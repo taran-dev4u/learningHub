@@ -1,0 +1,699 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CS Fundamentals</title>
+<style>
+:root {
+  --bg: #0f1115; --bg-elev: #161922; --bg-card: #1c2030; --bg-row-alt: #1a1d2a;
+  --text: #e6e8ee; --text-dim: #9aa0b0; --text-faint: #6b7080;
+  --border: #2a2f42; --border-strong: #3a3f55;
+  --accent: #7c9eff; --accent-dim: rgba(124,158,255,0.15);
+  --link: #9ab8ff;
+  --quote-bg: rgba(124,158,255,0.06);
+  --done: #00b894; --done-bg: rgba(0,184,148,0.12);
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.2);
+  --shadow-banner: 0 4px 14px rgba(0,0,0,0.25);
+}
+html.light {
+  --bg: #fafbfc; --bg-elev: #ffffff; --bg-card: #ffffff; --bg-row-alt: #f8f9fb;
+  --text: #1a1d24; --text-dim: #5a6072; --text-faint: #8b91a3;
+  --border: #e4e7ee; --border-strong: #d0d4de;
+  --accent: #3b5bdb; --accent-dim: rgba(59,91,219,0.1);
+  --link: #2949c6;
+  --quote-bg: rgba(59,91,219,0.05);
+  --done: #00a884; --done-bg: rgba(0,168,132,0.12);
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-banner: 0 4px 14px rgba(0,0,0,0.08);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; line-height: 1.55;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--bg); color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.2s, color 0.2s;
+}
+.wrap { max-width: 1240px; margin: 0 auto; padding: 24px 20px 80px; }
+.hero { text-align: center; padding: 16px 0 24px; border-bottom: 1px solid var(--border); margin-bottom: 20px; }
+.hero h1 { font-size: 32px; margin: 6px 0 4px; letter-spacing: -0.02em; }
+.hero .subtitle { color: var(--text-dim); margin: 0; font-size: 14px; }
+.hero .edition {
+  display: inline-block; color: var(--accent); font-weight: 700; font-size: 11px;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  background: var(--accent-dim); padding: 4px 10px; border-radius: 4px;
+}
+.nav-bar {
+  display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;
+  padding: 10px 0; margin-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+.nav-bar a {
+  font-size: 12px; padding: 6px 12px; border-radius: 6px;
+  background: var(--bg-card); border: 1px solid var(--border);
+  color: var(--text-dim); text-decoration: none; font-weight: 600;
+  transition: all 0.12s;
+}
+.nav-bar a:hover { background: var(--accent); color: white; border-color: var(--accent); }
+.nav-bar a.current { background: var(--accent); color: white; border-color: var(--accent); }
+
+.stats { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-top: 20px; }
+.stat {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 10px; padding: 8px 14px; min-width: 80px;
+  box-shadow: var(--shadow-card);
+}
+.stat .n { font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.stat .l { font-size: 10px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 2px; }
+
+.overall-progress {
+  background: var(--bg-elev); border: 1px solid var(--border);
+  border-radius: 10px; padding: 14px 20px; margin: 18px 0 18px;
+  display: flex; align-items: center; gap: 16px;
+}
+.overall-progress .lbl { font-size: 12px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; }
+.overall-progress .bar-track {
+  flex: 1; height: 10px; background: var(--bg-card);
+  border-radius: 5px; overflow: hidden; border: 1px solid var(--border);
+}
+.overall-progress .bar-fill {
+  height: 100%; background: linear-gradient(90deg, var(--done), var(--accent));
+  transition: width 0.3s ease; width: 0%;
+}
+.overall-progress .pct { font-weight: 700; font-variant-numeric: tabular-nums; font-size: 14px; min-width: 80px; text-align: right; }
+
+.controls {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--bg); backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  padding: 10px 0; margin: 0 0 20px;
+}
+.controls-row {
+  display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+  background: var(--bg-elev); border: 1px solid var(--border);
+  border-radius: 10px; padding: 10px 14px;
+}
+.controls-row .label {
+  font-size: 10px; color: var(--text-faint);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  font-weight: 700; margin-right: 2px;
+}
+.search { flex: 1; min-width: 180px; }
+.search input {
+  width: 100%; padding: 6px 11px; font-size: 13px;
+  background: var(--bg-card); border: 1px solid var(--border); color: var(--text);
+  border-radius: 5px;
+}
+.search input:focus { outline: none; border-color: var(--accent); }
+.icon-btn {
+  padding: 5px 9px; font-size: 14px;
+  background: var(--bg-card); border: 1px solid var(--border);
+  color: var(--text-dim); border-radius: 5px; cursor: pointer;
+  transition: all 0.12s;
+}
+.icon-btn:hover { background: var(--accent); color: white; border-color: var(--accent); }
+.filter-btn {
+  padding: 5px 10px; font-size: 11px; font-weight: 700;
+  background: var(--bg-card); border: 1px solid var(--border);
+  color: var(--text-dim); border-radius: 5px; cursor: pointer;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  transition: all 0.12s; letter-spacing: 0.02em;
+}
+.filter-btn:hover { background: var(--bg); color: var(--text); }
+.filter-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+.filter-btn.status-bookmarked.active { background: #ffa94d; border-color: #ffa94d; }
+.filter-btn.status-done.active { background: var(--done); border-color: var(--done); }
+.sep { width: 1px; height: 20px; background: var(--border); margin: 0 2px; }
+
+.toc {
+  background: var(--bg-elev); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px 22px; margin-bottom: 28px;
+}
+.toc h2 {
+  font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--text-faint); margin: 0 0 12px; font-weight: 700;
+}
+.toc-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 3px 12px;
+}
+.toc a {
+  display: flex; align-items: center; gap: 10px;
+  padding: 6px 8px; border-radius: 6px; color: var(--text);
+  text-decoration: none; font-size: 12.5px;
+  transition: background 0.12s;
+}
+.toc a:hover { background: var(--bg-card); }
+.toc .roman {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 10px; color: var(--text-faint); min-width: 36px;
+}
+.toc .name { flex: 1; }
+.toc .cnt {
+  font-size: 9.5px; color: var(--text-faint);
+  font-variant-numeric: tabular-nums;
+  background: var(--bg-card); padding: 1px 6px; border-radius: 3px;
+}
+
+.section { margin: 48px 0 0; }
+.section-banner {
+  border-radius: 12px; padding: 18px 24px; color: white;
+  display: flex; align-items: center; gap: 16px;
+  box-shadow: var(--shadow-banner);
+}
+.section-banner .num {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 22px; font-weight: 700; opacity: 0.95;
+  min-width: 56px; text-align: center;
+  padding: 6px 10px; background: rgba(255,255,255,0.18);
+  border-radius: 7px;
+}
+.section-banner .info { flex: 1; min-width: 0; }
+.section-banner .label {
+  font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em;
+  opacity: 0.85; margin-bottom: 1px;
+}
+.section-banner h2 { margin: 0; font-size: 20px; font-weight: 700; letter-spacing: -0.01em; }
+.section-banner .meta { font-size: 11.5px; opacity: 0.9; margin-top: 3px; }
+.section-banner .ppg { min-width: 140px; text-align: right; }
+.section-banner .ppg .pct-text { font-size: 13px; font-weight: 700; margin-bottom: 4px; font-variant-numeric: tabular-nums; }
+.section-banner .ppg .pp-track { height: 6px; background: rgba(255,255,255,0.25); border-radius: 3px; overflow: hidden; }
+.section-banner .ppg .pp-fill { height: 100%; background: white; border-radius: 3px; width: 0%; transition: width 0.3s; }
+
+.section-desc {
+  background: var(--quote-bg);
+  border-left: 4px solid var(--section-color, var(--accent));
+  border-radius: 0 8px 8px 0;
+  padding: 12px 18px; margin: 14px 0 6px 24px; font-size: 13.5px;
+}
+.section-desc .tagline { font-size: 14.5px; font-weight: 700; color: var(--text); margin: 0 0 6px; }
+.section-desc .row { margin: 4px 0; color: var(--text-dim); }
+.section-desc .row b { color: var(--text); }
+
+.subsection {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-left: 4px solid var(--section-color, var(--accent));
+  border-radius: 10px; margin: 16px 0 0 24px; padding: 14px 18px 16px;
+  box-shadow: var(--shadow-card);
+}
+.subsection-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 6px; flex-wrap: wrap; }
+.subsection-tag {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 10px; background: var(--bg-elev); border: 1px solid var(--border);
+  color: var(--text-dim); padding: 2px 7px; border-radius: 4px;
+  font-weight: 700; letter-spacing: 0.04em;
+}
+.subsection h3 { margin: 0; font-size: 14.5px; font-weight: 700; flex: 1; min-width: 0; color: var(--text); }
+.subsection-desc {
+  font-size: 12.5px; color: var(--text-dim); margin: 4px 0 8px;
+  padding: 7px 11px; background: var(--bg-elev); border-radius: 6px; line-height: 1.5;
+}
+
+/* Concept cards (the trackable units within a subsection) */
+.concepts {
+  list-style: none; padding: 0; margin: 8px 0 0;
+  border-radius: 8px; overflow: hidden;
+  border: 1px solid var(--border);
+}
+.concepts li {
+  display: grid;
+  grid-template-columns: 28px 22px 1fr auto auto;
+  gap: 10px; align-items: center;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-elev);
+  transition: background 0.12s;
+}
+.concepts li:last-child { border-bottom: none; }
+.concepts li:nth-child(even) { background: var(--bg-row-alt); }
+.concepts li:hover { background: var(--accent-dim); }
+.concepts li.hidden { display: none; }
+.concepts li.done { background: var(--done-bg); }
+.concepts li.done .cname { color: var(--text-dim); text-decoration: line-through; }
+.done-check {
+  width: 22px; height: 22px; cursor: pointer;
+  border: 2px solid var(--border-strong); border-radius: 5px;
+  background: var(--bg-card);
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.15s; flex-shrink: 0;
+}
+.done-check:hover { border-color: var(--done); }
+.done-check.checked { background: var(--done); border-color: var(--done); color: white; }
+.done-check.checked::after { content: '✓'; font-weight: 700; font-size: 14px; }
+.bookmark-star {
+  cursor: pointer; font-size: 16px; color: var(--border-strong);
+  user-select: none; transition: color 0.15s, transform 0.15s; flex-shrink: 0;
+}
+.bookmark-star:hover { color: #ffa94d; transform: scale(1.15); }
+.bookmark-star.active { color: #ffa94d; }
+.cname { color: var(--text); font-size: 13.5px; font-weight: 500; }
+.cname b { color: var(--accent); }
+.res-links { display: flex; gap: 4px; flex-shrink: 0; flex-wrap: wrap; }
+.res-links a {
+  font-size: 10.5px; padding: 3px 7px; border-radius: 4px;
+  background: var(--bg-card); border: 1px solid var(--border);
+  color: var(--text-dim); text-decoration: none;
+  white-space: nowrap; font-weight: 600;
+  transition: all 0.12s;
+}
+.res-links a:hover { background: var(--accent); color: white; border-color: var(--accent); }
+.res-links a.video:hover { background: #ff0000; border-color: #ff0000; }
+
+/* Resource panels (collapsible per-section) */
+.resources-section {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 10px; padding: 12px 16px; margin: 10px 0 8px 24px;
+}
+.resources-section .head {
+  display: flex; align-items: center; justify-content: space-between;
+  cursor: pointer; user-select: none;
+}
+.resources-section .head h4 {
+  margin: 0; font-size: 11.5px; color: var(--text-faint);
+  text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700;
+}
+.resources-section .head .count {
+  font-size: 10.5px; color: var(--text-faint);
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+}
+.resources-section .head .chevron {
+  color: var(--text-faint); font-size: 11px; margin-left: 8px;
+  transition: transform 0.18s; display: inline-block;
+}
+.resources-section.open .chevron { transform: rotate(90deg); }
+.resources-body { display: none; margin-top: 10px; }
+.resources-section.open .resources-body { display: block; }
+.res-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 5px 8px;
+}
+.res-link {
+  display: flex; align-items: center; gap: 8px;
+  padding: 6px 10px; border-radius: 6px;
+  background: var(--bg-elev); border: 1px solid var(--border);
+  text-decoration: none; color: var(--text);
+  font-size: 12.5px; transition: all 0.12s;
+}
+.res-link:hover { background: var(--accent); color: white; border-color: var(--accent); }
+.res-link:hover .res-source { color: rgba(255,255,255,0.8); }
+.res-icon { font-size: 13px; flex-shrink: 0; }
+.res-title { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.res-source { font-size: 9.5px; color: var(--text-faint); margin-left: auto; padding-left: 6px; white-space: nowrap; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+
+.learning-aid {
+  background: var(--bg-elev); border: 1px solid var(--border);
+  border-radius: 12px; padding: 18px 22px; margin-bottom: 20px;
+}
+.learning-aid .head {
+  display: flex; align-items: center; justify-content: space-between;
+  cursor: pointer; user-select: none;
+}
+.learning-aid h3 { margin: 0; font-size: 14px; color: var(--text); font-weight: 700; }
+.learning-aid h3 .ic { margin-right: 8px; }
+.learning-aid .head .chevron {
+  color: var(--text-faint); font-size: 14px;
+  transition: transform 0.18s;
+}
+.learning-aid.open .chevron { transform: rotate(90deg); }
+.learning-aid .body { display: none; margin-top: 14px; }
+.learning-aid.open .body { display: block; }
+.la-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.la-table th, .la-table td {
+  padding: 8px 12px; text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+.la-table th {
+  font-size: 10.5px; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--text-faint); font-weight: 700;
+  background: var(--bg-card);
+}
+.la-table tr:hover { background: var(--bg-card); }
+.la-table .strong { color: var(--text); font-weight: 600; }
+
+.top {
+  position: fixed; bottom: 20px; right: 20px;
+  background: var(--accent); color: white;
+  padding: 10px 14px; border-radius: 8px;
+  text-decoration: none; font-size: 13px; font-weight: 600;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.2); z-index: 100;
+}
+
+@media (max-width: 900px) {
+  .wrap { padding: 16px 12px 80px; }
+  .subsection, .section-desc, .resources-section { margin-left: 0; }
+  .section-banner { flex-direction: column; align-items: flex-start; }
+  .section-banner .ppg { min-width: 100%; text-align: left; }
+  .hero h1 { font-size: 24px; }
+  .concepts li { grid-template-columns: 24px 20px 1fr auto; gap: 6px; padding: 6px 8px; }
+  .concepts li .res-links { display: none; }
+}
+@media print {
+  body { background: white; color: black; }
+  .controls, .top, .filter-btn, .icon-btn { display: none !important; }
+  .resources-section .resources-body, .learning-aid .body { display: block !important; }
+  .section { page-break-inside: avoid; }
+  a { color: black; text-decoration: underline; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav class="nav-bar"><a href="index.html">🏠 Hub</a><a href="DSA_Ultimate_Index.html">🧩 DSA</a><a href="system_design.html">🏗️ System Design</a><a href="cs_fundamentals.html" class="current">📚 CS Fundamentals</a><a href="behavioral.html">💬 Behavioral</a><a href="ai_engineering.html">🤖 AI Engineering</a><a href="cloud_aws_azure.html">☁️ Cloud (AWS+Azure)</a></nav>
+<div class="hero">
+<div class="edition">v1 · CS Fundamentals · 6 Domains · 180+ Resources</div>
+<h1>📚 CS Fundamentals</h1>
+<p class="subtitle">OS · Networking · Databases · Concurrency · Security · Architecture</p>
+</div>
+<div class="stats">
+<div class="stat"><div class="n">6</div><div class="l">Domains</div></div>
+<div class="stat"><div class="n">25</div><div class="l">Subsections</div></div>
+<div class="stat"><div class="n">128</div><div class="l">Concepts</div></div>
+<div class="stat"><div class="n">35+</div><div class="l">Resources</div></div>
+</div>
+<div class="overall-progress">
+<span class="lbl">Your Progress</span>
+<div class="bar-track"><div class="bar-fill" id="overall-bar"></div></div>
+<span class="pct" id="overall-pct">0 / 128</span>
+</div>
+<div class="controls"><div class="controls-row"><span class="label">Filter:</span><button class="filter-btn status-done" data-filter="status" data-val="done">Done</button><button class="filter-btn" data-filter="status" data-val="undone">Not Done</button><button class="filter-btn status-bookmarked" data-filter="status" data-val="bookmarked">★ Bookmarked</button><span class="sep"></span><div class="search"><input type="search" id="search-input" placeholder="Search concepts…"></div><button class="icon-btn" id="random-btn" title="Random concept">🎲</button><button class="icon-btn" id="theme-toggle" title="Toggle theme">🌓</button><button class="icon-btn" onclick="window.print()" title="Print">🖨️</button><button class="filter-btn" id="clear-filters">Clear</button></div></div>
+<section class="resources-section open" style="margin: 0 0 24px;">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<h4>🌟 Universal Anchor Resources — start here</h4>
+<div><span class="count">12 curated</span><span class="chevron">▶</span></div>
+</div><div class="resources-body">
+<p style="font-size:12.5px;color:var(--text-dim);margin:0 0 10px;">Free CS curricula and books that cover every topic below. <b>OSTEP</b> for OS, <b>Kurose</b> for networking, <b>CSAPP</b> for architecture, <b>DDIA</b> for data systems.</p>
+<div class="res-grid">
+<a class="res-link" href="https://teachyourselfcs.com/" target="_blank" rel="noopener">
+<span class="res-icon">📝</span><span class="res-title">Teach Yourself CS (curriculum)</span>
+<span class="res-source">TYCS</span></a>
+<a class="res-link" href="https://github.com/ossu/computer-science" target="_blank" rel="noopener">
+<span class="res-icon">💻</span><span class="res-title">OSSU CS (free curriculum)</span>
+<span class="res-source">OSSU</span></a>
+<a class="res-link" href="https://github.com/jwasham/coding-interview-university" target="_blank" rel="noopener">
+<span class="res-icon">💻</span><span class="res-title">Coding Interview University</span>
+<span class="res-source">jwasham</span></a>
+<a class="res-link" href="https://ocw.mit.edu/search/?d=Electrical%20Engineering%20and%20Computer%20Science" target="_blank" rel="noopener">
+<span class="res-icon">🎓</span><span class="res-title">MIT OCW EECS</span>
+<span class="res-source">MIT OCW</span></a>
+<a class="res-link" href="https://pages.cs.wisc.edu/~remzi/OSTEP/" target="_blank" rel="noopener">
+<span class="res-icon">📖</span><span class="res-title">OSTEP (free OS book)</span>
+<span class="res-source">OSTEP</span></a>
+<a class="res-link" href="https://gaia.cs.umass.edu/kurose_ross/" target="_blank" rel="noopener">
+<span class="res-icon">📖</span><span class="res-title">Computer Networking: Top-Down (Kurose)</span>
+<span class="res-source">Kurose &amp; Ross</span></a>
+<a class="res-link" href="https://dataintensive.net/" target="_blank" rel="noopener">
+<span class="res-icon">📖</span><span class="res-title">DDIA (Kleppmann)</span>
+<span class="res-source">DDIA</span></a>
+<a class="res-link" href="https://cs50.harvard.edu/x/" target="_blank" rel="noopener">
+<span class="res-icon">🎓</span><span class="res-title">CS50 Harvard (free)</span>
+<span class="res-source">Harvard</span></a>
+<a class="res-link" href="https://www.nand2tetris.org/" target="_blank" rel="noopener">
+<span class="res-icon">🎓</span><span class="res-title">nand2tetris</span>
+<span class="res-source">Nisan/Schocken</span></a>
+<a class="res-link" href="https://www.youtube.com/playlist?list=PL8dPuuaLjXtNlUrzyH5r6jN9ulIgZBpdo" target="_blank" rel="noopener">
+<span class="res-icon">📺</span><span class="res-title">Crash Course CS (YouTube)</span>
+<span class="res-source">PBS</span></a>
+<a class="res-link" href="https://roadmap.sh/computer-science" target="_blank" rel="noopener">
+<span class="res-icon">📝</span><span class="res-title">Roadmap.sh — CS</span>
+<span class="res-source">Roadmap.sh</span></a>
+<a class="res-link" href="https://csapp.cs.cmu.edu/" target="_blank" rel="noopener">
+<span class="res-icon">📖</span><span class="res-title">CSAPP (Bryant &amp; O&#x27;Hallaron)</span>
+<span class="res-source">CMU</span></a>
+</div></div></section>
+<nav class="toc"><h2>📑 Table of Contents</h2><div class="toc-grid"><a href="#section-1"><span class="roman">1</span><span class="name">Operating Systems</span><span class="cnt">5sec · 28</span></a><a href="#section-2"><span class="roman">2</span><span class="name">Networking</span><span class="cnt">5sec · 23</span></a><a href="#section-3"><span class="roman">3</span><span class="name">Databases</span><span class="cnt">5sec · 22</span></a><a href="#section-4"><span class="roman">4</span><span class="name">Concurrency &amp; Parallelism</span><span class="cnt">4sec · 22</span></a><a href="#section-5"><span class="roman">5</span><span class="name">Security</span><span class="cnt">3sec · 19</span></a><a href="#section-6"><span class="roman">6</span><span class="name">Computer Architecture</span><span class="cnt">3sec · 14</span></a></div></nav>
+<section class="section" id="section-1" style="--section-color:hsl(210, 60%, 55%)">
+<div class="section-banner" style="background:linear-gradient(135deg, hsl(210, 65%, 48%), hsl(240, 70%, 55%))">
+<div class="num">1</div>
+<div class="info">
+<div class="label">Section 1 of 6</div>
+<h2>Operating Systems</h2>
+<div class="meta">5 subsections · 28 concepts</div>
+</div>
+<div class="ppg">
+<div class="pct-text" data-pp-text="1">0 / 28</div>
+<div class="pp-track"><div class="pp-fill" data-pp-fill="1"></div></div>
+</div>
+</div>
+<div class="section-desc">
+<div class="tagline">How programs share CPU, memory, and devices.</div>
+<div class="row"><b>When.</b> Concurrency questions, performance debugging, low-level interviews.</div>
+<div class="row"><b>Key idea.</b> Processes are isolated, threads share memory. Scheduler decides who runs.</div>
+</div>
+<div class="resources-section"><div class="head" onclick="this.parentElement.classList.toggle('open')"><h4>📚 Learn this domain</h4><div><span class="count">4 resources</span><span class="chevron">▶</span></div></div><div class="resources-body"><div class="res-grid"><a class="res-link" href="https://pages.cs.wisc.edu/~remzi/OSTEP/" target="_blank" rel="noopener"><span class="res-icon">📖</span><span class="res-title">OSTEP — full free book</span><span class="res-source">Remzi</span></a><a class="res-link" href="https://pdos.csail.mit.edu/6.S081/2020/" target="_blank" rel="noopener"><span class="res-icon">🎓</span><span class="res-title">MIT 6.S081 OS</span><span class="res-source">MIT</span></a><a class="res-link" href="https://www.kernel.org/doc/html/latest/" target="_blank" rel="noopener"><span class="res-icon">📝</span><span class="res-title">Linux Kernel Docs</span><span class="res-source">Kernel.org</span></a><a class="res-link" href="https://www.youtube.com/watch?v=26QPDBe-NB8" target="_blank" rel="noopener"><span class="res-icon">🎥</span><span class="res-title">Crash Course OS</span><span class="res-source">YouTube</span></a></div></div></div>
+<div class="subsection"><div class="subsection-head"><span class="subsection-tag">1.1</span><h3>Processes &amp; Threads</h3><span style="font-size:11px;color:var(--text-faint);">6 concepts</span></div><div class="subsection-desc">Units of execution and their resources.</div><ol class="concepts"><li data-cid="1.1.1" data-name="process: isolated address space"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Process: isolated address space</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">PID, memory regions, file descriptors. fork() creates child.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Process+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Process+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="1.1.2" data-name="thread: shares process memory"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Thread: shares process memory</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Same heap/code, own stack. pthreads, Java Thread.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Thread+shares+process+memory+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Thread+shares+process+memory+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="1.1.3" data-name="context switching"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Context switching</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Save/restore registers + page tables. Microsecond cost.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Context+switching+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Context+switching+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="1.1.4" data-name="process states (ready/running/blocked)"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Process states (Ready/Running/Blocked)</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">State machine driven by scheduler + events.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Process+states+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Process+states+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="1.1.5" data-name="fork() / exec() / wait()"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">fork() / exec() / wait()</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Duplicate, replace image, reap child. Unix process API.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=fork+exec+wait+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=fork+exec+wait+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="1.1.6" data-name="zombies &amp; orphans"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Zombies &amp; orphans</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Zombie = dead, not reaped. Orphan = parent died first.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Zombies+and+orphans+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Zombies+and+orphans+computer+science" target="_blank" rel="noopener">🔍G</a></div></li></ol></div>
+<div class="subsection"><div class="subsection-head"><span class="subsection-tag">1.2</span><h3>CPU Scheduling</h3><span style="font-size:11px;color:var(--text-faint);">5 concepts</span></div><div class="subsection-desc">Picking which ready process runs next.</div><ol class="concepts"><li data-cid="1.2.1" data-name="fcfs / sjf / srtf"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">FCFS / SJF / SRTF</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">First-come, shortest-job, shortest-remaining.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=FCFS+SJF+SRTF+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=FCFS+SJF+SRTF+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="1.2.2" data-name="round robin"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Round Robin</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Time quantum per process. Fair, interactive.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Round+Robin+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Round+Robin+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="1.2.3" data-name="multilevel feedback queue"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Multilevel feedback queue</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Multi-priority queues, long jobs demoted.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Multilevel+feedback+queue+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Multilevel+feedback+queue+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="1.2.4" data-name="linux cfs (completely fair scheduler)"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Linux CFS (Completely Fair Scheduler)</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Red-black tree of vruntime. Picks smallest.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Linux+CFS+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Linux+CFS+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="1.2.5" data-name="preemptive vs cooperative"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Preemptive vs cooperative</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Preemptive: kernel can interrupt. Cooperative: must yield.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Preemptive+vs+cooperative+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Preemptive+vs+cooperative+computer+science" target="_blank" rel="noopener">🔍G</a></div></li></ol></div>
+<div class="subsection"><div class="subsection-head"><span class="subsection-tag">1.3</span><h3>Memory Management</h3><span style="font-size:11px;color:var(--text-faint);">7 concepts</span></div><div class="subsection-desc">Virtual memory, paging, allocation.</div><ol class="concepts"><li data-cid="1.3.1" data-name="virtual memory &amp; mmu"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Virtual memory &amp; MMU</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Each process sees its own address space. MMU translates.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Virtual+memory+and+MMU+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Virtual+memory+and+MMU+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="1.3.2" data-name="paging (page tables, tlb)"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Paging (page tables, TLB)</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">4KB pages typical. TLB caches translations.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Paging+page+tables+TLB+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Paging+page+tables+TLB+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="1.3.3" data-name="page faults &amp; demand paging"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Page faults &amp; demand paging</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Lazy load on first access. Major fault = disk hit.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Page+faults+and+demand+paging+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Page+faults+and+demand+paging+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="1.3.4" data-name="page replacement (lru, clock)"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Page replacement (LRU, Clock)</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">When RAM full. Clock = cheap LRU approximation.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Page+replacement+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Page+replacement+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="1.3.5" data-name="heap vs stack"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Heap vs Stack</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Stack: LIFO, fast. Heap: dynamic, fragmented.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Heap+vs+Stack+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Heap+vs+Stack+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="1.3.6" data-name="memory allocators (malloc)"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Memory allocators (malloc)</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Best-fit, buddy system, slab allocator.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Memory+allocators+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Memory+allocators+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="1.3.7" data-name="garbage collection"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Garbage collection</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Mark-and-sweep, generational, refcount.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Garbage+collection+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Garbage+collection+computer+science" target="_blank" rel="noopener">🔍G</a></div></li></ol></div>
+<div class="subsection"><div class="subsection-head"><span class="subsection-tag">1.4</span><h3>I/O &amp; File Systems</h3><span style="font-size:11px;color:var(--text-faint);">5 concepts</span></div><div class="subsection-desc">How OS manages disks, files, devices.</div><ol class="concepts"><li data-cid="1.4.1" data-name="file system (inodes, directories)"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">File system (inodes, directories)</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Inode = metadata + block pointers.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=File+system+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=File+system+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="1.4.2" data-name="journaling (ext4, ntfs)"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Journaling (ext4, NTFS)</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Log intent first, then apply. Crash-safe.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Journaling+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Journaling+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="1.4.3" data-name="blocking vs non-blocking i/o"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Blocking vs non-blocking I/O</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Blocking waits. Non-blocking returns immediately.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Blocking+vs+non-blocking+I+O+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Blocking+vs+non-blocking+I+O+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="1.4.4" data-name="select/poll/epoll/kqueue"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">select/poll/epoll/kqueue</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">epoll &amp; kqueue scale O(1) to many fds.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=select+poll+epoll+kqueue+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=select+poll+epoll+kqueue+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="1.4.5" data-name="dma (direct memory access)"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">DMA (Direct Memory Access)</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Device transfers data without CPU.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=DMA+%28Direct+Memory+Access%29+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=DMA+%28Direct+Memory+Access%29+computer+science" target="_blank" rel="noopener">🔍G</a></div></li></ol></div>
+<div class="subsection"><div class="subsection-head"><span class="subsection-tag">1.5</span><h3>IPC</h3><span style="font-size:11px;color:var(--text-faint);">5 concepts</span></div><div class="subsection-desc">Inter-process communication.</div><ol class="concepts"><li data-cid="1.5.1" data-name="pipes (anonymous + named)"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Pipes (anonymous + named)</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Unidirectional byte stream.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Pipes+anonymous+named+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Pipes+anonymous+named+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="1.5.2" data-name="shared memory"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Shared memory</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Multiple processes map same physical pages. Fastest IPC.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Shared+memory+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Shared+memory+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="1.5.3" data-name="message queues (posix, system v)"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Message queues (POSIX, System V)</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">OS-managed queue, priorities supported.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Message+queues+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Message+queues+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="1.5.4" data-name="unix domain sockets"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Unix domain sockets</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Local TCP-like sockets. Docker, X11 use them.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Unix+domain+sockets+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Unix+domain+sockets+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="1.5.5" data-name="signals (sigterm, sigkill)"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Signals (SIGTERM, SIGKILL)</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Async notification. SIGKILL can&#x27;t be caught.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Signals+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Signals+computer+science" target="_blank" rel="noopener">🔍G</a></div></li></ol></div>
+</section>
+<section class="section" id="section-2" style="--section-color:hsl(145, 60%, 55%)">
+<div class="section-banner" style="background:linear-gradient(135deg, hsl(145, 65%, 48%), hsl(175, 70%, 55%))">
+<div class="num">2</div>
+<div class="info">
+<div class="label">Section 2 of 6</div>
+<h2>Networking</h2>
+<div class="meta">5 subsections · 23 concepts</div>
+</div>
+<div class="ppg">
+<div class="pct-text" data-pp-text="2">0 / 23</div>
+<div class="pp-track"><div class="pp-fill" data-pp-fill="2"></div></div>
+</div>
+</div>
+<div class="section-desc">
+<div class="tagline">How bits cross machines.</div>
+<div class="row"><b>When.</b> Distributed systems, connectivity debugging, security.</div>
+<div class="row"><b>Key idea.</b> Layered TCP/IP. Each layer trusts the one below.</div>
+</div>
+<div class="resources-section"><div class="head" onclick="this.parentElement.classList.toggle('open')"><h4>📚 Learn this domain</h4><div><span class="count">4 resources</span><span class="chevron">▶</span></div></div><div class="resources-body"><div class="res-grid"><a class="res-link" href="https://gaia.cs.umass.edu/kurose_ross/" target="_blank" rel="noopener"><span class="res-icon">📖</span><span class="res-title">Kurose &amp; Ross site</span><span class="res-source">K&amp;R</span></a><a class="res-link" href="https://beej.us/guide/bgnet/" target="_blank" rel="noopener"><span class="res-icon">📝</span><span class="res-title">Beej&#x27;s Network Programming</span><span class="res-source">Beej</span></a><a class="res-link" href="https://www.cloudflare.com/learning/" target="_blank" rel="noopener"><span class="res-icon">📝</span><span class="res-title">Cloudflare Learning Center</span><span class="res-source">Cloudflare</span></a><a class="res-link" href="https://hpbn.co/" target="_blank" rel="noopener"><span class="res-icon">📖</span><span class="res-title">HPBN (free online)</span><span class="res-source">Ilya Grigorik</span></a></div></div></div>
+<div class="subsection"><div class="subsection-head"><span class="subsection-tag">2.1</span><h3>OSI &amp; TCP/IP Models</h3><span style="font-size:11px;color:var(--text-faint);">3 concepts</span></div><div class="subsection-desc">Layered architecture.</div><ol class="concepts"><li data-cid="2.1.1" data-name="osi 7 layers"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">OSI 7 layers</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Physical, Data Link, Network, Transport, Session, Presentation, Application.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=OSI+7+layers+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=OSI+7+layers+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="2.1.2" data-name="tcp/ip 4-layer model"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">TCP/IP 4-layer model</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Link → Internet → Transport → Application.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=TCP+IP+4-layer+model+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=TCP+IP+4-layer+model+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="2.1.3" data-name="encapsulation across layers"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Encapsulation across layers</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Each layer adds its own header.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Encapsulation+across+layers+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Encapsulation+across+layers+computer+science" target="_blank" rel="noopener">🔍G</a></div></li></ol></div>
+<div class="subsection"><div class="subsection-head"><span class="subsection-tag">2.2</span><h3>IP &amp; Routing</h3><span style="font-size:11px;color:var(--text-faint);">6 concepts</span></div><div class="subsection-desc">Layer 3.</div><ol class="concepts"><li data-cid="2.2.1" data-name="ipv4 (32-bit) &amp; exhaustion"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">IPv4 (32-bit) &amp; exhaustion</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">4 billion addrs. NAT extends.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=IPv4+32-bit+and+exhaustion+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=IPv4+32-bit+and+exhaustion+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="2.2.2" data-name="ipv6 (128-bit)"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">IPv6 (128-bit)</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">2^128 addresses, ~40% adoption.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=IPv6+128-bit+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=IPv6+128-bit+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="2.2.3" data-name="subnetting &amp; cidr"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Subnetting &amp; CIDR</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">/24 = 256 addrs. Network/host bits.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Subnetting+and+CIDR+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Subnetting+and+CIDR+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="2.2.4" data-name="nat"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">NAT</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Private IPs share one public. Rewrites source.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=NAT+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=NAT+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="2.2.5" data-name="bgp &amp; ospf routing"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">BGP &amp; OSPF routing</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">BGP between ASes. OSPF within.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=BGP+and+OSPF+routing+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=BGP+and+OSPF+routing+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="2.2.6" data-name="icmp (ping, traceroute)"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">ICMP (ping, traceroute)</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Network diagnostics, not data.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=ICMP+ping+traceroute+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=ICMP+ping+traceroute+computer+science" target="_blank" rel="noopener">🔍G</a></div></li></ol></div>
+<div class="subsection"><div class="subsection-head"><span class="subsection-tag">2.3</span><h3>TCP &amp; UDP</h3><span style="font-size:11px;color:var(--text-faint);">6 concepts</span></div><div class="subsection-desc">Layer 4 — transport.</div><ol class="concepts"><li data-cid="2.3.1" data-name="tcp: reliable, ordered, connection"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">TCP: reliable, ordered, connection</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">3-way handshake, ACKs, retransmits.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=TCP%3A+reliable%2C+ordered%2C+connection+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=TCP%3A+reliable%2C+ordered%2C+connection+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="2.3.2" data-name="tcp 3-way handshake"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">TCP 3-way handshake</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">SYN, SYN-ACK, ACK.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=TCP+3-way+handshake+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=TCP+3-way+handshake+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="2.3.3" data-name="congestion control (reno, cubic, bbr)"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Congestion control (Reno, Cubic, BBR)</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Slow start, AIMD. BBR = Google&#x27;s modern.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Congestion+control+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Congestion+control+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="2.3.4" data-name="udp: connectionless, unreliable"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">UDP: connectionless, unreliable</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">DNS, VoIP, games, QUIC.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=UDP%3A+connectionless%2C+unreliable+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=UDP%3A+connectionless%2C+unreliable+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="2.3.5" data-name="quic (http/3 transport)"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">QUIC (HTTP/3 transport)</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">UDP-based, TLS-integrated, multiplexed.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=QUIC+HTTP+transport+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=QUIC+HTTP+transport+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="2.3.6" data-name="ports &amp; sockets"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Ports &amp; sockets</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Socket = (IP, port). 80, 443, 22, 53.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Ports+and+sockets+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Ports+and+sockets+computer+science" target="_blank" rel="noopener">🔍G</a></div></li></ol></div>
+<div class="subsection"><div class="subsection-head"><span class="subsection-tag">2.4</span><h3>HTTP &amp; DNS</h3><span style="font-size:11px;color:var(--text-faint);">5 concepts</span></div><div class="subsection-desc">Layer 7 essentials.</div><ol class="concepts"><li data-cid="2.4.1" data-name="http anatomy (req/resp)"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">HTTP anatomy (req/resp)</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Method + path + headers + body.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=HTTP+anatomy+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=HTTP+anatomy+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="2.4.2" data-name="http/1.1 vs 2 vs 3"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">HTTP/1.1 vs 2 vs 3</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">1.1: text. 2: binary multiplex. 3: QUIC.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=HTTP%2F1+vs+vs+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=HTTP%2F1+vs+vs+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="2.4.3" data-name="dns resolution flow"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">DNS resolution flow</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Resolver → root → TLD → authoritative.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=DNS+resolution+flow+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=DNS+resolution+flow+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="2.4.4" data-name="dns records (a, cname, mx, txt)"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">DNS records (A, CNAME, MX, TXT)</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">A: IPv4. CNAME: alias. MX: mail. TXT: SPF/verification.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=DNS+records+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=DNS+records+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="2.4.5" data-name="dns caching"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">DNS caching</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Browser, OS, resolver. TTLs control freshness.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=DNS+caching+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=DNS+caching+computer+science" target="_blank" rel="noopener">🔍G</a></div></li></ol></div>
+<div class="subsection"><div class="subsection-head"><span class="subsection-tag">2.5</span><h3>TLS / Security</h3><span style="font-size:11px;color:var(--text-faint);">3 concepts</span></div><div class="subsection-desc">Encryption in transit.</div><ol class="concepts"><li data-cid="2.5.1" data-name="tls handshake (1.2 vs 1.3)"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">TLS handshake (1.2 vs 1.3)</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Cert + key exchange. 1.3 = 1 RTT.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=TLS+handshake+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=TLS+handshake+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="2.5.2" data-name="certificates &amp; pki"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Certificates &amp; PKI</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Cert chain → root CA. mTLS = both sides.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Certificates+and+PKI+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Certificates+and+PKI+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="2.5.3" data-name="hsts, ocsp stapling"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">HSTS, OCSP stapling</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Force HTTPS, fast revocation check.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=HSTS%2C+OCSP+stapling+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=HSTS%2C+OCSP+stapling+computer+science" target="_blank" rel="noopener">🔍G</a></div></li></ol></div>
+</section>
+<section class="section" id="section-3" style="--section-color:hsl(30, 60%, 55%)">
+<div class="section-banner" style="background:linear-gradient(135deg, hsl(30, 65%, 48%), hsl(60, 70%, 55%))">
+<div class="num">3</div>
+<div class="info">
+<div class="label">Section 3 of 6</div>
+<h2>Databases</h2>
+<div class="meta">5 subsections · 22 concepts</div>
+</div>
+<div class="ppg">
+<div class="pct-text" data-pp-text="3">0 / 22</div>
+<div class="pp-track"><div class="pp-fill" data-pp-fill="3"></div></div>
+</div>
+</div>
+<div class="section-desc">
+<div class="tagline">Persistent state.</div>
+<div class="row"><b>When.</b> Every interview that touches data.</div>
+<div class="row"><b>Key idea.</b> Relational guarantees aren&#x27;t free; NoSQL trades them for scale.</div>
+</div>
+<div class="resources-section"><div class="head" onclick="this.parentElement.classList.toggle('open')"><h4>📚 Learn this domain</h4><div><span class="count">4 resources</span><span class="chevron">▶</span></div></div><div class="resources-body"><div class="res-grid"><a class="res-link" href="https://use-the-index-luke.com/" target="_blank" rel="noopener"><span class="res-icon">📝</span><span class="res-title">Use the Index, Luke!</span><span class="res-source">Markus Winand</span></a><a class="res-link" href="https://www.postgresql.org/docs/current/" target="_blank" rel="noopener"><span class="res-icon">📝</span><span class="res-title">PostgreSQL Docs</span><span class="res-source">PostgreSQL</span></a><a class="res-link" href="https://15445.courses.cs.cmu.edu/fall2023/" target="_blank" rel="noopener"><span class="res-icon">🎓</span><span class="res-title">CMU 15-445 (free)</span><span class="res-source">CMU</span></a><a class="res-link" href="https://mode.com/sql-tutorial/" target="_blank" rel="noopener"><span class="res-icon">📝</span><span class="res-title">Mode SQL Tutorial</span><span class="res-source">Mode</span></a></div></div></div>
+<div class="subsection"><div class="subsection-head"><span class="subsection-tag">3.1</span><h3>SQL Basics</h3><span style="font-size:11px;color:var(--text-faint);">5 concepts</span></div><div class="subsection-desc">Core relational operations.</div><ol class="concepts"><li data-cid="3.1.1" data-name="join types"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">JOIN types</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">INNER, LEFT, RIGHT, FULL, CROSS.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=JOIN+types+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=JOIN+types+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="3.1.2" data-name="group by + aggregates"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">GROUP BY + aggregates</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">COUNT/SUM/AVG/MIN/MAX. HAVING filters groups.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=GROUP+BY+%2B+aggregates+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=GROUP+BY+%2B+aggregates+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="3.1.3" data-name="window functions"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Window functions</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">ROW_NUMBER, RANK, LAG over partitions.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Window+functions+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Window+functions+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="3.1.4" data-name="ctes (with)"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">CTEs (WITH)</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Named subqueries, recursive CTEs.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=CTEs+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=CTEs+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="3.1.5" data-name="subqueries vs joins"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Subqueries vs JOINs</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Correlated subqueries often slow.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Subqueries+vs+JOINs+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Subqueries+vs+JOINs+computer+science" target="_blank" rel="noopener">🔍G</a></div></li></ol></div>
+<div class="subsection"><div class="subsection-head"><span class="subsection-tag">3.2</span><h3>Normalization</h3><span style="font-size:11px;color:var(--text-faint);">2 concepts</span></div><div class="subsection-desc">Reduce redundancy via decomposition.</div><ol class="concepts"><li data-cid="3.2.1" data-name="1nf, 2nf, 3nf, bcnf"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">1NF, 2NF, 3NF, BCNF</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Atomic → no partial dep → no transitive dep.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=1NF%2C+2NF%2C+3NF%2C+BCNF+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=1NF%2C+2NF%2C+3NF%2C+BCNF+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="3.2.2" data-name="denormalization tradeoffs"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Denormalization tradeoffs</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Faster reads, write amplification.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Denormalization+tradeoffs+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Denormalization+tradeoffs+computer+science" target="_blank" rel="noopener">🔍G</a></div></li></ol></div>
+<div class="subsection"><div class="subsection-head"><span class="subsection-tag">3.3</span><h3>Indexes</h3><span style="font-size:11px;color:var(--text-faint);">5 concepts</span></div><div class="subsection-desc">Trade write speed for read speed.</div><ol class="concepts"><li data-cid="3.3.1" data-name="b-tree vs hash vs gin/gist"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">B-Tree vs Hash vs GIN/GiST</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">B-tree: ranges. Hash: equality. GIN: full-text.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=B-Tree+vs+Hash+vs+GIN+GiST+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=B-Tree+vs+Hash+vs+GIN+GiST+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="3.3.2" data-name="clustered vs non-clustered"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Clustered vs non-clustered</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Clustered = data IS the leaf.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Clustered+vs+non-clustered+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Clustered+vs+non-clustered+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="3.3.3" data-name="composite + leftmost prefix"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Composite + leftmost prefix</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">(A,B,C) helps WHERE A, A+B, A+B+C — not B alone.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Composite+%2B+leftmost+prefix+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Composite+%2B+leftmost+prefix+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="3.3.4" data-name="index selectivity &amp; cardinality"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Index selectivity &amp; cardinality</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">High cardinality good. Low (gender) useless.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Index+selectivity+and+cardinality+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Index+selectivity+and+cardinality+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="3.3.5" data-name="explain analyze"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">EXPLAIN ANALYZE</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Read query plans. Seq Scan = often missing index.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=EXPLAIN+ANALYZE+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=EXPLAIN+ANALYZE+computer+science" target="_blank" rel="noopener">🔍G</a></div></li></ol></div>
+<div class="subsection"><div class="subsection-head"><span class="subsection-tag">3.4</span><h3>Transactions &amp; Isolation</h3><span style="font-size:11px;color:var(--text-faint);">6 concepts</span></div><div class="subsection-desc">How concurrency interacts with data.</div><ol class="concepts"><li data-cid="3.4.1" data-name="acid"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">ACID</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Atomicity, Consistency, Isolation, Durability.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=ACID+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=ACID+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="3.4.2" data-name="isolation levels"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Isolation levels</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Read Uncommitted → Committed → Repeatable Read → Serializable.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Isolation+levels+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Isolation+levels+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="3.4.3" data-name="anomalies (dirty/non-repeatable/phantom)"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Anomalies (dirty/non-repeatable/phantom)</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Each level prevents specific anomalies.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Anomalies+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Anomalies+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="3.4.4" data-name="mvcc"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">MVCC</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Snapshot reads, no read locks. Postgres, Oracle.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=MVCC+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=MVCC+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="3.4.5" data-name="locks &amp; deadlock"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Locks &amp; deadlock</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Shared/exclusive. Deadlock = circular wait.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Locks+and+deadlock+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Locks+and+deadlock+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="3.4.6" data-name="optimistic concurrency"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Optimistic concurrency</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Version columns, retry on conflict.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Optimistic+concurrency+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Optimistic+concurrency+computer+science" target="_blank" rel="noopener">🔍G</a></div></li></ol></div>
+<div class="subsection"><div class="subsection-head"><span class="subsection-tag">3.5</span><h3>NoSQL types</h3><span style="font-size:11px;color:var(--text-faint);">4 concepts</span></div><div class="subsection-desc">When relational isn&#x27;t right.</div><ol class="concepts"><li data-cid="3.5.1" data-name="document (mongodb)"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Document (MongoDB)</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Embed related data, schemaless.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Document+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Document+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="3.5.2" data-name="key-value (redis)"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Key-Value (Redis)</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Sub-ms lookups. Cache, session, counters.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Key-Value+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Key-Value+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="3.5.3" data-name="wide-column (cassandra)"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Wide-column (Cassandra)</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Time-series, write-heavy, billions of rows.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Wide-column+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Wide-column+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="3.5.4" data-name="graph (neo4j)"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Graph (Neo4j)</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Many-to-many, O(1) edge traversal.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Graph+Neo4j+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Graph+Neo4j+computer+science" target="_blank" rel="noopener">🔍G</a></div></li></ol></div>
+</section>
+<section class="section" id="section-4" style="--section-color:hsl(270, 60%, 55%)">
+<div class="section-banner" style="background:linear-gradient(135deg, hsl(270, 65%, 48%), hsl(300, 70%, 55%))">
+<div class="num">4</div>
+<div class="info">
+<div class="label">Section 4 of 6</div>
+<h2>Concurrency &amp; Parallelism</h2>
+<div class="meta">4 subsections · 22 concepts</div>
+</div>
+<div class="ppg">
+<div class="pct-text" data-pp-text="4">0 / 22</div>
+<div class="pp-track"><div class="pp-fill" data-pp-fill="4"></div></div>
+</div>
+</div>
+<div class="section-desc">
+<div class="tagline">Many things at once.</div>
+<div class="row"><b>When.</b> Threaded code, async I/O, distributed systems.</div>
+<div class="row"><b>Key idea.</b> Shared mutable state is the enemy. Prefer immutability or message passing.</div>
+</div>
+<div class="resources-section"><div class="head" onclick="this.parentElement.classList.toggle('open')"><h4>📚 Learn this domain</h4><div><span class="count">4 resources</span><span class="chevron">▶</span></div></div><div class="resources-body"><div class="res-grid"><a class="res-link" href="https://greenteapress.com/wp/semaphores/" target="_blank" rel="noopener"><span class="res-icon">📖</span><span class="res-title">Little Book of Semaphores (free)</span><span class="res-source">Allen Downey</span></a><a class="res-link" href="https://preshing.com/" target="_blank" rel="noopener"><span class="res-icon">📝</span><span class="res-title">Preshing on Programming</span><span class="res-source">Preshing</span></a><a class="res-link" href="https://www.youtube.com/watch?v=f6kdp27TYZs" target="_blank" rel="noopener"><span class="res-icon">🎥</span><span class="res-title">Go Concurrency Patterns</span><span class="res-source">Rob Pike</span></a><a class="res-link" href="https://rust-lang.github.io/async-book/" target="_blank" rel="noopener"><span class="res-icon">📖</span><span class="res-title">Rust Async Book</span><span class="res-source">Rust</span></a></div></div></div>
+<div class="subsection"><div class="subsection-head"><span class="subsection-tag">4.1</span><h3>Concurrency vs Parallelism</h3><span style="font-size:11px;color:var(--text-faint);">3 concepts</span></div><div class="subsection-desc">Often confused, different problems.</div><ol class="concepts"><li data-cid="4.1.1" data-name="concurrency: structure"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Concurrency: structure</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Many in progress, not simultaneous.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Concurrency+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Concurrency+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="4.1.2" data-name="parallelism: execution"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Parallelism: execution</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Actually simultaneous on multiple cores.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Parallelism+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Parallelism+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="4.1.3" data-name="amdahl&#x27;s law"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Amdahl&#x27;s Law</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Max speedup = 1/(s + p/N). Serial bounds parallel.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Amdahl%27s+Law+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Amdahl%27s+Law+computer+science" target="_blank" rel="noopener">🔍G</a></div></li></ol></div>
+<div class="subsection"><div class="subsection-head"><span class="subsection-tag">4.2</span><h3>Synchronization Primitives</h3><span style="font-size:11px;color:var(--text-faint);">7 concepts</span></div><div class="subsection-desc">Tools to coordinate threads.</div><ol class="concepts"><li data-cid="4.2.1" data-name="mutex"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Mutex</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">One thread at a time. Critical section.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Mutex+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Mutex+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="4.2.2" data-name="semaphore"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Semaphore</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Counting mutex for N resources.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Semaphore+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Semaphore+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="4.2.3" data-name="condition variable"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Condition variable</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Wait until predicate true. Always with mutex.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Condition+variable+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Condition+variable+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="4.2.4" data-name="read-write lock"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Read-write lock</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Many readers OR one writer.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Read-write+lock+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Read-write+lock+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="4.2.5" data-name="spinlock"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Spinlock</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Busy-wait. Short sections only.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Spinlock+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Spinlock+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="4.2.6" data-name="atomics &amp; cas"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Atomics &amp; CAS</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">compare-and-swap, lock-free primitives.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Atomics+and+CAS+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Atomics+and+CAS+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="4.2.7" data-name="barriers / latches"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Barriers / latches</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Wait until N threads arrive.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Barriers+latches+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Barriers+latches+computer+science" target="_blank" rel="noopener">🔍G</a></div></li></ol></div>
+<div class="subsection"><div class="subsection-head"><span class="subsection-tag">4.3</span><h3>Classic Problems</h3><span style="font-size:11px;color:var(--text-faint);">7 concepts</span></div><div class="subsection-desc">Coordination puzzles.</div><ol class="concepts"><li data-cid="4.3.1" data-name="deadlock (4 conditions)"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Deadlock (4 conditions)</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Mutex, hold-and-wait, no preempt, circular wait.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Deadlock+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Deadlock+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="4.3.2" data-name="livelock"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Livelock</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Threads change state without progress.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Livelock+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Livelock+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="4.3.3" data-name="starvation / priority inversion"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Starvation / priority inversion</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Mars Pathfinder bug.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Starvation+priority+inversion+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Starvation+priority+inversion+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="4.3.4" data-name="race condition"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Race condition</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Outcome depends on timing. Most common bug.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Race+condition+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Race+condition+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="4.3.5" data-name="producer-consumer"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Producer-Consumer</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Bounded buffer with 2 sems + mutex.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Producer-Consumer+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Producer-Consumer+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="4.3.6" data-name="readers-writers"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Readers-Writers</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Many R OR one W. Watch for writer starvation.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Readers-Writers+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Readers-Writers+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="4.3.7" data-name="dining philosophers"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Dining Philosophers</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Deadlock demo. Solutions: ordering, asymmetry.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Dining+Philosophers+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Dining+Philosophers+computer+science" target="_blank" rel="noopener">🔍G</a></div></li></ol></div>
+<div class="subsection"><div class="subsection-head"><span class="subsection-tag">4.4</span><h3>Async &amp; Coroutines</h3><span style="font-size:11px;color:var(--text-faint);">5 concepts</span></div><div class="subsection-desc">Concurrency without threads.</div><ol class="concepts"><li data-cid="4.4.1" data-name="event loop (node, asyncio)"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Event loop (Node, asyncio)</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Single thread + non-blocking I/O + callbacks.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Event+loop+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Event+loop+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="4.4.2" data-name="promises / futures"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Promises / Futures</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Placeholder for eventual value.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Promises+Futures+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Promises+Futures+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="4.4.3" data-name="async/await"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">async/await</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Sugar over promises, synchronous-looking.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=async+await+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=async+await+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="4.4.4" data-name="coroutines vs threads"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Coroutines vs threads</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">User-space (KB) vs kernel (MB).</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Coroutines+vs+threads+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Coroutines+vs+threads+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="4.4.5" data-name="actor model (erlang, akka)"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Actor model (Erlang, Akka)</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Isolated actors + message passing, no shared state.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Actor+model+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Actor+model+computer+science" target="_blank" rel="noopener">🔍G</a></div></li></ol></div>
+</section>
+<section class="section" id="section-5" style="--section-color:hsl(165, 60%, 55%)">
+<div class="section-banner" style="background:linear-gradient(135deg, hsl(165, 65%, 48%), hsl(195, 70%, 55%))">
+<div class="num">5</div>
+<div class="info">
+<div class="label">Section 5 of 6</div>
+<h2>Security</h2>
+<div class="meta">3 subsections · 19 concepts</div>
+</div>
+<div class="ppg">
+<div class="pct-text" data-pp-text="5">0 / 19</div>
+<div class="pp-track"><div class="pp-fill" data-pp-fill="5"></div></div>
+</div>
+</div>
+<div class="section-desc">
+<div class="tagline">Trust nothing. Validate everything.</div>
+<div class="row"><b>When.</b> Every system taking external input.</div>
+<div class="row"><b>Key idea.</b> Defense in depth. Hash passwords, validate input, encrypt secrets, least privilege.</div>
+</div>
+<div class="resources-section"><div class="head" onclick="this.parentElement.classList.toggle('open')"><h4>📚 Learn this domain</h4><div><span class="count">4 resources</span><span class="chevron">▶</span></div></div><div class="resources-body"><div class="res-grid"><a class="res-link" href="https://owasp.org/www-project-top-ten/" target="_blank" rel="noopener"><span class="res-icon">📝</span><span class="res-title">OWASP Top 10</span><span class="res-source">OWASP</span></a><a class="res-link" href="https://cryptopals.com/" target="_blank" rel="noopener"><span class="res-icon">🎓</span><span class="res-title">Cryptopals (free challenges)</span><span class="res-source">Cryptopals</span></a><a class="res-link" href="https://book.hacktricks.xyz/" target="_blank" rel="noopener"><span class="res-icon">📝</span><span class="res-title">HackTricks (offensive wiki)</span><span class="res-source">HackTricks</span></a><a class="res-link" href="https://infosec.mozilla.org/guidelines/web_security" target="_blank" rel="noopener"><span class="res-icon">📝</span><span class="res-title">Mozilla Web Security</span><span class="res-source">Mozilla</span></a></div></div></div>
+<div class="subsection"><div class="subsection-head"><span class="subsection-tag">5.1</span><h3>Cryptography Basics</h3><span style="font-size:11px;color:var(--text-faint);">6 concepts</span></div><div class="subsection-desc">Primitives and when to use them.</div><ol class="concepts"><li data-cid="5.1.1" data-name="symmetric (aes)"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Symmetric (AES)</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Same key. Fast. AES-GCM for authenticated encryption.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Symmetric+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Symmetric+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="5.1.2" data-name="asymmetric (rsa, ecc)"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Asymmetric (RSA, ECC)</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Pub/priv keys. Slower. Key exchange + signatures.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Asymmetric+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Asymmetric+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="5.1.3" data-name="hashing (sha-256, blake2)"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Hashing (SHA-256, BLAKE2)</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">One-way, fixed-size. NOT for passwords.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Hashing+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Hashing+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="5.1.4" data-name="password hashing (bcrypt, argon2)"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Password hashing (bcrypt, Argon2)</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Slow by design. Argon2 current best. Salt mandatory.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Password+hashing+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Password+hashing+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="5.1.5" data-name="digital signatures"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Digital signatures</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Sign with priv key, verify with pub. Authenticity + integrity.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Digital+signatures+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Digital+signatures+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="5.1.6" data-name="hmac"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">HMAC</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Hash with secret key.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=HMAC+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=HMAC+computer+science" target="_blank" rel="noopener">🔍G</a></div></li></ol></div>
+<div class="subsection"><div class="subsection-head"><span class="subsection-tag">5.2</span><h3>Authentication &amp; Authorization</h3><span style="font-size:11px;color:var(--text-faint);">6 concepts</span></div><div class="subsection-desc">Who you are vs what you can do.</div><ol class="concepts"><li data-cid="5.2.1" data-name="sessions vs jwt"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Sessions vs JWT</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Server state vs stateless tokens. JWT harder to revoke.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Sessions+vs+JWT+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Sessions+vs+JWT+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="5.2.2" data-name="oauth 2.0 flows"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">OAuth 2.0 flows</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Auth Code, PKCE, Client Credentials.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=OAuth+2.0+flows+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=OAuth+2.0+flows+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="5.2.3" data-name="openid connect (oidc)"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">OpenID Connect (OIDC)</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Authentication on OAuth 2.0.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=OpenID+Connect+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=OpenID+Connect+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="5.2.4" data-name="saml"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">SAML</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">XML-based SSO. Common in enterprise.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=SAML+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=SAML+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="5.2.5" data-name="mfa / webauthn"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">MFA / WebAuthn</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">TOTP or hardware key. WebAuthn is phishing-resistant.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=MFA+WebAuthn+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=MFA+WebAuthn+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="5.2.6" data-name="rbac vs abac"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">RBAC vs ABAC</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Role vs attribute. RBAC simpler.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=RBAC+vs+ABAC+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=RBAC+vs+ABAC+computer+science" target="_blank" rel="noopener">🔍G</a></div></li></ol></div>
+<div class="subsection"><div class="subsection-head"><span class="subsection-tag">5.3</span><h3>OWASP Top 10</h3><span style="font-size:11px;color:var(--text-faint);">7 concepts</span></div><div class="subsection-desc">The most common web vulnerabilities.</div><ol class="concepts"><li data-cid="5.3.1" data-name="injection (sql, nosql, os)"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Injection (SQL, NoSQL, OS)</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">User input as code. Fix: parameterized queries.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Injection+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Injection+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="5.3.2" data-name="broken authentication"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Broken authentication</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Weak passwords, no MFA, exposed session.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Broken+authentication+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Broken+authentication+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="5.3.3" data-name="xss"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">XSS</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Inject JS into pages. Fix: escape output, CSP.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=XSS+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=XSS+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="5.3.4" data-name="csrf"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">CSRF</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Forge authenticated request. Fix: CSRF tokens, SameSite.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=CSRF+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=CSRF+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="5.3.5" data-name="insecure deserialization"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Insecure deserialization</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Pickle, Java serializable → RCE.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Insecure+deserialization+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Insecure+deserialization+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="5.3.6" data-name="ssrf"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">SSRF</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Trick server to fetch internal URLs. AWS IMDS attack.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=SSRF+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=SSRF+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="5.3.7" data-name="security misconfiguration"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Security misconfiguration</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Default passwords, verbose errors.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Security+misconfiguration+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Security+misconfiguration+computer+science" target="_blank" rel="noopener">🔍G</a></div></li></ol></div>
+</section>
+<section class="section" id="section-6" style="--section-color:hsl(105, 60%, 55%)">
+<div class="section-banner" style="background:linear-gradient(135deg, hsl(105, 65%, 48%), hsl(135, 70%, 55%))">
+<div class="num">6</div>
+<div class="info">
+<div class="label">Section 6 of 6</div>
+<h2>Computer Architecture</h2>
+<div class="meta">3 subsections · 14 concepts</div>
+</div>
+<div class="ppg">
+<div class="pct-text" data-pp-text="6">0 / 14</div>
+<div class="pp-track"><div class="pp-fill" data-pp-fill="6"></div></div>
+</div>
+</div>
+<div class="section-desc">
+<div class="tagline">How CPUs run your code.</div>
+<div class="row"><b>When.</b> Performance tuning, embedded, low-level.</div>
+<div class="row"><b>Key idea.</b> Cache locality and branch prediction dominate modern perf.</div>
+</div>
+<div class="resources-section"><div class="head" onclick="this.parentElement.classList.toggle('open')"><h4>📚 Learn this domain</h4><div><span class="count">3 resources</span><span class="chevron">▶</span></div></div><div class="resources-body"><div class="res-grid"><a class="res-link" href="https://csapp.cs.cmu.edu/" target="_blank" rel="noopener"><span class="res-icon">📖</span><span class="res-title">CSAPP (Bryant &amp; O&#x27;Hallaron)</span><span class="res-source">CMU</span></a><a class="res-link" href="https://colin-scott.github.io/personal_website/research/interactive_latency.html" target="_blank" rel="noopener"><span class="res-icon">🛠️</span><span class="res-title">Latency Numbers Visualized</span><span class="res-source">Colin Scott</span></a><a class="res-link" href="https://www.youtube.com/playlist?list=PL8dPuuaLjXtNlUrzyH5r6jN9ulIgZBpdo" target="_blank" rel="noopener"><span class="res-icon">📺</span><span class="res-title">Crash Course CS playlist</span><span class="res-source">PBS</span></a></div></div></div>
+<div class="subsection"><div class="subsection-head"><span class="subsection-tag">6.1</span><h3>CPU Execution</h3><span style="font-size:11px;color:var(--text-faint);">5 concepts</span></div><div class="subsection-desc">Pipeline, branches, speculation.</div><ol class="concepts"><li data-cid="6.1.1" data-name="fetch-decode-execute cycle"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Fetch-Decode-Execute cycle</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">PC → fetch → decode → execute → writeback.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Fetch-Decode-Execute+cycle+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Fetch-Decode-Execute+cycle+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="6.1.2" data-name="pipelining"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Pipelining</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Overlap stages. Classic 5-stage MIPS.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Pipelining+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Pipelining+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="6.1.3" data-name="branch prediction"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Branch prediction</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Speculative execution. Miss = 10-20 cycles.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Branch+prediction+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Branch+prediction+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="6.1.4" data-name="out-of-order execution"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Out-of-order execution</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Execute later instructions while waiting.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Out-of-order+execution+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Out-of-order+execution+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="6.1.5" data-name="simd (sse, avx)"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">SIMD (SSE, AVX)</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Same instruction, multiple data. AVX-512 = 16 floats.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=SIMD+SSE+AVX+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=SIMD+SSE+AVX+computer+science" target="_blank" rel="noopener">🔍G</a></div></li></ol></div>
+<div class="subsection"><div class="subsection-head"><span class="subsection-tag">6.2</span><h3>Memory Hierarchy</h3><span style="font-size:11px;color:var(--text-faint);">5 concepts</span></div><div class="subsection-desc">Speed-cost tradeoff at each level.</div><ol class="concepts"><li data-cid="6.2.1" data-name="cache levels (l1/l2/l3/ram/ssd)"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Cache levels (L1/L2/L3/RAM/SSD)</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">L1 1ns. RAM 100ns. SSD 150μs. Net 150ms.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Cache+levels+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Cache+levels+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="6.2.2" data-name="cache coherence (mesi)"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Cache coherence (MESI)</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Multiple cores keep caches consistent.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Cache+coherence+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Cache+coherence+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="6.2.3" data-name="cache lines &amp; false sharing"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Cache lines &amp; false sharing</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">64-byte lines. Two cores writing same line = perf disaster.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Cache+lines+and+false+sharing+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Cache+lines+and+false+sharing+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="6.2.4" data-name="spatial vs temporal locality"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Spatial vs temporal locality</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Spatial: nearby addrs. Temporal: re-access soon.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Spatial+vs+temporal+locality+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Spatial+vs+temporal+locality+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="6.2.5" data-name="cache-friendly data structures"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Cache-friendly data structures</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Arrays &gt; linked lists. Struct-of-arrays &gt; array-of-structs.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Cache-friendly+data+structures+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Cache-friendly+data+structures+computer+science" target="_blank" rel="noopener">🔍G</a></div></li></ol></div>
+<div class="subsection"><div class="subsection-head"><span class="subsection-tag">6.3</span><h3>Number Representation</h3><span style="font-size:11px;color:var(--text-faint);">4 concepts</span></div><div class="subsection-desc">How values are stored.</div><ol class="concepts"><li data-cid="6.3.1" data-name="two&#x27;s complement integers"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Two&#x27;s complement integers</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Signed integer representation.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Two%27s+complement+integers+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Two%27s+complement+integers+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="6.3.2" data-name="ieee 754 floating point"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">IEEE 754 floating point</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Sign + exponent + mantissa. Precision pitfalls.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=IEEE+754+floating+point+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=IEEE+754+floating+point+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="6.3.3" data-name="endianness (big vs little)"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Endianness (big vs little)</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Byte order. x86: little. Network: big.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Endianness+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Endianness+computer+science" target="_blank" rel="noopener">🔍G</a></div></li><li data-cid="6.3.4" data-name="character encodings (utf-8)"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">Character encodings (UTF-8)</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">ASCII (7-bit) → UTF-8 (1-4 bytes) → UTF-16 → UTF-32.</div></div><div class="res-links"><a class="video" href="https://www.youtube.com/results?search_query=Character+encodings+computer+science" target="_blank" rel="noopener">🔍YT</a><a class="" href="https://www.google.com/search?q=Character+encodings+computer+science" target="_blank" rel="noopener">🔍G</a></div></li></ol></div>
+</section>
+<script>window.SITE_SLUG = "cs";</script>
+<a href="#" class="top">↑ Top</a>
+</div>
+<script>
+
+(function() {
+  const SLUG = window.SITE_SLUG || 'unknown';
+  const KEY_DONE = 'hub_done_' + SLUG;
+  const KEY_BM = 'hub_bm_' + SLUG;
+  const KEY_THEME = 'hub_theme';
+
+  function applyTheme(t) {
+    if (t === 'light') document.documentElement.classList.add('light');
+    else document.documentElement.classList.remove('light');
+  }
+  applyTheme(localStorage.getItem(KEY_THEME) || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'));
+  const themeBtn = document.getElementById('theme-toggle');
+  if (themeBtn) themeBtn.addEventListener('click', () => {
+    const isLight = document.documentElement.classList.toggle('light');
+    localStorage.setItem(KEY_THEME, isLight ? 'light' : 'dark');
+  });
+
+  function getSet(k) { try { return new Set(JSON.parse(localStorage.getItem(k) || '[]')); } catch(e) { return new Set(); } }
+  function saveSet(k, s) { localStorage.setItem(k, JSON.stringify([...s])); }
+  let done = getSet(KEY_DONE);
+  let bookmarks = getSet(KEY_BM);
+
+  function renderState() {
+    document.querySelectorAll('.concepts li[data-cid]').forEach(li => {
+      const cid = li.dataset.cid;
+      const isDone = done.has(cid);
+      const isBM = bookmarks.has(cid);
+      li.classList.toggle('done', isDone);
+      const cb = li.querySelector('.done-check');
+      if (cb) cb.classList.toggle('checked', isDone);
+      const star = li.querySelector('.bookmark-star');
+      if (star) { star.classList.toggle('active', isBM); star.textContent = isBM ? '★' : '☆'; }
+    });
+    updateProgress();
+  }
+  function updateProgress() {
+    const allCids = new Set();
+    document.querySelectorAll('.concepts li[data-cid]').forEach(li => allCids.add(li.dataset.cid));
+    const doneTotal = [...done].filter(c => allCids.has(c)).length;
+    const pct = allCids.size ? Math.round(100 * doneTotal / allCids.size) : 0;
+    const ob = document.getElementById('overall-bar'); if (ob) ob.style.width = pct + '%';
+    const op = document.getElementById('overall-pct'); if (op) op.textContent = doneTotal + ' / ' + allCids.size;
+    document.querySelectorAll('.section').forEach(s => {
+      const cids = Array.from(s.querySelectorAll('.concepts li[data-cid]')).map(li => li.dataset.cid);
+      const uniq = new Set(cids);
+      const dn = [...uniq].filter(c => done.has(c)).length;
+      const sid = s.id.replace('section-', '');
+      const fill = s.querySelector(`[data-pp-fill="${sid}"]`);
+      const txt = s.querySelector(`[data-pp-text="${sid}"]`);
+      if (fill) fill.style.width = (uniq.size ? (100 * dn / uniq.size) : 0) + '%';
+      if (txt) txt.textContent = `${dn} / ${uniq.size}`;
+    });
+  }
+  document.querySelectorAll('.done-check').forEach(cb => {
+    cb.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const cid = cb.closest('li').dataset.cid;
+      if (done.has(cid)) done.delete(cid); else done.add(cid);
+      saveSet(KEY_DONE, done);
+      renderState();
+    });
+  });
+  document.querySelectorAll('.bookmark-star').forEach(star => {
+    star.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const cid = star.closest('li').dataset.cid;
+      if (bookmarks.has(cid)) bookmarks.delete(cid); else bookmarks.add(cid);
+      saveSet(KEY_BM, bookmarks);
+      renderState();
+      applyFilters();
+    });
+  });
+
+  const filters = { status: null, search: '' };
+  function applyFilters() {
+    document.querySelectorAll('.concepts li[data-cid]').forEach(li => {
+      let show = true;
+      if (filters.status === 'done' && !done.has(li.dataset.cid)) show = false;
+      if (filters.status === 'undone' && done.has(li.dataset.cid)) show = false;
+      if (filters.status === 'bookmarked' && !bookmarks.has(li.dataset.cid)) show = false;
+      if (filters.search) {
+        const hay = (li.dataset.name || '').toLowerCase();
+        if (!hay.includes(filters.search)) show = false;
+      }
+      li.classList.toggle('hidden', !show);
+    });
+  }
+  document.querySelectorAll('.filter-btn[data-filter]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const f = btn.dataset.filter, v = btn.dataset.val;
+      const same = filters[f] === v;
+      document.querySelectorAll(`.filter-btn[data-filter="${f}"]`).forEach(b => b.classList.remove('active'));
+      filters[f] = same ? null : v;
+      if (!same) btn.classList.add('active');
+      applyFilters();
+    });
+  });
+  const cb = document.getElementById('clear-filters');
+  if (cb) cb.addEventListener('click', () => {
+    filters.status = null; filters.search = '';
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    const si = document.getElementById('search-input'); if (si) si.value = '';
+    applyFilters();
+  });
+  const si = document.getElementById('search-input');
+  if (si) si.addEventListener('input', e => { filters.search = e.target.value.toLowerCase().trim(); applyFilters(); });
+  const rb = document.getElementById('random-btn');
+  if (rb) rb.addEventListener('click', () => {
+    const vis = Array.from(document.querySelectorAll('.concepts li[data-cid]:not(.hidden)'));
+    if (!vis.length) { alert('No concepts match current filters.'); return; }
+    const pick = vis[Math.floor(Math.random() * vis.length)];
+    pick.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    pick.style.transition = 'box-shadow 0.4s, transform 0.4s';
+    pick.style.boxShadow = '0 0 0 3px var(--accent), 0 6px 20px rgba(124,158,255,0.4)';
+    pick.style.transform = 'scale(1.02)';
+    setTimeout(() => { pick.style.boxShadow = ''; pick.style.transform = ''; }, 2500);
+  });
+
+  renderState();
+})();
+
+</script>
+</body></html>
