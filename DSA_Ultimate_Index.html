@@ -665,10 +665,75 @@
     .solve-check, .bookmark-star, .note-btn { display: none !important; }
   }
 </style>
+<style id="site-nav-style">
+.site-nav {
+  position: sticky; top: 0; z-index: 80;
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  margin: 0 0 14px; padding: 10px 12px;
+  border: 1px solid var(--border); border-radius: 10px;
+  background: color-mix(in srgb, var(--bg-elev, var(--bg-card, #fff)) 92%, transparent);
+  backdrop-filter: blur(14px); box-shadow: var(--shadow-card, 0 1px 3px rgba(0,0,0,.12));
+}
+.site-brand { display: grid; gap: 1px; color: var(--text); text-decoration: none; min-width: 180px; }
+.site-brand strong { font-size: 14px; letter-spacing: 0; }
+.site-brand span { font-size: 11px; color: var(--text-faint, var(--text-dim)); }
+.site-nav-toggle { position: absolute; opacity: 0; pointer-events: none; }
+.site-nav-menu {
+  display: none; min-height: 34px; padding: 0 10px; border-radius: 7px;
+  border: 1px solid var(--border); background: var(--bg-card); color: var(--text);
+  align-items: center; cursor: pointer; font-size: 12px; font-weight: 800;
+}
+.site-links { display: flex; flex: 1; min-width: 260px; gap: 6px; flex-wrap: wrap; align-items: center; }
+.site-links a, .site-theme-button {
+  display: inline-flex; align-items: center; justify-content: center; min-height: 32px;
+  padding: 5px 9px; border-radius: 7px; border: 1px solid var(--border);
+  background: var(--bg-card); color: var(--text-dim); text-decoration: none;
+  font-size: 12px; font-weight: 800; white-space: nowrap; cursor: pointer;
+}
+.site-links a:hover, .site-theme-button:hover { border-color: var(--accent); color: var(--text); }
+.site-links a.current { background: var(--accent); border-color: var(--accent); color: white; }
+.site-theme-button { margin-left: auto; font-family: inherit; }
+.site-progress { color: var(--text-faint, var(--text-dim)); font-size: 11px; font-weight: 800; margin-left: 2px; }
+.learning-coverage {
+  background: var(--bg-elev); border: 1px solid var(--border); border-radius: 12px;
+  padding: 14px 18px; margin: 16px 0 22px; box-shadow: var(--shadow-card);
+}
+.learning-coverage h2 { margin: 0 0 6px; font-size: 16px; letter-spacing: 0; }
+.learning-coverage p { margin: 0; color: var(--text-dim); font-size: 13px; }
+.coverage-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.coverage-pills span, .coverage-links a {
+  display: inline-flex; align-items: center; min-height: 25px; padding: 3px 8px;
+  border-radius: 999px; background: var(--bg-card); border: 1px solid var(--border);
+  color: var(--text-dim); font-size: 11px; font-weight: 800; text-decoration: none;
+}
+.coverage-links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.qa-name { display: grid; gap: 3px; }
+.qa-question { font-weight: 800; color: var(--text); }
+.qa-answer { color: var(--text-dim); font-size: 12px; font-weight: 500; }
+@media (max-width: 760px) {
+  .site-nav { align-items: stretch; }
+  .site-brand { flex: 1; min-width: 0; }
+  .site-nav-menu { display: inline-flex; }
+  .site-links { display: none; flex-basis: 100%; min-width: 0; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .site-nav-toggle:checked ~ .site-links { display: grid; }
+  .site-links a, .site-theme-button { width: 100%; }
+  .site-theme-button { margin-left: 0; }
+}
+</style>
 </head>
 <body>
 <div class="wrap">
-<div class="home-strip"><a href="index.html">Back to Learning Hub</a></div>
+<nav class="site-nav" aria-label="Learning site navigation">
+  <a class="site-brand" href="index.html"><strong>Taran's Learning Hub</strong><span>DSA Ultimate Index</span></a>
+  <input class="site-nav-toggle" id="site-nav-toggle" type="checkbox" aria-label="Toggle site menu">
+  <label class="site-nav-menu" for="site-nav-toggle">Menu</label>
+  <div class="site-links">
+    <a href="index.html">Hub</a>
+    <a class="current" aria-current="page" href="DSA_Ultimate_Index.html">DSA</a><a href="system_design.html">Systems</a><a href="cs_fundamentals.html">CS</a><a href="behavioral.html">Behavioral</a><a href="ai_engineering.html">AI</a><a href="cloud_aws_azure.html">Cloud</a>
+    <button class="site-theme-button" type="button" data-site-theme-toggle>Theme</button>
+    <span class="site-progress">Progress: <span data-site-nav-progress>saved locally</span></span>
+  </div>
+</nav>
 
 <div class="hero">
 <div class="edition">v7 · Learning Companion · Cheat Sheets · Code Templates · Notes · Bookmarks</div>
@@ -732,7 +797,7 @@
 <button class="icon-btn" id="print-btn" title="Print" onclick="window.print()">🖨️</button>
 <button class="filter-btn" id="clear-filters">Clear</button>
 </div></div>
-<section class="resources-section open" style="margin: 0 0 24px;">
+<section class="resources-section" style="margin: 0 0 24px;">
 <div class="head" onclick="this.parentElement.classList.toggle('open')">
 <h4>🌟 Universal Anchor Resources — start here</h4>
 <div><span class="count">16 hand-picked</span><span class="chevron">▶</span></div>
@@ -1062,6 +1127,12 @@
 <div class="wk-focus">Solving alone ≠ interviewing well. Use Pramp or interviewing.io for live practice. Use the Bookmark feature to flag re-review candidates.</div>
 </div></div>
 </div></div></section>
+<section class="learning-coverage" id="coverage-check">
+  <h2>DSA Coverage Check</h2>
+  <p>Keep the 609-problem pattern index as the primary practice map.</p>
+  <div class="coverage-pills"><span>Pattern recognition drills</span><span>Complexity trade-offs</span><span>Edge-case checklist</span><span>Mock interview communication</span><span>Re-solving weak bookmarked problems</span></div>
+  <div class="coverage-links"><a href="https://neetcode.io/roadmap" target="_blank" rel="noopener">NeetCode Roadmap</a><a href="https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-course-sheet-2/" target="_blank" rel="noopener">Striver A2Z DSA Sheet</a><a href="https://cp-algorithms.com/" target="_blank" rel="noopener">CP-Algorithms</a></div>
+</section>
 <nav class="toc"><h2>📑 Table of Contents</h2><div class="toc-grid">
 <a href="#pattern-1"><span class="roman">I</span><span class="name">Two Pointer Patterns</span><span class="cnt">7sp · 37q</span></a>
 <a href="#pattern-2"><span class="roman">II</span><span class="name">Array/Matrix Manipulation Patterns</span><span class="cnt">10sp · 24q</span></a>
@@ -1140,7 +1211,7 @@ def has_cycle(head):
             return True
     return False</pre></div>
 </div>
-<div class="resources-section open">
+<div class="resources-section">
 <div class="head" onclick="this.parentElement.classList.toggle('open')">
 <h4>📚 Learn this pattern — articles, videos, visualizations</h4>
 <div><span class="count">9 resources</span><span class="chevron">▶</span></div>
@@ -2160,7 +2231,7 @@ def has_cycle(head):
 <div class="row"><b>Key idea.</b> Use indices, signs, or sentinel values inside the existing array as bookkeeping; transform geometry by swapping layers/rows/columns.</div>
 <div class="row"><b>Complexity.</b> O(n) or O(rows×cols) time, O(1) extra space when fully in-place.</div>
 </div>
-<div class="resources-section open">
+<div class="resources-section">
 <div class="head" onclick="this.parentElement.classList.toggle('open')">
 <h4>📚 Learn this pattern — articles, videos, visualizations</h4>
 <div><span class="count">10 resources</span><span class="chevron">▶</span></div>
@@ -2924,7 +2995,7 @@ def has_cycle(head):
 <div class="row"><b>Key idea.</b> Use a dummy head node and 2–3 pointers (prev, curr, next) to rewire links without losing references.</div>
 <div class="row"><b>Complexity.</b> O(n) time, O(1) extra space for most variants.</div>
 </div>
-<div class="resources-section open">
+<div class="resources-section">
 <div class="head" onclick="this.parentElement.classList.toggle('open')">
 <h4>📚 Learn this pattern — articles, videos, visualizations</h4>
 <div><span class="count">10 resources</span><span class="chevron">▶</span></div>
@@ -3577,7 +3648,7 @@ def has_cycle(head):
 <div class="row"><b>Key idea.</b> Pick the traversal that exposes the property you need — inorder for sorted BST, postorder for child-then-self computation, BFS for shortest depth.</div>
 <div class="row"><b>Complexity.</b> O(n) time, O(h) space (h = height) for recursion stack, O(width) for BFS.</div>
 </div>
-<div class="resources-section open">
+<div class="resources-section">
 <div class="head" onclick="this.parentElement.classList.toggle('open')">
 <h4>📚 Learn this pattern — articles, videos, visualizations</h4>
 <div><span class="count">13 resources</span><span class="chevron">▶</span></div>
@@ -5012,7 +5083,7 @@ def has_cycle(head):
         result = max(result, right - left + 1)
     return result</pre></div>
 </div>
-<div class="resources-section open">
+<div class="resources-section">
 <div class="head" onclick="this.parentElement.classList.toggle('open')">
 <h4>📚 Learn this pattern — articles, videos, visualizations</h4>
 <div><span class="count">8 resources</span><span class="chevron">▶</span></div>
@@ -5488,8 +5559,8 @@ def has_cycle(head):
 <div class="company-row"></div>
 <div class="solutions">
 <a class="sol-link" href="https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element/solutions/" target="_blank" rel="noopener" title="LeetCode solutions tab">📝 Sol</a>
-<a class="sol-link video" href="https://www.youtube.com/results?search_query=leetcode+1493+Longest+Subarray+of+1%27s+After+Deleting+One+Element+solution" target="_blank" rel="noopener" title="YouTube search (NeetCode, Striver, & other top creators)">🎥 Video</a>
-<a class="sol-link gfg" href="https://www.google.com/search?q=site%3Ageeksforgeeks.org+Longest+Subarray+of+1%27s+After+Deleting+One+Element+leetcode" target="_blank" rel="noopener" title="GeeksforGeeks article">📚 GFG</a>
+<a class="sol-link video" href="https://www.youtube.com/results?search_query=leetcode+1493+Longest+Subarray+of+1+s+After+Deleting+One+Element+solution" target="_blank" rel="noopener" title="YouTube search (NeetCode, Striver, & other top creators)">🎥 Video</a>
+<a class="sol-link gfg" href="https://www.google.com/search?q=site%3Ageeksforgeeks.org+Longest+Subarray+of+1+s+After+Deleting+One+Element+leetcode" target="_blank" rel="noopener" title="GeeksforGeeks article">📚 GFG</a>
 </div>
 <div class="note-btn" data-lc="1493" title="Add a note for this problem">📝</div>
 </li>
@@ -5909,7 +5980,7 @@ def has_cycle(head):
         stack.append(i)
     return result</pre></div>
 </div>
-<div class="resources-section open">
+<div class="resources-section">
 <div class="head" onclick="this.parentElement.classList.toggle('open')">
 <h4>📚 Learn this pattern — articles, videos, visualizations</h4>
 <div><span class="count">9 resources</span><span class="chevron">▶</span></div>
@@ -6819,7 +6890,7 @@ def top_k_frequent(nums, k):
             heapq.heappop(heap)
     return [num for freq, num in heap]</pre></div>
 </div>
-<div class="resources-section open">
+<div class="resources-section">
 <div class="head" onclick="this.parentElement.classList.toggle('open')">
 <h4>📚 Learn this pattern — articles, videos, visualizations</h4>
 <div><span class="count">10 resources</span><span class="chevron">▶</span></div>
@@ -7666,7 +7737,7 @@ def min_value_satisfying(lo, hi, ok):
             lo = mid + 1
     return lo</pre></div>
 </div>
-<div class="resources-section open">
+<div class="resources-section">
 <div class="head" onclick="this.parentElement.classList.toggle('open')">
 <h4>📚 Learn this pattern — articles, videos, visualizations</h4>
 <div><span class="count">9 resources</span><span class="chevron">▶</span></div>
@@ -7764,8 +7835,8 @@ def min_value_satisfying(lo, hi, ok):
 <div class="company-row"></div>
 <div class="solutions">
 <a class="sol-link" href="https://leetcode.com/problems/sqrtx/solutions/" target="_blank" rel="noopener" title="LeetCode solutions tab">📝 Sol</a>
-<a class="sol-link video" href="https://www.youtube.com/results?search_query=leetcode+69+Sqrt%28x%29+solution" target="_blank" rel="noopener" title="YouTube search (NeetCode, Striver, & other top creators)">🎥 Video</a>
-<a class="sol-link gfg" href="https://www.google.com/search?q=site%3Ageeksforgeeks.org+Sqrt%28x%29+leetcode" target="_blank" rel="noopener" title="GeeksforGeeks article">📚 GFG</a>
+<a class="sol-link video" href="https://www.youtube.com/results?search_query=leetcode+69+Sqrt+x+solution" target="_blank" rel="noopener" title="YouTube search (NeetCode, Striver, & other top creators)">🎥 Video</a>
+<a class="sol-link gfg" href="https://www.google.com/search?q=site%3Ageeksforgeeks.org+Sqrt+x+leetcode" target="_blank" rel="noopener" title="GeeksforGeeks article">📚 GFG</a>
 </div>
 <div class="note-btn" data-lc="69" title="Add a note for this problem">📝</div>
 </li>
@@ -8522,7 +8593,7 @@ class DSU:
         if self.rank[px] == self.rank[py]: self.rank[px] += 1
         return True</pre></div>
 </div>
-<div class="resources-section open">
+<div class="resources-section">
 <div class="head" onclick="this.parentElement.classList.toggle('open')">
 <h4>📚 Learn this pattern — articles, videos, visualizations</h4>
 <div><span class="count">31 resources</span><span class="chevron">▶</span></div>
@@ -10220,8 +10291,8 @@ class DSU:
 <div class="company-row"><span class="company-chip" style="background:#FF9900;color:white" title="Amazon">Amazon</span><span class="company-chip" style="background:#4285F4;color:white" title="Google">Google</span></div>
 <div class="solutions">
 <a class="sol-link" href="https://leetcode.com/problems/is-graph-bipartite/solutions/" target="_blank" rel="noopener" title="LeetCode solutions tab">📝 Sol</a>
-<a class="sol-link video" href="https://www.youtube.com/results?search_query=leetcode+785+Is+Graph+Bipartite%3F+solution" target="_blank" rel="noopener" title="YouTube search (NeetCode, Striver, & other top creators)">🎥 Video</a>
-<a class="sol-link gfg" href="https://www.google.com/search?q=site%3Ageeksforgeeks.org+Is+Graph+Bipartite%3F+leetcode" target="_blank" rel="noopener" title="GeeksforGeeks article">📚 GFG</a>
+<a class="sol-link video" href="https://www.youtube.com/results?search_query=leetcode+785+Is+Graph+Bipartite+solution" target="_blank" rel="noopener" title="YouTube search (NeetCode, Striver, & other top creators)">🎥 Video</a>
+<a class="sol-link gfg" href="https://www.google.com/search?q=site%3Ageeksforgeeks.org+Is+Graph+Bipartite+leetcode" target="_blank" rel="noopener" title="GeeksforGeeks article">📚 GFG</a>
 </div>
 <div class="note-btn" data-lc="785" title="Add a note for this problem">📝</div>
 </li>
@@ -10441,7 +10512,7 @@ class DSU:
 <div class="row"><b>Key idea.</b> Sort by the right key (start, end, deadline, ratio) and process greedily; sometimes use a heap to track &#x27;best available&#x27; option.</div>
 <div class="row"><b>Complexity.</b> Typically O(n log n) for the sort, then O(n) for the sweep.</div>
 </div>
-<div class="resources-section open">
+<div class="resources-section">
 <div class="head" onclick="this.parentElement.classList.toggle('open')">
 <h4>📚 Learn this pattern — articles, videos, visualizations</h4>
 <div><span class="count">7 resources</span><span class="chevron">▶</span></div>
@@ -11210,7 +11281,7 @@ def permutations(nums):
     backtrack()
     return result</pre></div>
 </div>
-<div class="resources-section open">
+<div class="resources-section">
 <div class="head" onclick="this.parentElement.classList.toggle('open')">
 <h4>📚 Learn this pattern — articles, videos, visualizations</h4>
 <div><span class="count">8 resources</span><span class="chevron">▶</span></div>
@@ -12032,7 +12103,7 @@ def knapsack(weights, values, W):
             dp[w] = max(dp[w], dp[w - weights[i]] + values[i])
     return dp[W]</pre></div>
 </div>
-<div class="resources-section open">
+<div class="resources-section">
 <div class="head" onclick="this.parentElement.classList.toggle('open')">
 <h4>📚 Learn this pattern — articles, videos, visualizations</h4>
 <div><span class="count">12 resources</span><span class="chevron">▶</span></div>
@@ -13427,7 +13498,7 @@ def knapsack(weights, values, W):
 <div class="row"><b>Key idea.</b> Use frequency arrays for anagrams, two pointers for palindromes, hashing for fast comparison, and KMP/Rabin-Karp for substring search.</div>
 <div class="row"><b>Complexity.</b> O(n) for most one-pass problems, O(n+m) for KMP, O(n) average for Rabin-Karp.</div>
 </div>
-<div class="resources-section open">
+<div class="resources-section">
 <div class="head" onclick="this.parentElement.classList.toggle('open')">
 <h4>📚 Learn this pattern — articles, videos, visualizations</h4>
 <div><span class="count">8 resources</span><span class="chevron">▶</span></div>
@@ -13678,8 +13749,8 @@ def knapsack(weights, values, W):
 <div class="company-row"></div>
 <div class="solutions">
 <a class="sol-link" href="https://leetcode.com/problems/string-to-integer-atoi/solutions/" target="_blank" rel="noopener" title="LeetCode solutions tab">📝 Sol</a>
-<a class="sol-link video" href="https://www.youtube.com/results?search_query=leetcode+8+String+to+Integer+%28atoi%29+solution" target="_blank" rel="noopener" title="YouTube search (NeetCode, Striver, & other top creators)">🎥 Video</a>
-<a class="sol-link gfg" href="https://www.google.com/search?q=site%3Ageeksforgeeks.org+String+to+Integer+%28atoi%29+leetcode" target="_blank" rel="noopener" title="GeeksforGeeks article">📚 GFG</a>
+<a class="sol-link video" href="https://www.youtube.com/results?search_query=leetcode+8+String+to+Integer+atoi+solution" target="_blank" rel="noopener" title="YouTube search (NeetCode, Striver, & other top creators)">🎥 Video</a>
+<a class="sol-link gfg" href="https://www.google.com/search?q=site%3Ageeksforgeeks.org+String+to+Integer+atoi+leetcode" target="_blank" rel="noopener" title="GeeksforGeeks article">📚 GFG</a>
 </div>
 <div class="note-btn" data-lc="8" title="Add a note for this problem">📝</div>
 </li>
@@ -14120,7 +14191,7 @@ def knapsack(weights, values, W):
 <div class="row"><b>Key idea.</b> XOR is its own inverse (a^a=0), AND with (n-1) clears the lowest set bit, shifts multiply/divide by 2.</div>
 <div class="row"><b>Complexity.</b> Most operations are O(1) per bit, O(log n) per number.</div>
 </div>
-<div class="resources-section open">
+<div class="resources-section">
 <div class="head" onclick="this.parentElement.classList.toggle('open')">
 <h4>📚 Learn this pattern — articles, videos, visualizations</h4>
 <div><span class="count">9 resources</span><span class="chevron">▶</span></div>
@@ -14614,7 +14685,7 @@ def knapsack(weights, values, W):
 <div class="row"><b>Key idea.</b> Compose primitives — hashmap + doubly linked list for LRU, hashmap + heap for top-K, Trie for prefix queries.</div>
 <div class="row"><b>Complexity.</b> Operation-specific — the goal is usually O(1) or O(log n) per call.</div>
 </div>
-<div class="resources-section open">
+<div class="resources-section">
 <div class="head" onclick="this.parentElement.classList.toggle('open')">
 <h4>📚 Learn this pattern — articles, videos, visualizations</h4>
 <div><span class="count">8 resources</span><span class="chevron">▶</span></div>
@@ -14733,8 +14804,8 @@ def knapsack(weights, values, W):
 <div class="solutions">
 <a class="sol-link verified" href="https://www.youtube.com/watch?v=oobqoCJlHA0" target="_blank" rel="noopener" title="NeetCode Video Walkthrough — direct video link">🎬 NC✓</a>
 <a class="sol-link" href="https://leetcode.com/problems/implement-trie-prefix-tree/solutions/" target="_blank" rel="noopener" title="LeetCode solutions tab">📝 Sol</a>
-<a class="sol-link video" href="https://www.youtube.com/results?search_query=leetcode+208+Implement+Trie+%28Prefix+Tree%29+solution" target="_blank" rel="noopener" title="YouTube search (NeetCode, Striver, & other top creators)">🎥 Video</a>
-<a class="sol-link gfg" href="https://www.google.com/search?q=site%3Ageeksforgeeks.org+Implement+Trie+%28Prefix+Tree%29+leetcode" target="_blank" rel="noopener" title="GeeksforGeeks article">📚 GFG</a>
+<a class="sol-link video" href="https://www.youtube.com/results?search_query=leetcode+208+Implement+Trie+Prefix+Tree+solution" target="_blank" rel="noopener" title="YouTube search (NeetCode, Striver, & other top creators)">🎥 Video</a>
+<a class="sol-link gfg" href="https://www.google.com/search?q=site%3Ageeksforgeeks.org+Implement+Trie+Prefix+Tree+leetcode" target="_blank" rel="noopener" title="GeeksforGeeks article">📚 GFG</a>
 </div>
 <div class="note-btn" data-lc="208" title="Add a note for this problem">📝</div>
 </li>
@@ -15079,8 +15150,8 @@ def knapsack(weights, values, W):
 <div class="company-row"><span class="company-chip" style="background:#FF9900;color:white" title="Amazon">Amazon</span><span class="company-chip" style="background:#0A66C2;color:white" title="LinkedIn">LinkedIn</span><span class="company-chip" style="background:#09091A;color:white" title="Uber">Uber</span></div>
 <div class="solutions">
 <a class="sol-link" href="https://leetcode.com/problems/insert-delete-getrandom-o1/solutions/" target="_blank" rel="noopener" title="LeetCode solutions tab">📝 Sol</a>
-<a class="sol-link video" href="https://www.youtube.com/results?search_query=leetcode+380+Insert+Delete+GetRandom+O%281%29+solution" target="_blank" rel="noopener" title="YouTube search (NeetCode, Striver, & other top creators)">🎥 Video</a>
-<a class="sol-link gfg" href="https://www.google.com/search?q=site%3Ageeksforgeeks.org+Insert+Delete+GetRandom+O%281%29+leetcode" target="_blank" rel="noopener" title="GeeksforGeeks article">📚 GFG</a>
+<a class="sol-link video" href="https://www.youtube.com/results?search_query=leetcode+380+Insert+Delete+GetRandom+O+1+solution" target="_blank" rel="noopener" title="YouTube search (NeetCode, Striver, & other top creators)">🎥 Video</a>
+<a class="sol-link gfg" href="https://www.google.com/search?q=site%3Ageeksforgeeks.org+Insert+Delete+GetRandom+O+1+leetcode" target="_blank" rel="noopener" title="GeeksforGeeks article">📚 GFG</a>
 </div>
 <div class="note-btn" data-lc="380" title="Add a note for this problem">📝</div>
 </li>
@@ -15102,8 +15173,8 @@ def knapsack(weights, values, W):
 <div class="company-row"></div>
 <div class="solutions">
 <a class="sol-link" href="https://leetcode.com/problems/all-oone-data-structure/solutions/" target="_blank" rel="noopener" title="LeetCode solutions tab">📝 Sol</a>
-<a class="sol-link video" href="https://www.youtube.com/results?search_query=leetcode+432+All+O%60one+Data+Structure+solution" target="_blank" rel="noopener" title="YouTube search (NeetCode, Striver, & other top creators)">🎥 Video</a>
-<a class="sol-link gfg" href="https://www.google.com/search?q=site%3Ageeksforgeeks.org+All+O%60one+Data+Structure+leetcode" target="_blank" rel="noopener" title="GeeksforGeeks article">📚 GFG</a>
+<a class="sol-link video" href="https://www.youtube.com/results?search_query=leetcode+432+All+O+one+Data+Structure+solution" target="_blank" rel="noopener" title="YouTube search (NeetCode, Striver, & other top creators)">🎥 Video</a>
+<a class="sol-link gfg" href="https://www.google.com/search?q=site%3Ageeksforgeeks.org+All+O+one+Data+Structure+leetcode" target="_blank" rel="noopener" title="GeeksforGeeks article">📚 GFG</a>
 </div>
 <div class="note-btn" data-lc="432" title="Add a note for this problem">📝</div>
 </li>
@@ -15623,8 +15694,8 @@ def knapsack(weights, values, W):
 <div class="solutions">
 <a class="sol-link verified" href="https://www.youtube.com/watch?v=oobqoCJlHA0" target="_blank" rel="noopener" title="NeetCode Video Walkthrough — direct video link">🎬 NC✓</a>
 <a class="sol-link" href="https://leetcode.com/problems/implement-trie-prefix-tree/solutions/" target="_blank" rel="noopener" title="LeetCode solutions tab">📝 Sol</a>
-<a class="sol-link video" href="https://www.youtube.com/results?search_query=leetcode+208+Implement+Trie+%28Prefix+Tree%29+solution" target="_blank" rel="noopener" title="YouTube search (NeetCode, Striver, & other top creators)">🎥 Video</a>
-<a class="sol-link gfg" href="https://www.google.com/search?q=site%3Ageeksforgeeks.org+Implement+Trie+%28Prefix+Tree%29+leetcode" target="_blank" rel="noopener" title="GeeksforGeeks article">📚 GFG</a>
+<a class="sol-link video" href="https://www.youtube.com/results?search_query=leetcode+208+Implement+Trie+Prefix+Tree+solution" target="_blank" rel="noopener" title="YouTube search (NeetCode, Striver, & other top creators)">🎥 Video</a>
+<a class="sol-link gfg" href="https://www.google.com/search?q=site%3Ageeksforgeeks.org+Implement+Trie+Prefix+Tree+leetcode" target="_blank" rel="noopener" title="GeeksforGeeks article">📚 GFG</a>
 </div>
 <div class="note-btn" data-lc="208" title="Add a note for this problem">📝</div>
 </li>
@@ -15731,7 +15802,7 @@ def knapsack(weights, values, W):
             l //= 2; r //= 2
         return res</pre></div>
 </div>
-<div class="resources-section open">
+<div class="resources-section">
 <div class="head" onclick="this.parentElement.classList.toggle('open')">
 <h4>📚 Learn this pattern — articles, videos, visualizations</h4>
 <div><span class="count">9 resources</span><span class="chevron">▶</span></div>
@@ -16121,7 +16192,7 @@ def knapsack(weights, values, W):
         seen[prefix] = seen.get(prefix, 0) + 1
     return count</pre></div>
 </div>
-<div class="resources-section open">
+<div class="resources-section">
 <div class="head" onclick="this.parentElement.classList.toggle('open')">
 <h4>📚 Learn this pattern — articles, videos, visualizations</h4>
 <div><span class="count">5 resources</span><span class="chevron">▶</span></div>
@@ -16526,7 +16597,7 @@ def knapsack(weights, values, W):
 <div class="row"><b>Key idea.</b> Compose a hashmap with a doubly linked list (LRU), or hashmap+frequency map+ordered keys (LFU). The map gives O(1) lookup; the list gives O(1) reorder.</div>
 <div class="row"><b>Complexity.</b> O(1) per operation for well-designed caches.</div>
 </div>
-<div class="resources-section open">
+<div class="resources-section">
 <div class="head" onclick="this.parentElement.classList.toggle('open')">
 <h4>📚 Learn this pattern — articles, videos, visualizations</h4>
 <div><span class="count">6 resources</span><span class="chevron">▶</span></div>
@@ -16729,8 +16800,8 @@ def knapsack(weights, values, W):
 <div class="company-row"></div>
 <div class="solutions">
 <a class="sol-link" href="https://leetcode.com/problems/all-oone-data-structure/solutions/" target="_blank" rel="noopener" title="LeetCode solutions tab">📝 Sol</a>
-<a class="sol-link video" href="https://www.youtube.com/results?search_query=leetcode+432+All+O%60one+Data+Structure+solution" target="_blank" rel="noopener" title="YouTube search (NeetCode, Striver, & other top creators)">🎥 Video</a>
-<a class="sol-link gfg" href="https://www.google.com/search?q=site%3Ageeksforgeeks.org+All+O%60one+Data+Structure+leetcode" target="_blank" rel="noopener" title="GeeksforGeeks article">📚 GFG</a>
+<a class="sol-link video" href="https://www.youtube.com/results?search_query=leetcode+432+All+O+one+Data+Structure+solution" target="_blank" rel="noopener" title="YouTube search (NeetCode, Striver, & other top creators)">🎥 Video</a>
+<a class="sol-link gfg" href="https://www.google.com/search?q=site%3Ageeksforgeeks.org+All+O+one+Data+Structure+leetcode" target="_blank" rel="noopener" title="GeeksforGeeks article">📚 GFG</a>
 </div>
 <div class="note-btn" data-lc="432" title="Add a note for this problem">📝</div>
 </li>
@@ -16826,8 +16897,8 @@ def knapsack(weights, values, W):
 <div class="company-row"><span class="company-chip" style="background:#FF9900;color:white" title="Amazon">Amazon</span><span class="company-chip" style="background:#0A66C2;color:white" title="LinkedIn">LinkedIn</span><span class="company-chip" style="background:#09091A;color:white" title="Uber">Uber</span></div>
 <div class="solutions">
 <a class="sol-link" href="https://leetcode.com/problems/insert-delete-getrandom-o1/solutions/" target="_blank" rel="noopener" title="LeetCode solutions tab">📝 Sol</a>
-<a class="sol-link video" href="https://www.youtube.com/results?search_query=leetcode+380+Insert+Delete+GetRandom+O%281%29+solution" target="_blank" rel="noopener" title="YouTube search (NeetCode, Striver, & other top creators)">🎥 Video</a>
-<a class="sol-link gfg" href="https://www.google.com/search?q=site%3Ageeksforgeeks.org+Insert+Delete+GetRandom+O%281%29+leetcode" target="_blank" rel="noopener" title="GeeksforGeeks article">📚 GFG</a>
+<a class="sol-link video" href="https://www.youtube.com/results?search_query=leetcode+380+Insert+Delete+GetRandom+O+1+solution" target="_blank" rel="noopener" title="YouTube search (NeetCode, Striver, & other top creators)">🎥 Video</a>
+<a class="sol-link gfg" href="https://www.google.com/search?q=site%3Ageeksforgeeks.org+Insert+Delete+GetRandom+O+1+leetcode" target="_blank" rel="noopener" title="GeeksforGeeks article">📚 GFG</a>
 </div>
 <div class="note-btn" data-lc="380" title="Add a note for this problem">📝</div>
 </li>
@@ -16849,8 +16920,8 @@ def knapsack(weights, values, W):
 <div class="company-row"><span class="company-chip" style="background:#0668E1;color:white" title="Meta">Meta</span><span class="company-chip" style="background:#FF9900;color:white" title="Amazon">Amazon</span><span class="company-chip" style="background:#09091A;color:white" title="Uber">Uber</span></div>
 <div class="solutions">
 <a class="sol-link" href="https://leetcode.com/problems/insert-delete-getrandom-o1-duplicates-allowed/solutions/" target="_blank" rel="noopener" title="LeetCode solutions tab">📝 Sol</a>
-<a class="sol-link video" href="https://www.youtube.com/results?search_query=leetcode+381+Insert+Delete+GetRandom+O%281%29+-+Duplicates+allowed+solution" target="_blank" rel="noopener" title="YouTube search (NeetCode, Striver, & other top creators)">🎥 Video</a>
-<a class="sol-link gfg" href="https://www.google.com/search?q=site%3Ageeksforgeeks.org+Insert+Delete+GetRandom+O%281%29+-+Duplicates+allowed+leetcode" target="_blank" rel="noopener" title="GeeksforGeeks article">📚 GFG</a>
+<a class="sol-link video" href="https://www.youtube.com/results?search_query=leetcode+381+Insert+Delete+GetRandom+O+1+-+Duplicates+allowed+solution" target="_blank" rel="noopener" title="YouTube search (NeetCode, Striver, & other top creators)">🎥 Video</a>
+<a class="sol-link gfg" href="https://www.google.com/search?q=site%3Ageeksforgeeks.org+Insert+Delete+GetRandom+O+1+-+Duplicates+allowed+leetcode" target="_blank" rel="noopener" title="GeeksforGeeks article">📚 GFG</a>
 </div>
 <div class="note-btn" data-lc="381" title="Add a note for this problem">📝</div>
 </li>
@@ -16882,7 +16953,7 @@ def knapsack(weights, values, W):
 <div class="row"><b>Key idea.</b> Know the closed-form identities (Euclid&#x27;s GCD, sieve of Eratosthenes, fast power) and the geometric primitives (cross product, distance squared).</div>
 <div class="row"><b>Complexity.</b> O(log n) for GCD/fast-power, O(n log log n) for sieve, O(n) for most geometry sweeps.</div>
 </div>
-<div class="resources-section open">
+<div class="resources-section">
 <div class="head" onclick="this.parentElement.classList.toggle('open')">
 <h4>📚 Learn this pattern — articles, videos, visualizations</h4>
 <div><span class="count">11 resources</span><span class="chevron">▶</span></div>
@@ -16967,8 +17038,8 @@ def knapsack(weights, values, W):
 <div class="company-row"><span class="company-chip" style="background:#0668E1;color:white" title="Meta">Meta</span><span class="company-chip" style="background:#4285F4;color:white" title="Google">Google</span><span class="company-chip" style="background:#0A66C2;color:white" title="LinkedIn">LinkedIn</span></div>
 <div class="solutions">
 <a class="sol-link" href="https://leetcode.com/problems/powx-n/solutions/" target="_blank" rel="noopener" title="LeetCode solutions tab">📝 Sol</a>
-<a class="sol-link video" href="https://www.youtube.com/results?search_query=leetcode+50+Pow%28x%2C+n%29+solution" target="_blank" rel="noopener" title="YouTube search (NeetCode, Striver, & other top creators)">🎥 Video</a>
-<a class="sol-link gfg" href="https://www.google.com/search?q=site%3Ageeksforgeeks.org+Pow%28x%2C+n%29+leetcode" target="_blank" rel="noopener" title="GeeksforGeeks article">📚 GFG</a>
+<a class="sol-link video" href="https://www.youtube.com/results?search_query=leetcode+50+Pow+x+n+solution" target="_blank" rel="noopener" title="YouTube search (NeetCode, Striver, & other top creators)">🎥 Video</a>
+<a class="sol-link gfg" href="https://www.google.com/search?q=site%3Ageeksforgeeks.org+Pow+x+n+leetcode" target="_blank" rel="noopener" title="GeeksforGeeks article">📚 GFG</a>
 </div>
 <div class="note-btn" data-lc="50" title="Add a note for this problem">📝</div>
 </li>
@@ -16990,8 +17061,8 @@ def knapsack(weights, values, W):
 <div class="company-row"></div>
 <div class="solutions">
 <a class="sol-link" href="https://leetcode.com/problems/sqrtx/solutions/" target="_blank" rel="noopener" title="LeetCode solutions tab">📝 Sol</a>
-<a class="sol-link video" href="https://www.youtube.com/results?search_query=leetcode+69+Sqrt%28x%29+solution" target="_blank" rel="noopener" title="YouTube search (NeetCode, Striver, & other top creators)">🎥 Video</a>
-<a class="sol-link gfg" href="https://www.google.com/search?q=site%3Ageeksforgeeks.org+Sqrt%28x%29+leetcode" target="_blank" rel="noopener" title="GeeksforGeeks article">📚 GFG</a>
+<a class="sol-link video" href="https://www.youtube.com/results?search_query=leetcode+69+Sqrt+x+solution" target="_blank" rel="noopener" title="YouTube search (NeetCode, Striver, & other top creators)">🎥 Video</a>
+<a class="sol-link gfg" href="https://www.google.com/search?q=site%3Ageeksforgeeks.org+Sqrt+x+leetcode" target="_blank" rel="noopener" title="GeeksforGeeks article">📚 GFG</a>
 </div>
 <div class="note-btn" data-lc="69" title="Add a note for this problem">📝</div>
 </li>
@@ -17050,8 +17121,8 @@ def knapsack(weights, values, W):
 <div class="company-row"></div>
 <div class="solutions">
 <a class="sol-link" href="https://leetcode.com/problems/string-to-integer-atoi/solutions/" target="_blank" rel="noopener" title="LeetCode solutions tab">📝 Sol</a>
-<a class="sol-link video" href="https://www.youtube.com/results?search_query=leetcode+8+String+to+Integer+%28atoi%29+solution" target="_blank" rel="noopener" title="YouTube search (NeetCode, Striver, & other top creators)">🎥 Video</a>
-<a class="sol-link gfg" href="https://www.google.com/search?q=site%3Ageeksforgeeks.org+String+to+Integer+%28atoi%29+leetcode" target="_blank" rel="noopener" title="GeeksforGeeks article">📚 GFG</a>
+<a class="sol-link video" href="https://www.youtube.com/results?search_query=leetcode+8+String+to+Integer+atoi+solution" target="_blank" rel="noopener" title="YouTube search (NeetCode, Striver, & other top creators)">🎥 Video</a>
+<a class="sol-link gfg" href="https://www.google.com/search?q=site%3Ageeksforgeeks.org+String+to+Integer+atoi+leetcode" target="_blank" rel="noopener" title="GeeksforGeeks article">📚 GFG</a>
 </div>
 <div class="note-btn" data-lc="8" title="Add a note for this problem">📝</div>
 </li>
@@ -17411,8 +17482,8 @@ def knapsack(weights, values, W):
 <div class="company-row"></div>
 <div class="solutions">
 <a class="sol-link" href="https://leetcode.com/problems/pascals-triangle/solutions/" target="_blank" rel="noopener" title="LeetCode solutions tab">📝 Sol</a>
-<a class="sol-link video" href="https://www.youtube.com/results?search_query=leetcode+118+Pascal%27s+Triangle+solution" target="_blank" rel="noopener" title="YouTube search (NeetCode, Striver, & other top creators)">🎥 Video</a>
-<a class="sol-link gfg" href="https://www.google.com/search?q=site%3Ageeksforgeeks.org+Pascal%27s+Triangle+leetcode" target="_blank" rel="noopener" title="GeeksforGeeks article">📚 GFG</a>
+<a class="sol-link video" href="https://www.youtube.com/results?search_query=leetcode+118+Pascal+s+Triangle+solution" target="_blank" rel="noopener" title="YouTube search (NeetCode, Striver, & other top creators)">🎥 Video</a>
+<a class="sol-link gfg" href="https://www.google.com/search?q=site%3Ageeksforgeeks.org+Pascal+s+Triangle+leetcode" target="_blank" rel="noopener" title="GeeksforGeeks article">📚 GFG</a>
 </div>
 <div class="note-btn" data-lc="118" title="Add a note for this problem">📝</div>
 </li>
@@ -17434,8 +17505,8 @@ def knapsack(weights, values, W):
 <div class="company-row"></div>
 <div class="solutions">
 <a class="sol-link" href="https://leetcode.com/problems/pascals-triangle-ii/solutions/" target="_blank" rel="noopener" title="LeetCode solutions tab">📝 Sol</a>
-<a class="sol-link video" href="https://www.youtube.com/results?search_query=leetcode+119+Pascal%27s+Triangle+II+solution" target="_blank" rel="noopener" title="YouTube search (NeetCode, Striver, & other top creators)">🎥 Video</a>
-<a class="sol-link gfg" href="https://www.google.com/search?q=site%3Ageeksforgeeks.org+Pascal%27s+Triangle+II+leetcode" target="_blank" rel="noopener" title="GeeksforGeeks article">📚 GFG</a>
+<a class="sol-link video" href="https://www.youtube.com/results?search_query=leetcode+119+Pascal+s+Triangle+II+solution" target="_blank" rel="noopener" title="YouTube search (NeetCode, Striver, & other top creators)">🎥 Video</a>
+<a class="sol-link gfg" href="https://www.google.com/search?q=site%3Ageeksforgeeks.org+Pascal+s+Triangle+II+leetcode" target="_blank" rel="noopener" title="GeeksforGeeks article">📚 GFG</a>
 </div>
 <div class="note-btn" data-lc="119" title="Add a note for this problem">📝</div>
 </li>
@@ -17522,7 +17593,7 @@ class Trie:
             node = node.children[c]
         return node</pre></div>
 </div>
-<div class="resources-section open">
+<div class="resources-section">
 <div class="head" onclick="this.parentElement.classList.toggle('open')">
 <h4>📚 Learn this pattern — articles, videos, visualizations</h4>
 <div><span class="count">8 resources</span><span class="chevron">▶</span></div>
@@ -17593,8 +17664,8 @@ class Trie:
 <div class="solutions">
 <a class="sol-link verified" href="https://www.youtube.com/watch?v=oobqoCJlHA0" target="_blank" rel="noopener" title="NeetCode Video Walkthrough — direct video link">🎬 NC✓</a>
 <a class="sol-link" href="https://leetcode.com/problems/implement-trie-prefix-tree/solutions/" target="_blank" rel="noopener" title="LeetCode solutions tab">📝 Sol</a>
-<a class="sol-link video" href="https://www.youtube.com/results?search_query=leetcode+208+Implement+Trie+%28Prefix+Tree%29+solution" target="_blank" rel="noopener" title="YouTube search (NeetCode, Striver, & other top creators)">🎥 Video</a>
-<a class="sol-link gfg" href="https://www.google.com/search?q=site%3Ageeksforgeeks.org+Implement+Trie+%28Prefix+Tree%29+leetcode" target="_blank" rel="noopener" title="GeeksforGeeks article">📚 GFG</a>
+<a class="sol-link video" href="https://www.youtube.com/results?search_query=leetcode+208+Implement+Trie+Prefix+Tree+solution" target="_blank" rel="noopener" title="YouTube search (NeetCode, Striver, & other top creators)">🎥 Video</a>
+<a class="sol-link gfg" href="https://www.google.com/search?q=site%3Ageeksforgeeks.org+Implement+Trie+Prefix+Tree+leetcode" target="_blank" rel="noopener" title="GeeksforGeeks article">📚 GFG</a>
 </div>
 <div class="note-btn" data-lc="208" title="Add a note for this problem">📝</div>
 </li>
@@ -17639,8 +17710,8 @@ class Trie:
 <div class="company-row"></div>
 <div class="solutions">
 <a class="sol-link" href="https://leetcode.com/problems/implement-trie-ii-prefix-tree/solutions/" target="_blank" rel="noopener" title="LeetCode solutions tab">📝 Sol</a>
-<a class="sol-link video" href="https://www.youtube.com/results?search_query=leetcode+1804+Implement+Trie+II+%28Prefix+Tree%29+solution" target="_blank" rel="noopener" title="YouTube search (NeetCode, Striver, & other top creators)">🎥 Video</a>
-<a class="sol-link gfg" href="https://www.google.com/search?q=site%3Ageeksforgeeks.org+Implement+Trie+II+%28Prefix+Tree%29+leetcode" target="_blank" rel="noopener" title="GeeksforGeeks article">📚 GFG</a>
+<a class="sol-link video" href="https://www.youtube.com/results?search_query=leetcode+1804+Implement+Trie+II+Prefix+Tree+solution" target="_blank" rel="noopener" title="YouTube search (NeetCode, Striver, & other top creators)">🎥 Video</a>
+<a class="sol-link gfg" href="https://www.google.com/search?q=site%3Ageeksforgeeks.org+Implement+Trie+II+Prefix+Tree+leetcode" target="_blank" rel="noopener" title="GeeksforGeeks article">📚 GFG</a>
 </div>
 <div class="note-btn" data-lc="1804" title="Add a note for this problem">📝</div>
 </li>
@@ -18048,7 +18119,7 @@ class Trie:
 <div class="row"><b>Key idea.</b> Sort by start (and sometimes by end); for line sweep, emit +1/−1 events at endpoints and sweep to find max concurrent count.</div>
 <div class="row"><b>Complexity.</b> O(n log n) for the sort/sweep.</div>
 </div>
-<div class="resources-section open">
+<div class="resources-section">
 <div class="head" onclick="this.parentElement.classList.toggle('open')">
 <h4>📚 Learn this pattern — articles, videos, visualizations</h4>
 <div><span class="count">5 resources</span><span class="chevron">▶</span></div>
@@ -18523,7 +18594,7 @@ class Trie:
 <div class="row"><b>Key idea.</b> Recurse to children first; combine their return values (often a tuple like (include, exclude) or (max_path_ending_here, best_seen)) to compute the parent&#x27;s answer.</div>
 <div class="row"><b>Complexity.</b> O(n) — each node is visited once.</div>
 </div>
-<div class="resources-section open">
+<div class="resources-section">
 <div class="head" onclick="this.parentElement.classList.toggle('open')">
 <h4>📚 Learn this pattern — articles, videos, visualizations</h4>
 <div><span class="count">6 resources</span><span class="chevron">▶</span></div>
@@ -18818,7 +18889,7 @@ class Trie:
 <div class="row"><b>Key idea.</b> Bitmask DP: state = (mask, …); iterate over submasks or transitions. Digit DP: state = (position, tight, leading_zero, …). State machine: track which &#x27;mode&#x27; you&#x27;re in (holding, sold, cooldown).</div>
 <div class="row"><b>Complexity.</b> Bitmask: O(2ⁿ · n). Digit: O(digits · states · 10). State machine: O(n · states).</div>
 </div>
-<div class="resources-section open">
+<div class="resources-section">
 <div class="head" onclick="this.parentElement.classList.toggle('open')">
 <h4>📚 Learn this pattern — articles, videos, visualizations</h4>
 <div><span class="count">8 resources</span><span class="chevron">▶</span></div>
@@ -19641,7 +19712,7 @@ class Trie:
 <div class="row"><b>Key idea.</b> Tarjan for bridges/SCC, Floyd-Warshall for all-pairs (O(V³)), Hierholzer for Eulerian, 0-1 BFS for graphs with edge weights ∈ {0,1}, bidirectional BFS to halve depth.</div>
 <div class="row"><b>Complexity.</b> Tarjan O(V+E), Floyd-Warshall O(V³), Bellman-Ford O(V·E), 0-1 BFS O(V+E).</div>
 </div>
-<div class="resources-section open">
+<div class="resources-section">
 <div class="head" onclick="this.parentElement.classList.toggle('open')">
 <h4>📚 Learn this pattern — articles, videos, visualizations</h4>
 <div><span class="count">15 resources</span><span class="chevron">▶</span></div>
@@ -20484,7 +20555,7 @@ class Trie:
 <div class="row"><b>Key idea.</b> Push every source into the queue with distance 0 in the same pass; the BFS naturally computes the minimum distance from any source.</div>
 <div class="row"><b>Complexity.</b> O(rows × cols) — every cell is visited once.</div>
 </div>
-<div class="resources-section open">
+<div class="resources-section">
 <div class="head" onclick="this.parentElement.classList.toggle('open')">
 <h4>📚 Learn this pattern — articles, videos, visualizations</h4>
 <div><span class="count">4 resources</span><span class="chevron">▶</span></div>
@@ -20683,7 +20754,7 @@ class Trie:
 <div class="row"><b>Key idea.</b> Defer work until next() is called; keep just enough state (stack of partial results, two heaps, deque) to answer the next query in O(1) or O(log n).</div>
 <div class="row"><b>Complexity.</b> Typically O(1) amortized per next()/hasNext().</div>
 </div>
-<div class="resources-section open">
+<div class="resources-section">
 <div class="head" onclick="this.parentElement.classList.toggle('open')">
 <h4>📚 Learn this pattern — articles, videos, visualizations</h4>
 <div><span class="count">5 resources</span><span class="chevron">▶</span></div>
@@ -21119,7 +21190,7 @@ class Trie:
 <div class="row"><b>Key idea.</b> Quickselect partitions around a pivot like Quicksort but recurses into one side; merge sort can count inversions during the merge step.</div>
 <div class="row"><b>Complexity.</b> Quickselect O(n) avg / O(n²) worst; merge-sort apps O(n log n); bucket/radix O(n + k).</div>
 </div>
-<div class="resources-section open">
+<div class="resources-section">
 <div class="head" onclick="this.parentElement.classList.toggle('open')">
 <h4>📚 Learn this pattern — articles, videos, visualizations</h4>
 <div><span class="count">10 resources</span><span class="chevron">▶</span></div>
@@ -21433,7 +21504,7 @@ class Trie:
 <div class="row"><b>Key idea.</b> Reservoir sampling keeps one or k samples and replaces with probability k/i at step i; weighted random uses prefix sums + binary search.</div>
 <div class="row"><b>Complexity.</b> O(n) one-pass for reservoir; O(log n) per query for weighted (after O(n) precomputation).</div>
 </div>
-<div class="resources-section open">
+<div class="resources-section">
 <div class="head" onclick="this.parentElement.classList.toggle('open')">
 <h4>📚 Learn this pattern — articles, videos, visualizations</h4>
 <div><span class="count">4 resources</span><span class="chevron">▶</span></div>
@@ -21671,7 +21742,7 @@ class Trie:
 <div class="row"><b>Key idea.</b> Manacher reuses palindrome symmetry to avoid recomputing; Z-algorithm computes longest common prefix with every suffix; suffix automaton/array enables substring queries.</div>
 <div class="row"><b>Complexity.</b> O(n) for Manacher and Z-algorithm; O(n log n) for suffix array.</div>
 </div>
-<div class="resources-section open">
+<div class="resources-section">
 <div class="head" onclick="this.parentElement.classList.toggle('open')">
 <h4>📚 Learn this pattern — articles, videos, visualizations</h4>
 <div><span class="count">10 resources</span><span class="chevron">▶</span></div>
@@ -22252,4 +22323,34 @@ class Trie:
   renderState();
 })();
 </script>
-</div></body></html>
+</div><script id="site-nav-script">
+(function () {
+  const progress = document.querySelector("[data-site-nav-progress]");
+  function refreshProgress() {
+    const pageProgress = document.getElementById("overall-pct");
+    if (progress && pageProgress) progress.textContent = pageProgress.textContent.trim();
+  }
+  refreshProgress();
+  const pageProgress = document.getElementById("overall-pct");
+  if (progress && pageProgress && "MutationObserver" in window) {
+    new MutationObserver(refreshProgress).observe(pageProgress, {
+      childList: true,
+      characterData: true,
+      subtree: true
+    });
+  }
+  setTimeout(refreshProgress, 120);
+  document.addEventListener("click", function (event) {
+    if (event.target.closest(".done-check, .solve-check, .bookmark-star")) setTimeout(refreshProgress, 80);
+  });
+  const themeButton = document.querySelector("[data-site-theme-toggle]");
+  if (themeButton) {
+    themeButton.addEventListener("click", function () {
+      const pageThemeButton = document.getElementById("theme-toggle");
+      if (pageThemeButton) pageThemeButton.click();
+      else document.documentElement.classList.toggle("light");
+    });
+  }
+})();
+</script>
+</body></html>

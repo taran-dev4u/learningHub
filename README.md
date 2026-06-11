@@ -1,6 +1,6 @@
-# Learning Hub
+# Taran's Learning Hub
 
-A static one-stop learning hub generated from the HTML sites in this folder.
+A personal static learning hub generated from the HTML sites in this folder.
 
 ## Included sites
 
@@ -10,6 +10,13 @@ A static one-stop learning hub generated from the HTML sites in this folder.
 - Behavioral and Leadership: 121 concepts, 5 sections, 24 resources
 - AI Engineering: 150 concepts, 10 sections, 54 resources
 - Cloud - AWS and Azure: 159 concepts, 10 sections, 44 resources
+
+## Current UI
+
+- `index.html` and `hub.html` show only the six page entry cards.
+- Each source page has shared cross-site navigation.
+- Resource panels start closed by default.
+- Progress and bookmarks are stored locally in the browser.
 
 ## Local preview
 

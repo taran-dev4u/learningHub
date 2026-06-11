@@ -164,6 +164,146 @@ const additions = [
   },
 ];
 
+const coverageBySource = {
+  dsa: {
+    title: "DSA Coverage Check",
+    source: "NeetCode / Striver-style pattern coverage",
+    notes: [
+      "Keep the 609-problem pattern index as the primary practice map.",
+      "Revisit duplicate placements intentionally; duplicated problems should teach multiple patterns.",
+      "Prioritize core patterns before advanced/niche patterns unless a target company requires them.",
+    ],
+    topics: [
+      "Pattern recognition drills",
+      "Complexity trade-offs",
+      "Edge-case checklist",
+      "Mock interview communication",
+      "Re-solving weak bookmarked problems",
+    ],
+    resources: [
+      ["NeetCode Roadmap", "https://neetcode.io/roadmap"],
+      ["Striver A2Z DSA Sheet", "https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-course-sheet-2/"],
+      ["CP-Algorithms", "https://cp-algorithms.com/"],
+    ],
+  },
+  sd: {
+    title: "System Design Coverage Check",
+    source: "roadmap.sh System Design + System Design Primer",
+    notes: [
+      "Make trade-offs explicit: consistency, latency, cost, availability, and operability.",
+      "Use classic designs as integration practice, not memorized templates.",
+      "Add security, observability, and failure-mode reasoning to every design.",
+    ],
+    topics: [
+      "Capacity estimation",
+      "CDNs and edge caching",
+      "Proxies and API gateways",
+      "Search systems",
+      "Observability and SLOs",
+      "Threat modeling",
+    ],
+    resources: [
+      ["roadmap.sh System Design", "https://roadmap.sh/system-design"],
+      ["System Design Primer", "https://github.com/donnemartin/system-design-primer"],
+      ["Google SRE Book", "https://sre.google/sre-book/table-of-contents/"],
+    ],
+  },
+  cs: {
+    title: "CS Fundamentals Coverage Check",
+    source: "roadmap.sh Computer Science + standard interview foundations",
+    notes: [
+      "Keep OS, networking, DB, concurrency, security, and architecture as the required core.",
+      "Add compiler/runtime and distributed-systems prerequisites as review topics.",
+      "Treat CS fundamentals as support for system design and debugging interviews.",
+    ],
+    topics: [
+      "Compilers and interpreters",
+      "Runtime and garbage collection",
+      "Serialization formats",
+      "Distributed systems basics",
+      "Testing fundamentals",
+      "Performance profiling",
+    ],
+    resources: [
+      ["roadmap.sh Computer Science", "https://roadmap.sh/computer-science"],
+      ["MIT 6.828 Operating Systems", "https://pdos.csail.mit.edu/6.828/"],
+      ["Beej's Guide to Network Programming", "https://beej.us/guide/bgnet/"],
+    ],
+  },
+  bh: {
+    title: "Behavioral Coverage Check",
+    source: "STAR interview prep + leadership story coverage",
+    notes: [
+      "Prepare reusable stories that can flex across companies and question wording.",
+      "Every story should include stakes, action, measurable result, and reflection.",
+      "Keep a short answer and a deeper version for each major story.",
+    ],
+    topics: [
+      "Ambiguity",
+      "Ownership",
+      "Conflict",
+      "Failure",
+      "Mentoring",
+      "Prioritization",
+      "Customer impact",
+      "Technical judgment",
+    ],
+    resources: [
+      ["Amazon Leadership Principles", "https://www.amazon.jobs/content/en/our-workplace/leadership-principles"],
+      ["Google Interview Prep", "https://www.google.com/about/careers/applications/interview-tips/"],
+      ["STAR Method Guide", "https://www.themuse.com/advice/star-interview-method"],
+    ],
+  },
+  ai: {
+    title: "AI Engineering Coverage Check",
+    source: "roadmap.sh AI Engineer + OpenAI Cookbook + production LLM practice",
+    notes: [
+      "Focus on building reliable AI systems with existing models before training from scratch.",
+      "Pair every RAG/agent technique with evals, observability, and failure analysis.",
+      "Track safety, cost, latency, and quality as production constraints.",
+    ],
+    topics: [
+      "Structured outputs",
+      "Function/tool calling",
+      "RAG evaluation",
+      "Agent reliability",
+      "Prompt/version management",
+      "LLM observability",
+      "Safety and guardrails",
+      "Cost and latency optimization",
+    ],
+    resources: [
+      ["roadmap.sh AI Engineer", "https://roadmap.sh/ai-engineer"],
+      ["OpenAI Cookbook", "https://cookbook.openai.com/"],
+      ["Hugging Face NLP Course", "https://huggingface.co/learn/nlp-course"],
+    ],
+  },
+  cloud: {
+    title: "Cloud Coverage Check",
+    source: "roadmap.sh AWS + AWS/Azure Well-Architected guidance",
+    notes: [
+      "Keep AWS and Azure mappings side-by-side for interview recall.",
+      "Add reliability, security, cost, and operational excellence to each service family.",
+      "Practice explaining why a managed service is chosen, not only what it is called.",
+    ],
+    topics: [
+      "Well-Architected pillars",
+      "Landing zones",
+      "Cost governance",
+      "Backup and disaster recovery",
+      "Secrets management",
+      "Container platforms",
+      "Zero-trust networking",
+      "Cloud migration patterns",
+    ],
+    resources: [
+      ["roadmap.sh AWS", "https://roadmap.sh/aws"],
+      ["AWS Well-Architected Framework", "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html"],
+      ["Azure Well-Architected Framework", "https://learn.microsoft.com/en-us/azure/well-architected/"],
+    ],
+  },
+};
+
 function read(file) {
   return fs.readFileSync(path.join(root, file), "utf8");
 }
@@ -541,6 +681,7 @@ function buildData() {
       itemCount,
       resourceCount,
       progressLabel: source.kind === "problem" ? "problems" : "concepts",
+      coverage: coverageBySource[source.key],
     };
     parsedSources.push(sourceRecord);
     allItems = allItems.concat(parsed.items);
@@ -571,6 +712,7 @@ function buildData() {
     resources: allResources,
     roadmap,
     additions,
+    coverage: coverageBySource,
   };
 }
 
@@ -1221,6 +1363,571 @@ button, input, select { font: inherit; }
 `;
 }
 
+function personalPurpose(source) {
+  const purposes = {
+    dsa: "My primary coding-interview practice map: patterns first, problems second, repeat weak spots until they feel automatic.",
+    sd: "My system design control room: concepts, trade-offs, classic designs, and interview structure in one place.",
+    cs: "My fundamentals refresh layer: OS, networking, databases, concurrency, security, and architecture for deeper reasoning.",
+    bh: "My story bank and leadership prep space: STAR answers, principles, conflict, ownership, and mock practice.",
+    ai: "My AI engineering track: LLM apps, RAG, agents, evals, MLOps, and production quality constraints.",
+    cloud: "My AWS and Azure comparison desk: services, Q&A, architecture pillars, security, reliability, and cost thinking.",
+  };
+  return purposes[source.key] || source.summary;
+}
+
+function simpleHubHtml(data) {
+  const json = JSON.stringify({
+    sources: data.sources.map((s) => ({
+      key: s.key,
+      title: s.title,
+      file: s.file,
+      color: s.color,
+      storage: s.storage,
+      itemCount: s.itemCount,
+      progressLabel: s.progressLabel,
+    })),
+  }).replace(/</g, "\\u003c");
+  const cards = data.sources.map((source, index) => `
+    <article class="page-card" data-page-card="${escHtml(source.key)}" style="--card-color:${escHtml(source.color)}">
+      <div class="card-index">${String(index + 1).padStart(2, "0")}</div>
+      <div class="card-body">
+        <p class="card-kicker">${escHtml(source.label)} / ${escHtml(source.progressLabel)}</p>
+        <h2>${escHtml(source.title)}</h2>
+        <p>${escHtml(personalPurpose(source))}</p>
+        <div class="card-stats">
+          <span>${source.sections.length} sections</span>
+          <span>${source.itemCount} ${escHtml(source.progressLabel)}</span>
+          <span>${source.resourceCount} resources</span>
+        </div>
+        <div class="card-progress" aria-label="Progress for ${escHtml(source.title)}">
+          <span data-page-progress-fill="${escHtml(source.key)}"></span>
+        </div>
+        <div class="card-footer">
+          <span data-page-progress-text="${escHtml(source.key)}">0 / ${source.itemCount} complete</span>
+          <a href="${escHtml(source.file)}">Open</a>
+        </div>
+      </div>
+    </article>`).join("");
+
+  return `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Taran's personal learning hub for DSA, system design, CS fundamentals, behavioral interviews, AI engineering, and cloud.">
+<title>Taran's Learning Hub</title>
+<style>
+:root {
+  --bg: #f4f6f8;
+  --surface: #ffffff;
+  --surface-2: #edf1f5;
+  --text: #151922;
+  --muted: #586173;
+  --faint: #818b9d;
+  --border: #dce3ec;
+  --strong: #202a3a;
+  --accent: #2459d6;
+  --shadow: 0 14px 36px rgba(31, 42, 63, .1);
+}
+html.dark {
+  --bg: #101319;
+  --surface: #181d27;
+  --surface-2: #232a37;
+  --text: #edf1f7;
+  --muted: #a2acbc;
+  --faint: #737d90;
+  --border: #303849;
+  --strong: #f7f9fc;
+  --accent: #7ca2ff;
+  --shadow: 0 16px 42px rgba(0, 0, 0, .32);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  line-height: 1.5;
+}
+a { color: inherit; }
+.wrap {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 28px 0 54px;
+}
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+.brand h1 {
+  margin: 0;
+  font-size: clamp(28px, 5vw, 54px);
+  letter-spacing: 0;
+  line-height: 1.02;
+}
+.brand p {
+  margin: 8px 0 0;
+  max-width: 760px;
+  color: var(--muted);
+  font-size: 15px;
+}
+.theme-btn {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  min-height: 40px;
+  padding: 0 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 800;
+  box-shadow: var(--shadow);
+}
+.theme-btn:hover { border-color: var(--accent); }
+.page-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+.page-card {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr);
+  min-height: 250px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 5px solid var(--card-color);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.card-index {
+  display: grid;
+  place-items: start center;
+  padding-top: 18px;
+  background: color-mix(in srgb, var(--card-color) 13%, var(--surface-2));
+  color: var(--card-color);
+  font-weight: 900;
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+.card-body { padding: 18px 18px 16px; display: flex; flex-direction: column; min-width: 0; }
+.card-kicker {
+  margin: 0 0 8px;
+  color: var(--card-color);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-size: 11px;
+  font-weight: 900;
+}
+.page-card h2 {
+  margin: 0;
+  font-size: clamp(20px, 3vw, 28px);
+  line-height: 1.12;
+  letter-spacing: 0;
+}
+.page-card p {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+.card-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 14px;
+}
+.card-stats span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 25px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+.card-progress {
+  height: 9px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: auto;
+  background: var(--surface-2);
+}
+.card-progress span { display: block; width: 0; height: 100%; background: var(--card-color); }
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+.card-footer a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  padding: 0 14px;
+  border-radius: 8px;
+  background: var(--strong);
+  color: var(--bg);
+  text-decoration: none;
+  white-space: nowrap;
+}
+@media (max-width: 820px) {
+  .topbar { align-items: flex-start; }
+  .page-grid { grid-template-columns: 1fr; }
+  .page-card { grid-template-columns: 46px minmax(0, 1fr); min-height: 230px; }
+}
+@media (max-width: 520px) {
+  .wrap { width: min(100% - 24px, 1180px); padding-top: 18px; }
+  .topbar { flex-direction: column; }
+  .theme-btn { width: 100%; }
+  .card-footer { align-items: stretch; flex-direction: column; }
+  .card-footer a { width: 100%; }
+}
+</style>
+</head>
+<body>
+<script id="hub-data" type="application/json">${json}</script>
+<main class="wrap">
+  <div class="topbar">
+    <section class="brand">
+      <h1>Taran's Learning Hub</h1>
+      <p>Six connected study spaces for my interview prep and engineering growth. Pick a page, follow the content inside it, and let progress/bookmarks stay local in this browser.</p>
+    </section>
+    <button class="theme-btn" id="theme">Theme</button>
+  </div>
+  <section class="page-grid" aria-label="Learning pages">
+    ${cards}
+  </section>
+</main>
+<script>
+(function () {
+  const data = JSON.parse(document.getElementById("hub-data").textContent);
+  const themeKey = "learning_hub_theme_v2";
+  function readSet(key) {
+    try { return new Set(JSON.parse(localStorage.getItem(key) || "[]")); }
+    catch (_e) { return new Set(); }
+  }
+  function applyTheme(theme) {
+    document.documentElement.classList.toggle("dark", theme === "dark");
+  }
+  applyTheme(localStorage.getItem(themeKey) || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"));
+  document.getElementById("theme").addEventListener("click", function () {
+    const next = document.documentElement.classList.contains("dark") ? "light" : "dark";
+    localStorage.setItem(themeKey, next);
+    applyTheme(next);
+  });
+  data.sources.forEach(function (source) {
+    const done = readSet(source.storage.done).size;
+    const safeDone = Math.min(done, source.itemCount);
+    const pct = source.itemCount ? Math.round((safeDone / source.itemCount) * 100) : 0;
+    const fill = document.querySelector('[data-page-progress-fill="' + source.key + '"]');
+    const text = document.querySelector('[data-page-progress-text="' + source.key + '"]');
+    if (fill) fill.style.width = pct + "%";
+    if (text) text.textContent = safeDone + " / " + source.itemCount + " complete";
+  });
+})();
+</script>
+</body>
+</html>
+`;
+}
+
+function siteNavStyle() {
+  return `<style id="site-nav-style">
+.site-nav {
+  position: sticky; top: 0; z-index: 80;
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  margin: 0 0 14px; padding: 10px 12px;
+  border: 1px solid var(--border); border-radius: 10px;
+  background: color-mix(in srgb, var(--bg-elev, var(--bg-card, #fff)) 92%, transparent);
+  backdrop-filter: blur(14px); box-shadow: var(--shadow-card, 0 1px 3px rgba(0,0,0,.12));
+}
+.site-brand { display: grid; gap: 1px; color: var(--text); text-decoration: none; min-width: 180px; }
+.site-brand strong { font-size: 14px; letter-spacing: 0; }
+.site-brand span { font-size: 11px; color: var(--text-faint, var(--text-dim)); }
+.site-nav-toggle { position: absolute; opacity: 0; pointer-events: none; }
+.site-nav-menu {
+  display: none; min-height: 34px; padding: 0 10px; border-radius: 7px;
+  border: 1px solid var(--border); background: var(--bg-card); color: var(--text);
+  align-items: center; cursor: pointer; font-size: 12px; font-weight: 800;
+}
+.site-links { display: flex; flex: 1; min-width: 260px; gap: 6px; flex-wrap: wrap; align-items: center; }
+.site-links a, .site-theme-button {
+  display: inline-flex; align-items: center; justify-content: center; min-height: 32px;
+  padding: 5px 9px; border-radius: 7px; border: 1px solid var(--border);
+  background: var(--bg-card); color: var(--text-dim); text-decoration: none;
+  font-size: 12px; font-weight: 800; white-space: nowrap; cursor: pointer;
+}
+.site-links a:hover, .site-theme-button:hover { border-color: var(--accent); color: var(--text); }
+.site-links a.current { background: var(--accent); border-color: var(--accent); color: white; }
+.site-theme-button { margin-left: auto; font-family: inherit; }
+.site-progress { color: var(--text-faint, var(--text-dim)); font-size: 11px; font-weight: 800; margin-left: 2px; }
+.learning-coverage {
+  background: var(--bg-elev); border: 1px solid var(--border); border-radius: 12px;
+  padding: 14px 18px; margin: 16px 0 22px; box-shadow: var(--shadow-card);
+}
+.learning-coverage h2 { margin: 0 0 6px; font-size: 16px; letter-spacing: 0; }
+.learning-coverage p { margin: 0; color: var(--text-dim); font-size: 13px; }
+.coverage-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.coverage-pills span, .coverage-links a {
+  display: inline-flex; align-items: center; min-height: 25px; padding: 3px 8px;
+  border-radius: 999px; background: var(--bg-card); border: 1px solid var(--border);
+  color: var(--text-dim); font-size: 11px; font-weight: 800; text-decoration: none;
+}
+.coverage-links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.qa-name { display: grid; gap: 3px; }
+.qa-question { font-weight: 800; color: var(--text); }
+.qa-answer { color: var(--text-dim); font-size: 12px; font-weight: 500; }
+@media (max-width: 760px) {
+  .site-nav { align-items: stretch; }
+  .site-brand { flex: 1; min-width: 0; }
+  .site-nav-menu { display: inline-flex; }
+  .site-links { display: none; flex-basis: 100%; min-width: 0; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .site-nav-toggle:checked ~ .site-links { display: grid; }
+  .site-links a, .site-theme-button { width: 100%; }
+  .site-theme-button { margin-left: 0; }
+}
+</style>`;
+}
+
+function siteNavHtml(source) {
+  const links = sourceDefs.map((target) => {
+    const currentAttrs = target.key === source.key ? ' class="current" aria-current="page"' : "";
+    return `<a${currentAttrs} href="${escHtml(target.file)}">${escHtml(target.label)}</a>`;
+  }).join("");
+  return `<nav class="site-nav" aria-label="Learning site navigation">
+  <a class="site-brand" href="index.html"><strong>Taran's Learning Hub</strong><span>${escHtml(source.title)}</span></a>
+  <input class="site-nav-toggle" id="site-nav-toggle" type="checkbox" aria-label="Toggle site menu">
+  <label class="site-nav-menu" for="site-nav-toggle">Menu</label>
+  <div class="site-links">
+    <a${source.key === "hub" ? ' class="current" aria-current="page"' : ""} href="index.html">Hub</a>
+    ${links}
+    <button class="site-theme-button" type="button" data-site-theme-toggle>Theme</button>
+    <span class="site-progress">Progress: <span data-site-nav-progress>saved locally</span></span>
+  </div>
+</nav>`;
+}
+
+function siteNavScript() {
+  return `<script id="site-nav-script">
+(function () {
+  const progress = document.querySelector("[data-site-nav-progress]");
+  function refreshProgress() {
+    const pageProgress = document.getElementById("overall-pct");
+    if (progress && pageProgress) progress.textContent = pageProgress.textContent.trim();
+  }
+  refreshProgress();
+  const pageProgress = document.getElementById("overall-pct");
+  if (progress && pageProgress && "MutationObserver" in window) {
+    new MutationObserver(refreshProgress).observe(pageProgress, {
+      childList: true,
+      characterData: true,
+      subtree: true
+    });
+  }
+  setTimeout(refreshProgress, 120);
+  document.addEventListener("click", function (event) {
+    if (event.target.closest(".done-check, .solve-check, .bookmark-star")) setTimeout(refreshProgress, 80);
+  });
+  const themeButton = document.querySelector("[data-site-theme-toggle]");
+  if (themeButton) {
+    themeButton.addEventListener("click", function () {
+      const pageThemeButton = document.getElementById("theme-toggle");
+      if (pageThemeButton) pageThemeButton.click();
+      else document.documentElement.classList.toggle("light");
+    });
+  }
+})();
+</script>`;
+}
+
+function coveragePanelHtml(source) {
+  const coverage = coverageBySource[source.key];
+  if (!coverage) return "";
+  const topics = coverage.topics.map((topic) => `<span>${escHtml(topic)}</span>`).join("");
+  const links = coverage.resources.map(([title, url]) => `<a href="${escHtml(url)}" target="_blank" rel="noopener">${escHtml(title)}</a>`).join("");
+  return `<section class="learning-coverage" id="coverage-check">
+  <h2>${escHtml(coverage.title)}</h2>
+  <p>${escHtml(coverage.notes[0])}</p>
+  <div class="coverage-pills">${topics}</div>
+  <div class="coverage-links">${links}</div>
+</section>`;
+}
+
+function stripLeadingDecor(value = "") {
+  return clean(value)
+    .replace(/^[\p{Extended_Pictographic}\uFE0F\s]+/gu, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function queryEncode(value) {
+  return encodeURIComponent(value).replace(/%20/g, "+");
+}
+
+function normalizeSearchTopic(value = "") {
+  let text = stripLeadingDecor(value)
+    .replace(/&#x27;/g, "'")
+    .replace(/&amp;/g, "and")
+    .replace(/[“”]/g, '"')
+    .replace(/[’]/g, "'")
+    .replace(/\s+/g, " ")
+    .trim();
+  const qMatch = text.match(/^q:\s*(.*?)(?:\s+[—-]\s*a:|\s+a:|$)/i);
+  if (qMatch) text = qMatch[1];
+  text = text
+    .replace(/^a:\s*/i, "")
+    .replace(/\bq:\s*/gi, "")
+    .replace(/\ba:\s*/gi, "")
+    .replace(/[^\w\s+#./-]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+  const words = text.split(" ");
+  const deduped = [];
+  for (const word of words) {
+    if (word.toLowerCase() !== deduped[deduped.length - 1]?.toLowerCase()) deduped.push(word);
+  }
+  return deduped.join(" ").trim();
+}
+
+function rewriteProblemSearchLinks(html) {
+  return html.replace(/<li\b([^>]*\bdata-lc=["'][^"']+["'][^>]*)>([\s\S]*?)<\/li>/gi, (full, open, body) => {
+    const lc = attr(open, "data-lc");
+    if (!lc) return full;
+    const title = normalizeSearchTopic(first(body, /<a class="pname"[^>]*>([\s\S]*?)<\/a>/i) || attr(open, "data-name"));
+    const yt = `https://www.youtube.com/results?search_query=${queryEncode(`leetcode ${lc} ${title} solution`)}`;
+    const google = `https://www.google.com/search?q=${queryEncode(`site:geeksforgeeks.org ${title} leetcode`)}`;
+    const nextBody = body
+      .replace(/https:\/\/www\.youtube\.com\/results\?search_query=[^"']*/gi, yt)
+      .replace(/https:\/\/www\.google\.com\/search\?q=[^"']*/gi, google);
+    return `<li${open}>${nextBody}</li>`;
+  });
+}
+
+function rewriteConceptSearchLinks(html, source) {
+  const context = {
+    sd: "system design",
+    cs: "computer science",
+    bh: "behavioral interview",
+    ai: "AI engineering",
+    cloud: "AWS Azure cloud",
+  }[source.key] || source.title;
+  return html.replace(/<li\b([^>]*\bdata-cid=["'][^"']+["'][^>]*)>([\s\S]*?)<\/li>/gi, (full, open, body) => {
+    const topic = normalizeSearchTopic(attr(open, "data-name") || first(body, /<div class="cname[^"]*">([\s\S]*?)<\/div>/i));
+    if (!topic) return full;
+    const yt = `https://www.youtube.com/results?search_query=${queryEncode(`${topic} ${context} explained`)}`;
+    const google = `https://www.google.com/search?q=${queryEncode(`${topic} ${context} tutorial`)}`;
+    const nextBody = body
+      .replace(/https:\/\/www\.youtube\.com\/results\?search_query=[^"']*/gi, yt)
+      .replace(/https:\/\/www\.google\.com\/search\?q=[^"']*/gi, google);
+    return `<li${open}>${nextBody}</li>`;
+  });
+}
+
+function formatCloudQa(html) {
+  return html.replace(/<div class="cname">Q:\s*([\s\S]*?)\s+[—-]\s*A:\s*([\s\S]*?)<\/div>/gi, (_full, question, answer) => {
+    return `<div class="cname qa-name"><span class="qa-question">Q: ${clean(question)}</span><span class="qa-answer">A: ${clean(answer)}</span></div>`;
+  });
+}
+
+function removeGeneratedPageChrome(html) {
+  return html
+    .replace(/<style id="site-nav-style">[\s\S]*?<\/style>\s*/g, "")
+    .replace(/<script id="site-nav-script">[\s\S]*?<\/script>\s*/g, "")
+    .replace(/<nav class="site-nav"[\s\S]*?<\/nav>\s*/g, "")
+    .replace(/<section class="learning-coverage" id="coverage-check">[\s\S]*?<\/section>\s*/g, "")
+    .replace(/<nav class="nav-bar">[\s\S]*?<\/nav>\s*/g, "")
+    .replace(/<div class="home-strip">[\s\S]*?<\/div>\s*/g, "");
+}
+
+function transformSourcePage(source) {
+  const filePath = path.join(root, source.file);
+  let html = fs.readFileSync(filePath, "utf8");
+  html = removeGeneratedPageChrome(html);
+  html = html.replace(/href=["']hub\.html["']/g, 'href="index.html"');
+  html = html.replace(/\bclass=(["'])resources-section\s+open\1/g, 'class=$1resources-section$1');
+  html = html.replace(/\bclass=(["'])resources-section\s+open\s+([^"']*)\1/g, 'class=$1resources-section $2$1');
+  html = html.replace(/<h1>([\s\S]*?)<\/h1>/i, (_m, title) => `<h1>${escHtml(stripLeadingDecor(title))}</h1>`);
+  html = rewriteProblemSearchLinks(html);
+  html = rewriteConceptSearchLinks(html, source);
+  if (source.key === "cloud") html = formatCloudQa(html);
+  html = html.replace("</head>", `${siteNavStyle()}\n</head>`);
+  html = html.replace('<div class="wrap">', `<div class="wrap">\n${siteNavHtml(source)}\n`);
+  html = html.replace(/(<nav class="toc">)/, `${coveragePanelHtml(source)}\n$1`);
+  html = html.replace("</body>", `${siteNavScript()}\n</body>`);
+  fs.writeFileSync(filePath, html, "utf8");
+}
+
+function duplicateTitles(values) {
+  const counts = new Map();
+  for (const value of values.filter(Boolean)) counts.set(value, (counts.get(value) || 0) + 1);
+  return [...counts.entries()].filter(([, count]) => count > 1).map(([value, count]) => `${value} (${count})`);
+}
+
+function buildContentAudit(data) {
+  const lines = [
+    "# Taran's Learning Hub Content Audit",
+    "",
+    `Generated: ${data.generatedAt}`,
+    "",
+    "## Research References",
+    "",
+    "- roadmap.sh System Design: https://roadmap.sh/system-design",
+    "- roadmap.sh Computer Science: https://roadmap.sh/computer-science",
+    "- roadmap.sh AI Engineer: https://roadmap.sh/ai-engineer",
+    "- roadmap.sh AWS: https://roadmap.sh/aws",
+    "- OpenAI Cookbook: https://cookbook.openai.com/",
+    "- AWS Well-Architected Framework: https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html",
+    "- Azure Well-Architected Framework: https://learn.microsoft.com/en-us/azure/well-architected/",
+    "- OWASP Top 10: https://owasp.org/www-project-top-ten/",
+    "- System Design Primer: https://github.com/donnemartin/system-design-primer",
+    "",
+    "## Global Actions Applied",
+    "",
+    "- Rebuilt the hub as six page cards only; no global catalog, roadmap, or resource library on the landing page.",
+    "- Added a shared cross-site navigation bar to every source page.",
+    "- Closed resource dropdown panels by default while preserving click-to-expand behavior.",
+    "- Rewrote generated YouTube and Google fallback URLs with cleaner topic-specific query rules.",
+    "- Added per-page coverage check panels based on trusted roadmap and official documentation sources.",
+    "",
+  ];
+
+  for (const source of data.sources) {
+    const subsectionTitles = source.sections.flatMap((section) => section.subsections.map((sub) => sub.title));
+    const weak = subsectionTitles.filter((title) => /^(misc|general|other|basics?)$/i.test(title) || title.length < 4);
+    const dupes = duplicateTitles(subsectionTitles);
+    const coverage = coverageBySource[source.key];
+    lines.push(`## ${source.title}`);
+    lines.push("");
+    lines.push(`- Inventory: ${source.sections.length} sections, ${source.sections.reduce((sum, s) => sum + s.subsections.length, 0)} subsections, ${source.itemCount} ${source.progressLabel}, ${source.resourceCount} resources.`);
+    lines.push(`- Formatting focus: consistent navigation, closed resources, clean headings, and better fallback search links.`);
+    lines.push(`- Duplicate subsection names to review: ${dupes.length ? dupes.slice(0, 8).join(", ") : "none found by title."}`);
+    lines.push(`- Weak/generic subsection names to review: ${weak.length ? weak.slice(0, 8).join(", ") : "none found by heuristic."}`);
+    if (coverage) {
+      lines.push(`- Coverage source: ${coverage.source}.`);
+      lines.push(`- Missing/priority candidates: ${coverage.topics.join(", ")}.`);
+      lines.push(`- Recommended next resources: ${coverage.resources.map(([title]) => title).join(", ")}.`);
+    }
+    lines.push("");
+    lines.push("Sections:");
+    for (const section of source.sections) {
+      lines.push(`- ${section.title}: ${section.itemCount} items, ${section.subsections.length} subsections, ${section.resourceCount} resources.`);
+    }
+    lines.push("");
+  }
+  return `${lines.join("\n")}\n`;
+}
+
 function pagesWorkflow() {
   return `name: Deploy static learning hub
 
@@ -1260,13 +1967,20 @@ jobs:
 }
 
 function readme(data) {
-  return `# Learning Hub
+  return `# Taran's Learning Hub
 
-A static one-stop learning hub generated from the HTML sites in this folder.
+A personal static learning hub generated from the HTML sites in this folder.
 
 ## Included sites
 
 ${data.sources.map((s) => `- ${s.title}: ${s.itemCount} ${s.progressLabel}, ${s.sections.length} sections, ${s.resourceCount} resources`).join("\n")}
+
+## Current UI
+
+- \`index.html\` and \`hub.html\` show only the six page entry cards.
+- Each source page has shared cross-site navigation.
+- Resource panels start closed by default.
+- Progress and bookmarks are stored locally in the browser.
 
 ## Local preview
 
@@ -1292,11 +2006,12 @@ function updateSourceNavs() {
 
 const data = buildData();
 write("learning-hub-data.json", `${JSON.stringify(data, null, 2)}\n`);
-write("index.html", hubHtml(data));
-write("hub.html", hubHtml(data));
+write("index.html", simpleHubHtml(data));
+write("hub.html", simpleHubHtml(data));
+write("content-audit.md", buildContentAudit(data));
 write(".nojekyll", "");
 write(".github/workflows/pages.yml", pagesWorkflow());
 write("README.md", readme(data));
-updateSourceNavs();
+for (const source of sourceDefs) transformSourcePage(source);
 
 console.log(`Learning hub generated: ${data.stats.domains} sites, ${data.stats.sections} sections, ${data.stats.items} items, ${data.stats.resources} resources.`);
