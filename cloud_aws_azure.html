@@ -399,6 +399,34 @@ body {
   color: var(--text-dim); font-size: 11px; font-weight: 800; text-decoration: none;
 }
 .coverage-links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.source-extract {
+  background: var(--bg-elev); border: 1px solid var(--border); border-radius: 8px;
+  padding: 16px 18px; margin: 16px 0 22px; box-shadow: var(--shadow-card);
+}
+.source-extract h2 { margin: 0 0 6px; font-size: 17px; letter-spacing: 0; }
+.source-extract p { margin: 0; color: var(--text-dim); font-size: 13px; }
+.source-extract-grid {
+  display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  margin-top: 12px;
+}
+.source-extract-card {
+  border: 1px solid var(--border); border-radius: 8px; background: var(--bg-card); padding: 12px;
+}
+.source-extract-card h3 { margin: 0 0 6px; font-size: 14px; letter-spacing: 0; }
+.source-extract-card ul { margin: 0; padding-left: 18px; color: var(--text-dim); font-size: 12px; }
+.source-extract-card li { margin: 3px 0; }
+.source-status {
+  display: inline-flex; margin-bottom: 7px; min-height: 22px; align-items: center;
+  padding: 2px 7px; border-radius: 999px; border: 1px solid var(--border);
+  color: var(--accent); font-size: 10px; font-weight: 900; text-transform: uppercase;
+}
+.source-direct-links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.source-direct-links a {
+  display: inline-flex; align-items: center; min-height: 25px; padding: 3px 8px;
+  border-radius: 999px; background: var(--bg-card); border: 1px solid var(--border);
+  color: var(--text-dim); font-size: 11px; font-weight: 800; text-decoration: none;
+}
+.source-direct-links a:hover { border-color: var(--accent); color: var(--text); }
 .qa-name { display: grid; gap: 3px; }
 .qa-question { font-weight: 800; color: var(--text); }
 .qa-answer { color: var(--text-dim); font-size: 12px; font-weight: 500; }
@@ -501,6 +529,7 @@ body {
   <div class="coverage-pills"><span>Well-Architected pillars</span><span>Landing zones</span><span>Cost governance</span><span>Backup and disaster recovery</span><span>Secrets management</span><span>Container platforms</span><span>Zero-trust networking</span><span>Cloud migration patterns</span></div>
   <div class="coverage-links"><a href="https://roadmap.sh/aws" target="_blank" rel="noopener">roadmap.sh AWS</a><a href="https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html" target="_blank" rel="noopener">AWS Well-Architected Framework</a><a href="https://learn.microsoft.com/en-us/azure/well-architected/" target="_blank" rel="noopener">Azure Well-Architected Framework</a></div>
 </section>
+
 <nav class="toc"><h2>📑 Table of Contents</h2><div class="toc-grid"><a href="#section-1"><span class="roman">1</span><span class="name">Cloud Foundations</span><span class="cnt">4sec · 39</span></a><a href="#section-2"><span class="roman">2</span><span class="name">Identity &amp; Access (IAM / Entra ID)</span><span class="cnt">2sec · 8</span></a><a href="#section-3"><span class="roman">3</span><span class="name">Compute</span><span class="cnt">3sec · 14</span></a><a href="#section-4"><span class="roman">4</span><span class="name">Storage</span><span class="cnt">2sec · 11</span></a><a href="#section-5"><span class="roman">5</span><span class="name">Networking</span><span class="cnt">3sec · 15</span></a><a href="#section-6"><span class="roman">6</span><span class="name">Databases</span><span class="cnt">2sec · 10</span></a><a href="#section-7"><span class="roman">7</span><span class="name">Messaging &amp; Events</span><span class="cnt">2sec · 9</span></a><a href="#section-8"><span class="roman">8</span><span class="name">Monitoring &amp; Observability</span><span class="cnt">2sec · 7</span></a><a href="#section-9"><span class="roman">9</span><span class="name">Infrastructure as Code</span><span class="cnt">1sec · 6</span></a><a href="#section-10"><span class="roman">10</span><span class="name">AWS Interview Q&amp;A (250 Questions)</span><span class="cnt">5sec · 40</span></a></div></nav>
 <section class="section" id="section-1" style="--section-color:hsl(195, 60%, 55%)">
 <div class="section-banner" style="background:linear-gradient(135deg, hsl(195, 65%, 48%), hsl(225, 70%, 55%))">

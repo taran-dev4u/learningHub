@@ -399,6 +399,34 @@ body {
   color: var(--text-dim); font-size: 11px; font-weight: 800; text-decoration: none;
 }
 .coverage-links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.source-extract {
+  background: var(--bg-elev); border: 1px solid var(--border); border-radius: 8px;
+  padding: 16px 18px; margin: 16px 0 22px; box-shadow: var(--shadow-card);
+}
+.source-extract h2 { margin: 0 0 6px; font-size: 17px; letter-spacing: 0; }
+.source-extract p { margin: 0; color: var(--text-dim); font-size: 13px; }
+.source-extract-grid {
+  display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  margin-top: 12px;
+}
+.source-extract-card {
+  border: 1px solid var(--border); border-radius: 8px; background: var(--bg-card); padding: 12px;
+}
+.source-extract-card h3 { margin: 0 0 6px; font-size: 14px; letter-spacing: 0; }
+.source-extract-card ul { margin: 0; padding-left: 18px; color: var(--text-dim); font-size: 12px; }
+.source-extract-card li { margin: 3px 0; }
+.source-status {
+  display: inline-flex; margin-bottom: 7px; min-height: 22px; align-items: center;
+  padding: 2px 7px; border-radius: 999px; border: 1px solid var(--border);
+  color: var(--accent); font-size: 10px; font-weight: 900; text-transform: uppercase;
+}
+.source-direct-links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.source-direct-links a {
+  display: inline-flex; align-items: center; min-height: 25px; padding: 3px 8px;
+  border-radius: 999px; background: var(--bg-card); border: 1px solid var(--border);
+  color: var(--text-dim); font-size: 11px; font-weight: 800; text-decoration: none;
+}
+.source-direct-links a:hover { border-color: var(--accent); color: var(--text); }
 .qa-name { display: grid; gap: 3px; }
 .qa-question { font-weight: 800; color: var(--text); }
 .qa-answer { color: var(--text-dim); font-size: 12px; font-weight: 500; }
@@ -489,6 +517,44 @@ body {
   <div class="coverage-pills"><span>Ambiguity</span><span>Ownership</span><span>Conflict</span><span>Failure</span><span>Mentoring</span><span>Prioritization</span><span>Customer impact</span><span>Technical judgment</span></div>
   <div class="coverage-links"><a href="https://www.amazon.jobs/content/en/our-workplace/leadership-principles" target="_blank" rel="noopener">Amazon Leadership Principles</a><a href="https://www.google.com/about/careers/applications/interview-tips/" target="_blank" rel="noopener">Google Interview Prep</a><a href="https://www.themuse.com/advice/star-interview-method" target="_blank" rel="noopener">STAR Method Guide</a></div>
 </section>
+<aside class="source-extract" id="behavioral-source-extracts">
+  <h2>Extracted Source Map: Thita Behavioral Sheet</h2>
+  <p>8 behavioral patterns and 32 subpatterns extracted from the uploaded Thita STAR sheet, with direct practice links for each subtopic.</p>
+  <div class="source-direct-links"><a href="https://www.thita.ai/behavioral-sheet" target="_blank" rel="noopener">Thita Behavioral Sheet</a></div>
+  <div class="source-extract-grid"><article class="source-extract-card">
+    <span class="source-status">Thita</span>
+    <h3>STAR Method</h3>
+    <ul><li><a href="https://thita.ai/dashboard/tutoring?category=Behavioral&amp;pattern=STAR+Method&amp;subpattern=Situation+Examples&amp;teaching_mode=feynman&amp;persona=samuel-brooks" target="_blank" rel="noopener">Situation Examples</a></li><li><a href="https://thita.ai/dashboard/tutoring?category=Behavioral&amp;pattern=STAR+Method&amp;subpattern=Task+Breakdown&amp;teaching_mode=feynman&amp;persona=samuel-brooks" target="_blank" rel="noopener">Task Breakdown</a></li><li><a href="https://thita.ai/dashboard/tutoring?category=Behavioral&amp;pattern=STAR+Method&amp;subpattern=Action+Planning&amp;teaching_mode=feynman&amp;persona=samuel-brooks" target="_blank" rel="noopener">Action Planning</a></li><li><a href="https://thita.ai/dashboard/tutoring?category=Behavioral&amp;pattern=STAR+Method&amp;subpattern=Result+Measurement&amp;teaching_mode=feynman&amp;persona=samuel-brooks" target="_blank" rel="noopener">Result Measurement</a></li></ul>
+  </article><article class="source-extract-card">
+    <span class="source-status">Thita</span>
+    <h3>Conflict Resolution</h3>
+    <ul><li><a href="https://thita.ai/dashboard/tutoring?category=Behavioral&amp;pattern=Conflict+Resolution&amp;subpattern=Identifying+Issues&amp;teaching_mode=feynman&amp;persona=samuel-brooks" target="_blank" rel="noopener">Identifying Issues</a></li><li><a href="https://thita.ai/dashboard/tutoring?category=Behavioral&amp;pattern=Conflict+Resolution&amp;subpattern=Stakeholder+Management&amp;teaching_mode=feynman&amp;persona=samuel-brooks" target="_blank" rel="noopener">Stakeholder Management</a></li><li><a href="https://thita.ai/dashboard/tutoring?category=Behavioral&amp;pattern=Conflict+Resolution&amp;subpattern=Negotiation+Tactics&amp;teaching_mode=feynman&amp;persona=samuel-brooks" target="_blank" rel="noopener">Negotiation Tactics</a></li><li><a href="https://thita.ai/dashboard/tutoring?category=Behavioral&amp;pattern=Conflict+Resolution&amp;subpattern=Resolution+Follow-up&amp;teaching_mode=feynman&amp;persona=samuel-brooks" target="_blank" rel="noopener">Resolution Follow-up</a></li></ul>
+  </article><article class="source-extract-card">
+    <span class="source-status">Thita</span>
+    <h3>Team Leadership</h3>
+    <ul><li><a href="https://thita.ai/dashboard/tutoring?category=Behavioral&amp;pattern=Team+Leadership&amp;subpattern=Team+Building&amp;teaching_mode=feynman&amp;persona=samuel-brooks" target="_blank" rel="noopener">Team Building</a></li><li><a href="https://thita.ai/dashboard/tutoring?category=Behavioral&amp;pattern=Team+Leadership&amp;subpattern=Motivation+Techniques&amp;teaching_mode=feynman&amp;persona=samuel-brooks" target="_blank" rel="noopener">Motivation Techniques</a></li><li><a href="https://thita.ai/dashboard/tutoring?category=Behavioral&amp;pattern=Team+Leadership&amp;subpattern=Delegation+Skills&amp;teaching_mode=feynman&amp;persona=samuel-brooks" target="_blank" rel="noopener">Delegation Skills</a></li><li><a href="https://thita.ai/dashboard/tutoring?category=Behavioral&amp;pattern=Team+Leadership&amp;subpattern=Performance+Management&amp;teaching_mode=feynman&amp;persona=samuel-brooks" target="_blank" rel="noopener">Performance Management</a></li></ul>
+  </article><article class="source-extract-card">
+    <span class="source-status">Thita</span>
+    <h3>Project Management</h3>
+    <ul><li><a href="https://thita.ai/dashboard/tutoring?category=Behavioral&amp;pattern=Project+Management&amp;subpattern=Planning+%26+Scoping&amp;teaching_mode=feynman&amp;persona=samuel-brooks" target="_blank" rel="noopener">Planning &amp; Scoping</a></li><li><a href="https://thita.ai/dashboard/tutoring?category=Behavioral&amp;pattern=Project+Management&amp;subpattern=Risk+Management&amp;teaching_mode=feynman&amp;persona=samuel-brooks" target="_blank" rel="noopener">Risk Management</a></li><li><a href="https://thita.ai/dashboard/tutoring?category=Behavioral&amp;pattern=Project+Management&amp;subpattern=Timeline+Management&amp;teaching_mode=feynman&amp;persona=samuel-brooks" target="_blank" rel="noopener">Timeline Management</a></li><li><a href="https://thita.ai/dashboard/tutoring?category=Behavioral&amp;pattern=Project+Management&amp;subpattern=Cross-functional+Coordination&amp;teaching_mode=feynman&amp;persona=samuel-brooks" target="_blank" rel="noopener">Cross-functional Coordination</a></li></ul>
+  </article><article class="source-extract-card">
+    <span class="source-status">Thita</span>
+    <h3>Communication</h3>
+    <ul><li><a href="https://thita.ai/dashboard/tutoring?category=Behavioral&amp;pattern=Communication&amp;subpattern=Stakeholder+Communication&amp;teaching_mode=feynman&amp;persona=samuel-brooks" target="_blank" rel="noopener">Stakeholder Communication</a></li><li><a href="https://thita.ai/dashboard/tutoring?category=Behavioral&amp;pattern=Communication&amp;subpattern=Technical+Explanation&amp;teaching_mode=feynman&amp;persona=samuel-brooks" target="_blank" rel="noopener">Technical Explanation</a></li><li><a href="https://thita.ai/dashboard/tutoring?category=Behavioral&amp;pattern=Communication&amp;subpattern=Active+Listening&amp;teaching_mode=feynman&amp;persona=samuel-brooks" target="_blank" rel="noopener">Active Listening</a></li><li><a href="https://thita.ai/dashboard/tutoring?category=Behavioral&amp;pattern=Communication&amp;subpattern=Feedback+Delivery&amp;teaching_mode=feynman&amp;persona=samuel-brooks" target="_blank" rel="noopener">Feedback Delivery</a></li></ul>
+  </article><article class="source-extract-card">
+    <span class="source-status">Thita</span>
+    <h3>Problem Solving</h3>
+    <ul><li><a href="https://thita.ai/dashboard/tutoring?category=Behavioral&amp;pattern=Problem+Solving&amp;subpattern=Root+Cause+Analysis&amp;teaching_mode=feynman&amp;persona=samuel-brooks" target="_blank" rel="noopener">Root Cause Analysis</a></li><li><a href="https://thita.ai/dashboard/tutoring?category=Behavioral&amp;pattern=Problem+Solving&amp;subpattern=Creative+Solutions&amp;teaching_mode=feynman&amp;persona=samuel-brooks" target="_blank" rel="noopener">Creative Solutions</a></li><li><a href="https://thita.ai/dashboard/tutoring?category=Behavioral&amp;pattern=Problem+Solving&amp;subpattern=Data-Driven+Decisions&amp;teaching_mode=feynman&amp;persona=samuel-brooks" target="_blank" rel="noopener">Data-Driven Decisions</a></li><li><a href="https://thita.ai/dashboard/tutoring?category=Behavioral&amp;pattern=Problem+Solving&amp;subpattern=Implementation+Strategy&amp;teaching_mode=feynman&amp;persona=samuel-brooks" target="_blank" rel="noopener">Implementation Strategy</a></li></ul>
+  </article><article class="source-extract-card">
+    <span class="source-status">Thita</span>
+    <h3>Adaptability</h3>
+    <ul><li><a href="https://thita.ai/dashboard/tutoring?category=Behavioral&amp;pattern=Adaptability&amp;subpattern=Change+Management&amp;teaching_mode=feynman&amp;persona=samuel-brooks" target="_blank" rel="noopener">Change Management</a></li><li><a href="https://thita.ai/dashboard/tutoring?category=Behavioral&amp;pattern=Adaptability&amp;subpattern=Learning+Agility&amp;teaching_mode=feynman&amp;persona=samuel-brooks" target="_blank" rel="noopener">Learning Agility</a></li><li><a href="https://thita.ai/dashboard/tutoring?category=Behavioral&amp;pattern=Adaptability&amp;subpattern=Resilience+Building&amp;teaching_mode=feynman&amp;persona=samuel-brooks" target="_blank" rel="noopener">Resilience Building</a></li><li><a href="https://thita.ai/dashboard/tutoring?category=Behavioral&amp;pattern=Adaptability&amp;subpattern=Flexibility+in+Approach&amp;teaching_mode=feynman&amp;persona=samuel-brooks" target="_blank" rel="noopener">Flexibility in Approach</a></li></ul>
+  </article><article class="source-extract-card">
+    <span class="source-status">Thita</span>
+    <h3>Cultural Fit</h3>
+    <ul><li><a href="https://thita.ai/dashboard/tutoring?category=Behavioral&amp;pattern=Cultural+Fit&amp;subpattern=Company+Values+Alignment&amp;teaching_mode=feynman&amp;persona=samuel-brooks" target="_blank" rel="noopener">Company Values Alignment</a></li><li><a href="https://thita.ai/dashboard/tutoring?category=Behavioral&amp;pattern=Cultural+Fit&amp;subpattern=Team+Dynamics&amp;teaching_mode=feynman&amp;persona=samuel-brooks" target="_blank" rel="noopener">Team Dynamics</a></li><li><a href="https://thita.ai/dashboard/tutoring?category=Behavioral&amp;pattern=Cultural+Fit&amp;subpattern=Work+Style+Preferences&amp;teaching_mode=feynman&amp;persona=samuel-brooks" target="_blank" rel="noopener">Work Style Preferences</a></li><li><a href="https://thita.ai/dashboard/tutoring?category=Behavioral&amp;pattern=Cultural+Fit&amp;subpattern=Growth+Mindset&amp;teaching_mode=feynman&amp;persona=samuel-brooks" target="_blank" rel="noopener">Growth Mindset</a></li></ul>
+  </article></div>
+</aside>
 <nav class="toc"><h2>📑 Table of Contents</h2><div class="toc-grid"><a href="#section-1"><span class="roman">1</span><span class="name">STAR Framework &amp; Storytelling</span><span class="cnt">3sec · 12</span></a><a href="#section-2"><span class="roman">2</span><span class="name">Amazon&#x27;s 16 Leadership Principles</span><span class="cnt">16sec · 48</span></a><a href="#section-3"><span class="roman">3</span><span class="name">Question Categories (any company)</span><span class="cnt">8sec · 26</span></a><a href="#section-4"><span class="roman">4</span><span class="name">Story Bank — 12 stories you need</span><span class="cnt">2sec · 18</span></a><a href="#section-5"><span class="roman">5</span><span class="name">Interview Strategy &amp; Mock Practice</span><span class="cnt">4sec · 17</span></a></div></nav>
 <section class="section" id="section-1" style="--section-color:hsl(210, 60%, 55%)">
 <div class="section-banner" style="background:linear-gradient(135deg, hsl(210, 65%, 48%), hsl(240, 70%, 55%))">

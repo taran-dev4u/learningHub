@@ -188,7 +188,7 @@ const coverageBySource = {
   },
   sd: {
     title: "System Design Coverage Check",
-    source: "roadmap.sh System Design + System Design Primer",
+    source: "roadmap.sh System Design + System Design Primer + GeeksforGeeks System Design Tutorial",
     notes: [
       "Make trade-offs explicit: consistency, latency, cost, availability, and operability.",
       "Use classic designs as integration practice, not memorized templates.",
@@ -196,8 +196,13 @@ const coverageBySource = {
     ],
     topics: [
       "Capacity estimation",
+      "HLD vs LLD boundaries",
+      "Functional and non-functional requirements",
+      "UML and HLD diagrams",
       "CDNs and edge caching",
       "Proxies and API gateways",
+      "Testing and CI/CD",
+      "Cost estimation",
       "Search systems",
       "Observability and SLOs",
       "Threat modeling",
@@ -205,6 +210,7 @@ const coverageBySource = {
     resources: [
       ["roadmap.sh System Design", "https://roadmap.sh/system-design"],
       ["System Design Primer", "https://github.com/donnemartin/system-design-primer"],
+      ["GeeksforGeeks System Design Tutorial", "https://www.geeksforgeeks.org/system-design/system-design-tutorial/"],
       ["Google SRE Book", "https://sre.google/sre-book/table-of-contents/"],
     ],
   },
@@ -303,6 +309,478 @@ const coverageBySource = {
     ],
   },
 };
+
+const gfgSystemDesignOutline = [
+  {
+    group: "Basics and Requirements",
+    status: "Strengthen",
+    topics: [
+      "System design introduction",
+      "High-level design vs low-level design",
+      "Functional requirements",
+      "Non-functional requirements",
+      "Requirements gathering",
+      "System life cycle / SDLC",
+      "System analysis vs system design",
+      "Core terminology and objectives",
+    ],
+  },
+  {
+    group: "High-Level Design",
+    status: "Covered plus diagrams",
+    topics: [
+      "HLD components and interactions",
+      "HLD diagrams",
+      "Activity diagrams",
+      "Monolithic architecture",
+      "Microservices architecture",
+      "Event-driven architecture",
+      "Serverless architecture",
+      "Stateful vs stateless systems",
+      "Pub/Sub architecture",
+    ],
+  },
+  {
+    group: "Scalability and Capacity",
+    status: "Covered",
+    topics: [
+      "Horizontal scaling",
+      "Vertical scaling",
+      "Choosing a scaling approach",
+      "Scalability bottlenecks",
+      "Highly scalable system design",
+      "Capacity estimation",
+    ],
+  },
+  {
+    group: "Databases and Storage",
+    status: "Covered",
+    topics: [
+      "Database design",
+      "SQL vs NoSQL selection",
+      "File vs database storage",
+      "Block storage",
+      "Object storage",
+      "File storage",
+      "Database replication",
+      "Replication types",
+      "Database sharding",
+      "Data partitioning",
+      "Normalization",
+      "Denormalization",
+      "SQL query optimization",
+      "Redis",
+    ],
+  },
+  {
+    group: "Reliability Qualities",
+    status: "Covered",
+    topics: [
+      "Availability",
+      "High availability",
+      "Consistency",
+      "Consistency patterns",
+      "CAP theorem",
+      "Reliability",
+      "Fault tolerance",
+      "Maintainability",
+    ],
+  },
+  {
+    group: "Traffic and Performance",
+    status: "Covered",
+    topics: [
+      "Load balancers",
+      "Load balancer types",
+      "Load balancing algorithms",
+      "Concurrency and parallelism",
+      "Stateful vs stateless load balancing",
+      "Load balancing vs failover",
+      "Consistent hashing",
+      "Latency and throughput",
+      "Caching",
+      "Distributed cache",
+      "Cache eviction policies",
+      "Cold and warm cache",
+      "Edge caching",
+      "CDN vs edge server",
+    ],
+  },
+  {
+    group: "Communication and Integration",
+    status: "Covered",
+    topics: [
+      "API gateway",
+      "Message queues",
+      "Rate limiting",
+      "Rate limiting algorithms",
+      "Communication protocols",
+      "DNS",
+      "DNS caching",
+      "TTL",
+      "CDN",
+      "Proxies",
+      "Forward proxy vs reverse proxy",
+      "Web server vs application server",
+      "Short polling",
+      "Long polling",
+      "WebSockets",
+    ],
+  },
+  {
+    group: "Event-Driven Systems",
+    status: "Covered",
+    topics: [
+      "Event sourcing",
+      "Event sourcing vs event streaming",
+      "Event-driven APIs",
+      "Event-driven error handling",
+      "State restore after message-driven failure",
+      "Cloud-native event-driven patterns",
+      "Request-driven vs event-driven microservices",
+      "Message-driven vs event-driven architecture",
+    ],
+  },
+  {
+    group: "Testing and Delivery",
+    status: "Add",
+    topics: [
+      "Unit testing",
+      "Integration testing",
+      "Load testing",
+      "Stress testing",
+      "CI/CD pipelines",
+      "Release safety checks",
+    ],
+  },
+  {
+    group: "Security and Recovery",
+    status: "Strengthen",
+    topics: [
+      "Security measures",
+      "Authentication",
+      "Authorization",
+      "SSL/TLS",
+      "Secure SDLC",
+      "Data backup",
+      "Disaster recovery",
+      "Secure distributed communication",
+    ],
+  },
+  {
+    group: "Distributed Systems",
+    status: "Covered",
+    topics: [
+      "Distributed system introduction",
+      "Consensus algorithms",
+      "Distributed tracing",
+      "Distributed design issues",
+      "Secure communication in distributed systems",
+    ],
+  },
+  {
+    group: "Cost and Optimization",
+    status: "Add",
+    topics: [
+      "Software cost estimation",
+      "Performance optimization techniques",
+      "Cost vs performance trade-offs",
+    ],
+  },
+  {
+    group: "Low-Level Design",
+    status: "Add",
+    topics: [
+      "OOP concepts",
+      "OOAD",
+      "Modularity and interfaces",
+      "HLD vs LLD differences",
+      "SOLID",
+      "DRY",
+      "KISS",
+      "YAGNI",
+      "UML diagrams",
+      "Creational design patterns",
+      "Structural design patterns",
+      "Behavioral design patterns",
+    ],
+  },
+  {
+    group: "Interview Practice",
+    status: "Strengthen",
+    topics: [
+      "Cracking the system design round",
+      "LLD interview approach",
+      "Common system design concepts",
+      "Object-oriented design interview steps",
+      "Common design interview questions",
+      "Design Dropbox / Google Drive",
+      "Design Twitter / X",
+      "Design Netflix / YouTube",
+      "Design Uber / rideshare",
+      "Design BookMyShow / ticketing",
+      "Design Facebook Messenger / chat",
+    ],
+  },
+];
+
+const gfgSystemDesignPriorityGaps = [
+  "HLD vs LLD distinction and when to switch levels",
+  "Functional vs non-functional requirement checklist",
+  "System life cycle / SDLC and requirements gathering",
+  "HLD diagrams, activity diagrams, and UML diagram practice",
+  "LLD foundations: OOP, OOAD, interfaces, SOLID, DRY, KISS, YAGNI",
+  "Testing and delivery: unit, integration, load, stress, CI/CD",
+  "Cost estimation and cost-vs-performance trade-offs",
+  "Backup and disaster recovery planning",
+  "Ticket booking / BookMyShow and Messenger-style design prompts",
+];
+
+const gfgSystemDesignResources = [
+  ["GFG System Design Tutorial", "https://www.geeksforgeeks.org/system-design/system-design-tutorial/"],
+  ["GFG HLD", "https://www.geeksforgeeks.org/system-design/what-is-high-level-design-learn-system-design/"],
+  ["GFG LLD", "https://www.geeksforgeeks.org/system-design/what-is-low-level-design-or-lld-learn-system-design/"],
+  ["GFG Functional vs Non-Functional Requirements", "https://www.geeksforgeeks.org/software-engineering/functional-vs-non-functional-requirements/"],
+  ["GFG UML Diagrams", "https://www.geeksforgeeks.org/system-design/unified-modeling-language-uml-introduction/"],
+  ["GFG System Design Interview Guide", "https://www.geeksforgeeks.org/interview-experiences/how-to-crack-system-design-round-in-interviews/"],
+];
+
+const gfgSystemDesignLinks = [
+  ["System Design Tutorial", "https://www.geeksforgeeks.org/system-design/system-design-tutorial/"],
+  ["HLD", "https://www.geeksforgeeks.org/system-design/what-is-high-level-design-learn-system-design/"],
+  ["LLD", "https://www.geeksforgeeks.org/system-design/what-is-low-level-design-or-lld-learn-system-design/"],
+  ["Functional and Non Functional", "https://www.geeksforgeeks.org/software-engineering/functional-vs-non-functional-requirements/"],
+  ["Life Cycle", "https://www.geeksforgeeks.org/system-design/system-design-life-cycle-phases-models-and-use-cases/"],
+  ["Design Patterns", "https://www.geeksforgeeks.org/system-design/software-design-patterns/"],
+  ["UML Diagrams", "https://www.geeksforgeeks.org/system-design/unified-modeling-language-uml-introduction/"],
+  ["System Design Interview Guide", "https://www.geeksforgeeks.org/interview-experiences/how-to-crack-system-design-round-in-interviews/"],
+  ["Scalability", "https://www.geeksforgeeks.org/system-design/what-is-scalability/"],
+  ["Databases", "https://www.geeksforgeeks.org/system-design/complete-reference-to-databases-in-designing-systems/"],
+  ["Software Engineering", "https://www.geeksforgeeks.org/software-engineering/software-engineering/"],
+  ["System Design Introduction - HLD & LLD", "https://www.geeksforgeeks.org/system-design/getting-started-with-system-design/"],
+  ["High Level Design Diagram", "https://www.geeksforgeeks.org/system-design/how-to-draw-high-level-design-diagram/"],
+  ["Monolithic Architecture", "https://www.geeksforgeeks.org/system-design/monolithic-architecture-system-design/"],
+  ["Microservices", "https://www.geeksforgeeks.org/system-design/microservices/"],
+  ["Monolithic Vs Microservices Architecture", "https://www.geeksforgeeks.org/software-engineering/monolithic-vs-microservices-architecture/"],
+  ["Event-Driven Architecture", "https://www.geeksforgeeks.org/system-design/event-driven-architecture-system-design/"],
+  ["Event-Driven Architecture in an E-commerce System", "https://www.geeksforgeeks.org/system-design/event-driven-architecture-in-an-e-commerce-system/"],
+  ["Serverless Architecture", "https://www.geeksforgeeks.org/system-design/serverless-architectures/"],
+  ["Stateless and Stateful Systems", "https://www.geeksforgeeks.org/system-design/stateless-and-stateful-systems-in-system-design/"],
+  ["Stateful Vs Stateless Architecture", "https://www.geeksforgeeks.org/system-design/stateful-vs-stateless-architecture/"],
+  ["Pub/Sub Architecture", "https://www.geeksforgeeks.org/system-design/what-is-pub-sub/"],
+  ["Horizontal and Vertical Scaling", "https://www.geeksforgeeks.org/system-design/system-design-horizontal-and-vertical-scaling/"],
+  ["Choosing the Right Scalability Approach", "https://www.geeksforgeeks.org/system-design/which-scalability-approach-is-right-for-our-application-system-design/"],
+  ["Designing Highly Scalable Systems", "https://www.geeksforgeeks.org/system-design/guide-for-designing-highly-scalable-systems/"],
+  ["Primary Scalability Bottlenecks", "https://www.geeksforgeeks.org/system-design/primary-bottlenecks-that-hurt-the-scalability-of-an-application-system-design/"],
+  ["Types of Database", "https://www.geeksforgeeks.org/system-design/types-of-databases-in-system-design/"],
+  ["Choosing a Database - SQL or NoSQL", "https://www.geeksforgeeks.org/system-design/which-database-to-choose-while-designing-a-system-sql-or-nosql/"],
+  ["File and Database Storage Systems", "https://www.geeksforgeeks.org/system-design/file-and-database-storage-systems-in-system-design/"],
+  ["Database Replication", "https://www.geeksforgeeks.org/system-design/database-replication-and-their-types-in-system-design/"],
+  ["Types of Database Replication", "https://www.geeksforgeeks.org/system-design/types-of-database-replication-system-design/"],
+  ["Database Sharding", "https://www.geeksforgeeks.org/system-design/database-sharding-a-system-design-concept/"],
+  ["Data Partitioning", "https://www.geeksforgeeks.org/system-design/data-partitioning-techniques/"],
+  ["Block, Object, and File Storage", "https://www.geeksforgeeks.org/system-design/block-object-and-file-storage-in-cloud-with-difference/"],
+  ["Intro to Redis", "https://www.geeksforgeeks.org/system-design/introduction-to-redis-server/"],
+  ["Availability", "https://www.geeksforgeeks.org/system-design/availability-in-system-design/"],
+  ["High Availability", "https://www.geeksforgeeks.org/system-design/what-is-high-availability-in-system-design/"],
+  ["Consistency", "https://www.geeksforgeeks.org/system-design/consistency-in-system-design/"],
+  ["Consistency Patterns", "https://www.geeksforgeeks.org/system-design/consistency-patterns/"],
+  ["CAP Theorem", "https://www.geeksforgeeks.org/system-design/cap-theorem-in-system-design/"],
+  ["Reliability", "https://www.geeksforgeeks.org/system-design/reliability-in-system-design/"],
+  ["Fault Tolerance", "https://www.geeksforgeeks.org/system-design/fault-tolerance-in-system-design/"],
+  ["Maintainability", "https://www.geeksforgeeks.org/system-design/maintainability-in-system-design/"],
+  ["Load Balancer", "https://www.geeksforgeeks.org/system-design/what-is-load-balancer-system-design/"],
+  ["Types of Load Balancer", "https://www.geeksforgeeks.org/system-design/types-of-load-balancer/"],
+  ["Load Balancing Algorithms", "https://www.geeksforgeeks.org/system-design/load-balancing-algorithms/"],
+  ["Stateless Vs Stateful Load Balancing", "https://www.geeksforgeeks.org/system-design/stateless-vs-stateful-load-balancing/"],
+  ["Load Balancing Vs Failover", "https://www.geeksforgeeks.org/system-design/load-balancing-vs-failover/"],
+  ["Consistent Hashing", "https://www.geeksforgeeks.org/system-design/consistent-hashing/"],
+  ["Latency and Throughput", "https://www.geeksforgeeks.org/system-design/latency-in-system-design/"],
+  ["Caching", "https://www.geeksforgeeks.org/system-design/caching-system-design-concept-for-beginners/"],
+  ["Distributed Cache", "https://www.geeksforgeeks.org/system-design/what-is-a-distributed-cache/"],
+  ["Design Distributed Cache", "https://www.geeksforgeeks.org/system-design/design-distributed-cache-system-design/"],
+  ["Edge Caching", "https://www.geeksforgeeks.org/system-design/edge-caching-system-design/"],
+  ["CDN Vs Edge Server", "https://www.geeksforgeeks.org/system-design/cdn-vs-edge-server-system-design/"],
+  ["Cache Eviction Policies", "https://www.geeksforgeeks.org/system-design/cache-eviction-policies-system-design/"],
+  ["Cold and Warm Cache", "https://www.geeksforgeeks.org/system-design/cold-and-warm-cache-in-system-design/"],
+  ["API Gateway", "https://www.geeksforgeeks.org/system-design/what-is-api-gateway-system-design/"],
+  ["Message Queues", "https://www.geeksforgeeks.org/system-design/message-queues-system-design/"],
+  ["Rate Limiting", "https://www.geeksforgeeks.org/system-design/rate-limiting-in-system-design/"],
+  ["Rate Limiting Algorithm", "https://www.geeksforgeeks.org/system-design/rate-limiting-algorithms-system-design/"],
+  ["Communication Protocols", "https://www.geeksforgeeks.org/system-design/communication-protocols-in-system-design/"],
+  ["Content Delivery Network", "https://www.geeksforgeeks.org/system-design/what-is-content-delivery-networkcdn-in-system-design/"],
+  ["Proxies", "https://www.geeksforgeeks.org/system-design/network-protocols-and-proxies-in-system-design/"],
+  ["Forward Proxy vs Reverse Proxy", "https://www.geeksforgeeks.org/system-design/difference-between-forward-proxy-and-reverse-proxy/"],
+  ["Web and Application Server", "https://www.geeksforgeeks.org/system-design/web-server-proxies-and-their-role-in-designing-systems/"],
+  ["Event Sourcing Pattern", "https://www.geeksforgeeks.org/system-design/event-sourcing-pattern/"],
+  ["Event Sourcing Vs Event Streaming", "https://www.geeksforgeeks.org/system-design/event-sourcing-vs-event-streaming-in-system-design/"],
+  ["Event-Driven APIs", "https://www.geeksforgeeks.org/system-design/event-driven-apis-in-microservice-architectures/"],
+  ["Event-Driven Error Handling", "https://www.geeksforgeeks.org/system-design/error-handling-in-event-driven-architecture/"],
+  ["Restore State After Event Failure", "https://www.geeksforgeeks.org/system-design/how-to-restore-state-in-an-event-based-message-driven-microservice-architecture-on-failure-scenario/"],
+  ["Cloud-Native Event Patterns", "https://www.geeksforgeeks.org/system-design/event-driven-architecture-patterns-in-cloud-native-applications/"],
+  ["Request-driven Vs Event-driven Microservices", "https://www.geeksforgeeks.org/system-design/request-driven-vs-event-driven-microservices/"],
+  ["Event-Driven Vs Microservices", "https://www.geeksforgeeks.org/system-design/event-driven-architecture-vs-microservices-architecture/"],
+  ["Message-Driven Vs Event-Driven", "https://www.geeksforgeeks.org/system-design/message-driven-architecture-vs-event-driven-architecture/"],
+  ["CI/CD Pipeline", "https://www.geeksforgeeks.org/system-design/cicd-pipeline-system-design/"],
+  ["Security Measures", "https://www.geeksforgeeks.org/system-design/essential-security-measures-in-system-design/"],
+  ["Distributed Tracing", "https://www.geeksforgeeks.org/system-design/distributed-tracing-system-design/"],
+  ["Distributed System Design Issues", "https://www.geeksforgeeks.org/system-design/design-issues-of-distributed-system/"],
+  ["Software Cost Estimation", "https://www.geeksforgeeks.org/software-engineering/software-cost-estimation/"],
+  ["Performance Optimization Techniques", "https://www.geeksforgeeks.org/system-design/optimization-techniques-for-system-design/"],
+  ["Cost Vs Performance", "https://www.geeksforgeeks.org/system-design/cost-vs-performance/"],
+  ["OOP Concepts", "https://www.geeksforgeeks.org/system-design/object-oriented-programingoop-concepts-for-designing-sytems/"],
+  ["Modularity and Interfaces", "https://www.geeksforgeeks.org/system-design/inroduction-to-modularity-and-interfaces-in-system-design/"],
+  ["HLD vs LLD Difference", "https://www.geeksforgeeks.org/system-design/difference-between-high-level-design-and-low-level-design/"],
+  ["SOLID Principles", "https://www.geeksforgeeks.org/system-design/solid-principle-in-programming-understand-with-real-life-examples/"],
+  ["DRY Principle", "https://www.geeksforgeeks.org/software-engineering/dont-repeat-yourselfdry-in-software-development/"],
+  ["KISS Principle", "https://www.geeksforgeeks.org/software-engineering/kiss-principle-in-software-development/"],
+  ["YAGNI Principle", "https://www.geeksforgeeks.org/software-engineering/what-is-yagni-principle-you-arent-gonna-need-it/"],
+  ["Common Design Interview Questions", "https://www.geeksforgeeks.org/system-design/most-commonly-asked-system-design-interview-problems-questions/"],
+  ["Cracking System Design Round", "https://www.geeksforgeeks.org/system-design/how-to-crack-system-design-round-in-interviews/"],
+  ["Low-Level Design Interview Tips", "https://www.geeksforgeeks.org/system-design/5-tips-to-crack-low-level-system-design-interviews/"],
+  ["Common System Design Concepts", "https://www.geeksforgeeks.org/system-design/5-common-system-design-concepts-for-interview-preparation/"],
+  ["Object-Oriented Design Interview Steps", "https://www.geeksforgeeks.org/interview-experiences/steps-to-approach-object-oriented-design-questions-in-interview/"],
+  ["Components", "https://www.geeksforgeeks.org/system-design/what-are-the-components-of-system-design/"],
+  ["Goals and Objectives", "https://www.geeksforgeeks.org/system-design/goals-and-objectives-of-system-design/"],
+  ["Importance of System Design", "https://www.geeksforgeeks.org/system-design/why-is-it-important-to-learn-system-design/"],
+  ["Key Concepts and Terminologies", "https://www.geeksforgeeks.org/system-design/important-key-concepts-and-terminologies-learn-system-design/"],
+  ["Advantages", "https://www.geeksforgeeks.org/system-design/advantages-of-system-design/"],
+  ["Monolithic vs Distributed Systems", "https://www.geeksforgeeks.org/system-design/analysis-of-monolithic-and-distributed-systems-learn-system-design/"],
+  ["Requirements Gathering", "https://www.geeksforgeeks.org/system-design/what-is-requirements-gathering-process/"],
+  ["System Analysis vs System Design", "https://www.geeksforgeeks.org/system-design/system-analysis-vs-system-design/"],
+  ["Capacity Estimation", "https://www.geeksforgeeks.org/system-design/capacity-estimation-in-systems-design/"],
+  ["Answering System Design Problems", "https://www.geeksforgeeks.org/system-design/how-to-answer-a-system-design-interview-problem/"],
+  ["Activity Diagrams", "https://www.geeksforgeeks.org/system-design/unified-modeling-language-uml-activity-diagrams/"],
+  ["Authentication vs Authorization", "https://www.geeksforgeeks.org/system-design/difference-between-authentication-and-authorization-in-lld-system-design/"],
+  ["OOAD", "https://www.geeksforgeeks.org/software-engineering/object-oriented-analysis-and-design/"],
+  ["DSA for System Design", "https://www.geeksforgeeks.org/system-design/data-structures-and-algorithms-for-system-design/"],
+  ["Containerization Architecture", "https://www.geeksforgeeks.org/system-design/containerization-architecture-in-system-design/"],
+  ["Prepare for LLD Interviews", "https://www.geeksforgeeks.org/system-design/how-to-prepare-for-low-level-design-interviews/"],
+  ["Creational Design Patterns", "https://www.geeksforgeeks.org/system-design/creational-design-pattern/"],
+  ["Structural Design Patterns", "https://www.geeksforgeeks.org/system-design/structural-design-patterns/"],
+  ["Behavioral Design Patterns", "https://www.geeksforgeeks.org/system-design/behavioral-design-patterns/"],
+  ["Design Patterns Cheat Sheet", "https://www.geeksforgeeks.org/system-design/design-patterns-cheat-sheet-when-to-use-which-design-pattern/"],
+  ["Interview Q&A", "https://www.geeksforgeeks.org/system-design/top-10-system-design-interview-questions-and-answers/"],
+];
+
+const designGurusSystemDesignLinks = [
+  ["Course home", "https://www.designgurus.io/course/grokking-the-system-design-interview"],
+  ["What is a system design interview?", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/what-is-a-system-design-interview"],
+  ["Functional vs non-functional requirements", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/functional-vs-nonfunctional-requirements"],
+  ["Back-of-the-envelope estimations", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/what-are-backoftheenvelope-estimations"],
+  ["System design basics", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/system-design-basics"],
+  ["Distributed system characteristics", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/key-characteristics-of-distributed-systems"],
+  ["Load balancing", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/load-balancing"],
+  ["Load balancing algorithms", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/load-balancing-algorithms"],
+  ["Caching", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/caching"],
+  ["Data partitioning", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/data-partitioning"],
+  ["Indexes", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/indexes"],
+  ["Proxies", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/proxies"],
+  ["Redundancy and replication", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/redundancy-and-replication"],
+  ["SQL vs NoSQL", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/sql-vs-nosql"],
+  ["CAP theorem", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/cap-theorem"],
+  ["PACELC theorem", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/pacelc-theorem-new"],
+  ["Consistent hashing", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/consistent-hashing-new"],
+  ["Long polling vs WebSockets vs SSE", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/longpolling-vs-websockets-vs-serversent-events"],
+  ["Bloom filters", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/bloom-filters"],
+  ["Quorum", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/quorum-new"],
+  ["Leader and follower", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/leader-and-follower-new"],
+  ["Heartbeat", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/heartbeat-new"],
+  ["Checksum", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/checksum-new"],
+  ["Trade-offs", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/importance-of-discussing-tradeoffs"],
+  ["Strong vs eventual consistency", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/strong-vs-eventual-consistency"],
+  ["Latency vs throughput", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/latency-vs-throughput"],
+  ["ACID vs BASE", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/acid-vs-base-properties-in-databases"],
+  ["Read-through vs write-through cache", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/readthrough-vs-writethrough-cache"],
+  ["Batch vs stream processing", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/batch-processing-vs-stream-processing"],
+  ["Load balancer vs API gateway", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/load-balancer-vs-api-gateway"],
+  ["Proxy vs reverse proxy", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/proxy-vs-reverse-proxy"],
+  ["REST vs RPC", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/rest-vs-rpc"],
+  ["Polling vs long polling vs webhooks", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/polling-vs-longpolling-vs-webhooks"],
+  ["CDN vs direct serving", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/cdn-usage-vs-direct-server-serving"],
+  ["Serverless vs server-based", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/serverless-architecture-vs-traditional-serverbased"],
+  ["Stateful vs stateless architecture", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/stateful-vs-stateless-architecture"],
+  ["Token bucket vs leaky bucket", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/token-bucket-vs-leaky-bucket"],
+  ["Read-heavy vs write-heavy systems", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/read-heavy-vs-write-heavy-system"],
+  ["Step-by-step interview guide", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/system-design-interviews-a-step-by-step-guide"],
+  ["System design master template", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/system-design-master-template"],
+  ["Design URL shortener", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/designing-a-url-shortening-service-like-tinyurl"],
+  ["Design Pastebin", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/designing-pastebin"],
+  ["Design Instagram", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/designing-instagram"],
+  ["Design Dropbox", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/designing-dropbox"],
+  ["Design Facebook Messenger", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/designing-facebook-messenger"],
+  ["Design Twitter", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/designing-twitter"],
+  ["Design YouTube or Netflix", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/designing-youtube-or-netflix"],
+  ["Design Typeahead", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/designing-typeahead-suggestion"],
+  ["Design API rate limiter", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/designing-an-api-rate-limiter"],
+  ["Design Twitter search", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/designing-twitter-search"],
+  ["Design web crawler", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/designing-a-web-crawler"],
+  ["Design Facebook newsfeed", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/designing-facebooks-newsfeed"],
+  ["Design Yelp / Nearby Friends", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/designing-yelp-or-nearby-friends"],
+  ["Design Uber backend", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/designing-uber-backend"],
+  ["Design Ticketmaster", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/designing-ticketmaster"],
+];
+
+const thitaHldOutline = [
+  "Foundations: 45-minute framework, estimation, CAP and consistency, availability and SLAs",
+  "Networking and APIs: protocols, API design, gRPC, advanced API patterns, chat design",
+  "Databases: SQL vs NoSQL, replication, sharding, indexing, storage, LSM trees, WAL",
+  "Caching: cache strategy, cache failure modes, multi-layer caching, rate limiter and distributed cache designs",
+  "Queues and async: queue fundamentals, delivery guarantees, idempotency, event-driven patterns, job scheduler design",
+  "Scalability: consistent hashing, scaling reads vs writes, service architecture, feed design",
+  "Coordination and transactions: consensus, locks, distributed transactions, Raft, gossip, quorum, stock exchange design",
+  "Search, geo and aggregation: search, geospatial systems, real-time aggregation, Elasticsearch, maps and leaderboard designs",
+];
+
+const thitaLldOutline = [
+  "OOP foundations and class design",
+  "Strategy and factory patterns",
+  "State pattern and state machines",
+  "Observer, decorator and behavioral patterns",
+  "Concurrency patterns",
+  "Machine coding and interview execution",
+  "Foundational case studies",
+  "Applied case studies",
+];
+
+const thitaBehavioralPatterns = [
+  ["STAR Method", ["Situation Examples", "Task Breakdown", "Action Planning", "Result Measurement"]],
+  ["Conflict Resolution", ["Identifying Issues", "Stakeholder Management", "Negotiation Tactics", "Resolution Follow-up"]],
+  ["Team Leadership", ["Team Building", "Motivation Techniques", "Delegation Skills", "Performance Management"]],
+  ["Project Management", ["Planning & Scoping", "Risk Management", "Timeline Management", "Cross-functional Coordination"]],
+  ["Communication", ["Stakeholder Communication", "Technical Explanation", "Active Listening", "Feedback Delivery"]],
+  ["Problem Solving", ["Root Cause Analysis", "Creative Solutions", "Data-Driven Decisions", "Implementation Strategy"]],
+  ["Adaptability", ["Change Management", "Learning Agility", "Resilience Building", "Flexibility in Approach"]],
+  ["Cultural Fit", ["Company Values Alignment", "Team Dynamics", "Work Style Preferences", "Growth Mindset"]],
+];
+
+const thitaDataScienceOutline = [
+  "Business Analytics and Metrics",
+  "Data Manipulation and Preprocessing",
+  "Deep Learning Fundamentals",
+  "Exploratory Data Analysis",
+  "Feature Selection and Dimensionality Reduction",
+  "Full Pattern Problem Practice",
+  "Model Selection and Validation",
+  "Natural Language Processing",
+  "Statistics and Probability Fundamentals",
+  "Supervised Learning - Classification",
+  "Supervised Learning - Regression",
+  "Time Series Analysis",
+  "Unsupervised Learning",
+];
+
+const dataScienceDirectResources = [
+  ["Thita Data Science Learning Path", "https://thita.ai/dashboard/learning-path/data-science"],
+  ["Kaggle Learn Python", "https://www.kaggle.com/learn/python"],
+  ["Kaggle Learn Pandas", "https://www.kaggle.com/learn/pandas"],
+  ["Kaggle Learn Data Visualization", "https://www.kaggle.com/learn/data-visualization"],
+  ["Kaggle Intro to Machine Learning", "https://www.kaggle.com/learn/intro-to-machine-learning"],
+  ["Google Machine Learning Crash Course", "https://developers.google.com/machine-learning/crash-course"],
+  ["scikit-learn User Guide", "https://scikit-learn.org/stable/user_guide.html"],
+  ["TensorFlow Tutorials", "https://www.tensorflow.org/tutorials"],
+  ["Hugging Face NLP Course", "https://huggingface.co/learn/nlp-course"],
+];
 
 function read(file) {
   return fs.readFileSync(path.join(root, file), "utf8");
@@ -1685,6 +2163,34 @@ function siteNavStyle() {
   color: var(--text-dim); font-size: 11px; font-weight: 800; text-decoration: none;
 }
 .coverage-links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.source-extract {
+  background: var(--bg-elev); border: 1px solid var(--border); border-radius: 8px;
+  padding: 16px 18px; margin: 16px 0 22px; box-shadow: var(--shadow-card);
+}
+.source-extract h2 { margin: 0 0 6px; font-size: 17px; letter-spacing: 0; }
+.source-extract p { margin: 0; color: var(--text-dim); font-size: 13px; }
+.source-extract-grid {
+  display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  margin-top: 12px;
+}
+.source-extract-card {
+  border: 1px solid var(--border); border-radius: 8px; background: var(--bg-card); padding: 12px;
+}
+.source-extract-card h3 { margin: 0 0 6px; font-size: 14px; letter-spacing: 0; }
+.source-extract-card ul { margin: 0; padding-left: 18px; color: var(--text-dim); font-size: 12px; }
+.source-extract-card li { margin: 3px 0; }
+.source-status {
+  display: inline-flex; margin-bottom: 7px; min-height: 22px; align-items: center;
+  padding: 2px 7px; border-radius: 999px; border: 1px solid var(--border);
+  color: var(--accent); font-size: 10px; font-weight: 900; text-transform: uppercase;
+}
+.source-direct-links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.source-direct-links a {
+  display: inline-flex; align-items: center; min-height: 25px; padding: 3px 8px;
+  border-radius: 999px; background: var(--bg-card); border: 1px solid var(--border);
+  color: var(--text-dim); font-size: 11px; font-weight: 800; text-decoration: none;
+}
+.source-direct-links a:hover { border-color: var(--accent); color: var(--text); }
 .qa-name { display: grid; gap: 3px; }
 .qa-question { font-weight: 800; color: var(--text); }
 .qa-answer { color: var(--text-dim); font-size: 12px; font-weight: 500; }
@@ -1762,6 +2268,97 @@ function coveragePanelHtml(source) {
   <div class="coverage-pills">${topics}</div>
   <div class="coverage-links">${links}</div>
 </section>`;
+}
+
+function linkChips(links, limit = links.length) {
+  return links
+    .slice(0, limit)
+    .map(([title, url]) => `<a href="${escHtml(url)}" target="_blank" rel="noopener">${escHtml(title)}</a>`)
+    .join("");
+}
+
+function listItems(items) {
+  return items.map((item) => `<li>${escHtml(item)}</li>`).join("");
+}
+
+function tutoringLink(pattern, subpattern) {
+  const base = "https://thita.ai/dashboard/tutoring";
+  const params = new URLSearchParams({
+    category: "Behavioral",
+    pattern,
+    subpattern,
+    teaching_mode: "feynman",
+    persona: "samuel-brooks",
+  });
+  return `${base}?${params.toString()}`;
+}
+
+function systemDesignSourceExtractHtml() {
+  const gfgCards = gfgSystemDesignOutline.map((group) => `<article class="source-extract-card">
+    <span class="source-status">${escHtml(group.status)}</span>
+    <h3>${escHtml(group.group)}</h3>
+    <ul>${listItems(group.topics)}</ul>
+  </article>`).join("");
+  const priority = `<article class="source-extract-card">
+    <span class="source-status">Priority gaps</span>
+    <h3>Add / strengthen next</h3>
+    <ul>${listItems(gfgSystemDesignPriorityGaps)}</ul>
+  </article>`;
+  const thitaCards = [
+    `<article class="source-extract-card"><span class="source-status">Thita HLD</span><h3>20-hour HLD path</h3><ul>${listItems(thitaHldOutline)}</ul></article>`,
+    `<article class="source-extract-card"><span class="source-status">Thita LLD</span><h3>LLD learning path</h3><ul>${listItems(thitaLldOutline)}</ul></article>`,
+  ].join("");
+  return `<aside class="source-extract" id="system-design-source-extracts">
+  <h2>Extracted Source Map: GFG, DesignGurus and Thita</h2>
+  <p>Topic outline extracted from the provided URL and uploaded course pages. This is organized as a gap map so I can study missing pieces without copying course/article text verbatim.</p>
+  <div class="source-direct-links">${linkChips(gfgSystemDesignResources)}${linkChips([
+    ["DesignGurus Grokking Course", "https://www.designgurus.io/course/grokking-the-system-design-interview"],
+    ["Thita System Design HLD", "https://www.thita.ai/system-design"],
+    ["Thita LLD Path", "https://www.thita.ai/dashboard/learning-path/lld"],
+  ])}</div>
+  <div class="source-extract-grid">${priority}${gfgCards}${thitaCards}</div>
+  <h2 style="margin-top:16px">Direct GFG Topic Links</h2>
+  <p>Direct topic links extracted from the GeeksforGeeks System Design tutorial page.</p>
+  <div class="source-direct-links">${linkChips(gfgSystemDesignLinks)}</div>
+  <h2 style="margin-top:16px">Direct DesignGurus Lesson Links</h2>
+  <p>Direct topic links from the uploaded Grokking System Design course file.</p>
+  <div class="source-direct-links">${linkChips(designGurusSystemDesignLinks)}</div>
+</aside>`;
+}
+
+function behavioralSourceExtractHtml() {
+  const cards = thitaBehavioralPatterns.map(([pattern, subs]) => `<article class="source-extract-card">
+    <span class="source-status">Thita</span>
+    <h3>${escHtml(pattern)}</h3>
+    <ul>${subs.map((sub) => `<li><a href="${escHtml(tutoringLink(pattern, sub))}" target="_blank" rel="noopener">${escHtml(sub)}</a></li>`).join("")}</ul>
+  </article>`).join("");
+  return `<aside class="source-extract" id="behavioral-source-extracts">
+  <h2>Extracted Source Map: Thita Behavioral Sheet</h2>
+  <p>8 behavioral patterns and 32 subpatterns extracted from the uploaded Thita STAR sheet, with direct practice links for each subtopic.</p>
+  <div class="source-direct-links">${linkChips([["Thita Behavioral Sheet", "https://www.thita.ai/behavioral-sheet"]])}</div>
+  <div class="source-extract-grid">${cards}</div>
+</aside>`;
+}
+
+function aiSourceExtractHtml() {
+  const cards = thitaDataScienceOutline.map((topic) => `<article class="source-extract-card">
+    <span class="source-status">Data science</span>
+    <h3>${escHtml(topic)}</h3>
+    <ul><li>Use this as the ML/statistics foundation bridge for AI engineering interviews.</li></ul>
+  </article>`).join("");
+  return `<aside class="source-extract" id="ai-source-extracts">
+  <h2>Extracted Source Map: Thita Data Science Path</h2>
+  <p>13 data science and analytics patterns extracted from the uploaded Thita learning path. I added direct resource links for the topics that support AI engineering.</p>
+  <div class="source-direct-links">${linkChips(dataScienceDirectResources)}</div>
+  <div class="source-extract-grid">${cards}</div>
+</aside>`;
+}
+
+function sourceExtractHtml(source) {
+  if (source.key === "sd") return systemDesignSourceExtractHtml();
+  if (source.key === "bh") return behavioralSourceExtractHtml();
+  if (source.key === "ai") return aiSourceExtractHtml();
+  return "";
 }
 
 function stripLeadingDecor(value = "") {
@@ -1846,6 +2443,7 @@ function removeGeneratedPageChrome(html) {
     .replace(/<script id="site-nav-script">[\s\S]*?<\/script>\s*/g, "")
     .replace(/<nav class="site-nav"[\s\S]*?<\/nav>\s*/g, "")
     .replace(/<section class="learning-coverage" id="coverage-check">[\s\S]*?<\/section>\s*/g, "")
+    .replace(/<aside class="source-extract"[\s\S]*?<\/aside>\s*/g, "")
     .replace(/<nav class="nav-bar">[\s\S]*?<\/nav>\s*/g, "")
     .replace(/<div class="home-strip">[\s\S]*?<\/div>\s*/g, "");
 }
@@ -1863,7 +2461,7 @@ function transformSourcePage(source) {
   if (source.key === "cloud") html = formatCloudQa(html);
   html = html.replace("</head>", `${siteNavStyle()}\n</head>`);
   html = html.replace('<div class="wrap">', `<div class="wrap">\n${siteNavHtml(source)}\n`);
-  html = html.replace(/(<nav class="toc">)/, `${coveragePanelHtml(source)}\n$1`);
+  html = html.replace(/(<nav class="toc">)/, `${coveragePanelHtml(source)}\n${sourceExtractHtml(source)}\n$1`);
   html = html.replace("</body>", `${siteNavScript()}\n</body>`);
   fs.writeFileSync(filePath, html, "utf8");
 }
@@ -1891,6 +2489,12 @@ function buildContentAudit(data) {
     "- Azure Well-Architected Framework: https://learn.microsoft.com/en-us/azure/well-architected/",
     "- OWASP Top 10: https://owasp.org/www-project-top-ten/",
     "- System Design Primer: https://github.com/donnemartin/system-design-primer",
+    "- GeeksforGeeks System Design Tutorial: https://www.geeksforgeeks.org/system-design/system-design-tutorial/",
+    "- DesignGurus Grokking System Design Interview: https://www.designgurus.io/course/grokking-the-system-design-interview",
+    "- Thita Behavioral Sheet: https://www.thita.ai/behavioral-sheet",
+    "- Thita System Design HLD: https://www.thita.ai/system-design",
+    "- Thita Data Science Learning Path: https://thita.ai/dashboard/learning-path/data-science",
+    "- Thita LLD Learning Path: https://thita.ai/dashboard/learning-path/lld",
     "",
     "## Global Actions Applied",
     "",
@@ -1917,6 +2521,33 @@ function buildContentAudit(data) {
       lines.push(`- Coverage source: ${coverage.source}.`);
       lines.push(`- Missing/priority candidates: ${coverage.topics.join(", ")}.`);
       lines.push(`- Recommended next resources: ${coverage.resources.map(([title]) => title).join(", ")}.`);
+    }
+    if (source.key === "sd") {
+      lines.push("- Uploaded/source extracts added to page: GeeksforGeeks topic map, DesignGurus direct lesson links, Thita HLD outline, and Thita LLD outline.");
+      lines.push(`- GFG priority gaps: ${gfgSystemDesignPriorityGaps.join(", ")}.`);
+      lines.push(`- GFG direct topic links included: ${gfgSystemDesignLinks.length}.`);
+      lines.push(`- DesignGurus direct links included: ${designGurusSystemDesignLinks.length}.`);
+      lines.push("- GFG extracted outline:");
+      for (const group of gfgSystemDesignOutline) lines.push(`  - ${group.group} [${group.status}]: ${group.topics.join(", ")}.`);
+      lines.push("- GFG direct topic links:");
+      for (const [title, url] of gfgSystemDesignLinks) lines.push(`  - ${title}: ${url}`);
+      lines.push("- Thita HLD extracted outline:");
+      for (const item of thitaHldOutline) lines.push(`  - ${item}.`);
+      lines.push("- Thita LLD extracted outline:");
+      for (const item of thitaLldOutline) lines.push(`  - ${item}.`);
+      lines.push("- DesignGurus direct lesson links:");
+      for (const [title, url] of designGurusSystemDesignLinks) lines.push(`  - ${title}: ${url}`);
+    }
+    if (source.key === "bh") {
+      lines.push("- Uploaded/source extract added to page: Thita Behavioral Sheet with direct STAR/pattern practice links.");
+      lines.push("- Thita behavioral extracted outline:");
+      for (const [pattern, subs] of thitaBehavioralPatterns) lines.push(`  - ${pattern}: ${subs.join(", ")}.`);
+    }
+    if (source.key === "ai") {
+      lines.push("- Uploaded/source extract added to page: Thita Data Science path as an AI/ML foundations bridge.");
+      lines.push(`- Data Science extracted topics: ${thitaDataScienceOutline.join(", ")}.`);
+      lines.push("- Data Science direct resources:");
+      for (const [title, url] of dataScienceDirectResources) lines.push(`  - ${title}: ${url}`);
     }
     lines.push("");
     lines.push("Sections:");
