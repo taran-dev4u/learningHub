@@ -17,6 +17,7 @@
   --strong: #202a3a;
   --accent: #2459d6;
   --shadow: 0 14px 36px rgba(31, 42, 63, .1);
+  --shadow-lift: 0 22px 48px rgba(31, 42, 63, .16);
 }
 html.dark {
   --bg: #101319;
@@ -29,6 +30,7 @@ html.dark {
   --strong: #f7f9fc;
   --accent: #7ca2ff;
   --shadow: 0 16px 42px rgba(0, 0, 0, .32);
+  --shadow-lift: 0 24px 56px rgba(0, 0, 0, .44);
 }
 * { box-sizing: border-box; }
 body {
@@ -50,12 +52,12 @@ a { color: inherit; }
   align-items: center;
   justify-content: space-between;
   gap: 14px;
-  margin-bottom: 22px;
+  margin-bottom: 18px;
 }
 .brand h1 {
   margin: 0;
   font-size: clamp(28px, 5vw, 54px);
-  letter-spacing: 0;
+  letter-spacing: -0.02em;
   line-height: 1.02;
 }
 .brand p {
@@ -64,7 +66,8 @@ a { color: inherit; }
   color: var(--muted);
   font-size: 15px;
 }
-.theme-btn {
+.actions { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+.hub-btn {
   border: 1px solid var(--border);
   background: var(--surface);
   color: var(--text);
@@ -73,9 +76,116 @@ a { color: inherit; }
   border-radius: 8px;
   cursor: pointer;
   font-weight: 800;
+  font-size: 13px;
+  box-shadow: var(--shadow);
+  transition: border-color .15s ease, transform .15s ease;
+}
+.hub-btn:hover { border-color: var(--accent); transform: translateY(-1px); }
+.stats-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 16px;
+}
+.stat-chip {
+  display: flex;
+  flex-direction: column;
+  min-width: 130px;
+  flex: 1;
+  padding: 12px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
   box-shadow: var(--shadow);
 }
-.theme-btn:hover { border-color: var(--accent); }
+.stat-chip b { font-size: 22px; font-variant-numeric: tabular-nums; }
+.stat-chip span { color: var(--muted); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; }
+.overall-progress { height: 8px; border-radius: 999px; background: var(--surface-2); border: 1px solid var(--border); overflow: hidden; margin-top: 8px; }
+.overall-progress i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, #2f6fdd, #7b61d8, #d84f86); transition: width .4s ease; }
+.search-block { position: relative; margin: 0 0 18px; }
+.search-input {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 15px;
+  font-family: inherit;
+  box-shadow: var(--shadow);
+  outline: none;
+}
+.search-input:focus { border-color: var(--accent); }
+.search-results {
+  display: none;
+  margin-top: 8px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  box-shadow: var(--shadow-lift);
+  max-height: 420px;
+  overflow: auto;
+}
+.search-results.open { display: block; }
+.search-results a {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 10px 14px;
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+}
+.search-results a:last-child { border-bottom: none; }
+.search-results a:hover { background: var(--surface-2); }
+.sr-page {
+  flex-shrink: 0;
+  font-size: 10.5px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: #fff;
+  background: var(--pill, var(--accent));
+  border-radius: 999px;
+  padding: 2px 8px;
+}
+.sr-section { margin-left: auto; color: var(--faint); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 38%; }
+.search-note { padding: 12px 14px; color: var(--muted); font-size: 13px; }
+.review-panel {
+  margin: 0 0 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.review-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  cursor: pointer;
+  user-select: none;
+}
+.review-head h2 { margin: 0; font-size: 16px; }
+.review-head .count { color: var(--muted); font-size: 13px; font-weight: 800; }
+.review-body { display: none; padding: 0 16px 14px; }
+.review-panel.open .review-body { display: block; }
+.review-group { margin-top: 10px; }
+.review-group h3 { margin: 0 0 6px; font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.review-group a {
+  display: inline-block;
+  margin: 0 6px 6px 0;
+  padding: 4px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-2);
+  font-size: 12.5px;
+  text-decoration: none;
+}
+.review-group a:hover { border-color: var(--accent); }
+.review-empty { color: var(--muted); font-size: 13px; margin: 8px 0 0; }
 .page-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -88,10 +198,12 @@ a { color: inherit; }
   background: var(--surface);
   border: 1px solid var(--border);
   border-top: 5px solid var(--card-color);
-  border-radius: 8px;
+  border-radius: 10px;
   box-shadow: var(--shadow);
   overflow: hidden;
+  transition: transform .18s ease, box-shadow .18s ease;
 }
+.page-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); }
 .card-index {
   display: grid;
   place-items: start center;
@@ -115,7 +227,7 @@ a { color: inherit; }
   margin: 0;
   font-size: clamp(20px, 3vw, 28px);
   line-height: 1.12;
-  letter-spacing: 0;
+  letter-spacing: -0.01em;
 }
 .page-card p {
   margin: 10px 0 0;
@@ -147,7 +259,7 @@ a { color: inherit; }
   margin-top: auto;
   background: var(--surface-2);
 }
-.card-progress span { display: block; width: 0; height: 100%; background: var(--card-color); }
+.card-progress span { display: block; width: 0; height: 100%; background: var(--card-color); transition: width .4s ease; }
 .card-footer {
   display: flex;
   align-items: center;
@@ -169,7 +281,9 @@ a { color: inherit; }
   color: var(--bg);
   text-decoration: none;
   white-space: nowrap;
+  transition: opacity .15s ease, transform .15s ease;
 }
+.card-footer a:hover { opacity: .88; transform: translateY(-1px); }
 @media (max-width: 820px) {
   .topbar { align-items: flex-start; }
   .page-grid { grid-template-columns: 1fr; }
@@ -178,22 +292,45 @@ a { color: inherit; }
 @media (max-width: 520px) {
   .wrap { width: min(100% - 24px, 1180px); padding-top: 18px; }
   .topbar { flex-direction: column; }
-  .theme-btn { width: 100%; }
+  .actions { width: 100%; justify-content: stretch; }
+  .hub-btn { flex: 1; }
   .card-footer { align-items: stretch; flex-direction: column; }
   .card-footer a { width: 100%; }
 }
 </style>
 </head>
 <body>
-<script id="hub-data" type="application/json">{"sources":[{"key":"dsa","title":"DSA Ultimate Index","file":"DSA_Ultimate_Index.html","color":"#2f6fdd","storage":{"done":"dsa_index_solved_v1","bookmark":"dsa_index_bookmark_v1"},"itemCount":609,"progressLabel":"problems"},{"key":"sd","title":"System Design","file":"system_design.html","color":"#d84f86","storage":{"done":"hub_done_sd","bookmark":"hub_bm_sd"},"itemCount":255,"progressLabel":"concepts"},{"key":"cs","title":"CS Fundamentals","file":"cs_fundamentals.html","color":"#15875f","storage":{"done":"hub_done_cs","bookmark":"hub_bm_cs"},"itemCount":128,"progressLabel":"concepts"},{"key":"bh","title":"Behavioral and Leadership","file":"behavioral.html","color":"#c9692d","storage":{"done":"hub_done_bh","bookmark":"hub_bm_bh"},"itemCount":121,"progressLabel":"concepts"},{"key":"ai","title":"AI Engineering","file":"ai_engineering.html","color":"#7b61d8","storage":{"done":"hub_done_ai","bookmark":"hub_bm_ai"},"itemCount":150,"progressLabel":"concepts"},{"key":"cloud","title":"Cloud - AWS and Azure","file":"cloud_aws_azure.html","color":"#0786a3","storage":{"done":"hub_done_cloud","bookmark":"hub_bm_cloud"},"itemCount":159,"progressLabel":"concepts"}]}</script>
+<script id="hub-data" type="application/json">{"sources":[{"key":"dsa","title":"DSA Ultimate Index","file":"DSA_Ultimate_Index.html","label":"DSA","color":"#2f6fdd","storage":{"done":"dsa_index_solved_v1","bookmark":"dsa_index_bookmark_v1"},"itemCount":609,"progressLabel":"problems"},{"key":"sd","title":"System Design","file":"system_design.html","label":"Systems","color":"#d84f86","storage":{"done":"hub_done_sd","bookmark":"hub_bm_sd"},"itemCount":296,"progressLabel":"concepts"},{"key":"cs","title":"CS Fundamentals","file":"cs_fundamentals.html","label":"CS","color":"#15875f","storage":{"done":"hub_done_cs","bookmark":"hub_bm_cs"},"itemCount":156,"progressLabel":"concepts"},{"key":"bh","title":"Behavioral and Leadership","file":"behavioral.html","label":"Behavioral","color":"#c9692d","storage":{"done":"hub_done_bh","bookmark":"hub_bm_bh"},"itemCount":145,"progressLabel":"concepts"},{"key":"ai","title":"AI Engineering","file":"ai_engineering.html","label":"AI","color":"#7b61d8","storage":{"done":"hub_done_ai","bookmark":"hub_bm_ai"},"itemCount":180,"progressLabel":"concepts"},{"key":"cloud","title":"Cloud - AWS and Azure","file":"cloud_aws_azure.html","label":"Cloud","color":"#0786a3","storage":{"done":"hub_done_cloud","bookmark":"hub_bm_cloud"},"itemCount":194,"progressLabel":"concepts"}]}</script>
 <main class="wrap">
   <div class="topbar">
     <section class="brand">
       <h1>Taran's Learning Hub</h1>
       <p>Six connected study spaces for my interview prep and engineering growth. Pick a page, follow the content inside it, and let progress/bookmarks stay local in this browser.</p>
     </section>
-    <button class="theme-btn" id="theme">Theme</button>
+    <div class="actions">
+      <button class="hub-btn" id="theme">Theme</button>
+      <button class="hub-btn" id="export-progress" title="Download progress and bookmarks as JSON">Backup</button>
+      <button class="hub-btn" id="import-progress" title="Restore progress from a backup file">Restore</button>
+      <input type="file" id="import-file" accept="application/json" hidden>
+    </div>
   </div>
+  <section class="stats-strip" aria-label="Overall stats">
+    <div class="stat-chip"><b id="total-done">0 / 1580</b><span>items complete</span><div class="overall-progress"><i id="total-fill"></i></div></div>
+    <div class="stat-chip"><b>6</b><span>study spaces</span></div>
+    <div class="stat-chip"><b>78</b><span>sections</span></div>
+    <div class="stat-chip"><b>981</b><span>resources</span></div>
+  </section>
+  <section class="search-block" aria-label="Global search">
+    <input class="search-input" id="global-search" type="search" placeholder="Search all 1580 topics and problems across every page…" autocomplete="off">
+    <div class="search-results" id="search-results"></div>
+  </section>
+  <section class="review-panel" id="review-panel" aria-label="Bookmarked items">
+    <div class="review-head" id="review-head">
+      <h2>★ Review queue</h2>
+      <span class="count" id="review-count">0 bookmarked</span>
+    </div>
+    <div class="review-body" id="review-body"></div>
+  </section>
   <section class="page-grid" aria-label="Learning pages">
     
     <article class="page-card" data-page-card="dsa" style="--card-color:#2f6fdd">
@@ -205,7 +342,7 @@ a { color: inherit; }
         <div class="card-stats">
           <span>29 sections</span>
           <span>609 problems</span>
-          <span>510 resources</span>
+          <span>517 resources</span>
         </div>
         <div class="card-progress" aria-label="Progress for DSA Ultimate Index">
           <span data-page-progress-fill="dsa"></span>
@@ -223,15 +360,15 @@ a { color: inherit; }
         <h2>System Design</h2>
         <p>My system design control room: concepts, trade-offs, classic designs, and interview structure in one place.</p>
         <div class="card-stats">
-          <span>13 sections</span>
-          <span>255 concepts</span>
-          <span>251 resources</span>
+          <span>14 sections</span>
+          <span>296 concepts</span>
+          <span>256 resources</span>
         </div>
         <div class="card-progress" aria-label="Progress for System Design">
           <span data-page-progress-fill="sd"></span>
         </div>
         <div class="card-footer">
-          <span data-page-progress-text="sd">0 / 255 complete</span>
+          <span data-page-progress-text="sd">0 / 296 complete</span>
           <a href="system_design.html">Open</a>
         </div>
       </div>
@@ -243,15 +380,15 @@ a { color: inherit; }
         <h2>CS Fundamentals</h2>
         <p>My fundamentals refresh layer: OS, networking, databases, concurrency, security, and architecture for deeper reasoning.</p>
         <div class="card-stats">
-          <span>6 sections</span>
-          <span>128 concepts</span>
-          <span>34 resources</span>
+          <span>7 sections</span>
+          <span>156 concepts</span>
+          <span>53 resources</span>
         </div>
         <div class="card-progress" aria-label="Progress for CS Fundamentals">
           <span data-page-progress-fill="cs"></span>
         </div>
         <div class="card-footer">
-          <span data-page-progress-text="cs">0 / 128 complete</span>
+          <span data-page-progress-text="cs">0 / 156 complete</span>
           <a href="cs_fundamentals.html">Open</a>
         </div>
       </div>
@@ -263,15 +400,15 @@ a { color: inherit; }
         <h2>Behavioral and Leadership</h2>
         <p>My story bank and leadership prep space: STAR answers, principles, conflict, ownership, and mock practice.</p>
         <div class="card-stats">
-          <span>5 sections</span>
-          <span>121 concepts</span>
-          <span>24 resources</span>
+          <span>6 sections</span>
+          <span>145 concepts</span>
+          <span>37 resources</span>
         </div>
         <div class="card-progress" aria-label="Progress for Behavioral and Leadership">
           <span data-page-progress-fill="bh"></span>
         </div>
         <div class="card-footer">
-          <span data-page-progress-text="bh">0 / 121 complete</span>
+          <span data-page-progress-text="bh">0 / 145 complete</span>
           <a href="behavioral.html">Open</a>
         </div>
       </div>
@@ -283,15 +420,15 @@ a { color: inherit; }
         <h2>AI Engineering</h2>
         <p>My AI engineering track: LLM apps, RAG, agents, evals, MLOps, and production quality constraints.</p>
         <div class="card-stats">
-          <span>10 sections</span>
-          <span>150 concepts</span>
-          <span>54 resources</span>
+          <span>11 sections</span>
+          <span>180 concepts</span>
+          <span>60 resources</span>
         </div>
         <div class="card-progress" aria-label="Progress for AI Engineering">
           <span data-page-progress-fill="ai"></span>
         </div>
         <div class="card-footer">
-          <span data-page-progress-text="ai">0 / 150 complete</span>
+          <span data-page-progress-text="ai">0 / 180 complete</span>
           <a href="ai_engineering.html">Open</a>
         </div>
       </div>
@@ -303,15 +440,15 @@ a { color: inherit; }
         <h2>Cloud - AWS and Azure</h2>
         <p>My AWS and Azure comparison desk: services, Q&amp;A, architecture pillars, security, reliability, and cost thinking.</p>
         <div class="card-stats">
-          <span>10 sections</span>
-          <span>159 concepts</span>
-          <span>44 resources</span>
+          <span>11 sections</span>
+          <span>194 concepts</span>
+          <span>58 resources</span>
         </div>
         <div class="card-progress" aria-label="Progress for Cloud - AWS and Azure">
           <span data-page-progress-fill="cloud"></span>
         </div>
         <div class="card-footer">
-          <span data-page-progress-text="cloud">0 / 159 complete</span>
+          <span data-page-progress-text="cloud">0 / 194 complete</span>
           <a href="cloud_aws_azure.html">Open</a>
         </div>
       </div>
@@ -335,14 +472,162 @@ a { color: inherit; }
     localStorage.setItem(themeKey, next);
     applyTheme(next);
   });
+
+  // Per-card progress + overall totals
+  let doneTotal = 0;
   data.sources.forEach(function (source) {
     const done = readSet(source.storage.done).size;
     const safeDone = Math.min(done, source.itemCount);
+    doneTotal += safeDone;
     const pct = source.itemCount ? Math.round((safeDone / source.itemCount) * 100) : 0;
     const fill = document.querySelector('[data-page-progress-fill="' + source.key + '"]');
     const text = document.querySelector('[data-page-progress-text="' + source.key + '"]');
     if (fill) fill.style.width = pct + "%";
     if (text) text.textContent = safeDone + " / " + source.itemCount + " complete";
+  });
+  const itemsTotal = data.sources.reduce(function (sum, s) { return sum + s.itemCount; }, 0);
+  document.getElementById("total-done").textContent = doneTotal + " / " + itemsTotal;
+  document.getElementById("total-fill").style.width = (itemsTotal ? Math.round(100 * doneTotal / itemsTotal) : 0) + "%";
+
+  // Search index (lazy-loaded, shared by search + review queue)
+  let indexPromise = null;
+  function loadIndex() {
+    if (!indexPromise) {
+      indexPromise = fetch("search-index.json").then(function (r) {
+        if (!r.ok) throw new Error("HTTP " + r.status);
+        return r.json();
+      });
+    }
+    return indexPromise;
+  }
+  const byKey = {};
+  data.sources.forEach(function (s) { byKey[s.key] = s; });
+
+  // Global search
+  const input = document.getElementById("global-search");
+  const results = document.getElementById("search-results");
+  let searchToken = 0;
+  function renderResults(list, query) {
+    if (!list.length) {
+      results.innerHTML = '<div class="search-note">No matches for "' + query.replace(/[<>&]/g, "") + '".</div>';
+      results.classList.add("open");
+      return;
+    }
+    results.innerHTML = list.slice(0, 40).map(function (item) {
+      const src = byKey[item.k] || {};
+      return '<a href="' + item.a + '" style="--pill:' + (src.color || "#888") + '">'
+        + '<span class="sr-page">' + (src.label || item.k) + '</span>'
+        + '<span>' + item.t.replace(/[<>&]/g, "") + '</span>'
+        + '<span class="sr-section">' + (item.s || "").replace(/[<>&]/g, "") + '</span>'
+        + '</a>';
+    }).join("");
+    results.classList.add("open");
+  }
+  input.addEventListener("input", function () {
+    const q = input.value.trim().toLowerCase();
+    const token = ++searchToken;
+    if (q.length < 2) { results.classList.remove("open"); return; }
+    loadIndex().then(function (index) {
+      if (token !== searchToken) return;
+      const hits = index.filter(function (item) {
+        return item.t.toLowerCase().includes(q) || (item.s || "").toLowerCase().includes(q);
+      });
+      renderResults(hits, q);
+    }).catch(function () {
+      if (token !== searchToken) return;
+      results.innerHTML = '<div class="search-note">Search needs the site to be served over HTTP (works on the live GitHub Pages site).</div>';
+      results.classList.add("open");
+    });
+  });
+  document.addEventListener("click", function (event) {
+    if (!event.target.closest(".search-block")) results.classList.remove("open");
+  });
+
+  // Review queue (bookmarked items across all pages)
+  const reviewPanel = document.getElementById("review-panel");
+  const reviewBody = document.getElementById("review-body");
+  const reviewCount = document.getElementById("review-count");
+  const bookmarkSets = {};
+  let bookmarkTotal = 0;
+  data.sources.forEach(function (s) {
+    const set = readSet(s.storage.bookmark);
+    bookmarkSets[s.key] = set;
+    bookmarkTotal += set.size;
+  });
+  reviewCount.textContent = bookmarkTotal + " bookmarked";
+  document.getElementById("review-head").addEventListener("click", function () {
+    const open = reviewPanel.classList.toggle("open");
+    if (!open || reviewBody.dataset.loaded) return;
+    if (!bookmarkTotal) {
+      reviewBody.innerHTML = '<p class="review-empty">Nothing bookmarked yet. Use the ☆ star on any item to queue it for review.</p>';
+      reviewBody.dataset.loaded = "1";
+      return;
+    }
+    reviewBody.innerHTML = '<p class="review-empty">Loading…</p>';
+    loadIndex().then(function (index) {
+      const groups = data.sources.map(function (s) {
+        const set = bookmarkSets[s.key];
+        if (!set.size) return "";
+        const links = index.filter(function (item) { return item.k === s.key && set.has(item.c); })
+          .map(function (item) { return '<a href="' + item.a + '">' + item.t.replace(/[<>&]/g, "") + '</a>'; })
+          .join("");
+        if (!links) return "";
+        return '<div class="review-group"><h3>' + s.title + " (" + set.size + ')</h3>' + links + "</div>";
+      }).join("");
+      reviewBody.innerHTML = groups || '<p class="review-empty">Bookmarked items could not be matched to the index. Rebuild the site to refresh the index.</p>';
+      reviewBody.dataset.loaded = "1";
+    }).catch(function () {
+      reviewBody.innerHTML = '<p class="review-empty">The review queue needs the site to be served over HTTP (works on the live GitHub Pages site).</p>';
+    });
+  });
+
+  // Progress backup / restore
+  function progressKeys() {
+    const keys = [themeKey, "hub_theme"];
+    data.sources.forEach(function (s) {
+      keys.push(s.storage.done, s.storage.bookmark);
+    });
+    return keys;
+  }
+  document.getElementById("export-progress").addEventListener("click", function () {
+    const payload = { exportedAt: new Date().toISOString(), site: "taran-learning-hub", data: {} };
+    progressKeys().forEach(function (key) {
+      const value = localStorage.getItem(key);
+      if (value !== null) payload.data[key] = value;
+    });
+    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "learning-hub-progress-" + new Date().toISOString().slice(0, 10) + ".json";
+    a.click();
+    URL.revokeObjectURL(url);
+  });
+  const importFile = document.getElementById("import-file");
+  document.getElementById("import-progress").addEventListener("click", function () { importFile.click(); });
+  importFile.addEventListener("change", function () {
+    const file = importFile.files && importFile.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function () {
+      try {
+        const payload = JSON.parse(String(reader.result));
+        const entries = payload && payload.data ? payload.data : payload;
+        const allowed = new Set(progressKeys());
+        let applied = 0;
+        Object.keys(entries || {}).forEach(function (key) {
+          if (allowed.has(key) && typeof entries[key] === "string") {
+            localStorage.setItem(key, entries[key]);
+            applied += 1;
+          }
+        });
+        alert(applied ? "Restored " + applied + " progress entries. Reloading." : "No matching progress entries found in that file.");
+        if (applied) location.reload();
+      } catch (_e) {
+        alert("That file is not a valid progress backup.");
+      }
+    };
+    reader.readAsText(file);
   });
 })();
 </script>

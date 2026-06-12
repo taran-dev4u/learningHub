@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DSA Academy — Master Data Structures &amp; Algorithms</title>
+<style>
+/* ============================================================
+   DSA ACADEMY — SHARED DESIGN SYSTEM
+   Copy this <style> block verbatim into every module page.
+   ============================================================ */
+:root{
+  --bg:#0d1117; --bg2:#161b22; --bg3:#1f2630; --border:#30363d;
+  --text:#e6edf3; --text2:#9ba8b5; --accent:#4ea1ff; --accent2:#7ee2a8;
+  --warn:#ffb454; --danger:#ff7b72; --easy:#2ea96f; --med:#d9a426; --hard:#d95c5c;
+  --code-bg:#11151c; --shadow:0 4px 16px rgba(0,0,0,.4);
+  --radius:12px; --maxw:1080px;
+}
+[data-theme="light"]{
+  --bg:#f6f8fa; --bg2:#ffffff; --bg3:#eef1f5; --border:#d0d7de;
+  --text:#1f2328; --text2:#57606a; --accent:#0969da; --accent2:#1a7f4b;
+  --warn:#9a6700; --danger:#cf222e; --easy:#1a7f4b; --med:#9a6700; --hard:#cf222e;
+  --code-bg:#f0f2f5; --shadow:0 4px 16px rgba(140,149,159,.2);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;transition:background .25s,color .25s}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+/* header / nav */
+header.site{position:sticky;top:0;z-index:50;background:var(--bg2);border-bottom:1px solid var(--border);box-shadow:var(--shadow)}
+header.site .wrap{display:flex;align-items:center;gap:14px;height:58px}
+.logo{font-weight:800;font-size:1.05rem;color:var(--text);white-space:nowrap}
+.logo span{color:var(--accent)}
+nav.crumbs{display:flex;gap:10px;align-items:center;font-size:.88rem;color:var(--text2);overflow:hidden;white-space:nowrap}
+.spacer{flex:1}
+button.btn{background:var(--bg3);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:6px 12px;font-size:.85rem;cursor:pointer}
+button.btn:hover{border-color:var(--accent)}
+/* typography */
+h1{font-size:2rem;line-height:1.25;margin:28px 0 10px}
+h2{font-size:1.45rem;margin:42px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+h3{font-size:1.15rem;margin:30px 0 10px;color:var(--accent)}
+h4{font-size:1rem;margin:22px 0 8px}
+p{margin:10px 0}
+ul,ol{margin:10px 0 10px 26px}
+li{margin:5px 0}
+.sub{color:var(--text2)}
+/* cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin:18px 0}
+.card{display:block;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:16px;color:var(--text);transition:transform .12s,border-color .12s}
+.card:hover{transform:translateY(-2px);border-color:var(--accent);text-decoration:none}
+.card .mnum{font-size:.75rem;font-weight:700;color:var(--accent);letter-spacing:.05em;text-transform:uppercase}
+.card .mtitle{font-weight:700;margin:4px 0 6px}
+.card .mmeta{font-size:.8rem;color:var(--text2)}
+.pbar{height:6px;background:var(--bg3);border-radius:3px;margin-top:10px;overflow:hidden}
+.pbar i{display:block;height:100%;width:0%;background:var(--accent2);border-radius:3px;transition:width .3s}
+/* pills & badges */
+.pill{display:inline-block;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:999px;color:#fff;vertical-align:middle}
+.pill.E{background:var(--easy)} .pill.M{background:var(--med)} .pill.H{background:var(--hard)}
+.badge{display:inline-block;font-size:.66rem;font-weight:600;padding:1px 7px;border-radius:999px;border:1px solid var(--border);color:var(--text2);vertical-align:middle}
+/* boxes */
+.box{background:var(--bg2);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:8px;padding:14px 16px;margin:16px 0}
+.box.tip{border-left-color:var(--accent2)}
+.box.warn{border-left-color:var(--warn)}
+.box.danger{border-left-color:var(--danger)}
+.box .bt{font-weight:700;font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;display:block}
+/* tables */
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:.9rem}
+th,td{border:1px solid var(--border);padding:8px 11px;text-align:left;vertical-align:top}
+th{background:var(--bg3)}
+tr:nth-child(even) td{background:var(--bg2)}
+.tablewrap{overflow-x:auto}
+/* code */
+pre{position:relative;background:var(--code-bg);border:1px solid var(--border);border-radius:8px;padding:14px 16px;margin:14px 0;overflow-x:auto;font-size:.85rem;line-height:1.55}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+p code,li code,td code{background:var(--code-bg);border:1px solid var(--border);border-radius:5px;padding:1px 6px;font-size:.84em}
+.copybtn{position:absolute;top:8px;right:8px;background:var(--bg3);color:var(--text2);border:1px solid var(--border);border-radius:6px;padding:3px 10px;font-size:.72rem;cursor:pointer}
+.copybtn:hover{color:var(--text);border-color:var(--accent)}
+/* details */
+details{background:var(--bg2);border:1px solid var(--border);border-radius:8px;margin:12px 0;overflow:hidden}
+details summary{cursor:pointer;padding:12px 16px;font-weight:600;list-style:none;display:flex;align-items:center;gap:8px}
+details summary::before{content:"▸";color:var(--accent);transition:transform .15s}
+details[open] summary::before{transform:rotate(90deg)}
+details summary:hover{background:var(--bg3)}
+details .dbody{padding:4px 18px 16px}
+/* checkboxes */
+.chk{display:inline-flex;align-items:center;gap:8px;cursor:pointer}
+.chk input{width:16px;height:16px;accent-color:var(--accent2);cursor:pointer}
+/* ascii diagrams */
+pre.diagram{background:var(--bg3);border-style:dashed;font-size:.82rem}
+/* search */
+.search{width:100%;padding:12px 16px;font-size:1rem;background:var(--bg2);color:var(--text);border:1px solid var(--border);border-radius:10px;margin:18px 0 6px}
+.search:focus{outline:none;border-color:var(--accent)}
+/* footer nav */
+.pagenav{display:flex;justify-content:space-between;gap:12px;margin:48px 0 30px}
+.pagenav a{flex:1;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:12px 16px;color:var(--text)}
+.pagenav a:hover{border-color:var(--accent);text-decoration:none}
+.pagenav .dir{font-size:.72rem;color:var(--text2);text-transform:uppercase;letter-spacing:.05em}
+footer.site{border-top:1px solid var(--border);padding:24px 0 40px;color:var(--text2);font-size:.85rem;margin-top:30px}
+/* hero (hub only) */
+.hero{padding:48px 0 8px;text-align:center}
+.hero h1{font-size:2.4rem}
+.hero p{max-width:680px;margin:12px auto;color:var(--text2);font-size:1.05rem}
+.stats{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:22px 0 6px}
+.stat{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:10px 22px}
+.stat b{display:block;font-size:1.5rem;color:var(--accent)}
+.stat span{font-size:.78rem;color:var(--text2);text-transform:uppercase;letter-spacing:.04em}
+@media(max-width:640px){
+  h1{font-size:1.55rem}.hero h1{font-size:1.7rem}
+  header.site .wrap{height:50px}
+  nav.crumbs{display:none}
+  .grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:430px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="logo" href="index.html">DSA <span>Academy</span></a>
+    <nav class="crumbs"><span>Hub · 12 foundations · 29 patterns · 609 problems</span></nav>
+    <div class="spacer"></div>
+    <button class="btn" id="themeBtn" onclick="toggleTheme()">🌙 Dark</button>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="hero">
+    <h1>From zero to interview-ready.</h1>
+    <p>A complete, self-paced course in Data Structures &amp; Algorithms. Start with the foundations — no prior knowledge assumed — then master all 29 problem-solving patterns through 609 curated problems.</p>
+    <div class="stats">
+      <div class="stat"><b>12</b><span>Foundations</span></div>
+      <div class="stat"><b>29</b><span>Patterns</span></div>
+      <div class="stat"><b>158</b><span>Subpatterns</span></div>
+      <div class="stat"><b>609</b><span>Problems</span></div>
+    </div>
+  </section>
+
+  <input class="search" id="searchBox" type="search" placeholder="Filter modules… (e.g. 'heap', 'sliding window', 'DP')" oninput="filterCards()">
+  <p class="sub" id="searchCount"></p>
+
+  <h2 id="foundations">Module 0 — Foundations</h2>
+  <p class="sub">Learn every data structure and core skill from absolute scratch. Do these first, in order.</p>
+  <div class="grid" id="gridFoundations"></div>
+
+  <h2 id="patterns">The 29 Patterns</h2>
+  <p class="sub">Each pattern is a reusable problem-solving template. Listed in recommended study order below in the 14-week plan; numbered P1–P29 here.</p>
+  <div class="grid" id="gridPatterns"></div>
+
+  <h2 id="references">Reference Library</h2>
+
+  <details id="cheatsheet">
+    <summary>🧭 Pattern Recognition Cheat Sheet — "the problem says X → think pattern Y"</summary>
+    <div class="dbody">
+      <p>Interviews are pattern-matching under pressure. Scan the problem statement for these signals:</p>
+      <div class="tablewrap">
+      <table>
+        <tr><th>If the problem says / involves…</th><th>Think…</th></tr>
+        <tr><td>Sorted array + find a pair / triplet summing to a target</td><td><a href="p01-two-pointers.html">Two Pointers (converging)</a></td></tr>
+        <tr><td>Linked list cycle, middle of list, "without extra space"</td><td><a href="p01-two-pointers.html">Fast &amp; Slow Pointers</a></td></tr>
+        <tr><td>Longest / shortest <em>contiguous</em> subarray or substring satisfying a condition</td><td><a href="p05-sliding-window.html">Sliding Window</a></td></tr>
+        <tr><td>Count or sum of subarrays equal to K; "range sum" with no updates</td><td><a href="p17-prefix-sum.html">Prefix Sum (+ hashmap)</a></td></tr>
+        <tr><td>Next greater/smaller element, daily temperatures, histogram areas</td><td><a href="p06-stack.html">Monotonic Stack</a></td></tr>
+        <tr><td>Matching brackets, undo/redo, nested structure, evaluate expression</td><td><a href="p06-stack.html">Stack</a></td></tr>
+        <tr><td>"K largest/smallest/closest/most frequent", running median</td><td><a href="p07-heap.html">Heap (Top-K / Two Heaps)</a></td></tr>
+        <tr><td>Sorted input, or "minimize the maximum…" / "can we do it with capacity X?"</td><td><a href="p08-binary-search.html">Binary Search (incl. on answer)</a></td></tr>
+        <tr><td>Tree: level by level, zigzag, right side view</td><td><a href="p04-tree-traversal.html">BFS level order</a></td></tr>
+        <tr><td>Tree: paths, depths, validate BST, ancestors</td><td><a href="p04-tree-traversal.html">DFS traversal</a></td></tr>
+        <tr><td>Grid of islands / regions / flood fill</td><td><a href="p09-graph-traversal.html">Graph DFS/BFS on grid</a></td></tr>
+        <tr><td>Prerequisites, build order, dependency cycle</td><td><a href="p09-graph-traversal.html">Topological Sort</a></td></tr>
+        <tr><td>Cheapest path with weighted edges</td><td><a href="p09-graph-traversal.html">Dijkstra</a></td></tr>
+        <tr><td>"Are these connected?", merging groups/accounts</td><td><a href="p09-graph-traversal.html">Union-Find (DSU)</a></td></tr>
+        <tr><td>Spread from multiple starting points simultaneously (rotting oranges)</td><td><a href="p25-multi-source-bfs.html">Multi-Source BFS</a></td></tr>
+        <tr><td>Count ways / min cost / max value with overlapping choices</td><td><a href="p12-dp.html">Dynamic Programming</a></td></tr>
+        <tr><td>Generate <em>all</em> subsets / permutations / combinations / boards</td><td><a href="p11-backtracking.html">Backtracking</a></td></tr>
+        <tr><td>Intervals: merge, insert, rooms needed, overlaps</td><td><a href="p21-intervals-sweep.html">Intervals &amp; Line Sweep</a></td></tr>
+        <tr><td>Locally best choice provably works (scheduling, jumps, stock)</td><td><a href="p10-greedy.html">Greedy</a></td></tr>
+        <tr><td>Prefix lookups, autocomplete, word dictionary with wildcards</td><td><a href="p20-trie.html">Trie</a></td></tr>
+        <tr><td>XOR tricks, single number among pairs, set-bit counting</td><td><a href="p14-bit-manipulation.html">Bit Manipulation</a></td></tr>
+        <tr><td>Range queries <em>with updates</em></td><td><a href="p16-segment-fenwick.html">Segment / Fenwick Tree</a></td></tr>
+        <tr><td>"Design a data structure that supports…"</td><td><a href="p15-design.html">Design</a> / <a href="p18-hashmap-cache.html">Hash Map &amp; Cache</a></td></tr>
+        <tr><td>Substring search, repeated patterns, string periodicity</td><td><a href="p13-string-manipulation.html">KMP / Rabin-Karp</a> · <a href="p29-advanced-strings.html">Z / Manacher</a></td></tr>
+        <tr><td>Random pick with constraints, sampling from a stream</td><td><a href="p28-randomized.html">Randomized Algorithms</a></td></tr>
+        <tr><td>Kth element without full sort</td><td><a href="p27-sorting-selection.html">Quickselect</a></td></tr>
+        <tr><td>Iterate lazily over a complex structure / stream</td><td><a href="p26-iterators-streams.html">Iterator Design</a></td></tr>
+      </table>
+      </div>
+    </div>
+  </details>
+
+  <details id="bigo">
+    <summary>📈 Big-O Reference Tables</summary>
+    <div class="dbody">
+      <h4>Data structure operations (average / worst)</h4>
+      <div class="tablewrap">
+      <table>
+        <tr><th>Structure</th><th>Access</th><th>Search</th><th>Insert</th><th>Delete</th><th>Notes</th></tr>
+        <tr><td>Array (static)</td><td>O(1)</td><td>O(n)</td><td>O(n)</td><td>O(n)</td><td>insert/delete shift elements</td></tr>
+        <tr><td>Dynamic array</td><td>O(1)</td><td>O(n)</td><td>O(1) amortized at end</td><td>O(n)</td><td>occasional resize copies all</td></tr>
+        <tr><td>Singly linked list</td><td>O(n)</td><td>O(n)</td><td>O(1) at head</td><td>O(1) with prev node</td><td>no random access</td></tr>
+        <tr><td>Hash map / set</td><td>—</td><td>O(1) / O(n)</td><td>O(1) / O(n)</td><td>O(1) / O(n)</td><td>worst case = all collide</td></tr>
+        <tr><td>Stack / Queue / Deque</td><td>peek O(1)</td><td>O(n)</td><td>O(1)</td><td>O(1)</td><td>at the permitted ends</td></tr>
+        <tr><td>Binary heap</td><td>peek O(1)</td><td>O(n)</td><td>O(log n)</td><td>O(log n)</td><td>build-heap is O(n)</td></tr>
+        <tr><td>BST (balanced)</td><td>O(log n)</td><td>O(log n)</td><td>O(log n)</td><td>O(log n)</td><td>unbalanced degrades to O(n)</td></tr>
+        <tr><td>Trie</td><td>—</td><td>O(L)</td><td>O(L)</td><td>O(L)</td><td>L = word length</td></tr>
+        <tr><td>Union-Find</td><td>—</td><td>find ~O(α(n))</td><td>union ~O(α(n))</td><td>—</td><td>with compression + rank</td></tr>
+        <tr><td>Segment tree</td><td>—</td><td>query O(log n)</td><td>update O(log n)</td><td>—</td><td>build O(n)</td></tr>
+        <tr><td>Fenwick tree</td><td>—</td><td>prefix O(log n)</td><td>update O(log n)</td><td>—</td><td>smaller constant than segtree</td></tr>
+      </table>
+      </div>
+      <h4>Sorting algorithms</h4>
+      <div class="tablewrap">
+      <table>
+        <tr><th>Algorithm</th><th>Best</th><th>Average</th><th>Worst</th><th>Space</th><th>Stable?</th></tr>
+        <tr><td>Bubble</td><td>O(n)</td><td>O(n²)</td><td>O(n²)</td><td>O(1)</td><td>Yes</td></tr>
+        <tr><td>Selection</td><td>O(n²)</td><td>O(n²)</td><td>O(n²)</td><td>O(1)</td><td>No</td></tr>
+        <tr><td>Insertion</td><td>O(n)</td><td>O(n²)</td><td>O(n²)</td><td>O(1)</td><td>Yes</td></tr>
+        <tr><td>Merge</td><td>O(n log n)</td><td>O(n log n)</td><td>O(n log n)</td><td>O(n)</td><td>Yes</td></tr>
+        <tr><td>Quick</td><td>O(n log n)</td><td>O(n log n)</td><td>O(n²)</td><td>O(log n)</td><td>No</td></tr>
+        <tr><td>Heap</td><td>O(n log n)</td><td>O(n log n)</td><td>O(n log n)</td><td>O(1)</td><td>No</td></tr>
+        <tr><td>Counting</td><td>O(n+k)</td><td>O(n+k)</td><td>O(n+k)</td><td>O(k)</td><td>Yes</td></tr>
+        <tr><td>Radix</td><td>O(d·(n+k))</td><td>O(d·(n+k))</td><td>O(d·(n+k))</td><td>O(n+k)</td><td>Yes</td></tr>
+        <tr><td>Bucket</td><td>O(n+k)</td><td>O(n+k)</td><td>O(n²)</td><td>O(n)</td><td>Yes*</td></tr>
+      </table>
+      </div>
+      <h4>Graph algorithms (V vertices, E edges)</h4>
+      <div class="tablewrap">
+      <table>
+        <tr><th>Algorithm</th><th>Time</th><th>Space</th><th>Use</th></tr>
+        <tr><td>BFS / DFS</td><td>O(V+E)</td><td>O(V)</td><td>traversal, components, shortest path (unweighted)</td></tr>
+        <tr><td>Topological sort</td><td>O(V+E)</td><td>O(V)</td><td>ordering a DAG</td></tr>
+        <tr><td>Dijkstra (binary heap)</td><td>O((V+E) log V)</td><td>O(V)</td><td>shortest path, non-negative weights</td></tr>
+        <tr><td>Bellman-Ford</td><td>O(V·E)</td><td>O(V)</td><td>negative edges, ≤K stops</td></tr>
+        <tr><td>Floyd-Warshall</td><td>O(V³)</td><td>O(V²)</td><td>all-pairs shortest path</td></tr>
+        <tr><td>Kruskal / Prim</td><td>O(E log E) / O(E log V)</td><td>O(V)</td><td>minimum spanning tree</td></tr>
+        <tr><td>Tarjan (SCC/bridges)</td><td>O(V+E)</td><td>O(V)</td><td>critical connections</td></tr>
+      </table>
+      </div>
+      <h4>String algorithms</h4>
+      <div class="tablewrap">
+      <table>
+        <tr><th>Algorithm</th><th>Time</th><th>Use</th></tr>
+        <tr><td>Naive matching</td><td>O(n·m)</td><td>tiny inputs only</td></tr>
+        <tr><td>KMP</td><td>O(n+m)</td><td>substring search via failure function</td></tr>
+        <tr><td>Rabin-Karp</td><td>O(n+m) expected</td><td>rolling hash; multi-pattern search</td></tr>
+        <tr><td>Z-algorithm</td><td>O(n)</td><td>prefix-match array</td></tr>
+        <tr><td>Manacher</td><td>O(n)</td><td>longest palindromic substring</td></tr>
+      </table>
+      </div>
+    </div>
+  </details>
+
+  <details id="studyplan">
+    <summary>🗓️ 14-Week Study Plan</summary>
+    <div class="dbody">
+      <p>Roughly 8–12 hours/week. Foundations first, then patterns in dependency order. Each week: read the module, dry-run every example by hand, then solve the problems <em>before</em> opening the solutions.</p>
+      <div class="tablewrap">
+      <table>
+        <tr><th>Week</th><th>Focus</th><th>Modules</th></tr>
+        <tr><td>1</td><td>How to measure code + arrays</td><td>0.1 Complexity · 0.2 Arrays &amp; Strings · 0.3 Hashing</td></tr>
+        <tr><td>2</td><td>Linear structures</td><td>0.4 Linked Lists · 0.5 Stacks &amp; Queues · 0.6 Recursion</td></tr>
+        <tr><td>3</td><td>Hierarchical structures</td><td>0.7 Trees &amp; BSTs · 0.8 Heaps</td></tr>
+        <tr><td>4</td><td>Graphs + sorting + the rest</td><td>0.9 Graphs · 0.10 Sorting · 0.11 Tries &amp; DSU · 0.12 Advanced DS</td></tr>
+        <tr><td>5</td><td>First patterns</td><td>P1 Two Pointers · P2 Array/Matrix</td></tr>
+        <tr><td>6</td><td>Windows &amp; sums</td><td>P5 Sliding Window · P17 Prefix Sum</td></tr>
+        <tr><td>7</td><td>Linear DS patterns</td><td>P3 Linked List · P6 Stack · P7 Heap</td></tr>
+        <tr><td>8</td><td>Search &amp; bits</td><td>P8 Binary Search · P18 Hash Map &amp; Cache · P14 Bit Manipulation</td></tr>
+        <tr><td>9</td><td>Trees</td><td>P4 Tree Traversal · P22 Tree DP</td></tr>
+        <tr><td>10</td><td>Graphs</td><td>P9 Graph Traversal · P25 Multi-Source BFS · P24 Advanced Graph</td></tr>
+        <tr><td>11</td><td>Dynamic programming</td><td>P12 DP · P23 Advanced DP</td></tr>
+        <tr><td>12</td><td>Choices &amp; exhaustive search</td><td>P10 Greedy · P11 Backtracking</td></tr>
+        <tr><td>13</td><td>Strings &amp; design</td><td>P13 Strings · P29 Advanced Strings · P15 Design · P20 Trie · P26 Iterators</td></tr>
+        <tr><td>14</td><td>Specialized + review</td><td>P16 Seg/Fenwick · P21 Intervals · P19 Math · P27 Sorting/Selection · P28 Randomized · full review</td></tr>
+      </table>
+      </div>
+      <div class="box tip"><span class="bt">How to review</span>Keep a "missed it" list. Any problem you couldn't solve unaided goes on the list; re-solve it from scratch 3 days later, then 2 weeks later. Pattern recognition is built by spaced repetition, not by reading.</div>
+    </div>
+  </details>
+
+  <footer class="site">
+    DSA Academy · Built for absolute beginners, finishing at advanced interview level. All code in Python.
+  </footer>
+</div>
+
+<script>
+/* ============================================================
+   SHARED JS — copy verbatim into every page (theme + copy btns)
+   ============================================================ */
+var themeState = "dark"; // in-memory only, per session
+function toggleTheme(){
+  themeState = themeState === "dark" ? "light" : "dark";
+  document.documentElement.setAttribute("data-theme", themeState === "light" ? "light" : "");
+  if(themeState === "dark") document.documentElement.removeAttribute("data-theme");
+  var b = document.getElementById("themeBtn");
+  if(b) b.textContent = themeState === "dark" ? "🌙 Dark" : "☀️ Light";
+}
+function addCopyButtons(){
+  document.querySelectorAll("pre").forEach(function(pre){
+    if(pre.classList.contains("diagram") || pre.querySelector(".copybtn")) return;
+    var btn = document.createElement("button");
+    btn.className = "copybtn"; btn.textContent = "Copy";
+    btn.addEventListener("click", function(){
+      var code = pre.querySelector("code");
+      var text = (code ? code : pre).innerText.replace(/^Copy\n?/, "");
+      navigator.clipboard.writeText(text).then(function(){
+        btn.textContent = "Copied!"; setTimeout(function(){ btn.textContent = "Copy"; }, 1500);
+      });
+    });
+    pre.appendChild(btn);
+  });
+}
+document.addEventListener("DOMContentLoaded", addCopyButtons);
+
+/* ============================ HUB-ONLY JS ============================ */
+var MODULES = [
+  // Foundations
+  {id:"0.1", t:"Complexity & Big-O", f:"m0-1-complexity.html", g:"f", meta:"Counting steps · amortized · log intuition"},
+  {id:"0.2", t:"Arrays, Strings & Matrices", f:"m0-2-arrays-strings.html", g:"f", meta:"Memory layout · dynamic arrays · 2D"},
+  {id:"0.3", t:"Hash Maps & Sets", f:"m0-3-hashing.html", g:"f", meta:"Hash functions · collisions · rehashing"},
+  {id:"0.4", t:"Linked Lists", f:"m0-4-linked-lists.html", g:"f", meta:"Singly · doubly · circular · dummy node"},
+  {id:"0.5", t:"Stacks, Queues & Deques", f:"m0-5-stacks-queues.html", g:"f", meta:"LIFO · FIFO · circular queue"},
+  {id:"0.6", t:"Recursion & the Call Stack", f:"m0-6-recursion.html", g:"f", meta:"Base case · call tree · tail recursion"},
+  {id:"0.7", t:"Trees & BSTs", f:"m0-7-trees.html", g:"f", meta:"All operations · 4 traversals · balance"},
+  {id:"0.8", t:"Heaps / Priority Queues", f:"m0-8-heaps.html", g:"f", meta:"Sift up/down · heapify O(n) · heapq"},
+  {id:"0.9", t:"Graph Representations & BFS/DFS", f:"m0-9-graphs.html", g:"f", meta:"Adjacency list/matrix · traversal mechanics"},
+  {id:"0.10", t:"All Sorting Algorithms", f:"m0-10-sorting.html", g:"f", meta:"9 algorithms · stability · when to use"},
+  {id:"0.11", t:"Tries & Union-Find", f:"m0-11-tries-dsu.html", g:"f", meta:"Prefix trees · path compression · rank"},
+  {id:"0.12", t:"Segment Tree, Fenwick, Monotonic", f:"m0-12-advanced-ds.html", g:"f", meta:"Range queries · BIT · TreeMap concept"},
+  // Patterns
+  {id:"P1", t:"Two Pointers", f:"p01-two-pointers.html", g:"p", sp:7, pr:37},
+  {id:"P2", t:"Array / Matrix Manipulation", f:"p02-array-matrix.html", g:"p", sp:10, pr:24},
+  {id:"P3", t:"Linked List Manipulation", f:"p03-linked-list.html", g:"p", sp:5, pr:22},
+  {id:"P4", t:"Tree Traversal (DFS & BFS)", f:"p04-tree-traversal.html", g:"p", sp:6, pr:54},
+  {id:"P5", t:"Sliding Window", f:"p05-sliding-window.html", g:"p", sp:4, pr:33},
+  {id:"P6", t:"Stack Patterns", f:"p06-stack.html", g:"p", sp:6, pr:32},
+  {id:"P7", t:"Heap (Priority Queue)", f:"p07-heap.html", g:"p", sp:4, pr:30},
+  {id:"P8", t:"Binary Search", f:"p08-binary-search.html", g:"p", sp:5, pr:29},
+  {id:"P9", t:"Graph Traversal (DFS & BFS)", f:"p09-graph-traversal.html", g:"p", sp:11, pr:69},
+  {id:"P10", t:"Greedy", f:"p10-greedy.html", g:"p", sp:7, pr:25},
+  {id:"P11", t:"Backtracking", f:"p11-backtracking.html", g:"p", sp:7, pr:27},
+  {id:"P12", t:"Dynamic Programming", f:"p12-dp.html", g:"p", sp:12, pr:50},
+  {id:"P13", t:"String Manipulation", f:"p13-string-manipulation.html", g:"p", sp:7, pr:23},
+  {id:"P14", t:"Bit Manipulation", f:"p14-bit-manipulation.html", g:"p", sp:4, pr:16},
+  {id:"P15", t:"Design", f:"p15-design.html", g:"p", sp:2, pr:43},
+  {id:"P16", t:"Segment & Fenwick Tree", f:"p16-segment-fenwick.html", g:"p", sp:2, pr:12},
+  {id:"P17", t:"Prefix Sum & Difference Array", f:"p17-prefix-sum.html", g:"p", sp:4, pr:13},
+  {id:"P18", t:"Hash Map & Cache Design", f:"p18-hashmap-cache.html", g:"p", sp:5, pr:10},
+  {id:"P19", t:"Math, Number Theory & Geometry", f:"p19-math.html", g:"p", sp:5, pr:20},
+  {id:"P20", t:"Trie / Prefix Tree", f:"p20-trie.html", g:"p", sp:5, pr:17},
+  {id:"P21", t:"Intervals & Line Sweep", f:"p21-intervals-sweep.html", g:"p", sp:4, pr:16},
+  {id:"P22", t:"Tree DP", f:"p22-tree-dp.html", g:"p", sp:4, pr:8},
+  {id:"P23", t:"Advanced DP", f:"p23-advanced-dp.html", g:"p", sp:5, pr:30},
+  {id:"P24", t:"Advanced Graph", f:"p24-advanced-graph.html", g:"p", sp:9, pr:27},
+  {id:"P25", t:"Multi-Source BFS", f:"p25-multi-source-bfs.html", g:"p", sp:1, pr:6},
+  {id:"P26", t:"Iterator & Data-Stream Design", f:"p26-iterators-streams.html", g:"p", sp:6, pr:13},
+  {id:"P27", t:"Sorting & Selection", f:"p27-sorting-selection.html", g:"p", sp:4, pr:8},
+  {id:"P28", t:"Randomized Algorithms", f:"p28-randomized.html", g:"p", sp:4, pr:6},
+  {id:"P29", t:"Advanced String Algorithms", f:"p29-advanced-strings.html", g:"p", sp:3, pr:7}
+];
+function cardHTML(m){
+  var meta = m.g === "f" ? m.meta : (m.sp + " subpattern" + (m.sp>1?"s":"") + " · " + m.pr + " problems");
+  var num = m.g === "f" ? "Module " + m.id : m.id;
+  return '<a class="card" href="' + m.f + '" data-name="' + (m.id + " " + m.t).toLowerCase() + '">' +
+    '<div class="mnum">' + num + '</div>' +
+    '<div class="mtitle">' + m.t + '</div>' +
+    '<div class="mmeta">' + meta + '</div>' +
+    '<div class="pbar"><i></i></div></a>';
+}
+function renderCards(){
+  document.getElementById("gridFoundations").innerHTML = MODULES.filter(function(m){return m.g==="f";}).map(cardHTML).join("");
+  document.getElementById("gridPatterns").innerHTML = MODULES.filter(function(m){return m.g==="p";}).map(cardHTML).join("");
+}
+function filterCards(){
+  var q = document.getElementById("searchBox").value.trim().toLowerCase();
+  var shown = 0, total = 0;
+  document.querySelectorAll(".card").forEach(function(c){
+    total++;
+    var hit = !q || c.getAttribute("data-name").indexOf(q) !== -1;
+    c.style.display = hit ? "" : "none";
+    if(hit) shown++;
+  });
+  document.getElementById("searchCount").textContent = q ? ("Showing " + shown + " of " + total + " modules") : "";
+}
+renderCards();
+</script>
+</body>
+</html>

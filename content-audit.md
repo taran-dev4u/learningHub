@@ -1,6 +1,6 @@
 # Taran's Learning Hub Content Audit
 
-Generated: 2026-06-11T18:33:20.839Z
+Generated: 2026-06-12T17:50:16.923Z
 
 ## Research References
 
@@ -30,7 +30,7 @@ Generated: 2026-06-11T18:33:20.839Z
 
 ## DSA Ultimate Index
 
-- Inventory: 29 sections, 158 subsections, 609 problems, 510 resources.
+- Inventory: 29 sections, 158 subsections, 609 problems, 517 resources.
 - Formatting focus: consistent navigation, closed resources, clean headings, and better fallback search links.
 - Duplicate subsection names to review: none found by title.
 - Weak/generic subsection names to review: none found by heuristic.
@@ -71,7 +71,7 @@ Sections:
 
 ## System Design
 
-- Inventory: 13 sections, 46 subsections, 255 concepts, 251 resources.
+- Inventory: 14 sections, 56 subsections, 296 concepts, 256 resources.
 - Formatting focus: consistent navigation, closed resources, clean headings, and better fallback search links.
 - Duplicate subsection names to review: none found by title.
 - Weak/generic subsection names to review: none found by heuristic.
@@ -302,10 +302,11 @@ Sections:
 - Security: 12 items, 2 subsections, 8 resources.
 - Classic System Designs: 27 items, 3 subsections, 24 resources.
 - Interview Approach: 15 items, 3 subsections, 14 resources.
+- Interview Engineering Toolkit: 41 items, 10 subsections, 6 resources.
 
 ## CS Fundamentals
 
-- Inventory: 6 sections, 25 subsections, 128 concepts, 34 resources.
+- Inventory: 7 sections, 31 subsections, 156 concepts, 53 resources.
 - Formatting focus: consistent navigation, closed resources, clean headings, and better fallback search links.
 - Duplicate subsection names to review: none found by title.
 - Weak/generic subsection names to review: IPC
@@ -320,12 +321,13 @@ Sections:
 - Concurrency & Parallelism: 22 items, 4 subsections, 4 resources.
 - Security: 19 items, 3 subsections, 4 resources.
 - Computer Architecture: 14 items, 3 subsections, 3 resources.
+- Languages, Runtimes & Engineering Practice: 28 items, 6 subsections, 6 resources.
 
 ## Behavioral and Leadership
 
-- Inventory: 5 sections, 33 subsections, 121 concepts, 24 resources.
+- Inventory: 6 sections, 41 subsections, 145 concepts, 37 resources.
 - Formatting focus: consistent navigation, closed resources, clean headings, and better fallback search links.
-- Duplicate subsection names to review: none found by title.
+- Duplicate subsection names to review: Failure & Learning (2)
 - Weak/generic subsection names to review: none found by heuristic.
 - Coverage source: STAR interview prep + leadership story coverage.
 - Missing/priority candidates: Ambiguity, Ownership, Conflict, Failure, Mentoring, Prioritization, Customer impact, Technical judgment.
@@ -347,10 +349,11 @@ Sections:
 - Question Categories (any company): 26 items, 8 subsections, 2 resources.
 - Story Bank — 12 stories you need: 18 items, 2 subsections, 2 resources.
 - Interview Strategy & Mock Practice: 17 items, 4 subsections, 3 resources.
+- Competency Deep Dives: 24 items, 8 subsections, 4 resources.
 
 ## AI Engineering
 
-- Inventory: 10 sections, 30 subsections, 150 concepts, 54 resources.
+- Inventory: 11 sections, 37 subsections, 180 concepts, 60 resources.
 - Formatting focus: consistent navigation, closed resources, clean headings, and better fallback search links.
 - Duplicate subsection names to review: none found by title.
 - Weak/generic subsection names to review: none found by heuristic.
@@ -381,10 +384,11 @@ Sections:
 - Classical Machine Learning: 23 items, 4 subsections, 4 resources.
 - Deep Learning: 11 items, 2 subsections, 4 resources.
 - MLOps: 16 items, 4 subsections, 4 resources.
+- Production AI Engineering: 30 items, 7 subsections, 6 resources.
 
 ## Cloud - AWS and Azure
 
-- Inventory: 10 sections, 26 subsections, 159 concepts, 44 resources.
+- Inventory: 11 sections, 34 subsections, 194 concepts, 58 resources.
 - Formatting focus: consistent navigation, closed resources, clean headings, and better fallback search links.
 - Duplicate subsection names to review: none found by title.
 - Weak/generic subsection names to review: none found by heuristic.
@@ -403,4 +407,5 @@ Sections:
 - Monitoring & Observability: 7 items, 2 subsections, 2 resources.
 - Infrastructure as Code: 6 items, 1 subsections, 4 resources.
 - AWS Interview Q&A (250 Questions): 40 items, 5 subsections, 4 resources.
+- Architecture & Governance: 35 items, 8 subsections, 6 resources.
 

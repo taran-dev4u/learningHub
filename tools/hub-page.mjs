@@ -1,4 +1,69 @@
-<!doctype html>
+// Hub landing page (index.html / hub.html).
+// Six page cards + global search, bookmark review queue, and progress export/import.
+
+function escHtml(value = "") {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function personalPurpose(source) {
+  const purposes = {
+    dsa: "My primary coding-interview practice map: patterns first, problems second, repeat weak spots until they feel automatic.",
+    sd: "My system design control room: concepts, trade-offs, classic designs, and interview structure in one place.",
+    cs: "My fundamentals refresh layer: OS, networking, databases, concurrency, security, and architecture for deeper reasoning.",
+    bh: "My story bank and leadership prep space: STAR answers, principles, conflict, ownership, and mock practice.",
+    ai: "My AI engineering track: LLM apps, RAG, agents, evals, MLOps, and production quality constraints.",
+    cloud: "My AWS and Azure comparison desk: services, Q&A, architecture pillars, security, reliability, and cost thinking.",
+  };
+  return purposes[source.key] || source.summary;
+}
+
+export function simpleHubHtml(data) {
+  const json = JSON.stringify({
+    sources: data.sources.map((s) => ({
+      key: s.key,
+      title: s.title,
+      file: s.file,
+      label: s.label,
+      color: s.color,
+      storage: s.storage,
+      itemCount: s.itemCount,
+      progressLabel: s.progressLabel,
+    })),
+  }).replace(/</g, "\\u003c");
+
+  const totals = {
+    items: data.sources.reduce((sum, s) => sum + s.itemCount, 0),
+    sections: data.sources.reduce((sum, s) => sum + s.sections.length, 0),
+    resources: data.sources.reduce((sum, s) => sum + s.resourceCount, 0),
+  };
+
+  const cards = data.sources.map((source, index) => `
+    <article class="page-card" data-page-card="${escHtml(source.key)}" style="--card-color:${escHtml(source.color)}">
+      <div class="card-index">${String(index + 1).padStart(2, "0")}</div>
+      <div class="card-body">
+        <p class="card-kicker">${escHtml(source.label)} / ${escHtml(source.progressLabel)}</p>
+        <h2>${escHtml(source.title)}</h2>
+        <p>${escHtml(personalPurpose(source))}</p>
+        <div class="card-stats">
+          <span>${source.sections.length} sections</span>
+          <span>${source.itemCount} ${escHtml(source.progressLabel)}</span>
+          <span>${source.resourceCount} resources</span>
+        </div>
+        <div class="card-progress" aria-label="Progress for ${escHtml(source.title)}">
+          <span data-page-progress-fill="${escHtml(source.key)}"></span>
+        </div>
+        <div class="card-footer">
+          <span data-page-progress-text="${escHtml(source.key)}">0 / ${source.itemCount} complete</span>
+          <a href="${escHtml(source.file)}">Open</a>
+        </div>
+      </div>
+    </article>`).join("");
+
+  return `<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -300,7 +365,7 @@ a { color: inherit; }
 </style>
 </head>
 <body>
-<script id="hub-data" type="application/json">{"sources":[{"key":"dsa","title":"DSA Ultimate Index","file":"DSA_Ultimate_Index.html","label":"DSA","color":"#2f6fdd","storage":{"done":"dsa_index_solved_v1","bookmark":"dsa_index_bookmark_v1"},"itemCount":609,"progressLabel":"problems"},{"key":"sd","title":"System Design","file":"system_design.html","label":"Systems","color":"#d84f86","storage":{"done":"hub_done_sd","bookmark":"hub_bm_sd"},"itemCount":296,"progressLabel":"concepts"},{"key":"cs","title":"CS Fundamentals","file":"cs_fundamentals.html","label":"CS","color":"#15875f","storage":{"done":"hub_done_cs","bookmark":"hub_bm_cs"},"itemCount":156,"progressLabel":"concepts"},{"key":"bh","title":"Behavioral and Leadership","file":"behavioral.html","label":"Behavioral","color":"#c9692d","storage":{"done":"hub_done_bh","bookmark":"hub_bm_bh"},"itemCount":145,"progressLabel":"concepts"},{"key":"ai","title":"AI Engineering","file":"ai_engineering.html","label":"AI","color":"#7b61d8","storage":{"done":"hub_done_ai","bookmark":"hub_bm_ai"},"itemCount":180,"progressLabel":"concepts"},{"key":"cloud","title":"Cloud - AWS and Azure","file":"cloud_aws_azure.html","label":"Cloud","color":"#0786a3","storage":{"done":"hub_done_cloud","bookmark":"hub_bm_cloud"},"itemCount":194,"progressLabel":"concepts"}]}</script>
+<script id="hub-data" type="application/json">${json}</script>
 <main class="wrap">
   <div class="topbar">
     <section class="brand">
@@ -315,13 +380,13 @@ a { color: inherit; }
     </div>
   </div>
   <section class="stats-strip" aria-label="Overall stats">
-    <div class="stat-chip"><b id="total-done">0 / 1580</b><span>items complete</span><div class="overall-progress"><i id="total-fill"></i></div></div>
-    <div class="stat-chip"><b>6</b><span>study spaces</span></div>
-    <div class="stat-chip"><b>78</b><span>sections</span></div>
-    <div class="stat-chip"><b>981</b><span>resources</span></div>
+    <div class="stat-chip"><b id="total-done">0 / ${totals.items}</b><span>items complete</span><div class="overall-progress"><i id="total-fill"></i></div></div>
+    <div class="stat-chip"><b>${data.sources.length}</b><span>study spaces</span></div>
+    <div class="stat-chip"><b>${totals.sections}</b><span>sections</span></div>
+    <div class="stat-chip"><b>${totals.resources}</b><span>resources</span></div>
   </section>
   <section class="search-block" aria-label="Global search">
-    <input class="search-input" id="global-search" type="search" placeholder="Search all 1580 topics and problems across every page…" autocomplete="off">
+    <input class="search-input" id="global-search" type="search" placeholder="Search all ${totals.items} topics and problems across every page…" autocomplete="off">
     <div class="search-results" id="search-results"></div>
   </section>
   <section class="review-panel" id="review-panel" aria-label="Bookmarked items">
@@ -332,127 +397,7 @@ a { color: inherit; }
     <div class="review-body" id="review-body"></div>
   </section>
   <section class="page-grid" aria-label="Learning pages">
-    
-    <article class="page-card" data-page-card="dsa" style="--card-color:#2f6fdd">
-      <div class="card-index">01</div>
-      <div class="card-body">
-        <p class="card-kicker">DSA / problems</p>
-        <h2>DSA Ultimate Index</h2>
-        <p>My primary coding-interview practice map: patterns first, problems second, repeat weak spots until they feel automatic.</p>
-        <div class="card-stats">
-          <span>29 sections</span>
-          <span>609 problems</span>
-          <span>517 resources</span>
-        </div>
-        <div class="card-progress" aria-label="Progress for DSA Ultimate Index">
-          <span data-page-progress-fill="dsa"></span>
-        </div>
-        <div class="card-footer">
-          <span data-page-progress-text="dsa">0 / 609 complete</span>
-          <a href="DSA_Ultimate_Index.html">Open</a>
-        </div>
-      </div>
-    </article>
-    <article class="page-card" data-page-card="sd" style="--card-color:#d84f86">
-      <div class="card-index">02</div>
-      <div class="card-body">
-        <p class="card-kicker">Systems / concepts</p>
-        <h2>System Design</h2>
-        <p>My system design control room: concepts, trade-offs, classic designs, and interview structure in one place.</p>
-        <div class="card-stats">
-          <span>14 sections</span>
-          <span>296 concepts</span>
-          <span>256 resources</span>
-        </div>
-        <div class="card-progress" aria-label="Progress for System Design">
-          <span data-page-progress-fill="sd"></span>
-        </div>
-        <div class="card-footer">
-          <span data-page-progress-text="sd">0 / 296 complete</span>
-          <a href="system_design.html">Open</a>
-        </div>
-      </div>
-    </article>
-    <article class="page-card" data-page-card="cs" style="--card-color:#15875f">
-      <div class="card-index">03</div>
-      <div class="card-body">
-        <p class="card-kicker">CS / concepts</p>
-        <h2>CS Fundamentals</h2>
-        <p>My fundamentals refresh layer: OS, networking, databases, concurrency, security, and architecture for deeper reasoning.</p>
-        <div class="card-stats">
-          <span>7 sections</span>
-          <span>156 concepts</span>
-          <span>53 resources</span>
-        </div>
-        <div class="card-progress" aria-label="Progress for CS Fundamentals">
-          <span data-page-progress-fill="cs"></span>
-        </div>
-        <div class="card-footer">
-          <span data-page-progress-text="cs">0 / 156 complete</span>
-          <a href="cs_fundamentals.html">Open</a>
-        </div>
-      </div>
-    </article>
-    <article class="page-card" data-page-card="bh" style="--card-color:#c9692d">
-      <div class="card-index">04</div>
-      <div class="card-body">
-        <p class="card-kicker">Behavioral / concepts</p>
-        <h2>Behavioral and Leadership</h2>
-        <p>My story bank and leadership prep space: STAR answers, principles, conflict, ownership, and mock practice.</p>
-        <div class="card-stats">
-          <span>6 sections</span>
-          <span>145 concepts</span>
-          <span>37 resources</span>
-        </div>
-        <div class="card-progress" aria-label="Progress for Behavioral and Leadership">
-          <span data-page-progress-fill="bh"></span>
-        </div>
-        <div class="card-footer">
-          <span data-page-progress-text="bh">0 / 145 complete</span>
-          <a href="behavioral.html">Open</a>
-        </div>
-      </div>
-    </article>
-    <article class="page-card" data-page-card="ai" style="--card-color:#7b61d8">
-      <div class="card-index">05</div>
-      <div class="card-body">
-        <p class="card-kicker">AI / concepts</p>
-        <h2>AI Engineering</h2>
-        <p>My AI engineering track: LLM apps, RAG, agents, evals, MLOps, and production quality constraints.</p>
-        <div class="card-stats">
-          <span>11 sections</span>
-          <span>180 concepts</span>
-          <span>60 resources</span>
-        </div>
-        <div class="card-progress" aria-label="Progress for AI Engineering">
-          <span data-page-progress-fill="ai"></span>
-        </div>
-        <div class="card-footer">
-          <span data-page-progress-text="ai">0 / 180 complete</span>
-          <a href="ai_engineering.html">Open</a>
-        </div>
-      </div>
-    </article>
-    <article class="page-card" data-page-card="cloud" style="--card-color:#0786a3">
-      <div class="card-index">06</div>
-      <div class="card-body">
-        <p class="card-kicker">Cloud / concepts</p>
-        <h2>Cloud - AWS and Azure</h2>
-        <p>My AWS and Azure comparison desk: services, Q&amp;A, architecture pillars, security, reliability, and cost thinking.</p>
-        <div class="card-stats">
-          <span>11 sections</span>
-          <span>194 concepts</span>
-          <span>58 resources</span>
-        </div>
-        <div class="card-progress" aria-label="Progress for Cloud - AWS and Azure">
-          <span data-page-progress-fill="cloud"></span>
-        </div>
-        <div class="card-footer">
-          <span data-page-progress-text="cloud">0 / 194 complete</span>
-          <a href="cloud_aws_azure.html">Open</a>
-        </div>
-      </div>
-    </article>
+    ${cards}
   </section>
 </main>
 <script>
@@ -633,3 +578,5 @@ a { color: inherit; }
 </script>
 </body>
 </html>
+`;
+}

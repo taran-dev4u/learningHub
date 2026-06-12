@@ -4,12 +4,12 @@ A personal static learning hub generated from the HTML sites in this folder.
 
 ## Included sites
 
-- DSA Ultimate Index: 609 problems, 29 sections, 510 resources
-- System Design: 255 concepts, 13 sections, 251 resources
-- CS Fundamentals: 128 concepts, 6 sections, 34 resources
-- Behavioral and Leadership: 121 concepts, 5 sections, 24 resources
-- AI Engineering: 150 concepts, 10 sections, 54 resources
-- Cloud - AWS and Azure: 159 concepts, 10 sections, 44 resources
+- DSA Ultimate Index: 609 problems, 29 sections, 517 resources
+- System Design: 296 concepts, 14 sections, 256 resources
+- CS Fundamentals: 156 concepts, 7 sections, 53 resources
+- Behavioral and Leadership: 145 concepts, 6 sections, 37 resources
+- AI Engineering: 180 concepts, 11 sections, 60 resources
+- Cloud - AWS and Azure: 194 concepts, 11 sections, 58 resources
 
 ## Current UI
 

@@ -1,5 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
+import { gapSections, resourceLibraries } from "./gap-content.mjs";
+import { simpleHubHtml } from "./hub-page.mjs";
+// build: generates hub pages, gap sections, resource libraries, and search index.
 
 const root = process.cwd();
 
@@ -1841,285 +1844,6 @@ button, input, select { font: inherit; }
 `;
 }
 
-function personalPurpose(source) {
-  const purposes = {
-    dsa: "My primary coding-interview practice map: patterns first, problems second, repeat weak spots until they feel automatic.",
-    sd: "My system design control room: concepts, trade-offs, classic designs, and interview structure in one place.",
-    cs: "My fundamentals refresh layer: OS, networking, databases, concurrency, security, and architecture for deeper reasoning.",
-    bh: "My story bank and leadership prep space: STAR answers, principles, conflict, ownership, and mock practice.",
-    ai: "My AI engineering track: LLM apps, RAG, agents, evals, MLOps, and production quality constraints.",
-    cloud: "My AWS and Azure comparison desk: services, Q&A, architecture pillars, security, reliability, and cost thinking.",
-  };
-  return purposes[source.key] || source.summary;
-}
-
-function simpleHubHtml(data) {
-  const json = JSON.stringify({
-    sources: data.sources.map((s) => ({
-      key: s.key,
-      title: s.title,
-      file: s.file,
-      color: s.color,
-      storage: s.storage,
-      itemCount: s.itemCount,
-      progressLabel: s.progressLabel,
-    })),
-  }).replace(/</g, "\\u003c");
-  const cards = data.sources.map((source, index) => `
-    <article class="page-card" data-page-card="${escHtml(source.key)}" style="--card-color:${escHtml(source.color)}">
-      <div class="card-index">${String(index + 1).padStart(2, "0")}</div>
-      <div class="card-body">
-        <p class="card-kicker">${escHtml(source.label)} / ${escHtml(source.progressLabel)}</p>
-        <h2>${escHtml(source.title)}</h2>
-        <p>${escHtml(personalPurpose(source))}</p>
-        <div class="card-stats">
-          <span>${source.sections.length} sections</span>
-          <span>${source.itemCount} ${escHtml(source.progressLabel)}</span>
-          <span>${source.resourceCount} resources</span>
-        </div>
-        <div class="card-progress" aria-label="Progress for ${escHtml(source.title)}">
-          <span data-page-progress-fill="${escHtml(source.key)}"></span>
-        </div>
-        <div class="card-footer">
-          <span data-page-progress-text="${escHtml(source.key)}">0 / ${source.itemCount} complete</span>
-          <a href="${escHtml(source.file)}">Open</a>
-        </div>
-      </div>
-    </article>`).join("");
-
-  return `<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Taran's personal learning hub for DSA, system design, CS fundamentals, behavioral interviews, AI engineering, and cloud.">
-<title>Taran's Learning Hub</title>
-<style>
-:root {
-  --bg: #f4f6f8;
-  --surface: #ffffff;
-  --surface-2: #edf1f5;
-  --text: #151922;
-  --muted: #586173;
-  --faint: #818b9d;
-  --border: #dce3ec;
-  --strong: #202a3a;
-  --accent: #2459d6;
-  --shadow: 0 14px 36px rgba(31, 42, 63, .1);
-}
-html.dark {
-  --bg: #101319;
-  --surface: #181d27;
-  --surface-2: #232a37;
-  --text: #edf1f7;
-  --muted: #a2acbc;
-  --faint: #737d90;
-  --border: #303849;
-  --strong: #f7f9fc;
-  --accent: #7ca2ff;
-  --shadow: 0 16px 42px rgba(0, 0, 0, .32);
-}
-* { box-sizing: border-box; }
-body {
-  margin: 0;
-  min-height: 100vh;
-  background: var(--bg);
-  color: var(--text);
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-  line-height: 1.5;
-}
-a { color: inherit; }
-.wrap {
-  width: min(1180px, calc(100% - 32px));
-  margin: 0 auto;
-  padding: 28px 0 54px;
-}
-.topbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-  margin-bottom: 22px;
-}
-.brand h1 {
-  margin: 0;
-  font-size: clamp(28px, 5vw, 54px);
-  letter-spacing: 0;
-  line-height: 1.02;
-}
-.brand p {
-  margin: 8px 0 0;
-  max-width: 760px;
-  color: var(--muted);
-  font-size: 15px;
-}
-.theme-btn {
-  border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--text);
-  min-height: 40px;
-  padding: 0 14px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 800;
-  box-shadow: var(--shadow);
-}
-.theme-btn:hover { border-color: var(--accent); }
-.page-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
-}
-.page-card {
-  display: grid;
-  grid-template-columns: 58px minmax(0, 1fr);
-  min-height: 250px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-top: 5px solid var(--card-color);
-  border-radius: 8px;
-  box-shadow: var(--shadow);
-  overflow: hidden;
-}
-.card-index {
-  display: grid;
-  place-items: start center;
-  padding-top: 18px;
-  background: color-mix(in srgb, var(--card-color) 13%, var(--surface-2));
-  color: var(--card-color);
-  font-weight: 900;
-  font-size: 16px;
-  font-variant-numeric: tabular-nums;
-}
-.card-body { padding: 18px 18px 16px; display: flex; flex-direction: column; min-width: 0; }
-.card-kicker {
-  margin: 0 0 8px;
-  color: var(--card-color);
-  text-transform: uppercase;
-  letter-spacing: .1em;
-  font-size: 11px;
-  font-weight: 900;
-}
-.page-card h2 {
-  margin: 0;
-  font-size: clamp(20px, 3vw, 28px);
-  line-height: 1.12;
-  letter-spacing: 0;
-}
-.page-card p {
-  margin: 10px 0 0;
-  color: var(--muted);
-  font-size: 14px;
-}
-.card-stats {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-  margin-top: 14px;
-}
-.card-stats span {
-  display: inline-flex;
-  align-items: center;
-  min-height: 25px;
-  padding: 3px 8px;
-  border-radius: 999px;
-  background: var(--surface-2);
-  color: var(--muted);
-  font-size: 12px;
-  font-weight: 800;
-}
-.card-progress {
-  height: 9px;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  overflow: hidden;
-  margin-top: auto;
-  background: var(--surface-2);
-}
-.card-progress span { display: block; width: 0; height: 100%; background: var(--card-color); }
-.card-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  margin-top: 12px;
-  color: var(--muted);
-  font-size: 12px;
-  font-weight: 800;
-}
-.card-footer a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 36px;
-  padding: 0 14px;
-  border-radius: 8px;
-  background: var(--strong);
-  color: var(--bg);
-  text-decoration: none;
-  white-space: nowrap;
-}
-@media (max-width: 820px) {
-  .topbar { align-items: flex-start; }
-  .page-grid { grid-template-columns: 1fr; }
-  .page-card { grid-template-columns: 46px minmax(0, 1fr); min-height: 230px; }
-}
-@media (max-width: 520px) {
-  .wrap { width: min(100% - 24px, 1180px); padding-top: 18px; }
-  .topbar { flex-direction: column; }
-  .theme-btn { width: 100%; }
-  .card-footer { align-items: stretch; flex-direction: column; }
-  .card-footer a { width: 100%; }
-}
-</style>
-</head>
-<body>
-<script id="hub-data" type="application/json">${json}</script>
-<main class="wrap">
-  <div class="topbar">
-    <section class="brand">
-      <h1>Taran's Learning Hub</h1>
-      <p>Six connected study spaces for my interview prep and engineering growth. Pick a page, follow the content inside it, and let progress/bookmarks stay local in this browser.</p>
-    </section>
-    <button class="theme-btn" id="theme">Theme</button>
-  </div>
-  <section class="page-grid" aria-label="Learning pages">
-    ${cards}
-  </section>
-</main>
-<script>
-(function () {
-  const data = JSON.parse(document.getElementById("hub-data").textContent);
-  const themeKey = "learning_hub_theme_v2";
-  function readSet(key) {
-    try { return new Set(JSON.parse(localStorage.getItem(key) || "[]")); }
-    catch (_e) { return new Set(); }
-  }
-  function applyTheme(theme) {
-    document.documentElement.classList.toggle("dark", theme === "dark");
-  }
-  applyTheme(localStorage.getItem(themeKey) || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"));
-  document.getElementById("theme").addEventListener("click", function () {
-    const next = document.documentElement.classList.contains("dark") ? "light" : "dark";
-    localStorage.setItem(themeKey, next);
-    applyTheme(next);
-  });
-  data.sources.forEach(function (source) {
-    const done = readSet(source.storage.done).size;
-    const safeDone = Math.min(done, source.itemCount);
-    const pct = source.itemCount ? Math.round((safeDone / source.itemCount) * 100) : 0;
-    const fill = document.querySelector('[data-page-progress-fill="' + source.key + '"]');
-    const text = document.querySelector('[data-page-progress-text="' + source.key + '"]');
-    if (fill) fill.style.width = pct + "%";
-    if (text) text.textContent = safeDone + " / " + source.itemCount + " complete";
-  });
-})();
-</script>
-</body>
-</html>
-`;
-}
-
 function siteNavStyle() {
   return `<style id="site-nav-style">
 .site-nav {
@@ -2146,7 +1870,8 @@ function siteNavStyle() {
   background: var(--bg-card); color: var(--text-dim); text-decoration: none;
   font-size: 12px; font-weight: 800; white-space: nowrap; cursor: pointer;
 }
-.site-links a:hover, .site-theme-button:hover { border-color: var(--accent); color: var(--text); }
+.site-links a, .site-theme-button { transition: border-color .15s ease, color .15s ease, transform .15s ease; }
+.site-links a:hover, .site-theme-button:hover { border-color: var(--accent); color: var(--text); transform: translateY(-1px); }
 .site-links a.current { background: var(--accent); border-color: var(--accent); color: white; }
 .site-theme-button { margin-left: auto; font-family: inherit; }
 .site-progress { color: var(--text-faint, var(--text-dim)); font-size: 11px; font-weight: 800; margin-left: 2px; }
@@ -2164,8 +1889,9 @@ function siteNavStyle() {
 }
 .coverage-links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
 .source-extract {
-  background: var(--bg-elev); border: 1px solid var(--border); border-radius: 8px;
+  background: var(--bg-elev); border: 1px solid var(--border); border-radius: 10px;
   padding: 16px 18px; margin: 16px 0 22px; box-shadow: var(--shadow-card);
+  transition: box-shadow .2s ease;
 }
 .source-extract h2 { margin: 0 0 6px; font-size: 17px; letter-spacing: 0; }
 .source-extract p { margin: 0; color: var(--text-dim); font-size: 13px; }
@@ -2354,11 +2080,97 @@ function aiSourceExtractHtml() {
 </aside>`;
 }
 
+function gapSearchContext(key) {
+  return {
+    sd: "system design",
+    cs: "computer science",
+    bh: "behavioral interview",
+    ai: "AI engineering",
+    cloud: "AWS Azure cloud",
+  }[key] || "";
+}
+
+function gapConceptLi(cid, name, desc, context) {
+  const topic = normalizeSearchTopic(name);
+  const yt = `https://www.youtube.com/results?search_query=${queryEncode(`${topic} ${context} explained`)}`;
+  const google = `https://www.google.com/search?q=${queryEncode(`${topic} ${context} tutorial`)}`;
+  return `<li data-cid="${cid}" data-name="${escHtml(name.toLowerCase())}"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">${escHtml(name)}</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">${escHtml(desc)}</div></div><div class="res-links"><a class="video" href="${yt}" target="_blank" rel="noopener">🔍YT</a><a class="" href="${google}" target="_blank" rel="noopener">🔍G</a></div></li>`;
+}
+
+function gapSectionHtml(source) {
+  const gap = gapSections[source.key];
+  if (!gap) return "";
+  const context = gapSearchContext(source.key);
+  const total = gap.subsections.reduce((sum, [, , concepts]) => sum + concepts.length, 0);
+  const resLinks = gap.resources
+    .map(([icon, title, src, url]) => `<a class="res-link" href="${escHtml(url)}" target="_blank" rel="noopener"><span class="res-icon">${icon}</span><span class="res-title">${escHtml(title)}</span><span class="res-source">${escHtml(src)}</span></a>`)
+    .join("");
+  const subs = gap.subsections
+    .map(([subTitle, subDesc, concepts], subIndex) => {
+      const tag = `${gap.num}.${subIndex + 1}`;
+      const lis = concepts
+        .map(([name, desc], conceptIndex) => gapConceptLi(`${tag}.${conceptIndex + 1}`, name, desc, context))
+        .join("");
+      return `<div class="subsection"><div class="subsection-head"><span class="subsection-tag">${tag}</span><h3>${escHtml(subTitle)}</h3><span style="font-size:11px;color:var(--text-faint);">${concepts.length} concepts</span></div><div class="subsection-desc">${escHtml(subDesc)}</div><ol class="concepts">${lis}</ol></div>`;
+    })
+    .join("\n");
+  return `<!--gen-gap-start-->
+<section class="section" id="section-${gap.num}" style="--section-color:hsl(${gap.hue}, 60%, 55%)">
+<div class="section-banner" style="background:linear-gradient(135deg, hsl(${gap.hue}, 65%, 48%), hsl(${gap.hue + 30}, 70%, 55%))">
+<div class="num">${gap.num}</div>
+<div class="info">
+<div class="label">Section ${gap.num} · Gap coverage</div>
+<h2>${escHtml(gap.title)}</h2>
+<div class="meta">${gap.subsections.length} subsections · ${total} concepts</div>
+</div>
+<div class="ppg">
+<div class="pct-text" data-pp-text="${gap.num}">0 / ${total}</div>
+<div class="pp-track"><div class="pp-fill" data-pp-fill="${gap.num}"></div></div>
+</div>
+</div>
+<div class="section-desc">
+<div class="tagline">${escHtml(gap.tagline)}</div>
+<div class="row"><b>When.</b> ${escHtml(gap.when)}</div>
+<div class="row"><b>Key idea.</b> ${escHtml(gap.keyIdea)}</div>
+</div>
+<div class="resources-section"><div class="head" onclick="this.parentElement.classList.toggle('open')"><h4>📚 Learn this domain</h4><div><span class="count">${gap.resources.length} resources</span><span class="chevron">▶</span></div></div><div class="resources-body"><div class="res-grid">${resLinks}</div></div></div>
+${subs}
+</section>
+<!--gen-gap-end-->`;
+}
+
+function gapTocEntryHtml(source) {
+  const gap = gapSections[source.key];
+  if (!gap) return "";
+  const total = gap.subsections.reduce((sum, [, , concepts]) => sum + concepts.length, 0);
+  return `<!--gen-toc-start--><a href="#section-${gap.num}"><span class="roman">${gap.num}</span><span class="name">${escHtml(gap.title)}</span><span class="cnt">${gap.subsections.length}sec · ${total}</span></a><!--gen-toc-end-->`;
+}
+
+function resourceLibraryHtml(source) {
+  const lib = resourceLibraries[source.key];
+  if (!lib) return "";
+  const links = lib.links
+    .map(([title, url]) => `<a class="res-link" href="${escHtml(url)}" target="_blank" rel="noopener"><span class="res-icon">🔗</span><span class="res-title">${escHtml(title)}</span><span class="res-source">${escHtml(new URL(url).hostname.replace(/^www\./, ""))}</span></a>`)
+    .join("");
+  const drills = lib.drills
+    ? `<div class="source-extract-grid"><article class="source-extract-card"><span class="source-status">Weekly drills</span><h3>Practice operating system</h3><ul>${listItems(lib.drills)}</ul></article></div>`
+    : "";
+  return `<aside class="source-extract" id="resource-library-${escHtml(source.key)}">
+  <h2>${escHtml(lib.title)}</h2>
+  <p>${escHtml(lib.blurb)}</p>
+  ${drills}
+  <div class="res-grid" style="margin-top:10px">${links}</div>
+</aside>`;
+}
+
 function sourceExtractHtml(source) {
-  if (source.key === "sd") return systemDesignSourceExtractHtml();
-  if (source.key === "bh") return behavioralSourceExtractHtml();
-  if (source.key === "ai") return aiSourceExtractHtml();
-  return "";
+  const parts = [];
+  if (source.key === "sd") parts.push(systemDesignSourceExtractHtml());
+  if (source.key === "bh") parts.push(behavioralSourceExtractHtml());
+  if (source.key === "ai") parts.push(aiSourceExtractHtml());
+  const library = resourceLibraryHtml(source);
+  if (library) parts.push(library);
+  return parts.join("\n");
 }
 
 function stripLeadingDecor(value = "") {
@@ -2445,13 +2257,21 @@ function removeGeneratedPageChrome(html) {
     .replace(/<section class="learning-coverage" id="coverage-check">[\s\S]*?<\/section>\s*/g, "")
     .replace(/<aside class="source-extract"[\s\S]*?<\/aside>\s*/g, "")
     .replace(/<nav class="nav-bar">[\s\S]*?<\/nav>\s*/g, "")
-    .replace(/<div class="home-strip">[\s\S]*?<\/div>\s*/g, "");
+    .replace(/<div class="home-strip">[\s\S]*?<\/div>\s*/g, "")
+    .replace(/<!--gen-gap-start-->[\s\S]*?<!--gen-gap-end-->\s*/g, "")
+    .replace(/<!--gen-toc-start-->[\s\S]*?<!--gen-toc-end-->\s*/g, "");
 }
 
 function transformSourcePage(source) {
   const filePath = path.join(root, source.file);
   let html = fs.readFileSync(filePath, "utf8");
   html = removeGeneratedPageChrome(html);
+  const gapHtml = gapSectionHtml(source);
+  if (gapHtml) {
+    html = html.replace(/<script>window\.SITE_SLUG/, `${gapHtml}\n<script>window.SITE_SLUG`);
+    const tocEntry = gapTocEntryHtml(source);
+    html = html.replace(/(<nav class="toc">[\s\S]*?)(<\/div>\s*<\/nav>)/, (_m, head, tail) => `${head}${tocEntry}${tail}`);
+  }
   html = html.replace(/href=["']hub\.html["']/g, 'href="index.html"');
   html = html.replace(/\bclass=(["'])resources-section\s+open\1/g, 'class=$1resources-section$1');
   html = html.replace(/\bclass=(["'])resources-section\s+open\s+([^"']*)\1/g, 'class=$1resources-section $2$1');
@@ -2637,6 +2457,18 @@ function updateSourceNavs() {
 
 const data = buildData();
 write("learning-hub-data.json", `${JSON.stringify(data, null, 2)}\n`);
+write(
+  "search-index.json",
+  `${JSON.stringify(
+    data.items.map((item) => ({
+      k: item.domain,
+      c: item.key,
+      t: item.title,
+      s: item.section,
+      a: item.link,
+    })),
+  )}\n`,
+);
 write("index.html", simpleHubHtml(data));
 write("hub.html", simpleHubHtml(data));
 write("content-audit.md", buildContentAudit(data));

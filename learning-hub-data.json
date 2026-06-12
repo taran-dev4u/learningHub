@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-06-11T18:33:20.839Z",
+  "generatedAt": "2026-06-12T17:50:16.923Z",
   "stats": {
     "domains": 6,
-    "sections": 73,
-    "subsections": 318,
-    "items": 1422,
+    "sections": 78,
+    "subsections": 357,
+    "items": 1580,
     "problems": 609,
-    "concepts": 813,
-    "resources": 917,
+    "concepts": 971,
+    "resources": 981,
     "additions": 5
   },
   "sources": [
@@ -1438,7 +1438,7 @@
         }
       ],
       "itemCount": 609,
-      "resourceCount": 510,
+      "resourceCount": 517,
       "progressLabel": "problems",
       "coverage": {
         "title": "DSA Coverage Check",
@@ -1954,10 +1954,85 @@
               "resourceCount": 3
             }
           ]
+        },
+        {
+          "id": "section-14",
+          "title": "Interview Engineering Toolkit",
+          "meta": "10 subsections · 41 concepts",
+          "tagline": "The cross-cutting skills that turn concept knowledge into a strong interview performance.",
+          "rows": [
+            "When. Every system design interview: estimation, scoping, diagrams, delivery, cost, and security questions.",
+            "Key idea. Strong candidates structure the interview themselves: clarify, estimate, design, then verify."
+          ],
+          "link": "system_design.html#section-14",
+          "itemCount": 41,
+          "resourceCount": 6,
+          "subsections": [
+            {
+              "title": "Capacity Estimation",
+              "description": "Back-of-envelope math that anchors every design.",
+              "itemCount": 5,
+              "resourceCount": 0
+            },
+            {
+              "title": "Requirements & Scope",
+              "description": "Functional vs non-functional, and when to go deep.",
+              "itemCount": 4,
+              "resourceCount": 0
+            },
+            {
+              "title": "Diagrams & Communication",
+              "description": "UML and HLD diagram practice.",
+              "itemCount": 4,
+              "resourceCount": 0
+            },
+            {
+              "title": "CDN & Edge",
+              "description": "Serving content close to users.",
+              "itemCount": 4,
+              "resourceCount": 0
+            },
+            {
+              "title": "Proxies & API Gateways",
+              "description": "The front door of every architecture.",
+              "itemCount": 4,
+              "resourceCount": 0
+            },
+            {
+              "title": "Search Systems",
+              "description": "Designing search and discovery.",
+              "itemCount": 4,
+              "resourceCount": 0
+            },
+            {
+              "title": "Testing & Delivery",
+              "description": "Load testing, chaos, and safe deployment.",
+              "itemCount": 4,
+              "resourceCount": 0
+            },
+            {
+              "title": "Cost Estimation",
+              "description": "Cost as a first-class design constraint.",
+              "itemCount": 4,
+              "resourceCount": 0
+            },
+            {
+              "title": "Observability & SLOs",
+              "description": "Knowing the system works.",
+              "itemCount": 4,
+              "resourceCount": 0
+            },
+            {
+              "title": "Threat Modeling",
+              "description": "Security thinking for designs.",
+              "itemCount": 4,
+              "resourceCount": 0
+            }
+          ]
         }
       ],
-      "itemCount": 255,
-      "resourceCount": 251,
+      "itemCount": 296,
+      "resourceCount": 256,
       "progressLabel": "concepts",
       "coverage": {
         "title": "System Design Coverage Check",
@@ -2252,10 +2327,61 @@
               "resourceCount": 0
             }
           ]
+        },
+        {
+          "id": "section-7",
+          "title": "Languages, Runtimes & Engineering Practice",
+          "meta": "6 subsections · 28 concepts",
+          "tagline": "Compilers, GC, serialization, distributed basics, testing, and profiling.",
+          "rows": [
+            "When. Language internals questions, debugging sessions, performance interviews, senior-engineer depth.",
+            "Key idea. Code runs on layers you can inspect: compiler, runtime, OS. Learn to look one layer down."
+          ],
+          "link": "cs_fundamentals.html#section-7",
+          "itemCount": 28,
+          "resourceCount": 6,
+          "subsections": [
+            {
+              "title": "Compilers & Interpreters",
+              "description": "From source code to execution.",
+              "itemCount": 5,
+              "resourceCount": 0
+            },
+            {
+              "title": "Runtimes & Garbage Collection",
+              "description": "How managed languages handle memory.",
+              "itemCount": 4,
+              "resourceCount": 0
+            },
+            {
+              "title": "Serialization & Data Formats",
+              "description": "Moving data between systems safely.",
+              "itemCount": 4,
+              "resourceCount": 0
+            },
+            {
+              "title": "Distributed Systems Basics",
+              "description": "The minimum every engineer needs.",
+              "itemCount": 5,
+              "resourceCount": 0
+            },
+            {
+              "title": "Testing Fundamentals",
+              "description": "Confidence through automation.",
+              "itemCount": 5,
+              "resourceCount": 0
+            },
+            {
+              "title": "Performance Profiling",
+              "description": "Measure before optimizing.",
+              "itemCount": 5,
+              "resourceCount": 0
+            }
+          ]
         }
       ],
-      "itemCount": 128,
-      "resourceCount": 34,
+      "itemCount": 156,
+      "resourceCount": 53,
       "progressLabel": "concepts",
       "coverage": {
         "title": "CS Fundamentals Coverage Check",
@@ -2574,10 +2700,73 @@
               "resourceCount": 0
             }
           ]
+        },
+        {
+          "id": "section-6",
+          "title": "Competency Deep Dives",
+          "meta": "8 subsections · 24 concepts",
+          "tagline": "The eight competencies interviewers actually probe — each needs a prepared story.",
+          "rows": [
+            "When. Any behavioral round: Amazon LPs, Google GCA, Meta signals, startup culture-fit screens.",
+            "Key idea. One strong, true, quantified story per competency beats ten generic ones."
+          ],
+          "link": "behavioral.html#section-6",
+          "itemCount": 24,
+          "resourceCount": 4,
+          "subsections": [
+            {
+              "title": "Navigating Ambiguity",
+              "description": "Acting well with incomplete information.",
+              "itemCount": 3,
+              "resourceCount": 0
+            },
+            {
+              "title": "Ownership & Initiative",
+              "description": "Going beyond your job description.",
+              "itemCount": 3,
+              "resourceCount": 0
+            },
+            {
+              "title": "Conflict & Influence",
+              "description": "Disagreement handled like an adult.",
+              "itemCount": 3,
+              "resourceCount": 0
+            },
+            {
+              "title": "Failure & Learning",
+              "description": "Real failure, real lesson, real change.",
+              "itemCount": 3,
+              "resourceCount": 0
+            },
+            {
+              "title": "Mentoring & Growth",
+              "description": "Multiplying other engineers.",
+              "itemCount": 3,
+              "resourceCount": 0
+            },
+            {
+              "title": "Prioritization & Trade-offs",
+              "description": "Saying no with data.",
+              "itemCount": 3,
+              "resourceCount": 0
+            },
+            {
+              "title": "Customer Impact",
+              "description": "Working backwards from the user.",
+              "itemCount": 3,
+              "resourceCount": 0
+            },
+            {
+              "title": "Technical Judgment",
+              "description": "Choices that aged well.",
+              "itemCount": 3,
+              "resourceCount": 0
+            }
+          ]
         }
       ],
-      "itemCount": 121,
-      "resourceCount": 24,
+      "itemCount": 145,
+      "resourceCount": 37,
       "progressLabel": "concepts",
       "coverage": {
         "title": "Behavioral Coverage Check",
@@ -2955,10 +3144,67 @@
               "resourceCount": 0
             }
           ]
+        },
+        {
+          "id": "section-11",
+          "title": "Production AI Engineering",
+          "meta": "7 subsections · 30 concepts",
+          "tagline": "Structured outputs, RAG evals, agent reliability, observability, guardrails, and cost control.",
+          "rows": [
+            "When. AI engineer interviews and real LLM products: everything past the demo stage.",
+            "Key idea. The demo is 5% of the work. Reliability, evals, safety, and cost are the other 95%."
+          ],
+          "link": "ai_engineering.html#section-11",
+          "itemCount": 30,
+          "resourceCount": 6,
+          "subsections": [
+            {
+              "title": "Structured Outputs & Tool Calling",
+              "description": "Making model output machine-reliable.",
+              "itemCount": 5,
+              "resourceCount": 0
+            },
+            {
+              "title": "RAG Evaluation",
+              "description": "Proving retrieval actually works.",
+              "itemCount": 4,
+              "resourceCount": 0
+            },
+            {
+              "title": "Agent Reliability",
+              "description": "Agents that don't run off the rails.",
+              "itemCount": 4,
+              "resourceCount": 0
+            },
+            {
+              "title": "Prompt & Version Management",
+              "description": "Prompts are code — treat them like it.",
+              "itemCount": 4,
+              "resourceCount": 0
+            },
+            {
+              "title": "LLM Observability",
+              "description": "Seeing what the model is doing in prod.",
+              "itemCount": 4,
+              "resourceCount": 0
+            },
+            {
+              "title": "Safety & Guardrails",
+              "description": "Defense in depth for LLM apps.",
+              "itemCount": 4,
+              "resourceCount": 0
+            },
+            {
+              "title": "Cost & Latency Optimization",
+              "description": "Unit economics of LLM features.",
+              "itemCount": 5,
+              "resourceCount": 0
+            }
+          ]
         }
       ],
-      "itemCount": 150,
-      "resourceCount": 54,
+      "itemCount": 180,
+      "resourceCount": 60,
       "progressLabel": "concepts",
       "coverage": {
         "title": "AI Engineering Coverage Check",
@@ -3312,10 +3558,73 @@
               "resourceCount": 0
             }
           ]
+        },
+        {
+          "id": "section-11",
+          "title": "Architecture & Governance",
+          "meta": "8 subsections · 35 concepts",
+          "tagline": "Well-Architected pillars, landing zones, cost, DR, secrets, containers, zero-trust, and migration.",
+          "rows": [
+            "When. Cloud architect interviews, multi-account real-world setups, and the org-level questions seniors get.",
+            "Key idea. Cloud maturity = governance: identity, account structure, cost control, and recovery discipline."
+          ],
+          "link": "cloud_aws_azure.html#section-11",
+          "itemCount": 35,
+          "resourceCount": 6,
+          "subsections": [
+            {
+              "title": "Well-Architected Pillars",
+              "description": "The shared vocabulary of cloud review.",
+              "itemCount": 6,
+              "resourceCount": 0
+            },
+            {
+              "title": "Landing Zones & Multi-Account",
+              "description": "Org structure before workloads.",
+              "itemCount": 4,
+              "resourceCount": 0
+            },
+            {
+              "title": "Cost Governance",
+              "description": "FinOps before the bill surprises you.",
+              "itemCount": 4,
+              "resourceCount": 0
+            },
+            {
+              "title": "Backup & Disaster Recovery",
+              "description": "RTO/RPO as design inputs.",
+              "itemCount": 4,
+              "resourceCount": 0
+            },
+            {
+              "title": "Secrets & Key Management",
+              "description": "No credentials in code, ever.",
+              "itemCount": 4,
+              "resourceCount": 0
+            },
+            {
+              "title": "Containers & Kubernetes",
+              "description": "Managed container platforms.",
+              "itemCount": 5,
+              "resourceCount": 0
+            },
+            {
+              "title": "Zero-Trust Networking",
+              "description": "Identity is the new perimeter.",
+              "itemCount": 4,
+              "resourceCount": 0
+            },
+            {
+              "title": "Migration Patterns",
+              "description": "Getting to the cloud sanely.",
+              "itemCount": 4,
+              "resourceCount": 0
+            }
+          ]
         }
       ],
-      "itemCount": 159,
-      "resourceCount": 44,
+      "itemCount": 194,
+      "resourceCount": 58,
       "progressLabel": "concepts",
       "coverage": {
         "title": "Cloud Coverage Check",
@@ -35306,6 +35615,990 @@
       "search": "text tweet: ~280 chars → image tweet: ~500kb → video: ~100mb numbers to memorise before any interview. system design interview approach estimation cheat sheet 13.3.5"
     },
     {
+      "id": "sd:14.1.1",
+      "key": "14.1.1",
+      "type": "concept",
+      "domain": "sd",
+      "domainTitle": "System Design",
+      "title": "Back-of-envelope framework",
+      "description": "Users → requests → QPS → storage → bandwidth. Round aggressively.",
+      "section": "Interview Engineering Toolkit",
+      "subsection": "Capacity Estimation",
+      "url": "",
+      "link": "system_design.html#section-14",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=back-of-envelope+framework+system+design+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=back-of-envelope+framework+system+design+tutorial"
+        }
+      ],
+      "search": "back-of-envelope framework users → requests → qps → storage → bandwidth. round aggressively. system design interview engineering toolkit capacity estimation 14.1.1"
+    },
+    {
+      "id": "sd:14.1.2",
+      "key": "14.1.2",
+      "type": "concept",
+      "domain": "sd",
+      "domainTitle": "System Design",
+      "title": "QPS, storage and bandwidth math",
+      "description": "DAU x actions / 86,400s. Peak = 2-5x average.",
+      "section": "Interview Engineering Toolkit",
+      "subsection": "Capacity Estimation",
+      "url": "",
+      "link": "system_design.html#section-14",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=qps+storage+and+bandwidth+math+system+design+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=qps+storage+and+bandwidth+math+system+design+tutorial"
+        }
+      ],
+      "search": "qps, storage and bandwidth math dau x actions / 86,400s. peak = 2-5x average. system design interview engineering toolkit capacity estimation 14.1.2"
+    },
+    {
+      "id": "sd:14.1.3",
+      "key": "14.1.3",
+      "type": "concept",
+      "domain": "sd",
+      "domainTitle": "System Design",
+      "title": "Latency numbers to memorize",
+      "description": "RAM ~100ns, SSD ~100µs, disk ~10ms, same-DC RTT ~0.5ms, cross-region ~50-150ms.",
+      "section": "Interview Engineering Toolkit",
+      "subsection": "Capacity Estimation",
+      "url": "",
+      "link": "system_design.html#section-14",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=latency+numbers+to+memorize+system+design+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=latency+numbers+to+memorize+system+design+tutorial"
+        }
+      ],
+      "search": "latency numbers to memorize ram ~100ns, ssd ~100µs, disk ~10ms, same-dc rtt ~0.5ms, cross-region ~50-150ms. system design interview engineering toolkit capacity estimation 14.1.3"
+    },
+    {
+      "id": "sd:14.1.4",
+      "key": "14.1.4",
+      "type": "concept",
+      "domain": "sd",
+      "domainTitle": "System Design",
+      "title": "Peak vs average traffic sizing",
+      "description": "Design for peak, pay for average. Autoscaling bridges the gap.",
+      "section": "Interview Engineering Toolkit",
+      "subsection": "Capacity Estimation",
+      "url": "",
+      "link": "system_design.html#section-14",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=peak+vs+average+traffic+sizing+system+design+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=peak+vs+average+traffic+sizing+system+design+tutorial"
+        }
+      ],
+      "search": "peak vs average traffic sizing design for peak, pay for average. autoscaling bridges the gap. system design interview engineering toolkit capacity estimation 14.1.4"
+    },
+    {
+      "id": "sd:14.1.5",
+      "key": "14.1.5",
+      "type": "concept",
+      "domain": "sd",
+      "domainTitle": "System Design",
+      "title": "Read/write ratio implications",
+      "description": "Read-heavy → cache + replicas. Write-heavy → partitioning + LSM stores.",
+      "section": "Interview Engineering Toolkit",
+      "subsection": "Capacity Estimation",
+      "url": "",
+      "link": "system_design.html#section-14",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=read%2Fwrite+ratio+implications+system+design+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=read%2Fwrite+ratio+implications+system+design+tutorial"
+        }
+      ],
+      "search": "read/write ratio implications read-heavy → cache + replicas. write-heavy → partitioning + lsm stores. system design interview engineering toolkit capacity estimation 14.1.5"
+    },
+    {
+      "id": "sd:14.2.1",
+      "key": "14.2.1",
+      "type": "concept",
+      "domain": "sd",
+      "domainTitle": "System Design",
+      "title": "Functional requirements checklist",
+      "description": "Core flows, actors, inputs/outputs, edge cases. Confirm before designing.",
+      "section": "Interview Engineering Toolkit",
+      "subsection": "Requirements & Scope",
+      "url": "",
+      "link": "system_design.html#section-14",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=functional+requirements+checklist+system+design+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=functional+requirements+checklist+system+design+tutorial"
+        }
+      ],
+      "search": "functional requirements checklist core flows, actors, inputs/outputs, edge cases. confirm before designing. system design interview engineering toolkit requirements & scope 14.2.1"
+    },
+    {
+      "id": "sd:14.2.2",
+      "key": "14.2.2",
+      "type": "concept",
+      "domain": "sd",
+      "domainTitle": "System Design",
+      "title": "Non-functional requirements",
+      "description": "Scale, latency targets, availability, durability, consistency, compliance.",
+      "section": "Interview Engineering Toolkit",
+      "subsection": "Requirements & Scope",
+      "url": "",
+      "link": "system_design.html#section-14",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=non-functional+requirements+system+design+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=non-functional+requirements+system+design+tutorial"
+        }
+      ],
+      "search": "non-functional requirements scale, latency targets, availability, durability, consistency, compliance. system design interview engineering toolkit requirements & scope 14.2.2"
+    },
+    {
+      "id": "sd:14.2.3",
+      "key": "14.2.3",
+      "type": "concept",
+      "domain": "sd",
+      "domainTitle": "System Design",
+      "title": "HLD vs LLD: when to switch levels",
+      "description": "HLD: boxes and data flow. LLD: classes, APIs, schemas. Follow interviewer signals.",
+      "section": "Interview Engineering Toolkit",
+      "subsection": "Requirements & Scope",
+      "url": "",
+      "link": "system_design.html#section-14",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=hld+vs+lld+when+to+switch+levels+system+design+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=hld+vs+lld+when+to+switch+levels+system+design+tutorial"
+        }
+      ],
+      "search": "hld vs lld: when to switch levels hld: boxes and data flow. lld: classes, apis, schemas. follow interviewer signals. system design interview engineering toolkit requirements & scope 14.2.3"
+    },
+    {
+      "id": "sd:14.2.4",
+      "key": "14.2.4",
+      "type": "concept",
+      "domain": "sd",
+      "domainTitle": "System Design",
+      "title": "Clarifying questions that score points",
+      "description": "Who are the users? Scale? Read or write heavy? Consistency needs? Budget?",
+      "section": "Interview Engineering Toolkit",
+      "subsection": "Requirements & Scope",
+      "url": "",
+      "link": "system_design.html#section-14",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=clarifying+questions+that+score+points+system+design+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=clarifying+questions+that+score+points+system+design+tutorial"
+        }
+      ],
+      "search": "clarifying questions that score points who are the users? scale? read or write heavy? consistency needs? budget? system design interview engineering toolkit requirements & scope 14.2.4"
+    },
+    {
+      "id": "sd:14.3.1",
+      "key": "14.3.1",
+      "type": "concept",
+      "domain": "sd",
+      "domainTitle": "System Design",
+      "title": "C4 model levels",
+      "description": "Context → Container → Component → Code. Zoom levels for architecture.",
+      "section": "Interview Engineering Toolkit",
+      "subsection": "Diagrams & Communication",
+      "url": "",
+      "link": "system_design.html#section-14",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=c4+model+levels+system+design+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=c4+model+levels+system+design+tutorial"
+        }
+      ],
+      "search": "c4 model levels context → container → component → code. zoom levels for architecture. system design interview engineering toolkit diagrams & communication 14.3.1"
+    },
+    {
+      "id": "sd:14.3.2",
+      "key": "14.3.2",
+      "type": "concept",
+      "domain": "sd",
+      "domainTitle": "System Design",
+      "title": "UML class and sequence diagrams",
+      "description": "Class: structure for LLD. Sequence: request flows between services.",
+      "section": "Interview Engineering Toolkit",
+      "subsection": "Diagrams & Communication",
+      "url": "",
+      "link": "system_design.html#section-14",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=uml+class+and+sequence+diagrams+system+design+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=uml+class+and+sequence+diagrams+system+design+tutorial"
+        }
+      ],
+      "search": "uml class and sequence diagrams class: structure for lld. sequence: request flows between services. system design interview engineering toolkit diagrams & communication 14.3.2"
+    },
+    {
+      "id": "sd:14.3.3",
+      "key": "14.3.3",
+      "type": "concept",
+      "domain": "sd",
+      "domainTitle": "System Design",
+      "title": "Activity and state diagrams",
+      "description": "Workflows and lifecycle states (order: placed → paid → shipped).",
+      "section": "Interview Engineering Toolkit",
+      "subsection": "Diagrams & Communication",
+      "url": "",
+      "link": "system_design.html#section-14",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=activity+and+state+diagrams+system+design+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=activity+and+state+diagrams+system+design+tutorial"
+        }
+      ],
+      "search": "activity and state diagrams workflows and lifecycle states (order: placed → paid → shipped). system design interview engineering toolkit diagrams & communication 14.3.3"
+    },
+    {
+      "id": "sd:14.3.4",
+      "key": "14.3.4",
+      "type": "concept",
+      "domain": "sd",
+      "domainTitle": "System Design",
+      "title": "Whiteboard layout strategy",
+      "description": "Clients left, services middle, storage right. Leave room for scaling notes.",
+      "section": "Interview Engineering Toolkit",
+      "subsection": "Diagrams & Communication",
+      "url": "",
+      "link": "system_design.html#section-14",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=whiteboard+layout+strategy+system+design+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=whiteboard+layout+strategy+system+design+tutorial"
+        }
+      ],
+      "search": "whiteboard layout strategy clients left, services middle, storage right. leave room for scaling notes. system design interview engineering toolkit diagrams & communication 14.3.4"
+    },
+    {
+      "id": "sd:14.4.1",
+      "key": "14.4.1",
+      "type": "concept",
+      "domain": "sd",
+      "domainTitle": "System Design",
+      "title": "CDN architecture (PoPs, origin shield)",
+      "description": "Edge caches absorb traffic; origin shield collapses misses.",
+      "section": "Interview Engineering Toolkit",
+      "subsection": "CDN & Edge",
+      "url": "",
+      "link": "system_design.html#section-14",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=cdn+architecture+pops+origin+shield+system+design+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=cdn+architecture+pops+origin+shield+system+design+tutorial"
+        }
+      ],
+      "search": "cdn architecture (pops, origin shield) edge caches absorb traffic; origin shield collapses misses. system design interview engineering toolkit cdn & edge 14.4.1"
+    },
+    {
+      "id": "sd:14.4.2",
+      "key": "14.4.2",
+      "type": "concept",
+      "domain": "sd",
+      "domainTitle": "System Design",
+      "title": "Edge cache invalidation strategies",
+      "description": "Versioned URLs beat purges. TTL + stale-while-revalidate.",
+      "section": "Interview Engineering Toolkit",
+      "subsection": "CDN & Edge",
+      "url": "",
+      "link": "system_design.html#section-14",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=edge+cache+invalidation+strategies+system+design+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=edge+cache+invalidation+strategies+system+design+tutorial"
+        }
+      ],
+      "search": "edge cache invalidation strategies versioned urls beat purges. ttl + stale-while-revalidate. system design interview engineering toolkit cdn & edge 14.4.2"
+    },
+    {
+      "id": "sd:14.4.3",
+      "key": "14.4.3",
+      "type": "concept",
+      "domain": "sd",
+      "domainTitle": "System Design",
+      "title": "Static vs dynamic acceleration",
+      "description": "Static: cache fully. Dynamic: TCP/TLS termination + smart routing.",
+      "section": "Interview Engineering Toolkit",
+      "subsection": "CDN & Edge",
+      "url": "",
+      "link": "system_design.html#section-14",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=static+vs+dynamic+acceleration+system+design+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=static+vs+dynamic+acceleration+system+design+tutorial"
+        }
+      ],
+      "search": "static vs dynamic acceleration static: cache fully. dynamic: tcp/tls termination + smart routing. system design interview engineering toolkit cdn & edge 14.4.3"
+    },
+    {
+      "id": "sd:14.4.4",
+      "key": "14.4.4",
+      "type": "concept",
+      "domain": "sd",
+      "domainTitle": "System Design",
+      "title": "Signed URLs and token auth",
+      "description": "Time-limited access to private content at the edge.",
+      "section": "Interview Engineering Toolkit",
+      "subsection": "CDN & Edge",
+      "url": "",
+      "link": "system_design.html#section-14",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=signed+urls+and+token+auth+system+design+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=signed+urls+and+token+auth+system+design+tutorial"
+        }
+      ],
+      "search": "signed urls and token auth time-limited access to private content at the edge. system design interview engineering toolkit cdn & edge 14.4.4"
+    },
+    {
+      "id": "sd:14.5.1",
+      "key": "14.5.1",
+      "type": "concept",
+      "domain": "sd",
+      "domainTitle": "System Design",
+      "title": "Forward vs reverse proxy",
+      "description": "Forward: hides clients. Reverse: hides servers, terminates TLS.",
+      "section": "Interview Engineering Toolkit",
+      "subsection": "Proxies & API Gateways",
+      "url": "",
+      "link": "system_design.html#section-14",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=forward+vs+reverse+proxy+system+design+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=forward+vs+reverse+proxy+system+design+tutorial"
+        }
+      ],
+      "search": "forward vs reverse proxy forward: hides clients. reverse: hides servers, terminates tls. system design interview engineering toolkit proxies & api gateways 14.5.1"
+    },
+    {
+      "id": "sd:14.5.2",
+      "key": "14.5.2",
+      "type": "concept",
+      "domain": "sd",
+      "domainTitle": "System Design",
+      "title": "API gateway responsibilities",
+      "description": "AuthN/Z, rate limiting, routing, transformation, API versioning.",
+      "section": "Interview Engineering Toolkit",
+      "subsection": "Proxies & API Gateways",
+      "url": "",
+      "link": "system_design.html#section-14",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=api+gateway+responsibilities+system+design+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=api+gateway+responsibilities+system+design+tutorial"
+        }
+      ],
+      "search": "api gateway responsibilities authn/z, rate limiting, routing, transformation, api versioning. system design interview engineering toolkit proxies & api gateways 14.5.2"
+    },
+    {
+      "id": "sd:14.5.3",
+      "key": "14.5.3",
+      "type": "concept",
+      "domain": "sd",
+      "domainTitle": "System Design",
+      "title": "Load balancer L4 vs L7",
+      "description": "L4: TCP, fast, opaque. L7: HTTP-aware routing, headers, cookies.",
+      "section": "Interview Engineering Toolkit",
+      "subsection": "Proxies & API Gateways",
+      "url": "",
+      "link": "system_design.html#section-14",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=load+balancer+l4+vs+l7+system+design+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=load+balancer+l4+vs+l7+system+design+tutorial"
+        }
+      ],
+      "search": "load balancer l4 vs l7 l4: tcp, fast, opaque. l7: http-aware routing, headers, cookies. system design interview engineering toolkit proxies & api gateways 14.5.3"
+    },
+    {
+      "id": "sd:14.5.4",
+      "key": "14.5.4",
+      "type": "concept",
+      "domain": "sd",
+      "domainTitle": "System Design",
+      "title": "Service mesh sidecars",
+      "description": "Per-pod proxies (Envoy) for mTLS, retries, traffic shifting.",
+      "section": "Interview Engineering Toolkit",
+      "subsection": "Proxies & API Gateways",
+      "url": "",
+      "link": "system_design.html#section-14",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=service+mesh+sidecars+system+design+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=service+mesh+sidecars+system+design+tutorial"
+        }
+      ],
+      "search": "service mesh sidecars per-pod proxies (envoy) for mtls, retries, traffic shifting. system design interview engineering toolkit proxies & api gateways 14.5.4"
+    },
+    {
+      "id": "sd:14.6.1",
+      "key": "14.6.1",
+      "type": "concept",
+      "domain": "sd",
+      "domainTitle": "System Design",
+      "title": "Inverted index fundamentals",
+      "description": "Term → posting list of documents. The core of all text search.",
+      "section": "Interview Engineering Toolkit",
+      "subsection": "Search Systems",
+      "url": "",
+      "link": "system_design.html#section-14",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=inverted+index+fundamentals+system+design+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=inverted+index+fundamentals+system+design+tutorial"
+        }
+      ],
+      "search": "inverted index fundamentals term → posting list of documents. the core of all text search. system design interview engineering toolkit search systems 14.6.1"
+    },
+    {
+      "id": "sd:14.6.2",
+      "key": "14.6.2",
+      "type": "concept",
+      "domain": "sd",
+      "domainTitle": "System Design",
+      "title": "Elasticsearch architecture",
+      "description": "Shards + replicas over Lucene. Near-real-time refresh.",
+      "section": "Interview Engineering Toolkit",
+      "subsection": "Search Systems",
+      "url": "",
+      "link": "system_design.html#section-14",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=elasticsearch+architecture+system+design+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=elasticsearch+architecture+system+design+tutorial"
+        }
+      ],
+      "search": "elasticsearch architecture shards + replicas over lucene. near-real-time refresh. system design interview engineering toolkit search systems 14.6.2"
+    },
+    {
+      "id": "sd:14.6.3",
+      "key": "14.6.3",
+      "type": "concept",
+      "domain": "sd",
+      "domainTitle": "System Design",
+      "title": "Relevance scoring (TF-IDF, BM25)",
+      "description": "Term frequency x inverse document frequency; BM25 adds saturation.",
+      "section": "Interview Engineering Toolkit",
+      "subsection": "Search Systems",
+      "url": "",
+      "link": "system_design.html#section-14",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=relevance+scoring+tf-idf+bm25+system+design+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=relevance+scoring+tf-idf+bm25+system+design+tutorial"
+        }
+      ],
+      "search": "relevance scoring (tf-idf, bm25) term frequency x inverse document frequency; bm25 adds saturation. system design interview engineering toolkit search systems 14.6.3"
+    },
+    {
+      "id": "sd:14.6.4",
+      "key": "14.6.4",
+      "type": "concept",
+      "domain": "sd",
+      "domainTitle": "System Design",
+      "title": "Autocomplete / typeahead design",
+      "description": "Prefix tries or edge n-grams, top-k by popularity, heavy caching.",
+      "section": "Interview Engineering Toolkit",
+      "subsection": "Search Systems",
+      "url": "",
+      "link": "system_design.html#section-14",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=autocomplete+%2F+typeahead+design+system+design+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=autocomplete+%2F+typeahead+design+system+design+tutorial"
+        }
+      ],
+      "search": "autocomplete / typeahead design prefix tries or edge n-grams, top-k by popularity, heavy caching. system design interview engineering toolkit search systems 14.6.4"
+    },
+    {
+      "id": "sd:14.7.1",
+      "key": "14.7.1",
+      "type": "concept",
+      "domain": "sd",
+      "domainTitle": "System Design",
+      "title": "Load, stress and soak testing",
+      "description": "Load: expected peak. Stress: find the breaking point. Soak: leaks over time.",
+      "section": "Interview Engineering Toolkit",
+      "subsection": "Testing & Delivery",
+      "url": "",
+      "link": "system_design.html#section-14",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=load+stress+and+soak+testing+system+design+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=load+stress+and+soak+testing+system+design+tutorial"
+        }
+      ],
+      "search": "load, stress and soak testing load: expected peak. stress: find the breaking point. soak: leaks over time. system design interview engineering toolkit testing & delivery 14.7.1"
+    },
+    {
+      "id": "sd:14.7.2",
+      "key": "14.7.2",
+      "type": "concept",
+      "domain": "sd",
+      "domainTitle": "System Design",
+      "title": "Chaos engineering",
+      "description": "Inject failure on purpose (Chaos Monkey) to verify resilience claims.",
+      "section": "Interview Engineering Toolkit",
+      "subsection": "Testing & Delivery",
+      "url": "",
+      "link": "system_design.html#section-14",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=chaos+engineering+system+design+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=chaos+engineering+system+design+tutorial"
+        }
+      ],
+      "search": "chaos engineering inject failure on purpose (chaos monkey) to verify resilience claims. system design interview engineering toolkit testing & delivery 14.7.2"
+    },
+    {
+      "id": "sd:14.7.3",
+      "key": "14.7.3",
+      "type": "concept",
+      "domain": "sd",
+      "domainTitle": "System Design",
+      "title": "CI/CD pipeline design",
+      "description": "Build → test → stage → deploy. Gate on automated checks.",
+      "section": "Interview Engineering Toolkit",
+      "subsection": "Testing & Delivery",
+      "url": "",
+      "link": "system_design.html#section-14",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=ci%2Fcd+pipeline+design+system+design+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=ci%2Fcd+pipeline+design+system+design+tutorial"
+        }
+      ],
+      "search": "ci/cd pipeline design build → test → stage → deploy. gate on automated checks. system design interview engineering toolkit testing & delivery 14.7.3"
+    },
+    {
+      "id": "sd:14.7.4",
+      "key": "14.7.4",
+      "type": "concept",
+      "domain": "sd",
+      "domainTitle": "System Design",
+      "title": "Canary and blue-green deployment",
+      "description": "Canary: small % first. Blue-green: instant switch with full standby.",
+      "section": "Interview Engineering Toolkit",
+      "subsection": "Testing & Delivery",
+      "url": "",
+      "link": "system_design.html#section-14",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=canary+and+blue-green+deployment+system+design+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=canary+and+blue-green+deployment+system+design+tutorial"
+        }
+      ],
+      "search": "canary and blue-green deployment canary: small % first. blue-green: instant switch with full standby. system design interview engineering toolkit testing & delivery 14.7.4"
+    },
+    {
+      "id": "sd:14.8.1",
+      "key": "14.8.1",
+      "type": "concept",
+      "domain": "sd",
+      "domainTitle": "System Design",
+      "title": "Cost vs performance trade-offs",
+      "description": "Cache hit ratio vs cluster size; consistency vs cross-region traffic.",
+      "section": "Interview Engineering Toolkit",
+      "subsection": "Cost Estimation",
+      "url": "",
+      "link": "system_design.html#section-14",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=cost+vs+performance+trade-offs+system+design+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=cost+vs+performance+trade-offs+system+design+tutorial"
+        }
+      ],
+      "search": "cost vs performance trade-offs cache hit ratio vs cluster size; consistency vs cross-region traffic. system design interview engineering toolkit cost estimation 14.8.1"
+    },
+    {
+      "id": "sd:14.8.2",
+      "key": "14.8.2",
+      "type": "concept",
+      "domain": "sd",
+      "domainTitle": "System Design",
+      "title": "Compute vs storage vs network costs",
+      "description": "Egress is the silent killer. Storage tiers for cold data.",
+      "section": "Interview Engineering Toolkit",
+      "subsection": "Cost Estimation",
+      "url": "",
+      "link": "system_design.html#section-14",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=compute+vs+storage+vs+network+costs+system+design+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=compute+vs+storage+vs+network+costs+system+design+tutorial"
+        }
+      ],
+      "search": "compute vs storage vs network costs egress is the silent killer. storage tiers for cold data. system design interview engineering toolkit cost estimation 14.8.2"
+    },
+    {
+      "id": "sd:14.8.3",
+      "key": "14.8.3",
+      "type": "concept",
+      "domain": "sd",
+      "domainTitle": "System Design",
+      "title": "Autoscaling economics",
+      "description": "Scale-out on demand vs reserved capacity baselines.",
+      "section": "Interview Engineering Toolkit",
+      "subsection": "Cost Estimation",
+      "url": "",
+      "link": "system_design.html#section-14",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=autoscaling+economics+system+design+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=autoscaling+economics+system+design+tutorial"
+        }
+      ],
+      "search": "autoscaling economics scale-out on demand vs reserved capacity baselines. system design interview engineering toolkit cost estimation 14.8.3"
+    },
+    {
+      "id": "sd:14.8.4",
+      "key": "14.8.4",
+      "type": "concept",
+      "domain": "sd",
+      "domainTitle": "System Design",
+      "title": "Build vs buy decisions",
+      "description": "Managed services trade money for ops time. Justify either way.",
+      "section": "Interview Engineering Toolkit",
+      "subsection": "Cost Estimation",
+      "url": "",
+      "link": "system_design.html#section-14",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=build+vs+buy+decisions+system+design+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=build+vs+buy+decisions+system+design+tutorial"
+        }
+      ],
+      "search": "build vs buy decisions managed services trade money for ops time. justify either way. system design interview engineering toolkit cost estimation 14.8.4"
+    },
+    {
+      "id": "sd:14.9.1",
+      "key": "14.9.1",
+      "type": "concept",
+      "domain": "sd",
+      "domainTitle": "System Design",
+      "title": "SLI / SLO / SLA definitions",
+      "description": "Indicator (measured) → objective (target) → agreement (contract).",
+      "section": "Interview Engineering Toolkit",
+      "subsection": "Observability & SLOs",
+      "url": "",
+      "link": "system_design.html#section-14",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=sli+%2F+slo+%2F+sla+definitions+system+design+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=sli+%2F+slo+%2F+sla+definitions+system+design+tutorial"
+        }
+      ],
+      "search": "sli / slo / sla definitions indicator (measured) → objective (target) → agreement (contract). system design interview engineering toolkit observability & slos 14.9.1"
+    },
+    {
+      "id": "sd:14.9.2",
+      "key": "14.9.2",
+      "type": "concept",
+      "domain": "sd",
+      "domainTitle": "System Design",
+      "title": "Error budgets",
+      "description": "100% - SLO = budget for change velocity. Spent budget freezes releases.",
+      "section": "Interview Engineering Toolkit",
+      "subsection": "Observability & SLOs",
+      "url": "",
+      "link": "system_design.html#section-14",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=error+budgets+system+design+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=error+budgets+system+design+tutorial"
+        }
+      ],
+      "search": "error budgets 100% - slo = budget for change velocity. spent budget freezes releases. system design interview engineering toolkit observability & slos 14.9.2"
+    },
+    {
+      "id": "sd:14.9.3",
+      "key": "14.9.3",
+      "type": "concept",
+      "domain": "sd",
+      "domainTitle": "System Design",
+      "title": "Golden signals",
+      "description": "Latency, traffic, errors, saturation. Start every dashboard here.",
+      "section": "Interview Engineering Toolkit",
+      "subsection": "Observability & SLOs",
+      "url": "",
+      "link": "system_design.html#section-14",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=golden+signals+system+design+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=golden+signals+system+design+tutorial"
+        }
+      ],
+      "search": "golden signals latency, traffic, errors, saturation. start every dashboard here. system design interview engineering toolkit observability & slos 14.9.3"
+    },
+    {
+      "id": "sd:14.9.4",
+      "key": "14.9.4",
+      "type": "concept",
+      "domain": "sd",
+      "domainTitle": "System Design",
+      "title": "Distributed tracing",
+      "description": "Trace ID propagated across services; spans show where time goes.",
+      "section": "Interview Engineering Toolkit",
+      "subsection": "Observability & SLOs",
+      "url": "",
+      "link": "system_design.html#section-14",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=distributed+tracing+system+design+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=distributed+tracing+system+design+tutorial"
+        }
+      ],
+      "search": "distributed tracing trace id propagated across services; spans show where time goes. system design interview engineering toolkit observability & slos 14.9.4"
+    },
+    {
+      "id": "sd:14.10.1",
+      "key": "14.10.1",
+      "type": "concept",
+      "domain": "sd",
+      "domainTitle": "System Design",
+      "title": "STRIDE framework",
+      "description": "Spoofing, Tampering, Repudiation, Info disclosure, DoS, Elevation.",
+      "section": "Interview Engineering Toolkit",
+      "subsection": "Threat Modeling",
+      "url": "",
+      "link": "system_design.html#section-14",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=stride+framework+system+design+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=stride+framework+system+design+tutorial"
+        }
+      ],
+      "search": "stride framework spoofing, tampering, repudiation, info disclosure, dos, elevation. system design interview engineering toolkit threat modeling 14.10.1"
+    },
+    {
+      "id": "sd:14.10.2",
+      "key": "14.10.2",
+      "type": "concept",
+      "domain": "sd",
+      "domainTitle": "System Design",
+      "title": "Attack surface mapping",
+      "description": "Every exposed endpoint, queue, and bucket is attack surface.",
+      "section": "Interview Engineering Toolkit",
+      "subsection": "Threat Modeling",
+      "url": "",
+      "link": "system_design.html#section-14",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=attack+surface+mapping+system+design+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=attack+surface+mapping+system+design+tutorial"
+        }
+      ],
+      "search": "attack surface mapping every exposed endpoint, queue, and bucket is attack surface. system design interview engineering toolkit threat modeling 14.10.2"
+    },
+    {
+      "id": "sd:14.10.3",
+      "key": "14.10.3",
+      "type": "concept",
+      "domain": "sd",
+      "domainTitle": "System Design",
+      "title": "Data classification and encryption boundaries",
+      "description": "Classify data; encrypt in transit and at rest; manage keys separately.",
+      "section": "Interview Engineering Toolkit",
+      "subsection": "Threat Modeling",
+      "url": "",
+      "link": "system_design.html#section-14",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=data+classification+and+encryption+boundaries+system+design+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=data+classification+and+encryption+boundaries+system+design+tutorial"
+        }
+      ],
+      "search": "data classification and encryption boundaries classify data; encrypt in transit and at rest; manage keys separately. system design interview engineering toolkit threat modeling 14.10.3"
+    },
+    {
+      "id": "sd:14.10.4",
+      "key": "14.10.4",
+      "type": "concept",
+      "domain": "sd",
+      "domainTitle": "System Design",
+      "title": "Abuse and rate-limit threat cases",
+      "description": "Scraping, credential stuffing, hot-key abuse. Design limits up front.",
+      "section": "Interview Engineering Toolkit",
+      "subsection": "Threat Modeling",
+      "url": "",
+      "link": "system_design.html#section-14",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=abuse+and+rate-limit+threat+cases+system+design+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=abuse+and+rate-limit+threat+cases+system+design+tutorial"
+        }
+      ],
+      "search": "abuse and rate-limit threat cases scraping, credential stuffing, hot-key abuse. design limits up front. system design interview engineering toolkit threat modeling 14.10.4"
+    },
+    {
       "id": "cs:1.1.1",
       "key": "1.1.1",
       "type": "concept",
@@ -38378,6 +39671,678 @@
       "search": "character encodings (utf-8) ascii (7-bit) → utf-8 (1-4 bytes) → utf-16 → utf-32. cs fundamentals computer architecture number representation 6.3.4"
     },
     {
+      "id": "cs:7.1.1",
+      "key": "7.1.1",
+      "type": "concept",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals",
+      "title": "Compilation pipeline",
+      "description": "Lexing → parsing → AST → optimization → codegen.",
+      "section": "Languages, Runtimes & Engineering Practice",
+      "subsection": "Compilers & Interpreters",
+      "url": "",
+      "link": "cs_fundamentals.html#section-7",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=compilation+pipeline+computer+science+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=compilation+pipeline+computer+science+tutorial"
+        }
+      ],
+      "search": "compilation pipeline lexing → parsing → ast → optimization → codegen. cs fundamentals languages, runtimes & engineering practice compilers & interpreters 7.1.1"
+    },
+    {
+      "id": "cs:7.1.2",
+      "key": "7.1.2",
+      "type": "concept",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals",
+      "title": "Interpreters vs JIT compilation",
+      "description": "Interpret: simple, slow. JIT: compile hot paths at runtime (V8, JVM).",
+      "section": "Languages, Runtimes & Engineering Practice",
+      "subsection": "Compilers & Interpreters",
+      "url": "",
+      "link": "cs_fundamentals.html#section-7",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=interpreters+vs+jit+compilation+computer+science+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=interpreters+vs+jit+compilation+computer+science+tutorial"
+        }
+      ],
+      "search": "interpreters vs jit compilation interpret: simple, slow. jit: compile hot paths at runtime (v8, jvm). cs fundamentals languages, runtimes & engineering practice compilers & interpreters 7.1.2"
+    },
+    {
+      "id": "cs:7.1.3",
+      "key": "7.1.3",
+      "type": "concept",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals",
+      "title": "Bytecode and virtual machines",
+      "description": "JVM, CPython compile to bytecode run by a VM.",
+      "section": "Languages, Runtimes & Engineering Practice",
+      "subsection": "Compilers & Interpreters",
+      "url": "",
+      "link": "cs_fundamentals.html#section-7",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=bytecode+and+virtual+machines+computer+science+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=bytecode+and+virtual+machines+computer+science+tutorial"
+        }
+      ],
+      "search": "bytecode and virtual machines jvm, cpython compile to bytecode run by a vm. cs fundamentals languages, runtimes & engineering practice compilers & interpreters 7.1.3"
+    },
+    {
+      "id": "cs:7.1.4",
+      "key": "7.1.4",
+      "type": "concept",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals",
+      "title": "Static vs dynamic typing",
+      "description": "Compile-time checks vs runtime flexibility. Gradual typing bridges.",
+      "section": "Languages, Runtimes & Engineering Practice",
+      "subsection": "Compilers & Interpreters",
+      "url": "",
+      "link": "cs_fundamentals.html#section-7",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=static+vs+dynamic+typing+computer+science+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=static+vs+dynamic+typing+computer+science+tutorial"
+        }
+      ],
+      "search": "static vs dynamic typing compile-time checks vs runtime flexibility. gradual typing bridges. cs fundamentals languages, runtimes & engineering practice compilers & interpreters 7.1.4"
+    },
+    {
+      "id": "cs:7.1.5",
+      "key": "7.1.5",
+      "type": "concept",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals",
+      "title": "Linkers, loaders and ABIs",
+      "description": "Static vs dynamic linking; symbol resolution; calling conventions.",
+      "section": "Languages, Runtimes & Engineering Practice",
+      "subsection": "Compilers & Interpreters",
+      "url": "",
+      "link": "cs_fundamentals.html#section-7",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=linkers+loaders+and+abis+computer+science+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=linkers+loaders+and+abis+computer+science+tutorial"
+        }
+      ],
+      "search": "linkers, loaders and abis static vs dynamic linking; symbol resolution; calling conventions. cs fundamentals languages, runtimes & engineering practice compilers & interpreters 7.1.5"
+    },
+    {
+      "id": "cs:7.2.1",
+      "key": "7.2.1",
+      "type": "concept",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals",
+      "title": "Mark-and-sweep vs generational GC",
+      "description": "Most objects die young — collect the nursery often.",
+      "section": "Languages, Runtimes & Engineering Practice",
+      "subsection": "Runtimes & Garbage Collection",
+      "url": "",
+      "link": "cs_fundamentals.html#section-7",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=mark-and-sweep+vs+generational+gc+computer+science+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=mark-and-sweep+vs+generational+gc+computer+science+tutorial"
+        }
+      ],
+      "search": "mark-and-sweep vs generational gc most objects die young — collect the nursery often. cs fundamentals languages, runtimes & engineering practice runtimes & garbage collection 7.2.1"
+    },
+    {
+      "id": "cs:7.2.2",
+      "key": "7.2.2",
+      "type": "concept",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals",
+      "title": "Reference counting and cycles",
+      "description": "CPython refcounts + cycle detector. Swift ARC needs weak refs.",
+      "section": "Languages, Runtimes & Engineering Practice",
+      "subsection": "Runtimes & Garbage Collection",
+      "url": "",
+      "link": "cs_fundamentals.html#section-7",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=reference+counting+and+cycles+computer+science+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=reference+counting+and+cycles+computer+science+tutorial"
+        }
+      ],
+      "search": "reference counting and cycles cpython refcounts + cycle detector. swift arc needs weak refs. cs fundamentals languages, runtimes & engineering practice runtimes & garbage collection 7.2.2"
+    },
+    {
+      "id": "cs:7.2.3",
+      "key": "7.2.3",
+      "type": "concept",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals",
+      "title": "Stop-the-world vs concurrent GC",
+      "description": "G1, ZGC, Shenandoah shrink pauses to milliseconds.",
+      "section": "Languages, Runtimes & Engineering Practice",
+      "subsection": "Runtimes & Garbage Collection",
+      "url": "",
+      "link": "cs_fundamentals.html#section-7",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=stop-the-world+vs+concurrent+gc+computer+science+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=stop-the-world+vs+concurrent+gc+computer+science+tutorial"
+        }
+      ],
+      "search": "stop-the-world vs concurrent gc g1, zgc, shenandoah shrink pauses to milliseconds. cs fundamentals languages, runtimes & engineering practice runtimes & garbage collection 7.2.3"
+    },
+    {
+      "id": "cs:7.2.4",
+      "key": "7.2.4",
+      "type": "concept",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals",
+      "title": "Memory leaks in managed languages",
+      "description": "Leaks = unwanted reachability: caches, listeners, globals.",
+      "section": "Languages, Runtimes & Engineering Practice",
+      "subsection": "Runtimes & Garbage Collection",
+      "url": "",
+      "link": "cs_fundamentals.html#section-7",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=memory+leaks+in+managed+languages+computer+science+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=memory+leaks+in+managed+languages+computer+science+tutorial"
+        }
+      ],
+      "search": "memory leaks in managed languages leaks = unwanted reachability: caches, listeners, globals. cs fundamentals languages, runtimes & engineering practice runtimes & garbage collection 7.2.4"
+    },
+    {
+      "id": "cs:7.3.1",
+      "key": "7.3.1",
+      "type": "concept",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals",
+      "title": "JSON vs Protobuf vs Avro",
+      "description": "Text + flexible vs binary + schema vs schema-evolution-first.",
+      "section": "Languages, Runtimes & Engineering Practice",
+      "subsection": "Serialization & Data Formats",
+      "url": "",
+      "link": "cs_fundamentals.html#section-7",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=json+vs+protobuf+vs+avro+computer+science+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=json+vs+protobuf+vs+avro+computer+science+tutorial"
+        }
+      ],
+      "search": "json vs protobuf vs avro text + flexible vs binary + schema vs schema-evolution-first. cs fundamentals languages, runtimes & engineering practice serialization & data formats 7.3.1"
+    },
+    {
+      "id": "cs:7.3.2",
+      "key": "7.3.2",
+      "type": "concept",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals",
+      "title": "Schema evolution and compatibility",
+      "description": "Backward/forward compatibility; never reuse field numbers.",
+      "section": "Languages, Runtimes & Engineering Practice",
+      "subsection": "Serialization & Data Formats",
+      "url": "",
+      "link": "cs_fundamentals.html#section-7",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=schema+evolution+and+compatibility+computer+science+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=schema+evolution+and+compatibility+computer+science+tutorial"
+        }
+      ],
+      "search": "schema evolution and compatibility backward/forward compatibility; never reuse field numbers. cs fundamentals languages, runtimes & engineering practice serialization & data formats 7.3.2"
+    },
+    {
+      "id": "cs:7.3.3",
+      "key": "7.3.3",
+      "type": "concept",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals",
+      "title": "Endianness and binary encoding",
+      "description": "Big vs little endian; network byte order is big-endian.",
+      "section": "Languages, Runtimes & Engineering Practice",
+      "subsection": "Serialization & Data Formats",
+      "url": "",
+      "link": "cs_fundamentals.html#section-7",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=endianness+and+binary+encoding+computer+science+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=endianness+and+binary+encoding+computer+science+tutorial"
+        }
+      ],
+      "search": "endianness and binary encoding big vs little endian; network byte order is big-endian. cs fundamentals languages, runtimes & engineering practice serialization & data formats 7.3.3"
+    },
+    {
+      "id": "cs:7.3.4",
+      "key": "7.3.4",
+      "type": "concept",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals",
+      "title": "Text encodings (UTF-8)",
+      "description": "Variable-width, ASCII-compatible, dominant on the web.",
+      "section": "Languages, Runtimes & Engineering Practice",
+      "subsection": "Serialization & Data Formats",
+      "url": "",
+      "link": "cs_fundamentals.html#section-7",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=text+encodings+utf-8+computer+science+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=text+encodings+utf-8+computer+science+tutorial"
+        }
+      ],
+      "search": "text encodings (utf-8) variable-width, ascii-compatible, dominant on the web. cs fundamentals languages, runtimes & engineering practice serialization & data formats 7.3.4"
+    },
+    {
+      "id": "cs:7.4.1",
+      "key": "7.4.1",
+      "type": "concept",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals",
+      "title": "Fallacies of distributed computing",
+      "description": "The network is not reliable, latency is not zero, topology changes.",
+      "section": "Languages, Runtimes & Engineering Practice",
+      "subsection": "Distributed Systems Basics",
+      "url": "",
+      "link": "cs_fundamentals.html#section-7",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=fallacies+of+distributed+computing+computer+science+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=fallacies+of+distributed+computing+computer+science+tutorial"
+        }
+      ],
+      "search": "fallacies of distributed computing the network is not reliable, latency is not zero, topology changes. cs fundamentals languages, runtimes & engineering practice distributed systems basics 7.4.1"
+    },
+    {
+      "id": "cs:7.4.2",
+      "key": "7.4.2",
+      "type": "concept",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals",
+      "title": "Logical clocks and ordering",
+      "description": "Lamport clocks order events without synchronized time.",
+      "section": "Languages, Runtimes & Engineering Practice",
+      "subsection": "Distributed Systems Basics",
+      "url": "",
+      "link": "cs_fundamentals.html#section-7",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=logical+clocks+and+ordering+computer+science+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=logical+clocks+and+ordering+computer+science+tutorial"
+        }
+      ],
+      "search": "logical clocks and ordering lamport clocks order events without synchronized time. cs fundamentals languages, runtimes & engineering practice distributed systems basics 7.4.2"
+    },
+    {
+      "id": "cs:7.4.3",
+      "key": "7.4.3",
+      "type": "concept",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals",
+      "title": "Idempotency and retries",
+      "description": "Safe retries need idempotency keys. Design for duplicates.",
+      "section": "Languages, Runtimes & Engineering Practice",
+      "subsection": "Distributed Systems Basics",
+      "url": "",
+      "link": "cs_fundamentals.html#section-7",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=idempotency+and+retries+computer+science+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=idempotency+and+retries+computer+science+tutorial"
+        }
+      ],
+      "search": "idempotency and retries safe retries need idempotency keys. design for duplicates. cs fundamentals languages, runtimes & engineering practice distributed systems basics 7.4.3"
+    },
+    {
+      "id": "cs:7.4.4",
+      "key": "7.4.4",
+      "type": "concept",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals",
+      "title": "At-least-once vs exactly-once delivery",
+      "description": "Exactly-once = at-least-once + idempotent processing.",
+      "section": "Languages, Runtimes & Engineering Practice",
+      "subsection": "Distributed Systems Basics",
+      "url": "",
+      "link": "cs_fundamentals.html#section-7",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=at-least-once+vs+exactly-once+delivery+computer+science+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=at-least-once+vs+exactly-once+delivery+computer+science+tutorial"
+        }
+      ],
+      "search": "at-least-once vs exactly-once delivery exactly-once = at-least-once + idempotent processing. cs fundamentals languages, runtimes & engineering practice distributed systems basics 7.4.4"
+    },
+    {
+      "id": "cs:7.4.5",
+      "key": "7.4.5",
+      "type": "concept",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals",
+      "title": "CAP in practice",
+      "description": "Under partition choose C or A. Most systems choose per-operation.",
+      "section": "Languages, Runtimes & Engineering Practice",
+      "subsection": "Distributed Systems Basics",
+      "url": "",
+      "link": "cs_fundamentals.html#section-7",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=cap+in+practice+computer+science+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=cap+in+practice+computer+science+tutorial"
+        }
+      ],
+      "search": "cap in practice under partition choose c or a. most systems choose per-operation. cs fundamentals languages, runtimes & engineering practice distributed systems basics 7.4.5"
+    },
+    {
+      "id": "cs:7.5.1",
+      "key": "7.5.1",
+      "type": "concept",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals",
+      "title": "Test pyramid",
+      "description": "Many unit, fewer integration, few e2e. Invert it and suffer.",
+      "section": "Languages, Runtimes & Engineering Practice",
+      "subsection": "Testing Fundamentals",
+      "url": "",
+      "link": "cs_fundamentals.html#section-7",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=test+pyramid+computer+science+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=test+pyramid+computer+science+tutorial"
+        }
+      ],
+      "search": "test pyramid many unit, fewer integration, few e2e. invert it and suffer. cs fundamentals languages, runtimes & engineering practice testing fundamentals 7.5.1"
+    },
+    {
+      "id": "cs:7.5.2",
+      "key": "7.5.2",
+      "type": "concept",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals",
+      "title": "Mocks, stubs and fakes",
+      "description": "Mock: verify calls. Stub: canned answers. Fake: working lightweight impl.",
+      "section": "Languages, Runtimes & Engineering Practice",
+      "subsection": "Testing Fundamentals",
+      "url": "",
+      "link": "cs_fundamentals.html#section-7",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=mocks+stubs+and+fakes+computer+science+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=mocks+stubs+and+fakes+computer+science+tutorial"
+        }
+      ],
+      "search": "mocks, stubs and fakes mock: verify calls. stub: canned answers. fake: working lightweight impl. cs fundamentals languages, runtimes & engineering practice testing fundamentals 7.5.2"
+    },
+    {
+      "id": "cs:7.5.3",
+      "key": "7.5.3",
+      "type": "concept",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals",
+      "title": "Property-based testing",
+      "description": "Generate inputs, assert invariants (Hypothesis, QuickCheck).",
+      "section": "Languages, Runtimes & Engineering Practice",
+      "subsection": "Testing Fundamentals",
+      "url": "",
+      "link": "cs_fundamentals.html#section-7",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=property-based+testing+computer+science+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=property-based+testing+computer+science+tutorial"
+        }
+      ],
+      "search": "property-based testing generate inputs, assert invariants (hypothesis, quickcheck). cs fundamentals languages, runtimes & engineering practice testing fundamentals 7.5.3"
+    },
+    {
+      "id": "cs:7.5.4",
+      "key": "7.5.4",
+      "type": "concept",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals",
+      "title": "Coverage and mutation testing",
+      "description": "Coverage says executed, mutation testing says actually verified.",
+      "section": "Languages, Runtimes & Engineering Practice",
+      "subsection": "Testing Fundamentals",
+      "url": "",
+      "link": "cs_fundamentals.html#section-7",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=coverage+and+mutation+testing+computer+science+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=coverage+and+mutation+testing+computer+science+tutorial"
+        }
+      ],
+      "search": "coverage and mutation testing coverage says executed, mutation testing says actually verified. cs fundamentals languages, runtimes & engineering practice testing fundamentals 7.5.4"
+    },
+    {
+      "id": "cs:7.5.5",
+      "key": "7.5.5",
+      "type": "concept",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals",
+      "title": "Flaky tests and determinism",
+      "description": "Time, ordering, shared state, network — the four horsemen of flakiness.",
+      "section": "Languages, Runtimes & Engineering Practice",
+      "subsection": "Testing Fundamentals",
+      "url": "",
+      "link": "cs_fundamentals.html#section-7",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=flaky+tests+and+determinism+computer+science+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=flaky+tests+and+determinism+computer+science+tutorial"
+        }
+      ],
+      "search": "flaky tests and determinism time, ordering, shared state, network — the four horsemen of flakiness. cs fundamentals languages, runtimes & engineering practice testing fundamentals 7.5.5"
+    },
+    {
+      "id": "cs:7.6.1",
+      "key": "7.6.1",
+      "type": "concept",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals",
+      "title": "CPU profiling and flame graphs",
+      "description": "Sampled stacks → flame graph. Width = time spent.",
+      "section": "Languages, Runtimes & Engineering Practice",
+      "subsection": "Performance Profiling",
+      "url": "",
+      "link": "cs_fundamentals.html#section-7",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=cpu+profiling+and+flame+graphs+computer+science+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=cpu+profiling+and+flame+graphs+computer+science+tutorial"
+        }
+      ],
+      "search": "cpu profiling and flame graphs sampled stacks → flame graph. width = time spent. cs fundamentals languages, runtimes & engineering practice performance profiling 7.6.1"
+    },
+    {
+      "id": "cs:7.6.2",
+      "key": "7.6.2",
+      "type": "concept",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals",
+      "title": "Memory profiling and heap dumps",
+      "description": "Find retained size and allocation hot spots.",
+      "section": "Languages, Runtimes & Engineering Practice",
+      "subsection": "Performance Profiling",
+      "url": "",
+      "link": "cs_fundamentals.html#section-7",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=memory+profiling+and+heap+dumps+computer+science+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=memory+profiling+and+heap+dumps+computer+science+tutorial"
+        }
+      ],
+      "search": "memory profiling and heap dumps find retained size and allocation hot spots. cs fundamentals languages, runtimes & engineering practice performance profiling 7.6.2"
+    },
+    {
+      "id": "cs:7.6.3",
+      "key": "7.6.3",
+      "type": "concept",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals",
+      "title": "Latency percentiles (p50/p95/p99)",
+      "description": "Averages lie. Tail latency drives user experience.",
+      "section": "Languages, Runtimes & Engineering Practice",
+      "subsection": "Performance Profiling",
+      "url": "",
+      "link": "cs_fundamentals.html#section-7",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=latency+percentiles+p50%2Fp95%2Fp99+computer+science+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=latency+percentiles+p50%2Fp95%2Fp99+computer+science+tutorial"
+        }
+      ],
+      "search": "latency percentiles (p50/p95/p99) averages lie. tail latency drives user experience. cs fundamentals languages, runtimes & engineering practice performance profiling 7.6.3"
+    },
+    {
+      "id": "cs:7.6.4",
+      "key": "7.6.4",
+      "type": "concept",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals",
+      "title": "Benchmarking pitfalls",
+      "description": "JIT warmup, dead-code elimination, coordinated omission.",
+      "section": "Languages, Runtimes & Engineering Practice",
+      "subsection": "Performance Profiling",
+      "url": "",
+      "link": "cs_fundamentals.html#section-7",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=benchmarking+pitfalls+computer+science+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=benchmarking+pitfalls+computer+science+tutorial"
+        }
+      ],
+      "search": "benchmarking pitfalls jit warmup, dead-code elimination, coordinated omission. cs fundamentals languages, runtimes & engineering practice performance profiling 7.6.4"
+    },
+    {
+      "id": "cs:7.6.5",
+      "key": "7.6.5",
+      "type": "concept",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals",
+      "title": "Little's law and queueing intuition",
+      "description": "L = λW. Concurrency = throughput x latency.",
+      "section": "Languages, Runtimes & Engineering Practice",
+      "subsection": "Performance Profiling",
+      "url": "",
+      "link": "cs_fundamentals.html#section-7",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=little+computer+science+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=little+computer+science+tutorial"
+        }
+      ],
+      "search": "little's law and queueing intuition l = λw. concurrency = throughput x latency. cs fundamentals languages, runtimes & engineering practice performance profiling 7.6.5"
+    },
+    {
       "id": "bh:1.1.1",
       "key": "1.1.1",
       "type": "concept",
@@ -41280,6 +43245,582 @@
         }
       ],
       "search": "asking only about salary/perks save compensation for after the offer. ask about role, team, growth. behavioral and leadership interview strategy & mock practice common pitfalls to avoid 5.4.5"
+    },
+    {
+      "id": "bh:6.1.1",
+      "key": "6.1.1",
+      "type": "concept",
+      "domain": "bh",
+      "domainTitle": "Behavioral and Leadership",
+      "title": "Acting with incomplete information",
+      "description": "Story: shipped a decision with 70% certainty. Show the framework you used.",
+      "section": "Competency Deep Dives",
+      "subsection": "Navigating Ambiguity",
+      "url": "",
+      "link": "behavioral.html#section-6",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=acting+with+incomplete+information+behavioral+interview+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=acting+with+incomplete+information+behavioral+interview+tutorial"
+        }
+      ],
+      "search": "acting with incomplete information story: shipped a decision with 70% certainty. show the framework you used. behavioral and leadership competency deep dives navigating ambiguity 6.1.1"
+    },
+    {
+      "id": "bh:6.1.2",
+      "key": "6.1.2",
+      "type": "concept",
+      "domain": "bh",
+      "domainTitle": "Behavioral and Leadership",
+      "title": "Defining scope when none is given",
+      "description": "Story: turned a vague ask into a concrete plan with milestones.",
+      "section": "Competency Deep Dives",
+      "subsection": "Navigating Ambiguity",
+      "url": "",
+      "link": "behavioral.html#section-6",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=defining+scope+when+none+is+given+behavioral+interview+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=defining+scope+when+none+is+given+behavioral+interview+tutorial"
+        }
+      ],
+      "search": "defining scope when none is given story: turned a vague ask into a concrete plan with milestones. behavioral and leadership competency deep dives navigating ambiguity 6.1.2"
+    },
+    {
+      "id": "bh:6.1.3",
+      "key": "6.1.3",
+      "type": "concept",
+      "domain": "bh",
+      "domainTitle": "Behavioral and Leadership",
+      "title": "Communicating assumptions",
+      "description": "Story: stated assumptions up front, revisited them when facts changed.",
+      "section": "Competency Deep Dives",
+      "subsection": "Navigating Ambiguity",
+      "url": "",
+      "link": "behavioral.html#section-6",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=communicating+assumptions+behavioral+interview+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=communicating+assumptions+behavioral+interview+tutorial"
+        }
+      ],
+      "search": "communicating assumptions story: stated assumptions up front, revisited them when facts changed. behavioral and leadership competency deep dives navigating ambiguity 6.1.3"
+    },
+    {
+      "id": "bh:6.2.1",
+      "key": "6.2.1",
+      "type": "concept",
+      "domain": "bh",
+      "domainTitle": "Behavioral and Leadership",
+      "title": "Going beyond your role",
+      "description": "Story: fixed something outside your team because it blocked customers.",
+      "section": "Competency Deep Dives",
+      "subsection": "Ownership & Initiative",
+      "url": "",
+      "link": "behavioral.html#section-6",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=going+beyond+your+role+behavioral+interview+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=going+beyond+your+role+behavioral+interview+tutorial"
+        }
+      ],
+      "search": "going beyond your role story: fixed something outside your team because it blocked customers. behavioral and leadership competency deep dives ownership & initiative 6.2.1"
+    },
+    {
+      "id": "bh:6.2.2",
+      "key": "6.2.2",
+      "type": "concept",
+      "domain": "bh",
+      "domainTitle": "Behavioral and Leadership",
+      "title": "Long-term thinking vs quick wins",
+      "description": "Story: chose durable fix over patch and defended the timeline.",
+      "section": "Competency Deep Dives",
+      "subsection": "Ownership & Initiative",
+      "url": "",
+      "link": "behavioral.html#section-6",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=long-term+thinking+vs+quick+wins+behavioral+interview+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=long-term+thinking+vs+quick+wins+behavioral+interview+tutorial"
+        }
+      ],
+      "search": "long-term thinking vs quick wins story: chose durable fix over patch and defended the timeline. behavioral and leadership competency deep dives ownership & initiative 6.2.2"
+    },
+    {
+      "id": "bh:6.2.3",
+      "key": "6.2.3",
+      "type": "concept",
+      "domain": "bh",
+      "domainTitle": "Behavioral and Leadership",
+      "title": "Owning outcomes after handoff",
+      "description": "Story: followed through after the project left your hands.",
+      "section": "Competency Deep Dives",
+      "subsection": "Ownership & Initiative",
+      "url": "",
+      "link": "behavioral.html#section-6",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=owning+outcomes+after+handoff+behavioral+interview+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=owning+outcomes+after+handoff+behavioral+interview+tutorial"
+        }
+      ],
+      "search": "owning outcomes after handoff story: followed through after the project left your hands. behavioral and leadership competency deep dives ownership & initiative 6.2.3"
+    },
+    {
+      "id": "bh:6.3.1",
+      "key": "6.3.1",
+      "type": "concept",
+      "domain": "bh",
+      "domainTitle": "Behavioral and Leadership",
+      "title": "Disagreeing with a manager",
+      "description": "Story: disagree and commit — pushed back with data, then aligned.",
+      "section": "Competency Deep Dives",
+      "subsection": "Conflict & Influence",
+      "url": "",
+      "link": "behavioral.html#section-6",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=disagreeing+with+a+manager+behavioral+interview+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=disagreeing+with+a+manager+behavioral+interview+tutorial"
+        }
+      ],
+      "search": "disagreeing with a manager story: disagree and commit — pushed back with data, then aligned. behavioral and leadership competency deep dives conflict & influence 6.3.1"
+    },
+    {
+      "id": "bh:6.3.2",
+      "key": "6.3.2",
+      "type": "concept",
+      "domain": "bh",
+      "domainTitle": "Behavioral and Leadership",
+      "title": "Influencing without authority",
+      "description": "Story: convinced another team via prototype, data, or shared goals.",
+      "section": "Competency Deep Dives",
+      "subsection": "Conflict & Influence",
+      "url": "",
+      "link": "behavioral.html#section-6",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=influencing+without+authority+behavioral+interview+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=influencing+without+authority+behavioral+interview+tutorial"
+        }
+      ],
+      "search": "influencing without authority story: convinced another team via prototype, data, or shared goals. behavioral and leadership competency deep dives conflict & influence 6.3.2"
+    },
+    {
+      "id": "bh:6.3.3",
+      "key": "6.3.3",
+      "type": "concept",
+      "domain": "bh",
+      "domainTitle": "Behavioral and Leadership",
+      "title": "Driving alignment across teams",
+      "description": "Story: brokered a decision between teams with conflicting incentives.",
+      "section": "Competency Deep Dives",
+      "subsection": "Conflict & Influence",
+      "url": "",
+      "link": "behavioral.html#section-6",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=driving+alignment+across+teams+behavioral+interview+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=driving+alignment+across+teams+behavioral+interview+tutorial"
+        }
+      ],
+      "search": "driving alignment across teams story: brokered a decision between teams with conflicting incentives. behavioral and leadership competency deep dives conflict & influence 6.3.3"
+    },
+    {
+      "id": "bh:6.4.1",
+      "key": "6.4.1",
+      "type": "concept",
+      "domain": "bh",
+      "domainTitle": "Behavioral and Leadership",
+      "title": "Telling a real failure story",
+      "description": "Own the failure fully — no 'my weakness is working too hard'.",
+      "section": "Competency Deep Dives",
+      "subsection": "Failure & Learning",
+      "url": "",
+      "link": "behavioral.html#section-6",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=telling+a+real+failure+story+behavioral+interview+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=telling+a+real+failure+story+behavioral+interview+tutorial"
+        }
+      ],
+      "search": "telling a real failure story own the failure fully — no 'my weakness is working too hard'. behavioral and leadership competency deep dives failure & learning 6.4.1"
+    },
+    {
+      "id": "bh:6.4.2",
+      "key": "6.4.2",
+      "type": "concept",
+      "domain": "bh",
+      "domainTitle": "Behavioral and Leadership",
+      "title": "Post-mortems and prevention",
+      "description": "Story: ran a blameless post-mortem and shipped a prevention mechanism.",
+      "section": "Competency Deep Dives",
+      "subsection": "Failure & Learning",
+      "url": "",
+      "link": "behavioral.html#section-6",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=post-mortems+and+prevention+behavioral+interview+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=post-mortems+and+prevention+behavioral+interview+tutorial"
+        }
+      ],
+      "search": "post-mortems and prevention story: ran a blameless post-mortem and shipped a prevention mechanism. behavioral and leadership competency deep dives failure & learning 6.4.2"
+    },
+    {
+      "id": "bh:6.4.3",
+      "key": "6.4.3",
+      "type": "concept",
+      "domain": "bh",
+      "domainTitle": "Behavioral and Leadership",
+      "title": "Receiving hard feedback",
+      "description": "Story: specific feedback that stung, and the visible behavior change.",
+      "section": "Competency Deep Dives",
+      "subsection": "Failure & Learning",
+      "url": "",
+      "link": "behavioral.html#section-6",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=receiving+hard+feedback+behavioral+interview+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=receiving+hard+feedback+behavioral+interview+tutorial"
+        }
+      ],
+      "search": "receiving hard feedback story: specific feedback that stung, and the visible behavior change. behavioral and leadership competency deep dives failure & learning 6.4.3"
+    },
+    {
+      "id": "bh:6.5.1",
+      "key": "6.5.1",
+      "type": "concept",
+      "domain": "bh",
+      "domainTitle": "Behavioral and Leadership",
+      "title": "Onboarding and coaching juniors",
+      "description": "Story: ramped someone up; measure their later success.",
+      "section": "Competency Deep Dives",
+      "subsection": "Mentoring & Growth",
+      "url": "",
+      "link": "behavioral.html#section-6",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=onboarding+and+coaching+juniors+behavioral+interview+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=onboarding+and+coaching+juniors+behavioral+interview+tutorial"
+        }
+      ],
+      "search": "onboarding and coaching juniors story: ramped someone up; measure their later success. behavioral and leadership competency deep dives mentoring & growth 6.5.1"
+    },
+    {
+      "id": "bh:6.5.2",
+      "key": "6.5.2",
+      "type": "concept",
+      "domain": "bh",
+      "domainTitle": "Behavioral and Leadership",
+      "title": "Delegation and trust",
+      "description": "Story: handed a meaty project to someone and supported without hovering.",
+      "section": "Competency Deep Dives",
+      "subsection": "Mentoring & Growth",
+      "url": "",
+      "link": "behavioral.html#section-6",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=delegation+and+trust+behavioral+interview+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=delegation+and+trust+behavioral+interview+tutorial"
+        }
+      ],
+      "search": "delegation and trust story: handed a meaty project to someone and supported without hovering. behavioral and leadership competency deep dives mentoring & growth 6.5.2"
+    },
+    {
+      "id": "bh:6.5.3",
+      "key": "6.5.3",
+      "type": "concept",
+      "domain": "bh",
+      "domainTitle": "Behavioral and Leadership",
+      "title": "Raising the bar in reviews",
+      "description": "Story: improved quality culture via code review or design review.",
+      "section": "Competency Deep Dives",
+      "subsection": "Mentoring & Growth",
+      "url": "",
+      "link": "behavioral.html#section-6",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=raising+the+bar+in+reviews+behavioral+interview+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=raising+the+bar+in+reviews+behavioral+interview+tutorial"
+        }
+      ],
+      "search": "raising the bar in reviews story: improved quality culture via code review or design review. behavioral and leadership competency deep dives mentoring & growth 6.5.3"
+    },
+    {
+      "id": "bh:6.6.1",
+      "key": "6.6.1",
+      "type": "concept",
+      "domain": "bh",
+      "domainTitle": "Behavioral and Leadership",
+      "title": "Saying no with data",
+      "description": "Story: declined a request using impact/effort evidence, kept the relationship.",
+      "section": "Competency Deep Dives",
+      "subsection": "Prioritization & Trade-offs",
+      "url": "",
+      "link": "behavioral.html#section-6",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=saying+no+with+data+behavioral+interview+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=saying+no+with+data+behavioral+interview+tutorial"
+        }
+      ],
+      "search": "saying no with data story: declined a request using impact/effort evidence, kept the relationship. behavioral and leadership competency deep dives prioritization & trade-offs 6.6.1"
+    },
+    {
+      "id": "bh:6.6.2",
+      "key": "6.6.2",
+      "type": "concept",
+      "domain": "bh",
+      "domainTitle": "Behavioral and Leadership",
+      "title": "Tech debt vs features",
+      "description": "Story: negotiated debt paydown by quantifying its drag.",
+      "section": "Competency Deep Dives",
+      "subsection": "Prioritization & Trade-offs",
+      "url": "",
+      "link": "behavioral.html#section-6",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=tech+debt+vs+features+behavioral+interview+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=tech+debt+vs+features+behavioral+interview+tutorial"
+        }
+      ],
+      "search": "tech debt vs features story: negotiated debt paydown by quantifying its drag. behavioral and leadership competency deep dives prioritization & trade-offs 6.6.2"
+    },
+    {
+      "id": "bh:6.6.3",
+      "key": "6.6.3",
+      "type": "concept",
+      "domain": "bh",
+      "domainTitle": "Behavioral and Leadership",
+      "title": "Deadline triage",
+      "description": "Story: cut scope honestly instead of cutting quality silently.",
+      "section": "Competency Deep Dives",
+      "subsection": "Prioritization & Trade-offs",
+      "url": "",
+      "link": "behavioral.html#section-6",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=deadline+triage+behavioral+interview+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=deadline+triage+behavioral+interview+tutorial"
+        }
+      ],
+      "search": "deadline triage story: cut scope honestly instead of cutting quality silently. behavioral and leadership competency deep dives prioritization & trade-offs 6.6.3"
+    },
+    {
+      "id": "bh:6.7.1",
+      "key": "6.7.1",
+      "type": "concept",
+      "domain": "bh",
+      "domainTitle": "Behavioral and Leadership",
+      "title": "Working backwards from the customer",
+      "description": "Story: started from customer pain, not from the tech.",
+      "section": "Competency Deep Dives",
+      "subsection": "Customer Impact",
+      "url": "",
+      "link": "behavioral.html#section-6",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=working+backwards+from+the+customer+behavioral+interview+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=working+backwards+from+the+customer+behavioral+interview+tutorial"
+        }
+      ],
+      "search": "working backwards from the customer story: started from customer pain, not from the tech. behavioral and leadership competency deep dives customer impact 6.7.1"
+    },
+    {
+      "id": "bh:6.7.2",
+      "key": "6.7.2",
+      "type": "concept",
+      "domain": "bh",
+      "domainTitle": "Behavioral and Leadership",
+      "title": "Quantifying customer outcomes",
+      "description": "Story: metric moved — latency, retention, support tickets, revenue.",
+      "section": "Competency Deep Dives",
+      "subsection": "Customer Impact",
+      "url": "",
+      "link": "behavioral.html#section-6",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=quantifying+customer+outcomes+behavioral+interview+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=quantifying+customer+outcomes+behavioral+interview+tutorial"
+        }
+      ],
+      "search": "quantifying customer outcomes story: metric moved — latency, retention, support tickets, revenue. behavioral and leadership competency deep dives customer impact 6.7.2"
+    },
+    {
+      "id": "bh:6.7.3",
+      "key": "6.7.3",
+      "type": "concept",
+      "domain": "bh",
+      "domainTitle": "Behavioral and Leadership",
+      "title": "Handling customer escalations",
+      "description": "Story: owned an escalation end-to-end, fixed cause not just symptom.",
+      "section": "Competency Deep Dives",
+      "subsection": "Customer Impact",
+      "url": "",
+      "link": "behavioral.html#section-6",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=handling+customer+escalations+behavioral+interview+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=handling+customer+escalations+behavioral+interview+tutorial"
+        }
+      ],
+      "search": "handling customer escalations story: owned an escalation end-to-end, fixed cause not just symptom. behavioral and leadership competency deep dives customer impact 6.7.3"
+    },
+    {
+      "id": "bh:6.8.1",
+      "key": "6.8.1",
+      "type": "concept",
+      "domain": "bh",
+      "domainTitle": "Behavioral and Leadership",
+      "title": "Choosing boring technology",
+      "description": "Story: picked the proven option and justified innovation tokens.",
+      "section": "Competency Deep Dives",
+      "subsection": "Technical Judgment",
+      "url": "",
+      "link": "behavioral.html#section-6",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=choosing+boring+technology+behavioral+interview+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=choosing+boring+technology+behavioral+interview+tutorial"
+        }
+      ],
+      "search": "choosing boring technology story: picked the proven option and justified innovation tokens. behavioral and leadership competency deep dives technical judgment 6.8.1"
+    },
+    {
+      "id": "bh:6.8.2",
+      "key": "6.8.2",
+      "type": "concept",
+      "domain": "bh",
+      "domainTitle": "Behavioral and Leadership",
+      "title": "Architecture decision records",
+      "description": "Story: documented context and trade-offs so the decision survived you.",
+      "section": "Competency Deep Dives",
+      "subsection": "Technical Judgment",
+      "url": "",
+      "link": "behavioral.html#section-6",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=architecture+decision+records+behavioral+interview+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=architecture+decision+records+behavioral+interview+tutorial"
+        }
+      ],
+      "search": "architecture decision records story: documented context and trade-offs so the decision survived you. behavioral and leadership competency deep dives technical judgment 6.8.2"
+    },
+    {
+      "id": "bh:6.8.3",
+      "key": "6.8.3",
+      "type": "concept",
+      "domain": "bh",
+      "domainTitle": "Behavioral and Leadership",
+      "title": "Estimating and de-risking projects",
+      "description": "Story: front-loaded the riskiest unknown; estimate held.",
+      "section": "Competency Deep Dives",
+      "subsection": "Technical Judgment",
+      "url": "",
+      "link": "behavioral.html#section-6",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=estimating+and+de-risking+projects+behavioral+interview+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=estimating+and+de-risking+projects+behavioral+interview+tutorial"
+        }
+      ],
+      "search": "estimating and de-risking projects story: front-loaded the riskiest unknown; estimate held. behavioral and leadership competency deep dives technical judgment 6.8.3"
     },
     {
       "id": "ai:1.1.1",
@@ -44880,6 +47421,726 @@
         }
       ],
       "search": "ci/cd for ml (github actions, jenkins) same patterns as software. trigger on data or code change. ai engineering mlops infrastructure 10.4.3"
+    },
+    {
+      "id": "ai:11.1.1",
+      "key": "11.1.1",
+      "type": "concept",
+      "domain": "ai",
+      "domainTitle": "AI Engineering",
+      "title": "JSON mode and schema-constrained decoding",
+      "description": "Grammar/schema constraints guarantee parseable output.",
+      "section": "Production AI Engineering",
+      "subsection": "Structured Outputs & Tool Calling",
+      "url": "",
+      "link": "ai_engineering.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=json+mode+and+schema-constrained+decoding+AI+engineering+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=json+mode+and+schema-constrained+decoding+AI+engineering+tutorial"
+        }
+      ],
+      "search": "json mode and schema-constrained decoding grammar/schema constraints guarantee parseable output. ai engineering production ai engineering structured outputs & tool calling 11.1.1"
+    },
+    {
+      "id": "ai:11.1.2",
+      "key": "11.1.2",
+      "type": "concept",
+      "domain": "ai",
+      "domainTitle": "AI Engineering",
+      "title": "Function calling APIs",
+      "description": "Model emits tool name + JSON args; your code executes and returns results.",
+      "section": "Production AI Engineering",
+      "subsection": "Structured Outputs & Tool Calling",
+      "url": "",
+      "link": "ai_engineering.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=function+calling+apis+AI+engineering+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=function+calling+apis+AI+engineering+tutorial"
+        }
+      ],
+      "search": "function calling apis model emits tool name + json args; your code executes and returns results. ai engineering production ai engineering structured outputs & tool calling 11.1.2"
+    },
+    {
+      "id": "ai:11.1.3",
+      "key": "11.1.3",
+      "type": "concept",
+      "domain": "ai",
+      "domainTitle": "AI Engineering",
+      "title": "Tool selection and routing",
+      "description": "Few good tools beat many vague ones. Descriptions are prompts.",
+      "section": "Production AI Engineering",
+      "subsection": "Structured Outputs & Tool Calling",
+      "url": "",
+      "link": "ai_engineering.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=tool+selection+and+routing+AI+engineering+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=tool+selection+and+routing+AI+engineering+tutorial"
+        }
+      ],
+      "search": "tool selection and routing few good tools beat many vague ones. descriptions are prompts. ai engineering production ai engineering structured outputs & tool calling 11.1.3"
+    },
+    {
+      "id": "ai:11.1.4",
+      "key": "11.1.4",
+      "type": "concept",
+      "domain": "ai",
+      "domainTitle": "AI Engineering",
+      "title": "Parallel tool calls",
+      "description": "Independent calls batched in one turn cut latency.",
+      "section": "Production AI Engineering",
+      "subsection": "Structured Outputs & Tool Calling",
+      "url": "",
+      "link": "ai_engineering.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=parallel+tool+calls+AI+engineering+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=parallel+tool+calls+AI+engineering+tutorial"
+        }
+      ],
+      "search": "parallel tool calls independent calls batched in one turn cut latency. ai engineering production ai engineering structured outputs & tool calling 11.1.4"
+    },
+    {
+      "id": "ai:11.1.5",
+      "key": "11.1.5",
+      "type": "concept",
+      "domain": "ai",
+      "domainTitle": "AI Engineering",
+      "title": "Validating and repairing output",
+      "description": "Validate against schema; retry with the error message on failure.",
+      "section": "Production AI Engineering",
+      "subsection": "Structured Outputs & Tool Calling",
+      "url": "",
+      "link": "ai_engineering.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=validating+and+repairing+output+AI+engineering+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=validating+and+repairing+output+AI+engineering+tutorial"
+        }
+      ],
+      "search": "validating and repairing output validate against schema; retry with the error message on failure. ai engineering production ai engineering structured outputs & tool calling 11.1.5"
+    },
+    {
+      "id": "ai:11.2.1",
+      "key": "11.2.1",
+      "type": "concept",
+      "domain": "ai",
+      "domainTitle": "AI Engineering",
+      "title": "Retrieval metrics (recall@k, MRR)",
+      "description": "Did the right chunk appear, and how high did it rank?",
+      "section": "Production AI Engineering",
+      "subsection": "RAG Evaluation",
+      "url": "",
+      "link": "ai_engineering.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=retrieval+metrics+recall+k+mrr+AI+engineering+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=retrieval+metrics+recall+k+mrr+AI+engineering+tutorial"
+        }
+      ],
+      "search": "retrieval metrics (recall@k, mrr) did the right chunk appear, and how high did it rank? ai engineering production ai engineering rag evaluation 11.2.1"
+    },
+    {
+      "id": "ai:11.2.2",
+      "key": "11.2.2",
+      "type": "concept",
+      "domain": "ai",
+      "domainTitle": "AI Engineering",
+      "title": "Faithfulness and groundedness",
+      "description": "Is the answer supported by retrieved context? LLM-as-judge scoring.",
+      "section": "Production AI Engineering",
+      "subsection": "RAG Evaluation",
+      "url": "",
+      "link": "ai_engineering.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=faithfulness+and+groundedness+AI+engineering+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=faithfulness+and+groundedness+AI+engineering+tutorial"
+        }
+      ],
+      "search": "faithfulness and groundedness is the answer supported by retrieved context? llm-as-judge scoring. ai engineering production ai engineering rag evaluation 11.2.2"
+    },
+    {
+      "id": "ai:11.2.3",
+      "key": "11.2.3",
+      "type": "concept",
+      "domain": "ai",
+      "domainTitle": "AI Engineering",
+      "title": "Golden datasets and synthetic evals",
+      "description": "Curate Q-A-context triples; bootstrap with generated questions.",
+      "section": "Production AI Engineering",
+      "subsection": "RAG Evaluation",
+      "url": "",
+      "link": "ai_engineering.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=golden+datasets+and+synthetic+evals+AI+engineering+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=golden+datasets+and+synthetic+evals+AI+engineering+tutorial"
+        }
+      ],
+      "search": "golden datasets and synthetic evals curate q-a-context triples; bootstrap with generated questions. ai engineering production ai engineering rag evaluation 11.2.3"
+    },
+    {
+      "id": "ai:11.2.4",
+      "key": "11.2.4",
+      "type": "concept",
+      "domain": "ai",
+      "domainTitle": "AI Engineering",
+      "title": "End-to-end RAG eval pipelines",
+      "description": "Score retrieval and generation separately — they fail differently.",
+      "section": "Production AI Engineering",
+      "subsection": "RAG Evaluation",
+      "url": "",
+      "link": "ai_engineering.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=end-to-end+rag+eval+pipelines+AI+engineering+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=end-to-end+rag+eval+pipelines+AI+engineering+tutorial"
+        }
+      ],
+      "search": "end-to-end rag eval pipelines score retrieval and generation separately — they fail differently. ai engineering production ai engineering rag evaluation 11.2.4"
+    },
+    {
+      "id": "ai:11.3.1",
+      "key": "11.3.1",
+      "type": "concept",
+      "domain": "ai",
+      "domainTitle": "AI Engineering",
+      "title": "Agent failure modes",
+      "description": "Loops, hallucinated tools, lost context, goal drift. Name them to catch them.",
+      "section": "Production AI Engineering",
+      "subsection": "Agent Reliability",
+      "url": "",
+      "link": "ai_engineering.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=agent+failure+modes+AI+engineering+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=agent+failure+modes+AI+engineering+tutorial"
+        }
+      ],
+      "search": "agent failure modes loops, hallucinated tools, lost context, goal drift. name them to catch them. ai engineering production ai engineering agent reliability 11.3.1"
+    },
+    {
+      "id": "ai:11.3.2",
+      "key": "11.3.2",
+      "type": "concept",
+      "domain": "ai",
+      "domainTitle": "AI Engineering",
+      "title": "Guardrails on actions and budgets",
+      "description": "Step limits, spend caps, allow-listed tools, dry-run modes.",
+      "section": "Production AI Engineering",
+      "subsection": "Agent Reliability",
+      "url": "",
+      "link": "ai_engineering.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=guardrails+on+actions+and+budgets+AI+engineering+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=guardrails+on+actions+and+budgets+AI+engineering+tutorial"
+        }
+      ],
+      "search": "guardrails on actions and budgets step limits, spend caps, allow-listed tools, dry-run modes. ai engineering production ai engineering agent reliability 11.3.2"
+    },
+    {
+      "id": "ai:11.3.3",
+      "key": "11.3.3",
+      "type": "concept",
+      "domain": "ai",
+      "domainTitle": "AI Engineering",
+      "title": "Human-in-the-loop checkpoints",
+      "description": "Approval gates before irreversible actions.",
+      "section": "Production AI Engineering",
+      "subsection": "Agent Reliability",
+      "url": "",
+      "link": "ai_engineering.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=human-in-the-loop+checkpoints+AI+engineering+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=human-in-the-loop+checkpoints+AI+engineering+tutorial"
+        }
+      ],
+      "search": "human-in-the-loop checkpoints approval gates before irreversible actions. ai engineering production ai engineering agent reliability 11.3.3"
+    },
+    {
+      "id": "ai:11.3.4",
+      "key": "11.3.4",
+      "type": "concept",
+      "domain": "ai",
+      "domainTitle": "AI Engineering",
+      "title": "Tracing agent decisions",
+      "description": "Log every thought/tool/result step for replay and debugging.",
+      "section": "Production AI Engineering",
+      "subsection": "Agent Reliability",
+      "url": "",
+      "link": "ai_engineering.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=tracing+agent+decisions+AI+engineering+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=tracing+agent+decisions+AI+engineering+tutorial"
+        }
+      ],
+      "search": "tracing agent decisions log every thought/tool/result step for replay and debugging. ai engineering production ai engineering agent reliability 11.3.4"
+    },
+    {
+      "id": "ai:11.4.1",
+      "key": "11.4.1",
+      "type": "concept",
+      "domain": "ai",
+      "domainTitle": "AI Engineering",
+      "title": "Prompt registries and versioning",
+      "description": "Store prompts with versions and owners, outside the code hot path.",
+      "section": "Production AI Engineering",
+      "subsection": "Prompt & Version Management",
+      "url": "",
+      "link": "ai_engineering.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=prompt+registries+and+versioning+AI+engineering+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=prompt+registries+and+versioning+AI+engineering+tutorial"
+        }
+      ],
+      "search": "prompt registries and versioning store prompts with versions and owners, outside the code hot path. ai engineering production ai engineering prompt & version management 11.4.1"
+    },
+    {
+      "id": "ai:11.4.2",
+      "key": "11.4.2",
+      "type": "concept",
+      "domain": "ai",
+      "domainTitle": "AI Engineering",
+      "title": "A/B testing prompts",
+      "description": "Compare variants on live traffic with quality + cost metrics.",
+      "section": "Production AI Engineering",
+      "subsection": "Prompt & Version Management",
+      "url": "",
+      "link": "ai_engineering.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=a%2Fb+testing+prompts+AI+engineering+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=a%2Fb+testing+prompts+AI+engineering+tutorial"
+        }
+      ],
+      "search": "a/b testing prompts compare variants on live traffic with quality + cost metrics. ai engineering production ai engineering prompt & version management 11.4.2"
+    },
+    {
+      "id": "ai:11.4.3",
+      "key": "11.4.3",
+      "type": "concept",
+      "domain": "ai",
+      "domainTitle": "AI Engineering",
+      "title": "Regression testing on prompt change",
+      "description": "Run the eval suite before shipping any prompt edit.",
+      "section": "Production AI Engineering",
+      "subsection": "Prompt & Version Management",
+      "url": "",
+      "link": "ai_engineering.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=regression+testing+on+prompt+change+AI+engineering+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=regression+testing+on+prompt+change+AI+engineering+tutorial"
+        }
+      ],
+      "search": "regression testing on prompt change run the eval suite before shipping any prompt edit. ai engineering production ai engineering prompt & version management 11.4.3"
+    },
+    {
+      "id": "ai:11.4.4",
+      "key": "11.4.4",
+      "type": "concept",
+      "domain": "ai",
+      "domainTitle": "AI Engineering",
+      "title": "Templates and variable hygiene",
+      "description": "Escape user input; never let users write into system prompts.",
+      "section": "Production AI Engineering",
+      "subsection": "Prompt & Version Management",
+      "url": "",
+      "link": "ai_engineering.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=templates+and+variable+hygiene+AI+engineering+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=templates+and+variable+hygiene+AI+engineering+tutorial"
+        }
+      ],
+      "search": "templates and variable hygiene escape user input; never let users write into system prompts. ai engineering production ai engineering prompt & version management 11.4.4"
+    },
+    {
+      "id": "ai:11.5.1",
+      "key": "11.5.1",
+      "type": "concept",
+      "domain": "ai",
+      "domainTitle": "AI Engineering",
+      "title": "Token, cost and latency dashboards",
+      "description": "Track per-feature unit economics, not just totals.",
+      "section": "Production AI Engineering",
+      "subsection": "LLM Observability",
+      "url": "",
+      "link": "ai_engineering.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=token+cost+and+latency+dashboards+AI+engineering+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=token+cost+and+latency+dashboards+AI+engineering+tutorial"
+        }
+      ],
+      "search": "token, cost and latency dashboards track per-feature unit economics, not just totals. ai engineering production ai engineering llm observability 11.5.1"
+    },
+    {
+      "id": "ai:11.5.2",
+      "key": "11.5.2",
+      "type": "concept",
+      "domain": "ai",
+      "domainTitle": "AI Engineering",
+      "title": "Logging completions safely",
+      "description": "Redact PII before storage; sample full traces.",
+      "section": "Production AI Engineering",
+      "subsection": "LLM Observability",
+      "url": "",
+      "link": "ai_engineering.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=logging+completions+safely+AI+engineering+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=logging+completions+safely+AI+engineering+tutorial"
+        }
+      ],
+      "search": "logging completions safely redact pii before storage; sample full traces. ai engineering production ai engineering llm observability 11.5.2"
+    },
+    {
+      "id": "ai:11.5.3",
+      "key": "11.5.3",
+      "type": "concept",
+      "domain": "ai",
+      "domainTitle": "AI Engineering",
+      "title": "Quality drift detection",
+      "description": "Score sampled prod outputs continuously; alert on drops.",
+      "section": "Production AI Engineering",
+      "subsection": "LLM Observability",
+      "url": "",
+      "link": "ai_engineering.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=quality+drift+detection+AI+engineering+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=quality+drift+detection+AI+engineering+tutorial"
+        }
+      ],
+      "search": "quality drift detection score sampled prod outputs continuously; alert on drops. ai engineering production ai engineering llm observability 11.5.3"
+    },
+    {
+      "id": "ai:11.5.4",
+      "key": "11.5.4",
+      "type": "concept",
+      "domain": "ai",
+      "domainTitle": "AI Engineering",
+      "title": "User feedback loops",
+      "description": "Thumbs up/down + implicit signals feed the next eval set.",
+      "section": "Production AI Engineering",
+      "subsection": "LLM Observability",
+      "url": "",
+      "link": "ai_engineering.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=user+feedback+loops+AI+engineering+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=user+feedback+loops+AI+engineering+tutorial"
+        }
+      ],
+      "search": "user feedback loops thumbs up/down + implicit signals feed the next eval set. ai engineering production ai engineering llm observability 11.5.4"
+    },
+    {
+      "id": "ai:11.6.1",
+      "key": "11.6.1",
+      "type": "concept",
+      "domain": "ai",
+      "domainTitle": "AI Engineering",
+      "title": "Input and output content filtering",
+      "description": "Classifier layers before and after the model.",
+      "section": "Production AI Engineering",
+      "subsection": "Safety & Guardrails",
+      "url": "",
+      "link": "ai_engineering.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=input+and+output+content+filtering+AI+engineering+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=input+and+output+content+filtering+AI+engineering+tutorial"
+        }
+      ],
+      "search": "input and output content filtering classifier layers before and after the model. ai engineering production ai engineering safety & guardrails 11.6.1"
+    },
+    {
+      "id": "ai:11.6.2",
+      "key": "11.6.2",
+      "type": "concept",
+      "domain": "ai",
+      "domainTitle": "AI Engineering",
+      "title": "Prompt injection defenses",
+      "description": "Treat retrieved/user content as data, not instructions; privilege separation.",
+      "section": "Production AI Engineering",
+      "subsection": "Safety & Guardrails",
+      "url": "",
+      "link": "ai_engineering.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=prompt+injection+defenses+AI+engineering+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=prompt+injection+defenses+AI+engineering+tutorial"
+        }
+      ],
+      "search": "prompt injection defenses treat retrieved/user content as data, not instructions; privilege separation. ai engineering production ai engineering safety & guardrails 11.6.2"
+    },
+    {
+      "id": "ai:11.6.3",
+      "key": "11.6.3",
+      "type": "concept",
+      "domain": "ai",
+      "domainTitle": "AI Engineering",
+      "title": "Jailbreak detection",
+      "description": "Detect role-play exploits and encoded payloads; log and rate-limit.",
+      "section": "Production AI Engineering",
+      "subsection": "Safety & Guardrails",
+      "url": "",
+      "link": "ai_engineering.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=jailbreak+detection+AI+engineering+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=jailbreak+detection+AI+engineering+tutorial"
+        }
+      ],
+      "search": "jailbreak detection detect role-play exploits and encoded payloads; log and rate-limit. ai engineering production ai engineering safety & guardrails 11.6.3"
+    },
+    {
+      "id": "ai:11.6.4",
+      "key": "11.6.4",
+      "type": "concept",
+      "domain": "ai",
+      "domainTitle": "AI Engineering",
+      "title": "PII redaction",
+      "description": "Strip identifiers before the model and before the logs.",
+      "section": "Production AI Engineering",
+      "subsection": "Safety & Guardrails",
+      "url": "",
+      "link": "ai_engineering.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=pii+redaction+AI+engineering+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=pii+redaction+AI+engineering+tutorial"
+        }
+      ],
+      "search": "pii redaction strip identifiers before the model and before the logs. ai engineering production ai engineering safety & guardrails 11.6.4"
+    },
+    {
+      "id": "ai:11.7.1",
+      "key": "11.7.1",
+      "type": "concept",
+      "domain": "ai",
+      "domainTitle": "AI Engineering",
+      "title": "Model routing and cascades",
+      "description": "Try the small model first; escalate on low confidence.",
+      "section": "Production AI Engineering",
+      "subsection": "Cost & Latency Optimization",
+      "url": "",
+      "link": "ai_engineering.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=model+routing+and+cascades+AI+engineering+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=model+routing+and+cascades+AI+engineering+tutorial"
+        }
+      ],
+      "search": "model routing and cascades try the small model first; escalate on low confidence. ai engineering production ai engineering cost & latency optimization 11.7.1"
+    },
+    {
+      "id": "ai:11.7.2",
+      "key": "11.7.2",
+      "type": "concept",
+      "domain": "ai",
+      "domainTitle": "AI Engineering",
+      "title": "Caching (exact and semantic)",
+      "description": "Hash-match identical calls; embed-match similar ones.",
+      "section": "Production AI Engineering",
+      "subsection": "Cost & Latency Optimization",
+      "url": "",
+      "link": "ai_engineering.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=caching+exact+and+semantic+AI+engineering+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=caching+exact+and+semantic+AI+engineering+tutorial"
+        }
+      ],
+      "search": "caching (exact and semantic) hash-match identical calls; embed-match similar ones. ai engineering production ai engineering cost & latency optimization 11.7.2"
+    },
+    {
+      "id": "ai:11.7.3",
+      "key": "11.7.3",
+      "type": "concept",
+      "domain": "ai",
+      "domainTitle": "AI Engineering",
+      "title": "Batching and streaming",
+      "description": "Batch offline work; stream online responses for perceived speed.",
+      "section": "Production AI Engineering",
+      "subsection": "Cost & Latency Optimization",
+      "url": "",
+      "link": "ai_engineering.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=batching+and+streaming+AI+engineering+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=batching+and+streaming+AI+engineering+tutorial"
+        }
+      ],
+      "search": "batching and streaming batch offline work; stream online responses for perceived speed. ai engineering production ai engineering cost & latency optimization 11.7.3"
+    },
+    {
+      "id": "ai:11.7.4",
+      "key": "11.7.4",
+      "type": "concept",
+      "domain": "ai",
+      "domainTitle": "AI Engineering",
+      "title": "Quantization and distillation",
+      "description": "Smaller weights or distilled students for self-hosted serving.",
+      "section": "Production AI Engineering",
+      "subsection": "Cost & Latency Optimization",
+      "url": "",
+      "link": "ai_engineering.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=quantization+and+distillation+AI+engineering+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=quantization+and+distillation+AI+engineering+tutorial"
+        }
+      ],
+      "search": "quantization and distillation smaller weights or distilled students for self-hosted serving. ai engineering production ai engineering cost & latency optimization 11.7.4"
+    },
+    {
+      "id": "ai:11.7.5",
+      "key": "11.7.5",
+      "type": "concept",
+      "domain": "ai",
+      "domainTitle": "AI Engineering",
+      "title": "Context window budgeting",
+      "description": "Trim, summarize, and rank context. Tokens are money.",
+      "section": "Production AI Engineering",
+      "subsection": "Cost & Latency Optimization",
+      "url": "",
+      "link": "ai_engineering.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=context+window+budgeting+AI+engineering+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=context+window+budgeting+AI+engineering+tutorial"
+        }
+      ],
+      "search": "context window budgeting trim, summarize, and rank context. tokens are money. ai engineering production ai engineering cost & latency optimization 11.7.5"
     },
     {
       "id": "cloud:1.1.1",
@@ -48696,6 +51957,846 @@
         }
       ],
       "search": "q: what is snowball? — a: physical data transfer appliance. petabytes in/out of aws when network is impractical. messaging, serverless, more. cloud - aws and azure aws interview q&a (250 questions) sqs / sns / lambda / misc q&a 10.5.10"
+    },
+    {
+      "id": "cloud:11.1.1",
+      "key": "11.1.1",
+      "type": "concept",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure",
+      "title": "Operational excellence",
+      "description": "Run as code, small reversible changes, learn from failure.",
+      "section": "Architecture & Governance",
+      "subsection": "Well-Architected Pillars",
+      "url": "",
+      "link": "cloud_aws_azure.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=operational+excellence+AWS+Azure+cloud+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=operational+excellence+AWS+Azure+cloud+tutorial"
+        }
+      ],
+      "search": "operational excellence run as code, small reversible changes, learn from failure. cloud - aws and azure architecture & governance well-architected pillars 11.1.1"
+    },
+    {
+      "id": "cloud:11.1.2",
+      "key": "11.1.2",
+      "type": "concept",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure",
+      "title": "Security pillar",
+      "description": "Identity first, defense in depth, trace everything, automate response.",
+      "section": "Architecture & Governance",
+      "subsection": "Well-Architected Pillars",
+      "url": "",
+      "link": "cloud_aws_azure.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=security+pillar+AWS+Azure+cloud+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=security+pillar+AWS+Azure+cloud+tutorial"
+        }
+      ],
+      "search": "security pillar identity first, defense in depth, trace everything, automate response. cloud - aws and azure architecture & governance well-architected pillars 11.1.2"
+    },
+    {
+      "id": "cloud:11.1.3",
+      "key": "11.1.3",
+      "type": "concept",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure",
+      "title": "Reliability pillar",
+      "description": "Auto-recover, scale horizontally, test recovery, manage quotas.",
+      "section": "Architecture & Governance",
+      "subsection": "Well-Architected Pillars",
+      "url": "",
+      "link": "cloud_aws_azure.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=reliability+pillar+AWS+Azure+cloud+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=reliability+pillar+AWS+Azure+cloud+tutorial"
+        }
+      ],
+      "search": "reliability pillar auto-recover, scale horizontally, test recovery, manage quotas. cloud - aws and azure architecture & governance well-architected pillars 11.1.3"
+    },
+    {
+      "id": "cloud:11.1.4",
+      "key": "11.1.4",
+      "type": "concept",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure",
+      "title": "Performance efficiency",
+      "description": "Right-size, go global in minutes, use managed and serverless options.",
+      "section": "Architecture & Governance",
+      "subsection": "Well-Architected Pillars",
+      "url": "",
+      "link": "cloud_aws_azure.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=performance+efficiency+AWS+Azure+cloud+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=performance+efficiency+AWS+Azure+cloud+tutorial"
+        }
+      ],
+      "search": "performance efficiency right-size, go global in minutes, use managed and serverless options. cloud - aws and azure architecture & governance well-architected pillars 11.1.4"
+    },
+    {
+      "id": "cloud:11.1.5",
+      "key": "11.1.5",
+      "type": "concept",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure",
+      "title": "Cost optimization",
+      "description": "Measure spend, match supply to demand, adopt consumption pricing.",
+      "section": "Architecture & Governance",
+      "subsection": "Well-Architected Pillars",
+      "url": "",
+      "link": "cloud_aws_azure.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=cost+optimization+AWS+Azure+cloud+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=cost+optimization+AWS+Azure+cloud+tutorial"
+        }
+      ],
+      "search": "cost optimization measure spend, match supply to demand, adopt consumption pricing. cloud - aws and azure architecture & governance well-architected pillars 11.1.5"
+    },
+    {
+      "id": "cloud:11.1.6",
+      "key": "11.1.6",
+      "type": "concept",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure",
+      "title": "Sustainability",
+      "description": "Maximize utilization, choose efficient regions and hardware.",
+      "section": "Architecture & Governance",
+      "subsection": "Well-Architected Pillars",
+      "url": "",
+      "link": "cloud_aws_azure.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=sustainability+AWS+Azure+cloud+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=sustainability+AWS+Azure+cloud+tutorial"
+        }
+      ],
+      "search": "sustainability maximize utilization, choose efficient regions and hardware. cloud - aws and azure architecture & governance well-architected pillars 11.1.6"
+    },
+    {
+      "id": "cloud:11.2.1",
+      "key": "11.2.1",
+      "type": "concept",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure",
+      "title": "AWS Organizations and Control Tower",
+      "description": "Account factory + guardrails + centralized logging.",
+      "section": "Architecture & Governance",
+      "subsection": "Landing Zones & Multi-Account",
+      "url": "",
+      "link": "cloud_aws_azure.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=aws+organizations+and+control+tower+AWS+Azure+cloud+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=aws+organizations+and+control+tower+AWS+Azure+cloud+tutorial"
+        }
+      ],
+      "search": "aws organizations and control tower account factory + guardrails + centralized logging. cloud - aws and azure architecture & governance landing zones & multi-account 11.2.1"
+    },
+    {
+      "id": "cloud:11.2.2",
+      "key": "11.2.2",
+      "type": "concept",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure",
+      "title": "Azure management groups and subscriptions",
+      "description": "Hierarchy for policy inheritance and billing separation.",
+      "section": "Architecture & Governance",
+      "subsection": "Landing Zones & Multi-Account",
+      "url": "",
+      "link": "cloud_aws_azure.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=azure+management+groups+and+subscriptions+AWS+Azure+cloud+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=azure+management+groups+and+subscriptions+AWS+Azure+cloud+tutorial"
+        }
+      ],
+      "search": "azure management groups and subscriptions hierarchy for policy inheritance and billing separation. cloud - aws and azure architecture & governance landing zones & multi-account 11.2.2"
+    },
+    {
+      "id": "cloud:11.2.3",
+      "key": "11.2.3",
+      "type": "concept",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure",
+      "title": "Account/subscription isolation strategy",
+      "description": "Blast-radius isolation: prod, non-prod, security, shared services.",
+      "section": "Architecture & Governance",
+      "subsection": "Landing Zones & Multi-Account",
+      "url": "",
+      "link": "cloud_aws_azure.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=account%2Fsubscription+isolation+strategy+AWS+Azure+cloud+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=account%2Fsubscription+isolation+strategy+AWS+Azure+cloud+tutorial"
+        }
+      ],
+      "search": "account/subscription isolation strategy blast-radius isolation: prod, non-prod, security, shared services. cloud - aws and azure architecture & governance landing zones & multi-account 11.2.3"
+    },
+    {
+      "id": "cloud:11.2.4",
+      "key": "11.2.4",
+      "type": "concept",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure",
+      "title": "Guardrails: SCPs and Azure Policy",
+      "description": "Preventive org-wide controls no workload admin can bypass.",
+      "section": "Architecture & Governance",
+      "subsection": "Landing Zones & Multi-Account",
+      "url": "",
+      "link": "cloud_aws_azure.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=guardrails+scps+and+azure+policy+AWS+Azure+cloud+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=guardrails+scps+and+azure+policy+AWS+Azure+cloud+tutorial"
+        }
+      ],
+      "search": "guardrails: scps and azure policy preventive org-wide controls no workload admin can bypass. cloud - aws and azure architecture & governance landing zones & multi-account 11.2.4"
+    },
+    {
+      "id": "cloud:11.3.1",
+      "key": "11.3.1",
+      "type": "concept",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure",
+      "title": "Tagging and cost allocation",
+      "description": "Enforced tags make showback/chargeback possible.",
+      "section": "Architecture & Governance",
+      "subsection": "Cost Governance",
+      "url": "",
+      "link": "cloud_aws_azure.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=tagging+and+cost+allocation+AWS+Azure+cloud+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=tagging+and+cost+allocation+AWS+Azure+cloud+tutorial"
+        }
+      ],
+      "search": "tagging and cost allocation enforced tags make showback/chargeback possible. cloud - aws and azure architecture & governance cost governance 11.3.1"
+    },
+    {
+      "id": "cloud:11.3.2",
+      "key": "11.3.2",
+      "type": "concept",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure",
+      "title": "Budgets and anomaly alerts",
+      "description": "AWS Budgets / Cost Anomaly Detection; Azure Cost Management alerts.",
+      "section": "Architecture & Governance",
+      "subsection": "Cost Governance",
+      "url": "",
+      "link": "cloud_aws_azure.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=budgets+and+anomaly+alerts+AWS+Azure+cloud+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=budgets+and+anomaly+alerts+AWS+Azure+cloud+tutorial"
+        }
+      ],
+      "search": "budgets and anomaly alerts aws budgets / cost anomaly detection; azure cost management alerts. cloud - aws and azure architecture & governance cost governance 11.3.2"
+    },
+    {
+      "id": "cloud:11.3.3",
+      "key": "11.3.3",
+      "type": "concept",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure",
+      "title": "Savings plans and reserved capacity",
+      "description": "Commit to baselines; keep burst on demand.",
+      "section": "Architecture & Governance",
+      "subsection": "Cost Governance",
+      "url": "",
+      "link": "cloud_aws_azure.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=savings+plans+and+reserved+capacity+AWS+Azure+cloud+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=savings+plans+and+reserved+capacity+AWS+Azure+cloud+tutorial"
+        }
+      ],
+      "search": "savings plans and reserved capacity commit to baselines; keep burst on demand. cloud - aws and azure architecture & governance cost governance 11.3.3"
+    },
+    {
+      "id": "cloud:11.3.4",
+      "key": "11.3.4",
+      "type": "concept",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure",
+      "title": "FinOps practice",
+      "description": "Inform → optimize → operate loop owned jointly by eng and finance.",
+      "section": "Architecture & Governance",
+      "subsection": "Cost Governance",
+      "url": "",
+      "link": "cloud_aws_azure.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=finops+practice+AWS+Azure+cloud+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=finops+practice+AWS+Azure+cloud+tutorial"
+        }
+      ],
+      "search": "finops practice inform → optimize → operate loop owned jointly by eng and finance. cloud - aws and azure architecture & governance cost governance 11.3.4"
+    },
+    {
+      "id": "cloud:11.4.1",
+      "key": "11.4.1",
+      "type": "concept",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure",
+      "title": "RTO and RPO targets",
+      "description": "How fast back up, how much data loss tolerable. Drives everything.",
+      "section": "Architecture & Governance",
+      "subsection": "Backup & Disaster Recovery",
+      "url": "",
+      "link": "cloud_aws_azure.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=rto+and+rpo+targets+AWS+Azure+cloud+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=rto+and+rpo+targets+AWS+Azure+cloud+tutorial"
+        }
+      ],
+      "search": "rto and rpo targets how fast back up, how much data loss tolerable. drives everything. cloud - aws and azure architecture & governance backup & disaster recovery 11.4.1"
+    },
+    {
+      "id": "cloud:11.4.2",
+      "key": "11.4.2",
+      "type": "concept",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure",
+      "title": "Backup vs snapshot vs replication",
+      "description": "Point-in-time copies vs continuous replicas. Test restores!",
+      "section": "Architecture & Governance",
+      "subsection": "Backup & Disaster Recovery",
+      "url": "",
+      "link": "cloud_aws_azure.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=backup+vs+snapshot+vs+replication+AWS+Azure+cloud+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=backup+vs+snapshot+vs+replication+AWS+Azure+cloud+tutorial"
+        }
+      ],
+      "search": "backup vs snapshot vs replication point-in-time copies vs continuous replicas. test restores! cloud - aws and azure architecture & governance backup & disaster recovery 11.4.2"
+    },
+    {
+      "id": "cloud:11.4.3",
+      "key": "11.4.3",
+      "type": "concept",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure",
+      "title": "DR strategies",
+      "description": "Backup-restore → pilot light → warm standby → multi-site active-active.",
+      "section": "Architecture & Governance",
+      "subsection": "Backup & Disaster Recovery",
+      "url": "",
+      "link": "cloud_aws_azure.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=dr+strategies+AWS+Azure+cloud+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=dr+strategies+AWS+Azure+cloud+tutorial"
+        }
+      ],
+      "search": "dr strategies backup-restore → pilot light → warm standby → multi-site active-active. cloud - aws and azure architecture & governance backup & disaster recovery 11.4.3"
+    },
+    {
+      "id": "cloud:11.4.4",
+      "key": "11.4.4",
+      "type": "concept",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure",
+      "title": "Cross-region failover testing",
+      "description": "An untested DR plan is a rumor. Game days make it real.",
+      "section": "Architecture & Governance",
+      "subsection": "Backup & Disaster Recovery",
+      "url": "",
+      "link": "cloud_aws_azure.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=cross-region+failover+testing+AWS+Azure+cloud+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=cross-region+failover+testing+AWS+Azure+cloud+tutorial"
+        }
+      ],
+      "search": "cross-region failover testing an untested dr plan is a rumor. game days make it real. cloud - aws and azure architecture & governance backup & disaster recovery 11.4.4"
+    },
+    {
+      "id": "cloud:11.5.1",
+      "key": "11.5.1",
+      "type": "concept",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure",
+      "title": "Secrets Manager vs Key Vault",
+      "description": "Managed secret storage with rotation on both clouds.",
+      "section": "Architecture & Governance",
+      "subsection": "Secrets & Key Management",
+      "url": "",
+      "link": "cloud_aws_azure.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=secrets+manager+vs+key+vault+AWS+Azure+cloud+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=secrets+manager+vs+key+vault+AWS+Azure+cloud+tutorial"
+        }
+      ],
+      "search": "secrets manager vs key vault managed secret storage with rotation on both clouds. cloud - aws and azure architecture & governance secrets & key management 11.5.1"
+    },
+    {
+      "id": "cloud:11.5.2",
+      "key": "11.5.2",
+      "type": "concept",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure",
+      "title": "KMS envelope encryption",
+      "description": "Data keys encrypt data; master keys encrypt data keys.",
+      "section": "Architecture & Governance",
+      "subsection": "Secrets & Key Management",
+      "url": "",
+      "link": "cloud_aws_azure.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=kms+envelope+encryption+AWS+Azure+cloud+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=kms+envelope+encryption+AWS+Azure+cloud+tutorial"
+        }
+      ],
+      "search": "kms envelope encryption data keys encrypt data; master keys encrypt data keys. cloud - aws and azure architecture & governance secrets & key management 11.5.2"
+    },
+    {
+      "id": "cloud:11.5.3",
+      "key": "11.5.3",
+      "type": "concept",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure",
+      "title": "Secret rotation",
+      "description": "Automate rotation; short-lived credentials beat long-lived ones.",
+      "section": "Architecture & Governance",
+      "subsection": "Secrets & Key Management",
+      "url": "",
+      "link": "cloud_aws_azure.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=secret+rotation+AWS+Azure+cloud+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=secret+rotation+AWS+Azure+cloud+tutorial"
+        }
+      ],
+      "search": "secret rotation automate rotation; short-lived credentials beat long-lived ones. cloud - aws and azure architecture & governance secrets & key management 11.5.3"
+    },
+    {
+      "id": "cloud:11.5.4",
+      "key": "11.5.4",
+      "type": "concept",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure",
+      "title": "IAM roles vs static credentials",
+      "description": "Instance/workload identity eliminates stored keys.",
+      "section": "Architecture & Governance",
+      "subsection": "Secrets & Key Management",
+      "url": "",
+      "link": "cloud_aws_azure.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=iam+roles+vs+static+credentials+AWS+Azure+cloud+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=iam+roles+vs+static+credentials+AWS+Azure+cloud+tutorial"
+        }
+      ],
+      "search": "iam roles vs static credentials instance/workload identity eliminates stored keys. cloud - aws and azure architecture & governance secrets & key management 11.5.4"
+    },
+    {
+      "id": "cloud:11.6.1",
+      "key": "11.6.1",
+      "type": "concept",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure",
+      "title": "ECS vs EKS vs AKS",
+      "description": "Opinionated AWS-native vs managed Kubernetes on either cloud.",
+      "section": "Architecture & Governance",
+      "subsection": "Containers & Kubernetes",
+      "url": "",
+      "link": "cloud_aws_azure.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=ecs+vs+eks+vs+aks+AWS+Azure+cloud+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=ecs+vs+eks+vs+aks+AWS+Azure+cloud+tutorial"
+        }
+      ],
+      "search": "ecs vs eks vs aks opinionated aws-native vs managed kubernetes on either cloud. cloud - aws and azure architecture & governance containers & kubernetes 11.6.1"
+    },
+    {
+      "id": "cloud:11.6.2",
+      "key": "11.6.2",
+      "type": "concept",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure",
+      "title": "Fargate and serverless containers",
+      "description": "No nodes to patch; pay per task.",
+      "section": "Architecture & Governance",
+      "subsection": "Containers & Kubernetes",
+      "url": "",
+      "link": "cloud_aws_azure.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=fargate+and+serverless+containers+AWS+Azure+cloud+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=fargate+and+serverless+containers+AWS+Azure+cloud+tutorial"
+        }
+      ],
+      "search": "fargate and serverless containers no nodes to patch; pay per task. cloud - aws and azure architecture & governance containers & kubernetes 11.6.2"
+    },
+    {
+      "id": "cloud:11.6.3",
+      "key": "11.6.3",
+      "type": "concept",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure",
+      "title": "Cluster autoscaling",
+      "description": "HPA scales pods; cluster autoscaler/Karpenter scales nodes.",
+      "section": "Architecture & Governance",
+      "subsection": "Containers & Kubernetes",
+      "url": "",
+      "link": "cloud_aws_azure.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=cluster+autoscaling+AWS+Azure+cloud+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=cluster+autoscaling+AWS+Azure+cloud+tutorial"
+        }
+      ],
+      "search": "cluster autoscaling hpa scales pods; cluster autoscaler/karpenter scales nodes. cloud - aws and azure architecture & governance containers & kubernetes 11.6.3"
+    },
+    {
+      "id": "cloud:11.6.4",
+      "key": "11.6.4",
+      "type": "concept",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure",
+      "title": "Service discovery and ingress",
+      "description": "Services, DNS, ingress controllers, load balancer integration.",
+      "section": "Architecture & Governance",
+      "subsection": "Containers & Kubernetes",
+      "url": "",
+      "link": "cloud_aws_azure.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=service+discovery+and+ingress+AWS+Azure+cloud+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=service+discovery+and+ingress+AWS+Azure+cloud+tutorial"
+        }
+      ],
+      "search": "service discovery and ingress services, dns, ingress controllers, load balancer integration. cloud - aws and azure architecture & governance containers & kubernetes 11.6.4"
+    },
+    {
+      "id": "cloud:11.6.5",
+      "key": "11.6.5",
+      "type": "concept",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure",
+      "title": "Image registries and scanning",
+      "description": "ECR/ACR with vulnerability scanning in the pipeline.",
+      "section": "Architecture & Governance",
+      "subsection": "Containers & Kubernetes",
+      "url": "",
+      "link": "cloud_aws_azure.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=image+registries+and+scanning+AWS+Azure+cloud+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=image+registries+and+scanning+AWS+Azure+cloud+tutorial"
+        }
+      ],
+      "search": "image registries and scanning ecr/acr with vulnerability scanning in the pipeline. cloud - aws and azure architecture & governance containers & kubernetes 11.6.5"
+    },
+    {
+      "id": "cloud:11.7.1",
+      "key": "11.7.1",
+      "type": "concept",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure",
+      "title": "Identity-based access vs network perimeter",
+      "description": "Verify every request; never trust the network location.",
+      "section": "Architecture & Governance",
+      "subsection": "Zero-Trust Networking",
+      "url": "",
+      "link": "cloud_aws_azure.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=identity-based+access+vs+network+perimeter+AWS+Azure+cloud+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=identity-based+access+vs+network+perimeter+AWS+Azure+cloud+tutorial"
+        }
+      ],
+      "search": "identity-based access vs network perimeter verify every request; never trust the network location. cloud - aws and azure architecture & governance zero-trust networking 11.7.1"
+    },
+    {
+      "id": "cloud:11.7.2",
+      "key": "11.7.2",
+      "type": "concept",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure",
+      "title": "PrivateLink and private endpoints",
+      "description": "Keep service traffic off the public internet.",
+      "section": "Architecture & Governance",
+      "subsection": "Zero-Trust Networking",
+      "url": "",
+      "link": "cloud_aws_azure.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=privatelink+and+private+endpoints+AWS+Azure+cloud+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=privatelink+and+private+endpoints+AWS+Azure+cloud+tutorial"
+        }
+      ],
+      "search": "privatelink and private endpoints keep service traffic off the public internet. cloud - aws and azure architecture & governance zero-trust networking 11.7.2"
+    },
+    {
+      "id": "cloud:11.7.3",
+      "key": "11.7.3",
+      "type": "concept",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure",
+      "title": "mTLS service-to-service",
+      "description": "Both sides authenticate; mesh or sidecar issued certs.",
+      "section": "Architecture & Governance",
+      "subsection": "Zero-Trust Networking",
+      "url": "",
+      "link": "cloud_aws_azure.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=mtls+service-to-service+AWS+Azure+cloud+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=mtls+service-to-service+AWS+Azure+cloud+tutorial"
+        }
+      ],
+      "search": "mtls service-to-service both sides authenticate; mesh or sidecar issued certs. cloud - aws and azure architecture & governance zero-trust networking 11.7.3"
+    },
+    {
+      "id": "cloud:11.7.4",
+      "key": "11.7.4",
+      "type": "concept",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure",
+      "title": "Microsegmentation",
+      "description": "Security groups/NSGs per workload, least-privilege east-west.",
+      "section": "Architecture & Governance",
+      "subsection": "Zero-Trust Networking",
+      "url": "",
+      "link": "cloud_aws_azure.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=microsegmentation+AWS+Azure+cloud+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=microsegmentation+AWS+Azure+cloud+tutorial"
+        }
+      ],
+      "search": "microsegmentation security groups/nsgs per workload, least-privilege east-west. cloud - aws and azure architecture & governance zero-trust networking 11.7.4"
+    },
+    {
+      "id": "cloud:11.8.1",
+      "key": "11.8.1",
+      "type": "concept",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure",
+      "title": "The 6 Rs of migration",
+      "description": "Rehost, replatform, repurchase, refactor, retire, retain.",
+      "section": "Architecture & Governance",
+      "subsection": "Migration Patterns",
+      "url": "",
+      "link": "cloud_aws_azure.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=the+6+rs+of+migration+AWS+Azure+cloud+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=the+6+rs+of+migration+AWS+Azure+cloud+tutorial"
+        }
+      ],
+      "search": "the 6 rs of migration rehost, replatform, repurchase, refactor, retire, retain. cloud - aws and azure architecture & governance migration patterns 11.8.1"
+    },
+    {
+      "id": "cloud:11.8.2",
+      "key": "11.8.2",
+      "type": "concept",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure",
+      "title": "Strangler fig pattern",
+      "description": "Route traffic incrementally from legacy to new system.",
+      "section": "Architecture & Governance",
+      "subsection": "Migration Patterns",
+      "url": "",
+      "link": "cloud_aws_azure.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=strangler+fig+pattern+AWS+Azure+cloud+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=strangler+fig+pattern+AWS+Azure+cloud+tutorial"
+        }
+      ],
+      "search": "strangler fig pattern route traffic incrementally from legacy to new system. cloud - aws and azure architecture & governance migration patterns 11.8.2"
+    },
+    {
+      "id": "cloud:11.8.3",
+      "key": "11.8.3",
+      "type": "concept",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure",
+      "title": "Database migration (DMS)",
+      "description": "Continuous replication enables near-zero-downtime cutover.",
+      "section": "Architecture & Governance",
+      "subsection": "Migration Patterns",
+      "url": "",
+      "link": "cloud_aws_azure.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=database+migration+dms+AWS+Azure+cloud+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=database+migration+dms+AWS+Azure+cloud+tutorial"
+        }
+      ],
+      "search": "database migration (dms) continuous replication enables near-zero-downtime cutover. cloud - aws and azure architecture & governance migration patterns 11.8.3"
+    },
+    {
+      "id": "cloud:11.8.4",
+      "key": "11.8.4",
+      "type": "concept",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure",
+      "title": "Hybrid connectivity",
+      "description": "Direct Connect / ExpressRoute + VPN backup for on-prem links.",
+      "section": "Architecture & Governance",
+      "subsection": "Migration Patterns",
+      "url": "",
+      "link": "cloud_aws_azure.html#section-11",
+      "resources": [
+        {
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=hybrid+connectivity+AWS+Azure+cloud+explained"
+        },
+        {
+          "title": "🔍G",
+          "url": "https://www.google.com/search?q=hybrid+connectivity+AWS+Azure+cloud+tutorial"
+        }
+      ],
+      "search": "hybrid connectivity direct connect / expressroute + vpn backup for on-prem links. cloud - aws and azure architecture & governance migration patterns 11.8.4"
     }
   ],
   "resources": [
@@ -48824,6 +52925,62 @@
       "title": "LeetCode Discuss Study Guides",
       "url": "https://leetcode.com/discuss/study-guide/",
       "source": "LeetCode Discuss",
+      "domain": "dsa",
+      "domainTitle": "DSA Ultimate Index"
+    },
+    {
+      "id": "dsa:neetcode-roadmap:https-neetcode-io-roadmap",
+      "title": "NeetCode Roadmap",
+      "url": "https://neetcode.io/roadmap",
+      "source": "neetcode.io",
+      "domain": "dsa",
+      "domainTitle": "DSA Ultimate Index"
+    },
+    {
+      "id": "dsa:striver-a2z-dsa-sheet:https-takeuforward-org-strivers-a2z-dsa-course-strivers-a2z-dsa-course-sheet-2",
+      "title": "Striver A2Z DSA Sheet",
+      "url": "https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-course-sheet-2/",
+      "source": "takeuforward.org",
+      "domain": "dsa",
+      "domainTitle": "DSA Ultimate Index"
+    },
+    {
+      "id": "dsa:leetcode-patterns-sean-prashad:https-seanprashad-com-leetcode-patterns",
+      "title": "LeetCode Patterns (Sean Prashad)",
+      "url": "https://seanprashad.com/leetcode-patterns/",
+      "source": "seanprashad.com",
+      "domain": "dsa",
+      "domainTitle": "DSA Ultimate Index"
+    },
+    {
+      "id": "dsa:cp-algorithms:https-cp-algorithms-com",
+      "title": "CP-Algorithms",
+      "url": "https://cp-algorithms.com/",
+      "source": "cp-algorithms.com",
+      "domain": "dsa",
+      "domainTitle": "DSA Ultimate Index"
+    },
+    {
+      "id": "dsa:tech-interview-handbook:https-www-techinterviewhandbook-org",
+      "title": "Tech Interview Handbook",
+      "url": "https://www.techinterviewhandbook.org/",
+      "source": "techinterviewhandbook.org",
+      "domain": "dsa",
+      "domainTitle": "DSA Ultimate Index"
+    },
+    {
+      "id": "dsa:algomonster-flowchart:https-algo-monster-flowchart",
+      "title": "AlgoMonster Flowchart",
+      "url": "https://algo.monster/flowchart",
+      "source": "algo.monster",
+      "domain": "dsa",
+      "domainTitle": "DSA Ultimate Index"
+    },
+    {
+      "id": "dsa:visualgo-algorithm-visualizer:https-visualgo-net-en",
+      "title": "VisuAlgo (algorithm visualizer)",
+      "url": "https://visualgo.net/en",
+      "source": "visualgo.net",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
@@ -54788,6 +58945,46 @@
       "domainTitle": "System Design"
     },
     {
+      "id": "sd:latency-numbers-every-programmer-should-know:https-gist-github-com-jboner-2841832",
+      "title": "Latency Numbers Every Programmer Should Know",
+      "url": "https://gist.github.com/jboner/2841832",
+      "source": "GitHub",
+      "domain": "sd",
+      "domainTitle": "System Design"
+    },
+    {
+      "id": "sd:c4-model-for-architecture-diagrams:https-c4model-com",
+      "title": "C4 Model for Architecture Diagrams",
+      "url": "https://c4model.com/",
+      "source": "c4model.com",
+      "domain": "sd",
+      "domainTitle": "System Design"
+    },
+    {
+      "id": "sd:owasp-threat-modeling:https-owasp-org-www-community-threat-modeling",
+      "title": "OWASP Threat Modeling",
+      "url": "https://owasp.org/www-community/Threat_Modeling",
+      "source": "OWASP",
+      "domain": "sd",
+      "domainTitle": "System Design"
+    },
+    {
+      "id": "sd:capacity-estimation-guide:https-www-hellointerview-com-blog-mastering-estimation",
+      "title": "Capacity Estimation Guide",
+      "url": "https://www.hellointerview.com/blog/mastering-estimation",
+      "source": "Hello Interview",
+      "domain": "sd",
+      "domainTitle": "System Design"
+    },
+    {
+      "id": "sd:aws-disaster-recovery-whitepaper:https-docs-aws-amazon-com-whitepapers-latest-disaster-recovery-workloads-on-aws-",
+      "title": "AWS Disaster Recovery Whitepaper",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-workloads-on-aws.html",
+      "source": "AWS",
+      "domain": "sd",
+      "domainTitle": "System Design"
+    },
+    {
       "id": "cs:teach-yourself-cs-curriculum:https-teachyourselfcs-com",
       "title": "Teach Yourself CS (curriculum)",
       "url": "https://teachyourselfcs.com/",
@@ -54880,6 +59077,118 @@
       "title": "CSAPP (Bryant & O'Hallaron)",
       "url": "https://csapp.cs.cmu.edu/",
       "source": "CMU",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals"
+    },
+    {
+      "id": "cs:ostep-operating-systems:https-pages-cs-wisc-edu-remzi-ostep",
+      "title": "OSTEP (Operating Systems)",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/",
+      "source": "pages.cs.wisc.edu",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals"
+    },
+    {
+      "id": "cs:cs-app-book-site:https-csapp-cs-cmu-edu",
+      "title": "CS:APP Book Site",
+      "url": "https://csapp.cs.cmu.edu/",
+      "source": "csapp.cs.cmu.edu",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals"
+    },
+    {
+      "id": "cs:beej-s-guide-to-network-programming:https-beej-us-guide-bgnet",
+      "title": "Beej's Guide to Network Programming",
+      "url": "https://beej.us/guide/bgnet/",
+      "source": "beej.us",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals"
+    },
+    {
+      "id": "cs:high-performance-browser-networking:https-hpbn-co",
+      "title": "High Performance Browser Networking",
+      "url": "https://hpbn.co/",
+      "source": "hpbn.co",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals"
+    },
+    {
+      "id": "cs:use-the-index-luke-db-indexing:https-use-the-index-luke-com",
+      "title": "Use The Index, Luke (DB indexing)",
+      "url": "https://use-the-index-luke.com/",
+      "source": "use-the-index-luke.com",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals"
+    },
+    {
+      "id": "cs:cmu-15-445-database-systems:https-15445-courses-cs-cmu-edu",
+      "title": "CMU 15-445 Database Systems",
+      "url": "https://15445.courses.cs.cmu.edu/",
+      "source": "15445.courses.cs.cmu.edu",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals"
+    },
+    {
+      "id": "cs:jepsen-consistency-map:https-jepsen-io-consistency",
+      "title": "Jepsen Consistency Map",
+      "url": "https://jepsen.io/consistency",
+      "source": "jepsen.io",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals"
+    },
+    {
+      "id": "cs:preshing-on-programming-concurrency:https-preshing-com",
+      "title": "Preshing on Programming (concurrency)",
+      "url": "https://preshing.com/",
+      "source": "preshing.com",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals"
+    },
+    {
+      "id": "cs:crafting-interpreters:https-craftinginterpreters-com",
+      "title": "Crafting Interpreters",
+      "url": "https://craftinginterpreters.com/",
+      "source": "craftinginterpreters.com",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals"
+    },
+    {
+      "id": "cs:brendan-gregg-s-performance-site:https-www-brendangregg-com",
+      "title": "Brendan Gregg's Performance Site",
+      "url": "https://www.brendangregg.com/",
+      "source": "brendangregg.com",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals"
+    },
+    {
+      "id": "cs:computerphile-youtube:https-www-youtube-com-user-computerphile",
+      "title": "Computerphile (YouTube)",
+      "url": "https://www.youtube.com/user/Computerphile",
+      "source": "youtube.com",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals"
+    },
+    {
+      "id": "cs:mit-6-824-distributed-systems:https-pdos-csail-mit-edu-6-824",
+      "title": "MIT 6.824 Distributed Systems",
+      "url": "https://pdos.csail.mit.edu/6.824/",
+      "source": "pdos.csail.mit.edu",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals"
+    },
+    {
+      "id": "cs:owasp-cheat-sheet-series:https-cheatsheetseries-owasp-org",
+      "title": "OWASP Cheat Sheet Series",
+      "url": "https://cheatsheetseries.owasp.org/",
+      "source": "cheatsheetseries.owasp.org",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals"
+    },
+    {
+      "id": "cs:putting-the-you-in-cpu:https-cpu-land",
+      "title": "Putting the You in CPU",
+      "url": "https://cpu.land/",
+      "source": "cpu.land",
       "domain": "cs",
       "domainTitle": "CS Fundamentals"
     },
@@ -55060,6 +59369,46 @@
       "domainTitle": "CS Fundamentals"
     },
     {
+      "id": "cs:crafting-interpreters-free-book:https-craftinginterpreters-com",
+      "title": "Crafting Interpreters (free book)",
+      "url": "https://craftinginterpreters.com/",
+      "source": "Bob Nystrom",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals"
+    },
+    {
+      "id": "cs:cpython-internals:https-realpython-com-products-cpython-internals-book",
+      "title": "CPython Internals",
+      "url": "https://realpython.com/products/cpython-internals-book/",
+      "source": "Real Python",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals"
+    },
+    {
+      "id": "cs:protocol-buffers-docs:https-protobuf-dev",
+      "title": "Protocol Buffers Docs",
+      "url": "https://protobuf.dev/",
+      "source": "Google",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals"
+    },
+    {
+      "id": "cs:jepsen-analyses-distributed-systems:https-jepsen-io-analyses",
+      "title": "Jepsen Analyses (distributed systems)",
+      "url": "https://jepsen.io/analyses",
+      "source": "Jepsen",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals"
+    },
+    {
+      "id": "cs:flame-graphs:https-www-brendangregg-com-flamegraphs-html",
+      "title": "Flame Graphs",
+      "url": "https://www.brendangregg.com/flamegraphs.html",
+      "source": "Brendan Gregg",
+      "domain": "cs",
+      "domainTitle": "CS Fundamentals"
+    },
+    {
       "id": "bh:tech-interview-handbook-behavioral:https-www-techinterviewhandbook-org-behavioral-interview",
       "title": "Tech Interview Handbook — Behavioral",
       "url": "https://www.techinterviewhandbook.org/behavioral-interview/",
@@ -55136,6 +59485,86 @@
       "title": "Big Interview YouTube",
       "url": "https://www.youtube.com/@BigInterview",
       "source": "YouTube",
+      "domain": "bh",
+      "domainTitle": "Behavioral and Leadership"
+    },
+    {
+      "id": "bh:amazon-leadership-principles:https-www-amazon-jobs-content-en-our-workplace-leadership-principles",
+      "title": "Amazon Leadership Principles",
+      "url": "https://www.amazon.jobs/content/en/our-workplace/leadership-principles",
+      "source": "amazon.jobs",
+      "domain": "bh",
+      "domainTitle": "Behavioral and Leadership"
+    },
+    {
+      "id": "bh:tech-interview-handbook-behavioral:https-www-techinterviewhandbook-org-behavioral-interview",
+      "title": "Tech Interview Handbook: Behavioral",
+      "url": "https://www.techinterviewhandbook.org/behavioral-interview/",
+      "source": "techinterviewhandbook.org",
+      "domain": "bh",
+      "domainTitle": "Behavioral and Leadership"
+    },
+    {
+      "id": "bh:star-technique-guide-indeed:https-www-indeed-com-career-advice-interviewing-how-to-use-the-star-interview-re",
+      "title": "STAR Technique Guide (Indeed)",
+      "url": "https://www.indeed.com/career-advice/interviewing/how-to-use-the-star-interview-response-technique",
+      "source": "indeed.com",
+      "domain": "bh",
+      "domainTitle": "Behavioral and Leadership"
+    },
+    {
+      "id": "bh:interviewing-io-mock-interviews:https-interviewing-io-mocks",
+      "title": "interviewing.io Mock Interviews",
+      "url": "https://interviewing.io/mocks",
+      "source": "interviewing.io",
+      "domain": "bh",
+      "domainTitle": "Behavioral and Leadership"
+    },
+    {
+      "id": "bh:exponent-behavioral-questions:https-www-tryexponent-com-questions-type-behavioral",
+      "title": "Exponent Behavioral Questions",
+      "url": "https://www.tryexponent.com/questions?type=behavioral",
+      "source": "tryexponent.com",
+      "domain": "bh",
+      "domainTitle": "Behavioral and Leadership"
+    },
+    {
+      "id": "bh:jeff-h-sipe-youtube-google-focused:https-www-youtube-com-jeffhsipepi",
+      "title": "Jeff H Sipe (YouTube, Google-focused)",
+      "url": "https://www.youtube.com/@jeffhsipepi",
+      "source": "youtube.com",
+      "domain": "bh",
+      "domainTitle": "Behavioral and Leadership"
+    },
+    {
+      "id": "bh:the-manager-s-path-book:https-www-oreilly-com-library-view-the-managers-path-9781491973882",
+      "title": "The Manager's Path (book)",
+      "url": "https://www.oreilly.com/library/view/the-managers-path/9781491973882/",
+      "source": "oreilly.com",
+      "domain": "bh",
+      "domainTitle": "Behavioral and Leadership"
+    },
+    {
+      "id": "bh:staff-engineer-stories-staffeng:https-staffeng-com-stories",
+      "title": "Staff Engineer Stories (StaffEng)",
+      "url": "https://staffeng.com/stories/",
+      "source": "staffeng.com",
+      "domain": "bh",
+      "domainTitle": "Behavioral and Leadership"
+    },
+    {
+      "id": "bh:glassdoor-interview-questions:https-www-glassdoor-com-interview-index-htm",
+      "title": "Glassdoor Interview Questions",
+      "url": "https://www.glassdoor.com/Interview/index.htm",
+      "source": "glassdoor.com",
+      "domain": "bh",
+      "domainTitle": "Behavioral and Leadership"
+    },
+    {
+      "id": "bh:thita-behavioral-sheet:https-www-thita-ai-behavioral-sheet",
+      "title": "Thita Behavioral Sheet",
+      "url": "https://www.thita.ai/behavioral-sheet",
+      "source": "thita.ai",
       "domain": "bh",
       "domainTitle": "Behavioral and Leadership"
     },
@@ -55248,6 +59677,30 @@
       "title": "Ask the right questions back",
       "url": "https://www.themuse.com/advice/51-interview-questions-you-should-be-asking",
       "source": "The Muse",
+      "domain": "bh",
+      "domainTitle": "Behavioral and Leadership"
+    },
+    {
+      "id": "bh:behavioral-guide:https-www-techinterviewhandbook-org-behavioral-interview",
+      "title": "Behavioral Guide",
+      "url": "https://www.techinterviewhandbook.org/behavioral-interview/",
+      "source": "Tech Interview Handbook",
+      "domain": "bh",
+      "domainTitle": "Behavioral and Leadership"
+    },
+    {
+      "id": "bh:star-method-guide:https-www-indeed-com-career-advice-interviewing-how-to-use-the-star-interview-re",
+      "title": "STAR Method Guide",
+      "url": "https://www.indeed.com/career-advice/interviewing/how-to-use-the-star-interview-response-technique",
+      "source": "Indeed",
+      "domain": "bh",
+      "domainTitle": "Behavioral and Leadership"
+    },
+    {
+      "id": "bh:behavioral-mock-interviews:https-interviewing-io-mocks",
+      "title": "Behavioral Mock Interviews",
+      "url": "https://interviewing.io/mocks",
+      "source": "interviewing.io",
       "domain": "bh",
       "domainTitle": "Behavioral and Leadership"
     },
@@ -55684,6 +60137,54 @@
       "domainTitle": "AI Engineering"
     },
     {
+      "id": "ai:openai-cookbook-structured-outputs:https-cookbook-openai-com-examples-structured-outputs-intro",
+      "title": "OpenAI Cookbook: Structured Outputs",
+      "url": "https://cookbook.openai.com/examples/structured_outputs_intro",
+      "source": "OpenAI",
+      "domain": "ai",
+      "domainTitle": "AI Engineering"
+    },
+    {
+      "id": "ai:anthropic-tool-use-docs:https-docs-claude-com-en-docs-agents-and-tools-tool-use-overview",
+      "title": "Anthropic Tool Use Docs",
+      "url": "https://docs.claude.com/en/docs/agents-and-tools/tool-use/overview",
+      "source": "Anthropic",
+      "domain": "ai",
+      "domainTitle": "AI Engineering"
+    },
+    {
+      "id": "ai:ragas-rag-evaluation:https-docs-ragas-io",
+      "title": "RAGAS: RAG Evaluation",
+      "url": "https://docs.ragas.io/",
+      "source": "RAGAS",
+      "domain": "ai",
+      "domainTitle": "AI Engineering"
+    },
+    {
+      "id": "ai:owasp-top-10-for-llm-applications:https-owasp-org-www-project-top-10-for-large-language-model-applications",
+      "title": "OWASP Top 10 for LLM Applications",
+      "url": "https://owasp.org/www-project-top-10-for-large-language-model-applications/",
+      "source": "OWASP",
+      "domain": "ai",
+      "domainTitle": "AI Engineering"
+    },
+    {
+      "id": "ai:langsmith-observability-docs:https-docs-smith-langchain-com",
+      "title": "LangSmith Observability Docs",
+      "url": "https://docs.smith.langchain.com/",
+      "source": "LangChain",
+      "domain": "ai",
+      "domainTitle": "AI Engineering"
+    },
+    {
+      "id": "ai:applied-llms-a-year-of-building:https-applied-llms-org",
+      "title": "Applied LLMs: A Year of Building",
+      "url": "https://applied-llms.org/",
+      "source": "O'Reilly authors",
+      "domain": "ai",
+      "domainTitle": "AI Engineering"
+    },
+    {
       "id": "cloud:aws-documentation:https-docs-aws-amazon-com",
       "title": "AWS Documentation",
       "url": "https://docs.aws.amazon.com/",
@@ -55792,6 +60293,86 @@
       "title": "TechWorld with Nana — AWS & Azure",
       "url": "https://www.youtube.com/@TechWorldwithNana",
       "source": "YouTube",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure"
+    },
+    {
+      "id": "cloud:aws-skill-builder:https-skillbuilder-aws",
+      "title": "AWS Skill Builder",
+      "url": "https://skillbuilder.aws/",
+      "source": "skillbuilder.aws",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure"
+    },
+    {
+      "id": "cloud:microsoft-learn-for-azure:https-learn-microsoft-com-en-us-training-azure",
+      "title": "Microsoft Learn for Azure",
+      "url": "https://learn.microsoft.com/en-us/training/azure/",
+      "source": "learn.microsoft.com",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure"
+    },
+    {
+      "id": "cloud:aws-whitepapers:https-aws-amazon-com-whitepapers",
+      "title": "AWS Whitepapers",
+      "url": "https://aws.amazon.com/whitepapers/",
+      "source": "aws.amazon.com",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure"
+    },
+    {
+      "id": "cloud:aws-well-architected-labs:https-www-wellarchitectedlabs-com",
+      "title": "AWS Well-Architected Labs",
+      "url": "https://www.wellarchitectedlabs.com/",
+      "source": "wellarchitectedlabs.com",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure"
+    },
+    {
+      "id": "cloud:azure-charts-service-map:https-azurecharts-com",
+      "title": "Azure Charts (service map)",
+      "url": "https://azurecharts.com/",
+      "source": "azurecharts.com",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure"
+    },
+    {
+      "id": "cloud:open-guide-to-aws:https-github-com-open-guides-og-aws",
+      "title": "Open Guide to AWS",
+      "url": "https://github.com/open-guides/og-aws",
+      "source": "github.com",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure"
+    },
+    {
+      "id": "cloud:last-week-in-aws:https-www-lastweekinaws-com",
+      "title": "Last Week in AWS",
+      "url": "https://www.lastweekinaws.com/",
+      "source": "lastweekinaws.com",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure"
+    },
+    {
+      "id": "cloud:cloud-resume-challenge:https-cloudresumechallenge-dev",
+      "title": "Cloud Resume Challenge",
+      "url": "https://cloudresumechallenge.dev/",
+      "source": "cloudresumechallenge.dev",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure"
+    },
+    {
+      "id": "cloud:aws-re-post-community:https-repost-aws",
+      "title": "AWS re:Post Community",
+      "url": "https://repost.aws/",
+      "source": "repost.aws",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure"
+    },
+    {
+      "id": "cloud:finops-foundation:https-www-finops-org",
+      "title": "FinOps Foundation",
+      "url": "https://www.finops.org/",
+      "source": "finops.org",
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure"
     },
@@ -56032,6 +60613,38 @@
       "title": "Stephane Maarek — AWS SAA (Udemy)",
       "url": "https://www.udemy.com/course/aws-certified-solutions-architect-associate-saa-c03/",
       "source": "Udemy",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure"
+    },
+    {
+      "id": "cloud:aws-well-architected-framework:https-docs-aws-amazon-com-wellarchitected-latest-framework-welcome-html",
+      "title": "AWS Well-Architected Framework",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html",
+      "source": "AWS",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure"
+    },
+    {
+      "id": "cloud:aws-organizations-best-practices:https-docs-aws-amazon-com-organizations-latest-userguide-orgs-best-practices-htm",
+      "title": "AWS Organizations Best Practices",
+      "url": "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_best-practices.html",
+      "source": "AWS",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure"
+    },
+    {
+      "id": "cloud:finops-framework:https-www-finops-org-framework",
+      "title": "FinOps Framework",
+      "url": "https://www.finops.org/framework/",
+      "source": "FinOps Foundation",
+      "domain": "cloud",
+      "domainTitle": "Cloud - AWS and Azure"
+    },
+    {
+      "id": "cloud:kubernetes-documentation:https-kubernetes-io-docs-home",
+      "title": "Kubernetes Documentation",
+      "url": "https://kubernetes.io/docs/home/",
+      "source": "CNCF",
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure"
     }
