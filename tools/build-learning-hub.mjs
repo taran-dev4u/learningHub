@@ -192,6 +192,7 @@ const coverageBySource = {
   sd: {
     title: "System Design Coverage Check",
     source: "roadmap.sh System Design + System Design Primer + GeeksforGeeks System Design Tutorial",
+    auditLabel: "Reorganized coverage areas",
     notes: [
       "Make trade-offs explicit: consistency, latency, cost, availability, and operability.",
       "Use classic designs as integration practice, not memorized templates.",
@@ -2339,7 +2340,7 @@ function buildContentAudit(data) {
     lines.push(`- Weak/generic subsection names to review: ${weak.length ? weak.slice(0, 8).join(", ") : "none found by heuristic."}`);
     if (coverage) {
       lines.push(`- Coverage source: ${coverage.source}.`);
-      lines.push(`- Missing/priority candidates: ${coverage.topics.join(", ")}.`);
+      lines.push(`- ${coverage.auditLabel || "Missing/priority candidates"}: ${coverage.topics.join(", ")}.`);
       lines.push(`- Recommended next resources: ${coverage.resources.map(([title]) => title).join(", ")}.`);
     }
     if (source.key === "sd") {

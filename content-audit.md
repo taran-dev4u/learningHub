@@ -1,6 +1,6 @@
 # Taran's Learning Hub Content Audit
 
-Generated: 2026-06-12T17:50:16.923Z
+Generated: 2026-06-18T18:30:25.108Z
 
 ## Research References
 
@@ -71,12 +71,12 @@ Sections:
 
 ## System Design
 
-- Inventory: 14 sections, 56 subsections, 296 concepts, 256 resources.
+- Inventory: 15 sections, 62 subsections, 322 concepts, 263 resources.
 - Formatting focus: consistent navigation, closed resources, clean headings, and better fallback search links.
 - Duplicate subsection names to review: none found by title.
 - Weak/generic subsection names to review: none found by heuristic.
 - Coverage source: roadmap.sh System Design + System Design Primer + GeeksforGeeks System Design Tutorial.
-- Missing/priority candidates: Capacity estimation, HLD vs LLD boundaries, Functional and non-functional requirements, UML and HLD diagrams, CDNs and edge caching, Proxies and API gateways, Testing and CI/CD, Cost estimation, Search systems, Observability and SLOs, Threat modeling.
+- Reorganized coverage areas: Capacity estimation, HLD vs LLD boundaries, Functional and non-functional requirements, UML and HLD diagrams, CDNs and edge caching, Proxies and API gateways, Testing and CI/CD, Cost estimation, Search systems, Observability and SLOs, Threat modeling.
 - Recommended next resources: roadmap.sh System Design, System Design Primer, GeeksforGeeks System Design Tutorial, Google SRE Book.
 - Uploaded/source extracts added to page: GeeksforGeeks topic map, DesignGurus direct lesson links, Thita HLD outline, and Thita LLD outline.
 - GFG priority gaps: HLD vs LLD distinction and when to switch levels, Functional vs non-functional requirement checklist, System life cycle / SDLC and requirements gathering, HLD diagrams, activity diagrams, and UML diagram practice, LLD foundations: OOP, OOAD, interfaces, SOLID, DRY, KISS, YAGNI, Testing and delivery: unit, integration, load, stress, CI/CD, Cost estimation and cost-vs-performance trade-offs, Backup and disaster recovery planning, Ticket booking / BookMyShow and Messenger-style design prompts.
@@ -289,20 +289,21 @@ Sections:
   - Design Ticketmaster: https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/designing-ticketmaster
 
 Sections:
-- Foundations: 27 items, 5 subsections, 32 resources.
-- Networking & Communication: 31 items, 5 subsections, 35 resources.
-- Databases: 38 items, 6 subsections, 33 resources.
-- Caching: 24 items, 5 subsections, 23 resources.
-- Messaging & Streaming: 19 items, 4 subsections, 23 resources.
-- Reliability & Resilience Patterns: 17 items, 4 subsections, 18 resources.
-- Architecture Patterns: 17 items, 3 subsections, 18 resources.
-- Distributed Systems Deep Dive: 13 items, 3 subsections, 16 resources.
-- Storage Systems: 5 items, 1 subsections, 6 resources.
-- Observability & Monitoring: 10 items, 2 subsections, 11 resources.
-- Security: 12 items, 2 subsections, 8 resources.
-- Classic System Designs: 27 items, 3 subsections, 24 resources.
-- Interview Approach: 15 items, 3 subsections, 14 resources.
-- Interview Engineering Toolkit: 41 items, 10 subsections, 6 resources.
+- System Design Interview Process & Requirements: 28 items, 6 subsections, 20 resources.
+- Core System Design Fundamentals: 23 items, 4 subsections, 28 resources.
+- Networking, APIs & Traffic Management: 35 items, 6 subsections, 41 resources.
+- Data Storage, Databases & Distribution: 47 items, 8 subsections, 50 resources.
+- Caching & Content Delivery: 28 items, 6 subsections, 29 resources.
+- Asynchronous Messaging & Event Streaming: 19 items, 4 subsections, 23 resources.
+- Service Architecture Patterns: 17 items, 3 subsections, 18 resources.
+- Reliability, Resilience & Idempotency: 17 items, 4 subsections, 18 resources.
+- Distributed Systems Coordination: 13 items, 3 subsections, 16 resources.
+- Search Systems & Discovery: 4 items, 1 subsections, 6 resources.
+- Observability, SLOs, Testing & Delivery: 18 items, 4 subsections, 17 resources.
+- Security, Privacy & Threat Modeling: 16 items, 3 subsections, 14 resources.
+- Cost & Performance Optimization: 4 items, 1 subsections, 6 resources.
+- Classic HLD Case Studies: 27 items, 3 subsections, 24 resources.
+- Low-Level Design & Object-Oriented Design: 26 items, 6 subsections, 7 resources.
 
 ## CS Fundamentals
 
