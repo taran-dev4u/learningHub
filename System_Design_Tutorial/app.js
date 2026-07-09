@@ -68,38 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return `<h${level} id="${id}">${textStr}</h${level}>`;
     };
 
-    renderer.blockquote = function(...args) {
-        let quoteStr = '';
-        if (args.length === 1 && typeof args[0] === 'object') {
-            quoteStr = args[0].text || args[0].raw || '';
-        } else {
-            quoteStr = args[0];
-        }
-
-        const match = quoteStr.match(/<p>\[!(TIP|NOTE|WARNING|IMPORTANT|CAUTION)\]([\s\S]*?)<\/p>/i);
-        if (match) {
-            const type = match[1].toLowerCase();
-            const content = match[2].replace(/^(?:<br\s*\/?>|\n|\s)+/, '');
-
-            let icon = '💡';
-            if (type === 'note') icon = 'ℹ️';
-            if (type === 'warning') icon = '⚠️';
-            if (type === 'important') icon = '🔥';
-            if (type === 'caution') icon = '🛑';
-
-            let html = `<div class="alert alert-${type}">
-                <div class="alert-header">
-                    <span class="alert-icon">${icon}</span>
-                    <span class="alert-title">${type.toUpperCase()}</span>
-                </div>
-                <div class="alert-content">${content}</div>
-            </div>`;
-
-            return quoteStr.replace(match[0], html);
-        }
-        return `<blockquote>${quoteStr}</blockquote>`;
-    };
-
     marked.setOptions({
         renderer: renderer,
         highlight: function(code, lang) {
@@ -321,7 +289,28 @@ document.addEventListener('DOMContentLoaded', () => {
             const markdownText = window.contentBundle[concept.file];
             if (!markdownText) throw new Error('Content not found');
 
-            const rawHtml = marked.parse(markdownText);
+            let rawHtml = marked.parse(markdownText);
+
+            // Post-process blockquotes to alerts to preserve inner markdown formatting
+            rawHtml = rawHtml.replace(/<blockquote>\s*<p>\[!(TIP|NOTE|WARNING|IMPORTANT|CAUTION)\]([\s\S]*?)<\/p>\s*<\/blockquote>/gi, (match, type, content) => {
+                const alertType = type.toLowerCase();
+                let icon = '💡';
+                if (alertType === 'note') icon = 'ℹ️';
+                if (alertType === 'warning') icon = '⚠️';
+                if (alertType === 'important') icon = '🔥';
+                if (alertType === 'caution') icon = '🛑';
+
+                const cleanContent = content.replace(/^(?:<br\s*\/?>|\n|\s)+/, '');
+
+                return `<div class="alert alert-${alertType}">
+                    <div class="alert-header">
+                        <span class="alert-icon">${icon}</span>
+                        <span class="alert-title">${alertType.toUpperCase()}</span>
+                    </div>
+                    <div class="alert-content">${cleanContent}</div>
+                </div>`;
+            });
+
             const safeHtml = DOMPurify.sanitize(rawHtml, { ADD_ATTR: ['id'] }); // Allow id tags for scrolling
 
             markdownContent.innerHTML = safeHtml;
