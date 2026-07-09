@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-07-09T20:50:20.566Z",
+  "generatedAt": "2026-07-09T21:34:35.020Z",
   "stats": {
-    "domains": 6,
-    "sections": 79,
-    "subsections": 363,
-    "items": 1606,
+    "domains": 7,
+    "sections": 85,
+    "subsections": 381,
+    "items": 1698,
     "problems": 609,
-    "concepts": 997,
-    "resources": 989,
+    "concepts": 1089,
+    "resources": 1006,
     "additions": 5
   },
   "sources": [
@@ -23,6 +23,12 @@
         "bookmark": "dsa_index_bookmark_v1"
       },
       "summary": "Pattern-first LeetCode prep with company tags, lists, notes, and a 14-week plan.",
+      "relatedLinks": [
+        [
+          "Open Deep DSA Tutorial",
+          "DSA_Tutorial/index.html"
+        ]
+      ],
       "sections": [
         {
           "id": "pattern-1",
@@ -1483,6 +1489,12 @@
         "bookmark": "hub_bm_sd"
       },
       "summary": "Distributed systems, architecture patterns, reliability, security, and classic designs.",
+      "relatedLinks": [
+        [
+          "Open System Design Tutorial",
+          "System_Design_Tutorial/index.html"
+        ]
+      ],
       "sections": [
         {
           "id": "section-1",
@@ -3712,6 +3724,255 @@
           [
             "Azure Well-Architected Framework",
             "https://learn.microsoft.com/en-us/azure/well-architected/"
+          ]
+        ]
+      }
+    },
+    {
+      "key": "interview",
+      "title": "Interview Prep",
+      "file": "interview_prep.html",
+      "kind": "concept",
+      "label": "Interview",
+      "color": "#e04768",
+      "storage": {
+        "done": "hub_done_interview",
+        "bookmark": "hub_bm_interview"
+      },
+      "summary": "Behavioral, HR, communication, salary, and mock-answer practice with a word-by-word transcript trainer.",
+      "sections": [
+        {
+          "id": "section-1",
+          "title": "Answer Frameworks",
+          "meta": "3 subsections · 15 items",
+          "tagline": "Reusable structures for clear, paced interview answers.",
+          "rows": [
+            "When. Use this first so every answer has a beginning, middle, result, and reflection.",
+            "Key idea. Structure reduces anxiety. Pick the framework that fits the question, then fill it with evidence."
+          ],
+          "link": "interview_prep.html#section-1",
+          "itemCount": 15,
+          "resourceCount": 3,
+          "subsections": [
+            {
+              "title": "Behavioral Story Methods",
+              "description": "How to turn experience into concise stories.",
+              "itemCount": 5,
+              "resourceCount": 0
+            },
+            {
+              "title": "Direct Answer Methods",
+              "description": "How to answer open-ended and opinion questions without rambling.",
+              "itemCount": 5,
+              "resourceCount": 0
+            },
+            {
+              "title": "Answer Quality Checklist",
+              "description": "The standard every saved answer should meet.",
+              "itemCount": 5,
+              "resourceCount": 0
+            }
+          ]
+        },
+        {
+          "id": "section-2",
+          "title": "Personal Pitch and Resume Walkthrough",
+          "meta": "3 subsections · 16 items",
+          "tagline": "Answers for opening questions, resume discussion, and motivation.",
+          "rows": [
+            "When. Use these in recruiter screens, hiring manager screens, and the first few minutes of technical interviews.",
+            "Key idea. Your pitch should connect your past work, target role, and proof that you can do the job."
+          ],
+          "link": "interview_prep.html#section-2",
+          "itemCount": 16,
+          "resourceCount": 3,
+          "subsections": [
+            {
+              "title": "Opening Questions",
+              "description": "The first answers that set the tone.",
+              "itemCount": 6,
+              "resourceCount": 0
+            },
+            {
+              "title": "Experience and Projects",
+              "description": "How to explain work without sounding vague.",
+              "itemCount": 5,
+              "resourceCount": 0
+            },
+            {
+              "title": "Self-Awareness Questions",
+              "description": "Questions that test honesty and maturity.",
+              "itemCount": 5,
+              "resourceCount": 0
+            }
+          ]
+        },
+        {
+          "id": "section-3",
+          "title": "Behavioral Story Bank",
+          "meta": "4 subsections · 20 items",
+          "tagline": "The personal story themes most interview loops repeatedly test.",
+          "rows": [
+            "When. Use these to prepare one strong story per theme, then reuse them across different question wording.",
+            "Key idea. A small set of strong, flexible stories beats memorizing hundreds of one-off answers."
+          ],
+          "link": "interview_prep.html#section-3",
+          "itemCount": 20,
+          "resourceCount": 3,
+          "subsections": [
+            {
+              "title": "Ownership and Impact",
+              "description": "Stories that show you take responsibility and move outcomes.",
+              "itemCount": 5,
+              "resourceCount": 0
+            },
+            {
+              "title": "Conflict and Communication",
+              "description": "Stories that show collaboration without defensiveness.",
+              "itemCount": 5,
+              "resourceCount": 0
+            },
+            {
+              "title": "Ambiguity, Failure, and Learning",
+              "description": "Stories that prove resilience and judgment.",
+              "itemCount": 5,
+              "resourceCount": 0
+            },
+            {
+              "title": "Leadership and Mentoring",
+              "description": "Stories that show influence without relying on title.",
+              "itemCount": 5,
+              "resourceCount": 0
+            }
+          ]
+        },
+        {
+          "id": "section-4",
+          "title": "HR and Recruiter Questions",
+          "meta": "3 subsections · 16 items",
+          "tagline": "Common screening questions, logistics, negotiation, and professionalism.",
+          "rows": [
+            "When. Use this before recruiter calls and final HR rounds.",
+            "Key idea. Be honest, calm, and concise. Do not over-explain sensitive topics."
+          ],
+          "link": "interview_prep.html#section-4",
+          "itemCount": 16,
+          "resourceCount": 3,
+          "subsections": [
+            {
+              "title": "Recruiter Screen Basics",
+              "description": "Questions that determine fit, timing, and communication quality.",
+              "itemCount": 6,
+              "resourceCount": 0
+            },
+            {
+              "title": "Compensation and Offer Questions",
+              "description": "How to stay professional when money comes up.",
+              "itemCount": 5,
+              "resourceCount": 0
+            },
+            {
+              "title": "Risk and Fit Questions",
+              "description": "Questions that test maturity and alignment.",
+              "itemCount": 5,
+              "resourceCount": 0
+            }
+          ]
+        },
+        {
+          "id": "section-5",
+          "title": "Technical Communication",
+          "meta": "3 subsections · 15 items",
+          "tagline": "How to explain technical work, trade-offs, and debugging under interview pressure.",
+          "rows": [
+            "When. Use this in system design, coding debriefs, project deep dives, and hiring manager rounds.",
+            "Key idea. Interviewers evaluate how you think, not only what you know. Make your reasoning visible."
+          ],
+          "link": "interview_prep.html#section-5",
+          "itemCount": 15,
+          "resourceCount": 3,
+          "subsections": [
+            {
+              "title": "Project Deep Dive Questions",
+              "description": "Explain technical depth with structure.",
+              "itemCount": 5,
+              "resourceCount": 0
+            },
+            {
+              "title": "Trade-Off and Judgment Questions",
+              "description": "Show senior reasoning in simple language.",
+              "itemCount": 5,
+              "resourceCount": 0
+            },
+            {
+              "title": "Coding Interview Communication",
+              "description": "What to say while solving.",
+              "itemCount": 5,
+              "resourceCount": 0
+            }
+          ]
+        },
+        {
+          "id": "section-6",
+          "title": "Transcript Practice Lab",
+          "meta": "2 subsections · 10 items",
+          "tagline": "Read answers word by word, build pacing, and rehearse out loud.",
+          "rows": [
+            "When. Use this after drafting an answer and before a mock interview.",
+            "Key idea. A strong answer sounds calm because it has rhythm. Practice with moving highlights until the structure feels natural."
+          ],
+          "link": "interview_prep.html#section-6",
+          "itemCount": 10,
+          "resourceCount": 3,
+          "subsections": [
+            {
+              "title": "Transcript Scripts",
+              "description": "Prepared scripts to read, personalize, and rehearse.",
+              "itemCount": 5,
+              "resourceCount": 0
+            },
+            {
+              "title": "Mock Interview Operating System",
+              "description": "How to run a complete prep session.",
+              "itemCount": 5,
+              "resourceCount": 0
+            }
+          ]
+        }
+      ],
+      "itemCount": 92,
+      "resourceCount": 17,
+      "progressLabel": "concepts",
+      "coverage": {
+        "title": "Interview Prep Coverage Check",
+        "source": "behavioral, HR, recruiter, and communication interview practice",
+        "notes": [
+          "Practice the structure first, then personalize every answer with your own project evidence.",
+          "Keep each answer readable as a 60-90 second transcript and expandable into a deeper story.",
+          "Use the transcript runner for pacing, clarity, and word-by-word rehearsal."
+        ],
+        "topics": [
+          "STAR, CARL, SOAR, PREP, and PEEL answer methods",
+          "Tell me about yourself",
+          "Strengths and weaknesses",
+          "Conflict and failure",
+          "Ambiguity and ownership",
+          "Salary and offer conversations",
+          "Questions to ask the interviewer",
+          "Mock interview scorecard"
+        ],
+        "resources": [
+          [
+            "Google Interview Tips",
+            "https://www.google.com/about/careers/applications/interview-tips/"
+          ],
+          [
+            "Indeed Common Interview Questions",
+            "https://www.indeed.com/career-advice/interviewing/top-interview-questions-and-answers"
+          ],
+          [
+            "MIT CAPD Behavioral Interviews",
+            "https://capd.mit.edu/resources/behavioral-interviews/"
           ]
         ]
       }
@@ -53477,6 +53738,2214 @@
         }
       ],
       "search": "hybrid connectivity direct connect / expressroute + vpn backup for on-prem links. cloud - aws and azure architecture & governance migration patterns 11.8.4"
+    },
+    {
+      "id": "interview:1.1.1",
+      "key": "1.1.1",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "STAR method",
+      "description": "Situation, Task, Action, Result. Best default for behavioral questions.",
+      "section": "Answer Frameworks",
+      "subsection": "Behavioral Story Methods",
+      "url": "",
+      "link": "interview_prep.html#section-1",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=STAR+method+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=STAR+method+interview+answer+examples"
+        }
+      ],
+      "search": "star method situation, task, action, result. best default for behavioral questions. interview prep answer frameworks behavioral story methods 1.1.1"
+    },
+    {
+      "id": "interview:1.1.2",
+      "key": "1.1.2",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "CARL method",
+      "description": "Context, Action, Result, Learning. Strong when reflection matters.",
+      "section": "Answer Frameworks",
+      "subsection": "Behavioral Story Methods",
+      "url": "",
+      "link": "interview_prep.html#section-1",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=CARL+method+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=CARL+method+interview+answer+examples"
+        }
+      ],
+      "search": "carl method context, action, result, learning. strong when reflection matters. interview prep answer frameworks behavioral story methods 1.1.2"
+    },
+    {
+      "id": "interview:1.1.3",
+      "key": "1.1.3",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "SOAR method",
+      "description": "Situation, Obstacle, Action, Result. Useful for conflict, blockers, and ambiguity.",
+      "section": "Answer Frameworks",
+      "subsection": "Behavioral Story Methods",
+      "url": "",
+      "link": "interview_prep.html#section-1",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=SOAR+method+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=SOAR+method+interview+answer+examples"
+        }
+      ],
+      "search": "soar method situation, obstacle, action, result. useful for conflict, blockers, and ambiguity. interview prep answer frameworks behavioral story methods 1.1.3"
+    },
+    {
+      "id": "interview:1.1.4",
+      "key": "1.1.4",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "PAR method",
+      "description": "Problem, Action, Result. Fast format for shorter recruiter screens.",
+      "section": "Answer Frameworks",
+      "subsection": "Behavioral Story Methods",
+      "url": "",
+      "link": "interview_prep.html#section-1",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=PAR+method+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=PAR+method+interview+answer+examples"
+        }
+      ],
+      "search": "par method problem, action, result. fast format for shorter recruiter screens. interview prep answer frameworks behavioral story methods 1.1.4"
+    },
+    {
+      "id": "interview:1.1.5",
+      "key": "1.1.5",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Result plus reflection",
+      "description": "End with what changed, what you learned, and how you apply it now.",
+      "section": "Answer Frameworks",
+      "subsection": "Behavioral Story Methods",
+      "url": "",
+      "link": "interview_prep.html#section-1",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Result+plus+reflection+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Result+plus+reflection+interview+answer+examples"
+        }
+      ],
+      "search": "result plus reflection end with what changed, what you learned, and how you apply it now. interview prep answer frameworks behavioral story methods 1.1.5"
+    },
+    {
+      "id": "interview:1.2.1",
+      "key": "1.2.1",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "PREP method",
+      "description": "Point, Reason, Example, Point. Good for opinions and trade-off questions.",
+      "section": "Answer Frameworks",
+      "subsection": "Direct Answer Methods",
+      "url": "",
+      "link": "interview_prep.html#section-1",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=PREP+method+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=PREP+method+interview+answer+examples"
+        }
+      ],
+      "search": "prep method point, reason, example, point. good for opinions and trade-off questions. interview prep answer frameworks direct answer methods 1.2.1"
+    },
+    {
+      "id": "interview:1.2.2",
+      "key": "1.2.2",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "PEEL method",
+      "description": "Point, Evidence, Explanation, Link. Good for leadership and judgment answers.",
+      "section": "Answer Frameworks",
+      "subsection": "Direct Answer Methods",
+      "url": "",
+      "link": "interview_prep.html#section-1",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=PEEL+method+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=PEEL+method+interview+answer+examples"
+        }
+      ],
+      "search": "peel method point, evidence, explanation, link. good for leadership and judgment answers. interview prep answer frameworks direct answer methods 1.2.2"
+    },
+    {
+      "id": "interview:1.2.3",
+      "key": "1.2.3",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Headline first",
+      "description": "Start with the answer in one sentence before giving context.",
+      "section": "Answer Frameworks",
+      "subsection": "Direct Answer Methods",
+      "url": "",
+      "link": "interview_prep.html#section-1",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Headline+first+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Headline+first+interview+answer+examples"
+        }
+      ],
+      "search": "headline first start with the answer in one sentence before giving context. interview prep answer frameworks direct answer methods 1.2.3"
+    },
+    {
+      "id": "interview:1.2.4",
+      "key": "1.2.4",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Signposting",
+      "description": "Tell the interviewer the two or three parts of your answer before diving in.",
+      "section": "Answer Frameworks",
+      "subsection": "Direct Answer Methods",
+      "url": "",
+      "link": "interview_prep.html#section-1",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Signposting+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Signposting+interview+answer+examples"
+        }
+      ],
+      "search": "signposting tell the interviewer the two or three parts of your answer before diving in. interview prep answer frameworks direct answer methods 1.2.4"
+    },
+    {
+      "id": "interview:1.2.5",
+      "key": "1.2.5",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Time-boxing",
+      "description": "Prepare 30-second, 90-second, and 3-minute versions of core stories.",
+      "section": "Answer Frameworks",
+      "subsection": "Direct Answer Methods",
+      "url": "",
+      "link": "interview_prep.html#section-1",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Time-boxing+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Time-boxing+interview+answer+examples"
+        }
+      ],
+      "search": "time-boxing prepare 30-second, 90-second, and 3-minute versions of core stories. interview prep answer frameworks direct answer methods 1.2.5"
+    },
+    {
+      "id": "interview:1.3.1",
+      "key": "1.3.1",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Specificity",
+      "description": "Use a real project, real constraint, real metric, and real decision.",
+      "section": "Answer Frameworks",
+      "subsection": "Answer Quality Checklist",
+      "url": "",
+      "link": "interview_prep.html#section-1",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Specificity+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Specificity+interview+answer+examples"
+        }
+      ],
+      "search": "specificity use a real project, real constraint, real metric, and real decision. interview prep answer frameworks answer quality checklist 1.3.1"
+    },
+    {
+      "id": "interview:1.3.2",
+      "key": "1.3.2",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Ownership",
+      "description": "Say exactly what you did, not only what the team did.",
+      "section": "Answer Frameworks",
+      "subsection": "Answer Quality Checklist",
+      "url": "",
+      "link": "interview_prep.html#section-1",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Ownership+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Ownership+interview+answer+examples"
+        }
+      ],
+      "search": "ownership say exactly what you did, not only what the team did. interview prep answer frameworks answer quality checklist 1.3.2"
+    },
+    {
+      "id": "interview:1.3.3",
+      "key": "1.3.3",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Measurable impact",
+      "description": "Use latency, revenue, users, time saved, defects reduced, or process improved.",
+      "section": "Answer Frameworks",
+      "subsection": "Answer Quality Checklist",
+      "url": "",
+      "link": "interview_prep.html#section-1",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Measurable+impact+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Measurable+impact+interview+answer+examples"
+        }
+      ],
+      "search": "measurable impact use latency, revenue, users, time saved, defects reduced, or process improved. interview prep answer frameworks answer quality checklist 1.3.3"
+    },
+    {
+      "id": "interview:1.3.4",
+      "key": "1.3.4",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Trade-off clarity",
+      "description": "Name what you gave up and why the decision was reasonable.",
+      "section": "Answer Frameworks",
+      "subsection": "Answer Quality Checklist",
+      "url": "",
+      "link": "interview_prep.html#section-1",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Trade-off+clarity+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Trade-off+clarity+interview+answer+examples"
+        }
+      ],
+      "search": "trade-off clarity name what you gave up and why the decision was reasonable. interview prep answer frameworks answer quality checklist 1.3.4"
+    },
+    {
+      "id": "interview:1.3.5",
+      "key": "1.3.5",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Learning loop",
+      "description": "Show how the experience changed your behavior afterward.",
+      "section": "Answer Frameworks",
+      "subsection": "Answer Quality Checklist",
+      "url": "",
+      "link": "interview_prep.html#section-1",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Learning+loop+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Learning+loop+interview+answer+examples"
+        }
+      ],
+      "search": "learning loop show how the experience changed your behavior afterward. interview prep answer frameworks answer quality checklist 1.3.5"
+    },
+    {
+      "id": "interview:2.1.1",
+      "key": "2.1.1",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Tell me about yourself",
+      "description": "Give present, past, future, and role fit in under 90 seconds.",
+      "section": "Personal Pitch and Resume Walkthrough",
+      "subsection": "Opening Questions",
+      "url": "",
+      "link": "interview_prep.html#section-2",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Tell+me+about+yourself+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Tell+me+about+yourself+interview+answer+examples"
+        }
+      ],
+      "search": "tell me about yourself give present, past, future, and role fit in under 90 seconds. interview prep personal pitch and resume walkthrough opening questions 2.1.1"
+    },
+    {
+      "id": "interview:2.1.2",
+      "key": "2.1.2",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Walk me through your resume",
+      "description": "Move chronologically only where it helps; emphasize decisions and impact.",
+      "section": "Personal Pitch and Resume Walkthrough",
+      "subsection": "Opening Questions",
+      "url": "",
+      "link": "interview_prep.html#section-2",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Walk+me+through+your+resume+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Walk+me+through+your+resume+interview+answer+examples"
+        }
+      ],
+      "search": "walk me through your resume move chronologically only where it helps; emphasize decisions and impact. interview prep personal pitch and resume walkthrough opening questions 2.1.2"
+    },
+    {
+      "id": "interview:2.1.3",
+      "key": "2.1.3",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "What are you looking for next",
+      "description": "Connect growth goals with the role's responsibilities.",
+      "section": "Personal Pitch and Resume Walkthrough",
+      "subsection": "Opening Questions",
+      "url": "",
+      "link": "interview_prep.html#section-2",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=What+are+you+looking+for+next+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=What+are+you+looking+for+next+interview+answer+examples"
+        }
+      ],
+      "search": "what are you looking for next connect growth goals with the role's responsibilities. interview prep personal pitch and resume walkthrough opening questions 2.1.3"
+    },
+    {
+      "id": "interview:2.1.4",
+      "key": "2.1.4",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Why this company",
+      "description": "Mention product, mission, engineering challenge, and personal fit.",
+      "section": "Personal Pitch and Resume Walkthrough",
+      "subsection": "Opening Questions",
+      "url": "",
+      "link": "interview_prep.html#section-2",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Why+this+company+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Why+this+company+interview+answer+examples"
+        }
+      ],
+      "search": "why this company mention product, mission, engineering challenge, and personal fit. interview prep personal pitch and resume walkthrough opening questions 2.1.4"
+    },
+    {
+      "id": "interview:2.1.5",
+      "key": "2.1.5",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Why this role",
+      "description": "Show that your skills and interests match the actual job description.",
+      "section": "Personal Pitch and Resume Walkthrough",
+      "subsection": "Opening Questions",
+      "url": "",
+      "link": "interview_prep.html#section-2",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Why+this+role+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Why+this+role+interview+answer+examples"
+        }
+      ],
+      "search": "why this role show that your skills and interests match the actual job description. interview prep personal pitch and resume walkthrough opening questions 2.1.5"
+    },
+    {
+      "id": "interview:2.1.6",
+      "key": "2.1.6",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "What makes you a strong fit",
+      "description": "Use three proof points tied to role requirements.",
+      "section": "Personal Pitch and Resume Walkthrough",
+      "subsection": "Opening Questions",
+      "url": "",
+      "link": "interview_prep.html#section-2",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=What+makes+you+a+strong+fit+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=What+makes+you+a+strong+fit+interview+answer+examples"
+        }
+      ],
+      "search": "what makes you a strong fit use three proof points tied to role requirements. interview prep personal pitch and resume walkthrough opening questions 2.1.6"
+    },
+    {
+      "id": "interview:2.2.1",
+      "key": "2.2.1",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Most impactful project",
+      "description": "State the problem, your role, technical decision, and measured outcome.",
+      "section": "Personal Pitch and Resume Walkthrough",
+      "subsection": "Experience and Projects",
+      "url": "",
+      "link": "interview_prep.html#section-2",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Most+impactful+project+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Most+impactful+project+interview+answer+examples"
+        }
+      ],
+      "search": "most impactful project state the problem, your role, technical decision, and measured outcome. interview prep personal pitch and resume walkthrough experience and projects 2.2.1"
+    },
+    {
+      "id": "interview:2.2.2",
+      "key": "2.2.2",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Most complex project",
+      "description": "Explain complexity from scale, ambiguity, dependencies, or constraints.",
+      "section": "Personal Pitch and Resume Walkthrough",
+      "subsection": "Experience and Projects",
+      "url": "",
+      "link": "interview_prep.html#section-2",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Most+complex+project+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Most+complex+project+interview+answer+examples"
+        }
+      ],
+      "search": "most complex project explain complexity from scale, ambiguity, dependencies, or constraints. interview prep personal pitch and resume walkthrough experience and projects 2.2.2"
+    },
+    {
+      "id": "interview:2.2.3",
+      "key": "2.2.3",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Project you are proud of",
+      "description": "Pick a story that shows ownership and craft.",
+      "section": "Personal Pitch and Resume Walkthrough",
+      "subsection": "Experience and Projects",
+      "url": "",
+      "link": "interview_prep.html#section-2",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Project+you+are+proud+of+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Project+you+are+proud+of+interview+answer+examples"
+        }
+      ],
+      "search": "project you are proud of pick a story that shows ownership and craft. interview prep personal pitch and resume walkthrough experience and projects 2.2.3"
+    },
+    {
+      "id": "interview:2.2.4",
+      "key": "2.2.4",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Project that failed",
+      "description": "Separate outcome from learning and describe what you changed.",
+      "section": "Personal Pitch and Resume Walkthrough",
+      "subsection": "Experience and Projects",
+      "url": "",
+      "link": "interview_prep.html#section-2",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Project+that+failed+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Project+that+failed+interview+answer+examples"
+        }
+      ],
+      "search": "project that failed separate outcome from learning and describe what you changed. interview prep personal pitch and resume walkthrough experience and projects 2.2.4"
+    },
+    {
+      "id": "interview:2.2.5",
+      "key": "2.2.5",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Favorite technical decision",
+      "description": "Name alternatives considered and why your choice fit the constraints.",
+      "section": "Personal Pitch and Resume Walkthrough",
+      "subsection": "Experience and Projects",
+      "url": "",
+      "link": "interview_prep.html#section-2",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Favorite+technical+decision+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Favorite+technical+decision+interview+answer+examples"
+        }
+      ],
+      "search": "favorite technical decision name alternatives considered and why your choice fit the constraints. interview prep personal pitch and resume walkthrough experience and projects 2.2.5"
+    },
+    {
+      "id": "interview:2.3.1",
+      "key": "2.3.1",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Biggest strength",
+      "description": "Pick a strength with a short example and clear job relevance.",
+      "section": "Personal Pitch and Resume Walkthrough",
+      "subsection": "Self-Awareness Questions",
+      "url": "",
+      "link": "interview_prep.html#section-2",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Biggest+strength+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Biggest+strength+interview+answer+examples"
+        }
+      ],
+      "search": "biggest strength pick a strength with a short example and clear job relevance. interview prep personal pitch and resume walkthrough self-awareness questions 2.3.1"
+    },
+    {
+      "id": "interview:2.3.2",
+      "key": "2.3.2",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Biggest weakness",
+      "description": "Choose a real but manageable weakness and explain your improvement system.",
+      "section": "Personal Pitch and Resume Walkthrough",
+      "subsection": "Self-Awareness Questions",
+      "url": "",
+      "link": "interview_prep.html#section-2",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Biggest+weakness+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Biggest+weakness+interview+answer+examples"
+        }
+      ],
+      "search": "biggest weakness choose a real but manageable weakness and explain your improvement system. interview prep personal pitch and resume walkthrough self-awareness questions 2.3.2"
+    },
+    {
+      "id": "interview:2.3.3",
+      "key": "2.3.3",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "How do you learn new things",
+      "description": "Show a repeatable learning loop: docs, small project, feedback, notes.",
+      "section": "Personal Pitch and Resume Walkthrough",
+      "subsection": "Self-Awareness Questions",
+      "url": "",
+      "link": "interview_prep.html#section-2",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=How+do+you+learn+new+things+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=How+do+you+learn+new+things+interview+answer+examples"
+        }
+      ],
+      "search": "how do you learn new things show a repeatable learning loop: docs, small project, feedback, notes. interview prep personal pitch and resume walkthrough self-awareness questions 2.3.3"
+    },
+    {
+      "id": "interview:2.3.4",
+      "key": "2.3.4",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Where do you see yourself in five years",
+      "description": "Keep it ambitious but role-aligned.",
+      "section": "Personal Pitch and Resume Walkthrough",
+      "subsection": "Self-Awareness Questions",
+      "url": "",
+      "link": "interview_prep.html#section-2",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Where+do+you+see+yourself+in+five+years+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Where+do+you+see+yourself+in+five+years+interview+answer+examples"
+        }
+      ],
+      "search": "where do you see yourself in five years keep it ambitious but role-aligned. interview prep personal pitch and resume walkthrough self-awareness questions 2.3.4"
+    },
+    {
+      "id": "interview:2.3.5",
+      "key": "2.3.5",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "What motivates you",
+      "description": "Connect motivation to craft, impact, learning, and team outcomes.",
+      "section": "Personal Pitch and Resume Walkthrough",
+      "subsection": "Self-Awareness Questions",
+      "url": "",
+      "link": "interview_prep.html#section-2",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=What+motivates+you+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=What+motivates+you+interview+answer+examples"
+        }
+      ],
+      "search": "what motivates you connect motivation to craft, impact, learning, and team outcomes. interview prep personal pitch and resume walkthrough self-awareness questions 2.3.5"
+    },
+    {
+      "id": "interview:3.1.1",
+      "key": "3.1.1",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Tell me about a time you owned a project end to end",
+      "description": "Show planning, execution, communication, and final result.",
+      "section": "Behavioral Story Bank",
+      "subsection": "Ownership and Impact",
+      "url": "",
+      "link": "interview_prep.html#section-3",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Tell+me+about+a+time+you+owned+a+project+end+to+end+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Tell+me+about+a+time+you+owned+a+project+end+to+end+interview+answer+examples"
+        }
+      ],
+      "search": "tell me about a time you owned a project end to end show planning, execution, communication, and final result. interview prep behavioral story bank ownership and impact 3.1.1"
+    },
+    {
+      "id": "interview:3.1.2",
+      "key": "3.1.2",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Tell me about a time you improved a process",
+      "description": "Show before, action, adoption, and measurable improvement.",
+      "section": "Behavioral Story Bank",
+      "subsection": "Ownership and Impact",
+      "url": "",
+      "link": "interview_prep.html#section-3",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Tell+me+about+a+time+you+improved+a+process+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Tell+me+about+a+time+you+improved+a+process+interview+answer+examples"
+        }
+      ],
+      "search": "tell me about a time you improved a process show before, action, adoption, and measurable improvement. interview prep behavioral story bank ownership and impact 3.1.2"
+    },
+    {
+      "id": "interview:3.1.3",
+      "key": "3.1.3",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Tell me about a time you went beyond your role",
+      "description": "Show judgment, not heroics.",
+      "section": "Behavioral Story Bank",
+      "subsection": "Ownership and Impact",
+      "url": "",
+      "link": "interview_prep.html#section-3",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Tell+me+about+a+time+you+went+beyond+your+role+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Tell+me+about+a+time+you+went+beyond+your+role+interview+answer+examples"
+        }
+      ],
+      "search": "tell me about a time you went beyond your role show judgment, not heroics. interview prep behavioral story bank ownership and impact 3.1.3"
+    },
+    {
+      "id": "interview:3.1.4",
+      "key": "3.1.4",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Tell me about a time you made a customer or user impact",
+      "description": "Tie technical work to user value.",
+      "section": "Behavioral Story Bank",
+      "subsection": "Ownership and Impact",
+      "url": "",
+      "link": "interview_prep.html#section-3",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Tell+me+about+a+time+you+made+a+customer+or+user+impact+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Tell+me+about+a+time+you+made+a+customer+or+user+impact+interview+answer+examples"
+        }
+      ],
+      "search": "tell me about a time you made a customer or user impact tie technical work to user value. interview prep behavioral story bank ownership and impact 3.1.4"
+    },
+    {
+      "id": "interview:3.1.5",
+      "key": "3.1.5",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Tell me about a time you delivered under pressure",
+      "description": "Show prioritization and calm execution.",
+      "section": "Behavioral Story Bank",
+      "subsection": "Ownership and Impact",
+      "url": "",
+      "link": "interview_prep.html#section-3",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Tell+me+about+a+time+you+delivered+under+pressure+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Tell+me+about+a+time+you+delivered+under+pressure+interview+answer+examples"
+        }
+      ],
+      "search": "tell me about a time you delivered under pressure show prioritization and calm execution. interview prep behavioral story bank ownership and impact 3.1.5"
+    },
+    {
+      "id": "interview:3.2.1",
+      "key": "3.2.1",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Tell me about a conflict with a teammate",
+      "description": "Focus on listening, shared goal, resolution, and learning.",
+      "section": "Behavioral Story Bank",
+      "subsection": "Conflict and Communication",
+      "url": "",
+      "link": "interview_prep.html#section-3",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Tell+me+about+a+conflict+with+a+teammate+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Tell+me+about+a+conflict+with+a+teammate+interview+answer+examples"
+        }
+      ],
+      "search": "tell me about a conflict with a teammate focus on listening, shared goal, resolution, and learning. interview prep behavioral story bank conflict and communication 3.2.1"
+    },
+    {
+      "id": "interview:3.2.2",
+      "key": "3.2.2",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Tell me about a disagreement with your manager",
+      "description": "Show respect, evidence, alignment, and follow-through.",
+      "section": "Behavioral Story Bank",
+      "subsection": "Conflict and Communication",
+      "url": "",
+      "link": "interview_prep.html#section-3",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Tell+me+about+a+disagreement+with+your+manager+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Tell+me+about+a+disagreement+with+your+manager+interview+answer+examples"
+        }
+      ],
+      "search": "tell me about a disagreement with your manager show respect, evidence, alignment, and follow-through. interview prep behavioral story bank conflict and communication 3.2.2"
+    },
+    {
+      "id": "interview:3.2.3",
+      "key": "3.2.3",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Tell me about a difficult stakeholder",
+      "description": "Show expectation management and clear communication.",
+      "section": "Behavioral Story Bank",
+      "subsection": "Conflict and Communication",
+      "url": "",
+      "link": "interview_prep.html#section-3",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Tell+me+about+a+difficult+stakeholder+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Tell+me+about+a+difficult+stakeholder+interview+answer+examples"
+        }
+      ],
+      "search": "tell me about a difficult stakeholder show expectation management and clear communication. interview prep behavioral story bank conflict and communication 3.2.3"
+    },
+    {
+      "id": "interview:3.2.4",
+      "key": "3.2.4",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Tell me about feedback you received",
+      "description": "Show openness and changed behavior.",
+      "section": "Behavioral Story Bank",
+      "subsection": "Conflict and Communication",
+      "url": "",
+      "link": "interview_prep.html#section-3",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Tell+me+about+feedback+you+received+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Tell+me+about+feedback+you+received+interview+answer+examples"
+        }
+      ],
+      "search": "tell me about feedback you received show openness and changed behavior. interview prep behavioral story bank conflict and communication 3.2.4"
+    },
+    {
+      "id": "interview:3.2.5",
+      "key": "3.2.5",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Tell me about giving difficult feedback",
+      "description": "Show care, specificity, and outcome.",
+      "section": "Behavioral Story Bank",
+      "subsection": "Conflict and Communication",
+      "url": "",
+      "link": "interview_prep.html#section-3",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Tell+me+about+giving+difficult+feedback+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Tell+me+about+giving+difficult+feedback+interview+answer+examples"
+        }
+      ],
+      "search": "tell me about giving difficult feedback show care, specificity, and outcome. interview prep behavioral story bank conflict and communication 3.2.5"
+    },
+    {
+      "id": "interview:3.3.1",
+      "key": "3.3.1",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Tell me about a time requirements were unclear",
+      "description": "Show how you clarified, scoped, and reduced risk.",
+      "section": "Behavioral Story Bank",
+      "subsection": "Ambiguity, Failure, and Learning",
+      "url": "",
+      "link": "interview_prep.html#section-3",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Tell+me+about+a+time+requirements+were+unclear+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Tell+me+about+a+time+requirements+were+unclear+interview+answer+examples"
+        }
+      ],
+      "search": "tell me about a time requirements were unclear show how you clarified, scoped, and reduced risk. interview prep behavioral story bank ambiguity, failure, and learning 3.3.1"
+    },
+    {
+      "id": "interview:3.3.2",
+      "key": "3.3.2",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Tell me about a failure",
+      "description": "Own the decision, name the consequence, and show the fix.",
+      "section": "Behavioral Story Bank",
+      "subsection": "Ambiguity, Failure, and Learning",
+      "url": "",
+      "link": "interview_prep.html#section-3",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Tell+me+about+a+failure+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Tell+me+about+a+failure+interview+answer+examples"
+        }
+      ],
+      "search": "tell me about a failure own the decision, name the consequence, and show the fix. interview prep behavioral story bank ambiguity, failure, and learning 3.3.2"
+    },
+    {
+      "id": "interview:3.3.3",
+      "key": "3.3.3",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Tell me about a mistake in production",
+      "description": "Explain detection, mitigation, communication, and prevention.",
+      "section": "Behavioral Story Bank",
+      "subsection": "Ambiguity, Failure, and Learning",
+      "url": "",
+      "link": "interview_prep.html#section-3",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Tell+me+about+a+mistake+in+production+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Tell+me+about+a+mistake+in+production+interview+answer+examples"
+        }
+      ],
+      "search": "tell me about a mistake in production explain detection, mitigation, communication, and prevention. interview prep behavioral story bank ambiguity, failure, and learning 3.3.3"
+    },
+    {
+      "id": "interview:3.3.4",
+      "key": "3.3.4",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Tell me about learning a new technology quickly",
+      "description": "Show learning strategy and applied result.",
+      "section": "Behavioral Story Bank",
+      "subsection": "Ambiguity, Failure, and Learning",
+      "url": "",
+      "link": "interview_prep.html#section-3",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Tell+me+about+learning+a+new+technology+quickly+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Tell+me+about+learning+a+new+technology+quickly+interview+answer+examples"
+        }
+      ],
+      "search": "tell me about learning a new technology quickly show learning strategy and applied result. interview prep behavioral story bank ambiguity, failure, and learning 3.3.4"
+    },
+    {
+      "id": "interview:3.3.5",
+      "key": "3.3.5",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Tell me about a time you had to change direction",
+      "description": "Show adaptability and communication.",
+      "section": "Behavioral Story Bank",
+      "subsection": "Ambiguity, Failure, and Learning",
+      "url": "",
+      "link": "interview_prep.html#section-3",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Tell+me+about+a+time+you+had+to+change+direction+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Tell+me+about+a+time+you+had+to+change+direction+interview+answer+examples"
+        }
+      ],
+      "search": "tell me about a time you had to change direction show adaptability and communication. interview prep behavioral story bank ambiguity, failure, and learning 3.3.5"
+    },
+    {
+      "id": "interview:3.4.1",
+      "key": "3.4.1",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Tell me about leading without authority",
+      "description": "Show influence through clarity, trust, and execution.",
+      "section": "Behavioral Story Bank",
+      "subsection": "Leadership and Mentoring",
+      "url": "",
+      "link": "interview_prep.html#section-3",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Tell+me+about+leading+without+authority+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Tell+me+about+leading+without+authority+interview+answer+examples"
+        }
+      ],
+      "search": "tell me about leading without authority show influence through clarity, trust, and execution. interview prep behavioral story bank leadership and mentoring 3.4.1"
+    },
+    {
+      "id": "interview:3.4.2",
+      "key": "3.4.2",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Tell me about mentoring someone",
+      "description": "Show how you helped them grow and become independent.",
+      "section": "Behavioral Story Bank",
+      "subsection": "Leadership and Mentoring",
+      "url": "",
+      "link": "interview_prep.html#section-3",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Tell+me+about+mentoring+someone+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Tell+me+about+mentoring+someone+interview+answer+examples"
+        }
+      ],
+      "search": "tell me about mentoring someone show how you helped them grow and become independent. interview prep behavioral story bank leadership and mentoring 3.4.2"
+    },
+    {
+      "id": "interview:3.4.3",
+      "key": "3.4.3",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Tell me about raising team standards",
+      "description": "Show a practical mechanism: reviews, docs, tests, rituals.",
+      "section": "Behavioral Story Bank",
+      "subsection": "Leadership and Mentoring",
+      "url": "",
+      "link": "interview_prep.html#section-3",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Tell+me+about+raising+team+standards+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Tell+me+about+raising+team+standards+interview+answer+examples"
+        }
+      ],
+      "search": "tell me about raising team standards show a practical mechanism: reviews, docs, tests, rituals. interview prep behavioral story bank leadership and mentoring 3.4.3"
+    },
+    {
+      "id": "interview:3.4.4",
+      "key": "3.4.4",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Tell me about prioritizing competing work",
+      "description": "Show how you made trade-offs explicit.",
+      "section": "Behavioral Story Bank",
+      "subsection": "Leadership and Mentoring",
+      "url": "",
+      "link": "interview_prep.html#section-3",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Tell+me+about+prioritizing+competing+work+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Tell+me+about+prioritizing+competing+work+interview+answer+examples"
+        }
+      ],
+      "search": "tell me about prioritizing competing work show how you made trade-offs explicit. interview prep behavioral story bank leadership and mentoring 3.4.4"
+    },
+    {
+      "id": "interview:3.4.5",
+      "key": "3.4.5",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Tell me about creating alignment",
+      "description": "Show shared goals, options, decision, and follow-up.",
+      "section": "Behavioral Story Bank",
+      "subsection": "Leadership and Mentoring",
+      "url": "",
+      "link": "interview_prep.html#section-3",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Tell+me+about+creating+alignment+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Tell+me+about+creating+alignment+interview+answer+examples"
+        }
+      ],
+      "search": "tell me about creating alignment show shared goals, options, decision, and follow-up. interview prep behavioral story bank leadership and mentoring 3.4.5"
+    },
+    {
+      "id": "interview:4.1.1",
+      "key": "4.1.1",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Why are you leaving your current role",
+      "description": "Keep it positive: growth, scope, product, location, or timing.",
+      "section": "HR and Recruiter Questions",
+      "subsection": "Recruiter Screen Basics",
+      "url": "",
+      "link": "interview_prep.html#section-4",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Why+are+you+leaving+your+current+role+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Why+are+you+leaving+your+current+role+interview+answer+examples"
+        }
+      ],
+      "search": "why are you leaving your current role keep it positive: growth, scope, product, location, or timing. interview prep hr and recruiter questions recruiter screen basics 4.1.1"
+    },
+    {
+      "id": "interview:4.1.2",
+      "key": "4.1.2",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Why do you want to join us",
+      "description": "Mention role fit, product interest, and engineering challenge.",
+      "section": "HR and Recruiter Questions",
+      "subsection": "Recruiter Screen Basics",
+      "url": "",
+      "link": "interview_prep.html#section-4",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Why+do+you+want+to+join+us+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Why+do+you+want+to+join+us+interview+answer+examples"
+        }
+      ],
+      "search": "why do you want to join us mention role fit, product interest, and engineering challenge. interview prep hr and recruiter questions recruiter screen basics 4.1.2"
+    },
+    {
+      "id": "interview:4.1.3",
+      "key": "4.1.3",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "What is your notice period",
+      "description": "Answer directly and mention flexibility if true.",
+      "section": "HR and Recruiter Questions",
+      "subsection": "Recruiter Screen Basics",
+      "url": "",
+      "link": "interview_prep.html#section-4",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=What+is+your+notice+period+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=What+is+your+notice+period+interview+answer+examples"
+        }
+      ],
+      "search": "what is your notice period answer directly and mention flexibility if true. interview prep hr and recruiter questions recruiter screen basics 4.1.3"
+    },
+    {
+      "id": "interview:4.1.4",
+      "key": "4.1.4",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Are you interviewing elsewhere",
+      "description": "Be transparent without revealing unnecessary details.",
+      "section": "HR and Recruiter Questions",
+      "subsection": "Recruiter Screen Basics",
+      "url": "",
+      "link": "interview_prep.html#section-4",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Are+you+interviewing+elsewhere+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Are+you+interviewing+elsewhere+interview+answer+examples"
+        }
+      ],
+      "search": "are you interviewing elsewhere be transparent without revealing unnecessary details. interview prep hr and recruiter questions recruiter screen basics 4.1.4"
+    },
+    {
+      "id": "interview:4.1.5",
+      "key": "4.1.5",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "What is your availability",
+      "description": "Give clear windows and timezone.",
+      "section": "HR and Recruiter Questions",
+      "subsection": "Recruiter Screen Basics",
+      "url": "",
+      "link": "interview_prep.html#section-4",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=What+is+your+availability+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=What+is+your+availability+interview+answer+examples"
+        }
+      ],
+      "search": "what is your availability give clear windows and timezone. interview prep hr and recruiter questions recruiter screen basics 4.1.5"
+    },
+    {
+      "id": "interview:4.1.6",
+      "key": "4.1.6",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Do you need sponsorship",
+      "description": "Answer clearly and consistently.",
+      "section": "HR and Recruiter Questions",
+      "subsection": "Recruiter Screen Basics",
+      "url": "",
+      "link": "interview_prep.html#section-4",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Do+you+need+sponsorship+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Do+you+need+sponsorship+interview+answer+examples"
+        }
+      ],
+      "search": "do you need sponsorship answer clearly and consistently. interview prep hr and recruiter questions recruiter screen basics 4.1.6"
+    },
+    {
+      "id": "interview:4.2.1",
+      "key": "4.2.1",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "What are your salary expectations",
+      "description": "Give a researched range or ask for the approved range first.",
+      "section": "HR and Recruiter Questions",
+      "subsection": "Compensation and Offer Questions",
+      "url": "",
+      "link": "interview_prep.html#section-4",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=What+are+your+salary+expectations+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=What+are+your+salary+expectations+interview+answer+examples"
+        }
+      ],
+      "search": "what are your salary expectations give a researched range or ask for the approved range first. interview prep hr and recruiter questions compensation and offer questions 4.2.1"
+    },
+    {
+      "id": "interview:4.2.2",
+      "key": "4.2.2",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "What is your current compensation",
+      "description": "Redirect to target range where legally and professionally appropriate.",
+      "section": "HR and Recruiter Questions",
+      "subsection": "Compensation and Offer Questions",
+      "url": "",
+      "link": "interview_prep.html#section-4",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=What+is+your+current+compensation+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=What+is+your+current+compensation+interview+answer+examples"
+        }
+      ],
+      "search": "what is your current compensation redirect to target range where legally and professionally appropriate. interview prep hr and recruiter questions compensation and offer questions 4.2.2"
+    },
+    {
+      "id": "interview:4.2.3",
+      "key": "4.2.3",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Do you have competing offers",
+      "description": "Answer truthfully and focus on timeline.",
+      "section": "HR and Recruiter Questions",
+      "subsection": "Compensation and Offer Questions",
+      "url": "",
+      "link": "interview_prep.html#section-4",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Do+you+have+competing+offers+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Do+you+have+competing+offers+interview+answer+examples"
+        }
+      ],
+      "search": "do you have competing offers answer truthfully and focus on timeline. interview prep hr and recruiter questions compensation and offer questions 4.2.3"
+    },
+    {
+      "id": "interview:4.2.4",
+      "key": "4.2.4",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "What matters besides salary",
+      "description": "Mention role scope, growth, team, location, equity, and benefits.",
+      "section": "HR and Recruiter Questions",
+      "subsection": "Compensation and Offer Questions",
+      "url": "",
+      "link": "interview_prep.html#section-4",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=What+matters+besides+salary+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=What+matters+besides+salary+interview+answer+examples"
+        }
+      ],
+      "search": "what matters besides salary mention role scope, growth, team, location, equity, and benefits. interview prep hr and recruiter questions compensation and offer questions 4.2.4"
+    },
+    {
+      "id": "interview:4.2.5",
+      "key": "4.2.5",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "How would you evaluate an offer",
+      "description": "Use total compensation, role fit, learning, manager, and long-term path.",
+      "section": "HR and Recruiter Questions",
+      "subsection": "Compensation and Offer Questions",
+      "url": "",
+      "link": "interview_prep.html#section-4",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=How+would+you+evaluate+an+offer+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=How+would+you+evaluate+an+offer+interview+answer+examples"
+        }
+      ],
+      "search": "how would you evaluate an offer use total compensation, role fit, learning, manager, and long-term path. interview prep hr and recruiter questions compensation and offer questions 4.2.5"
+    },
+    {
+      "id": "interview:4.3.1",
+      "key": "4.3.1",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Why is there a gap in your resume",
+      "description": "Be brief, factual, and pivot to readiness.",
+      "section": "HR and Recruiter Questions",
+      "subsection": "Risk and Fit Questions",
+      "url": "",
+      "link": "interview_prep.html#section-4",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Why+is+there+a+gap+in+your+resume+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Why+is+there+a+gap+in+your+resume+interview+answer+examples"
+        }
+      ],
+      "search": "why is there a gap in your resume be brief, factual, and pivot to readiness. interview prep hr and recruiter questions risk and fit questions 4.3.1"
+    },
+    {
+      "id": "interview:4.3.2",
+      "key": "4.3.2",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Have you ever been fired or laid off",
+      "description": "Be honest, avoid blame, and describe the learning or context.",
+      "section": "HR and Recruiter Questions",
+      "subsection": "Risk and Fit Questions",
+      "url": "",
+      "link": "interview_prep.html#section-4",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Have+you+ever+been+fired+or+laid+off+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Have+you+ever+been+fired+or+laid+off+interview+answer+examples"
+        }
+      ],
+      "search": "have you ever been fired or laid off be honest, avoid blame, and describe the learning or context. interview prep hr and recruiter questions risk and fit questions 4.3.2"
+    },
+    {
+      "id": "interview:4.3.3",
+      "key": "4.3.3",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "How do you handle stress",
+      "description": "Explain a real operating system: prioritization, communication, recovery.",
+      "section": "HR and Recruiter Questions",
+      "subsection": "Risk and Fit Questions",
+      "url": "",
+      "link": "interview_prep.html#section-4",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=How+do+you+handle+stress+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=How+do+you+handle+stress+interview+answer+examples"
+        }
+      ],
+      "search": "how do you handle stress explain a real operating system: prioritization, communication, recovery. interview prep hr and recruiter questions risk and fit questions 4.3.3"
+    },
+    {
+      "id": "interview:4.3.4",
+      "key": "4.3.4",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "What work environment helps you perform best",
+      "description": "Describe conditions while staying adaptable.",
+      "section": "HR and Recruiter Questions",
+      "subsection": "Risk and Fit Questions",
+      "url": "",
+      "link": "interview_prep.html#section-4",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=What+work+environment+helps+you+perform+best+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=What+work+environment+helps+you+perform+best+interview+answer+examples"
+        }
+      ],
+      "search": "what work environment helps you perform best describe conditions while staying adaptable. interview prep hr and recruiter questions risk and fit questions 4.3.4"
+    },
+    {
+      "id": "interview:4.3.5",
+      "key": "4.3.5",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "What would make you decline an offer",
+      "description": "Stay professional and values-based.",
+      "section": "HR and Recruiter Questions",
+      "subsection": "Risk and Fit Questions",
+      "url": "",
+      "link": "interview_prep.html#section-4",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=What+would+make+you+decline+an+offer+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=What+would+make+you+decline+an+offer+interview+answer+examples"
+        }
+      ],
+      "search": "what would make you decline an offer stay professional and values-based. interview prep hr and recruiter questions risk and fit questions 4.3.5"
+    },
+    {
+      "id": "interview:5.1.1",
+      "key": "5.1.1",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Explain your architecture",
+      "description": "Start with user flow, then services, data, and bottlenecks.",
+      "section": "Technical Communication",
+      "subsection": "Project Deep Dive Questions",
+      "url": "",
+      "link": "interview_prep.html#section-5",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Explain+your+architecture+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Explain+your+architecture+interview+answer+examples"
+        }
+      ],
+      "search": "explain your architecture start with user flow, then services, data, and bottlenecks. interview prep technical communication project deep dive questions 5.1.1"
+    },
+    {
+      "id": "interview:5.1.2",
+      "key": "5.1.2",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "What was the hardest technical problem",
+      "description": "Show constraints, alternatives, decision, and result.",
+      "section": "Technical Communication",
+      "subsection": "Project Deep Dive Questions",
+      "url": "",
+      "link": "interview_prep.html#section-5",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=What+was+the+hardest+technical+problem+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=What+was+the+hardest+technical+problem+interview+answer+examples"
+        }
+      ],
+      "search": "what was the hardest technical problem show constraints, alternatives, decision, and result. interview prep technical communication project deep dive questions 5.1.2"
+    },
+    {
+      "id": "interview:5.1.3",
+      "key": "5.1.3",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "How did you measure success",
+      "description": "Use metrics and before/after comparison.",
+      "section": "Technical Communication",
+      "subsection": "Project Deep Dive Questions",
+      "url": "",
+      "link": "interview_prep.html#section-5",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=How+did+you+measure+success+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=How+did+you+measure+success+interview+answer+examples"
+        }
+      ],
+      "search": "how did you measure success use metrics and before/after comparison. interview prep technical communication project deep dive questions 5.1.3"
+    },
+    {
+      "id": "interview:5.1.4",
+      "key": "5.1.4",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "What would you redesign now",
+      "description": "Show hindsight, not regret.",
+      "section": "Technical Communication",
+      "subsection": "Project Deep Dive Questions",
+      "url": "",
+      "link": "interview_prep.html#section-5",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=What+would+you+redesign+now+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=What+would+you+redesign+now+interview+answer+examples"
+        }
+      ],
+      "search": "what would you redesign now show hindsight, not regret. interview prep technical communication project deep dive questions 5.1.4"
+    },
+    {
+      "id": "interview:5.1.5",
+      "key": "5.1.5",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "How did you test it",
+      "description": "Mention unit, integration, load, rollout, monitoring, and rollback where relevant.",
+      "section": "Technical Communication",
+      "subsection": "Project Deep Dive Questions",
+      "url": "",
+      "link": "interview_prep.html#section-5",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=How+did+you+test+it+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=How+did+you+test+it+interview+answer+examples"
+        }
+      ],
+      "search": "how did you test it mention unit, integration, load, rollout, monitoring, and rollback where relevant. interview prep technical communication project deep dive questions 5.1.5"
+    },
+    {
+      "id": "interview:5.2.1",
+      "key": "5.2.1",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Why did you choose this technology",
+      "description": "Name alternatives and the constraint that mattered most.",
+      "section": "Technical Communication",
+      "subsection": "Trade-Off and Judgment Questions",
+      "url": "",
+      "link": "interview_prep.html#section-5",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Why+did+you+choose+this+technology+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Why+did+you+choose+this+technology+interview+answer+examples"
+        }
+      ],
+      "search": "why did you choose this technology name alternatives and the constraint that mattered most. interview prep technical communication trade-off and judgment questions 5.2.1"
+    },
+    {
+      "id": "interview:5.2.2",
+      "key": "5.2.2",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "What did you optimize for",
+      "description": "State the ranking: reliability, latency, cost, speed, or simplicity.",
+      "section": "Technical Communication",
+      "subsection": "Trade-Off and Judgment Questions",
+      "url": "",
+      "link": "interview_prep.html#section-5",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=What+did+you+optimize+for+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=What+did+you+optimize+for+interview+answer+examples"
+        }
+      ],
+      "search": "what did you optimize for state the ranking: reliability, latency, cost, speed, or simplicity. interview prep technical communication trade-off and judgment questions 5.2.2"
+    },
+    {
+      "id": "interview:5.2.3",
+      "key": "5.2.3",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "What broke at scale",
+      "description": "Explain bottleneck, symptom, mitigation, and long-term fix.",
+      "section": "Technical Communication",
+      "subsection": "Trade-Off and Judgment Questions",
+      "url": "",
+      "link": "interview_prep.html#section-5",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=What+broke+at+scale+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=What+broke+at+scale+interview+answer+examples"
+        }
+      ],
+      "search": "what broke at scale explain bottleneck, symptom, mitigation, and long-term fix. interview prep technical communication trade-off and judgment questions 5.2.3"
+    },
+    {
+      "id": "interview:5.2.4",
+      "key": "5.2.4",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "How do you handle incidents",
+      "description": "Detect, mitigate, communicate, root-cause, prevent.",
+      "section": "Technical Communication",
+      "subsection": "Trade-Off and Judgment Questions",
+      "url": "",
+      "link": "interview_prep.html#section-5",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=How+do+you+handle+incidents+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=How+do+you+handle+incidents+interview+answer+examples"
+        }
+      ],
+      "search": "how do you handle incidents detect, mitigate, communicate, root-cause, prevent. interview prep technical communication trade-off and judgment questions 5.2.4"
+    },
+    {
+      "id": "interview:5.2.5",
+      "key": "5.2.5",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "How do you decide build vs buy",
+      "description": "Compare cost, control, speed, risk, and team expertise.",
+      "section": "Technical Communication",
+      "subsection": "Trade-Off and Judgment Questions",
+      "url": "",
+      "link": "interview_prep.html#section-5",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=How+do+you+decide+build+vs+buy+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=How+do+you+decide+build+vs+buy+interview+answer+examples"
+        }
+      ],
+      "search": "how do you decide build vs buy compare cost, control, speed, risk, and team expertise. interview prep technical communication trade-off and judgment questions 5.2.5"
+    },
+    {
+      "id": "interview:5.3.1",
+      "key": "5.3.1",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Restate the problem",
+      "description": "Confirm inputs, outputs, constraints, and examples.",
+      "section": "Technical Communication",
+      "subsection": "Coding Interview Communication",
+      "url": "",
+      "link": "interview_prep.html#section-5",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Restate+the+problem+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Restate+the+problem+interview+answer+examples"
+        }
+      ],
+      "search": "restate the problem confirm inputs, outputs, constraints, and examples. interview prep technical communication coding interview communication 5.3.1"
+    },
+    {
+      "id": "interview:5.3.2",
+      "key": "5.3.2",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Clarify edge cases",
+      "description": "Ask about nulls, empty data, duplicates, size, and ordering.",
+      "section": "Technical Communication",
+      "subsection": "Coding Interview Communication",
+      "url": "",
+      "link": "interview_prep.html#section-5",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Clarify+edge+cases+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Clarify+edge+cases+interview+answer+examples"
+        }
+      ],
+      "search": "clarify edge cases ask about nulls, empty data, duplicates, size, and ordering. interview prep technical communication coding interview communication 5.3.2"
+    },
+    {
+      "id": "interview:5.3.3",
+      "key": "5.3.3",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Explain brute force first",
+      "description": "Show baseline understanding before optimizing.",
+      "section": "Technical Communication",
+      "subsection": "Coding Interview Communication",
+      "url": "",
+      "link": "interview_prep.html#section-5",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Explain+brute+force+first+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Explain+brute+force+first+interview+answer+examples"
+        }
+      ],
+      "search": "explain brute force first show baseline understanding before optimizing. interview prep technical communication coding interview communication 5.3.3"
+    },
+    {
+      "id": "interview:5.3.4",
+      "key": "5.3.4",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Narrate the invariant",
+      "description": "Explain what stays true during the algorithm.",
+      "section": "Technical Communication",
+      "subsection": "Coding Interview Communication",
+      "url": "",
+      "link": "interview_prep.html#section-5",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Narrate+the+invariant+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Narrate+the+invariant+interview+answer+examples"
+        }
+      ],
+      "search": "narrate the invariant explain what stays true during the algorithm. interview prep technical communication coding interview communication 5.3.4"
+    },
+    {
+      "id": "interview:5.3.5",
+      "key": "5.3.5",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Close with complexity and tests",
+      "description": "Give time, space, and targeted test cases.",
+      "section": "Technical Communication",
+      "subsection": "Coding Interview Communication",
+      "url": "",
+      "link": "interview_prep.html#section-5",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Close+with+complexity+and+tests+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Close+with+complexity+and+tests+interview+answer+examples"
+        }
+      ],
+      "search": "close with complexity and tests give time, space, and targeted test cases. interview prep technical communication coding interview communication 5.3.5"
+    },
+    {
+      "id": "interview:6.1.1",
+      "key": "6.1.1",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Opening pitch transcript",
+      "description": "A 75-second answer for Tell me about yourself.",
+      "section": "Transcript Practice Lab",
+      "subsection": "Transcript Scripts",
+      "url": "",
+      "link": "interview_prep.html#section-6",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Opening+pitch+transcript+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Opening+pitch+transcript+interview+answer+examples"
+        }
+      ],
+      "search": "opening pitch transcript a 75-second answer for tell me about yourself. interview prep transcript practice lab transcript scripts 6.1.1"
+    },
+    {
+      "id": "interview:6.1.2",
+      "key": "6.1.2",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Conflict story transcript",
+      "description": "A STAR answer with calm disagreement and resolution.",
+      "section": "Transcript Practice Lab",
+      "subsection": "Transcript Scripts",
+      "url": "",
+      "link": "interview_prep.html#section-6",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Conflict+story+transcript+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Conflict+story+transcript+interview+answer+examples"
+        }
+      ],
+      "search": "conflict story transcript a star answer with calm disagreement and resolution. interview prep transcript practice lab transcript scripts 6.1.2"
+    },
+    {
+      "id": "interview:6.1.3",
+      "key": "6.1.3",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Failure story transcript",
+      "description": "A CARL answer that owns the mistake and shows learning.",
+      "section": "Transcript Practice Lab",
+      "subsection": "Transcript Scripts",
+      "url": "",
+      "link": "interview_prep.html#section-6",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Failure+story+transcript+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Failure+story+transcript+interview+answer+examples"
+        }
+      ],
+      "search": "failure story transcript a carl answer that owns the mistake and shows learning. interview prep transcript practice lab transcript scripts 6.1.3"
+    },
+    {
+      "id": "interview:6.1.4",
+      "key": "6.1.4",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Project deep dive transcript",
+      "description": "A technical walkthrough with problem, design, trade-offs, and impact.",
+      "section": "Transcript Practice Lab",
+      "subsection": "Transcript Scripts",
+      "url": "",
+      "link": "interview_prep.html#section-6",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Project+deep+dive+transcript+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Project+deep+dive+transcript+interview+answer+examples"
+        }
+      ],
+      "search": "project deep dive transcript a technical walkthrough with problem, design, trade-offs, and impact. interview prep transcript practice lab transcript scripts 6.1.4"
+    },
+    {
+      "id": "interview:6.1.5",
+      "key": "6.1.5",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Closing question transcript",
+      "description": "A confident close that asks about expectations and success signals.",
+      "section": "Transcript Practice Lab",
+      "subsection": "Transcript Scripts",
+      "url": "",
+      "link": "interview_prep.html#section-6",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Closing+question+transcript+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Closing+question+transcript+interview+answer+examples"
+        }
+      ],
+      "search": "closing question transcript a confident close that asks about expectations and success signals. interview prep transcript practice lab transcript scripts 6.1.5"
+    },
+    {
+      "id": "interview:6.2.1",
+      "key": "6.2.1",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Warm-up pass",
+      "description": "Read the answer once slowly without stopping.",
+      "section": "Transcript Practice Lab",
+      "subsection": "Mock Interview Operating System",
+      "url": "",
+      "link": "interview_prep.html#section-6",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Warm-up+pass+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Warm-up+pass+interview+answer+examples"
+        }
+      ],
+      "search": "warm-up pass read the answer once slowly without stopping. interview prep transcript practice lab mock interview operating system 6.2.1"
+    },
+    {
+      "id": "interview:6.2.2",
+      "key": "6.2.2",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Timed pass",
+      "description": "Run a 60-90 second version with the transcript timer.",
+      "section": "Transcript Practice Lab",
+      "subsection": "Mock Interview Operating System",
+      "url": "",
+      "link": "interview_prep.html#section-6",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Timed+pass+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Timed+pass+interview+answer+examples"
+        }
+      ],
+      "search": "timed pass run a 60-90 second version with the transcript timer. interview prep transcript practice lab mock interview operating system 6.2.2"
+    },
+    {
+      "id": "interview:6.2.3",
+      "key": "6.2.3",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "No-screen pass",
+      "description": "Answer from memory and check if the structure stayed intact.",
+      "section": "Transcript Practice Lab",
+      "subsection": "Mock Interview Operating System",
+      "url": "",
+      "link": "interview_prep.html#section-6",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=No-screen+pass+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=No-screen+pass+interview+answer+examples"
+        }
+      ],
+      "search": "no-screen pass answer from memory and check if the structure stayed intact. interview prep transcript practice lab mock interview operating system 6.2.3"
+    },
+    {
+      "id": "interview:6.2.4",
+      "key": "6.2.4",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Scorecard pass",
+      "description": "Rate clarity, specificity, impact, and confidence.",
+      "section": "Transcript Practice Lab",
+      "subsection": "Mock Interview Operating System",
+      "url": "",
+      "link": "interview_prep.html#section-6",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Scorecard+pass+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Scorecard+pass+interview+answer+examples"
+        }
+      ],
+      "search": "scorecard pass rate clarity, specificity, impact, and confidence. interview prep transcript practice lab mock interview operating system 6.2.4"
+    },
+    {
+      "id": "interview:6.2.5",
+      "key": "6.2.5",
+      "type": "concept",
+      "domain": "interview",
+      "domainTitle": "Interview Prep",
+      "title": "Revision pass",
+      "description": "Cut filler, add metrics, and make the first sentence stronger.",
+      "section": "Transcript Practice Lab",
+      "subsection": "Mock Interview Operating System",
+      "url": "",
+      "link": "interview_prep.html#section-6",
+      "resources": [
+        {
+          "title": "YT",
+          "url": "https://www.youtube.com/results?search_query=Revision+pass+interview+answer+explained"
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/search?q=Revision+pass+interview+answer+examples"
+        }
+      ],
+      "search": "revision pass cut filler, add metrics, and make the first sentence stronger. interview prep transcript practice lab mock interview operating system 6.2.5"
     }
   ],
   "resources": [
@@ -61391,6 +63860,142 @@
       "source": "CNCF",
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure"
+    },
+    {
+      "id": "interview:star-method-guide:https-www-themuse-com-advice-star-interview-method",
+      "title": "STAR Method Guide",
+      "url": "https://www.themuse.com/advice/star-interview-method",
+      "source": "themuse.com",
+      "domain": "interview",
+      "domainTitle": "Interview Prep"
+    },
+    {
+      "id": "interview:mit-behavioral-interviews:https-capd-mit-edu-resources-behavioral-interviews",
+      "title": "MIT Behavioral Interviews",
+      "url": "https://capd.mit.edu/resources/behavioral-interviews/",
+      "source": "capd.mit.edu",
+      "domain": "interview",
+      "domainTitle": "Interview Prep"
+    },
+    {
+      "id": "interview:google-interview-tips:https-www-google-com-about-careers-applications-interview-tips",
+      "title": "Google Interview Tips",
+      "url": "https://www.google.com/about/careers/applications/interview-tips/",
+      "source": "google.com",
+      "domain": "interview",
+      "domainTitle": "Interview Prep"
+    },
+    {
+      "id": "interview:indeed-interview-questions:https-www-indeed-com-career-advice-interviewing-top-interview-questions-and-answ",
+      "title": "Indeed Interview Questions",
+      "url": "https://www.indeed.com/career-advice/interviewing/top-interview-questions-and-answers",
+      "source": "indeed.com",
+      "domain": "interview",
+      "domainTitle": "Interview Prep"
+    },
+    {
+      "id": "interview:harvard-resume-and-interview-resources:https-careerservices-fas-harvard-edu-resources",
+      "title": "Harvard Resume and Interview Resources",
+      "url": "https://careerservices.fas.harvard.edu/resources/",
+      "source": "careerservices.fas.harvard.edu",
+      "domain": "interview",
+      "domainTitle": "Interview Prep"
+    },
+    {
+      "id": "interview:linkedin-interview-prep:https-www-linkedin-com-interview-prep",
+      "title": "LinkedIn Interview Prep",
+      "url": "https://www.linkedin.com/interview-prep/",
+      "source": "linkedin.com",
+      "domain": "interview",
+      "domainTitle": "Interview Prep"
+    },
+    {
+      "id": "interview:amazon-leadership-principles:https-www-amazon-jobs-content-en-our-workplace-leadership-principles",
+      "title": "Amazon Leadership Principles",
+      "url": "https://www.amazon.jobs/content/en/our-workplace/leadership-principles",
+      "source": "amazon.jobs",
+      "domain": "interview",
+      "domainTitle": "Interview Prep"
+    },
+    {
+      "id": "interview:yale-behavioral-interviewing:https-ocs-yale-edu-channels-behavioral-interviewing",
+      "title": "Yale Behavioral Interviewing",
+      "url": "https://ocs.yale.edu/channels/behavioral-interviewing/",
+      "source": "ocs.yale.edu",
+      "domain": "interview",
+      "domainTitle": "Interview Prep"
+    },
+    {
+      "id": "interview:indeed-hr-interview-questions:https-www-indeed-com-career-advice-interviewing-hr-interview-questions",
+      "title": "Indeed HR Interview Questions",
+      "url": "https://www.indeed.com/career-advice/interviewing/hr-interview-questions",
+      "source": "indeed.com",
+      "domain": "interview",
+      "domainTitle": "Interview Prep"
+    },
+    {
+      "id": "interview:hbr-negotiating-job-offers:https-hbr-org-2014-04-15-rules-for-negotiating-a-job-offer",
+      "title": "HBR Negotiating Job Offers",
+      "url": "https://hbr.org/2014/04/15-rules-for-negotiating-a-job-offer",
+      "source": "hbr.org",
+      "domain": "interview",
+      "domainTitle": "Interview Prep"
+    },
+    {
+      "id": "interview:levels-fyi-salary-negotiation-guide:https-www-levels-fyi-blog-salary-negotiation-html",
+      "title": "Levels.fyi Salary Negotiation Guide",
+      "url": "https://www.levels.fyi/blog/salary-negotiation.html",
+      "source": "levels.fyi",
+      "domain": "interview",
+      "domainTitle": "Interview Prep"
+    },
+    {
+      "id": "interview:google-technical-interview-prep:https-www-google-com-about-careers-applications-interview-tips",
+      "title": "Google Technical Interview Prep",
+      "url": "https://www.google.com/about/careers/applications/interview-tips/",
+      "source": "google.com",
+      "domain": "interview",
+      "domainTitle": "Interview Prep"
+    },
+    {
+      "id": "interview:system-design-primer:https-github-com-donnemartin-system-design-primer",
+      "title": "System Design Primer",
+      "url": "https://github.com/donnemartin/system-design-primer",
+      "source": "github.com",
+      "domain": "interview",
+      "domainTitle": "Interview Prep"
+    },
+    {
+      "id": "interview:martin-fowler-technical-leadership:https-martinfowler-com-tags-leadership-html",
+      "title": "Martin Fowler Technical Leadership",
+      "url": "https://martinfowler.com/tags/leadership.html",
+      "source": "martinfowler.com",
+      "domain": "interview",
+      "domainTitle": "Interview Prep"
+    },
+    {
+      "id": "interview:pramp-mock-interviews:https-www-pramp-com",
+      "title": "Pramp Mock Interviews",
+      "url": "https://www.pramp.com/",
+      "source": "pramp.com",
+      "domain": "interview",
+      "domainTitle": "Interview Prep"
+    },
+    {
+      "id": "interview:interviewing-io:https-interviewing-io",
+      "title": "Interviewing.io",
+      "url": "https://interviewing.io/",
+      "source": "interviewing.io",
+      "domain": "interview",
+      "domainTitle": "Interview Prep"
+    },
+    {
+      "id": "interview:exponent-interview-prep:https-www-tryexponent-com",
+      "title": "Exponent Interview Prep",
+      "url": "https://www.tryexponent.com/",
+      "source": "tryexponent.com",
+      "domain": "interview",
+      "domainTitle": "Interview Prep"
     }
   ],
   "roadmap": [
@@ -61452,7 +64057,8 @@
       "title": "Behavioral and mocks",
       "focus": "Prepare STAR stories, leadership examples, failure stories, conflict stories, and live mock interviews.",
       "domains": [
-        "Behavioral"
+        "Behavioral",
+        "Interview"
       ]
     }
   ],
@@ -61793,6 +64399,39 @@
         [
           "Azure Well-Architected Framework",
           "https://learn.microsoft.com/en-us/azure/well-architected/"
+        ]
+      ]
+    },
+    "interview": {
+      "title": "Interview Prep Coverage Check",
+      "source": "behavioral, HR, recruiter, and communication interview practice",
+      "notes": [
+        "Practice the structure first, then personalize every answer with your own project evidence.",
+        "Keep each answer readable as a 60-90 second transcript and expandable into a deeper story.",
+        "Use the transcript runner for pacing, clarity, and word-by-word rehearsal."
+      ],
+      "topics": [
+        "STAR, CARL, SOAR, PREP, and PEEL answer methods",
+        "Tell me about yourself",
+        "Strengths and weaknesses",
+        "Conflict and failure",
+        "Ambiguity and ownership",
+        "Salary and offer conversations",
+        "Questions to ask the interviewer",
+        "Mock interview scorecard"
+      ],
+      "resources": [
+        [
+          "Google Interview Tips",
+          "https://www.google.com/about/careers/applications/interview-tips/"
+        ],
+        [
+          "Indeed Common Interview Questions",
+          "https://www.indeed.com/career-advice/interviewing/top-interview-questions-and-answers"
+        ],
+        [
+          "MIT CAPD Behavioral Interviews",
+          "https://capd.mit.edu/resources/behavioral-interviews/"
         ]
       ]
     }

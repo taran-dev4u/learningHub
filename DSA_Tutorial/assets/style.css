@@ -29,7 +29,10 @@ pre.viz{color:var(--text-dim);border-style:dashed}
 .copy-btn:hover{color:var(--text)}
 
 /* top nav */
-.nav-bar{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;gap:10px;
+.global-learning-nav{position:sticky;top:0;z-index:80;display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding:10px 14px;background:linear-gradient(90deg,rgba(124,92,255,.16),rgba(0,184,148,.12)),var(--bg-card);border-bottom:1px solid var(--border)}
+.global-learning-nav a{display:inline-flex;align-items:center;min-height:30px;padding:4px 9px;border:1px solid var(--border);border-radius:7px;background:var(--bg-soft);color:var(--text-dim);font-size:12px;font-weight:800;text-decoration:none}
+.global-learning-nav a:hover,.global-learning-nav a.current{border-color:var(--accent);background:var(--accent);color:#fff;text-decoration:none}
+.nav-bar{position:sticky;top:50px;z-index:10;display:flex;justify-content:space-between;align-items:center;gap:10px;
   background:var(--bg-card);border-bottom:1px solid var(--border);padding:10px 16px;font-size:14px}
 .nav-bar .mid{color:var(--text-dim);text-align:center;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .nav-bar a{white-space:nowrap}

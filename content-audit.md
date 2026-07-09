@@ -1,6 +1,6 @@
 # Taran's Learning Hub Content Audit
 
-Generated: 2026-07-09T20:50:20.566Z
+Generated: 2026-07-09T21:34:35.020Z
 
 ## Research References
 
@@ -22,7 +22,7 @@ Generated: 2026-07-09T20:50:20.566Z
 
 ## Global Actions Applied
 
-- Rebuilt the hub as six page cards only; no global catalog, roadmap, or resource library on the landing page.
+- Rebuilt the hub as seven page cards only; no global catalog, roadmap, or resource library on the landing page.
 - Added a shared cross-site navigation bar to every source page.
 - Closed resource dropdown panels by default while preserving click-to-expand behavior.
 - Rewrote generated YouTube and Google fallback URLs with cleaner topic-specific query rules.
@@ -409,4 +409,22 @@ Sections:
 - Infrastructure as Code: 6 items, 1 subsections, 4 resources.
 - AWS Interview Q&A (250 Questions): 40 items, 5 subsections, 4 resources.
 - Architecture & Governance: 35 items, 8 subsections, 6 resources.
+
+## Interview Prep
+
+- Inventory: 6 sections, 18 subsections, 92 concepts, 17 resources.
+- Formatting focus: consistent navigation, closed resources, clean headings, and better fallback search links.
+- Duplicate subsection names to review: none found by title.
+- Weak/generic subsection names to review: none found by heuristic.
+- Coverage source: behavioral, HR, recruiter, and communication interview practice.
+- Missing/priority candidates: STAR, CARL, SOAR, PREP, and PEEL answer methods, Tell me about yourself, Strengths and weaknesses, Conflict and failure, Ambiguity and ownership, Salary and offer conversations, Questions to ask the interviewer, Mock interview scorecard.
+- Recommended next resources: Google Interview Tips, Indeed Common Interview Questions, MIT CAPD Behavioral Interviews.
+
+Sections:
+- Answer Frameworks: 15 items, 3 subsections, 3 resources.
+- Personal Pitch and Resume Walkthrough: 16 items, 3 subsections, 3 resources.
+- Behavioral Story Bank: 20 items, 4 subsections, 3 resources.
+- HR and Recruiter Questions: 16 items, 3 subsections, 3 resources.
+- Technical Communication: 15 items, 3 subsections, 3 resources.
+- Transcript Practice Lab: 10 items, 2 subsections, 3 resources.
 

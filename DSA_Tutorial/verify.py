@@ -20,6 +20,7 @@ for h in htmls:
         url = m.group(1)
         if url.startswith(('http', 'mailto')):
             continue
+        url = url.split('?', 1)[0]
         t = os.path.normpath(os.path.join(base, url)).replace(os.sep, '/')
         if not os.path.exists(os.path.join(root, t)):
             broken.append((h, url))

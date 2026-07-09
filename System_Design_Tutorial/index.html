@@ -7,12 +7,26 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
     <!-- Highlight.js CSS for Code Blocks -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
-    <link rel="stylesheet" href="styles.css?v=6">
+    <link rel="stylesheet" href="../assets/learning-hub-shared.css">
+    <script src="../assets/learning-hub-shared.js"></script>
+    <link rel="stylesheet" href="styles.css?v=8">
 </head>
 <body>
+    <nav class="global-learning-nav" aria-label="Learning hub navigation">
+        <a href="../index.html">Hub</a>
+        <a href="../DSA_Ultimate_Index.html">DSA Index</a>
+        <a href="../DSA_Tutorial/index.html">DSA Tutorial</a>
+        <a href="../system_design.html">System Design</a>
+        <a class="current" href="index.html" aria-current="page">System Tutorial</a>
+        <a href="../cs_fundamentals.html">CS</a>
+        <a href="../behavioral.html">Behavioral</a>
+        <a href="../ai_engineering.html">AI</a>
+        <a href="../cloud_aws_azure.html">Cloud</a>
+        <a href="../interview_prep.html">Interview Prep</a>
+    </nav>
     <header class="navbar">
         <div class="logo">
             <span class="logo-icon">🏗️</span>
@@ -36,6 +50,10 @@
         </aside>
 
         <main class="content-area">
+            <div class="study-toolbar" id="study-toolbar">
+                <button id="mark-studied" class="btn btn-secondary" type="button">Mark Studied</button>
+                <span id="study-progress">0 studied</span>
+            </div>
             <article id="markdown-content" class="markdown-body">
                 <!-- Markdown content will be dynamically injected here -->
             </article>
@@ -61,6 +79,6 @@
     <!-- App Logic -->
     <script src="contentBundle.js?v=5"></script>
     <script src="topics.js?v=5"></script>
-    <script src="app.js?v=5"></script>
+    <script src="app.js?v=6"></script>
 </body>
 </html>

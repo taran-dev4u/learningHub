@@ -13,6 +13,7 @@ const pages = [
   "behavioral.html",
   "ai_engineering.html",
   "cloud_aws_azure.html",
+  "interview_prep.html",
 ];
 
 let failures = 0;
@@ -35,7 +36,7 @@ for (const file of pages) {
   check("no default-open resources", !/resources-section open/.test(html));
   if (isHub) {
     const cards = (html.match(/class="page-card"/g) || []).length;
-    check("exactly six page cards", cards === 6, `found ${cards}`);
+    check("exactly seven page cards", cards === 7, `found ${cards}`);
   } else {
     const navs = (html.match(/<nav class="site-nav"/g) || []).length;
     check("exactly one site nav", navs === 1, `found ${navs}`);

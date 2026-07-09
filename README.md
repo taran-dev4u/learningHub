@@ -10,19 +10,22 @@ A personal static learning hub generated from the HTML sites in this folder.
 - Behavioral and Leadership: 145 concepts, 6 sections, 37 resources
 - AI Engineering: 180 concepts, 11 sections, 60 resources
 - Cloud - AWS and Azure: 194 concepts, 11 sections, 58 resources
+- Interview Prep: 92 concepts, 6 sections, 17 resources
 
 ## Added tutorial sub-sites
 
 - DSA Tutorial: `DSA_Tutorial/index.html` with 755 generated pages and 707 problem tutorials.
 - System Design Tutorial Hub: `System_Design_Tutorial/index.html` with 15 sections, 62 mapped topics, and 102 bundled markdown lessons.
+- Interview Prep: `interview_prep.html` with answer methods, HR questions, behavioral story themes, technical communication practice, and a word-by-word transcript runner.
 
 ## Current UI
 
-- `index.html` and `hub.html` show only the six page entry cards.
+- `index.html` and `hub.html` show only the seven page entry cards.
 - Each source page has shared cross-site navigation.
 - Resource panels start closed by default.
-- Progress and bookmarks are stored locally in the browser.
-- DSA and System Design pages link to their deeper local tutorial sub-sites.
+- Progress and bookmarks are stored locally in the browser and refresh across open tabs.
+- DSA and System Design cards/pages link to their deeper local tutorial sub-sites.
+- The site has a browser-side password gate for casual access control.
 
 ## Local preview
 

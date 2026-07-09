@@ -72,16 +72,34 @@
       pre.appendChild(btn);
     });
 
-    // Solved checkboxes (persisted by data-id)
-    var PKEY = 'dsa-tut-progress';
-    var prog = {};
-    try { prog = JSON.parse(localStorage.getItem(PKEY) || '{}'); } catch (e) {}
+    // Solved checkboxes use the same LeetCode-number set as the main DSA index.
+    var PKEY = 'dsa_index_solved_v1';
+    function readSolvedSet() {
+      if (window.LearningHubShared) return window.LearningHubShared.readSet(PKEY);
+      try { return new Set(JSON.parse(localStorage.getItem(PKEY) || '[]')); } catch (e) { return new Set(); }
+    }
+    function writeSolvedSet(set) {
+      if (window.LearningHubShared) window.LearningHubShared.writeSet(PKEY, set);
+      else {
+        try { localStorage.setItem(PKEY, JSON.stringify(Array.from(set))); } catch (e) {}
+      }
+    }
+    function lcFromId(id) {
+      var match = String(id || '').match(/lc(\d+)/i);
+      return match ? match[1] : id;
+    }
+    var solved = readSolvedSet();
     document.querySelectorAll('input[data-id]').forEach(function (cb) {
       var id = cb.getAttribute('data-id');
-      cb.checked = !!prog[id];
+      var lc = lcFromId(id);
+      cb.checked = solved.has(lc);
       cb.addEventListener('change', function () {
-        if (cb.checked) prog[id] = 1; else delete prog[id];
-        try { localStorage.setItem(PKEY, JSON.stringify(prog)); } catch (e) {}
+        solved = readSolvedSet();
+        if (cb.checked) solved.add(lc); else solved.delete(lc);
+        writeSolvedSet(solved);
+        document.querySelectorAll('input[data-id]').forEach(function (other) {
+          if (lcFromId(other.getAttribute('data-id')) === lc) other.checked = cb.checked;
+        });
         updateCounts();
       });
     });
@@ -95,6 +113,14 @@
       });
     }
     updateCounts();
+    window.addEventListener('learning-hub-progress-external', function (event) {
+      if (!event.detail || event.detail.key !== PKEY) return;
+      solved = readSolvedSet();
+      document.querySelectorAll('input[data-id]').forEach(function (cb) {
+        cb.checked = solved.has(lcFromId(cb.getAttribute('data-id')));
+      });
+      updateCounts();
+    });
 
     // Hub search
     var s = document.getElementById('hub-search');

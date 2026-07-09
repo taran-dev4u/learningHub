@@ -357,13 +357,17 @@ body {
   a { color: black; text-decoration: underline; }
 }
 </style>
+<link rel="stylesheet" href="assets/learning-hub-shared.css">
+<script src="assets/learning-hub-shared.js"></script>
 <style id="site-nav-style">
 .site-nav {
   position: sticky; top: 0; z-index: 80;
   display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
   margin: 0 0 14px; padding: 10px 12px;
   border: 1px solid var(--border); border-radius: 10px;
-  background: color-mix(in srgb, var(--bg-elev, var(--bg-card, #fff)) 92%, transparent);
+  background:
+    linear-gradient(90deg, rgba(47,111,221,.16), rgba(224,71,104,.12), rgba(42,168,118,.10)),
+    color-mix(in srgb, var(--bg-elev, var(--bg-card, #fff)) 92%, transparent);
   backdrop-filter: blur(14px); box-shadow: var(--shadow-card, 0 1px 3px rgba(0,0,0,.12));
 }
 .site-brand { display: grid; gap: 1px; color: var(--text); text-decoration: none; min-width: 180px; }
@@ -385,6 +389,7 @@ body {
 .site-links a, .site-theme-button { transition: border-color .15s ease, color .15s ease, transform .15s ease; }
 .site-links a:hover, .site-theme-button:hover { border-color: var(--accent); color: var(--text); transform: translateY(-1px); }
 .site-links a.current { background: var(--accent); border-color: var(--accent); color: white; }
+.site-links a[href*="interview_prep"] { border-color: rgba(224,71,104,.45); }
 .site-theme-button { margin-left: auto; font-family: inherit; }
 .site-progress { color: var(--text-faint, var(--text-dim)); font-size: 11px; font-weight: 800; margin-left: 2px; }
 .learning-coverage {
@@ -451,7 +456,7 @@ body {
   <label class="site-nav-menu" for="site-nav-toggle">Menu</label>
   <div class="site-links">
     <a href="index.html">Hub</a>
-    <a href="DSA_Ultimate_Index.html">DSA</a><a href="system_design.html">Systems</a><a href="cs_fundamentals.html">CS</a><a class="current" aria-current="page" href="behavioral.html">Behavioral</a><a href="ai_engineering.html">AI</a><a href="cloud_aws_azure.html">Cloud</a>
+    <a href="DSA_Ultimate_Index.html">DSA</a><a href="system_design.html">Systems</a><a href="cs_fundamentals.html">CS</a><a class="current" aria-current="page" href="behavioral.html">Behavioral</a><a href="ai_engineering.html">AI</a><a href="cloud_aws_azure.html">Cloud</a><a href="interview_prep.html">Interview</a>
     <button class="site-theme-button" type="button" data-site-theme-toggle>Theme</button>
     <span class="site-progress">Progress: <span data-site-nav-progress>saved locally</span></span>
   </div>

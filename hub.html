@@ -3,8 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Taran's personal learning hub for DSA, system design, CS fundamentals, behavioral interviews, AI engineering, and cloud.">
+<meta name="description" content="Taran's personal learning hub for DSA, system design, CS fundamentals, behavioral interviews, AI engineering, cloud, and interview prep.">
 <title>Taran's Learning Hub</title>
+<link rel="stylesheet" href="assets/learning-hub-shared.css">
+<script src="assets/learning-hub-shared.js"></script>
 <style>
 :root {
   --bg: #f4f6f8;
@@ -36,7 +38,10 @@ html.dark {
 body {
   margin: 0;
   min-height: 100vh;
-  background: var(--bg);
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--accent) 9%, transparent), transparent 34%),
+    linear-gradient(315deg, rgba(224, 71, 104, .12), transparent 32%),
+    var(--bg);
   color: var(--text);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
   line-height: 1.5;
@@ -194,8 +199,10 @@ a { color: inherit; }
 .page-card {
   display: grid;
   grid-template-columns: 58px minmax(0, 1fr);
-  min-height: 250px;
-  background: var(--surface);
+  min-height: 292px;
+  background:
+    linear-gradient(145deg, color-mix(in srgb, var(--card-color) 13%, transparent), transparent 42%),
+    var(--surface);
   border: 1px solid var(--border);
   border-top: 5px solid var(--card-color);
   border-radius: 10px;
@@ -215,6 +222,48 @@ a { color: inherit; }
   font-variant-numeric: tabular-nums;
 }
 .card-body { padding: 18px 18px 16px; display: flex; flex-direction: column; min-width: 0; }
+.card-diagram {
+  position: relative;
+  min-height: 86px;
+  margin: -2px 0 14px;
+  border: 1px solid color-mix(in srgb, var(--card-color) 28%, var(--border));
+  border-radius: 10px;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--card-color) 17%, transparent), transparent 62%),
+    var(--surface-2);
+  overflow: hidden;
+}
+.diagram-node {
+  position: absolute;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 62px;
+  min-height: 25px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--card-color) 44%, var(--border));
+  background: var(--surface);
+  color: var(--card-color);
+  font-size: 11px;
+  font-weight: 900;
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--card-color) 16%, transparent);
+}
+.node-1 { left: 12px; top: 12px; }
+.node-2 { left: 38%; top: 14px; transform: translateX(-50%); }
+.node-3 { right: 16px; top: 16px; }
+.node-4 { left: 50%; bottom: 12px; transform: translateX(-50%); }
+.diagram-path {
+  position: absolute;
+  height: 2px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--card-color) 52%, transparent);
+  transform-origin: left center;
+}
+.path-1 { left: 70px; top: 28px; width: 32%; transform: rotate(2deg); }
+.path-2 { right: 70px; top: 31px; width: 28%; transform: rotate(-5deg); }
+.path-3 { left: 34%; bottom: 31px; width: 36%; transform: rotate(0deg); }
 .card-kicker {
   margin: 0 0 8px;
   color: var(--card-color);
@@ -270,6 +319,7 @@ a { color: inherit; }
   font-size: 12px;
   font-weight: 800;
 }
+.card-links { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
 .card-footer a {
   display: inline-flex;
   align-items: center;
@@ -283,6 +333,11 @@ a { color: inherit; }
   white-space: nowrap;
   transition: opacity .15s ease, transform .15s ease;
 }
+.card-footer a.secondary {
+  background: color-mix(in srgb, var(--card-color) 18%, var(--surface-2));
+  color: var(--text);
+  border: 1px solid color-mix(in srgb, var(--card-color) 42%, var(--border));
+}
 .card-footer a:hover { opacity: .88; transform: translateY(-1px); }
 @media (max-width: 820px) {
   .topbar { align-items: flex-start; }
@@ -295,17 +350,18 @@ a { color: inherit; }
   .actions { width: 100%; justify-content: stretch; }
   .hub-btn { flex: 1; }
   .card-footer { align-items: stretch; flex-direction: column; }
-  .card-footer a { width: 100%; }
+  .card-links { justify-content: stretch; }
+  .card-footer a { flex: 1; min-width: 100%; }
 }
 </style>
 </head>
 <body>
-<script id="hub-data" type="application/json">{"sources":[{"key":"dsa","title":"DSA Ultimate Index","file":"DSA_Ultimate_Index.html","label":"DSA","color":"#2f6fdd","storage":{"done":"dsa_index_solved_v1","bookmark":"dsa_index_bookmark_v1"},"itemCount":609,"progressLabel":"problems"},{"key":"sd","title":"System Design","file":"system_design.html","label":"Systems","color":"#d84f86","storage":{"done":"hub_done_sd","bookmark":"hub_bm_sd"},"itemCount":322,"progressLabel":"concepts"},{"key":"cs","title":"CS Fundamentals","file":"cs_fundamentals.html","label":"CS","color":"#15875f","storage":{"done":"hub_done_cs","bookmark":"hub_bm_cs"},"itemCount":156,"progressLabel":"concepts"},{"key":"bh","title":"Behavioral and Leadership","file":"behavioral.html","label":"Behavioral","color":"#c9692d","storage":{"done":"hub_done_bh","bookmark":"hub_bm_bh"},"itemCount":145,"progressLabel":"concepts"},{"key":"ai","title":"AI Engineering","file":"ai_engineering.html","label":"AI","color":"#7b61d8","storage":{"done":"hub_done_ai","bookmark":"hub_bm_ai"},"itemCount":180,"progressLabel":"concepts"},{"key":"cloud","title":"Cloud - AWS and Azure","file":"cloud_aws_azure.html","label":"Cloud","color":"#0786a3","storage":{"done":"hub_done_cloud","bookmark":"hub_bm_cloud"},"itemCount":194,"progressLabel":"concepts"}]}</script>
+<script id="hub-data" type="application/json">{"sources":[{"key":"dsa","title":"DSA Ultimate Index","file":"DSA_Ultimate_Index.html","label":"DSA","color":"#2f6fdd","storage":{"done":"dsa_index_solved_v1","bookmark":"dsa_index_bookmark_v1"},"itemCount":609,"progressLabel":"problems","relatedLinks":[["Open Deep DSA Tutorial","DSA_Tutorial/index.html"]]},{"key":"sd","title":"System Design","file":"system_design.html","label":"Systems","color":"#d84f86","storage":{"done":"hub_done_sd","bookmark":"hub_bm_sd"},"itemCount":322,"progressLabel":"concepts","relatedLinks":[["Open System Design Tutorial","System_Design_Tutorial/index.html"]]},{"key":"cs","title":"CS Fundamentals","file":"cs_fundamentals.html","label":"CS","color":"#15875f","storage":{"done":"hub_done_cs","bookmark":"hub_bm_cs"},"itemCount":156,"progressLabel":"concepts","relatedLinks":[]},{"key":"bh","title":"Behavioral and Leadership","file":"behavioral.html","label":"Behavioral","color":"#c9692d","storage":{"done":"hub_done_bh","bookmark":"hub_bm_bh"},"itemCount":145,"progressLabel":"concepts","relatedLinks":[]},{"key":"ai","title":"AI Engineering","file":"ai_engineering.html","label":"AI","color":"#7b61d8","storage":{"done":"hub_done_ai","bookmark":"hub_bm_ai"},"itemCount":180,"progressLabel":"concepts","relatedLinks":[]},{"key":"cloud","title":"Cloud - AWS and Azure","file":"cloud_aws_azure.html","label":"Cloud","color":"#0786a3","storage":{"done":"hub_done_cloud","bookmark":"hub_bm_cloud"},"itemCount":194,"progressLabel":"concepts","relatedLinks":[]},{"key":"interview","title":"Interview Prep","file":"interview_prep.html","label":"Interview","color":"#e04768","storage":{"done":"hub_done_interview","bookmark":"hub_bm_interview"},"itemCount":92,"progressLabel":"concepts","relatedLinks":[]}]}</script>
 <main class="wrap">
   <div class="topbar">
     <section class="brand">
       <h1>Taran's Learning Hub</h1>
-      <p>Six connected study spaces for my interview prep and engineering growth. Pick a page, follow the content inside it, and let progress/bookmarks stay local in this browser.</p>
+      <p>Seven connected study spaces for my interview prep and engineering growth. Pick a page, follow the content inside it, and let progress/bookmarks stay synced across every open tab in this browser.</p>
     </section>
     <div class="actions">
       <button class="hub-btn" id="theme">Theme</button>
@@ -315,13 +371,13 @@ a { color: inherit; }
     </div>
   </div>
   <section class="stats-strip" aria-label="Overall stats">
-    <div class="stat-chip"><b id="total-done">0 / 1606</b><span>items complete</span><div class="overall-progress"><i id="total-fill"></i></div></div>
-    <div class="stat-chip"><b>6</b><span>study spaces</span></div>
-    <div class="stat-chip"><b>79</b><span>sections</span></div>
-    <div class="stat-chip"><b>989</b><span>resources</span></div>
+    <div class="stat-chip"><b id="total-done">0 / 1698</b><span>items complete</span><div class="overall-progress"><i id="total-fill"></i></div></div>
+    <div class="stat-chip"><b>7</b><span>study spaces</span></div>
+    <div class="stat-chip"><b>85</b><span>sections</span></div>
+    <div class="stat-chip"><b>1006</b><span>resources</span></div>
   </section>
   <section class="search-block" aria-label="Global search">
-    <input class="search-input" id="global-search" type="search" placeholder="Search all 1606 topics and problems across every page…" autocomplete="off">
+    <input class="search-input" id="global-search" type="search" placeholder="Search all 1698 topics and problems across every page…" autocomplete="off">
     <div class="search-results" id="search-results"></div>
   </section>
   <section class="review-panel" id="review-panel" aria-label="Bookmarked items">
@@ -336,6 +392,10 @@ a { color: inherit; }
     <article class="page-card" data-page-card="dsa" style="--card-color:#2f6fdd">
       <div class="card-index">01</div>
       <div class="card-body">
+        <div class="card-diagram" aria-hidden="true">
+    <span class="diagram-node node-1">Array</span><span class="diagram-node node-2">Map</span><span class="diagram-node node-3">Tree</span><span class="diagram-node node-4">Graph</span>
+    <i class="diagram-path path-1"></i><i class="diagram-path path-2"></i><i class="diagram-path path-3"></i>
+  </div>
         <p class="card-kicker">DSA / problems</p>
         <h2>DSA Ultimate Index</h2>
         <p>My primary coding-interview practice map: patterns first, problems second, repeat weak spots until they feel automatic.</p>
@@ -349,13 +409,20 @@ a { color: inherit; }
         </div>
         <div class="card-footer">
           <span data-page-progress-text="dsa">0 / 609 complete</span>
-          <a href="DSA_Ultimate_Index.html">Open</a>
+          <div class="card-links">
+            <a href="DSA_Ultimate_Index.html">Open</a>
+            <a class="secondary" href="DSA_Tutorial/index.html">Deep DSA Tutorial</a>
+          </div>
         </div>
       </div>
     </article>
     <article class="page-card" data-page-card="sd" style="--card-color:#d84f86">
       <div class="card-index">02</div>
       <div class="card-body">
+        <div class="card-diagram" aria-hidden="true">
+    <span class="diagram-node node-1">Client</span><span class="diagram-node node-2">API</span><span class="diagram-node node-3">Cache</span><span class="diagram-node node-4">DB</span>
+    <i class="diagram-path path-1"></i><i class="diagram-path path-2"></i><i class="diagram-path path-3"></i>
+  </div>
         <p class="card-kicker">Systems / concepts</p>
         <h2>System Design</h2>
         <p>My system design control room: concepts, trade-offs, classic designs, and interview structure in one place.</p>
@@ -369,13 +436,20 @@ a { color: inherit; }
         </div>
         <div class="card-footer">
           <span data-page-progress-text="sd">0 / 322 complete</span>
-          <a href="system_design.html">Open</a>
+          <div class="card-links">
+            <a href="system_design.html">Open</a>
+            <a class="secondary" href="System_Design_Tutorial/index.html">System Design Tutorial</a>
+          </div>
         </div>
       </div>
     </article>
     <article class="page-card" data-page-card="cs" style="--card-color:#15875f">
       <div class="card-index">03</div>
       <div class="card-body">
+        <div class="card-diagram" aria-hidden="true">
+    <span class="diagram-node node-1">OS</span><span class="diagram-node node-2">Net</span><span class="diagram-node node-3">DB</span><span class="diagram-node node-4">Runtime</span>
+    <i class="diagram-path path-1"></i><i class="diagram-path path-2"></i><i class="diagram-path path-3"></i>
+  </div>
         <p class="card-kicker">CS / concepts</p>
         <h2>CS Fundamentals</h2>
         <p>My fundamentals refresh layer: OS, networking, databases, concurrency, security, and architecture for deeper reasoning.</p>
@@ -389,13 +463,19 @@ a { color: inherit; }
         </div>
         <div class="card-footer">
           <span data-page-progress-text="cs">0 / 156 complete</span>
-          <a href="cs_fundamentals.html">Open</a>
+          <div class="card-links">
+            <a href="cs_fundamentals.html">Open</a>
+          </div>
         </div>
       </div>
     </article>
     <article class="page-card" data-page-card="bh" style="--card-color:#c9692d">
       <div class="card-index">04</div>
       <div class="card-body">
+        <div class="card-diagram" aria-hidden="true">
+    <span class="diagram-node node-1">Story</span><span class="diagram-node node-2">Action</span><span class="diagram-node node-3">Impact</span><span class="diagram-node node-4">Learn</span>
+    <i class="diagram-path path-1"></i><i class="diagram-path path-2"></i><i class="diagram-path path-3"></i>
+  </div>
         <p class="card-kicker">Behavioral / concepts</p>
         <h2>Behavioral and Leadership</h2>
         <p>My story bank and leadership prep space: STAR answers, principles, conflict, ownership, and mock practice.</p>
@@ -409,13 +489,19 @@ a { color: inherit; }
         </div>
         <div class="card-footer">
           <span data-page-progress-text="bh">0 / 145 complete</span>
-          <a href="behavioral.html">Open</a>
+          <div class="card-links">
+            <a href="behavioral.html">Open</a>
+          </div>
         </div>
       </div>
     </article>
     <article class="page-card" data-page-card="ai" style="--card-color:#7b61d8">
       <div class="card-index">05</div>
       <div class="card-body">
+        <div class="card-diagram" aria-hidden="true">
+    <span class="diagram-node node-1">Prompt</span><span class="diagram-node node-2">RAG</span><span class="diagram-node node-3">Eval</span><span class="diagram-node node-4">Deploy</span>
+    <i class="diagram-path path-1"></i><i class="diagram-path path-2"></i><i class="diagram-path path-3"></i>
+  </div>
         <p class="card-kicker">AI / concepts</p>
         <h2>AI Engineering</h2>
         <p>My AI engineering track: LLM apps, RAG, agents, evals, MLOps, and production quality constraints.</p>
@@ -429,13 +515,19 @@ a { color: inherit; }
         </div>
         <div class="card-footer">
           <span data-page-progress-text="ai">0 / 180 complete</span>
-          <a href="ai_engineering.html">Open</a>
+          <div class="card-links">
+            <a href="ai_engineering.html">Open</a>
+          </div>
         </div>
       </div>
     </article>
     <article class="page-card" data-page-card="cloud" style="--card-color:#0786a3">
       <div class="card-index">06</div>
       <div class="card-body">
+        <div class="card-diagram" aria-hidden="true">
+    <span class="diagram-node node-1">IAM</span><span class="diagram-node node-2">VPC</span><span class="diagram-node node-3">Compute</span><span class="diagram-node node-4">Monitor</span>
+    <i class="diagram-path path-1"></i><i class="diagram-path path-2"></i><i class="diagram-path path-3"></i>
+  </div>
         <p class="card-kicker">Cloud / concepts</p>
         <h2>Cloud - AWS and Azure</h2>
         <p>My AWS and Azure comparison desk: services, Q&amp;A, architecture pillars, security, reliability, and cost thinking.</p>
@@ -449,7 +541,35 @@ a { color: inherit; }
         </div>
         <div class="card-footer">
           <span data-page-progress-text="cloud">0 / 194 complete</span>
-          <a href="cloud_aws_azure.html">Open</a>
+          <div class="card-links">
+            <a href="cloud_aws_azure.html">Open</a>
+          </div>
+        </div>
+      </div>
+    </article>
+    <article class="page-card" data-page-card="interview" style="--card-color:#e04768">
+      <div class="card-index">07</div>
+      <div class="card-body">
+        <div class="card-diagram" aria-hidden="true">
+    <span class="diagram-node node-1">Prompt</span><span class="diagram-node node-2">STAR</span><span class="diagram-node node-3">Transcript</span><span class="diagram-node node-4">Mock</span>
+    <i class="diagram-path path-1"></i><i class="diagram-path path-2"></i><i class="diagram-path path-3"></i>
+  </div>
+        <p class="card-kicker">Interview / concepts</p>
+        <h2>Interview Prep</h2>
+        <p>My interview practice room: answer frameworks, HR questions, story rehearsals, and word-by-word transcript pacing.</p>
+        <div class="card-stats">
+          <span>6 sections</span>
+          <span>92 concepts</span>
+          <span>17 resources</span>
+        </div>
+        <div class="card-progress" aria-label="Progress for Interview Prep">
+          <span data-page-progress-fill="interview"></span>
+        </div>
+        <div class="card-footer">
+          <span data-page-progress-text="interview">0 / 92 complete</span>
+          <div class="card-links">
+            <a href="interview_prep.html">Open</a>
+          </div>
         </div>
       </div>
     </article>

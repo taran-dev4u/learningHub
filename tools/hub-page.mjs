@@ -17,8 +17,26 @@ function personalPurpose(source) {
     bh: "My story bank and leadership prep space: STAR answers, principles, conflict, ownership, and mock practice.",
     ai: "My AI engineering track: LLM apps, RAG, agents, evals, MLOps, and production quality constraints.",
     cloud: "My AWS and Azure comparison desk: services, Q&A, architecture pillars, security, reliability, and cost thinking.",
+    interview: "My interview practice room: answer frameworks, HR questions, story rehearsals, and word-by-word transcript pacing.",
   };
   return purposes[source.key] || source.summary;
+}
+
+function cardDiagram(source) {
+  const diagrams = {
+    dsa: ["Array", "Map", "Tree", "Graph"],
+    sd: ["Client", "API", "Cache", "DB"],
+    cs: ["OS", "Net", "DB", "Runtime"],
+    bh: ["Story", "Action", "Impact", "Learn"],
+    ai: ["Prompt", "RAG", "Eval", "Deploy"],
+    cloud: ["IAM", "VPC", "Compute", "Monitor"],
+    interview: ["Prompt", "STAR", "Transcript", "Mock"],
+  };
+  const nodes = diagrams[source.key] || ["Learn", "Build", "Review", "Mock"];
+  return `<div class="card-diagram" aria-hidden="true">
+    ${nodes.map((node, index) => `<span class="diagram-node node-${index + 1}">${escHtml(node)}</span>`).join("")}
+    <i class="diagram-path path-1"></i><i class="diagram-path path-2"></i><i class="diagram-path path-3"></i>
+  </div>`;
 }
 
 export function simpleHubHtml(data) {
@@ -32,6 +50,7 @@ export function simpleHubHtml(data) {
       storage: s.storage,
       itemCount: s.itemCount,
       progressLabel: s.progressLabel,
+      relatedLinks: s.relatedLinks || [],
     })),
   }).replace(/</g, "\\u003c");
 
@@ -41,10 +60,16 @@ export function simpleHubHtml(data) {
     resources: data.sources.reduce((sum, s) => sum + s.resourceCount, 0),
   };
 
-  const cards = data.sources.map((source, index) => `
+  const cards = data.sources.map((source, index) => {
+    const relatedAnchors = (source.relatedLinks || [])
+      .map(([label, url]) => `<a class="secondary" href="${escHtml(url)}">${escHtml(label.replace(/^Open\s+/i, ""))}</a>`)
+      .join("\n            ");
+
+    return `
     <article class="page-card" data-page-card="${escHtml(source.key)}" style="--card-color:${escHtml(source.color)}">
       <div class="card-index">${String(index + 1).padStart(2, "0")}</div>
       <div class="card-body">
+        ${cardDiagram(source)}
         <p class="card-kicker">${escHtml(source.label)} / ${escHtml(source.progressLabel)}</p>
         <h2>${escHtml(source.title)}</h2>
         <p>${escHtml(personalPurpose(source))}</p>
@@ -58,18 +83,23 @@ export function simpleHubHtml(data) {
         </div>
         <div class="card-footer">
           <span data-page-progress-text="${escHtml(source.key)}">0 / ${source.itemCount} complete</span>
-          <a href="${escHtml(source.file)}">Open</a>
+          <div class="card-links">
+            <a href="${escHtml(source.file)}">Open</a>${relatedAnchors ? `\n            ${relatedAnchors}` : ""}
+          </div>
         </div>
       </div>
-    </article>`).join("");
+    </article>`;
+  }).join("");
 
   return `<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Taran's personal learning hub for DSA, system design, CS fundamentals, behavioral interviews, AI engineering, and cloud.">
+<meta name="description" content="Taran's personal learning hub for DSA, system design, CS fundamentals, behavioral interviews, AI engineering, cloud, and interview prep.">
 <title>Taran's Learning Hub</title>
+<link rel="stylesheet" href="assets/learning-hub-shared.css">
+<script src="assets/learning-hub-shared.js"></script>
 <style>
 :root {
   --bg: #f4f6f8;
@@ -101,7 +131,10 @@ html.dark {
 body {
   margin: 0;
   min-height: 100vh;
-  background: var(--bg);
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--accent) 9%, transparent), transparent 34%),
+    linear-gradient(315deg, rgba(224, 71, 104, .12), transparent 32%),
+    var(--bg);
   color: var(--text);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
   line-height: 1.5;
@@ -259,8 +292,10 @@ a { color: inherit; }
 .page-card {
   display: grid;
   grid-template-columns: 58px minmax(0, 1fr);
-  min-height: 250px;
-  background: var(--surface);
+  min-height: 292px;
+  background:
+    linear-gradient(145deg, color-mix(in srgb, var(--card-color) 13%, transparent), transparent 42%),
+    var(--surface);
   border: 1px solid var(--border);
   border-top: 5px solid var(--card-color);
   border-radius: 10px;
@@ -280,6 +315,48 @@ a { color: inherit; }
   font-variant-numeric: tabular-nums;
 }
 .card-body { padding: 18px 18px 16px; display: flex; flex-direction: column; min-width: 0; }
+.card-diagram {
+  position: relative;
+  min-height: 86px;
+  margin: -2px 0 14px;
+  border: 1px solid color-mix(in srgb, var(--card-color) 28%, var(--border));
+  border-radius: 10px;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--card-color) 17%, transparent), transparent 62%),
+    var(--surface-2);
+  overflow: hidden;
+}
+.diagram-node {
+  position: absolute;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 62px;
+  min-height: 25px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--card-color) 44%, var(--border));
+  background: var(--surface);
+  color: var(--card-color);
+  font-size: 11px;
+  font-weight: 900;
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--card-color) 16%, transparent);
+}
+.node-1 { left: 12px; top: 12px; }
+.node-2 { left: 38%; top: 14px; transform: translateX(-50%); }
+.node-3 { right: 16px; top: 16px; }
+.node-4 { left: 50%; bottom: 12px; transform: translateX(-50%); }
+.diagram-path {
+  position: absolute;
+  height: 2px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--card-color) 52%, transparent);
+  transform-origin: left center;
+}
+.path-1 { left: 70px; top: 28px; width: 32%; transform: rotate(2deg); }
+.path-2 { right: 70px; top: 31px; width: 28%; transform: rotate(-5deg); }
+.path-3 { left: 34%; bottom: 31px; width: 36%; transform: rotate(0deg); }
 .card-kicker {
   margin: 0 0 8px;
   color: var(--card-color);
@@ -335,6 +412,7 @@ a { color: inherit; }
   font-size: 12px;
   font-weight: 800;
 }
+.card-links { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
 .card-footer a {
   display: inline-flex;
   align-items: center;
@@ -348,6 +426,11 @@ a { color: inherit; }
   white-space: nowrap;
   transition: opacity .15s ease, transform .15s ease;
 }
+.card-footer a.secondary {
+  background: color-mix(in srgb, var(--card-color) 18%, var(--surface-2));
+  color: var(--text);
+  border: 1px solid color-mix(in srgb, var(--card-color) 42%, var(--border));
+}
 .card-footer a:hover { opacity: .88; transform: translateY(-1px); }
 @media (max-width: 820px) {
   .topbar { align-items: flex-start; }
@@ -360,7 +443,8 @@ a { color: inherit; }
   .actions { width: 100%; justify-content: stretch; }
   .hub-btn { flex: 1; }
   .card-footer { align-items: stretch; flex-direction: column; }
-  .card-footer a { width: 100%; }
+  .card-links { justify-content: stretch; }
+  .card-footer a { flex: 1; min-width: 100%; }
 }
 </style>
 </head>
@@ -370,7 +454,7 @@ a { color: inherit; }
   <div class="topbar">
     <section class="brand">
       <h1>Taran's Learning Hub</h1>
-      <p>Six connected study spaces for my interview prep and engineering growth. Pick a page, follow the content inside it, and let progress/bookmarks stay local in this browser.</p>
+      <p>Seven connected study spaces for my interview prep and engineering growth. Pick a page, follow the content inside it, and let progress/bookmarks stay synced across every open tab in this browser.</p>
     </section>
     <div class="actions">
       <button class="hub-btn" id="theme">Theme</button>

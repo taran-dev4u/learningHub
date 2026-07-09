@@ -16,6 +16,7 @@ const sourceDefs = [
     color: "#2f6fdd",
     storage: { done: "dsa_index_solved_v1", bookmark: "dsa_index_bookmark_v1" },
     summary: "Pattern-first LeetCode prep with company tags, lists, notes, and a 14-week plan.",
+    relatedLinks: [["Open Deep DSA Tutorial", "DSA_Tutorial/index.html"]],
   },
   {
     key: "sd",
@@ -26,6 +27,7 @@ const sourceDefs = [
     color: "#d84f86",
     storage: { done: "hub_done_sd", bookmark: "hub_bm_sd" },
     summary: "Distributed systems, architecture patterns, reliability, security, and classic designs.",
+    relatedLinks: [["Open System Design Tutorial", "System_Design_Tutorial/index.html"]],
   },
   {
     key: "cs",
@@ -66,6 +68,16 @@ const sourceDefs = [
     color: "#0786a3",
     storage: { done: "hub_done_cloud", bookmark: "hub_bm_cloud" },
     summary: "AWS and Azure service mapping, cloud foundations, IaC, observability, and interview Q&A.",
+  },
+  {
+    key: "interview",
+    title: "Interview Prep",
+    file: "interview_prep.html",
+    kind: "concept",
+    label: "Interview",
+    color: "#e04768",
+    storage: { done: "hub_done_interview", bookmark: "hub_bm_interview" },
+    summary: "Behavioral, HR, communication, salary, and mock-answer practice with a word-by-word transcript trainer.",
   },
 ];
 
@@ -110,7 +122,7 @@ const roadmap = [
     phase: "Every week",
     title: "Behavioral and mocks",
     focus: "Prepare STAR stories, leadership examples, failure stories, conflict stories, and live mock interviews.",
-    domains: ["Behavioral"],
+    domains: ["Behavioral", "Interview"],
   },
 ];
 
@@ -311,6 +323,30 @@ const coverageBySource = {
       ["roadmap.sh AWS", "https://roadmap.sh/aws"],
       ["AWS Well-Architected Framework", "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html"],
       ["Azure Well-Architected Framework", "https://learn.microsoft.com/en-us/azure/well-architected/"],
+    ],
+  },
+  interview: {
+    title: "Interview Prep Coverage Check",
+    source: "behavioral, HR, recruiter, and communication interview practice",
+    notes: [
+      "Practice the structure first, then personalize every answer with your own project evidence.",
+      "Keep each answer readable as a 60-90 second transcript and expandable into a deeper story.",
+      "Use the transcript runner for pacing, clarity, and word-by-word rehearsal.",
+    ],
+    topics: [
+      "STAR, CARL, SOAR, PREP, and PEEL answer methods",
+      "Tell me about yourself",
+      "Strengths and weaknesses",
+      "Conflict and failure",
+      "Ambiguity and ownership",
+      "Salary and offer conversations",
+      "Questions to ask the interviewer",
+      "Mock interview scorecard",
+    ],
+    resources: [
+      ["Google Interview Tips", "https://www.google.com/about/careers/applications/interview-tips/"],
+      ["Indeed Common Interview Questions", "https://www.indeed.com/career-advice/interviewing/top-interview-questions-and-answers"],
+      ["MIT CAPD Behavioral Interviews", "https://capd.mit.edu/resources/behavioral-interviews/"],
     ],
   },
 };
@@ -787,6 +823,215 @@ const dataScienceDirectResources = [
   ["Hugging Face NLP Course", "https://huggingface.co/learn/nlp-course"],
 ];
 
+const interviewPrepSections = [
+  {
+    title: "Answer Frameworks",
+    tagline: "Reusable structures for clear, paced interview answers.",
+    when: "Use this first so every answer has a beginning, middle, result, and reflection.",
+    keyIdea: "Structure reduces anxiety. Pick the framework that fits the question, then fill it with evidence.",
+    resources: [
+      ["STAR Method Guide", "https://www.themuse.com/advice/star-interview-method"],
+      ["MIT Behavioral Interviews", "https://capd.mit.edu/resources/behavioral-interviews/"],
+      ["Google Interview Tips", "https://www.google.com/about/careers/applications/interview-tips/"],
+    ],
+    subsections: [
+      ["Behavioral Story Methods", "How to turn experience into concise stories.", [
+        ["STAR method", "Situation, Task, Action, Result. Best default for behavioral questions."],
+        ["CARL method", "Context, Action, Result, Learning. Strong when reflection matters."],
+        ["SOAR method", "Situation, Obstacle, Action, Result. Useful for conflict, blockers, and ambiguity."],
+        ["PAR method", "Problem, Action, Result. Fast format for shorter recruiter screens."],
+        ["Result plus reflection", "End with what changed, what you learned, and how you apply it now."],
+      ]],
+      ["Direct Answer Methods", "How to answer open-ended and opinion questions without rambling.", [
+        ["PREP method", "Point, Reason, Example, Point. Good for opinions and trade-off questions."],
+        ["PEEL method", "Point, Evidence, Explanation, Link. Good for leadership and judgment answers."],
+        ["Headline first", "Start with the answer in one sentence before giving context."],
+        ["Signposting", "Tell the interviewer the two or three parts of your answer before diving in."],
+        ["Time-boxing", "Prepare 30-second, 90-second, and 3-minute versions of core stories."],
+      ]],
+      ["Answer Quality Checklist", "The standard every saved answer should meet.", [
+        ["Specificity", "Use a real project, real constraint, real metric, and real decision."],
+        ["Ownership", "Say exactly what you did, not only what the team did."],
+        ["Measurable impact", "Use latency, revenue, users, time saved, defects reduced, or process improved."],
+        ["Trade-off clarity", "Name what you gave up and why the decision was reasonable."],
+        ["Learning loop", "Show how the experience changed your behavior afterward."],
+      ]],
+    ],
+  },
+  {
+    title: "Personal Pitch and Resume Walkthrough",
+    tagline: "Answers for opening questions, resume discussion, and motivation.",
+    when: "Use these in recruiter screens, hiring manager screens, and the first few minutes of technical interviews.",
+    keyIdea: "Your pitch should connect your past work, target role, and proof that you can do the job.",
+    resources: [
+      ["Indeed Interview Questions", "https://www.indeed.com/career-advice/interviewing/top-interview-questions-and-answers"],
+      ["Harvard Resume and Interview Resources", "https://careerservices.fas.harvard.edu/resources/"],
+      ["LinkedIn Interview Prep", "https://www.linkedin.com/interview-prep/"],
+    ],
+    subsections: [
+      ["Opening Questions", "The first answers that set the tone.", [
+        ["Tell me about yourself", "Give present, past, future, and role fit in under 90 seconds."],
+        ["Walk me through your resume", "Move chronologically only where it helps; emphasize decisions and impact."],
+        ["What are you looking for next", "Connect growth goals with the role's responsibilities."],
+        ["Why this company", "Mention product, mission, engineering challenge, and personal fit."],
+        ["Why this role", "Show that your skills and interests match the actual job description."],
+        ["What makes you a strong fit", "Use three proof points tied to role requirements."],
+      ]],
+      ["Experience and Projects", "How to explain work without sounding vague.", [
+        ["Most impactful project", "State the problem, your role, technical decision, and measured outcome."],
+        ["Most complex project", "Explain complexity from scale, ambiguity, dependencies, or constraints."],
+        ["Project you are proud of", "Pick a story that shows ownership and craft."],
+        ["Project that failed", "Separate outcome from learning and describe what you changed."],
+        ["Favorite technical decision", "Name alternatives considered and why your choice fit the constraints."],
+      ]],
+      ["Self-Awareness Questions", "Questions that test honesty and maturity.", [
+        ["Biggest strength", "Pick a strength with a short example and clear job relevance."],
+        ["Biggest weakness", "Choose a real but manageable weakness and explain your improvement system."],
+        ["How do you learn new things", "Show a repeatable learning loop: docs, small project, feedback, notes."],
+        ["Where do you see yourself in five years", "Keep it ambitious but role-aligned."],
+        ["What motivates you", "Connect motivation to craft, impact, learning, and team outcomes."],
+      ]],
+    ],
+  },
+  {
+    title: "Behavioral Story Bank",
+    tagline: "The personal story themes most interview loops repeatedly test.",
+    when: "Use these to prepare one strong story per theme, then reuse them across different question wording.",
+    keyIdea: "A small set of strong, flexible stories beats memorizing hundreds of one-off answers.",
+    resources: [
+      ["Amazon Leadership Principles", "https://www.amazon.jobs/content/en/our-workplace/leadership-principles"],
+      ["MIT Behavioral Interviews", "https://capd.mit.edu/resources/behavioral-interviews/"],
+      ["Yale Behavioral Interviewing", "https://ocs.yale.edu/channels/behavioral-interviewing/"],
+    ],
+    subsections: [
+      ["Ownership and Impact", "Stories that show you take responsibility and move outcomes.", [
+        ["Tell me about a time you owned a project end to end", "Show planning, execution, communication, and final result."],
+        ["Tell me about a time you improved a process", "Show before, action, adoption, and measurable improvement."],
+        ["Tell me about a time you went beyond your role", "Show judgment, not heroics."],
+        ["Tell me about a time you made a customer or user impact", "Tie technical work to user value."],
+        ["Tell me about a time you delivered under pressure", "Show prioritization and calm execution."],
+      ]],
+      ["Conflict and Communication", "Stories that show collaboration without defensiveness.", [
+        ["Tell me about a conflict with a teammate", "Focus on listening, shared goal, resolution, and learning."],
+        ["Tell me about a disagreement with your manager", "Show respect, evidence, alignment, and follow-through."],
+        ["Tell me about a difficult stakeholder", "Show expectation management and clear communication."],
+        ["Tell me about feedback you received", "Show openness and changed behavior."],
+        ["Tell me about giving difficult feedback", "Show care, specificity, and outcome."],
+      ]],
+      ["Ambiguity, Failure, and Learning", "Stories that prove resilience and judgment.", [
+        ["Tell me about a time requirements were unclear", "Show how you clarified, scoped, and reduced risk."],
+        ["Tell me about a failure", "Own the decision, name the consequence, and show the fix."],
+        ["Tell me about a mistake in production", "Explain detection, mitigation, communication, and prevention."],
+        ["Tell me about learning a new technology quickly", "Show learning strategy and applied result."],
+        ["Tell me about a time you had to change direction", "Show adaptability and communication."],
+      ]],
+      ["Leadership and Mentoring", "Stories that show influence without relying on title.", [
+        ["Tell me about leading without authority", "Show influence through clarity, trust, and execution."],
+        ["Tell me about mentoring someone", "Show how you helped them grow and become independent."],
+        ["Tell me about raising team standards", "Show a practical mechanism: reviews, docs, tests, rituals."],
+        ["Tell me about prioritizing competing work", "Show how you made trade-offs explicit."],
+        ["Tell me about creating alignment", "Show shared goals, options, decision, and follow-up."],
+      ]],
+    ],
+  },
+  {
+    title: "HR and Recruiter Questions",
+    tagline: "Common screening questions, logistics, negotiation, and professionalism.",
+    when: "Use this before recruiter calls and final HR rounds.",
+    keyIdea: "Be honest, calm, and concise. Do not over-explain sensitive topics.",
+    resources: [
+      ["Indeed HR Interview Questions", "https://www.indeed.com/career-advice/interviewing/hr-interview-questions"],
+      ["HBR Negotiating Job Offers", "https://hbr.org/2014/04/15-rules-for-negotiating-a-job-offer"],
+      ["Levels.fyi Salary Negotiation Guide", "https://www.levels.fyi/blog/salary-negotiation.html"],
+    ],
+    subsections: [
+      ["Recruiter Screen Basics", "Questions that determine fit, timing, and communication quality.", [
+        ["Why are you leaving your current role", "Keep it positive: growth, scope, product, location, or timing."],
+        ["Why do you want to join us", "Mention role fit, product interest, and engineering challenge."],
+        ["What is your notice period", "Answer directly and mention flexibility if true."],
+        ["Are you interviewing elsewhere", "Be transparent without revealing unnecessary details."],
+        ["What is your availability", "Give clear windows and timezone."],
+        ["Do you need sponsorship", "Answer clearly and consistently."],
+      ]],
+      ["Compensation and Offer Questions", "How to stay professional when money comes up.", [
+        ["What are your salary expectations", "Give a researched range or ask for the approved range first."],
+        ["What is your current compensation", "Redirect to target range where legally and professionally appropriate."],
+        ["Do you have competing offers", "Answer truthfully and focus on timeline."],
+        ["What matters besides salary", "Mention role scope, growth, team, location, equity, and benefits."],
+        ["How would you evaluate an offer", "Use total compensation, role fit, learning, manager, and long-term path."],
+      ]],
+      ["Risk and Fit Questions", "Questions that test maturity and alignment.", [
+        ["Why is there a gap in your resume", "Be brief, factual, and pivot to readiness."],
+        ["Have you ever been fired or laid off", "Be honest, avoid blame, and describe the learning or context."],
+        ["How do you handle stress", "Explain a real operating system: prioritization, communication, recovery."],
+        ["What work environment helps you perform best", "Describe conditions while staying adaptable."],
+        ["What would make you decline an offer", "Stay professional and values-based."],
+      ]],
+    ],
+  },
+  {
+    title: "Technical Communication",
+    tagline: "How to explain technical work, trade-offs, and debugging under interview pressure.",
+    when: "Use this in system design, coding debriefs, project deep dives, and hiring manager rounds.",
+    keyIdea: "Interviewers evaluate how you think, not only what you know. Make your reasoning visible.",
+    resources: [
+      ["Google Technical Interview Prep", "https://www.google.com/about/careers/applications/interview-tips/"],
+      ["System Design Primer", "https://github.com/donnemartin/system-design-primer"],
+      ["Martin Fowler Technical Leadership", "https://martinfowler.com/tags/leadership.html"],
+    ],
+    subsections: [
+      ["Project Deep Dive Questions", "Explain technical depth with structure.", [
+        ["Explain your architecture", "Start with user flow, then services, data, and bottlenecks."],
+        ["What was the hardest technical problem", "Show constraints, alternatives, decision, and result."],
+        ["How did you measure success", "Use metrics and before/after comparison."],
+        ["What would you redesign now", "Show hindsight, not regret."],
+        ["How did you test it", "Mention unit, integration, load, rollout, monitoring, and rollback where relevant."],
+      ]],
+      ["Trade-Off and Judgment Questions", "Show senior reasoning in simple language.", [
+        ["Why did you choose this technology", "Name alternatives and the constraint that mattered most."],
+        ["What did you optimize for", "State the ranking: reliability, latency, cost, speed, or simplicity."],
+        ["What broke at scale", "Explain bottleneck, symptom, mitigation, and long-term fix."],
+        ["How do you handle incidents", "Detect, mitigate, communicate, root-cause, prevent."],
+        ["How do you decide build vs buy", "Compare cost, control, speed, risk, and team expertise."],
+      ]],
+      ["Coding Interview Communication", "What to say while solving.", [
+        ["Restate the problem", "Confirm inputs, outputs, constraints, and examples."],
+        ["Clarify edge cases", "Ask about nulls, empty data, duplicates, size, and ordering."],
+        ["Explain brute force first", "Show baseline understanding before optimizing."],
+        ["Narrate the invariant", "Explain what stays true during the algorithm."],
+        ["Close with complexity and tests", "Give time, space, and targeted test cases."],
+      ]],
+    ],
+  },
+  {
+    title: "Transcript Practice Lab",
+    tagline: "Read answers word by word, build pacing, and rehearse out loud.",
+    when: "Use this after drafting an answer and before a mock interview.",
+    keyIdea: "A strong answer sounds calm because it has rhythm. Practice with moving highlights until the structure feels natural.",
+    resources: [
+      ["Pramp Mock Interviews", "https://www.pramp.com/"],
+      ["Interviewing.io", "https://interviewing.io/"],
+      ["Exponent Interview Prep", "https://www.tryexponent.com/"],
+    ],
+    subsections: [
+      ["Transcript Scripts", "Prepared scripts to read, personalize, and rehearse.", [
+        ["Opening pitch transcript", "A 75-second answer for Tell me about yourself."],
+        ["Conflict story transcript", "A STAR answer with calm disagreement and resolution."],
+        ["Failure story transcript", "A CARL answer that owns the mistake and shows learning."],
+        ["Project deep dive transcript", "A technical walkthrough with problem, design, trade-offs, and impact."],
+        ["Closing question transcript", "A confident close that asks about expectations and success signals."],
+      ]],
+      ["Mock Interview Operating System", "How to run a complete prep session.", [
+        ["Warm-up pass", "Read the answer once slowly without stopping."],
+        ["Timed pass", "Run a 60-90 second version with the transcript timer."],
+        ["No-screen pass", "Answer from memory and check if the structure stayed intact."],
+        ["Scorecard pass", "Rate clarity, specificity, impact, and confidence."],
+        ["Revision pass", "Cut filler, add metrics, and make the first sentence stronger."],
+      ]],
+    ],
+  },
+];
+
 function read(file) {
   return fs.readFileSync(path.join(root, file), "utf8");
 }
@@ -1205,6 +1450,346 @@ function escHtml(value = "") {
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;");
+}
+
+function conceptPageRuntimeScript(slug) {
+  return `<script>
+(function() {
+  const SLUG = ${JSON.stringify(slug)};
+  const KEY_DONE = 'hub_done_' + SLUG;
+  const KEY_BM = 'hub_bm_' + SLUG;
+  const KEY_THEME = 'hub_theme';
+
+  function applyTheme(t) {
+    if (t === 'light') document.documentElement.classList.add('light');
+    else document.documentElement.classList.remove('light');
+  }
+  applyTheme(localStorage.getItem(KEY_THEME) || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'));
+  const themeBtn = document.getElementById('theme-toggle');
+  if (themeBtn) themeBtn.addEventListener('click', () => {
+    const isLight = document.documentElement.classList.toggle('light');
+    localStorage.setItem(KEY_THEME, isLight ? 'light' : 'dark');
+  });
+
+  function getSet(k) { try { return new Set(JSON.parse(localStorage.getItem(k) || '[]')); } catch(e) { return new Set(); } }
+  function saveSet(k, s) { localStorage.setItem(k, JSON.stringify([...s])); }
+  let done = getSet(KEY_DONE);
+  let bookmarks = getSet(KEY_BM);
+
+  function renderState() {
+    document.querySelectorAll('.concepts li[data-cid]').forEach(li => {
+      const cid = li.dataset.cid;
+      const isDone = done.has(cid);
+      const isBM = bookmarks.has(cid);
+      li.classList.toggle('done', isDone);
+      const cb = li.querySelector('.done-check');
+      if (cb) cb.classList.toggle('checked', isDone);
+      const star = li.querySelector('.bookmark-star');
+      if (star) { star.classList.toggle('active', isBM); star.textContent = isBM ? '★' : '☆'; }
+    });
+    updateProgress();
+  }
+
+  function updateProgress() {
+    const allCids = new Set();
+    document.querySelectorAll('.concepts li[data-cid]').forEach(li => allCids.add(li.dataset.cid));
+    const doneTotal = [...done].filter(c => allCids.has(c)).length;
+    const pct = allCids.size ? Math.round(100 * doneTotal / allCids.size) : 0;
+    const ob = document.getElementById('overall-bar'); if (ob) ob.style.width = pct + '%';
+    const op = document.getElementById('overall-pct'); if (op) op.textContent = doneTotal + ' / ' + allCids.size;
+    document.querySelectorAll('.section').forEach(s => {
+      const cids = Array.from(s.querySelectorAll('.concepts li[data-cid]')).map(li => li.dataset.cid);
+      const uniq = new Set(cids);
+      const dn = [...uniq].filter(c => done.has(c)).length;
+      const sid = s.id.replace('section-', '');
+      const fill = s.querySelector('[data-pp-fill="' + sid + '"]');
+      const txt = s.querySelector('[data-pp-text="' + sid + '"]');
+      if (fill) fill.style.width = (uniq.size ? (100 * dn / uniq.size) : 0) + '%';
+      if (txt) txt.textContent = dn + ' / ' + uniq.size;
+    });
+  }
+
+  document.querySelectorAll('.done-check').forEach(cb => {
+    cb.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const cid = cb.closest('li').dataset.cid;
+      if (done.has(cid)) done.delete(cid); else done.add(cid);
+      saveSet(KEY_DONE, done);
+      renderState();
+    });
+  });
+  document.querySelectorAll('.bookmark-star').forEach(star => {
+    star.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const cid = star.closest('li').dataset.cid;
+      if (bookmarks.has(cid)) bookmarks.delete(cid); else bookmarks.add(cid);
+      saveSet(KEY_BM, bookmarks);
+      renderState();
+      applyFilters();
+    });
+  });
+
+  const filters = { status: null, search: '' };
+  function applyFilters() {
+    document.querySelectorAll('.concepts li[data-cid]').forEach(li => {
+      let show = true;
+      if (filters.status === 'done' && !done.has(li.dataset.cid)) show = false;
+      if (filters.status === 'undone' && done.has(li.dataset.cid)) show = false;
+      if (filters.status === 'bookmarked' && !bookmarks.has(li.dataset.cid)) show = false;
+      if (filters.search) {
+        const hay = (li.dataset.name || '').toLowerCase();
+        if (!hay.includes(filters.search)) show = false;
+      }
+      li.classList.toggle('hidden', !show);
+    });
+  }
+  document.querySelectorAll('.filter-btn[data-filter]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const f = btn.dataset.filter, v = btn.dataset.val;
+      const same = filters[f] === v;
+      document.querySelectorAll('.filter-btn[data-filter="' + f + '"]').forEach(b => b.classList.remove('active'));
+      filters[f] = same ? null : v;
+      if (!same) btn.classList.add('active');
+      applyFilters();
+    });
+  });
+  const clearBtn = document.getElementById('clear-filters');
+  if (clearBtn) clearBtn.addEventListener('click', () => {
+    filters.status = null; filters.search = '';
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    const si = document.getElementById('search-input'); if (si) si.value = '';
+    applyFilters();
+  });
+  const searchInput = document.getElementById('search-input');
+  if (searchInput) searchInput.addEventListener('input', e => { filters.search = e.target.value.toLowerCase().trim(); applyFilters(); });
+  const randomBtn = document.getElementById('random-btn');
+  if (randomBtn) randomBtn.addEventListener('click', () => {
+    const visible = Array.from(document.querySelectorAll('.concepts li[data-cid]:not(.hidden)'));
+    if (!visible.length) { alert('No items match current filters.'); return; }
+    const pick = visible[Math.floor(Math.random() * visible.length)];
+    pick.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    pick.style.transition = 'box-shadow 0.4s, transform 0.4s';
+    pick.style.boxShadow = '0 0 0 3px var(--accent), 0 6px 20px rgba(124,158,255,0.4)';
+    pick.style.transform = 'scale(1.02)';
+    setTimeout(() => { pick.style.boxShadow = ''; pick.style.transform = ''; }, 2500);
+  });
+
+  renderState();
+})();
+</script>`;
+}
+
+function transcriptRunnerScript() {
+  return `<script>
+(function () {
+  const lab = document.querySelector('[data-transcript-lab]');
+  if (!lab) return;
+  const scripts = {
+    pitch: "I am Taran, and I am preparing for software engineering interviews with a strong focus on data structures, system design, cloud, AI engineering, and behavioral communication. Recently I have been organizing my learning into one connected hub so I can practice in a structured way instead of jumping between random resources. My strongest pattern is that I learn deeply, build practical systems, and keep improving from feedback. In my next role, I want to contribute to real engineering problems, keep growing technically, and bring ownership, clarity, and consistency to the team.",
+    conflict: "In one project, a teammate and I disagreed about whether to ship quickly with a simpler design or spend extra time building a more flexible version. I first made sure I understood their concern, then wrote down the trade-offs: delivery risk, future maintenance, and user impact. We agreed to ship the smaller version with clear extension points and added a follow-up task for the larger design only if usage justified it. The result was that we delivered on time without blocking future work, and I learned to turn disagreement into a decision framework instead of a personal debate.",
+    failure: "A failure I learned from was underestimating the testing needed for a change that looked small. The change worked in the main case, but it missed an edge case and created rework. I took responsibility, fixed the issue, and added a checklist for edge cases, rollback thinking, and targeted regression tests. Since then, I slow down at the risk points even when the implementation looks simple, because the cost of prevention is much lower than the cost of surprise.",
+    project: "The project I would explain is my personal learning hub. The problem was scattered interview material across DSA, system design, cloud, AI, behavioral, and external resources. I organized the content into dedicated websites, added navigation, progress tracking, bookmarks, direct resources, and deeper tutorial sub-sites. The main trade-off was keeping it static and simple enough for GitHub Pages while still making it feel like a connected app. The impact is that the study path is clearer, progress is preserved, and I can practice consistently across different interview areas."
+  };
+  const select = lab.querySelector('[data-script-select]');
+  const viewport = lab.querySelector('[data-transcript-viewport]');
+  const play = lab.querySelector('[data-transcript-play]');
+  const reset = lab.querySelector('[data-transcript-reset]');
+  const speed = lab.querySelector('[data-transcript-speed]');
+  const time = lab.querySelector('[data-transcript-time]');
+  let words = [];
+  let index = 0;
+  let timer = null;
+  let startedAt = 0;
+
+  function format(seconds) {
+    const m = String(Math.floor(seconds / 60)).padStart(2, '0');
+    const s = String(Math.floor(seconds % 60)).padStart(2, '0');
+    return m + ':' + s;
+  }
+  function render() {
+    viewport.innerHTML = words.map((word, i) => '<button type="button" class="transcript-word ' + (i === index ? 'active' : '') + (i < index ? ' past' : '') + '" data-word-index="' + i + '">' + word.replace(/[&<>"']/g, function (ch) { return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[ch]; }) + '</button>').join(' ');
+    const active = viewport.querySelector('.active');
+    if (active) active.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+    const elapsed = timer ? (Date.now() - startedAt) / 1000 : index * Number(speed.value || 420) / 1000;
+    const total = words.length * Number(speed.value || 420) / 1000;
+    time.textContent = format(elapsed) + ' / ' + format(total);
+  }
+  function loadScript(name) {
+    stop();
+    words = (scripts[name] || scripts.pitch).split(/\\s+/).filter(Boolean);
+    index = 0;
+    render();
+  }
+  function step() {
+    if (index < words.length - 1) {
+      index += 1;
+      render();
+    } else {
+      stop();
+    }
+  }
+  function start() {
+    if (timer) return;
+    play.textContent = 'Pause';
+    startedAt = Date.now() - (index * Number(speed.value || 420));
+    timer = setInterval(step, Number(speed.value || 420));
+  }
+  function stop() {
+    if (timer) clearInterval(timer);
+    timer = null;
+    play.textContent = 'Play';
+    render();
+  }
+  select.addEventListener('change', () => loadScript(select.value));
+  play.addEventListener('click', () => timer ? stop() : start());
+  reset.addEventListener('click', () => { index = 0; stop(); });
+  speed.addEventListener('input', () => { if (timer) { stop(); start(); } else render(); });
+  viewport.addEventListener('click', (event) => {
+    const btn = event.target.closest('[data-word-index]');
+    if (!btn) return;
+    index = Number(btn.dataset.wordIndex || 0);
+    render();
+  });
+  loadScript(select.value || 'pitch');
+})();
+</script>`;
+}
+
+function interviewPrepHtml() {
+  const total = interviewPrepSections.reduce((sum, section) => (
+    sum + section.subsections.reduce((inner, [, , concepts]) => inner + concepts.length, 0)
+  ), 0);
+  const toc = interviewPrepSections.map((section, index) => {
+    const num = index + 1;
+    const count = section.subsections.reduce((sum, [, , concepts]) => sum + concepts.length, 0);
+    return `<a href="#section-${num}"><span class="roman">${num}</span><span class="name">${escHtml(section.title)}</span><span class="cnt">${section.subsections.length} sec · ${count}</span></a>`;
+  }).join("");
+  const sections = interviewPrepSections.map((section, index) => {
+    const num = index + 1;
+    const hue = [350, 28, 165, 210, 265, 315][index % 6];
+    const count = section.subsections.reduce((sum, [, , concepts]) => sum + concepts.length, 0);
+    const resources = section.resources.map(([title, url]) => (
+      `<a class="res-link" href="${escHtml(url)}" target="_blank" rel="noopener"><span class="res-icon">Link</span><span class="res-title">${escHtml(title)}</span><span class="res-source">${escHtml(new URL(url).hostname.replace(/^www\./, ""))}</span></a>`
+    )).join("");
+    const subsections = section.subsections.map(([subTitle, subDesc, concepts], subIndex) => {
+      const tag = `${num}.${subIndex + 1}`;
+      const lis = concepts.map(([name, desc], conceptIndex) => {
+        const cid = `${tag}.${conceptIndex + 1}`;
+        const topic = normalizeSearchTopic(name);
+        const yt = `https://www.youtube.com/results?search_query=${queryEncode(`${topic} interview answer explained`)}`;
+        const google = `https://www.google.com/search?q=${queryEncode(`${topic} interview answer examples`)}`;
+        return `<li data-cid="${cid}" data-name="${escHtml(name.toLowerCase())}"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">${escHtml(name)}</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">${escHtml(desc)}</div></div><div class="res-links"><a class="video" href="${yt}" target="_blank" rel="noopener">YT</a><a href="${google}" target="_blank" rel="noopener">Google</a></div></li>`;
+      }).join("");
+      return `<div class="subsection"><div class="subsection-head"><span class="subsection-tag">${tag}</span><h3>${escHtml(subTitle)}</h3><span style="font-size:11px;color:var(--text-faint);">${concepts.length} items</span></div><div class="subsection-desc">${escHtml(subDesc)}</div><ol class="concepts">${lis}</ol></div>`;
+    }).join("\n");
+    return `<section class="section" id="section-${num}" style="--section-color:hsl(${hue}, 70%, 55%)">
+<div class="section-banner" style="background:linear-gradient(135deg, hsl(${hue}, 70%, 48%), hsl(${hue + 34}, 75%, 56%))">
+<div class="num">${num}</div>
+<div class="info"><div class="label">Section ${num} · Interview prep</div><h2>${escHtml(section.title)}</h2><div class="meta">${section.subsections.length} subsections · ${count} items</div></div>
+<div class="ppg"><div class="pct-text" data-pp-text="${num}">0 / ${count}</div><div class="pp-track"><div class="pp-fill" data-pp-fill="${num}"></div></div></div>
+</div>
+<div class="section-desc"><div class="tagline">${escHtml(section.tagline)}</div><div class="row"><b>When.</b> ${escHtml(section.when)}</div><div class="row"><b>Key idea.</b> ${escHtml(section.keyIdea)}</div></div>
+<div class="resources-section"><div class="head" onclick="this.parentElement.classList.toggle('open')"><h4>Learn this section</h4><div><span class="count">${section.resources.length} resources</span><span class="chevron">▶</span></div></div><div class="resources-body"><div class="res-grid">${resources}</div></div></div>
+${subsections}
+</section>`;
+  }).join("\n");
+
+  return `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Taran's personal interview preparation site with answer methods, HR questions, behavioral stories, and a word-by-word transcript trainer.">
+<title>Interview Prep - Taran's Learning Hub</title>
+<link rel="stylesheet" href="assets/learning-hub-shared.css">
+<script src="assets/learning-hub-shared.js"></script>
+<style>
+:root { --bg:#0f1115; --bg-elev:#171b24; --bg-card:#1d2230; --bg-row-alt:#191e2a; --text:#f1f4fb; --text-dim:#a8b0c1; --text-faint:#7b8498; --border:#30384b; --accent:#e04768; --done:#16c784; --shadow-card:0 14px 34px rgba(0,0,0,.26); }
+html.light { --bg:#f8fafc; --bg-elev:#ffffff; --bg-card:#ffffff; --bg-row-alt:#f0f4f8; --text:#172033; --text-dim:#526077; --text-faint:#8591a5; --border:#dbe3ef; --accent:#cc2f55; --done:#0c9f6e; --shadow-card:0 12px 30px rgba(30,42,70,.1); }
+* { box-sizing:border-box; } html { scroll-behavior:smooth; } body { margin:0; background:var(--bg); color:var(--text); font-family:Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif; line-height:1.55; }
+a { color:inherit; } .wrap { max-width:1280px; margin:0 auto; padding:24px 20px 80px; }
+.hero { display:grid; gap:18px; grid-template-columns:minmax(0,1.1fr) minmax(300px,.9fr); align-items:center; padding:18px 0 24px; border-bottom:1px solid var(--border); margin-bottom:20px; }
+.hero h1 { margin:0; font-size:clamp(34px,5vw,64px); line-height:1; letter-spacing:0; }
+.hero p { margin:10px 0 0; max-width:780px; color:var(--text-dim); font-size:15px; }
+.edition { display:inline-flex; width:max-content; color:white; font-weight:900; font-size:11px; text-transform:uppercase; letter-spacing:.12em; background:linear-gradient(90deg,#e04768,#ef8a3a,#2aa876); padding:5px 10px; border-radius:999px; margin-bottom:12px; }
+.interview-diagram { min-height:260px; border:1px solid var(--border); border-radius:16px; background:linear-gradient(145deg,rgba(224,71,104,.22),rgba(42,168,118,.16)), var(--bg-elev); padding:18px; box-shadow:var(--shadow-card); display:grid; gap:12px; }
+.diagram-row { display:grid; grid-template-columns:110px minmax(0,1fr); gap:10px; align-items:center; }
+.diagram-chip { font-size:12px; font-weight:900; color:white; border-radius:999px; padding:6px 10px; text-align:center; background:var(--chip-color); }
+.diagram-line { height:12px; border-radius:999px; background:linear-gradient(90deg,var(--chip-color),transparent); border:1px solid color-mix(in srgb,var(--chip-color) 55%,var(--border)); }
+.overall-progress { background:var(--bg-elev); border:1px solid var(--border); border-radius:10px; padding:14px 20px; margin:18px 0; display:flex; align-items:center; gap:16px; }
+.overall-progress .lbl { font-size:12px; color:var(--text-faint); text-transform:uppercase; letter-spacing:.1em; font-weight:800; }
+.bar-track { flex:1; height:10px; background:var(--bg-card); border-radius:999px; overflow:hidden; border:1px solid var(--border); }
+.bar-fill { height:100%; width:0; background:linear-gradient(90deg,#16c784,#e04768,#ef8a3a); transition:width .3s ease; }
+.pct { font-weight:900; font-variant-numeric:tabular-nums; min-width:82px; text-align:right; }
+.controls { position:sticky; top:0; z-index:50; background:color-mix(in srgb,var(--bg) 92%,transparent); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); padding:10px 0; margin-bottom:20px; }
+.controls-row { display:flex; flex-wrap:wrap; gap:8px; align-items:center; background:var(--bg-elev); border:1px solid var(--border); border-radius:10px; padding:10px 14px; }
+.filter-btn,.icon-btn { min-height:34px; padding:6px 10px; border:1px solid var(--border); border-radius:7px; background:var(--bg-card); color:var(--text-dim); cursor:pointer; font-weight:800; font-size:12px; }
+.filter-btn:hover,.icon-btn:hover,.filter-btn.active { background:var(--accent); border-color:var(--accent); color:white; }
+.search { flex:1; min-width:220px; } .search input { width:100%; min-height:36px; padding:6px 11px; background:var(--bg-card); border:1px solid var(--border); border-radius:7px; color:var(--text); }
+.toc { background:var(--bg-elev); border:1px solid var(--border); border-radius:12px; padding:16px 22px; margin-bottom:24px; box-shadow:var(--shadow-card); }
+.toc h2 { margin:0 0 12px; font-size:16px; } .toc-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:8px; }
+.toc a { display:flex; gap:8px; align-items:center; padding:9px 10px; border-radius:8px; text-decoration:none; background:var(--bg-card); border:1px solid var(--border); }
+.toc a:hover { border-color:var(--accent); } .roman { color:var(--accent); font-weight:900; } .name { flex:1; font-weight:800; font-size:13px; } .cnt { color:var(--text-faint); font-size:11px; }
+.transcript-lab { border:1px solid var(--border); background:var(--bg-elev); border-radius:14px; padding:16px; box-shadow:var(--shadow-card); margin:0 0 24px; }
+.transcript-head { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px; margin-bottom:12px; }
+.transcript-head h2 { margin:0; font-size:18px; } .transcript-controls { display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+.transcript-controls select,.transcript-controls button { min-height:34px; border:1px solid var(--border); border-radius:8px; background:var(--bg-card); color:var(--text); padding:5px 10px; font-weight:800; }
+.transcript-controls input { accent-color:var(--accent); }
+.transcript-time { color:var(--text-faint); font-weight:900; font-variant-numeric:tabular-nums; }
+.transcript-viewport { max-height:230px; overflow:auto; padding:16px; border-radius:10px; border:1px solid var(--border); background:var(--bg-card); font-size:20px; line-height:1.9; }
+.transcript-word { border:0; background:transparent; color:var(--text-dim); padding:2px 3px; border-radius:5px; cursor:pointer; font:inherit; }
+.transcript-word.past { color:var(--text-faint); } .transcript-word.active { background:var(--accent); color:white; box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 20%,transparent); }
+.section { margin:26px 0 34px; border-radius:14px; overflow:hidden; border:1px solid var(--border); background:var(--bg-elev); box-shadow:var(--shadow-card); }
+.section-banner { color:white; padding:18px 20px; display:grid; grid-template-columns:54px minmax(0,1fr) 150px; gap:14px; align-items:center; }
+.num { font-size:28px; font-weight:950; } .label { font-size:11px; text-transform:uppercase; letter-spacing:.12em; font-weight:900; opacity:.85; }
+.section-banner h2 { margin:2px 0; font-size:clamp(22px,3vw,34px); line-height:1.08; } .meta { opacity:.9; font-size:13px; }
+.ppg { display:grid; gap:6px; } .pct-text { font-weight:900; text-align:right; } .pp-track { height:8px; border-radius:999px; background:rgba(255,255,255,.25); overflow:hidden; } .pp-fill { height:100%; width:0; background:white; }
+.section-desc { padding:16px 20px; display:grid; gap:8px; border-bottom:1px solid var(--border); } .tagline { font-weight:850; } .row { color:var(--text-dim); font-size:14px; }
+.resources-section { margin:14px 20px; border:1px solid var(--border); border-radius:10px; overflow:hidden; background:var(--bg-card); }
+.resources-section .head { min-height:48px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center; gap:10px; cursor:pointer; }
+.resources-section h4 { margin:0; } .count { color:var(--text-faint); font-size:12px; font-weight:800; } .chevron { display:inline-block; margin-left:6px; transition:transform .18s ease; }
+.resources-body { display:none; padding:0 14px 14px; } .resources-section.open .resources-body { display:block; } .resources-section.open .chevron { transform:rotate(90deg); }
+.res-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:8px; } .res-link { display:grid; gap:2px; padding:10px; border:1px solid var(--border); border-radius:8px; background:var(--bg-elev); text-decoration:none; }
+.res-icon { color:var(--accent); font-size:11px; font-weight:900; text-transform:uppercase; } .res-title { font-weight:850; } .res-source { color:var(--text-faint); font-size:12px; }
+.subsection { margin:20px; padding:16px; border:1px solid var(--border); border-radius:12px; background:var(--bg-card); }
+.subsection-head { display:flex; gap:10px; align-items:center; flex-wrap:wrap; } .subsection-tag { color:white; background:var(--section-color); border-radius:999px; padding:3px 8px; font-weight:900; font-size:11px; }
+.subsection h3 { margin:0; font-size:18px; } .subsection-desc { margin:8px 0 12px; color:var(--text-dim); font-size:13px; }
+.concepts { list-style:none; padding:0; margin:0; display:grid; gap:8px; } .concepts li { display:grid; grid-template-columns:26px 26px minmax(0,1fr) auto; gap:10px; align-items:center; border:1px solid var(--border); border-radius:10px; padding:10px; background:var(--bg-row-alt); }
+.concepts li.done { border-color:color-mix(in srgb,var(--done) 55%,var(--border)); background:color-mix(in srgb,var(--done) 10%,var(--bg-row-alt)); }
+.done-check { width:22px; height:22px; border:2px solid var(--border); border-radius:6px; cursor:pointer; display:grid; place-items:center; }
+.done-check.checked { background:var(--done); border-color:var(--done); color:white; } .done-check.checked::after { content:'✓'; font-weight:900; }
+.bookmark-star { width:22px; text-align:center; color:var(--text-faint); font-size:20px; cursor:pointer; } .bookmark-star.active { color:#f6b342; }
+.cname { font-weight:850; } .res-links { display:flex; gap:6px; flex-wrap:wrap; justify-content:flex-end; } .res-links a { min-height:28px; padding:4px 8px; border:1px solid var(--border); border-radius:7px; background:var(--bg-elev); text-decoration:none; color:var(--text-dim); font-size:11px; font-weight:900; }
+.hidden { display:none !important; } .top { position:fixed; right:18px; bottom:18px; background:var(--accent); color:white; text-decoration:none; border-radius:999px; padding:10px 12px; font-weight:900; box-shadow:var(--shadow-card); }
+@media (max-width:860px){ .hero{grid-template-columns:1fr;} .section-banner{grid-template-columns:44px minmax(0,1fr);} .ppg{grid-column:1/-1;} .concepts li{grid-template-columns:26px 26px minmax(0,1fr);} .res-links{grid-column:1/-1; justify-content:flex-start;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+<div><span class="edition">Taran's Interview Prep</span><h1>Interview Prep</h1><p>One practice space for behavioral answers, HR questions, recruiter screens, technical communication, and transcript rehearsal. Mark each method or question when it is ready, save weak areas, and practice answers word by word.</p></div>
+<div class="interview-diagram" aria-label="Interview prep flow diagram">
+<div class="diagram-row" style="--chip-color:#e04768"><span class="diagram-chip">Structure</span><span class="diagram-line"></span></div>
+<div class="diagram-row" style="--chip-color:#ef8a3a"><span class="diagram-chip">Story</span><span class="diagram-line"></span></div>
+<div class="diagram-row" style="--chip-color:#2aa876"><span class="diagram-chip">Evidence</span><span class="diagram-line"></span></div>
+<div class="diagram-row" style="--chip-color:#2f6fdd"><span class="diagram-chip">Pacing</span><span class="diagram-line"></span></div>
+<div class="diagram-row" style="--chip-color:#7b61d8"><span class="diagram-chip">Mock</span><span class="diagram-line"></span></div>
+</div>
+</header>
+<div class="overall-progress"><span class="lbl">Overall progress</span><div class="bar-track"><div class="bar-fill" id="overall-bar"></div></div><span class="pct" id="overall-pct">0 / ${total}</span></div>
+<div class="controls"><div class="controls-row"><span class="label">Filter:</span><button class="filter-btn status-done" data-filter="status" data-val="done">Done</button><button class="filter-btn" data-filter="status" data-val="undone">Not Done</button><button class="filter-btn status-bookmarked" data-filter="status" data-val="bookmarked">Bookmarked</button><span class="search"><input type="search" id="search-input" placeholder="Search methods, HR questions, stories, transcripts"></span><button class="icon-btn" id="random-btn" title="Random item">Random</button><button class="icon-btn" id="theme-toggle" title="Toggle theme">Theme</button><button class="filter-btn" id="clear-filters">Clear</button></div></div>
+<section class="transcript-lab" data-transcript-lab>
+<div class="transcript-head"><h2>Word-by-word Transcript Runner</h2><div class="transcript-controls"><select data-script-select><option value="pitch">Opening pitch</option><option value="conflict">Conflict story</option><option value="failure">Failure story</option><option value="project">Project deep dive</option></select><button type="button" data-transcript-play>Play</button><button type="button" data-transcript-reset>Reset</button><label>Speed <input type="range" min="180" max="850" value="420" step="20" data-transcript-speed></label><span class="transcript-time" data-transcript-time>00:00 / 00:00</span></div></div>
+<div class="transcript-viewport" data-transcript-viewport aria-live="polite"></div>
+</section>
+<nav class="toc"><h2>Interview Prep Map</h2><div class="toc-grid">${toc}</div></nav>
+${sections}
+<script>window.SITE_SLUG = "interview";</script>
+<a href="#" class="top">Top</a>
+</div>
+${conceptPageRuntimeScript("interview")}
+${transcriptRunnerScript()}
+</body></html>`;
 }
 
 function hubHtml(data) {
@@ -1853,7 +2438,9 @@ function siteNavStyle() {
   display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
   margin: 0 0 14px; padding: 10px 12px;
   border: 1px solid var(--border); border-radius: 10px;
-  background: color-mix(in srgb, var(--bg-elev, var(--bg-card, #fff)) 92%, transparent);
+  background:
+    linear-gradient(90deg, rgba(47,111,221,.16), rgba(224,71,104,.12), rgba(42,168,118,.10)),
+    color-mix(in srgb, var(--bg-elev, var(--bg-card, #fff)) 92%, transparent);
   backdrop-filter: blur(14px); box-shadow: var(--shadow-card, 0 1px 3px rgba(0,0,0,.12));
 }
 .site-brand { display: grid; gap: 1px; color: var(--text); text-decoration: none; min-width: 180px; }
@@ -1875,6 +2462,7 @@ function siteNavStyle() {
 .site-links a, .site-theme-button { transition: border-color .15s ease, color .15s ease, transform .15s ease; }
 .site-links a:hover, .site-theme-button:hover { border-color: var(--accent); color: var(--text); transform: translateY(-1px); }
 .site-links a.current { background: var(--accent); border-color: var(--accent); color: white; }
+.site-links a[href*="interview_prep"] { border-color: rgba(224,71,104,.45); }
 .site-theme-button { margin-left: auto; font-family: inherit; }
 .site-progress { color: var(--text-faint, var(--text-dim)); font-size: 11px; font-weight: 800; margin-left: 2px; }
 .learning-coverage {
@@ -2090,6 +2678,7 @@ function gapSearchContext(key) {
     bh: "behavioral interview",
     ai: "AI engineering",
     cloud: "AWS Azure cloud",
+    interview: "interview preparation",
   }[key] || "";
 }
 
@@ -2241,6 +2830,7 @@ function rewriteConceptSearchLinks(html, source) {
     bh: "behavioral interview",
     ai: "AI engineering",
     cloud: "AWS Azure cloud",
+    interview: "interview preparation",
   }[source.key] || source.title;
   return html.replace(/<li\b([^>]*\bdata-cid=["'][^"']+["'][^>]*)>([\s\S]*?)<\/li>/gi, (full, open, body) => {
     const topic = normalizeSearchTopic(attr(open, "data-name") || first(body, /<div class="cname[^"]*">([\s\S]*?)<\/div>/i));
@@ -2262,6 +2852,8 @@ function formatCloudQa(html) {
 
 function removeGeneratedPageChrome(html) {
   return html
+    .replace(/<link rel="stylesheet" href="assets\/learning-hub-shared\.css">\s*/g, "")
+    .replace(/<script src="assets\/learning-hub-shared\.js"><\/script>\s*/g, "")
     .replace(/<style id="site-nav-style">[\s\S]*?<\/style>\s*/g, "")
     .replace(/<script id="site-nav-script">[\s\S]*?<\/script>\s*/g, "")
     .replace(/<nav class="site-nav"[\s\S]*?<\/nav>\s*/g, "")
@@ -2290,7 +2882,7 @@ function transformSourcePage(source) {
   html = rewriteProblemSearchLinks(html);
   html = rewriteConceptSearchLinks(html, source);
   if (source.key === "cloud") html = formatCloudQa(html);
-  html = html.replace("</head>", `${siteNavStyle()}\n</head>`);
+  html = html.replace("</head>", `<link rel="stylesheet" href="assets/learning-hub-shared.css">\n<script src="assets/learning-hub-shared.js"></script>\n${siteNavStyle()}\n</head>`);
   html = html.replace('<div class="wrap">', `<div class="wrap">\n${siteNavHtml(source)}\n`);
   html = html.replace(/(<nav class="toc">)/, `${coveragePanelHtml(source)}\n${sourceExtractHtml(source)}\n$1`);
   html = html.replace("</body>", `${siteNavScript()}\n</body>`);
@@ -2329,7 +2921,7 @@ function buildContentAudit(data) {
     "",
     "## Global Actions Applied",
     "",
-    "- Rebuilt the hub as six page cards only; no global catalog, roadmap, or resource library on the landing page.",
+    "- Rebuilt the hub as seven page cards only; no global catalog, roadmap, or resource library on the landing page.",
     "- Added a shared cross-site navigation bar to every source page.",
     "- Closed resource dropdown panels by default while preserving click-to-expand behavior.",
     "- Rewrote generated YouTube and Google fallback URLs with cleaner topic-specific query rules.",
@@ -2441,14 +3033,16 @@ ${data.sources.map((s) => `- ${s.title}: ${s.itemCount} ${s.progressLabel}, ${s.
 
 - DSA Tutorial: \`DSA_Tutorial/index.html\` with 755 generated pages and 707 problem tutorials.
 - System Design Tutorial Hub: \`System_Design_Tutorial/index.html\` with 15 sections, 62 mapped topics, and 102 bundled markdown lessons.
+- Interview Prep: \`interview_prep.html\` with answer methods, HR questions, behavioral story themes, technical communication practice, and a word-by-word transcript runner.
 
 ## Current UI
 
-- \`index.html\` and \`hub.html\` show only the six page entry cards.
+- \`index.html\` and \`hub.html\` show only the seven page entry cards.
 - Each source page has shared cross-site navigation.
 - Resource panels start closed by default.
-- Progress and bookmarks are stored locally in the browser.
-- DSA and System Design pages link to their deeper local tutorial sub-sites.
+- Progress and bookmarks are stored locally in the browser and refresh across open tabs.
+- DSA and System Design cards/pages link to their deeper local tutorial sub-sites.
+- The site has a browser-side password gate for casual access control.
 
 ## Local preview
 
@@ -2472,6 +3066,7 @@ function updateSourceNavs() {
   }
 }
 
+write("interview_prep.html", interviewPrepHtml());
 const data = buildData();
 write("learning-hub-data.json", `${JSON.stringify(data, null, 2)}\n`);
 write(

@@ -32,6 +32,7 @@ LC_SVG = ('<a class="lc-icon" href="{url}" target="_blank" rel="noopener" title=
 # ---------------------------------------------------------------- page shell
 def shell(title, body, depth, prev_page, next_page, crumb_html, mid_label):
     rel = '../' * depth
+    root_rel = rel + '../'
     prev_a = (f'<a href="{rel}{prev_page["path"]}">← {esc(prev_page["short"])}</a>' if prev_page else '<span></span>')
     next_a = (f'<a href="{rel}{next_page["path"]}">{esc(next_page["short"])} →</a>' if next_page else '<span></span>')
     pager_prev = (f'<a href="{rel}{prev_page["path"]}"><span class="lbl">← Previous</span>{esc(prev_page["short"])}</a>'
@@ -43,12 +44,26 @@ def shell(title, body, depth, prev_page, next_page, crumb_html, mid_label):
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{esc(title)} — DSA Tutorial</title>
-<link rel="stylesheet" href="{rel}assets/style.css">
+<link rel="stylesheet" href="{root_rel}assets/learning-hub-shared.css">
+<link rel="stylesheet" href="{rel}assets/style.css?v=2">
+<script src="{root_rel}assets/learning-hub-shared.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-<script defer src="{rel}assets/app.js"></script>
+<script defer src="{rel}assets/app.js?v=2"></script>
 </head>
 <body>
+<nav class="global-learning-nav" aria-label="Learning hub navigation">
+<a href="{root_rel}index.html">Hub</a>
+<a href="{root_rel}DSA_Ultimate_Index.html">DSA Index</a>
+<a class="current" href="{rel}index.html" aria-current="page">DSA Tutorial</a>
+<a href="{root_rel}system_design.html">System Design</a>
+<a href="{root_rel}System_Design_Tutorial/index.html">System Tutorial</a>
+<a href="{root_rel}cs_fundamentals.html">CS</a>
+<a href="{root_rel}behavioral.html">Behavioral</a>
+<a href="{root_rel}ai_engineering.html">AI</a>
+<a href="{root_rel}cloud_aws_azure.html">Cloud</a>
+<a href="{root_rel}interview_prep.html">Interview Prep</a>
+</nav>
 <div class="nav-bar">{prev_a}<div class="mid"><a href="{rel}index.html">🏠 DSA Tutorial</a> · {mid_label}</div>
 <div style="display:flex;gap:8px;align-items:center">{next_a}<button class="theme-btn" title="Toggle theme">☀️</button></div></div>
 <div class="container">
