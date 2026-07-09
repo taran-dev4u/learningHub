@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#151 Reverse Words in a String — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0012-lc977-squares-of-a-sorted-array.html">← #977 Squares of a Sorted Array</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Problem 13 / 707</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0014-lc344-reverse-string.html">#344 Reverse String →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a> › String Reversal › #151</div>
+
+<h1><span class="num" style="color:var(--text-dim)">#151</span> Reverse Words in a String
+<span class="pill M">Medium</span><a class="lc-icon" href="https://leetcode.com/problems/reverse-words-in-a-string/" target="_blank" rel="noopener" title="Open on LeetCode"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3l-8 8a5 5 0 000 7l2 2a5 5 0 007 0l2.5-2.5" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/><path d="M9 13h10" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/></svg>LeetCode</a></h1>
+<p><span class="chip"></span>  &nbsp; <label style="font-size:14px;color:var(--text-dim)"><input type="checkbox" data-id="p01-lc151"> mark solved</label></p>
+<p class="progress-note">Pattern: <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a>
+ › Subpattern 1.2: String Reversal · Problem 13 of 707</p>
+<p class="progress-note">This problem also appears under: <a href="0448-lc151-reverse-words-in-a-string.html">String Manipulation</a> — same problem, different lens.</p>
+<h2>📋 The problem</h2><p>Reverse the order of words in a string, cleaning up any extra spaces.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+
+<h2>🧭 How to think about it</h2>
+<p>Reverse the <em>order of words</em>, not the letters, and collapse any messy spacing to single spaces. The clean Python answer is split-reverse-join. But interviewers often want the in-place, O(1)-extra-space version done on a character array: reverse the whole thing, then reverse each word back.</p>
+
+<h2>🐢 Brute force first</h2>
+<p>Split on whitespace, drop empties, reverse the list, join with single spaces. That's O(n) time and O(n) space — perfectly good and the expected first answer.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> reversing the entire string flips both the word order <em>and</em> each word's letters. A second pass that reverses each individual word fixes the letters, leaving the words in reversed order. Two reversals = the answer, no extra array.</div>
+
+<h2>🪜 The approach, step by step (in-place variant)</h2>
+<ol>
+<li>Trim and normalize spaces (or handle them while scanning).</li>
+<li>Reverse the whole character array.</li>
+<li>Walk with two pointers to find each word's bounds and reverse it back.</li>
+</ol>
+
+<h2>🎞️ Visual dry run — s = "the sky is blue"</h2>
+<pre class="viz">split → ["the","sky","is","blue"]
+reverse list → ["blue","is","sky","the"]
+join → "blue is sky the"
+
+in-place idea: "the sky is blue"
+reverse all → "eulb si yks eht"
+reverse each word → "blue is sky the" ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def reverseWords(s):
+    # Pythonic: split() drops all runs of whitespace automatically
+    return " ".join(reversed(s.split()))
+
+# In-place style on a list of chars (interview version):
+def reverseWordsInPlace(chars):
+    def rev(a, i, j):
+        while i &lt; j:
+            a[i], a[j] = a[j], a[i]
+            i += 1; j -= 1
+    rev(chars, 0, len(chars) - 1)          # reverse everything
+    start = 0
+    for i in range(len(chars) + 1):
+        if i == len(chars) or chars[i] == ' ':
+            rev(chars, start, i - 1)        # reverse this word back
+            start = i + 1
+    return chars</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — a constant number of linear passes. <strong>Space O(1)</strong> for the in-place char-array version (Python's <code>split</code>/<code>join</code> version is O(n) space because strings are immutable).</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Leading/trailing spaces and multiple spaces between words → <code>split()</code> normalizes them; the in-place version must skip empty gaps.</li>
+<li>Single word → returned unchanged.</li>
+<li>All spaces → empty string.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Reversing the characters of each word instead of the word order (the double-reverse trick prevents this).</li>
+<li>Leaving double spaces in the output.</li>
+<li>Forgetting to reverse the final word when the string doesn't end in a space (loop to <code>len+1</code> to flush it).</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Reverse letters within each word but keep word order (LC 557) → just the second pass.</li>
+<li>Do it truly in place in a language with mutable strings → the two-reversal method is the answer.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0014-lc344-reverse-string.html">#344</a> · <a href="0015-lc345-reverse-vowels-of-a-string.html">#345</a> · <a href="0016-lc541-reverse-string-ii.html">#541</a></p>
+
+
+<div class="pager"><a href="../problems/0012-lc977-squares-of-a-sorted-array.html"><span class="lbl">← Previous</span>#977 Squares of a Sorted Array</a><a href="../problems/0014-lc344-reverse-string.html" style="text-align:right"><span class="lbl">Next →</span>#344 Reverse String</a></div>
+</div>
+</body>
+</html>

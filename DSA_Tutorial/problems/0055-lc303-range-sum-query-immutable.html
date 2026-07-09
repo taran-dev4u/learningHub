@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#303 Range Sum Query - Immutable — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0054-lc378-kth-smallest-element-in-a-sorted-matrix.html">← #378 Kth Smallest Element in a Sorted Matrix</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Problem 55 / 707</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0056-lc560-subarray-sum-equals-k.html">#560 Subarray Sum Equals K →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › <a href="../patterns/p02-array-matrix.html">Array/Matrix Manipulation Patterns</a> › Prefix Sum / Running Sum › #303</div>
+
+<h1><span class="num" style="color:var(--text-dim)">#303</span> Range Sum Query - Immutable
+<span class="pill E">Easy</span><a class="lc-icon" href="https://leetcode.com/problems/range-sum-query-immutable/" target="_blank" rel="noopener" title="Open on LeetCode"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3l-8 8a5 5 0 000 7l2 2a5 5 0 007 0l2.5-2.5" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/><path d="M9 13h10" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/></svg>LeetCode</a></h1>
+<p><span class="chip"></span>  &nbsp; <label style="font-size:14px;color:var(--text-dim)"><input type="checkbox" data-id="p02-lc303"> mark solved</label></p>
+<p class="progress-note">Pattern: <a href="../patterns/p02-array-matrix.html">Array/Matrix Manipulation Patterns</a>
+ › Subpattern 2.9: Prefix Sum / Running Sum · Problem 55 of 707</p>
+<p class="progress-note">This problem also appears under: <a href="0534-lc303-range-sum-query-immutable.html">Prefix Sum &amp; Difference Array</a> — same problem, different lens.</p>
+<h2>📋 The problem</h2><p>Precompute over an immutable array so sumRange(i, j) queries answer in O(1).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+
+<h2>Where this fits</h2>
+<p><strong>Prefix Sum / Running Sum</strong> — Maintain a running cumulative sum to answer subarray-sum or count-prefix-target queries.</p>
+<div class="insight"><strong>💡 Key idea</strong><br>Precompute prefix sums; range sum = prefix[j+1] − prefix[i].</div>
+<h2>Why this pattern?</h2><ul><li>"rotate / transpose / flip" a matrix or array</li><li>"in place" / "O(1) extra space" on a grid problem</li><li>traverse in an unusual order (spiral, diagonal, zigzag)</li><li>mark/erase cells based on other cells (use the cells themselves as flags)</li></ul>
+<h2>Pattern template to adapt</h2><p>Start from the Array/Matrix Manipulation master template and adapt the marked parts to this problem:</p><pre><code># Rotate matrix 90° clockwise, in place
+n = len(matrix)
+for r in range(n):                     # 1) transpose (swap across diagonal)
+    for c in range(r + 1, n):
+        matrix[r][c], matrix[c][r] = matrix[c][r], matrix[r][c]
+for row in matrix:                     # 2) reverse each row
+    row.reverse()
+
+# Spiral walk: shrink four boundaries
+top, bottom, left, right = 0, rows - 1, 0, cols - 1
+while top &lt;= bottom and left &lt;= right:
+    ...walk top row, right col, bottom row, left col...
+    top += 1; bottom -= 1; left += 1; right -= 1</code></pre>
+<h2>How to work on it now</h2>
+<ol>
+<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
+<li>Write the brute force first — know what you are improving.</li>
+<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
+<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+</ol>
+<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
+(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
+deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<div class="pager"><a href="../problems/0054-lc378-kth-smallest-element-in-a-sorted-matrix.html"><span class="lbl">← Previous</span>#378 Kth Smallest Element in a Sorted Matrix</a><a href="../problems/0056-lc560-subarray-sum-equals-k.html" style="text-align:right"><span class="lbl">Next →</span>#560 Subarray Sum Equals K</a></div>
+</div>
+</body>
+</html>

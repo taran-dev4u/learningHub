@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#4 Median of Two Sorted Arrays — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0260-lc658-find-k-closest-elements.html">← #658 Find K Closest Elements</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Problem 261 / 707</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../patterns/p09-graph-traversal.html">Graph Traversal (DFS &amp; BFS) →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › <a href="../patterns/p08-binary-search.html">Binary Search Patterns</a> › Median of Two Sorted Arrays › #4</div>
+
+<h1><span class="num" style="color:var(--text-dim)">#4</span> Median of Two Sorted Arrays
+<span class="pill H">Hard</span><a class="lc-icon" href="https://leetcode.com/problems/median-of-two-sorted-arrays/" target="_blank" rel="noopener" title="Open on LeetCode"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3l-8 8a5 5 0 000 7l2 2a5 5 0 007 0l2.5-2.5" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/><path d="M9 13h10" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/></svg>LeetCode</a></h1>
+<p><span class="chip">Google</span><span class="chip">Amazon</span><span class="chip">Meta</span><span class="chip">Apple</span> <a class="chip" href="https://www.youtube.com/watch?v=q6IEA26hvXc" target="_blank" rel="noopener">🎬 Video walkthrough</a> &nbsp; <label style="font-size:14px;color:var(--text-dim)"><input type="checkbox" data-id="p08-lc4"> mark solved</label></p>
+<p class="progress-note">Pattern: <a href="../patterns/p08-binary-search.html">Binary Search Patterns</a>
+ › Subpattern 8.5: Median of Two Sorted Arrays · Problem 261 of 707</p>
+
+<h2>📋 The problem</h2><p>Given two sorted arrays, return the median of all their elements combined, in O(log(m+n)) time.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+
+<h2>Where this fits</h2>
+<p><strong>Median of Two Sorted Arrays</strong> — Partition-based binary search across two arrays to find the kth-smallest in O(log min(m,n)).</p>
+<div class="insight"><strong>💡 Key idea</strong><br>Partition both arrays so left halves' sizes sum to half; binary search the cut in the shorter array.</div>
+<h2>Why this pattern?</h2><ul><li>sorted (or rotated-sorted) array + find/insert position</li><li>"minimize the maximum" / "maximize the minimum"</li><li>a feasibility check that flips once as a parameter grows</li><li>O(log n) demanded explicitly</li></ul>
+<h2>Pattern template to adapt</h2><p>Start from the Binary Search master template and adapt the marked parts to this problem:</p><pre><code># Lower-bound shape: smallest index where check(i) is True
+lo, hi = 0, n            # hi = n allows "no answer" result
+while lo &lt; hi:
+    mid = (lo + hi) // 2
+    if check(mid):        # True region is on the right side's left edge
+        hi = mid          # mid might be the answer — keep it in range
+    else:
+        lo = mid + 1      # mid is definitely not — discard it
+return lo                 # first True (or n if none)
+
+# Binary search on the ANSWER
+lo, hi = min_possible, max_possible
+while lo &lt; hi:
+    mid = (lo + hi) // 2
+    if feasible(mid): hi = mid
+    else:             lo = mid + 1</code></pre>
+<h2>How to work on it now</h2>
+<ol>
+<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
+<li>Write the brute force first — know what you are improving.</li>
+<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
+<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+</ol>
+<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
+(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
+deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<div class="pager"><a href="../problems/0260-lc658-find-k-closest-elements.html"><span class="lbl">← Previous</span>#658 Find K Closest Elements</a><a href="../patterns/p09-graph-traversal.html" style="text-align:right"><span class="lbl">Next →</span>Graph Traversal (DFS &amp; BFS)</a></div>
+</div>
+</body>
+</html>

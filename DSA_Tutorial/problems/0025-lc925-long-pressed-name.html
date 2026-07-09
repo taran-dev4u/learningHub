@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#925 Long Pressed Name — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0024-lc922-sort-array-by-parity-ii.html">← #922 Sort Array By Parity II</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Problem 25 / 707</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0026-lc2337-move-pieces-to-obtain-a-string.html">#2337 Move Pieces to Obtain a String →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a> › In-place Array Modification › #925</div>
+
+<h1><span class="num" style="color:var(--text-dim)">#925</span> Long Pressed Name
+<span class="pill E">Easy</span><a class="lc-icon" href="https://leetcode.com/problems/long-pressed-name/" target="_blank" rel="noopener" title="Open on LeetCode"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3l-8 8a5 5 0 000 7l2 2a5 5 0 007 0l2.5-2.5" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/><path d="M9 13h10" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/></svg>LeetCode</a></h1>
+<p><span class="chip"></span>  &nbsp; <label style="font-size:14px;color:var(--text-dim)"><input type="checkbox" data-id="p01-lc925"> mark solved</label></p>
+<p class="progress-note">Pattern: <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a>
+ › Subpattern 1.3: In-place Array Modification · Problem 25 of 707</p>
+
+<h2>📋 The problem</h2><p>Decide whether 'typed' could result from 'name' with some characters accidentally long-pressed (repeated).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+
+<h2>🧭 How to think about it</h2>
+<p>Someone typed your name but a key may have been held down, repeating letters. Decide whether <code>typed</code> could be your <code>name</code> with some characters long-pressed. Walk <strong>two pointers</strong> — one on <code>name</code>, one on <code>typed</code> — matching letter by letter; extra repeats in <code>typed</code> are allowed only if they repeat the character you just matched.</p>
+
+<h2>🐢 Brute force first</h2>
+<p>Run-length encode both strings and compare characters with counts (typed's count must be ≥ name's for each run). The two-pointer walk does the same check without building the encodings.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> pointer <code>i</code> on name, <code>j</code> on typed. If <code>name[i] == typed[j]</code>, both advance. Otherwise <code>typed[j]</code> must equal the <em>previous</em> matched character (a long-press) — advance only <code>j</code>. If neither holds, it's not a match. At the end, <code>i</code> must have consumed all of name.</div>
+
+<h2>🪜 The approach, step by step</h2>
+<ol>
+<li><code>i = j = 0</code>.</li>
+<li>If <code>name[i] == typed[j]</code>: <code>i += 1</code>, <code>j += 1</code>.</li>
+<li>Else if <code>j &gt; 0</code> and <code>typed[j] == typed[j−1]</code>: <code>j += 1</code> (long-press).</li>
+<li>Else return False.</li>
+<li>After the loop, return <code>i == len(name)</code> (all of name matched; trailing typed repeats are fine).</li>
+</ol>
+
+<h2>🎞️ Visual dry run — name = "alex", typed = "aaleex"</h2>
+<pre class="viz">i0=a j0=a match → i1 j1
+i1=l j1=a  a==typed[0]a long-press → j2
+i1=l j2=l match → i2 j3
+i2=e j3=e match → i3 j4
+i3=x j4=e  e==typed[3]e long-press → j5
+i3=x j5=x match → i4 j6 (end)
+i==len(name)=4 → True</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def isLongPressedName(name, typed):
+    i, j = 0, 0
+    while j &lt; len(typed):
+        if i &lt; len(name) and name[i] == typed[j]:
+            i += 1; j += 1               # normal match
+        elif j &gt; 0 and typed[j] == typed[j - 1]:
+            j += 1                        # long-press of the previous char
+        else:
+            return False
+    return i == len(name)                 # every name char consumed</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n + m)</strong> — each pointer advances through its string once. <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>First characters differ → immediate False (no previous char to long-press).</li>
+<li><code>typed</code> shorter than <code>name</code> → <code>i</code> can't finish → False.</li>
+<li>Extra trailing repeats in typed → fine, as long as name is fully matched.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Forgetting the final <code>i == len(name)</code> check — typed may end before name is consumed.</li>
+<li>Allowing a long-press against the wrong (not-just-matched) character.</li>
+<li>Index errors when <code>j == 0</code> and the first chars mismatch.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Is one string a subsequence of another (<a href="0031-lc392-is-subsequence.html">#392</a>) — related pointer walk.</li>
+<li>Allow bounded press counts → track run lengths explicitly.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0031-lc392-is-subsequence.html">#392</a> · <a href="0035-lc844-backspace-string-compare.html">#844</a> · <a href="0022-lc443-string-compression.html">#443</a></p>
+
+
+<div class="pager"><a href="../problems/0024-lc922-sort-array-by-parity-ii.html"><span class="lbl">← Previous</span>#922 Sort Array By Parity II</a><a href="../problems/0026-lc2337-move-pieces-to-obtain-a-string.html" style="text-align:right"><span class="lbl">Next →</span>#2337 Move Pieces to Obtain a String</a></div>
+</div>
+</body>
+</html>

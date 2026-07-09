@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multi-Source BFS Patterns — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0667-lc2360-longest-cycle-in-a-graph.html">← #2360 Longest Cycle in a Graph</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Pattern 25 of 29</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0668-lc286-walls-and-gates.html">#286 Walls and Gates →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › Patterns › Multi-Source BFS Patterns</div>
+<h1>🧩 Multi-Source BFS Patterns</h1><p class="progress-note">1 subpatterns · 6 problems · <span data-count-of="p25-"></span></p>
+<h2>1. Intuition — the mental model</h2><p>"How far is each cell from the nearest X?" Running BFS from every X separately costs O(sources × V). Instead seed the queue with <em>all</em> X's at distance 0 and run ONE BFS: the wavefronts expand together, and whichever front reaches a cell first is, by BFS's order guarantee, the nearest source.</p>
+<div class="insight"><strong>💡 The “aha” insight</strong><br>Flip the direction: don't search FROM each cell FOR the nearest source — flood FROM all sources TO every cell simultaneously. It's equivalent to adding a virtual super-source connected to all real sources. One pass, O(V+E) total.</div>
+<h2>2. Recognition signals</h2><p>Think of this pattern when the problem says:</p><ul><li>"distance to nearest 0/gate/land" for EVERY cell</li><li>simultaneous spreading: rotting oranges, fire, infection + "how long until…"</li><li>"highest cell / farthest from any coast" (max of min-distances)</li><li>many starting points, one uniform spread speed</li></ul>
+<h2>3. Master template</h2><pre><code>from collections import deque
+q = deque()
+dist = [[-1] * cols for _ in range(rows)]
+for r in range(rows):                     # seed ALL sources at distance 0
+    for c in range(cols):
+        if grid[r][c] == SOURCE:
+            dist[r][c] = 0
+            q.append((r, c))
+while q:
+    r, c = q.popleft()
+    for dr, dc in ((1,0),(-1,0),(0,1),(0,-1)):
+        nr, nc = r + dr, c + dc
+        if 0 &lt;= nr &lt; rows and 0 &lt;= nc &lt; cols and dist[nr][nc] == -1 \
+           and passable(grid[nr][nc]):
+            dist[nr][nc] = dist[r][c] + 1
+            q.append((nr, nc))
+# "time until all infected" = max over dist; unreachable stay -1</code></pre>
+<p>The dist grid doubles as the visited set (−1 = unseen). For "minutes until done" answers, either track the max distance or process level-by-level with the <code>len(q)</code> freeze and count rounds.</p>
+<h2>4. Complexity of the template</h2><p>O(V+E) = O(rows·cols) on grids — identical to single-source BFS; that's the entire win. Space O(V) for queue + distances.</p>
+<h2>5. Common mistakes</h2><ul><li>Running per-source BFS loops — the exact O(S·V) trap this pattern deletes.</li><li>Seeding sources with distance 0 but forgetting to mark them visited.</li><li>Rotting oranges: not checking afterwards whether unreachable fresh cells remain (answer −1).</li><li>Counting rounds off by one — an initially-done grid is 0 minutes.</li></ul>
+<h2>6. Subpatterns &amp; problems</h2>
+<h3>25.1 — Multi-Source Distance BFS</h3><p class="progress-note">Seed all source cells with distance 0 in the same pass; BFS expands all fronts together.</p><ul class="plist"><li><input type="checkbox" data-id="p25-lc286" title="mark solved"><span class="num">#286</span><span class="pill M">M</span><a href="../problems/0668-lc286-walls-and-gates.html">Walls and Gates</a></li><li><input type="checkbox" data-id="p25-lc542" title="mark solved"><span class="num">#542</span><span class="pill M">M</span><a href="../problems/0669-lc542-01-matrix.html">01 Matrix</a><span class="badge nc" title="NeetCode 150">★NC</span><span class="badge g75" title="Grind 75">★G</span></li><li><input type="checkbox" data-id="p25-lc934" title="mark solved"><span class="num">#934</span><span class="pill M">M</span><a href="../problems/0670-lc934-shortest-bridge.html">Shortest Bridge</a></li><li><input type="checkbox" data-id="p25-lc994" title="mark solved"><span class="num">#994</span><span class="pill M">M</span><a href="../problems/0671-lc994-rotting-oranges.html">Rotting Oranges</a><span class="badge nc" title="NeetCode 150">★NC</span><span class="badge g75" title="Grind 75">★G</span></li><li><input type="checkbox" data-id="p25-lc1162" title="mark solved"><span class="num">#1162</span><span class="pill M">M</span><a href="../problems/0672-lc1162-as-far-from-land-as-possible.html">As Far from Land as Possible</a></li><li><input type="checkbox" data-id="p25-lc1765" title="mark solved"><span class="num">#1765</span><span class="pill M">M</span><a href="../problems/0673-lc1765-map-of-highest-peak.html">Map of Highest Peak</a></li></ul>
+<div class="pager"><a href="../problems/0667-lc2360-longest-cycle-in-a-graph.html"><span class="lbl">← Previous</span>#2360 Longest Cycle in a Graph</a><a href="../problems/0668-lc286-walls-and-gates.html" style="text-align:right"><span class="lbl">Next →</span>#286 Walls and Gates</a></div>
+</div>
+</body>
+</html>

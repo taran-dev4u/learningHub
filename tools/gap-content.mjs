@@ -373,6 +373,7 @@ export const resourceLibraries = {
       "Re-solve queue: every bookmarked ★ problem returns in 7 days; solved-with-help returns in 3.",
     ],
     links: [
+      ["Local DSA Tutorial", "DSA_Tutorial/index.html"],
       ["NeetCode Roadmap", "https://neetcode.io/roadmap"],
       ["Striver A2Z DSA Sheet", "https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-course-sheet-2/"],
       ["LeetCode Patterns (Sean Prashad)", "https://seanprashad.com/leetcode-patterns/"],

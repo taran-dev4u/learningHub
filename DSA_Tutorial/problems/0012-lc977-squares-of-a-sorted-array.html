@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#977 Squares of a Sorted Array — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0011-lc881-boats-to-save-people.html">← #881 Boats to Save People</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Problem 12 / 707</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0013-lc151-reverse-words-in-a-string.html">#151 Reverse Words in a String →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a> › Converging › #977</div>
+
+<h1><span class="num" style="color:var(--text-dim)">#977</span> Squares of a Sorted Array
+<span class="pill E">Easy</span><a class="lc-icon" href="https://leetcode.com/problems/squares-of-a-sorted-array/" target="_blank" rel="noopener" title="Open on LeetCode"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3l-8 8a5 5 0 000 7l2 2a5 5 0 007 0l2.5-2.5" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/><path d="M9 13h10" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/></svg>LeetCode</a></h1>
+<p><span class="chip">Amazon</span><span class="chip">Apple</span>  &nbsp; <label style="font-size:14px;color:var(--text-dim)"><input type="checkbox" data-id="p01-lc977"> mark solved</label></p>
+<p class="progress-note">Pattern: <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a>
+ › Subpattern 1.1: Converging · Problem 12 of 707</p>
+
+<h2>📋 The problem</h2><p>Given a sorted array (possibly negative), return the squares of its elements in sorted order in O(n).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+
+<h2>🧭 How to think about it</h2>
+<p>Squaring a sorted array scrambles the order because negatives flip: <code>[−4,−1,0,3]</code> squared is <code>[16,1,0,9]</code>. But notice — the <em>largest</em> square always sits at one of the two ends (the most negative or the most positive value). So compare the ends, take the bigger square, and fill the answer <strong>from the back</strong>.</p>
+
+<h2>🐢 Brute force first</h2>
+<p>Square everything then sort: O(n log n). Correct, but we can do O(n) because the input is already sorted — we just need to merge two runs.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> the array is two sorted runs in disguise — negatives (descending in magnitude) and non-negatives (ascending). The biggest magnitude is at one end or the other. Two pointers at the ends pick the larger square each step and place it at the current tail of the result.</div>
+
+<h2>🪜 The approach, step by step</h2>
+<ol>
+<li><code>lo = 0</code>, <code>hi = n−1</code>, result array of size n, write index <code>pos = n−1</code>.</li>
+<li>Compare <code>|nums[lo]|</code> and <code>|nums[hi]|</code> via their squares.</li>
+<li>Place the larger square at <code>result[pos]</code>, move that pointer inward, <code>pos -= 1</code>.</li>
+<li>Repeat until the pointers cross.</li>
+</ol>
+
+<h2>🎞️ Visual dry run — nums = [−4, −1, 0, 3, 10]</h2>
+<pre class="viz">lo=0(−4→16) hi=4(10→100)  100&gt;16 → res[4]=100; hi→3, pos=3
+lo=0(−4→16) hi=3(3→9)     16&gt;9  → res[3]=16 ; lo→1, pos=2
+lo=1(−1→1)  hi=3(3→9)     9&gt;1   → res[2]=9  ; hi→2, pos=1
+lo=1(−1→1)  hi=2(0→0)     1&gt;0   → res[1]=1  ; lo→2, pos=0
+lo=2(0)     hi=2(0)       res[0]=0
+Result: [0, 1, 9, 16, 100]</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def sortedSquares(nums):
+    n = len(nums)
+    res = [0] * n
+    lo, hi = 0, n - 1
+    for pos in range(n - 1, -1, -1):    # fill from the back
+        if nums[lo] * nums[lo] &gt; nums[hi] * nums[hi]:
+            res[pos] = nums[lo] * nums[lo]
+            lo += 1
+        else:
+            res[pos] = nums[hi] * nums[hi]
+            hi -= 1
+    return res</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — one pass, each index placed once. <strong>Space O(n)</strong> for the output (unavoidable; the input can't be safely overwritten while reading both ends).</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>All non-negative → the <code>hi</code> pointer feeds everything; already-sorted squares.</li>
+<li>All negative → the <code>lo</code> pointer feeds everything.</li>
+<li>Contains 0 → its square 0 lands first (at the front).</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Filling the result from the front — you'd need the <em>smallest</em> square, which is in the middle and hard to find.</li>
+<li>Comparing raw values instead of magnitudes/squares — <code>−4 &lt; 3</code> but <code>16 &gt; 9</code>.</li>
+<li>Off-by-one on <code>pos</code> or the crossing condition.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Cubes of a sorted array → cubes preserve sign/order, so just map — no merge needed.</li>
+<li>Merge two sorted arrays generally → same back-to-front idea (<a href="0046-lc88-merge-sorted-array.html">#88</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0007-lc167-two-sum-ii-input-array-is-sorted.html">#167</a> · <a href="0009-lc349-intersection-of-two-arrays.html">#349</a> · <a href="0002-lc11-container-with-most-water.html">#11</a></p>
+
+
+<div class="pager"><a href="../problems/0011-lc881-boats-to-save-people.html"><span class="lbl">← Previous</span>#881 Boats to Save People</a><a href="../problems/0013-lc151-reverse-words-in-a-string.html" style="text-align:right"><span class="lbl">Next →</span>#151 Reverse Words in a String</a></div>
+</div>
+</body>
+</html>

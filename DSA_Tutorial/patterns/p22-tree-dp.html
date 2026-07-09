@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tree Dynamic Programming Patterns — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0602-lc732-my-calendar-iii.html">← #732 My Calendar III</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Pattern 22 of 29</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0603-lc337-house-robber-iii.html">#337 House Robber III →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › Patterns › Tree Dynamic Programming Patterns</div>
+<h1>🧩 Tree Dynamic Programming Patterns</h1><p class="progress-note">4 subpatterns · 8 problems · <span data-count-of="p22-"></span></p>
+<h2>1. Intuition — the mental model</h2><p>Tree DP = DP where the subproblems are <em>subtrees</em>. A postorder DFS computes children first, then combines their answers at the parent. The craft is deciding what each node reports upward — often a tuple of scenarios, like ("best if I'm included", "best if I'm excluded").</p>
+<div class="insight"><strong>💡 The “aha” insight</strong><br>When one number isn't enough, return a tuple of cases. House Robber III: each node returns (loot if robbed, loot if skipped); the parent combines them with its own choice. The exponential "try all subsets of nodes" collapses to one O(n) traversal.</div>
+<h2>2. Recognition signals</h2><p>Think of this pattern when the problem says:</p><ul><li>optimize a value over a TREE (max path, max loot, longest chain)</li><li>constraints between parent and child ("can't pick both")</li><li>"count/size/best of subtrees" feeding a global answer</li><li>the diameter shape: best-through-this-node vs best-for-parent differ</li><li>rerooting: answer needed for EVERY node as root</li></ul>
+<h2>3. Master template</h2><pre><code>def dfs(node):
+    if not node:
+        return NEUTRAL                     # e.g. (0, 0)
+    L = dfs(node.left)                     # children first (postorder)
+    R = dfs(node.right)
+    include = node.val + L[1] + R[1]       # take node → children excluded
+    exclude = max(L) + max(R)              # skip node → children free
+    # global-answer problems also do:  best = max(best, through_node)
+    return (include, exclude)
+
+ans = max(dfs(root))</code></pre>
+<p>The diameter/max-path-sum family has TWO quantities: the value <em>through</em> the node (may use both children — updates the global) and the value the node <em>offers its parent</em> (one child only — gets returned). Never conflate them.</p>
+<h2>4. Complexity of the template</h2><p>O(n) time — each node combined once; O(h) recursion stack. Rerooting technique: two passes, still O(n) for all n answers.</p>
+<h2>5. Common mistakes</h2><ul><li>Returning the "through" value to the parent — a parent can't use a forked path.</li><li>Clamping negatives forgotten: <code>max(0, child_gain)</code> in max-path-sum.</li><li>Wrong neutral for None: (0,0) fine for sums; -inf needed for maxima of node values.</li><li>Doing tree DP top-down without memo keyed by (node, state) — recompute explosion on shared logic.</li></ul>
+<h2>6. Subpatterns &amp; problems</h2>
+<h3>22.1 — Include/Exclude on Tree (Tree Robber)</h3><p class="progress-note">Each node returns (include_me, exclude_me); parent picks max — works for House Robber on tree.</p><ul class="plist"><li><input type="checkbox" data-id="p22-lc337" title="mark solved"><span class="num">#337</span><span class="pill M">M</span><a href="../problems/0603-lc337-house-robber-iii.html">House Robber III</a></li></ul>
+<h3>22.2 — Tree Diameter &amp; Longest Path</h3><p class="progress-note">Each node returns max-depth-going-down; while recursing, update the global diameter answer.</p><ul class="plist"><li><input type="checkbox" data-id="p22-lc543" title="mark solved"><span class="num">#543</span><span class="pill E">E</span><a href="../problems/0604-lc543-diameter-of-binary-tree.html">Diameter of Binary Tree</a><span class="badge g75" title="Grind 75">★G</span></li><li><input type="checkbox" data-id="p22-lc687" title="mark solved"><span class="num">#687</span><span class="pill M">M</span><a href="../problems/0605-lc687-longest-univalue-path.html">Longest Univalue Path</a></li><li><input type="checkbox" data-id="p22-lc1372" title="mark solved"><span class="num">#1372</span><span class="pill M">M</span><a href="../problems/0606-lc1372-longest-zigzag-path-in-a-binary-tree.html">Longest ZigZag Path in a Binary Tree</a></li></ul>
+<h3>22.3 — Tree Max Path Sum / Tilt</h3><p class="progress-note">Each node returns max-gain-as-leaf; while recursing, update the global max-path-sum answer.</p><ul class="plist"><li><input type="checkbox" data-id="p22-lc124" title="mark solved"><span class="num">#124</span><span class="pill H">H</span><a href="../problems/0607-lc124-binary-tree-maximum-path-sum.html">Binary Tree Maximum Path Sum</a><span class="badge b75" title="Blind 75">★75</span><span class="badge nc" title="NeetCode 150">★NC</span><span class="badge g75" title="Grind 75">★G</span></li><li><input type="checkbox" data-id="p22-lc563" title="mark solved"><span class="num">#563</span><span class="pill E">E</span><a href="../problems/0608-lc563-binary-tree-tilt.html">Binary Tree Tilt</a></li></ul>
+<h3>22.4 — Subtree Summary DP</h3><p class="progress-note">Each node returns subtree summary (size, sum, valid?) — used for largest valid BST in a tree.</p><ul class="plist"><li><input type="checkbox" data-id="p22-lc366" title="mark solved"><span class="num">#366</span><span class="pill M">M</span><a href="../problems/0609-lc366-find-leaves-of-binary-tree.html">Find Leaves of Binary Tree</a></li><li><input type="checkbox" data-id="p22-lc1373" title="mark solved"><span class="num">#1373</span><span class="pill H">H</span><a href="../problems/0610-lc1373-maximum-sum-bst-in-binary-tree.html">Maximum Sum BST in Binary Tree</a></li></ul>
+<div class="pager"><a href="../problems/0602-lc732-my-calendar-iii.html"><span class="lbl">← Previous</span>#732 My Calendar III</a><a href="../problems/0603-lc337-house-robber-iii.html" style="text-align:right"><span class="lbl">Next →</span>#337 House Robber III</a></div>
+</div>
+</body>
+</html>

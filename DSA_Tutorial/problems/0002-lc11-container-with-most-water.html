@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#11 Container With Most Water — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0001-lc1-two-sum.html">← #1 Two Sum</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Problem 2 / 707</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0003-lc15-3sum.html">#15 3Sum →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a> › Converging › #11</div>
+
+<h1><span class="num" style="color:var(--text-dim)">#11</span> Container With Most Water
+<span class="pill M">Medium</span><span class="badge b75" title="Blind 75">★75</span><span class="badge nc" title="NeetCode 150">★NC</span><a class="lc-icon" href="https://leetcode.com/problems/container-with-most-water/" target="_blank" rel="noopener" title="Open on LeetCode"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3l-8 8a5 5 0 000 7l2 2a5 5 0 007 0l2.5-2.5" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/><path d="M9 13h10" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/></svg>LeetCode</a></h1>
+<p><span class="chip">Meta</span><span class="chip">Amazon</span><span class="chip">Bloomberg</span><span class="chip">Google</span>  &nbsp; <label style="font-size:14px;color:var(--text-dim)"><input type="checkbox" data-id="p01-lc11"> mark solved</label></p>
+<p class="progress-note">Pattern: <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a>
+ › Subpattern 1.1: Converging · Problem 2 of 707</p>
+
+<h2>📋 The problem</h2><p>Vertical lines of given heights stand on the x-axis. Choose two of them to form a container with the x-axis; return the maximum water it can hold.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+
+<h2>🧭 How to think about it</h2>
+<p>Area between lines i and j is <code>min(h[i], h[j]) × (j − i)</code>: the shorter line is the bottleneck, the distance is the width. We want the best trade-off between <em>width</em> and <em>the shorter height</em>. Start with maximum width (both ends) and ask: which end is ever worth giving up?</p>
+
+<h2>🐢 Brute force first</h2>
+<p>Check all pairs: O(n²). For each pair compute the min-height × width. Works, but n = 10⁵ kills it.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> from the widest container, moving the <em>taller</em> pointer inward can never help — the width shrinks and the height is still capped by the same shorter line. Only moving the <strong>shorter</strong> pointer has any chance of finding a taller bottleneck. So each step discards one end <em>safely</em>, and O(n²) pairs collapse into n steps.</div>
+
+<h2>🪜 The approach, step by step</h2>
+<ol>
+<li><code>left = 0</code>, <code>right = n−1</code>, <code>best = 0</code>.</li>
+<li>Compute the current area; update <code>best</code>.</li>
+<li>Move the pointer at the <em>shorter</em> line inward (ties: either).</li>
+<li>Repeat until the pointers meet.</li>
+</ol>
+
+<h2>🎞️ Visual dry run — h = [1, 8, 6, 2, 5, 4, 8, 3, 7]</h2>
+<pre class="viz">L=0(h=1) R=8(h=7)  area=min(1,7)×8= 8   best=8    h[L]&lt;h[R] → L→1
+L=1(h=8) R=8(h=7)  area=min(8,7)×7=49   best=49   h[R]&lt;h[L] → R→7
+L=1(h=8) R=7(h=3)  area=min(8,3)×6=18   best=49   R→6
+L=1(h=8) R=6(h=8)  area=min(8,8)×5=40   best=49   tie → move either …
+…pointers close in; nothing beats 49 → answer 49</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def maxArea(height):
+    left, right = 0, len(height) - 1
+    best = 0
+    while left &lt; right:
+        h = min(height[left], height[right])   # bottleneck height
+        best = max(best, h * (right - left))   # width = distance
+        if height[left] &lt; height[right]:
+            left += 1                          # only the shorter end can improve
+        else:
+            right -= 1
+    return best</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — every step retires one index for good. <strong>Space O(1)</strong> — two indices and a best.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Exactly two lines: one area, returned directly.</li>
+<li>All equal heights: still correct — every move keeps area shrinking with width, first computation was the max.</li>
+<li>Zero heights at the ends: fine, area 0 just never wins.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Moving the taller pointer, or both — breaks the "never discard a possible winner" guarantee.</li>
+<li>Using the taller line for the area (water spills over the short one).</li>
+<li>Confusing this with Trapping Rain Water (<a href="0006-lc42-trapping-rain-water.html">#42</a>) — here only TWO lines form the container; there, every bar matters.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Return the indices, not the area — track them when best updates.</li>
+<li>Interviewer asks "why is skipping the taller one safe?" — be ready to prove it: the skipped pairs all have area ≤ current (same bottleneck, less width).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0006-lc42-trapping-rain-water.html">#42 Trapping Rain Water</a> · <a href="0011-lc881-boats-to-save-people.html">#881 Boats to Save People</a> · <a href="0007-lc167-two-sum-ii-input-array-is-sorted.html">#167 Two Sum II</a></p>
+
+
+<div class="pager"><a href="../problems/0001-lc1-two-sum.html"><span class="lbl">← Previous</span>#1 Two Sum</a><a href="../problems/0003-lc15-3sum.html" style="text-align:right"><span class="lbl">Next →</span>#15 3Sum</a></div>
+</div>
+</body>
+</html>

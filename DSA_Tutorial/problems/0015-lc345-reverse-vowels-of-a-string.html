@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#345 Reverse Vowels of a String — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0014-lc344-reverse-string.html">← #344 Reverse String</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Problem 15 / 707</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0016-lc541-reverse-string-ii.html">#541 Reverse String II →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a> › String Reversal › #345</div>
+
+<h1><span class="num" style="color:var(--text-dim)">#345</span> Reverse Vowels of a String
+<span class="pill E">Easy</span><a class="lc-icon" href="https://leetcode.com/problems/reverse-vowels-of-a-string/" target="_blank" rel="noopener" title="Open on LeetCode"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3l-8 8a5 5 0 000 7l2 2a5 5 0 007 0l2.5-2.5" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/><path d="M9 13h10" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/></svg>LeetCode</a></h1>
+<p><span class="chip"></span>  &nbsp; <label style="font-size:14px;color:var(--text-dim)"><input type="checkbox" data-id="p01-lc345"> mark solved</label></p>
+<p class="progress-note">Pattern: <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a>
+ › Subpattern 1.2: String Reversal · Problem 15 of 707</p>
+
+<h2>📋 The problem</h2><p>Reverse only the vowels of a string, leaving other characters in place.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+
+<h2>🧭 How to think about it</h2>
+<p>Reverse only the vowels, leaving every other character exactly where it is. That's the two-pointer swap from Reverse String, but each pointer first <strong>skips forward until it lands on a vowel</strong>. Only vowels ever get swapped; consonants are frozen.</p>
+
+<h2>🐢 Brute force first</h2>
+<p>Collect the vowels, reverse that list, then splice them back into their original positions: O(n) time, O(n) space. The two-pointer method does it in place.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> a left pointer walks right until it finds a vowel; a right pointer walks left until it finds a vowel; swap those two vowels, then continue. Non-vowels are stepped over and never touched.</div>
+
+<h2>🪜 The approach, step by step</h2>
+<ol>
+<li>Put the string in a list (Python strings are immutable). <code>left = 0</code>, <code>right = n−1</code>, define a vowel set.</li>
+<li>Advance <code>left</code> while <code>s[left]</code> isn't a vowel; retreat <code>right</code> while <code>s[right]</code> isn't a vowel.</li>
+<li>If <code>left &lt; right</code>, swap them, then step both inward.</li>
+</ol>
+
+<h2>🎞️ Visual dry run — s = "leetcode"</h2>
+<pre class="viz">l e e t c o d e     vowels = {e,e,o,e}
+L finds 'e'(1), R finds 'e'(7) → swap (both 'e', no visible change); L→2 R→6
+L finds 'e'(2), R finds 'o'(5) → swap e↔o → "leotcede"; L→3 R→4
+L skips t,c to 4; R at 4 → cross → stop
+Result: "leotcede"</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def reverseVowels(s):
+    vowels = set("aeiouAEIOU")
+    chars = list(s)                       # strings are immutable
+    left, right = 0, len(chars) - 1
+    while left &lt; right:
+        if chars[left] not in vowels:
+            left += 1                     # skip consonant on the left
+        elif chars[right] not in vowels:
+            right -= 1                    # skip consonant on the right
+        else:
+            chars[left], chars[right] = chars[right], chars[left]
+            left += 1; right -= 1
+    return "".join(chars)</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — each pointer crosses the string once. <strong>Space O(n)</strong> only because Python needs a mutable list; the algorithm itself is O(1) extra.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>No vowels → nothing swaps; string unchanged.</li>
+<li>Uppercase vowels — include them in the vowel set.</li>
+<li>All vowels → behaves exactly like full reversal.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Forgetting uppercase vowels.</li>
+<li>Swapping before both pointers actually sit on vowels (structure the if/elif/else so a swap only happens when both are vowels).</li>
+<li>Re-checking <code>left &lt; right</code> after skips — the loop condition handles it each iteration.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Reverse only letters, skipping punctuation (LC 917) → same skip-and-swap.</li>
+<li>Reverse consonants instead → flip the membership test.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0014-lc344-reverse-string.html">#344</a> · <a href="0434-lc125-valid-palindrome.html">#125</a> · <a href="0016-lc541-reverse-string-ii.html">#541</a></p>
+
+
+<div class="pager"><a href="../problems/0014-lc344-reverse-string.html"><span class="lbl">← Previous</span>#344 Reverse String</a><a href="../problems/0016-lc541-reverse-string-ii.html" style="text-align:right"><span class="lbl">Next →</span>#541 Reverse String II</a></div>
+</div>
+</body>
+</html>

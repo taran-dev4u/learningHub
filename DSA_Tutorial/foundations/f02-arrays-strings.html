@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>F2 · Arrays &amp; Strings: Contiguous Memory — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../foundations/f01-complexity.html">← Complexity</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Foundations</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../foundations/f03-hashing.html">Hashing →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › Foundations › Arrays &amp; Strings</div>
+<h1>F2 · Arrays &amp; Strings: Contiguous Memory</h1>
+
+<h2>The problem it solves</h2>
+<p>You need to store many items and jump straight to the i-th one. An array puts items side-by-side in memory, so the address of item i is just <code>start + i × item_size</code> — one multiplication, O(1), regardless of size.</p>
+
+<h2>Visual</h2>
+<pre class="viz">index:    0     1     2     3     4
+        ┌─────┬─────┬─────┬─────┬─────┐
+value:  │ 10  │ 20  │ 30  │ 40  │ 50  │   contiguous block
+        └─────┴─────┴─────┴─────┴─────┘
+insert 15 at index 1  →  20,30,40,50 ALL shift right → O(n)</code></pre>
+
+<h2>Cost model (Python list = dynamic array)</h2>
+<p>Access/assign O(1) · append/pop at end O(1) amortized · insert/delete anywhere else O(n) (shifting) · search unsorted O(n). Strings are immutable character arrays: same O(1) access, but every "modification" builds a new string.</p>
+
+<h2>The three core array techniques (preview of patterns)</h2>
+<ul>
+<li><strong>Two pointers</strong> — two indices moving by rules; turns many O(n²) pair-scans into O(n). (Pattern P1)</li>
+<li><strong>Sliding window</strong> — maintain a moving subarray and update its state incrementally. (Pattern P5)</li>
+<li><strong>Prefix sums</strong> — precompute running totals once, answer any range-sum in O(1). (Pattern P17)</li>
+</ul>
+<pre><code># prefix sums in 3 lines
+prefix = [0]
+for x in nums: prefix.append(prefix[-1] + x)
+# sum of nums[i..j] == prefix[j+1] - prefix[i]</code></pre>
+
+<h2>In-place modification</h2>
+<p>Many problems demand O(1) extra space. The trick is almost always the <strong>write-pointer</strong>: one pointer reads every element, another marks where the next "kept" element goes.</p>
+<pre><code>write = 0
+for read in range(len(nums)):
+    if keep(nums[read]):
+        nums[write] = nums[read]
+        write += 1          # everything before write is the answer so far</code></pre>
+
+<h2>Edge cases to always test</h2>
+<ul><li>Empty array, single element</li><li>All duplicates</li><li>Already sorted / reverse sorted</li><li>Negative numbers and zeros</li><li>k larger than len (rotation problems: use <code>k %= n</code>)</li></ul>
+
+<div class="pager"><a href="../foundations/f01-complexity.html"><span class="lbl">← Previous</span>Complexity</a><a href="../foundations/f03-hashing.html" style="text-align:right"><span class="lbl">Next →</span>Hashing</a></div>
+</div>
+</body>
+</html>

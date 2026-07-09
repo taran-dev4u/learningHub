@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>F10 · Sorting: The Algorithms &amp; When They Matter — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../foundations/f09-graphs.html">← Graphs</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Foundations</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../foundations/f11-tries-dsu.html">Tries &amp; Union-Find →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › Foundations › Sorting</div>
+<h1>F10 · Sorting: The Algorithms &amp; When They Matter</h1>
+
+<h2>What interviews actually test</h2>
+<p>You'll rarely implement sorting from scratch — you'll be asked (1) to <em>explain</em> the classic algorithms and their trade-offs, (2) to use sorting as step 1 of a greedy/intervals solution, and (3) to know <strong>quickselect</strong> and <strong>counting sort</strong> for beating O(n log n) in special cases.</p>
+
+<h2>The landscape</h2>
+<table>
+<tr><th>Algorithm</th><th>Time (avg)</th><th>Worst</th><th>Space</th><th>Stable?</th><th>One-line idea</th></tr>
+<tr><td>Bubble/Insertion</td><td>O(n²)</td><td>O(n²)</td><td>O(1)</td><td>yes</td><td>swap neighbors / insert into sorted prefix (great when nearly sorted: O(n))</td></tr>
+<tr><td>Merge sort</td><td>O(n log n)</td><td>O(n log n)</td><td>O(n)</td><td>yes</td><td>halve, sort halves, merge two sorted lists</td></tr>
+<tr><td>Quicksort</td><td>O(n log n)</td><td>O(n²)</td><td>O(log n)</td><td>no</td><td>partition around a pivot, recurse on both sides</td></tr>
+<tr><td>Heap sort</td><td>O(n log n)</td><td>O(n log n)</td><td>O(1)</td><td>no</td><td>heapify, pop n times</td></tr>
+<tr><td>Counting sort</td><td>O(n+k)</td><td>O(n+k)</td><td>O(k)</td><td>yes</td><td>count occurrences of each of k possible values</td></tr>
+<tr><td>Python's sort (Timsort)</td><td>O(n log n)</td><td>O(n log n)</td><td>O(n)</td><td>yes</td><td>merge sort + insertion-sort runs; exploits existing order</td></tr>
+</table>
+
+<h2>Merge — the step that powers everything</h2>
+<pre><code>def merge(a, b):                  # two sorted lists → one sorted list, O(n)
+    i = j = 0; out = []
+    while i < len(a) and j < len(b):
+        if a[i] <= b[j]: out.append(a[i]); i += 1
+        else:            out.append(b[j]); j += 1
+    return out + a[i:] + b[j:]    # one side has leftovers</code></pre>
+<p>This two-pointer merge reappears in "merge sorted arrays", "merge k lists" (with a heap), and counting inversions.</p>
+
+<h2>Partition &amp; quickselect — k-th element in O(n) average</h2>
+<pre><code>import random
+def quickselect(nums, k):               # k-th smallest, 0-indexed
+    pivot = random.choice(nums)
+    lo  = [x for x in nums if x < pivot]
+    eq  = [x for x in nums if x == pivot]
+    hi  = [x for x in nums if x > pivot]
+    if k < len(lo):            return quickselect(lo, k)
+    if k < len(lo) + len(eq):  return pivot
+    return quickselect(hi, k - len(lo) - len(eq))</code></pre>
+<p>Unlike quicksort, you recurse into <em>one</em> side: n + n/2 + n/4 + … = O(n) average. The answer to "k-th largest without sorting".</p>
+
+<h2>Beating n log n</h2>
+<p>Comparison sorts can't beat O(n log n) (information-theoretic bound). But if values live in a small known range — digits 0-9, letters a-z, ages 0-120 — <strong>counting sort</strong> is O(n+k). Sort Colors (3 values) is the famous special case, solvable one-pass with the Dutch National Flag three-pointer.</p>
+
+<h2>Stability — why it matters</h2>
+<p>Stable = equal keys keep their input order. Python's sort is stable, so you can sort by a secondary key first, then the primary — or just use a tuple key. Radix sort is repeated stable counting sort per digit.</p>
+
+<h2>Pitfalls</h2>
+<ul><li><code>a.sort()</code> returns <code>None</code> — don't write <code>a = a.sort()</code>.</li>
+<li>Sorting costs O(n log n) up front — check whether a heap (O(n log k)) or one pass (counting) is cheaper for the actual question.</li>
+<li>Custom comparators: prefer tuple keys; <code>functools.cmp_to_key</code> exists for genuine pairwise rules (e.g. Largest Number: compare <code>a+b</code> vs <code>b+a</code>).</li></ul>
+
+<div class="pager"><a href="../foundations/f09-graphs.html"><span class="lbl">← Previous</span>Graphs</a><a href="../foundations/f11-tries-dsu.html" style="text-align:right"><span class="lbl">Next →</span>Tries &amp; Union-Find</a></div>
+</div>
+</body>
+</html>

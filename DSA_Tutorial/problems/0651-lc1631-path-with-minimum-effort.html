@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#1631 Path With Minimum Effort — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0650-lc1584-min-cost-to-connect-all-points.html">← #1584 Min Cost to Connect All Points</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Problem 651 / 707</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0652-lc2812-find-the-safest-path-in-a-grid.html">#2812 Find the Safest Path in a Grid →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › <a href="../patterns/p24-advanced-graph.html">Advanced Graph Algorithm Patterns</a> › Dijkstra Variants on Weighted Grids › #1631</div>
+
+<h1><span class="num" style="color:var(--text-dim)">#1631</span> Path With Minimum Effort
+<span class="pill M">Medium</span><a class="lc-icon" href="https://leetcode.com/problems/path-with-minimum-effort/" target="_blank" rel="noopener" title="Open on LeetCode"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3l-8 8a5 5 0 000 7l2 2a5 5 0 007 0l2.5-2.5" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/><path d="M9 13h10" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/></svg>LeetCode</a></h1>
+<p><span class="chip">Amazon</span><span class="chip">Google</span>  &nbsp; <label style="font-size:14px;color:var(--text-dim)"><input type="checkbox" data-id="p24-lc1631"> mark solved</label></p>
+<p class="progress-note">Pattern: <a href="../patterns/p24-advanced-graph.html">Advanced Graph Algorithm Patterns</a>
+ › Subpattern 24.5: Dijkstra Variants on Weighted Grids · Problem 651 of 707</p>
+<p class="progress-note">This problem also appears under: <a href="0296-lc1631-path-with-minimum-effort.html">Graph Traversal (DFS &amp; BFS)</a> — same problem, different lens.</p>
+<h2>📋 The problem</h2><p>Find a path from corner to corner minimizing the maximum height difference along it (binary search + BFS, or Dijkstra on effort).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+
+<h2>Where this fits</h2>
+<p><strong>Dijkstra Variants on Weighted Grids</strong> — Dijkstra on weighted grids: distance metric is max-edge-on-path, min-effort, or probability product.</p>
+
+<h2>Why this pattern?</h2><ul><li>"cheapest / fastest path" with weights → Dijkstra (non-negative)</li><li>negative weights or "at most k stops" → Bellman-Ford / k-round relaxation</li><li>"minimum cost to connect all" → MST (Kruskal + DSU, or Prim)</li><li>"critical connection" whose removal disconnects → bridges (Tarjan)</li></ul>
+<h2>Pattern template to adapt</h2><p>Start from the Advanced Graph Algorithm master template and adapt the marked parts to this problem:</p><pre><code>import heapq
+# Dijkstra
+dist = {start: 0}
+h = [(0, start)]
+while h:
+    d, u = heapq.heappop(h)
+    if d &gt; dist.get(u, float('inf')):    # stale heap entry — skip
+        continue
+    for v, w in graph[u]:
+        nd = d + w
+        if nd &lt; dist.get(v, float('inf')):
+            dist[v] = nd
+            heapq.heappush(h, (nd, v))   # lazy: duplicates OK, skip stale
+
+# Bellman-Ford core: V-1 rounds of relaxing every edge
+for _ in range(V - 1):
+    for u, v, w in edges:
+        if dist[u] + w &lt; dist[v]:
+            dist[v] = dist[u] + w
+# one more improving round ⇒ negative cycle</code></pre>
+<h2>How to work on it now</h2>
+<ol>
+<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
+<li>Write the brute force first — know what you are improving.</li>
+<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
+<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+</ol>
+<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
+(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
+deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<div class="pager"><a href="../problems/0650-lc1584-min-cost-to-connect-all-points.html"><span class="lbl">← Previous</span>#1584 Min Cost to Connect All Points</a><a href="../problems/0652-lc2812-find-the-safest-path-in-a-grid.html" style="text-align:right"><span class="lbl">Next →</span>#2812 Find the Safest Path in a Grid</a></div>
+</div>
+</body>
+</html>

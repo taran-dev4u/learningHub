@@ -1,6 +1,6 @@
 # Taran's Learning Hub Content Audit
 
-Generated: 2026-06-18T18:30:25.108Z
+Generated: 2026-07-09T20:50:20.566Z
 
 ## Research References
 
@@ -30,7 +30,7 @@ Generated: 2026-06-18T18:30:25.108Z
 
 ## DSA Ultimate Index
 
-- Inventory: 29 sections, 158 subsections, 609 problems, 517 resources.
+- Inventory: 29 sections, 158 subsections, 609 problems, 518 resources.
 - Formatting focus: consistent navigation, closed resources, clean headings, and better fallback search links.
 - Duplicate subsection names to review: none found by title.
 - Weak/generic subsection names to review: none found by heuristic.
@@ -77,7 +77,7 @@ Sections:
 - Weak/generic subsection names to review: none found by heuristic.
 - Coverage source: roadmap.sh System Design + System Design Primer + GeeksforGeeks System Design Tutorial.
 - Reorganized coverage areas: Capacity estimation, HLD vs LLD boundaries, Functional and non-functional requirements, UML and HLD diagrams, CDNs and edge caching, Proxies and API gateways, Testing and CI/CD, Cost estimation, Search systems, Observability and SLOs, Threat modeling.
-- Recommended next resources: roadmap.sh System Design, System Design Primer, GeeksforGeeks System Design Tutorial, Google SRE Book.
+- Recommended next resources: Local System Design Tutorial Hub, roadmap.sh System Design, System Design Primer, GeeksforGeeks System Design Tutorial, Google SRE Book.
 - Uploaded/source extracts added to page: GeeksforGeeks topic map, DesignGurus direct lesson links, Thita HLD outline, and Thita LLD outline.
 - GFG priority gaps: HLD vs LLD distinction and when to switch levels, Functional vs non-functional requirement checklist, System life cycle / SDLC and requirements gathering, HLD diagrams, activity diagrams, and UML diagram practice, LLD foundations: OOP, OOAD, interfaces, SOLID, DRY, KISS, YAGNI, Testing and delivery: unit, integration, load, stress, CI/CD, Cost estimation and cost-vs-performance trade-offs, Backup and disaster recovery planning, Ticket booking / BookMyShow and Messenger-style design prompts.
 - GFG direct topic links included: 115.

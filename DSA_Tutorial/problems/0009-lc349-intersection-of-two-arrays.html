@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#349 Intersection of Two Arrays — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0008-lc259-3sum-smaller.html">← #259 3Sum Smaller</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Problem 9 / 707</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0010-lc611-valid-triangle-number.html">#611 Valid Triangle Number →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a> › Converging › #349</div>
+
+<h1><span class="num" style="color:var(--text-dim)">#349</span> Intersection of Two Arrays
+<span class="pill E">Easy</span><a class="lc-icon" href="https://leetcode.com/problems/intersection-of-two-arrays/" target="_blank" rel="noopener" title="Open on LeetCode"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3l-8 8a5 5 0 000 7l2 2a5 5 0 007 0l2.5-2.5" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/><path d="M9 13h10" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/></svg>LeetCode</a></h1>
+<p><span class="chip"></span>  &nbsp; <label style="font-size:14px;color:var(--text-dim)"><input type="checkbox" data-id="p01-lc349"> mark solved</label></p>
+<p class="progress-note">Pattern: <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a>
+ › Subpattern 1.1: Converging · Problem 9 of 707</p>
+
+<h2>📋 The problem</h2><p>Return the unique values common to two arrays.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+
+<h2>🧭 How to think about it</h2>
+<p>Return the <em>unique</em> values that appear in both arrays. The one-line answer is <code>set(a) &amp; set(b)</code>. But the two-pointer version is worth knowing: sort both arrays, then walk a pointer through each — when they point at equal values, that's a shared element; otherwise advance whichever points at the smaller value, because it can never catch up.</p>
+
+<h2>🐢 Brute force first</h2>
+<p>For each element of <code>a</code>, scan all of <code>b</code>: O(n·m), plus a set to dedupe. Sets alone give O(n+m). The two-pointer method gives O(n log n + m log m) and shines when the inputs are already sorted or memory is tight.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> on two sorted arrays, matching values line up. Equal → record and step both past duplicates. Unequal → the smaller value has no partner ahead of it, so step it forward.</div>
+
+<h2>🪜 The approach, step by step</h2>
+<ol>
+<li>Sort both arrays.</li>
+<li><code>i = j = 0</code>. While both in range: compare <code>a[i]</code>, <code>b[j]</code>.</li>
+<li>Equal → append (if not just appended), advance both.</li>
+<li><code>a[i] &lt; b[j]</code> → <code>i += 1</code>; else <code>j += 1</code>.</li>
+</ol>
+
+<h2>🎞️ Visual dry run — a = [4,9,5], b = [9,4,9,8,4] → sorted a=[4,5,9] b=[4,4,8,9,9]</h2>
+<pre class="viz">i=0(4) j=0(4)  equal → out=[4]; i→1, j→1
+i=1(5) j=1(4)  5&gt;4 → j→2
+i=1(5) j=2(8)  5&lt;8 → i→2
+i=2(9) j=2(8)  9&gt;8 → j→3
+i=2(9) j=3(9)  equal → out=[4,9]; i→3 (end)
+Result: [4, 9]</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def intersection(nums1, nums2):
+    nums1.sort(); nums2.sort()
+    i = j = 0
+    res = []
+    while i &lt; len(nums1) and j &lt; len(nums2):
+        if nums1[i] == nums2[j]:
+            if not res or res[-1] != nums1[i]:  # keep results unique
+                res.append(nums1[i])
+            i += 1; j += 1
+        elif nums1[i] &lt; nums2[j]:
+            i += 1                              # smaller value can't match ahead
+        else:
+            j += 1
+    return res
+
+# One-liner alternative:  return list(set(nums1) &amp; set(nums2))</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n log n + m log m)</strong> — dominated by the two sorts; the merge walk is O(n+m). <strong>Space O(1)</strong> beyond the output (the set version is O(n+m) space, O(n+m) time).</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Either array empty → empty result.</li>
+<li>Heavy duplicates → the "don't repeat the last appended" guard keeps the output unique.</li>
+<li>No overlap → one pointer runs off the end, loop stops, result empty.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Forgetting to dedupe — the result must contain each shared value once.</li>
+<li>Advancing only one pointer on a match — you'd re-report duplicates.</li>
+<li>Not sorting before the two-pointer walk — the whole method depends on order.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Keep multiplicity (Intersection II, LC 350) → append on every match, don't dedupe.</li>
+<li>One array is huge and on disk → sort + stream the two-pointer merge.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0007-lc167-two-sum-ii-input-array-is-sorted.html">#167</a> · <a href="0012-lc977-squares-of-a-sorted-array.html">#977</a> · <a href="0003-lc15-3sum.html">#15</a></p>
+
+
+<div class="pager"><a href="../problems/0008-lc259-3sum-smaller.html"><span class="lbl">← Previous</span>#259 3Sum Smaller</a><a href="../problems/0010-lc611-valid-triangle-number.html" style="text-align:right"><span class="lbl">Next →</span>#611 Valid Triangle Number</a></div>
+</div>
+</body>
+</html>

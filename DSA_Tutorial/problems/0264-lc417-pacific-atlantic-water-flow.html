@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#417 Pacific Atlantic Water Flow — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0263-lc200-number-of-islands.html">← #200 Number of Islands</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Problem 264 / 707</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0265-lc547-number-of-provinces.html">#547 Number of Provinces →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › <a href="../patterns/p09-graph-traversal.html">Graph Traversal Patterns (DFS &amp; BFS)</a> › Graph DFS - Connected Components / Island Counting › #417</div>
+
+<h1><span class="num" style="color:var(--text-dim)">#417</span> Pacific Atlantic Water Flow
+<span class="pill M">Medium</span><span class="badge b75" title="Blind 75">★75</span><span class="badge nc" title="NeetCode 150">★NC</span><span class="badge g75" title="Grind 75">★G</span><a class="lc-icon" href="https://leetcode.com/problems/pacific-atlantic-water-flow/" target="_blank" rel="noopener" title="Open on LeetCode"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3l-8 8a5 5 0 000 7l2 2a5 5 0 007 0l2.5-2.5" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/><path d="M9 13h10" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/></svg>LeetCode</a></h1>
+<p><span class="chip">Amazon</span><span class="chip">Meta</span><span class="chip">Google</span>  &nbsp; <label style="font-size:14px;color:var(--text-dim)"><input type="checkbox" data-id="p09-lc417"> mark solved</label></p>
+<p class="progress-note">Pattern: <a href="../patterns/p09-graph-traversal.html">Graph Traversal Patterns (DFS &amp; BFS)</a>
+ › Subpattern 9.1: Graph DFS - Connected Components / Island Counting · Problem 264 of 707</p>
+
+<h2>📋 The problem</h2><p>In a height grid, water flows to lower-or-equal neighbors; return cells from which water can reach both the top-left (Pacific) and bottom-right (Atlantic) borders.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+
+<h2>Where this fits</h2>
+<p><strong>Graph DFS - Connected Components / Island Counting</strong> — DFS from each unvisited cell/node to count connected components or islands.</p>
+<div class="insight"><strong>💡 Key idea</strong><br>Reverse-flow: DFS from each ocean's border inland (uphill); answer = cells reached by both.</div>
+<h2>Why this pattern?</h2><ul><li>"islands", "connected", "regions", "provinces" → component DFS/BFS</li><li>"minimum steps / moves / days to reach" → BFS</li><li>"prerequisites", "build order", "course schedule" → topological sort</li><li>states-and-moves puzzles (word ladder, locks) → BFS over implicit graph</li></ul>
+<h2>Pattern template to adapt</h2><p>Start from the Graph Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>from collections import deque, defaultdict
+# BFS shortest steps
+q, seen = deque([(start, 0)]), {start}
+while q:
+    node, d = q.popleft()
+    if node == goal: return d
+    for nb in neighbors(node):
+        if nb not in seen:
+            seen.add(nb)                 # mark on ENQUEUE
+            q.append((nb, d + 1))
+
+# Topological sort (Kahn's)
+indeg = defaultdict(int)
+for u in graph:
+    for v in graph[u]: indeg[v] += 1
+q = deque([u for u in graph if indeg[u] == 0])
+order = []
+while q:
+    u = q.popleft(); order.append(u)
+    for v in graph[u]:
+        indeg[v] -= 1
+        if indeg[v] == 0: q.append(v)
+# len(order) &lt; number of nodes  ⇒  cycle exists</code></pre>
+<h2>How to work on it now</h2>
+<ol>
+<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
+<li>Write the brute force first — know what you are improving.</li>
+<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
+<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+</ol>
+<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
+(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
+deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<div class="pager"><a href="../problems/0263-lc200-number-of-islands.html"><span class="lbl">← Previous</span>#200 Number of Islands</a><a href="../problems/0265-lc547-number-of-provinces.html" style="text-align:right"><span class="lbl">Next →</span>#547 Number of Provinces</a></div>
+</div>
+</body>
+</html>

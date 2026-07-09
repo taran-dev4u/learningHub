@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#18 4Sum — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0004-lc16-3sum-closest.html">← #16 3Sum Closest</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Problem 5 / 707</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0006-lc42-trapping-rain-water.html">#42 Trapping Rain Water →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a> › Converging › #18</div>
+
+<h1><span class="num" style="color:var(--text-dim)">#18</span> 4Sum
+<span class="pill M">Medium</span><a class="lc-icon" href="https://leetcode.com/problems/4sum/" target="_blank" rel="noopener" title="Open on LeetCode"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3l-8 8a5 5 0 000 7l2 2a5 5 0 007 0l2.5-2.5" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/><path d="M9 13h10" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/></svg>LeetCode</a></h1>
+<p><span class="chip"></span>  &nbsp; <label style="font-size:14px;color:var(--text-dim)"><input type="checkbox" data-id="p01-lc18"> mark solved</label></p>
+<p class="progress-note">Pattern: <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a>
+ › Subpattern 1.1: Converging · Problem 5 of 707</p>
+
+<h2>📋 The problem</h2><p>Find all unique quadruplets in an array that sum to a given target, with no duplicate quadruplets.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+
+<h2>🧭 How to think about it</h2>
+<p>The kSum ladder: 2Sum on sorted input = converge in O(n); 3Sum = anchor × 2Sum; 4Sum = anchor × anchor × 2Sum. Every extra number is one more outer loop with the <em>same</em> duplicate-skipping discipline. If you truly own 3Sum, 4Sum is bookkeeping.</p>
+
+<h2>🐢 Brute force first</h2>
+<p>Four loops = O(n⁴). Even a hash-assisted O(n³)-pairs approach struggles with dedupe. The sorted double-anchor + converge is the clean O(n³).</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> generalize, don't specialize: <code>kSum(nums, target, k)</code> recursively fixes one anchor and calls <code>kSum(rest, target − anchor, k−1)</code> until k == 2, which converges. One function solves 2/3/4/5-Sum — this is the answer interviewers hope to see for "and now 5Sum?"</div>
+
+<h2>🪜 The approach, step by step</h2>
+<ol>
+<li>Sort.</li>
+<li>Loop anchor <code>a</code> (skip duplicates); loop anchor <code>b &gt; a</code> (skip duplicates).</li>
+<li>Converge <code>lo/hi</code> on the remainder toward <code>target − nums[a] − nums[b]</code>.</li>
+<li>On hits: record and skip duplicates on both pointers.</li>
+<li>Optional pruning per anchor level: smallest possible sum &gt; target → break; largest possible &lt; target → continue.</li>
+</ol>
+
+<h2>🎞️ Visual dry run — nums = [1, 0, −1, 0, −2, 2], target = 0 → sorted [−2, −1, 0, 0, 1, 2]</h2>
+<pre class="viz">a=−2: b=−1: need 3:  lo(0)+hi(2)=2&lt;3 →lo; 0+2=2&lt;3 →lo; 1+2=3 ✓ [−2,−1,1,2]
+      b=0 : need 2:  0+2=2 ✓ [−2,0,0,2]; skip dups; 1+? meet
+a=−1: b=0 : need 1:  0+2=2&gt;1 →hi; 0+1=1 ✓ [−1,0,0,1]
+a=0 (dup of previous 0 as first anchor? no—first 0 anchor) … no further hits
+Result: [[−2,−1,1,2], [−2,0,0,2], [−1,0,0,1]]</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def fourSum(nums, target):
+    nums.sort()
+    n, res = len(nums), []
+    for a in range(n - 3):
+        if a &gt; 0 and nums[a] == nums[a-1]:
+            continue                              # dup anchor 1
+        for b in range(a + 1, n - 2):
+            if b &gt; a + 1 and nums[b] == nums[b-1]:
+                continue                          # dup anchor 2
+            lo, hi = b + 1, n - 1
+            need = target - nums[a] - nums[b]
+            while lo &lt; hi:
+                s = nums[lo] + nums[hi]
+                if s &lt; need:
+                    lo += 1
+                elif s &gt; need:
+                    hi -= 1
+                else:
+                    res.append([nums[a], nums[b], nums[lo], nums[hi]])
+                    while lo &lt; hi and nums[lo] == nums[lo+1]: lo += 1
+                    while lo &lt; hi and nums[hi] == nums[hi-1]: hi -= 1
+                    lo += 1; hi -= 1
+    return res</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n³)</strong> — n² anchor pairs × O(n) converge. <strong>Space O(1)</strong> beyond output.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li><strong>Overflow warning for other languages:</strong> sums of four 10⁹-scale values overflow 32-bit ints; Python is safe, but say it aloud.</li>
+<li>Massive duplicate runs (<code>[2,2,2,2,2]</code>, target 8) → exactly one quadruplet.</li>
+<li>n &lt; 4 → empty.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Second anchor's dup-skip condition: must be <code>b &gt; a + 1</code>, not <code>b &gt; 0</code> — otherwise you skip legitimate quadruplets where <code>nums[b] == nums[a]</code>.</li>
+<li>Forgetting that four numbers can legally repeat values across positions — dedupe per <em>position level</em>, never globally.</li>
+<li>Rebuilding 3Sum logic inline with subtle differences instead of reusing the discipline.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>kSum generic recursion (the follow-up interviewers love).</li>
+<li>4Sum-II (count tuples from four separate arrays) — different tool: meet-in-the-middle hash of pair sums, O(n²).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0003-lc15-3sum.html">#15 3Sum</a> · <a href="0001-lc1-two-sum.html">#1 Two Sum</a> · <a href="0004-lc16-3sum-closest.html">#16 3Sum Closest</a></p>
+
+
+<div class="pager"><a href="../problems/0004-lc16-3sum-closest.html"><span class="lbl">← Previous</span>#16 3Sum Closest</a><a href="../problems/0006-lc42-trapping-rain-water.html" style="text-align:right"><span class="lbl">Next →</span>#42 Trapping Rain Water</a></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#295 Find Median from Data Stream — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0679-lc341-flatten-nested-list-iterator.html">← #341 Flatten Nested List Iterator</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Problem 680 / 707</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0681-lc346-moving-average-from-data-stream.html">#346 Moving Average from Data Stream →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › <a href="../patterns/p26-iterators.html">Iterator &amp; Data-Stream Design Patterns</a> › Streaming Statistics › #295</div>
+
+<h1><span class="num" style="color:var(--text-dim)">#295</span> Find Median from Data Stream
+<span class="pill H">Hard</span><span class="badge b75" title="Blind 75">★75</span><span class="badge nc" title="NeetCode 150">★NC</span><span class="badge g75" title="Grind 75">★G</span><a class="lc-icon" href="https://leetcode.com/problems/find-median-from-data-stream/" target="_blank" rel="noopener" title="Open on LeetCode"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3l-8 8a5 5 0 000 7l2 2a5 5 0 007 0l2.5-2.5" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/><path d="M9 13h10" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/></svg>LeetCode</a></h1>
+<p><span class="chip">Amazon</span><span class="chip">Google</span><span class="chip">Meta</span> <a class="chip" href="https://www.youtube.com/watch?v=itmhHWaHupI" target="_blank" rel="noopener">🎬 Video walkthrough</a> &nbsp; <label style="font-size:14px;color:var(--text-dim)"><input type="checkbox" data-id="p26-lc295"> mark solved</label></p>
+<p class="progress-note">Pattern: <a href="../patterns/p26-iterators.html">Iterator &amp; Data-Stream Design Patterns</a>
+ › Subpattern 26.5: Streaming Statistics · Problem 680 of 707</p>
+<p class="progress-note">This problem also appears under: <a href="0212-lc295-find-median-from-data-stream.html">Heap (Priority Queue)</a>, <a href="0480-lc295-find-median-from-data-stream.html">Design</a> — same problem, different lens.</p>
+<h2>📋 The problem</h2><p>Design a structure that accepts a stream of numbers and can return the median of everything seen so far at any time.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+
+<h2>Where this fits</h2>
+<p><strong>Streaming Statistics</strong> — Streaming statistics — moving average via deque, median via two heaps.</p>
+<div class="insight"><strong>💡 Key idea</strong><br>Two heaps: max-heap lower half, min-heap upper half, rebalanced so sizes differ ≤ 1; median from the tops.</div>
+<h2>Why this pattern?</h2><ul><li>"implement an iterator over…" (nested lists, BST, zigzag of k lists)</li><li>"peek()" on top of an existing iterator → one-element buffer</li><li>streaming: moving average, median, top-k of a live feed</li><li>can't afford to flatten/materialize (memory bound)</li></ul>
+<h2>Pattern template to adapt</h2><p>Start from the Iterator &amp; Data-Stream Design master template and adapt the marked parts to this problem:</p><pre><code># Nested-list iterator: stack of (list, index) frames
+class Flattener:
+    def __init__(self, nested):
+        self.stack = [(nested, 0)]
+    def hasNext(self):
+        while self.stack:
+            lst, i = self.stack[-1]
+            if i == len(lst):
+                self.stack.pop()                # frame exhausted
+            elif isinstance(lst[i], list):
+                self.stack[-1] = (lst, i + 1)   # consume slot,
+                self.stack.append((lst[i], 0))  # descend into it
+            else:
+                return True                     # real element on top
+        return False
+    def next(self):
+        lst, i = self.stack[-1]
+        self.stack[-1] = (lst, i + 1)
+        return lst[i]
+
+# BST iterator: stack = path of left spines → O(h) memory inorder
+# Moving average: deque(maxlen=k) + running sum</code></pre>
+<h2>How to work on it now</h2>
+<ol>
+<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
+<li>Write the brute force first — know what you are improving.</li>
+<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
+<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+</ol>
+<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
+(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
+deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<div class="pager"><a href="../problems/0679-lc341-flatten-nested-list-iterator.html"><span class="lbl">← Previous</span>#341 Flatten Nested List Iterator</a><a href="../problems/0681-lc346-moving-average-from-data-stream.html" style="text-align:right"><span class="lbl">Next →</span>#346 Moving Average from Data Stream</a></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>F6 · Recursion: Functions That Call Themselves — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../foundations/f05-stacks-queues.html">← Stacks &amp; Queues</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Foundations</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../foundations/f07-trees.html">Trees →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › Foundations › Recursion</div>
+<h1>F6 · Recursion: Functions That Call Themselves</h1>
+
+<h2>The problem it solves</h2>
+<p>Some problems are naturally "a smaller copy of themselves": a directory contains directories; a tree node's subtrees are trees; "ways to climb n stairs" depends on "ways to climb n−1 and n−2". Recursion lets the code mirror that structure.</p>
+
+<h2>The two non-negotiable parts</h2>
+<pre><code>def factorial(n):
+    if n <= 1:                 # 1. BASE CASE — where recursion stops
+        return 1
+    return n * factorial(n-1)  # 2. RECURSIVE CASE — smaller subproblem</code></pre>
+<p>No base case (or a recursive case that doesn't shrink the problem) = infinite recursion = <code>RecursionError</code>.</p>
+
+<h2>Internal working: the call stack</h2>
+<pre class="viz">factorial(3)
+│ 3 * factorial(2)
+│     │ 2 * factorial(1)
+│     │     │ return 1        ← base case hit, stack unwinds
+│     │ return 2 * 1 = 2
+│ return 3 * 2 = 6</code></pre>
+<p>Each call gets its own frame (its own local variables) on the <strong>call stack</strong>. Depth d ⇒ O(d) memory. Python caps depth (~1000); deep inputs need <code>sys.setrecursionlimit</code> or an iterative rewrite with an explicit stack.</p>
+
+<h2>The leap of faith</h2>
+<div class="insight"><strong>💡 How to write recursion without melting your brain:</strong> assume the recursive call <em>already works</em> for the smaller input, and only ask: (1) what's the smallest case I can answer directly? (2) if the sub-answer is correct, how do I combine it into my answer? Trace one small example to trust it — never mentally simulate 10 levels.</div>
+
+<h2>Recursion trees &amp; complexity</h2>
+<p><code>fib(n)</code> calling <code>fib(n-1)</code> and <code>fib(n-2)</code> makes a binary tree of calls ⇒ O(2ⁿ). Count complexity as (number of nodes in the call tree) × (work per node). The same subproblems repeat — <strong>memoization</strong> caches them:</p>
+<pre><code>from functools import lru_cache
+@lru_cache(None)
+def fib(n):
+    return n if n < 2 else fib(n-1) + fib(n-2)   # now O(n)</code></pre>
+<p>That one decorator is the bridge from recursion to <strong>dynamic programming</strong> (Pattern P12).</p>
+
+<h2>Recursion vs iteration</h2>
+<table>
+<tr><th>Prefer recursion</th><th>Prefer iteration</th></tr>
+<tr><td>trees, nested structures, backtracking, divide &amp; conquer</td><td>simple counting loops, very deep linear chains (linked lists!), hot paths</td></tr>
+</table>
+
+<h2>Pitfalls</h2>
+<ul>
+<li>Mutable default args (<code>def f(path=[])</code>) persist across calls — pass explicitly.</li>
+<li>Forgetting to <code>return</code> the recursive result (computing it and dropping it).</li>
+<li>Sharing state across branches unintentionally — in backtracking, undo (pop) after each choice.</li>
+</ul>
+
+<div class="pager"><a href="../foundations/f05-stacks-queues.html"><span class="lbl">← Previous</span>Stacks &amp; Queues</a><a href="../foundations/f07-trees.html" style="text-align:right"><span class="lbl">Next →</span>Trees</a></div>
+</div>
+</body>
+</html>

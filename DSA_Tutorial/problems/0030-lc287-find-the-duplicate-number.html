@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#287 Find the Duplicate Number — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0029-lc202-happy-number.html">← #202 Happy Number</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Problem 30 / 707</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0031-lc392-is-subsequence.html">#392 Is Subsequence →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a> › Fast and Slow › #287</div>
+
+<h1><span class="num" style="color:var(--text-dim)">#287</span> Find the Duplicate Number
+<span class="pill M">Medium</span><a class="lc-icon" href="https://leetcode.com/problems/find-the-duplicate-number/" target="_blank" rel="noopener" title="Open on LeetCode"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3l-8 8a5 5 0 000 7l2 2a5 5 0 007 0l2.5-2.5" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/><path d="M9 13h10" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/></svg>LeetCode</a></h1>
+<p><span class="chip">Amazon</span><span class="chip">Meta</span><span class="chip">Google</span>  &nbsp; <label style="font-size:14px;color:var(--text-dim)"><input type="checkbox" data-id="p01-lc287"> mark solved</label></p>
+<p class="progress-note">Pattern: <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a>
+ › Subpattern 1.4: Fast and Slow · Problem 30 of 707</p>
+<p class="progress-note">This problem also appears under: <a href="0049-lc287-find-the-duplicate-number.html">Array/Matrix Manipulation</a> — same problem, different lens.</p>
+<h2>📋 The problem</h2><p>An array of n+1 integers holds values 1..n, so one value repeats; find it without modifying the array and in O(1) space.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+
+<h2>🧭 How to think about it</h2>
+<p>An array of <code>n+1</code> numbers, each in <code>1..n</code>, has exactly one repeated value. The elegant O(1)-space trick reads the array as a <strong>linked list</strong>: from index <code>i</code>, "follow" to index <code>nums[i]</code>. Because some value repeats, two indices point to the same place — creating a cycle. Floyd's tortoise-and-hare finds the cycle's entrance, which is the duplicate.</p>
+
+<h2>🐢 Brute force first</h2>
+<p>A set of seen values is O(n) space; sorting mutates the array; both are disallowed by the "no modification, O(1) space" constraints. Cycle detection satisfies both.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> treat <code>nums[i]</code> as "next index". The duplicate value is the index that two others jump to, so the functional graph has a cycle whose <em>entry node</em> equals the duplicate. Phase 1: find a meeting point with slow/fast. Phase 2: walk one pointer from the start until they meet again — that's the entrance.</div>
+
+<h2>🪜 The approach, step by step</h2>
+<ol>
+<li><code>slow = fast = nums[0]</code>.</li>
+<li>Advance <code>slow = nums[slow]</code>, <code>fast = nums[nums[fast]]</code> until they meet.</li>
+<li>Reset <code>slow = nums[0]</code>; step both by one until they meet — the meeting value is the duplicate.</li>
+</ol>
+
+<h2>🎞️ Visual dry run — nums = [1, 3, 4, 2, 2]</h2>
+<pre class="viz">Phase 1 (find meeting):
+slow: 1 → nums[1]=3 → nums[3]=2 → nums[2]=4 ...
+fast: 1 → nums[nums[1]]=nums[3]=2 → nums[nums[2]]=nums[4]=2 → ...
+they meet at value 4 (inside the cycle)
+Phase 2 (find entrance):
+slow=nums[0]=1, other=4 → step: 3 vs 2 → 2 vs 4 → 4 vs 2 → 2 vs 2 meet at 2
+Duplicate = 2</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def findDuplicate(nums):
+    slow = fast = nums[0]
+    # Phase 1: find a point inside the cycle
+    while True:
+        slow = nums[slow]
+        fast = nums[nums[fast]]
+        if slow == fast:
+            break
+    # Phase 2: entrance of the cycle == duplicate
+    slow = nums[0]
+    while slow != fast:
+        slow = nums[slow]
+        fast = nums[fast]
+    return slow</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — both phases are linear. <strong>Space O(1)</strong> — array untouched, just indices.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>The duplicate appears more than twice → still exactly one repeated <em>value</em>, still works.</li>
+<li>Duplicate is the first or last value → the graph still has a cycle.</li>
+<li>Minimum size (n=1, array length 2) → the two equal entries meet immediately.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Starting phase 2 from the meeting point rather than <code>nums[0]</code>.</li>
+<li>Advancing <code>fast</code> by only one step in phase 2 (it must slow to one step there).</li>
+<li>Modifying the array (e.g., marking visited) when the problem forbids it.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>If modification were allowed → index-as-marker or cyclic sort (<a href="0050-lc442-find-all-duplicates-in-an-array.html">#442</a>, <a href="0051-lc448-find-all-numbers-disappeared-in-an-array.html">#448</a>).</li>
+<li>Binary search on the value range (count ≤ mid) → O(n log n), also O(1) space.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0028-lc141-linked-list-cycle.html">#141</a> · #142 · <a href="0029-lc202-happy-number.html">#202</a></p>
+
+
+<div class="pager"><a href="../problems/0029-lc202-happy-number.html"><span class="lbl">← Previous</span>#202 Happy Number</a><a href="../problems/0031-lc392-is-subsequence.html" style="text-align:right"><span class="lbl">Next →</span>#392 Is Subsequence</a></div>
+</div>
+</body>
+</html>

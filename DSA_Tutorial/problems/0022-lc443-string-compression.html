@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#443 String Compression — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0021-lc283-move-zeroes.html">← #283 Move Zeroes</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Problem 22 / 707</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0023-lc905-sort-array-by-parity.html">#905 Sort Array By Parity →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a> › In-place Array Modification › #443</div>
+
+<h1><span class="num" style="color:var(--text-dim)">#443</span> String Compression
+<span class="pill M">Medium</span><a class="lc-icon" href="https://leetcode.com/problems/string-compression/" target="_blank" rel="noopener" title="Open on LeetCode"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3l-8 8a5 5 0 000 7l2 2a5 5 0 007 0l2.5-2.5" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/><path d="M9 13h10" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/></svg>LeetCode</a></h1>
+<p><span class="chip">Meta</span><span class="chip">Amazon</span>  &nbsp; <label style="font-size:14px;color:var(--text-dim)"><input type="checkbox" data-id="p01-lc443"> mark solved</label></p>
+<p class="progress-note">Pattern: <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a>
+ › Subpattern 1.3: In-place Array Modification · Problem 22 of 707</p>
+
+<h2>📋 The problem</h2><p>Compress a char array in place: runs of a letter become the letter plus the run length (if &gt;1); return the new length.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+
+<h2>🧭 How to think about it</h2>
+<p>Compress runs of the same character in place: <code>aaab</code> becomes <code>a3b</code>. You need <strong>two pointers</strong> — a <em>read</em> pointer that counts each run, and a <em>write</em> pointer that lays down the character followed by its count's digits (only when the count is &gt; 1). The answer's length is where <code>write</code> ends up.</p>
+
+<h2>🐢 Brute force first</h2>
+<p>Building the compressed string separately is O(n) space; the problem wants in-place with O(1) extra. Because the compressed form is never longer than the input, the write pointer safely trails the read pointer.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> a run never expands — one char plus its count digits is at most as long as the run itself. So <code>write</code> can never overtake <code>read</code>. Scan each run, write the char, then write the count's digits (skip the digits when the count is 1).</div>
+
+<h2>🪜 The approach, step by step</h2>
+<ol>
+<li><code>read = 0</code>, <code>write = 0</code>.</li>
+<li>At each run start, remember the char; advance <code>read</code> while it stays the same, counting length.</li>
+<li>Write the char at <code>write</code>; if count &gt; 1, write each digit of the count.</li>
+<li>Return <code>write</code>.</li>
+</ol>
+
+<h2>🎞️ Visual dry run — chars = ['a','a','b','b','c','c','c']</h2>
+<pre class="viz">run 'a' ×2 → write 'a','2' → [a,2,...] write=2
+run 'b' ×2 → write 'b','2' → [a,2,b,2,...] write=4
+run 'c' ×3 → write 'c','3' → [a,2,b,2,c,3,...] write=6
+Return 6; first 6 = ['a','2','b','2','c','3']</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def compress(chars):
+    write = read = 0
+    n = len(chars)
+    while read &lt; n:
+        ch = chars[read]
+        count = 0
+        while read &lt; n and chars[read] == ch:   # measure the run
+            read += 1; count += 1
+        chars[write] = ch; write += 1           # write the character
+        if count &gt; 1:                            # write digits only if needed
+            for d in str(count):
+                chars[write] = d; write += 1
+    return write</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — each character read once, each output slot written once. <strong>Space O(1)</strong> — writes stay inside the array (the <code>str(count)</code> is at most a few digits).</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Run length 1 → write only the char, no digit.</li>
+<li>Counts ≥ 10 → written as multiple digit characters (e.g., "12").</li>
+<li>Single character input → returns 1.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Writing the count as a number instead of individual digit characters.</li>
+<li>Writing "1" for singleton runs.</li>
+<li>Letting <code>write</code> pass <code>read</code> (can't happen if you follow the run structure, but sloppy indexing breaks it).</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Decompress the run-length encoding → inverse two-pointer walk.</li>
+<li>Return a new string instead of in-place → simpler, O(n) space.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0017-lc26-remove-duplicates-from-sorted-array.html">#26</a> · <a href="0018-lc27-remove-element.html">#27</a> · <a href="0021-lc283-move-zeroes.html">#283</a></p>
+
+
+<div class="pager"><a href="../problems/0021-lc283-move-zeroes.html"><span class="lbl">← Previous</span>#283 Move Zeroes</a><a href="../problems/0023-lc905-sort-array-by-parity.html" style="text-align:right"><span class="lbl">Next →</span>#905 Sort Array By Parity</a></div>
+</div>
+</body>
+</html>

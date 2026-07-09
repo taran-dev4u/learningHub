@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>F1 · Big-O: How We Measure “Fast” — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../python/py-6-idioms-shortcuts.html">← Idioms &amp; Shortcuts</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Foundations</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../foundations/f02-arrays-strings.html">Arrays &amp; Strings →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › Foundations › Complexity</div>
+<h1>F1 · Big-O: How We Measure “Fast”</h1>
+
+<h2>The problem it solves</h2>
+<p>“My code works” isn't enough — will it still work when the input has a million items? Big-O is how we predict that <em>without running the code</em>: it describes how work grows as input size <code>n</code> grows, ignoring constant factors and hardware.</p>
+
+<h2>The growth ladder</h2>
+<table>
+<tr><th>Class</th><th>Name</th><th>n = 1,000,000 →</th><th>Typical source</th></tr>
+<tr><td>O(1)</td><td>constant</td><td>1 step</td><td>hash lookup, array index, push/pop</td></tr>
+<tr><td>O(log n)</td><td>logarithmic</td><td>~20 steps</td><td>binary search, balanced tree op, heap push/pop</td></tr>
+<tr><td>O(n)</td><td>linear</td><td>10⁶</td><td>one pass over the data</td></tr>
+<tr><td>O(n log n)</td><td>linearithmic</td><td>~2·10⁷</td><td>good sorting, n × heap ops</td></tr>
+<tr><td>O(n²)</td><td>quadratic</td><td>10¹² — too slow</td><td>nested loops over the same data</td></tr>
+<tr><td>O(2ⁿ)</td><td>exponential</td><td>astronomical</td><td>trying all subsets</td></tr>
+<tr><td>O(n!)</td><td>factorial</td><td>worse</td><td>trying all orderings</td></tr>
+</table>
+<div class="insight"><strong>💡 Rule of thumb:</strong> a judge runs roughly 10⁷–10⁸ simple operations per second. n ≤ 10⁶ → you need O(n) or O(n log n). n ≤ 10³ → O(n²) is fine. n ≤ 20 → exponential/backtracking is intended.</div>
+
+<h2>How to read code for its complexity</h2>
+<pre><code>for x in nums:            # n iterations
+    for y in nums:        #   × n iterations  → O(n²)
+        ...
+
+for x in nums:            # n iterations
+    heapq.heappush(h, x)  #   × O(log n)      → O(n log n)
+
+while lo < hi:            # halves the range each time → O(log n)
+    mid = (lo + hi) // 2</code></pre>
+<p>Rules: sequential blocks <strong>add</strong> (keep the biggest); nested blocks <strong>multiply</strong>; halving each step is log; drop constants (O(2n) = O(n)) and smaller terms (O(n² + n) = O(n²)).</p>
+
+<h2>Space complexity</h2>
+<p>Same idea, but for extra memory: an O(n) hash map, an O(h) recursion stack (h = tree height), O(1) for a few variables. The input itself usually doesn't count. Note: recursion always costs stack space — a DFS on a chain of n nodes is O(n) space even with no arrays.</p>
+
+<h2>Amortized time</h2>
+<p><code>list.append</code> occasionally copies the whole array to grow it (O(n) that once), but averaged over many appends it's O(1). That average-over-a-sequence cost is called <strong>amortized</strong>.</p>
+
+<h2>Pitfalls</h2>
+<ul>
+<li>Big-O is worst case unless stated. Hash ops are O(1) <em>average</em>, O(n) pathological worst.</li>
+<li>Two sequential loops are O(n), not O(n²) — nesting is what multiplies.</li>
+<li>String concat in a loop and <code>list.pop(0)</code> are hidden O(n)s inside your loop.</li>
+<li>Slicing (<code>a[i:j]</code>) copies — a "one-liner" can still be O(n).</li>
+</ul>
+
+<div class="pager"><a href="../python/py-6-idioms-shortcuts.html"><span class="lbl">← Previous</span>Idioms &amp; Shortcuts</a><a href="../foundations/f02-arrays-strings.html" style="text-align:right"><span class="lbl">Next →</span>Arrays &amp; Strings</a></div>
+</div>
+</body>
+</html>

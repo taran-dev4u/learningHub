@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PY-1 · How Python Thinks: Variables, Truthiness &amp; Loops — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../index.html">← Home</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Python Primer</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../python/py-2-builtin-functions.html">Built-in Functions →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › Python Primer › How Python Thinks</div>
+<h1>PY-1 · How Python Thinks: Variables, Truthiness &amp; Loops</h1>
+
+<p>Before any data structure, you need to know what Python is actually doing when you write a line of code. Three ideas explain 90% of beginner bugs: <strong>everything is a reference</strong>, <strong>some objects can change and some cannot</strong>, and <strong>every value is secretly True or False</strong>.</p>
+
+<h2>1. Variables are name-tags, not boxes</h2>
+<p>In Python a variable does not "contain" a value. It is a name-tag tied onto an object. Two names can point at the <em>same</em> object:</p>
+<pre><code>a = [1, 2, 3]
+b = a          # b is another name for the SAME list, not a copy
+b.append(4)
+print(a)       # [1, 2, 3, 4]  ← a changed too!</code></pre>
+<div class="warn"><strong>Classic interview bug:</strong> building a 2-D grid with <code>grid = [[0]*3]*3</code>. All three rows are the <em>same</em> list, so writing <code>grid[0][0]=1</code> changes every row. Correct: <code>grid = [[0]*3 for _ in range(3)]</code>.</div>
+<p>To copy a list: <code>b = a[:]</code> or <code>b = list(a)</code> (shallow) or <code>copy.deepcopy(a)</code> (nested structures).</p>
+
+<h2>2. Mutable vs immutable</h2>
+<table><tr><th>Immutable (cannot change)</th><th>Mutable (can change in place)</th></tr>
+<tr><td><code>int, float, str, tuple, frozenset, bool</code></td><td><code>list, dict, set, deque, custom objects</code></td></tr></table>
+<p>Why it matters: only <strong>immutable</strong> things can be dictionary keys or set members (they must have a stable hash). Strings being immutable means <code>s += ch</code> in a loop copies the whole string every time — O(n²) total. Build a list and <code>''.join()</code> it instead.</p>
+
+<h2>3. Truthiness — the hidden if</h2>
+<p>Every value converts to True/False. These are False: <code>0, 0.0, "", [], {{}}, set(), None, False</code>. Everything else is True. That's why Pythonic code says:</p>
+<pre><code>if not stack:          # stack is empty
+if node:               # node is not None
+while queue:           # keep going until queue is empty</code></pre>
+<div class="warn"><code>if not x</code> is True for BOTH <code>x = None</code> and <code>x = 0</code>. When 0 is a legal value (e.g. index or count), test explicitly: <code>if x is None</code>.</div>
+
+<h2>4. Loop idioms you will use constantly</h2>
+<pre><code>for i in range(n):            # 0, 1, ..., n-1
+for i in range(n-1, -1, -1):  # n-1, ..., 1, 0  (backwards)
+for i, v in enumerate(nums):  # index AND value together
+for a, b in zip(xs, ys):      # walk two lists in lockstep
+for k, v in d.items():        # dict keys and values
+
+# swap without a temp variable — used in every two-pointer problem
+nums[i], nums[j] = nums[j], nums[i]
+
+# multiple assignment — used in Fibonacci/DP all the time
+prev, curr = curr, prev + curr</code></pre>
+
+<h2>5. Integer behavior (no overflow!)</h2>
+<p>Python ints grow without limit — no 32-bit overflow like Java/C++. Interviewers may still ask about overflow; know that <code>2**31 - 1</code> is the classic INT_MAX. Division: <code>7 / 2 == 3.5</code> (true division), <code>7 // 2 == 3</code> (floor), <code>7 % 2 == 1</code> (modulo). Careful: <code>-7 // 2 == -4</code> (floors toward negative infinity, not toward zero). <code>divmod(7, 2)</code> returns <code>(3, 1)</code>.</p>
+
+<h2>6. Comparison chaining &amp; conditional expression</h2>
+<pre><code>if 0 <= i < n:                 # bounds check in one shot
+best = a if a > b else b       # ternary
+x = y or default               # y if y is truthy, else default</code></pre>
+
+<div class="tip"><strong>Self-check:</strong> Why does <code>a = b = []</code> then <code>a.append(1)</code> make <code>b == [1]</code>? (Answer: both names tag the same list object.)</div>
+
+<div class="pager"><a href="../index.html"><span class="lbl">← Previous</span>Home</a><a href="../python/py-2-builtin-functions.html" style="text-align:right"><span class="lbl">Next →</span>Built-in Functions</a></div>
+</div>
+</body>
+</html>

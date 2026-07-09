@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trie / Prefix Tree Patterns — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0569-lc1071-greatest-common-divisor-of-strings.html">← #1071 Greatest Common Divisor of Strings</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Pattern 20 of 29</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0570-lc208-implement-trie-prefix-tree.html">#208 Implement Trie (Prefix Tree) →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › Patterns › Trie / Prefix Tree Patterns</div>
+<h1>🧩 Trie / Prefix Tree Patterns</h1><p class="progress-note">5 subpatterns · 17 problems · <span data-count-of="p20-"></span></p>
+<h2>1. Intuition — the mental model</h2><p>When one word is the query, a set suffices. When a <em>set of words</em> must be matched against prefixes, wildcards, or a letter grid, the trie shines: words sharing a prefix share a path, so a single walk simultaneously checks every word with that prefix — and a dead branch prunes all of them at once.</p>
+<div class="insight"><strong>💡 The “aha” insight</strong><br>In grid word-search, walk the trie WHILE you DFS the board: the moment the current path isn't a trie prefix, abandon the entire branch. Thousands of candidate words are eliminated in one comparison — that's Word Search II's whole trick.</div>
+<h2>2. Recognition signals</h2><p>Think of this pattern when the problem says:</p><ul><li>"startsWith", autocomplete, longest common prefix over many strings</li><li>wildcard search ('.' matches anything) → branch at the dot</li><li>find many words in a letter grid simultaneously</li><li>XOR maximization → binary trie over bits</li><li>"replace words with shortest root"</li></ul>
+<h2>3. Master template</h2><pre><code>class TrieNode:
+    __slots__ = ('kids', 'end')
+    def __init__(self):
+        self.kids = {}                 # char → TrieNode
+        self.end = False               # a word ends here
+
+root = TrieNode()
+def insert(word):                      # O(len)
+    node = root
+    for ch in word:
+        node = node.kids.setdefault(ch, TrieNode())
+    node.end = True
+
+def search(word, node=None, i=0):      # supports '.' wildcard
+    node = node or root
+    for j in range(i, len(word)):
+        ch = word[j]
+        if ch == '.':
+            return any(search(word, kid, j+1) for kid in node.kids.values())
+        if ch not in node.kids: return False
+        node = node.kids[ch]
+    return node.end</code></pre>
+<p>Store the full word on end-nodes in grid problems (no path reconstruction), and prune: delete leaf nodes after a word is found to shrink future searches.</p>
+<h2>4. Complexity of the template</h2><p>Insert/search O(L) per word — independent of dictionary size (a set can't say that for prefixes). Space O(total characters) worst case; shared prefixes compress it.</p>
+<h2>5. Common mistakes</h2><ul><li>Marking end-of-word implicitly (leaf = word) — "car" inside "cart" needs an explicit flag.</li><li>Wildcard search iteratively — the branching needs recursion.</li><li>Grid search: checking word membership per path instead of walking the trie alongside.</li><li>Not unmarking grid cells on backtrack (the usual backtracking sin).</li></ul>
+<h2>6. Subpatterns &amp; problems</h2>
+<h3>20.1 — Trie Core (Insert/Search)</h3><p class="progress-note">Children dict/array + isEnd flag; insert and search in O(L).</p><ul class="plist"><li><input type="checkbox" data-id="p20-lc208" title="mark solved"><span class="num">#208</span><span class="pill M">M</span><a href="../problems/0570-lc208-implement-trie-prefix-tree.html">Implement Trie (Prefix Tree)</a><span class="badge b75" title="Blind 75">★75</span><span class="badge nc" title="NeetCode 150">★NC</span><span class="badge g75" title="Grind 75">★G</span></li><li><input type="checkbox" data-id="p20-lc677" title="mark solved"><span class="num">#677</span><span class="pill M">M</span><a href="../problems/0571-lc677-map-sum-pairs.html">Map Sum Pairs</a></li><li><input type="checkbox" data-id="p20-lc1804" title="mark solved"><span class="num">#1804</span><span class="pill M">M</span><a href="../problems/0572-lc1804-implement-trie-ii-prefix-tree.html">Implement Trie II (Prefix Tree)</a></li></ul>
+<h3>20.2 — Trie with Wildcards</h3><p class="progress-note">Extend search to handle '.' or '*' wildcards via DFS branching.</p><ul class="plist"><li><input type="checkbox" data-id="p20-lc211" title="mark solved"><span class="num">#211</span><span class="pill M">M</span><a href="../problems/0573-lc211-design-add-and-search-words-data-structure.html">Design Add and Search Words Data Structure</a><span class="badge b75" title="Blind 75">★75</span><span class="badge nc" title="NeetCode 150">★NC</span></li></ul>
+<h3>20.3 — Trie + DFS on Grid / Strings</h3><p class="progress-note">Build a Trie of words; DFS the grid and walk the Trie in parallel.</p><ul class="plist"><li><input type="checkbox" data-id="p20-lc140" title="mark solved"><span class="num">#140</span><span class="pill H">H</span><a href="../problems/0574-lc140-word-break-ii.html">Word Break II</a></li><li><input type="checkbox" data-id="p20-lc212" title="mark solved"><span class="num">#212</span><span class="pill H">H</span><a href="../problems/0575-lc212-word-search-ii.html">Word Search II</a></li></ul>
+<h3>20.4 — Streaming / Autocomplete / Suffix Trie</h3><p class="progress-note">Insert/remove on demand and answer streaming queries (suffix matching, autocomplete).</p><ul class="plist"><li><input type="checkbox" data-id="p20-lc336" title="mark solved"><span class="num">#336</span><span class="pill H">H</span><a href="../problems/0576-lc336-palindrome-pairs.html">Palindrome Pairs</a></li><li><input type="checkbox" data-id="p20-lc472" title="mark solved"><span class="num">#472</span><span class="pill H">H</span><a href="../problems/0577-lc472-concatenated-words.html">Concatenated Words</a></li><li><input type="checkbox" data-id="p20-lc642" title="mark solved"><span class="num">#642</span><span class="pill H">H</span><a href="../problems/0578-lc642-design-search-autocomplete-system.html">Design Search Autocomplete System</a></li><li><input type="checkbox" data-id="p20-lc648" title="mark solved"><span class="num">#648</span><span class="pill M">M</span><a href="../problems/0579-lc648-replace-words.html">Replace Words</a></li><li><input type="checkbox" data-id="p20-lc1032" title="mark solved"><span class="num">#1032</span><span class="pill H">H</span><a href="../problems/0580-lc1032-stream-of-characters.html">Stream of Characters</a></li><li><input type="checkbox" data-id="p20-lc1233" title="mark solved"><span class="num">#1233</span><span class="pill M">M</span><a href="../problems/0581-lc1233-remove-sub-folders-from-the-filesystem.html">Remove Sub-Folders from the Filesystem</a></li><li><input type="checkbox" data-id="p20-lc2185" title="mark solved"><span class="num">#2185</span><span class="pill E">E</span><a href="../problems/0582-lc2185-counting-words-with-a-given-prefix.html">Counting Words With a Given Prefix</a></li><li><input type="checkbox" data-id="p20-lc2416" title="mark solved"><span class="num">#2416</span><span class="pill H">H</span><a href="../problems/0583-lc2416-sum-of-prefix-scores-of-strings.html">Sum of Prefix Scores of Strings</a></li><li><input type="checkbox" data-id="p20-lc2707" title="mark solved"><span class="num">#2707</span><span class="pill M">M</span><a href="../problems/0584-lc2707-extra-characters-in-a-string.html">Extra Characters in a String</a></li></ul>
+<h3>20.5 — XOR Trie / Binary Trie</h3><p class="progress-note">Binary Trie where each node has children 0/1; query the bit-by-bit complement to maximize XOR.</p><ul class="plist"><li><input type="checkbox" data-id="p20-lc421" title="mark solved"><span class="num">#421</span><span class="pill M">M</span><a href="../problems/0585-lc421-maximum-xor-of-two-numbers-in-an-array.html">Maximum XOR of Two Numbers in an Array</a></li><li><input type="checkbox" data-id="p20-lc1707" title="mark solved"><span class="num">#1707</span><span class="pill H">H</span><a href="../problems/0586-lc1707-maximum-xor-with-an-element-from-array.html">Maximum XOR With an Element From Array</a></li></ul>
+<div class="pager"><a href="../problems/0569-lc1071-greatest-common-divisor-of-strings.html"><span class="lbl">← Previous</span>#1071 Greatest Common Divisor of Strings</a><a href="../problems/0570-lc208-implement-trie-prefix-tree.html" style="text-align:right"><span class="lbl">Next →</span>#208 Implement Trie (Prefix Tree)</a></div>
+</div>
+</body>
+</html>

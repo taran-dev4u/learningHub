@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#1696 Jump Game VI — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0167-lc862-shortest-subarray-with-sum-at-least-k.html">← #862 Shortest Subarray with Sum at Least K</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Problem 168 / 707</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0169-lc438-find-all-anagrams-in-a-string.html">#438 Find All Anagrams in a String →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › <a href="../patterns/p05-sliding-window.html">Sliding Window Patterns</a> › Monotonic Queue for Max/Min › #1696</div>
+
+<h1><span class="num" style="color:var(--text-dim)">#1696</span> Jump Game VI
+<span class="pill M">Medium</span><a class="lc-icon" href="https://leetcode.com/problems/jump-game-vi/" target="_blank" rel="noopener" title="Open on LeetCode"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3l-8 8a5 5 0 000 7l2 2a5 5 0 007 0l2.5-2.5" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/><path d="M9 13h10" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/></svg>LeetCode</a></h1>
+<p><span class="chip"></span>  &nbsp; <label style="font-size:14px;color:var(--text-dim)"><input type="checkbox" data-id="p05-lc1696"> mark solved</label></p>
+<p class="progress-note">Pattern: <a href="../patterns/p05-sliding-window.html">Sliding Window Patterns</a>
+ › Subpattern 5.3: Monotonic Queue for Max/Min · Problem 168 of 707</p>
+
+<h2>📋 The problem</h2><p>Jump forward up to k steps, scoring each landing value; maximize the score reaching the end (DP + sliding-window max).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+
+<h2>Where this fits</h2>
+<p><strong>Monotonic Queue for Max/Min</strong> — A deque of indices keeps candidates in monotonic order — answers 'max in window' in O(n).</p>
+
+<h2>Why this pattern?</h2><ul><li>"contiguous subarray / substring" + longest/shortest/max/min/count</li><li>fixed size k ("every window of size k")</li><li>a constraint to maintain: "at most k distinct", "no repeats", "sum ≥ target"</li><li>strings + character frequency ("anagram of", "contains all chars of")</li></ul>
+<h2>Pattern template to adapt</h2><p>Start from the Sliding Window master template and adapt the marked parts to this problem:</p><pre><code># Variable-size window (the general form)
+state = {}                              # counts / sum — whatever the constraint needs
+left = 0
+best = 0
+for right in range(len(s)):
+    add(s[right], state)                # 1) window grows
+    while invalid(state):               # 2) shrink until constraint holds again
+        remove(s[left], state)
+        left += 1
+    best = max(best, right - left + 1)  # 3) window is valid here</code></pre>
+<h2>How to work on it now</h2>
+<ol>
+<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
+<li>Write the brute force first — know what you are improving.</li>
+<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
+<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+</ol>
+<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
+(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
+deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<div class="pager"><a href="../problems/0167-lc862-shortest-subarray-with-sum-at-least-k.html"><span class="lbl">← Previous</span>#862 Shortest Subarray with Sum at Least K</a><a href="../problems/0169-lc438-find-all-anagrams-in-a-string.html" style="text-align:right"><span class="lbl">Next →</span>#438 Find All Anagrams in a String</a></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PY-4 · Strings: Every Method You Need — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../python/py-3-data-structures.html">← Core Data Structures</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Python Primer</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../python/py-5-power-modules.html">Power Modules →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › Python Primer › String Methods</div>
+<h1>PY-4 · Strings: Every Method You Need</h1>
+
+<p>Strings appear in a third of all interview problems. Two facts drive everything: strings are <strong>immutable</strong> (every "change" creates a new string) and they are <strong>sequences</strong> (everything from lists — indexing, slicing, <code>len</code>, <code>in</code>, loops — works on them).</p>
+
+<h2>1. The immutability tax</h2>
+<pre><code># BAD: O(n²) — each += copies the whole string so far
+res = ""
+for ch in parts: res += ch
+
+# GOOD: O(n) — collect then join once
+res = []
+for ch in parts: res.append(ch)
+answer = "".join(res)</code></pre>
+
+<h2>2. Method toolkit</h2>
+<table>
+<tr><th>Method</th><th>What it does</th><th>Notes</th></tr>
+<tr><td><code>s.split(sep)</code></td><td>string → list</td><td><code>s.split()</code> splits on ANY whitespace, drops empties</td></tr>
+<tr><td><code>sep.join(lst)</code></td><td>list → string</td><td>O(total length); items must be strings</td></tr>
+<tr><td><code>s.strip() / lstrip / rstrip</code></td><td>trim whitespace (or given chars)</td><td>parsing</td></tr>
+<tr><td><code>s.lower() / s.upper()</code></td><td>case change</td><td>case-insensitive compare</td></tr>
+<tr><td><code>s.replace(old, new)</code></td><td>replace all occurrences</td><td>returns new string</td></tr>
+<tr><td><code>s.find(t) / s.index(t)</code></td><td>first position of t</td><td>find returns −1, index raises</td></tr>
+<tr><td><code>s.count(t)</code></td><td>non-overlapping occurrences</td><td>O(n·m)</td></tr>
+<tr><td><code>s.startswith(t) / endswith(t)</code></td><td>prefix/suffix test</td><td>accepts tuple of options</td></tr>
+<tr><td><code>s.isdigit() / isalpha() / isalnum()</code></td><td>character-class tests</td><td>whole string must match</td></tr>
+<tr><td><code>s.zfill(w)</code></td><td>left-pad with zeros</td><td>binary addition problems</td></tr>
+</table>
+
+<h2>3. f-strings</h2>
+<pre><code>f"{name} scored {score:.2f}"     # 2 decimals
+f"{n:05d}"                        # zero-padded width 5
+f"{ratio:.1%}"                    # percentage</code></pre>
+
+<h2>4. Classic string idioms</h2>
+<pre><code>s == s[::-1]                          # palindrome check
+sorted(a) == sorted(b)                # anagram check, O(n log n)
+"".join(sorted(s))                    # canonical anagram key for grouping
+ord(c) - ord('a')                     # letter → 0..25 (frequency arrays)
+s.split() and " ".join(words[::-1])   # reverse word order
+c.isalnum()                           # skip punctuation in palindrome problems</code></pre>
+
+<h2>5. Character frequency — three ways</h2>
+<pre><code>from collections import Counter
+freq = Counter(s)                       # the usual way
+
+freq = {}                               # manual
+for c in s: freq[c] = freq.get(c, 0) + 1
+
+arr = [0] * 26                          # fastest, lowercase only
+for c in s: arr[ord(c) - ord('a')] += 1</code></pre>
+<p>The 26-length array trick makes the frequency itself hashable (<code>tuple(arr)</code>) — the key to Group Anagrams in O(n·k).</p>
+
+<div class="tip"><strong>Mental model:</strong> to "edit" a string, convert to list, edit, join back: <code>lst = list(s); lst[i] = 'x'; s = "".join(lst)</code>.</div>
+
+<div class="pager"><a href="../python/py-3-data-structures.html"><span class="lbl">← Previous</span>Core Data Structures</a><a href="../python/py-5-power-modules.html" style="text-align:right"><span class="lbl">Next →</span>Power Modules</a></div>
+</div>
+</body>
+</html>

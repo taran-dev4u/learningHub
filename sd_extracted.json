@@ -1,0 +1,656 @@
+{
+  "key": "sd",
+  "title": "System Design",
+  "file": "system_design.html",
+  "kind": "concept",
+  "label": "Systems",
+  "color": "#d84f86",
+  "storage": {
+    "done": "hub_done_sd",
+    "bookmark": "hub_bm_sd"
+  },
+  "summary": "Distributed systems, architecture patterns, reliability, security, and classic designs.",
+  "sections": [
+    {
+      "id": "section-1",
+      "title": "System Design Interview Process & Requirements",
+      "meta": "6 subsections | 28 concepts",
+      "tagline": "Start every design with clear requirements, scale, scope, diagrams, and interviewer alignment.",
+      "rows": [
+        "When. The first 10 minutes of every system design round, before drawing boxes or naming technologies.",
+        "Key idea. A strong design answer is a structured conversation: clarify, estimate, design, validate, then discuss trade-offs."
+      ],
+      "link": "system_design.html#section-1",
+      "itemCount": 28,
+      "resourceCount": 20,
+      "subsections": [
+        {
+          "title": "Requirements & Scope",
+          "description": "Functional requirements, non-functional requirements, scope control, and the HLD/LLD boundary.",
+          "itemCount": 4,
+          "resourceCount": 0
+        },
+        {
+          "title": "Capacity Estimation",
+          "description": "Back-of-the-envelope sizing for QPS, storage, bandwidth, peak traffic, and read/write ratio.",
+          "itemCount": 5,
+          "resourceCount": 0
+        },
+        {
+          "title": "Architecture Diagrams & Communication",
+          "description": "C4, UML, sequence/activity diagrams, and whiteboard layout strategy for clear interviews.",
+          "itemCount": 4,
+          "resourceCount": 0
+        },
+        {
+          "title": "5-Step Interview Framework",
+          "description": "A repeatable flow for clarifying, estimating, designing, deep-diving, and closing with trade-offs.",
+          "itemCount": 5,
+          "resourceCount": 3
+        },
+        {
+          "title": "Senior Engineer Signals",
+          "description": "The communication habits that show ownership, trade-off thinking, and operational maturity.",
+          "itemCount": 5,
+          "resourceCount": 2
+        },
+        {
+          "title": "Reference Numbers & Estimation Cheat Sheet",
+          "description": "Numbers and shortcuts to make estimation fast without pretending false precision.",
+          "itemCount": 5,
+          "resourceCount": 3
+        }
+      ]
+    },
+    {
+      "id": "section-2",
+      "title": "Core System Design Fundamentals",
+      "meta": "4 subsections | 23 concepts",
+      "tagline": "The vocabulary and trade-offs that every later topic builds on.",
+      "rows": [
+        "When. Before choosing databases, queues, caches, or cloud services.",
+        "Key idea. Most design decisions are trade-offs among latency, throughput, consistency, availability, durability, and cost."
+      ],
+      "link": "system_design.html#section-2",
+      "itemCount": 23,
+      "resourceCount": 28,
+      "subsections": [
+        {
+          "title": "Latency, Throughput & Scalability Basics",
+          "description": "Core performance terms, tail latency, vertical/horizontal scaling, and throughput trade-offs.",
+          "itemCount": 6,
+          "resourceCount": 6
+        },
+        {
+          "title": "Availability, Reliability & SLAs",
+          "description": "Reliability targets, downtime math, redundancy, and failover models.",
+          "itemCount": 6,
+          "resourceCount": 4
+        },
+        {
+          "title": "Consistency Models",
+          "description": "Strong, eventual, causal, monotonic, read-your-writes, and CRDT-based consistency.",
+          "itemCount": 6,
+          "resourceCount": 4
+        },
+        {
+          "title": "CAP & PACELC Theorems",
+          "description": "Partition trade-offs plus the latency-vs-consistency choice when the network is healthy.",
+          "itemCount": 5,
+          "resourceCount": 7
+        }
+      ]
+    },
+    {
+      "id": "section-3",
+      "title": "Networking, APIs & Traffic Management",
+      "meta": "6 subsections | 35 concepts",
+      "tagline": "How requests enter, move through, and return from distributed systems.",
+      "rows": [
+        "When. Any design with clients, APIs, load balancers, global routing, real-time updates, or public ingress.",
+        "Key idea. Good traffic design separates protocol choice, routing, load balancing, gateway policy, and overload protection."
+      ],
+      "link": "system_design.html#section-3",
+      "itemCount": 35,
+      "resourceCount": 41,
+      "subsections": [
+        {
+          "title": "HTTP, TLS & Protocol Fundamentals",
+          "description": "HTTP versions, status codes, idempotency, TLS, and transport-level behavior.",
+          "itemCount": 6,
+          "resourceCount": 6
+        },
+        {
+          "title": "API Styles: REST, GraphQL & gRPC",
+          "description": "Choosing API contracts for public clients, internal services, streaming, and schema evolution.",
+          "itemCount": 6,
+          "resourceCount": 6
+        },
+        {
+          "title": "DNS, Load Balancers & Traffic Routing",
+          "description": "DNS resolution, records, GeoDNS, L4/L7 load balancing, health checks, and routing algorithms.",
+          "itemCount": 8,
+          "resourceCount": 6
+        },
+        {
+          "title": "Proxies, API Gateways & Service Mesh",
+          "description": "Forward/reverse proxies, API gateway responsibilities, L4/L7 differences, and sidecar/service-mesh patterns.",
+          "itemCount": 4,
+          "resourceCount": 0
+        },
+        {
+          "title": "Rate Limiting Algorithms",
+          "description": "Token bucket, leaky bucket, fixed/sliding windows, and distributed rate limiting.",
+          "itemCount": 5,
+          "resourceCount": 5
+        },
+        {
+          "title": "Real-Time Communication: Polling, SSE, WebSockets & WebRTC",
+          "description": "Choosing short polling, long polling, SSE, WebSockets, or WebRTC for real-time product requirements.",
+          "itemCount": 6,
+          "resourceCount": 6
+        }
+      ]
+    },
+    {
+      "id": "section-4",
+      "title": "Data Storage, Databases & Distribution",
+      "meta": "8 subsections | 47 concepts",
+      "tagline": "How systems model, store, index, replicate, partition, and move data.",
+      "rows": [
+        "When. Once entities, access patterns, consistency needs, and data volume are clear.",
+        "Key idea. Start from access patterns and consistency needs; then pick storage, indexes, replication, and partitioning."
+      ],
+      "link": "system_design.html#section-4",
+      "itemCount": 47,
+      "resourceCount": 50,
+      "subsections": [
+        {
+          "title": "Storage Types: Block, Object & File",
+          "description": "Choosing block, object, file, blob, archive, and ephemeral storage for the workload.",
+          "itemCount": 5,
+          "resourceCount": 2
+        },
+        {
+          "title": "SQL vs NoSQL Decision Framework",
+          "description": "Choosing relational, document, key-value, wide-column, graph, time-series, or search stores.",
+          "itemCount": 7,
+          "resourceCount": 4
+        },
+        {
+          "title": "ACID, Transactions & Isolation",
+          "description": "Atomicity, consistency, isolation, durability, isolation levels, deadlocks, and two-phase commit.",
+          "itemCount": 7,
+          "resourceCount": 4
+        },
+        {
+          "title": "Indexes & Query Optimization",
+          "description": "B-trees, LSM trees, covering indexes, compound indexes, and query-plan thinking.",
+          "itemCount": 7,
+          "resourceCount": 4
+        },
+        {
+          "title": "Replication & Read Scaling",
+          "description": "Leader/follower, multi-leader, replication lag, read replicas, and failover implications.",
+          "itemCount": 6,
+          "resourceCount": 5
+        },
+        {
+          "title": "Partitioning, Sharding & Data Distribution",
+          "description": "Range/hash/directory partitioning, hot shards, rebalancing, and routing queries to shards.",
+          "itemCount": 5,
+          "resourceCount": 4
+        },
+        {
+          "title": "Consistent Hashing & Rebalancing",
+          "description": "Hash rings, virtual nodes, remapping behavior, and when consistent hashing beats modulo hashing.",
+          "itemCount": 4,
+          "resourceCount": 4
+        },
+        {
+          "title": "NoSQL Internals",
+          "description": "LSM trees, SSTables, quorum reads/writes, compaction, tombstones, and high-write data stores.",
+          "itemCount": 6,
+          "resourceCount": 6
+        }
+      ]
+    },
+    {
+      "id": "section-5",
+      "title": "Caching & Content Delivery",
+      "meta": "6 subsections | 28 concepts",
+      "tagline": "Reducing latency and load with cache layers from process memory to the edge.",
+      "rows": [
+        "When. Read-heavy systems, global content, expensive computations, hot keys, or slow origin services.",
+        "Key idea. Every cache needs a source of truth, invalidation policy, consistency story, and failure-mode plan."
+      ],
+      "link": "system_design.html#section-5",
+      "itemCount": 28,
+      "resourceCount": 29,
+      "subsections": [
+        {
+          "title": "Cache Strategies",
+          "description": "Cache-aside, read-through, write-through, write-back, refresh-ahead, and where each belongs.",
+          "itemCount": 5,
+          "resourceCount": 3
+        },
+        {
+          "title": "Cache Eviction, TTL & Invalidation",
+          "description": "LRU/LFU/FIFO, TTL choices, explicit invalidation, and stale-while-revalidate patterns.",
+          "itemCount": 4,
+          "resourceCount": 2
+        },
+        {
+          "title": "Cache Failure Modes & Pitfalls",
+          "description": "Cache stampede, penetration, avalanche, hot keys, stale data, and memory pressure.",
+          "itemCount": 6,
+          "resourceCount": 3
+        },
+        {
+          "title": "Redis & Distributed Caching",
+          "description": "Redis structures, clustering, sharding, persistence, eviction, and distributed-cache design.",
+          "itemCount": 5,
+          "resourceCount": 5
+        },
+        {
+          "title": "CDN Caching",
+          "description": "CDN PoPs, origin shields, TTL, purges, signed URLs, and static content delivery.",
+          "itemCount": 4,
+          "resourceCount": 4
+        },
+        {
+          "title": "Edge Delivery & Global Acceleration",
+          "description": "Edge caching, invalidation, static vs dynamic acceleration, and token-protected edge access.",
+          "itemCount": 4,
+          "resourceCount": 0
+        }
+      ]
+    },
+    {
+      "id": "section-6",
+      "title": "Asynchronous Messaging & Event Streaming",
+      "meta": "4 subsections | 19 concepts",
+      "tagline": "Decoupling systems with queues, logs, streams, delivery semantics, and event-driven flows.",
+      "rows": [
+        "When. Work can happen later, spikes need buffering, or services should not call each other synchronously.",
+        "Key idea. Async design trades immediate consistency for resilience, throughput, and loose coupling."
+      ],
+      "link": "system_design.html#section-6",
+      "itemCount": 19,
+      "resourceCount": 23,
+      "subsections": [
+        {
+          "title": "Message Queues vs Event Streams",
+          "description": "When to use task queues, pub/sub, append-only logs, and event streams.",
+          "itemCount": 4,
+          "resourceCount": 3
+        },
+        {
+          "title": "Kafka Architecture",
+          "description": "Topics, partitions, brokers, leaders, replicas, consumer groups, retention, and ordering.",
+          "itemCount": 5,
+          "resourceCount": 4
+        },
+        {
+          "title": "Delivery Semantics & Reliability",
+          "description": "At-most-once, at-least-once, effectively-once, idempotency, retries, and dead-letter queues.",
+          "itemCount": 5,
+          "resourceCount": 3
+        },
+        {
+          "title": "Event-Driven Architecture",
+          "description": "Event sourcing, CQRS, outbox pattern, choreography, and eventual consistency.",
+          "itemCount": 5,
+          "resourceCount": 6
+        }
+      ]
+    },
+    {
+      "id": "section-7",
+      "title": "Service Architecture Patterns",
+      "meta": "3 subsections | 17 concepts",
+      "tagline": "How applications are decomposed into services, modules, and deployable boundaries.",
+      "rows": [
+        "When. When the system grows beyond one codebase, one team, or one deployment lifecycle.",
+        "Key idea. Architecture boundaries should follow ownership, data, change rate, and failure isolation."
+      ],
+      "link": "system_design.html#section-7",
+      "itemCount": 17,
+      "resourceCount": 18,
+      "subsections": [
+        {
+          "title": "Monolith vs Microservices vs Serverless",
+          "description": "Choosing deployment and ownership boundaries based on complexity, scale, and team structure.",
+          "itemCount": 6,
+          "resourceCount": 5
+        },
+        {
+          "title": "Microservices Patterns",
+          "description": "Service discovery, API composition, saga, outbox, sidecars, and database-per-service trade-offs.",
+          "itemCount": 7,
+          "resourceCount": 4
+        },
+        {
+          "title": "Clean, Layered & Hexagonal Architecture",
+          "description": "Keeping domain logic independent from frameworks, databases, transport, and infrastructure.",
+          "itemCount": 4,
+          "resourceCount": 3
+        }
+      ]
+    },
+    {
+      "id": "section-8",
+      "title": "Reliability, Resilience & Idempotency",
+      "meta": "4 subsections | 17 concepts",
+      "tagline": "Designing systems that degrade gracefully instead of collapsing under failure.",
+      "rows": [
+        "When. Any production design with dependencies, retries, overload, high availability, or partial failure.",
+        "Key idea. Assume every dependency fails; then bound blast radius, retry safely, and preserve core user value."
+      ],
+      "link": "system_design.html#section-8",
+      "itemCount": 17,
+      "resourceCount": 18,
+      "subsections": [
+        {
+          "title": "Circuit Breakers, Bulkheads & Timeouts",
+          "description": "Preventing cascading failure with isolation, deadline propagation, and fast failure.",
+          "itemCount": 5,
+          "resourceCount": 4
+        },
+        {
+          "title": "Backpressure, Throttling & Load Protection",
+          "description": "Protecting systems from overload with rate limits, queues, adaptive throttling, and backpressure.",
+          "itemCount": 4,
+          "resourceCount": 4
+        },
+        {
+          "title": "Graceful Degradation & Load Shedding",
+          "description": "Dropping noncritical work, serving fallbacks, and preserving core flows under stress.",
+          "itemCount": 4,
+          "resourceCount": 2
+        },
+        {
+          "title": "Distributed Locking, Idempotency & Safe Retries",
+          "description": "Lease-based locks, fencing tokens, idempotency keys, deduplication, and retry correctness.",
+          "itemCount": 4,
+          "resourceCount": 3
+        }
+      ]
+    },
+    {
+      "id": "section-9",
+      "title": "Distributed Systems Coordination",
+      "meta": "3 subsections | 13 concepts",
+      "tagline": "Coordination primitives for correctness across multiple machines.",
+      "rows": [
+        "When. Leader election, consensus, distributed locks, distributed transactions, or cross-service consistency are required.",
+        "Key idea. Coordination improves correctness but costs latency, availability, and operational complexity."
+      ],
+      "link": "system_design.html#section-9",
+      "itemCount": 13,
+      "resourceCount": 16,
+      "subsections": [
+        {
+          "title": "Consensus Algorithms: Raft & Paxos",
+          "description": "Replicated logs, majorities, leader terms, safety, liveness, and why consensus is expensive.",
+          "itemCount": 5,
+          "resourceCount": 5
+        },
+        {
+          "title": "Leader Election, Heartbeats & Failure Detection",
+          "description": "Detecting failed nodes, electing leaders, leases, split brain, and heartbeat trade-offs.",
+          "itemCount": 4,
+          "resourceCount": 2
+        },
+        {
+          "title": "Distributed Transactions & Sagas",
+          "description": "2PC, sagas, compensation, outbox, and designing correctness across services.",
+          "itemCount": 4,
+          "resourceCount": 3
+        }
+      ]
+    },
+    {
+      "id": "section-10",
+      "title": "Search Systems & Discovery",
+      "meta": "1 subsections | 4 concepts",
+      "tagline": "Indexing, ranking, autocomplete, and search-serving architecture.",
+      "rows": [
+        "When. The product needs full-text search, discovery, typeahead, ranking, or geospatial lookup.",
+        "Key idea. Search is a separate read model optimized for retrieval, not a replacement for the source-of-truth database."
+      ],
+      "link": "system_design.html#section-10",
+      "itemCount": 4,
+      "resourceCount": 6,
+      "subsections": [
+        {
+          "title": "Search Indexing, Ranking & Typeahead",
+          "description": "Inverted indexes, Elasticsearch/OpenSearch, BM25, and autocomplete architecture.",
+          "itemCount": 4,
+          "resourceCount": 0
+        }
+      ]
+    },
+    {
+      "id": "section-11",
+      "title": "Observability, SLOs, Testing & Delivery",
+      "meta": "4 subsections | 18 concepts",
+      "tagline": "Knowing the system works and shipping changes without guessing.",
+      "rows": [
+        "When. After the architecture is drawn, explain how you will operate, test, deploy, and debug it.",
+        "Key idea. A design is incomplete until it has telemetry, SLOs, safe rollout, and failure-verification plans."
+      ],
+      "link": "system_design.html#section-11",
+      "itemCount": 18,
+      "resourceCount": 17,
+      "subsections": [
+        {
+          "title": "Metrics, Dashboards & Alerting",
+          "description": "Prometheus-style metrics, dashboards, alert routing, saturation, traffic, errors, and latency.",
+          "itemCount": 5,
+          "resourceCount": 2
+        },
+        {
+          "title": "Logging & Distributed Tracing",
+          "description": "Structured logs, correlation IDs, trace spans, sampling, and debugging across service boundaries.",
+          "itemCount": 5,
+          "resourceCount": 3
+        },
+        {
+          "title": "SLOs, Error Budgets & Golden Signals",
+          "description": "SLI/SLO/SLA definitions, error budgets, golden signals, and tracing-driven operation.",
+          "itemCount": 4,
+          "resourceCount": 0
+        },
+        {
+          "title": "Testing, Chaos & Safe Deployment",
+          "description": "Load, stress, soak, chaos testing, CI/CD, canary, and blue-green deployment.",
+          "itemCount": 4,
+          "resourceCount": 0
+        }
+      ]
+    },
+    {
+      "id": "section-12",
+      "title": "Security, Privacy & Threat Modeling",
+      "meta": "3 subsections | 16 concepts",
+      "tagline": "Building systems that protect users, data, APIs, and infrastructure.",
+      "rows": [
+        "When. Every design: mention auth, authorization, data boundaries, abuse cases, and sensitive operations.",
+        "Key idea. Security is a set of design constraints, not a final checklist after the architecture is done."
+      ],
+      "link": "system_design.html#section-12",
+      "itemCount": 16,
+      "resourceCount": 14,
+      "subsections": [
+        {
+          "title": "Authentication & Authorization",
+          "description": "Sessions, JWT, OAuth/OIDC, RBAC/ABAC, least privilege, and service-to-service auth.",
+          "itemCount": 6,
+          "resourceCount": 3
+        },
+        {
+          "title": "OWASP Top 10 & API Security",
+          "description": "Injection, XSS, CSRF, SSRF, insecure design, API abuse, and secure-by-default endpoints.",
+          "itemCount": 6,
+          "resourceCount": 2
+        },
+        {
+          "title": "Threat Modeling & Abuse Cases",
+          "description": "STRIDE, attack surfaces, data classification, encryption boundaries, scraping, and credential-stuffing defenses.",
+          "itemCount": 4,
+          "resourceCount": 0
+        }
+      ]
+    },
+    {
+      "id": "section-13",
+      "title": "Cost & Performance Optimization",
+      "meta": "1 subsections | 4 concepts",
+      "tagline": "Making trade-offs visible between speed, reliability, complexity, and money.",
+      "rows": [
+        "When. After the baseline design works, or when constraints include budget, egress, latency, or operational load.",
+        "Key idea. Cost is an architecture property: compute, storage, network, managed services, and scaling choices all create it."
+      ],
+      "link": "system_design.html#section-13",
+      "itemCount": 4,
+      "resourceCount": 6,
+      "subsections": [
+        {
+          "title": "Cost Estimation & Build-vs-Buy Trade-offs",
+          "description": "Compute, storage, egress, autoscaling economics, managed-service trade-offs, and cost/performance choices.",
+          "itemCount": 4,
+          "resourceCount": 0
+        }
+      ]
+    },
+    {
+      "id": "section-14",
+      "title": "Classic HLD Case Studies",
+      "meta": "3 subsections | 27 concepts",
+      "tagline": "End-to-end designs that combine the primitives above into interview-ready systems.",
+      "rows": [
+        "When. After the primitives are familiar; use these cases to practice complete designs and trade-off narration.",
+        "Key idea. Case studies are not templates to memorize; they are exercises in applying fundamentals under constraints."
+      ],
+      "link": "system_design.html#section-14",
+      "itemCount": 27,
+      "resourceCount": 24,
+      "subsections": [
+        {
+          "title": "Foundational Designs",
+          "description": "URL shortener, Pastebin, rate limiter, typeahead, and other small systems that teach core primitives.",
+          "itemCount": 6,
+          "resourceCount": 4
+        },
+        {
+          "title": "Core Interview Designs",
+          "description": "Feeds, chat, video streaming, notifications, ticket booking, maps, payments, and message queues.",
+          "itemCount": 13,
+          "resourceCount": 9
+        },
+        {
+          "title": "Advanced Senior-Level Designs",
+          "description": "Uber, Google Search, collaborative editing, stock exchange, large feeds, and distributed locks.",
+          "itemCount": 8,
+          "resourceCount": 4
+        }
+      ]
+    },
+    {
+      "id": "section-15",
+      "title": "Low-Level Design & Object-Oriented Design",
+      "meta": "6 subsections \u00b7 26 concepts",
+      "tagline": "Implementation-level design: classes, modules, interfaces, object models, UML, and design patterns.",
+      "rows": [
+        "When. After the high-level architecture is clear, or whenever the interviewer asks for object models, APIs, schemas, or machine-coding design.",
+        "Key idea. HLD explains how services collaborate; LLD explains how code units collaborate. Keep the boundary clear."
+      ],
+      "link": "system_design.html#section-15",
+      "itemCount": 26,
+      "resourceCount": 7,
+      "subsections": [
+        {
+          "title": "HLD vs LLD Boundaries",
+          "description": "Know which level of detail the interviewer is asking for.",
+          "itemCount": 4,
+          "resourceCount": 0
+        },
+        {
+          "title": "Object-Oriented Foundations",
+          "description": "The vocabulary for implementation-level design.",
+          "itemCount": 4,
+          "resourceCount": 0
+        },
+        {
+          "title": "Design Principles",
+          "description": "Rules that keep low-level designs simple and change-friendly.",
+          "itemCount": 4,
+          "resourceCount": 0
+        },
+        {
+          "title": "UML & Interaction Modeling",
+          "description": "Use diagrams to communicate object behavior, not decorate the answer.",
+          "itemCount": 4,
+          "resourceCount": 0
+        },
+        {
+          "title": "Design Patterns For LLD",
+          "description": "Use patterns as vocabulary for recurring object-design problems.",
+          "itemCount": 5,
+          "resourceCount": 0
+        },
+        {
+          "title": "Machine Coding & LLD Case Studies",
+          "description": "Practice turning requirements into maintainable code structure.",
+          "itemCount": 5,
+          "resourceCount": 0
+        }
+      ]
+    }
+  ],
+  "itemCount": 322,
+  "resourceCount": 263,
+  "progressLabel": "concepts",
+  "coverage": {
+    "title": "System Design Coverage Check",
+    "source": "roadmap.sh System Design + System Design Primer + GeeksforGeeks System Design Tutorial",
+    "auditLabel": "Reorganized coverage areas",
+    "notes": [
+      "Make trade-offs explicit: consistency, latency, cost, availability, and operability.",
+      "Use classic designs as integration practice, not memorized templates.",
+      "Add security, observability, and failure-mode reasoning to every design."
+    ],
+    "topics": [
+      "Capacity estimation",
+      "HLD vs LLD boundaries",
+      "Functional and non-functional requirements",
+      "UML and HLD diagrams",
+      "CDNs and edge caching",
+      "Proxies and API gateways",
+      "Testing and CI/CD",
+      "Cost estimation",
+      "Search systems",
+      "Observability and SLOs",
+      "Threat modeling"
+    ],
+    "resources": [
+      [
+        "roadmap.sh System Design",
+        "https://roadmap.sh/system-design"
+      ],
+      [
+        "System Design Primer",
+        "https://github.com/donnemartin/system-design-primer"
+      ],
+      [
+        "GeeksforGeeks System Design Tutorial",
+        "https://www.geeksforgeeks.org/system-design/system-design-tutorial/"
+      ],
+      [
+        "Google SRE Book",
+        "https://sre.google/sre-book/table-of-contents/"
+      ]
+    ]
+  }
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#1475 Final Prices With a Special Discount in a Shop — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0189-lc962-maximum-width-ramp.html">← #962 Maximum Width Ramp</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Problem 190 / 707</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0191-lc1673-find-the-most-competitive-subsequence.html">#1673 Find the Most Competitive Subsequence →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › <a href="../patterns/p06-stack.html">Stack Patterns</a> › Monotonic Stack › #1475</div>
+
+<h1><span class="num" style="color:var(--text-dim)">#1475</span> Final Prices With a Special Discount in a Shop
+<span class="pill E">Easy</span><a class="lc-icon" href="https://leetcode.com/problems/final-prices-with-a-special-discount-in-a-shop/" target="_blank" rel="noopener" title="Open on LeetCode"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3l-8 8a5 5 0 000 7l2 2a5 5 0 007 0l2.5-2.5" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/><path d="M9 13h10" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/></svg>LeetCode</a></h1>
+<p><span class="chip"></span>  &nbsp; <label style="font-size:14px;color:var(--text-dim)"><input type="checkbox" data-id="p06-lc1475"> mark solved</label></p>
+<p class="progress-note">Pattern: <a href="../patterns/p06-stack.html">Stack Patterns</a>
+ › Subpattern 6.2: Monotonic Stack · Problem 190 of 707</p>
+
+<h2>📋 The problem</h2><p>For each shop price, subtract the next smaller-or-equal price to its right (monotonic stack discount).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+
+<h2>Where this fits</h2>
+<p><strong>Monotonic Stack</strong> — Stack maintained in increasing or decreasing order — pops give next-greater/smaller in O(n).</p>
+
+<h2>Why this pattern?</h2><ul><li>brackets/tags to match or validate</li><li>"next greater / next warmer / previous smaller" element</li><li>histogram areas, trapped water, "can see over"</li><li>evaluate/parse an expression, decode nested strings</li></ul>
+<h2>Pattern template to adapt</h2><p>Start from the Stack master template and adapt the marked parts to this problem:</p><pre><code># Monotonic (decreasing) stack — next greater element
+stack = []                              # holds INDICES of unresolved elements
+res = [-1] * len(nums)
+for i, x in enumerate(nums):
+    while stack and nums[stack[-1]] &lt; x:   # x resolves the waiting ones
+        j = stack.pop()
+        res[j] = x                          # x is j's next greater
+    stack.append(i)
+
+# Matching
+for ch in s:
+    if ch in pairs:  stack.append(ch)
+    elif not stack or pairs[stack.pop()] != ch:
+        return False
+return not stack</code></pre>
+<h2>How to work on it now</h2>
+<ol>
+<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
+<li>Write the brute force first — know what you are improving.</li>
+<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
+<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+</ol>
+<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
+(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
+deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<div class="pager"><a href="../problems/0189-lc962-maximum-width-ramp.html"><span class="lbl">← Previous</span>#962 Maximum Width Ramp</a><a href="../problems/0191-lc1673-find-the-most-competitive-subsequence.html" style="text-align:right"><span class="lbl">Next →</span>#1673 Find the Most Competitive Subsequence</a></div>
+</div>
+</body>
+</html>

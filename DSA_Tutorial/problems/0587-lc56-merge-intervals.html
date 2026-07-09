@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#56 Merge Intervals — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../patterns/p21-intervals.html">← Intervals &amp; Line Sweep</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Problem 587 / 707</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0588-lc57-insert-interval.html">#57 Insert Interval →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › <a href="../patterns/p21-intervals.html">Intervals &amp; Line Sweep Patterns</a> › Interval Merging / Insertion › #56</div>
+
+<h1><span class="num" style="color:var(--text-dim)">#56</span> Merge Intervals
+<span class="pill M">Medium</span><span class="badge b75" title="Blind 75">★75</span><span class="badge nc" title="NeetCode 150">★NC</span><a class="lc-icon" href="https://leetcode.com/problems/merge-intervals/" target="_blank" rel="noopener" title="Open on LeetCode"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3l-8 8a5 5 0 000 7l2 2a5 5 0 007 0l2.5-2.5" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/><path d="M9 13h10" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/></svg>LeetCode</a></h1>
+<p><span class="chip">Amazon</span><span class="chip">Meta</span><span class="chip">Google</span><span class="chip">Microsoft</span><span class="chip">Bloomberg</span>  &nbsp; <label style="font-size:14px;color:var(--text-dim)"><input type="checkbox" data-id="p21-lc56"> mark solved</label></p>
+<p class="progress-note">Pattern: <a href="../patterns/p21-intervals.html">Intervals &amp; Line Sweep Patterns</a>
+ › Subpattern 21.1: Interval Merging / Insertion · Problem 587 of 707</p>
+<p class="progress-note">This problem also appears under: <a href="0331-lc56-merge-intervals.html">Greedy</a> — same problem, different lens.</p>
+<h2>📋 The problem</h2><p>Merge all overlapping intervals in a list and return the non-overlapping result.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+
+<h2>Where this fits</h2>
+<p><strong>Interval Merging / Insertion</strong> — Sort by start; merge/insert into a result list when they overlap.</p>
+<div class="insight"><strong>💡 Key idea</strong><br>Sort by start; extend the last merged block while starts overlap its end.</div>
+<h2>Why this pattern?</h2><ul><li>"merge overlapping intervals" / "insert interval"</li><li>"minimum meeting rooms / platforms / arrows"</li><li>"remove fewest to make non-overlapping" (greedy by end)</li><li>bookings, calendars, seat/resource occupancy over time</li></ul>
+<h2>Pattern template to adapt</h2><p>Start from the Intervals &amp; Line Sweep master template and adapt the marked parts to this problem:</p><pre><code># Merge intervals
+intervals.sort(key=lambda iv: iv[0])
+merged = []
+for s, e in intervals:
+    if merged and s &lt;= merged[-1][1]:            # overlaps the last block
+        merged[-1][1] = max(merged[-1][1], e)    # extend it
+    else:
+        merged.append([s, e])
+
+# Sweep line: max concurrent intervals
+events = []
+for s, e in intervals:
+    events.append((s, 1))          # interval opens
+    events.append((e, -1))         # interval closes
+events.sort()                      # ties: -1 before +1 ⇒ [1,2],[2,3] don't stack
+cur = peak = 0
+for _, delta in events:
+    cur += delta
+    peak = max(peak, cur)</code></pre>
+<h2>How to work on it now</h2>
+<ol>
+<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
+<li>Write the brute force first — know what you are improving.</li>
+<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
+<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+</ol>
+<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
+(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
+deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<div class="pager"><a href="../patterns/p21-intervals.html"><span class="lbl">← Previous</span>Intervals &amp; Line Sweep</a><a href="../problems/0588-lc57-insert-interval.html" style="text-align:right"><span class="lbl">Next →</span>#57 Insert Interval</a></div>
+</div>
+</body>
+</html>

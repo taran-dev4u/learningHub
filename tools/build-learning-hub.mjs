@@ -212,6 +212,7 @@ const coverageBySource = {
       "Threat modeling",
     ],
     resources: [
+      ["Local System Design Tutorial Hub", "System_Design_Tutorial/index.html"],
       ["roadmap.sh System Design", "https://roadmap.sh/system-design"],
       ["System Design Primer", "https://github.com/donnemartin/system-design-primer"],
       ["GeeksforGeeks System Design Tutorial", "https://www.geeksforgeeks.org/system-design/system-design-tutorial/"],
@@ -2039,6 +2040,7 @@ function systemDesignSourceExtractHtml() {
   <h2>Extracted Source Map: GFG, DesignGurus and Thita</h2>
   <p>Topic outline extracted from the provided URL and uploaded course pages. This is organized as a gap map so I can study missing pieces without copying course/article text verbatim.</p>
   <div class="source-direct-links">${linkChips(gfgSystemDesignResources)}${linkChips([
+    ["Local System Design Tutorial Hub", "System_Design_Tutorial/index.html"],
     ["DesignGurus Grokking Course", "https://www.designgurus.io/course/grokking-the-system-design-interview"],
     ["Thita System Design HLD", "https://www.thita.ai/system-design"],
     ["Thita LLD Path", "https://www.thita.ai/dashboard/learning-path/lld"],
@@ -2151,7 +2153,15 @@ function resourceLibraryHtml(source) {
   const lib = resourceLibraries[source.key];
   if (!lib) return "";
   const links = lib.links
-    .map(([title, url]) => `<a class="res-link" href="${escHtml(url)}" target="_blank" rel="noopener"><span class="res-icon">🔗</span><span class="res-title">${escHtml(title)}</span><span class="res-source">${escHtml(new URL(url).hostname.replace(/^www\./, ""))}</span></a>`)
+    .map(([title, url]) => {
+      let sourceLabel = "learning hub";
+      try {
+        sourceLabel = new URL(url).hostname.replace(/^www\./, "");
+      } catch {
+        sourceLabel = "learning hub";
+      }
+      return `<a class="res-link" href="${escHtml(url)}" target="_blank" rel="noopener"><span class="res-icon">🔗</span><span class="res-title">${escHtml(title)}</span><span class="res-source">${escHtml(sourceLabel)}</span></a>`;
+    })
     .join("");
   const drills = lib.drills
     ? `<div class="source-extract-grid"><article class="source-extract-card"><span class="source-status">Weekly drills</span><h3>Practice operating system</h3><ul>${listItems(lib.drills)}</ul></article></div>`
@@ -2427,12 +2437,18 @@ A personal static learning hub generated from the HTML sites in this folder.
 
 ${data.sources.map((s) => `- ${s.title}: ${s.itemCount} ${s.progressLabel}, ${s.sections.length} sections, ${s.resourceCount} resources`).join("\n")}
 
+## Added tutorial sub-sites
+
+- DSA Tutorial: \`DSA_Tutorial/index.html\` with 755 generated pages and 707 problem tutorials.
+- System Design Tutorial Hub: \`System_Design_Tutorial/index.html\` with 15 sections, 62 mapped topics, and 102 bundled markdown lessons.
+
 ## Current UI
 
 - \`index.html\` and \`hub.html\` show only the six page entry cards.
 - Each source page has shared cross-site navigation.
 - Resource panels start closed by default.
 - Progress and bookmarks are stored locally in the browser.
+- DSA and System Design pages link to their deeper local tutorial sub-sites.
 
 ## Local preview
 

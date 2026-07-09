@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math, Number Theory &amp; Geometry Patterns — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0549-lc381-insert-delete-getrandom-o-1-duplicates-allowed.html">← #381 Insert Delete GetRandom O(1) - Duplicates allowed</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Pattern 19 of 29</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0550-lc50-pow-x-n.html">#50 Pow(x, n) →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › Patterns › Math, Number Theory &amp; Geometry Patterns</div>
+<h1>🧩 Math, Number Theory &amp; Geometry Patterns</h1><p class="progress-note">5 subpatterns · 20 problems · <span data-count-of="p19-"></span></p>
+<h2>1. Intuition — the mental model</h2><p>These problems trade data structures for facts: gcd via Euclid, primes via sieve, modular exponentiation, digit manipulation, coordinate geometry with cross products. There's usually a short insight that makes the code tiny — the risk is not knowing the fact, so this pattern is more "learn the toolbox" than "derive on the spot".</p>
+<div class="insight"><strong>💡 The “aha” insight</strong><br>Work smarter with structure: Euclid — gcd(a,b) = gcd(b, a mod b) collapses in O(log min); the sieve marks multiples instead of testing divisibility, giving all primes ≤ n in O(n log log n); pow(a, b, m) squares its way to the answer in O(log b).</div>
+<h2>2. Recognition signals</h2><p>Think of this pattern when the problem says:</p><ul><li>divisibility, remainders, "answer modulo 10⁹+7"</li><li>counting primes/factors/trailing zeros</li><li>digit games: reverse, palindrome number, happy number</li><li>geometry: overlaps of rectangles, points on a line, areas</li><li>sequences with closed forms (sum formulas, cycle detection on digits)</li></ul>
+<h2>3. Master template</h2><pre><code>import math
+math.gcd(a, b)                      # Euclid, O(log min(a,b))
+pow(a, b, MOD)                      # fast modular exponentiation, O(log b)
+
+def sieve(n):                       # all primes ≤ n
+    is_p = [True] * (n + 1)
+    is_p[0] = is_p[1] = False
+    for i in range(2, int(n**0.5) + 1):
+        if is_p[i]:
+            for j in range(i*i, n + 1, i):   # start at i² — smaller done
+                is_p[j] = False
+    return is_p
+
+# Digits without strings
+while n: n, d = divmod(n, 10)       # d = last digit
+
+# Cross product: orientation of C vs line AB (0 = collinear)
+cross = (bx-ax)*(cy-ay) - (by-ay)*(cx-ax)</code></pre>
+<p>Rectangle overlap reads cleanest as "NOT disjoint": disjoint iff one is fully left/right/above/below the other. Slopes: never divide — compare via cross products to dodge division-by-zero and float error.</p>
+<h2>4. Complexity of the template</h2><p>Per-fact: Euclid O(log), sieve O(n log log n), fast pow O(log b). Mention overflow story: Python ints don't overflow, but mod keeps numbers small and matches other languages.</p>
+<h2>5. Common mistakes</h2><ul><li>Applying MOD only at the end — apply after every multiply/add.</li><li>Floating-point equality for geometry — integers and cross products instead.</li><li>Sieve inner loop from 2·i instead of i·i — correct but slower; and forgetting 0,1 aren't prime.</li><li>Negative mod surprises: Python's % is always non-negative, unlike C/Java — flag it.</li></ul>
+<h2>6. Subpatterns &amp; problems</h2>
+<h3>19.1 — Powers, Logs, Roots</h3><p class="progress-note">Closed-form / iterative number theory — fast power, GCD, sieve, modular inverse.</p><ul class="plist"><li><input type="checkbox" data-id="p19-lc50" title="mark solved"><span class="num">#50</span><span class="pill M">M</span><a href="../problems/0550-lc50-pow-x-n.html">Pow(x, n)</a></li><li><input type="checkbox" data-id="p19-lc69" title="mark solved"><span class="num">#69</span><span class="pill E">E</span><a href="../problems/0551-lc69-sqrt-x.html">Sqrt(x)</a></li><li><input type="checkbox" data-id="p19-lc372" title="mark solved"><span class="num">#372</span><span class="pill M">M</span><a href="../problems/0552-lc372-super-pow.html">Super Pow</a></li></ul>
+<h3>19.2 — Number Representation Conversion</h3><p class="progress-note">Convert integers to/from Roman numerals, English words, Excel column titles.</p><ul class="plist"><li><input type="checkbox" data-id="p19-lc8" title="mark solved"><span class="num">#8</span><span class="pill M">M</span><a href="../problems/0553-lc8-string-to-integer-atoi.html">String to Integer (atoi)</a></li><li><input type="checkbox" data-id="p19-lc168" title="mark solved"><span class="num">#168</span><span class="pill E">E</span><a href="../problems/0554-lc168-excel-sheet-column-title.html">Excel Sheet Column Title</a></li><li><input type="checkbox" data-id="p19-lc171" title="mark solved"><span class="num">#171</span><span class="pill E">E</span><a href="../problems/0555-lc171-excel-sheet-column-number.html">Excel Sheet Column Number</a></li></ul>
+<h3>19.3 — Primes &amp; Sieve</h3><p class="progress-note">Sieve of Eratosthenes / linear sieve for prime queries; trial division for one-off checks.</p><ul class="plist"><li><input type="checkbox" data-id="p19-lc204" title="mark solved"><span class="num">#204</span><span class="pill E">E</span><a href="../problems/0556-lc204-count-primes.html">Count Primes</a></li><li><input type="checkbox" data-id="p19-lc263" title="mark solved"><span class="num">#263</span><span class="pill E">E</span><a href="../problems/0557-lc263-ugly-number.html">Ugly Number</a><span class="badge nc" title="NeetCode 150">★NC</span></li><li><input type="checkbox" data-id="p19-lc264" title="mark solved"><span class="num">#264</span><span class="pill M">M</span><a href="../problems/0558-lc264-ugly-number-ii.html">Ugly Number II</a></li><li><input type="checkbox" data-id="p19-lc279" title="mark solved"><span class="num">#279</span><span class="pill M">M</span><a href="../problems/0559-lc279-perfect-squares.html">Perfect Squares</a></li></ul>
+<h3>19.4 — Geometry &amp; Points</h3><p class="progress-note">Cross product, dot product, distance², bounding rectangles, lattice/grid geometry.</p><ul class="plist"><li><input type="checkbox" data-id="p19-lc149" title="mark solved"><span class="num">#149</span><span class="pill H">H</span><a href="../problems/0560-lc149-max-points-on-a-line.html">Max Points on a Line</a></li><li><input type="checkbox" data-id="p19-lc223" title="mark solved"><span class="num">#223</span><span class="pill M">M</span><a href="../problems/0561-lc223-rectangle-area.html">Rectangle Area</a></li><li><input type="checkbox" data-id="p19-lc335" title="mark solved"><span class="num">#335</span><span class="pill H">H</span><a href="../problems/0562-lc335-self-crossing.html">Self Crossing</a></li><li><input type="checkbox" data-id="p19-lc836" title="mark solved"><span class="num">#836</span><span class="pill E">E</span><a href="../problems/0563-lc836-rectangle-overlap.html">Rectangle Overlap</a></li><li><input type="checkbox" data-id="p19-lc973" title="mark solved"><span class="num">#973</span><span class="pill M">M</span><a href="../problems/0564-lc973-k-closest-points-to-origin.html">K Closest Points to Origin</a></li><li><input type="checkbox" data-id="p19-lc2013" title="mark solved"><span class="num">#2013</span><span class="pill M">M</span><a href="../problems/0565-lc2013-detect-squares.html">Detect Squares</a></li></ul>
+<h3>19.5 — GCD, LCM &amp; Combinatorics</h3><p class="progress-note">Combinations C(n,k), Pascal triangle, modular nCr with Fermat's little theorem.</p><ul class="plist"><li><input type="checkbox" data-id="p19-lc62" title="mark solved"><span class="num">#62</span><span class="pill M">M</span><a href="../problems/0566-lc62-unique-paths.html">Unique Paths</a><span class="badge b75" title="Blind 75">★75</span><span class="badge nc" title="NeetCode 150">★NC</span></li><li><input type="checkbox" data-id="p19-lc118" title="mark solved"><span class="num">#118</span><span class="pill E">E</span><a href="../problems/0567-lc118-pascal-s-triangle.html">Pascal's Triangle</a></li><li><input type="checkbox" data-id="p19-lc119" title="mark solved"><span class="num">#119</span><span class="pill E">E</span><a href="../problems/0568-lc119-pascal-s-triangle-ii.html">Pascal's Triangle II</a></li><li><input type="checkbox" data-id="p19-lc1071" title="mark solved"><span class="num">#1071</span><span class="pill E">E</span><a href="../problems/0569-lc1071-greatest-common-divisor-of-strings.html">Greatest Common Divisor of Strings</a></li></ul>
+<div class="pager"><a href="../problems/0549-lc381-insert-delete-getrandom-o-1-duplicates-allowed.html"><span class="lbl">← Previous</span>#381 Insert Delete GetRandom O(1) - Duplicates allowed</a><a href="../problems/0550-lc50-pow-x-n.html" style="text-align:right"><span class="lbl">Next →</span>#50 Pow(x, n)</a></div>
+</div>
+</body>
+</html>

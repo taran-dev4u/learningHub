@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#214 Shortest Palindrome — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0701-lc5-longest-palindromic-substring.html">← #5 Longest Palindromic Substring</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Problem 702 / 707</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0703-lc686-repeated-string-match.html">#686 Repeated String Match →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › <a href="../patterns/p29-advanced-strings.html">Advanced String Algorithm Patterns</a> › Z-Algorithm / KMP Failure-Function Applications › #214</div>
+
+<h1><span class="num" style="color:var(--text-dim)">#214</span> Shortest Palindrome
+<span class="pill H">Hard</span><a class="lc-icon" href="https://leetcode.com/problems/shortest-palindrome/" target="_blank" rel="noopener" title="Open on LeetCode"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3l-8 8a5 5 0 000 7l2 2a5 5 0 007 0l2.5-2.5" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/><path d="M9 13h10" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/></svg>LeetCode</a></h1>
+<p><span class="chip"></span>  &nbsp; <label style="font-size:14px;color:var(--text-dim)"><input type="checkbox" data-id="p29-lc214"> mark solved</label></p>
+<p class="progress-note">Pattern: <a href="../patterns/p29-advanced-strings.html">Advanced String Algorithm Patterns</a>
+ › Subpattern 29.2: Z-Algorithm / KMP Failure-Function Applications · Problem 702 of 707</p>
+<p class="progress-note">This problem also appears under: <a href="0449-lc214-shortest-palindrome.html">String Manipulation</a> — same problem, different lens.</p>
+<h2>📋 The problem</h2><p>Return the shortest palindrome obtainable by adding characters in front of the given string.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+
+<h2>Where this fits</h2>
+<p><strong>Z-Algorithm / KMP Failure-Function Applications</strong> — KMP / Z-algorithm — O(n) failure function and longest-common-prefix-with-suffix arrays.</p>
+
+<h2>Why this pattern?</h2><ul><li>find/count occurrences of a pattern in a long text</li><li>"shortest palindrome by prepending", "longest prefix = suffix" → failure function</li><li>many substring-equality checks → rolling hash</li><li>"repeated substring pattern" / string periodicity</li></ul>
+<h2>Pattern template to adapt</h2><p>Start from the Advanced String Algorithm master template and adapt the marked parts to this problem:</p><pre><code># KMP failure table: fail[i] = length of longest proper prefix of
+# pat[0..i] that is also its suffix
+def build_fail(pat):
+    fail = [0] * len(pat)
+    k = 0
+    for i in range(1, len(pat)):
+        while k and pat[i] != pat[k]:
+            k = fail[k - 1]            # fall back to shorter border
+        if pat[i] == pat[k]:
+            k += 1
+        fail[i] = k
+    return fail
+
+def kmp_search(text, pat):             # O(n + m)
+    fail, k = build_fail(pat), 0
+    for i, ch in enumerate(text):
+        while k and ch != pat[k]:
+            k = fail[k - 1]
+        if ch == pat[k]:
+            k += 1
+        if k == len(pat):
+            yield i - k + 1            # match start
+            k = fail[k - 1]&lt;/code&gt;</code></pre>
+<h2>How to work on it now</h2>
+<ol>
+<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
+<li>Write the brute force first — know what you are improving.</li>
+<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
+<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+</ol>
+<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
+(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
+deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<div class="pager"><a href="../problems/0701-lc5-longest-palindromic-substring.html"><span class="lbl">← Previous</span>#5 Longest Palindromic Substring</a><a href="../problems/0703-lc686-repeated-string-match.html" style="text-align:right"><span class="lbl">Next →</span>#686 Repeated String Match</a></div>
+</div>
+</body>
+</html>

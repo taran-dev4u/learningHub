@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>F8 · Heaps: Always Know the Minimum — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../foundations/f07-trees.html">← Trees</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Foundations</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../foundations/f09-graphs.html">Graphs →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › Foundations › Heaps</div>
+<h1>F8 · Heaps: Always Know the Minimum</h1>
+
+<h2>The problem it solves</h2>
+<p>You repeatedly need the smallest (or largest) item from a changing collection. Keeping it sorted costs O(n) per insert; a <strong>heap</strong> gives insert O(log n) and pop-min O(log n), peek O(1) — by maintaining much weaker order than "sorted".</p>
+
+<h2>Internal working</h2>
+<p>A <strong>min-heap</strong> is a complete binary tree where each node ≤ its children (heap property). Only parent-child order matters — siblings are unordered. Because it's complete, it lives in a plain array with index math (no pointers): children of i are <code>2i+1, 2i+2</code>; parent is <code>(i−1)//2</code>.</p>
+<pre class="viz">array: [1, 3, 2, 7, 4]        1            push 0:  put at end, "sift up":
+                            /   \          swap with parent while smaller
+                           3     2         pop min: move last to root,
+                          / \              "sift down": swap with smaller
+                         7   4             child while bigger — O(log n) each</code></pre>
+<p><code>heapq.heapify</code> builds a heap in <strong>O(n)</strong> (bottom-up sift-down — most nodes are near the leaves and barely move; the costs sum to O(n), not O(n log n)).</p>
+
+<h2>Python API + max-heap workaround</h2>
+<pre><code>import heapq
+heapq.heappush(h, x); x = heapq.heappop(h); h[0]      # min-heap
+heapq.heappush(h, -x); biggest = -h[0]                # "max-heap"
+heapq.heappush(h, (dist, node))                       # tuple = priority + payload</code></pre>
+
+<h2>The top-k playbook (memorize)</h2>
+<div class="insight"><strong>💡 k largest → keep a MIN-heap of size k</strong> (pop the smallest whenever size &gt; k; survivors are the k largest). k smallest → max-heap of size k. Cost O(n log k) — better than sorting when k ≪ n.</div>
+<pre><code>h = []
+for x in nums:
+    heapq.heappush(h, x)
+    if len(h) > k: heapq.heappop(h)   # h now holds the k largest</code></pre>
+
+<h2>Where heaps appear</h2>
+<ul><li>Top-k / k-th largest (P7)</li><li>Merge k sorted lists (heap of current heads)</li><li>Dijkstra's shortest path (always expand the closest node)</li><li>Two heaps: median of a stream (max-heap of lower half + min-heap of upper half)</li><li>Scheduling: always take the soonest deadline / most frequent task</li></ul>
+
+<h2>Heap vs sorted vs BST</h2>
+<table>
+<tr><th></th><th>Heap</th><th>Sorted list</th><th>Balanced BST</th></tr>
+<tr><td>peek min</td><td>O(1)</td><td>O(1)</td><td>O(log n)</td></tr>
+<tr><td>insert</td><td>O(log n)</td><td>O(n)</td><td>O(log n)</td></tr>
+<tr><td>find arbitrary</td><td>O(n)</td><td>O(log n)</td><td>O(log n)</td></tr>
+</table>
+
+<h2>Pitfalls</h2>
+<ul><li>A heap array is NOT sorted — only h[0] is guaranteed.</li>
+<li>Tuple ties: <code>(priority, item)</code> crashes if priorities tie and items aren't comparable — add a counter: <code>(priority, i, item)</code>.</li>
+<li>No efficient "remove arbitrary element" — use lazy deletion (mark dead, skip when popped).</li></ul>
+
+<div class="pager"><a href="../foundations/f07-trees.html"><span class="lbl">← Previous</span>Trees</a><a href="../foundations/f09-graphs.html" style="text-align:right"><span class="lbl">Next →</span>Graphs</a></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#1248 Count Number of Nice Subarrays — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0532-lc974-subarray-sums-divisible-by-k.html">← #974 Subarray Sums Divisible by K</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Problem 533 / 707</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0534-lc303-range-sum-query-immutable.html">#303 Range Sum Query - Immutable →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › <a href="../patterns/p17-prefix-sum.html">Prefix Sum &amp; Difference Array Patterns</a> › Subarray Sum with Hashmap › #1248</div>
+
+<h1><span class="num" style="color:var(--text-dim)">#1248</span> Count Number of Nice Subarrays
+<span class="pill M">Medium</span><a class="lc-icon" href="https://leetcode.com/problems/count-number-of-nice-subarrays/" target="_blank" rel="noopener" title="Open on LeetCode"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3l-8 8a5 5 0 000 7l2 2a5 5 0 007 0l2.5-2.5" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/><path d="M9 13h10" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/></svg>LeetCode</a></h1>
+<p><span class="chip">Amazon</span><span class="chip">Google</span>  &nbsp; <label style="font-size:14px;color:var(--text-dim)"><input type="checkbox" data-id="p17-lc1248"> mark solved</label></p>
+<p class="progress-note">Pattern: <a href="../patterns/p17-prefix-sum.html">Prefix Sum &amp; Difference Array Patterns</a>
+ › Subpattern 17.1: Subarray Sum with Hashmap · Problem 533 of 707</p>
+
+<h2>📋 The problem</h2><p>Count the subarrays containing exactly k odd numbers ('nice' subarrays).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+
+<h2>Where this fits</h2>
+<p><strong>Subarray Sum with Hashmap</strong> — Hashmap of running prefix sums → count subarrays whose sum equals k, even with negatives.</p>
+
+<h2>Why this pattern?</h2><ul><li>many range-sum queries, immutable array</li><li>"number of subarrays summing to k / divisible by k"</li><li>many range UPDATES, values read once at the end → difference array</li><li>2-D block sums → 2-D prefix (inclusion-exclusion)</li></ul>
+<h2>Pattern template to adapt</h2><p>Start from the Prefix Sum &amp; Difference Array master template and adapt the marked parts to this problem:</p><pre><code># Prefix sums + hash map: count subarrays summing to k
+from collections import defaultdict
+count, cur = 0, 0
+seen = defaultdict(int)
+seen[0] = 1                      # empty prefix — subarrays starting at 0
+for x in nums:
+    cur += x
+    count += seen[cur - k]       # each earlier prefix = one subarray ending here
+    seen[cur] += 1
+
+# Difference array: m range updates in O(1) each
+diff = [0] * (n + 1)
+for l, r, val in updates:
+    diff[l] += val
+    diff[r + 1] -= val           # effect ends after r
+# final values = prefix sums of diff</code></pre>
+<h2>How to work on it now</h2>
+<ol>
+<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
+<li>Write the brute force first — know what you are improving.</li>
+<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
+<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+</ol>
+<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
+(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
+deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<div class="pager"><a href="../problems/0532-lc974-subarray-sums-divisible-by-k.html"><span class="lbl">← Previous</span>#974 Subarray Sums Divisible by K</a><a href="../problems/0534-lc303-range-sum-query-immutable.html" style="text-align:right"><span class="lbl">Next →</span>#303 Range Sum Query - Immutable</a></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#715 Range Module — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0497-lc706-design-hashmap.html">← #706 Design HashMap</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Problem 498 / 707</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0499-lc900-rle-iterator.html">#900 RLE Iterator →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › <a href="../patterns/p15-design.html">Design Patterns</a> › General / Specific Data Structure Design › #715</div>
+
+<h1><span class="num" style="color:var(--text-dim)">#715</span> Range Module
+<span class="pill H">Hard</span><a class="lc-icon" href="https://leetcode.com/problems/range-module/" target="_blank" rel="noopener" title="Open on LeetCode"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3l-8 8a5 5 0 000 7l2 2a5 5 0 007 0l2.5-2.5" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/><path d="M9 13h10" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/></svg>LeetCode</a></h1>
+<p><span class="chip"></span>  &nbsp; <label style="font-size:14px;color:var(--text-dim)"><input type="checkbox" data-id="p15-lc715"> mark solved</label></p>
+<p class="progress-note">Pattern: <a href="../patterns/p15-design.html">Design Patterns</a>
+ › Subpattern 15.1: General / Specific Data Structure Design · Problem 498 of 707</p>
+<p class="progress-note">This problem also appears under: <a href="0519-lc715-range-module.html">Segment Tree &amp; Fenwick Tree</a> — same problem, different lens.</p>
+<h2>📋 The problem</h2><p>Design a structure that adds, removes, and queries coverage of number ranges (interval set with add/remove/query).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+
+<h2>Where this fits</h2>
+<p><strong>General / Specific Data Structure Design</strong> — Compose hashmap + secondary structure (linked list, heap, set) to give each operation the right complexity.</p>
+
+<h2>Why this pattern?</h2><ul><li>"Design/implement a class with operations X, Y, Z"</li><li>explicit per-op complexity targets ("all in O(1)")</li><li>eviction rules (LRU/LFU), recency, frequency</li><li>"getRandom", "getMin", snapshots, iterators</li></ul>
+<h2>Pattern template to adapt</h2><p>Start from the Design master template and adapt the marked parts to this problem:</p><pre><code># The composition method:
+# 1. Ops:      get(k), put(k,v), evict_least_recent
+# 2. Targets:  O(1),   O(1),     O(1)
+# 3. Pick:     dict  → O(1) get/put by key
+#              DLL   → O(1) move-to-front / evict-tail
+#              glue: dict maps key → its DLL node
+
+# In Python interviews, OrderedDict is the accepted shortcut:
+from collections import OrderedDict
+class LRUCache:
+    def __init__(self, cap):
+        self.d, self.cap = OrderedDict(), cap
+    def get(self, k):
+        if k not in self.d: return -1
+        self.d.move_to_end(k)            # mark most-recent
+        return self.d[k]
+    def put(self, k, v):
+        if k in self.d: self.d.move_to_end(k)
+        self.d[k] = v
+        if len(self.d) &gt; self.cap:
+            self.d.popitem(last=False)   # evict least-recent</code></pre>
+<h2>How to work on it now</h2>
+<ol>
+<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
+<li>Write the brute force first — know what you are improving.</li>
+<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
+<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+</ol>
+<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
+(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
+deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<div class="pager"><a href="../problems/0497-lc706-design-hashmap.html"><span class="lbl">← Previous</span>#706 Design HashMap</a><a href="../problems/0499-lc900-rle-iterator.html" style="text-align:right"><span class="lbl">Next →</span>#900 RLE Iterator</a></div>
+</div>
+</body>
+</html>

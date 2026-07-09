@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Randomized Algorithm Patterns — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0694-lc1122-relative-sort-array.html">← #1122 Relative Sort Array</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Pattern 28 of 29</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0695-lc382-linked-list-random-node.html">#382 Linked List Random Node →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › Patterns › Randomized Algorithm Patterns</div>
+<h1>🧩 Randomized Algorithm Patterns</h1><p class="progress-note">4 subpatterns · 6 problems · <span data-count-of="p28-"></span></p>
+<h2>1. Intuition — the mental model</h2><p>Randomness as a tool: shuffle uniformly, sample fairly from streams of unknown length, pick proportional to weights. Each has a short provably-correct recipe — and famous plausible-looking WRONG versions. The bar is being able to state why each element ends up equally (or proportionally) likely.</p>
+<div class="insight"><strong>💡 The “aha” insight</strong><br>Reservoir sampling: keep the i-th arriving item with probability 1/i, evicting a random incumbent. Induction shows every item seen so far ends at exactly 1/i — so you can sample uniformly from a stream without knowing its length, in O(1) memory.</div>
+<h2>2. Recognition signals</h2><p>Think of this pattern when the problem says:</p><ul><li>"shuffle" / "random pick" with uniformity required</li><li>stream or linked list of unknown length + "pick one uniformly"</li><li>pick index proportional to weight → prefix sums + bisect</li><li>O(1) getRandom in a set → array + swap-delete</li><li>"random point in circle/rectangles" → geometric transforms</li></ul>
+<h2>3. Master template</h2><pre><code>import random
+# Fisher-Yates shuffle — uniform over all n! orders
+for i in range(len(a) - 1, 0, -1):
+    j = random.randint(0, i)          # j ∈ [0, i]  (inclusive!)
+    a[i], a[j] = a[j], a[i]
+
+# Reservoir sampling (k = 1) from a stream
+choice, count = None, 0
+for x in stream:
+    count += 1
+    if random.randint(1, count) == 1:   # prob 1/count
+        choice = x
+
+# Weighted random pick: prefix sums + binary search
+import bisect, itertools
+prefix = list(itertools.accumulate(weights))
+def pick():
+    r = random.uniform(0, prefix[-1])
+    return bisect.bisect_left(prefix, r)    # first prefix ≥ r&lt;/code&gt;</code></pre>
+<p>The famous wrong shuffle draws j from the WHOLE range every step — it produces nⁿ equally-likely paths that can't map evenly onto n! orders, so it's biased. Know this story; it's the interview question behind the question.</p>
+<h2>4. Complexity of the template</h2><p>Shuffle O(n)/O(1). Reservoir O(n) stream pass, O(k) memory. Weighted pick O(n) build then O(log n) per query.</p>
+<h2>5. Common mistakes</h2><ul><li><code>randint(0, len(a)-1)</code> in Fisher-Yates instead of <code>(0, i)</code> — the biased classic.</li><li>Weighted pick with bisect_right vs uniform float edge cases — trace a boundary.</li><li>Reservoir with <code>random.random() &lt; 1/count</code> float form — fine, but be able to prove it.</li><li>Testing randomness by eyeballing one run — check distributions over many runs.</li></ul>
+<h2>6. Subpatterns &amp; problems</h2>
+<h3>28.1 — Reservoir Sampling</h3><p class="progress-note">Reservoir sampling — keep one (or k) sample(s) and replace with probability k/i at step i.</p><ul class="plist"><li><input type="checkbox" data-id="p28-lc382" title="mark solved"><span class="num">#382</span><span class="pill M">M</span><a href="../problems/0695-lc382-linked-list-random-node.html">Linked List Random Node</a></li><li><input type="checkbox" data-id="p28-lc398" title="mark solved"><span class="num">#398</span><span class="pill M">M</span><a href="../problems/0696-lc398-random-pick-index.html">Random Pick Index</a></li></ul>
+<h3>28.2 — Weighted Random (Prefix Sum + Binary Search)</h3><p class="progress-note">Weighted random pick — build prefix sums of weights, then binary search a uniform random in [0, total).</p><ul class="plist"><li><input type="checkbox" data-id="p28-lc528" title="mark solved"><span class="num">#528</span><span class="pill M">M</span><a href="../problems/0697-lc528-random-pick-with-weight.html">Random Pick with Weight</a></li></ul>
+<h3>28.3 — Fisher-Yates Shuffle</h3><p class="progress-note">Fisher-Yates shuffle — swap each index with a random later index for a uniform permutation.</p><ul class="plist"><li><input type="checkbox" data-id="p28-lc384" title="mark solved"><span class="num">#384</span><span class="pill M">M</span><a href="../problems/0698-lc384-shuffle-an-array.html">Shuffle an Array</a></li></ul>
+<h3>28.4 — Random Pick with Blacklist</h3><p class="progress-note">Random pick with blacklist — map blacklisted ids in [0,k) to whitelisted ids in [k,n).</p><ul class="plist"><li><input type="checkbox" data-id="p28-lc519" title="mark solved"><span class="num">#519</span><span class="pill M">M</span><a href="../problems/0699-lc519-random-flip-matrix.html">Random Flip Matrix</a></li><li><input type="checkbox" data-id="p28-lc710" title="mark solved"><span class="num">#710</span><span class="pill H">H</span><a href="../problems/0700-lc710-random-pick-with-blacklist.html">Random Pick with Blacklist</a></li></ul>
+<div class="pager"><a href="../problems/0694-lc1122-relative-sort-array.html"><span class="lbl">← Previous</span>#1122 Relative Sort Array</a><a href="../problems/0695-lc382-linked-list-random-node.html" style="text-align:right"><span class="lbl">Next →</span>#382 Linked List Random Node</a></div>
+</div>
+</body>
+</html>

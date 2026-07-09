@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#5 Longest Palindromic Substring — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0035-lc844-backspace-string-compare.html">← #844 Backspace String Compare</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Problem 36 / 707</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0037-lc647-palindromic-substrings.html">#647 Palindromic Substrings →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a> › Expanding From Center › #5</div>
+
+<h1><span class="num" style="color:var(--text-dim)">#5</span> Longest Palindromic Substring
+<span class="pill M">Medium</span><a class="lc-icon" href="https://leetcode.com/problems/longest-palindromic-substring/" target="_blank" rel="noopener" title="Open on LeetCode"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3l-8 8a5 5 0 000 7l2 2a5 5 0 007 0l2.5-2.5" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/><path d="M9 13h10" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/></svg>LeetCode</a></h1>
+<p><span class="chip">Amazon</span><span class="chip">Microsoft</span><span class="chip">Meta</span><span class="chip">Google</span>  &nbsp; <label style="font-size:14px;color:var(--text-dim)"><input type="checkbox" data-id="p01-lc5"> mark solved</label></p>
+<p class="progress-note">Pattern: <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a>
+ › Subpattern 1.7: Expanding From Center · Problem 36 of 707</p>
+<p class="progress-note">This problem also appears under: <a href="0428-lc5-longest-palindromic-substring.html">Dynamic Programming (DP)</a>, <a href="0701-lc5-longest-palindromic-substring.html">Advanced String Algorithm</a> — same problem, different lens.</p>
+<h2>📋 The problem</h2><p>Given a string, return its longest substring that reads the same forwards and backwards.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+
+<h2>🧭 How to think about it</h2>
+<p>A palindrome reads the same both ways, so it has a <strong>center</strong> and is symmetric around it. Instead of checking every substring, sit at each possible center and let two pointers <em>expand outward</em> while the characters match. There are <code>2n−1</code> centers (each character, and each gap between characters), covering odd- and even-length palindromes.</p>
+
+<h2>🐢 Brute force first</h2>
+<p>Check all O(n²) substrings, each palindrome-tested in O(n) → O(n³). Expand-around-center is O(n²) time and O(1) space; the advanced Manacher's algorithm reaches O(n).</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> every palindrome grows symmetrically from its center. For each center, push <code>left</code> and <code>right</code> apart while <code>s[left] == s[right]</code>. Track the longest span found. Two center types — <code>(i, i)</code> for odd length and <code>(i, i+1)</code> for even — cover them all.</div>
+
+<h2>🪜 The approach, step by step</h2>
+<ol>
+<li>For each index <code>i</code>, expand around center <code>(i, i)</code> and around <code>(i, i+1)</code>.</li>
+<li>Each expansion returns the palindrome's bounds; keep the longest.</li>
+<li>Return the substring for those bounds.</li>
+</ol>
+
+<h2>🎞️ Visual dry run — s = "babad"</h2>
+<pre class="viz">center i=1 (a): expand b[a]b → "bab" length 3
+center i=2 (b): expand a[b]a → "aba" length 3
+even centers give length ≤ 1 here
+Longest = "bab" (or "aba"; either is accepted)</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def longestPalindrome(s):
+    def expand(left, right):
+        while left &gt;= 0 and right &lt; len(s) and s[left] == s[right]:
+            left -= 1; right += 1
+        return left + 1, right - 1        # last valid (inclusive) bounds
+
+    start, end = 0, 0
+    for i in range(len(s)):
+        l1, r1 = expand(i, i)             # odd-length center
+        if r1 - l1 &gt; end - start:
+            start, end = l1, r1
+        l2, r2 = expand(i, i + 1)         # even-length center
+        if r2 - l2 &gt; end - start:
+            start, end = l2, r2
+    return s[start:end + 1]</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n²)</strong> — n centers, each expands up to O(n). <strong>Space O(1)</strong> — just index bookkeeping.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Empty string → returns empty.</li>
+<li>All identical characters → the whole string is the palindrome.</li>
+<li>No palindrome longer than 1 → any single character is returned.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Handling only odd centers → misses even-length palindromes like "abba".</li>
+<li>Off-by-one when converting the expanded pointers back to inclusive bounds.</li>
+<li>Comparing lengths with the wrong bound arithmetic.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Count all palindromic substrings (<a href="0037-lc647-palindromic-substrings.html">#647</a>) → same expansion, add up counts.</li>
+<li>Manacher's algorithm → O(n), the ultimate follow-up.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0037-lc647-palindromic-substrings.html">#647</a> · <a href="0015-lc345-reverse-vowels-of-a-string.html">#345</a> · <a href="0434-lc125-valid-palindrome.html">#125</a></p>
+
+
+<div class="pager"><a href="../problems/0035-lc844-backspace-string-compare.html"><span class="lbl">← Previous</span>#844 Backspace String Compare</a><a href="../problems/0037-lc647-palindromic-substrings.html" style="text-align:right"><span class="lbl">Next →</span>#647 Palindromic Substrings</a></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#202 Happy Number — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0028-lc141-linked-list-cycle.html">← #141 Linked List Cycle</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Problem 29 / 707</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0030-lc287-find-the-duplicate-number.html">#287 Find the Duplicate Number →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a> › Fast and Slow › #202</div>
+
+<h1><span class="num" style="color:var(--text-dim)">#202</span> Happy Number
+<span class="pill E">Easy</span><span class="badge nc" title="NeetCode 150">★NC</span><a class="lc-icon" href="https://leetcode.com/problems/happy-number/" target="_blank" rel="noopener" title="Open on LeetCode"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3l-8 8a5 5 0 000 7l2 2a5 5 0 007 0l2.5-2.5" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/><path d="M9 13h10" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/></svg>LeetCode</a></h1>
+<p><span class="chip"></span>  &nbsp; <label style="font-size:14px;color:var(--text-dim)"><input type="checkbox" data-id="p01-lc202"> mark solved</label></p>
+<p class="progress-note">Pattern: <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a>
+ › Subpattern 1.4: Fast and Slow · Problem 29 of 707</p>
+
+<h2>📋 The problem</h2><p>A number is 'happy' if repeatedly summing the squares of its digits reaches 1; decide whether n is happy (detect the loop otherwise).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+
+<h2>🧭 How to think about it</h2>
+<p>Repeatedly replace a number by the sum of the squares of its digits. If you reach 1, it's "happy"; otherwise you fall into a loop that never hits 1. "A sequence that either reaches a target or cycles forever" is exactly a <strong>cycle-detection</strong> problem — the same tortoise-and-hare from Linked List Cycle, but the "next node" is computed arithmetically.</p>
+
+<h2>🐢 Brute force first</h2>
+<p>Track seen numbers in a set; if a value repeats before reaching 1, it's unhappy — O(1)-ish space bounded by how many distinct values appear. Floyd's two-pointer version uses truly O(1) space.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> define <code>next(n)</code> = sum of squares of digits. Run <code>slow = next(n)</code> and <code>fast = next(next(n))</code>. If they meet at 1 → happy; if they meet anywhere else → a cycle that never reaches 1 → not happy.</div>
+
+<h2>🪜 The approach, step by step</h2>
+<ol>
+<li>Write a helper that squares and sums digits.</li>
+<li><code>slow</code> steps once, <code>fast</code> steps twice per iteration.</li>
+<li>Stop when they meet. Return whether the meeting value is 1.</li>
+</ol>
+
+<h2>🎞️ Visual dry run — n = 19</h2>
+<pre class="viz">next(19)=1²+9²=82, next(82)=68, next(68)=100, next(100)=1
+slow: 82, 68, 1 ...
+fast: 68, 1, 1 ...
+they converge on 1 → Happy → True</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def isHappy(n):
+    def nxt(x):
+        total = 0
+        while x:
+            x, d = divmod(x, 10)   # peel last digit
+            total += d * d
+        return total
+
+    slow, fast = n, nxt(n)
+    while fast != 1 and slow != fast:
+        slow = nxt(slow)           # one step
+        fast = nxt(nxt(fast))      # two steps
+    return fast == 1               # reached 1 ⇒ happy; else stuck in a cycle</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(log n)</strong> per step and a bounded number of steps (values quickly collapse below 1000), so effectively O(log n) overall. <strong>Space O(1)</strong> with the two-pointer method.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li><code>n = 1</code> → already happy.</li>
+<li>Known unhappy cycle contains 4 → the pointers meet at a non-1 value.</li>
+<li>Large <code>n</code> → the digit-square-sum shrinks it fast.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Looping <code>while fast != 1</code> only — you also need <code>slow != fast</code> to break out of unhappy cycles.</li>
+<li>Off-by-one in initializing <code>fast = nxt(n)</code> vs <code>n</code>.</li>
+<li>Recomputing digit sums inefficiently.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Use a set instead of Floyd → simpler, slightly more memory.</li>
+<li>Other digit functions (cubes, etc.) → same detection framework.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0028-lc141-linked-list-cycle.html">#141</a> · <a href="0030-lc287-find-the-duplicate-number.html">#287</a> · #142</p>
+
+
+<div class="pager"><a href="../problems/0028-lc141-linked-list-cycle.html"><span class="lbl">← Previous</span>#141 Linked List Cycle</a><a href="../problems/0030-lc287-find-the-duplicate-number.html" style="text-align:right"><span class="lbl">Next →</span>#287 Find the Duplicate Number</a></div>
+</div>
+</body>
+</html>

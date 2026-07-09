@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#2461 Maximum Sum of Distinct Subarrays With Length K — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0157-lc1838-frequency-of-the-most-frequent-element.html">← #1838 Frequency of the Most Frequent Element</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Problem 158 / 707</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0159-lc2516-take-k-of-each-character-from-left-and-right.html">#2516 Take K of Each Character From Left and Right →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › <a href="../patterns/p05-sliding-window.html">Sliding Window Patterns</a> › Variable Size / Condition-Based › #2461</div>
+
+<h1><span class="num" style="color:var(--text-dim)">#2461</span> Maximum Sum of Distinct Subarrays With Length K
+<span class="pill M">Medium</span><a class="lc-icon" href="https://leetcode.com/problems/maximum-sum-of-distinct-subarrays-with-length-k/" target="_blank" rel="noopener" title="Open on LeetCode"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3l-8 8a5 5 0 000 7l2 2a5 5 0 007 0l2.5-2.5" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/><path d="M9 13h10" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/></svg>LeetCode</a></h1>
+<p><span class="chip"></span>  &nbsp; <label style="font-size:14px;color:var(--text-dim)"><input type="checkbox" data-id="p05-lc2461"> mark solved</label></p>
+<p class="progress-note">Pattern: <a href="../patterns/p05-sliding-window.html">Sliding Window Patterns</a>
+ › Subpattern 5.2: Variable Size / Condition-Based · Problem 158 of 707</p>
+
+<h2>📋 The problem</h2><p>Return the maximum sum among subarrays of length k whose elements are all distinct (window + counts).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+
+<h2>Where this fits</h2>
+<p><strong>Variable Size / Condition-Based</strong> — Grow the right pointer; shrink the left while a constraint is violated — captures max/min subarray meeting a condition.</p>
+
+<h2>Why this pattern?</h2><ul><li>"contiguous subarray / substring" + longest/shortest/max/min/count</li><li>fixed size k ("every window of size k")</li><li>a constraint to maintain: "at most k distinct", "no repeats", "sum ≥ target"</li><li>strings + character frequency ("anagram of", "contains all chars of")</li></ul>
+<h2>Pattern template to adapt</h2><p>Start from the Sliding Window master template and adapt the marked parts to this problem:</p><pre><code># Variable-size window (the general form)
+state = {}                              # counts / sum — whatever the constraint needs
+left = 0
+best = 0
+for right in range(len(s)):
+    add(s[right], state)                # 1) window grows
+    while invalid(state):               # 2) shrink until constraint holds again
+        remove(s[left], state)
+        left += 1
+    best = max(best, right - left + 1)  # 3) window is valid here</code></pre>
+<h2>How to work on it now</h2>
+<ol>
+<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
+<li>Write the brute force first — know what you are improving.</li>
+<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
+<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+</ol>
+<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
+(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
+deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<div class="pager"><a href="../problems/0157-lc1838-frequency-of-the-most-frequent-element.html"><span class="lbl">← Previous</span>#1838 Frequency of the Most Frequent Element</a><a href="../problems/0159-lc2516-take-k-of-each-character-from-left-and-right.html" style="text-align:right"><span class="lbl">Next →</span>#2516 Take K of Each Character From Left and Right</a></div>
+</div>
+</body>
+</html>

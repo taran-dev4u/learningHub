@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#307 Range Sum Query - Mutable — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0515-lc218-the-skyline-problem.html">← #218 The Skyline Problem</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Problem 516 / 707</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0517-lc308-range-sum-query-2d-mutable.html">#308 Range Sum Query 2D - Mutable →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › <a href="../patterns/p16-segment-tree.html">Segment Tree &amp; Fenwick Tree Patterns</a> › Segment Tree / Range Query with Updates › #307</div>
+
+<h1><span class="num" style="color:var(--text-dim)">#307</span> Range Sum Query - Mutable
+<span class="pill M">Medium</span><a class="lc-icon" href="https://leetcode.com/problems/range-sum-query-mutable/" target="_blank" rel="noopener" title="Open on LeetCode"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3l-8 8a5 5 0 000 7l2 2a5 5 0 007 0l2.5-2.5" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/><path d="M9 13h10" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/></svg>LeetCode</a></h1>
+<p><span class="chip"></span>  &nbsp; <label style="font-size:14px;color:var(--text-dim)"><input type="checkbox" data-id="p16-lc307"> mark solved</label></p>
+<p class="progress-note">Pattern: <a href="../patterns/p16-segment-tree.html">Segment Tree &amp; Fenwick Tree Patterns</a>
+ › Subpattern 16.1: Segment Tree / Range Query with Updates · Problem 516 of 707</p>
+<p class="progress-note">This problem also appears under: <a href="0523-lc307-range-sum-query-mutable.html">Segment Tree &amp; Fenwick Tree</a> — same problem, different lens.</p>
+<h2>📋 The problem</h2><p>Support both updating one element and querying a range sum on an array, each in O(log n).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+
+<h2>Where this fits</h2>
+<p><strong>Segment Tree / Range Query with Updates</strong> — Build a binary tree of intervals; each internal node stores an aggregate (sum/min/max). Lazy propagation handles range updates.</p>
+<div class="insight"><strong>💡 Key idea</strong><br>Fenwick/segment tree: point update and range query both O(log n).</div>
+<h2>Why this pattern?</h2><ul><li>interleaved "update element" + "query range sum/min/max"</li><li>"count of smaller elements after self" (offline index counting)</li><li>k-th smallest with insertions/deletions</li><li>huge value range → coordinate-compress first</li></ul>
+<h2>Pattern template to adapt</h2><p>Start from the Segment Tree &amp; Fenwick Tree master template and adapt the marked parts to this problem:</p><pre><code># Fenwick / BIT — shortest correct implementation (1-indexed)
+tree = [0] * (n + 1)
+def update(i, delta):            # a[i] += delta, O(log n)
+    while i &lt;= n:
+        tree[i] += delta
+        i += i &amp; (-i)            # next block responsible for i
+def prefix(i):                   # sum a[1..i], O(log n)
+    s = 0
+    while i &gt; 0:
+        s += tree[i]
+        i -= i &amp; (-i)
+    return s
+def range_sum(l, r):
+    return prefix(r) - prefix(l - 1)</code></pre>
+<h2>How to work on it now</h2>
+<ol>
+<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
+<li>Write the brute force first — know what you are improving.</li>
+<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
+<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+</ol>
+<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
+(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
+deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<div class="pager"><a href="../problems/0515-lc218-the-skyline-problem.html"><span class="lbl">← Previous</span>#218 The Skyline Problem</a><a href="../problems/0517-lc308-range-sum-query-2d-mutable.html" style="text-align:right"><span class="lbl">Next →</span>#308 Range Sum Query 2D - Mutable</a></div>
+</div>
+</body>
+</html>

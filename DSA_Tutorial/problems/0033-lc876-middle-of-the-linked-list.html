@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#876 Middle of the Linked List — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0032-lc19-remove-nth-node-from-end-of-list.html">← #19 Remove Nth Node From End of List</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Problem 33 / 707</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0034-lc2095-delete-the-middle-node-of-a-linked-list.html">#2095 Delete the Middle Node of a Linked List →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a> › Fixed Separation › #876</div>
+
+<h1><span class="num" style="color:var(--text-dim)">#876</span> Middle of the Linked List
+<span class="pill E">Easy</span><a class="lc-icon" href="https://leetcode.com/problems/middle-of-the-linked-list/" target="_blank" rel="noopener" title="Open on LeetCode"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3l-8 8a5 5 0 000 7l2 2a5 5 0 007 0l2.5-2.5" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/><path d="M9 13h10" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/></svg>LeetCode</a></h1>
+<p><span class="chip">Amazon</span><span class="chip">Google</span>  &nbsp; <label style="font-size:14px;color:var(--text-dim)"><input type="checkbox" data-id="p01-lc876"> mark solved</label></p>
+<p class="progress-note">Pattern: <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a>
+ › Subpattern 1.5: Fixed Separation · Problem 33 of 707</p>
+
+<h2>📋 The problem</h2><p>Return the middle node of a linked list (second middle if even length).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+
+<h2>🧭 How to think about it</h2>
+<p>Find the middle node in one pass, without knowing the length up front. Send a <strong>fast pointer at double speed</strong>: when it reaches the end, the slow pointer — moving half as fast — is exactly at the middle.</p>
+
+<h2>🐢 Brute force first</h2>
+<p>Count the length, then walk to index <code>length // 2</code> — two passes. Fast/slow does it in one.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> if <code>fast</code> covers two nodes for every one that <code>slow</code> covers, then when <code>fast</code> has gone the full length, <code>slow</code> has gone halfway. The loop condition <code>fast and fast.next</code> makes <code>slow</code> land on the <em>second</em> middle for even lengths (as the problem asks).</div>
+
+<h2>🪜 The approach, step by step</h2>
+<ol>
+<li><code>slow = fast = head</code>.</li>
+<li>While <code>fast</code> and <code>fast.next</code>: <code>slow = slow.next</code>, <code>fast = fast.next.next</code>.</li>
+<li>Return <code>slow</code>.</li>
+</ol>
+
+<h2>🎞️ Visual dry run — 1→2→3→4→5</h2>
+<pre class="viz">slow=1 fast=1
+slow=2 fast=3
+slow=3 fast=5  (fast.next is None → stop)
+Middle = node 3 ✓
+(For 1→2→3→4→5→6, slow ends on 4 — the second middle.)</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def middleNode(head):
+    slow = fast = head
+    while fast and fast.next:      # fast moves two, slow one
+        slow = slow.next
+        fast = fast.next.next
+    return slow                    # halfway when fast reached the end</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — fast traverses the whole list. <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Single node → returns it.</li>
+<li>Two nodes → returns the second (the second middle).</li>
+<li>Odd vs even length → the loop condition selects the intended middle.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Using <code>while fast.next and fast.next.next</code> → returns the first middle for even lengths (wrong for this problem).</li>
+<li>Forgetting the <code>fast</code> null check → crash on even lengths.</li>
+<li>Returning <code>slow.next</code> by mistake.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Return the <em>first</em> middle → adjust the loop condition.</li>
+<li>Split the list in half (used in merge sort / reorder, <a href="0076-lc143-reorder-list.html">#143</a>) → stop one before the middle.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0034-lc2095-delete-the-middle-node-of-a-linked-list.html">#2095</a> · <a href="0032-lc19-remove-nth-node-from-end-of-list.html">#19</a> · <a href="0028-lc141-linked-list-cycle.html">#141</a></p>
+
+
+<div class="pager"><a href="../problems/0032-lc19-remove-nth-node-from-end-of-list.html"><span class="lbl">← Previous</span>#19 Remove Nth Node From End of List</a><a href="../problems/0034-lc2095-delete-the-middle-node-of-a-linked-list.html" style="text-align:right"><span class="lbl">Next →</span>#2095 Delete the Middle Node of a Linked List</a></div>
+</div>
+</body>
+</html>

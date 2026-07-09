@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#1899 Merge Triplets to Form Target Triplet — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0354-lc1029-two-city-scheduling.html">← #1029 Two City Scheduling</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Problem 355 / 707</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../patterns/p11-backtracking.html">Backtracking →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › <a href="../patterns/p10-greedy.html">Greedy Patterns</a> › Assign / Resource Allocation › #1899</div>
+
+<h1><span class="num" style="color:var(--text-dim)">#1899</span> Merge Triplets to Form Target Triplet
+<span class="pill M">Medium</span><a class="lc-icon" href="https://leetcode.com/problems/merge-triplets-to-form-target-triplet/" target="_blank" rel="noopener" title="Open on LeetCode"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3l-8 8a5 5 0 000 7l2 2a5 5 0 007 0l2.5-2.5" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/><path d="M9 13h10" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/></svg>LeetCode</a></h1>
+<p><span class="chip">Amazon</span>  &nbsp; <label style="font-size:14px;color:var(--text-dim)"><input type="checkbox" data-id="p10-lc1899"> mark solved</label></p>
+<p class="progress-note">Pattern: <a href="../patterns/p10-greedy.html">Greedy Patterns</a>
+ › Subpattern 10.7: Assign / Resource Allocation · Problem 355 of 707</p>
+
+<h2>📋 The problem</h2><p>You may merge triplets element-wise by max; decide whether the exact target triplet is formable (use only triplets ≤ target everywhere).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+
+<h2>Where this fits</h2>
+<p><strong>Assign / Resource Allocation</strong> — Sort by a property (deadline, ratio, capacity) and assign one-by-one — assignment problems, two-city scheduling.</p>
+
+<h2>Why this pattern?</h2><ul><li>"maximum number of non-overlapping…" / "minimum number of intervals to remove"</li><li>"minimum arrows/platforms/refuels" resource covering</li><li>a swap/exchange argument feels available ("taking the smaller first is never worse")</li><li>candidates can be sorted so that decisions never need revisiting</li></ul>
+<h2>Pattern template to adapt</h2><p>Start from the Greedy master template and adapt the marked parts to this problem:</p><pre><code># Interval scheduling: max non-overlapping
+intervals.sort(key=lambda iv: iv[1])     # sort by END time
+count, free_at = 0, float('-inf')
+for start, end in intervals:
+    if start &gt;= free_at:                 # doesn't clash with last taken
+        count += 1
+        free_at = end                    # commit — never look back
+
+# Reachability sweep (jump game)
+far = 0
+for i, step in enumerate(nums):
+    if i &gt; far: return False             # gap we can never cross
+    far = max(far, i + step)
+return True</code></pre>
+<h2>How to work on it now</h2>
+<ol>
+<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
+<li>Write the brute force first — know what you are improving.</li>
+<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
+<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+</ol>
+<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
+(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
+deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<div class="pager"><a href="../problems/0354-lc1029-two-city-scheduling.html"><span class="lbl">← Previous</span>#1029 Two City Scheduling</a><a href="../patterns/p11-backtracking.html" style="text-align:right"><span class="lbl">Next →</span>Backtracking</a></div>
+</div>
+</body>
+</html>

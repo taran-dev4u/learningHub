@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#167 Two Sum II - Input Array Is Sorted — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0006-lc42-trapping-rain-water.html">← #42 Trapping Rain Water</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Problem 7 / 707</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0008-lc259-3sum-smaller.html">#259 3Sum Smaller →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a> › Converging › #167</div>
+
+<h1><span class="num" style="color:var(--text-dim)">#167</span> Two Sum II - Input Array Is Sorted
+<span class="pill M">Medium</span><span class="badge nc" title="NeetCode 150">★NC</span><a class="lc-icon" href="https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/" target="_blank" rel="noopener" title="Open on LeetCode"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3l-8 8a5 5 0 000 7l2 2a5 5 0 007 0l2.5-2.5" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/><path d="M9 13h10" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/></svg>LeetCode</a></h1>
+<p><span class="chip">Amazon</span><span class="chip">Google</span> <a class="chip" href="https://www.youtube.com/watch?v=cQ1Oz4ckceM" target="_blank" rel="noopener">🎬 Video walkthrough</a> &nbsp; <label style="font-size:14px;color:var(--text-dim)"><input type="checkbox" data-id="p01-lc167"> mark solved</label></p>
+<p class="progress-note">Pattern: <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a>
+ › Subpattern 1.1: Converging · Problem 7 of 707</p>
+
+<h2>📋 The problem</h2><p>In a 1-indexed sorted array, find the two numbers that add to a target and return their indices, using O(1) space.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+
+<h2>🧭 How to think about it</h2>
+<p>This is Two Sum, but the array is <strong>already sorted</strong> — and sorted order is a gift. When a list is sorted, the sum of the two ends tells you which way to move: too small means you need more, so raise the low end; too big means you need less, so lower the high end. No hash map needed, no extra memory.</p>
+
+<h2>🐢 Brute force first</h2>
+<p>Every pair, O(n²). Or reuse the hash-map Two Sum for O(n) time and O(n) space. But sorted input lets us do O(n) time with <em>O(1)</em> space — strictly better.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> put one pointer at each end. Their sum is the largest-plus-smallest available. If it's below target, the only way to grow is <code>left += 1</code>; if above, the only way to shrink is <code>right -= 1</code>. Each move safely discards a value that can never be part of the answer.</div>
+
+<h2>🪜 The approach, step by step</h2>
+<ol>
+<li><code>left = 0</code>, <code>right = n − 1</code>.</li>
+<li>Compute <code>s = nums[left] + nums[right]</code>.</li>
+<li>If <code>s == target</code>, return the 1-indexed pair <code>[left+1, right+1]</code>.</li>
+<li>If <code>s &lt; target</code>, <code>left += 1</code>; if <code>s &gt; target</code>, <code>right -= 1</code>.</li>
+</ol>
+
+<h2>🎞️ Visual dry run — numbers = [2, 7, 11, 15], target = 9</h2>
+<pre class="viz">L=0(2) R=3(15)  sum=17 &gt; 9 → R−−
+L=0(2) R=2(11)  sum=13 &gt; 9 → R−−
+L=0(2) R=1(7)   sum=9  = 9 → return [1, 2] ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def twoSum(numbers, target):
+    left, right = 0, len(numbers) - 1
+    while left &lt; right:
+        s = numbers[left] + numbers[right]
+        if s == target:
+            return [left + 1, right + 1]   # problem uses 1-based indices
+        elif s &lt; target:
+            left += 1                       # need a bigger sum
+        else:
+            right -= 1                      # need a smaller sum
+    return []                               # guaranteed not reached</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — each step retires one index; pointers meet after ≤ n moves. <strong>Space O(1)</strong> — two indices, nothing else.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Exactly two elements — the first comparison settles it.</li>
+<li>Negatives and zeros — arithmetic is unaffected; sorted order is all that matters.</li>
+<li>The 1-based indexing — a classic off-by-one; add 1 to both.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Returning 0-based indices — this problem is 1-based.</li>
+<li>Using <code>left &lt;= right</code> — an element can't pair with itself here; keep <code>&lt;</code>.</li>
+<li>Reaching for a hash map — correct but wastes the O(1)-space opportunity the sorting hands you.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Unsorted input → hash-map Two Sum (<a href="0001-lc1-two-sum.html">#1</a>).</li>
+<li>Count all pairs summing to target → keep moving both ends after each hit, skipping duplicates.</li>
+<li>Three numbers → sort + anchor + this converge (<a href="0003-lc15-3sum.html">#15</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0001-lc1-two-sum.html">#1</a> · <a href="0003-lc15-3sum.html">#15</a> · <a href="0012-lc977-squares-of-a-sorted-array.html">#977</a> · <a href="0010-lc611-valid-triangle-number.html">#611</a></p>
+
+
+<div class="pager"><a href="../problems/0006-lc42-trapping-rain-water.html"><span class="lbl">← Previous</span>#42 Trapping Rain Water</a><a href="../problems/0008-lc259-3sum-smaller.html" style="text-align:right"><span class="lbl">Next →</span>#259 3Sum Smaller</a></div>
+</div>
+</body>
+</html>

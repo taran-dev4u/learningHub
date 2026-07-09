@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>F11 · Tries &amp; Union-Find: Two Specialists — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../foundations/f10-sorting.html">← Sorting</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Foundations</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../foundations/f12-advanced-ds.html">Advanced Structures →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › Foundations › Tries &amp; Union-Find</div>
+<h1>F11 · Tries &amp; Union-Find: Two Specialists</h1>
+
+<h2>Trie (prefix tree) — a dictionary organized by prefix</h2>
+<p><strong>Problem it solves:</strong> a hash set answers "is <code>word</code> in the set?" but not "does anything start with <code>pre</code>?" A trie stores words as root→leaf paths where each edge is a letter, so all words sharing a prefix share a path — prefix queries cost O(len(prefix)), independent of how many words are stored.</p>
+<pre class="viz">insert "car", "cat", "do":     root
+                              /    \
+                             c      d
+                             │      │
+                             a      o ●        ● = end-of-word flag
+                            / \
+                           r ●  t ●</code></pre>
+<pre><code>class Trie:
+    def __init__(self):
+        self.root = {}                      # node = dict: letter → child node
+    def insert(self, word):                 # O(len(word))
+        node = self.root
+        for ch in word:
+            node = node.setdefault(ch, {})
+        node['$'] = True                    # end-of-word marker
+    def search(self, word):                 # O(len(word))
+        node = self._walk(word)
+        return node is not None and '$' in node
+    def starts_with(self, prefix):          # O(len(prefix))
+        return self._walk(prefix) is not None
+    def _walk(self, s):
+        node = self.root
+        for ch in s:
+            if ch not in node: return None
+            node = node[ch]
+        return node</code></pre>
+<p><strong>Use for:</strong> autocomplete, word search on boards (prune whole branches the moment a prefix doesn't exist — the Word Search II trick), wildcard matching (branch on '.'), XOR problems (bit-trie). Trade-off: much more memory than a set.</p>
+
+<h2>Union-Find (Disjoint Set Union) — dynamic "same group?"</h2>
+<p><strong>Problem it solves:</strong> edges keep arriving and you must repeatedly answer "are u and v connected?" Re-running BFS per query is O(V+E) each. DSU answers in near-O(1) by giving each group a representative <em>root</em>.</p>
+<pre><code>parent = list(range(n))
+rank   = [0] * n
+
+def find(x):                         # walk to the root...
+    while parent[x] != x:
+        parent[x] = parent[parent[x]]   # path compression: point to grandparent
+        x = parent[x]
+    return x
+
+def union(a, b):                     # returns False if already connected
+    ra, rb = find(a), find(b)
+    if ra == rb: return False
+    if rank[ra] < rank[rb]: ra, rb = rb, ra
+    parent[rb] = ra                  # attach shorter tree under taller (union by rank)
+    rank[ra] += rank[ra] == rank[rb]
+    return True</code></pre>
+<p>Path compression + union by rank make each op effectively O(α(n)) ≈ O(1) — α is the inverse Ackermann function, ≤ 5 for any realistic n.</p>
+<p><strong>Use for:</strong> counting components as edges arrive, cycle detection in undirected graphs (union returns False ⇒ cycle), Kruskal's MST, accounts-merge style grouping, "redundant connection".</p>
+
+<h2>When which?</h2>
+<table>
+<tr><th>Question smells like…</th><th>Tool</th></tr>
+<tr><td>prefixes, autocomplete, many string lookups</td><td>Trie</td></tr>
+<tr><td>merging groups, connectivity under additions</td><td>Union-Find</td></tr>
+<tr><td>connectivity of a FIXED graph, one-shot</td><td>plain BFS/DFS</td></tr>
+</table>
+
+<div class="pager"><a href="../foundations/f10-sorting.html"><span class="lbl">← Previous</span>Sorting</a><a href="../foundations/f12-advanced-ds.html" style="text-align:right"><span class="lbl">Next →</span>Advanced Structures</a></div>
+</div>
+</body>
+</html>

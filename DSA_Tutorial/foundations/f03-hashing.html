@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>F3 · Hashing: How dict and set Are O(1) — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../foundations/f02-arrays-strings.html">← Arrays &amp; Strings</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Foundations</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../foundations/f04-linked-lists.html">Linked Lists →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › Foundations › Hashing</div>
+<h1>F3 · Hashing: How dict and set Are O(1)</h1>
+
+<h2>The problem it solves</h2>
+<p>Searching a list is O(n). Hashing makes lookup O(1) by <em>computing where a value lives</em> instead of searching for it.</p>
+
+<h2>Internal working</h2>
+<p>A hash table is an array of <strong>buckets</strong>. A <strong>hash function</strong> turns any key into a number; <code>hash(key) % table_size</code> picks the bucket. Store the key (and value) there; to look up, hash again and jump straight to that bucket.</p>
+<pre class="viz">hash("cat") = 738  →  738 % 8 = 2
+buckets:  [0]      [1]      [2]────────┐  [3] ...
+                            │"cat": 3  │
+                            └──────────┘</code></pre>
+<p><strong>Collisions</strong> — two keys landing in one bucket — are inevitable. Python resolves them by probing other slots (open addressing); when the table gets ~2/3 full it <strong>rehashes</strong> into a bigger array. That's why ops are O(1) <em>average</em>, and why only immutable (stable-hash) types can be keys.</p>
+
+<h2>The three interview superpowers</h2>
+<table>
+<tr><th>Move</th><th>Idiom</th><th>Replaces</th></tr>
+<tr><td>Seen before?</td><td><code>if x in seen</code> (set)</td><td>O(n) scan → O(1)</td></tr>
+<tr><td>Complement lookup</td><td><code>if target - x in index_of</code></td><td>O(n²) Two Sum → O(n)</td></tr>
+<tr><td>Group by signature</td><td><code>groups[key(x)].append(x)</code></td><td>O(n²) pairwise compare → O(n·k)</td></tr>
+</table>
+<pre><code># Two Sum — THE canonical hash trade: memory for speed
+index_of = {}
+for i, x in enumerate(nums):
+    if target - x in index_of:       # O(1) average
+        return [index_of[target - x], i]
+    index_of[x] = i</code></pre>
+
+<h2>Choosing a signature key</h2>
+<p>Grouping problems reduce to "what makes two items equivalent?": anagrams → <code>tuple(sorted(word))</code> or 26-count tuple; shifted strings → tuple of letter gaps; grid diagonals → <code>r - c</code>. If you can name the invariant, a dict groups it in one pass.</p>
+
+<h2>Pitfalls</h2>
+<ul>
+<li>Lists can't be keys (mutable) — convert to <code>tuple</code> first.</li>
+<li>Hash map costs O(n) memory — mention the trade-off aloud in interviews.</li>
+<li>Worst case O(n) per op exists in theory; say "average O(1)".</li>
+<li>Dict preserves insertion order (3.7+) but a set does not guarantee any order.</li>
+</ul>
+
+<div class="pager"><a href="../foundations/f02-arrays-strings.html"><span class="lbl">← Previous</span>Arrays &amp; Strings</a><a href="../foundations/f04-linked-lists.html" style="text-align:right"><span class="lbl">Next →</span>Linked Lists</a></div>
+</div>
+</body>
+</html>

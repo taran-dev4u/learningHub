@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#128 Longest Consecutive Sequence — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0540-lc49-group-anagrams.html">← #49 Group Anagrams</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Problem 541 / 707</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0542-lc249-group-shifted-strings.html">#249 Group Shifted Strings →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › <a href="../patterns/p18-hash-map.html">Hash Map &amp; Cache Design Patterns</a> › Grouping / Frequency › #128</div>
+
+<h1><span class="num" style="color:var(--text-dim)">#128</span> Longest Consecutive Sequence
+<span class="pill M">Medium</span><span class="badge b75" title="Blind 75">★75</span><span class="badge nc" title="NeetCode 150">★NC</span><a class="lc-icon" href="https://leetcode.com/problems/longest-consecutive-sequence/" target="_blank" rel="noopener" title="Open on LeetCode"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3l-8 8a5 5 0 000 7l2 2a5 5 0 007 0l2.5-2.5" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/><path d="M9 13h10" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/></svg>LeetCode</a></h1>
+<p><span class="chip">Amazon</span><span class="chip">Meta</span><span class="chip">Google</span><span class="chip">Microsoft</span>  &nbsp; <label style="font-size:14px;color:var(--text-dim)"><input type="checkbox" data-id="p18-lc128"> mark solved</label></p>
+<p class="progress-note">Pattern: <a href="../patterns/p18-hash-map.html">Hash Map &amp; Cache Design Patterns</a>
+ › Subpattern 18.1: Grouping / Frequency · Problem 541 of 707</p>
+
+<h2>📋 The problem</h2><p>Given an unsorted array, return the length of the longest run of consecutive integer values, in O(n).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+
+<h2>Where this fits</h2>
+<p><strong>Grouping / Frequency</strong> — Hashmap groups elements by a canonical key (sorted string, character signature, etc.).</p>
+
+<h2>Why this pattern?</h2><ul><li>"O(1) average for every operation"</li><li>eviction by recency/frequency, capacity limits</li><li>time-versioned lookups (get value at timestamp)</li><li>two-way mappings, consistent grouping</li></ul>
+<h2>Pattern template to adapt</h2><p>Start from the Hash Map &amp; Cache Design master template and adapt the marked parts to this problem:</p><pre><code># Frequency buckets (LFU core idea, also "O(1) inc/dec"):
+# key → count, and count → set of keys with that count
+counts = {}                       # key → its frequency
+buckets = defaultdict(set)        # frequency → keys at that frequency
+min_freq = tracked separately     # evict from buckets[min_freq]
+
+# Timestamped values: dict of key → sorted list of (time, value)
+import bisect
+store = defaultdict(list)
+def set_val(k, v, t): store[k].append((t, v))       # times arrive increasing
+def get_val(k, t):
+    arr = store[k]
+    i = bisect.bisect_right(arr, (t, chr(0x10FFFF)))  # last entry ≤ t
+    return arr[i-1][1] if i else ""</code></pre>
+<h2>How to work on it now</h2>
+<ol>
+<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
+<li>Write the brute force first — know what you are improving.</li>
+<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
+<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+</ol>
+<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
+(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
+deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<div class="pager"><a href="../problems/0540-lc49-group-anagrams.html"><span class="lbl">← Previous</span>#49 Group Anagrams</a><a href="../problems/0542-lc249-group-shifted-strings.html" style="text-align:right"><span class="lbl">Next →</span>#249 Group Shifted Strings</a></div>
+</div>
+</body>
+</html>

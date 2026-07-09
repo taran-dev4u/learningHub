@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PY-6 · Comprehensions, Lambdas &amp; the Shortcuts Pythonistas Use — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../python/py-5-power-modules.html">← Power Modules</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Python Primer</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../foundations/f01-complexity.html">Complexity →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › Python Primer › Idioms &amp; Shortcuts</div>
+<h1>PY-6 · Comprehensions, Lambdas &amp; the Shortcuts Pythonistas Use</h1>
+
+<p>This page is the "why does their solution look so short?" page — the compression tools of fluent Python, each with the long version next to it so you always know what's happening underneath.</p>
+
+<h2>1. List comprehensions</h2>
+<pre><code>squares = [x*x for x in nums]              # map
+evens   = [x for x in nums if x % 2 == 0]  # filter
+pairs   = [(i, j) for i in range(3) for j in range(3) if i != j]  # nested
+matrix_col = [row[0] for row in grid]      # extract a column</code></pre>
+<p>Long version of the first: <code>squares = []</code> then <code>for x in nums: squares.append(x*x)</code>. Same speed class, half the code, no off-by-one room.</p>
+
+<h2>2. Dict &amp; set comprehensions, generators</h2>
+<pre><code>index_of = {v: i for i, v in enumerate(nums)}   # value → index map (Two Sum!)
+seen     = {x % 10 for x in nums}               # set comprehension
+total    = sum(x*x for x in nums)               # generator: no list built, O(1) memory
+first    = next((x for x in nums if x < 0), None)  # first match or None</code></pre>
+
+<h2>3. Unpacking &amp; star syntax</h2>
+<pre><code>a, b = b, a                    # swap
+first, *rest = nums            # head / tail
+x, y = point                   # tuple unpack
+def f(*args, **kwargs): ...    # variadic
+merged = [*list1, *list2]      # concatenate
+print(*nums)                   # spread as arguments</code></pre>
+
+<h2>4. Lambdas — tiny throwaway functions</h2>
+<pre><code>sorted(people, key=lambda p: (p[1], p[0]))   # sort by 2nd field, then 1st
+max(words, key=lambda w: len(set(w)))         # most distinct letters
+intervals.sort(key=lambda iv: iv[0])          # THE intervals opener</code></pre>
+<p>A lambda is just <code>def f(p): return (p[1], p[0])</code> without the name. If it needs more than one expression, write a real function.</p>
+
+<h2>5. Idioms that save minutes in interviews</h2>
+<pre><code>float('inf'), float('-inf')         # best-so-far sentinels
+dp = [[0]*cols for _ in range(rows)]  # 2-D array (NOT [[0]*c]*r !)
+for dr, dc in ((1,0),(-1,0),(0,1),(0,-1)):   # 4-direction grid walk
+    r, c = row+dr, col+dc
+    if 0 <= r < R and 0 <= c < C: ...
+k = (lo + hi) // 2                  # binary search mid (no overflow in Python)
+seen = set(); seen.add((r, c))      # visited cells as tuples
+res.append(path[:])                 # SNAPSHOT the path in backtracking (copy!)
+matrix[:] = zip(*matrix[::-1])      # rotate matrix 90° clockwise
+val = d.get(key, 0) + 1             # count without Counter
+if x in (a, b, c):                  # membership instead of 3 ors</code></pre>
+<div class="warn"><strong>Backtracking bug #1:</strong> <code>res.append(path)</code> appends a <em>reference</em>; when you later pop from <code>path</code>, your saved answer mutates too. Always append a copy: <code>path[:]</code> or <code>list(path)</code>.</div>
+
+<h2>6. Reading "clever" one-liners</h2>
+<pre><code># Longest string in list:
+max(strs, key=len)
+# Sum of digits:
+sum(int(d) for d in str(n))
+# Transpose:
+list(zip(*grid))
+# Check if all rows same length:
+len({len(r) for r in grid}) == 1
+# Frequency of most common element:
+max(Counter(nums).values())</code></pre>
+
+<h2>7. What NOT to do in interviews</h2>
+<ul>
+<li>Don't nest comprehensions three levels deep — clarity beats cleverness; you'll be asked to explain it.</li>
+<li>Don't shadow built-ins: naming a variable <code>list</code>, <code>dict</code>, <code>sum</code>, <code>min</code>, or <code>max</code> breaks them for the rest of the function.</li>
+<li>Don't use recursion depth &gt; ~1000 without <code>sys.setrecursionlimit</code> — Python's default limit will crash deep DFS on big inputs; know the iterative rewrite.</li>
+<li>Don't mutate a list while iterating over it — iterate over a copy or build a new list.</li>
+</ul>
+
+<div class="tip">You now have the full Python toolkit. Next stop: <strong>Foundations</strong> — how these tools are built and when each data structure wins.</div>
+
+<div class="pager"><a href="../python/py-5-power-modules.html"><span class="lbl">← Previous</span>Power Modules</a><a href="../foundations/f01-complexity.html" style="text-align:right"><span class="lbl">Next →</span>Complexity</a></div>
+</div>
+</body>
+</html>

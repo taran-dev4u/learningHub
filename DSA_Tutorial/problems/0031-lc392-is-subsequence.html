@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#392 Is Subsequence — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0030-lc287-find-the-duplicate-number.html">← #287 Find the Duplicate Number</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Problem 31 / 707</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0032-lc19-remove-nth-node-from-end-of-list.html">#19 Remove Nth Node From End of List →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a> › Fast and Slow › #392</div>
+
+<h1><span class="num" style="color:var(--text-dim)">#392</span> Is Subsequence
+<span class="pill E">Easy</span><a class="lc-icon" href="https://leetcode.com/problems/is-subsequence/" target="_blank" rel="noopener" title="Open on LeetCode"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3l-8 8a5 5 0 000 7l2 2a5 5 0 007 0l2.5-2.5" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/><path d="M9 13h10" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/></svg>LeetCode</a></h1>
+<p><span class="chip"></span>  &nbsp; <label style="font-size:14px;color:var(--text-dim)"><input type="checkbox" data-id="p01-lc392"> mark solved</label></p>
+<p class="progress-note">Pattern: <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a>
+ › Subpattern 1.4: Fast and Slow · Problem 31 of 707</p>
+
+<h2>📋 The problem</h2><p>Decide whether s is a subsequence of t (s's characters appear in t in order, not necessarily adjacent).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+
+<h2>🧭 How to think about it</h2>
+<p>Is <code>s</code> a subsequence of <code>t</code> — can you get <code>s</code> by deleting some characters of <code>t</code> without reordering? Walk <strong>two pointers</strong>: one over <code>s</code>, one over <code>t</code>. Advance through <code>t</code>, and every time its character matches the current character of <code>s</code>, tick <code>s</code> forward. If you consume all of <code>s</code>, it's a subsequence.</p>
+
+<h2>🐢 Brute force first</h2>
+<p>There's no meaningfully slower natural approach; the greedy two-pointer scan is already O(n). The interesting complexity is in the follow-up (many queries).</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> greedily match each character of <code>s</code> to the <em>earliest</em> possible position in <code>t</code>. A single pointer over <code>s</code> only advances on a match; a pointer over <code>t</code> always advances. If <code>s</code>'s pointer reaches its end, every character was found in order.</div>
+
+<h2>🪜 The approach, step by step</h2>
+<ol>
+<li><code>i = 0</code> (into s), <code>j = 0</code> (into t).</li>
+<li>While both in range: if <code>s[i] == t[j]</code>, <code>i += 1</code>. Always <code>j += 1</code>.</li>
+<li>Return <code>i == len(s)</code>.</li>
+</ol>
+
+<h2>🎞️ Visual dry run — s = "abc", t = "ahbgdc"</h2>
+<pre class="viz">i0=a j0=a match → i1 j1
+i1=b j1=h no  → j2
+i1=b j2=b match → i2 j3
+i2=c j3=g no  → j4
+i2=c j4=d no  → j5
+i2=c j5=c match → i3 (end of s)
+i==len(s)=3 → True</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def isSubsequence(s, t):
+    i, j = 0, 0
+    while i &lt; len(s) and j &lt; len(t):
+        if s[i] == t[j]:
+            i += 1                 # matched one char of s
+        j += 1                     # always move through t
+    return i == len(s)             # consumed all of s?</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(|t|)</strong> — one scan of <code>t</code>. <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li><code>s</code> empty → vacuously True.</li>
+<li><code>s</code> longer than <code>t</code> → can't finish → False.</li>
+<li>Identical strings → True.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Advancing <code>i</code> even on a mismatch.</li>
+<li>Returning based on <code>j</code> instead of whether all of <code>s</code> was matched.</li>
+<li>Assuming contiguous substring rather than subsequence.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li><strong>Many</strong> <code>s</code> queries against one <code>t</code> → preprocess <code>t</code> into lists of positions per character and binary-search each — O(|s| log |t|) per query.</li>
+<li>Longest common subsequence (<a href="0405-lc1143-longest-common-subsequence.html">#1143</a>) generalizes the matching to DP.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0025-lc925-long-pressed-name.html">#925</a> · <a href="0035-lc844-backspace-string-compare.html">#844</a> · <a href="0405-lc1143-longest-common-subsequence.html">#1143</a></p>
+
+
+<div class="pager"><a href="../problems/0030-lc287-find-the-duplicate-number.html"><span class="lbl">← Previous</span>#287 Find the Duplicate Number</a><a href="../problems/0032-lc19-remove-nth-node-from-end-of-list.html" style="text-align:right"><span class="lbl">Next →</span>#19 Remove Nth Node From End of List</a></div>
+</div>
+</body>
+</html>

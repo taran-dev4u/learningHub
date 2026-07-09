@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-18T18:30:25.108Z",
+  "generatedAt": "2026-07-09T20:50:20.566Z",
   "stats": {
     "domains": 6,
     "sections": 79,
@@ -7,7 +7,7 @@
     "items": 1606,
     "problems": 609,
     "concepts": 997,
-    "resources": 988,
+    "resources": 989,
     "additions": 5
   },
   "sources": [
@@ -1438,7 +1438,7 @@
         }
       ],
       "itemCount": 609,
-      "resourceCount": 517,
+      "resourceCount": 518,
       "progressLabel": "problems",
       "coverage": {
         "title": "DSA Coverage Check",
@@ -2108,6 +2108,10 @@
           "Threat modeling"
         ],
         "resources": [
+          [
+            "Local System Design Tutorial Hub",
+            "System_Design_Tutorial/index.html"
+          ],
           [
             "roadmap.sh System Design",
             "https://roadmap.sh/system-design"
@@ -53605,6 +53609,14 @@
       "domainTitle": "DSA Ultimate Index"
     },
     {
+      "id": "dsa:local-dsa-tutorial:dsa-tutorial-index-html",
+      "title": "Local DSA Tutorial",
+      "url": "DSA_Tutorial/index.html",
+      "source": "learning hub",
+      "domain": "dsa",
+      "domainTitle": "DSA Ultimate Index"
+    },
+    {
       "id": "dsa:neetcode-roadmap:https-neetcode-io-roadmap",
       "title": "NeetCode Roadmap",
       "url": "https://neetcode.io/roadmap",
@@ -61632,6 +61644,10 @@
         "Threat modeling"
       ],
       "resources": [
+        [
+          "Local System Design Tutorial Hub",
+          "System_Design_Tutorial/index.html"
+        ],
         [
           "roadmap.sh System Design",
           "https://roadmap.sh/system-design"

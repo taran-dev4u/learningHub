@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#15 3Sum — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0002-lc11-container-with-most-water.html">← #11 Container With Most Water</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Problem 3 / 707</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0004-lc16-3sum-closest.html">#16 3Sum Closest →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a> › Converging › #15</div>
+
+<h1><span class="num" style="color:var(--text-dim)">#15</span> 3Sum
+<span class="pill M">Medium</span><span class="badge b75" title="Blind 75">★75</span><span class="badge nc" title="NeetCode 150">★NC</span><a class="lc-icon" href="https://leetcode.com/problems/3sum/" target="_blank" rel="noopener" title="Open on LeetCode"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3l-8 8a5 5 0 000 7l2 2a5 5 0 007 0l2.5-2.5" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/><path d="M9 13h10" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/></svg>LeetCode</a></h1>
+<p><span class="chip">Amazon</span><span class="chip">Meta</span><span class="chip">Microsoft</span><span class="chip">Adobe</span><span class="chip">Google</span>  &nbsp; <label style="font-size:14px;color:var(--text-dim)"><input type="checkbox" data-id="p01-lc15"> mark solved</label></p>
+<p class="progress-note">Pattern: <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a>
+ › Subpattern 1.1: Converging · Problem 3 of 707</p>
+
+<h2>📋 The problem</h2><p>Find all unique triplets in an array that sum to zero; the result must contain no duplicate triplets.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+
+<h2>🧭 How to think about it</h2>
+<p>Three numbers summing to zero = <strong>fix one number <code>a</code></strong>, then find a pair summing to <code>−a</code> — which is exactly Two Sum on the rest. On a <em>sorted</em> array that pair-search is converging two pointers in O(n). The real difficulty of 3Sum isn't the search — it's returning <em>unique</em> triplets. Sorting solves that too: duplicates sit next to each other, so you can skip them.</p>
+
+<h2>🐢 Brute force first</h2>
+<p>Three nested loops, O(n³), plus a set of sorted triplets to dedupe. n = 3000 → 4.5 billion checks. No.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> sort once. For each anchor index <code>i</code>, converge <code>lo/hi</code> on the suffix: sum too small → <code>lo += 1</code>, too big → <code>hi −= 1</code>. After every hit AND at the anchor level, <strong>skip equal neighbors</strong> — that's what makes results unique without a set.</div>
+
+<h2>🪜 The approach, step by step</h2>
+<ol>
+<li>Sort the array (O(n log n)).</li>
+<li>For each <code>i</code> from 0 to n−3:
+  <ul><li>if <code>nums[i] &gt; 0</code>, stop — a positive anchor can't reach zero with larger numbers;</li>
+  <li>if <code>nums[i] == nums[i−1]</code>, skip — same anchor was already handled.</li></ul></li>
+<li>Converge <code>lo = i+1</code>, <code>hi = n−1</code> looking for <code>−nums[i]</code>.</li>
+<li>On a hit: record, then advance <code>lo</code> past duplicates and retreat <code>hi</code> past duplicates.</li>
+</ol>
+
+<h2>🎞️ Visual dry run — nums = [−1, 0, 1, 2, −1, −4] → sorted [−4, −1, −1, 0, 1, 2]</h2>
+<pre class="viz">i=0 a=−4  need 4:  lo=1(−1) hi=5(2)  sum=1&lt;4 →lo  … no pair (max is 3)
+i=1 a=−1  need 1:  lo=2(−1) hi=5(2)  sum=1 ✓ → [−1,−1,2]; skip dups; lo=3(0) hi=4(1) sum=1 ✓ → [−1,0,1]
+i=2 a=−1  = nums[1] → SKIP (anchor duplicate)
+i=3 a=0   need 0:  lo=4(1) hi=5(2)  sum=3&gt;0 →hi; pointers meet. Done.
+Result: [[−1,−1,2], [−1,0,1]]</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def threeSum(nums):
+    nums.sort()
+    res = []
+    n = len(nums)
+    for i in range(n - 2):
+        if nums[i] &gt; 0:                    # anchors beyond 0 can't work
+            break
+        if i &gt; 0 and nums[i] == nums[i-1]: # duplicate anchor → same triplets
+            continue
+        lo, hi = i + 1, n - 1
+        while lo &lt; hi:
+            s = nums[i] + nums[lo] + nums[hi]
+            if s &lt; 0:
+                lo += 1                    # need a bigger sum
+            elif s &gt; 0:
+                hi -= 1                    # need a smaller sum
+            else:
+                res.append([nums[i], nums[lo], nums[hi]])
+                while lo &lt; hi and nums[lo] == nums[lo+1]:  # skip dup pairs
+                    lo += 1
+                while lo &lt; hi and nums[hi] == nums[hi-1]:
+                    hi -= 1
+                lo += 1; hi -= 1           # move BOTH past the used values
+    return res</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n²)</strong> — n anchors × O(n) converge each (sort's n log n is dominated). <strong>Space O(1)</strong> extra beyond the output (sorting in place).</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Fewer than 3 elements → empty result.</li>
+<li>All zeros <code>[0,0,0,0]</code> → exactly one triplet [0,0,0]; the dup-skips guarantee it appears once.</li>
+<li>All positive or all negative → the <code>nums[i] &gt; 0</code> break / natural convergence returns [].</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Skipping duplicates at the wrong moment — anchor skip uses <code>nums[i] == nums[i−1]</code> (compare <em>backwards</em>); comparing forward skips valid first-uses.</li>
+<li>After a hit, moving only one pointer — you'll record the same pair again.</li>
+<li>Using a set of triplets instead of skip logic — accepted, but the interviewer wants the O(1)-space dedupe.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Target ≠ 0: replace 0 with target everywhere (drop the <code>&gt; 0</code> break unless values are known non-negative).</li>
+<li>Closest instead of exact → track the best gap (<a href="0004-lc16-3sum-closest.html">#16</a>).</li>
+<li>Four numbers → one more anchor loop (<a href="0005-lc18-4sum.html">#18</a>); k numbers → recursion peeling one anchor per level.</li>
+<li>Count triplets with sum &lt; target → (<a href="0008-lc259-3sum-smaller.html">#259</a>) — the counting trick <code>hi − lo</code>.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0001-lc1-two-sum.html">#1 Two Sum</a> · <a href="0004-lc16-3sum-closest.html">#16 3Sum Closest</a> · <a href="0005-lc18-4sum.html">#18 4Sum</a> · <a href="0008-lc259-3sum-smaller.html">#259 3Sum Smaller</a></p>
+
+
+<div class="pager"><a href="../problems/0002-lc11-container-with-most-water.html"><span class="lbl">← Previous</span>#11 Container With Most Water</a><a href="../problems/0004-lc16-3sum-closest.html" style="text-align:right"><span class="lbl">Next →</span>#16 3Sum Closest</a></div>
+</div>
+</body>
+</html>

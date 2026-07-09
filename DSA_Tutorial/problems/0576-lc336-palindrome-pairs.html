@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#336 Palindrome Pairs — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0575-lc212-word-search-ii.html">← #212 Word Search II</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Problem 576 / 707</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0577-lc472-concatenated-words.html">#472 Concatenated Words →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › <a href="../patterns/p20-trie.html">Trie / Prefix Tree Patterns</a> › Streaming / Autocomplete / Suffix Trie › #336</div>
+
+<h1><span class="num" style="color:var(--text-dim)">#336</span> Palindrome Pairs
+<span class="pill H">Hard</span><a class="lc-icon" href="https://leetcode.com/problems/palindrome-pairs/" target="_blank" rel="noopener" title="Open on LeetCode"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3l-8 8a5 5 0 000 7l2 2a5 5 0 007 0l2.5-2.5" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/><path d="M9 13h10" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/></svg>LeetCode</a></h1>
+<p><span class="chip">Google</span><span class="chip">Airbnb</span><span class="chip">Amazon</span>  &nbsp; <label style="font-size:14px;color:var(--text-dim)"><input type="checkbox" data-id="p20-lc336"> mark solved</label></p>
+<p class="progress-note">Pattern: <a href="../patterns/p20-trie.html">Trie / Prefix Tree Patterns</a>
+ › Subpattern 20.4: Streaming / Autocomplete / Suffix Trie · Problem 576 of 707</p>
+
+<h2>📋 The problem</h2><p>From a list of unique words, return all index pairs whose concatenation forms a palindrome.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+
+<h2>Where this fits</h2>
+<p><strong>Streaming / Autocomplete / Suffix Trie</strong> — Insert/remove on demand and answer streaming queries (suffix matching, autocomplete).</p>
+
+<h2>Why this pattern?</h2><ul><li>"startsWith", autocomplete, longest common prefix over many strings</li><li>wildcard search ('.' matches anything) → branch at the dot</li><li>find many words in a letter grid simultaneously</li><li>XOR maximization → binary trie over bits</li></ul>
+<h2>Pattern template to adapt</h2><p>Start from the Trie / Prefix Tree master template and adapt the marked parts to this problem:</p><pre><code>class TrieNode:
+    __slots__ = ('kids', 'end')
+    def __init__(self):
+        self.kids = {}                 # char → TrieNode
+        self.end = False               # a word ends here
+
+root = TrieNode()
+def insert(word):                      # O(len)
+    node = root
+    for ch in word:
+        node = node.kids.setdefault(ch, TrieNode())
+    node.end = True
+
+def search(word, node=None, i=0):      # supports '.' wildcard
+    node = node or root
+    for j in range(i, len(word)):
+        ch = word[j]
+        if ch == '.':
+            return any(search(word, kid, j+1) for kid in node.kids.values())
+        if ch not in node.kids: return False
+        node = node.kids[ch]
+    return node.end</code></pre>
+<h2>How to work on it now</h2>
+<ol>
+<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
+<li>Write the brute force first — know what you are improving.</li>
+<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
+<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+</ol>
+<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
+(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
+deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<div class="pager"><a href="../problems/0575-lc212-word-search-ii.html"><span class="lbl">← Previous</span>#212 Word Search II</a><a href="../problems/0577-lc472-concatenated-words.html" style="text-align:right"><span class="lbl">Next →</span>#472 Concatenated Words</a></div>
+</div>
+</body>
+</html>

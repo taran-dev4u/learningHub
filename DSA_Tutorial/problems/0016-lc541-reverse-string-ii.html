@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#541 Reverse String II — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0015-lc345-reverse-vowels-of-a-string.html">← #345 Reverse Vowels of a String</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Problem 16 / 707</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0017-lc26-remove-duplicates-from-sorted-array.html">#26 Remove Duplicates from Sorted Array →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a> › String Reversal › #541</div>
+
+<h1><span class="num" style="color:var(--text-dim)">#541</span> Reverse String II
+<span class="pill E">Easy</span><a class="lc-icon" href="https://leetcode.com/problems/reverse-string-ii/" target="_blank" rel="noopener" title="Open on LeetCode"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3l-8 8a5 5 0 000 7l2 2a5 5 0 007 0l2.5-2.5" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/><path d="M9 13h10" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/></svg>LeetCode</a></h1>
+<p><span class="chip"></span>  &nbsp; <label style="font-size:14px;color:var(--text-dim)"><input type="checkbox" data-id="p01-lc541"> mark solved</label></p>
+<p class="progress-note">Pattern: <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a>
+ › Subpattern 1.2: String Reversal · Problem 16 of 707</p>
+
+<h2>📋 The problem</h2><p>Reverse the first k characters of every 2k-sized block of a string.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+
+<h2>🧭 How to think about it</h2>
+<p>March through the string in blocks of <code>2k</code> characters. In each block, reverse the <em>first</em> <code>k</code>; leave the rest alone. The two-pointer reversal is the same as before — the only new idea is stepping the start index by <code>2k</code> each time and clamping the reversal when fewer than <code>k</code> characters remain.</p>
+
+<h2>🐢 Brute force first</h2>
+<p>There isn't really a slower approach worth naming — the direct block walk is already O(n). The subtlety is entirely in the boundary rules.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> iterate the start index <code>i</code> in steps of <code>2k</code>. Reverse <code>s[i : i+k]</code>. If fewer than <code>k</code> characters are left, reverse whatever remains; if between <code>k</code> and <code>2k</code>, reverse exactly the first <code>k</code>. Python slicing with a clamped end handles both cases for free.</p></div>
+
+<h2>🪜 The approach, step by step</h2>
+<ol>
+<li>Convert to a list. Loop <code>i = 0, 2k, 4k, …</code> up to the length.</li>
+<li>Reverse the sub-range from <code>i</code> to <code>min(i+k, n)</code>.</li>
+<li>Leave the next <code>k</code> (or the tail) untouched.</li>
+</ol>
+
+<h2>🎞️ Visual dry run — s = "abcdefg", k = 2 (so 2k = 4)</h2>
+<pre class="viz">i=0: reverse s[0:2] "ab"→"ba"  → "bacdefg"   (leave s[2:4] "cd")
+i=4: reverse s[4:6] "ef"→"fe"  → "bacdfeg"   (leave s[6:] "g")
+i=8: past end → stop
+Result: "bacdfeg"</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def reverseStr(s, k):
+    chars = list(s)
+    for i in range(0, len(chars), 2 * k):     # start of each 2k block
+        left, right = i, min(i + k, len(chars)) - 1
+        while left &lt; right:                   # reverse the first k (clamped)
+            chars[left], chars[right] = chars[right], chars[left]
+            left += 1; right -= 1
+    return "".join(chars)</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — every character is touched at most once. <strong>Space O(n)</strong> for the mutable list (O(1) extra logic).</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Fewer than <code>k</code> chars total → reverse them all.</li>
+<li>Between <code>k</code> and <code>2k</code> left → reverse exactly the first <code>k</code>.</li>
+<li><code>k</code> larger than the string → whole string reversed.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Stepping by <code>k</code> instead of <code>2k</code> — you'd reverse everything.</li>
+<li>Not clamping <code>i+k</code> to the length → index errors on the last block.</li>
+<li>Reversing the wrong half of each block.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Reverse the <em>second</em> k of each block → shift the range.</li>
+<li>Reverse nodes in k-groups on a linked list (<a href="0063-lc25-reverse-nodes-in-k-group.html">#25</a>) — same block idea, pointer rewiring.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0014-lc344-reverse-string.html">#344</a> · <a href="0015-lc345-reverse-vowels-of-a-string.html">#345</a> · <a href="0013-lc151-reverse-words-in-a-string.html">#151</a></p>
+
+
+<div class="pager"><a href="../problems/0015-lc345-reverse-vowels-of-a-string.html"><span class="lbl">← Previous</span>#345 Reverse Vowels of a String</a><a href="../problems/0017-lc26-remove-duplicates-from-sorted-array.html" style="text-align:right"><span class="lbl">Next →</span>#26 Remove Duplicates from Sorted Array</a></div>
+</div>
+</body>
+</html>

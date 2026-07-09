@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#62 Unique Paths — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0565-lc2013-detect-squares.html">← #2013 Detect Squares</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Problem 566 / 707</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0567-lc118-pascal-s-triangle.html">#118 Pascal's Triangle →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › <a href="../patterns/p19-math.html">Math, Number Theory &amp; Geometry Patterns</a> › GCD, LCM &amp; Combinatorics › #62</div>
+
+<h1><span class="num" style="color:var(--text-dim)">#62</span> Unique Paths
+<span class="pill M">Medium</span><span class="badge b75" title="Blind 75">★75</span><span class="badge nc" title="NeetCode 150">★NC</span><a class="lc-icon" href="https://leetcode.com/problems/unique-paths/" target="_blank" rel="noopener" title="Open on LeetCode"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3l-8 8a5 5 0 000 7l2 2a5 5 0 007 0l2.5-2.5" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/><path d="M9 13h10" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/></svg>LeetCode</a></h1>
+<p><span class="chip">Amazon</span><span class="chip">Bloomberg</span><span class="chip">Google</span><span class="chip">Uber</span>  &nbsp; <label style="font-size:14px;color:var(--text-dim)"><input type="checkbox" data-id="p19-lc62"> mark solved</label></p>
+<p class="progress-note">Pattern: <a href="../patterns/p19-math.html">Math, Number Theory &amp; Geometry Patterns</a>
+ › Subpattern 19.5: GCD, LCM &amp; Combinatorics · Problem 566 of 707</p>
+<p class="progress-note">This problem also appears under: <a href="0409-lc62-unique-paths.html">Dynamic Programming (DP)</a> — same problem, different lens.</p>
+<h2>📋 The problem</h2><p>Count the paths a robot can take from the top-left to the bottom-right of an m×n grid moving only right or down.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+
+<h2>Where this fits</h2>
+<p><strong>GCD, LCM &amp; Combinatorics</strong> — Combinations C(n,k), Pascal triangle, modular nCr with Fermat's little theorem.</p>
+<div class="insight"><strong>💡 Key idea</strong><br>dp[r][c] = dp[r−1][c] + dp[r][c−1]; or closed form C(m+n−2, m−1).</div>
+<h2>Why this pattern?</h2><ul><li>divisibility, remainders, "answer modulo 10⁹+7"</li><li>counting primes/factors/trailing zeros</li><li>digit games: reverse, palindrome number, happy number</li><li>geometry: overlaps of rectangles, points on a line, areas</li></ul>
+<h2>Pattern template to adapt</h2><p>Start from the Math, Number Theory &amp; Geometry master template and adapt the marked parts to this problem:</p><pre><code>import math
+math.gcd(a, b)                      # Euclid, O(log min(a,b))
+pow(a, b, MOD)                      # fast modular exponentiation, O(log b)
+
+def sieve(n):                       # all primes ≤ n
+    is_p = [True] * (n + 1)
+    is_p[0] = is_p[1] = False
+    for i in range(2, int(n**0.5) + 1):
+        if is_p[i]:
+            for j in range(i*i, n + 1, i):   # start at i² — smaller done
+                is_p[j] = False
+    return is_p
+
+# Digits without strings
+while n: n, d = divmod(n, 10)       # d = last digit
+
+# Cross product: orientation of C vs line AB (0 = collinear)
+cross = (bx-ax)*(cy-ay) - (by-ay)*(cx-ax)</code></pre>
+<h2>How to work on it now</h2>
+<ol>
+<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
+<li>Write the brute force first — know what you are improving.</li>
+<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
+<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+</ol>
+<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
+(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
+deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<div class="pager"><a href="../problems/0565-lc2013-detect-squares.html"><span class="lbl">← Previous</span>#2013 Detect Squares</a><a href="../problems/0567-lc118-pascal-s-triangle.html" style="text-align:right"><span class="lbl">Next →</span>#118 Pascal's Triangle</a></div>
+</div>
+</body>
+</html>

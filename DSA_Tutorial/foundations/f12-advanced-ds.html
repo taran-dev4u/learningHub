@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>F12 · Segment Trees, Fenwick Trees &amp; Friends — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../foundations/f11-tries-dsu.html">← Tries &amp; Union-Find</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Foundations</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../patterns/p01-two-pointers.html">Two Pointer →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › Foundations › Advanced Structures</div>
+<h1>F12 · Segment Trees, Fenwick Trees &amp; Friends</h1>
+
+<h2>The problem they solve</h2>
+<p>Prefix sums answer range-sum queries in O(1) — but one array update forces rebuilding the prefixes in O(n). When you need <strong>both</strong> updates and range queries, interleaved, segment/Fenwick trees give O(log n) for each.</p>
+<table>
+<tr><th></th><th>update</th><th>range query</th><th>notes</th></tr>
+<tr><td>plain array</td><td>O(1)</td><td>O(n)</td><td>fine if queries are rare</td></tr>
+<tr><td>prefix sums</td><td>O(n)</td><td>O(1)</td><td>fine if updates are rare</td></tr>
+<tr><td><strong>Fenwick / Segment tree</strong></td><td>O(log n)</td><td>O(log n)</td><td>fine when both are frequent</td></tr>
+</table>
+
+<h2>Segment tree — intervals halved recursively</h2>
+<p>Each node covers a range and stores an aggregate (sum/min/max) of it; the root covers [0, n), children split the range in half. A query decomposes any [l, r) into O(log n) node ranges; an update fixes one leaf and its O(log n) ancestors. Works for <em>any associative operation</em> — that's its edge over Fenwick.</p>
+<pre class="viz">              [0,8) sum=36
+             /            \
+       [0,4)=10          [4,8)=26
+       /     \            /     \
+   [0,2)=3  [2,4)=7  [4,6)=11  [6,8)=15   ... leaves = single elements</code></pre>
+
+<h2>Fenwick tree (BIT) — prefix sums, updatable</h2>
+<p>A compressed cousin: an array where index i is responsible for a block whose size is i's lowest set bit (<code>i &amp; -i</code>). Shorter code, half the memory; supports prefix aggregates of invertible ops (sum yes, min no).</p>
+<pre><code>tree = [0] * (n + 1)                  # 1-indexed
+def update(i, delta):                 # add delta at position i
+    while i <= n:
+        tree[i] += delta
+        i += i & (-i)                 # jump to next responsible block
+def prefix(i):                        # sum of a[1..i]
+    s = 0
+    while i > 0:
+        s += tree[i]
+        i -= i & (-i)
+    return s
+# range sum l..r = prefix(r) - prefix(l-1)</code></pre>
+<p>Classic uses: count of smaller elements to the right, range-sum with updates, counting inversions.</p>
+
+<h2>Map of rarer structures (recognize, don't memorize)</h2>
+<ul>
+<li><strong>Monotonic stack/deque</strong> — next-greater-element, window max. (Really a technique — P6.)</li>
+<li><strong>LRU structure</strong> — dict + doubly-linked list: O(1) get/put with eviction order. (P15/P18.)</li>
+<li><strong>Intervals + sweep line</strong> — sort events, +1/−1 counter: meeting rooms, skyline. (P21.)</li>
+<li><strong>Ordered multiset via <code>bisect</code>+list</strong> — Python's stand-in for a balanced BST; O(n) insert but often passes.</li>
+<li><strong>Suffix arrays / KMP / Rabin-Karp</strong> — heavy string machinery. (P29.)</li>
+</ul>
+
+<div class="tip"><strong>Interview reality check:</strong> segment/Fenwick trees appear mainly in Hard problems. Recognize the trigger — "updates AND range queries, both frequent" — and know the API + complexity; fluent implementation is a bonus, not table stakes. Foundations complete → on to the patterns!</div>
+
+<div class="pager"><a href="../foundations/f11-tries-dsu.html"><span class="lbl">← Previous</span>Tries &amp; Union-Find</a><a href="../patterns/p01-two-pointers.html" style="text-align:right"><span class="lbl">Next →</span>Two Pointer</a></div>
+</div>
+</body>
+</html>

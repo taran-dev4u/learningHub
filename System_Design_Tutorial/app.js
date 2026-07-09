@@ -1,0 +1,262 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const topicNav = document.getElementById('topic-nav');
+    const markdownContent = document.getElementById('markdown-content');
+    const btnPrev = document.getElementById('btn-prev');
+    const btnNext = document.getElementById('btn-next');
+    const themeToggle = document.getElementById('theme-toggle');
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const sidebar = document.getElementById('sidebar');
+
+    let topicsData = [];
+    let flatConcepts = []; // We will flatten down to concepts for Prev/Next
+    let currentConceptIndex = 0;
+    let currentlyLoadedPageId = null;
+
+    // Configure marked.js to use highlight.js and inject IDs into headings
+    const renderer = new marked.Renderer();
+    renderer.heading = function(...args) {
+        let textStr = '';
+        let level = 1;
+        
+        if (args.length === 1 && typeof args[0] === 'object') {
+            textStr = args[0].text || args[0].raw;
+            level = args[0].depth;
+        } else {
+            textStr = args[0];
+            level = args[1];
+        }
+        
+        const id = String(textStr).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+        return `<h${level} id="${id}">${textStr}</h${level}>`;
+    };
+
+    marked.setOptions({
+        renderer: renderer,
+        highlight: function(code, lang) {
+            const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+            return hljs.highlight(code, { language }).value;
+        },
+        langPrefix: 'hljs language-'
+    });
+
+    // Theme handling
+    const initTheme = () => {
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    };
+
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+    });
+
+    // Mobile menu toggle
+    mobileMenuBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('open');
+    });
+
+    // Initialize Application
+    const init = async () => {
+        initTheme();
+        try {
+            topicsData = window.topicsData;
+            
+            // Flatten to concepts for pagination
+            topicsData.forEach(section => {
+                section.subsections.forEach(sub => {
+                    sub.concepts.forEach(concept => {
+                        flatConcepts.push({
+                            pageId: sub.id,
+                            pageTitle: sub.title,
+                            file: sub.file,
+                            conceptId: concept.anchor,
+                            conceptTitle: concept.title
+                        });
+                    });
+                });
+            });
+
+            renderSidebar();
+            handleRouting();
+            
+            window.addEventListener('hashchange', handleRouting);
+        } catch (error) {
+            console.error('Error loading topics:', error);
+            topicNav.innerHTML = '<div style="padding: 24px; color: red;">Failed to load curriculum.</div>';
+        }
+    };
+
+    const renderSidebar = () => {
+        topicNav.innerHTML = '';
+        
+        topicsData.forEach(section => {
+            const sectionEl = document.createElement('div');
+            sectionEl.className = 'topic-group';
+            
+            const titleEl = document.createElement('div');
+            titleEl.className = 'topic-group-title';
+            titleEl.innerText = section.section;
+            sectionEl.appendChild(titleEl);
+            
+            const subListEl = document.createElement('div');
+            subListEl.className = 'topic-list';
+            
+            section.subsections.forEach(sub => {
+                const subTitleEl = document.createElement('div');
+                subTitleEl.className = 'subsection-title';
+                subTitleEl.innerText = sub.title;
+                subTitleEl.style.fontWeight = '600';
+                subTitleEl.style.marginTop = '10px';
+                subTitleEl.style.marginBottom = '4px';
+                subTitleEl.style.color = 'var(--text-primary)';
+                subTitleEl.style.fontSize = '0.9rem';
+                subListEl.appendChild(subTitleEl);
+
+                sub.concepts.forEach(concept => {
+                    const link = document.createElement('a');
+                    link.href = `#${sub.id}/${concept.anchor}`;
+                    link.className = 'topic-link';
+                    link.innerText = concept.title;
+                    link.dataset.pageId = sub.id;
+                    link.dataset.conceptId = concept.anchor;
+                    
+                    link.addEventListener('click', () => {
+                        if (window.innerWidth <= 900) {
+                            sidebar.classList.remove('open');
+                        }
+                    });
+                    
+                    subListEl.appendChild(link);
+                });
+            });
+            
+            sectionEl.appendChild(subListEl);
+            topicNav.appendChild(sectionEl);
+        });
+    };
+
+    const handleRouting = async () => {
+        const hash = window.location.hash.substring(1); // e.g. "requirements-scope/functional-requirements"
+        let targetConcept = flatConcepts[0];
+
+        if (hash) {
+            const parts = hash.split('/');
+            const pageId = parts[0];
+            const conceptId = parts[1];
+            
+            const found = flatConcepts.find(c => c.pageId === pageId && c.conceptId === conceptId);
+            if (found) {
+                targetConcept = found;
+            } else {
+                // Try to just find by pageId
+                const foundPage = flatConcepts.find(c => c.pageId === pageId);
+                if (foundPage) targetConcept = foundPage;
+            }
+        } else {
+            window.history.replaceState(null, null, `#${targetConcept.pageId}/${targetConcept.conceptId}`);
+        }
+
+        currentConceptIndex = flatConcepts.findIndex(c => c.pageId === targetConcept.pageId && c.conceptId === targetConcept.conceptId);
+        
+        updateSidebarHighlight(targetConcept.pageId, targetConcept.conceptId);
+        updatePaginationButtons();
+        
+        await loadContent(targetConcept);
+    };
+
+    const updateSidebarHighlight = (pageId, conceptId) => {
+        document.querySelectorAll('.topic-link').forEach(link => {
+            if (link.dataset.pageId === pageId && link.dataset.conceptId === conceptId) {
+                link.classList.add('active');
+                link.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            } else {
+                link.classList.remove('active');
+            }
+        });
+    };
+
+    const updatePaginationButtons = () => {
+        if (currentConceptIndex > 0) {
+            btnPrev.disabled = false;
+            const prev = flatConcepts[currentConceptIndex - 1];
+            btnPrev.onclick = () => { window.location.hash = `${prev.pageId}/${prev.conceptId}`; };
+        } else {
+            btnPrev.disabled = true;
+            btnPrev.onclick = null;
+        }
+
+        if (currentConceptIndex < flatConcepts.length - 1) {
+            btnNext.disabled = false;
+            btnNext.querySelector('span') ? null : btnNext.innerHTML = 'Next Topic <span class="arrow">→</span>';
+            const next = flatConcepts[currentConceptIndex + 1];
+            btnNext.onclick = () => { window.location.hash = `${next.pageId}/${next.conceptId}`; };
+        } else {
+            btnNext.disabled = true;
+            btnNext.onclick = null;
+        }
+    };
+
+    const loadContent = async (concept) => {
+        // If we are already on the correct page, just scroll
+        if (currentlyLoadedPageId === concept.pageId) {
+            scrollToConcept(concept.conceptId);
+            return;
+        }
+
+        markdownContent.innerHTML = '<div class="loading-spinner">Loading content...</div>';
+        try {
+            const markdownText = window.contentBundle[concept.file];
+            if (!markdownText) throw new Error('Content not found');
+            
+            const rawHtml = marked.parse(markdownText);
+            const safeHtml = DOMPurify.sanitize(rawHtml, { ADD_ATTR: ['id'] }); // Allow id tags for scrolling
+            
+            markdownContent.innerHTML = safeHtml;
+            markdownContent.classList.add('fade-in');
+            
+            currentlyLoadedPageId = concept.pageId;
+            
+            setTimeout(() => {
+                markdownContent.classList.remove('fade-in');
+            }, 400);
+            
+            scrollToConcept(concept.conceptId);
+            
+        } catch (error) {
+            console.error('Error fetching content:', error);
+            currentlyLoadedPageId = null;
+            markdownContent.innerHTML = `
+                <div style="text-align: center; padding: 40px;">
+                    <h1>🚧 Error Loading Content</h1>
+                    <p>The masterclass for <strong>${concept.pageTitle}</strong> failed to load.</p>
+                    <pre style="text-align: left; background: #222; padding: 15px; margin-top: 20px; color: red; overflow-x: auto;">
+${error.message}
+${error.stack}
+                    </pre>
+                </div>
+            `;
+        }
+    };
+
+    const scrollToConcept = (conceptId) => {
+        if (!conceptId) return;
+        const el = document.getElementById(conceptId);
+        if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // Add a slight highlight animation
+            el.style.transition = 'color 0.3s ease';
+            const originalColor = el.style.color;
+            el.style.color = 'var(--primary-color)';
+            setTimeout(() => {
+                el.style.color = originalColor || '';
+            }, 1000);
+        } else {
+            window.scrollTo(0, 0);
+        }
+    };
+
+    // Boot
+    init();
+});

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prefix Sum &amp; Difference Array Patterns — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0526-lc493-reverse-pairs.html">← #493 Reverse Pairs</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Pattern 17 of 29</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0527-lc325-maximum-size-subarray-sum-equals-k.html">#325 Maximum Size Subarray Sum Equals k →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › Patterns › Prefix Sum &amp; Difference Array Patterns</div>
+<h1>🧩 Prefix Sum &amp; Difference Array Patterns</h1><p class="progress-note">4 subpatterns · 13 problems · <span data-count-of="p17-"></span></p>
+<h2>1. Intuition — the mental model</h2><p>If you'll ask many range-sum questions, pay O(n) once to store running totals: <code>prefix[i]</code> = sum of the first i elements. Then any range sum is a subtraction. The same idea powers "subarray sums equal k" (via a hash map of seen prefixes) and its mirror twin, the <strong>difference array</strong>, which turns many range-updates into O(1) each.</p>
+<div class="insight"><strong>💡 The “aha” insight</strong><br>sum(i..j) = prefix[j+1] − prefix[i] — so "does any subarray sum to k?" becomes "have I already SEEN a prefix equal to current − k?" A dict of seen prefix-sums answers that in O(1) per step: the O(n²) subarray scan collapses to one pass.</div>
+<h2>2. Recognition signals</h2><p>Think of this pattern when the problem says:</p><ul><li>many range-sum queries, immutable array</li><li>"number of subarrays summing to k / divisible by k"</li><li>many range UPDATES, values read once at the end → difference array</li><li>2-D block sums → 2-D prefix (inclusion-exclusion)</li><li>"equal 0s and 1s" → map to ±1 and find zero-sum ranges</li></ul>
+<h2>3. Master template</h2><pre><code># Prefix sums + hash map: count subarrays summing to k
+from collections import defaultdict
+count, cur = 0, 0
+seen = defaultdict(int)
+seen[0] = 1                      # empty prefix — subarrays starting at 0
+for x in nums:
+    cur += x
+    count += seen[cur - k]       # each earlier prefix = one subarray ending here
+    seen[cur] += 1
+
+# Difference array: m range updates in O(1) each
+diff = [0] * (n + 1)
+for l, r, val in updates:
+    diff[l] += val
+    diff[r + 1] -= val           # effect ends after r
+# final values = prefix sums of diff</code></pre>
+<p>The trio to memorize: prefix + dict (counting), difference array (bulk updates), 2-D prefix <code>P[r][c] = A + P[r-1][c] + P[r][c-1] − P[r-1][c-1]</code> (block sums).</p>
+<h2>4. Complexity of the template</h2><p>Build O(n); each query/update O(1). Subarray counting: O(n) time, O(n) space for the dict.</p>
+<h2>5. Common mistakes</h2><ul><li>Forgetting <code>seen[0] = 1</code> — misses every subarray that starts at index 0.</li><li>Off-by-one between "prefix includes i" and "excludes i" — pick length-(n+1) prefixes.</li><li>Negative numbers: sliding window fails but prefix+dict works — know when you're in which world.</li><li>Difference array: writing −val at r instead of r+1.</li></ul>
+<h2>6. Subpatterns &amp; problems</h2>
+<h3>17.1 — Subarray Sum with Hashmap</h3><p class="progress-note">Hashmap of running prefix sums → count subarrays whose sum equals k, even with negatives.</p><ul class="plist"><li><input type="checkbox" data-id="p17-lc325" title="mark solved"><span class="num">#325</span><span class="pill M">M</span><a href="../problems/0527-lc325-maximum-size-subarray-sum-equals-k.html">Maximum Size Subarray Sum Equals k</a></li><li><input type="checkbox" data-id="p17-lc523" title="mark solved"><span class="num">#523</span><span class="pill M">M</span><a href="../problems/0528-lc523-continuous-subarray-sum.html">Continuous Subarray Sum</a></li><li><input type="checkbox" data-id="p17-lc525" title="mark solved"><span class="num">#525</span><span class="pill M">M</span><a href="../problems/0529-lc525-contiguous-array.html">Contiguous Array</a><span class="badge nc" title="NeetCode 150">★NC</span></li><li><input type="checkbox" data-id="p17-lc560" title="mark solved"><span class="num">#560</span><span class="pill M">M</span><a href="../problems/0530-lc560-subarray-sum-equals-k.html">Subarray Sum Equals K</a></li><li><input type="checkbox" data-id="p17-lc930" title="mark solved"><span class="num">#930</span><span class="pill M">M</span><a href="../problems/0531-lc930-binary-subarrays-with-sum.html">Binary Subarrays With Sum</a></li><li><input type="checkbox" data-id="p17-lc974" title="mark solved"><span class="num">#974</span><span class="pill M">M</span><a href="../problems/0532-lc974-subarray-sums-divisible-by-k.html">Subarray Sums Divisible by K</a></li><li><input type="checkbox" data-id="p17-lc1248" title="mark solved"><span class="num">#1248</span><span class="pill M">M</span><a href="../problems/0533-lc1248-count-number-of-nice-subarrays.html">Count Number of Nice Subarrays</a></li></ul>
+<h3>17.2 — Range Sum Query (Static)</h3><p class="progress-note">Precompute prefix array once; answer range sums in O(1) (1D and 2D variants).</p><ul class="plist"><li><input type="checkbox" data-id="p17-lc303" title="mark solved"><span class="num">#303</span><span class="pill E">E</span><a href="../problems/0534-lc303-range-sum-query-immutable.html">Range Sum Query - Immutable</a></li><li><input type="checkbox" data-id="p17-lc304" title="mark solved"><span class="num">#304</span><span class="pill M">M</span><a href="../problems/0535-lc304-range-sum-query-2d-immutable.html">Range Sum Query 2D - Immutable</a></li></ul>
+<h3>17.3 — Difference Array / Range Update</h3><p class="progress-note">diff[l] += v, diff[r+1] -= v on range updates; prefix-sum the diff array at the end.</p><ul class="plist"><li><input type="checkbox" data-id="p17-lc370" title="mark solved"><span class="num">#370</span><span class="pill M">M</span><a href="../problems/0536-lc370-range-addition.html">Range Addition</a></li><li><input type="checkbox" data-id="p17-lc1094" title="mark solved"><span class="num">#1094</span><span class="pill M">M</span><a href="../problems/0537-lc1094-car-pooling.html">Car Pooling</a></li><li><input type="checkbox" data-id="p17-lc1109" title="mark solved"><span class="num">#1109</span><span class="pill M">M</span><a href="../problems/0538-lc1109-corporate-flight-bookings.html">Corporate Flight Bookings</a></li></ul>
+<h3>17.4 — Prefix XOR / Prefix Product</h3><p class="progress-note">Prefix XOR or prefix product to answer range-XOR / range-product queries.</p><ul class="plist"><li><input type="checkbox" data-id="p17-lc1310" title="mark solved"><span class="num">#1310</span><span class="pill M">M</span><a href="../problems/0539-lc1310-xor-queries-of-a-subarray.html">XOR Queries of a Subarray</a></li></ul>
+<div class="pager"><a href="../problems/0526-lc493-reverse-pairs.html"><span class="lbl">← Previous</span>#493 Reverse Pairs</a><a href="../problems/0527-lc325-maximum-size-subarray-sum-equals-k.html" style="text-align:right"><span class="lbl">Next →</span>#325 Maximum Size Subarray Sum Equals k</a></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bit Manipulation Patterns — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0455-lc459-repeated-substring-pattern.html">← #459 Repeated Substring Pattern</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Pattern 14 of 29</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0456-lc136-single-number.html">#136 Single Number →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › Patterns › Bit Manipulation Patterns</div>
+<h1>🧩 Bit Manipulation Patterns</h1><p class="progress-note">4 subpatterns · 16 problems · <span data-count-of="p14-"></span></p>
+<h2>1. Intuition — the mental model</h2><p>Integers are arrays of bits, and bitwise ops act on all 32/64 lanes at once — free parallelism. Three workhorses: <strong>XOR</strong> (pairs cancel: x^x=0), <strong>n &amp; (n−1)</strong> (clears the lowest set bit), and <strong>masks as sets</strong> (bit i = "element i included" — subsets become integers you can cache).</p>
+<div class="insight"><strong>💡 The “aha” insight</strong><br>XOR of everything makes duplicates vanish: XOR-ing a whole array where every number appears twice except one leaves exactly that one — O(n) time, O(1) space, no hash map. Order doesn't matter because XOR is commutative and associative.</div>
+<h2>2. Recognition signals</h2><p>Think of this pattern when the problem says:</p><ul><li>"every element appears twice except…" → XOR</li><li>"without using +/-" arithmetic → bit ops</li><li>count/check/flip individual bits, powers of two</li><li>n ≤ 20 with subset enumeration → bitmask (possibly + DP)</li><li>"O(1) space" on a counting problem that smells impossible</li></ul>
+<h2>3. Master template</h2><pre><code>x &amp; 1            # is odd? (last bit)
+x &gt;&gt; 1, x &lt;&lt; 1   # halve / double
+x &amp; (x - 1)      # clear lowest set bit  → == 0 means power of two
+x &amp; (-x)         # isolate lowest set bit
+x ^= y           # toggle by mask; pairs cancel
+(x &gt;&gt; i) &amp; 1     # read bit i
+x | (1 &lt;&lt; i)     # set bit i
+x &amp; ~(1 &lt;&lt; i)    # clear bit i
+
+# Bitmask subsets: iterate all 2^n subsets of n items
+for mask in range(1 &lt;&lt; n):
+    if mask &amp; (1 &lt;&lt; i):  ...   # item i is in this subset</code></pre>
+<p>Brian Kernighan's trick counts set bits in O(number of set bits): loop <code>x &amp;= x-1</code> until zero. Python ints are unbounded — simulate 32-bit wrap with <code>&amp; 0xFFFFFFFF</code> when a problem demands it.</p>
+<h2>4. Complexity of the template</h2><p>Single-number tricks: O(n) time, O(1) space. Bitmask enumeration: O(2ⁿ) subsets — fine only for n ≤ ~20 (and O(3ⁿ) for subset-of-subset loops).</p>
+<h2>5. Common mistakes</h2><ul><li>Sign bugs porting negative-number logic — Python has no fixed width; mask explicitly.</li><li>Operator precedence: <code>x &amp; 1 == 0</code> parses as <code>x &amp; (1 == 0)</code> — parenthesize!</li><li>Confusing XOR-swap cleverness with clarity — just use tuple swap in Python.</li><li>Missing that "appears 3 times except one" needs per-bit counting mod 3, not plain XOR.</li></ul>
+<h2>6. Subpatterns &amp; problems</h2>
+<h3>14.1 — Bitwise XOR / Finding Single or Missing Number</h3><p class="progress-note">XOR all elements — pairs cancel, leaving the singleton.</p><ul class="plist"><li><input type="checkbox" data-id="p14-lc136" title="mark solved"><span class="num">#136</span><span class="pill E">E</span><a href="../problems/0456-lc136-single-number.html">Single Number</a><span class="badge nc" title="NeetCode 150">★NC</span><span class="badge g75" title="Grind 75">★G</span></li><li><input type="checkbox" data-id="p14-lc137" title="mark solved"><span class="num">#137</span><span class="pill M">M</span><a href="../problems/0457-lc137-single-number-ii.html">Single Number II</a></li><li><input type="checkbox" data-id="p14-lc260" title="mark solved"><span class="num">#260</span><span class="pill M">M</span><a href="../problems/0458-lc260-single-number-iii.html">Single Number III</a></li><li><input type="checkbox" data-id="p14-lc268" title="mark solved"><span class="num">#268</span><span class="pill E">E</span><a href="../problems/0459-lc268-missing-number.html">Missing Number</a><span class="badge b75" title="Blind 75">★75</span><span class="badge nc" title="NeetCode 150">★NC</span></li><li><input type="checkbox" data-id="p14-lc389" title="mark solved"><span class="num">#389</span><span class="pill E">E</span><a href="../problems/0460-lc389-find-the-difference.html">Find the Difference</a></li></ul>
+<h3>14.2 — Bitwise AND / Counting Set Bits</h3><p class="progress-note">Count set bits with n &amp; (n-1) until n is zero.</p><ul class="plist"><li><input type="checkbox" data-id="p14-lc191" title="mark solved"><span class="num">#191</span><span class="pill E">E</span><a href="../problems/0461-lc191-number-of-1-bits.html">Number of 1 Bits</a><span class="badge b75" title="Blind 75">★75</span><span class="badge nc" title="NeetCode 150">★NC</span></li><li><input type="checkbox" data-id="p14-lc201" title="mark solved"><span class="num">#201</span><span class="pill M">M</span><a href="../problems/0462-lc201-bitwise-and-of-numbers-range.html">Bitwise AND of Numbers Range</a></li><li><input type="checkbox" data-id="p14-lc477" title="mark solved"><span class="num">#477</span><span class="pill M">M</span><a href="../problems/0463-lc477-total-hamming-distance.html">Total Hamming Distance</a></li></ul>
+<h3>14.3 — Bitwise DP / Counting Bits Optimization</h3><p class="progress-note">dp[i] = dp[i&gt;&gt;1] + (i&amp;1) — counts set bits for 0..n.</p><ul class="plist"><li><input type="checkbox" data-id="p14-lc338" title="mark solved"><span class="num">#338</span><span class="pill E">E</span><a href="../problems/0464-lc338-counting-bits.html">Counting Bits</a><span class="badge b75" title="Blind 75">★75</span><span class="badge nc" title="NeetCode 150">★NC</span></li><li><input type="checkbox" data-id="p14-lc1863" title="mark solved"><span class="num">#1863</span><span class="pill E">E</span><a href="../problems/0465-lc1863-sum-of-all-subset-xor-totals.html">Sum of All Subset XOR Totals</a></li></ul>
+<h3>14.4 — Bitwise Operations / Power of Two or Four Check</h3><p class="progress-note">n &amp; (n-1) == 0 ⇔ power of two; mask with 0x55555555 for power of four.</p><ul class="plist"><li><input type="checkbox" data-id="p14-lc190" title="mark solved"><span class="num">#190</span><span class="pill E">E</span><a href="../problems/0466-lc190-reverse-bits.html">Reverse Bits</a><span class="badge b75" title="Blind 75">★75</span><span class="badge nc" title="NeetCode 150">★NC</span></li><li><input type="checkbox" data-id="p14-lc231" title="mark solved"><span class="num">#231</span><span class="pill E">E</span><a href="../problems/0467-lc231-power-of-two.html">Power of Two</a></li><li><input type="checkbox" data-id="p14-lc342" title="mark solved"><span class="num">#342</span><span class="pill E">E</span><a href="../problems/0468-lc342-power-of-four.html">Power of Four</a></li><li><input type="checkbox" data-id="p14-lc371" title="mark solved"><span class="num">#371</span><span class="pill M">M</span><a href="../problems/0469-lc371-sum-of-two-integers.html">Sum of Two Integers</a><span class="badge b75" title="Blind 75">★75</span><span class="badge nc" title="NeetCode 150">★NC</span></li><li><input type="checkbox" data-id="p14-lc393" title="mark solved"><span class="num">#393</span><span class="pill M">M</span><a href="../problems/0470-lc393-utf-8-validation.html">UTF-8 Validation</a></li><li><input type="checkbox" data-id="p14-lc1318" title="mark solved"><span class="num">#1318</span><span class="pill M">M</span><a href="../problems/0471-lc1318-minimum-flips-to-make-a-or-b-equal-to-c.html">Minimum Flips to Make a OR b Equal to c</a></li></ul>
+<div class="pager"><a href="../problems/0455-lc459-repeated-substring-pattern.html"><span class="lbl">← Previous</span>#459 Repeated Substring Pattern</a><a href="../problems/0456-lc136-single-number.html" style="text-align:right"><span class="lbl">Next →</span>#136 Single Number</a></div>
+</div>
+</body>
+</html>

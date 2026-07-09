@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#611 Valid Triangle Number — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0009-lc349-intersection-of-two-arrays.html">← #349 Intersection of Two Arrays</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Problem 10 / 707</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0011-lc881-boats-to-save-people.html">#881 Boats to Save People →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a> › Converging › #611</div>
+
+<h1><span class="num" style="color:var(--text-dim)">#611</span> Valid Triangle Number
+<span class="pill M">Medium</span><a class="lc-icon" href="https://leetcode.com/problems/valid-triangle-number/" target="_blank" rel="noopener" title="Open on LeetCode"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3l-8 8a5 5 0 000 7l2 2a5 5 0 007 0l2.5-2.5" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/><path d="M9 13h10" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/></svg>LeetCode</a></h1>
+<p><span class="chip">Amazon</span><span class="chip">Google</span>  &nbsp; <label style="font-size:14px;color:var(--text-dim)"><input type="checkbox" data-id="p01-lc611"> mark solved</label></p>
+<p class="progress-note">Pattern: <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a>
+ › Subpattern 1.1: Converging · Problem 10 of 707</p>
+
+<h2>📋 The problem</h2><p>Count the triplets in an array that could be the side lengths of a triangle.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+
+<h2>🧭 How to think about it</h2>
+<p>Three lengths form a triangle iff the two shortest add up to more than the longest (the other two triangle inequalities are automatic once that holds). So <strong>sort</strong>, fix the <em>largest</em> side, and count how many pairs of smaller sides beat it. Sorting turns "check three inequalities" into "check one".</p>
+
+<h2>🐢 Brute force first</h2>
+<p>Test every triple against the triangle inequality: O(n³). Sorting plus a converge collapses it to O(n²).</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> after sorting, fix the largest side at index <code>k</code> and converge <code>lo/hi</code> below it. If <code>nums[lo] + nums[hi] &gt; nums[k]</code>, then every element from <code>lo</code> up to <code>hi−1</code> also works with <code>hi</code> — add <code>hi − lo</code> at once and drop <code>hi</code>. Otherwise <code>lo += 1</code>.</div>
+
+<h2>🪜 The approach, step by step</h2>
+<ol>
+<li>Sort ascending.</li>
+<li>For <code>k</code> from <code>n−1</code> down to 2 (the largest side): set <code>lo = 0</code>, <code>hi = k−1</code>.</li>
+<li>If <code>nums[lo] + nums[hi] &gt; nums[k]</code>: count += <code>hi − lo</code>, then <code>hi -= 1</code>.</li>
+<li>Else <code>lo += 1</code>.</li>
+</ol>
+
+<h2>🎞️ Visual dry run — nums = [2, 2, 3, 4] (sorted)</h2>
+<pre class="viz">k=3 (side 4): lo=0(2) hi=2(3)  2+3=5 &gt; 4 → count += hi−lo = 2; hi→1
+              lo=0(2) hi=1(2)  2+2=4 not &gt; 4 → lo→1 ; lo==hi stop
+k=2 (side 3): lo=0(2) hi=1(2)  2+2=4 &gt; 3 → count += 1 (total 3); hi→0 stop
+Total = 3 triangles</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def triangleNumber(nums):
+    nums.sort()
+    n, count = len(nums), 0
+    for k in range(n - 1, 1, -1):        # k = index of the longest side
+        lo, hi = 0, k - 1
+        while lo &lt; hi:
+            if nums[lo] + nums[hi] &gt; nums[k]:
+                count += hi - lo         # lo..hi-1 all pair with hi
+                hi -= 1
+            else:
+                lo += 1                  # shortest side too small; grow it
+    return count</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n²)</strong> — n choices of longest side × O(n) converge. <strong>Space O(1)</strong> beyond the sort.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Fewer than 3 elements → 0.</li>
+<li>Zeros — a side of length 0 never satisfies <code>a + b &gt; c</code> when it's one of the shorter sides, and the strict <code>&gt;</code> handles it.</li>
+<li>Many equal lengths → counted correctly by the batch add.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Fixing the <em>smallest</em> side instead of the largest — you'd need all three inequalities again.</li>
+<li>Using <code>≥</code> — degenerate (flat) triangles don't count; the inequality is strict.</li>
+<li>Adding 1 instead of <code>hi − lo</code>.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Count degenerate triangles too → switch to <code>≥</code>.</li>
+<li>Return the triangles, not the count → record the ranges instead of summing.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0008-lc259-3sum-smaller.html">#259</a> · <a href="0003-lc15-3sum.html">#15</a> · <a href="0007-lc167-two-sum-ii-input-array-is-sorted.html">#167</a></p>
+
+
+<div class="pager"><a href="../problems/0009-lc349-intersection-of-two-arrays.html"><span class="lbl">← Previous</span>#349 Intersection of Two Arrays</a><a href="../problems/0011-lc881-boats-to-save-people.html" style="text-align:right"><span class="lbl">Next →</span>#881 Boats to Save People</a></div>
+</div>
+</body>
+</html>

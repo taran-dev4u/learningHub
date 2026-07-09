@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sorting Algorithms &amp; Selection Patterns — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0686-lc641-design-circular-deque.html">← #641 Design Circular Deque</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Pattern 27 of 29</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0687-lc215-kth-largest-element-in-an-array.html">#215 Kth Largest Element in an Array →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › Patterns › Sorting Algorithms &amp; Selection Patterns</div>
+<h1>🧩 Sorting Algorithms &amp; Selection Patterns</h1><p class="progress-note">4 subpatterns · 8 problems · <span data-count-of="p27-"></span></p>
+<h2>1. Intuition — the mental model</h2><p>Here the sort IS the problem: implement merge sort on a linked list, sort colors in one pass, find the k-th largest without full sorting. The leverage points: merge sort's merge step, quicksort's partition step (reusable alone as quickselect), and non-comparison counting when the value range is tiny.</p>
+<div class="insight"><strong>💡 The “aha” insight</strong><br>Partition does useful work even without sorting: after one partition, the pivot sits at its FINAL index, everything smaller is left, bigger is right. Recurse into just one side and you have quickselect — k-th element in O(n) average, no full sort.</div>
+<h2>2. Recognition signals</h2><p>Think of this pattern when the problem says:</p><ul><li>"k-th largest/smallest" without needing full order → quickselect</li><li>"sort colors / 0s,1s,2s in one pass" → Dutch national flag</li><li>sort a LINKED list in O(n log n) O(1) space → merge sort</li><li>values in a tiny known range → counting sort</li><li>"sort by custom rule" (largest concatenation) → comparator thinking</li></ul>
+<h2>3. Master template</h2><pre><code># Dutch national flag: 3-way partition, one pass
+lo, mid, hi = 0, 0, len(a) - 1
+while mid &lt;= hi:
+    if a[mid] == 0:
+        a[lo], a[mid] = a[mid], a[lo]; lo += 1; mid += 1
+    elif a[mid] == 2:
+        a[mid], a[hi] = a[hi], a[mid]; hi -= 1     # mid NOT advanced!
+    else:
+        mid += 1
+
+# Quickselect skeleton (k-th smallest) — partition, recurse one side
+import random
+def quickselect(a, k):
+    p = random.choice(a)
+    lo  = [x for x in a if x &lt; p]
+    eq  = [x for x in a if x == p]
+    if k &lt; len(lo): return quickselect(lo, k)
+    if k &lt; len(lo) + len(eq): return p
+    return quickselect([x for x in a if x &gt; p], k - len(lo) - len(eq))</code></pre>
+<p>Why mid doesn't advance after swapping with hi: the element that arrived from the right is unexamined. Random pivots make the O(n²) adversarial case vanish in practice; mention median-of-medians for guaranteed O(n).</p>
+<h2>4. Complexity of the template</h2><p>Quickselect O(n) average / O(n²) worst (random pivot ⇒ negligible); Dutch flag O(n)/O(1); linked-list merge sort O(n log n) with O(1) extra (bottom-up).</p>
+<h2>5. Common mistakes</h2><ul><li>Advancing mid after the hi-swap in Dutch flag — skips elements.</li><li>Quickselect without randomization on adversarial inputs.</li><li>k-th LARGEST vs k-th smallest index conversion: k-th largest = (n−k)-th smallest.</li><li>Linked-list sorting with array algorithms (random access doesn't exist).</li></ul>
+<h2>6. Subpatterns &amp; problems</h2>
+<h3>27.1 — Quickselect (Kth element)</h3><p class="progress-note">Partition around a pivot like Quicksort, but recurse only into the side containing the kth index.</p><ul class="plist"><li><input type="checkbox" data-id="p27-lc215" title="mark solved"><span class="num">#215</span><span class="pill M">M</span><a href="../problems/0687-lc215-kth-largest-element-in-an-array.html">Kth Largest Element in an Array</a><span class="badge g75" title="Grind 75">★G</span></li><li><input type="checkbox" data-id="p27-lc324" title="mark solved"><span class="num">#324</span><span class="pill M">M</span><a href="../problems/0688-lc324-wiggle-sort-ii.html">Wiggle Sort II</a></li></ul>
+<h3>27.2 — Merge-Sort Applications</h3><p class="progress-note">Merge sort with an extra counter increments when merging — counts inversions in O(n log n).</p><ul class="plist"><li><input type="checkbox" data-id="p27-lc148" title="mark solved"><span class="num">#148</span><span class="pill M">M</span><a href="../problems/0689-lc148-sort-list.html">Sort List</a><span class="badge g75" title="Grind 75">★G</span></li></ul>
+<h3>27.3 — Bucket / Counting / Radix Sort</h3><p class="progress-note">Place items into buckets keyed by value/frequency; concatenate the buckets in order.</p><ul class="plist"><li><input type="checkbox" data-id="p27-lc164" title="mark solved"><span class="num">#164</span><span class="pill H">H</span><a href="../problems/0690-lc164-maximum-gap.html">Maximum Gap</a></li><li><input type="checkbox" data-id="p27-lc274" title="mark solved"><span class="num">#274</span><span class="pill M">M</span><a href="../problems/0691-lc274-h-index.html">H-Index</a></li><li><input type="checkbox" data-id="p27-lc275" title="mark solved"><span class="num">#275</span><span class="pill M">M</span><a href="../problems/0692-lc275-h-index-ii.html">H-Index II</a></li></ul>
+<h3>27.4 — Custom-Comparator Sort</h3><p class="progress-note">Sort with a non-default comparator that captures the required ordering (e.g., 'a+b' vs 'b+a').</p><ul class="plist"><li><input type="checkbox" data-id="p27-lc179" title="mark solved"><span class="num">#179</span><span class="pill M">M</span><a href="../problems/0693-lc179-largest-number.html">Largest Number</a></li><li><input type="checkbox" data-id="p27-lc1122" title="mark solved"><span class="num">#1122</span><span class="pill E">E</span><a href="../problems/0694-lc1122-relative-sort-array.html">Relative Sort Array</a></li></ul>
+<div class="pager"><a href="../problems/0686-lc641-design-circular-deque.html"><span class="lbl">← Previous</span>#641 Design Circular Deque</a><a href="../problems/0687-lc215-kth-largest-element-in-an-array.html" style="text-align:right"><span class="lbl">Next →</span>#215 Kth Largest Element in an Array</a></div>
+</div>
+</body>
+</html>

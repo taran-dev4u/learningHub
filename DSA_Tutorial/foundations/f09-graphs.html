@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>F9 · Graphs: Networks of Relationships — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../foundations/f08-heaps.html">← Heaps</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Foundations</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../foundations/f10-sorting.html">Sorting →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › Foundations › Graphs</div>
+<h1>F9 · Graphs: Networks of Relationships</h1>
+
+<h2>The problem it solves</h2>
+<p>Trees only model hierarchies. Friendships, maps, dependencies, grids — anything where items connect freely — need a <strong>graph</strong>: nodes (vertices) + connections (edges). Directed or undirected, weighted or unweighted, possibly cyclic, possibly disconnected.</p>
+
+<h2>Representation: adjacency list (the default)</h2>
+<pre><code>from collections import defaultdict
+graph = defaultdict(list)
+for u, v in edges:
+    graph[u].append(v)
+    graph[v].append(u)      # drop this line for a directed graph</code></pre>
+<p>O(V+E) space; iterating a node's neighbors is O(degree). An adjacency <em>matrix</em> is O(V²) space with O(1) edge lookup — only worth it for dense graphs. <strong>Grids are graphs too</strong>: cell (r,c) has neighbors in 4 directions — no need to build an explicit adjacency list.</p>
+
+<h2>BFS vs DFS — the two engines</h2>
+<pre><code>from collections import deque        # BFS: explore by distance rings
+def bfs(start):
+    q, seen = deque([start]), {start}
+    while q:
+        node = q.popleft()
+        for nb in graph[node]:
+            if nb not in seen:
+                seen.add(nb)         # mark when ENQUEUED, not when popped
+                q.append(nb)
+
+def dfs(node, seen):                 # DFS: dive deep, backtrack
+    for nb in graph[node]:
+        if nb not in seen:
+            seen.add(nb)
+            dfs(nb, seen)</code></pre>
+<table>
+<tr><th></th><th>BFS</th><th>DFS</th></tr>
+<tr><td>Structure</td><td>queue</td><td>recursion / stack</td></tr>
+<tr><td>Explores</td><td>nearest first</td><td>one branch fully</td></tr>
+<tr><td>Guarantees</td><td><strong>shortest path (unweighted)</strong></td><td>—</td></tr>
+<tr><td>Best for</td><td>min steps, levels, nearest X</td><td>connectivity, islands, cycles, topological sort, backtracking</td></tr>
+<tr><td>Complexity</td><td colspan="2">both O(V+E) time, O(V) space</td></tr>
+</table>
+<div class="warn"><strong>The #1 graph bug:</strong> forgetting the visited set (infinite loops on cycles) or marking visited at pop-time instead of enqueue-time in BFS (nodes enter the queue twice — wrong distances and blow-ups).</div>
+
+<h2>The five recurring graph jobs</h2>
+<ul>
+<li><strong>Connected components / islands</strong> — loop all nodes, DFS/BFS from each unvisited one, count starts.</li>
+<li><strong>Shortest path</strong> — unweighted: BFS. Weighted non-negative: Dijkstra (heap). Negative edges: Bellman-Ford.</li>
+<li><strong>Cycle detection</strong> — undirected: DFS seeing a visited non-parent. Directed: three colors (white/gray/black); a gray→gray edge is a cycle.</li>
+<li><strong>Topological sort</strong> — order a DAG so edges point forward: Kahn's algorithm (repeatedly remove indegree-0 nodes). Course Schedule is this.</li>
+<li><strong>Union-Find</strong> — near-O(1) "same group?" queries under merging (F11).</li>
+</ul>
+
+<h2>Pitfalls</h2>
+<ul><li>Disconnected graphs: one traversal from node 0 doesn't see everything — loop over all starts.</li>
+<li>Grid DFS recursion can exceed Python's depth limit on big grids — use an explicit stack.</li>
+<li>Don't mutate the input grid as your visited-marker unless allowed (though it's a classic O(1)-space trick — say it aloud).</li></ul>
+
+<div class="pager"><a href="../foundations/f08-heaps.html"><span class="lbl">← Previous</span>Heaps</a><a href="../foundations/f10-sorting.html" style="text-align:right"><span class="lbl">Next →</span>Sorting</a></div>
+</div>
+</body>
+</html>

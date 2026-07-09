@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#19 Remove Nth Node From End of List — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0031-lc392-is-subsequence.html">← #392 Is Subsequence</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Problem 32 / 707</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0033-lc876-middle-of-the-linked-list.html">#876 Middle of the Linked List →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a> › Fixed Separation › #19</div>
+
+<h1><span class="num" style="color:var(--text-dim)">#19</span> Remove Nth Node From End of List
+<span class="pill M">Medium</span><a class="lc-icon" href="https://leetcode.com/problems/remove-nth-node-from-end-of-list/" target="_blank" rel="noopener" title="Open on LeetCode"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3l-8 8a5 5 0 000 7l2 2a5 5 0 007 0l2.5-2.5" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/><path d="M9 13h10" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/></svg>LeetCode</a></h1>
+<p><span class="chip">Meta</span><span class="chip">Amazon</span><span class="chip">Microsoft</span><span class="chip">Bloomberg</span>  &nbsp; <label style="font-size:14px;color:var(--text-dim)"><input type="checkbox" data-id="p01-lc19"> mark solved</label></p>
+<p class="progress-note">Pattern: <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a>
+ › Subpattern 1.5: Fixed Separation · Problem 32 of 707</p>
+
+<h2>📋 The problem</h2><p>Remove the n-th node from the end of a linked list and return the head — ideally in one pass.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+
+<h2>🧭 How to think about it</h2>
+<p>Delete the n-th node counting from the end, in a single pass. The trick is a <strong>fixed gap</strong> between two pointers: move a lead pointer <code>n</code> steps ahead, then advance both together. When the lead reaches the end, the trailing pointer sits exactly on the node just before the one to remove.</p>
+
+<h2>🐢 Brute force first</h2>
+<p>Two passes: count the length L, then walk to node <code>L−n</code> and unlink. Correct and simple. The two-pointer version does it in one pass.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> a gap of <code>n</code> between <code>lead</code> and <code>lag</code> is preserved as both advance. Start them off a <em>dummy</em> node so that even removing the head is handled uniformly; when <code>lead</code> falls off the end, <code>lag.next</code> is the target.</div>
+
+<h2>🪜 The approach, step by step</h2>
+<ol>
+<li>Create a <code>dummy</code> pointing to head; <code>lead = lag = dummy</code>.</li>
+<li>Advance <code>lead</code> by <code>n+1</code> steps (so the gap spans the node before the target).</li>
+<li>Advance both until <code>lead</code> is <code>None</code>.</li>
+<li><code>lag.next = lag.next.next</code>; return <code>dummy.next</code>.</li>
+</ol>
+
+<h2>🎞️ Visual dry run — list 1→2→3→4→5, n = 2</h2>
+<pre class="viz">dummy→1→2→3→4→5 ; move lead 3 steps: lead=3, lag=dummy
+advance both: lead=4 lag=1 ; lead=5 lag=2 ; lead=None lag=3
+lag.next (=4) skipped → lag.next = 5
+Result: 1→2→3→5</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def removeNthFromEnd(head, n):
+    dummy = ListNode(0, head)      # handles removing the head uniformly
+    lead = lag = dummy
+    for _ in range(n + 1):         # open a gap of n between lag and lead
+        lead = lead.next
+    while lead:                    # advance together
+        lead = lead.next
+        lag = lag.next
+    lag.next = lag.next.next       # unlink the target
+    return dummy.next</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(L)</strong> — one traversal. <strong>Space O(1)</strong> — a few pointers.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Removing the head (<code>n == L</code>) → the dummy makes <code>lag</code> land on dummy, so <code>dummy.next</code> updates correctly.</li>
+<li>Single-node list, <code>n = 1</code> → returns empty list.</li>
+<li><code>n</code> equal to length → head removed.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Advancing <code>lead</code> by <code>n</code> instead of <code>n+1</code> — you'd land <code>lag</code> on the target, not before it.</li>
+<li>Not using a dummy → special-casing head removal and risking null errors.</li>
+<li>Off-by-one in the gap.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Return the n-th node from the end without deleting → same gap, no unlink.</li>
+<li>Find the middle (<a href="0033-lc876-middle-of-the-linked-list.html">#876</a>) → a different fixed-ratio pointer setup.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0033-lc876-middle-of-the-linked-list.html">#876</a> · <a href="0034-lc2095-delete-the-middle-node-of-a-linked-list.html">#2095</a> · <a href="0028-lc141-linked-list-cycle.html">#141</a></p>
+
+
+<div class="pager"><a href="../problems/0031-lc392-is-subsequence.html"><span class="lbl">← Previous</span>#392 Is Subsequence</a><a href="../problems/0033-lc876-middle-of-the-linked-list.html" style="text-align:right"><span class="lbl">Next →</span>#876 Middle of the Linked List</a></div>
+</div>
+</body>
+</html>

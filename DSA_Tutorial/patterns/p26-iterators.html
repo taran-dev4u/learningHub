@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iterator &amp; Data-Stream Design Patterns — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0673-lc1765-map-of-highest-peak.html">← #1765 Map of Highest Peak</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Pattern 26 of 29</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0674-lc173-binary-search-tree-iterator.html">#173 Binary Search Tree Iterator →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › Patterns › Iterator &amp; Data-Stream Design Patterns</div>
+<h1>🧩 Iterator &amp; Data-Stream Design Patterns</h1><p class="progress-note">6 subpatterns · 13 problems · <span data-count-of="p26-"></span></p>
+<h2>1. Intuition — the mental model</h2><p>Sometimes you must expose data <em>one element at a time</em> — flattening nested structures, peeking ahead, merging streams — without materializing everything. The discipline: keep just enough state (a stack of positions, a buffered element, running aggregates) to answer <code>next()</code> and <code>hasNext()</code> quickly, and do work lazily.</p>
+<div class="insight"><strong>💡 The “aha” insight</strong><br>Push the WORK into hasNext(): keep a stack of "places I still have to explore"; hasNext() digs until the top is a real element (or the stack dies). next() then just pops. This makes nested/lazy iteration correct even with empty sublists everywhere — and BST iterators O(h) memory instead of O(n).</div>
+<h2>2. Recognition signals</h2><p>Think of this pattern when the problem says:</p><ul><li>"implement an iterator over…" (nested lists, BST, zigzag of k lists)</li><li>"peek()" on top of an existing iterator → one-element buffer</li><li>streaming: moving average, median, top-k of a live feed</li><li>can't afford to flatten/materialize (memory bound)</li></ul>
+<h2>3. Master template</h2><pre><code># Nested-list iterator: stack of (list, index) frames
+class Flattener:
+    def __init__(self, nested):
+        self.stack = [(nested, 0)]
+    def hasNext(self):
+        while self.stack:
+            lst, i = self.stack[-1]
+            if i == len(lst):
+                self.stack.pop()                # frame exhausted
+            elif isinstance(lst[i], list):
+                self.stack[-1] = (lst, i + 1)   # consume slot,
+                self.stack.append((lst[i], 0))  # descend into it
+            else:
+                return True                     # real element on top
+        return False
+    def next(self):
+        lst, i = self.stack[-1]
+        self.stack[-1] = (lst, i + 1)
+        return lst[i]
+
+# BST iterator: stack = path of left spines → O(h) memory inorder
+# Moving average: deque(maxlen=k) + running sum</code></pre>
+<p>peek() wraps any iterator: cache one element, serve it before advancing. Stream medians: the two-heap structure from the Heap pattern, maintained per arrival.</p>
+<h2>4. Complexity of the template</h2><p>Aim for amortized O(1) per next() (each element touched a constant number of times overall) and sublinear state — O(depth) or O(h) or O(k), never O(total).</p>
+<h2>5. Common mistakes</h2><ul><li>Flattening everything in the constructor — legal, but it dodges the actual question; say the trade-off.</li><li>next() without hasNext()'s digging — breaks on empty nested lists.</li><li>Iterator invalidation: mutating the underlying data mid-iteration.</li><li>Moving average dividing by k before the window is full.</li></ul>
+<h2>6. Subpatterns &amp; problems</h2>
+<h3>26.1 — BST Iterator</h3><p class="progress-note">BST iterator with controlled stack to give in-order next() in amortized O(1).</p><ul class="plist"><li><input type="checkbox" data-id="p26-lc173" title="mark solved"><span class="num">#173</span><span class="pill M">M</span><a href="../problems/0674-lc173-binary-search-tree-iterator.html">Binary Search Tree Iterator</a></li></ul>
+<h3>26.2 — Peeking / Wrapping Iterators</h3><p class="progress-note">Wrap an existing iterator with peek() by buffering one element.</p><ul class="plist"><li><input type="checkbox" data-id="p26-lc284" title="mark solved"><span class="num">#284</span><span class="pill M">M</span><a href="../problems/0675-lc284-peeking-iterator.html">Peeking Iterator</a></li></ul>
+<h3>26.3 — Multi-Source Iterators</h3><p class="progress-note">Multi-list iterators that round-robin or zigzag across sub-iterators.</p><ul class="plist"><li><input type="checkbox" data-id="p26-lc281" title="mark solved"><span class="num">#281</span><span class="pill M">M</span><a href="../problems/0676-lc281-zigzag-iterator.html">Zigzag Iterator</a></li><li><input type="checkbox" data-id="p26-lc1429" title="mark solved"><span class="num">#1429</span><span class="pill M">M</span><a href="../problems/0677-lc1429-first-unique-number.html">First Unique Number</a></li></ul>
+<h3>26.4 — Nested List / 2D Iterator</h3><p class="progress-note">Flatten nested integers/lists with a stack of iterators or recursive expansion on demand.</p><ul class="plist"><li><input type="checkbox" data-id="p26-lc251" title="mark solved"><span class="num">#251</span><span class="pill M">M</span><a href="../problems/0678-lc251-flatten-2d-vector.html">Flatten 2D Vector</a></li><li><input type="checkbox" data-id="p26-lc341" title="mark solved"><span class="num">#341</span><span class="pill M">M</span><a href="../problems/0679-lc341-flatten-nested-list-iterator.html">Flatten Nested List Iterator</a></li></ul>
+<h3>26.5 — Streaming Statistics</h3><p class="progress-note">Streaming statistics — moving average via deque, median via two heaps.</p><ul class="plist"><li><input type="checkbox" data-id="p26-lc295" title="mark solved"><span class="num">#295</span><span class="pill H">H</span><a href="../problems/0680-lc295-find-median-from-data-stream.html">Find Median from Data Stream</a><span class="badge b75" title="Blind 75">★75</span><span class="badge nc" title="NeetCode 150">★NC</span><span class="badge g75" title="Grind 75">★G</span></li><li><input type="checkbox" data-id="p26-lc346" title="mark solved"><span class="num">#346</span><span class="pill E">E</span><a href="../problems/0681-lc346-moving-average-from-data-stream.html">Moving Average from Data Stream</a></li><li><input type="checkbox" data-id="p26-lc703" title="mark solved"><span class="num">#703</span><span class="pill E">E</span><a href="../problems/0682-lc703-kth-largest-element-in-a-stream.html">Kth Largest Element in a Stream</a><span class="badge nc" title="NeetCode 150">★NC</span></li></ul>
+<h3>26.6 — Stack / Queue Conversion</h3><p class="progress-note">Stack-of-queues / queue-of-stacks design to mimic the opposite ADT.</p><ul class="plist"><li><input type="checkbox" data-id="p26-lc225" title="mark solved"><span class="num">#225</span><span class="pill E">E</span><a href="../problems/0683-lc225-implement-stack-using-queues.html">Implement Stack using Queues</a></li><li><input type="checkbox" data-id="p26-lc232" title="mark solved"><span class="num">#232</span><span class="pill E">E</span><a href="../problems/0684-lc232-implement-queue-using-stacks.html">Implement Queue using Stacks</a></li><li><input type="checkbox" data-id="p26-lc622" title="mark solved"><span class="num">#622</span><span class="pill M">M</span><a href="../problems/0685-lc622-design-circular-queue.html">Design Circular Queue</a></li><li><input type="checkbox" data-id="p26-lc641" title="mark solved"><span class="num">#641</span><span class="pill M">M</span><a href="../problems/0686-lc641-design-circular-deque.html">Design Circular Deque</a></li></ul>
+<div class="pager"><a href="../problems/0673-lc1765-map-of-highest-peak.html"><span class="lbl">← Previous</span>#1765 Map of Highest Peak</a><a href="../problems/0674-lc173-binary-search-tree-iterator.html" style="text-align:right"><span class="lbl">Next →</span>#173 Binary Search Tree Iterator</a></div>
+</div>
+</body>
+</html>

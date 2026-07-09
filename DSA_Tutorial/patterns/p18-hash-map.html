@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hash Map &amp; Cache Design Patterns — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0539-lc1310-xor-queries-of-a-subarray.html">← #1310 XOR Queries of a Subarray</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Pattern 18 of 29</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0540-lc49-group-anagrams.html">#49 Group Anagrams →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › Patterns › Hash Map &amp; Cache Design Patterns</div>
+<h1>🧩 Hash Map &amp; Cache Design Patterns</h1><p class="progress-note">5 subpatterns · 10 problems · <span data-count-of="p18-"></span></p>
+<h2>1. Intuition — the mental model</h2><p>Beyond plain counting, this family builds <em>machinery</em> around O(1) lookup: caches with eviction (LRU/LFU), O(1)-everything sets, key-value stores with expiry or versions. The recurring shape: the dict finds things instantly, a second structure (linked list, heap, second dict) maintains whatever <em>order</em> the dict cannot.</p>
+<div class="insight"><strong>💡 The “aha” insight</strong><br>A dict pointing at linked-list NODES gives you both worlds at once: hash-speed access to an element AND O(1) splice-out/reorder of that element. That one composition is LRU, LFU (dict of frequency-buckets), and most "O(1) all operations" designs.</div>
+<h2>2. Recognition signals</h2><p>Think of this pattern when the problem says:</p><ul><li>"O(1) average for every operation"</li><li>eviction by recency/frequency, capacity limits</li><li>time-versioned lookups (get value at timestamp)</li><li>two-way mappings, consistent grouping</li><li>"design a HashMap/HashSet" from primitives</li></ul>
+<h2>3. Master template</h2><pre><code># Frequency buckets (LFU core idea, also "O(1) inc/dec"):
+# key → count, and count → set of keys with that count
+counts = {}                       # key → its frequency
+buckets = defaultdict(set)        # frequency → keys at that frequency
+min_freq = tracked separately     # evict from buckets[min_freq]
+
+# Timestamped values: dict of key → sorted list of (time, value)
+import bisect
+store = defaultdict(list)
+def set_val(k, v, t): store[k].append((t, v))       # times arrive increasing
+def get_val(k, t):
+    arr = store[k]
+    i = bisect.bisect_right(arr, (t, chr(0x10FFFF)))  # last entry ≤ t
+    return arr[i-1][1] if i else ""</code></pre>
+<p>Ask what each operation must cost <em>before</em> choosing structures. If eviction order matters → linked list or buckets; if "as of time t" → sorted list + bisect; if "min/max too" → add a heap or store pairs.</p>
+<h2>4. Complexity of the template</h2><p>The point is per-operation O(1) average (or O(log n) where bisect enters). State the space overhead — usually O(capacity) or O(total entries).</p>
+<h2>5. Common mistakes</h2><ul><li>Iterating the dict to find an eviction victim — that's the O(n) you were hired to avoid.</li><li>LFU without tracking min_freq — finding it on demand is O(n).</li><li>Timestamp lookups with linear scan instead of bisect.</li><li>Forgetting to clean empty buckets — stale min_freq pointers.</li></ul>
+<h2>6. Subpatterns &amp; problems</h2>
+<h3>18.1 — Grouping / Frequency</h3><p class="progress-note">Hashmap groups elements by a canonical key (sorted string, character signature, etc.).</p><ul class="plist"><li><input type="checkbox" data-id="p18-lc49" title="mark solved"><span class="num">#49</span><span class="pill M">M</span><a href="../problems/0540-lc49-group-anagrams.html">Group Anagrams</a><span class="badge b75" title="Blind 75">★75</span><span class="badge nc" title="NeetCode 150">★NC</span></li><li><input type="checkbox" data-id="p18-lc128" title="mark solved"><span class="num">#128</span><span class="pill M">M</span><a href="../problems/0541-lc128-longest-consecutive-sequence.html">Longest Consecutive Sequence</a><span class="badge b75" title="Blind 75">★75</span><span class="badge nc" title="NeetCode 150">★NC</span></li><li><input type="checkbox" data-id="p18-lc249" title="mark solved"><span class="num">#249</span><span class="pill M">M</span><a href="../problems/0542-lc249-group-shifted-strings.html">Group Shifted Strings</a></li><li><input type="checkbox" data-id="p18-lc347" title="mark solved"><span class="num">#347</span><span class="pill M">M</span><a href="../problems/0543-lc347-top-k-frequent-elements.html">Top K Frequent Elements</a><span class="badge b75" title="Blind 75">★75</span><span class="badge nc" title="NeetCode 150">★NC</span><span class="badge g75" title="Grind 75">★G</span></li></ul>
+<h3>18.2 — LRU Cache Design</h3><p class="progress-note">Doubly linked list orders by recency; hashmap maps key → list node for O(1) access.</p><ul class="plist"><li><input type="checkbox" data-id="p18-lc146" title="mark solved"><span class="num">#146</span><span class="pill M">M</span><a href="../problems/0544-lc146-lru-cache.html">LRU Cache</a><span class="badge nc" title="NeetCode 150">★NC</span><span class="badge g75" title="Grind 75">★G</span></li></ul>
+<h3>18.3 — LFU Cache Design</h3><p class="progress-note">Two hashmaps: one for value, one for the frequency-bucket list head; promote on access.</p><ul class="plist"><li><input type="checkbox" data-id="p18-lc432" title="mark solved"><span class="num">#432</span><span class="pill H">H</span><a href="../problems/0545-lc432-all-o-one-data-structure.html">All O`one Data Structure</a></li><li><input type="checkbox" data-id="p18-lc460" title="mark solved"><span class="num">#460</span><span class="pill H">H</span><a href="../problems/0546-lc460-lfu-cache.html">LFU Cache</a></li></ul>
+<h3>18.4 — Time-Based / Snapshot Storage</h3><p class="progress-note">Hashmap of stacks (or arrays) keyed by snapshot id / version / timestamp for time-travel queries.</p><ul class="plist"><li><input type="checkbox" data-id="p18-lc981" title="mark solved"><span class="num">#981</span><span class="pill M">M</span><a href="../problems/0547-lc981-time-based-key-value-store.html">Time Based Key-Value Store</a><span class="badge nc" title="NeetCode 150">★NC</span><span class="badge g75" title="Grind 75">★G</span></li></ul>
+<h3>18.5 — Hashmap + Random Access O(1)</h3><p class="progress-note">Hashmap maps value → index; backing array supports O(1) random pick via swap-and-pop.</p><ul class="plist"><li><input type="checkbox" data-id="p18-lc380" title="mark solved"><span class="num">#380</span><span class="pill M">M</span><a href="../problems/0548-lc380-insert-delete-getrandom-o-1.html">Insert Delete GetRandom O(1)</a></li><li><input type="checkbox" data-id="p18-lc381" title="mark solved"><span class="num">#381</span><span class="pill H">H</span><a href="../problems/0549-lc381-insert-delete-getrandom-o-1-duplicates-allowed.html">Insert Delete GetRandom O(1) - Duplicates allowed</a></li></ul>
+<div class="pager"><a href="../problems/0539-lc1310-xor-queries-of-a-subarray.html"><span class="lbl">← Previous</span>#1310 XOR Queries of a Subarray</a><a href="../problems/0540-lc49-group-anagrams.html" style="text-align:right"><span class="lbl">Next →</span>#49 Group Anagrams</a></div>
+</div>
+</body>
+</html>

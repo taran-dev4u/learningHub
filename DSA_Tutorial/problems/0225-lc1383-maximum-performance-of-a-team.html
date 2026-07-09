@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#1383 Maximum Performance of a Team — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0224-lc1167-minimum-cost-to-connect-sticks.html">← #1167 Minimum Cost to Connect Sticks</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Problem 225 / 707</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0226-lc1642-furthest-building-you-can-reach.html">#1642 Furthest Building You Can Reach →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › <a href="../patterns/p07-heap.html">Heap (Priority Queue) Patterns</a> › Scheduling / Minimum Cost with Priority Queue › #1383</div>
+
+<h1><span class="num" style="color:var(--text-dim)">#1383</span> Maximum Performance of a Team
+<span class="pill H">Hard</span><a class="lc-icon" href="https://leetcode.com/problems/maximum-performance-of-a-team/" target="_blank" rel="noopener" title="Open on LeetCode"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3l-8 8a5 5 0 000 7l2 2a5 5 0 007 0l2.5-2.5" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/><path d="M9 13h10" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/></svg>LeetCode</a></h1>
+<p><span class="chip">Amazon</span><span class="chip">Google</span>  &nbsp; <label style="font-size:14px;color:var(--text-dim)"><input type="checkbox" data-id="p07-lc1383"> mark solved</label></p>
+<p class="progress-note">Pattern: <a href="../patterns/p07-heap.html">Heap (Priority Queue) Patterns</a>
+ › Subpattern 7.4: Scheduling / Minimum Cost with Priority Queue · Problem 225 of 707</p>
+
+<h2>📋 The problem</h2><p>Pick at most k engineers maximizing (sum of speeds) × (minimum efficiency) — sort by efficiency, min-heap of speeds.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+
+<h2>Where this fits</h2>
+<p><strong>Scheduling / Minimum Cost with Priority Queue</strong> — Heap selects the highest-cost/highest-priority task at each step — task scheduling, IPO, sticks.</p>
+
+<h2>Why this pattern?</h2><ul><li>"k largest / k closest / k most frequent / k-th …"</li><li>merge k sorted lists/streams</li><li>"median of a stream" / balance two halves → two heaps</li><li>scheduling: always take the earliest end / most frequent / cheapest next</li></ul>
+<h2>Pattern template to adapt</h2><p>Start from the Heap (Priority Queue) master template and adapt the marked parts to this problem:</p><pre><code>import heapq
+# Top-k largest: min-heap of size k
+h = []
+for x in nums:
+    heapq.heappush(h, x)
+    if len(h) &gt; k:
+        heapq.heappop(h)                 # evict the smallest of the k+1
+# h holds the k largest; h[0] is the k-th largest
+
+# k-way merge: heap of (value, which_list, index)
+h = [(lst[0], i, 0) for i, lst in enumerate(lists) if lst]
+heapq.heapify(h)
+while h:
+    val, i, j = heapq.heappop(h)
+    out.append(val)
+    if j + 1 &lt; len(lists[i]):
+        heapq.heappush(h, (lists[i][j+1], i, j+1))</code></pre>
+<h2>How to work on it now</h2>
+<ol>
+<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
+<li>Write the brute force first — know what you are improving.</li>
+<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
+<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+</ol>
+<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
+(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
+deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<div class="pager"><a href="../problems/0224-lc1167-minimum-cost-to-connect-sticks.html"><span class="lbl">← Previous</span>#1167 Minimum Cost to Connect Sticks</a><a href="../problems/0226-lc1642-furthest-building-you-can-reach.html" style="text-align:right"><span class="lbl">Next →</span>#1642 Furthest Building You Can Reach</a></div>
+</div>
+</body>
+</html>

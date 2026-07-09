@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#1372 Longest ZigZag Path in a Binary Tree — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0605-lc687-longest-univalue-path.html">← #687 Longest Univalue Path</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Problem 606 / 707</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0607-lc124-binary-tree-maximum-path-sum.html">#124 Binary Tree Maximum Path Sum →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › <a href="../patterns/p22-tree-dp.html">Tree Dynamic Programming Patterns</a> › Tree Diameter &amp; Longest Path › #1372</div>
+
+<h1><span class="num" style="color:var(--text-dim)">#1372</span> Longest ZigZag Path in a Binary Tree
+<span class="pill M">Medium</span><a class="lc-icon" href="https://leetcode.com/problems/longest-zigzag-path-in-a-binary-tree/" target="_blank" rel="noopener" title="Open on LeetCode"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3l-8 8a5 5 0 000 7l2 2a5 5 0 007 0l2.5-2.5" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/><path d="M9 13h10" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/></svg>LeetCode</a></h1>
+<p><span class="chip"></span>  &nbsp; <label style="font-size:14px;color:var(--text-dim)"><input type="checkbox" data-id="p22-lc1372"> mark solved</label></p>
+<p class="progress-note">Pattern: <a href="../patterns/p22-tree-dp.html">Tree Dynamic Programming Patterns</a>
+ › Subpattern 22.2: Tree Diameter &amp; Longest Path · Problem 606 of 707</p>
+
+<h2>📋 The problem</h2><p>Return the longest zigzag path in a binary tree (alternate left/right child steps).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+
+<h2>Where this fits</h2>
+<p><strong>Tree Diameter &amp; Longest Path</strong> — Each node returns max-depth-going-down; while recursing, update the global diameter answer.</p>
+
+<h2>Why this pattern?</h2><ul><li>optimize a value over a TREE (max path, max loot, longest chain)</li><li>constraints between parent and child ("can't pick both")</li><li>"count/size/best of subtrees" feeding a global answer</li><li>the diameter shape: best-through-this-node vs best-for-parent differ</li></ul>
+<h2>Pattern template to adapt</h2><p>Start from the Tree Dynamic Programming master template and adapt the marked parts to this problem:</p><pre><code>def dfs(node):
+    if not node:
+        return NEUTRAL                     # e.g. (0, 0)
+    L = dfs(node.left)                     # children first (postorder)
+    R = dfs(node.right)
+    include = node.val + L[1] + R[1]       # take node → children excluded
+    exclude = max(L) + max(R)              # skip node → children free
+    # global-answer problems also do:  best = max(best, through_node)
+    return (include, exclude)
+
+ans = max(dfs(root))</code></pre>
+<h2>How to work on it now</h2>
+<ol>
+<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
+<li>Write the brute force first — know what you are improving.</li>
+<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
+<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+</ol>
+<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
+(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
+deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<div class="pager"><a href="../problems/0605-lc687-longest-univalue-path.html"><span class="lbl">← Previous</span>#687 Longest Univalue Path</a><a href="../problems/0607-lc124-binary-tree-maximum-path-sum.html" style="text-align:right"><span class="lbl">Next →</span>#124 Binary Tree Maximum Path Sum</a></div>
+</div>
+</body>
+</html>

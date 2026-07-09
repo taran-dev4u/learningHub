@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#1000 Minimum Cost to Merge Stones — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0629-lc877-stone-game.html">← #877 Stone Game</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Problem 630 / 707</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0631-lc1140-stone-game-ii.html">#1140 Stone Game II →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › <a href="../patterns/p23-advanced-dp.html">Advanced Dynamic Programming Patterns</a> › Interval / Partition DP › #1000</div>
+
+<h1><span class="num" style="color:var(--text-dim)">#1000</span> Minimum Cost to Merge Stones
+<span class="pill H">Hard</span><a class="lc-icon" href="https://leetcode.com/problems/minimum-cost-to-merge-stones/" target="_blank" rel="noopener" title="Open on LeetCode"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3l-8 8a5 5 0 000 7l2 2a5 5 0 007 0l2.5-2.5" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/><path d="M9 13h10" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/></svg>LeetCode</a></h1>
+<p><span class="chip"></span>  &nbsp; <label style="font-size:14px;color:var(--text-dim)"><input type="checkbox" data-id="p23-lc1000"> mark solved</label></p>
+<p class="progress-note">Pattern: <a href="../patterns/p23-advanced-dp.html">Advanced Dynamic Programming Patterns</a>
+ › Subpattern 23.4: Interval / Partition DP · Problem 630 of 707</p>
+
+<h2>📋 The problem</h2><p>Merge k adjacent stone piles at a time, paying their total; return the minimum cost to merge everything into one pile (-1 if impossible).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+
+<h2>Where this fits</h2>
+<p><strong>Interval / Partition DP</strong> — Interval/partition DP — dp[i][j] from splits k between i and j; #312 Burst Balloons is canonical.</p>
+
+<h2>Why this pattern?</h2><ul><li>two strings/sequences compared → 2-D prefix DP</li><li>pick items under a budget → knapsack (0/1 vs unbounded!)</li><li>"longest increasing …" → LIS (O(n log n) with patience trick)</li><li>operations on ranges "burst/merge/remove" → interval DP over lengths</li></ul>
+<h2>Pattern template to adapt</h2><p>Start from the Advanced Dynamic Programming master template and adapt the marked parts to this problem:</p><pre><code># 2-D sequence DP (edit distance shape)
+dp = [[0]*(m+1) for _ in range(n+1)]
+for i in range(n+1): dp[i][0] = i          # base: delete everything
+for j in range(m+1): dp[0][j] = j
+for i in range(1, n+1):
+    for j in range(1, m+1):
+        if a[i-1] == b[j-1]:
+            dp[i][j] = dp[i-1][j-1]         # free match
+        else:
+            dp[i][j] = 1 + min(dp[i-1][j],      # delete
+                               dp[i][j-1],      # insert
+                               dp[i-1][j-1])    # replace
+
+# 0/1 knapsack, 1-D
+dp = [0] * (W + 1)
+for wt, val in items:
+    for w in range(W, wt - 1, -1):          # DESCENDING: item used once
+        dp[w] = max(dp[w], dp[w - wt] + val)&lt;/code&gt;</code></pre>
+<h2>How to work on it now</h2>
+<ol>
+<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
+<li>Write the brute force first — know what you are improving.</li>
+<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
+<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+</ol>
+<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
+(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
+deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<div class="pager"><a href="../problems/0629-lc877-stone-game.html"><span class="lbl">← Previous</span>#877 Stone Game</a><a href="../problems/0631-lc1140-stone-game-ii.html" style="text-align:right"><span class="lbl">Next →</span>#1140 Stone Game II</a></div>
+</div>
+</body>
+</html>

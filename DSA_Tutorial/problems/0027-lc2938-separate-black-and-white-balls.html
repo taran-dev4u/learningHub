@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#2938 Separate Black and White Balls — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0026-lc2337-move-pieces-to-obtain-a-string.html">← #2337 Move Pieces to Obtain a String</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Problem 27 / 707</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0028-lc141-linked-list-cycle.html">#141 Linked List Cycle →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a> › In-place Array Modification › #2938</div>
+
+<h1><span class="num" style="color:var(--text-dim)">#2938</span> Separate Black and White Balls
+<span class="pill M">Medium</span><a class="lc-icon" href="https://leetcode.com/problems/separate-black-and-white-balls/" target="_blank" rel="noopener" title="Open on LeetCode"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3l-8 8a5 5 0 000 7l2 2a5 5 0 007 0l2.5-2.5" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/><path d="M9 13h10" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/></svg>LeetCode</a></h1>
+<p><span class="chip"></span>  &nbsp; <label style="font-size:14px;color:var(--text-dim)"><input type="checkbox" data-id="p01-lc2938"> mark solved</label></p>
+<p class="progress-note">Pattern: <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a>
+ › Subpattern 1.3: In-place Array Modification · Problem 27 of 707</p>
+
+<h2>📋 The problem</h2><p>Return the minimum adjacent swaps to move every '1' (black ball) to the right of every '0' (each 1 crosses the 0s after it; sum zeros-passed).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+
+<h2>🧭 How to think about it</h2>
+<p>A string of <code>'0'</code> (white) and <code>'1'</code> (black); you may swap adjacent balls, and want all whites on the left and blacks on the right with the <em>minimum</em> number of adjacent swaps. Think of each white ball: it must "pass" every black ball currently to its left. Count those crossings and you have the answer.</p>
+
+<h2>🐢 Brute force first</h2>
+<p>Bubble-sort style adjacent swaps simulate the process but are O(n²). Counting crossings in one pass is O(n).</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> sweep left to right counting the blacks seen so far. Every time you hit a white ball, it needs exactly <code>(number of blacks already passed)</code> adjacent swaps to move past them. Sum that over all whites. Equivalently: a pointer tracks the destination for the next white; the gap is the swaps needed.</div>
+
+<h2>🪜 The approach, step by step</h2>
+<ol>
+<li><code>ones = 0</code> (blacks seen), <code>swaps = 0</code>.</li>
+<li>For each character: if <code>'1'</code>, increment <code>ones</code>.</li>
+<li>If <code>'0'</code>, it must cross all current blacks → <code>swaps += ones</code>.</li>
+<li>Return <code>swaps</code>.</li>
+</ol>
+
+<h2>🎞️ Visual dry run — s = "100"</h2>
+<pre class="viz">ch='1' → ones=1
+ch='0' → swaps += 1 (this white passes the one black) → swaps=1
+ch='0' → swaps += 1 → swaps=2
+Answer: 2   ("100" → "010" → "001")</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def minimumSteps(s):
+    ones = 0        # black balls ('1') seen so far
+    swaps = 0
+    for ch in s:
+        if ch == '1':
+            ones += 1
+        else:                       # a white ball must cross every black to its left
+            swaps += ones
+    return swaps</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — single pass. <strong>Space O(1)</strong>. (Use a 64-bit-safe integer type in other languages; Python ints are unbounded.)</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Already sorted ("0…01…1") → 0 swaps.</li>
+<li>All same color → 0 swaps.</li>
+<li>Reverse sorted ("1…10…0") → the maximum, counted correctly.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Simulating adjacent swaps → O(n²) and too slow for large inputs.</li>
+<li>Integer overflow in languages with fixed-width ints (the count can be ~n²/4).</li>
+<li>Counting whites-before-blacks instead of blacks-before-whites — pick one consistent framing.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>All blacks on the left instead → mirror the count.</li>
+<li>Three colors → reduces toward the Dutch-flag idea (<a href="0019-lc75-sort-colors.html">#75</a>) for placement, but swap-counting differs.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0019-lc75-sort-colors.html">#75</a> · <a href="0023-lc905-sort-array-by-parity.html">#905</a> · <a href="0026-lc2337-move-pieces-to-obtain-a-string.html">#2337</a></p>
+
+
+<div class="pager"><a href="../problems/0026-lc2337-move-pieces-to-obtain-a-string.html"><span class="lbl">← Previous</span>#2337 Move Pieces to Obtain a String</a><a href="../problems/0028-lc141-linked-list-cycle.html" style="text-align:right"><span class="lbl">Next →</span>#141 Linked List Cycle</a></div>
+</div>
+</body>
+</html>

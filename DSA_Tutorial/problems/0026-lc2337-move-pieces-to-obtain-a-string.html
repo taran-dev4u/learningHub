@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#2337 Move Pieces to Obtain a String — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0025-lc925-long-pressed-name.html">← #925 Long Pressed Name</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Problem 26 / 707</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0027-lc2938-separate-black-and-white-balls.html">#2938 Separate Black and White Balls →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a> › In-place Array Modification › #2337</div>
+
+<h1><span class="num" style="color:var(--text-dim)">#2337</span> Move Pieces to Obtain a String
+<span class="pill M">Medium</span><a class="lc-icon" href="https://leetcode.com/problems/move-pieces-to-obtain-a-string/" target="_blank" rel="noopener" title="Open on LeetCode"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3l-8 8a5 5 0 000 7l2 2a5 5 0 007 0l2.5-2.5" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/><path d="M9 13h10" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/></svg>LeetCode</a></h1>
+<p><span class="chip"></span>  &nbsp; <label style="font-size:14px;color:var(--text-dim)"><input type="checkbox" data-id="p01-lc2337"> mark solved</label></p>
+<p class="progress-note">Pattern: <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a>
+ › Subpattern 1.3: In-place Array Modification · Problem 26 of 707</p>
+
+<h2>📋 The problem</h2><p>'L' pieces may only move left and 'R' only right through blanks; decide whether the start string can reach the target (matched pieces with compatible positions).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+
+<h2>🧭 How to think about it</h2>
+<p>Two boards of <code>'L'</code>, <code>'R'</code>, and <code>'_'</code> (blank). An <code>'L'</code> can only slide left, an <code>'R'</code> only right; blanks are free space. Can <code>start</code> become <code>target</code>? Ignore the blanks and compare the <strong>sequence of pieces</strong>: it must be identical. Then use two pointers to check each piece can physically reach its target position given its allowed direction.</p>
+
+<h2>🐢 Brute force first</h2>
+<p>Simulating every possible move is exponential. The insight-based two-pointer check is O(n): the relative order of non-blank pieces never changes, so it's a positional feasibility test.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> compare only non-blank characters, in order — they must match exactly (same L/R sequence). For each matched piece, an <code>'L'</code> in start must be at an index <strong>≥</strong> its target index (it moves left), and an <code>'R'</code> must be at an index <strong>≤</strong> its target index (it moves right).</div>
+
+<h2>🪜 The approach, step by step</h2>
+<ol>
+<li>Two pointers <code>i</code> (start) and <code>j</code> (target); skip blanks in each.</li>
+<li>When both point at pieces, they must be the same letter; else return False.</li>
+<li>For <code>'L'</code>: require <code>i &gt;= j</code>. For <code>'R'</code>: require <code>i &lt;= j</code>.</li>
+<li>Advance both. At the end both pointers must have reached the end together.</li>
+</ol>
+
+<h2>🎞️ Visual dry run — start = "_L__", target = "L___"</h2>
+<pre class="viz">i skips '_' to 1 ('L'); j at 0 ('L')  → same letter, 'L' needs i≥j: 1≥0 ✓
+advance: i→2 (skip blanks to end), j→1 (skip to end)
+both reach end together → True  (the L slid left from index1 to index0)</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def canChange(start, target):
+    n = len(start)
+    i = j = 0
+    while i &lt; n or j &lt; n:
+        while i &lt; n and start[i] == '_':  i += 1   # skip blanks
+        while j &lt; n and target[j] == '_': j += 1
+        if i == n or j == n:                        # one ran out of pieces
+            return i == n and j == n                # both must end together
+        if start[i] != target[j]:
+            return False                            # different piece order
+        if start[i] == 'L' and i &lt; j:
+            return False                            # 'L' can't move right
+        if start[i] == 'R' and i &gt; j:
+            return False                            # 'R' can't move left
+        i += 1; j += 1
+    return True</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — each pointer scans once. <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Different piece counts → one pointer finishes first → False.</li>
+<li>Same string → trivially True.</li>
+<li>Piece order differs → caught by the letter-mismatch check.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Forgetting that L moves left (needs <code>i ≥ j</code>) and R moves right (needs <code>i ≤ j</code>) — mixing them up.</li>
+<li>Not verifying both pointers end simultaneously.</li>
+<li>Comparing including blanks.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Report the sequence of moves → harder; needs a queue of positions.</li>
+<li>Pieces that move both directions → the positional constraints relax.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0027-lc2938-separate-black-and-white-balls.html">#2938</a> · <a href="0035-lc844-backspace-string-compare.html">#844</a> · <a href="0025-lc925-long-pressed-name.html">#925</a></p>
+
+
+<div class="pager"><a href="../problems/0025-lc925-long-pressed-name.html"><span class="lbl">← Previous</span>#925 Long Pressed Name</a><a href="../problems/0027-lc2938-separate-black-and-white-balls.html" style="text-align:right"><span class="lbl">Next →</span>#2938 Separate Black and White Balls</a></div>
+</div>
+</body>
+</html>

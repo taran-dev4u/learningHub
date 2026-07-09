@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advanced String Algorithm Patterns — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0700-lc710-random-pick-with-blacklist.html">← #710 Random Pick with Blacklist</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Pattern 29 of 29</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0701-lc5-longest-palindromic-substring.html">#5 Longest Palindromic Substring →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › Patterns › Advanced String Algorithm Patterns</div>
+<h1>🧩 Advanced String Algorithm Patterns</h1><p class="progress-note">3 subpatterns · 7 problems · <span data-count-of="p29-"></span></p>
+<h2>1. Intuition — the mental model</h2><p>Naive substring search re-compares up to O(n·m) characters because it forgets everything after each mismatch. The advanced algorithms all monetize memory of what already matched: KMP precomputes how much of a match survives a mismatch; Rabin-Karp compares rolling <em>hashes</em> in O(1); Manacher reuses palindrome symmetry. Total: O(n+m) where naive pays O(n·m).</p>
+<div class="insight"><strong>💡 The “aha” insight</strong><br>KMP's failure table answers one question: "after matching pattern[0..k] and failing, what is the LONGEST proper prefix of the pattern that is also a suffix of what matched?" Jump there instead of restarting — the text pointer never moves backwards, guaranteeing linear time.</div>
+<h2>2. Recognition signals</h2><p>Think of this pattern when the problem says:</p><ul><li>find/count occurrences of a pattern in a long text</li><li>"shortest palindrome by prepending", "longest prefix = suffix" → failure function</li><li>many substring-equality checks → rolling hash</li><li>"repeated substring pattern" / string periodicity</li><li>longest palindromic substring in O(n) explicitly → Manacher</li></ul>
+<h2>3. Master template</h2><pre><code># KMP failure table: fail[i] = length of longest proper prefix of
+# pat[0..i] that is also its suffix
+def build_fail(pat):
+    fail = [0] * len(pat)
+    k = 0
+    for i in range(1, len(pat)):
+        while k and pat[i] != pat[k]:
+            k = fail[k - 1]            # fall back to shorter border
+        if pat[i] == pat[k]:
+            k += 1
+        fail[i] = k
+    return fail
+
+def kmp_search(text, pat):             # O(n + m)
+    fail, k = build_fail(pat), 0
+    for i, ch in enumerate(text):
+        while k and ch != pat[k]:
+            k = fail[k - 1]
+        if ch == pat[k]:
+            k += 1
+        if k == len(pat):
+            yield i - k + 1            # match start
+            k = fail[k - 1]&lt;/code&gt;</code></pre>
+<p>Rabin-Karp rolling hash: <code>h = (h·B + new − old·Bᵐ) mod P</code> — O(1) per slide; verify hash hits by direct compare (collisions). Periodicity: s repeats iff <code>len(s) % (len(s) − fail[-1]) == 0</code> with fail[-1] &gt; 0.</p>
+<h2>4. Complexity of the template</h2><p>KMP O(n+m) time, O(m) space; Rabin-Karp O(n+m) average; Manacher O(n). Against naive O(n·m) — state the gap, it's the motivation.</p>
+<h2>5. Common mistakes</h2><ul><li>Failure table "proper prefix" — the whole string never counts as its own border.</li><li>Rabin-Karp trusting hash equality without verifying — collisions exist.</li><li>Rolling hash without modular care — huge numbers or biased collisions.</li><li>Reaching for KMP when <code>text.find(pat)</code> or a window suffices — know when it's overkill (then say why you know KMP anyway).</li></ul>
+<h2>6. Subpatterns &amp; problems</h2>
+<h3>29.1 — Manacher's Algorithm (Linear Palindrome)</h3><p class="progress-note">Manacher's algorithm — O(n) longest palindromic substring by reusing palindrome symmetry.</p><ul class="plist"><li><input type="checkbox" data-id="p29-lc5" title="mark solved"><span class="num">#5</span><span class="pill M">M</span><a href="../problems/0701-lc5-longest-palindromic-substring.html">Longest Palindromic Substring</a></li></ul>
+<h3>29.2 — Z-Algorithm / KMP Failure-Function Applications</h3><p class="progress-note">KMP / Z-algorithm — O(n) failure function and longest-common-prefix-with-suffix arrays.</p><ul class="plist"><li><input type="checkbox" data-id="p29-lc214" title="mark solved"><span class="num">#214</span><span class="pill H">H</span><a href="../problems/0702-lc214-shortest-palindrome.html">Shortest Palindrome</a></li><li><input type="checkbox" data-id="p29-lc686" title="mark solved"><span class="num">#686</span><span class="pill M">M</span><a href="../problems/0703-lc686-repeated-string-match.html">Repeated String Match</a></li><li><input type="checkbox" data-id="p29-lc1392" title="mark solved"><span class="num">#1392</span><span class="pill H">H</span><a href="../problems/0704-lc1392-longest-happy-prefix.html">Longest Happy Prefix</a></li></ul>
+<h3>29.3 — Rolling Hash Beyond Rabin-Karp</h3><p class="progress-note">Rolling hash for substring fingerprinting — find duplicate/longest repeated substrings in O(n log n).</p><ul class="plist"><li><input type="checkbox" data-id="p29-lc187" title="mark solved"><span class="num">#187</span><span class="pill M">M</span><a href="../problems/0705-lc187-repeated-dna-sequences.html">Repeated DNA Sequences</a></li><li><input type="checkbox" data-id="p29-lc1044" title="mark solved"><span class="num">#1044</span><span class="pill H">H</span><a href="../problems/0706-lc1044-longest-duplicate-substring.html">Longest Duplicate Substring</a></li><li><input type="checkbox" data-id="p29-lc1316" title="mark solved"><span class="num">#1316</span><span class="pill H">H</span><a href="../problems/0707-lc1316-distinct-echo-substrings.html">Distinct Echo Substrings</a></li></ul>
+<div class="pager"><a href="../problems/0700-lc710-random-pick-with-blacklist.html"><span class="lbl">← Previous</span>#710 Random Pick with Blacklist</a><a href="../problems/0701-lc5-longest-palindromic-substring.html" style="text-align:right"><span class="lbl">Next →</span>#5 Longest Palindromic Substring</a></div>
+</div>
+</body>
+</html>

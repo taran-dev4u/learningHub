@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#905 Sort Array By Parity — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0022-lc443-string-compression.html">← #443 String Compression</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Problem 23 / 707</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0024-lc922-sort-array-by-parity-ii.html">#922 Sort Array By Parity II →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a> › In-place Array Modification › #905</div>
+
+<h1><span class="num" style="color:var(--text-dim)">#905</span> Sort Array By Parity
+<span class="pill E">Easy</span><a class="lc-icon" href="https://leetcode.com/problems/sort-array-by-parity/" target="_blank" rel="noopener" title="Open on LeetCode"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3l-8 8a5 5 0 000 7l2 2a5 5 0 007 0l2.5-2.5" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/><path d="M9 13h10" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/></svg>LeetCode</a></h1>
+<p><span class="chip"></span>  &nbsp; <label style="font-size:14px;color:var(--text-dim)"><input type="checkbox" data-id="p01-lc905"> mark solved</label></p>
+<p class="progress-note">Pattern: <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a>
+ › Subpattern 1.3: In-place Array Modification · Problem 23 of 707</p>
+
+<h2>📋 The problem</h2><p>Reorder an array so all even numbers come before all odd numbers.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+
+<h2>🧭 How to think about it</h2>
+<p>Put all even numbers before all odd numbers (any order within each group). This is a two-way partition, exactly like the first step of quicksort: one pointer at each end, swap an out-of-place pair, and close in.</p>
+
+<h2>🐢 Brute force first</h2>
+<p>Two lists (evens, odds) concatenated → O(n) space. The two-pointer swap does it in place, O(1) extra.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> <code>left</code> looks for an odd on the left side (which shouldn't be there); <code>right</code> looks for an even on the right side. When both find a misplaced value, swap them. Repeat until the pointers cross — evens end up left, odds right.</div>
+
+<h2>🪜 The approach, step by step</h2>
+<ol>
+<li><code>left = 0</code>, <code>right = n−1</code>.</li>
+<li>Advance <code>left</code> while <code>nums[left]</code> is even; retreat <code>right</code> while <code>nums[right]</code> is odd.</li>
+<li>If <code>left &lt; right</code>, swap them, then step both.</li>
+</ol>
+
+<h2>🎞️ Visual dry run — nums = [3, 1, 2, 4]</h2>
+<pre class="viz">L=0(3 odd) stops; R=3(4 even) stops → swap → [4,1,2,3]; L→1 R→2
+L=1(1 odd) stops; R=2(2 even) stops → swap → [4,2,1,3]; L→2 R→1 cross
+Result: [4,2,1,3] (evens first)</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def sortArrayByParity(nums):
+    left, right = 0, len(nums) - 1
+    while left &lt; right:
+        if nums[left] % 2 == 0:
+            left += 1                    # even is already on the correct side
+        elif nums[right] % 2 == 1:
+            right -= 1                   # odd is already on the correct side
+        else:                            # nums[left] odd, nums[right] even
+            nums[left], nums[right] = nums[right], nums[left]
+            left += 1; right -= 1
+    return nums</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — pointers cross once. <strong>Space O(1)</strong> — in-place swaps.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Already partitioned → pointers slide, no swaps.</li>
+<li>All even or all odd → one pointer runs to the other; no swaps.</li>
+<li>Single element → loop doesn't run.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Swapping before confirming <em>both</em> ends are misplaced (structure the if/elif/else).</li>
+<li>Assuming a required order within the even/odd groups — any order is accepted.</li>
+<li>Off-by-one at the crossing.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Even at even indices, odd at odd indices (<a href="0024-lc922-sort-array-by-parity-ii.html">#922</a>).</li>
+<li>Stable partition (preserve order) → needs the write-pointer approach with a second pass.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0024-lc922-sort-array-by-parity-ii.html">#922</a> · <a href="0019-lc75-sort-colors.html">#75</a> · <a href="0021-lc283-move-zeroes.html">#283</a></p>
+
+
+<div class="pager"><a href="../problems/0022-lc443-string-compression.html"><span class="lbl">← Previous</span>#443 String Compression</a><a href="../problems/0024-lc922-sort-array-by-parity-ii.html" style="text-align:right"><span class="lbl">Next →</span>#922 Sort Array By Parity II</a></div>
+</div>
+</body>
+</html>

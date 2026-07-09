@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#42 Trapping Rain Water — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0005-lc18-4sum.html">← #18 4Sum</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Problem 6 / 707</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0007-lc167-two-sum-ii-input-array-is-sorted.html">#167 Two Sum II - Input Array Is Sorted →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a> › Converging › #42</div>
+
+<h1><span class="num" style="color:var(--text-dim)">#42</span> Trapping Rain Water
+<span class="pill H">Hard</span><span class="badge nc" title="NeetCode 150">★NC</span><a class="lc-icon" href="https://leetcode.com/problems/trapping-rain-water/" target="_blank" rel="noopener" title="Open on LeetCode"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3l-8 8a5 5 0 000 7l2 2a5 5 0 007 0l2.5-2.5" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/><path d="M9 13h10" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/></svg>LeetCode</a></h1>
+<p><span class="chip">Amazon</span><span class="chip">Meta</span><span class="chip">Google</span><span class="chip">Bloomberg</span><span class="chip">Apple</span>  &nbsp; <label style="font-size:14px;color:var(--text-dim)"><input type="checkbox" data-id="p01-lc42"> mark solved</label></p>
+<p class="progress-note">Pattern: <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a>
+ › Subpattern 1.1: Converging · Problem 6 of 707</p>
+
+<h2>📋 The problem</h2><p>Given bar heights of an elevation map, compute how much rainwater the valleys between bars can trap.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+
+<h2>🧭 How to think about it</h2>
+<p>Stop thinking about "pools". Think about <strong>one column at a time</strong>: how much water stands on top of bar i? Water is held by the tallest wall to the left and the tallest wall to the right; the level is the <em>lower</em> of those two, and the water above bar i is <code>min(maxL, maxR) − h[i]</code> (never negative). Sum that over all bars and the problem is solved — the rest is how cheaply you can know <code>maxL</code> and <code>maxR</code>.</p>
+
+<h2>🐢 Brute force first</h2>
+<p>For each bar, scan left for the max and right for the max: O(n²). Better: precompute prefix-max and suffix-max arrays → O(n) time, O(n) space. The two-pointer version removes even that space.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> walk pointers from both ends carrying <code>maxL</code> and <code>maxR</code>. If <code>maxL &lt; maxR</code>, then for the left bar the binding wall is <em>certainly</em> <code>maxL</code> — some unseen wall in the middle can only make the right side taller, never lower than <code>maxR</code>. So the left column's water is decided <em>now</em>, without ever seeing the middle. Process it, step inward.</div>
+
+<h2>🪜 The approach, step by step</h2>
+<ol>
+<li><code>l = 0, r = n−1, maxL = maxR = 0, water = 0</code>.</li>
+<li>If <code>h[l] &lt; h[r]</code>: the left side is the shorter frontier —
+  <ul><li>if <code>h[l] ≥ maxL</code>, it's a new wall: update <code>maxL</code>;</li>
+  <li>else it holds <code>maxL − h[l]</code> water. Then <code>l += 1</code>.</li></ul></li>
+<li>Otherwise do the mirror step on the right.</li>
+<li>Stop when pointers cross.</li>
+</ol>
+
+<h2>🎞️ Visual dry run — h = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]</h2>
+<pre class="viz">              █
+      █░░░░░░ █ █░░█
+  █░░ █ █░░ █ █ █ █ █ █        ░ = trapped water
+  0 1 0 2 1 0 1 3 2 1 2 1
+l walks while its frontier is shorter: bar2 gets 1−0=1, bar4 gets 2−1=1,
+bar5 gets 2−0=2, bar6 gets 2−1=1 … right side: bar9 gets 2−1=1 … total = 6</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def trap(height):
+    l, r = 0, len(height) - 1
+    maxL = maxR = water = 0
+    while l &lt; r:
+        if height[l] &lt; height[r]:
+            # left frontier is shorter → its ceiling is maxL, final
+            if height[l] &gt;= maxL:
+                maxL = height[l]          # new left wall, holds nothing
+            else:
+                water += maxL - height[l] # stands under the left wall
+            l += 1
+        else:
+            if height[r] &gt;= maxR:
+                maxR = height[r]
+            else:
+                water += maxR - height[r]
+            r -= 1
+    return water</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — each bar processed once from one side. <strong>Space O(1)</strong> — two maxima, two pointers. (The prefix/suffix-array version is O(n)/O(n) and a fine first answer.)</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Fewer than 3 bars → 0 (no basin possible).</li>
+<li>Monotonic ascending or descending → 0 (every bar is its own max on one side).</li>
+<li>Plateaus of equal heights — the ≥ in the wall update handles them without double-counting.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Comparing <code>maxL</code> vs <code>maxR</code> to decide which side to step (compare the <em>current bars</em> <code>h[l]</code> vs <code>h[r]</code>; the maxima update after).</li>
+<li>Trying to detect "pools" as shapes — per-column accounting is the whole trick.</li>
+<li>Confusing with Container With Most Water (<a href="0002-lc11-container-with-most-water.html">#11</a>): there you pick 2 lines and ignore the middle; here every middle bar displaces water.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>2-D version (Trapping Rain Water II, LC 407) — becomes a heap/BFS from the border, not two pointers.</li>
+<li>"Explain why the shorter-side decision is safe" — rehearse the argument; it's the interview.</li>
+<li>Prefix/suffix arrays version — know both; offer the O(1)-space upgrade.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0002-lc11-container-with-most-water.html">#11 Container With Most Water</a> · <a href="0012-lc977-squares-of-a-sorted-array.html">#977 Squares of a Sorted Array</a></p>
+
+
+<div class="pager"><a href="../problems/0005-lc18-4sum.html"><span class="lbl">← Previous</span>#18 4Sum</a><a href="../problems/0007-lc167-two-sum-ii-input-array-is-sorted.html" style="text-align:right"><span class="lbl">Next →</span>#167 Two Sum II - Input Array Is Sorted</a></div>
+</div>
+</body>
+</html>

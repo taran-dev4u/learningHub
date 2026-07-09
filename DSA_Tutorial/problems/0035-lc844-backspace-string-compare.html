@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#844 Backspace String Compare — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0034-lc2095-delete-the-middle-node-of-a-linked-list.html">← #2095 Delete the Middle Node of a Linked List</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Problem 35 / 707</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0036-lc5-longest-palindromic-substring.html">#5 Longest Palindromic Substring →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a> › String Comparison with Special Characters › #844</div>
+
+<h1><span class="num" style="color:var(--text-dim)">#844</span> Backspace String Compare
+<span class="pill E">Easy</span><a class="lc-icon" href="https://leetcode.com/problems/backspace-string-compare/" target="_blank" rel="noopener" title="Open on LeetCode"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3l-8 8a5 5 0 000 7l2 2a5 5 0 007 0l2.5-2.5" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/><path d="M9 13h10" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/></svg>LeetCode</a></h1>
+<p><span class="chip"></span>  &nbsp; <label style="font-size:14px;color:var(--text-dim)"><input type="checkbox" data-id="p01-lc844"> mark solved</label></p>
+<p class="progress-note">Pattern: <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a>
+ › Subpattern 1.6: String Comparison with Special Characters · Problem 35 of 707</p>
+
+<h2>📋 The problem</h2><p>Compare two strings typed into text editors where '#' means backspace; decide whether they end up equal (O(1) space follow-up).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+
+<h2>🧭 How to think about it</h2>
+<p>Two strings contain <code>'#'</code> characters meaning "backspace". Do they type out equal? The clean O(1)-space way is to scan <strong>from the right</strong>: a <code>'#'</code> tells you to skip the next real character, so you can figure out each string's next "surviving" character without building the result.</p>
+
+<h2>🐢 Brute force first</h2>
+<p>Rebuild each string with a stack (push letters, pop on <code>'#'</code>), then compare — O(n) time, O(n) space. The reverse two-pointer walk drops the space to O(1).</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> walking backwards, keep a <em>skip</em> counter. Each <code>'#'</code> increases skip; each real character either is skipped (skip &gt; 0, decrement) or is the next surviving character. Advance both strings to their next survivors and compare; repeat.</div>
+
+<h2>🪜 The approach, step by step</h2>
+<ol>
+<li>Pointers <code>i</code>, <code>j</code> at the ends of <code>s</code>, <code>t</code>.</li>
+<li>A helper walks a pointer left past skipped characters to the next real, surviving character.</li>
+<li>Compare the two survivors; if they differ (or one runs out), decide the answer; else step both inward.</li>
+</ol>
+
+<h2>🎞️ Visual dry run — s = "ab#c", t = "ad#c"</h2>
+<pre class="viz">s survivors from right: c, (b then # cancels), a → "ac"
+t survivors from right: c, (d then # cancels), a → "ac"
+compare c==c, a==a → equal → True</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def backspaceCompare(s, t):
+    def next_valid(string, i):
+        skip = 0
+        while i &gt;= 0:
+            if string[i] == '#':
+                skip += 1; i -= 1        # a backspace to apply
+            elif skip &gt; 0:
+                skip -= 1; i -= 1        # this char is erased
+            else:
+                break                    # i is a surviving character
+        return i
+
+    i, j = len(s) - 1, len(t) - 1
+    while i &gt;= 0 or j &gt;= 0:
+        i = next_valid(s, i)
+        j = next_valid(t, j)
+        if i &gt;= 0 and j &gt;= 0:
+            if s[i] != t[j]:
+                return False
+        elif i &gt;= 0 or j &gt;= 0:            # one has a leftover character
+            return False
+        i -= 1; j -= 1
+    return True</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n + m)</strong> — each character visited once. <strong>Space O(1)</strong> — just counters and indices.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Backspace on an empty result (leading <code>'#'</code>) → harmless, skip counter just idles.</li>
+<li>Strings that reduce to empty → equal.</li>
+<li>Different surviving lengths → the "one leftover" check returns False.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Comparing lengths of the raw strings rather than the typed results.</li>
+<li>Mishandling the case where one pointer is exhausted but the other still has a survivor.</li>
+<li>Forgetting to decrement both pointers after a successful comparison.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Build with a stack for clarity if O(n) space is fine.</li>
+<li>Multiple special commands (e.g., caps-lock) → extend the survivor logic.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0025-lc925-long-pressed-name.html">#925</a> · <a href="0031-lc392-is-subsequence.html">#392</a> · <a href="0022-lc443-string-compression.html">#443</a></p>
+
+
+<div class="pager"><a href="../problems/0034-lc2095-delete-the-middle-node-of-a-linked-list.html"><span class="lbl">← Previous</span>#2095 Delete the Middle Node of a Linked List</a><a href="../problems/0036-lc5-longest-palindromic-substring.html" style="text-align:right"><span class="lbl">Next →</span>#5 Longest Palindromic Substring</a></div>
+</div>
+</body>
+</html>

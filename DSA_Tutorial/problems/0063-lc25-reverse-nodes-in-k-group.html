@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#25 Reverse Nodes in k-Group — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0062-lc24-swap-nodes-in-pairs.html">← #24 Swap Nodes in Pairs</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Problem 63 / 707</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0064-lc82-remove-duplicates-from-sorted-list-ii.html">#82 Remove Duplicates from Sorted List II →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › <a href="../patterns/p03-linked-list.html">Linked List Manipulation Patterns</a> › In-place Reversal › #25</div>
+
+<h1><span class="num" style="color:var(--text-dim)">#25</span> Reverse Nodes in k-Group
+<span class="pill H">Hard</span><a class="lc-icon" href="https://leetcode.com/problems/reverse-nodes-in-k-group/" target="_blank" rel="noopener" title="Open on LeetCode"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3l-8 8a5 5 0 000 7l2 2a5 5 0 007 0l2.5-2.5" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/><path d="M9 13h10" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/></svg>LeetCode</a></h1>
+<p><span class="chip">Amazon</span><span class="chip">Meta</span><span class="chip">Microsoft</span>  &nbsp; <label style="font-size:14px;color:var(--text-dim)"><input type="checkbox" data-id="p03-lc25"> mark solved</label></p>
+<p class="progress-note">Pattern: <a href="../patterns/p03-linked-list.html">Linked List Manipulation Patterns</a>
+ › Subpattern 3.1: In-place Reversal · Problem 63 of 707</p>
+
+<h2>📋 The problem</h2><p>Reverse the nodes of a linked list k at a time; any final group shorter than k stays in original order.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+
+<h2>Where this fits</h2>
+<p><strong>In-place Reversal</strong> — Iteratively reverse links with prev/curr/next pointers; recursive variant also classic.</p>
+<div class="insight"><strong>💡 Key idea</strong><br>Reverse in k-sized chunks: count k nodes, reverse them, reconnect; leave a short tail untouched.</div>
+<h2>Why this pattern?</h2><ul><li>input is a linked list (that alone is the signal)</li><li>"reverse", "reorder", "swap in pairs", "rotate" nodes</li><li>"k-th from the end", "middle", "cycle" → fast &amp; slow</li><li>"merge k sorted lists" → pairwise merge or heap of heads</li></ul>
+<h2>Pattern template to adapt</h2><p>Start from the Linked List Manipulation master template and adapt the marked parts to this problem:</p><pre><code>dummy = ListNode(0, head)            # dummy head: prev of the real head
+prev, cur = dummy, head
+
+# In-place reversal core
+p = None
+while cur:
+    cur.next, p, cur = p, cur, cur.next
+# p is the new head
+
+# Fast &amp; slow
+slow = fast = head
+while fast and fast.next:
+    slow, fast = slow.next, fast.next.next   # slow = middle when fast ends</code></pre>
+<h2>How to work on it now</h2>
+<ol>
+<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
+<li>Write the brute force first — know what you are improving.</li>
+<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
+<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+</ol>
+<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
+(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
+deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<div class="pager"><a href="../problems/0062-lc24-swap-nodes-in-pairs.html"><span class="lbl">← Previous</span>#24 Swap Nodes in Pairs</a><a href="../problems/0064-lc82-remove-duplicates-from-sorted-list-ii.html" style="text-align:right"><span class="lbl">Next →</span>#82 Remove Duplicates from Sorted List II</a></div>
+</div>
+</body>
+</html>

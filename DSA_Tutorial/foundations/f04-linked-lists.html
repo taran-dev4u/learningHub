@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>F4 · Linked Lists: Chains of Nodes — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../foundations/f03-hashing.html">← Hashing</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Foundations</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../foundations/f05-stacks-queues.html">Stacks &amp; Queues →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › Foundations › Linked Lists</div>
+<h1>F4 · Linked Lists: Chains of Nodes</h1>
+
+<h2>The problem it solves</h2>
+<p>Arrays pay O(n) to insert/delete in the middle (shifting). A linked list stores each item in its own <strong>node</strong> with a pointer to the next node — rewiring two pointers inserts or deletes in O(1)… <em>if you're already standing there</em>. The trade: no O(1) index access; reaching position i costs O(i).</p>
+
+<h2>Visual</h2>
+<pre class="viz">head → [3 | •] → [7 | •] → [1 | •] → None
+
+delete 7:  just rewire —   [3 | •] ─────────→ [1 | •] → None
+insert 5 after 3:          [3 | •] → [5 | •] → [7 | •] → ...</code></pre>
+
+<pre><code>class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next</code></pre>
+
+<h2>Cost model</h2>
+<p>insert/delete at a known node O(1) · access i-th O(n) · search O(n) · no cache friendliness (nodes scattered in memory). Use when you splice a lot and never index; otherwise arrays usually win.</p>
+
+<h2>The three tools that solve 90% of list problems</h2>
+<p><strong>1. Dummy head</strong> — a fake node before the real head so "delete the first node" isn't a special case:</p>
+<pre><code>dummy = ListNode(0, head)
+prev, cur = dummy, head
+# ...delete: prev.next = cur.next
+return dummy.next</code></pre>
+<p><strong>2. Fast &amp; slow pointers</strong> — fast moves 2, slow moves 1. When fast hits the end, slow is at the middle; if there's a cycle, they must meet (Floyd's algorithm).</p>
+<pre><code>slow = fast = head
+while fast and fast.next:
+    slow, fast = slow.next, fast.next.next
+# slow == middle; add "if slow is fast: cycle!" inside for detection</code></pre>
+<p><strong>3. In-place reversal</strong> — walk once, flipping each arrow:</p>
+<pre><code>prev = None
+while cur:
+    cur.next, prev, cur = prev, cur, cur.next   # flip, advance
+return prev    # new head</code></pre>
+<pre class="viz">None ← 3   7 → 1        prev=3, cur=7
+None ← 3 ← 7   1        prev=7, cur=1
+None ← 3 ← 7 ← 1        prev=1, cur=None → done</code></pre>
+
+<h2>Pitfalls</h2>
+<ul>
+<li>Losing the rest of the list: save <code>nxt = cur.next</code> <em>before</em> overwriting <code>cur.next</code>.</li>
+<li>Null crashes: guard <code>while fast and fast.next</code> — order matters.</li>
+<li>Off-by-one in "k-th from end": advance the lead pointer exactly k first, then move both.</li>
+<li>Doubly-linked lists add a <code>prev</code> pointer — O(1) delete given the node; that's the engine of LRU Cache.</li>
+</ul>
+
+<div class="pager"><a href="../foundations/f03-hashing.html"><span class="lbl">← Previous</span>Hashing</a><a href="../foundations/f05-stacks-queues.html" style="text-align:right"><span class="lbl">Next →</span>Stacks &amp; Queues</a></div>
+</div>
+</body>
+</html>

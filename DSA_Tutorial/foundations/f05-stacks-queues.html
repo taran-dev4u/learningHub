@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>F5 · Stacks &amp; Queues: Order of Processing — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../foundations/f04-linked-lists.html">← Linked Lists</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Foundations</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../foundations/f06-recursion.html">Recursion →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › Foundations › Stacks &amp; Queues</div>
+<h1>F5 · Stacks &amp; Queues: Order of Processing</h1>
+
+<h2>The problem they solve</h2>
+<p>Often the algorithm's whole job is <em>processing things in the right order</em>. Two disciplines cover most needs: <strong>LIFO</strong> (last in, first out — a stack of plates) and <strong>FIFO</strong> (first in, first out — a checkout line).</p>
+
+<h2>Stack — LIFO</h2>
+<pre><code>stack = []
+stack.append(x)     # push  O(1)
+top = stack[-1]     # peek  O(1)
+x = stack.pop()     # pop   O(1)
+if not stack: ...   # empty check</code></pre>
+<pre class="viz">push 1, push 2, push 3 →   │ 3 │ ← pop returns 3 first
+                           │ 2 │
+                           │ 1 │
+                           └───┘</code></pre>
+<p><strong>Where stacks appear:</strong> matching brackets (open → push, close → must match pop); undo history; DFS (explicit stack = recursion without recursion); <em>monotonic stacks</em> for "next greater element" (Pattern P6); expression evaluation (operators wait on a stack).</p>
+
+<h2>Queue — FIFO</h2>
+<pre><code>from collections import deque
+q = deque()
+q.append(x)         # enqueue O(1)
+x = q.popleft()     # dequeue O(1)  ← list.pop(0) is O(n): never use a list as a queue</code></pre>
+<p><strong>Where queues appear:</strong> BFS (process nodes in discovery order — this is why BFS finds shortest paths in unweighted graphs); level-order tree traversal; task scheduling; sliding-window maximum uses a <em>deque</em> variant (monotonic deque).</p>
+
+<h2>Stack vs Queue vs Deque</h2>
+<table>
+<tr><th></th><th>Stack</th><th>Queue</th><th>Deque</th></tr>
+<tr><td>Order</td><td>LIFO</td><td>FIFO</td><td>both ends</td></tr>
+<tr><td>Python</td><td><code>list</code></td><td><code>deque</code></td><td><code>deque</code></td></tr>
+<tr><td>Signature use</td><td>matching, DFS, monotonic</td><td>BFS, levels</td><td>window max/min</td></tr>
+<tr><td>All ops</td><td>O(1)</td><td>O(1)</td><td>O(1)</td></tr>
+</table>
+
+<h2>Mini dry run — Valid Parentheses "([])"</h2>
+<pre class="viz">read (  → push        stack: (
+read [  → push        stack: ( [
+read ]  → pop ( == [? yes → ok   stack: (
+read )  → pop ( == (? yes → ok   stack: empty
+end: stack empty → VALID</code></pre>
+
+<h2>Pitfalls</h2>
+<ul>
+<li>Peeking/popping an empty stack — always check <code>if stack:</code> first.</li>
+<li>Using <code>list.pop(0)</code> for a queue — silently turns O(n) total into O(n²).</li>
+<li>For "next greater" problems, store <em>indices</em> on the stack, not values — you usually need distances.</li>
+</ul>
+
+<div class="pager"><a href="../foundations/f04-linked-lists.html"><span class="lbl">← Previous</span>Linked Lists</a><a href="../foundations/f06-recursion.html" style="text-align:right"><span class="lbl">Next →</span>Recursion</a></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#141 Linked List Cycle — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0027-lc2938-separate-black-and-white-balls.html">← #2938 Separate Black and White Balls</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Problem 28 / 707</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0029-lc202-happy-number.html">#202 Happy Number →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a> › Fast and Slow › #141</div>
+
+<h1><span class="num" style="color:var(--text-dim)">#141</span> Linked List Cycle
+<span class="pill E">Easy</span><span class="badge b75" title="Blind 75">★75</span><span class="badge nc" title="NeetCode 150">★NC</span><span class="badge g75" title="Grind 75">★G</span><a class="lc-icon" href="https://leetcode.com/problems/linked-list-cycle/" target="_blank" rel="noopener" title="Open on LeetCode"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3l-8 8a5 5 0 000 7l2 2a5 5 0 007 0l2.5-2.5" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/><path d="M9 13h10" stroke="#ffa116" stroke-width="2.4" stroke-linecap="round"/></svg>LeetCode</a></h1>
+<p><span class="chip">Amazon</span><span class="chip">Microsoft</span><span class="chip">Bloomberg</span>  &nbsp; <label style="font-size:14px;color:var(--text-dim)"><input type="checkbox" data-id="p01-lc141"> mark solved</label></p>
+<p class="progress-note">Pattern: <a href="../patterns/p01-two-pointers.html">Two Pointer Patterns</a>
+ › Subpattern 1.4: Fast and Slow · Problem 28 of 707</p>
+
+<h2>📋 The problem</h2><p>Decide whether a linked list contains a cycle, using O(1) memory.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+
+<h2>🧭 How to think about it</h2>
+<p>Does the linked list loop back on itself? Picture two runners on a track: a slow one taking one step, a fast one taking two. On a straight track the fast runner reaches the end. On a <em>circular</em> track the fast runner keeps lapping and must eventually collide with the slow one. That collision is the signal for a cycle — and it needs no extra memory.</p>
+
+<h2>🐢 Brute force first</h2>
+<p>Store every visited node in a set; if you revisit one, there's a cycle — O(n) time, O(n) space. Floyd's two-pointer method gets O(1) space.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> move <code>slow</code> by 1 and <code>fast</code> by 2. If there's no cycle, <code>fast</code> hits <code>None</code>. If there is, <code>fast</code> gains one step on <code>slow</code> each iteration inside the loop and inevitably lands on it. (Tortoise and hare.)</div>
+
+<h2>🪜 The approach, step by step</h2>
+<ol>
+<li><code>slow = fast = head</code>.</li>
+<li>While <code>fast</code> and <code>fast.next</code> exist: <code>slow = slow.next</code>, <code>fast = fast.next.next</code>.</li>
+<li>If <code>slow is fast</code>, return True.</li>
+<li>If the loop exits, return False.</li>
+</ol>
+
+<h2>🎞️ Visual dry run — 3 → 2 → 0 → −4 ↺ back to 2</h2>
+<pre class="viz">slow=3 fast=3
+step: slow=2 fast=0
+step: slow=0 fast=2   (fast looped)
+step: slow=-4 fast=-4 → slow is fast → cycle! True</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def hasCycle(head):
+    slow = fast = head
+    while fast and fast.next:        # fast needs two steps available
+        slow = slow.next
+        fast = fast.next.next
+        if slow is fast:            # they collided → cycle
+            return True
+    return False                    # fast fell off the end → no cycle</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — before meeting, the pointers traverse O(n) nodes. <strong>Space O(1)</strong> — two pointers.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Empty list or single node with no self-loop → loop never triggers → False.</li>
+<li>Single node pointing to itself → detected on the first step.</li>
+<li>Cycle at the very end → still caught.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Checking <code>slow == fast</code> before moving them — they start equal at <code>head</code>, giving a false positive.</li>
+<li>Forgetting the <code>fast.next</code> guard → <code>None.next</code> crash.</li>
+<li>Comparing values instead of node identity (use <code>is</code>).</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Return the cycle's entry node (#142) → after meeting, restart one pointer at head.</li>
+<li>Cycle length → keep moving one pointer after the meeting until it returns.</li>
+<li>Happy Number (<a href="0029-lc202-happy-number.html">#202</a>) applies the same trick to a number sequence.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p>#142 · <a href="0029-lc202-happy-number.html">#202</a> · <a href="0030-lc287-find-the-duplicate-number.html">#287</a></p>
+
+
+<div class="pager"><a href="../problems/0027-lc2938-separate-black-and-white-balls.html"><span class="lbl">← Previous</span>#2938 Separate Black and White Balls</a><a href="../problems/0029-lc202-happy-number.html" style="text-align:right"><span class="lbl">Next →</span>#202 Happy Number</a></div>
+</div>
+</body>
+</html>

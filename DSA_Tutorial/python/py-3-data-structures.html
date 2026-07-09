@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PY-3 · list, tuple, dict, set — Every Operation &amp; Its Cost — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../python/py-2-builtin-functions.html">← Built-in Functions</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Python Primer</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../python/py-4-strings.html">String Methods →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › Python Primer › Core Data Structures</div>
+<h1>PY-3 · list, tuple, dict, set — Every Operation &amp; Its Cost</h1>
+
+<p>Four structures cover most interview code. For each, you must know every operation <em>and its cost</em> — choosing the wrong structure is the most common reason a correct algorithm times out.</p>
+
+<h2>1. list — dynamic array</h2>
+<p>A resizable array. Fast at the <strong>end</strong>, slow at the <strong>front</strong> (everything must shift).</p>
+<table>
+<tr><th>Operation</th><th>Code</th><th>Cost</th></tr>
+<tr><td>index / assign</td><td><code>a[i]</code>, <code>a[i]=v</code></td><td>O(1)</td></tr>
+<tr><td>append at end</td><td><code>a.append(v)</code></td><td>O(1) amortized</td></tr>
+<tr><td>pop end</td><td><code>a.pop()</code></td><td>O(1)</td></tr>
+<tr><td>pop front / insert front</td><td><code>a.pop(0)</code>, <code>a.insert(0,v)</code></td><td><strong>O(n) — avoid! use deque</strong></td></tr>
+<tr><td>insert middle / delete</td><td><code>a.insert(i,v)</code>, <code>del a[i]</code>, <code>a.remove(v)</code></td><td>O(n)</td></tr>
+<tr><td>membership</td><td><code>v in a</code></td><td><strong>O(n) — use a set if repeated</strong></td></tr>
+<tr><td>slice</td><td><code>a[i:j]</code></td><td>O(j−i), makes a copy</td></tr>
+<tr><td>reverse / sort</td><td><code>a.reverse()</code>, <code>a.sort()</code></td><td>O(n) / O(n log n)</td></tr>
+<tr><td>extend, count, index</td><td><code>a.extend(b)</code>, <code>a.count(v)</code>, <code>a.index(v)</code></td><td>O(len b) / O(n) / O(n)</td></tr>
+</table>
+<p>Slicing tricks: <code>a[::-1]</code> reversed copy · <code>a[:k]</code> first k · <code>a[-k:]</code> last k · <code>a[::2]</code> every 2nd.</p>
+
+<h2>2. tuple — frozen list</h2>
+<p>Immutable, hashable. Use as dict/set keys (<code>seen[(r, c)]</code> for grid cells), for multiple return values, and for sort keys. Same O(1) indexing as list.</p>
+
+<h2>3. dict — hash map (the interview MVP)</h2>
+<table>
+<tr><th>Operation</th><th>Code</th><th>Cost</th></tr>
+<tr><td>get / set / delete</td><td><code>d[k]</code>, <code>d[k]=v</code>, <code>del d[k]</code></td><td>O(1) average</td></tr>
+<tr><td>membership</td><td><code>k in d</code></td><td>O(1) average</td></tr>
+<tr><td>safe get</td><td><code>d.get(k, default)</code></td><td>O(1) — no KeyError</td></tr>
+<tr><td>get-or-insert</td><td><code>d.setdefault(k, []).append(v)</code></td><td>O(1)</td></tr>
+<tr><td>remove &amp; return</td><td><code>d.pop(k, None)</code></td><td>O(1)</td></tr>
+<tr><td>iterate</td><td><code>d.keys() / d.values() / d.items()</code></td><td>O(n)</td></tr>
+</table>
+<p>Since Python 3.7 dicts remember <strong>insertion order</strong> — that's what makes an LRU cache buildable with a plain dict. Counting idiom without imports: <code>freq[x] = freq.get(x, 0) + 1</code>.</p>
+<div class="warn">Never add/remove dict keys while looping over the dict — iterate over <code>list(d)</code> if you must modify.</div>
+
+<h2>4. set — dict without values</h2>
+<table>
+<tr><th>Operation</th><th>Code</th><th>Cost</th></tr>
+<tr><td>add / remove / contains</td><td><code>s.add(v)</code>, <code>s.discard(v)</code>, <code>v in s</code></td><td>O(1) average</td></tr>
+<tr><td>union / intersection / difference</td><td><code>a | b</code>, <code>a &amp; b</code>, <code>a - b</code></td><td>O(len a + len b)</td></tr>
+<tr><td>subset</td><td><code>a <= b</code></td><td>O(len a)</td></tr>
+</table>
+<p><code>s.remove(v)</code> raises if missing; <code>s.discard(v)</code> doesn't. Dedupe: <code>list(set(a))</code> (order lost). The one-line "have I seen this before?" tool for cycle detection, duplicates, visited cells.</p>
+
+<h2>Which structure? Decision table</h2>
+<table>
+<tr><th>You need…</th><th>Use</th></tr>
+<tr><td>ordered items, index access, stack</td><td><code>list</code></td></tr>
+<tr><td>key → value lookup, counting, grouping</td><td><code>dict</code></td></tr>
+<tr><td>fast "seen it?" membership, dedupe</td><td><code>set</code></td></tr>
+<tr><td>hashable composite key, fixed record</td><td><code>tuple</code></td></tr>
+<tr><td>fast pops from BOTH ends (queue)</td><td><code>collections.deque</code> (next page)</td></tr>
+</table>
+
+<div class="pager"><a href="../python/py-2-builtin-functions.html"><span class="lbl">← Previous</span>Built-in Functions</a><a href="../python/py-4-strings.html" style="text-align:right"><span class="lbl">Next →</span>String Methods</a></div>
+</div>
+</body>
+</html>

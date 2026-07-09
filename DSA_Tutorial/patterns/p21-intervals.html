@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intervals &amp; Line Sweep Patterns — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../problems/0586-lc1707-maximum-xor-with-an-element-from-array.html">← #1707 Maximum XOR With an Element From Array</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Pattern 21 of 29</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../problems/0587-lc56-merge-intervals.html">#56 Merge Intervals →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › Patterns › Intervals &amp; Line Sweep Patterns</div>
+<h1>🧩 Intervals &amp; Line Sweep Patterns</h1><p class="progress-note">4 subpatterns · 16 problems · <span data-count-of="p21-"></span></p>
+<h2>1. Intuition — the mental model</h2><p>Interval chaos becomes order the moment you sort. Sorted by start, overlap is a local question — each interval only interacts with the one before it. The other lens is the <strong>sweep line</strong>: convert intervals to +1/−1 <em>events</em>, sort events, and a running counter tells you how many intervals cover every moment.</p>
+<div class="insight"><strong>💡 The “aha” insight</strong><br>After sorting by start, "does interval i overlap anything?" reduces to <code>start_i ≤ end of the merged block so far</code>. One comparison per interval. And "max simultaneous meetings" is just the peak of the +1/−1 counter — no interval pairs ever compared.</div>
+<h2>2. Recognition signals</h2><p>Think of this pattern when the problem says:</p><ul><li>"merge overlapping intervals" / "insert interval"</li><li>"minimum meeting rooms / platforms / arrows"</li><li>"remove fewest to make non-overlapping" (greedy by end)</li><li>bookings, calendars, seat/resource occupancy over time</li><li>skyline-style "what is the profile over time"</li></ul>
+<h2>3. Master template</h2><pre><code># Merge intervals
+intervals.sort(key=lambda iv: iv[0])
+merged = []
+for s, e in intervals:
+    if merged and s &lt;= merged[-1][1]:            # overlaps the last block
+        merged[-1][1] = max(merged[-1][1], e)    # extend it
+    else:
+        merged.append([s, e])
+
+# Sweep line: max concurrent intervals
+events = []
+for s, e in intervals:
+    events.append((s, 1))          # interval opens
+    events.append((e, -1))         # interval closes
+events.sort()                      # ties: -1 before +1 ⇒ [1,2],[2,3] don't stack
+cur = peak = 0
+for _, delta in events:
+    cur += delta
+    peak = max(peak, cur)</code></pre>
+<p>Decide the tie rule consciously: does an interval ending at t overlap one starting at t? Closed intervals ⇒ yes (sort +1 before −1); half-open ⇒ no (−1 first, which plain tuple sort gives you).</p>
+<h2>4. Complexity of the template</h2><p>O(n log n) for the sort dominates; the pass is O(n). Meeting-rooms heap variant: O(n log n) too (heap of end times).</p>
+<h2>5. Common mistakes</h2><ul><li>Not sorting first — nothing about intervals works unsorted.</li><li>Tie-breaking at equal timestamps done by accident instead of by decision.</li><li>Merging with <code>e &lt; merged[-1][1]</code> — forgetting to take the max of ends (nested intervals!).</li><li>"Remove fewest overlapping" greedily by start instead of by END.</li></ul>
+<h2>6. Subpatterns &amp; problems</h2>
+<h3>21.1 — Interval Merging / Insertion</h3><p class="progress-note">Sort by start; merge/insert into a result list when they overlap.</p><ul class="plist"><li><input type="checkbox" data-id="p21-lc56" title="mark solved"><span class="num">#56</span><span class="pill M">M</span><a href="../problems/0587-lc56-merge-intervals.html">Merge Intervals</a><span class="badge b75" title="Blind 75">★75</span><span class="badge nc" title="NeetCode 150">★NC</span></li><li><input type="checkbox" data-id="p21-lc57" title="mark solved"><span class="num">#57</span><span class="pill M">M</span><a href="../problems/0588-lc57-insert-interval.html">Insert Interval</a><span class="badge b75" title="Blind 75">★75</span><span class="badge nc" title="NeetCode 150">★NC</span><span class="badge g75" title="Grind 75">★G</span></li><li><input type="checkbox" data-id="p21-lc986" title="mark solved"><span class="num">#986</span><span class="pill M">M</span><a href="../problems/0589-lc986-interval-list-intersections.html">Interval List Intersections</a></li><li><input type="checkbox" data-id="p21-lc1288" title="mark solved"><span class="num">#1288</span><span class="pill M">M</span><a href="../problems/0590-lc1288-remove-covered-intervals.html">Remove Covered Intervals</a></li></ul>
+<h3>21.2 — Meeting Rooms &amp; Scheduling</h3><p class="progress-note">Sort and compare current's end with the previous — counts overlaps or schedules.</p><ul class="plist"><li><input type="checkbox" data-id="p21-lc252" title="mark solved"><span class="num">#252</span><span class="pill E">E</span><a href="../problems/0591-lc252-meeting-rooms.html">Meeting Rooms</a><span class="badge b75" title="Blind 75">★75</span><span class="badge nc" title="NeetCode 150">★NC</span><span class="badge g75" title="Grind 75">★G</span></li><li><input type="checkbox" data-id="p21-lc253" title="mark solved"><span class="num">#253</span><span class="pill M">M</span><a href="../problems/0592-lc253-meeting-rooms-ii.html">Meeting Rooms II</a><span class="badge b75" title="Blind 75">★75</span><span class="badge nc" title="NeetCode 150">★NC</span><span class="badge g75" title="Grind 75">★G</span></li><li><input type="checkbox" data-id="p21-lc759" title="mark solved"><span class="num">#759</span><span class="pill H">H</span><a href="../problems/0593-lc759-employee-free-time.html">Employee Free Time</a></li><li><input type="checkbox" data-id="p21-lc2402" title="mark solved"><span class="num">#2402</span><span class="pill H">H</span><a href="../problems/0594-lc2402-meeting-rooms-iii.html">Meeting Rooms III</a></li><li><input type="checkbox" data-id="p21-lc2406" title="mark solved"><span class="num">#2406</span><span class="pill M">M</span><a href="../problems/0595-lc2406-divide-intervals-into-minimum-number-of-groups.html">Divide Intervals Into Minimum Number of Groups</a></li></ul>
+<h3>21.3 — Line Sweep with Events</h3><p class="progress-note">Convert intervals to +1/−1 point events on a sorted timeline; sweep to compute peaks.</p><ul class="plist"><li><input type="checkbox" data-id="p21-lc218" title="mark solved"><span class="num">#218</span><span class="pill H">H</span><a href="../problems/0596-lc218-the-skyline-problem.html">The Skyline Problem</a><span class="badge nc" title="NeetCode 150">★NC</span></li><li><input type="checkbox" data-id="p21-lc1851" title="mark solved"><span class="num">#1851</span><span class="pill H">H</span><a href="../problems/0597-lc1851-minimum-interval-to-include-each-query.html">Minimum Interval to Include Each Query</a><span class="badge nc" title="NeetCode 150">★NC</span></li><li><input type="checkbox" data-id="p21-lc1854" title="mark solved"><span class="num">#1854</span><span class="pill E">E</span><a href="../problems/0598-lc1854-maximum-population-year.html">Maximum Population Year</a></li></ul>
+<h3>21.4 — Calendar / Booking (TreeMap)</h3><p class="progress-note">Use a TreeMap of bookings, or two-pass overlap counting, to handle dynamic add/query.</p><ul class="plist"><li><input type="checkbox" data-id="p21-lc352" title="mark solved"><span class="num">#352</span><span class="pill H">H</span><a href="../problems/0599-lc352-data-stream-as-disjoint-intervals.html">Data Stream as Disjoint Intervals</a></li><li><input type="checkbox" data-id="p21-lc729" title="mark solved"><span class="num">#729</span><span class="pill M">M</span><a href="../problems/0600-lc729-my-calendar-i.html">My Calendar I</a></li><li><input type="checkbox" data-id="p21-lc731" title="mark solved"><span class="num">#731</span><span class="pill M">M</span><a href="../problems/0601-lc731-my-calendar-ii.html">My Calendar II</a></li><li><input type="checkbox" data-id="p21-lc732" title="mark solved"><span class="num">#732</span><span class="pill H">H</span><a href="../problems/0602-lc732-my-calendar-iii.html">My Calendar III</a></li></ul>
+<div class="pager"><a href="../problems/0586-lc1707-maximum-xor-with-an-element-from-array.html"><span class="lbl">← Previous</span>#1707 Maximum XOR With an Element From Array</a><a href="../problems/0587-lc56-merge-intervals.html" style="text-align:right"><span class="lbl">Next →</span>#56 Merge Intervals</a></div>
+</div>
+</body>
+</html>

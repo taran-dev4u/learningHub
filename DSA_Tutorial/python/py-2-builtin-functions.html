@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PY-2 · The Built-in Functions That Solve Problems — DSA Tutorial</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script defer src="../assets/app.js"></script>
+</head>
+<body>
+<div class="nav-bar"><a href="../python/py-1-how-python-thinks.html">← How Python Thinks</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Python Primer</div>
+<div style="display:flex;gap:8px;align-items:center"><a href="../python/py-3-data-structures.html">Core Data Structures →</a><button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div class="container">
+<div class="crumbs"><a href="../index.html">Home</a> › Python Primer › Built-in Functions</div>
+<h1>PY-2 · The Built-in Functions That Solve Problems</h1>
+
+<p>These functions are pre-loaded — no import needed. Knowing them cold is the difference between a 5-line solution and a 25-line one. Complexities matter: interviewers expect you to know that <code>sorted</code> is O(n log n) and <code>len</code> is O(1).</p>
+
+<h2>The core table</h2>
+<table>
+<tr><th>Function</th><th>What it does</th><th>Complexity</th><th>Interview use</th></tr>
+<tr><td><code>len(x)</code></td><td>number of items</td><td>O(1) — stored, not counted</td><td>everywhere</td></tr>
+<tr><td><code>sorted(x)</code></td><td>NEW sorted list (any iterable)</td><td>O(n log n)</td><td>intervals, greedy</td></tr>
+<tr><td><code>x.sort()</code></td><td>sorts list in place, returns None</td><td>O(n log n)</td><td>when original order not needed</td></tr>
+<tr><td><code>min(x) / max(x)</code></td><td>smallest / largest</td><td>O(n)</td><td>with <code>key=</code>, very powerful</td></tr>
+<tr><td><code>sum(x)</code></td><td>total</td><td>O(n)</td><td>prefix sums, averages</td></tr>
+<tr><td><code>abs(x)</code></td><td>absolute value</td><td>O(1)</td><td>distances</td></tr>
+<tr><td><code>any(it)</code></td><td>True if ANY element truthy (stops early)</td><td>O(n) worst</td><td>existence checks</td></tr>
+<tr><td><code>all(it)</code></td><td>True if ALL truthy (stops early)</td><td>O(n) worst</td><td>validation</td></tr>
+<tr><td><code>enumerate(x)</code></td><td>yields (index, value)</td><td>O(1) per step</td><td>replaces manual counters</td></tr>
+<tr><td><code>zip(a, b)</code></td><td>pairs items up, stops at shorter</td><td>O(1) per step</td><td>compare two sequences</td></tr>
+<tr><td><code>reversed(x)</code></td><td>iterator over x backwards</td><td>O(1) to create</td><td>palindromes</td></tr>
+<tr><td><code>range(a, b, s)</code></td><td>lazy number sequence</td><td>O(1) memory</td><td>all loops</td></tr>
+<tr><td><code>map(f, x)</code></td><td>lazily apply f to each</td><td>O(1) per step</td><td>parsing input</td></tr>
+<tr><td><code>filter(f, x)</code></td><td>lazily keep items where f is True</td><td>O(1) per step</td><td>cleaning data</td></tr>
+<tr><td><code>round(x, d)</code></td><td>round to d decimals</td><td>O(1)</td><td>output formatting</td></tr>
+<tr><td><code>pow(a, b, m)</code></td><td>aᵇ mod m, FAST</td><td>O(log b)</td><td>number theory</td></tr>
+<tr><td><code>ord(c) / chr(i)</code></td><td>char ↔ unicode number</td><td>O(1)</td><td>letter math: <code>ord(c)-ord('a')</code></td></tr>
+<tr><td><code>bin(x) / hex(x)</code></td><td>binary/hex string of x</td><td>O(log x)</td><td>bit manipulation</td></tr>
+<tr><td><code>isinstance(x, T)</code></td><td>type check</td><td>O(1)</td><td>nested structures</td></tr>
+<tr><td><code>id(x)</code></td><td>object identity</td><td>O(1)</td><td>debugging references</td></tr>
+</table>
+
+<h2>The <code>key=</code> superpower</h2>
+<p><code>sorted</code>, <code>min</code>, and <code>max</code> all accept a <code>key</code> function — "judge each item by this value instead":</p>
+<pre><code>sorted(words, key=len)                     # shortest → longest
+sorted(points, key=lambda p: p[0]**2 + p[1]**2)   # by distance from origin
+sorted(intervals, key=lambda iv: iv[0])    # intervals by start — the #1 intervals move
+max(freq, key=freq.get)                    # dict key with the highest value
+sorted(s)                                  # chars of a string, sorted → anagram signature</code></pre>
+<p>Sort descending: <code>sorted(x, reverse=True)</code>. Sort by two criteria: return a tuple — <code>key=lambda w: (-count[w], w)</code> means "count descending, then alphabetical". Python's sort is <strong>stable</strong>: equal keys keep their original order.</p>
+
+<h2>Building collections from iterables</h2>
+<pre><code>list("abc")      # ['a', 'b', 'c']
+set(nums)        # dedupe in O(n)
+dict(pairs)      # from [(k, v), ...]
+tuple(nums)      # hashable version of a list (usable as dict key!)
+''.join(chars)   # list of strings → one string, O(total length)
+str(123), int("42"), int("ff", 16)         # conversions</code></pre>
+
+<h2>Input parsing one-liners (for non-LeetCode judges)</h2>
+<pre><code>n = int(input())
+nums = list(map(int, input().split()))
+a, b = map(int, input().split())</code></pre>
+
+<div class="tip"><strong>Rule of thumb:</strong> if you are writing a manual loop to find a max, a sum, a count, or a check — a built-in probably does it in one readable line with the same complexity.</div>
+
+<div class="pager"><a href="../python/py-1-how-python-thinks.html"><span class="lbl">← Previous</span>How Python Thinks</a><a href="../python/py-3-data-structures.html" style="text-align:right"><span class="lbl">Next →</span>Core Data Structures</a></div>
+</div>
+</body>
+</html>
