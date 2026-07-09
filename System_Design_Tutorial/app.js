@@ -289,7 +289,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const markdownText = window.contentBundle[concept.file];
             if (!markdownText) throw new Error('Content not found');
 
-            let rawHtml = marked.parse(markdownText);
+            // Format raw math exponents like 2^10 or O(N^2) to HTML superscripts before parsing
+            let processedText = markdownText.replace(/([A-Za-z0-9_]+)\^([A-Za-z0-9_]+)/g, '$1<sup>$2</sup>');
+
+            let rawHtml = marked.parse(processedText);
 
             // Post-process blockquotes to alerts to preserve inner markdown formatting
             rawHtml = rawHtml.replace(/<blockquote>\s*<p>\[!(TIP|NOTE|WARNING|IMPORTANT|CAUTION)\]([\s\S]*?)<\/p>\s*<\/blockquote>/gi, (match, type, content) => {
@@ -342,18 +345,31 @@ ${error.stack}
 
     const scrollToConcept = (conceptId) => {
         if (!conceptId) return;
-        const el = document.getElementById(conceptId);
+        let el = document.getElementById(conceptId);
+
+        if (!el) {
+            // Fuzzy match: the sidebar anchor might not exactly match the markdown heading ID.
+            const headers = Array.from(document.querySelectorAll('#markdown-content h1, #markdown-content h2, #markdown-content h3, #markdown-content h4'));
+            const cleanConcept = conceptId.replace(/-/g, '');
+
+            el = headers.find(h => {
+                const cleanId = h.id.replace(/-/g, '');
+                // Match if one is a substring of the other (e.g. "functional-requirements" vs "functional-requirements-checklist")
+                return cleanId.length > 3 && (cleanConcept.includes(cleanId) || cleanId.includes(cleanConcept));
+            });
+        }
+
         if (el) {
             el.scrollIntoView({ behavior: 'smooth', block: 'start' });
             // Add a slight highlight animation
-            el.style.transition = 'color 0.3s ease';
+            el.style.transition = 'color 0.4s ease';
             const originalColor = el.style.color;
-            el.style.color = 'var(--primary-color)';
+            el.style.color = 'var(--accent-primary)';
             setTimeout(() => {
                 el.style.color = originalColor || '';
-            }, 1000);
+            }, 1200);
         } else {
-            window.scrollTo(0, 0);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     };
 
