@@ -36,34 +36,78 @@
 
 <h2>📋 The problem</h2><p>Return the shortest walking directions (U for up, L/R for down-steps) between two nodes of a binary tree (LCA + path diff).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Tree - Lowest Common Ancestor (LCA) Finding</strong> — Find the deepest node that has both target nodes in its subtree — recursive or with parent pointers.</p>
+<h2>🧭 How to think about it</h2>
+<p>Give the shortest path from node <code>startValue</code> to <code>destValue</code> as a string of <code>'U'</code> (up), <code>'L'</code>, <code>'R'</code>. Every path in a tree goes up to the <strong>lowest common ancestor</strong>, then down. So find the root-to-start and root-to-dest paths, drop their common prefix (that's the LCA), replace the start's remaining steps with <code>'U'</code>s, and append the dest's remaining steps.</p>
 
-<h2>Why this pattern?</h2><ul><li>"level", "depth", "nearest", "zigzag by rows" → BFS</li><li>"path sum", "ancestor", "validate", "diameter" → DFS</li><li>BST + "k-th smallest / sorted order" → inorder</li><li>"serialize / reconstruct" → preorder</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Tree Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>def dfs(node, state):                 # state flows DOWN (bounds, path...)
-    if not node:
-        return base                       # e.g. 0, True, None
-    L = dfs(node.left,  new_state)
-    R = dfs(node.right, new_state)
-    return combine(node.val, L, R)        # answer flows UP
+<h2>🐢 Brute force first</h2>
+<p>BFS the whole tree as a graph → works but heavier. The path-and-LCA approach is O(n) and directly yields the directions.</p>
 
-from collections import deque             # BFS by levels
-q = deque([root])
-while q:
-    for _ in range(len(q)):               # freeze current level size
-        node = q.popleft()
-        if node.left:  q.append(node.left)
-        if node.right: q.append(node.right)</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> record the root-to-node direction strings for both targets. Their shared prefix leads to the LCA. From start you go <code>'U'</code> once per remaining step up to the LCA; then follow dest's remaining <code>'L'/'R'</code> steps down.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>DFS to build the path string from root to <code>startValue</code> and to <code>destValue</code>.</li>
+<li>Strip the common prefix.</li>
+<li>Answer = <code>'U' × len(remaining start path)</code> + <code>remaining dest path</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — start path "LL", dest path "R"</h2>
+<pre class="viz">common prefix "" → up 2 from start ("UU"), then dest "R"
+Directions: "UUR"</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def getDirections(root, startValue, destValue):
+    def find(node, value, path):
+        if not node:
+            return False
+        if node.val == value:
+            return True
+        path.append('L')
+        if find(node.left, value, path):
+            return True
+        path[-1] = 'R'
+        if find(node.right, value, path):
+            return True
+        path.pop()                       # backtrack
+        return False
+
+    sp, dp = [], []
+    find(root, startValue, sp)
+    find(root, destValue, dp)
+    # drop common prefix (path down to the LCA)
+    i = 0
+    while i &lt; len(sp) and i &lt; len(dp) and sp[i] == dp[i]:
+        i += 1
+    return 'U' * (len(sp) - i) + ''.join(dp[i:])</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — two path searches. <strong>Space O(n)</strong> for the paths/recursion.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Start is an ancestor of dest → all-down path (no <code>'U'</code>).</li>
+<li>Dest is an ancestor of start → all-<code>'U'</code> path.</li>
+<li>Start == dest is disallowed by constraints (paths differ).</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Forgetting to backtrack in the path search.</li>
+<li>Not stripping the shared prefix (over-counting <code>'U'</code>s).</li>
+<li>Using node identity when values are unique here (values are fine).</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Return the LCA node itself (<a href="0133-lc236-lowest-common-ancestor-of-a-binary-tree.html">#236</a>).</li>
+<li>Distance (not directions) between nodes → sum of remaining lengths.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0133-lc236-lowest-common-ancestor-of-a-binary-tree.html">#236</a> · <a href="0129-lc863-all-nodes-distance-k-in-binary-tree.html">#863</a> · <a href="0104-lc257-binary-tree-paths.html">#257</a></p>
+
 
 <div class="pager"><a href="../problems/0134-lc1123-lowest-common-ancestor-of-deepest-leaves.html"><span class="lbl">← Previous</span>#1123 Lowest Common Ancestor of Deepest Leaves</a><a href="../problems/0136-lc297-serialize-and-deserialize-binary-tree.html" style="text-align:right"><span class="lbl">Next →</span>#297 Serialize and Deserialize Binary Tree</a></div>
 </div>

@@ -12,26 +12,30 @@ for d, _, fs in os.walk(root):
     htmls += [os.path.relpath(os.path.join(d, f), root).replace(os.sep, '/')
               for f in fs if f.endswith('.html')]
 
-broken = []
-for h in htmls:
+broken, no_icon, no_pager = [], [], []
+existing = set(htmls) | {'index.html'}   # cheap membership set for internal links
+
+for h in htmls:                          # read each file exactly once
     src = open(os.path.join(root, h), encoding='utf-8').read()
     base = os.path.dirname(h)
     for m in re.finditer(r'(?:href|src)="([^"#]+)"', src):
         url = m.group(1)
         if url.startswith(('http', 'mailto')):
             continue
-        url = url.split('?', 1)[0]
+        url = url.split('?', 1)[0]       # drop cache-busting query strings
+        if not url:
+            continue
         t = os.path.normpath(os.path.join(base, url)).replace(os.sep, '/')
-        if not os.path.exists(os.path.join(root, t)):
+        if t not in existing and not os.path.exists(os.path.join(root, t)):
             broken.append((h, url))
+    if h.startswith('problems/') and 'lc-icon' not in src:
+        no_icon.append(h)
+    if 'pager' not in src:
+        no_pager.append(h)
 
 cur = json.load(open(os.path.join(root, 'data', 'curriculum.json'), encoding='utf-8'))
 want = sum(len(s['problems']) for p in cur for s in p['subpatterns'])
 probs = [h for h in htmls if h.startswith('problems/')]
-no_icon = [p for p in probs
-           if 'lc-icon' not in open(os.path.join(root, p), encoding='utf-8').read()]
-no_pager = [h for h in htmls
-            if 'pager' not in open(os.path.join(root, h), encoding='utf-8').read()]
 
 def check(label, cond, detail=''):
     global ok

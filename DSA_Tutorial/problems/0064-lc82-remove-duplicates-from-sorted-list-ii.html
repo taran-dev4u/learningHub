@@ -36,33 +36,72 @@
 
 <h2>📋 The problem</h2><p>From a sorted linked list, delete every value that appears more than once, keeping only values that occur exactly once.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>In-place Reversal</strong> — Iteratively reverse links with prev/curr/next pointers; recursive variant also classic.</p>
+<h2>🧭 How to think about it</h2>
+<p>The list is sorted; remove <em>every</em> node that has a duplicate, leaving only values that appeared exactly once (<code>1→2→3→3→4→4→5</code> → <code>1→2→5</code>). Because the head itself can be deleted, use a <strong>dummy</strong> before it, and a <code>prev</code> pointing at the last confirmed-unique node.</p>
 
-<h2>Why this pattern?</h2><ul><li>input is a linked list (that alone is the signal)</li><li>"reverse", "reorder", "swap in pairs", "rotate" nodes</li><li>"k-th from the end", "middle", "cycle" → fast &amp; slow</li><li>"merge k sorted lists" → pairwise merge or heap of heads</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Linked List Manipulation master template and adapt the marked parts to this problem:</p><pre><code>dummy = ListNode(0, head)            # dummy head: prev of the real head
-prev, cur = dummy, head
+<h2>🐢 Brute force first</h2>
+<p>Count values with a dict, then rebuild keeping count-1 values → O(n) time, O(n) space. Since the list is sorted, a single in-place pass with O(1) space works.</p>
 
-# In-place reversal core
-p = None
-while cur:
-    cur.next, p, cur = p, cur, cur.next
-# p is the new head
+<div class="insight">💡 <strong>Key insight:</strong> when <code>cur</code> starts a run of equal values, skip the whole run, then link <code>prev.next</code> past it. If <code>cur</code> had no duplicate, just advance <code>prev</code>. The dummy lets <code>prev</code> start "before the head" so deleting the first node is uniform.</div>
 
-# Fast &amp; slow
-slow = fast = head
-while fast and fast.next:
-    slow, fast = slow.next, fast.next.next   # slow = middle when fast ends</code></pre>
-<h2>How to work on it now</h2>
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li><code>dummy → head</code>; <code>prev = dummy</code>, <code>cur = head</code>.</li>
+<li>If <code>cur</code> and <code>cur.next</code> have equal values, advance <code>cur</code> past the entire run, then <code>prev.next = cur.next</code>.</li>
+<li>Otherwise <code>prev = cur</code>.</li>
+<li>Advance <code>cur</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — 1→2→3→3→4→4→5</h2>
+<pre class="viz">prev=dummy cur=1 (unique) → prev=1
+cur=2 (unique) → prev=2
+cur=3, 3==3 → skip run to last 3 → prev.next = 4 ; cur=4
+cur=4, 4==4 → skip run → prev.next = 5 ; cur=5
+cur=5 unique → prev=5
+Result: 1→2→5</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def deleteDuplicates(head):
+    dummy = ListNode(0, head)
+    prev, cur = dummy, head
+    while cur:
+        if cur.next and cur.val == cur.next.val:
+            while cur.next and cur.val == cur.next.val:
+                cur = cur.next          # walk to the end of the run
+            prev.next = cur.next        # cut the whole run out
+        else:
+            prev = cur                  # cur is unique → keep it
+        cur = cur.next
+    return dummy.next</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — one pass. <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>All duplicates → empty list.</li>
+<li>Duplicates at the head → the dummy handles deletion cleanly.</li>
+<li>No duplicates → unchanged.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Advancing <code>prev</code> into a duplicate run (it must stay before the run).</li>
+<li>Forgetting the dummy → head-deletion bugs.</li>
+<li>Confusing this with <a href="0065-lc83-remove-duplicates-from-sorted-list.html">#83</a>, which keeps one copy of each value.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Keep one copy of each (<a href="0065-lc83-remove-duplicates-from-sorted-list.html">#83</a>).</li>
+<li>Unsorted input → count with a dict first.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0065-lc83-remove-duplicates-from-sorted-list.html">#83</a> · <a href="0017-lc26-remove-duplicates-from-sorted-array.html">#26</a> · #203</p>
+
 
 <div class="pager"><a href="../problems/0063-lc25-reverse-nodes-in-k-group.html"><span class="lbl">← Previous</span>#25 Reverse Nodes in k-Group</a><a href="../problems/0065-lc83-remove-duplicates-from-sorted-list.html" style="text-align:right"><span class="lbl">Next →</span>#83 Remove Duplicates from Sorted List</a></div>
 </div>

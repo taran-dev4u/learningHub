@@ -55,9 +55,9 @@ The build is resumable at any point: progress lives in `PROGRESS.md`, content in
 |---|---------|-------|
 | 1 | Framework + Python primer + all 707 problem pages (light) | done in session 1 |
 | 2 | Deepen: Two Pointers (P1) | ✅ done — all 37 problems |
-| 3 | Deepen: Array/Matrix (P2) + Linked List (P3) | 46 |
-| 4 | Deepen: Tree Traversal (P4) | 54 |
-| 5 | Deepen: Sliding Window (P5) + Stack (P6) | 65 |
+| 3 | Deepen: Array/Matrix (P2) + Linked List (P3) | ✅ done — all 46 problems |
+| 4 | Deepen: Tree Traversal (P4) | ✅ done — all 54 problems |
+| 5 | Deepen: Sliding Window (P5) + Stack (P6) | ✅ done — all 65 problems |
 | 6 | Deepen: Heap (P7) + Binary Search (P8) | 59 |
 | 7 | Deepen: Graph Traversal (P9) | 69 |
 | 8 | Deepen: Greedy (P10) + Backtracking (P11) | 52 |

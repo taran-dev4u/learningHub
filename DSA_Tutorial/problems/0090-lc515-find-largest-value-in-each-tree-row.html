@@ -36,34 +36,71 @@
 
 <h2>📋 The problem</h2><p>Return the largest value in each row (level) of a binary tree.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Tree BFS - Level Order Traversal</strong> — BFS with a queue; process the entire current level before moving on — level lists, right view, zigzag.</p>
+<h2>🧭 How to think about it</h2>
+<p>Report the maximum value on each level. Run level-order BFS and, for each level, keep a running max over the nodes you pop.</p>
 
-<h2>Why this pattern?</h2><ul><li>"level", "depth", "nearest", "zigzag by rows" → BFS</li><li>"path sum", "ancestor", "validate", "diameter" → DFS</li><li>BST + "k-th smallest / sorted order" → inorder</li><li>"serialize / reconstruct" → preorder</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Tree Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>def dfs(node, state):                 # state flows DOWN (bounds, path...)
-    if not node:
-        return base                       # e.g. 0, True, None
-    L = dfs(node.left,  new_state)
-    R = dfs(node.right, new_state)
-    return combine(node.val, L, R)        # answer flows UP
+<h2>🐢 Brute force first</h2>
+<p>Collect every level's list then take <code>max</code> of each — the same work. Tracking the max inline avoids storing whole levels.</p>
 
-from collections import deque             # BFS by levels
-q = deque([root])
-while q:
-    for _ in range(len(q)):               # freeze current level size
-        node = q.popleft()
-        if node.left:  q.append(node.left)
-        if node.right: q.append(node.right)</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> the level boundary (frozen <code>len(queue)</code>) lets you reduce each level to a single number as you go, so you never need the full level list.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>BFS with a frozen level size.</li>
+<li>Start <code>level_max = −∞</code>; update it as you pop each node.</li>
+<li>Append <code>level_max</code> after the level completes.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — [1,3,2,5,3,null,9]</h2>
+<pre class="viz">level0 [1] → 1
+level1 [3,2] → 3
+level2 [5,3,9] → 9
+Result: [1,3,9]</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>from collections import deque
+def largestValues(root):
+    if not root:
+        return []
+    res, q = [], deque([root])
+    while q:
+        level_max = float('-inf')
+        for _ in range(len(q)):
+            node = q.popleft()
+            level_max = max(level_max, node.val)
+            if node.left:  q.append(node.left)
+            if node.right: q.append(node.right)
+        res.append(level_max)
+    return res</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong>, <strong>Space O(n)</strong> for the queue.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Empty tree → <code>[]</code>.</li>
+<li>Negative values → seed with <code>−∞</code>, not 0.</li>
+<li>Single node → <code>[val]</code>.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Initializing <code>level_max = 0</code> and breaking on all-negative trees.</li>
+<li>Not freezing the level size.</li>
+<li>Storing whole levels unnecessarily.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Largest-sum level (<a href="0094-lc1161-maximum-level-sum-of-a-binary-tree.html">#1161</a>).</li>
+<li>Per-level average / min → swap the reducer.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0094-lc1161-maximum-level-sum-of-a-binary-tree.html">#1161</a> · <a href="0084-lc102-binary-tree-level-order-traversal.html">#102</a> · <a href="0088-lc199-binary-tree-right-side-view.html">#199</a></p>
+
 
 <div class="pager"><a href="../problems/0089-lc314-binary-tree-vertical-order-traversal.html"><span class="lbl">← Previous</span>#314 Binary Tree Vertical Order Traversal</a><a href="../problems/0091-lc545-boundary-of-binary-tree.html" style="text-align:right"><span class="lbl">Next →</span>#545 Boundary of Binary Tree</a></div>
 </div>

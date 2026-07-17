@@ -36,33 +36,71 @@
 <p class="progress-note">This problem also appears under: <a href="0235-lc74-search-a-2d-matrix.html">Binary Search</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Search a target in a matrix whose rows are sorted and where each row starts after the previous row ends, in O(log(m·n)).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Matrix Search / Sorted Matrix</strong> — Binary-search a row-and-column-sorted matrix by treating it as 1D, or staircase-search from a corner.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Treat the matrix as one sorted array: index → (i // cols, i % cols).</div>
-<h2>Why this pattern?</h2><ul><li>"rotate / transpose / flip" a matrix or array</li><li>"in place" / "O(1) extra space" on a grid problem</li><li>traverse in an unusual order (spiral, diagonal, zigzag)</li><li>mark/erase cells based on other cells (use the cells themselves as flags)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Array/Matrix Manipulation master template and adapt the marked parts to this problem:</p><pre><code># Rotate matrix 90° clockwise, in place
-n = len(matrix)
-for r in range(n):                     # 1) transpose (swap across diagonal)
-    for c in range(r + 1, n):
-        matrix[r][c], matrix[c][r] = matrix[c][r], matrix[r][c]
-for row in matrix:                     # 2) reverse each row
-    row.reverse()
+<h2>🧭 How to think about it</h2>
+<p>The matrix is sorted row by row, and each row's first value is greater than the previous row's last — so reading it row after row gives one fully sorted sequence. That means you can run a single <strong>binary search over the m·n virtual array</strong>, converting a flat index back to (row, col) with division and modulo.</p>
 
-# Spiral walk: shrink four boundaries
-top, bottom, left, right = 0, rows - 1, 0, cols - 1
-while top &lt;= bottom and left &lt;= right:
-    ...walk top row, right col, bottom row, left col...
-    top += 1; bottom -= 1; left += 1; right -= 1</code></pre>
-<h2>How to work on it now</h2>
+<h2>🐢 Brute force first</h2>
+<p>Scan every cell → O(m·n). Binary search per row → O(m log n). Treating it as one sorted array → O(log(m·n)), the best.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> index <code>mid</code> in <code>0..m·n−1</code> maps to <code>matrix[mid // cols][mid % cols]</code>. Now it's a textbook binary search: compare, halve, repeat.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li><code>lo = 0</code>, <code>hi = m·n − 1</code>.</li>
+<li><code>mid</code> → value at <code>(mid // n, mid % n)</code>.</li>
+<li>Equal → found; less → <code>lo = mid+1</code>; greater → <code>hi = mid−1</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — matrix=[[1,3,5,7],[10,11,16,20],[23,30,34,60]], target=3</h2>
+<pre class="viz">m=3,n=4 → lo=0 hi=11
+mid=5 → (1,1)=11 &gt; 3 → hi=4
+mid=2 → (0,2)=5 &gt; 3 → hi=1
+mid=0 → (0,0)=1 &lt; 3 → lo=1
+mid=1 → (0,1)=3 == 3 → found</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def searchMatrix(matrix, target):
+    m, n = len(matrix), len(matrix[0])
+    lo, hi = 0, m * n - 1
+    while lo &lt;= hi:
+        mid = (lo + hi) // 2
+        val = matrix[mid // n][mid % n]    # flat index → (row, col)
+        if val == target:
+            return True
+        elif val &lt; target:
+            lo = mid + 1
+        else:
+            hi = mid - 1
+    return False</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(log(m·n))</strong> — one binary search. <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Target smaller than the first / larger than the last element → search converges to not-found.</li>
+<li>Single row or single column → the index math still works.</li>
+<li>Empty matrix → guard by checking dimensions.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Using <code>mid // m</code> / <code>mid % m</code> — must divide by the number of <em>columns</em> <code>n</code>.</li>
+<li>Off-by-one in <code>hi = m·n − 1</code>.</li>
+<li>Assuming the weaker row/column sorting of <a href="0053-lc240-search-a-2d-matrix-ii.html">#240</a> (different algorithm).</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Rows sorted but not globally (<a href="0053-lc240-search-a-2d-matrix-ii.html">#240</a>) → staircase search.</li>
+<li>Count/insert position → lower-bound variant.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0053-lc240-search-a-2d-matrix-ii.html">#240</a> · <a href="0054-lc378-kth-smallest-element-in-a-sorted-matrix.html">#378</a> · <a href="0233-lc35-search-insert-position.html">#35</a></p>
+
 
 <div class="pager"><a href="../problems/0051-lc448-find-all-numbers-disappeared-in-an-array.html"><span class="lbl">← Previous</span>#448 Find All Numbers Disappeared in an Array</a><a href="../problems/0053-lc240-search-a-2d-matrix-ii.html" style="text-align:right"><span class="lbl">Next →</span>#240 Search a 2D Matrix II</a></div>
 </div>

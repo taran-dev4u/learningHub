@@ -36,34 +36,68 @@
 
 <h2>📋 The problem</h2><p>Trim a BST so all values lie within [lo, hi], preserving the structure of what remains.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Tree DFS - Recursive Inorder Traversal</strong> — Visit left, root, right — yields sorted order on a BST; used for kth-smallest, BST validation.</p>
+<h2>🧭 How to think about it</h2>
+<p>Remove all nodes whose values fall outside <code>[low, high]</code>, keeping the tree a valid BST. Recurse: if a node is too small, the entire left subtree is also too small, so return the trimmed <strong>right</strong> subtree; if too big, return the trimmed <strong>left</strong> subtree; otherwise keep the node and trim both sides.</p>
 
-<h2>Why this pattern?</h2><ul><li>"level", "depth", "nearest", "zigzag by rows" → BFS</li><li>"path sum", "ancestor", "validate", "diameter" → DFS</li><li>BST + "k-th smallest / sorted order" → inorder</li><li>"serialize / reconstruct" → preorder</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Tree Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>def dfs(node, state):                 # state flows DOWN (bounds, path...)
-    if not node:
-        return base                       # e.g. 0, True, None
-    L = dfs(node.left,  new_state)
-    R = dfs(node.right, new_state)
-    return combine(node.val, L, R)        # answer flows UP
+<h2>🐢 Brute force first</h2>
+<p>Collect valid values and rebuild → O(n) and loses structure. The recursive BST trim is O(n) and preserves shape where possible.</p>
 
-from collections import deque             # BFS by levels
-q = deque([root])
-while q:
-    for _ in range(len(q)):               # freeze current level size
-        node = q.popleft()
-        if node.left:  q.append(node.left)
-        if node.right: q.append(node.right)</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> BST ordering lets you discard whole subtrees. If <code>node.val &lt; low</code>, everything in its left subtree is also &lt; low, so replace the node with the trim of its right child. Symmetrically for <code>&gt; high</code>.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Null → null.</li>
+<li><code>val &lt; low</code> → return <code>trim(right)</code>.</li>
+<li><code>val &gt; high</code> → return <code>trim(left)</code>.</li>
+<li>Else trim both children and keep the node.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — [3,0,4,null,2,null,null,1], low=1, high=3</h2>
+<pre class="viz">3 in range → trim left(0) and right(4)
+ 0&lt;1 → return trim(right of 0 = 2) → 2 in range → keep, trim its left 1
+ 4&gt;3 → return trim(left of 4 = null)
+Result: 3→(2→1)</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def trimBST(root, low, high):
+    if not root:
+        return None
+    if root.val &lt; low:
+        return trimBST(root.right, low, high)   # whole left subtree too small
+    if root.val &gt; high:
+        return trimBST(root.left, low, high)    # whole right subtree too big
+    root.left = trimBST(root.left, low, high)
+    root.right = trimBST(root.right, low, high)
+    return root</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> worst case. <strong>Space O(h)</strong> recursion.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>All nodes out of range → empty tree.</li>
+<li>Root itself trimmed → the returned subtree becomes the new root.</li>
+<li>Range covers everything → tree unchanged.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Trimming both children even when the node is out of range (must jump to the surviving subtree).</li>
+<li>Forgetting to reassign <code>root.left/right</code>.</li>
+<li>Using inclusive/exclusive bounds incorrectly.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Range sum within bounds (<a href="0119-lc938-range-sum-of-bst.html">#938</a>).</li>
+<li>Delete a single node (<a href="0115-lc450-delete-node-in-a-bst.html">#450</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0119-lc938-range-sum-of-bst.html">#938</a> · <a href="0115-lc450-delete-node-in-a-bst.html">#450</a> · <a href="0109-lc98-validate-binary-search-tree.html">#98</a></p>
+
 
 <div class="pager"><a href="../problems/0117-lc530-minimum-absolute-difference-in-bst.html"><span class="lbl">← Previous</span>#530 Minimum Absolute Difference in BST</a><a href="../problems/0119-lc938-range-sum-of-bst.html" style="text-align:right"><span class="lbl">Next →</span>#938 Range Sum of BST</a></div>
 </div>

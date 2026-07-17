@@ -36,34 +36,65 @@
 
 <h2>📋 The problem</h2><p>Decide whether a binary tree is a mirror of itself around its center.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Tree DFS - Recursive Preorder Traversal</strong> — Visit root, then left subtree, then right — used for tree cloning, serialization, path building.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Mirror check: compare left.left with right.right and left.right with right.left.</div>
-<h2>Why this pattern?</h2><ul><li>"level", "depth", "nearest", "zigzag by rows" → BFS</li><li>"path sum", "ancestor", "validate", "diameter" → DFS</li><li>BST + "k-th smallest / sorted order" → inorder</li><li>"serialize / reconstruct" → preorder</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Tree Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>def dfs(node, state):                 # state flows DOWN (bounds, path...)
-    if not node:
-        return base                       # e.g. 0, True, None
-    L = dfs(node.left,  new_state)
-    R = dfs(node.right, new_state)
-    return combine(node.val, L, R)        # answer flows UP
+<h2>🧭 How to think about it</h2>
+<p>A tree is a mirror of itself when its left subtree is the mirror image of its right subtree. So compare two nodes in <strong>mirror</strong>: outer with outer, inner with inner — <code>left.left</code> vs <code>right.right</code> and <code>left.right</code> vs <code>right.left</code>.</p>
 
-from collections import deque             # BFS by levels
-q = deque([root])
-while q:
-    for _ in range(len(q)):               # freeze current level size
-        node = q.popleft()
-        if node.left:  q.append(node.left)
-        if node.right: q.append(node.right)</code></pre>
-<h2>How to work on it now</h2>
+<h2>🐢 Brute force first</h2>
+<p>Do a level-order BFS and check each level reads as a palindrome (with null placeholders) — works but bookkeeping-heavy. The mirror recursion is cleaner.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> write a helper <code>mirror(a, b)</code>: both null → True; one null or values differ → False; else <code>mirror(a.left, b.right) and mirror(a.right, b.left)</code>. Call it on the root's two children.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Empty tree → symmetric.</li>
+<li>Call <code>mirror(root.left, root.right)</code>.</li>
+<li>In <code>mirror</code>, compare outer and inner pairs recursively.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — [1,2,2,3,4,4,3]</h2>
+<pre class="viz">mirror(2,2): vals equal
+  mirror(3,3) outer ✓
+  mirror(4,4) inner ✓
+→ symmetric True</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def isSymmetric(root):
+    def mirror(a, b):
+        if not a and not b:
+            return True
+        if not a or not b or a.val != b.val:
+            return False
+        return mirror(a.left, b.right) and mirror(a.right, b.left)
+    return mirror(root.left, root.right) if root else True</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong>, <strong>Space O(h)</strong> recursion.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Empty tree → symmetric.</li>
+<li>Single node → symmetric.</li>
+<li>Same values but wrong shape → caught by the null mismatch.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Comparing <code>left.left</code> with <code>right.left</code> (that's the "same tree" check, not the mirror).</li>
+<li>Dereferencing before null checks.</li>
+<li>Forgetting the empty-tree case.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Iterative version with a queue of pairs.</li>
+<li>Same tree (<a href="0095-lc100-same-tree.html">#100</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0095-lc100-same-tree.html">#100</a> · <a href="0103-lc226-invert-binary-tree.html">#226</a> · <a href="0105-lc572-subtree-of-another-tree.html">#572</a></p>
+
 
 <div class="pager"><a href="../problems/0095-lc100-same-tree.html"><span class="lbl">← Previous</span>#100 Same Tree</a><a href="../problems/0097-lc105-construct-binary-tree-from-preorder-and-inorder-traversal.html" style="text-align:right"><span class="lbl">Next →</span>#105 Construct Binary Tree from Preorder and Inorder Traversal</a></div>
 </div>

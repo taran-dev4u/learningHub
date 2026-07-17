@@ -36,34 +36,59 @@
 
 <h2>📋 The problem</h2><p>Return the maximum depth of a binary tree — the number of nodes on the longest root-to-leaf path.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Tree DFS - Recursive Postorder Traversal</strong> — Visit left, right, then root — used when children's results are needed before computing the parent.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Height = 1 + max(height(left), height(right)); None returns 0.</div>
-<h2>Why this pattern?</h2><ul><li>"level", "depth", "nearest", "zigzag by rows" → BFS</li><li>"path sum", "ancestor", "validate", "diameter" → DFS</li><li>BST + "k-th smallest / sorted order" → inorder</li><li>"serialize / reconstruct" → preorder</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Tree Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>def dfs(node, state):                 # state flows DOWN (bounds, path...)
-    if not node:
-        return base                       # e.g. 0, True, None
-    L = dfs(node.left,  new_state)
-    R = dfs(node.right, new_state)
-    return combine(node.val, L, R)        # answer flows UP
+<h2>🧭 How to think about it</h2>
+<p>The depth of a tree is 1 plus the deeper of its two subtrees. That recursive definition is the whole solution: a <strong>postorder</strong> recursion where an empty subtree contributes 0.</p>
 
-from collections import deque             # BFS by levels
-q = deque([root])
-while q:
-    for _ in range(len(q)):               # freeze current level size
-        node = q.popleft()
-        if node.left:  q.append(node.left)
-        if node.right: q.append(node.right)</code></pre>
-<h2>How to work on it now</h2>
+<h2>🐢 Brute force first</h2>
+<p>BFS counting levels also works and is O(n). The recursive height is the shortest expression.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> <code>depth(node) = 1 + max(depth(left), depth(right))</code>, with <code>depth(None) = 0</code>. Each node's answer depends only on its children — a clean bottom-up computation.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Null → 0.</li>
+<li>Recurse into both children.</li>
+<li>Return <code>1 + max(left, right)</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — [3,9,20,null,null,15,7]</h2>
+<pre class="viz">9→1, 15→1, 7→1, 20→2, root→3
+Answer: 3</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def maxDepth(root):
+    if not root:
+        return 0
+    return 1 + max(maxDepth(root.left), maxDepth(root.right))</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong>, <strong>Space O(h)</strong> recursion.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Empty tree → 0.</li>
+<li>Single node → 1.</li>
+<li>Skewed tree → depth equals the node count.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Returning <code>max(left, right)</code> without the <code>+1</code>.</li>
+<li>Counting edges vs nodes inconsistently.</li>
+<li>Deep recursion overflow on huge skewed trees (use BFS then).</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Minimum depth → careful with one-sided nodes.</li>
+<li>Balanced check builds on height (<a href="0098-lc110-balanced-binary-tree.html">#110</a>); diameter too (<a href="0128-lc543-diameter-of-binary-tree.html">#543</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0098-lc110-balanced-binary-tree.html">#110</a> · <a href="0128-lc543-diameter-of-binary-tree.html">#543</a> · #111</p>
+
 
 <div class="pager"><a href="../problems/0119-lc938-range-sum-of-bst.html"><span class="lbl">← Previous</span>#938 Range Sum of BST</a><a href="../problems/0121-lc106-construct-binary-tree-from-inorder-and-postorder-traversal.html" style="text-align:right"><span class="lbl">Next →</span>#106 Construct Binary Tree from Inorder and Postorder Traversal</a></div>
 </div>

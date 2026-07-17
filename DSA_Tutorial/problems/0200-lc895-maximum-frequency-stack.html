@@ -36,35 +36,73 @@
 
 <h2>📋 The problem</h2><p>Design a stack where pop returns the most frequent element (ties: the one closest to the top).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Simulation / Backtracking Helper</strong> — Use a stack to mimic recursion or to roll back state — DFS without recursion, undo-redo.</p>
+<h2>🧭 How to think about it</h2>
+<p>Design a stack where <code>pop()</code> removes the <strong>most frequent</strong> element (ties broken by most recently pushed). Track each value's frequency, and keep a <strong>stack per frequency level</strong>: pushing a value adds it to the stack for its new frequency; popping takes from the highest non-empty frequency stack.</p>
 
-<h2>Why this pattern?</h2><ul><li>brackets/tags to match or validate</li><li>"next greater / next warmer / previous smaller" element</li><li>histogram areas, trapped water, "can see over"</li><li>evaluate/parse an expression, decode nested strings</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Stack master template and adapt the marked parts to this problem:</p><pre><code># Monotonic (decreasing) stack — next greater element
-stack = []                              # holds INDICES of unresolved elements
-res = [-1] * len(nums)
-for i, x in enumerate(nums):
-    while stack and nums[stack[-1]] &lt; x:   # x resolves the waiting ones
-        j = stack.pop()
-        res[j] = x                          # x is j's next greater
-    stack.append(i)
+<h2>🐢 Brute force first</h2>
+<p>Scanning for the max frequency on each pop is O(n). The per-frequency stacks make push and pop O(1).</p>
 
-# Matching
-for ch in s:
-    if ch in pairs:  stack.append(ch)
-    elif not stack or pairs[stack.pop()] != ch:
-        return False
-return not stack</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> when you push <code>x</code> and its count becomes <code>f</code>, append <code>x</code> to <code>groups[f]</code>. The current maximum frequency <code>maxFreq</code> points at the stack to pop from; popping from <code>groups[maxFreq]</code> gives the most-frequent, most-recent value and naturally handles ties (recency within the group).</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li><code>push(x)</code>: increment <code>freq[x]</code>; append <code>x</code> to <code>groups[freq[x]]</code>; bump <code>maxFreq</code>.</li>
+<li><code>pop()</code>: take from <code>groups[maxFreq]</code>; decrement that value's freq; if the top group empties, lower <code>maxFreq</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — push 5,7,5,7,4,5 then pop×3</h2>
+<pre class="viz">freq5=3 (groups[3]=[5]) ; pop → 5 (maxFreq2) ; pop → 7 (freq7 was 2, recent) ; pop → 5
+Pops: 5, 7, 5</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>from collections import defaultdict
+class FreqStack:
+    def __init__(self):
+        self.freq = defaultdict(int)
+        self.groups = defaultdict(list)   # frequency -> stack of values
+        self.max_freq = 0
+
+    def push(self, val):
+        self.freq[val] += 1
+        f = self.freq[val]
+        self.max_freq = max(self.max_freq, f)
+        self.groups[f].append(val)
+
+    def pop(self):
+        val = self.groups[self.max_freq].pop()   # most frequent, most recent
+        self.freq[val] -= 1
+        if not self.groups[self.max_freq]:
+            self.max_freq -= 1
+        return val</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(1)</strong> per push/pop. <strong>Space O(n)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Ties in frequency → the group's top (most recent) wins.</li>
+<li>Single element pushed many times → pops it repeatedly.</li>
+<li>Interleaved pushes/pops → <code>max_freq</code> stays correct.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Forgetting to lower <code>max_freq</code> when the top group empties.</li>
+<li>Not decrementing <code>freq[val]</code> on pop.</li>
+<li>Using one global stack and re-sorting (O(n) pops).</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Least frequent element → track min frequency similarly.</li>
+<li>LFU cache uses the same frequency-bucket idea.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0201-lc155-min-stack.html">#155</a> · <a href="0204-lc347-top-k-frequent-elements.html">#347</a> · <a href="0472-lc146-lru-cache.html">#146</a></p>
+
 
 <div class="pager"><a href="../problems/0199-lc636-exclusive-time-of-functions.html"><span class="lbl">← Previous</span>#636 Exclusive Time of Functions</a><a href="../problems/0201-lc155-min-stack.html" style="text-align:right"><span class="lbl">Next →</span>#155 Min Stack</a></div>
 </div>

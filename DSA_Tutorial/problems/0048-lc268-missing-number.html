@@ -36,33 +36,67 @@
 <p class="progress-note">This problem also appears under: <a href="0459-lc268-missing-number.html">Bit Manipulation</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>An array holds n distinct numbers from 0..n; return the one number missing from the range.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Cyclic Sort</strong> — Place each value at index value-1 by swapping — finds missing/duplicate numbers in O(n) O(1).</p>
-<div class="insight"><strong>💡 Key idea</strong><br>XOR all indices 0..n and all values — everything pairs off except the missing number.</div>
-<h2>Why this pattern?</h2><ul><li>"rotate / transpose / flip" a matrix or array</li><li>"in place" / "O(1) extra space" on a grid problem</li><li>traverse in an unusual order (spiral, diagonal, zigzag)</li><li>mark/erase cells based on other cells (use the cells themselves as flags)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Array/Matrix Manipulation master template and adapt the marked parts to this problem:</p><pre><code># Rotate matrix 90° clockwise, in place
-n = len(matrix)
-for r in range(n):                     # 1) transpose (swap across diagonal)
-    for c in range(r + 1, n):
-        matrix[r][c], matrix[c][r] = matrix[c][r], matrix[r][c]
-for row in matrix:                     # 2) reverse each row
-    row.reverse()
+<h2>🧭 How to think about it</h2>
+<p>The array holds <code>n</code> distinct numbers drawn from <code>0..n</code>, so exactly one is missing. Two clean tricks: the <strong>sum</strong> of <code>0..n</code> minus the actual sum is the missing number; or <strong>XOR</strong> all indices <code>0..n</code> with all values — every present number cancels itself, leaving the missing one.</p>
 
-# Spiral walk: shrink four boundaries
-top, bottom, left, right = 0, rows - 1, 0, cols - 1
-while top &lt;= bottom and left &lt;= right:
-    ...walk top row, right col, bottom row, left col...
-    top += 1; bottom -= 1; left += 1; right -= 1</code></pre>
-<h2>How to work on it now</h2>
+<h2>🐢 Brute force first</h2>
+<p>Sort then find the gap → O(n log n). A boolean seen-array is O(n) space. Sum or XOR give O(n) time and O(1) space with no overflow worries (XOR) .</p>
+
+<div class="insight">💡 <strong>Key insight (XOR):</strong> <code>x ^ x = 0</code> and XOR is commutative. XOR together every index 0..n and every array value; each number that appears both as an index and a value cancels, and the lone survivor is the missing number. The Gauss-sum version is equally valid: <code>n(n+1)/2 − sum(nums)</code>.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Start <code>missing = n</code> (covers the top index that has no matching loop value).</li>
+<li>For each <code>i</code>: <code>missing ^= i ^ nums[i]</code>.</li>
+<li>Return <code>missing</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — nums = [3,0,1] (n=3)</h2>
+<pre class="viz">missing=3
+i=0: 3 ^ 0 ^ 3 = 0
+i=1: 0 ^ 1 ^ 0 = 1
+i=2: 1 ^ 2 ^ 1 = 2
+Answer: 2   (sum check: 0+1+2+3=6, sum(nums)=4, 6-4=2 ✓)</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def missingNumber(nums):
+    n = len(nums)
+    missing = n                    # start with the index n (no value pairs with it)
+    for i, x in enumerate(nums):
+        missing ^= i ^ x           # cancel index and value
+    return missing
+
+# Gauss-sum alternative:
+# return n * (n + 1) // 2 - sum(nums)</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — one pass. <strong>Space O(1)</strong>. XOR avoids the (small) overflow risk the sum has in fixed-width languages.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Missing 0 → e.g. [1] → answer 0.</li>
+<li>Missing n → e.g. [0,1] → answer 2.</li>
+<li>Single-element array → returns whichever of 0/1 is absent.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Forgetting to seed <code>missing = n</code> (the top index never appears as a loop index otherwise).</li>
+<li>Sum overflow in languages with fixed-width ints.</li>
+<li>Assuming the array is sorted.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Cyclic-sort version → place each value at index = value, then find the mismatch (<a href="0047-lc41-first-missing-positive.html">#41</a>).</li>
+<li>Two missing numbers → XOR splits into two groups by a set bit.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0047-lc41-first-missing-positive.html">#41</a> · <a href="0051-lc448-find-all-numbers-disappeared-in-an-array.html">#448</a> · <a href="0456-lc136-single-number.html">#136</a></p>
+
 
 <div class="pager"><a href="../problems/0047-lc41-first-missing-positive.html"><span class="lbl">← Previous</span>#41 First Missing Positive</a><a href="../problems/0049-lc287-find-the-duplicate-number.html" style="text-align:right"><span class="lbl">Next →</span>#287 Find the Duplicate Number</a></div>
 </div>

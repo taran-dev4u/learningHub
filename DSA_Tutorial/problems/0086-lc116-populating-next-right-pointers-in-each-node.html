@@ -36,34 +36,69 @@
 
 <h2>📋 The problem</h2><p>In a perfect binary tree, point every node's next pointer to the node immediately to its right on the same level (or null).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Tree BFS - Level Order Traversal</strong> — BFS with a queue; process the entire current level before moving on — level lists, right view, zigzag.</p>
+<h2>🧭 How to think about it</h2>
+<p>The tree is <em>perfect</em> (every parent has two children, all leaves on the same level). Wire each node's <code>next</code> to the node on its right within the same level; the rightmost points to null. Because it's perfect, you can do this with <strong>O(1) extra space</strong> using the <code>next</code> pointers you're building as a same-level linked list.</p>
 
-<h2>Why this pattern?</h2><ul><li>"level", "depth", "nearest", "zigzag by rows" → BFS</li><li>"path sum", "ancestor", "validate", "diameter" → DFS</li><li>BST + "k-th smallest / sorted order" → inorder</li><li>"serialize / reconstruct" → preorder</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Tree Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>def dfs(node, state):                 # state flows DOWN (bounds, path...)
-    if not node:
-        return base                       # e.g. 0, True, None
-    L = dfs(node.left,  new_state)
-    R = dfs(node.right, new_state)
-    return combine(node.val, L, R)        # answer flows UP
+<h2>🐢 Brute force first</h2>
+<p>BFS level by level, linking consecutive nodes — O(n) time but O(n) queue space. The pointer-threading trick removes the queue.</p>
 
-from collections import deque             # BFS by levels
-q = deque([root])
-while q:
-    for _ in range(len(q)):               # freeze current level size
-        node = q.popleft()
-        if node.left:  q.append(node.left)
-        if node.right: q.append(node.right)</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> once a level is fully linked, you can walk it left-to-right via <code>next</code> and link the level below: for each node, <code>node.left.next = node.right</code>, and <code>node.right.next = node.next.left</code> (the next parent's left child). Perfectness guarantees those children exist.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Start <code>leftmost = root</code>.</li>
+<li>While <code>leftmost.left</code> exists (there's a level below): walk the current level via <code>next</code>.</li>
+<li>For each <code>node</code>: <code>node.left.next = node.right</code>; if <code>node.next</code>, <code>node.right.next = node.next.left</code>.</li>
+<li>Drop to <code>leftmost = leftmost.left</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — perfect tree 1 / 2 3 / 4 5 6 7</h2>
+<pre class="viz">level1: 1→null
+link level2: 2.next=3, 3.next=null
+link level3 via level2: 4→5 (2.left→2.right), 5→6 (2.right→3.left), 6→7
+Result: each level threaded left→right</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def connect(root):
+    leftmost = root
+    while leftmost and leftmost.left:      # while a lower level exists
+        node = leftmost
+        while node:                        # walk current level via next
+            node.left.next = node.right    # link the two children
+            if node.next:
+                node.right.next = node.next.left  # bridge across parents
+            node = node.next
+        leftmost = leftmost.left
+    return root</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — each node visited once. <strong>Space O(1)</strong> — no queue; the <code>next</code> links are the scaffolding.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Empty tree → return null.</li>
+<li>Single node → its <code>next</code> stays null.</li>
+<li>Leaf level → the outer loop stops (<code>leftmost.left</code> is null).</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Assuming the general-tree version (<a href="0087-lc117-populating-next-right-pointers-in-each-node-ii.html">#117</a>) is identical — here perfectness lets you dereference both children freely.</li>
+<li>Forgetting the cross-parent link <code>node.right.next = node.next.left</code>.</li>
+<li>Using a queue and losing the O(1)-space credit.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Any (non-perfect) binary tree (<a href="0087-lc117-populating-next-right-pointers-in-each-node-ii.html">#117</a>) → track the next level's head/tail as you go.</li>
+<li>Level-order traversal (<a href="0084-lc102-binary-tree-level-order-traversal.html">#102</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0087-lc117-populating-next-right-pointers-in-each-node-ii.html">#117</a> · <a href="0084-lc102-binary-tree-level-order-traversal.html">#102</a> · <a href="0088-lc199-binary-tree-right-side-view.html">#199</a></p>
+
 
 <div class="pager"><a href="../problems/0085-lc103-binary-tree-zigzag-level-order-traversal.html"><span class="lbl">← Previous</span>#103 Binary Tree Zigzag Level Order Traversal</a><a href="../problems/0087-lc117-populating-next-right-pointers-in-each-node-ii.html" style="text-align:right"><span class="lbl">Next →</span>#117 Populating Next Right Pointers in Each Node II</a></div>
 </div>

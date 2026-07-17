@@ -36,34 +36,71 @@
 <p class="progress-note">This problem also appears under: <a href="0674-lc173-binary-search-tree-iterator.html">Iterator &amp; Data-Stream Design</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Build an iterator over a BST that returns values in ascending order with next() and hasNext() in O(1) average and O(h) memory.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Tree DFS - Recursive Inorder Traversal</strong> — Visit left, root, right — yields sorted order on a BST; used for kth-smallest, BST validation.</p>
+<h2>🧭 How to think about it</h2>
+<p>Build an iterator that returns BST values in ascending order via <code>next()</code> and <code>hasNext()</code>, using only O(h) memory and O(1) amortized time per call. That's a <strong>paused inorder traversal</strong>: keep a stack holding the left spine, and advance it one node at a time.</p>
 
-<h2>Why this pattern?</h2><ul><li>"level", "depth", "nearest", "zigzag by rows" → BFS</li><li>"path sum", "ancestor", "validate", "diameter" → DFS</li><li>BST + "k-th smallest / sorted order" → inorder</li><li>"serialize / reconstruct" → preorder</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Tree Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>def dfs(node, state):                 # state flows DOWN (bounds, path...)
-    if not node:
-        return base                       # e.g. 0, True, None
-    L = dfs(node.left,  new_state)
-    R = dfs(node.right, new_state)
-    return combine(node.val, L, R)        # answer flows UP
+<h2>🐢 Brute force first</h2>
+<p>Flatten the whole tree into a list up front → O(n) space, easy but violates the O(h) requirement. The controlled-stack iterator meets it.</p>
 
-from collections import deque             # BFS by levels
-q = deque([root])
-while q:
-    for _ in range(len(q)):               # freeze current level size
-        node = q.popleft()
-        if node.left:  q.append(node.left)
-        if node.right: q.append(node.right)</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> the stack always contains the nodes whose left subtrees are fully processed but themselves aren't yet returned — the current left spine. <code>next()</code> pops the top (smallest remaining), then pushes the left spine of its right child.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Constructor: push the left spine from the root.</li>
+<li><code>next()</code>: pop a node, then push the left spine of its right child; return the popped value.</li>
+<li><code>hasNext()</code>: the stack is non-empty.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — BST [7,3,15,null,null,9,20]</h2>
+<pre class="viz">init stack: 7,3 → next→3 ; push right of 3 (none) → next→7 ; push spine of 15: 15,9 → next→9 → next→15 → next→20</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>class BSTIterator:
+    def __init__(self, root):
+        self.stack = []
+        self._push_left(root)
+
+    def _push_left(self, node):
+        while node:
+            self.stack.append(node)
+            node = node.left
+
+    def next(self):
+        node = self.stack.pop()        # smallest remaining
+        self._push_left(node.right)     # queue up its right subtree's spine
+        return node.val
+
+    def hasNext(self):
+        return len(self.stack) &gt; 0</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(1) amortized</strong> per <code>next</code> (each node pushed/popped once overall). <strong>Space O(h)</strong> for the stack.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Empty tree → <code>hasNext</code> immediately false.</li>
+<li>Right-skewed → stack stays shallow.</li>
+<li>Left-skewed → constructor pushes the whole spine.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Flattening eagerly and using O(n) space.</li>
+<li>Forgetting to push the right child's left spine in <code>next</code>.</li>
+<li>Returning the node instead of its value.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Reverse iterator (descending) → mirror with right spines.</li>
+<li>k-th smallest (<a href="0113-lc230-kth-smallest-element-in-a-bst.html">#230</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0108-lc94-binary-tree-inorder-traversal.html">#94</a> · <a href="0113-lc230-kth-smallest-element-in-a-bst.html">#230</a> · <a href="0114-lc285-inorder-successor-in-bst.html">#285</a></p>
+
 
 <div class="pager"><a href="../problems/0111-lc108-convert-sorted-array-to-binary-search-tree.html"><span class="lbl">← Previous</span>#108 Convert Sorted Array to Binary Search Tree</a><a href="../problems/0113-lc230-kth-smallest-element-in-a-bst.html" style="text-align:right"><span class="lbl">Next →</span>#230 Kth Smallest Element in a BST</a></div>
 </div>

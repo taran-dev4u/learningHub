@@ -36,34 +36,71 @@
 
 <h2>📋 The problem</h2><p>Delete the given values from a binary tree; return the roots of the resulting forest.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Tree DFS - Recursive Postorder Traversal</strong> — Visit left, right, then root — used when children's results are needed before computing the parent.</p>
+<h2>🧭 How to think about it</h2>
+<p>Delete a set of values; the remaining nodes split into a <strong>forest</strong> of subtrees. Do a <strong>postorder</strong> pass: when a node is deleted, its surviving children become new tree roots. A node is a new root if it isn't deleted and its parent was deleted (or it's the original root).</p>
 
-<h2>Why this pattern?</h2><ul><li>"level", "depth", "nearest", "zigzag by rows" → BFS</li><li>"path sum", "ancestor", "validate", "diameter" → DFS</li><li>BST + "k-th smallest / sorted order" → inorder</li><li>"serialize / reconstruct" → preorder</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Tree Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>def dfs(node, state):                 # state flows DOWN (bounds, path...)
-    if not node:
-        return base                       # e.g. 0, True, None
-    L = dfs(node.left,  new_state)
-    R = dfs(node.right, new_state)
-    return combine(node.val, L, R)        # answer flows UP
+<h2>🐢 Brute force first</h2>
+<p>Deleting one value at a time and re-scanning is wasteful. A single postorder with a "is my parent gone?" flag handles all deletions in O(n).</p>
 
-from collections import deque             # BFS by levels
-q = deque([root])
-while q:
-    for _ in range(len(q)):               # freeze current level size
-        node = q.popleft()
-        if node.left:  q.append(node.left)
-        if node.right: q.append(node.right)</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> pass down whether the current node is a root candidate (parent deleted). Postorder returns the (possibly null) subtree after deletion. If a node is deleted, return null so the parent detaches it; if it survives and its parent is gone, add it to the forest.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>DFS with a flag <code>is_root</code> and a set of deletions.</li>
+<li>Recurse into children first (postorder), reassigning them (deleted children become null).</li>
+<li>If the node is deleted → return null; else if <code>is_root</code>, add it to the forest.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — [1,2,3,4,5,6,7], delete {3,5}</h2>
+<pre class="viz">delete 3 → its child 6,7 become roots
+delete 5 → 2 loses right child (no new root, 5 had no kids kept)
+Forest roots: 1, 6, 7</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def delNodes(root, to_delete):
+    to_delete = set(to_delete)
+    forest = []
+    def dfs(node, is_root):
+        if not node:
+            return None
+        deleted = node.val in to_delete
+        if is_root and not deleted:
+            forest.append(node)            # new tree root
+        # children are roots only if this node is deleted
+        node.left = dfs(node.left, deleted)
+        node.right = dfs(node.right, deleted)
+        return None if deleted else node
+    dfs(root, True)
+    return forest</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — one pass. <strong>Space O(h)</strong> recursion plus the forest output.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Root deleted → its surviving children are the first roots.</li>
+<li>No deletions → the forest is just the original root.</li>
+<li>Leaf deletions → simply detach, no new roots.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Adding a node to the forest before detaching deleted children.</li>
+<li>Not reassigning <code>node.left/right</code> to the recursive result → keeps deleted nodes.</li>
+<li>Treating survivors of non-deleted parents as new roots.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Return the count of trees instead of the forest.</li>
+<li>Find leaves layer by layer (<a href="0126-lc366-find-leaves-of-binary-tree.html">#366</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0126-lc366-find-leaves-of-binary-tree.html">#366</a> · <a href="0103-lc226-invert-binary-tree.html">#226</a> · <a href="0120-lc104-maximum-depth-of-binary-tree.html">#104</a></p>
+
 
 <div class="pager"><a href="../problems/0129-lc863-all-nodes-distance-k-in-binary-tree.html"><span class="lbl">← Previous</span>#863 All Nodes Distance K in Binary Tree</a><a href="../problems/0131-lc2458-height-of-binary-tree-after-subtree-removal-queries.html" style="text-align:right"><span class="lbl">Next →</span>#2458 Height of Binary Tree After Subtree Removal Queries</a></div>
 </div>

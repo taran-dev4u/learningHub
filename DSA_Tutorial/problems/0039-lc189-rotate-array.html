@@ -36,33 +36,67 @@
 
 <h2>📋 The problem</h2><p>Rotate an array to the right by k steps, in place with O(1) extra space.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>In-place Rotation</strong> — Rotate a matrix or array in place using transpose + reverse, or layer-by-layer cyclic shifts.</p>
+<h2>🧭 How to think about it</h2>
+<p>Shift every element <code>k</code> places to the right, wrapping around. The elegant in-place method is the <strong>triple reverse</strong>: reverse the whole array, then reverse the first <code>k</code> and the rest separately. Reversing flips order; doing it in the right three chunks lands everything in the rotated position.</p>
 
-<h2>Why this pattern?</h2><ul><li>"rotate / transpose / flip" a matrix or array</li><li>"in place" / "O(1) extra space" on a grid problem</li><li>traverse in an unusual order (spiral, diagonal, zigzag)</li><li>mark/erase cells based on other cells (use the cells themselves as flags)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Array/Matrix Manipulation master template and adapt the marked parts to this problem:</p><pre><code># Rotate matrix 90° clockwise, in place
-n = len(matrix)
-for r in range(n):                     # 1) transpose (swap across diagonal)
-    for c in range(r + 1, n):
-        matrix[r][c], matrix[c][r] = matrix[c][r], matrix[r][c]
-for row in matrix:                     # 2) reverse each row
-    row.reverse()
+<h2>🐢 Brute force first</h2>
+<p>Copy into a new array at <code>(i+k) % n</code> → O(n) space. Or rotate one step at a time k times → O(n·k), too slow. The triple reverse is O(n) time, O(1) space.</p>
 
-# Spiral walk: shrink four boundaries
-top, bottom, left, right = 0, rows - 1, 0, cols - 1
-while top &lt;= bottom and left &lt;= right:
-    ...walk top row, right col, bottom row, left col...
-    top += 1; bottom -= 1; left += 1; right -= 1</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> rotating right by <code>k</code> moves the last <code>k</code> elements to the front. Reverse the entire array (last k are now at the front but backwards), then reverse those first <code>k</code> and reverse the remaining <code>n−k</code> to fix their internal order. Always take <code>k %= n</code> first.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li><code>k %= n</code> (rotating by n is a no-op).</li>
+<li>Reverse the whole array.</li>
+<li>Reverse the first <code>k</code> elements.</li>
+<li>Reverse the last <code>n−k</code> elements.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — nums = [1,2,3,4,5,6,7], k = 3</h2>
+<pre class="viz">reverse all      → 7 6 5 4 3 2 1
+reverse first 3  → 5 6 7 4 3 2 1
+reverse last 4   → 5 6 7 1 2 3 4  ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def rotate(nums, k):
+    n = len(nums)
+    k %= n                          # more than n wraps around
+    def rev(i, j):
+        while i &lt; j:
+            nums[i], nums[j] = nums[j], nums[i]
+            i += 1; j -= 1
+    rev(0, n - 1)                   # whole array
+    rev(0, k - 1)                   # first k
+    rev(k, n - 1)                   # the rest</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — three linear reversals. <strong>Space O(1)</strong> — swaps in place.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li><code>k</code> a multiple of n → <code>k % n == 0</code>, array unchanged.</li>
+<li><code>k &gt; n</code> → the modulo handles it.</li>
+<li>Single element → no-op.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Forgetting <code>k %= n</code> → index errors or wrong rotation when <code>k ≥ n</code>.</li>
+<li>Reversing the wrong two sub-ranges (mixing up <code>k</code> vs <code>n−k</code>).</li>
+<li>Rotating left instead of right (the chunk sizes swap).</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Rotate left by k → same trick with reversed chunk order, or rotate right by <code>n−k</code>.</li>
+<li>Cyclic-replacement method (juggling) → O(1) space too, but trickier with GCD cycles.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0038-lc48-rotate-image.html">#48</a> · <a href="0014-lc344-reverse-string.html">#344</a> · <a href="0073-lc61-rotate-list.html">#61</a></p>
+
 
 <div class="pager"><a href="../problems/0038-lc48-rotate-image.html"><span class="lbl">← Previous</span>#48 Rotate Image</a><a href="../problems/0040-lc54-spiral-matrix.html" style="text-align:right"><span class="lbl">Next →</span>#54 Spiral Matrix</a></div>
 </div>

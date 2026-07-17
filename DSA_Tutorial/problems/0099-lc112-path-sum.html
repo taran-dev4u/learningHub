@@ -36,34 +36,62 @@
 
 <h2>📋 The problem</h2><p>Decide whether a binary tree has a root-to-leaf path whose values sum to a given target.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Tree DFS - Recursive Preorder Traversal</strong> — Visit root, then left subtree, then right — used for tree cloning, serialization, path building.</p>
+<h2>🧭 How to think about it</h2>
+<p>Is there a root-to-<em>leaf</em> path whose values add up to a target? Walk down, subtracting each node's value from the target you still need; at a <strong>leaf</strong>, success means the remaining target equals the leaf's value (i.e., it hits zero exactly).</p>
 
-<h2>Why this pattern?</h2><ul><li>"level", "depth", "nearest", "zigzag by rows" → BFS</li><li>"path sum", "ancestor", "validate", "diameter" → DFS</li><li>BST + "k-th smallest / sorted order" → inorder</li><li>"serialize / reconstruct" → preorder</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Tree Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>def dfs(node, state):                 # state flows DOWN (bounds, path...)
-    if not node:
-        return base                       # e.g. 0, True, None
-    L = dfs(node.left,  new_state)
-    R = dfs(node.right, new_state)
-    return combine(node.val, L, R)        # answer flows UP
+<h2>🐢 Brute force first</h2>
+<p>Enumerate every root-to-leaf path and sum it → still O(n) here since each node is on paths, but carrying a running remainder is simplest and O(n).</p>
 
-from collections import deque             # BFS by levels
-q = deque([root])
-while q:
-    for _ in range(len(q)):               # freeze current level size
-        node = q.popleft()
-        if node.left:  q.append(node.left)
-        if node.right: q.append(node.right)</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> subtract as you descend. The answer is True at a leaf when the remaining target is 0. Recurse into whichever children exist, OR-ing their results.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Null node → False.</li>
+<li>Leaf → return <code>target − node.val == 0</code>.</li>
+<li>Otherwise recurse left/right with <code>target − node.val</code>, returning their OR.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — target 22, path 5→4→11→2</h2>
+<pre class="viz">need 22 at 5 → 17 at 4 → 6 at 11 → 2 at leaf 2 ; 2==remaining 2 → True</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def hasPathSum(root, targetSum):
+    if not root:
+        return False
+    if not root.left and not root.right:      # leaf
+        return targetSum == root.val
+    remaining = targetSum - root.val
+    return (hasPathSum(root.left, remaining) or
+            hasPathSum(root.right, remaining))</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — visits each node once. <strong>Space O(h)</strong> recursion.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Empty tree → False (even if target is 0 — there's no leaf).</li>
+<li>Negative values → subtraction still works.</li>
+<li>Single node → True iff it equals the target.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Treating a node with one child as a leaf → must have <em>no</em> children.</li>
+<li>Returning True at an internal node when the running sum hits target early.</li>
+<li>Returning True for an empty tree with target 0.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Return all such paths (<a href="0100-lc113-path-sum-ii.html">#113</a>).</li>
+<li>Count paths anywhere summing to target (<a href="0127-lc437-path-sum-iii.html">#437</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0100-lc113-path-sum-ii.html">#113</a> · <a href="0127-lc437-path-sum-iii.html">#437</a> · <a href="0102-lc129-sum-root-to-leaf-numbers.html">#129</a></p>
+
 
 <div class="pager"><a href="../problems/0098-lc110-balanced-binary-tree.html"><span class="lbl">← Previous</span>#110 Balanced Binary Tree</a><a href="../problems/0100-lc113-path-sum-ii.html" style="text-align:right"><span class="lbl">Next →</span>#113 Path Sum II</a></div>
 </div>

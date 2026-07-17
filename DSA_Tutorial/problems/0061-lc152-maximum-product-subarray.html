@@ -36,33 +36,68 @@
 
 <h2>📋 The problem</h2><p>Find the contiguous subarray with the largest product and return that product.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Kadane Variant for Maximum Product</strong> — Track both the running max product and running min product (sign flips matter).</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Track BOTH max and min product ending here (negatives flip them); swap on negative x.</div>
-<h2>Why this pattern?</h2><ul><li>"rotate / transpose / flip" a matrix or array</li><li>"in place" / "O(1) extra space" on a grid problem</li><li>traverse in an unusual order (spiral, diagonal, zigzag)</li><li>mark/erase cells based on other cells (use the cells themselves as flags)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Array/Matrix Manipulation master template and adapt the marked parts to this problem:</p><pre><code># Rotate matrix 90° clockwise, in place
-n = len(matrix)
-for r in range(n):                     # 1) transpose (swap across diagonal)
-    for c in range(r + 1, n):
-        matrix[r][c], matrix[c][r] = matrix[c][r], matrix[r][c]
-for row in matrix:                     # 2) reverse each row
-    row.reverse()
+<h2>🧭 How to think about it</h2>
+<p>Find the contiguous subarray with the largest product. Unlike sums, products have a twist: a <strong>negative times a negative becomes positive</strong>, so a tiny (very negative) running product can suddenly become the largest. The fix is to track <em>both</em> the maximum and the minimum product ending at each position.</p>
 
-# Spiral walk: shrink four boundaries
-top, bottom, left, right = 0, rows - 1, 0, cols - 1
-while top &lt;= bottom and left &lt;= right:
-    ...walk top row, right col, bottom row, left col...
-    top += 1; bottom -= 1; left += 1; right -= 1</code></pre>
-<h2>How to work on it now</h2>
+<h2>🐢 Brute force first</h2>
+<p>All O(n²) subarray products → too slow. Tracking running max/min gives a Kadane-style O(n) one-pass solution.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> at each element keep <code>cur_max</code> and <code>cur_min</code> of products ending here. When the new value is negative, the roles swap (multiplying flips sign), so <strong>swap</strong> <code>cur_max</code> and <code>cur_min</code> before updating. Each is <code>max/min(x, x·prev)</code> — either start fresh at <code>x</code> or extend.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Init <code>cur_max = cur_min = best = nums[0]</code>.</li>
+<li>For each later <code>x</code>: if <code>x &lt; 0</code>, swap <code>cur_max</code> and <code>cur_min</code>.</li>
+<li><code>cur_max = max(x, cur_max·x)</code>; <code>cur_min = min(x, cur_min·x)</code>.</li>
+<li><code>best = max(best, cur_max)</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — nums = [2,3,-2,4]</h2>
+<pre class="viz">start max=min=best=2
+x=3: max=max(3,6)=6 min=min(3,6)=3 best=6
+x=-2: swap→max=3,min=6; max=max(-2,-6)=-2 min=min(-2,-12)=-12 best=6
+x=4: max=max(4,-8)=4 min=min(4,-48)=-48 best=6
+Answer: 6</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def maxProduct(nums):
+    cur_max = cur_min = best = nums[0]
+    for x in nums[1:]:
+        if x &lt; 0:                       # negative flips which is largest
+            cur_max, cur_min = cur_min, cur_max
+        cur_max = max(x, cur_max * x)   # start fresh or extend
+        cur_min = min(x, cur_min * x)
+        best = max(best, cur_max)
+    return best</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — one pass. <strong>Space O(1)</strong> — two running values.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Zeros → reset both running products (the <code>max/min(x, …)</code> starts fresh at <code>x = 0</code>).</li>
+<li>All negatives → an even count multiplies to a positive best.</li>
+<li>Single element → returned directly.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Tracking only the max — a future negative can turn a stored min into the winner.</li>
+<li>Forgetting to swap before the negative update.</li>
+<li>Initializing <code>best = 0</code> instead of <code>nums[0]</code> (breaks all-negative inputs).</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Maximum sum subarray (Kadane, no min needed) — <a href="0392-lc53-maximum-subarray.html">#53</a>.</li>
+<li>Product of array except self (<a href="0044-lc238-product-of-array-except-self.html">#238</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0044-lc238-product-of-array-except-self.html">#238</a> · <a href="0392-lc53-maximum-subarray.html">#53</a> · <a href="0056-lc560-subarray-sum-equals-k.html">#560</a></p>
+
 
 <div class="pager"><a href="../problems/0060-lc1480-running-sum-of-1d-array.html"><span class="lbl">← Previous</span>#1480 Running Sum of 1d Array</a><a href="../patterns/p03-linked-list.html" style="text-align:right"><span class="lbl">Next →</span>Linked List Manipulation</a></div>
 </div>

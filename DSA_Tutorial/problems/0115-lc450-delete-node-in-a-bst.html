@@ -36,34 +36,72 @@
 
 <h2>📋 The problem</h2><p>Delete a value from a BST and return the (still valid) root — handle the two-children case.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Tree DFS - Recursive Inorder Traversal</strong> — Visit left, root, right — yields sorted order on a BST; used for kth-smallest, BST validation.</p>
+<h2>🧭 How to think about it</h2>
+<p>Delete a value from a BST and keep it valid. First <strong>find</strong> the node by BST navigation. Deleting a leaf or a one-child node is easy (return null or the single child). The tricky case — two children — is solved by replacing the node's value with its <strong>inorder successor</strong> (smallest in the right subtree), then deleting that successor.</p>
 
-<h2>Why this pattern?</h2><ul><li>"level", "depth", "nearest", "zigzag by rows" → BFS</li><li>"path sum", "ancestor", "validate", "diameter" → DFS</li><li>BST + "k-th smallest / sorted order" → inorder</li><li>"serialize / reconstruct" → preorder</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Tree Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>def dfs(node, state):                 # state flows DOWN (bounds, path...)
-    if not node:
-        return base                       # e.g. 0, True, None
-    L = dfs(node.left,  new_state)
-    R = dfs(node.right, new_state)
-    return combine(node.val, L, R)        # answer flows UP
+<h2>🐢 Brute force first</h2>
+<p>Collect all values, remove one, rebuild a balanced BST → loses structure and is O(n). The recursive splice keeps it O(h).</p>
 
-from collections import deque             # BFS by levels
-q = deque([root])
-while q:
-    for _ in range(len(q)):               # freeze current level size
-        node = q.popleft()
-        if node.left:  q.append(node.left)
-        if node.right: q.append(node.right)</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> recurse toward the target using BST order. When found: no left child → return right; no right child → return left; two children → copy the successor's value into this node and recursively delete the successor from the right subtree.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>If <code>key &lt; node.val</code> recurse left; if <code>&gt;</code> recurse right.</li>
+<li>If equal: handle 0/1-child cases directly.</li>
+<li>Two children: find the right subtree's min, copy its value up, delete it there.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — delete 3 from [5,3,6,2,4,null,7]</h2>
+<pre class="viz">find 3 (two children 2,4) → successor = 4 (min of right)
+copy 4 up ; delete 4 from right subtree
+Result: 3 replaced by 4, tree still a BST</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def deleteNode(root, key):
+    if not root:
+        return None
+    if key &lt; root.val:
+        root.left = deleteNode(root.left, key)
+    elif key &gt; root.val:
+        root.right = deleteNode(root.right, key)
+    else:
+        if not root.left:  return root.right     # 0 or 1 child
+        if not root.right: return root.left
+        succ = root.right                         # inorder successor
+        while succ.left:
+            succ = succ.left
+        root.val = succ.val                       # copy value up
+        root.right = deleteNode(root.right, succ.val)
+    return root</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(h)</strong> — find plus a successor walk. <strong>Space O(h)</strong> recursion.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Key absent → tree unchanged.</li>
+<li>Deleting the root → returns the restructured root.</li>
+<li>Leaf deletion → simply drops to null.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Forgetting to reassign <code>root.left/right</code> to the recursive result.</li>
+<li>Using the predecessor and successor inconsistently.</li>
+<li>Not deleting the successor after copying its value.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Use the predecessor (max of left subtree) instead.</li>
+<li>Insert into a BST → the mirror operation.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0109-lc98-validate-binary-search-tree.html">#98</a> · <a href="0114-lc285-inorder-successor-in-bst.html">#285</a> · <a href="0118-lc669-trim-a-binary-search-tree.html">#669</a></p>
+
 
 <div class="pager"><a href="../problems/0114-lc285-inorder-successor-in-bst.html"><span class="lbl">← Previous</span>#285 Inorder Successor in BST</a><a href="../problems/0116-lc501-find-mode-in-binary-search-tree.html" style="text-align:right"><span class="lbl">Next →</span>#501 Find Mode in Binary Search Tree</a></div>
 </div>

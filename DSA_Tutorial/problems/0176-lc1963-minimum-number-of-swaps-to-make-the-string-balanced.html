@@ -36,35 +36,65 @@
 
 <h2>📋 The problem</h2><p>Return the minimum swaps to balance a string of n/2 '[' and n/2 ']' (track unmatched closers; ceil(unmatched/2)).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Valid Parentheses Matching</strong> — Push openers, pop on matching closer — extends to multi-bracket and nested expressions.</p>
+<h2>🧭 How to think about it</h2>
+<p>The string has equal numbers of <code>'['</code> and <code>']'</code>; you may swap any two characters; minimize swaps to make it balanced. Track the running balance: the number of <strong>unmatched closing brackets</strong> at the worst point tells you how many swaps you need — each swap fixes two of them.</p>
 
-<h2>Why this pattern?</h2><ul><li>brackets/tags to match or validate</li><li>"next greater / next warmer / previous smaller" element</li><li>histogram areas, trapped water, "can see over"</li><li>evaluate/parse an expression, decode nested strings</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Stack master template and adapt the marked parts to this problem:</p><pre><code># Monotonic (decreasing) stack — next greater element
-stack = []                              # holds INDICES of unresolved elements
-res = [-1] * len(nums)
-for i, x in enumerate(nums):
-    while stack and nums[stack[-1]] &lt; x:   # x resolves the waiting ones
-        j = stack.pop()
-        res[j] = x                          # x is j's next greater
-    stack.append(i)
+<h2>🐢 Brute force first</h2>
+<p>Simulating swaps is expensive. Counting the maximum unmatched-closer depth gives the answer directly in O(n).</p>
 
-# Matching
-for ch in s:
-    if ch in pairs:  stack.append(ch)
-    elif not stack or pairs[stack.pop()] != ch:
-        return False
-return not stack</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> sweep tracking <code>balance</code> (<code>+1</code> for <code>'['</code>, <code>−1</code> for <code>']'</code>). When <code>balance</code> goes negative, that's an unmatched <code>']'</code>; track the count of such unmatched closers. A single swap moves a <code>'['</code> to the front and fixes two unmatched closers, so the answer is <code>ceil(unmatched / 2)</code> = <code>(unmatched + 1) // 2</code>.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Sweep; on <code>']'</code> that would make balance negative, count it as unmatched and reset balance to 0.</li>
+<li>The answer is <code>(unmatched + 1) // 2</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — s = "]]][[[" </h2>
+<pre class="viz">unmatched closers accumulate to 3 → swaps = (3+1)//2 = 2</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def minSwaps(s):
+    balance = 0
+    unmatched = 0
+    for c in s:
+        if c == '[':
+            balance += 1
+        else:                             # ']'
+            if balance &gt; 0:
+                balance -= 1              # matched an earlier '['
+            else:
+                unmatched += 1            # an unmatched ']'
+    return (unmatched + 1) // 2           # each swap fixes two</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong>, <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Already balanced → 0.</li>
+<li>Fully reversed → about <code>n/4</code> swaps.</li>
+<li>Single pair out of order → 1 swap.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Returning <code>unmatched</code> instead of half of it.</li>
+<li>Forgetting integer ceiling <code>(x + 1)//2</code>.</li>
+<li>Simulating swaps directly.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Minimum insertions/removals (<a href="0174-lc921-minimum-add-to-make-parentheses-valid.html">#921</a>, <a href="0175-lc1249-minimum-remove-to-make-valid-parentheses.html">#1249</a>).</li>
+<li>Balanced with multiple bracket types → needs a stack.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0174-lc921-minimum-add-to-make-parentheses-valid.html">#921</a> · <a href="0175-lc1249-minimum-remove-to-make-valid-parentheses.html">#1249</a> · <a href="0171-lc20-valid-parentheses.html">#20</a></p>
+
 
 <div class="pager"><a href="../problems/0175-lc1249-minimum-remove-to-make-valid-parentheses.html"><span class="lbl">← Previous</span>#1249 Minimum Remove to Make Valid Parentheses</a><a href="../problems/0177-lc85-maximal-rectangle.html" style="text-align:right"><span class="lbl">Next →</span>#85 Maximal Rectangle</a></div>
 </div>

@@ -36,34 +36,66 @@
 
 <h2>📋 The problem</h2><p>Count the nodes of a complete binary tree in better than O(n) time.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Tree DFS - Recursive Postorder Traversal</strong> — Visit left, right, then root — used when children's results are needed before computing the parent.</p>
+<h2>🧭 How to think about it</h2>
+<p>In a <em>complete</em> binary tree, every level is full except possibly the last, which fills left to right. You could count all nodes in O(n), but you can do better: compare the <strong>left height</strong> and <strong>right height</strong> at each node — if they're equal, the subtree is perfect and its size is <code>2^h − 1</code> (no recursion needed for that side).</p>
 
-<h2>Why this pattern?</h2><ul><li>"level", "depth", "nearest", "zigzag by rows" → BFS</li><li>"path sum", "ancestor", "validate", "diameter" → DFS</li><li>BST + "k-th smallest / sorted order" → inorder</li><li>"serialize / reconstruct" → preorder</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Tree Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>def dfs(node, state):                 # state flows DOWN (bounds, path...)
-    if not node:
-        return base                       # e.g. 0, True, None
-    L = dfs(node.left,  new_state)
-    R = dfs(node.right, new_state)
-    return combine(node.val, L, R)        # answer flows UP
+<h2>🐢 Brute force first</h2>
+<p>A plain traversal counts all nodes in O(n). Exploiting completeness gives O(log²n).</p>
 
-from collections import deque             # BFS by levels
-q = deque([root])
-while q:
-    for _ in range(len(q)):               # freeze current level size
-        node = q.popleft()
-        if node.left:  q.append(node.left)
-        if node.right: q.append(node.right)</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> walking only left gives the left height; only right gives the right height. If they match, the subtree is perfect → return <code>2^h − 1</code>. Otherwise recurse: <code>1 + count(left) + count(right)</code>. Only one branch recurses deeply at each level.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Measure left height (all left) and right height (all right).</li>
+<li>Equal → return <code>2^height − 1</code>.</li>
+<li>Else return <code>1 + count(left) + count(right)</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — perfect subtree of height 3</h2>
+<pre class="viz">leftH == rightH == 3 → 2^3 − 1 = 7 nodes, no recursion
+if unequal → recurse into children (one is perfect, computed instantly)</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def countNodes(root):
+    if not root:
+        return 0
+    lh = rh = 0
+    n = root
+    while n: lh += 1; n = n.left       # height along the left edge
+    n = root
+    while n: rh += 1; n = n.right      # height along the right edge
+    if lh == rh:
+        return (1 &lt;&lt; lh) - 1            # perfect subtree
+    return 1 + countNodes(root.left) + countNodes(root.right)</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(log²n)</strong> — O(log n) height checks at each of O(log n) levels. <strong>Space O(log n)</strong> recursion.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Empty tree → 0.</li>
+<li>Perfect tree → answered by a single height comparison.</li>
+<li>Last level partially filled → recursion narrows to the boundary.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Falling back to O(n) counting and ignoring completeness.</li>
+<li>Off-by-one in the <code>2^h − 1</code> formula (heights counted in nodes, not edges).</li>
+<li>Measuring left height on the right edge or vice versa.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Binary search on the last level's index → also O(log²n).</li>
+<li>Max depth of a general tree (<a href="0120-lc104-maximum-depth-of-binary-tree.html">#104</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0120-lc104-maximum-depth-of-binary-tree.html">#104</a> · <a href="0092-lc662-maximum-width-of-binary-tree.html">#662</a> · <a href="0098-lc110-balanced-binary-tree.html">#110</a></p>
+
 
 <div class="pager"><a href="../problems/0123-lc145-binary-tree-postorder-traversal.html"><span class="lbl">← Previous</span>#145 Binary Tree Postorder Traversal</a><a href="../problems/0125-lc337-house-robber-iii.html" style="text-align:right"><span class="lbl">Next →</span>#337 House Robber III</a></div>
 </div>

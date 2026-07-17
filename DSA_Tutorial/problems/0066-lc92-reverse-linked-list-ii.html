@@ -36,33 +36,68 @@
 
 <h2>📋 The problem</h2><p>Reverse the nodes of a linked list from position left to position right, in one pass.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>In-place Reversal</strong> — Iteratively reverse links with prev/curr/next pointers; recursive variant also classic.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Walk to the node before position left, then head-insert each following node until right.</div>
-<h2>Why this pattern?</h2><ul><li>input is a linked list (that alone is the signal)</li><li>"reverse", "reorder", "swap in pairs", "rotate" nodes</li><li>"k-th from the end", "middle", "cycle" → fast &amp; slow</li><li>"merge k sorted lists" → pairwise merge or heap of heads</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Linked List Manipulation master template and adapt the marked parts to this problem:</p><pre><code>dummy = ListNode(0, head)            # dummy head: prev of the real head
-prev, cur = dummy, head
+<h2>🧭 How to think about it</h2>
+<p>Reverse only the sublist between positions <code>left</code> and <code>right</code> (1-indexed), leaving the rest intact. Walk to the node just before <code>left</code>, then repeatedly <strong>pull the node after the current one to the front of the sublist</strong> (head-insertion) until the sublist is flipped.</p>
 
-# In-place reversal core
-p = None
-while cur:
-    cur.next, p, cur = p, cur, cur.next
-# p is the new head
+<h2>🐢 Brute force first</h2>
+<p>Collect the sublist values, reverse, and write back → O(n) time, O(n) space. The head-insertion method does it in one pass, O(1) space.</p>
 
-# Fast &amp; slow
-slow = fast = head
-while fast and fast.next:
-    slow, fast = slow.next, fast.next.next   # slow = middle when fast ends</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> let <code>prev</code> be the node before position <code>left</code> and <code>cur</code> the first node of the sublist. Each step, take <code>cur.next</code> and splice it right after <code>prev</code>. After <code>right − left</code> such moves, the sublist is reversed and still stitched to both ends. A dummy keeps <code>left = 1</code> uniform.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li><code>dummy → head</code>; walk <code>prev</code> to position <code>left−1</code>.</li>
+<li><code>cur = prev.next</code>. Repeat <code>right − left</code> times: <code>move = cur.next</code>; <code>cur.next = move.next</code>; <code>move.next = prev.next</code>; <code>prev.next = move</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — 1→2→3→4→5, left=2, right=4</h2>
+<pre class="viz">prev=1, cur=2
+move 3 to front: 1→3→2→4→5 ; cur still 2
+move 4 to front: 1→4→3→2→5
+Result: 1→4→3→2→5</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def reverseBetween(head, left, right):
+    dummy = ListNode(0, head)
+    prev = dummy
+    for _ in range(left - 1):
+        prev = prev.next            # node before the sublist
+    cur = prev.next                 # first node of the sublist
+    for _ in range(right - left):
+        move = cur.next             # node to hoist to the front
+        cur.next = move.next
+        move.next = prev.next
+        prev.next = move
+    return dummy.next</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — walk plus the reversals. <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li><code>left == right</code> → no reversal needed (loop runs zero times).</li>
+<li>Reversing from the head (<code>left = 1</code>) → the dummy handles it.</li>
+<li>Reversing to the tail → still correct.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Off-by-one walking <code>prev</code> (it must land at <code>left−1</code>).</li>
+<li>Reversing <code>right − left + 1</code> times instead of <code>right − left</code>.</li>
+<li>Not using a dummy and mishandling <code>left = 1</code>.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Reverse the whole list (<a href="0067-lc206-reverse-linked-list.html">#206</a>).</li>
+<li>Reverse in k-groups (<a href="0063-lc25-reverse-nodes-in-k-group.html">#25</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0067-lc206-reverse-linked-list.html">#206</a> · <a href="0063-lc25-reverse-nodes-in-k-group.html">#25</a> · <a href="0062-lc24-swap-nodes-in-pairs.html">#24</a></p>
+
 
 <div class="pager"><a href="../problems/0065-lc83-remove-duplicates-from-sorted-list.html"><span class="lbl">← Previous</span>#83 Remove Duplicates from Sorted List</a><a href="../problems/0067-lc206-reverse-linked-list.html" style="text-align:right"><span class="lbl">Next →</span>#206 Reverse Linked List</a></div>
 </div>

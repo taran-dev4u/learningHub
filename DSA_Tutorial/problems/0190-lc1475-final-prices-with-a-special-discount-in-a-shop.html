@@ -36,35 +36,63 @@
 
 <h2>📋 The problem</h2><p>For each shop price, subtract the next smaller-or-equal price to its right (monotonic stack discount).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Monotonic Stack</strong> — Stack maintained in increasing or decreasing order — pops give next-greater/smaller in O(n).</p>
+<h2>🧭 How to think about it</h2>
+<p>Each item's price gets discounted by the price of the <strong>next item to its right that is ≤ it</strong>. That's a "next smaller-or-equal element" query for every position — a textbook <strong>monotonic stack</strong>.</p>
 
-<h2>Why this pattern?</h2><ul><li>brackets/tags to match or validate</li><li>"next greater / next warmer / previous smaller" element</li><li>histogram areas, trapped water, "can see over"</li><li>evaluate/parse an expression, decode nested strings</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Stack master template and adapt the marked parts to this problem:</p><pre><code># Monotonic (decreasing) stack — next greater element
-stack = []                              # holds INDICES of unresolved elements
-res = [-1] * len(nums)
-for i, x in enumerate(nums):
-    while stack and nums[stack[-1]] &lt; x:   # x resolves the waiting ones
-        j = stack.pop()
-        res[j] = x                          # x is j's next greater
-    stack.append(i)
+<h2>🐢 Brute force first</h2>
+<p>For each item scan right for the first ≤ price → O(n²). The monotonic stack is O(n).</p>
 
-# Matching
-for ch in s:
-    if ch in pairs:  stack.append(ch)
-    elif not stack or pairs[stack.pop()] != ch:
-        return False
-return not stack</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> keep a stack of indices whose discount isn't decided yet, with increasing prices. When a new price <code>p</code> arrives, it discounts every stacked item with price ≥ <code>p</code> — pop them and subtract.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Copy prices into the answer.</li>
+<li>For each <code>i</code>: while the top item's price ≥ <code>prices[i]</code>, pop it and subtract <code>prices[i]</code>.</li>
+<li>Push <code>i</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — prices = [8,4,6,2,3]</h2>
+<pre class="viz">8 push ; 4≤8 → discount 8 by 4 → 4 ; push4? 4 discounts nothing else ; 6 push ; 2 discounts 6→4 and 4? 4≥2 discount 4→2 ...
+Result: [4,2,4,2,3]</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def finalPrices(prices):
+    res = prices[:]                       # default: no discount
+    stack = []                            # indices with undecided discounts
+    for i, p in enumerate(prices):
+        while stack and prices[stack[-1]] &gt;= p:
+            res[stack.pop()] -= p         # p is the discount
+        stack.append(i)
+    return res</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong>, <strong>Space O(n)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Strictly increasing prices → no discounts.</li>
+<li>Equal prices → discount applies (≥).</li>
+<li>Last item → never discounted.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Using <code>&gt;</code> instead of <code>≥</code> (equal prices should discount).</li>
+<li>Forgetting to default answers to the original prices.</li>
+<li>Scanning naively (O(n²)).</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Next greater element (<a href="0181-lc496-next-greater-element-i.html">#496</a>).</li>
+<li>Daily temperatures (<a href="0185-lc739-daily-temperatures.html">#739</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0185-lc739-daily-temperatures.html">#739</a> · <a href="0181-lc496-next-greater-element-i.html">#496</a> · <a href="0188-lc907-sum-of-subarray-minimums.html">#907</a></p>
+
 
 <div class="pager"><a href="../problems/0189-lc962-maximum-width-ramp.html"><span class="lbl">← Previous</span>#962 Maximum Width Ramp</a><a href="../problems/0191-lc1673-find-the-most-competitive-subsequence.html" style="text-align:right"><span class="lbl">Next →</span>#1673 Find the Most Competitive Subsequence</a></div>
 </div>

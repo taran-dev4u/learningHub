@@ -36,33 +36,63 @@
 <p class="progress-note">This problem also appears under: <a href="0534-lc303-range-sum-query-immutable.html">Prefix Sum &amp; Difference Array</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Precompute over an immutable array so sumRange(i, j) queries answer in O(1).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Prefix Sum / Running Sum</strong> — Maintain a running cumulative sum to answer subarray-sum or count-prefix-target queries.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Precompute prefix sums; range sum = prefix[j+1] − prefix[i].</div>
-<h2>Why this pattern?</h2><ul><li>"rotate / transpose / flip" a matrix or array</li><li>"in place" / "O(1) extra space" on a grid problem</li><li>traverse in an unusual order (spiral, diagonal, zigzag)</li><li>mark/erase cells based on other cells (use the cells themselves as flags)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Array/Matrix Manipulation master template and adapt the marked parts to this problem:</p><pre><code># Rotate matrix 90° clockwise, in place
-n = len(matrix)
-for r in range(n):                     # 1) transpose (swap across diagonal)
-    for c in range(r + 1, n):
-        matrix[r][c], matrix[c][r] = matrix[c][r], matrix[r][c]
-for row in matrix:                     # 2) reverse each row
-    row.reverse()
+<h2>🧭 How to think about it</h2>
+<p>Many queries ask "sum of <code>nums[i..j]</code>" on an array that never changes. Recomputing each range is wasteful. Precompute a <strong>prefix-sum</strong> array once; then any range sum is a single subtraction — instant per query.</p>
 
-# Spiral walk: shrink four boundaries
-top, bottom, left, right = 0, rows - 1, 0, cols - 1
-while top &lt;= bottom and left &lt;= right:
-    ...walk top row, right col, bottom row, left col...
-    top += 1; bottom -= 1; left += 1; right -= 1</code></pre>
-<h2>How to work on it now</h2>
+<h2>🐢 Brute force first</h2>
+<p>Each query loops <code>i..j</code> → O(n) per query, O(n·q) total. Prefix sums make each query O(1) after an O(n) setup.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> let <code>prefix[k] = nums[0] + … + nums[k−1]</code> (with <code>prefix[0] = 0</code>). Then <code>sum(i..j) = prefix[j+1] − prefix[i]</code>. The extra leading zero removes all the <code>i == 0</code> special-casing.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>In the constructor, build <code>prefix</code> of length <code>n+1</code> with a running total.</li>
+<li><code>sumRange(i, j)</code> returns <code>prefix[j+1] − prefix[i]</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — nums = [-2,0,3,-5,2,-1]</h2>
+<pre class="viz">prefix = [0, -2, -2, 1, -4, -2, -3]
+sumRange(0,2) = prefix[3]-prefix[0] = 1-0 = 1
+sumRange(2,5) = prefix[6]-prefix[2] = -3-(-2) = -1</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>class NumArray:
+    def __init__(self, nums):
+        self.prefix = [0] * (len(nums) + 1)
+        for i, x in enumerate(nums):
+            self.prefix[i + 1] = self.prefix[i] + x   # running total
+
+    def sumRange(self, i, j):
+        return self.prefix[j + 1] - self.prefix[i]    # O(1) range sum</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Build O(n)</strong>, <strong>query O(1)</strong>. <strong>Space O(n)</strong> for the prefix array.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li><code>i == j</code> → returns the single element.</li>
+<li>Whole array → <code>prefix[n] − prefix[0]</code>.</li>
+<li>Negatives → handled naturally.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Off-by-one: forgetting the leading zero and mixing up <code>prefix[j+1]</code> vs <code>prefix[j]</code>.</li>
+<li>Rebuilding prefix sums on every query.</li>
+<li>Confusing the inclusive query bounds.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>2-D range sums → 2-D prefix with inclusion-exclusion.</li>
+<li>Mutable array (point updates) → Fenwick / segment tree.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0056-lc560-subarray-sum-equals-k.html">#560</a> · <a href="0057-lc724-find-pivot-index.html">#724</a> · <a href="0060-lc1480-running-sum-of-1d-array.html">#1480</a></p>
+
 
 <div class="pager"><a href="../problems/0054-lc378-kth-smallest-element-in-a-sorted-matrix.html"><span class="lbl">← Previous</span>#378 Kth Smallest Element in a Sorted Matrix</a><a href="../problems/0056-lc560-subarray-sum-equals-k.html" style="text-align:right"><span class="lbl">Next →</span>#560 Subarray Sum Equals K</a></div>
 </div>

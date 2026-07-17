@@ -36,33 +36,71 @@
 
 <h2>📋 The problem</h2><p>Return an array where each position holds the product of every other element, without using division, in O(n).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Product Except Self / Prefix-Suffix Products</strong> — Compute prefix products from the left and suffix products from the right, then combine — avoids division.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>answer[i] = (product of everything left of i) × (product right of i); two sweeps, no division.</div>
-<h2>Why this pattern?</h2><ul><li>"rotate / transpose / flip" a matrix or array</li><li>"in place" / "O(1) extra space" on a grid problem</li><li>traverse in an unusual order (spiral, diagonal, zigzag)</li><li>mark/erase cells based on other cells (use the cells themselves as flags)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Array/Matrix Manipulation master template and adapt the marked parts to this problem:</p><pre><code># Rotate matrix 90° clockwise, in place
-n = len(matrix)
-for r in range(n):                     # 1) transpose (swap across diagonal)
-    for c in range(r + 1, n):
-        matrix[r][c], matrix[c][r] = matrix[c][r], matrix[r][c]
-for row in matrix:                     # 2) reverse each row
-    row.reverse()
+<h2>🧭 How to think about it</h2>
+<p><code>answer[i]</code> is the product of everything <em>except</em> <code>nums[i]</code> — and you can't use division. Split the idea: the answer for position <code>i</code> is (product of all elements to its <strong>left</strong>) × (product of all elements to its <strong>right</strong>). Two sweeps compute those, and you can store both in the output array itself.</p>
 
-# Spiral walk: shrink four boundaries
-top, bottom, left, right = 0, rows - 1, 0, cols - 1
-while top &lt;= bottom and left &lt;= right:
-    ...walk top row, right col, bottom row, left col...
-    top += 1; bottom -= 1; left += 1; right -= 1</code></pre>
-<h2>How to work on it now</h2>
+<h2>🐢 Brute force first</h2>
+<p>For each <code>i</code>, multiply all others → O(n²). Division would give O(n) but breaks on zeros and is banned. The two-sweep prefix/suffix method is O(n) with no division.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> first pass left-to-right fills <code>answer[i]</code> with the running product of everything before <code>i</code>. Second pass right-to-left multiplies in a running product of everything after <code>i</code>. No extra arrays needed beyond the output and one scalar.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li><code>answer[i] = product of nums[0..i-1]</code> via a left sweep (start prefix = 1).</li>
+<li>Sweep right with a running <code>suffix</code> (start 1): <code>answer[i] *= suffix</code>, then <code>suffix *= nums[i]</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — nums = [1,2,3,4]</h2>
+<pre class="viz">left pass (prefix products):  answer = [1, 1, 2, 6]
+right pass (suffix):
+ i=3: ans[3]*=1 →6 ; suffix=4
+ i=2: ans[2]*=4 →8 ; suffix=12
+ i=1: ans[1]*=12→12; suffix=24
+ i=0: ans[0]*=24→24; suffix=24
+Result: [24,12,8,6]</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def productExceptSelf(nums):
+    n = len(nums)
+    answer = [1] * n
+    prefix = 1
+    for i in range(n):
+        answer[i] = prefix          # product of everything left of i
+        prefix *= nums[i]
+    suffix = 1
+    for i in range(n - 1, -1, -1):
+        answer[i] *= suffix         # multiply in product of everything right of i
+        suffix *= nums[i]
+    return answer</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — two passes. <strong>Space O(1)</strong> extra (the output array doesn't count).</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>One zero → its position gets the product of the others; every other position is 0.</li>
+<li>Two or more zeros → all positions are 0.</li>
+<li>Negatives → signs handled by ordinary multiplication.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Using division — fails when any element is 0.</li>
+<li>Storing the value at <code>i</code> after already multiplying by <code>nums[i]</code> (order of update matters in each sweep).</li>
+<li>Allocating separate prefix and suffix arrays when a scalar suffices.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Allowed division + no zeros → total product ÷ nums[i].</li>
+<li>Sum except self → prefix/suffix sums, same shape.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0055-lc303-range-sum-query-immutable.html">#303</a> · <a href="0061-lc152-maximum-product-subarray.html">#152</a> · <a href="0056-lc560-subarray-sum-equals-k.html">#560</a></p>
+
 
 <div class="pager"><a href="../problems/0043-lc73-set-matrix-zeroes.html"><span class="lbl">← Previous</span>#73 Set Matrix Zeroes</a><a href="../problems/0045-lc66-plus-one.html" style="text-align:right"><span class="lbl">Next →</span>#66 Plus One</a></div>
 </div>

@@ -36,34 +36,73 @@
 
 <h2>📋 The problem</h2><p>Return the values of a binary tree level by level, top to bottom, as a list of lists.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Tree BFS - Level Order Traversal</strong> — BFS with a queue; process the entire current level before moving on — level lists, right view, zigzag.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>BFS; freeze len(queue) each round so each iteration processes exactly one level.</div>
-<h2>Why this pattern?</h2><ul><li>"level", "depth", "nearest", "zigzag by rows" → BFS</li><li>"path sum", "ancestor", "validate", "diameter" → DFS</li><li>BST + "k-th smallest / sorted order" → inorder</li><li>"serialize / reconstruct" → preorder</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Tree Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>def dfs(node, state):                 # state flows DOWN (bounds, path...)
-    if not node:
-        return base                       # e.g. 0, True, None
-    L = dfs(node.left,  new_state)
-    R = dfs(node.right, new_state)
-    return combine(node.val, L, R)        # answer flows UP
+<h2>🧭 How to think about it</h2>
+<p>Return the node values grouped level by level, top to bottom. "Level by level" is the signature of <strong>breadth-first search (BFS)</strong> with a queue. The one trick that makes levels come out cleanly: at the start of each round, <em>freeze the current queue size</em> — that many nodes are exactly one level.</p>
 
-from collections import deque             # BFS by levels
-q = deque([root])
-while q:
-    for _ in range(len(q)):               # freeze current level size
-        node = q.popleft()
-        if node.left:  q.append(node.left)
-        if node.right: q.append(node.right)</code></pre>
-<h2>How to work on it now</h2>
+<h2>🐢 Brute force first</h2>
+<p>You could find the height, then loop depth 0..h and DFS collecting nodes at each depth — O(n·h). A single BFS pass does it in O(n).</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> a queue naturally holds one level at a time if you drain exactly <code>len(queue)</code> nodes per round, enqueuing their children for the next round. Snapshot that length <em>before</em> the inner loop so newly added children don't bleed into the current level.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Put the root in a queue (skip if the tree is empty).</li>
+<li>While the queue isn't empty: record <code>size = len(queue)</code>.</li>
+<li>Pop <code>size</code> nodes, collect their values, enqueue their non-null children.</li>
+<li>Append the collected values as one level.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — tree [3,9,20,null,null,15,7]</h2>
+<pre class="viz">queue=[3]  size1 → level [3]; enqueue 9,20
+queue=[9,20] size2 → level [9,20]; enqueue 15,7
+queue=[15,7] size2 → level [15,7]
+Result: [[3],[9,20],[15,7]]</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>from collections import deque
+def levelOrder(root):
+    if not root:
+        return []
+    res, q = [], deque([root])
+    while q:
+        size = len(q)              # freeze this level's count
+        level = []
+        for _ in range(size):
+            node = q.popleft()
+            level.append(node.val)
+            if node.left:  q.append(node.left)
+            if node.right: q.append(node.right)
+        res.append(level)
+    return res</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — each node enqueued and dequeued once. <strong>Space O(n)</strong> — the queue holds up to a full level (up to n/2 nodes).</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Empty tree → return <code>[]</code>.</li>
+<li>Single node → <code>[[val]]</code>.</li>
+<li>Skewed tree → each level has one node.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Not snapshotting <code>len(q)</code> — children get mixed into the current level.</li>
+<li>Enqueuing null children → crashes when popped.</li>
+<li>Using a list with <code>pop(0)</code> (O(n)) instead of a deque.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Bottom-up order → reverse the result.</li>
+<li>Zigzag order (<a href="0085-lc103-binary-tree-zigzag-level-order-traversal.html">#103</a>); right-side view (<a href="0088-lc199-binary-tree-right-side-view.html">#199</a>); per-level max (<a href="0090-lc515-find-largest-value-in-each-tree-row.html">#515</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0085-lc103-binary-tree-zigzag-level-order-traversal.html">#103</a> · <a href="0088-lc199-binary-tree-right-side-view.html">#199</a> · <a href="0090-lc515-find-largest-value-in-each-tree-row.html">#515</a></p>
+
 
 <div class="pager"><a href="../patterns/p04-tree-traversal.html"><span class="lbl">← Previous</span>Tree Traversal (DFS &amp; BFS)</a><a href="../problems/0085-lc103-binary-tree-zigzag-level-order-traversal.html" style="text-align:right"><span class="lbl">Next →</span>#103 Binary Tree Zigzag Level Order Traversal</a></div>
 </div>

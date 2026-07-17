@@ -36,34 +36,63 @@
 
 <h2>📋 The problem</h2><p>Decide whether a binary tree is a valid binary search tree (every node greater than all of its left subtree and less than all of its right).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Tree DFS - Recursive Inorder Traversal</strong> — Visit left, root, right — yields sorted order on a BST; used for kth-smallest, BST validation.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Pass down (lo, hi) bounds; every node must fit its inherited range — child-only checks miss grandparent violations.</div>
-<h2>Why this pattern?</h2><ul><li>"level", "depth", "nearest", "zigzag by rows" → BFS</li><li>"path sum", "ancestor", "validate", "diameter" → DFS</li><li>BST + "k-th smallest / sorted order" → inorder</li><li>"serialize / reconstruct" → preorder</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Tree Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>def dfs(node, state):                 # state flows DOWN (bounds, path...)
-    if not node:
-        return base                       # e.g. 0, True, None
-    L = dfs(node.left,  new_state)
-    R = dfs(node.right, new_state)
-    return combine(node.val, L, R)        # answer flows UP
+<h2>🧭 How to think about it</h2>
+<p>Every node in a BST must be greater than <em>all</em> nodes in its left subtree and less than all in its right subtree — not just its immediate children. Enforce this by passing down an allowed <strong>(low, high) range</strong> that tightens as you descend.</p>
 
-from collections import deque             # BFS by levels
-q = deque([root])
-while q:
-    for _ in range(len(q)):               # freeze current level size
-        node = q.popleft()
-        if node.left:  q.append(node.left)
-        if node.right: q.append(node.right)</code></pre>
-<h2>How to work on it now</h2>
+<h2>🐢 Brute force first</h2>
+<p>Checking only <code>left.val &lt; node.val &lt; right.val</code> misses violations by distant ancestors. Two correct O(n) methods: range bounds, or an inorder traversal that must be strictly increasing.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> a node is valid only if <code>low &lt; node.val &lt; high</code>. Going left tightens the upper bound to <code>node.val</code>; going right tightens the lower bound to <code>node.val</code>. Start with (−∞, +∞).</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Recurse with <code>(low, high)</code>, starting unbounded.</li>
+<li>Null → valid. If <code>node.val</code> is outside <code>(low, high)</code> → invalid.</li>
+<li>Recurse left with <code>(low, node.val)</code> and right with <code>(node.val, high)</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — [5,1,4,null,null,3,6]</h2>
+<pre class="viz">5 in (−∞,∞) ✓ ; left 1 in (−∞,5) ✓ ; right 4 in (5,∞)? 4&gt;5 fails → invalid</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def isValidBST(root):
+    def valid(node, low, high):
+        if not node:
+            return True
+        if not (low &lt; node.val &lt; high):     # must fit inherited range
+            return False
+        return (valid(node.left, low, node.val) and
+                valid(node.right, node.val, high))
+    return valid(root, float('-inf'), float('inf'))</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong>, <strong>Space O(h)</strong> recursion.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Duplicate values → invalid (strict inequalities).</li>
+<li>Single node → valid.</li>
+<li>Extreme values → use ±∞ bounds, not fixed int limits.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Comparing only against immediate children.</li>
+<li>Using <code>≤</code>/<code>≥</code> and accepting duplicates.</li>
+<li>Hardcoding INT_MIN/MAX bounds that real values could hit.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Inorder-increasing check (track the previous value).</li>
+<li>Recover a BST with two swapped nodes (<a href="0110-lc99-recover-binary-search-tree.html">#99</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0110-lc99-recover-binary-search-tree.html">#99</a> · <a href="0108-lc94-binary-tree-inorder-traversal.html">#94</a> · <a href="0113-lc230-kth-smallest-element-in-a-bst.html">#230</a></p>
+
 
 <div class="pager"><a href="../problems/0108-lc94-binary-tree-inorder-traversal.html"><span class="lbl">← Previous</span>#94 Binary Tree Inorder Traversal</a><a href="../problems/0110-lc99-recover-binary-search-tree.html" style="text-align:right"><span class="lbl">Next →</span>#99 Recover Binary Search Tree</a></div>
 </div>

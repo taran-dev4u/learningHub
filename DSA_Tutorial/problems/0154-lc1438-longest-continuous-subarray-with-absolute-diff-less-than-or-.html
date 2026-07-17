@@ -36,30 +36,69 @@
 
 <h2>📋 The problem</h2><p>Return the longest subarray where max − min ≤ limit (window + two monotonic deques).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Variable Size / Condition-Based</strong> — Grow the right pointer; shrink the left while a constraint is violated — captures max/min subarray meeting a condition.</p>
+<h2>🧭 How to think about it</h2>
+<p>Find the longest subarray where the difference between its maximum and minimum is at most <code>limit</code>. A plain window can't cheaply know its current max and min — so maintain <strong>two monotonic deques</strong>: one giving the window max, one the window min. When <code>max − min</code> exceeds the limit, shrink from the left.</p>
 
-<h2>Why this pattern?</h2><ul><li>"contiguous subarray / substring" + longest/shortest/max/min/count</li><li>fixed size k ("every window of size k")</li><li>a constraint to maintain: "at most k distinct", "no repeats", "sum ≥ target"</li><li>strings + character frequency ("anagram of", "contains all chars of")</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Sliding Window master template and adapt the marked parts to this problem:</p><pre><code># Variable-size window (the general form)
-state = {}                              # counts / sum — whatever the constraint needs
-left = 0
-best = 0
-for right in range(len(s)):
-    add(s[right], state)                # 1) window grows
-    while invalid(state):               # 2) shrink until constraint holds again
-        remove(s[left], state)
-        left += 1
-    best = max(best, right - left + 1)  # 3) window is valid here</code></pre>
-<h2>How to work on it now</h2>
+<h2>🐢 Brute force first</h2>
+<p>Recompute max/min per window → O(n²). Two monotonic deques keep both in O(1) amortized, so the whole thing is O(n).</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> a decreasing deque's front is the window max; an increasing deque's front is the window min. Push each new value (popping smaller/larger from the back). If <code>maxDeque.front − minDeque.front &gt; limit</code>, advance <code>left</code>, expiring indices that fall out of the window.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Maintain <code>maxd</code> (decreasing) and <code>mind</code> (increasing) deques of indices.</li>
+<li>Push <code>right</code>; while the front difference &gt; limit, move <code>left</code> and pop expired fronts.</li>
+<li>Track the best window length.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — nums = [8,2,4,7], limit = 4</h2>
+<pre class="viz">[8] ok ; [8,2] max8 min2 diff6 &gt;4 → shrink to [2] ; [2,4] diff2 ; [2,4,7] max7 min2 diff5 &gt;4 → shrink to [4,7]
+best length = 2</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>from collections import deque
+def longestSubarray(nums, limit):
+    maxd, mind = deque(), deque()     # indices; maxd decreasing, mind increasing
+    left = best = 0
+    for right, x in enumerate(nums):
+        while maxd and nums[maxd[-1]] &lt;= x: maxd.pop()
+        while mind and nums[mind[-1]] &gt;= x: mind.pop()
+        maxd.append(right); mind.append(right)
+        while nums[maxd[0]] - nums[mind[0]] &gt; limit:   # window invalid
+            left += 1
+            if maxd[0] &lt; left: maxd.popleft()
+            if mind[0] &lt; left: mind.popleft()
+        best = max(best, right - left + 1)
+    return best</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — each index enters/leaves each deque once. <strong>Space O(n)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>All equal → whole array (diff 0).</li>
+<li>limit = 0 → longest run of a single repeated value.</li>
+<li>Single element → length 1.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Storing values instead of indices (can't expire by position).</li>
+<li>Forgetting to pop expired fronts as <code>left</code> advances.</li>
+<li>Wrong monotonic direction on a deque.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Count "continuous" subarrays with max−min ≤ 2 (<a href="0160-lc2762-continuous-subarrays.html">#2762</a>).</li>
+<li>Sliding window maximum (<a href="0166-lc239-sliding-window-maximum.html">#239</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0160-lc2762-continuous-subarrays.html">#2762</a> · <a href="0166-lc239-sliding-window-maximum.html">#239</a> · <a href="0145-lc3-longest-substring-without-repeating-characters.html">#3</a></p>
+
 
 <div class="pager"><a href="../problems/0153-lc992-subarrays-with-k-different-integers.html"><span class="lbl">← Previous</span>#992 Subarrays with K Different Integers</a><a href="../problems/0155-lc1493-longest-subarray-of-1-s-after-deleting-one-element.html" style="text-align:right"><span class="lbl">Next →</span>#1493 Longest Subarray of 1's After Deleting One Element</a></div>
 </div>

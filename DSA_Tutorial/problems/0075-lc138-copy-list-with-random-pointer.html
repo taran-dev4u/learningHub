@@ -36,33 +36,80 @@
 
 <h2>📋 The problem</h2><p>Deep-copy a linked list whose nodes carry an extra random pointer to any node (or null).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Reordering / Partitioning</strong> — Split the list around a pivot (value, midpoint) and reattach — partition or zigzag-reorder.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Interleave copies with originals (A→A'→B→B'), wire random pointers via node.random.next, then unzip.</div>
-<h2>Why this pattern?</h2><ul><li>input is a linked list (that alone is the signal)</li><li>"reverse", "reorder", "swap in pairs", "rotate" nodes</li><li>"k-th from the end", "middle", "cycle" → fast &amp; slow</li><li>"merge k sorted lists" → pairwise merge or heap of heads</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Linked List Manipulation master template and adapt the marked parts to this problem:</p><pre><code>dummy = ListNode(0, head)            # dummy head: prev of the real head
-prev, cur = dummy, head
+<h2>🧭 How to think about it</h2>
+<p>Deep-copy a list where each node has a <code>next</code> and a <code>random</code> pointer to any node (or null). The challenge is the random pointers: when you clone a node, the target of its random may not be cloned yet. Two clean solutions: a hash map from original→clone, or the <strong>interleaving</strong> trick that needs no extra map.</p>
 
-# In-place reversal core
-p = None
-while cur:
-    cur.next, p, cur = p, cur, cur.next
-# p is the new head
+<h2>🐢 Brute force first</h2>
+<p>Hash map <code>old → new</code>: first pass creates clones, second pass wires <code>next</code> and <code>random</code> using the map → O(n) time, O(n) space. The interleave method gets O(1) extra space.</p>
 
-# Fast &amp; slow
-slow = fast = head
-while fast and fast.next:
-    slow, fast = slow.next, fast.next.next   # slow = middle when fast ends</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight (interleave):</strong> insert each clone right after its original (<code>A → A' → B → B' → …</code>). Now a clone's random is simply <code>original.random.next</code> — the copy sits next to the node it should point to. Finally unzip the two lists apart.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Pass 1: after each node, splice in a clone with the same value.</li>
+<li>Pass 2: set each clone's <code>random = original.random.next</code> (if the original's random exists).</li>
+<li>Pass 3: unzip — restore the originals' <code>next</code> and extract the clones' <code>next</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — A→B, A.random=B, B.random=B</h2>
+<pre class="viz">interleave: A→A'→B→B'
+randoms: A'.random = A.random.next = B'  ; B'.random = B.random.next = B'
+unzip: originals A→B ; clones A'→B'</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def copyRandomList(head):
+    if not head:
+        return None
+    # 1) interleave clones
+    cur = head
+    while cur:
+        clone = Node(cur.val, cur.next, None)
+        cur.next = clone
+        cur = clone.next
+    # 2) assign randoms
+    cur = head
+    while cur:
+        if cur.random:
+            cur.next.random = cur.random.next
+        cur = cur.next.next
+    # 3) unzip
+    cur = head
+    copy_head = head.next
+    while cur:
+        clone = cur.next
+        cur.next = clone.next
+        clone.next = clone.next.next if clone.next else None
+        cur = cur.next
+    return copy_head</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — three linear passes. <strong>Space O(1)</strong> extra (interleave) versus O(n) for the hash-map version.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Empty list → return <code>None</code>.</li>
+<li>Random pointing to null → leave the clone's random null.</li>
+<li>Random pointing to self → handled: <code>cur.random.next</code> is the clone of self.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Wiring randoms before all clones are interleaved.</li>
+<li>Not fully restoring the original list's <code>next</code> during the unzip.</li>
+<li>Forgetting the null check on <code>cur.random</code>.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Hash-map version → simpler to explain, O(n) space.</li>
+<li>Clone a graph (<a href="0292-lc133-clone-graph.html">#133</a>) uses the map idea generally.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0292-lc133-clone-graph.html">#133</a> · <a href="0067-lc206-reverse-linked-list.html">#206</a> · <a href="0079-lc430-flatten-a-multilevel-doubly-linked-list.html">#430</a></p>
+
 
 <div class="pager"><a href="../problems/0074-lc86-partition-list.html"><span class="lbl">← Previous</span>#86 Partition List</a><a href="../problems/0076-lc143-reorder-list.html" style="text-align:right"><span class="lbl">Next →</span>#143 Reorder List</a></div>
 </div>

@@ -36,30 +36,75 @@
 
 <h2>📋 The problem</h2><p>With numOperations single-use adjustments of at most ±k, maximize how many elements can be made equal (sweep candidate targets with prefix counts).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Variable Size / Condition-Based</strong> — Grow the right pointer; shrink the left while a constraint is violated — captures max/min subarray meeting a condition.</p>
+<h2>🧭 How to think about it</h2>
+<p>You may adjust up to <code>numOperations</code> elements, each by at most ±<code>k</code> (each element once); maximize how many elements end up equal to some target <code>t</code>. For a target <code>t</code>, the elements that can <em>reach</em> it are those in <code>[t − k, t + k]</code>; the count you can make equal is limited by how many are already <code>t</code> plus <code>numOperations</code>. Sweep candidate targets and take the best.</p>
 
-<h2>Why this pattern?</h2><ul><li>"contiguous subarray / substring" + longest/shortest/max/min/count</li><li>fixed size k ("every window of size k")</li><li>a constraint to maintain: "at most k distinct", "no repeats", "sum ≥ target"</li><li>strings + character frequency ("anagram of", "contains all chars of")</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Sliding Window master template and adapt the marked parts to this problem:</p><pre><code># Variable-size window (the general form)
-state = {}                              # counts / sum — whatever the constraint needs
-left = 0
-best = 0
-for right in range(len(s)):
-    add(s[right], state)                # 1) window grows
-    while invalid(state):               # 2) shrink until constraint holds again
-        remove(s[left], state)
-        left += 1
-    best = max(best, right - left + 1)  # 3) window is valid here</code></pre>
-<h2>How to work on it now</h2>
+<h2>🐢 Brute force first</h2>
+<p>For each possible target value scan the whole array → O(range · n). Sorting plus a sliding window over <code>[t − k, t + k]</code> makes it O(n log n).</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> good targets are the array's own values (or the boundaries). For target <code>t</code>: <code>reachable</code> = count of elements within <code>[t − k, t + k]</code> (a window on the sorted array); <code>alreadyEqual</code> = count of elements exactly <code>t</code>. The answer for <code>t</code> is <code>min(reachable, alreadyEqual + numOperations)</code>.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Sort; also count exact frequencies.</li>
+<li>For each candidate target <code>t</code> (each distinct value), window-count elements in <code>[t − k, t + k]</code>.</li>
+<li>Best = <code>max(min(windowCount, freq[t] + numOperations))</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — nums = [1,4,5], k = 1, ops = 2</h2>
+<pre class="viz">t=4: reachable in [3,5] = {4,5} = 2 ; already 1 → min(2, 1+2)=2
+t=5: reachable [4,6] = {4,5}=2 ; already1 → min(2,3)=2
+Answer: 2</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>from collections import Counter
+def maxFrequency(nums, k, numOperations):
+    nums.sort()
+    freq = Counter(nums)
+    best = 0
+    left = 0
+    for right, t in enumerate(nums):        # candidate target = an existing value
+        while nums[right] - nums[left] &gt; 2 * k:   # window of reachable-to-some-target
+            left += 1
+    # simpler: evaluate each distinct value as the target
+    best = 0
+    for t in set(nums):
+        # count elements within [t-k, t+k] via bisect
+        import bisect
+        lo = bisect.bisect_left(nums, t - k)
+        hi = bisect.bisect_right(nums, t + k)
+        reachable = hi - lo
+        best = max(best, min(reachable, freq[t] + numOperations))
+    return best</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n log n)</strong> — sort plus a binary-search window per distinct target. <strong>Space O(n)</strong> for the frequency map.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li><code>numOperations = 0</code> → the plain max frequency.</li>
+<li>k large enough to reach everything → limited only by <code>freq[t] + ops</code>.</li>
+<li>All equal → n.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Forgetting the <code>min(reachable, alreadyEqual + ops)</code> cap — you can't create elements out of thin air.</li>
+<li>Only trying existing values but missing that they are sufficient candidates.</li>
+<li>Counting the same element for two different operations.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Larger constraints → <a href="0165-lc3347-maximum-frequency-of-an-element-after-performing-operations-.html">#3347</a> (same idea, careful counting).</li>
+<li>+1-only operations (<a href="0157-lc1838-frequency-of-the-most-frequent-element.html">#1838</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0165-lc3347-maximum-frequency-of-an-element-after-performing-operations-.html">#3347</a> · <a href="0157-lc1838-frequency-of-the-most-frequent-element.html">#1838</a> · <a href="0161-lc2779-maximum-beauty-of-an-array-after-applying-operation.html">#2779</a></p>
+
 
 <div class="pager"><a href="../problems/0163-lc3026-maximum-good-subarray-sum.html"><span class="lbl">← Previous</span>#3026 Maximum Good Subarray Sum</a><a href="../problems/0165-lc3347-maximum-frequency-of-an-element-after-performing-operations-.html" style="text-align:right"><span class="lbl">Next →</span>#3347 Maximum Frequency of an Element After Performing Operations II</a></div>
 </div>

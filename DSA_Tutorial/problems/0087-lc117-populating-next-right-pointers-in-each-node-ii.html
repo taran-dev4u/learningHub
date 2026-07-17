@@ -36,34 +36,71 @@
 
 <h2>📋 The problem</h2><p>Same next-pointer wiring, but the tree can be any shape — ideally with O(1) extra space.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Tree BFS - Level Order Traversal</strong> — BFS with a queue; process the entire current level before moving on — level lists, right view, zigzag.</p>
+<h2>🧭 How to think about it</h2>
+<p>Same goal — thread each level with <code>next</code> — but now the tree can be <em>any</em> shape, so a node may have zero, one, or two children. You can't assume neighbors exist. The O(1)-space fix: as you walk the current (already-threaded) level, build the next level as a linked list using a <strong>dummy head</strong> and a moving <code>tail</code>.</p>
 
-<h2>Why this pattern?</h2><ul><li>"level", "depth", "nearest", "zigzag by rows" → BFS</li><li>"path sum", "ancestor", "validate", "diameter" → DFS</li><li>BST + "k-th smallest / sorted order" → inorder</li><li>"serialize / reconstruct" → preorder</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Tree Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>def dfs(node, state):                 # state flows DOWN (bounds, path...)
-    if not node:
-        return base                       # e.g. 0, True, None
-    L = dfs(node.left,  new_state)
-    R = dfs(node.right, new_state)
-    return combine(node.val, L, R)        # answer flows UP
+<h2>🐢 Brute force first</h2>
+<p>Level-order BFS linking neighbors — O(n) time, O(n) space. The dummy-head threading keeps O(1) space.</p>
 
-from collections import deque             # BFS by levels
-q = deque([root])
-while q:
-    for _ in range(len(q)):               # freeze current level size
-        node = q.popleft()
-        if node.left:  q.append(node.left)
-        if node.right: q.append(node.right)</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> a <code>dummy</code> node's <code>next</code> will point at the start of the level below; a <code>tail</code> pointer appends each child in order as you scan the current level via <code>next</code>. Whatever children exist get linked; gaps are handled automatically.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li><code>cur = root</code> (head of the current level).</li>
+<li>For each level: make a fresh <code>dummy</code>; <code>tail = dummy</code>.</li>
+<li>Walk <code>cur</code> via <code>next</code>; append each existing child to <code>tail</code>.</li>
+<li>Move down: <code>cur = dummy.next</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — 1 / 2 3 / 4 _ _ 7</h2>
+<pre class="viz">level1: 1
+build level2: tail links 2, then 3 → 2.next=3
+build level3 from 2,3: 4 (2.left), then 7 (3.right) → 4.next=7
+Result: 2→3, 4→7</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def connect(root):
+    cur = root
+    while cur:
+        dummy = Node(0)            # sentinel before the next level
+        tail = dummy
+        while cur:                 # walk current level via next
+            if cur.left:
+                tail.next = cur.left; tail = tail.next
+            if cur.right:
+                tail.next = cur.right; tail = tail.next
+            cur = cur.next
+        cur = dummy.next           # descend to the level we just built
+    return root</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — one visit per node. <strong>Space O(1)</strong> — a dummy and a tail pointer, no queue.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Empty tree → null.</li>
+<li>Nodes with a single child → only that child is appended.</li>
+<li>Last level → <code>dummy.next</code> becomes null, loop ends.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Reusing the <a href="0086-lc116-populating-next-right-pointers-in-each-node.html">#116</a> logic that assumes both children exist.</li>
+<li>Forgetting to reset <code>dummy</code>/<code>tail</code> each level.</li>
+<li>Not advancing <code>cur = cur.next</code> inside the inner loop.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Perfect tree special case (<a href="0086-lc116-populating-next-right-pointers-in-each-node.html">#116</a>).</li>
+<li>Right-side view (<a href="0088-lc199-binary-tree-right-side-view.html">#199</a>) is the last node of each threaded level.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0086-lc116-populating-next-right-pointers-in-each-node.html">#116</a> · <a href="0088-lc199-binary-tree-right-side-view.html">#199</a> · <a href="0084-lc102-binary-tree-level-order-traversal.html">#102</a></p>
+
 
 <div class="pager"><a href="../problems/0086-lc116-populating-next-right-pointers-in-each-node.html"><span class="lbl">← Previous</span>#116 Populating Next Right Pointers in Each Node</a><a href="../problems/0088-lc199-binary-tree-right-side-view.html" style="text-align:right"><span class="lbl">Next →</span>#199 Binary Tree Right Side View</a></div>
 </div>

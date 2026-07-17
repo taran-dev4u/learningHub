@@ -36,33 +36,66 @@
 
 <h2>📋 The problem</h2><p>Merge a sorted array of n elements into a sorted array of m elements (which has room at its end) in place, producing one sorted array.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Merge Sorted Array / In-place from End</strong> — Merge two sorted arrays in place starting from the largest element and writing backward.</p>
+<h2>🧭 How to think about it</h2>
+<p>Merge <code>nums2</code> into <code>nums1</code>, which has extra space at the end. Merging front-to-back would overwrite values in <code>nums1</code> you haven't placed yet. The fix: fill <strong>from the back</strong>. The largest remaining element goes into the last empty slot, so you never clobber unread data.</p>
 
-<h2>Why this pattern?</h2><ul><li>"rotate / transpose / flip" a matrix or array</li><li>"in place" / "O(1) extra space" on a grid problem</li><li>traverse in an unusual order (spiral, diagonal, zigzag)</li><li>mark/erase cells based on other cells (use the cells themselves as flags)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Array/Matrix Manipulation master template and adapt the marked parts to this problem:</p><pre><code># Rotate matrix 90° clockwise, in place
-n = len(matrix)
-for r in range(n):                     # 1) transpose (swap across diagonal)
-    for c in range(r + 1, n):
-        matrix[r][c], matrix[c][r] = matrix[c][r], matrix[r][c]
-for row in matrix:                     # 2) reverse each row
-    row.reverse()
+<h2>🐢 Brute force first</h2>
+<p>Append and sort → O((m+n) log(m+n)). Correct but wasteful. The three-pointer back-merge is O(m+n) and in place.</p>
 
-# Spiral walk: shrink four boundaries
-top, bottom, left, right = 0, rows - 1, 0, cols - 1
-while top &lt;= bottom and left &lt;= right:
-    ...walk top row, right col, bottom row, left col...
-    top += 1; bottom -= 1; left += 1; right -= 1</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> three pointers — <code>i</code> at the last real element of <code>nums1</code>, <code>j</code> at the last of <code>nums2</code>, <code>k</code> at the very end of <code>nums1</code>. Copy the larger of <code>nums1[i]</code>, <code>nums2[j]</code> into <code>nums1[k]</code> and step inward. Writing backward means the slot you write was always going to be filled by something ≥ what's there.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li><code>i = m−1</code>, <code>j = n−1</code>, <code>k = m+n−1</code>.</li>
+<li>While <code>j ≥ 0</code>: place the larger of the two current values at <code>k</code>, decrement that pointer and <code>k</code>.</li>
+<li>If <code>nums1</code> runs out first, remaining <code>nums2</code> values copy down; if <code>nums2</code> runs out, <code>nums1</code>'s are already in place.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — nums1=[1,2,3,0,0,0] m=3, nums2=[2,5,6] n=3</h2>
+<pre class="viz">i=2(3) j=2(6) k=5 → 6&gt;3 → nums1[5]=6; j=1,k=4
+i=2(3) j=1(5) k=4 → 5&gt;3 → nums1[4]=5; j=0,k=3
+i=2(3) j=0(2) k=3 → 3&gt;2 → nums1[3]=3; i=1,k=2
+i=1(2) j=0(2) k=2 → 2≥2 → nums1[2]=2; j=-1 stop
+Result: [1,2,2,3,5,6]</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def merge(nums1, m, nums2, n):
+    i, j, k = m - 1, n - 1, m + n - 1
+    while j &gt;= 0:                       # while nums2 has elements left
+        if i &gt;= 0 and nums1[i] &gt; nums2[j]:
+            nums1[k] = nums1[i]; i -= 1
+        else:
+            nums1[k] = nums2[j]; j -= 1
+        k -= 1</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(m+n)</strong> — each element placed once. <strong>Space O(1)</strong> — merged in place.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li><code>n = 0</code> → nothing to merge; <code>nums1</code> already correct.</li>
+<li><code>m = 0</code> → the loop copies all of <code>nums2</code> down.</li>
+<li>Duplicates across arrays → the <code>≥</code>/<code>&gt;</code> choice keeps them stable enough (any order of equals is fine).</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Merging front-to-back and overwriting unprocessed <code>nums1</code> values.</li>
+<li>Looping on <code>i ≥ 0</code> instead of <code>j ≥ 0</code> — leftover <code>nums2</code> elements would be dropped.</li>
+<li>Forgetting the <code>i ≥ 0</code> guard in the comparison → index error.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Merge two lists into a new array → simple forward merge (<a href="0069-lc21-merge-two-sorted-lists.html">#21</a> on linked lists).</li>
+<li>Merge k arrays → heap-based k-way merge.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0069-lc21-merge-two-sorted-lists.html">#21</a> · <a href="0012-lc977-squares-of-a-sorted-array.html">#977</a> · <a href="0039-lc189-rotate-array.html">#189</a></p>
+
 
 <div class="pager"><a href="../problems/0045-lc66-plus-one.html"><span class="lbl">← Previous</span>#66 Plus One</a><a href="../problems/0047-lc41-first-missing-positive.html" style="text-align:right"><span class="lbl">Next →</span>#41 First Missing Positive</a></div>
 </div>

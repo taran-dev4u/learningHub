@@ -1,7 +1,7 @@
 # Architecture Diagrams & Communication
 
 ## Overview
-Welcome to the core visual language of System Design! You can have the most brilliant architecture in the world, but if you cannot draw it clearly on a whiteboard, you will fail the interview. 
+Welcome to the core visual language of System Design! You can have the most brilliant architecture in the world, but if you cannot draw it clearly on a whiteboard, you will fail the interview.
 
 An interviewer uses your whiteboard (or digital drawing tool) to judge your seniority. Junior engineers draw chaotic spaghetti diagrams. Senior engineers structure their drawings deliberately to tell a story.
 
@@ -33,6 +33,23 @@ In a 45-minute interview, you will almost exclusively use **Level 1** and **Leve
 Sequence diagrams are incredibly powerful in System Design interviews. They do not show *where* things are; they show *when* things happen.
 
 Think of a Sequence Diagram like a movie script. It reads top-to-bottom and shows the exact order of API calls between a Client, a Server, and a Database.
+
+```mermaid
+sequenceDiagram
+    participant User as 📱 Client App
+    participant Auth as 🛡️ Auth Service
+    participant DB as 🗄️ Database
+
+    User->>Auth: 1. POST /login (username, password)
+    activate Auth
+    Auth->>DB: 2. SELECT hash FROM users WHERE username
+    activate DB
+    DB-->>Auth: 3. Return hashed password
+    deactivate DB
+    Auth->>Auth: 4. Validate hash & generate JWT
+    Auth-->>User: 5. 200 OK (JWT Token)
+    deactivate Auth
+```
 
 **When to use it:** Use sequence diagrams when discussing **Authentication (OAuth)**, **Payment Processing (Stripe)**, or any multi-step protocol where order and failure handling matter.
 

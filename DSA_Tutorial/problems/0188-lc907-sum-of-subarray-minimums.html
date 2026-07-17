@@ -36,35 +36,77 @@
 
 <h2>📋 The problem</h2><p>Return the sum of the minimum of every contiguous subarray, modulo 1e9+7.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Monotonic Stack</strong> — Stack maintained in increasing or decreasing order — pops give next-greater/smaller in O(n).</p>
+<h2>🧭 How to think about it</h2>
+<p>Sum the minimum of every subarray. Rather than enumerate subarrays, count each element's <strong>contribution</strong>: <code>nums[i]</code> is the minimum of every subarray where it's the smallest. That count is (distance to the previous smaller element) × (distance to the next smaller element), found with a <strong>monotonic stack</strong>.</p>
 
-<h2>Why this pattern?</h2><ul><li>brackets/tags to match or validate</li><li>"next greater / next warmer / previous smaller" element</li><li>histogram areas, trapped water, "can see over"</li><li>evaluate/parse an expression, decode nested strings</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Stack master template and adapt the marked parts to this problem:</p><pre><code># Monotonic (decreasing) stack — next greater element
-stack = []                              # holds INDICES of unresolved elements
-res = [-1] * len(nums)
-for i, x in enumerate(nums):
-    while stack and nums[stack[-1]] &lt; x:   # x resolves the waiting ones
-        j = stack.pop()
-        res[j] = x                          # x is j's next greater
-    stack.append(i)
+<h2>🐢 Brute force first</h2>
+<p>All O(n²) subarray minimums → too slow. The contribution technique is O(n).</p>
 
-# Matching
-for ch in s:
-    if ch in pairs:  stack.append(ch)
-    elif not stack or pairs[stack.pop()] != ch:
-        return False
-return not stack</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> for each <code>i</code>, let <code>left</code> = number of subarrays extending left where <code>nums[i]</code> stays the min (up to the previous strictly-smaller element), and <code>right</code> similarly. Then <code>nums[i]</code> contributes <code>nums[i] × left × right</code>. Use "previous less" and "next less-or-equal" to avoid double counting equal values.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Compute previous-smaller and next-smaller-or-equal distances via monotonic stacks.</li>
+<li>Sum <code>nums[i] × left[i] × right[i]</code> modulo 1e9+7.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — nums = [3,1,2,4]</h2>
+<pre class="viz">1 is min of subarrays spanning it → big contribution
+sum of all subarray minimums = 17</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def sumSubarrayMins(arr):
+    MOD = 10**9 + 7
+    n = len(arr)
+    prev_less = [-1] * n                  # index of previous strictly smaller
+    next_less = [n] * n                   # index of next smaller-or-equal
+    stack = []
+    for i in range(n):
+        while stack and arr[stack[-1]] &gt; arr[i]:
+            stack.pop()
+        prev_less[i] = stack[-1] if stack else -1
+        stack.append(i)
+    stack = []
+    for i in range(n - 1, -1, -1):
+        while stack and arr[stack[-1]] &gt;= arr[i]:
+            stack.pop()
+        next_less[i] = stack[-1] if stack else n
+        stack.append(i)
+    total = 0
+    for i in range(n):
+        left = i - prev_less[i]
+        right = next_less[i] - i
+        total = (total + arr[i] * left * right) % MOD
+    return total</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — two stack passes. <strong>Space O(n)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Duplicate values → the strict/non-strict split prevents double counting.</li>
+<li>Sorted ascending/descending → contributions skew but stay correct.</li>
+<li>Single element → its own value.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Using the same inequality on both sides → duplicates counted twice.</li>
+<li>Forgetting the modulus.</li>
+<li>Off-by-one in the distance boundaries.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Sum of subarray maximums → mirror the inequalities.</li>
+<li>Sum of subarray ranges (<a href="0193-lc2104-sum-of-subarray-ranges.html">#2104</a>) = maxes − mins.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0193-lc2104-sum-of-subarray-ranges.html">#2104</a> · <a href="0202-lc84-largest-rectangle-in-histogram.html">#84</a> · <a href="0185-lc739-daily-temperatures.html">#739</a></p>
+
 
 <div class="pager"><a href="../problems/0187-lc901-online-stock-span.html"><span class="lbl">← Previous</span>#901 Online Stock Span</a><a href="../problems/0189-lc962-maximum-width-ramp.html" style="text-align:right"><span class="lbl">Next →</span>#962 Maximum Width Ramp</a></div>
 </div>

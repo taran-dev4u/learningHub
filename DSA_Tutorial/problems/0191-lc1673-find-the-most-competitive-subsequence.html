@@ -36,35 +36,65 @@
 
 <h2>📋 The problem</h2><p>Return the most competitive (lexicographically smallest) subsequence of length k (monotonic stack with a removal budget).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Monotonic Stack</strong> — Stack maintained in increasing or decreasing order — pops give next-greater/smaller in O(n).</p>
+<h2>🧭 How to think about it</h2>
+<p>Pick a subsequence of length <code>k</code> that is the <strong>smallest possible</strong> in lexicographic order. Build it on a <strong>monotonic increasing stack</strong>: pop larger trailing choices when a smaller value arrives, but only if enough elements remain to still reach length <code>k</code>.</p>
 
-<h2>Why this pattern?</h2><ul><li>brackets/tags to match or validate</li><li>"next greater / next warmer / previous smaller" element</li><li>histogram areas, trapped water, "can see over"</li><li>evaluate/parse an expression, decode nested strings</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Stack master template and adapt the marked parts to this problem:</p><pre><code># Monotonic (decreasing) stack — next greater element
-stack = []                              # holds INDICES of unresolved elements
-res = [-1] * len(nums)
-for i, x in enumerate(nums):
-    while stack and nums[stack[-1]] &lt; x:   # x resolves the waiting ones
-        j = stack.pop()
-        res[j] = x                          # x is j's next greater
-    stack.append(i)
+<h2>🐢 Brute force first</h2>
+<p>All length-k subsequences is combinatorial. The greedy stack with a remaining-count guard is O(n).</p>
 
-# Matching
-for ch in s:
-    if ch in pairs:  stack.append(ch)
-    elif not stack or pairs[stack.pop()] != ch:
-        return False
-return not stack</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> a smaller earlier digit makes the subsequence more competitive. While the stack top &gt; current value AND there are enough remaining elements (<code>len(stack) − 1 + (n − i) ≥ k</code>) to still fill <code>k</code>, pop. Push while the stack has room. The answer is the first <code>k</code> stacked values.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>For each index <code>i</code> with value <code>x</code>: while the top &gt; <code>x</code> and dropping it still allows reaching length <code>k</code>, pop.</li>
+<li>Push <code>x</code> if the stack has fewer than <code>k</code> elements.</li>
+<li>Return the stack (length <code>k</code>).</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — nums = [3,5,2,6], k = 2</h2>
+<pre class="viz">3 push ; 5 push [3,5] ; 2: pop5 (room), pop3 (room) → [2] ; 6 push [2,6]
+Result: [2,6]</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def mostCompetitive(nums, k):
+    n = len(nums)
+    stack = []
+    for i, x in enumerate(nums):
+        # pop while bigger and enough elements remain to fill k
+        while stack and stack[-1] &gt; x and len(stack) - 1 + (n - i) &gt;= k:
+            stack.pop()
+        if len(stack) &lt; k:
+            stack.append(x)
+    return stack</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong>, <strong>Space O(k)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>k = n → the whole array.</li>
+<li>Already increasing → the first k elements.</li>
+<li>Many duplicates → strict <code>&gt;</code> avoids needless pops.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Popping without the "enough remaining" guard → can't reach length k.</li>
+<li>Pushing beyond k elements.</li>
+<li>Using <code>≥</code> and dropping equal values unnecessarily.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Remove k digits for the smallest number (<a href="0179-lc402-remove-k-digits.html">#402</a>).</li>
+<li>Remove duplicate letters (<a href="0178-lc316-remove-duplicate-letters.html">#316</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0179-lc402-remove-k-digits.html">#402</a> · <a href="0178-lc316-remove-duplicate-letters.html">#316</a> · <a href="0180-lc456-132-pattern.html">#456</a></p>
+
 
 <div class="pager"><a href="../problems/0190-lc1475-final-prices-with-a-special-discount-in-a-shop.html"><span class="lbl">← Previous</span>#1475 Final Prices With a Special Discount in a Shop</a><a href="../problems/0192-lc1944-number-of-visible-people-in-a-queue.html" style="text-align:right"><span class="lbl">Next →</span>#1944 Number of Visible People in a Queue</a></div>
 </div>

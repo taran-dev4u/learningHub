@@ -36,35 +36,64 @@
 
 <h2>📋 The problem</h2><p>Given a string of the brackets ()[]{}, decide whether every opener is closed by the matching bracket type in the correct order.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Valid Parentheses Matching</strong> — Push openers, pop on matching closer — extends to multi-bracket and nested expressions.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Push openers; each closer must match the popped opener; valid iff stack ends empty.</div>
-<h2>Why this pattern?</h2><ul><li>brackets/tags to match or validate</li><li>"next greater / next warmer / previous smaller" element</li><li>histogram areas, trapped water, "can see over"</li><li>evaluate/parse an expression, decode nested strings</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Stack master template and adapt the marked parts to this problem:</p><pre><code># Monotonic (decreasing) stack — next greater element
-stack = []                              # holds INDICES of unresolved elements
-res = [-1] * len(nums)
-for i, x in enumerate(nums):
-    while stack and nums[stack[-1]] &lt; x:   # x resolves the waiting ones
-        j = stack.pop()
-        res[j] = x                          # x is j's next greater
-    stack.append(i)
+<h2>🧭 How to think about it</h2>
+<p>Check that every bracket is closed by the correct type in the correct order. Brackets nest like a stack of plates: the <strong>most recently opened</strong> bracket must be the <strong>first</strong> to close. So push openers, and on each closer verify it matches the opener you pop.</p>
 
-# Matching
-for ch in s:
-    if ch in pairs:  stack.append(ch)
-    elif not stack or pairs[stack.pop()] != ch:
-        return False
-return not stack</code></pre>
-<h2>How to work on it now</h2>
+<h2>🐢 Brute force first</h2>
+<p>Repeatedly deleting adjacent matched pairs like <code>()</code>/<code>[]</code>/<code>{}</code> until nothing changes → O(n²). A single stack pass is O(n).</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> a stack captures "last opened, first closed" exactly. Push each opener; on a closer, the top of the stack must be its matching opener — otherwise (or if the stack is empty) it's invalid. Valid iff the stack ends empty.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Map each closer to its opener.</li>
+<li>For each char: opener → push; closer → the popped top must match (else invalid).</li>
+<li>Valid iff the stack is empty at the end.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — s = "([{}])"</h2>
+<pre class="viz">( → [(] ; [ → [(,[] ; { → [(,[,{] ; } pop { ✓ ; ] pop [ ✓ ; ) pop ( ✓ → empty → valid</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def isValid(s):
+    match = {')': '(', ']': '[', '}': '{'}
+    stack = []
+    for c in s:
+        if c in match:                    # a closer
+            if not stack or stack.pop() != match[c]:
+                return False
+        else:
+            stack.append(c)               # an opener
+    return not stack                      # nothing left unclosed</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong>, <strong>Space O(n)</strong> for the stack.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Empty string → valid.</li>
+<li>Closer with an empty stack → invalid.</li>
+<li>Leftover openers → invalid.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Forgetting the empty-stack check before popping.</li>
+<li>Only counting brackets without checking types/order.</li>
+<li>Not verifying the stack is empty at the end.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Longest valid substring (<a href="0172-lc32-longest-valid-parentheses.html">#32</a>).</li>
+<li>Minimum insertions/removals to balance (<a href="0174-lc921-minimum-add-to-make-parentheses-valid.html">#921</a>, <a href="0175-lc1249-minimum-remove-to-make-valid-parentheses.html">#1249</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0172-lc32-longest-valid-parentheses.html">#32</a> · <a href="0174-lc921-minimum-add-to-make-parentheses-valid.html">#921</a> · <a href="0175-lc1249-minimum-remove-to-make-valid-parentheses.html">#1249</a></p>
+
 
 <div class="pager"><a href="../patterns/p06-stack.html"><span class="lbl">← Previous</span>Stack</a><a href="../problems/0172-lc32-longest-valid-parentheses.html" style="text-align:right"><span class="lbl">Next →</span>#32 Longest Valid Parentheses</a></div>
 </div>

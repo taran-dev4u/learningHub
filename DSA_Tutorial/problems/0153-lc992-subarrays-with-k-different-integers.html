@@ -36,30 +36,67 @@
 
 <h2>📋 The problem</h2><p>Count the subarrays containing exactly k distinct values (atMost(k) − atMost(k−1)).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Variable Size / Condition-Based</strong> — Grow the right pointer; shrink the left while a constraint is violated — captures max/min subarray meeting a condition.</p>
+<h2>🧭 How to think about it</h2>
+<p>Count subarrays with <em>exactly</em> <code>k</code> distinct integers. "Exactly k" is awkward for a single window, but "<strong>at most k</strong>" is easy — so compute <code>atMost(k) − atMost(k−1)</code>. The difference leaves precisely the subarrays with exactly <code>k</code> distinct values.</p>
 
-<h2>Why this pattern?</h2><ul><li>"contiguous subarray / substring" + longest/shortest/max/min/count</li><li>fixed size k ("every window of size k")</li><li>a constraint to maintain: "at most k distinct", "no repeats", "sum ≥ target"</li><li>strings + character frequency ("anagram of", "contains all chars of")</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Sliding Window master template and adapt the marked parts to this problem:</p><pre><code># Variable-size window (the general form)
-state = {}                              # counts / sum — whatever the constraint needs
-left = 0
-best = 0
-for right in range(len(s)):
-    add(s[right], state)                # 1) window grows
-    while invalid(state):               # 2) shrink until constraint holds again
-        remove(s[left], state)
-        left += 1
-    best = max(best, right - left + 1)  # 3) window is valid here</code></pre>
-<h2>How to work on it now</h2>
+<h2>🐢 Brute force first</h2>
+<p>Count distinct in every subarray → O(n²). Two at-most sliding windows give O(n).</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> <code>atMost(k)</code> counts subarrays with ≤ k distinct by a standard window: for each right end, add <code>right − left + 1</code> valid subarrays. Subtracting <code>atMost(k−1)</code> removes those with fewer than k, leaving exactly k.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Write <code>atMost(k)</code>: window with a count map, shrink while distinct &gt; k, add window length each step.</li>
+<li>Return <code>atMost(k) − atMost(k−1)</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — nums = [1,2,1,2,3], k = 2</h2>
+<pre class="viz">atMost(2) = 12 ; atMost(1) = 5 ; exactly 2 = 12 − 5 = 7</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def subarraysWithKDistinct(nums, k):
+    def at_most(m):
+        count = {}
+        left = res = 0
+        for right, x in enumerate(nums):
+            count[x] = count.get(x, 0) + 1
+            while len(count) &gt; m:
+                count[nums[left]] -= 1
+                if count[nums[left]] == 0:
+                    del count[nums[left]]
+                left += 1
+            res += right - left + 1        # subarrays ending at right
+        return res
+    return at_most(k) - at_most(k - 1)</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — two linear passes. <strong>Space O(k)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>k greater than the number of distinct values → 0.</li>
+<li>k = 1 → count of single-value runs' subarrays.</li>
+<li>All identical → only k = 1 yields results.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Trying to enforce "exactly k" in one window (hard); use the difference.</li>
+<li>Off-by-one between <code>atMost(k)</code> and <code>atMost(k−1)</code>.</li>
+<li>Not deleting zero-count keys.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Binary subarrays with sum (<a href="0058-lc930-binary-subarrays-with-sum.html">#930</a>) uses the same at-most trick.</li>
+<li>At most k distinct (<a href="0149-lc340-longest-substring-with-at-most-k-distinct-characters.html">#340</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0149-lc340-longest-substring-with-at-most-k-distinct-characters.html">#340</a> · <a href="0058-lc930-binary-subarrays-with-sum.html">#930</a> · <a href="0152-lc904-fruit-into-baskets.html">#904</a></p>
+
 
 <div class="pager"><a href="../problems/0152-lc904-fruit-into-baskets.html"><span class="lbl">← Previous</span>#904 Fruit Into Baskets</a><a href="../problems/0154-lc1438-longest-continuous-subarray-with-absolute-diff-less-than-or-.html" style="text-align:right"><span class="lbl">Next →</span>#1438 Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit</a></div>
 </div>

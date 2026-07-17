@@ -36,35 +36,70 @@
 
 <h2>📋 The problem</h2><p>Evaluate a string expression with + - * / (no parentheses); division truncates toward zero.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Expression Evaluation / RPN / Infix</strong> — Two stacks for operators and operands, or evaluate Reverse Polish Notation directly.</p>
+<h2>🧭 How to think about it</h2>
+<p>Evaluate an expression with <code>+ − × ÷</code> and no parentheses, respecting precedence. Use a <strong>stack of terms</strong>: <code>+</code>/<code>−</code> push the (signed) number to be added later, while <code>×</code>/<code>÷</code> combine <em>immediately</em> with the top of the stack. The answer is the sum of the stack.</p>
 
-<h2>Why this pattern?</h2><ul><li>brackets/tags to match or validate</li><li>"next greater / next warmer / previous smaller" element</li><li>histogram areas, trapped water, "can see over"</li><li>evaluate/parse an expression, decode nested strings</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Stack master template and adapt the marked parts to this problem:</p><pre><code># Monotonic (decreasing) stack — next greater element
-stack = []                              # holds INDICES of unresolved elements
-res = [-1] * len(nums)
-for i, x in enumerate(nums):
-    while stack and nums[stack[-1]] &lt; x:   # x resolves the waiting ones
-        j = stack.pop()
-        res[j] = x                          # x is j's next greater
-    stack.append(i)
+<h2>🐢 Brute force first</h2>
+<p>Two passes (handle ×/÷ first, then +/−) works. The single stack pass fuses them in O(n).</p>
 
-# Matching
-for ch in s:
-    if ch in pairs:  stack.append(ch)
-    elif not stack or pairs[stack.pop()] != ch:
-        return False
-return not stack</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> track the operator <em>before</em> the current number. When you finish a number: if the previous op was <code>+</code>/<code>−</code>, push <code>±number</code>; if it was <code>×</code>/<code>÷</code>, pop the top and push <code>top × number</code> or <code>int(top / number)</code>. Summing the stack respects precedence.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Iterate, building each number; remember the operator that preceded it (default <code>+</code>).</li>
+<li>On an operator or end: apply the previous operator to the number against the stack.</li>
+<li>Return <code>sum(stack)</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — "3+2*2"</h2>
+<pre class="viz">3 → push3 ; op + ; 2 → op was + push2 ; op * ; 2 → op * pop2 push 2*2=4
+stack [3,4] sum 7</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def calculate(s):
+    stack = []
+    number = 0
+    op = '+'                              # operator preceding the current number
+    for i, c in enumerate(s):
+        if c.isdigit():
+            number = number * 10 + int(c)
+        if c in '+-*/' or i == len(s) - 1:
+            if op == '+': stack.append(number)
+            elif op == '-': stack.append(-number)
+            elif op == '*': stack.append(stack.pop() * number)
+            else: stack.append(int(stack.pop() / number))  # truncate toward zero
+            op = c
+            number = 0
+    return sum(stack)</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong>, <strong>Space O(n)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Spaces → skipped (only digits/operators act).</li>
+<li>Division truncates toward zero, including negatives.</li>
+<li>Trailing number at the end → the <code>i == len−1</code> trigger commits it.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Not committing the final number (handle the last index).</li>
+<li>Using floor division for negatives.</li>
+<li>Applying precedence with two passes but mismanaging signs.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Add parentheses (<a href="0198-lc772-basic-calculator-iii.html">#772</a>).</li>
+<li>Only + − with parens (<a href="0195-lc224-basic-calculator.html">#224</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0195-lc224-basic-calculator.html">#224</a> · <a href="0198-lc772-basic-calculator-iii.html">#772</a> · <a href="0194-lc150-evaluate-reverse-polish-notation.html">#150</a></p>
+
 
 <div class="pager"><a href="../problems/0195-lc224-basic-calculator.html"><span class="lbl">← Previous</span>#224 Basic Calculator</a><a href="../problems/0197-lc394-decode-string.html" style="text-align:right"><span class="lbl">Next →</span>#394 Decode String</a></div>
 </div>

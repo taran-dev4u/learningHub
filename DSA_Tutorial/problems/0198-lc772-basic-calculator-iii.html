@@ -36,35 +36,77 @@
 
 <h2>📋 The problem</h2><p>Evaluate an expression string with + - * / and parentheses (full basic calculator).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Expression Evaluation / RPN / Infix</strong> — Two stacks for operators and operands, or evaluate Reverse Polish Notation directly.</p>
+<h2>🧭 How to think about it</h2>
+<p>The full calculator: <code>+ − × ÷</code> <strong>and</strong> parentheses. Combine the ideas from <a href="0196-lc227-basic-calculator-ii.html">#227</a> (precedence via a term stack) and <a href="0195-lc224-basic-calculator.html">#224</a> (parentheses). The cleanest structure is a <strong>recursive evaluator</strong> that processes a parenthesized group by recursing, returning both its value and where it ended.</p>
 
-<h2>Why this pattern?</h2><ul><li>brackets/tags to match or validate</li><li>"next greater / next warmer / previous smaller" element</li><li>histogram areas, trapped water, "can see over"</li><li>evaluate/parse an expression, decode nested strings</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Stack master template and adapt the marked parts to this problem:</p><pre><code># Monotonic (decreasing) stack — next greater element
-stack = []                              # holds INDICES of unresolved elements
-res = [-1] * len(nums)
-for i, x in enumerate(nums):
-    while stack and nums[stack[-1]] &lt; x:   # x resolves the waiting ones
-        j = stack.pop()
-        res[j] = x                          # x is j's next greater
-    stack.append(i)
+<h2>🐢 Brute force first</h2>
+<p>Convert to postfix then evaluate is two steps. A single recursive/stack evaluator does it in one O(n) pass.</p>
 
-# Matching
-for ch in s:
-    if ch in pairs:  stack.append(ch)
-    elif not stack or pairs[stack.pop()] != ch:
-        return False
-return not stack</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> reuse the <a href="0196-lc227-basic-calculator-ii.html">#227</a> term-stack for precedence within a level; when you meet <code>'('</code>, recurse to evaluate the inner expression and treat its result as a number; when you meet <code>')'</code>, finish the current level and return. Division truncates toward zero.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Parse with an index pointer; maintain a stack of terms and the pending operator.</li>
+<li><code>'('</code> → recurse from the next index; use the returned value as the current number.</li>
+<li><code>')'</code> or end → commit the last term and return <code>sum(stack)</code> with the position.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — "2*(5+5*2)/3+(6/2+8)"</h2>
+<pre class="viz">inner (5+5*2)=15 ; 2*15/3 = 10 ; inner (6/2+8)=11 ; 10+11 = 21
+Answer: 21</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def calculate(s):
+    def helper(i):
+        stack = []
+        num = 0
+        op = '+'
+        while i &lt; len(s):
+            c = s[i]
+            if c.isdigit():
+                num = num * 10 + int(c)
+            elif c == '(':
+                num, i = helper(i + 1)     # evaluate the inner group
+            if c in '+-*/)' or i == len(s) - 1:
+                if op == '+': stack.append(num)
+                elif op == '-': stack.append(-num)
+                elif op == '*': stack.append(stack.pop() * num)
+                elif op == '/': stack.append(int(stack.pop() / num))
+                num = 0; op = c
+                if c == ')':
+                    return sum(stack), i    # return value and position
+            i += 1
+        return sum(stack), i
+    return helper(0)[0]</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong>, <strong>Space O(n)</strong> for recursion/stack.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Nested parentheses → recursion handles depth.</li>
+<li>Spaces → ignored.</li>
+<li>Division truncates toward zero.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Not returning the updated index from the recursive group.</li>
+<li>Mishandling the operator that follows a closing parenthesis.</li>
+<li>Floor division on negatives.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Only +−() (<a href="0195-lc224-basic-calculator.html">#224</a>) or only +−×÷ (<a href="0196-lc227-basic-calculator-ii.html">#227</a>).</li>
+<li>Support exponentiation / functions.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0195-lc224-basic-calculator.html">#224</a> · <a href="0196-lc227-basic-calculator-ii.html">#227</a> · <a href="0194-lc150-evaluate-reverse-polish-notation.html">#150</a></p>
+
 
 <div class="pager"><a href="../problems/0197-lc394-decode-string.html"><span class="lbl">← Previous</span>#394 Decode String</a><a href="../problems/0199-lc636-exclusive-time-of-functions.html" style="text-align:right"><span class="lbl">Next →</span>#636 Exclusive Time of Functions</a></div>
 </div>

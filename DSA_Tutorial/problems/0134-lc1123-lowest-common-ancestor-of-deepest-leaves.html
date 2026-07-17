@@ -36,34 +36,67 @@
 
 <h2>📋 The problem</h2><p>Return the lowest common ancestor of all the deepest leaves of a binary tree.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Tree - Lowest Common Ancestor (LCA) Finding</strong> — Find the deepest node that has both target nodes in its subtree — recursive or with parent pointers.</p>
+<h2>🧭 How to think about it</h2>
+<p>Find the LCA of all the <em>deepest</em> leaves. A node is that LCA when its left and right subtrees have the <strong>same height</strong> (both reach the deepest level); if one side is deeper, the answer lies on that side. Compute height and LCA together in one postorder pass, returning a <code>(depth, node)</code> pair.</p>
 
-<h2>Why this pattern?</h2><ul><li>"level", "depth", "nearest", "zigzag by rows" → BFS</li><li>"path sum", "ancestor", "validate", "diameter" → DFS</li><li>BST + "k-th smallest / sorted order" → inorder</li><li>"serialize / reconstruct" → preorder</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Tree Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>def dfs(node, state):                 # state flows DOWN (bounds, path...)
-    if not node:
-        return base                       # e.g. 0, True, None
-    L = dfs(node.left,  new_state)
-    R = dfs(node.right, new_state)
-    return combine(node.val, L, R)        # answer flows UP
+<h2>🐢 Brute force first</h2>
+<p>Find the max depth, collect all deepest leaves, then compute their LCA separately → multiple passes. Combining depth and LCA into one return value does it in a single O(n) pass.</p>
 
-from collections import deque             # BFS by levels
-q = deque([root])
-while q:
-    for _ in range(len(q)):               # freeze current level size
-        node = q.popleft()
-        if node.left:  q.append(node.left)
-        if node.right: q.append(node.right)</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> each call returns <code>(height, lca_of_deepest_below)</code>. If left height == right height, this node is the LCA of its deepest leaves. If left is deeper, propagate the left result; if right is deeper, the right.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Postorder returning <code>(depth, node)</code>.</li>
+<li>Equal child depths → return <code>(depth+1, current node)</code>.</li>
+<li>Otherwise return the deeper child's pair with depth incremented.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — balanced deepest leaves under node X</h2>
+<pre class="viz">left depth == right depth at X → X is the LCA
+unequal → follow the deeper subtree</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def lcaDeepestLeaves(root):
+    def dfs(node):
+        if not node:
+            return (0, None)           # (depth, lca)
+        ld, lnode = dfs(node.left)
+        rd, rnode = dfs(node.right)
+        if ld == rd:
+            return (ld + 1, node)      # balanced → this node is the LCA
+        if ld &gt; rd:
+            return (ld + 1, lnode)      # deeper on the left
+        return (rd + 1, rnode)          # deeper on the right
+    return dfs(root)[1]</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — one pass. <strong>Space O(h)</strong> recursion.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Single deepest leaf → the LCA is that leaf.</li>
+<li>Perfectly balanced tree → the root is the answer.</li>
+<li>Single node → itself.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Doing separate passes and re-deriving the LCA.</li>
+<li>Returning the node without the depth (you need both to decide).</li>
+<li>Mishandling the equal-depth case (that's exactly the LCA node).</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Same as LeetCode 865 (identical problem).</li>
+<li>General LCA of two nodes (<a href="0133-lc236-lowest-common-ancestor-of-a-binary-tree.html">#236</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0133-lc236-lowest-common-ancestor-of-a-binary-tree.html">#236</a> · <a href="0128-lc543-diameter-of-binary-tree.html">#543</a> · <a href="0120-lc104-maximum-depth-of-binary-tree.html">#104</a></p>
+
 
 <div class="pager"><a href="../problems/0133-lc236-lowest-common-ancestor-of-a-binary-tree.html"><span class="lbl">← Previous</span>#236 Lowest Common Ancestor of a Binary Tree</a><a href="../problems/0135-lc2096-step-by-step-directions-from-a-binary-tree-node-to-another.html" style="text-align:right"><span class="lbl">Next →</span>#2096 Step-By-Step Directions From a Binary Tree Node to Another</a></div>
 </div>

@@ -36,35 +36,65 @@
 
 <h2>📋 The problem</h2><p>Given bar heights of a histogram, return the area of the largest rectangle that fits entirely inside it.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Largest Rectangle in Histogram</strong> — Monotonic stack of bar indices; on pop, compute the rectangle bounded by current and the new top.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Monotonic increasing stack: when a shorter bar arrives, pop and settle each taller bar's max rectangle (its width spans between stack neighbors).</div>
-<h2>Why this pattern?</h2><ul><li>brackets/tags to match or validate</li><li>"next greater / next warmer / previous smaller" element</li><li>histogram areas, trapped water, "can see over"</li><li>evaluate/parse an expression, decode nested strings</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Stack master template and adapt the marked parts to this problem:</p><pre><code># Monotonic (decreasing) stack — next greater element
-stack = []                              # holds INDICES of unresolved elements
-res = [-1] * len(nums)
-for i, x in enumerate(nums):
-    while stack and nums[stack[-1]] &lt; x:   # x resolves the waiting ones
-        j = stack.pop()
-        res[j] = x                          # x is j's next greater
-    stack.append(i)
+<h2>🧭 How to think about it</h2>
+<p>Find the largest rectangle fitting under a histogram's bars. For each bar, the widest rectangle of its height stretches left and right until it hits a shorter bar. A <strong>monotonic increasing stack</strong> of indices lets you settle each bar's rectangle exactly when a shorter bar appears.</p>
 
-# Matching
-for ch in s:
-    if ch in pairs:  stack.append(ch)
-    elif not stack or pairs[stack.pop()] != ch:
-        return False
-return not stack</code></pre>
-<h2>How to work on it now</h2>
+<h2>🐢 Brute force first</h2>
+<p>For each bar expand outward for the height limit → O(n²). The monotonic stack does it in O(n).</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> keep indices of bars in increasing height. When a shorter bar arrives, pop taller bars and "settle" each: its height is the popped bar's height, and its width spans from the new stack top (its previous smaller bar) to the current index. A sentinel 0 at the end flushes the stack.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Iterate with a stack of indices (increasing heights); append a virtual 0 at the end.</li>
+<li>While the current bar is shorter than the stack top, pop and compute <code>height × width</code>.</li>
+<li>Track the maximum area.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — heights = [2,1,5,6,2,3]</h2>
+<pre class="viz">bar 5,6 form 5×2=10 when 2 arrives ; overall best rectangle area = 10</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def largestRectangleArea(heights):
+    stack = []                            # indices, increasing heights
+    best = 0
+    for i in range(len(heights) + 1):
+        cur = heights[i] if i &lt; len(heights) else 0   # sentinel flushes stack
+        while stack and heights[stack[-1]] &gt;= cur:
+            height = heights[stack.pop()]
+            width = i if not stack else i - stack[-1] - 1
+            best = max(best, height * width)
+        stack.append(i)
+    return best</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — each index pushed/popped once. <strong>Space O(n)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Increasing heights → the sentinel settles everything at the end.</li>
+<li>All equal → area = height × n.</li>
+<li>Single bar → its own area.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Width formula off-by-one (use <code>i − stack[-1] − 1</code> after popping).</li>
+<li>Forgetting the trailing sentinel to flush remaining bars.</li>
+<li>Using <code>&gt;</code> vs <code>≥</code> inconsistently with equal heights.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Maximal rectangle in a binary matrix (<a href="0177-lc85-maximal-rectangle.html">#85</a>).</li>
+<li>Largest square → DP (<a href="0413-lc221-maximal-square.html">#221</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0177-lc85-maximal-rectangle.html">#85</a> · <a href="0188-lc907-sum-of-subarray-minimums.html">#907</a> · <a href="0185-lc739-daily-temperatures.html">#739</a></p>
+
 
 <div class="pager"><a href="../problems/0201-lc155-min-stack.html"><span class="lbl">← Previous</span>#155 Min Stack</a><a href="../patterns/p07-heap.html" style="text-align:right"><span class="lbl">Next →</span>Heap (Priority Queue)</a></div>
 </div>

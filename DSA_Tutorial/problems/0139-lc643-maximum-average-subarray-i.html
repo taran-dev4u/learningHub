@@ -36,30 +36,64 @@
 
 <h2>📋 The problem</h2><p>Return the maximum average of any contiguous subarray of length exactly k.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Fixed Size / Subarray Calculation</strong> — Window of constant size k — slide one step at a time, update the aggregate in O(1).</p>
+<h2>🧭 How to think about it</h2>
+<p>Find the length-<code>k</code> contiguous block with the largest average. Since every candidate has the same length <code>k</code>, maximizing the average is the same as maximizing the <strong>sum</strong>. Slide a fixed window of size <code>k</code>, updating the sum in O(1) per step.</p>
 
-<h2>Why this pattern?</h2><ul><li>"contiguous subarray / substring" + longest/shortest/max/min/count</li><li>fixed size k ("every window of size k")</li><li>a constraint to maintain: "at most k distinct", "no repeats", "sum ≥ target"</li><li>strings + character frequency ("anagram of", "contains all chars of")</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Sliding Window master template and adapt the marked parts to this problem:</p><pre><code># Variable-size window (the general form)
-state = {}                              # counts / sum — whatever the constraint needs
-left = 0
-best = 0
-for right in range(len(s)):
-    add(s[right], state)                # 1) window grows
-    while invalid(state):               # 2) shrink until constraint holds again
-        remove(s[left], state)
-        left += 1
-    best = max(best, right - left + 1)  # 3) window is valid here</code></pre>
-<h2>How to work on it now</h2>
+<h2>🐢 Brute force first</h2>
+<p>Sum each window from scratch → O(n·k). The rolling sum (add the new element, drop the one that left) makes it O(n).</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> compute the first window's sum, then for each slide do <code>sum += nums[r] − nums[r−k]</code>. Track the maximum sum and divide by <code>k</code> at the end.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Sum the first <code>k</code> elements; set <code>best = that sum</code>.</li>
+<li>For <code>r</code> from <code>k</code> to <code>n−1</code>: <code>sum += nums[r] − nums[r−k]</code>; update <code>best</code>.</li>
+<li>Return <code>best / k</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — nums = [1,12,-5,-6,50,3], k = 4</h2>
+<pre class="viz">first 4: 1+12-5-6 = 2
+slide: 2 -1 +50 = ... window[12,-5,-6,50]=51 (best)
+window[-5,-6,50,3]=42
+best sum 51 → avg 12.75</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def findMaxAverage(nums, k):
+    window = sum(nums[:k])
+    best = window
+    for r in range(k, len(nums)):
+        window += nums[r] - nums[r - k]     # add new, drop old
+        best = max(best, window)
+    return best / k</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — one pass after the initial sum. <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>k = n → one window, the whole array.</li>
+<li>All negatives → the least-negative window wins.</li>
+<li>k = 1 → the max element.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Comparing averages (float) instead of sums (int) — unnecessary and error-prone.</li>
+<li>Off-by-one in <code>nums[r−k]</code>.</li>
+<li>Initializing <code>best</code> to 0 and failing on all-negative input.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Variable-length max average → binary search on the answer.</li>
+<li>Streaming moving average (<a href="0138-lc346-moving-average-from-data-stream.html">#346</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0138-lc346-moving-average-from-data-stream.html">#346</a> · <a href="0142-lc2985-calculate-compressed-mean.html">#2985</a> · <a href="0147-lc209-minimum-size-subarray-sum.html">#209</a></p>
+
 
 <div class="pager"><a href="../problems/0138-lc346-moving-average-from-data-stream.html"><span class="lbl">← Previous</span>#346 Moving Average from Data Stream</a><a href="../problems/0140-lc995-minimum-number-of-k-consecutive-bit-flips.html" style="text-align:right"><span class="lbl">Next →</span>#995 Minimum Number of K Consecutive Bit Flips</a></div>
 </div>

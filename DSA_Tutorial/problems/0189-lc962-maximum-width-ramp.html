@@ -36,35 +36,67 @@
 
 <h2>📋 The problem</h2><p>Return the widest pair (i, j) with i &lt; j and nums[i] ≤ nums[j].</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Monotonic Stack</strong> — Stack maintained in increasing or decreasing order — pops give next-greater/smaller in O(n).</p>
+<h2>🧭 How to think about it</h2>
+<p>A "ramp" is a pair <code>i &lt; j</code> with <code>nums[i] ≤ nums[j]</code>; maximize <code>j − i</code>. Build a <strong>decreasing stack of candidate left ends</strong> (only indices where the value is smaller than everything before could ever be a useful <code>i</code>). Then scan <code>j</code> from the <strong>right</strong>, popping candidates that <code>nums[j]</code> can satisfy, recording the width.</p>
 
-<h2>Why this pattern?</h2><ul><li>brackets/tags to match or validate</li><li>"next greater / next warmer / previous smaller" element</li><li>histogram areas, trapped water, "can see over"</li><li>evaluate/parse an expression, decode nested strings</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Stack master template and adapt the marked parts to this problem:</p><pre><code># Monotonic (decreasing) stack — next greater element
-stack = []                              # holds INDICES of unresolved elements
-res = [-1] * len(nums)
-for i, x in enumerate(nums):
-    while stack and nums[stack[-1]] &lt; x:   # x resolves the waiting ones
-        j = stack.pop()
-        res[j] = x                          # x is j's next greater
-    stack.append(i)
+<h2>🐢 Brute force first</h2>
+<p>All pairs → O(n²). The candidate-stack + right scan is O(n).</p>
 
-# Matching
-for ch in s:
-    if ch in pairs:  stack.append(ch)
-    elif not stack or pairs[stack.pop()] != ch:
-        return False
-return not stack</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> a good left end is a "prefix minimum" position — push indices where <code>nums</code> strictly decreases. Scanning <code>j</code> from the right, while <code>nums[stack top] ≤ nums[j]</code>, that top is a valid <code>i</code> giving the widest ramp for this <code>j</code> — pop it and update the best width.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Build a stack of indices with strictly decreasing values (left-to-right).</li>
+<li>For <code>j</code> from right to left: while the top's value ≤ <code>nums[j]</code>, pop and update <code>best = max(best, j − top)</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — nums = [6,0,8,2,1,5]</h2>
+<pre class="viz">decreasing candidates: indices 0(6),1(0)
+scan j from right: j=5(5)≥0 pop1 width4 ; ≥6? no → j=2(8)≥6 pop0 width2
+best = 4</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def maxWidthRamp(nums):
+    stack = []
+    for i, x in enumerate(nums):
+        if not stack or nums[stack[-1]] &gt; x:
+            stack.append(i)               # decreasing candidate left ends
+    best = 0
+    for j in range(len(nums) - 1, -1, -1):
+        while stack and nums[stack[-1]] &lt;= nums[j]:
+            best = max(best, j - stack.pop())
+        if not stack:
+            break
+    return best</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — build then a single right scan. <strong>Space O(n)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Strictly decreasing → no ramp → 0.</li>
+<li>Equal values → valid (≤).</li>
+<li>Sorted ascending → width <code>n − 1</code>.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Building candidate ends with <code>≥</code> (must be strictly decreasing).</li>
+<li>Scanning <code>j</code> left-to-right (misses the widest match).</li>
+<li>Not stopping when the stack empties.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Max width with strict inequality → adjust the comparison.</li>
+<li>Largest rectangle uses related monotonic ideas (<a href="0202-lc84-largest-rectangle-in-histogram.html">#84</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0202-lc84-largest-rectangle-in-histogram.html">#84</a> · <a href="0185-lc739-daily-temperatures.html">#739</a> · <a href="0181-lc496-next-greater-element-i.html">#496</a></p>
+
 
 <div class="pager"><a href="../problems/0188-lc907-sum-of-subarray-minimums.html"><span class="lbl">← Previous</span>#907 Sum of Subarray Minimums</a><a href="../problems/0190-lc1475-final-prices-with-a-special-discount-in-a-shop.html" style="text-align:right"><span class="lbl">Next →</span>#1475 Final Prices With a Special Discount in a Shop</a></div>
 </div>

@@ -36,35 +36,69 @@
 
 <h2>📋 The problem</h2><p>Delete the minimum number of parentheses so the string becomes valid; return one result.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Valid Parentheses Matching</strong> — Push openers, pop on matching closer — extends to multi-bracket and nested expressions.</p>
+<h2>🧭 How to think about it</h2>
+<p>Delete the fewest parentheses so the string is valid (letters stay). Use a <strong>stack of indices of unmatched <code>'('</code></strong>. A <code>')'</code> with no open partner is itself invalid — mark it for removal. Whatever <code>'('</code> indices remain on the stack at the end are also unmatched — remove them too.</p>
 
-<h2>Why this pattern?</h2><ul><li>brackets/tags to match or validate</li><li>"next greater / next warmer / previous smaller" element</li><li>histogram areas, trapped water, "can see over"</li><li>evaluate/parse an expression, decode nested strings</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Stack master template and adapt the marked parts to this problem:</p><pre><code># Monotonic (decreasing) stack — next greater element
-stack = []                              # holds INDICES of unresolved elements
-res = [-1] * len(nums)
-for i, x in enumerate(nums):
-    while stack and nums[stack[-1]] &lt; x:   # x resolves the waiting ones
-        j = stack.pop()
-        res[j] = x                          # x is j's next greater
-    stack.append(i)
+<h2>🐢 Brute force first</h2>
+<p>Trying deletions combinatorially is exponential. One stack pass identifies exactly the indices to drop in O(n).</p>
 
-# Matching
-for ch in s:
-    if ch in pairs:  stack.append(ch)
-    elif not stack or pairs[stack.pop()] != ch:
-        return False
-return not stack</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> push each <code>'('</code>'s index; on <code>')'</code>, pop a matching <code>'('</code> if available, else record this <code>')'</code> as removable. Leftover <code>'('</code> indices are removable. Rebuild the string skipping all removable indices.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Scan; track a stack of <code>'('</code> indices and a set of indices to remove.</li>
+<li>Unmatched <code>')'</code> → add to the remove set.</li>
+<li>Add leftover stack indices to the remove set; build the result skipping them.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — s = "a)b(c)d"</h2>
+<pre class="viz">a ; ) unmatched → remove idx1 ; b ; ( push idx3 ; c ; ) match pop3 ; d
+remove {1} → "ab(c)d"</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def minRemoveToMakeValid(s):
+    s = list(s)
+    stack = []                            # indices of unmatched '('
+    for i, c in enumerate(s):
+        if c == '(':
+            stack.append(i)
+        elif c == ')':
+            if stack:
+                stack.pop()               # matched
+            else:
+                s[i] = ''                 # unmatched ')' → delete
+    for i in stack:                       # unmatched '(' → delete
+        s[i] = ''
+    return ''.join(s)</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong>, <strong>Space O(n)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>No parentheses → unchanged.</li>
+<li>All unmatched → all removed.</li>
+<li>Already valid → unchanged.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Removing letters by mistake.</li>
+<li>Forgetting to delete leftover unmatched <code>'('</code>.</li>
+<li>Editing the string while iterating by value (use indices).</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Minimum insertions instead (<a href="0174-lc921-minimum-add-to-make-parentheses-valid.html">#921</a>).</li>
+<li>Return the number removed, not the string.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0174-lc921-minimum-add-to-make-parentheses-valid.html">#921</a> · <a href="0171-lc20-valid-parentheses.html">#20</a> · <a href="0176-lc1963-minimum-number-of-swaps-to-make-the-string-balanced.html">#1963</a></p>
+
 
 <div class="pager"><a href="../problems/0174-lc921-minimum-add-to-make-parentheses-valid.html"><span class="lbl">← Previous</span>#921 Minimum Add to Make Parentheses Valid</a><a href="../problems/0176-lc1963-minimum-number-of-swaps-to-make-the-string-balanced.html" style="text-align:right"><span class="lbl">Next →</span>#1963 Minimum Number of Swaps to Make the String Balanced</a></div>
 </div>

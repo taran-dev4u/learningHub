@@ -36,34 +36,64 @@
 
 <h2>📋 The problem</h2><p>Return the k-th smallest value in a binary search tree.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Tree DFS - Recursive Inorder Traversal</strong> — Visit left, root, right — yields sorted order on a BST; used for kth-smallest, BST validation.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Inorder traversal of a BST yields sorted order; stop at the k-th visit.</div>
-<h2>Why this pattern?</h2><ul><li>"level", "depth", "nearest", "zigzag by rows" → BFS</li><li>"path sum", "ancestor", "validate", "diameter" → DFS</li><li>BST + "k-th smallest / sorted order" → inorder</li><li>"serialize / reconstruct" → preorder</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Tree Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>def dfs(node, state):                 # state flows DOWN (bounds, path...)
-    if not node:
-        return base                       # e.g. 0, True, None
-    L = dfs(node.left,  new_state)
-    R = dfs(node.right, new_state)
-    return combine(node.val, L, R)        # answer flows UP
+<h2>🧭 How to think about it</h2>
+<p>Inorder traversal of a BST produces values in ascending order, so the <code>k</code>-th value it emits is the answer. Walk inorder and stop as soon as you've counted <code>k</code> nodes — no need to traverse the whole tree.</p>
 
-from collections import deque             # BFS by levels
-q = deque([root])
-while q:
-    for _ in range(len(q)):               # freeze current level size
-        node = q.popleft()
-        if node.left:  q.append(node.left)
-        if node.right: q.append(node.right)</code></pre>
-<h2>How to work on it now</h2>
+<h2>🐢 Brute force first</h2>
+<p>Full inorder into a list, return index <code>k−1</code> → O(n). Early-stopping inorder returns after visiting only <code>k</code> nodes.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> use the iterative inorder with a stack and a counter; decrement <code>k</code> each time you pop a node, and return that node's value when <code>k</code> hits 0.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Push the left spine; pop a node (next smallest).</li>
+<li>Decrement <code>k</code>; if 0, return that value.</li>
+<li>Otherwise descend into the right subtree and continue.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — BST [3,1,4,null,2], k=1</h2>
+<pre class="viz">inorder: 1,2,3,4 ; stop at 1st → 1</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def kthSmallest(root, k):
+    stack, cur = [], root
+    while cur or stack:
+        while cur:
+            stack.append(cur); cur = cur.left
+        cur = stack.pop()
+        k -= 1
+        if k == 0:
+            return cur.val             # k-th smallest reached
+        cur = cur.right</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(h + k)</strong> — descend then pop k nodes. <strong>Space O(h)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li><code>k = 1</code> → the minimum (leftmost).</li>
+<li><code>k = n</code> → the maximum.</li>
+<li>Frequent modifications → keep subtree counts for faster repeated queries.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Traversing the whole tree instead of stopping at <code>k</code>.</li>
+<li>Off-by-one on the counter (decrement then compare to 0).</li>
+<li>Not exploiting the BST/inorder ordering.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>k-th largest → reverse inorder.</li>
+<li>Many queries with updates → augment nodes with subtree sizes.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0108-lc94-binary-tree-inorder-traversal.html">#94</a> · <a href="0112-lc173-binary-search-tree-iterator.html">#173</a> · <a href="0113-lc230-kth-smallest-element-in-a-bst.html">#230</a></p>
+
 
 <div class="pager"><a href="../problems/0112-lc173-binary-search-tree-iterator.html"><span class="lbl">← Previous</span>#173 Binary Search Tree Iterator</a><a href="../problems/0114-lc285-inorder-successor-in-bst.html" style="text-align:right"><span class="lbl">Next →</span>#285 Inorder Successor in BST</a></div>
 </div>

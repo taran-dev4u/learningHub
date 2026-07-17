@@ -36,33 +36,79 @@
 <p class="progress-note">This problem also appears under: <a href="0689-lc148-sort-list.html">Sorting Algorithms &amp; Selection</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Sort a linked list in O(n log n) time (constant extra space is the follow-up).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Reordering / Partitioning</strong> — Split the list around a pivot (value, midpoint) and reattach — partition or zigzag-reorder.</p>
+<h2>🧭 How to think about it</h2>
+<p>Sort a linked list in O(n log n). <strong>Merge sort</strong> is the natural fit: splitting a list is cheap (find the middle with fast/slow) and merging two sorted lists is the <a href="0069-lc21-merge-two-sorted-lists.html">#21</a> routine you already know. Quicksort on lists is awkward because you can't index; merge sort wins.</p>
 
-<h2>Why this pattern?</h2><ul><li>input is a linked list (that alone is the signal)</li><li>"reverse", "reorder", "swap in pairs", "rotate" nodes</li><li>"k-th from the end", "middle", "cycle" → fast &amp; slow</li><li>"merge k sorted lists" → pairwise merge or heap of heads</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Linked List Manipulation master template and adapt the marked parts to this problem:</p><pre><code>dummy = ListNode(0, head)            # dummy head: prev of the real head
-prev, cur = dummy, head
+<h2>🐢 Brute force first</h2>
+<p>Dump values into an array, sort, rebuild → O(n log n) time but O(n) space and it ignores the list structure. Top-down merge sort is O(n log n) with O(log n) stack; bottom-up reaches O(1) space.</p>
 
-# In-place reversal core
-p = None
-while cur:
-    cur.next, p, cur = p, cur, cur.next
-# p is the new head
+<div class="insight">💡 <strong>Key insight:</strong> recursively split the list in half (slow/fast finds the midpoint; cut it), sort each half, then merge. The merge is exactly Merge Two Sorted Lists.</div>
 
-# Fast &amp; slow
-slow = fast = head
-while fast and fast.next:
-    slow, fast = slow.next, fast.next.next   # slow = middle when fast ends</code></pre>
-<h2>How to work on it now</h2>
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Base case: 0 or 1 node → already sorted.</li>
+<li>Find the middle, split into two halves.</li>
+<li>Recursively sort both halves.</li>
+<li>Merge the two sorted halves.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — 4→2→1→3</h2>
+<pre class="viz">split → [4→2] [1→3]
+sort → [2→4] [1→3]
+merge → 1→2→3→4</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def sortList(head):
+    if not head or not head.next:
+        return head
+    # split at the middle
+    slow, fast = head, head.next
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+    mid = slow.next
+    slow.next = None
+    left = sortList(head)
+    right = sortList(mid)
+    # merge two sorted halves
+    dummy = tail = ListNode()
+    while left and right:
+        if left.val &lt;= right.val:
+            tail.next = left; left = left.next
+        else:
+            tail.next = right; right = right.next
+        tail = tail.next
+    tail.next = left or right
+    return dummy.next</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n log n)</strong> — log n levels, O(n) merge each. <strong>Space O(log n)</strong> recursion stack (O(1) for the bottom-up iterative version).</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Empty or single node → returned directly.</li>
+<li>Already sorted → still O(n log n) but merges are cheap.</li>
+<li>Duplicates → the <code>≤</code> merge keeps them together.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Not cutting the list at the middle (<code>slow.next = None</code>) → infinite recursion.</li>
+<li>Using <code>fast = head</code> instead of <code>head.next</code> can mis-split a 2-node list into an infinite loop.</li>
+<li>Reaching for quicksort and struggling with partitioning a list.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Bottom-up merge sort → true O(1) space.</li>
+<li>Merge k sorted lists (<a href="0214-lc23-merge-k-sorted-lists.html">#23</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0069-lc21-merge-two-sorted-lists.html">#21</a> · <a href="0214-lc23-merge-k-sorted-lists.html">#23</a> · <a href="0033-lc876-middle-of-the-linked-list.html">#876</a></p>
+
 
 <div class="pager"><a href="../problems/0076-lc143-reorder-list.html"><span class="lbl">← Previous</span>#143 Reorder List</a><a href="../problems/0078-lc328-odd-even-linked-list.html" style="text-align:right"><span class="lbl">Next →</span>#328 Odd Even Linked List</a></div>
 </div>

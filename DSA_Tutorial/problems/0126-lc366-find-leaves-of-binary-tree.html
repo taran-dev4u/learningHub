@@ -36,34 +36,68 @@
 <p class="progress-note">This problem also appears under: <a href="0609-lc366-find-leaves-of-binary-tree.html">Tree Dynamic Programming</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Repeatedly remove all leaves of a binary tree, collecting each wave of leaves until the tree is empty.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Tree DFS - Recursive Postorder Traversal</strong> — Visit left, right, then root — used when children's results are needed before computing the parent.</p>
+<h2>🧭 How to think about it</h2>
+<p>Repeatedly strip off all current leaves and group them, until the tree is empty. Instead of literally deleting layers, notice that a node's <strong>height from the bottom</strong> (leaf = 0) is exactly the round in which it gets removed. So group nodes by that height.</p>
 
-<h2>Why this pattern?</h2><ul><li>"level", "depth", "nearest", "zigzag by rows" → BFS</li><li>"path sum", "ancestor", "validate", "diameter" → DFS</li><li>BST + "k-th smallest / sorted order" → inorder</li><li>"serialize / reconstruct" → preorder</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Tree Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>def dfs(node, state):                 # state flows DOWN (bounds, path...)
-    if not node:
-        return base                       # e.g. 0, True, None
-    L = dfs(node.left,  new_state)
-    R = dfs(node.right, new_state)
-    return combine(node.val, L, R)        # answer flows UP
+<h2>🐢 Brute force first</h2>
+<p>Actually removing leaves and re-scanning each round is O(n·layers). One postorder pass computing bottom-up heights buckets every node in O(n).</p>
 
-from collections import deque             # BFS by levels
-q = deque([root])
-while q:
-    for _ in range(len(q)):               # freeze current level size
-        node = q.popleft()
-        if node.left:  q.append(node.left)
-        if node.right: q.append(node.right)</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> <code>height(node) = 1 + max(height(left), height(right))</code> with leaves at height 0. A node's height equals its removal round, so append its value to <code>result[height]</code> during the postorder.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Postorder DFS returning each node's bottom-up height.</li>
+<li>Append the node's value to <code>result[height]</code> (grow the list as needed).</li>
+<li>Return the list of layers.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — [1,2,3,4,5]</h2>
+<pre class="viz">heights: 4→0,5→0,3→0,2→1,1→2
+layer0 [4,5,3] ; layer1 [2] ; layer2 [1]
+Result: [[4,5,3],[2],[1]]</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def findLeaves(root):
+    res = []
+    def height(node):
+        if not node:
+            return -1                   # so a leaf gets height 0
+        h = 1 + max(height(node.left), height(node.right))
+        if h == len(res):
+            res.append([])              # new layer
+        res[h].append(node.val)
+        return h
+    height(root)
+    return res</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — one pass. <strong>Space O(n)</strong> for output plus O(h) recursion.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Single node → <code>[[val]]</code>.</li>
+<li>Skewed tree → each node in its own layer.</li>
+<li>Empty tree → <code>[]</code>.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Actually deleting nodes and re-traversing (slow and mutating).</li>
+<li>Using top-down depth instead of bottom-up height.</li>
+<li>Off-by-one making leaves height 1 instead of 0.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Return heights instead of grouping.</li>
+<li>Delete-and-return-forest style problems (<a href="0130-lc1110-delete-nodes-and-return-forest.html">#1110</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0120-lc104-maximum-depth-of-binary-tree.html">#104</a> · <a href="0130-lc1110-delete-nodes-and-return-forest.html">#1110</a> · <a href="0128-lc543-diameter-of-binary-tree.html">#543</a></p>
+
 
 <div class="pager"><a href="../problems/0125-lc337-house-robber-iii.html"><span class="lbl">← Previous</span>#337 House Robber III</a><a href="../problems/0127-lc437-path-sum-iii.html" style="text-align:right"><span class="lbl">Next →</span>#437 Path Sum III</a></div>
 </div>

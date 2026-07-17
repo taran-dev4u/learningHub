@@ -36,35 +36,65 @@
 
 <h2>📋 The problem</h2><p>Design a class where each new stock price returns its span: how many consecutive prices up to today are ≤ today's.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Monotonic Stack</strong> — Stack maintained in increasing or decreasing order — pops give next-greater/smaller in O(n).</p>
+<h2>🧭 How to think about it</h2>
+<p>For each new stock price, the "span" is how many consecutive previous days (including today) had a price ≤ today's. Keep a <strong>monotonic decreasing stack</strong> of <code>(price, span)</code> pairs: when a new price meets or exceeds earlier ones, absorb their spans.</p>
 
-<h2>Why this pattern?</h2><ul><li>brackets/tags to match or validate</li><li>"next greater / next warmer / previous smaller" element</li><li>histogram areas, trapped water, "can see over"</li><li>evaluate/parse an expression, decode nested strings</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Stack master template and adapt the marked parts to this problem:</p><pre><code># Monotonic (decreasing) stack — next greater element
-stack = []                              # holds INDICES of unresolved elements
-res = [-1] * len(nums)
-for i, x in enumerate(nums):
-    while stack and nums[stack[-1]] &lt; x:   # x resolves the waiting ones
-        j = stack.pop()
-        res[j] = x                          # x is j's next greater
-    stack.append(i)
+<h2>🐢 Brute force first</h2>
+<p>Scan back each day counting ≤ prices → O(n²) overall. The stack makes each call O(1) amortized.</p>
 
-# Matching
-for ch in s:
-    if ch in pairs:  stack.append(ch)
-    elif not stack or pairs[stack.pop()] != ch:
-        return False
-return not stack</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> the current day's span starts at 1; while the stack top's price ≤ today's, pop it and add its span (those days are dominated by today). Push <code>(price, accumulated span)</code>.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>On <code>next(price)</code>: <code>span = 1</code>.</li>
+<li>While the top price ≤ <code>price</code>, pop and add its span.</li>
+<li>Push <code>(price, span)</code>; return <code>span</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — prices 100,80,60,70,60,75,85</h2>
+<pre class="viz">100→1 ; 80→1 ; 60→1 ; 70 absorbs 60 → 2 ; 60→1 ; 75 absorbs 60,70 → 4 ; 85 absorbs 75,80 → 6
+Spans: [1,1,1,2,1,4,6]</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>class StockSpanner:
+    def __init__(self):
+        self.stack = []                   # (price, span), decreasing prices
+
+    def next(self, price):
+        span = 1
+        while self.stack and self.stack[-1][0] &lt;= price:
+            span += self.stack.pop()[1]   # absorb dominated spans
+        self.stack.append((price, span))
+        return span</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(1) amortized</strong> per call. <strong>Space O(n)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Strictly increasing prices → spans grow 1,2,3,…</li>
+<li>Strictly decreasing → every span is 1.</li>
+<li>Equal prices → counted (≤).</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Using <code>&lt;</code> instead of <code>≤</code> (equal prior days count).</li>
+<li>Storing only prices and recomputing spans.</li>
+<li>Forgetting to seed the span at 1.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Daily temperatures (<a href="0185-lc739-daily-temperatures.html">#739</a>) is the "next greater" mirror.</li>
+<li>Sliding-window max (<a href="0166-lc239-sliding-window-maximum.html">#239</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0185-lc739-daily-temperatures.html">#739</a> · <a href="0181-lc496-next-greater-element-i.html">#496</a> · <a href="0202-lc84-largest-rectangle-in-histogram.html">#84</a></p>
+
 
 <div class="pager"><a href="../problems/0186-lc853-car-fleet.html"><span class="lbl">← Previous</span>#853 Car Fleet</a><a href="../problems/0188-lc907-sum-of-subarray-minimums.html" style="text-align:right"><span class="lbl">Next →</span>#907 Sum of Subarray Minimums</a></div>
 </div>

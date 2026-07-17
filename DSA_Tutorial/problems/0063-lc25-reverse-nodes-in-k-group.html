@@ -36,33 +36,80 @@
 
 <h2>📋 The problem</h2><p>Reverse the nodes of a linked list k at a time; any final group shorter than k stays in original order.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>In-place Reversal</strong> — Iteratively reverse links with prev/curr/next pointers; recursive variant also classic.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Reverse in k-sized chunks: count k nodes, reverse them, reconnect; leave a short tail untouched.</div>
-<h2>Why this pattern?</h2><ul><li>input is a linked list (that alone is the signal)</li><li>"reverse", "reorder", "swap in pairs", "rotate" nodes</li><li>"k-th from the end", "middle", "cycle" → fast &amp; slow</li><li>"merge k sorted lists" → pairwise merge or heap of heads</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Linked List Manipulation master template and adapt the marked parts to this problem:</p><pre><code>dummy = ListNode(0, head)            # dummy head: prev of the real head
-prev, cur = dummy, head
+<h2>🧭 How to think about it</h2>
+<p>Reverse the list in chunks of <code>k</code>; if the final chunk has fewer than <code>k</code> nodes, leave it as-is. Do it by first <strong>checking</strong> that <code>k</code> nodes remain, then reversing exactly those <code>k</code>, and reconnecting the reversed block to the pieces before and after.</p>
 
-# In-place reversal core
-p = None
-while cur:
-    cur.next, p, cur = p, cur, cur.next
-# p is the new head
+<h2>🐢 Brute force first</h2>
+<p>Copy values into an array, reverse each k-block, write back — O(n) time and O(n) space, and it dodges the pointer work. The in-place version is the intended O(1)-space answer.</p>
 
-# Fast &amp; slow
-slow = fast = head
-while fast and fast.next:
-    slow, fast = slow.next, fast.next.next   # slow = middle when fast ends</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> keep a <code>group_prev</code> before each block. Walk k nodes to confirm a full group exists and to find the node <em>after</em> the group (<code>kth.next</code>). Reverse the k nodes with the standard prev/cur loop, then splice: <code>group_prev.next</code> becomes the new head, and the old first node becomes the next <code>group_prev</code>.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li><code>dummy → head</code>; <code>group_prev = dummy</code>.</li>
+<li>Find the k-th node from <code>group_prev</code>; if fewer than k remain, stop.</li>
+<li>Reverse the k nodes; reconnect the block between the previous and next segments.</li>
+<li>Move <code>group_prev</code> to the block's new tail.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — 1→2→3→4→5, k = 2</h2>
+<pre class="viz">group1 [1,2] reversed → 2→1 ; dummy→2→1→3→4→5 ; group_prev=1
+group2 [3,4] reversed → 4→3 ; ...→1→4→3→5 ; group_prev=3
+group3 [5] &lt; k → leave
+Result: 2→1→4→3→5</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def reverseKGroup(head, k):
+    dummy = ListNode(0, head)
+    group_prev = dummy
+    while True:
+        # find the k-th node ahead of group_prev
+        kth = group_prev
+        for _ in range(k):
+            kth = kth.next
+            if not kth:
+                return dummy.next        # fewer than k left → done
+        group_next = kth.next
+        # reverse the k nodes [group_prev.next .. kth]
+        prev, cur = group_next, group_prev.next
+        while cur != group_next:
+            nxt = cur.next
+            cur.next = prev
+            prev = cur
+            cur = nxt
+        # reconnect: old first node is the new tail
+        new_tail = group_prev.next
+        group_prev.next = kth            # kth is the new head of the block
+        group_prev = new_tail</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — each node is visited a constant number of times. <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li><code>k = 1</code> → no change.</li>
+<li>Length not divisible by k → the short tail is left untouched.</li>
+<li>Length &lt; k → whole list unchanged.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Reversing before confirming a full group of k exists.</li>
+<li>Losing the connection to <code>group_next</code> — reverse toward it as the sentinel.</li>
+<li>Forgetting to update <code>group_prev</code> to the block's new tail.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Swap pairs is k = 2 (<a href="0062-lc24-swap-nodes-in-pairs.html">#24</a>).</li>
+<li>Reverse the leftover tail too → drop the "full group" check.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0062-lc24-swap-nodes-in-pairs.html">#24</a> · <a href="0067-lc206-reverse-linked-list.html">#206</a> · <a href="0066-lc92-reverse-linked-list-ii.html">#92</a></p>
+
 
 <div class="pager"><a href="../problems/0062-lc24-swap-nodes-in-pairs.html"><span class="lbl">← Previous</span>#24 Swap Nodes in Pairs</a><a href="../problems/0064-lc82-remove-duplicates-from-sorted-list-ii.html" style="text-align:right"><span class="lbl">Next →</span>#82 Remove Duplicates from Sorted List II</a></div>
 </div>

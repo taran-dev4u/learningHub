@@ -36,35 +36,70 @@
 
 <h2>📋 The problem</h2><p>Return the smallest integer larger than n using exactly the same digits (or -1 if none fits in 32 bits).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Monotonic Stack</strong> — Stack maintained in increasing or decreasing order — pops give next-greater/smaller in O(n).</p>
+<h2>🧭 How to think about it</h2>
+<p>Given an integer, find the smallest larger integer using the same digits (or −1 if none, or if it overflows 32 bits). This is the classic <strong>next permutation</strong> on the digit sequence: find the rightmost ascending step, swap it with the next-larger digit to its right, then sort the tail ascending.</p>
 
-<h2>Why this pattern?</h2><ul><li>brackets/tags to match or validate</li><li>"next greater / next warmer / previous smaller" element</li><li>histogram areas, trapped water, "can see over"</li><li>evaluate/parse an expression, decode nested strings</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Stack master template and adapt the marked parts to this problem:</p><pre><code># Monotonic (decreasing) stack — next greater element
-stack = []                              # holds INDICES of unresolved elements
-res = [-1] * len(nums)
-for i, x in enumerate(nums):
-    while stack and nums[stack[-1]] &lt; x:   # x resolves the waiting ones
-        j = stack.pop()
-        res[j] = x                          # x is j's next greater
-    stack.append(i)
+<h2>🐢 Brute force first</h2>
+<p>Generating all permutations and picking the next is factorial. Next-permutation is O(d) over the digits.</p>
 
-# Matching
-for ch in s:
-    if ch in pairs:  stack.append(ch)
-    elif not stack or pairs[stack.pop()] != ch:
-        return False
-return not stack</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> scan from the right for the first digit smaller than the one after it (the "pivot"). Swap it with the smallest digit to its right that's still larger, then reverse (sort ascending) everything after the pivot — that's the minimal increase.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Find pivot <code>i</code> where <code>digits[i] &lt; digits[i+1]</code> (rightmost). None → −1.</li>
+<li>Find the rightmost <code>j &gt; i</code> with <code>digits[j] &gt; digits[i]</code>; swap.</li>
+<li>Reverse the suffix after <code>i</code>. Check the 32-bit bound.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — n = 12443322</h2>
+<pre class="viz">digits 1 2 4 4 3 3 2 2 ; pivot at index1 (2&lt;4)
+swap 2 with rightmost bigger (3) → 1 3 4 4 3 2 2 2 ; reverse suffix → 1 3 2 2 2 3 4 4
+Answer: 13222344</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def nextGreaterElement(n):
+    digits = list(str(n))
+    i = len(digits) - 2
+    while i &gt;= 0 and digits[i] &gt;= digits[i + 1]:
+        i -= 1                            # find the pivot
+    if i &lt; 0:
+        return -1                         # digits fully descending
+    j = len(digits) - 1
+    while digits[j] &lt;= digits[i]:
+        j -= 1                            # smallest digit &gt; pivot on the right
+    digits[i], digits[j] = digits[j], digits[i]
+    digits[i + 1:] = reversed(digits[i + 1:])   # minimal suffix
+    result = int(''.join(digits))
+    return result if result &lt; 2**31 else -1</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(d)</strong> in the digit count. <strong>Space O(d)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Descending digits (e.g., 4321) → −1.</li>
+<li>Overflows 32-bit → −1.</li>
+<li>Single digit → −1.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Sorting the whole suffix instead of reversing (works but slower; reversing is enough after the swap).</li>
+<li>Choosing the wrong swap partner (must be the smallest digit still larger than the pivot).</li>
+<li>Forgetting the 32-bit overflow check.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Next permutation of an array (LC 31).</li>
+<li>Previous smaller permutation → mirror the logic.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0181-lc496-next-greater-element-i.html">#496</a> · <a href="0182-lc503-next-greater-element-ii.html">#503</a> · <a href="0360-lc31-next-permutation.html">#31</a></p>
+
 
 <div class="pager"><a href="../problems/0182-lc503-next-greater-element-ii.html"><span class="lbl">← Previous</span>#503 Next Greater Element II</a><a href="../problems/0184-lc735-asteroid-collision.html" style="text-align:right"><span class="lbl">Next →</span>#735 Asteroid Collision</a></div>
 </div>

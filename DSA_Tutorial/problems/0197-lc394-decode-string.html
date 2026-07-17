@@ -36,35 +36,70 @@
 
 <h2>📋 The problem</h2><p>Decode strings like 3[a2[c]] where k[str] means repeat str k times; return the expanded string.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Expression Evaluation / RPN / Infix</strong> — Two stacks for operators and operands, or evaluate Reverse Polish Notation directly.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Stack of (repeat_count, string_so_far); on ']' pop and append repeated segment.</div>
-<h2>Why this pattern?</h2><ul><li>brackets/tags to match or validate</li><li>"next greater / next warmer / previous smaller" element</li><li>histogram areas, trapped water, "can see over"</li><li>evaluate/parse an expression, decode nested strings</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Stack master template and adapt the marked parts to this problem:</p><pre><code># Monotonic (decreasing) stack — next greater element
-stack = []                              # holds INDICES of unresolved elements
-res = [-1] * len(nums)
-for i, x in enumerate(nums):
-    while stack and nums[stack[-1]] &lt; x:   # x resolves the waiting ones
-        j = stack.pop()
-        res[j] = x                          # x is j's next greater
-    stack.append(i)
+<h2>🧭 How to think about it</h2>
+<p>Decode strings like <code>3[a2[c]]</code> into <code>accaccacc</code>. Nested repeats call for a <strong>stack</strong>: push the current build state and repeat count when you hit <code>'['</code>, and on <code>']'</code> pop and append the just-built segment repeated.</p>
 
-# Matching
-for ch in s:
-    if ch in pairs:  stack.append(ch)
-    elif not stack or pairs[stack.pop()] != ch:
-        return False
-return not stack</code></pre>
-<h2>How to work on it now</h2>
+<h2>🐢 Brute force first</h2>
+<p>Recursion mirrors the nesting and is equally valid. The explicit stack avoids deep call stacks and is O(total output).</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> keep a running <code>current</code> string and <code>num</code>. On <code>'['</code>, push <code>(current, num)</code> and reset. On <code>']'</code>, pop <code>(prev, k)</code> and set <code>current = prev + current × k</code>. Digits accumulate into <code>num</code>; letters append to <code>current</code>.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Track <code>current</code> (string) and <code>num</code> (count).</li>
+<li>Digit → build <code>num</code>. <code>'['</code> → push state, reset. <code>']'</code> → pop and expand. Letter → append.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — "3[a2[c]]"</h2>
+<pre class="viz">num3 ( push ("",3) ) ; a → "a" ; num2 ( push("a",2) ) ; c → "c" ; ] → "a"+"c"*2="acc" ; ] → ""+"acc"*3
+Answer: "accaccacc"</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def decodeString(s):
+    stack = []
+    current = ""
+    num = 0
+    for c in s:
+        if c.isdigit():
+            num = num * 10 + int(c)
+        elif c == '[':
+            stack.append((current, num))  # save context
+            current = ""; num = 0
+        elif c == ']':
+            prev, k = stack.pop()
+            current = prev + current * k  # expand the segment
+        else:
+            current += c
+    return current</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(total output length)</strong>. <strong>Space O(depth + output)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Multi-digit counts (e.g., <code>12[a]</code>).</li>
+<li>Nested brackets → the stack handles arbitrary depth.</li>
+<li>Plain letters without brackets → returned as-is.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Resetting <code>num</code> or <code>current</code> at the wrong moment.</li>
+<li>Multiplying by the wrong saved count.</li>
+<li>Only handling single-digit counts.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Encode a string with run-length + brackets.</li>
+<li>Evaluate nested expressions (<a href="0198-lc772-basic-calculator-iii.html">#772</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0195-lc224-basic-calculator.html">#224</a> · <a href="0198-lc772-basic-calculator-iii.html">#772</a> · <a href="0171-lc20-valid-parentheses.html">#20</a></p>
+
 
 <div class="pager"><a href="../problems/0196-lc227-basic-calculator-ii.html"><span class="lbl">← Previous</span>#227 Basic Calculator II</a><a href="../problems/0198-lc772-basic-calculator-iii.html" style="text-align:right"><span class="lbl">Next →</span>#772 Basic Calculator III</a></div>
 </div>

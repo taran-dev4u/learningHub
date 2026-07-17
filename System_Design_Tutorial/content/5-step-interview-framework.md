@@ -5,6 +5,23 @@ Going into a System Design interview without a strict framework is like building
 
 This module provides the ultimate **5-Step System Design Framework**. Treat this like a religion. If you follow these 5 steps in order, you will naturally control the pace of the interview, cover all the necessary bases, and demonstrate extreme seniority to your interviewer.
 
+```text
+📁 System Design Framework
+├── 📄 1. Clarify Requirements (5 min)
+│   ├── Functional (Core flows)
+│   └── Non-Functional (Scale & Constraints)
+├── 📄 2. Back-of-Envelope (5 min)
+│   ├── QPS
+│   └── Storage & Bandwidth
+├── 📄 3. High-Level Design (15 min)
+│   └── Component Architecture & Request Tracing
+├── 📄 4. Deep Dives (15 min)
+│   ├── Schema Design
+│   └── Bottleneck Mitigation
+└── 📄 5. Trade-offs (5 min)
+    └── Identifying System Limits
+```
+
 ---
 
 ## Step 1 — Clarify requirements (5 min)
@@ -46,6 +63,22 @@ Because these numbers dictate your design. If you calculate 100 QPS and 50 GB of
 This is the core of the interview. You will draw your Level 2 Container Diagram.
 
 **The Golden Rule:** Draw 4 to 8 boxes. No more, no less.
+
+```mermaid
+flowchart LR
+    Client([Client App]) -->|HTTP Request| LB(Load Balancer)
+    LB --> API(Timeline API Service)
+
+    API -.->|1. Check Cache| Cache[(Redis Cache)]
+    API -.->|2. Cache Miss| DB[(Cassandra DB)]
+    DB -.->|3. Update Cache| Cache
+
+    style Client fill:#3b82f6,stroke:#1d4ed8,color:#fff
+    style LB fill:#6366f1,stroke:#4338ca,color:#fff
+    style API fill:#10b981,stroke:#047857,color:#fff
+    style Cache fill:#f59e0b,stroke:#b45309,color:#fff
+    style DB fill:#ec4899,stroke:#be185d,color:#fff
+```
 
 ### Trace the Core Request Flow
 Do not just draw boxes randomly. Walk the interviewer through the exact path of a request:

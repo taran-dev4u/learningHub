@@ -36,34 +36,77 @@
 
 <h2>📋 The problem</h2><p>Return all node values at distance k from a target node in a binary tree (distance runs through parents too).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Tree DFS - Recursive Postorder Traversal</strong> — Visit left, right, then root — used when children's results are needed before computing the parent.</p>
+<h2>🧭 How to think about it</h2>
+<p>Find every node exactly <code>k</code> edges from a target node. In a tree, "distance" can go up toward the parent too, but tree nodes only know their children. The fix: first build a <strong>parent map</strong> so every node can move in all three directions, then run a plain <strong>BFS</strong> outward from the target for <code>k</code> levels.</p>
 
-<h2>Why this pattern?</h2><ul><li>"level", "depth", "nearest", "zigzag by rows" → BFS</li><li>"path sum", "ancestor", "validate", "diameter" → DFS</li><li>BST + "k-th smallest / sorted order" → inorder</li><li>"serialize / reconstruct" → preorder</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Tree Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>def dfs(node, state):                 # state flows DOWN (bounds, path...)
-    if not node:
-        return base                       # e.g. 0, True, None
-    L = dfs(node.left,  new_state)
-    R = dfs(node.right, new_state)
-    return combine(node.val, L, R)        # answer flows UP
+<h2>🐢 Brute force first</h2>
+<p>For each node compute its distance to the target via a path search → O(n²). Parent map + BFS is O(n).</p>
 
-from collections import deque             # BFS by levels
-q = deque([root])
-while q:
-    for _ in range(len(q)):               # freeze current level size
-        node = q.popleft()
-        if node.left:  q.append(node.left)
-        if node.right: q.append(node.right)</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> converting the tree into an undirected graph (each node linked to left, right, and parent) turns "distance k" into a standard BFS that stops after <code>k</code> rounds. A visited set prevents walking back.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>DFS to record each node's parent.</li>
+<li>BFS from the target, tracking visited nodes.</li>
+<li>After exactly <code>k</code> rounds, the queue holds the answer.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — target=5, k=2</h2>
+<pre class="viz">round0: {5}
+round1: neighbors of 5 (parent 3, children 6,2)
+round2: their unvisited neighbors → the distance-2 nodes
+Return the round-2 frontier</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>from collections import deque
+def distanceK(root, target, k):
+    parent = {}
+    def dfs(node, par):
+        if not node: return
+        parent[node] = par
+        dfs(node.left, node); dfs(node.right, node)
+    dfs(root, None)
+
+    visited = {target}
+    q = deque([target])
+    dist = 0
+    while q and dist &lt; k:
+        for _ in range(len(q)):
+            node = q.popleft()
+            for nxt in (node.left, node.right, parent[node]):
+                if nxt and nxt not in visited:
+                    visited.add(nxt); q.append(nxt)
+        dist += 1
+    return [n.val for n in q]</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — DFS plus BFS. <strong>Space O(n)</strong> for the parent map, visited set, and queue.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li><code>k = 0</code> → just the target.</li>
+<li><code>k</code> larger than the tree's reach → empty (queue empties first).</li>
+<li>Target is the root → only downward BFS matters.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Forgetting the parent direction → misses upward nodes.</li>
+<li>No visited set → walks back and loops.</li>
+<li>Stopping at the wrong round (off-by-one on <code>k</code>).</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Amount of time to infect a tree (BFS from a start) → same graph conversion.</li>
+<li>Distance between two nodes → LCA-based path length.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0133-lc236-lowest-common-ancestor-of-a-binary-tree.html">#236</a> · <a href="0084-lc102-binary-tree-level-order-traversal.html">#102</a> · <a href="0128-lc543-diameter-of-binary-tree.html">#543</a></p>
+
 
 <div class="pager"><a href="../problems/0128-lc543-diameter-of-binary-tree.html"><span class="lbl">← Previous</span>#543 Diameter of Binary Tree</a><a href="../problems/0130-lc1110-delete-nodes-and-return-forest.html" style="text-align:right"><span class="lbl">Next →</span>#1110 Delete Nodes And Return Forest</a></div>
 </div>

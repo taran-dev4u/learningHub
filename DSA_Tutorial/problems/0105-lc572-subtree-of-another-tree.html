@@ -36,34 +36,66 @@
 
 <h2>📋 The problem</h2><p>Decide whether one binary tree appears as a subtree of another.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Tree DFS - Recursive Preorder Traversal</strong> — Visit root, then left subtree, then right — used for tree cloning, serialization, path building.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>At each node of s, check isSameTree(node, t); or serialize both with null markers and substring-match.</div>
-<h2>Why this pattern?</h2><ul><li>"level", "depth", "nearest", "zigzag by rows" → BFS</li><li>"path sum", "ancestor", "validate", "diameter" → DFS</li><li>BST + "k-th smallest / sorted order" → inorder</li><li>"serialize / reconstruct" → preorder</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Tree Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>def dfs(node, state):                 # state flows DOWN (bounds, path...)
-    if not node:
-        return base                       # e.g. 0, True, None
-    L = dfs(node.left,  new_state)
-    R = dfs(node.right, new_state)
-    return combine(node.val, L, R)        # answer flows UP
+<h2>🧭 How to think about it</h2>
+<p>Is <code>subRoot</code> an exact subtree of <code>root</code>? At every node of <code>root</code>, ask "does the tree rooted here <em>equal</em> subRoot?" using the Same-Tree check. If any node matches, yes.</p>
 
-from collections import deque             # BFS by levels
-q = deque([root])
-while q:
-    for _ in range(len(q)):               # freeze current level size
-        node = q.popleft()
-        if node.left:  q.append(node.left)
-        if node.right: q.append(node.right)</code></pre>
-<h2>How to work on it now</h2>
+<h2>🐢 Brute force first</h2>
+<p>The node-by-node Same-Tree test is O(m·n) worst case. A serialization trick (compare with null markers, then substring-search) reaches O(m+n).</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> combine two recursions — an outer walk over <code>root</code> and an inner <code>isSameTree</code>. Return True if the current node matches subRoot, or if either child subtree contains it.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>If <code>root</code> is null → False (a non-null subRoot can't fit).</li>
+<li>If <code>isSameTree(root, subRoot)</code> → True.</li>
+<li>Else recurse into left or right.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — root [3,4,5,1,2], subRoot [4,1,2]</h2>
+<pre class="viz">at 3: same? no → check children
+at 4: same as [4,1,2]? yes → True</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def isSubtree(root, subRoot):
+    def same(a, b):
+        if not a and not b: return True
+        if not a or not b or a.val != b.val: return False
+        return same(a.left, b.left) and same(a.right, b.right)
+
+    if not root:
+        return False
+    if same(root, subRoot):
+        return True
+    return isSubtree(root.left, subRoot) or isSubtree(root.right, subRoot)</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(m·n)</strong> worst case — Same-Tree at each of m nodes. <strong>Space O(h)</strong> recursion. (Serialization variant: O(m+n).)</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li><code>subRoot</code> equal to the whole tree → True at the root.</li>
+<li>Single-node subRoot → matches any equal-valued leaf/subtree.</li>
+<li>subRoot larger than root → never matches.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Requiring only value containment, not exact structure — must match shape too.</li>
+<li>Substring serialization without null markers (e.g., "12" wrongly matching "123").</li>
+<li>Missing the null base case.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Serialize with markers and use KMP for O(m+n).</li>
+<li>Same tree (<a href="0095-lc100-same-tree.html">#100</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0095-lc100-same-tree.html">#100</a> · <a href="0096-lc101-symmetric-tree.html">#101</a> · <a href="0136-lc297-serialize-and-deserialize-binary-tree.html">#297</a></p>
+
 
 <div class="pager"><a href="../problems/0104-lc257-binary-tree-paths.html"><span class="lbl">← Previous</span>#257 Binary Tree Paths</a><a href="../problems/0106-lc988-smallest-string-starting-from-leaf.html" style="text-align:right"><span class="lbl">Next →</span>#988 Smallest String Starting From Leaf</a></div>
 </div>

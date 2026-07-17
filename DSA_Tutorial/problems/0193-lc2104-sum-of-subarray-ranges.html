@@ -36,35 +36,73 @@
 
 <h2>📋 The problem</h2><p>Return the sum over all subarrays of (max − min) — two monotonic-stack passes (sum of maxes minus sum of mins).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Monotonic Stack</strong> — Stack maintained in increasing or decreasing order — pops give next-greater/smaller in O(n).</p>
+<h2>🧭 How to think about it</h2>
+<p>The "range" of a subarray is its max minus its min; sum ranges over all subarrays. Since <code>Σ range = Σ max − Σ min</code>, compute the <strong>sum of subarray maximums</strong> and the <strong>sum of subarray minimums</strong> separately, each with a monotonic-stack contribution technique (<a href="0188-lc907-sum-of-subarray-minimums.html">#907</a>).</p>
 
-<h2>Why this pattern?</h2><ul><li>brackets/tags to match or validate</li><li>"next greater / next warmer / previous smaller" element</li><li>histogram areas, trapped water, "can see over"</li><li>evaluate/parse an expression, decode nested strings</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Stack master template and adapt the marked parts to this problem:</p><pre><code># Monotonic (decreasing) stack — next greater element
-stack = []                              # holds INDICES of unresolved elements
-res = [-1] * len(nums)
-for i, x in enumerate(nums):
-    while stack and nums[stack[-1]] &lt; x:   # x resolves the waiting ones
-        j = stack.pop()
-        res[j] = x                          # x is j's next greater
-    stack.append(i)
+<h2>🐢 Brute force first</h2>
+<p>All O(n²) subarrays tracking running max/min → O(n²) (fine for small n). The two contribution passes give O(n).</p>
 
-# Matching
-for ch in s:
-    if ch in pairs:  stack.append(ch)
-    elif not stack or pairs[stack.pop()] != ch:
-        return False
-return not stack</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> each element contributes to the max-sum over the subarrays where it's the maximum, and to the min-sum where it's the minimum. Compute both with previous/next boundary distances; the answer is <code>maxSum − minSum</code>.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Sum of subarray maximums via monotonic stacks (previous/next greater).</li>
+<li>Sum of subarray minimums via monotonic stacks (previous/next smaller).</li>
+<li>Return the difference.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — nums = [1,2,3]</h2>
+<pre class="viz">subarray ranges: [1]0 [2]0 [3]0 [1,2]1 [2,3]1 [1,2,3]2 → sum 4</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def subArrayRanges(nums):
+    n = len(nums)
+    def sum_extreme(sign):
+        # sign=+1 → sum of maxs ; sign=-1 → sum of mins (apply to -nums)
+        a = [sign * x for x in nums]
+        prev = [-1] * n; nxt = [n] * n; stack = []
+        for i in range(n):
+            while stack and a[stack[-1]] &lt; a[i]:
+                stack.pop()
+            prev[i] = stack[-1] if stack else -1
+            stack.append(i)
+        stack = []
+        for i in range(n - 1, -1, -1):
+            while stack and a[stack[-1]] &lt;= a[i]:
+                stack.pop()
+            nxt[i] = stack[-1] if stack else n
+            stack.append(i)
+        return sum(a[i] * (i - prev[i]) * (nxt[i] - i) for i in range(n))
+    return sum_extreme(1) + sum_extreme(-1)   # maxSum - minSum (via -nums)</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — four stack passes. <strong>Space O(n)</strong>. (A simple O(n²) double loop is also accepted for small inputs.)</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Single element → range 0.</li>
+<li>All equal → total 0.</li>
+<li>Duplicates → strict/non-strict split avoids double counting.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Mixing strict and non-strict inequalities inconsistently between the two sums.</li>
+<li>Forgetting that min-sum can be computed by negating and reusing the max-sum code.</li>
+<li>Overflow in fixed-width languages.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Sum of subarray minimums alone (<a href="0188-lc907-sum-of-subarray-minimums.html">#907</a>).</li>
+<li>Sum of subarray maximums alone.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0188-lc907-sum-of-subarray-minimums.html">#907</a> · <a href="0202-lc84-largest-rectangle-in-histogram.html">#84</a> · <a href="0185-lc739-daily-temperatures.html">#739</a></p>
+
 
 <div class="pager"><a href="../problems/0192-lc1944-number-of-visible-people-in-a-queue.html"><span class="lbl">← Previous</span>#1944 Number of Visible People in a Queue</a><a href="../problems/0194-lc150-evaluate-reverse-polish-notation.html" style="text-align:right"><span class="lbl">Next →</span>#150 Evaluate Reverse Polish Notation</a></div>
 </div>

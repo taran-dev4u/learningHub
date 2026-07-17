@@ -36,33 +36,61 @@
 
 <h2>📋 The problem</h2><p>Values lie in 1..n; return every value in that range missing from the array, without extra space beyond the output.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Cyclic Sort</strong> — Place each value at index value-1 by swapping — finds missing/duplicate numbers in O(n) O(1).</p>
+<h2>🧭 How to think about it</h2>
+<p>Values are in <code>1..n</code>; return those that never appear. Mirror of Find All Duplicates: mark each present value by negating its home slot, then any slot that stayed <strong>positive</strong> corresponds to a number nobody visited — that number is missing.</p>
 
-<h2>Why this pattern?</h2><ul><li>"rotate / transpose / flip" a matrix or array</li><li>"in place" / "O(1) extra space" on a grid problem</li><li>traverse in an unusual order (spiral, diagonal, zigzag)</li><li>mark/erase cells based on other cells (use the cells themselves as flags)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Array/Matrix Manipulation master template and adapt the marked parts to this problem:</p><pre><code># Rotate matrix 90° clockwise, in place
-n = len(matrix)
-for r in range(n):                     # 1) transpose (swap across diagonal)
-    for c in range(r + 1, n):
-        matrix[r][c], matrix[c][r] = matrix[c][r], matrix[r][c]
-for row in matrix:                     # 2) reverse each row
-    row.reverse()
+<h2>🐢 Brute force first</h2>
+<p>A set of present values, then scan 1..n → O(n) time, O(n) space. Sign-marking makes it O(1) extra.</p>
 
-# Spiral walk: shrink four boundaries
-top, bottom, left, right = 0, rows - 1, 0, cols - 1
-while top &lt;= bottom and left &lt;= right:
-    ...walk top row, right col, bottom row, left col...
-    top += 1; bottom -= 1; left += 1; right -= 1</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> for each value <code>v</code>, negate <code>nums[v−1]</code> to say "<code>v</code> is present". After the pass, index <code>i</code> still positive means <code>i+1</code> was never marked → <code>i+1</code> is missing.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>For each <code>x</code>, set <code>nums[abs(x)−1]</code> to its negative (if not already).</li>
+<li>Scan: every index <code>i</code> with <code>nums[i] &gt; 0</code> → collect <code>i+1</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — nums = [4,3,2,7,8,2,3,1]</h2>
+<pre class="viz">mark homes of 4,3,2,7,8,2,3,1 → indices 3,2,1,6,7,0 negated
+positive slots remain at idx4 and idx5
+missing = [5, 6]</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def findDisappearedNumbers(nums):
+    for x in nums:
+        idx = abs(x) - 1
+        if nums[idx] &gt; 0:
+            nums[idx] = -nums[idx]     # mark value idx+1 as present
+    return [i + 1 for i in range(len(nums)) if nums[i] &gt; 0]</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — two passes. <strong>Space O(1)</strong> extra.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>All numbers present → empty result.</li>
+<li>Many duplicates → their extra copies re-negate an already-negative slot (guarded by the <code>&gt; 0</code> check).</li>
+<li>Every number missing except one → the rest are reported.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Not guarding with <code>if nums[idx] &gt; 0</code> before negating → double-negation flips it back positive.</li>
+<li>Forgetting <code>abs()</code> when indexing.</li>
+<li>Reporting indices instead of <code>index+1</code> values.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>First missing positive with arbitrary values (<a href="0047-lc41-first-missing-positive.html">#41</a>).</li>
+<li>Find duplicates instead (<a href="0050-lc442-find-all-duplicates-in-an-array.html">#442</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0050-lc442-find-all-duplicates-in-an-array.html">#442</a> · <a href="0047-lc41-first-missing-positive.html">#41</a> · <a href="0048-lc268-missing-number.html">#268</a></p>
+
 
 <div class="pager"><a href="../problems/0050-lc442-find-all-duplicates-in-an-array.html"><span class="lbl">← Previous</span>#442 Find All Duplicates in an Array</a><a href="../problems/0052-lc74-search-a-2d-matrix.html" style="text-align:right"><span class="lbl">Next →</span>#74 Search a 2D Matrix</a></div>
 </div>

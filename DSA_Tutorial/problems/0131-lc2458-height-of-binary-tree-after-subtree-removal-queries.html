@@ -36,34 +36,79 @@
 
 <h2>📋 The problem</h2><p>For each query, return the tree's height after removing the subtree rooted at that node (precompute per-depth top-two heights).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Tree DFS - Recursive Postorder Traversal</strong> — Visit left, right, then root — used when children's results are needed before computing the parent.</p>
+<h2>🧭 How to think about it</h2>
+<p>For each query node, imagine removing its entire subtree and report the remaining tree's height. Answering each query by rebuilding is far too slow. Precompute, in two passes, each node's <strong>depth</strong> and its subtree's deepest reach, then a single DFS computes, for every node, the best height achievable <em>without</em> entering that node's subtree.</p>
 
-<h2>Why this pattern?</h2><ul><li>"level", "depth", "nearest", "zigzag by rows" → BFS</li><li>"path sum", "ancestor", "validate", "diameter" → DFS</li><li>BST + "k-th smallest / sorted order" → inorder</li><li>"serialize / reconstruct" → preorder</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Tree Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>def dfs(node, state):                 # state flows DOWN (bounds, path...)
-    if not node:
-        return base                       # e.g. 0, True, None
-    L = dfs(node.left,  new_state)
-    R = dfs(node.right, new_state)
-    return combine(node.val, L, R)        # answer flows UP
+<h2>🐢 Brute force first</h2>
+<p>Recompute the height for each of up to n queries → O(n²). Precomputing lets each query be answered in O(1).</p>
 
-from collections import deque             # BFS by levels
-q = deque([root])
-while q:
-    for _ in range(len(q)):               # freeze current level size
-        node = q.popleft()
-        if node.left:  q.append(node.left)
-        if node.right: q.append(node.right)</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> let <code>deepest[node]</code> be the maximum node-depth within its subtree. Do a DFS passing down <code>rest</code> = the deepest depth reachable while avoiding the current subtree. When descending into one child, the value passed carries the other child's <code>deepest</code> (and the node's own depth). Then <code>answer[node] = rest</code>.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Pass 1: compute <code>deepest[node]</code> = max absolute depth in its subtree.</li>
+<li>Pass 2: DFS carrying <code>rest</code>; store <code>answer[node.val] = rest</code>.</li>
+<li>When recursing into a child, combine <code>rest</code> with the sibling's <code>deepest</code>.</li>
+<li>Return <code>[answer[q] for q in queries]</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — remove a leaf's subtree</h2>
+<pre class="viz">deepest depths precomputed per node
+descend left → rest = max(rest, deepest[right sibling], depth-of-node)
+answer[node] = the best remaining depth avoiding node's subtree</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def treeQueries(root, queries):
+    deepest = {}                          # node -> max absolute depth in its subtree
+    def depth(node, d):
+        if not node:
+            return d - 1                  # so a null contributes nothing
+        deepest[node] = max(depth(node.left, d + 1),
+                            depth(node.right, d + 1))
+        return deepest[node]
+    depth(root, 0)
+
+    answer = {}
+    def dfs(node, d, rest):
+        if not node:
+            return
+        answer[node.val] = rest
+        left_deep  = deepest.get(node.left, d)   # depth of node if no left
+        right_deep = deepest.get(node.right, d)
+        # into left: exclude left subtree → best is rest or the right branch
+        dfs(node.left, d + 1, max(rest, right_deep))
+        dfs(node.right, d + 1, max(rest, left_deep))
+    dfs(root, 0, 0)
+    return [answer[q] for q in queries]</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n + q)</strong> — two DFS passes plus O(1) per query. <strong>Space O(n)</strong> for the maps.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Removing a leaf → height often unchanged (a sibling branch still reaches deep).</li>
+<li>Removing a node on the unique deepest path → height drops to the next-deepest branch.</li>
+<li>Query for a shallow node → answer reflects the rest of the tree.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Mixing up "depth" (from root) with "height" (from leaves).</li>
+<li>Forgetting the node's own depth as a candidate when a child is missing.</li>
+<li>Recomputing per query instead of precomputing.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Batch queries with rerooting techniques.</li>
+<li>Simpler subtree-removal forest (<a href="0130-lc1110-delete-nodes-and-return-forest.html">#1110</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0130-lc1110-delete-nodes-and-return-forest.html">#1110</a> · <a href="0128-lc543-diameter-of-binary-tree.html">#543</a> · <a href="0120-lc104-maximum-depth-of-binary-tree.html">#104</a></p>
+
 
 <div class="pager"><a href="../problems/0130-lc1110-delete-nodes-and-return-forest.html"><span class="lbl">← Previous</span>#1110 Delete Nodes And Return Forest</a><a href="../problems/0132-lc235-lowest-common-ancestor-of-a-binary-search-tree.html" style="text-align:right"><span class="lbl">Next →</span>#235 Lowest Common Ancestor of a Binary Search Tree</a></div>
 </div>

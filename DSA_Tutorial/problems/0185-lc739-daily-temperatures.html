@@ -36,35 +36,65 @@
 
 <h2>📋 The problem</h2><p>For each day's temperature, return how many days you wait until a warmer one (0 if never).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Monotonic Stack</strong> — Stack maintained in increasing or decreasing order — pops give next-greater/smaller in O(n).</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Monotonic stack of indices of unresolved (colder) days; a warmer day resolves them; answer is the index distance.</div>
-<h2>Why this pattern?</h2><ul><li>brackets/tags to match or validate</li><li>"next greater / next warmer / previous smaller" element</li><li>histogram areas, trapped water, "can see over"</li><li>evaluate/parse an expression, decode nested strings</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Stack master template and adapt the marked parts to this problem:</p><pre><code># Monotonic (decreasing) stack — next greater element
-stack = []                              # holds INDICES of unresolved elements
-res = [-1] * len(nums)
-for i, x in enumerate(nums):
-    while stack and nums[stack[-1]] &lt; x:   # x resolves the waiting ones
-        j = stack.pop()
-        res[j] = x                          # x is j's next greater
-    stack.append(i)
+<h2>🧭 How to think about it</h2>
+<p>For each day, how many days until a warmer temperature? Keep a <strong>monotonic decreasing stack of indices</strong> of days still waiting for a warmer day. When a warmer day arrives, it resolves all the cooler days on top of the stack, and the answer is the index distance.</p>
 
-# Matching
-for ch in s:
-    if ch in pairs:  stack.append(ch)
-    elif not stack or pairs[stack.pop()] != ch:
-        return False
-return not stack</code></pre>
-<h2>How to work on it now</h2>
+<h2>🐢 Brute force first</h2>
+<p>For each day scan forward for a warmer one → O(n²). The monotonic stack is O(n).</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> the stack holds indices of days with strictly decreasing temperatures (unresolved). A day <code>i</code> warmer than the stack's top day resolves it: <code>answer[top] = i − top</code>. Pop until the top is warmer, then push <code>i</code>.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li><code>res = [0]*n</code>, empty stack of indices.</li>
+<li>For each <code>i</code>: while the top day is cooler than <code>temps[i]</code>, pop and set <code>res[top] = i − top</code>.</li>
+<li>Push <code>i</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — temps = [73,74,75,71,69,72,76,73]</h2>
+<pre class="viz">73 push ; 74&gt;73 res[0]=1 ; 75&gt;74 res[1]=1 ; 71 push ; 69 push ; 72 resolves 69,71 → res[4]=1,res[3]=2 ; 76 resolves 72,75 → res[5]=1,res[2]=4 ; 73 push
+Result: [1,1,4,2,1,1,0,0]</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def dailyTemperatures(temperatures):
+    n = len(temperatures)
+    res = [0] * n
+    stack = []                            # indices of cooler, unresolved days
+    for i, t in enumerate(temperatures):
+        while stack and temperatures[stack[-1]] &lt; t:
+            j = stack.pop()
+            res[j] = i - j                # days until warmer
+        stack.append(i)
+    return res</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong>, <strong>Space O(n)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Monotonically decreasing → all 0.</li>
+<li>Last day → 0 (no warmer day after).</li>
+<li>Equal temperatures → not "warmer"; keep waiting.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Using <code>≤</code> (equal isn't warmer).</li>
+<li>Storing temperatures instead of indices.</li>
+<li>Forgetting to leave unresolved days at 0.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Next greater element (<a href="0181-lc496-next-greater-element-i.html">#496</a>, <a href="0182-lc503-next-greater-element-ii.html">#503</a>).</li>
+<li>Online stock span (<a href="0187-lc901-online-stock-span.html">#901</a>) uses the mirror idea.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0181-lc496-next-greater-element-i.html">#496</a> · <a href="0187-lc901-online-stock-span.html">#901</a> · <a href="0202-lc84-largest-rectangle-in-histogram.html">#84</a></p>
+
 
 <div class="pager"><a href="../problems/0184-lc735-asteroid-collision.html"><span class="lbl">← Previous</span>#735 Asteroid Collision</a><a href="../problems/0186-lc853-car-fleet.html" style="text-align:right"><span class="lbl">Next →</span>#853 Car Fleet</a></div>
 </div>

@@ -36,30 +36,74 @@
 
 <h2>📋 The problem</h2><p>Return the longest single-letter substring length that appears at least three times (count runs per letter; -1 if none).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Variable Size / Condition-Based</strong> — Grow the right pointer; shrink the left while a constraint is violated — captures max/min subarray meeting a condition.</p>
+<h2>🧭 How to think about it</h2>
+<p>A "special" substring is a run of a single repeated letter (like <code>"aaa"</code>). Find the longest length that occurs at least <strong>three times</strong> (overlaps allowed), or <code>−1</code>. Since specials are single-letter runs, group the run lengths per letter, then figure out the largest length that can be formed three times.</p>
 
-<h2>Why this pattern?</h2><ul><li>"contiguous subarray / substring" + longest/shortest/max/min/count</li><li>fixed size k ("every window of size k")</li><li>a constraint to maintain: "at most k distinct", "no repeats", "sum ≥ target"</li><li>strings + character frequency ("anagram of", "contains all chars of")</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Sliding Window master template and adapt the marked parts to this problem:</p><pre><code># Variable-size window (the general form)
-state = {}                              # counts / sum — whatever the constraint needs
-left = 0
-best = 0
-for right in range(len(s)):
-    add(s[right], state)                # 1) window grows
-    while invalid(state):               # 2) shrink until constraint holds again
-        remove(s[left], state)
-        left += 1
-    best = max(best, right - left + 1)  # 3) window is valid here</code></pre>
-<h2>How to work on it now</h2>
+<h2>🐢 Brute force first</h2>
+<p>Enumerate all special substrings and count → O(n²). Using per-letter run lengths reduces the reasoning to a handful of candidates.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> a run of length <code>L</code> contains a special of length <code>ell</code> in <code>L − ell + 1</code> positions. For each letter, take its run lengths; the best length appearing ≥ 3 times comes from the top runs: either the largest run minus 2 (three copies inside it), or combinations of the top three runs. Check candidate lengths and count occurrences.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Collect run lengths per letter.</li>
+<li>For a candidate length <code>ell</code>, occurrences for a letter = <code>sum(max(0, run − ell + 1))</code>.</li>
+<li>Find the largest <code>ell</code> (over all letters) with total occurrences ≥ 3.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — s = "aaaa"</h2>
+<pre class="viz">run of 'a' length4
+ell=2 → occurrences 4−2+1 = 3 ≥3 ✓ ; ell=3 → 2 &lt;3
+Answer: 2</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>from collections import defaultdict
+def maximumLength(s):
+    runs = defaultdict(list)
+    i, n = 0, len(s)
+    while i &lt; n:
+        j = i
+        while j &lt; n and s[j] == s[i]:
+            j += 1
+        runs[s[i]].append(j - i)          # run length for this letter
+        i = j
+
+    best = -1
+    for lengths in runs.values():
+        for ell in range(1, max(lengths) + 1):
+            occ = sum(max(0, L - ell + 1) for L in lengths)
+            if occ &gt;= 3:
+                best = max(best, ell)
+    return best</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n²)</strong> worst case for the "I" limits (candidate lengths × runs). <strong>Space O(n)</strong> for the runs. (A top-3-runs formula gives O(n).)</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>No length occurs three times → −1.</li>
+<li>Three separate single letters (e.g., "aaa" as three overlapping "a") → length 1.</li>
+<li>All distinct letters → −1.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Forgetting overlaps are allowed (a run of L gives multiple positions).</li>
+<li>Only checking the single longest run and missing combinations across runs.</li>
+<li>Off-by-one in <code>L − ell + 1</code>.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Occurs at least m times → change the threshold.</li>
+<li>Larger limits → use the top-three-runs closed form.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0150-lc424-longest-repeating-character-replacement.html">#424</a> · <a href="0145-lc3-longest-substring-without-repeating-characters.html">#3</a> · <a href="0149-lc340-longest-substring-with-at-most-k-distinct-characters.html">#340</a></p>
+
 
 <div class="pager"><a href="../problems/0161-lc2779-maximum-beauty-of-an-array-after-applying-operation.html"><span class="lbl">← Previous</span>#2779 Maximum Beauty of an Array After Applying Operation</a><a href="../problems/0163-lc3026-maximum-good-subarray-sum.html" style="text-align:right"><span class="lbl">Next →</span>#3026 Maximum Good Subarray Sum</a></div>
 </div>

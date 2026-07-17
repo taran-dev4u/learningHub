@@ -36,34 +36,64 @@
 
 <h2>📋 The problem</h2><p>Each root-to-leaf path spells a number digit by digit; return the sum of all those numbers.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Tree DFS - Recursive Preorder Traversal</strong> — Visit root, then left subtree, then right — used for tree cloning, serialization, path building.</p>
+<h2>🧭 How to think about it</h2>
+<p>Each root-to-leaf path spells a number (e.g., 1→2→3 is 123); sum all of them. Carry the number built <strong>so far</strong> down the tree: at each step it becomes <code>current × 10 + node.val</code>. At a leaf, that value is one complete number to add.</p>
 
-<h2>Why this pattern?</h2><ul><li>"level", "depth", "nearest", "zigzag by rows" → BFS</li><li>"path sum", "ancestor", "validate", "diameter" → DFS</li><li>BST + "k-th smallest / sorted order" → inorder</li><li>"serialize / reconstruct" → preorder</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Tree Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>def dfs(node, state):                 # state flows DOWN (bounds, path...)
-    if not node:
-        return base                       # e.g. 0, True, None
-    L = dfs(node.left,  new_state)
-    R = dfs(node.right, new_state)
-    return combine(node.val, L, R)        # answer flows UP
+<h2>🐢 Brute force first</h2>
+<p>Collect all paths as digit lists, convert, sum — works but stores paths. Threading the running number through the recursion is O(n), no extra storage beyond the stack.</p>
 
-from collections import deque             # BFS by levels
-q = deque([root])
-while q:
-    for _ in range(len(q)):               # freeze current level size
-        node = q.popleft()
-        if node.left:  q.append(node.left)
-        if node.right: q.append(node.right)</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> pass an accumulator <code>cur</code>. Descending multiplies by 10 and adds the digit. Leaves return <code>cur</code>; internal nodes return the sum of their children's contributions.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>DFS with <code>cur = cur*10 + node.val</code>.</li>
+<li>At a leaf, return <code>cur</code>.</li>
+<li>Otherwise return the sum over existing children.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — [1,2,3]</h2>
+<pre class="viz">1 → left: cur=12 (leaf) → 12 ; right: cur=13 (leaf) → 13
+sum = 25</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def sumNumbers(root):
+    def dfs(node, cur):
+        if not node:
+            return 0
+        cur = cur * 10 + node.val        # extend the number by one digit
+        if not node.left and not node.right:
+            return cur                    # completed number
+        return dfs(node.left, cur) + dfs(node.right, cur)
+    return dfs(root, 0)</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong>, <strong>Space O(h)</strong> recursion.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Single node → the node's value.</li>
+<li>Empty tree → 0.</li>
+<li>Nodes with one child → not leaves; keep descending.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Adding <code>cur</code> at internal nodes, double-counting.</li>
+<li>Treating a one-child node as a leaf.</li>
+<li>Resetting <code>cur</code> instead of threading it down.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Binary digits / other bases → change the multiplier.</li>
+<li>Smallest string from leaf (<a href="0106-lc988-smallest-string-starting-from-leaf.html">#988</a>) is a string analog.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0099-lc112-path-sum.html">#112</a> · <a href="0106-lc988-smallest-string-starting-from-leaf.html">#988</a> · <a href="0104-lc257-binary-tree-paths.html">#257</a></p>
+
 
 <div class="pager"><a href="../problems/0101-lc114-flatten-binary-tree-to-linked-list.html"><span class="lbl">← Previous</span>#114 Flatten Binary Tree to Linked List</a><a href="../problems/0103-lc226-invert-binary-tree.html" style="text-align:right"><span class="lbl">Next →</span>#226 Invert Binary Tree</a></div>
 </div>

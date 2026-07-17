@@ -36,34 +36,75 @@
 
 <h2>📋 The problem</h2><p>Return the level-order traversal of a binary tree, but alternate the direction of each level (left-to-right, then right-to-left).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Tree BFS - Level Order Traversal</strong> — BFS with a queue; process the entire current level before moving on — level lists, right view, zigzag.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Level-order BFS; reverse alternate levels (or append to a deque from alternating ends).</div>
-<h2>Why this pattern?</h2><ul><li>"level", "depth", "nearest", "zigzag by rows" → BFS</li><li>"path sum", "ancestor", "validate", "diameter" → DFS</li><li>BST + "k-th smallest / sorted order" → inorder</li><li>"serialize / reconstruct" → preorder</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Tree Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>def dfs(node, state):                 # state flows DOWN (bounds, path...)
-    if not node:
-        return base                       # e.g. 0, True, None
-    L = dfs(node.left,  new_state)
-    R = dfs(node.right, new_state)
-    return combine(node.val, L, R)        # answer flows UP
+<h2>🧭 How to think about it</h2>
+<p>Same level-order BFS, but alternate direction: level 0 left-to-right, level 1 right-to-left, and so on. The cleanest way is to do a normal BFS and simply <strong>reverse every other level's list</strong> before appending it.</p>
 
-from collections import deque             # BFS by levels
-q = deque([root])
-while q:
-    for _ in range(len(q)):               # freeze current level size
-        node = q.popleft()
-        if node.left:  q.append(node.left)
-        if node.right: q.append(node.right)</code></pre>
-<h2>How to work on it now</h2>
+<h2>🐢 Brute force first</h2>
+<p>Full level-order then post-process reversals — that's essentially the answer. Trying to reverse the traversal order itself with a stack works too but is fiddlier.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> BFS still visits left-to-right; keep a boolean <code>left_to_right</code> that flips each level. When it's false, reverse the collected level (or build it with <code>appendleft</code> into a deque) before adding it to the result.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Standard level-order BFS with a frozen level size.</li>
+<li>Track a direction flag; append the level as-is or reversed.</li>
+<li>Flip the flag each level.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — [3,9,20,null,null,15,7]</h2>
+<pre class="viz">level0 [3] (L→R)
+level1 [9,20] → reversed [20,9] (R→L)
+level2 [15,7] (L→R)
+Result: [[3],[20,9],[15,7]]</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>from collections import deque
+def zigzagLevelOrder(root):
+    if not root:
+        return []
+    res, q, left_to_right = [], deque([root]), True
+    while q:
+        level = deque()
+        for _ in range(len(q)):
+            node = q.popleft()
+            if left_to_right:
+                level.append(node.val)
+            else:
+                level.appendleft(node.val)   # build reversed cheaply
+            if node.left:  q.append(node.left)
+            if node.right: q.append(node.right)
+        res.append(list(level))
+        left_to_right = not left_to_right
+    return res</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — one BFS; <code>appendleft</code> keeps each level O(width). <strong>Space O(n)</strong> for the queue.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Empty tree → <code>[]</code>.</li>
+<li>Single node → <code>[[val]]</code>.</li>
+<li>Two levels → the second is reversed.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Reversing the traversal (visiting children right-first) and getting the child order wrong on the next level.</li>
+<li>Forgetting to flip the direction flag.</li>
+<li>Reversing with <code>list[::-1]</code> every level when <code>appendleft</code> is cleaner.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Spiral by column instead of row → vertical traversal (<a href="0093-lc987-vertical-order-traversal-of-a-binary-tree.html">#987</a>).</li>
+<li>Standard level order (<a href="0084-lc102-binary-tree-level-order-traversal.html">#102</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0084-lc102-binary-tree-level-order-traversal.html">#102</a> · <a href="0088-lc199-binary-tree-right-side-view.html">#199</a> · <a href="0090-lc515-find-largest-value-in-each-tree-row.html">#515</a></p>
+
 
 <div class="pager"><a href="../problems/0084-lc102-binary-tree-level-order-traversal.html"><span class="lbl">← Previous</span>#102 Binary Tree Level Order Traversal</a><a href="../problems/0086-lc116-populating-next-right-pointers-in-each-node.html" style="text-align:right"><span class="lbl">Next →</span>#116 Populating Next Right Pointers in Each Node</a></div>
 </div>

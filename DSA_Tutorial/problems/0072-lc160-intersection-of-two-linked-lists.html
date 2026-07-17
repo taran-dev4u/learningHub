@@ -36,33 +36,62 @@
 
 <h2>📋 The problem</h2><p>Two singly linked lists may merge at some node; return that intersection node (by identity) or null, in O(1) memory.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Intersection Detection</strong> — Align two lists by length difference, then advance together until they meet (or use cycle-style trick).</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Walk two pointers, each switching to the other list at its end — they equalize path lengths and meet at the intersection.</div>
-<h2>Why this pattern?</h2><ul><li>input is a linked list (that alone is the signal)</li><li>"reverse", "reorder", "swap in pairs", "rotate" nodes</li><li>"k-th from the end", "middle", "cycle" → fast &amp; slow</li><li>"merge k sorted lists" → pairwise merge or heap of heads</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Linked List Manipulation master template and adapt the marked parts to this problem:</p><pre><code>dummy = ListNode(0, head)            # dummy head: prev of the real head
-prev, cur = dummy, head
+<h2>🧭 How to think about it</h2>
+<p>Two lists may share a common tail; find the node where they first merge. The lengths before the join differ, so a naive lockstep walk misidentifies the meeting point. The elegant trick: send a pointer down each list, and when it reaches the end, <strong>redirect it to the other list's head</strong>. Both pointers then travel the same total distance and meet exactly at the intersection.</p>
 
-# In-place reversal core
-p = None
-while cur:
-    cur.next, p, cur = p, cur, cur.next
-# p is the new head
+<h2>🐢 Brute force first</h2>
+<p>Put all nodes of one list in a set, then scan the other for the first shared node → O(m+n) time, O(m) space. The two-pointer switch achieves O(1) space.</p>
 
-# Fast &amp; slow
-slow = fast = head
-while fast and fast.next:
-    slow, fast = slow.next, fast.next.next   # slow = middle when fast ends</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> pointer A walks <code>lenA</code> then <code>lenB</code>; pointer B walks <code>lenB</code> then <code>lenA</code>. Both cover <code>lenA + lenB</code> steps, so they arrive at the intersection simultaneously. If there's no intersection, they reach <code>None</code> together.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li><code>a = headA</code>, <code>b = headB</code>.</li>
+<li>While <code>a != b</code>: <code>a = a.next if a else headB</code>; <code>b = b.next if b else headA</code>.</li>
+<li>Return <code>a</code> (the shared node, or <code>None</code>).</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — A: a1→a2→c1→c2, B: b1→b2→b3→c1→c2</h2>
+<pre class="viz">a walks A then B; b walks B then A
+after each covers lenA+lenB, both land on c1
+Return c1</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def getIntersectionNode(headA, headB):
+    a, b = headA, headB
+    while a is not b:               # compare node identity, not value
+        a = a.next if a else headB  # switch to the other list at the end
+        b = b.next if b else headA
+    return a                        # intersection node, or None</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(m+n)</strong> — at most two passes each. <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>No intersection → both become <code>None</code> at the same time; loop ends, returns <code>None</code>.</li>
+<li>Intersection at the head of one list → still found.</li>
+<li>Equal-length lists → they meet without needing the switch trick, but it still works.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Switching to your own head instead of the <em>other</em> list's head.</li>
+<li>Comparing values instead of node identity (<code>is</code>).</li>
+<li>Infinite loop if you forget the "no intersection → both hit None" termination.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Length-difference method → advance the longer list by the difference first.</li>
+<li>Cycle-based questions (<a href="0028-lc141-linked-list-cycle.html">#141</a>, #142) share the two-pointer spirit.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0028-lc141-linked-list-cycle.html">#141</a> · #142 · <a href="0067-lc206-reverse-linked-list.html">#206</a></p>
+
 
 <div class="pager"><a href="../problems/0071-lc369-plus-one-linked-list.html"><span class="lbl">← Previous</span>#369 Plus One Linked List</a><a href="../problems/0073-lc61-rotate-list.html" style="text-align:right"><span class="lbl">Next →</span>#61 Rotate List</a></div>
 </div>

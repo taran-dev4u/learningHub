@@ -36,34 +36,72 @@
 
 <h2>📋 The problem</h2><p>Count downward paths in a binary tree whose values sum to a target (paths needn't start at the root or end at leaves).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Tree DFS - Recursive Postorder Traversal</strong> — Visit left, right, then root — used when children's results are needed before computing the parent.</p>
+<h2>🧭 How to think about it</h2>
+<p>Count paths that sum to a target, where a path goes <em>downward</em> (parent to child) but need not start at the root or end at a leaf. This is the tree version of "subarrays summing to k" — solved with a <strong>running prefix sum</strong> and a hash map of prefix counts along the current root-to-node path.</p>
 
-<h2>Why this pattern?</h2><ul><li>"level", "depth", "nearest", "zigzag by rows" → BFS</li><li>"path sum", "ancestor", "validate", "diameter" → DFS</li><li>BST + "k-th smallest / sorted order" → inorder</li><li>"serialize / reconstruct" → preorder</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Tree Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>def dfs(node, state):                 # state flows DOWN (bounds, path...)
-    if not node:
-        return base                       # e.g. 0, True, None
-    L = dfs(node.left,  new_state)
-    R = dfs(node.right, new_state)
-    return combine(node.val, L, R)        # answer flows UP
+<h2>🐢 Brute force first</h2>
+<p>Start a downward sum from every node → O(n²) (or O(n·h)). The prefix-sum map answers it in O(n).</p>
 
-from collections import deque             # BFS by levels
-q = deque([root])
-while q:
-    for _ in range(len(q)):               # freeze current level size
-        node = q.popleft()
-        if node.left:  q.append(node.left)
-        if node.right: q.append(node.right)</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> maintain <code>curr</code> = sum from root to the current node and a map <code>count[prefix]</code>. The number of valid paths ending here is <code>count[curr − target]</code> (an earlier prefix that leaves exactly <code>target</code>). Add the current prefix on the way down and <strong>remove it on the way back</strong> (backtrack) so sibling paths aren't polluted.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Seed <code>count = {0: 1}</code>, <code>curr = 0</code>.</li>
+<li>At each node: <code>curr += val</code>; add <code>count[curr − target]</code> to the total; increment <code>count[curr]</code>.</li>
+<li>Recurse into children, then decrement <code>count[curr]</code> (backtrack).</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — target 8, path 10→5→3</h2>
+<pre class="viz">curr: 10 (need 2:0), 15 (need 7:0), 18 (need 10: count[10]=1 → +1)
+found path 5→3? actually 10..: the 5→3 subpath sums 8 → counted via prefix 18−8=10</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>from collections import defaultdict
+def pathSum(root, targetSum):
+    count = defaultdict(int)
+    count[0] = 1
+    total = 0
+    def dfs(node, curr):
+        nonlocal total
+        if not node:
+            return
+        curr += node.val
+        total += count[curr - targetSum]   # paths ending here summing to target
+        count[curr] += 1
+        dfs(node.left, curr)
+        dfs(node.right, curr)
+        count[curr] -= 1                    # backtrack: leave this path
+    dfs(root, 0)
+    return total</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — each node processed once. <strong>Space O(h)</strong> for the map/recursion along a path.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Negative values → the prefix-sum method handles them (a sliding window would not).</li>
+<li>Target 0 → counts zero-sum downward paths.</li>
+<li>Single node equal to target → counts 1.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Forgetting to backtrack <code>count[curr] -= 1</code> → counts cross-branch paths.</li>
+<li>Omitting the <code>count[0] = 1</code> seed.</li>
+<li>Trying a sliding window with negative values.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Root-to-leaf only (<a href="0099-lc112-path-sum.html">#112</a>, <a href="0100-lc113-path-sum-ii.html">#113</a>).</li>
+<li>Subarray sum equals k (array analog).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0099-lc112-path-sum.html">#112</a> · <a href="0100-lc113-path-sum-ii.html">#113</a> · <a href="0122-lc124-binary-tree-maximum-path-sum.html">#124</a></p>
+
 
 <div class="pager"><a href="../problems/0126-lc366-find-leaves-of-binary-tree.html"><span class="lbl">← Previous</span>#366 Find Leaves of Binary Tree</a><a href="../problems/0128-lc543-diameter-of-binary-tree.html" style="text-align:right"><span class="lbl">Next →</span>#543 Diameter of Binary Tree</a></div>
 </div>

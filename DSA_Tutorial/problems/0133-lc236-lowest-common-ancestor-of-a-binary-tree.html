@@ -36,34 +36,63 @@
 
 <h2>📋 The problem</h2><p>In a general binary tree, return the lowest common ancestor of two given nodes.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Tree - Lowest Common Ancestor (LCA) Finding</strong> — Find the deepest node that has both target nodes in its subtree — recursive or with parent pointers.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Postorder: a node returning non-null from both sides is the LCA; otherwise forward the non-null side.</div>
-<h2>Why this pattern?</h2><ul><li>"level", "depth", "nearest", "zigzag by rows" → BFS</li><li>"path sum", "ancestor", "validate", "diameter" → DFS</li><li>BST + "k-th smallest / sorted order" → inorder</li><li>"serialize / reconstruct" → preorder</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Tree Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>def dfs(node, state):                 # state flows DOWN (bounds, path...)
-    if not node:
-        return base                       # e.g. 0, True, None
-    L = dfs(node.left,  new_state)
-    R = dfs(node.right, new_state)
-    return combine(node.val, L, R)        # answer flows UP
+<h2>🧭 How to think about it</h2>
+<p>No BST ordering here, so search structurally. A node is the LCA if <code>p</code> and <code>q</code> lie in <strong>different subtrees</strong> of it — or the node itself is one of them. A <strong>postorder</strong> recursion that reports "did I find p or q below?" pinpoints exactly that node.</p>
 
-from collections import deque             # BFS by levels
-q = deque([root])
-while q:
-    for _ in range(len(q)):               # freeze current level size
-        node = q.popleft()
-        if node.left:  q.append(node.left)
-        if node.right: q.append(node.right)</code></pre>
-<h2>How to work on it now</h2>
+<h2>🐢 Brute force first</h2>
+<p>Find the root-to-<code>p</code> and root-to-<code>q</code> paths, then compare to find the last shared node → O(n) time and space. The postorder recursion is O(n) time, O(h) space and more elegant.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> recurse; if a node <em>is</em> <code>p</code> or <code>q</code>, return it. If both left and right recursions return non-null, this node is the LCA. Otherwise bubble up whichever side found something.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Null or matching node → return it.</li>
+<li>Recurse left and right.</li>
+<li>Both non-null → current node is the LCA; else return the non-null side.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — p and q in different subtrees of node X</h2>
+<pre class="viz">left returns p, right returns q → both non-null → X is LCA
+if only left non-null → LCA is up the left branch</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def lowestCommonAncestor(root, p, q):
+    if not root or root is p or root is q:
+        return root                    # found one, or dead end
+    left = lowestCommonAncestor(root.left, p, q)
+    right = lowestCommonAncestor(root.right, p, q)
+    if left and right:
+        return root                    # p and q split here → LCA
+    return left or right               # bubble up the found side</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong>, <strong>Space O(h)</strong> recursion.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>One node is an ancestor of the other → that ancestor is returned early.</li>
+<li>Both guaranteed present (per constraints) → always finds an LCA.</li>
+<li>Root is the LCA → both sides return non-null.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Comparing values instead of node identity (there can be duplicate values in the general case; use <code>is</code>).</li>
+<li>Returning too early and missing the split node.</li>
+<li>Assuming BST ordering.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>With parent pointers → walk up like list-intersection.</li>
+<li>LCA of deepest leaves (<a href="0134-lc1123-lowest-common-ancestor-of-deepest-leaves.html">#1123</a>); step-by-step directions (<a href="0135-lc2096-step-by-step-directions-from-a-binary-tree-node-to-another.html">#2096</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0132-lc235-lowest-common-ancestor-of-a-binary-search-tree.html">#235</a> · <a href="0134-lc1123-lowest-common-ancestor-of-deepest-leaves.html">#1123</a> · <a href="0135-lc2096-step-by-step-directions-from-a-binary-tree-node-to-another.html">#2096</a></p>
+
 
 <div class="pager"><a href="../problems/0132-lc235-lowest-common-ancestor-of-a-binary-search-tree.html"><span class="lbl">← Previous</span>#235 Lowest Common Ancestor of a Binary Search Tree</a><a href="../problems/0134-lc1123-lowest-common-ancestor-of-deepest-leaves.html" style="text-align:right"><span class="lbl">Next →</span>#1123 Lowest Common Ancestor of Deepest Leaves</a></div>
 </div>

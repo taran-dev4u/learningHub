@@ -36,33 +36,76 @@
 
 <h2>📋 The problem</h2><p>Insert a value into a sorted circular linked list (which may be empty or all-equal) keeping it sorted.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Reordering / Partitioning</strong> — Split the list around a pivot (value, midpoint) and reattach — partition or zigzag-reorder.</p>
+<h2>🧭 How to think about it</h2>
+<p>Insert a value into a sorted <strong>circular</strong> list so it stays sorted. Walk with <code>prev</code>/<code>cur</code> around the ring once, watching for the right gap: either between two ascending neighbors that bracket the value, or at the "seam" where the list wraps from its maximum back to its minimum.</p>
 
-<h2>Why this pattern?</h2><ul><li>input is a linked list (that alone is the signal)</li><li>"reverse", "reorder", "swap in pairs", "rotate" nodes</li><li>"k-th from the end", "middle", "cycle" → fast &amp; slow</li><li>"merge k sorted lists" → pairwise merge or heap of heads</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Linked List Manipulation master template and adapt the marked parts to this problem:</p><pre><code>dummy = ListNode(0, head)            # dummy head: prev of the real head
-prev, cur = dummy, head
+<h2>🐢 Brute force first</h2>
+<p>Collect values, sort, rebuild the ring → O(n) space and destroys the structure. A single pointer walk splices in O(n) time, O(1) space.</p>
 
-# In-place reversal core
-p = None
-while cur:
-    cur.next, p, cur = p, cur, cur.next
-# p is the new head
+<div class="insight">💡 <strong>Key insight:</strong> as you traverse, insert when one of three things holds: (1) <code>prev.val ≤ value ≤ cur.val</code> (normal slot); (2) at the seam <code>prev.val &gt; cur.val</code> and the value is ≥ the max or ≤ the min (a new extreme); (3) you've looped all the way around (all values equal) — insert anywhere.</div>
 
-# Fast &amp; slow
-slow = fast = head
-while fast and fast.next:
-    slow, fast = slow.next, fast.next.next   # slow = middle when fast ends</code></pre>
-<h2>How to work on it now</h2>
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Empty list → make a single self-pointing node.</li>
+<li>Walk <code>prev = head</code>, <code>cur = head.next</code>; check the three insert conditions.</li>
+<li>Splice <code>prev.next = new</code>, <code>new.next = cur</code>; stop.</li>
+<li>If a full loop passes with no slot, insert before returning to head.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — ring 3→4→1 (sorted circular), insert 2</h2>
+<pre class="viz">prev=3 cur=4: 3≤2≤4? no ; seam? 3&gt;4? no
+prev=4 cur=1: seam 4&gt;1 ; 2≥max(4)? no ; 2≤min(1)? no → skip
+prev=1 cur=3: 1≤2≤3 yes → insert between 1 and 3
+Result: 3→4→1→2 (circular, sorted)</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def insert(head, insertVal):
+    node = Node(insertVal)
+    if not head:                       # empty → self-loop
+        node.next = node
+        return node
+    prev, cur = head, head.next
+    while True:
+        if prev.val &lt;= insertVal &lt;= cur.val:
+            break                       # normal in-between slot
+        if prev.val &gt; cur.val:          # seam (max → min)
+            if insertVal &gt;= prev.val or insertVal &lt;= cur.val:
+                break                   # new max or new min
+        if cur is head:                 # looped fully (all equal) → insert here
+            break
+        prev, cur = cur, cur.next
+    prev.next = node
+    node.next = cur
+    return head</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — at most one full loop. <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Empty list → create a self-referential node.</li>
+<li>All values equal → the "looped fully" condition inserts after one lap.</li>
+<li>New min or new max → inserted at the seam.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Infinite loop when all values are equal — needs the <code>cur is head</code> stop.</li>
+<li>Mishandling the seam (max→min) insert for extremes.</li>
+<li>Forgetting the empty-list self-loop.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Delete from a sorted circular list → similar seam care.</li>
+<li>Insert into a non-circular sorted list → simpler (no seam).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0080-lc707-design-linked-list.html">#707</a> · <a href="0069-lc21-merge-two-sorted-lists.html">#21</a> · <a href="0074-lc86-partition-list.html">#86</a></p>
+
 
 <div class="pager"><a href="../problems/0080-lc707-design-linked-list.html"><span class="lbl">← Previous</span>#707 Design Linked List</a><a href="../problems/0082-lc1019-next-greater-node-in-linked-list.html" style="text-align:right"><span class="lbl">Next →</span>#1019 Next Greater Node In Linked List</a></div>
 </div>

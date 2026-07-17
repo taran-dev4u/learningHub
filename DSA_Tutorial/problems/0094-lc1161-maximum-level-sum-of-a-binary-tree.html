@@ -36,34 +36,74 @@
 
 <h2>📋 The problem</h2><p>Return the level of a binary tree with the maximum sum of node values (smallest such level on ties).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Tree BFS - Level Order Traversal</strong> — BFS with a queue; process the entire current level before moving on — level lists, right view, zigzag.</p>
+<h2>🧭 How to think about it</h2>
+<p>Find the level (1-indexed, root = level 1) whose values sum to the most; ties go to the smallest level number. Level-order BFS, summing each level, tracking the best sum and the level that produced it.</p>
 
-<h2>Why this pattern?</h2><ul><li>"level", "depth", "nearest", "zigzag by rows" → BFS</li><li>"path sum", "ancestor", "validate", "diameter" → DFS</li><li>BST + "k-th smallest / sorted order" → inorder</li><li>"serialize / reconstruct" → preorder</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Tree Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>def dfs(node, state):                 # state flows DOWN (bounds, path...)
-    if not node:
-        return base                       # e.g. 0, True, None
-    L = dfs(node.left,  new_state)
-    R = dfs(node.right, new_state)
-    return combine(node.val, L, R)        # answer flows UP
+<h2>🐢 Brute force first</h2>
+<p>Compute all level sums then take the argmax — same cost. Doing it inline avoids storing all sums.</p>
 
-from collections import deque             # BFS by levels
-q = deque([root])
-while q:
-    for _ in range(len(q)):               # freeze current level size
-        node = q.popleft()
-        if node.left:  q.append(node.left)
-        if node.right: q.append(node.right)</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> because BFS processes levels top-down and you only update <code>best</code> on a <em>strictly greater</em> sum, the first (smallest-numbered) level wins ties automatically.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>BFS by level, counting the level number.</li>
+<li>Sum each level; if it exceeds the current best, record the sum and level.</li>
+<li>Return the best level number.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — [1,7,0,7,-8]</h2>
+<pre class="viz">level1: 1 → best=1 @L1
+level2: 7+0=7 → best=7 @L2
+level3: 7+(-8)=-1 → no change
+Answer: 2</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>from collections import deque
+def maxLevelSum(root):
+    best_sum = float('-inf')
+    best_level = 1
+    level = 0
+    q = deque([root])
+    while q:
+        level += 1
+        s = 0
+        for _ in range(len(q)):
+            node = q.popleft()
+            s += node.val
+            if node.left:  q.append(node.left)
+            if node.right: q.append(node.right)
+        if s &gt; best_sum:                # strict &gt; keeps the earliest level on ties
+            best_sum, best_level = s, level
+    return best_level</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong>, <strong>Space O(n)</strong> for the queue.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>All negative values → seed best with <code>−∞</code>.</li>
+<li>Single node → level 1.</li>
+<li>Ties → the earlier level wins via strict <code>&gt;</code>.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Using <code>≥</code> and returning a later level on ties.</li>
+<li>0-indexing levels when the problem is 1-indexed.</li>
+<li>Initializing best sum to 0.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Max level by average → divide by level count.</li>
+<li>Per-level max value (<a href="0090-lc515-find-largest-value-in-each-tree-row.html">#515</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0090-lc515-find-largest-value-in-each-tree-row.html">#515</a> · <a href="0084-lc102-binary-tree-level-order-traversal.html">#102</a> · <a href="0088-lc199-binary-tree-right-side-view.html">#199</a></p>
+
 
 <div class="pager"><a href="../problems/0093-lc987-vertical-order-traversal-of-a-binary-tree.html"><span class="lbl">← Previous</span>#987 Vertical Order Traversal of a Binary Tree</a><a href="../problems/0095-lc100-same-tree.html" style="text-align:right"><span class="lbl">Next →</span>#100 Same Tree</a></div>
 </div>

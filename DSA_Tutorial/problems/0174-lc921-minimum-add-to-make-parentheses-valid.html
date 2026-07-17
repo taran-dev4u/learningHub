@@ -36,35 +36,67 @@
 
 <h2>📋 The problem</h2><p>Return the minimum number of '(' or ')' insertions to make a parentheses string valid.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Valid Parentheses Matching</strong> — Push openers, pop on matching closer — extends to multi-bracket and nested expressions.</p>
+<h2>🧭 How to think about it</h2>
+<p>Count the fewest parentheses to insert so the string balances. You don't need a full stack — just track the running <strong>balance of open brackets</strong>. A <code>')'</code> with no open bracket needs an inserted <code>'('</code>; any opens left at the end each need a <code>')'</code>.</p>
 
-<h2>Why this pattern?</h2><ul><li>brackets/tags to match or validate</li><li>"next greater / next warmer / previous smaller" element</li><li>histogram areas, trapped water, "can see over"</li><li>evaluate/parse an expression, decode nested strings</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Stack master template and adapt the marked parts to this problem:</p><pre><code># Monotonic (decreasing) stack — next greater element
-stack = []                              # holds INDICES of unresolved elements
-res = [-1] * len(nums)
-for i, x in enumerate(nums):
-    while stack and nums[stack[-1]] &lt; x:   # x resolves the waiting ones
-        j = stack.pop()
-        res[j] = x                          # x is j's next greater
-    stack.append(i)
+<h2>🐢 Brute force first</h2>
+<p>Repeatedly removing matched pairs and counting leftovers works but is clumsy. A single balance sweep is O(n), O(1) space.</p>
 
-# Matching
-for ch in s:
-    if ch in pairs:  stack.append(ch)
-    elif not stack or pairs[stack.pop()] != ch:
-        return False
-return not stack</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> keep <code>open</code> (unmatched <code>'('</code>) and <code>needed</code> (insertions so far). On <code>'('</code>, <code>open += 1</code>. On <code>')'</code>: if <code>open &gt; 0</code> match it (<code>open −= 1</code>), else <code>needed += 1</code> (an insert). Answer is <code>needed + open</code>.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Sweep tracking <code>open</code> and <code>needed</code>.</li>
+<li><code>')'</code> without an open → increment <code>needed</code>.</li>
+<li>Return <code>needed + open</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — s = "())("</h2>
+<pre class="viz">( open1 ; ) open0 ; ) needed1 ; ( open1
+answer = needed1 + open1 = 2</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def minAddToMakeValid(s):
+    open_count = 0
+    needed = 0
+    for c in s:
+        if c == '(':
+            open_count += 1
+        else:                             # ')'
+            if open_count &gt; 0:
+                open_count -= 1           # match an existing '('
+            else:
+                needed += 1               # must insert a '('
+    return needed + open_count            # leftover '(' each need a ')'</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong>, <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Already valid → 0.</li>
+<li>All openers → <code>n</code> insertions.</li>
+<li>All closers → <code>n</code> insertions.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Forgetting to add leftover <code>open</code> at the end.</li>
+<li>Using a stack when a counter suffices.</li>
+<li>Letting <code>open</code> go negative instead of counting a needed insert.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Minimum removals for validity (<a href="0175-lc1249-minimum-remove-to-make-valid-parentheses.html">#1249</a>).</li>
+<li>Minimum insertions with weighted brackets (LC 1541).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0175-lc1249-minimum-remove-to-make-valid-parentheses.html">#1249</a> · <a href="0171-lc20-valid-parentheses.html">#20</a> · <a href="0176-lc1963-minimum-number-of-swaps-to-make-the-string-balanced.html">#1963</a></p>
+
 
 <div class="pager"><a href="../problems/0173-lc71-simplify-path.html"><span class="lbl">← Previous</span>#71 Simplify Path</a><a href="../problems/0175-lc1249-minimum-remove-to-make-valid-parentheses.html" style="text-align:right"><span class="lbl">Next →</span>#1249 Minimum Remove to Make Valid Parentheses</a></div>
 </div>

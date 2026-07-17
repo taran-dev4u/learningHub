@@ -10,6 +10,16 @@ DEEP = {}
 # patterns only shows its deep tutorial on the pattern it was written for.
 import content_deep_p01
 DEEP.update({(1, lc): body for lc, body in content_deep_p01.DEEP.items()})
+import content_deep_p02
+DEEP.update({(2, lc): body for lc, body in content_deep_p02.DEEP.items()})
+import content_deep_p03
+DEEP.update({(3, lc): body for lc, body in content_deep_p03.DEEP.items()})
+import content_deep_p04
+DEEP.update({(4, lc): body for lc, body in content_deep_p04.DEEP.items()})
+import content_deep_p05
+DEEP.update({(5, lc): body for lc, body in content_deep_p05.DEEP.items()})
+import content_deep_p06
+DEEP.update({(6, lc): body for lc, body in content_deep_p06.DEEP.items()})
 
 INSIGHTS = {
 1:   "Store each value's index in a dict as you scan; for each x, ask in O(1) whether target − x was already seen.",

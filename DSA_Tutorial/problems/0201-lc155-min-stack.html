@@ -36,35 +36,70 @@
 <p class="progress-note">This problem also appears under: <a href="0473-lc155-min-stack.html">Design</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Design a stack that supports push, pop, top, and retrieving the minimum element, all in O(1).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Min Stack Design</strong> — Auxiliary stack tracks the running minimum — getMin() in O(1).</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Store (value, min_so_far) pairs so getMin is a peek at the top.</div>
-<h2>Why this pattern?</h2><ul><li>brackets/tags to match or validate</li><li>"next greater / next warmer / previous smaller" element</li><li>histogram areas, trapped water, "can see over"</li><li>evaluate/parse an expression, decode nested strings</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Stack master template and adapt the marked parts to this problem:</p><pre><code># Monotonic (decreasing) stack — next greater element
-stack = []                              # holds INDICES of unresolved elements
-res = [-1] * len(nums)
-for i, x in enumerate(nums):
-    while stack and nums[stack[-1]] &lt; x:   # x resolves the waiting ones
-        j = stack.pop()
-        res[j] = x                          # x is j's next greater
-    stack.append(i)
+<h2>🧭 How to think about it</h2>
+<p>Support push/pop/top plus <code>getMin</code>, all in O(1). The trick is to store, alongside each value, the <strong>minimum of the stack at that moment</strong>. Then the current minimum is always just the top's stored min.</p>
 
-# Matching
-for ch in s:
-    if ch in pairs:  stack.append(ch)
-    elif not stack or pairs[stack.pop()] != ch:
-        return False
-return not stack</code></pre>
-<h2>How to work on it now</h2>
+<h2>🐢 Brute force first</h2>
+<p>Scanning for the min on each <code>getMin</code> is O(n). Pairing each element with its running min makes it O(1).</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> push <code>(val, min(val, currentMin))</code>. Popping restores the previous min automatically because it was stored with the element below. <code>getMin</code> reads the top's stored min.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li><code>push(x)</code>: new min = <code>min(x, top's min)</code>; push <code>(x, newMin)</code>.</li>
+<li><code>pop</code>/<code>top</code>: operate on the value component.</li>
+<li><code>getMin</code>: return the top's min component.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — push -2, 0, -3; getMin; pop; top; getMin</h2>
+<pre class="viz">(-2,-2) (0,-2) (-3,-3) → getMin -3 ; pop → top 0 ; getMin -2</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>class MinStack:
+    def __init__(self):
+        self.stack = []                   # (value, min_so_far)
+
+    def push(self, val):
+        cur_min = val if not self.stack else min(val, self.stack[-1][1])
+        self.stack.append((val, cur_min))
+
+    def pop(self):
+        self.stack.pop()
+
+    def top(self):
+        return self.stack[-1][0]
+
+    def getMin(self):
+        return self.stack[-1][1]</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(1)</strong> per operation. <strong>Space O(n)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Duplicate minimums → each element carries the correct running min.</li>
+<li>Pop down to empty → the paired min disappears with the value.</li>
+<li>Single element → its own min.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Keeping a single min variable that can't restore after popping the min.</li>
+<li>Recomputing the min by scanning.</li>
+<li>Mismatching value vs min components.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>O(1) space overhead trick storing encoded diffs.</li>
+<li>Max stack, or a queue with min (monotonic deque).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0477-lc232-implement-queue-using-stacks.html">#232</a> · <a href="0200-lc895-maximum-frequency-stack.html">#895</a> · <a href="0166-lc239-sliding-window-maximum.html">#239</a></p>
+
 
 <div class="pager"><a href="../problems/0200-lc895-maximum-frequency-stack.html"><span class="lbl">← Previous</span>#895 Maximum Frequency Stack</a><a href="../problems/0202-lc84-largest-rectangle-in-histogram.html" style="text-align:right"><span class="lbl">Next →</span>#84 Largest Rectangle in Histogram</a></div>
 </div>

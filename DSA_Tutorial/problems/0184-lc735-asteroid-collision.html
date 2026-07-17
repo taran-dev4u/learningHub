@@ -36,35 +36,70 @@
 
 <h2>📋 The problem</h2><p>Asteroids move in a line (sign = direction); equal sizes destroy each other, smaller ones explode — return the surviving asteroids.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Monotonic Stack</strong> — Stack maintained in increasing or decreasing order — pops give next-greater/smaller in O(n).</p>
+<h2>🧭 How to think about it</h2>
+<p>Asteroids move right (positive) or left (negative); equal-size opposite movers destroy each other, a bigger one survives. Process left to right with a <strong>stack</strong> of surviving asteroids: a right-mover always survives for now, but a left-mover may collide with right-movers on top of the stack.</p>
 
-<h2>Why this pattern?</h2><ul><li>brackets/tags to match or validate</li><li>"next greater / next warmer / previous smaller" element</li><li>histogram areas, trapped water, "can see over"</li><li>evaluate/parse an expression, decode nested strings</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Stack master template and adapt the marked parts to this problem:</p><pre><code># Monotonic (decreasing) stack — next greater element
-stack = []                              # holds INDICES of unresolved elements
-res = [-1] * len(nums)
-for i, x in enumerate(nums):
-    while stack and nums[stack[-1]] &lt; x:   # x resolves the waiting ones
-        j = stack.pop()
-        res[j] = x                          # x is j's next greater
-    stack.append(i)
+<h2>🐢 Brute force first</h2>
+<p>Repeatedly scanning for collisions until stable is O(n²). One stack pass resolves everything in O(n).</p>
 
-# Matching
-for ch in s:
-    if ch in pairs:  stack.append(ch)
-    elif not stack or pairs[stack.pop()] != ch:
-        return False
-return not stack</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> a collision happens only when the stack top is positive (moving right) and the new asteroid is negative (moving left). Resolve by comparing magnitudes: pop smaller right-movers; if equal, both vanish; if the top is bigger, the new one vanishes. Only if the new asteroid clears all opposing tops does it get pushed.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>For each asteroid, assume it survives.</li>
+<li>While it's left-moving and the top is right-moving: compare sizes and destroy accordingly.</li>
+<li>Push it if it survived the collisions.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — [5,10,-5]</h2>
+<pre class="viz">5 push ; 10 push [5,10] ; -5: top10&gt;5 → -5 destroyed
+Result: [5,10]</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def asteroidCollision(asteroids):
+    stack = []
+    for a in asteroids:
+        alive = True
+        while alive and a &lt; 0 and stack and stack[-1] &gt; 0:
+            top = stack[-1]
+            if top &lt; -a:
+                stack.pop()               # top (smaller) explodes; keep checking
+            elif top == -a:
+                stack.pop(); alive = False   # both explode
+            else:
+                alive = False             # incoming explodes
+        if alive:
+            stack.append(a)
+    return stack</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — each asteroid pushed/popped once. <strong>Space O(n)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>All same direction → no collisions.</li>
+<li>Equal opposite pair → both vanish.</li>
+<li>Left-movers at the start → no right-mover to hit; they survive.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Colliding same-direction asteroids (only right-then-left collides).</li>
+<li>Forgetting the equal-size mutual destruction.</li>
+<li>Pushing an asteroid that was actually destroyed.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Report survivors' original indices.</li>
+<li>Cars/particles collision simulations.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0185-lc739-daily-temperatures.html">#739</a> · <a href="0186-lc853-car-fleet.html">#853</a> · <a href="0171-lc20-valid-parentheses.html">#20</a></p>
+
 
 <div class="pager"><a href="../problems/0183-lc556-next-greater-element-iii.html"><span class="lbl">← Previous</span>#556 Next Greater Element III</a><a href="../problems/0185-lc739-daily-temperatures.html" style="text-align:right"><span class="lbl">Next →</span>#739 Daily Temperatures</a></div>
 </div>

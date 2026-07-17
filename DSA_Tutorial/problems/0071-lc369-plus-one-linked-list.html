@@ -36,33 +36,80 @@
 
 <h2>📋 The problem</h2><p>A linked list stores a number most-significant digit first; add one to it.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Addition of Numbers</strong> — Add digit-by-digit with a carry, advancing both list pointers.</p>
+<h2>🧭 How to think about it</h2>
+<p>The number's digits are in <strong>forward order</strong> (most significant first) and you must add 1. The carry, though, flows from the <em>last</em> digit backward — the opposite of the list's direction. The simplest robust approach: <strong>reverse</strong> the list, add one with a carry from the front, then reverse back.</p>
 
-<h2>Why this pattern?</h2><ul><li>input is a linked list (that alone is the signal)</li><li>"reverse", "reorder", "swap in pairs", "rotate" nodes</li><li>"k-th from the end", "middle", "cycle" → fast &amp; slow</li><li>"merge k sorted lists" → pairwise merge or heap of heads</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Linked List Manipulation master template and adapt the marked parts to this problem:</p><pre><code>dummy = ListNode(0, head)            # dummy head: prev of the real head
-prev, cur = dummy, head
+<h2>🐢 Brute force first</h2>
+<p>Convert to int, add 1, rebuild — fine in Python but fragile elsewhere. The reverse-add-reverse (or a one-pass recursion) is the clean pointer solution.</p>
 
-# In-place reversal core
-p = None
-while cur:
-    cur.next, p, cur = p, cur, cur.next
-# p is the new head
+<div class="insight">💡 <strong>Key insight:</strong> after reversing, the least significant digit is first, so adding 1 and carrying is a straightforward forward walk (just like <a href="0070-lc2-add-two-numbers.html">#2</a>). Reverse back to restore most-significant-first order. If a carry survives the end, append a new leading 1 (after the second reverse it becomes the head).</div>
 
-# Fast &amp; slow
-slow = fast = head
-while fast and fast.next:
-    slow, fast = slow.next, fast.next.next   # slow = middle when fast ends</code></pre>
-<h2>How to work on it now</h2>
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Reverse the list.</li>
+<li>Walk it adding <code>carry</code> (start 1); a digit &lt; 9 absorbs the carry and stops it; a 9 becomes 0 and carries on.</li>
+<li>If carry remains at the end, append a node with value 1.</li>
+<li>Reverse back and return.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — 1→2→3  (123 + 1)</h2>
+<pre class="viz">reverse → 3→2→1
+add 1: 3→4 (carry gone) → 4→2→1
+reverse back → 1→2→4
+(9→9→9 → reversed 9→9→9 → all roll to 0 with carry → 0→0→0→1 → reverse → 1→0→0→0)</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def plusOne(head):
+    def reverse(node):
+        prev = None
+        while node:
+            nxt = node.next
+            node.next = prev
+            prev = node
+            node = nxt
+        return prev
+
+    head = reverse(head)
+    cur, carry = head, 1
+    prev = None
+    while cur:
+        total = cur.val + carry
+        cur.val = total % 10
+        carry = total // 10
+        prev = cur
+        cur = cur.next
+    if carry:
+        prev.next = ListNode(1)     # new most-significant digit (still reversed)
+    return reverse(head)</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — two reversals and one add pass. <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>All nines → grows a leading digit (999 → 1000).</li>
+<li>Single node → 9 → 1→0.</li>
+<li>No carry beyond the first digit → stops early logically (loop still finishes, carry 0).</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Trying to carry forward without reversing (carry direction fights the list).</li>
+<li>Forgetting the all-nines new leading node.</li>
+<li>Not reversing back before returning.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Recursive one-pass (carry returned up the stack) avoids reversing.</li>
+<li>Array version (<a href="0045-lc66-plus-one.html">#66</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0045-lc66-plus-one.html">#66</a> · <a href="0070-lc2-add-two-numbers.html">#2</a> · <a href="0067-lc206-reverse-linked-list.html">#206</a></p>
+
 
 <div class="pager"><a href="../problems/0070-lc2-add-two-numbers.html"><span class="lbl">← Previous</span>#2 Add Two Numbers</a><a href="../problems/0072-lc160-intersection-of-two-linked-lists.html" style="text-align:right"><span class="lbl">Next →</span>#160 Intersection of Two Linked Lists</a></div>
 </div>

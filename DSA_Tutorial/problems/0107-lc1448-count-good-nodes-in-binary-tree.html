@@ -36,34 +36,63 @@
 
 <h2>📋 The problem</h2><p>Count 'good' nodes — nodes whose value is ≥ every value on the path from the root to them.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Tree DFS - Recursive Preorder Traversal</strong> — Visit root, then left subtree, then right — used for tree cloning, serialization, path building.</p>
+<h2>🧭 How to think about it</h2>
+<p>A node is "good" if no node on the path from the root to it has a greater value — i.e., it's ≥ the <strong>maximum seen so far</strong> along that path. Carry that running max down the tree and count nodes that meet or beat it.</p>
 
-<h2>Why this pattern?</h2><ul><li>"level", "depth", "nearest", "zigzag by rows" → BFS</li><li>"path sum", "ancestor", "validate", "diameter" → DFS</li><li>BST + "k-th smallest / sorted order" → inorder</li><li>"serialize / reconstruct" → preorder</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Tree Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>def dfs(node, state):                 # state flows DOWN (bounds, path...)
-    if not node:
-        return base                       # e.g. 0, True, None
-    L = dfs(node.left,  new_state)
-    R = dfs(node.right, new_state)
-    return combine(node.val, L, R)        # answer flows UP
+<h2>🐢 Brute force first</h2>
+<p>For each node, re-walk up to the root checking for a bigger ancestor → O(n·h). Threading the max down makes it a single O(n) pass.</p>
 
-from collections import deque             # BFS by levels
-q = deque([root])
-while q:
-    for _ in range(len(q)):               # freeze current level size
-        node = q.popleft()
-        if node.left:  q.append(node.left)
-        if node.right: q.append(node.right)</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> a preorder DFS passes the maximum value on the path so far. A node counts if <code>node.val ≥ max_so_far</code>; then recurse with <code>max(max_so_far, node.val)</code>.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>DFS with <code>max_so_far</code>, starting at <code>root.val</code> (or −∞).</li>
+<li>Count 1 if <code>node.val ≥ max_so_far</code>.</li>
+<li>Recurse into children with the updated max; sum the counts.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — [3,1,4,3,null,1,5]</h2>
+<pre class="viz">3 good (max3) ; 1 not (max3) ; 4 good (max4) ; 3 under 1: max3, 3≥3 good ; 1 not ; 5 good
+good count = 4</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def goodNodes(root):
+    def dfs(node, max_so_far):
+        if not node:
+            return 0
+        good = 1 if node.val &gt;= max_so_far else 0
+        new_max = max(max_so_far, node.val)
+        return good + dfs(node.left, new_max) + dfs(node.right, new_max)
+    return dfs(root, root.val)          # root is always good</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong>, <strong>Space O(h)</strong> recursion.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Root always counts (nothing above it).</li>
+<li>Equal values along a path → still "good" (uses ≥).</li>
+<li>Single node → 1.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Using strict <code>&gt;</code> and missing nodes equal to the running max.</li>
+<li>Resetting the max instead of carrying it down.</li>
+<li>Seeding the max above the root's value.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Count nodes that are a path minimum → track the running min.</li>
+<li>Good-node style constraints appear in many DFS problems.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0099-lc112-path-sum.html">#112</a> · <a href="0102-lc129-sum-root-to-leaf-numbers.html">#129</a> · <a href="0120-lc104-maximum-depth-of-binary-tree.html">#104</a></p>
+
 
 <div class="pager"><a href="../problems/0106-lc988-smallest-string-starting-from-leaf.html"><span class="lbl">← Previous</span>#988 Smallest String Starting From Leaf</a><a href="../problems/0108-lc94-binary-tree-inorder-traversal.html" style="text-align:right"><span class="lbl">Next →</span>#94 Binary Tree Inorder Traversal</a></div>
 </div>

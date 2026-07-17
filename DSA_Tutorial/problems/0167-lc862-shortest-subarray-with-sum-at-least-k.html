@@ -36,30 +36,70 @@
 
 <h2>📋 The problem</h2><p>Return the length of the shortest (possibly negative-valued) subarray with sum at least k, in O(n) (monotonic deque over prefix sums).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Monotonic Queue for Max/Min</strong> — A deque of indices keeps candidates in monotonic order — answers 'max in window' in O(n).</p>
+<h2>🧭 How to think about it</h2>
+<p>Find the shortest subarray with sum ≥ <code>k</code>, but values may be <strong>negative</strong>, so the simple positive-only window (<a href="0147-lc209-minimum-size-subarray-sum.html">#209</a>) breaks. Work on <strong>prefix sums</strong> and keep a <strong>monotonic increasing deque</strong> of prefix indices; it lets you find, for each right end, the best (closest, smallest-prefix) start.</p>
 
-<h2>Why this pattern?</h2><ul><li>"contiguous subarray / substring" + longest/shortest/max/min/count</li><li>fixed size k ("every window of size k")</li><li>a constraint to maintain: "at most k distinct", "no repeats", "sum ≥ target"</li><li>strings + character frequency ("anagram of", "contains all chars of")</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Sliding Window master template and adapt the marked parts to this problem:</p><pre><code># Variable-size window (the general form)
-state = {}                              # counts / sum — whatever the constraint needs
-left = 0
-best = 0
-for right in range(len(s)):
-    add(s[right], state)                # 1) window grows
-    while invalid(state):               # 2) shrink until constraint holds again
-        remove(s[left], state)
-        left += 1
-    best = max(best, right - left + 1)  # 3) window is valid here</code></pre>
-<h2>How to work on it now</h2>
+<h2>🐢 Brute force first</h2>
+<p>All subarrays → O(n²). The deque over prefix sums gives O(n).</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> with prefixes <code>P</code>, a subarray <code>(i, j]</code> has sum <code>P[j] − P[i] ≥ k</code>. For each <code>j</code>: (1) while <code>P[j] − P[front] ≥ k</code>, that front gives a valid subarray — record its length and pop it (a closer <code>j</code> can't do better with it). (2) Keep the deque increasing by popping back indices with <code>P ≥ P[j]</code> (a larger-or-equal earlier prefix is never a better start).</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Build prefix sums <code>P</code> of length <code>n+1</code>.</li>
+<li>For each <code>j</code>: pop fronts satisfying <code>P[j] − P[front] ≥ k</code> (update best); pop backs with <code>P[back] ≥ P[j]</code>; push <code>j</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — nums = [2,-1,2], k = 3</h2>
+<pre class="viz">P = [0,2,1,3]
+j=3 (P3=3): P3−P0=3 ≥3 → length 3 (best)
+Answer: 3</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>from collections import deque
+def shortestSubarray(nums, k):
+    n = len(nums)
+    P = [0] * (n + 1)
+    for i in range(n):
+        P[i + 1] = P[i] + nums[i]
+    dq = deque()                          # indices with increasing prefix sums
+    best = n + 1
+    for j in range(n + 1):
+        while dq and P[j] - P[dq[0]] &gt;= k:      # valid start → try it and drop it
+            best = min(best, j - dq.popleft())
+        while dq and P[dq[-1]] &gt;= P[j]:         # keep prefixes increasing
+            dq.pop()
+        dq.append(j)
+    return best if best &lt;= n else -1</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — each index enters/leaves the deque once. <strong>Space O(n)</strong> for prefixes and the deque.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>No subarray reaches k → −1.</li>
+<li>Negative values → handled by the prefix-deque (unlike <a href="0147-lc209-minimum-size-subarray-sum.html">#209</a>).</li>
+<li>Single element ≥ k → length 1.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Applying the positive-only sliding window with negatives present.</li>
+<li>Not popping the front after it yields a valid answer (a later <code>j</code> only makes it longer).</li>
+<li>Wrong monotonic direction on the deque.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Positive-only shortest subarray (<a href="0147-lc209-minimum-size-subarray-sum.html">#209</a>).</li>
+<li>Sliding window maximum (<a href="0166-lc239-sliding-window-maximum.html">#239</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0147-lc209-minimum-size-subarray-sum.html">#209</a> · <a href="0166-lc239-sliding-window-maximum.html">#239</a> · <a href="0056-lc560-subarray-sum-equals-k.html">#560</a></p>
+
 
 <div class="pager"><a href="../problems/0166-lc239-sliding-window-maximum.html"><span class="lbl">← Previous</span>#239 Sliding Window Maximum</a><a href="../problems/0168-lc1696-jump-game-vi.html" style="text-align:right"><span class="lbl">Next →</span>#1696 Jump Game VI</a></div>
 </div>

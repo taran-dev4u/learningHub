@@ -36,33 +36,77 @@
 <p class="progress-note">This problem also appears under: <a href="0030-lc287-find-the-duplicate-number.html">Two Pointer</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>An array of n+1 integers holds values 1..n, so one value repeats; find it without modifying the array and in O(1) space.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Cyclic Sort</strong> — Place each value at index value-1 by swapping — finds missing/duplicate numbers in O(n) O(1).</p>
+<h2>🧭 How to think about it</h2>
+<p>This problem lives in two pattern families. Under the <strong>cyclic-sort lens</strong> (this page), the values <code>1..n</code> want to live at home indices, and a duplicate is what blocks a slot. The catch: the official constraints forbid modifying the array and demand O(1) space — which is why the tournament answer is Floyd's cycle detection (taught in full on the Two Pointers version, <a href="0030-lc287-find-the-duplicate-number.html">#287</a>). Here we build the cyclic-sort intuition and note when it applies.</p>
 
-<h2>Why this pattern?</h2><ul><li>"rotate / transpose / flip" a matrix or array</li><li>"in place" / "O(1) extra space" on a grid problem</li><li>traverse in an unusual order (spiral, diagonal, zigzag)</li><li>mark/erase cells based on other cells (use the cells themselves as flags)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Array/Matrix Manipulation master template and adapt the marked parts to this problem:</p><pre><code># Rotate matrix 90° clockwise, in place
-n = len(matrix)
-for r in range(n):                     # 1) transpose (swap across diagonal)
-    for c in range(r + 1, n):
-        matrix[r][c], matrix[c][r] = matrix[c][r], matrix[r][c]
-for row in matrix:                     # 2) reverse each row
-    row.reverse()
+<h2>🐢 Brute force first</h2>
+<p>A seen-set finds the repeat in O(n) time / O(n) space. Sorting finds adjacent equals in O(n log n). Both are fine if the constraints are relaxed.</p>
 
-# Spiral walk: shrink four boundaries
-top, bottom, left, right = 0, rows - 1, 0, cols - 1
-while top &lt;= bottom and left &lt;= right:
-    ...walk top row, right col, bottom row, left col...
-    top += 1; bottom -= 1; left += 1; right -= 1</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> if you <em>are</em> allowed to mutate, index-marking works: walk the array, and for value <code>v</code> flip the sign at index <code>|v|−1</code>; the first index you find already negative points to the duplicate. To respect "no modification + O(1) space", read the array as a functional graph <code>i → nums[i]</code> and find the cycle entrance with slow/fast pointers.</div>
+
+<h2>🪜 The approach, step by step (index-marking, if mutation allowed)</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>For each value <code>v = nums[i]</code>, let <code>idx = abs(v) − 1</code>.</li>
+<li>If <code>nums[idx]</code> is already negative, <code>abs(v)</code> is the duplicate.</li>
+<li>Otherwise negate <code>nums[idx]</code> to mark it seen.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — nums = [1,3,4,2,2] (index-marking)</h2>
+<pre class="viz">v=1 → idx0: mark nums[0] neg
+v=3 → idx2: mark nums[2] neg
+v=4 → idx3: mark nums[3] neg
+v=2 → idx1: mark nums[1] neg
+v=2 → idx1: already negative → duplicate = 2</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code># Constraint-respecting answer (no mutation, O(1) space): Floyd's cycle detection.
+def findDuplicate(nums):
+    slow = fast = nums[0]
+    while True:
+        slow = nums[slow]
+        fast = nums[nums[fast]]
+        if slow == fast:
+            break
+    slow = nums[0]
+    while slow != fast:
+        slow = nums[slow]
+        fast = nums[fast]
+    return slow
+
+# If mutation were allowed, index-marking is simpler:
+# for x in nums:
+#     idx = abs(x) - 1
+#     if nums[idx] &lt; 0: return abs(x)
+#     nums[idx] = -nums[idx]</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> for both methods. <strong>Space O(1)</strong>. Floyd also leaves the array untouched, satisfying the strict constraints.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Duplicate appears many times → still one repeated <em>value</em>; both methods return it.</li>
+<li>Duplicate equals 1 or n → the functional-graph cycle still forms.</li>
+<li>Smallest input (length 2) → the two equal values resolve immediately.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Using index-marking when the problem forbids modifying the array.</li>
+<li>Starting Floyd's phase 2 from the meeting point rather than <code>nums[0]</code>.</li>
+<li>Confusing "one duplicate value" with "exactly two copies" — it can repeat more.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Binary search on the value range (count ≤ mid) → O(n log n), O(1) space, no mutation.</li>
+<li>Find <em>all</em> duplicates when mutation is allowed (<a href="0050-lc442-find-all-duplicates-in-an-array.html">#442</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0050-lc442-find-all-duplicates-in-an-array.html">#442</a> · <a href="0051-lc448-find-all-numbers-disappeared-in-an-array.html">#448</a> · <a href="0047-lc41-first-missing-positive.html">#41</a></p>
+
 
 <div class="pager"><a href="../problems/0048-lc268-missing-number.html"><span class="lbl">← Previous</span>#268 Missing Number</a><a href="../problems/0050-lc442-find-all-duplicates-in-an-array.html" style="text-align:right"><span class="lbl">Next →</span>#442 Find All Duplicates in an Array</a></div>
 </div>

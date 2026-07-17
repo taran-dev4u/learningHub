@@ -36,33 +36,71 @@
 
 <h2>📋 The problem</h2><p>Two non-empty linked lists store non-negative integers with digits in reverse order. Add the two numbers and return the sum as a linked list in the same format.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Addition of Numbers</strong> — Add digit-by-digit with a carry, advancing both list pointers.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Walk both lists digit by digit carrying the carry; a dummy head collects result nodes.</div>
-<h2>Why this pattern?</h2><ul><li>input is a linked list (that alone is the signal)</li><li>"reverse", "reorder", "swap in pairs", "rotate" nodes</li><li>"k-th from the end", "middle", "cycle" → fast &amp; slow</li><li>"merge k sorted lists" → pairwise merge or heap of heads</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Linked List Manipulation master template and adapt the marked parts to this problem:</p><pre><code>dummy = ListNode(0, head)            # dummy head: prev of the real head
-prev, cur = dummy, head
+<h2>🧭 How to think about it</h2>
+<p>Two numbers are stored as linked lists with digits in <strong>reverse order</strong> (ones digit first). That's actually convenient: walk both lists together, adding digit by digit and carrying, exactly like grade-school addition — and the reversed order means you start where the carry starts.</p>
 
-# In-place reversal core
-p = None
-while cur:
-    cur.next, p, cur = p, cur, cur.next
-# p is the new head
+<h2>🐢 Brute force first</h2>
+<p>Convert each list to an integer, add, convert back — works in Python but overflows in fixed-width languages and misses the point. The digit-by-digit merge is O(max(m,n)) and universal.</p>
 
-# Fast &amp; slow
-slow = fast = head
-while fast and fast.next:
-    slow, fast = slow.next, fast.next.next   # slow = middle when fast ends</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> a <code>dummy</code> collects result nodes; a running <code>carry</code> spans steps. At each position add the two current digits (0 if a list ended) plus carry; the new digit is <code>total % 10</code>, the new carry is <code>total // 10</code>. Don't forget a final carry node.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li><code>dummy</code>, <code>tail = dummy</code>, <code>carry = 0</code>.</li>
+<li>While either list has nodes or <code>carry</code>: <code>total = a + b + carry</code>; append <code>total % 10</code>; <code>carry = total // 10</code>.</li>
+<li>Advance whichever lists remain.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — 2→4→3 (342) + 5→6→4 (465)</h2>
+<pre class="viz">2+5=7 c0 → 7
+4+6=10 → 0 c1
+3+4+1=8 → 8
+Result: 7→0→8  (807 = 342+465)</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def addTwoNumbers(l1, l2):
+    dummy = ListNode()
+    tail = dummy
+    carry = 0
+    while l1 or l2 or carry:
+        a = l1.val if l1 else 0
+        b = l2.val if l2 else 0
+        total = a + b + carry
+        carry, digit = divmod(total, 10)
+        tail.next = ListNode(digit)
+        tail = tail.next
+        l1 = l1.next if l1 else None
+        l2 = l2.next if l2 else None
+    return dummy.next</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(max(m,n))</strong> — one pass over the longer list. <strong>Space O(max(m,n))</strong> for the result.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Different lengths → the shorter contributes 0 once exhausted.</li>
+<li>Final carry (e.g., 5 + 5 = 10) → the <code>or carry</code> in the loop adds the leading 1.</li>
+<li>One list is a single 0 → handled naturally.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Ending the loop before flushing a leftover carry.</li>
+<li>Assuming equal lengths.</li>
+<li>Converting to int in languages where it overflows.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Digits in forward order (Add Two Numbers II) → reverse first or use stacks.</li>
+<li>Plus one on a list (<a href="0071-lc369-plus-one-linked-list.html">#369</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0071-lc369-plus-one-linked-list.html">#369</a> · <a href="0045-lc66-plus-one.html">#66</a> · <a href="0069-lc21-merge-two-sorted-lists.html">#21</a></p>
+
 
 <div class="pager"><a href="../problems/0069-lc21-merge-two-sorted-lists.html"><span class="lbl">← Previous</span>#21 Merge Two Sorted Lists</a><a href="../problems/0071-lc369-plus-one-linked-list.html" style="text-align:right"><span class="lbl">Next →</span>#369 Plus One Linked List</a></div>
 </div>

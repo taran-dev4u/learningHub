@@ -36,33 +36,70 @@
 
 <h2>📋 The problem</h2><p>For each node of a linked list, report the first strictly larger value that appears later in the list (0 if none).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Reordering / Partitioning</strong> — Split the list around a pivot (value, midpoint) and reattach — partition or zigzag-reorder.</p>
+<h2>🧭 How to think about it</h2>
+<p>For each node, find the value of the first later node that is strictly greater; 0 if none. "Next greater to the right" is the classic <strong>monotonic stack</strong> pattern — but it's on a list, so first turn the values into an array (or process while collecting), then use a decreasing stack of indices.</p>
 
-<h2>Why this pattern?</h2><ul><li>input is a linked list (that alone is the signal)</li><li>"reverse", "reorder", "swap in pairs", "rotate" nodes</li><li>"k-th from the end", "middle", "cycle" → fast &amp; slow</li><li>"merge k sorted lists" → pairwise merge or heap of heads</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Linked List Manipulation master template and adapt the marked parts to this problem:</p><pre><code>dummy = ListNode(0, head)            # dummy head: prev of the real head
-prev, cur = dummy, head
+<h2>🐢 Brute force first</h2>
+<p>For each node scan all later nodes → O(n²). A monotonic stack resolves each node once → O(n).</p>
 
-# In-place reversal core
-p = None
-while cur:
-    cur.next, p, cur = p, cur, cur.next
-# p is the new head
+<div class="insight">💡 <strong>Key insight:</strong> keep a stack of indices whose "next greater" is still unknown, with their values decreasing down the stack. When a bigger value arrives, it is the answer for everything on top of the stack that's smaller — pop and fill them in.</div>
 
-# Fast &amp; slow
-slow = fast = head
-while fast and fast.next:
-    slow, fast = slow.next, fast.next.next   # slow = middle when fast ends</code></pre>
-<h2>How to work on it now</h2>
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Copy list values into an array <code>vals</code>; <code>res = [0]*n</code>.</li>
+<li>For each index <code>i</code>: while the stack's top value &lt; <code>vals[i]</code>, pop and set its answer to <code>vals[i]</code>.</li>
+<li>Push <code>i</code>. Leftover stack entries keep 0.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — 2→1→5</h2>
+<pre class="viz">vals=[2,1,5]
+i=0 push0 (stack[0])
+i=1 top val2&gt;1 → push1 (stack[0,1])
+i=2 val5: pop1(val1)→res[1]=5 ; pop0(val2)→res[0]=5 ; push2
+res=[5,5,0]</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def nextLargerNodes(head):
+    vals = []
+    while head:
+        vals.append(head.val)
+        head = head.next
+    res = [0] * len(vals)
+    stack = []                         # indices with unresolved next-greater
+    for i, v in enumerate(vals):
+        while stack and vals[stack[-1]] &lt; v:
+            res[stack.pop()] = v        # v is the next greater for that index
+        stack.append(i)
+    return res</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — each index pushed and popped once. <strong>Space O(n)</strong> for the values array, result, and stack.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Strictly increasing list → everyone's next greater is the following node (stack empties each step).</li>
+<li>Strictly decreasing → all answers 0.</li>
+<li>Single node → [0].</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Using <code>≤</code> instead of <code>&lt;</code> — "greater" is strict.</li>
+<li>Storing values instead of indices on the stack (you need to know which slot to fill).</li>
+<li>Forgetting leftover indices default to 0.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Next greater in an array (<a href="0181-lc496-next-greater-element-i.html">#496</a>, <a href="0185-lc739-daily-temperatures.html">#739</a>).</li>
+<li>Previous greater → scan the other direction.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0185-lc739-daily-temperatures.html">#739</a> · <a href="0181-lc496-next-greater-element-i.html">#496</a> · <a href="0067-lc206-reverse-linked-list.html">#206</a></p>
+
 
 <div class="pager"><a href="../problems/0081-lc708-insert-into-a-sorted-circular-linked-list.html"><span class="lbl">← Previous</span>#708 Insert into a Sorted Circular Linked List</a><a href="../problems/0083-lc2487-remove-nodes-from-linked-list.html" style="text-align:right"><span class="lbl">Next →</span>#2487 Remove Nodes From Linked List</a></div>
 </div>

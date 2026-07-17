@@ -36,35 +36,63 @@
 
 <h2>📋 The problem</h2><p>For each element of a subset array, find its next greater element to the right in the full array (-1 if none).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Monotonic Stack</strong> — Stack maintained in increasing or decreasing order — pops give next-greater/smaller in O(n).</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Monotonic decreasing stack over nums2; when x arrives, everything popped has x as its next greater.</div>
-<h2>Why this pattern?</h2><ul><li>brackets/tags to match or validate</li><li>"next greater / next warmer / previous smaller" element</li><li>histogram areas, trapped water, "can see over"</li><li>evaluate/parse an expression, decode nested strings</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Stack master template and adapt the marked parts to this problem:</p><pre><code># Monotonic (decreasing) stack — next greater element
-stack = []                              # holds INDICES of unresolved elements
-res = [-1] * len(nums)
-for i, x in enumerate(nums):
-    while stack and nums[stack[-1]] &lt; x:   # x resolves the waiting ones
-        j = stack.pop()
-        res[j] = x                          # x is j's next greater
-    stack.append(i)
+<h2>🧭 How to think about it</h2>
+<p>For each value in <code>nums1</code> (a subset of <code>nums2</code>), find the first greater value to its right in <code>nums2</code>. Precompute the "next greater" for every element of <code>nums2</code> with a <strong>monotonic decreasing stack</strong>, store the answers in a map, then look up each query.</p>
 
-# Matching
-for ch in s:
-    if ch in pairs:  stack.append(ch)
-    elif not stack or pairs[stack.pop()] != ch:
-        return False
-return not stack</code></pre>
-<h2>How to work on it now</h2>
+<h2>🐢 Brute force first</h2>
+<p>For each element scan right for a bigger one → O(n·m). The monotonic stack computes all next-greaters in O(n).</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> sweep <code>nums2</code> keeping a stack of values still waiting for their next greater. When a value <code>x</code> arrives, every stack element smaller than <code>x</code> has found its answer (<code>x</code>) — pop and record them. Unresolved elements get <code>−1</code>.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Walk <code>nums2</code>; while the stack top &lt; current, pop and map it to the current value.</li>
+<li>Push the current value.</li>
+<li>Answer each <code>nums1</code> query from the map (default −1).</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — nums2 = [1,3,4,2]</h2>
+<pre class="viz">1 push ; 3&gt;1 pop→map[1]=3, push3 ; 4&gt;3 pop→map[3]=4, push4 ; 2 push
+map: 1→3, 3→4, 4→-1, 2→-1</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def nextGreaterElement(nums1, nums2):
+    nxt = {}
+    stack = []
+    for x in nums2:
+        while stack and stack[-1] &lt; x:
+            nxt[stack.pop()] = x          # x is the next greater
+        stack.append(x)
+    return [nxt.get(v, -1) for v in nums1]</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n + m)</strong>, <strong>Space O(n)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Largest element → −1.</li>
+<li>Descending <code>nums2</code> → all −1.</li>
+<li>All distinct (guaranteed) → clean map keys.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Recomputing per query instead of precomputing.</li>
+<li>Pushing indices when values suffice (values are unique here).</li>
+<li>Forgetting the −1 default.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Circular array (<a href="0182-lc503-next-greater-element-ii.html">#503</a>).</li>
+<li>Next greater as a permutation number (<a href="0183-lc556-next-greater-element-iii.html">#556</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0182-lc503-next-greater-element-ii.html">#503</a> · <a href="0185-lc739-daily-temperatures.html">#739</a> · <a href="0183-lc556-next-greater-element-iii.html">#556</a></p>
+
 
 <div class="pager"><a href="../problems/0180-lc456-132-pattern.html"><span class="lbl">← Previous</span>#456 132 Pattern</a><a href="../problems/0182-lc503-next-greater-element-ii.html" style="text-align:right"><span class="lbl">Next →</span>#503 Next Greater Element II</a></div>
 </div>

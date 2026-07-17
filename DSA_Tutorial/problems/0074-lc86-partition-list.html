@@ -36,33 +36,68 @@
 
 <h2>📋 The problem</h2><p>Partition a linked list around a value x so all nodes &lt; x come before all nodes ≥ x, preserving relative order within each part.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Reordering / Partitioning</strong> — Split the list around a pivot (value, midpoint) and reattach — partition or zigzag-reorder.</p>
+<h2>🧭 How to think about it</h2>
+<p>Reorder so every node less than <code>x</code> comes before every node ≥ <code>x</code>, keeping the original relative order within each group. Build <strong>two separate chains</strong> — a "less" list and a "greater-or-equal" list — as you scan, then join them.</p>
 
-<h2>Why this pattern?</h2><ul><li>input is a linked list (that alone is the signal)</li><li>"reverse", "reorder", "swap in pairs", "rotate" nodes</li><li>"k-th from the end", "middle", "cycle" → fast &amp; slow</li><li>"merge k sorted lists" → pairwise merge or heap of heads</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Linked List Manipulation master template and adapt the marked parts to this problem:</p><pre><code>dummy = ListNode(0, head)            # dummy head: prev of the real head
-prev, cur = dummy, head
+<h2>🐢 Brute force first</h2>
+<p>Collect values, stable-partition, rebuild → O(n) space. Two dummy-headed chains do it in place with O(1) extra.</p>
 
-# In-place reversal core
-p = None
-while cur:
-    cur.next, p, cur = p, cur, cur.next
-# p is the new head
+<div class="insight">💡 <strong>Key insight:</strong> keep two builder tails, <code>less</code> and <code>greater</code>, each starting at its own dummy. Append each node to the appropriate chain in order (that preserves stability). Finally link <code>less</code>'s tail to <code>greater</code>'s head and terminate the greater chain.</div>
 
-# Fast &amp; slow
-slow = fast = head
-while fast and fast.next:
-    slow, fast = slow.next, fast.next.next   # slow = middle when fast ends</code></pre>
-<h2>How to work on it now</h2>
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Two dummies: <code>less_head</code>, <code>greater_head</code>; tails point at them.</li>
+<li>For each node: if <code>val &lt; x</code> append to <code>less</code>, else append to <code>greater</code>.</li>
+<li><code>greater_tail.next = None</code>; <code>less_tail.next = greater_head.next</code>; return <code>less_head.next</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — 1→4→3→2→5→2, x = 3</h2>
+<pre class="viz">less:    1 → 2 → 2
+greater: 4 → 3 → 5
+join → 1→2→2→4→3→5</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def partition(head, x):
+    less_head = less = ListNode()
+    greater_head = greater = ListNode()
+    while head:
+        if head.val &lt; x:
+            less.next = head; less = less.next
+        else:
+            greater.next = head; greater = greater.next
+        head = head.next
+    greater.next = None                 # terminate the greater chain
+    less.next = greater_head.next       # stitch less → greater
+    return less_head.next</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — one pass. <strong>Space O(1)</strong> — nodes are relinked, not copied.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>All nodes on one side → the other chain is empty (dummy handles it).</li>
+<li>Empty list → returns <code>None</code>.</li>
+<li>Values equal to <code>x</code> → go to the "greater-or-equal" chain.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Forgetting <code>greater.next = None</code> → a cycle or trailing junk.</li>
+<li>Breaking the stable order by inserting at heads instead of tails.</li>
+<li>Using <code>≤</code> vs <code>&lt;</code> incorrectly for the pivot.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Three-way partition (Dutch flag on a list) → three chains.</li>
+<li>Odd/even index split (<a href="0078-lc328-odd-even-linked-list.html">#328</a>) is the same two-chain idea by position.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0078-lc328-odd-even-linked-list.html">#328</a> · <a href="0069-lc21-merge-two-sorted-lists.html">#21</a> · <a href="0019-lc75-sort-colors.html">#75</a></p>
+
 
 <div class="pager"><a href="../problems/0073-lc61-rotate-list.html"><span class="lbl">← Previous</span>#61 Rotate List</a><a href="../problems/0075-lc138-copy-list-with-random-pointer.html" style="text-align:right"><span class="lbl">Next →</span>#138 Copy List with Random Pointer</a></div>
 </div>

@@ -36,34 +36,70 @@
 
 <h2>📋 The problem</h2><p>Each root-to-leaf path (read leaf→root) spells a word of letters a-z; return the lexicographically smallest one.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Tree DFS - Recursive Preorder Traversal</strong> — Visit root, then left subtree, then right — used for tree cloning, serialization, path building.</p>
+<h2>🧭 How to think about it</h2>
+<p>Values 0–25 map to letters a–z. Among all leaf-to-root strings, return the lexicographically smallest. Since the string starts at a <em>leaf</em>, build the path root-to-leaf and <strong>reverse it</strong> at the leaf, then keep the smallest.</p>
 
-<h2>Why this pattern?</h2><ul><li>"level", "depth", "nearest", "zigzag by rows" → BFS</li><li>"path sum", "ancestor", "validate", "diameter" → DFS</li><li>BST + "k-th smallest / sorted order" → inorder</li><li>"serialize / reconstruct" → preorder</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Tree Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>def dfs(node, state):                 # state flows DOWN (bounds, path...)
-    if not node:
-        return base                       # e.g. 0, True, None
-    L = dfs(node.left,  new_state)
-    R = dfs(node.right, new_state)
-    return combine(node.val, L, R)        # answer flows UP
+<h2>🐢 Brute force first</h2>
+<p>Collect every root-to-leaf path, reverse each, compare — O(n·h). A DFS that builds the reversed string incrementally and compares at leaves is the same order but cleaner.</p>
 
-from collections import deque             # BFS by levels
-q = deque([root])
-while q:
-    for _ in range(len(q)):               # freeze current level size
-        node = q.popleft()
-        if node.left:  q.append(node.left)
-        if node.right: q.append(node.right)</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> prepend each node's letter as you descend (so the working string is already leaf-first from the current node up). At a leaf, that string is a full candidate — compare it to the best. Careful lexicographic comparison, not length, decides the winner.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>DFS carrying <code>cur = chr(val) + parent_string</code> (leaf-first order).</li>
+<li>At a leaf, compare <code>cur</code> with the best-so-far and keep the smaller.</li>
+<li>Return the best.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — [0,1,2,3,4,3,4] (a at root)</h2>
+<pre class="viz">paths reversed: "dba","eba","dca","eca"
+smallest lexicographically: "dba"
+Answer: "dba"</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def smallestFromLeaf(root):
+    best = [None]
+    def dfs(node, suffix):
+        if not node:
+            return
+        cur = chr(ord('a') + node.val) + suffix   # prepend → leaf-first
+        if not node.left and not node.right:
+            if best[0] is None or cur &lt; best[0]:
+                best[0] = cur
+        else:
+            dfs(node.left, cur)
+            dfs(node.right, cur)
+    dfs(root, "")
+    return best[0] or ""</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n·h)</strong> — building/comparing strings up to length <code>h</code>. <strong>Space O(h)</strong> recursion.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Single node → its single letter.</li>
+<li>Prefix ties (e.g., "ab" vs "aba") → shorter wins only if it's a strict prefix; Python's string <code>&lt;</code> handles it.</li>
+<li>Empty tree → empty string.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Comparing by length instead of lexicographic order.</li>
+<li>Building root-first and forgetting to reverse.</li>
+<li>Recording candidates at internal nodes.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Largest string instead → flip the comparison.</li>
+<li>Sum of root-to-leaf numbers (<a href="0102-lc129-sum-root-to-leaf-numbers.html">#129</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0102-lc129-sum-root-to-leaf-numbers.html">#129</a> · <a href="0104-lc257-binary-tree-paths.html">#257</a> · <a href="0100-lc113-path-sum-ii.html">#113</a></p>
+
 
 <div class="pager"><a href="../problems/0105-lc572-subtree-of-another-tree.html"><span class="lbl">← Previous</span>#572 Subtree of Another Tree</a><a href="../problems/0107-lc1448-count-good-nodes-in-binary-tree.html" style="text-align:right"><span class="lbl">Next →</span>#1448 Count Good Nodes in Binary Tree</a></div>
 </div>

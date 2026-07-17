@@ -321,6 +321,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
             currentlyLoadedPageId = concept.pageId;
 
+            // Render Mermaid diagrams
+            try {
+                if (window.mermaid) {
+                    const mermaidBlocks = document.querySelectorAll('#markdown-content code.language-mermaid');
+                    if (mermaidBlocks.length > 0) {
+                        mermaidBlocks.forEach((el) => {
+                            const pre = el.parentElement;
+                            if (pre && pre.tagName === 'PRE') {
+                                const div = document.createElement('div');
+                                div.className = 'mermaid';
+                                div.style.textAlign = 'center';
+                                div.style.margin = '2rem 0';
+                                div.textContent = el.textContent; // Using textContent unescapes HTML entities if any
+                                pre.replaceWith(div);
+                            }
+                        });
+                        mermaid.run();
+                    }
+                }
+            } catch (err) {
+                console.error("Mermaid error:", err);
+            }
+
             setTimeout(() => {
                 markdownContent.classList.remove('fade-in');
             }, 400);

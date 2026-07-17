@@ -36,34 +36,66 @@
 
 <h2>📋 The problem</h2><p>Sum every BST value within [lo, hi], pruning branches outside the range.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Tree DFS - Recursive Inorder Traversal</strong> — Visit left, root, right — yields sorted order on a BST; used for kth-smallest, BST validation.</p>
+<h2>🧭 How to think about it</h2>
+<p>Sum the values in <code>[low, high]</code>. Use the BST property to <strong>prune</strong>: if a node is below <code>low</code>, skip its entire left subtree; if above <code>high</code>, skip its right subtree. Otherwise add the node and explore both sides.</p>
 
-<h2>Why this pattern?</h2><ul><li>"level", "depth", "nearest", "zigzag by rows" → BFS</li><li>"path sum", "ancestor", "validate", "diameter" → DFS</li><li>BST + "k-th smallest / sorted order" → inorder</li><li>"serialize / reconstruct" → preorder</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Tree Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>def dfs(node, state):                 # state flows DOWN (bounds, path...)
-    if not node:
-        return base                       # e.g. 0, True, None
-    L = dfs(node.left,  new_state)
-    R = dfs(node.right, new_state)
-    return combine(node.val, L, R)        # answer flows UP
+<h2>🐢 Brute force first</h2>
+<p>Traverse every node and add those in range → O(n). Pruning skips whole subtrees for a faster average, still O(n) worst case.</p>
 
-from collections import deque             # BFS by levels
-q = deque([root])
-while q:
-    for _ in range(len(q)):               # freeze current level size
-        node = q.popleft()
-        if node.left:  q.append(node.left)
-        if node.right: q.append(node.right)</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> ordering tells you where valid values can be. <code>node.val &lt; low</code> ⇒ only the right subtree can contain in-range values; <code>node.val &gt; high</code> ⇒ only the left. In range ⇒ count it and recurse both ways.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Null → 0.</li>
+<li><code>val &lt; low</code> → recurse right only.</li>
+<li><code>val &gt; high</code> → recurse left only.</li>
+<li>Else add <code>val</code> and recurse both.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — [10,5,15,3,7,null,18], low=7, high=15</h2>
+<pre class="viz">10 in range → +10 ; left 5&lt;7 → right of 5 = 7 (+7) ; right 15 in range → +15 ; 18&gt;15 skip
+Sum = 10+7+15 = 32</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def rangeSumBST(root, low, high):
+    if not root:
+        return 0
+    if root.val &lt; low:
+        return rangeSumBST(root.right, low, high)   # prune left
+    if root.val &gt; high:
+        return rangeSumBST(root.left, low, high)    # prune right
+    return (root.val
+            + rangeSumBST(root.left, low, high)
+            + rangeSumBST(root.right, low, high))</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> worst case (fewer with pruning). <strong>Space O(h)</strong> recursion.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>No values in range → 0.</li>
+<li>Whole tree in range → sums everything.</li>
+<li>Inclusive bounds → both endpoints count.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Recursing both ways even when pruning is possible (correct but slower).</li>
+<li>Excluding the endpoints (bounds are inclusive).</li>
+<li>Missing the null base case.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Count nodes in range → return counts instead of sums.</li>
+<li>Trim to the range (<a href="0118-lc669-trim-a-binary-search-tree.html">#669</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0118-lc669-trim-a-binary-search-tree.html">#669</a> · <a href="0109-lc98-validate-binary-search-tree.html">#98</a> · <a href="0111-lc108-convert-sorted-array-to-binary-search-tree.html">#108</a></p>
+
 
 <div class="pager"><a href="../problems/0118-lc669-trim-a-binary-search-tree.html"><span class="lbl">← Previous</span>#669 Trim a Binary Search Tree</a><a href="../problems/0120-lc104-maximum-depth-of-binary-tree.html" style="text-align:right"><span class="lbl">Next →</span>#104 Maximum Depth of Binary Tree</a></div>
 </div>

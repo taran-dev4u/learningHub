@@ -36,34 +36,68 @@
 
 <h2>📋 The problem</h2><p>Return the minimum absolute difference between any two values in a BST.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Tree DFS - Recursive Inorder Traversal</strong> — Visit left, root, right — yields sorted order on a BST; used for kth-smallest, BST validation.</p>
+<h2>🧭 How to think about it</h2>
+<p>Find the smallest absolute difference between any two node values. In a BST, the closest pair is always <strong>adjacent in inorder order</strong> — so walk inorder and compare each value only with the previous one.</p>
 
-<h2>Why this pattern?</h2><ul><li>"level", "depth", "nearest", "zigzag by rows" → BFS</li><li>"path sum", "ancestor", "validate", "diameter" → DFS</li><li>BST + "k-th smallest / sorted order" → inorder</li><li>"serialize / reconstruct" → preorder</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Tree Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>def dfs(node, state):                 # state flows DOWN (bounds, path...)
-    if not node:
-        return base                       # e.g. 0, True, None
-    L = dfs(node.left,  new_state)
-    R = dfs(node.right, new_state)
-    return combine(node.val, L, R)        # answer flows UP
+<h2>🐢 Brute force first</h2>
+<p>Compare all pairs → O(n²). Sort the values (or inorder them) and check neighbors → O(n) after the traversal.</p>
 
-from collections import deque             # BFS by levels
-q = deque([root])
-while q:
-    for _ in range(len(q)):               # freeze current level size
-        node = q.popleft()
-        if node.left:  q.append(node.left)
-        if node.right: q.append(node.right)</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> the minimum difference in a sorted sequence is between consecutive elements. Inorder gives sorted order for free, so track <code>prev</code> and minimize <code>cur − prev</code>.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Inorder-walk keeping <code>prev</code>.</li>
+<li>On each node, if <code>prev</code> exists, update <code>best = min(best, cur.val − prev)</code>.</li>
+<li>Return <code>best</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — inorder 1,3,6</h2>
+<pre class="viz">1→3: diff 2 (best 2) ; 3→6: diff 3 (best stays 2)
+Answer: 2</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def getMinimumDifference(root):
+    best = float('inf')
+    prev = None
+    stack, cur = [], root
+    while cur or stack:
+        while cur:
+            stack.append(cur); cur = cur.left
+        cur = stack.pop()
+        if prev is not None:
+            best = min(best, cur.val - prev)   # neighbors in sorted order
+        prev = cur.val
+        cur = cur.right
+    return best</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong>, <strong>Space O(h)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Fewer than two nodes → no valid pair (problem guarantees at least two).</li>
+<li>Values close together → still caught by neighbor comparison.</li>
+<li>Duplicates (if present) → difference 0.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Comparing all pairs instead of using inorder adjacency.</li>
+<li>Taking absolute value unnecessarily (inorder is increasing, so <code>cur − prev ≥ 0</code>).</li>
+<li>Not initializing <code>prev</code> as "none".</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>General tree → collect values and sort.</li>
+<li>Mode / k-th smallest use the same inorder (<a href="0116-lc501-find-mode-in-binary-search-tree.html">#501</a>, <a href="0113-lc230-kth-smallest-element-in-a-bst.html">#230</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0116-lc501-find-mode-in-binary-search-tree.html">#501</a> · <a href="0113-lc230-kth-smallest-element-in-a-bst.html">#230</a> · <a href="0108-lc94-binary-tree-inorder-traversal.html">#94</a></p>
+
 
 <div class="pager"><a href="../problems/0116-lc501-find-mode-in-binary-search-tree.html"><span class="lbl">← Previous</span>#501 Find Mode in Binary Search Tree</a><a href="../problems/0118-lc669-trim-a-binary-search-tree.html" style="text-align:right"><span class="lbl">Next →</span>#669 Trim a Binary Search Tree</a></div>
 </div>

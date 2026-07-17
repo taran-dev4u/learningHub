@@ -36,30 +36,72 @@
 
 <h2>📋 The problem</h2><p>Return the maximum sum among subarrays of length k whose elements are all distinct (window + counts).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Variable Size / Condition-Based</strong> — Grow the right pointer; shrink the left while a constraint is violated — captures max/min subarray meeting a condition.</p>
+<h2>🧭 How to think about it</h2>
+<p>Among all length-<code>k</code> windows whose elements are <strong>all distinct</strong>, return the maximum sum. Slide a fixed window of size <code>k</code> keeping a running sum and a count map; a window qualifies only when its map has exactly <code>k</code> keys (no repeats).</p>
 
-<h2>Why this pattern?</h2><ul><li>"contiguous subarray / substring" + longest/shortest/max/min/count</li><li>fixed size k ("every window of size k")</li><li>a constraint to maintain: "at most k distinct", "no repeats", "sum ≥ target"</li><li>strings + character frequency ("anagram of", "contains all chars of")</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Sliding Window master template and adapt the marked parts to this problem:</p><pre><code># Variable-size window (the general form)
-state = {}                              # counts / sum — whatever the constraint needs
-left = 0
-best = 0
-for right in range(len(s)):
-    add(s[right], state)                # 1) window grows
-    while invalid(state):               # 2) shrink until constraint holds again
-        remove(s[left], state)
-        left += 1
-    best = max(best, right - left + 1)  # 3) window is valid here</code></pre>
-<h2>How to work on it now</h2>
+<h2>🐢 Brute force first</h2>
+<p>Check each window for distinctness and sum it → O(n·k). A rolling sum plus a count map is O(n).</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> maintain the window sum and a frequency map as you slide. The window is "distinct" exactly when <code>len(map) == k</code>. Update the best sum only then.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Add each element to the sum and map; once the window exceeds <code>k</code>, evict the leftmost.</li>
+<li>When the window size is <code>k</code> and the map has <code>k</code> keys, update the best.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — nums = [1,5,4,2,9,9,9], k = 3</h2>
+<pre class="viz">[1,5,4] distinct sum10 ; [5,4,2] 11 ; [4,2,9] 15 ; [2,9,9] repeat skip ; [9,9,9] skip
+Answer: 15</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>from collections import defaultdict
+def maximumSubarraySum(nums, k):
+    count = defaultdict(int)
+    total = best = 0
+    left = 0
+    for right, x in enumerate(nums):
+        total += x
+        count[x] += 1
+        if right - left + 1 &gt; k:          # keep window size k
+            y = nums[left]
+            total -= y
+            count[y] -= 1
+            if count[y] == 0:
+                del count[y]
+            left += 1
+        if right - left + 1 == k and len(count) == k:
+            best = max(best, total)       # all distinct
+    return best</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong>, <strong>Space O(k)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>No distinct window of size k → 0.</li>
+<li>k = 1 → the max single element.</li>
+<li>All distinct → the plain max-sum window.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Not deleting zero-count keys (map size wrong).</li>
+<li>Comparing sums for non-distinct windows.</li>
+<li>Off-by-one on window size.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Longest distinct substring (<a href="0145-lc3-longest-substring-without-repeating-characters.html">#3</a>).</li>
+<li>Max average subarray (<a href="0139-lc643-maximum-average-subarray-i.html">#643</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0139-lc643-maximum-average-subarray-i.html">#643</a> · <a href="0145-lc3-longest-substring-without-repeating-characters.html">#3</a> · <a href="0166-lc239-sliding-window-maximum.html">#239</a></p>
+
 
 <div class="pager"><a href="../problems/0157-lc1838-frequency-of-the-most-frequent-element.html"><span class="lbl">← Previous</span>#1838 Frequency of the Most Frequent Element</a><a href="../problems/0159-lc2516-take-k-of-each-character-from-left-and-right.html" style="text-align:right"><span class="lbl">Next →</span>#2516 Take K of Each Character From Left and Right</a></div>
 </div>

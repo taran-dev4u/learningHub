@@ -36,33 +36,65 @@
 
 <h2>📋 The problem</h2><p>Reverse a singly linked list.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>In-place Reversal</strong> — Iteratively reverse links with prev/curr/next pointers; recursive variant also classic.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Walk once, flipping each .next to point backwards; keep prev/cur, save next before overwriting.</div>
-<h2>Why this pattern?</h2><ul><li>input is a linked list (that alone is the signal)</li><li>"reverse", "reorder", "swap in pairs", "rotate" nodes</li><li>"k-th from the end", "middle", "cycle" → fast &amp; slow</li><li>"merge k sorted lists" → pairwise merge or heap of heads</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Linked List Manipulation master template and adapt the marked parts to this problem:</p><pre><code>dummy = ListNode(0, head)            # dummy head: prev of the real head
-prev, cur = dummy, head
+<h2>🧭 How to think about it</h2>
+<p>The fundamental linked-list move: flip every <code>.next</code> pointer to face backward. Walk the list once with two pointers, <code>prev</code> and <code>cur</code>; at each node, remember the next node, point <code>cur</code> back at <code>prev</code>, then slide both forward. When <code>cur</code> falls off the end, <code>prev</code> is the new head.</p>
 
-# In-place reversal core
-p = None
-while cur:
-    cur.next, p, cur = p, cur, cur.next
-# p is the new head
+<h2>🐢 Brute force first</h2>
+<p>Push all nodes to a stack and rebuild, or collect values and rewrite → O(n) space. The in-place pointer flip is O(1) space and is the move you'll reuse everywhere.</p>
 
-# Fast &amp; slow
-slow = fast = head
-while fast and fast.next:
-    slow, fast = slow.next, fast.next.next   # slow = middle when fast ends</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> before overwriting <code>cur.next</code>, save it in <code>nxt</code> so you don't lose the rest of the list. Then <code>cur.next = prev</code>; advance <code>prev = cur</code>, <code>cur = nxt</code>.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li><code>prev = None</code>, <code>cur = head</code>.</li>
+<li>While <code>cur</code>: <code>nxt = cur.next</code>; <code>cur.next = prev</code>; <code>prev = cur</code>; <code>cur = nxt</code>.</li>
+<li>Return <code>prev</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — 1→2→3</h2>
+<pre class="viz">prev=None cur=1 : 1.next=None ; prev=1 cur=2
+prev=1 cur=2    : 2.next=1    ; prev=2 cur=3
+prev=2 cur=3    : 3.next=2    ; prev=3 cur=None
+Return 3 → 3→2→1</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def reverseList(head):
+    prev, cur = None, head
+    while cur:
+        nxt = cur.next      # save the rest before we overwrite
+        cur.next = prev     # flip this pointer backward
+        prev = cur          # advance prev
+        cur = nxt           # advance cur
+    return prev             # new head</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — one pass. <strong>Space O(1)</strong> (recursive version is O(n) call stack).</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Empty list → <code>prev</code> stays <code>None</code>.</li>
+<li>Single node → returned unchanged.</li>
+<li>Two nodes → one flip.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Overwriting <code>cur.next</code> before saving it → you lose the tail.</li>
+<li>Returning <code>cur</code> (which is <code>None</code>) instead of <code>prev</code>.</li>
+<li>Forgetting to advance both pointers.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Reverse a sublist (<a href="0066-lc92-reverse-linked-list-ii.html">#92</a>) or k-groups (<a href="0063-lc25-reverse-nodes-in-k-group.html">#25</a>).</li>
+<li>Recursive reversal → elegant but O(n) stack.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0066-lc92-reverse-linked-list-ii.html">#92</a> · <a href="0063-lc25-reverse-nodes-in-k-group.html">#25</a> · <a href="0068-lc234-palindrome-linked-list.html">#234</a></p>
+
 
 <div class="pager"><a href="../problems/0066-lc92-reverse-linked-list-ii.html"><span class="lbl">← Previous</span>#92 Reverse Linked List II</a><a href="../problems/0068-lc234-palindrome-linked-list.html" style="text-align:right"><span class="lbl">Next →</span>#234 Palindrome Linked List</a></div>
 </div>

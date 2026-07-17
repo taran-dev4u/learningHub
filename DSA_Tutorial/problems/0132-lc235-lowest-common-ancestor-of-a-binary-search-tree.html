@@ -36,34 +36,64 @@
 
 <h2>📋 The problem</h2><p>In a binary search tree, return the lowest common ancestor of two given nodes.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Tree - Lowest Common Ancestor (LCA) Finding</strong> — Find the deepest node that has both target nodes in its subtree — recursive or with parent pointers.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Walk from root: both values smaller → go left; both bigger → go right; else this node splits them = LCA.</div>
-<h2>Why this pattern?</h2><ul><li>"level", "depth", "nearest", "zigzag by rows" → BFS</li><li>"path sum", "ancestor", "validate", "diameter" → DFS</li><li>BST + "k-th smallest / sorted order" → inorder</li><li>"serialize / reconstruct" → preorder</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Tree Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>def dfs(node, state):                 # state flows DOWN (bounds, path...)
-    if not node:
-        return base                       # e.g. 0, True, None
-    L = dfs(node.left,  new_state)
-    R = dfs(node.right, new_state)
-    return combine(node.val, L, R)        # answer flows UP
+<h2>🧭 How to think about it</h2>
+<p>The lowest common ancestor (LCA) of two BST nodes is the first node where the two values <strong>split</strong> — one goes left and the other right (or one equals the node). BST ordering makes this a simple downward walk, no recursion into both sides needed.</p>
 
-from collections import deque             # BFS by levels
-q = deque([root])
-while q:
-    for _ in range(len(q)):               # freeze current level size
-        node = q.popleft()
-        if node.left:  q.append(node.left)
-        if node.right: q.append(node.right)</code></pre>
-<h2>How to work on it now</h2>
+<h2>🐢 Brute force first</h2>
+<p>The general-tree LCA (<a href="0133-lc236-lowest-common-ancestor-of-a-binary-tree.html">#236</a>) is O(n). The BST version exploits ordering for an O(h) walk.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> from the root, if both values are smaller, the LCA is in the left subtree; if both are larger, it's in the right; otherwise the current node is where they diverge — that's the LCA.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li><code>cur = root</code>.</li>
+<li>Both values &lt; <code>cur.val</code> → go left; both &gt; → go right.</li>
+<li>Otherwise return <code>cur</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — BST root 6, p=2, q=8</h2>
+<pre class="viz">at 6: 2&lt;6 and 8&gt;6 → they split → LCA = 6</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def lowestCommonAncestor(root, p, q):
+    cur = root
+    while cur:
+        if p.val &lt; cur.val and q.val &lt; cur.val:
+            cur = cur.left            # both in the left subtree
+        elif p.val &gt; cur.val and q.val &gt; cur.val:
+            cur = cur.right           # both in the right subtree
+        else:
+            return cur                # they split here (or one is cur)
+    return None</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(h)</strong> — one descent. <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>One node is an ancestor of the other → returned when the walk reaches it.</li>
+<li>p and q on opposite sides of the root → root is the LCA.</li>
+<li>Values equal to a node → that node splits the pair.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Ignoring the BST property and doing the O(n) general search.</li>
+<li>Strict vs non-strict comparisons when one value equals the node.</li>
+<li>Recursing unnecessarily (a loop suffices).</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>General binary tree LCA (<a href="0133-lc236-lowest-common-ancestor-of-a-binary-tree.html">#236</a>).</li>
+<li>Distance between two BST nodes → depths from the LCA.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0133-lc236-lowest-common-ancestor-of-a-binary-tree.html">#236</a> · <a href="0109-lc98-validate-binary-search-tree.html">#98</a> · <a href="0114-lc285-inorder-successor-in-bst.html">#285</a></p>
+
 
 <div class="pager"><a href="../problems/0131-lc2458-height-of-binary-tree-after-subtree-removal-queries.html"><span class="lbl">← Previous</span>#2458 Height of Binary Tree After Subtree Removal Queries</a><a href="../problems/0133-lc236-lowest-common-ancestor-of-a-binary-tree.html" style="text-align:right"><span class="lbl">Next →</span>#236 Lowest Common Ancestor of a Binary Tree</a></div>
 </div>

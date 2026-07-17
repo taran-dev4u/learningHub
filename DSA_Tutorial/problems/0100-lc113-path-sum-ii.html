@@ -36,34 +36,71 @@
 
 <h2>📋 The problem</h2><p>Return all root-to-leaf paths of a binary tree whose values sum to a given target.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Tree DFS - Recursive Preorder Traversal</strong> — Visit root, then left subtree, then right — used for tree cloning, serialization, path building.</p>
+<h2>🧭 How to think about it</h2>
+<p>Now return <em>every</em> root-to-leaf path that sums to the target. This is <strong>backtracking</strong>: carry the current path down, and when you reach a leaf that completes the target, snapshot the path. Undo (pop) as you return so siblings start clean.</p>
 
-<h2>Why this pattern?</h2><ul><li>"level", "depth", "nearest", "zigzag by rows" → BFS</li><li>"path sum", "ancestor", "validate", "diameter" → DFS</li><li>BST + "k-th smallest / sorted order" → inorder</li><li>"serialize / reconstruct" → preorder</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Tree Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>def dfs(node, state):                 # state flows DOWN (bounds, path...)
-    if not node:
-        return base                       # e.g. 0, True, None
-    L = dfs(node.left,  new_state)
-    R = dfs(node.right, new_state)
-    return combine(node.val, L, R)        # answer flows UP
+<h2>🐢 Brute force first</h2>
+<p>Collect all root-to-leaf paths, then filter by sum — fine but stores everything. Backtracking prunes nothing extra here but records only completed paths.</p>
 
-from collections import deque             # BFS by levels
-q = deque([root])
-while q:
-    for _ in range(len(q)):               # freeze current level size
-        node = q.popleft()
-        if node.left:  q.append(node.left)
-        if node.right: q.append(node.right)</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> append the node to <code>path</code>, subtract from the remaining target, recurse; at a leaf that hits zero, append a <em>copy</em> of <code>path</code> to the results. Always <code>path.pop()</code> before returning so the shared list stays correct for siblings.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>DFS carrying a mutable <code>path</code> and remaining target.</li>
+<li>At a leaf with remaining == node.val, record <code>path + [node]</code>.</li>
+<li>Recurse into children; pop the node on the way back.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — target 22, tree with paths 5→4→11→2 (=22) and 5→8→4→5 (=22)</h2>
+<pre class="viz">descend 5,4,11,2 → sum 22 → record [5,4,11,2]
+backtrack, descend 5,8,4,5 → sum 22 → record [5,8,4,5]
+Result: [[5,4,11,2],[5,8,4,5]]</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def pathSum(root, targetSum):
+    res, path = [], []
+    def dfs(node, remaining):
+        if not node:
+            return
+        path.append(node.val)
+        remaining -= node.val
+        if not node.left and not node.right and remaining == 0:
+            res.append(path[:])          # snapshot a copy
+        else:
+            dfs(node.left, remaining)
+            dfs(node.right, remaining)
+        path.pop()                        # backtrack
+    dfs(root, targetSum)
+    return res</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n²)</strong> worst case — copying paths of length up to <code>h</code> for many leaves. <strong>Space O(h)</strong> recursion plus output.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>No qualifying path → empty list.</li>
+<li>Empty tree → empty list.</li>
+<li>Negative values → still handled by subtraction.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Appending <code>path</code> itself instead of a copy — later pops mutate it.</li>
+<li>Forgetting to backtrack (<code>path.pop()</code>).</li>
+<li>Recording at non-leaf nodes.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Existence only (<a href="0099-lc112-path-sum.html">#112</a>).</li>
+<li>Paths not required to start/end at root/leaf (<a href="0127-lc437-path-sum-iii.html">#437</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0099-lc112-path-sum.html">#112</a> · <a href="0127-lc437-path-sum-iii.html">#437</a> · <a href="0104-lc257-binary-tree-paths.html">#257</a></p>
+
 
 <div class="pager"><a href="../problems/0099-lc112-path-sum.html"><span class="lbl">← Previous</span>#112 Path Sum</a><a href="../problems/0101-lc114-flatten-binary-tree-to-linked-list.html" style="text-align:right"><span class="lbl">Next →</span>#114 Flatten Binary Tree to Linked List</a></div>
 </div>

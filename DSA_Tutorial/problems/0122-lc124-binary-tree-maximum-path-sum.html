@@ -36,34 +36,68 @@
 <p class="progress-note">This problem also appears under: <a href="0607-lc124-binary-tree-maximum-path-sum.html">Tree Dynamic Programming</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Return the maximum sum of any path in a binary tree; a path connects nodes parent-to-child and may not fork (it can pass through a node's two children only at its highest point).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Tree DFS - Recursive Postorder Traversal</strong> — Visit left, right, then root — used when children's results are needed before computing the parent.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>At each node: best downward gain per child (clamped at 0); path through node = val + leftGain + rightGain updates the global.</div>
-<h2>Why this pattern?</h2><ul><li>"level", "depth", "nearest", "zigzag by rows" → BFS</li><li>"path sum", "ancestor", "validate", "diameter" → DFS</li><li>BST + "k-th smallest / sorted order" → inorder</li><li>"serialize / reconstruct" → preorder</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Tree Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>def dfs(node, state):                 # state flows DOWN (bounds, path...)
-    if not node:
-        return base                       # e.g. 0, True, None
-    L = dfs(node.left,  new_state)
-    R = dfs(node.right, new_state)
-    return combine(node.val, L, R)        # answer flows UP
+<h2>🧭 How to think about it</h2>
+<p>A "path" can start and end at any nodes and bends at most once (goes up to some node, then down). At each node, the best path <em>through</em> it is the node's value plus the best downward gain from each side. The tricky part: what a node <strong>returns</strong> to its parent (a single downward branch) differs from what it <strong>contributes</strong> as a peak.</p>
 
-from collections import deque             # BFS by levels
-q = deque([root])
-while q:
-    for _ in range(len(q)):               # freeze current level size
-        node = q.popleft()
-        if node.left:  q.append(node.left)
-        if node.right: q.append(node.right)</code></pre>
-<h2>How to work on it now</h2>
+<h2>🐢 Brute force first</h2>
+<p>Trying all path pairs is exponential. A single postorder pass computing downward gains is O(n).</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> for each node compute <code>leftGain = max(0, dfs(left))</code> and <code>rightGain = max(0, dfs(right))</code> (clamp negatives to 0 — a losing branch is dropped). Update a global best with <code>node.val + leftGain + rightGain</code> (the bend), but return only <code>node.val + max(leftGain, rightGain)</code> to the parent (a straight branch).</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Postorder DFS; compute clamped left/right gains.</li>
+<li>Update the global max with the through-node sum.</li>
+<li>Return the best single-branch extension upward.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — [-10,9,20,null,null,15,7]</h2>
+<pre class="viz">at 20: gains 15,7 → through = 20+15+7 = 42 (global) ; returns 20+15 = 35
+at -10: gains max(0,9)=9, max(0,35)=35 → through = -10+9+35 = 34 &lt; 42
+Answer: 42</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def maxPathSum(root):
+    best = float('-inf')
+    def gain(node):
+        nonlocal best
+        if not node:
+            return 0
+        left = max(0, gain(node.left))     # drop negative branches
+        right = max(0, gain(node.right))
+        best = max(best, node.val + left + right)   # path bending here
+        return node.val + max(left, right)          # extend one branch up
+    gain(root)
+    return best</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong>, <strong>Space O(h)</strong> recursion.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>All negative values → the max single node wins (clamping keeps branches out, but the node value can be negative — best still updates).</li>
+<li>Single node → its value.</li>
+<li>Long negative branch → dropped by the <code>max(0, …)</code>.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Returning the bent sum to the parent (a path can't fork upward).</li>
+<li>Not clamping negative gains to 0.</li>
+<li>Initializing <code>best = 0</code> and failing all-negative trees.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Diameter (count edges, ignore values) (<a href="0128-lc543-diameter-of-binary-tree.html">#543</a>).</li>
+<li>Max path sum with the path count constraint.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0128-lc543-diameter-of-binary-tree.html">#543</a> · <a href="0120-lc104-maximum-depth-of-binary-tree.html">#104</a> · <a href="0605-lc687-longest-univalue-path.html">#687</a></p>
+
 
 <div class="pager"><a href="../problems/0121-lc106-construct-binary-tree-from-inorder-and-postorder-traversal.html"><span class="lbl">← Previous</span>#106 Construct Binary Tree from Inorder and Postorder Traversal</a><a href="../problems/0123-lc145-binary-tree-postorder-traversal.html" style="text-align:right"><span class="lbl">Next →</span>#145 Binary Tree Postorder Traversal</a></div>
 </div>

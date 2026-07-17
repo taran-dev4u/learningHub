@@ -36,34 +36,71 @@
 
 <h2>📋 The problem</h2><p>Rebuild a binary tree from its preorder and inorder traversals (all values distinct).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Tree DFS - Recursive Preorder Traversal</strong> — Visit root, then left subtree, then right — used for tree cloning, serialization, path building.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Preorder's first element is the root; find it in inorder to split left/right subtrees; recurse with index math.</div>
-<h2>Why this pattern?</h2><ul><li>"level", "depth", "nearest", "zigzag by rows" → BFS</li><li>"path sum", "ancestor", "validate", "diameter" → DFS</li><li>BST + "k-th smallest / sorted order" → inorder</li><li>"serialize / reconstruct" → preorder</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Tree Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>def dfs(node, state):                 # state flows DOWN (bounds, path...)
-    if not node:
-        return base                       # e.g. 0, True, None
-    L = dfs(node.left,  new_state)
-    R = dfs(node.right, new_state)
-    return combine(node.val, L, R)        # answer flows UP
+<h2>🧭 How to think about it</h2>
+<p>Rebuild the tree from its preorder and inorder lists. <strong>Preorder's first element is always the root.</strong> Find that root inside inorder: everything to its left is the left subtree, everything to its right is the right subtree. Recurse on those slices.</p>
 
-from collections import deque             # BFS by levels
-q = deque([root])
-while q:
-    for _ in range(len(q)):               # freeze current level size
-        node = q.popleft()
-        if node.left:  q.append(node.left)
-        if node.right: q.append(node.right)</code></pre>
-<h2>How to work on it now</h2>
+<h2>🐢 Brute force first</h2>
+<p>Slicing arrays and doing <code>index()</code> each call is O(n²). A hash map from value→inorder-index plus a moving preorder pointer gives O(n).</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> consume preorder left-to-right (each call takes the next value as a root). Use a precomputed <code>value → inorder index</code> map to split in O(1), and pass inorder index bounds instead of slicing.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Map each value to its index in inorder.</li>
+<li>Keep a global preorder pointer; each call pops the next root.</li>
+<li>Build left subtree from the inorder range left of the root, then the right range.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — preorder [3,9,20,15,7], inorder [9,3,15,20,7]</h2>
+<pre class="viz">root 3 → inorder split: left [9] | right [15,20,7]
+ left root 9 (leaf)
+ right root 20 → left [15], right [7]
+Reconstructed: 3(9, 20(15,7))</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def buildTree(preorder, inorder):
+    idx = {v: i for i, v in enumerate(inorder)}   # value → inorder index
+    self_pre = [0]                                 # preorder cursor
+    def build(lo, hi):
+        if lo &gt; hi:
+            return None
+        root_val = preorder[self_pre[0]]
+        self_pre[0] += 1
+        root = TreeNode(root_val)
+        mid = idx[root_val]
+        root.left = build(lo, mid - 1)             # left subtree first (preorder)
+        root.right = build(mid + 1, hi)
+        return root
+    return build(0, len(inorder) - 1)</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — each node built once, O(1) split. <strong>Space O(n)</strong> for the map and recursion.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Empty input → empty tree.</li>
+<li>Single node → root only.</li>
+<li>All-left or all-right skew → still O(n) with the map.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Building the right subtree before the left (preorder demands left first, since the cursor advances).</li>
+<li>Re-scanning inorder with <code>index()</code> each call → O(n²).</li>
+<li>Off-by-one in the inorder bounds.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Inorder + postorder (<a href="0121-lc106-construct-binary-tree-from-inorder-and-postorder-traversal.html">#106</a>) — consume postorder from the right, build right subtree first.</li>
+<li>Preorder + postorder → not always unique.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0121-lc106-construct-binary-tree-from-inorder-and-postorder-traversal.html">#106</a> · <a href="0108-lc94-binary-tree-inorder-traversal.html">#94</a> · <a href="0101-lc114-flatten-binary-tree-to-linked-list.html">#114</a></p>
+
 
 <div class="pager"><a href="../problems/0096-lc101-symmetric-tree.html"><span class="lbl">← Previous</span>#101 Symmetric Tree</a><a href="../problems/0098-lc110-balanced-binary-tree.html" style="text-align:right"><span class="lbl">Next →</span>#110 Balanced Binary Tree</a></div>
 </div>

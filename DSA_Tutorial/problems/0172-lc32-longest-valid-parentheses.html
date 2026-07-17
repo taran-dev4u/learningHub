@@ -36,35 +36,69 @@
 
 <h2>📋 The problem</h2><p>Given a string of '(' and ')', return the length of the longest well-formed (valid) substring.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Valid Parentheses Matching</strong> — Push openers, pop on matching closer — extends to multi-bracket and nested expressions.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Stack of indices with a base marker: push '(' indices, pop on ')', longest = i − stack[-1].</div>
-<h2>Why this pattern?</h2><ul><li>brackets/tags to match or validate</li><li>"next greater / next warmer / previous smaller" element</li><li>histogram areas, trapped water, "can see over"</li><li>evaluate/parse an expression, decode nested strings</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Stack master template and adapt the marked parts to this problem:</p><pre><code># Monotonic (decreasing) stack — next greater element
-stack = []                              # holds INDICES of unresolved elements
-res = [-1] * len(nums)
-for i, x in enumerate(nums):
-    while stack and nums[stack[-1]] &lt; x:   # x resolves the waiting ones
-        j = stack.pop()
-        res[j] = x                          # x is j's next greater
-    stack.append(i)
+<h2>🧭 How to think about it</h2>
+<p>Find the length of the longest run of correctly matched parentheses. A <strong>stack of indices</strong> with a "base" marker at the bottom lets you measure valid stretches: when you close a bracket, the length is the distance from the current index back to the last unmatched position.</p>
 
-# Matching
-for ch in s:
-    if ch in pairs:  stack.append(ch)
-    elif not stack or pairs[stack.pop()] != ch:
-        return False
-return not stack</code></pre>
-<h2>How to work on it now</h2>
+<h2>🐢 Brute force first</h2>
+<p>Check every substring for validity → O(n³) or O(n²). The index-stack pass is O(n).</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> push <code>−1</code> as a base. Push <code>'('</code> indices. On <code>')'</code>, pop; if the stack becomes empty, push the current index as a new base; otherwise the valid length is <code>i − stack[-1]</code>.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Stack starts with <code>[-1]</code>.</li>
+<li><code>'('</code> → push its index. <code>')'</code> → pop.</li>
+<li>If empty after pop, push <code>i</code> (new base); else update <code>best = i − stack[-1]</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — s = ")()())"</h2>
+<pre class="viz">stack[-1] ; ) pop → empty → push0 ; ( push1 ; ) pop → top0 → len 2−0=2
+( push3 ; ) pop → top0 → len 4−0=4 (best) ; ) pop0 → empty → push5
+Answer: 4</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def longestValidParentheses(s):
+    stack = [-1]                          # base marker
+    best = 0
+    for i, c in enumerate(s):
+        if c == '(':
+            stack.append(i)
+        else:
+            stack.pop()
+            if not stack:
+                stack.append(i)           # new base after an unmatched ')'
+            else:
+                best = max(best, i - stack[-1])
+    return best</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong>, <strong>Space O(n)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>No valid pair → 0.</li>
+<li>Whole string valid → n.</li>
+<li>Leading unmatched closers → reset the base.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Forgetting the <code>−1</code> base marker.</li>
+<li>Measuring length as a count of pops instead of an index distance.</li>
+<li>Not pushing a new base after the stack empties.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>DP alternative: <code>dp[i]</code> from the previous match.</li>
+<li>Count valid substrings, not just the longest.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0171-lc20-valid-parentheses.html">#20</a> · <a href="0174-lc921-minimum-add-to-make-parentheses-valid.html">#921</a> · <a href="0175-lc1249-minimum-remove-to-make-valid-parentheses.html">#1249</a></p>
+
 
 <div class="pager"><a href="../problems/0171-lc20-valid-parentheses.html"><span class="lbl">← Previous</span>#20 Valid Parentheses</a><a href="../problems/0173-lc71-simplify-path.html" style="text-align:right"><span class="lbl">Next →</span>#71 Simplify Path</a></div>
 </div>

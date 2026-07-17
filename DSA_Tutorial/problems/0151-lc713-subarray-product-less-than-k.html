@@ -36,30 +36,67 @@
 
 <h2>📋 The problem</h2><p>Count the contiguous subarrays (of positive numbers) whose product is strictly less than k.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Variable Size / Condition-Based</strong> — Grow the right pointer; shrink the left while a constraint is violated — captures max/min subarray meeting a condition.</p>
+<h2>🧭 How to think about it</h2>
+<p>Count contiguous subarrays whose product is strictly less than <code>k</code> (all values positive). Slide a window keeping the running <strong>product</strong>; whenever it reaches <code>k</code> or more, shrink from the left. Each valid right end contributes <code>right − left + 1</code> new subarrays.</p>
 
-<h2>Why this pattern?</h2><ul><li>"contiguous subarray / substring" + longest/shortest/max/min/count</li><li>fixed size k ("every window of size k")</li><li>a constraint to maintain: "at most k distinct", "no repeats", "sum ≥ target"</li><li>strings + character frequency ("anagram of", "contains all chars of")</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Sliding Window master template and adapt the marked parts to this problem:</p><pre><code># Variable-size window (the general form)
-state = {}                              # counts / sum — whatever the constraint needs
-left = 0
-best = 0
-for right in range(len(s)):
-    add(s[right], state)                # 1) window grows
-    while invalid(state):               # 2) shrink until constraint holds again
-        remove(s[left], state)
-        left += 1
-    best = max(best, right - left + 1)  # 3) window is valid here</code></pre>
-<h2>How to work on it now</h2>
+<h2>🐢 Brute force first</h2>
+<p>All subarray products → O(n²). Positivity lets a sliding window count them in O(n).</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> for a window <code>[left, right]</code> with product &lt; k, every subarray ending at <code>right</code> and starting anywhere in <code>[left, right]</code> is valid — that's <code>right − left + 1</code> of them. Add that each step.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>If <code>k ≤ 1</code>, return 0 (no positive product is &lt; 1).</li>
+<li>Multiply in <code>nums[right]</code>; while product ≥ k, divide out <code>nums[left]</code> and advance.</li>
+<li>Add <code>right − left + 1</code> to the count.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — nums = [10,5,2,6], k = 100</h2>
+<pre class="viz">10 → +1 ; 10*5=50 → +2 ; 50*2=100 ≥100 → shrink to [5,2] prod10 → +2 ; *6=60 → +3
+total = 8</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def numSubarrayProductLessThanK(nums, k):
+    if k &lt;= 1:
+        return 0
+    prod = 1
+    left = count = 0
+    for right, x in enumerate(nums):
+        prod *= x
+        while prod &gt;= k:                  # shrink until valid
+            prod //= nums[left]
+            left += 1
+        count += right - left + 1         # subarrays ending at right
+    return count</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong>, <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>k ≤ 1 → 0 (products of positives are ≥ 1).</li>
+<li>Single element ≥ k → contributes nothing.</li>
+<li>All products &lt; k → n(n+1)/2 subarrays.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Using <code>≤</code> instead of <code>&lt;</code> (strictly less than).</li>
+<li>Forgetting the <code>k ≤ 1</code> guard (division/logic breaks).</li>
+<li>Applying this to arrays with zeros or negatives (window logic fails).</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Sum less than k with positives → same counting shape.</li>
+<li>Exactly k distinct integers (<a href="0153-lc992-subarrays-with-k-different-integers.html">#992</a>) uses the atMost trick.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0147-lc209-minimum-size-subarray-sum.html">#209</a> · <a href="0153-lc992-subarrays-with-k-different-integers.html">#992</a> · <a href="0145-lc3-longest-substring-without-repeating-characters.html">#3</a></p>
+
 
 <div class="pager"><a href="../problems/0150-lc424-longest-repeating-character-replacement.html"><span class="lbl">← Previous</span>#424 Longest Repeating Character Replacement</a><a href="../problems/0152-lc904-fruit-into-baskets.html" style="text-align:right"><span class="lbl">Next →</span>#904 Fruit Into Baskets</a></div>
 </div>

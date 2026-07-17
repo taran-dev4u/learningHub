@@ -36,34 +36,89 @@
 
 <h2>📋 The problem</h2><p>Return the boundary of a binary tree counterclockwise: root, left edge, leaves, right edge reversed.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Tree BFS - Level Order Traversal</strong> — BFS with a queue; process the entire current level before moving on — level lists, right view, zigzag.</p>
+<h2>🧭 How to think about it</h2>
+<p>Walk the tree's outline counter-clockwise: the root, then the <strong>left boundary</strong> (top-down, excluding leaves), then <strong>all leaves</strong> left-to-right, then the <strong>right boundary</strong> (bottom-up, excluding leaves). Collecting these three pieces carefully — without double-counting leaves or the root — is the whole problem.</p>
 
-<h2>Why this pattern?</h2><ul><li>"level", "depth", "nearest", "zigzag by rows" → BFS</li><li>"path sum", "ancestor", "validate", "diameter" → DFS</li><li>BST + "k-th smallest / sorted order" → inorder</li><li>"serialize / reconstruct" → preorder</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Tree Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>def dfs(node, state):                 # state flows DOWN (bounds, path...)
-    if not node:
-        return base                       # e.g. 0, True, None
-    L = dfs(node.left,  new_state)
-    R = dfs(node.right, new_state)
-    return combine(node.val, L, R)        # answer flows UP
+<h2>🐢 Brute force first</h2>
+<p>There's no shortcut; you must identify three groups. The care is in definitions: a leaf is neither a left- nor right-boundary node, and the root is added once.</p>
 
-from collections import deque             # BFS by levels
-q = deque([root])
-while q:
-    for _ in range(len(q)):               # freeze current level size
-        node = q.popleft()
-        if node.left:  q.append(node.left)
-        if node.right: q.append(node.right)</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> split into three helper walks. Left boundary: follow left (or right if no left), adding non-leaf nodes top-down. Leaves: a DFS adding nodes with no children, left-to-right. Right boundary: follow right (or left), adding non-leaf nodes, then reverse for bottom-up order.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Add the root (if not a leaf).</li>
+<li>Collect the left boundary (exclude leaves), top-down.</li>
+<li>Collect all leaves left-to-right.</li>
+<li>Collect the right boundary (exclude leaves), then reverse.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — root 1, left spine 2→4, leaves 4,5,6, right spine 3</h2>
+<pre class="viz">root: 1
+left boundary (non-leaf): 2
+leaves L→R: 4,5,6
+right boundary (non-leaf, reversed): 3
+Result: [1,2,4,5,6,3]</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def boundaryOfBinaryTree(root):
+    if not root:
+        return []
+    def is_leaf(n): return not n.left and not n.right
+    res = [root.val] if not is_leaf(root) else [root.val]
+
+    # left boundary (exclude leaves)
+    left = []
+    n = root.left
+    while n:
+        if not is_leaf(n): left.append(n.val)
+        n = n.left if n.left else n.right
+
+    # leaves, left to right
+    leaves = []
+    def dfs(n):
+        if not n: return
+        if is_leaf(n): leaves.append(n.val); return
+        dfs(n.left); dfs(n.right)
+    if not is_leaf(root):
+        dfs(root)
+
+    # right boundary (exclude leaves), collected then reversed
+    right = []
+    n = root.right
+    while n:
+        if not is_leaf(n): right.append(n.val)
+        n = n.right if n.right else n.left
+
+    return res + left + leaves + right[::-1]</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — a few linear walks. <strong>Space O(h)</strong> recursion for the leaf DFS.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Single node → just the root.</li>
+<li>Root with only one subtree → the missing side contributes nothing.</li>
+<li>Avoid adding a leaf twice (it belongs only to the leaves group).</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Double-counting leaves that also sit on a boundary spine.</li>
+<li>Forgetting to reverse the right boundary.</li>
+<li>Adding the root inside the boundary walks too.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Clockwise boundary → mirror the piece order.</li>
+<li>Perimeter of a grid island → analogous outline idea.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0088-lc199-binary-tree-right-side-view.html">#199</a> · <a href="0104-lc257-binary-tree-paths.html">#257</a> · <a href="0084-lc102-binary-tree-level-order-traversal.html">#102</a></p>
+
 
 <div class="pager"><a href="../problems/0090-lc515-find-largest-value-in-each-tree-row.html"><span class="lbl">← Previous</span>#515 Find Largest Value in Each Tree Row</a><a href="../problems/0092-lc662-maximum-width-of-binary-tree.html" style="text-align:right"><span class="lbl">Next →</span>#662 Maximum Width of Binary Tree</a></div>
 </div>

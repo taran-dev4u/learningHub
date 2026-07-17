@@ -36,35 +36,67 @@
 
 <h2>📋 The problem</h2><p>Simplify an absolute Unix file path: resolve '.', '..', and repeated slashes into the canonical path.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Valid Parentheses Matching</strong> — Push openers, pop on matching closer — extends to multi-bracket and nested expressions.</p>
+<h2>🧭 How to think about it</h2>
+<p>Normalize a Unix-style absolute path: collapse <code>//</code>, drop <code>.</code>, and let <code>..</code> pop up one directory. Split on <code>/</code> and process components with a <strong>stack of directory names</strong>: names push, <code>..</code> pops, and <code>.</code>/empty are ignored.</p>
 
-<h2>Why this pattern?</h2><ul><li>brackets/tags to match or validate</li><li>"next greater / next warmer / previous smaller" element</li><li>histogram areas, trapped water, "can see over"</li><li>evaluate/parse an expression, decode nested strings</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Stack master template and adapt the marked parts to this problem:</p><pre><code># Monotonic (decreasing) stack — next greater element
-stack = []                              # holds INDICES of unresolved elements
-res = [-1] * len(nums)
-for i, x in enumerate(nums):
-    while stack and nums[stack[-1]] &lt; x:   # x resolves the waiting ones
-        j = stack.pop()
-        res[j] = x                          # x is j's next greater
-    stack.append(i)
+<h2>🐢 Brute force first</h2>
+<p>String find/replace loops are fragile with edge cases. A stack over the split components handles everything cleanly in O(n).</p>
 
-# Matching
-for ch in s:
-    if ch in pairs:  stack.append(ch)
-    elif not stack or pairs[stack.pop()] != ch:
-        return False
-return not stack</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> the canonical path is exactly the stack contents joined by <code>/</code>. A real directory name pushes; <code>..</code> pops if possible; <code>.</code> and empty tokens (from <code>//</code>) are skipped.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Split the path on <code>'/'</code>.</li>
+<li>For each token: <code>'..'</code> → pop if non-empty; <code>''</code> or <code>'.'</code> → skip; else push.</li>
+<li>Return <code>'/' + '/'.join(stack)</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — "/a/./b/../../c/"</h2>
+<pre class="viz">tokens: a . b .. .. c
+a→[a] ; .→skip ; b→[a,b] ; ..→[a] ; ..→[] ; c→[c]
+Result: "/c"</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def simplifyPath(path):
+    stack = []
+    for token in path.split('/'):
+        if token == '' or token == '.':
+            continue                      # redundant separators / current dir
+        elif token == '..':
+            if stack:
+                stack.pop()               # go up one directory
+        else:
+            stack.append(token)
+    return '/' + '/'.join(stack)</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong>, <strong>Space O(n)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Root only (<code>"/"</code>) → <code>"/"</code>.</li>
+<li><code>..</code> at the root → stays at root.</li>
+<li>Trailing slash → no trailing slash in output.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Popping on <code>..</code> when the stack is empty.</li>
+<li>Not skipping empty tokens from <code>//</code>.</li>
+<li>Forgetting the leading <code>/</code> in the result.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Relative paths → track a notion of current directory.</li>
+<li>Windows-style paths → different separators/drive letters.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0171-lc20-valid-parentheses.html">#20</a> · <a href="0201-lc155-min-stack.html">#155</a> · <a href="0197-lc394-decode-string.html">#394</a></p>
+
 
 <div class="pager"><a href="../problems/0172-lc32-longest-valid-parentheses.html"><span class="lbl">← Previous</span>#32 Longest Valid Parentheses</a><a href="../problems/0174-lc921-minimum-add-to-make-parentheses-valid.html" style="text-align:right"><span class="lbl">Next →</span>#921 Minimum Add to Make Parentheses Valid</a></div>
 </div>

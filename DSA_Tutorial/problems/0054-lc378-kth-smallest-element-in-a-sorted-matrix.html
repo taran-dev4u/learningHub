@@ -36,33 +36,81 @@
 <p class="progress-note">This problem also appears under: <a href="0216-lc378-kth-smallest-element-in-a-sorted-matrix.html">Heap (Priority Queue)</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Return the k-th smallest element of a matrix whose rows and columns are sorted ascending.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Matrix Search / Sorted Matrix</strong> — Binary-search a row-and-column-sorted matrix by treating it as 1D, or staircase-search from a corner.</p>
+<h2>🧭 How to think about it</h2>
+<p>Each row and column is sorted; find the k-th smallest value overall. Rather than merging, <strong>binary search on the value range</strong> <code>[matrix[0][0], matrix[n−1][n−1]]</code>: for a candidate value <code>mid</code>, count how many matrix entries are ≤ <code>mid</code> (cheaply, with the staircase from <a href="0053-lc240-search-a-2d-matrix-ii.html">#240</a>). Shrink the range until it collapses to the answer.</p>
 
-<h2>Why this pattern?</h2><ul><li>"rotate / transpose / flip" a matrix or array</li><li>"in place" / "O(1) extra space" on a grid problem</li><li>traverse in an unusual order (spiral, diagonal, zigzag)</li><li>mark/erase cells based on other cells (use the cells themselves as flags)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Array/Matrix Manipulation master template and adapt the marked parts to this problem:</p><pre><code># Rotate matrix 90° clockwise, in place
-n = len(matrix)
-for r in range(n):                     # 1) transpose (swap across diagonal)
-    for c in range(r + 1, n):
-        matrix[r][c], matrix[c][r] = matrix[c][r], matrix[r][c]
-for row in matrix:                     # 2) reverse each row
-    row.reverse()
+<h2>🐢 Brute force first</h2>
+<p>Flatten and sort → O(n² log n). A min-heap k-way merge → O(k log n). Binary-search-on-value is O(n log(max−min)), independent of k, and uses O(1) space.</p>
 
-# Spiral walk: shrink four boundaries
-top, bottom, left, right = 0, rows - 1, 0, cols - 1
-while top &lt;= bottom and left &lt;= right:
-    ...walk top row, right col, bottom row, left col...
-    top += 1; bottom -= 1; left += 1; right -= 1</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> "how many entries are ≤ x" is monotonic in x, so binary search the value. Counting is O(n): walk from the bottom-left, moving up when a value exceeds <code>mid</code> and right otherwise, tallying full columns. The smallest value whose count ≥ k is the k-th smallest.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li><code>lo = matrix[0][0]</code>, <code>hi = matrix[n−1][n−1]</code>.</li>
+<li><code>mid = (lo+hi)//2</code>; count entries ≤ <code>mid</code> via the staircase.</li>
+<li>If count &lt; k → <code>lo = mid+1</code>; else <code>hi = mid</code>.</li>
+<li>When <code>lo == hi</code>, that's the answer.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — matrix=[[1,5,9],[10,11,13],[12,13,15]], k=8</h2>
+<pre class="viz">lo=1 hi=15
+mid=8: count(&lt;=8)=2 &lt; 8 → lo=9
+mid=12: count(&lt;=12)=6 &lt; 8 → lo=13
+mid=14: count(&lt;=14)=8 ≥ 8 → hi=14
+mid=13: count(&lt;=13)=8 ≥ 8 → hi=13; lo==hi=13
+Answer: 13</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def kthSmallest(matrix, k):
+    n = len(matrix)
+    def count_le(x):
+        # count entries &lt;= x via staircase from bottom-left
+        cnt, r, c = 0, n - 1, 0
+        while r &gt;= 0 and c &lt; n:
+            if matrix[r][c] &lt;= x:
+                cnt += r + 1        # whole column up to r qualifies
+                c += 1
+            else:
+                r -= 1
+        return cnt
+
+    lo, hi = matrix[0][0], matrix[n - 1][n - 1]
+    while lo &lt; hi:
+        mid = (lo + hi) // 2
+        if count_le(mid) &lt; k:
+            lo = mid + 1
+        else:
+            hi = mid
+    return lo</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n · log(max−min))</strong> — each count is O(n), repeated for the value-range binary search. <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li><code>k = 1</code> → smallest = <code>matrix[0][0]</code>; <code>k = n²</code> → largest.</li>
+<li>Duplicate values → the "smallest value with count ≥ k" rule still returns a value actually in the matrix.</li>
+<li>1×1 matrix → returns its only element.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Using <code>lo = mid+1</code> when count ≥ k (must keep <code>hi = mid</code> to converge onto a real matrix value).</li>
+<li>Counting with an O(n²) scan instead of the O(n) staircase.</li>
+<li>Assuming the answer is <code>mid</code> — it's the converged <code>lo</code>.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>k-th smallest via a min-heap seeded with the first row → O(k log n).</li>
+<li>k-th smallest pair distance / similar "search on the answer" problems.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0053-lc240-search-a-2d-matrix-ii.html">#240</a> · <a href="0052-lc74-search-a-2d-matrix.html">#74</a> · <a href="0203-lc215-kth-largest-element-in-an-array.html">#215</a></p>
+
 
 <div class="pager"><a href="../problems/0053-lc240-search-a-2d-matrix-ii.html"><span class="lbl">← Previous</span>#240 Search a 2D Matrix II</a><a href="../problems/0055-lc303-range-sum-query-immutable.html" style="text-align:right"><span class="lbl">Next →</span>#303 Range Sum Query - Immutable</a></div>
 </div>

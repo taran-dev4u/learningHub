@@ -36,34 +36,67 @@
 
 <h2>📋 The problem</h2><p>Convert a sorted array into a height-balanced binary search tree.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Tree DFS - Recursive Inorder Traversal</strong> — Visit left, root, right — yields sorted order on a BST; used for kth-smallest, BST validation.</p>
+<h2>🧭 How to think about it</h2>
+<p>Turn a sorted array into a <em>height-balanced</em> BST. Pick the <strong>middle element as the root</strong> so the halves are equal-sized; recursively build the left subtree from the left half and the right subtree from the right half. Balance falls out of always splitting in the middle.</p>
 
-<h2>Why this pattern?</h2><ul><li>"level", "depth", "nearest", "zigzag by rows" → BFS</li><li>"path sum", "ancestor", "validate", "diameter" → DFS</li><li>BST + "k-th smallest / sorted order" → inorder</li><li>"serialize / reconstruct" → preorder</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Tree Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>def dfs(node, state):                 # state flows DOWN (bounds, path...)
-    if not node:
-        return base                       # e.g. 0, True, None
-    L = dfs(node.left,  new_state)
-    R = dfs(node.right, new_state)
-    return combine(node.val, L, R)        # answer flows UP
+<h2>🐢 Brute force first</h2>
+<p>Inserting elements one by one gives a valid but possibly skewed BST. Choosing the middle each time guarantees minimal height.</p>
 
-from collections import deque             # BFS by levels
-q = deque([root])
-while q:
-    for _ in range(len(q)):               # freeze current level size
-        node = q.popleft()
-        if node.left:  q.append(node.left)
-        if node.right: q.append(node.right)</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> the middle of a sorted range is the BST root that keeps both subtrees within one node of each other in size — the definition of balance. Recurse on <code>[lo, mid−1]</code> and <code>[mid+1, hi]</code>.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Recurse on index range <code>[lo, hi]</code>.</li>
+<li><code>mid = (lo + hi) // 2</code> becomes the current root.</li>
+<li>Build left from <code>[lo, mid−1]</code>, right from <code>[mid+1, hi]</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — [-10,-3,0,5,9]</h2>
+<pre class="viz">mid idx2 = 0 → root 0
+ left [-10,-3] mid -3 → -3 with left -10
+ right [5,9] mid 5 → 5 with right 9
+Balanced BST rooted at 0</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def sortedArrayToBST(nums):
+    def build(lo, hi):
+        if lo &gt; hi:
+            return None
+        mid = (lo + hi) // 2           # middle keeps subtrees balanced
+        node = TreeNode(nums[mid])
+        node.left = build(lo, mid - 1)
+        node.right = build(mid + 1, hi)
+        return node
+    return build(0, len(nums) - 1)</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — each element becomes one node. <strong>Space O(log n)</strong> recursion (balanced).</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Empty array → empty tree.</li>
+<li>One element → single root.</li>
+<li>Even length → either middle works; both are balanced.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Building from slices (O(n log n) space) instead of index bounds.</li>
+<li>Off-by-one in the sub-ranges.</li>
+<li>Not choosing the middle → an unbalanced tree.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Sorted linked list → BST (find middle with fast/slow).</li>
+<li>Inorder reconstruction (<a href="0097-lc105-construct-binary-tree-from-preorder-and-inorder-traversal.html">#105</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0097-lc105-construct-binary-tree-from-preorder-and-inorder-traversal.html">#105</a> · <a href="0109-lc98-validate-binary-search-tree.html">#98</a> · <a href="0119-lc938-range-sum-of-bst.html">#938</a></p>
+
 
 <div class="pager"><a href="../problems/0110-lc99-recover-binary-search-tree.html"><span class="lbl">← Previous</span>#99 Recover Binary Search Tree</a><a href="../problems/0112-lc173-binary-search-tree-iterator.html" style="text-align:right"><span class="lbl">Next →</span>#173 Binary Search Tree Iterator</a></div>
 </div>

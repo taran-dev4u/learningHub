@@ -36,33 +36,77 @@
 
 <h2>📋 The problem</h2><p>Walk outward from a start cell in a growing clockwise spiral over an R×C grid; return the coordinates in visit order.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Spiral Traversal</strong> — Walk a matrix in spiral order by maintaining four shrinking boundaries.</p>
+<h2>🧭 How to think about it</h2>
+<p>Start at a given cell and walk outward in a clockwise spiral, collecting cells that fall <em>inside</em> the grid, until you've collected them all. Here you don't track boundaries — you follow the spiral's natural rhythm: go 1 step, 1 step, 2 steps, 2 steps, 3 steps, 3 steps… turning right each time, and simply skip positions that land off the grid.</p>
 
-<h2>Why this pattern?</h2><ul><li>"rotate / transpose / flip" a matrix or array</li><li>"in place" / "O(1) extra space" on a grid problem</li><li>traverse in an unusual order (spiral, diagonal, zigzag)</li><li>mark/erase cells based on other cells (use the cells themselves as flags)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Array/Matrix Manipulation master template and adapt the marked parts to this problem:</p><pre><code># Rotate matrix 90° clockwise, in place
-n = len(matrix)
-for r in range(n):                     # 1) transpose (swap across diagonal)
-    for c in range(r + 1, n):
-        matrix[r][c], matrix[c][r] = matrix[c][r], matrix[r][c]
-for row in matrix:                     # 2) reverse each row
-    row.reverse()
+<h2>🐢 Brute force first</h2>
+<p>There's no simpler correct simulation — you must physically trace the spiral because the start is off-center. The trick is knowing the step-length pattern so you never wander aimlessly.</p>
 
-# Spiral walk: shrink four boundaries
-top, bottom, left, right = 0, rows - 1, 0, cols - 1
-while top &lt;= bottom and left &lt;= right:
-    ...walk top row, right col, bottom row, left col...
-    top += 1; bottom -= 1; left += 1; right -= 1</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> a spiral's segment lengths go <code>1,1,2,2,3,3,…</code>. Move in directions East, South, West, North, cycling; after every <em>two</em> direction changes the step length grows by 1. Record any position that's within bounds; stop once you've recorded <code>rows×cols</code> cells.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Directions in order: E(0,1), S(1,0), W(0,−1), N(−1,0). Start at <code>(r0,c0)</code>, record it.</li>
+<li>Repeat: for two consecutive directions, walk <code>len</code> steps each, recording in-bounds cells; then <code>len += 1</code>.</li>
+<li>Stop when all <code>rows·cols</code> cells are collected.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — rows=1,cols=4,start=(0,0)</h2>
+<pre class="viz">record (0,0)
+E len1: (0,1) in → record
+S len1: (1,1) out → skip
+W len2: (1,0)out,(1,-1)out → skip
+N len2: (0,-1)out,(-1,-1)out → skip
+E len3: (-1,0)out,(-1,1)... (0,2) in → record; (0,3) in → record
+collected 4 = 1×4 → done
+Result: [[0,0],[0,1],[0,2],[0,3]]</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def spiralMatrixIII(rows, cols, rStart, cStart):
+    res = [[rStart, cStart]]
+    total = rows * cols
+    dirs = [(0, 1), (1, 0), (0, -1), (-1, 0)]   # E, S, W, N
+    r, c = rStart, cStart
+    step, d = 1, 0
+    while len(res) &lt; total:
+        for _ in range(2):                       # two segments per length
+            dr, dc = dirs[d % 4]
+            for _ in range(step):
+                r += dr; c += dc
+                if 0 &lt;= r &lt; rows and 0 &lt;= c &lt; cols:
+                    res.append([r, c])
+            d += 1                                # turn right
+        step += 1                                 # grow after every 2 turns
+    return res</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(max(rows,cols)²)</strong> — the spiral may wander well outside the grid before filling it; work is bounded by the enclosing square. <strong>Space O(rows·cols)</strong> for the output.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Start in a corner → many early steps land out of bounds and are skipped.</li>
+<li>Single cell grid → the initial record already completes it.</li>
+<li>Very elongated grid → the spiral overshoots a lot; still correct.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Growing the step length every turn instead of every <em>two</em> turns.</li>
+<li>Forgetting to record the starting cell before moving.</li>
+<li>Stopping on step count rather than on collected-cell count.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Counter-clockwise → reverse the direction list.</li>
+<li>Standard inward spiral read (<a href="0040-lc54-spiral-matrix.html">#54</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0040-lc54-spiral-matrix.html">#54</a> · <a href="0042-lc2326-spiral-matrix-iv.html">#2326</a> · <a href="0038-lc48-rotate-image.html">#48</a></p>
+
 
 <div class="pager"><a href="../problems/0040-lc54-spiral-matrix.html"><span class="lbl">← Previous</span>#54 Spiral Matrix</a><a href="../problems/0042-lc2326-spiral-matrix-iv.html" style="text-align:right"><span class="lbl">Next →</span>#2326 Spiral Matrix IV</a></div>
 </div>

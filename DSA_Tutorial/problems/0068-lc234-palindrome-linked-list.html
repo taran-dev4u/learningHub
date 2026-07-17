@@ -36,33 +36,77 @@
 
 <h2>📋 The problem</h2><p>Decide whether a linked list is a palindrome in O(n) time and O(1) space.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>In-place Reversal</strong> — Iteratively reverse links with prev/curr/next pointers; recursive variant also classic.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Middle + reverse second half + compare halves = O(1) space palindrome check.</div>
-<h2>Why this pattern?</h2><ul><li>input is a linked list (that alone is the signal)</li><li>"reverse", "reorder", "swap in pairs", "rotate" nodes</li><li>"k-th from the end", "middle", "cycle" → fast &amp; slow</li><li>"merge k sorted lists" → pairwise merge or heap of heads</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Linked List Manipulation master template and adapt the marked parts to this problem:</p><pre><code>dummy = ListNode(0, head)            # dummy head: prev of the real head
-prev, cur = dummy, head
+<h2>🧭 How to think about it</h2>
+<p>Check whether the list reads the same forwards and backwards, ideally in O(1) space. Combine three primitives you already know: <strong>find the middle</strong> (fast/slow), <strong>reverse the second half</strong>, then <strong>walk the two halves in step</strong> comparing values.</p>
 
-# In-place reversal core
-p = None
-while cur:
-    cur.next, p, cur = p, cur, cur.next
-# p is the new head
+<h2>🐢 Brute force first</h2>
+<p>Copy values into a list and check <code>vals == vals[::-1]</code> → O(n) time, O(n) space. The three-primitive method gets O(1) space.</p>
 
-# Fast &amp; slow
-slow = fast = head
-while fast and fast.next:
-    slow, fast = slow.next, fast.next.next   # slow = middle when fast ends</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> a slow/fast pass lands <code>slow</code> at the middle; reverse everything from there. Now the first half and the reversed second half start at both ends — compare node by node. (Optionally restore the list by reversing back.)</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Fast/slow to reach the middle.</li>
+<li>Reverse the second half starting at <code>slow</code>.</li>
+<li>Compare the front half with the reversed back half value by value.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — 1→2→2→1</h2>
+<pre class="viz">middle: slow lands at second 2
+reverse second half: 1→2 | 1→2  (back half now 1→2 reversed)
+compare front 1,2 with back 1,2 → all equal → True</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def isPalindrome(head):
+    # 1) find middle
+    slow = fast = head
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+    # 2) reverse second half
+    prev = None
+    while slow:
+        nxt = slow.next
+        slow.next = prev
+        prev = slow
+        slow = nxt
+    # 3) compare halves
+    left, right = head, prev
+    while right:                 # right half is shorter or equal
+        if left.val != right.val:
+            return False
+        left = left.next
+        right = right.next
+    return True</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — find + reverse + compare are each linear. <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Empty or single node → palindrome.</li>
+<li>Odd length → the middle node belongs to neither half; comparing until the shorter (<code>right</code>) ends handles it.</li>
+<li>Restoring the list → reverse the second half back if the caller needs it intact.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Comparing until <code>left</code> ends (it may be longer for odd lengths) — loop on <code>right</code>.</li>
+<li>Off-by-one in the middle for even vs odd lengths.</li>
+<li>Falling back to O(n) space when O(1) was requested.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Reorder list uses the same middle+reverse (<a href="0076-lc143-reorder-list.html">#143</a>).</li>
+<li>Doubly linked list → compare from both ends directly.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0067-lc206-reverse-linked-list.html">#206</a> · <a href="0033-lc876-middle-of-the-linked-list.html">#876</a> · <a href="0076-lc143-reorder-list.html">#143</a></p>
+
 
 <div class="pager"><a href="../problems/0067-lc206-reverse-linked-list.html"><span class="lbl">← Previous</span>#206 Reverse Linked List</a><a href="../problems/0069-lc21-merge-two-sorted-lists.html" style="text-align:right"><span class="lbl">Next →</span>#21 Merge Two Sorted Lists</a></div>
 </div>

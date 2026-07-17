@@ -36,30 +36,70 @@
 <p class="progress-note">This problem also appears under: <a href="0482-lc346-moving-average-from-data-stream.html">Design</a>, <a href="0681-lc346-moving-average-from-data-stream.html">Iterator &amp; Data-Stream Design</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Design a class that returns the moving average of the last k values of a stream.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Fixed Size / Subarray Calculation</strong> — Window of constant size k — slide one step at a time, update the aggregate in O(1).</p>
+<h2>🧭 How to think about it</h2>
+<p>Numbers arrive one at a time; each call returns the average of the <strong>last k</strong>. Keep a fixed-size window: a queue of the most recent values plus a running sum. When the window overflows, drop the oldest and subtract it — no re-summing.</p>
 
-<h2>Why this pattern?</h2><ul><li>"contiguous subarray / substring" + longest/shortest/max/min/count</li><li>fixed size k ("every window of size k")</li><li>a constraint to maintain: "at most k distinct", "no repeats", "sum ≥ target"</li><li>strings + character frequency ("anagram of", "contains all chars of")</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Sliding Window master template and adapt the marked parts to this problem:</p><pre><code># Variable-size window (the general form)
-state = {}                              # counts / sum — whatever the constraint needs
-left = 0
-best = 0
-for right in range(len(s)):
-    add(s[right], state)                # 1) window grows
-    while invalid(state):               # 2) shrink until constraint holds again
-        remove(s[left], state)
-        left += 1
-    best = max(best, right - left + 1)  # 3) window is valid here</code></pre>
-<h2>How to work on it now</h2>
+<h2>🐢 Brute force first</h2>
+<p>Store every value and average the last k on each call → O(k) per call. A running sum makes each call O(1).</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> maintain <code>window_sum</code>. On <code>next(v)</code>: add <code>v</code>; if the queue exceeds <code>k</code>, pop the front and subtract it. The average is <code>window_sum / len(queue)</code>.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Store <code>size = k</code>, a deque, and <code>window_sum = 0</code>.</li>
+<li><code>next(v)</code>: append <code>v</code>, add to sum; if over capacity, pop-left and subtract.</li>
+<li>Return <code>window_sum / len(deque)</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — k=3, stream 1,10,3,5</h2>
+<pre class="viz">1 → [1] sum1 avg 1
+10 → [1,10] sum11 avg 5.5
+3 → [1,10,3] sum14 avg 4.667
+5 → drop 1 → [10,3,5] sum18 avg 6</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>from collections import deque
+class MovingAverage:
+    def __init__(self, size):
+        self.size = size
+        self.q = deque()
+        self.window_sum = 0
+
+    def next(self, val):
+        self.q.append(val)
+        self.window_sum += val
+        if len(self.q) &gt; self.size:
+            self.window_sum -= self.q.popleft()   # evict the oldest
+        return self.window_sum / len(self.q)</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(1)</strong> per call. <strong>Space O(k)</strong> for the window.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Fewer than k values so far → average over what's present.</li>
+<li>k = 1 → returns the latest value.</li>
+<li>Negative values → running sum still works.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Re-summing the window each call (O(k)).</li>
+<li>Dividing by <code>k</code> instead of the current count before the window fills.</li>
+<li>Forgetting to subtract the evicted value.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Moving median → two heaps.</li>
+<li>Compressed/weighted mean over a window (<a href="0142-lc2985-calculate-compressed-mean.html">#2985</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0139-lc643-maximum-average-subarray-i.html">#643</a> · <a href="0142-lc2985-calculate-compressed-mean.html">#2985</a> · <a href="0166-lc239-sliding-window-maximum.html">#239</a></p>
+
 
 <div class="pager"><a href="../patterns/p05-sliding-window.html"><span class="lbl">← Previous</span>Sliding Window</a><a href="../problems/0139-lc643-maximum-average-subarray-i.html" style="text-align:right"><span class="lbl">Next →</span>#643 Maximum Average Subarray I</a></div>
 </div>

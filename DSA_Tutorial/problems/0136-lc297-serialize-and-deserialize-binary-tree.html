@@ -36,34 +36,76 @@
 
 <h2>📋 The problem</h2><p>Design serialize/deserialize: turn a binary tree into a string and rebuild the identical tree from it.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Tree - Serialization and Deserialization</strong> — Encode a tree to a string (preorder with nulls) and decode it back; used for cloning across the wire.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Preorder with explicit null markers serializes uniquely; deserialize by consuming tokens with an iterator.</div>
-<h2>Why this pattern?</h2><ul><li>"level", "depth", "nearest", "zigzag by rows" → BFS</li><li>"path sum", "ancestor", "validate", "diameter" → DFS</li><li>BST + "k-th smallest / sorted order" → inorder</li><li>"serialize / reconstruct" → preorder</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Tree Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>def dfs(node, state):                 # state flows DOWN (bounds, path...)
-    if not node:
-        return base                       # e.g. 0, True, None
-    L = dfs(node.left,  new_state)
-    R = dfs(node.right, new_state)
-    return combine(node.val, L, R)        # answer flows UP
+<h2>🧭 How to think about it</h2>
+<p>Turn a tree into a string and back. A <strong>preorder</strong> walk that writes an explicit marker (like <code>"#"</code>) for every null child produces a string that reconstructs the tree <em>uniquely</em> — the nulls pin down the exact shape.</p>
 
-from collections import deque             # BFS by levels
-q = deque([root])
-while q:
-    for _ in range(len(q)):               # freeze current level size
-        node = q.popleft()
-        if node.left:  q.append(node.left)
-        if node.right: q.append(node.right)</code></pre>
-<h2>How to work on it now</h2>
+<h2>🐢 Brute force first</h2>
+<p>Storing inorder + preorder needs two arrays and assumes unique values. Preorder-with-null-markers is self-contained, handles duplicates, and is O(n).</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> serialize by preorder, emitting <code>node.val</code> or <code>"#"</code> for null. Deserialize by consuming tokens left-to-right with an iterator: a <code>"#"</code> is a null; otherwise create the node and recursively build its left then right children.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Serialize: preorder append <code>val</code> or <code>"#"</code>, joined by commas.</li>
+<li>Deserialize: read tokens in order; <code>"#"</code> → null; else build node, recurse left, recurse right.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — [1,2,3,null,null,4,5]</h2>
+<pre class="viz">serialize → "1,2,#,#,3,4,#,#,5,#,#"
+deserialize consumes tokens preorder → rebuilds the same tree</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>class Codec:
+    def serialize(self, root):
+        out = []
+        def dfs(node):
+            if not node:
+                out.append('#'); return
+            out.append(str(node.val))
+            dfs(node.left); dfs(node.right)
+        dfs(root)
+        return ','.join(out)
+
+    def deserialize(self, data):
+        it = iter(data.split(','))
+        def build():
+            val = next(it)
+            if val == '#':
+                return None
+            node = TreeNode(int(val))
+            node.left = build()          # preorder: left then right
+            node.right = build()
+            return node
+        return build()</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> for both directions. <strong>Space O(n)</strong> for the string and recursion.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Empty tree → serializes to just a marker; deserializes to null.</li>
+<li>Negative values → handled as strings.</li>
+<li>Skewed trees → many markers but still correct.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Omitting null markers → ambiguous, non-reconstructible strings.</li>
+<li>Building right before left during deserialize (must mirror the serialize order).</li>
+<li>Splitting the string incorrectly (delimiter collisions with values).</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>BST-specific serialization can skip markers using ranges.</li>
+<li>Find duplicate subtrees via serialization (<a href="0137-lc652-find-duplicate-subtrees.html">#652</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0137-lc652-find-duplicate-subtrees.html">#652</a> · <a href="0097-lc105-construct-binary-tree-from-preorder-and-inorder-traversal.html">#105</a> · #449</p>
+
 
 <div class="pager"><a href="../problems/0135-lc2096-step-by-step-directions-from-a-binary-tree-node-to-another.html"><span class="lbl">← Previous</span>#2096 Step-By-Step Directions From a Binary Tree Node to Another</a><a href="../problems/0137-lc652-find-duplicate-subtrees.html" style="text-align:right"><span class="lbl">Next →</span>#652 Find Duplicate Subtrees</a></div>
 </div>

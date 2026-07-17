@@ -36,33 +36,69 @@
 <p class="progress-note">This problem also appears under: <a href="0532-lc974-subarray-sums-divisible-by-k.html">Prefix Sum &amp; Difference Array</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Count the subarrays whose sum is divisible by k.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Prefix Sum / Running Sum</strong> — Maintain a running cumulative sum to answer subarray-sum or count-prefix-target queries.</p>
+<h2>🧭 How to think about it</h2>
+<p>Count subarrays whose sum is divisible by <code>k</code>. A range sum is divisible by <code>k</code> exactly when its two prefix sums have the <strong>same remainder mod k</strong>. So track the running prefix's remainder and count how many earlier prefixes shared it — every pair forms a valid subarray.</p>
 
-<h2>Why this pattern?</h2><ul><li>"rotate / transpose / flip" a matrix or array</li><li>"in place" / "O(1) extra space" on a grid problem</li><li>traverse in an unusual order (spiral, diagonal, zigzag)</li><li>mark/erase cells based on other cells (use the cells themselves as flags)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Array/Matrix Manipulation master template and adapt the marked parts to this problem:</p><pre><code># Rotate matrix 90° clockwise, in place
-n = len(matrix)
-for r in range(n):                     # 1) transpose (swap across diagonal)
-    for c in range(r + 1, n):
-        matrix[r][c], matrix[c][r] = matrix[c][r], matrix[r][c]
-for row in matrix:                     # 2) reverse each row
-    row.reverse()
+<h2>🐢 Brute force first</h2>
+<p>All O(n²) subarrays → too slow. Counting equal remainders → O(n) with an array of size k.</p>
 
-# Spiral walk: shrink four boundaries
-top, bottom, left, right = 0, rows - 1, 0, cols - 1
-while top &lt;= bottom and left &lt;= right:
-    ...walk top row, right col, bottom row, left col...
-    top += 1; bottom -= 1; left += 1; right -= 1</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> if <code>prefix[j] ≡ prefix[i] (mod k)</code>, then <code>sum(i..j−1)</code> is a multiple of <code>k</code>. Keep <code>count[r]</code> = number of prefixes with remainder <code>r</code>; at each step add <code>count[r]</code> before incrementing it. Use Python's <code>%</code> which already returns a non-negative remainder for positive <code>k</code>, so negatives are handled.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li><code>count = [0]*k</code>, <code>count[0] = 1</code>, <code>running = 0</code>, <code>ans = 0</code>.</li>
+<li>For each <code>x</code>: <code>running = (running + x) % k</code>; <code>ans += count[running]</code>; <code>count[running] += 1</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — nums = [4,5,0,-2,-3,1], k = 5</h2>
+<pre class="viz">count[0]=1 running=0 ans=0
+4→r4 ans+=count[4]=0; count[4]=1
+5→r4 ans+=count[4]=1(ans1); count[4]=2
+0→r4 ans+=2(ans3); count[4]=3
+-2→r2 ans+=0; count[2]=1
+-3→r4 ans+=3(ans6); count[4]=4
+1→r0 ans+=count[0]=1(ans7)
+Answer: 7</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def subarraysDivByK(nums, k):
+    count = [0] * k
+    count[0] = 1                    # empty prefix has remainder 0
+    running = ans = 0
+    for x in nums:
+        running = (running + x) % k # Python % is non-negative for k &gt; 0
+        ans += count[running]       # earlier prefixes with the same remainder
+        count[running] += 1
+    return ans</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — one pass. <strong>Space O(k)</strong> for the remainder counts.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Negative numbers → Python's <code>%</code> normalizes remainders (in other languages, add <code>k</code> then mod).</li>
+<li>Zeros / subarrays that are already multiples → counted via matching remainders.</li>
+<li><code>k = 1</code> → every subarray qualifies.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>In languages where <code>%</code> can be negative, forgetting to normalize with <code>((r % k) + k) % k</code>.</li>
+<li>Omitting the seed <code>count[0] = 1</code>.</li>
+<li>Incrementing the count before reading it.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Exact sum k (<a href="0056-lc560-subarray-sum-equals-k.html">#560</a>) or 0/1 arrays (<a href="0058-lc930-binary-subarrays-with-sum.html">#930</a>).</li>
+<li>Longest such subarray → store first-occurrence index instead of a count.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0056-lc560-subarray-sum-equals-k.html">#560</a> · <a href="0058-lc930-binary-subarrays-with-sum.html">#930</a> · <a href="0528-lc523-continuous-subarray-sum.html">#523</a></p>
+
 
 <div class="pager"><a href="../problems/0058-lc930-binary-subarrays-with-sum.html"><span class="lbl">← Previous</span>#930 Binary Subarrays With Sum</a><a href="../problems/0060-lc1480-running-sum-of-1d-array.html" style="text-align:right"><span class="lbl">Next →</span>#1480 Running Sum of 1d Array</a></div>
 </div>

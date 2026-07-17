@@ -36,34 +36,71 @@
 
 <h2>📋 The problem</h2><p>Return a binary tree's values column by column (vertical order), left column to right, top to bottom within a column.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Tree BFS - Level Order Traversal</strong> — BFS with a queue; process the entire current level before moving on — level lists, right view, zigzag.</p>
+<h2>🧭 How to think about it</h2>
+<p>Group nodes by <strong>column</strong>: root is column 0, a left child is <code>col − 1</code>, a right child is <code>col + 1</code>. Within a column, nodes appear top-to-bottom, and (for ties at the same position) left-to-right — which is exactly what BFS gives you. Bucket node values by column, then read columns left to right.</p>
 
-<h2>Why this pattern?</h2><ul><li>"level", "depth", "nearest", "zigzag by rows" → BFS</li><li>"path sum", "ancestor", "validate", "diameter" → DFS</li><li>BST + "k-th smallest / sorted order" → inorder</li><li>"serialize / reconstruct" → preorder</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Tree Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>def dfs(node, state):                 # state flows DOWN (bounds, path...)
-    if not node:
-        return base                       # e.g. 0, True, None
-    L = dfs(node.left,  new_state)
-    R = dfs(node.right, new_state)
-    return combine(node.val, L, R)        # answer flows UP
+<h2>🐢 Brute force first</h2>
+<p>DFS collecting (col, row) then sorting is possible, but BFS avoids a sort for this problem's tie rule: same column, same row ties keep left-before-right insertion order.</p>
 
-from collections import deque             # BFS by levels
-q = deque([root])
-while q:
-    for _ in range(len(q)):               # freeze current level size
-        node = q.popleft()
-        if node.left:  q.append(node.left)
-        if node.right: q.append(node.right)</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> BFS carries a column index alongside each node. Append values into <code>columns[col]</code> in BFS order (top-down, left-right). Track the min and max column so you can output them in order without sorting keys.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Queue holds <code>(node, col)</code>, starting at <code>(root, 0)</code>.</li>
+<li>Append <code>node.val</code> to <code>columns[col]</code>; enqueue <code>(left, col−1)</code>, <code>(right, col+1)</code>.</li>
+<li>Track <code>min_col</code>/<code>max_col</code>; output columns from min to max.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — [3,9,20,null,null,15,7]</h2>
+<pre class="viz">3@0 ; 9@-1 ; 20@1 ; 15@0 ; 7@2
+columns: -1:[9] 0:[3,15] 1:[20] 2:[7]
+Result: [[9],[3,15],[20],[7]]</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>from collections import deque, defaultdict
+def verticalOrder(root):
+    if not root:
+        return []
+    columns = defaultdict(list)
+    q = deque([(root, 0)])
+    min_col = max_col = 0
+    while q:
+        node, col = q.popleft()
+        columns[col].append(node.val)       # BFS order = top-down, left-right
+        min_col = min(min_col, col)
+        max_col = max(max_col, col)
+        if node.left:  q.append((node.left, col - 1))
+        if node.right: q.append((node.right, col + 1))
+    return [columns[c] for c in range(min_col, max_col + 1)]</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — no sorting needed. <strong>Space O(n)</strong> for the queue and buckets.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Empty tree → <code>[]</code>.</li>
+<li>All left children → columns spread negative.</li>
+<li>Ties at same (col,row) → BFS keeps left-before-right.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Using DFS, which can violate the top-down order within a column.</li>
+<li>Sorting by column value with a dict but forgetting negative indices.</li>
+<li>Confusing this with <a href="0093-lc987-vertical-order-traversal-of-a-binary-tree.html">#987</a>, which additionally sorts same-position values.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Strict LeetCode 987 rule: sort ties by value (<a href="0093-lc987-vertical-order-traversal-of-a-binary-tree.html">#987</a>).</li>
+<li>Diagonal traversal → col = row − depth style indexing.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0093-lc987-vertical-order-traversal-of-a-binary-tree.html">#987</a> · <a href="0084-lc102-binary-tree-level-order-traversal.html">#102</a> · <a href="0085-lc103-binary-tree-zigzag-level-order-traversal.html">#103</a></p>
+
 
 <div class="pager"><a href="../problems/0088-lc199-binary-tree-right-side-view.html"><span class="lbl">← Previous</span>#199 Binary Tree Right Side View</a><a href="../problems/0090-lc515-find-largest-value-in-each-tree-row.html" style="text-align:right"><span class="lbl">Next →</span>#515 Find Largest Value in Each Tree Row</a></div>
 </div>

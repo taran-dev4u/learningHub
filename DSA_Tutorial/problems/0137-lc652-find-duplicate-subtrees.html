@@ -36,34 +36,70 @@
 
 <h2>📋 The problem</h2><p>Return one node from every duplicated subtree structure in a binary tree.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Tree - Serialization and Deserialization</strong> — Encode a tree to a string (preorder with nulls) and decode it back; used for cloning across the wire.</p>
+<h2>🧭 How to think about it</h2>
+<p>Return one representative root for each subtree shape+values that appears more than once. Give every subtree a <strong>canonical serialization</strong> (a string capturing its structure and values); identical subtrees produce identical strings. Count strings in a hash map and report those seen exactly twice.</p>
 
-<h2>Why this pattern?</h2><ul><li>"level", "depth", "nearest", "zigzag by rows" → BFS</li><li>"path sum", "ancestor", "validate", "diameter" → DFS</li><li>BST + "k-th smallest / sorted order" → inorder</li><li>"serialize / reconstruct" → preorder</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Tree Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>def dfs(node, state):                 # state flows DOWN (bounds, path...)
-    if not node:
-        return base                       # e.g. 0, True, None
-    L = dfs(node.left,  new_state)
-    R = dfs(node.right, new_state)
-    return combine(node.val, L, R)        # answer flows UP
+<h2>🐢 Brute force first</h2>
+<p>Comparing every pair of subtrees is O(n²) comparisons, each O(n). Serializing each subtree once and hashing is O(n²) worst case for string sizes but conceptually clean; ID-based hashing reaches O(n).</p>
 
-from collections import deque             # BFS by levels
-q = deque([root])
-while q:
-    for _ in range(len(q)):               # freeze current level size
-        node = q.popleft()
-        if node.left:  q.append(node.left)
-        if node.right: q.append(node.right)</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> a postorder serialization <code>"val,leftSerial,rightSerial"</code> uniquely identifies a subtree. Store counts in a dict; the first time a serialization's count hits 2, add that subtree's root to the answer (so each duplicate is reported once).</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Postorder build each subtree's serialization from its children's.</li>
+<li>Increment a counter for that string.</li>
+<li>When a string's count becomes exactly 2, record the current node.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — subtree "2,4,#,#" appears twice</h2>
+<pre class="viz">first "2,4,#,#" → count 1
+second occurrence → count 2 → add its root to answer
+Result: one node per duplicated subtree</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>from collections import defaultdict
+def findDuplicateSubtrees(root):
+    count = defaultdict(int)
+    res = []
+    def serialize(node):
+        if not node:
+            return '#'
+        s = f"{node.val},{serialize(node.left)},{serialize(node.right)}"
+        count[s] += 1
+        if count[s] == 2:               # record once, on the second sighting
+            res.append(node)
+        return s
+    serialize(root)
+    return res</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n²)</strong> worst case — serialization strings can be O(n) long. <strong>Space O(n²)</strong> for the map (O(n) with subtree-ID encoding).</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>No duplicates → empty result.</li>
+<li>A subtree appearing 3+ times → still reported once (count == 2 trigger).</li>
+<li>Single node duplicates → matched by value with null children.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Ambiguous serialization without null markers or delimiters.</li>
+<li>Reporting a subtree multiple times (guard on count == 2 exactly).</li>
+<li>Comparing subtrees pairwise (too slow).</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Assign integer IDs to serializations for O(n) total.</li>
+<li>Serialize/deserialize a whole tree (<a href="0136-lc297-serialize-and-deserialize-binary-tree.html">#297</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0136-lc297-serialize-and-deserialize-binary-tree.html">#297</a> · <a href="0105-lc572-subtree-of-another-tree.html">#572</a> · <a href="0095-lc100-same-tree.html">#100</a></p>
+
 
 <div class="pager"><a href="../problems/0136-lc297-serialize-and-deserialize-binary-tree.html"><span class="lbl">← Previous</span>#297 Serialize and Deserialize Binary Tree</a><a href="../patterns/p05-sliding-window.html" style="text-align:right"><span class="lbl">Next →</span>Sliding Window</a></div>
 </div>

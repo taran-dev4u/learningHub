@@ -36,33 +36,65 @@
 
 <h2>📋 The problem</h2><p>From a sorted linked list, remove the extra copies so each value appears exactly once.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>In-place Reversal</strong> — Iteratively reverse links with prev/curr/next pointers; recursive variant also classic.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>One pass: if cur.val == cur.next.val, bypass next.</div>
-<h2>Why this pattern?</h2><ul><li>input is a linked list (that alone is the signal)</li><li>"reverse", "reorder", "swap in pairs", "rotate" nodes</li><li>"k-th from the end", "middle", "cycle" → fast &amp; slow</li><li>"merge k sorted lists" → pairwise merge or heap of heads</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Linked List Manipulation master template and adapt the marked parts to this problem:</p><pre><code>dummy = ListNode(0, head)            # dummy head: prev of the real head
-prev, cur = dummy, head
+<h2>🧭 How to think about it</h2>
+<p>The list is sorted; collapse each run of equal values to a single node (<code>1→1→2→3→3</code> → <code>1→2→3</code>). Because you always keep the first of each value, no dummy is needed — just walk with one pointer and skip a node whenever it equals the next.</p>
 
-# In-place reversal core
-p = None
-while cur:
-    cur.next, p, cur = p, cur, cur.next
-# p is the new head
+<h2>🐢 Brute force first</h2>
+<p>A set plus rebuild is O(n) space. Sorted order lets you compare neighbors and do it in place, O(1) space.</p>
 
-# Fast &amp; slow
-slow = fast = head
-while fast and fast.next:
-    slow, fast = slow.next, fast.next.next   # slow = middle when fast ends</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> keep a single <code>cur</code>. If <code>cur.val == cur.next.val</code>, bypass the next node (<code>cur.next = cur.next.next</code>) without advancing <code>cur</code>, so a run of three-plus collapses. Otherwise move <code>cur</code> forward.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li><code>cur = head</code>.</li>
+<li>While <code>cur</code> and <code>cur.next</code>: if equal values, <code>cur.next = cur.next.next</code>; else <code>cur = cur.next</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — 1→1→2→3→3</h2>
+<pre class="viz">cur=1, next=1 equal → skip → 1→2→3→3 (cur stays at 1)
+cur=1, next=2 → advance cur=2
+cur=2, next=3 → advance cur=3
+cur=3, next=3 equal → skip → 1→2→3
+Result: 1→2→3</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def deleteDuplicates(head):
+    cur = head
+    while cur and cur.next:
+        if cur.val == cur.next.val:
+            cur.next = cur.next.next    # drop the duplicate; keep cur
+        else:
+            cur = cur.next
+    return head</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — one pass. <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Empty or single node → returned as-is.</li>
+<li>All equal → collapses to one node.</li>
+<li>No duplicates → unchanged.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Advancing <code>cur</code> after skipping — a run of 3+ then keeps a duplicate.</li>
+<li>Confusing with <a href="0064-lc82-remove-duplicates-from-sorted-list-ii.html">#82</a>, which removes all copies of duplicated values.</li>
+<li>Null-dereference by not checking <code>cur.next</code>.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Remove all duplicated values entirely (<a href="0064-lc82-remove-duplicates-from-sorted-list-ii.html">#82</a>).</li>
+<li>Array version (<a href="0017-lc26-remove-duplicates-from-sorted-array.html">#26</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0064-lc82-remove-duplicates-from-sorted-list-ii.html">#82</a> · <a href="0017-lc26-remove-duplicates-from-sorted-array.html">#26</a> · #203</p>
+
 
 <div class="pager"><a href="../problems/0064-lc82-remove-duplicates-from-sorted-list-ii.html"><span class="lbl">← Previous</span>#82 Remove Duplicates from Sorted List II</a><a href="../problems/0066-lc92-reverse-linked-list-ii.html" style="text-align:right"><span class="lbl">Next →</span>#92 Reverse Linked List II</a></div>
 </div>

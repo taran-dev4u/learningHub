@@ -36,33 +36,68 @@
 <p class="progress-note">This problem also appears under: <a href="0530-lc560-subarray-sum-equals-k.html">Prefix Sum &amp; Difference Array</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Count the contiguous subarrays whose elements sum exactly to k.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Prefix Sum / Running Sum</strong> — Maintain a running cumulative sum to answer subarray-sum or count-prefix-target queries.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>seen[0]=1; each step count += seen[cur−k], then record cur.</div>
-<h2>Why this pattern?</h2><ul><li>"rotate / transpose / flip" a matrix or array</li><li>"in place" / "O(1) extra space" on a grid problem</li><li>traverse in an unusual order (spiral, diagonal, zigzag)</li><li>mark/erase cells based on other cells (use the cells themselves as flags)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Array/Matrix Manipulation master template and adapt the marked parts to this problem:</p><pre><code># Rotate matrix 90° clockwise, in place
-n = len(matrix)
-for r in range(n):                     # 1) transpose (swap across diagonal)
-    for c in range(r + 1, n):
-        matrix[r][c], matrix[c][r] = matrix[c][r], matrix[r][c]
-for row in matrix:                     # 2) reverse each row
-    row.reverse()
+<h2>🧭 How to think about it</h2>
+<p>Count contiguous subarrays that sum to <code>k</code>. A subarray sum is a difference of two prefix sums: <code>sum(i..j) = prefix[j+1] − prefix[i]</code>. So a subarray ending at <code>j</code> with sum <code>k</code> exists once for every earlier prefix equal to <code>prefix[j+1] − k</code>. Keep a running prefix and a <strong>hash map of how many times each prefix value has occurred</strong>.</p>
 
-# Spiral walk: shrink four boundaries
-top, bottom, left, right = 0, rows - 1, 0, cols - 1
-while top &lt;= bottom and left &lt;= right:
-    ...walk top row, right col, bottom row, left col...
-    top += 1; bottom -= 1; left += 1; right -= 1</code></pre>
-<h2>How to work on it now</h2>
+<h2>🐢 Brute force first</h2>
+<p>All O(n²) subarrays (with a running inner sum) → O(n²). The prefix-count map answers it in one pass, O(n).</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> as you sweep, maintain <code>running</code> = prefix sum so far and a dict <code>count[p]</code> = number of prefixes seen with value <code>p</code>. At each step add <code>count[running − k]</code> to the answer (each such earlier prefix starts a valid subarray), then record <code>running</code>. Seed <code>count[0] = 1</code> for subarrays starting at index 0.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li><code>count = {0: 1}</code>, <code>running = 0</code>, <code>ans = 0</code>.</li>
+<li>For each <code>x</code>: <code>running += x</code>; <code>ans += count.get(running − k, 0)</code>; then <code>count[running] += 1</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — nums = [1,1,1], k = 2</h2>
+<pre class="viz">count={0:1} running=0 ans=0
+x=1: running=1; need -1 → 0; count={0:1,1:1}
+x=1: running=2; need 0 → +1 (ans=1); count={0:1,1:1,2:1}
+x=1: running=3; need 1 → +1 (ans=2); count[3]=1
+Answer: 2</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>from collections import defaultdict
+def subarraySum(nums, k):
+    count = defaultdict(int)
+    count[0] = 1                    # empty prefix, for subarrays from index 0
+    running = 0
+    ans = 0
+    for x in nums:
+        running += x
+        ans += count[running - k]   # earlier prefixes that complete a sum of k
+        count[running] += 1
+    return ans</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — one pass, O(1) map ops. <strong>Space O(n)</strong> for the prefix-count map.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Negative numbers → sliding window fails here; the prefix-map handles them.</li>
+<li><code>k = 0</code> → counts subarrays summing to zero.</li>
+<li>Whole array equals k → counted via the seeded <code>count[0]=1</code>.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Forgetting <code>count[0] = 1</code> → misses subarrays that start at index 0.</li>
+<li>Recording <code>running</code> <em>before</em> adding <code>count[running−k]</code> (over-counts zero-length).</li>
+<li>Trying a sliding window with negatives present.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Sum divisible by k (<a href="0059-lc974-subarray-sums-divisible-by-k.html">#974</a>) → key on the remainder.</li>
+<li>Count subarrays with a given XOR → same map on running XOR.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0059-lc974-subarray-sums-divisible-by-k.html">#974</a> · <a href="0058-lc930-binary-subarrays-with-sum.html">#930</a> · <a href="0055-lc303-range-sum-query-immutable.html">#303</a></p>
+
 
 <div class="pager"><a href="../problems/0055-lc303-range-sum-query-immutable.html"><span class="lbl">← Previous</span>#303 Range Sum Query - Immutable</a><a href="../problems/0057-lc724-find-pivot-index.html" style="text-align:right"><span class="lbl">Next →</span>#724 Find Pivot Index</a></div>
 </div>

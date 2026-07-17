@@ -36,35 +36,68 @@
 
 <h2>📋 The problem</h2><p>For each person in a queue, count how many people to their right they can see (monotonic decreasing stack).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Monotonic Stack</strong> — Stack maintained in increasing or decreasing order — pops give next-greater/smaller in O(n).</p>
+<h2>🧭 How to think about it</h2>
+<p>Person <code>i</code> can see person <code>j</code> to their right if everyone strictly between them is shorter than both. Count, for each person, how many they can see. Scan from the <strong>right</strong> with a <strong>monotonic decreasing stack</strong> of heights: each shorter person on the stack is visible, and the first taller one is also visible (but blocks further view).</p>
 
-<h2>Why this pattern?</h2><ul><li>brackets/tags to match or validate</li><li>"next greater / next warmer / previous smaller" element</li><li>histogram areas, trapped water, "can see over"</li><li>evaluate/parse an expression, decode nested strings</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Stack master template and adapt the marked parts to this problem:</p><pre><code># Monotonic (decreasing) stack — next greater element
-stack = []                              # holds INDICES of unresolved elements
-res = [-1] * len(nums)
-for i, x in enumerate(nums):
-    while stack and nums[stack[-1]] &lt; x:   # x resolves the waiting ones
-        j = stack.pop()
-        res[j] = x                          # x is j's next greater
-    stack.append(i)
+<h2>🐢 Brute force first</h2>
+<p>For each person scan right tracking the running max → O(n²). The stack does it in O(n).</p>
 
-# Matching
-for ch in s:
-    if ch in pairs:  stack.append(ch)
-    elif not stack or pairs[stack.pop()] != ch:
-        return False
-return not stack</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> processing right to left, the stack holds a decreasing sequence of heights (the currently visible people ahead). For person <code>i</code>: pop everyone shorter (each counts as visible); if a taller person remains, they're visible too (+1) but stop the view. Then push <code>i</code>.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Traverse right to left with a decreasing stack.</li>
+<li>For height <code>h</code>: while the top &lt; <code>h</code>, pop (count each). If the stack is still non-empty, add 1 more (the taller blocker).</li>
+<li>Push <code>h</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — heights = [10,6,8,5,11,9]</h2>
+<pre class="viz">from right: 9 ; 11 sees 9 → 1 ; 5 sees 11 → 1 ; 8 sees 5, then 11 → 2 ; 6 sees 8 → 1 ; 10 sees 6,8, then 11 → 3
+Result: [3,1,2,1,1,0]</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def canSeePersonsCount(heights):
+    n = len(heights)
+    res = [0] * n
+    stack = []                            # decreasing heights to the right
+    for i in range(n - 1, -1, -1):
+        h = heights[i]
+        while stack and stack[-1] &lt; h:
+            stack.pop()
+            res[i] += 1                   # shorter person is visible
+        if stack:
+            res[i] += 1                   # the first taller person, then blocked
+        stack.append(h)
+    return res</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong>, <strong>Space O(n)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Increasing heights → each sees only the next.</li>
+<li>Decreasing heights → each sees everyone to the right.</li>
+<li>Last person → sees 0.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Forgetting the "+1 for the blocker" when a taller person remains.</li>
+<li>Scanning left to right (harder to reason about visibility).</li>
+<li>Off-by-one at the array end.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Buildings with a sunset view (LC 1762).</li>
+<li>Daily temperatures (<a href="0185-lc739-daily-temperatures.html">#739</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0185-lc739-daily-temperatures.html">#739</a> · <a href="0181-lc496-next-greater-element-i.html">#496</a> · <a href="0187-lc901-online-stock-span.html">#901</a></p>
+
 
 <div class="pager"><a href="../problems/0191-lc1673-find-the-most-competitive-subsequence.html"><span class="lbl">← Previous</span>#1673 Find the Most Competitive Subsequence</a><a href="../problems/0193-lc2104-sum-of-subarray-ranges.html" style="text-align:right"><span class="lbl">Next →</span>#2104 Sum of Subarray Ranges</a></div>
 </div>

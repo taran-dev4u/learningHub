@@ -36,33 +36,72 @@
 
 <h2>📋 The problem</h2><p>If any cell of a matrix is 0, set its whole row and column to 0 — in place, ideally with O(1) extra space.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Set Matrix Zeroes / In-place Marking</strong> — Use the first row/column or a sign bit as in-place markers to mark zero rows/columns without extra space.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Use row 0 and column 0 as the marker arrays for 'this row/col must be zeroed' — O(1) extra space.</div>
-<h2>Why this pattern?</h2><ul><li>"rotate / transpose / flip" a matrix or array</li><li>"in place" / "O(1) extra space" on a grid problem</li><li>traverse in an unusual order (spiral, diagonal, zigzag)</li><li>mark/erase cells based on other cells (use the cells themselves as flags)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Array/Matrix Manipulation master template and adapt the marked parts to this problem:</p><pre><code># Rotate matrix 90° clockwise, in place
-n = len(matrix)
-for r in range(n):                     # 1) transpose (swap across diagonal)
-    for c in range(r + 1, n):
-        matrix[r][c], matrix[c][r] = matrix[c][r], matrix[r][c]
-for row in matrix:                     # 2) reverse each row
-    row.reverse()
+<h2>🧭 How to think about it</h2>
+<p>If a cell is 0, zero out its whole row and column — but do it <em>without</em> a separate copy. The problem is timing: if you zero a row immediately, those new zeros will wrongly trigger more rows/columns. The fix is to first <strong>mark</strong> which rows and columns need clearing, then clear them in a second pass. And to reach O(1) space, use the matrix's own first row and first column as the mark storage.</p>
 
-# Spiral walk: shrink four boundaries
-top, bottom, left, right = 0, rows - 1, 0, cols - 1
-while top &lt;= bottom and left &lt;= right:
-    ...walk top row, right col, bottom row, left col...
-    top += 1; bottom -= 1; left += 1; right -= 1</code></pre>
-<h2>How to work on it now</h2>
+<h2>🐢 Brute force first</h2>
+<p>Record every original zero's (row, col), then clear — O(m·n) time, O(m+n) space with two sets. Using the first row/column as markers drops the extra space to O(1).</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> let <code>matrix[i][0]</code> and <code>matrix[0][j]</code> remember "row i / column j must be zeroed". Because the first row and first column overlap at <code>(0,0)</code>, track whether the first column itself needs zeroing in a single extra boolean. Then clear the interior using the marks, and finally clear the first row/column if flagged.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Scan for a zero in column 0 → remember with a boolean <code>col0</code>.</li>
+<li>For every interior zero, set its row-marker <code>matrix[i][0]=0</code> and column-marker <code>matrix[0][j]=0</code>.</li>
+<li>Second pass over the interior: zero <code>matrix[i][j]</code> if its row or column marker is 0.</li>
+<li>Handle the first row (if <code>matrix[0][0]==0</code>) and first column (if <code>col0</code>) last.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — [[1,1,1],[1,0,1],[1,1,1]]</h2>
+<pre class="viz">zero at (1,1) → mark row1: M[1][0]=0 ; col1: M[0][1]=0
+second pass: any cell whose M[i][0]==0 or M[0][j]==0 → 0
+Result: [[1,0,1],[0,0,0],[1,0,1]]</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def setZeroes(matrix):
+    m, n = len(matrix), len(matrix[0])
+    col0 = any(matrix[i][0] == 0 for i in range(m))   # does column 0 need zeroing?
+    for i in range(m):
+        for j in range(1, n):
+            if matrix[i][j] == 0:
+                matrix[i][0] = 0        # mark this row
+                matrix[0][j] = 0        # mark this column
+    for i in range(m - 1, -1, -1):      # go bottom-up so row 0 markers survive
+        for j in range(n - 1, 0, -1):
+            if matrix[i][0] == 0 or matrix[0][j] == 0:
+                matrix[i][j] = 0
+        if col0:
+            matrix[i][0] = 0
+    return matrix</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(m·n)</strong> — two passes. <strong>Space O(1)</strong> — the matrix stores its own markers plus one boolean.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Zero already in the first row/column → captured by the markers and the <code>col0</code> flag.</li>
+<li>All zeros → whole matrix zero.</li>
+<li>No zeros → unchanged.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Clearing rows/columns during the first scan → cascades and zeros everything.</li>
+<li>Forgetting the first-column overlap, so <code>(0,0)</code> can't encode both — hence the separate <code>col0</code> boolean.</li>
+<li>Processing the interior top-down and wiping the row-0 markers before you use them (iterate bottom-up, or clear row 0 last).</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>O(m+n) space with two sets → the clear first answer to state before optimizing.</li>
+<li>Set to a value other than zero → same marking idea.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0040-lc54-spiral-matrix.html">#54</a> · <a href="0038-lc48-rotate-image.html">#48</a> · <a href="0044-lc238-product-of-array-except-self.html">#238</a></p>
+
 
 <div class="pager"><a href="../problems/0042-lc2326-spiral-matrix-iv.html"><span class="lbl">← Previous</span>#2326 Spiral Matrix IV</a><a href="../problems/0044-lc238-product-of-array-except-self.html" style="text-align:right"><span class="lbl">Next →</span>#238 Product of Array Except Self</a></div>
 </div>

@@ -36,35 +36,74 @@
 
 <h2>📋 The problem</h2><p>Evaluate a string arithmetic expression containing + - parentheses and spaces (a basic calculator).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Expression Evaluation / RPN / Infix</strong> — Two stacks for operators and operands, or evaluate Reverse Polish Notation directly.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Stack saves (result, sign) at each '('; on ')' pop and combine.</div>
-<h2>Why this pattern?</h2><ul><li>brackets/tags to match or validate</li><li>"next greater / next warmer / previous smaller" element</li><li>histogram areas, trapped water, "can see over"</li><li>evaluate/parse an expression, decode nested strings</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Stack master template and adapt the marked parts to this problem:</p><pre><code># Monotonic (decreasing) stack — next greater element
-stack = []                              # holds INDICES of unresolved elements
-res = [-1] * len(nums)
-for i, x in enumerate(nums):
-    while stack and nums[stack[-1]] &lt; x:   # x resolves the waiting ones
-        j = stack.pop()
-        res[j] = x                          # x is j's next greater
-    stack.append(i)
+<h2>🧭 How to think about it</h2>
+<p>Evaluate an expression with <code>+</code>, <code>−</code>, and <strong>parentheses</strong> (no <code>×</code>/<code>÷</code>). Keep a running <code>result</code> and current <code>sign</code>; when you hit <code>'('</code>, push the state and start fresh; on <code>')'</code>, fold the sub-result back in. A single stack of saved <code>(result, sign)</code> handles arbitrary nesting.</p>
 
-# Matching
-for ch in s:
-    if ch in pairs:  stack.append(ch)
-    elif not stack or pairs[stack.pop()] != ch:
-        return False
-return not stack</code></pre>
-<h2>How to work on it now</h2>
+<h2>🐢 Brute force first</h2>
+<p>Recursive descent parsing works but is heavier to write. The one-pass stack is O(n).</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> accumulate numbers digit by digit. On <code>+</code>/<code>−</code>, add <code>sign × number</code> to <code>result</code> and set the new sign. On <code>'('</code>, push <code>result</code> and <code>sign</code>, then reset. On <code>')'</code>, finish the inner number, then <code>result = result × savedSign + savedResult</code>.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Track <code>result</code>, <code>sign</code>, and a current <code>number</code>.</li>
+<li>Digit → build the number. <code>+/−</code> → fold it in, set sign. <code>(</code> → push (result, sign), reset. <code>)</code> → fold, then combine with the pushed state.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — "(1+(4+5+2)-3)"</h2>
+<pre class="viz">inner (4+5+2)=11 ; 1+11=12 ; 12-3=9
+Answer: 9</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def calculate(s):
+    result = 0
+    number = 0
+    sign = 1
+    stack = []
+    for c in s:
+        if c.isdigit():
+            number = number * 10 + int(c)
+        elif c in '+-':
+            result += sign * number       # commit the previous number
+            number = 0
+            sign = 1 if c == '+' else -1
+        elif c == '(':
+            stack.append(result); stack.append(sign)   # save state
+            result = 0; sign = 1
+        elif c == ')':
+            result += sign * number
+            number = 0
+            result = result * stack.pop() + stack.pop() # sign then result
+    return result + sign * number</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong>, <strong>Space O(n)</strong> for nesting.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Leading unary minus (e.g., <code>"-2+1"</code>) → sign starts handling it.</li>
+<li>Spaces → skipped (non-digit, non-operator).</li>
+<li>Deep nesting → the stack scales.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Popping sign and result in the wrong order.</li>
+<li>Forgetting to commit the last number after the loop.</li>
+<li>Not resetting <code>number</code> after committing.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Add <code>×</code>/<code>÷</code> (<a href="0196-lc227-basic-calculator-ii.html">#227</a>) or both plus parens (<a href="0198-lc772-basic-calculator-iii.html">#772</a>).</li>
+<li>Postfix evaluation (<a href="0194-lc150-evaluate-reverse-polish-notation.html">#150</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0196-lc227-basic-calculator-ii.html">#227</a> · <a href="0198-lc772-basic-calculator-iii.html">#772</a> · <a href="0194-lc150-evaluate-reverse-polish-notation.html">#150</a></p>
+
 
 <div class="pager"><a href="../problems/0194-lc150-evaluate-reverse-polish-notation.html"><span class="lbl">← Previous</span>#150 Evaluate Reverse Polish Notation</a><a href="../problems/0196-lc227-basic-calculator-ii.html" style="text-align:right"><span class="lbl">Next →</span>#227 Basic Calculator II</a></div>
 </div>

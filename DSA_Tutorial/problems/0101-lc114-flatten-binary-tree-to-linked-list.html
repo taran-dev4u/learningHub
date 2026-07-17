@@ -36,34 +36,69 @@
 
 <h2>📋 The problem</h2><p>Flatten a binary tree into a right-leaning 'linked list' in preorder, in place.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Tree DFS - Recursive Preorder Traversal</strong> — Visit root, then left subtree, then right — used for tree cloning, serialization, path building.</p>
+<h2>🧭 How to think about it</h2>
+<p>Flatten the tree into a right-leaning "linked list" that follows <strong>preorder</strong>: each node's <code>left</code> becomes null and <code>right</code> points to the next preorder node. The slick O(1)-space method rewires pointers using a Morris-like trick — attach the left subtree between a node and its right subtree.</p>
 
-<h2>Why this pattern?</h2><ul><li>"level", "depth", "nearest", "zigzag by rows" → BFS</li><li>"path sum", "ancestor", "validate", "diameter" → DFS</li><li>BST + "k-th smallest / sorted order" → inorder</li><li>"serialize / reconstruct" → preorder</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Tree Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>def dfs(node, state):                 # state flows DOWN (bounds, path...)
-    if not node:
-        return base                       # e.g. 0, True, None
-    L = dfs(node.left,  new_state)
-    R = dfs(node.right, new_state)
-    return combine(node.val, L, R)        # answer flows UP
+<h2>🐢 Brute force first</h2>
+<p>Collect preorder into a list, then relink — O(n) time, O(n) space. The pointer-rewiring version is O(1) extra space.</p>
 
-from collections import deque             # BFS by levels
-q = deque([root])
-while q:
-    for _ in range(len(q)):               # freeze current level size
-        node = q.popleft()
-        if node.left:  q.append(node.left)
-        if node.right: q.append(node.right)</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> for each node with a left child, find that left subtree's <strong>rightmost node</strong> (its preorder-last), attach the current right subtree there, move the left subtree to the right, and null the left. Advancing to <code>node.right</code> continues the process.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li><code>cur = root</code>.</li>
+<li>If <code>cur.left</code> exists: find the rightmost node of the left subtree.</li>
+<li>Point that rightmost node's <code>right</code> to <code>cur.right</code>; set <code>cur.right = cur.left</code>; <code>cur.left = None</code>.</li>
+<li>Advance <code>cur = cur.right</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — [1,2,5,3,4,null,6]</h2>
+<pre class="viz">at 1: left=2..(rightmost 4) ; 4.right=5 ; 1.right=2 ; 1.left=None
+→ 1→2→3→4→5→6 (all via right)
+Result: 1,2,3,4,5,6</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def flatten(root):
+    cur = root
+    while cur:
+        if cur.left:
+            # rightmost node of the left subtree (preorder predecessor of cur.right)
+            runner = cur.left
+            while runner.right:
+                runner = runner.right
+            runner.right = cur.right     # splice current right subtree after it
+            cur.right = cur.left         # move left subtree to the right
+            cur.left = None
+        cur = cur.right</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — each node visited O(1) amortized (the runner walks edges once overall). <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Empty tree → nothing to do.</li>
+<li>Right-only tree → already flattened.</li>
+<li>Left-only tree → becomes a right chain.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Forgetting to null out <code>cur.left</code> after moving it.</li>
+<li>Attaching the right subtree at the wrong node (must be the left subtree's rightmost).</li>
+<li>Losing the original right subtree before splicing.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Reverse-preorder recursion updating a <code>prev</code> pointer.</li>
+<li>Flatten to a doubly linked list in inorder (BST → DLL).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0097-lc105-construct-binary-tree-from-preorder-and-inorder-traversal.html">#105</a> · <a href="0108-lc94-binary-tree-inorder-traversal.html">#94</a> · <a href="0079-lc430-flatten-a-multilevel-doubly-linked-list.html">#430</a></p>
+
 
 <div class="pager"><a href="../problems/0100-lc113-path-sum-ii.html"><span class="lbl">← Previous</span>#113 Path Sum II</a><a href="../problems/0102-lc129-sum-root-to-leaf-numbers.html" style="text-align:right"><span class="lbl">Next →</span>#129 Sum Root to Leaf Numbers</a></div>
 </div>

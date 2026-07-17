@@ -36,33 +36,66 @@
 
 <h2>📋 The problem</h2><p>In an array where values lie in 1..n and appear once or twice, list the values appearing twice, in O(n) time and O(1) extra space.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Cyclic Sort</strong> — Place each value at index value-1 by swapping — finds missing/duplicate numbers in O(n) O(1).</p>
+<h2>🧭 How to think about it</h2>
+<p>Every value is in <code>1..n</code> and appears once or twice; return the ones appearing twice, in O(n) time and O(1) extra space. Use the array as its own bookkeeping: for value <code>v</code>, the sign of the slot at index <code>v−1</code> records "have I seen <code>v</code> before?" Flip it to mark; if it's already flipped, <code>v</code> is a duplicate.</p>
 
-<h2>Why this pattern?</h2><ul><li>"rotate / transpose / flip" a matrix or array</li><li>"in place" / "O(1) extra space" on a grid problem</li><li>traverse in an unusual order (spiral, diagonal, zigzag)</li><li>mark/erase cells based on other cells (use the cells themselves as flags)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Array/Matrix Manipulation master template and adapt the marked parts to this problem:</p><pre><code># Rotate matrix 90° clockwise, in place
-n = len(matrix)
-for r in range(n):                     # 1) transpose (swap across diagonal)
-    for c in range(r + 1, n):
-        matrix[r][c], matrix[c][r] = matrix[c][r], matrix[r][c]
-for row in matrix:                     # 2) reverse each row
-    row.reverse()
+<h2>🐢 Brute force first</h2>
+<p>A count dict is O(n) time but O(n) space. Sign-marking keeps it O(1) extra because the values fit the index range perfectly.</p>
 
-# Spiral walk: shrink four boundaries
-top, bottom, left, right = 0, rows - 1, 0, cols - 1
-while top &lt;= bottom and left &lt;= right:
-    ...walk top row, right col, bottom row, left col...
-    top += 1; bottom -= 1; left += 1; right -= 1</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> index <code>v−1</code> is <code>v</code>'s home. Negate <code>nums[v−1]</code> the first time you meet <code>v</code>. If you reach a <code>v</code> whose home is already negative, you've seen <code>v</code> before → it's a duplicate. Use <code>abs</code> when reading values, since earlier marks made some negative.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>For each <code>x</code>, let <code>idx = abs(x) − 1</code>.</li>
+<li>If <code>nums[idx] &lt; 0</code>, append <code>abs(x)</code> to the result.</li>
+<li>Otherwise negate <code>nums[idx]</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — nums = [4,3,2,7,8,2,3,1]</h2>
+<pre class="viz">x=4→idx3 mark; x=3→idx2 mark; x=2→idx1 mark; x=7→idx6 mark;
+x=8→idx7 mark; x=2→idx1 already neg → dup 2;
+x=3→idx2 already neg → dup 3; x=1→idx0 mark
+Result: [2, 3]</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def findDuplicates(nums):
+    res = []
+    for x in nums:
+        idx = abs(x) - 1           # home slot of value abs(x)
+        if nums[idx] &lt; 0:
+            res.append(abs(x))     # seen before → duplicate
+        else:
+            nums[idx] = -nums[idx] # mark as seen
+    return res</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — one pass. <strong>Space O(1)</strong> extra (the output aside).</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>No duplicates → empty result; array signs flipped (restore with a second pass if needed).</li>
+<li>Every value duplicated → all returned once.</li>
+<li>Reading values after marks → always use <code>abs</code>.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Forgetting <code>abs()</code> when computing the index, after some slots turned negative.</li>
+<li>Appending the index instead of the value.</li>
+<li>Assuming input is sorted.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Find all <em>missing</em> numbers (<a href="0051-lc448-find-all-numbers-disappeared-in-an-array.html">#448</a>) → same marking, then report positive positions.</li>
+<li>Single duplicate with no mutation (<a href="0030-lc287-find-the-duplicate-number.html">#287</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0051-lc448-find-all-numbers-disappeared-in-an-array.html">#448</a> · <a href="0030-lc287-find-the-duplicate-number.html">#287</a> · <a href="0047-lc41-first-missing-positive.html">#41</a></p>
+
 
 <div class="pager"><a href="../problems/0049-lc287-find-the-duplicate-number.html"><span class="lbl">← Previous</span>#287 Find the Duplicate Number</a><a href="../problems/0051-lc448-find-all-numbers-disappeared-in-an-array.html" style="text-align:right"><span class="lbl">Next →</span>#448 Find All Numbers Disappeared in an Array</a></div>
 </div>

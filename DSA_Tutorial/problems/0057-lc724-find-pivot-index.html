@@ -36,33 +36,66 @@
 
 <h2>📋 The problem</h2><p>Return the leftmost index where the sum of elements to its left equals the sum to its right (-1 if none).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Prefix Sum / Running Sum</strong> — Maintain a running cumulative sum to answer subarray-sum or count-prefix-target queries.</p>
+<h2>🧭 How to think about it</h2>
+<p>Find an index where the sum to its left equals the sum to its right. Compute the <strong>total</strong> once; then sweep, tracking the running left sum. At each index the right sum is <code>total − left − nums[i]</code>, so you can test the pivot condition in O(1).</p>
 
-<h2>Why this pattern?</h2><ul><li>"rotate / transpose / flip" a matrix or array</li><li>"in place" / "O(1) extra space" on a grid problem</li><li>traverse in an unusual order (spiral, diagonal, zigzag)</li><li>mark/erase cells based on other cells (use the cells themselves as flags)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Array/Matrix Manipulation master template and adapt the marked parts to this problem:</p><pre><code># Rotate matrix 90° clockwise, in place
-n = len(matrix)
-for r in range(n):                     # 1) transpose (swap across diagonal)
-    for c in range(r + 1, n):
-        matrix[r][c], matrix[c][r] = matrix[c][r], matrix[r][c]
-for row in matrix:                     # 2) reverse each row
-    row.reverse()
+<h2>🐢 Brute force first</h2>
+<p>For each index sum both sides → O(n²). One prefix sweep with the total precomputed → O(n).</p>
 
-# Spiral walk: shrink four boundaries
-top, bottom, left, right = 0, rows - 1, 0, cols - 1
-while top &lt;= bottom and left &lt;= right:
-    ...walk top row, right col, bottom row, left col...
-    top += 1; bottom -= 1; left += 1; right -= 1</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> at index <code>i</code>, left sum is what you've accumulated before <code>i</code>; right sum is <code>total − left − nums[i]</code>. If they're equal, <code>i</code> is the pivot. Add <code>nums[i]</code> to <code>left</code> after the check.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li><code>total = sum(nums)</code>, <code>left = 0</code>.</li>
+<li>For each <code>i</code>: if <code>left == total − left − nums[i]</code>, return <code>i</code>.</li>
+<li>Else <code>left += nums[i]</code>. If none found, return −1.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — nums = [1,7,3,6,5,6]</h2>
+<pre class="viz">total=28
+i=0 left=0 right=28-0-1=27 → no; left=1
+i=1 left=1 right=28-1-7=20 → no; left=8
+i=2 left=8 right=28-8-3=17 → no; left=11
+i=3 left=11 right=28-11-6=11 → equal → pivot 3</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def pivotIndex(nums):
+    total = sum(nums)
+    left = 0
+    for i, x in enumerate(nums):
+        if left == total - left - x:   # right sum = total - left - current
+            return i
+        left += x
+    return -1</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — one sum plus one sweep. <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Pivot at index 0 → left sum 0 must equal the sum of the rest.</li>
+<li>Pivot at the last index → right sum 0.</li>
+<li>Multiple pivots → return the leftmost.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Adding <code>nums[i]</code> to <code>left</code> before the comparison.</li>
+<li>Including <code>nums[i]</code> in either side (the pivot itself belongs to neither).</li>
+<li>Returning a boolean instead of the index / −1.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Find all pivots → don't return early.</li>
+<li>Balance point by value/weight → weighted prefix sums.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0055-lc303-range-sum-query-immutable.html">#303</a> · <a href="0060-lc1480-running-sum-of-1d-array.html">#1480</a> · <a href="0056-lc560-subarray-sum-equals-k.html">#560</a></p>
+
 
 <div class="pager"><a href="../problems/0056-lc560-subarray-sum-equals-k.html"><span class="lbl">← Previous</span>#560 Subarray Sum Equals K</a><a href="../problems/0058-lc930-binary-subarrays-with-sum.html" style="text-align:right"><span class="lbl">Next →</span>#930 Binary Subarrays With Sum</a></div>
 </div>

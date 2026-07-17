@@ -36,35 +36,77 @@
 
 <h2>📋 The problem</h2><p>In a binary matrix, find the area of the largest rectangle containing only 1s.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Monotonic Stack</strong> — Stack maintained in increasing or decreasing order — pops give next-greater/smaller in O(n).</p>
+<h2>🧭 How to think about it</h2>
+<p>Find the largest all-<code>1</code> rectangle in a binary matrix. Process the matrix <strong>row by row</strong>, building a histogram where each column's bar height is the number of consecutive 1s ending at that row. Then the answer for each row reduces to <strong>Largest Rectangle in Histogram</strong> (<a href="0202-lc84-largest-rectangle-in-histogram.html">#84</a>).</p>
 
-<h2>Why this pattern?</h2><ul><li>brackets/tags to match or validate</li><li>"next greater / next warmer / previous smaller" element</li><li>histogram areas, trapped water, "can see over"</li><li>evaluate/parse an expression, decode nested strings</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Stack master template and adapt the marked parts to this problem:</p><pre><code># Monotonic (decreasing) stack — next greater element
-stack = []                              # holds INDICES of unresolved elements
-res = [-1] * len(nums)
-for i, x in enumerate(nums):
-    while stack and nums[stack[-1]] &lt; x:   # x resolves the waiting ones
-        j = stack.pop()
-        res[j] = x                          # x is j's next greater
-    stack.append(i)
+<h2>🐢 Brute force first</h2>
+<p>Enumerate all rectangles → O((mn)²) or worse. The row-histogram + monotonic-stack approach is O(m·n).</p>
 
-# Matching
-for ch in s:
-    if ch in pairs:  stack.append(ch)
-    elif not stack or pairs[stack.pop()] != ch:
-        return False
-return not stack</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> for each row, <code>height[c]</code> grows by 1 if the cell is 1, else resets to 0. The best rectangle whose bottom edge is on this row equals the largest rectangle in that histogram. Take the max over all rows.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Maintain a running <code>heights</code> array across rows.</li>
+<li>For each row, update heights, then run the histogram routine.</li>
+<li>Track the global maximum area.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — rows build heights</h2>
+<pre class="viz">row1 heights [1,0,1,0,0]
+row2 heights [2,0,2,1,1]
+row3 heights [3,1,3,2,2] → histogram max here is the answer region</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def maximalRectangle(matrix):
+    if not matrix:
+        return 0
+    n = len(matrix[0])
+    heights = [0] * n
+    best = 0
+    def largest_hist(h):
+        stack, area = [], 0
+        for i in range(len(h) + 1):
+            cur = h[i] if i &lt; len(h) else 0
+            while stack and h[stack[-1]] &gt;= cur:
+                height = h[stack.pop()]
+                width = i if not stack else i - stack[-1] - 1
+                area = max(area, height * width)
+            stack.append(i)
+        return area
+    for row in matrix:
+        for c in range(n):
+            heights[c] = heights[c] + 1 if row[c] == '1' else 0
+        best = max(best, largest_hist(heights))
+    return best</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(m·n)</strong> — each row's histogram is O(n). <strong>Space O(n)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>All zeros → 0.</li>
+<li>Single row → plain histogram.</li>
+<li>Values as chars <code>'0'/'1'</code> vs ints — match the input type.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Not resetting a column's height to 0 on a 0 cell.</li>
+<li>Bugs in the histogram width calculation.</li>
+<li>Mixing up string vs integer cell values.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Maximal square (<a href="0413-lc221-maximal-square.html">#221</a>) → DP instead.</li>
+<li>Largest rectangle in histogram (<a href="0202-lc84-largest-rectangle-in-histogram.html">#84</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0202-lc84-largest-rectangle-in-histogram.html">#84</a> · <a href="0413-lc221-maximal-square.html">#221</a> · <a href="0185-lc739-daily-temperatures.html">#739</a></p>
+
 
 <div class="pager"><a href="../problems/0176-lc1963-minimum-number-of-swaps-to-make-the-string-balanced.html"><span class="lbl">← Previous</span>#1963 Minimum Number of Swaps to Make the String Balanced</a><a href="../problems/0178-lc316-remove-duplicate-letters.html" style="text-align:right"><span class="lbl">Next →</span>#316 Remove Duplicate Letters</a></div>
 </div>

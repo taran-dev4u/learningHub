@@ -36,33 +36,72 @@
 <p class="progress-note">This problem also appears under: <a href="0236-lc240-search-a-2d-matrix-ii.html">Binary Search</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Search a target in a matrix where each row and each column is sorted ascending.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Matrix Search / Sorted Matrix</strong> — Binary-search a row-and-column-sorted matrix by treating it as 1D, or staircase-search from a corner.</p>
+<h2>🧭 How to think about it</h2>
+<p>Here each row and each column is sorted, but there's no global order (a row can start below the previous row's end). Binary search on the flattened array no longer works. Instead, start at a <strong>corner where one direction increases and the other decreases</strong> — the top-right — so every comparison eliminates a whole row or column.</p>
 
-<h2>Why this pattern?</h2><ul><li>"rotate / transpose / flip" a matrix or array</li><li>"in place" / "O(1) extra space" on a grid problem</li><li>traverse in an unusual order (spiral, diagonal, zigzag)</li><li>mark/erase cells based on other cells (use the cells themselves as flags)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Array/Matrix Manipulation master template and adapt the marked parts to this problem:</p><pre><code># Rotate matrix 90° clockwise, in place
-n = len(matrix)
-for r in range(n):                     # 1) transpose (swap across diagonal)
-    for c in range(r + 1, n):
-        matrix[r][c], matrix[c][r] = matrix[c][r], matrix[r][c]
-for row in matrix:                     # 2) reverse each row
-    row.reverse()
+<h2>🐢 Brute force first</h2>
+<p>Scan all cells → O(m·n). Binary search each row → O(m log n). The staircase walk is O(m+n), simpler and often faster.</p>
 
-# Spiral walk: shrink four boundaries
-top, bottom, left, right = 0, rows - 1, 0, cols - 1
-while top &lt;= bottom and left &lt;= right:
-    ...walk top row, right col, bottom row, left col...
-    top += 1; bottom -= 1; left += 1; right -= 1</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> at the top-right cell, values to the left are smaller and values below are larger. If it's bigger than the target, the whole column can go (move left); if smaller, the whole row can go (move down). Each step removes a row or a column.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Start at <code>r = 0</code>, <code>c = n−1</code>.</li>
+<li>If <code>matrix[r][c] == target</code> → found.</li>
+<li>If it's greater than target → <code>c −= 1</code>; if less → <code>r += 1</code>.</li>
+<li>Stop when you fall off the grid.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — target = 5, matrix rows/cols sorted</h2>
+<pre class="viz">start top-right (0, n-1) = large value
+  &gt; 5 → move left (drop column)
+  &gt; 5 → move left
+  &lt; 5 → move down (drop row)
+  == 5 → found</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def searchMatrix(matrix, target):
+    if not matrix or not matrix[0]:
+        return False
+    r, c = 0, len(matrix[0]) - 1       # top-right corner
+    while r &lt; len(matrix) and c &gt;= 0:
+        val = matrix[r][c]
+        if val == target:
+            return True
+        elif val &gt; target:
+            c -= 1                      # eliminate this column
+        else:
+            r += 1                      # eliminate this row
+    return False</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(m+n)</strong> — each step drops a row or column. <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Target absent → pointer walks off the grid.</li>
+<li>Single row/column → degrades to ordinary linear/binary search behavior.</li>
+<li>Empty matrix → early return.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Starting at top-left or bottom-right — those corners don't split the search (both neighbors move the same way).</li>
+<li>Trying to reuse the flattened binary search from <a href="0052-lc74-search-a-2d-matrix.html">#74</a> (invalid here).</li>
+<li>Boundary errors on <code>r</code>/<code>c</code>.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Count elements ≤ target → same staircase, counting as you go (used in <a href="0054-lc378-kth-smallest-element-in-a-sorted-matrix.html">#378</a>).</li>
+<li>Start from bottom-left → symmetric alternative.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0052-lc74-search-a-2d-matrix.html">#74</a> · <a href="0054-lc378-kth-smallest-element-in-a-sorted-matrix.html">#378</a> · <a href="0053-lc240-search-a-2d-matrix-ii.html">#240</a></p>
+
 
 <div class="pager"><a href="../problems/0052-lc74-search-a-2d-matrix.html"><span class="lbl">← Previous</span>#74 Search a 2D Matrix</a><a href="../problems/0054-lc378-kth-smallest-element-in-a-sorted-matrix.html" style="text-align:right"><span class="lbl">Next →</span>#378 Kth Smallest Element in a Sorted Matrix</a></div>
 </div>

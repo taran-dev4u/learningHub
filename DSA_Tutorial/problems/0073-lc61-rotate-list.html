@@ -36,33 +36,77 @@
 
 <h2>📋 The problem</h2><p>Rotate a linked list to the right by k places.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Reordering / Partitioning</strong> — Split the list around a pivot (value, midpoint) and reattach — partition or zigzag-reorder.</p>
+<h2>🧭 How to think about it</h2>
+<p>Rotate the list right by <code>k</code> places. The clean trick: connect the tail to the head to form a <strong>ring</strong>, figure out where the new head should be, then break the ring there. Because rotating by the length is a no-op, reduce <code>k</code> modulo the length first.</p>
 
-<h2>Why this pattern?</h2><ul><li>input is a linked list (that alone is the signal)</li><li>"reverse", "reorder", "swap in pairs", "rotate" nodes</li><li>"k-th from the end", "middle", "cycle" → fast &amp; slow</li><li>"merge k sorted lists" → pairwise merge or heap of heads</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Linked List Manipulation master template and adapt the marked parts to this problem:</p><pre><code>dummy = ListNode(0, head)            # dummy head: prev of the real head
-prev, cur = dummy, head
+<h2>🐢 Brute force first</h2>
+<p>Move the last node to the front, <code>k</code> times → O(n·k). Forming a ring and cutting once is O(n).</p>
 
-# In-place reversal core
-p = None
-while cur:
-    cur.next, p, cur = p, cur, cur.next
-# p is the new head
+<div class="insight">💡 <strong>Key insight:</strong> find the length <code>n</code> and the tail. Link <code>tail.next = head</code> (a ring). The new tail is <code>n − (k % n) − 1</code> steps from the old head; the node after it is the new head. Cut the ring there.</div>
 
-# Fast &amp; slow
-slow = fast = head
-while fast and fast.next:
-    slow, fast = slow.next, fast.next.next   # slow = middle when fast ends</code></pre>
-<h2>How to work on it now</h2>
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Count length <code>n</code> and reach the tail. If <code>k % n == 0</code>, return unchanged.</li>
+<li>Make it circular: <code>tail.next = head</code>.</li>
+<li>Walk <code>n − k%n − 1</code> steps to the new tail; new head is its <code>.next</code>.</li>
+<li>Break: set new tail's <code>.next = None</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — 1→2→3→4→5, k = 2</h2>
+<pre class="viz">n=5, k%n=2 ; ring: ...5→1...
+new tail = n-k-1 = 2 steps from head → node 3
+new head = 4 ; break after 3
+Result: 4→5→1→2→3</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def rotateRight(head, k):
+    if not head or not head.next:
+        return head
+    # length + tail
+    n, tail = 1, head
+    while tail.next:
+        tail = tail.next
+        n += 1
+    k %= n
+    if k == 0:
+        return head
+    tail.next = head                 # form a ring
+    steps = n - k                     # new tail is steps-1 from head
+    new_tail = head
+    for _ in range(steps - 1):
+        new_tail = new_tail.next
+    new_head = new_tail.next
+    new_tail.next = None              # cut the ring
+    return new_head</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — count plus one walk. <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li><code>k</code> a multiple of n → unchanged.</li>
+<li>Empty or single node → unchanged.</li>
+<li><code>k &gt; n</code> → the modulo reduces it.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Forgetting <code>k %= n</code> → huge, wrong walks.</li>
+<li>Off-by-one on the new-tail step count.</li>
+<li>Not breaking the ring → an infinite list.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Rotate left by k → new tail is <code>k−1</code> from head.</li>
+<li>Array rotation (<a href="0039-lc189-rotate-array.html">#189</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0039-lc189-rotate-array.html">#189</a> · <a href="0067-lc206-reverse-linked-list.html">#206</a> · <a href="0076-lc143-reorder-list.html">#143</a></p>
+
 
 <div class="pager"><a href="../problems/0072-lc160-intersection-of-two-linked-lists.html"><span class="lbl">← Previous</span>#160 Intersection of Two Linked Lists</a><a href="../problems/0074-lc86-partition-list.html" style="text-align:right"><span class="lbl">Next →</span>#86 Partition List</a></div>
 </div>

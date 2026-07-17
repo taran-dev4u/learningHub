@@ -36,35 +36,66 @@
 
 <h2>📋 The problem</h2><p>Next greater element in a circular array: for each element, the first larger value scanning forward with wraparound.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Monotonic Stack</strong> — Stack maintained in increasing or decreasing order — pops give next-greater/smaller in O(n).</p>
+<h2>🧭 How to think about it</h2>
+<p>Same "next greater" question, but the array is <strong>circular</strong> — after the last element you wrap to the first. Simulate the wrap by iterating the indices <strong>twice</strong> (using modulo), running the usual monotonic-stack sweep.</p>
 
-<h2>Why this pattern?</h2><ul><li>brackets/tags to match or validate</li><li>"next greater / next warmer / previous smaller" element</li><li>histogram areas, trapped water, "can see over"</li><li>evaluate/parse an expression, decode nested strings</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Stack master template and adapt the marked parts to this problem:</p><pre><code># Monotonic (decreasing) stack — next greater element
-stack = []                              # holds INDICES of unresolved elements
-res = [-1] * len(nums)
-for i, x in enumerate(nums):
-    while stack and nums[stack[-1]] &lt; x:   # x resolves the waiting ones
-        j = stack.pop()
-        res[j] = x                          # x is j's next greater
-    stack.append(i)
+<h2>🐢 Brute force first</h2>
+<p>For each element scan up to n−1 forward positions (with wrap) → O(n²). Two passes with a stack are O(n).</p>
 
-# Matching
-for ch in s:
-    if ch in pairs:  stack.append(ch)
-    elif not stack or pairs[stack.pop()] != ch:
-        return False
-return not stack</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> loop <code>i</code> from 0 to <code>2n − 1</code>, using <code>nums[i % n]</code>. Keep a stack of <em>indices</em>; when the current value exceeds the value at the stack's top index, record its answer. The second pass lets earlier elements find greater values that wrap around.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Initialize <code>res = [-1]*n</code>, empty stack.</li>
+<li>For <code>i</code> in <code>0..2n−1</code>: while the top index's value &lt; <code>nums[i%n]</code>, pop and set its result.</li>
+<li>Push <code>i % n</code> only during the first pass (or push always; results only set once).</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — nums = [1,2,1]</h2>
+<pre class="viz">i0(1) push0 ; i1(2)&gt;1 pop0→res[0]=2, push1 ; i2(1) push2 ; i3(1) ; i4(2)&gt;1 pop2→res[2]=2
+res = [2,-1,2]</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def nextGreaterElements(nums):
+    n = len(nums)
+    res = [-1] * n
+    stack = []                            # indices
+    for i in range(2 * n):
+        cur = nums[i % n]
+        while stack and nums[stack[-1]] &lt; cur:
+            res[stack.pop()] = cur
+        if i &lt; n:
+            stack.append(i)               # only push originals once
+    return res</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — 2n iterations, each index popped once. <strong>Space O(n)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>All equal → all −1 (strictly greater needed).</li>
+<li>Single element → −1.</li>
+<li>Global max → −1 even with wrap.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Pushing indices during the second pass (double answers).</li>
+<li>Using values instead of indices (duplicates confuse results).</li>
+<li>Forgetting the modulo wrap.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Non-circular (<a href="0181-lc496-next-greater-element-i.html">#496</a>).</li>
+<li>Next greater element in a linked list (<a href="0082-lc1019-next-greater-node-in-linked-list.html">#1019</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0181-lc496-next-greater-element-i.html">#496</a> · <a href="0185-lc739-daily-temperatures.html">#739</a> · <a href="0183-lc556-next-greater-element-iii.html">#556</a></p>
+
 
 <div class="pager"><a href="../problems/0181-lc496-next-greater-element-i.html"><span class="lbl">← Previous</span>#496 Next Greater Element I</a><a href="../problems/0183-lc556-next-greater-element-iii.html" style="text-align:right"><span class="lbl">Next →</span>#556 Next Greater Element III</a></div>
 </div>

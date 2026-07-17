@@ -36,33 +36,80 @@
 
 <h2>📋 The problem</h2><p>Fill an m×n matrix in spiral order with a linked list's values (-1 padding).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Spiral Traversal</strong> — Walk a matrix in spiral order by maintaining four shrinking boundaries.</p>
+<h2>🧭 How to think about it</h2>
+<p>Fill an m×n matrix with the values of a linked list in spiral order, and put <code>−1</code> wherever the list runs out. This is the four-boundary spiral of <a href="0040-lc54-spiral-matrix.html">#54</a>, but instead of <em>reading</em> cells you <em>write</em> them — advancing the list pointer as you go and leaving the pre-filled <code>−1</code>s where the list ends.</p>
 
-<h2>Why this pattern?</h2><ul><li>"rotate / transpose / flip" a matrix or array</li><li>"in place" / "O(1) extra space" on a grid problem</li><li>traverse in an unusual order (spiral, diagonal, zigzag)</li><li>mark/erase cells based on other cells (use the cells themselves as flags)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Array/Matrix Manipulation master template and adapt the marked parts to this problem:</p><pre><code># Rotate matrix 90° clockwise, in place
-n = len(matrix)
-for r in range(n):                     # 1) transpose (swap across diagonal)
-    for c in range(r + 1, n):
-        matrix[r][c], matrix[c][r] = matrix[c][r], matrix[r][c]
-for row in matrix:                     # 2) reverse each row
-    row.reverse()
+<h2>🐢 Brute force first</h2>
+<p>No meaningfully different approach — you must traverse in spiral order. The only design choice is initializing the grid to <code>−1</code> so untouched cells are already correct.</p>
 
-# Spiral walk: shrink four boundaries
-top, bottom, left, right = 0, rows - 1, 0, cols - 1
-while top &lt;= bottom and left &lt;= right:
-    ...walk top row, right col, bottom row, left col...
-    top += 1; bottom -= 1; left += 1; right -= 1</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> pre-fill the matrix with <code>−1</code>. Run the exact four-boundary spiral walk; at each cell write <code>node.val</code> and advance <code>node</code> — but stop writing as soon as <code>node</code> is <code>None</code>. The leftover <code>−1</code>s need no special handling.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Create <code>grid = m×n</code> filled with <code>−1</code>; set boundaries.</li>
+<li>Spiral-walk (top→right→bottom→left, shrinking each boundary).</li>
+<li>At each visited cell, if <code>node</code> exists, write its value and move to <code>node.next</code>.</li>
+<li>Stop early once the list is exhausted (or just let the writes become no-ops).</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — m=2,n=3, list = 3→0→2→6→8→1→7</h2>
+<pre class="viz">grid starts all -1
+top row →   : 3 0 2
+right col ↓ : 6
+bottom ←    : 8 1
+left col ↑  : 7   (list ends here)
+Result: [[3,0,2],[7,1,6]]  ... wait, order: [[3,0,2],[7,1,6]]</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def spiralMatrix(m, n, head):
+    grid = [[-1] * n for _ in range(m)]
+    top, bottom, left, right = 0, m - 1, 0, n - 1
+    node = head
+    while node and top &lt;= bottom and left &lt;= right:
+        for c in range(left, right + 1):
+            if node: grid[top][c] = node.val; node = node.next
+        top += 1
+        for r in range(top, bottom + 1):
+            if node: grid[r][right] = node.val; node = node.next
+        right -= 1
+        if top &lt;= bottom:
+            for c in range(right, left - 1, -1):
+                if node: grid[bottom][c] = node.val; node = node.next
+            bottom -= 1
+        if left &lt;= right:
+            for r in range(bottom, top - 1, -1):
+                if node: grid[r][left] = node.val; node = node.next
+            left += 1
+    return grid</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(m·n)</strong> — every cell visited once. <strong>Space O(1)</strong> extra beyond the required grid.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>List shorter than m·n → remaining cells stay <code>−1</code>.</li>
+<li>List longer than m·n → extra nodes are ignored (walk ends when the grid is full).</li>
+<li>Single row/column → the two guards prevent overwrites.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Forgetting to initialize with <code>−1</code>, then trying to fill blanks afterward.</li>
+<li>Advancing <code>node</code> even when it's <code>None</code> → crash.</li>
+<li>Dropping the boundary guards → double-writing a thin strip.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Read a matrix into a list (inverse) → the <a href="0040-lc54-spiral-matrix.html">#54</a> walk collecting values.</li>
+<li>Fill with a different traversal (diagonal, zigzag) → swap the walk.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0040-lc54-spiral-matrix.html">#54</a> · <a href="0041-lc885-spiral-matrix-iii.html">#885</a> · <a href="0067-lc206-reverse-linked-list.html">#206</a></p>
+
 
 <div class="pager"><a href="../problems/0041-lc885-spiral-matrix-iii.html"><span class="lbl">← Previous</span>#885 Spiral Matrix III</a><a href="../problems/0043-lc73-set-matrix-zeroes.html" style="text-align:right"><span class="lbl">Next →</span>#73 Set Matrix Zeroes</a></div>
 </div>

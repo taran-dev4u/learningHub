@@ -36,33 +36,65 @@
 
 <h2>📋 The problem</h2><p>Rotate an n×n matrix 90 degrees clockwise, in place.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>In-place Rotation</strong> — Rotate a matrix or array in place using transpose + reverse, or layer-by-layer cyclic shifts.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Rotate 90° = transpose (swap across the diagonal) then reverse each row.</div>
-<h2>Why this pattern?</h2><ul><li>"rotate / transpose / flip" a matrix or array</li><li>"in place" / "O(1) extra space" on a grid problem</li><li>traverse in an unusual order (spiral, diagonal, zigzag)</li><li>mark/erase cells based on other cells (use the cells themselves as flags)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Array/Matrix Manipulation master template and adapt the marked parts to this problem:</p><pre><code># Rotate matrix 90° clockwise, in place
-n = len(matrix)
-for r in range(n):                     # 1) transpose (swap across diagonal)
-    for c in range(r + 1, n):
-        matrix[r][c], matrix[c][r] = matrix[c][r], matrix[r][c]
-for row in matrix:                     # 2) reverse each row
-    row.reverse()
+<h2>🧭 How to think about it</h2>
+<p>Rotate an n×n matrix 90° clockwise, <em>in place</em>. Trying to move each element straight to its rotated spot means juggling four values at once — error-prone. The clean trick is to build the rotation out of two simple, well-understood moves you can each do in place: a <strong>transpose</strong> (flip across the main diagonal) followed by <strong>reversing every row</strong>.</p>
 
-# Spiral walk: shrink four boundaries
-top, bottom, left, right = 0, rows - 1, 0, cols - 1
-while top &lt;= bottom and left &lt;= right:
-    ...walk top row, right col, bottom row, left col...
-    top += 1; bottom -= 1; left += 1; right -= 1</code></pre>
-<h2>How to work on it now</h2>
+<h2>🐢 Brute force first</h2>
+<p>Allocate a fresh n×n matrix and copy <code>new[j][n−1−i] = old[i][j]</code>. Simple, O(n²) time, but O(n²) extra space — the problem asks for in-place.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> a 90° clockwise rotation equals <strong>transpose then reverse each row</strong>. Transpose swaps <code>(i,j)</code> with <code>(j,i)</code> — only the upper triangle, so no double-swaps. Reversing each row then slides the columns into rotated position. Both steps are in place.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Transpose: for <code>i</code> in 0..n−1, for <code>j</code> in <code>i+1</code>..n−1, swap <code>M[i][j]</code> and <code>M[j][i]</code>.</li>
+<li>Reverse each row.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — 3×3</h2>
+<pre class="viz">start        transpose      reverse rows (→ 90° CW)
+1 2 3        1 4 7          7 4 1
+4 5 6   →    2 5 8    →     8 5 2
+7 8 9        3 6 9          9 6 3</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def rotate(matrix):
+    n = len(matrix)
+    # 1) transpose: swap across the main diagonal (upper triangle only)
+    for i in range(n):
+        for j in range(i + 1, n):
+            matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+    # 2) reverse each row in place
+    for row in matrix:
+        row.reverse()</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n²)</strong> — every cell is touched a constant number of times. <strong>Space O(1)</strong> — all swaps happen inside the matrix.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>n = 1 → nothing changes.</li>
+<li>Even vs odd n → the transpose loop (<code>j &gt; i</code>) covers each pair exactly once either way.</li>
+<li>Rotating counter-clockwise → reverse each row <em>first</em>, then transpose (or transpose then reverse columns).</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Transposing the whole matrix (both triangles) — you swap every pair twice and end up unchanged.</li>
+<li>Reversing columns instead of rows (that gives counter-clockwise).</li>
+<li>Allocating a new matrix and reassigning — not in place.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>180° → reverse rows and reverse each row (or rotate 90° twice).</li>
+<li>Rectangular m×n rotation → must use O(m·n) extra space; the in-place trick needs a square.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0040-lc54-spiral-matrix.html">#54</a> · <a href="0043-lc73-set-matrix-zeroes.html">#73</a> · <a href="0039-lc189-rotate-array.html">#189</a></p>
+
 
 <div class="pager"><a href="../patterns/p02-array-matrix.html"><span class="lbl">← Previous</span>Array/Matrix Manipulation</a><a href="../problems/0039-lc189-rotate-array.html" style="text-align:right"><span class="lbl">Next →</span>#189 Rotate Array</a></div>
 </div>

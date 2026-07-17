@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Library - Taran's Learning Hub</title>
+<link rel="stylesheet" href="assets/learning-hub-shared.css">
+<style>
+:root {
+  --bg: #f4f6f8;
+  --surface: #ffffff;
+  --text: #151922;
+  --muted: #586173;
+  --border: #dce3ec;
+  --accent: #2459d6;
+  --shadow: 0 14px 36px rgba(31, 42, 63, .1);
+}
+html.dark {
+  --bg: #101319;
+  --surface: #181d27;
+  --text: #edf1f7;
+  --muted: #a2acbc;
+  --border: #303849;
+  --accent: #7ca2ff;
+  --shadow: 0 16px 42px rgba(0, 0, 0, .32);
+}
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, sans-serif;
+  padding: 40px 20px;
+}
+.wrap {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+h1 { margin: 0; font-size: 36px; }
+.btn-back {
+  padding: 10px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--text);
+  font-weight: bold;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+}
+.card h2 { margin: 0 0 10px 0; font-size: 20px; }
+.card p { color: var(--muted); margin: 0 0 20px 0; flex-grow: 1; }
+.card a {
+  display: inline-block;
+  padding: 10px 0;
+  background: var(--accent);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="header">
+    <h1>Library</h1>
+    <a href="index.html" class="btn-back">Back to Hub</a>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <h2>System Design Interview Book</h2>
+      <p>Comprehensive guide to system design interviews.</p>
+      <a href="Resources/System Design resources/System Design Interview Book.pdf" target="_blank">Read PDF</a>
+    </div>
+    <div class="card">
+      <h2>Grokking the System Design</h2>
+      <p>A breakdown of system design concepts.</p>
+      <a href="Resources/System Design resources/grok_system_design_interview.pdf" target="_blank">Read PDF</a>
+    </div>
+    <div class="card">
+      <h2>Samir's System Design Course</h2>
+      <p>System design course materials.</p>
+      <a href="Resources/System Design resources/samir.pages.dev-System Design Course.pdf" target="_blank">Read PDF</a>
+    </div>
+    <div class="card">
+      <h2>Python Interview Prep</h2>
+      <p>Preparation guide for Python interviews.</p>
+      <a href="Resources/DSA/Your Python Interview Prep Starts Here!.pdf" target="_blank">Read PDF</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>

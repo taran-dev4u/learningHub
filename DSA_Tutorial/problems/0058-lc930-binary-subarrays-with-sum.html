@@ -36,33 +36,69 @@
 <p class="progress-note">This problem also appears under: <a href="0531-lc930-binary-subarrays-with-sum.html">Prefix Sum &amp; Difference Array</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Count the subarrays of a binary array that sum exactly to a goal.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Prefix Sum / Running Sum</strong> — Maintain a running cumulative sum to answer subarray-sum or count-prefix-target queries.</p>
+<h2>🧭 How to think about it</h2>
+<p>Count subarrays of a 0/1 array whose sum equals <code>goal</code>. It's the same prefix-sum-count idea as <a href="0056-lc560-subarray-sum-equals-k.html">#560</a> — for each running prefix, how many earlier prefixes equal <code>running − goal</code>? A hash map (or, since values are 0/1, a small array) tracks prefix frequencies.</p>
 
-<h2>Why this pattern?</h2><ul><li>"rotate / transpose / flip" a matrix or array</li><li>"in place" / "O(1) extra space" on a grid problem</li><li>traverse in an unusual order (spiral, diagonal, zigzag)</li><li>mark/erase cells based on other cells (use the cells themselves as flags)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Array/Matrix Manipulation master template and adapt the marked parts to this problem:</p><pre><code># Rotate matrix 90° clockwise, in place
-n = len(matrix)
-for r in range(n):                     # 1) transpose (swap across diagonal)
-    for c in range(r + 1, n):
-        matrix[r][c], matrix[c][r] = matrix[c][r], matrix[r][c]
-for row in matrix:                     # 2) reverse each row
-    row.reverse()
+<h2>🐢 Brute force first</h2>
+<p>All O(n²) subarrays → too slow for large n. Prefix-count map → O(n). A neat alternative is <em>atMost(goal) − atMost(goal−1)</em> with a sliding window (valid because entries are non-negative).</p>
 
-# Spiral walk: shrink four boundaries
-top, bottom, left, right = 0, rows - 1, 0, cols - 1
-while top &lt;= bottom and left &lt;= right:
-    ...walk top row, right col, bottom row, left col...
-    top += 1; bottom -= 1; left += 1; right -= 1</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> maintain <code>running</code> prefix and <code>count[p]</code> = how many prefixes had value <code>p</code>. Each step adds <code>count[running − goal]</code> to the answer. Seed <code>count[0] = 1</code>. Because entries are non-negative, the sliding-window "atMost" trick also works and uses O(1) space.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li><code>count = {0: 1}</code>, <code>running = 0</code>, <code>ans = 0</code>.</li>
+<li>For each <code>x</code>: <code>running += x</code>; <code>ans += count.get(running − goal, 0)</code>; <code>count[running] += 1</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — nums = [1,0,1,0,1], goal = 2</h2>
+<pre class="viz">count={0:1} running=0 ans=0
+1→run1 need -1:0; count{0:1,1:1}
+0→run1 need -1:0; count{0:1,1:2}
+1→run2 need 0:+1(ans1); count{...,2:1}
+0→run2 need 0:+1(ans2); count{...,2:2}
+1→run3 need 1:+2(ans4)
+Answer: 4</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>from collections import defaultdict
+def numSubarraysWithSum(nums, goal):
+    count = defaultdict(int)
+    count[0] = 1
+    running = ans = 0
+    for x in nums:
+        running += x
+        ans += count[running - goal]
+        count[running] += 1
+    return ans</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — one pass. <strong>Space O(n)</strong> for the map (O(1) with the atMost sliding-window variant).</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li><code>goal = 0</code> → counts runs of consecutive zeros (the map handles it; a naive window would loop forever).</li>
+<li>All ones with goal = length → exactly one subarray.</li>
+<li>No qualifying subarray → 0.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Sliding window for <code>goal = 0</code> without the atMost subtraction → infinite/incorrect.</li>
+<li>Forgetting <code>count[0] = 1</code>.</li>
+<li>Ordering the update before the count read.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>atMost(goal) − atMost(goal−1) sliding window → O(1) space.</li>
+<li>General integer arrays (<a href="0056-lc560-subarray-sum-equals-k.html">#560</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0056-lc560-subarray-sum-equals-k.html">#560</a> · <a href="0059-lc974-subarray-sums-divisible-by-k.html">#974</a> · <a href="0055-lc303-range-sum-query-immutable.html">#303</a></p>
+
 
 <div class="pager"><a href="../problems/0057-lc724-find-pivot-index.html"><span class="lbl">← Previous</span>#724 Find Pivot Index</a><a href="../problems/0059-lc974-subarray-sums-divisible-by-k.html" style="text-align:right"><span class="lbl">Next →</span>#974 Subarray Sums Divisible by K</a></div>
 </div>

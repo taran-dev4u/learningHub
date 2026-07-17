@@ -36,30 +36,69 @@
 
 <h2>📋 The problem</h2><p>Every flip inverts a fixed-length k block; return the minimum flips so the binary array becomes all 1s (-1 if impossible).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Fixed Size / Subarray Calculation</strong> — Window of constant size k — slide one step at a time, update the aggregate in O(1).</p>
+<h2>🧭 How to think about it</h2>
+<p>Each move flips a fixed-length block of <code>k</code> consecutive bits; make the whole array all 1s with the fewest moves. Scan left to right: the leftmost 0 you meet <em>must</em> be fixed by a flip starting exactly there (nothing to its left can touch it anymore). Track the running effect of past flips so you know each bit's current value in O(1).</p>
 
-<h2>Why this pattern?</h2><ul><li>"contiguous subarray / substring" + longest/shortest/max/min/count</li><li>fixed size k ("every window of size k")</li><li>a constraint to maintain: "at most k distinct", "no repeats", "sum ≥ target"</li><li>strings + character frequency ("anagram of", "contains all chars of")</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Sliding Window master template and adapt the marked parts to this problem:</p><pre><code># Variable-size window (the general form)
-state = {}                              # counts / sum — whatever the constraint needs
-left = 0
-best = 0
-for right in range(len(s)):
-    add(s[right], state)                # 1) window grows
-    while invalid(state):               # 2) shrink until constraint holds again
-        remove(s[left], state)
-        left += 1
-    best = max(best, right - left + 1)  # 3) window is valid here</code></pre>
-<h2>How to work on it now</h2>
+<h2>🐢 Brute force first</h2>
+<p>Actually flipping k bits per move is O(n·k) or worse. A <strong>difference array</strong> (or a queue of flip end-points) records how many flips are currently affecting the position, giving O(n).</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> keep a running <code>flips</code> parity. A position's real value is <code>nums[i] XOR (flips % 2)</code>. If it's 0, we must start a flip here — but only if <code>i + k ≤ n</code>; otherwise it's impossible (−1). Use a <code>diff</code> array to cancel a flip's effect once you pass its end.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Maintain <code>flips</code> (active flip parity) and a <code>diff</code> array.</li>
+<li>At <code>i</code>: subtract <code>diff[i]</code> from <code>flips</code>. If <code>(nums[i] + flips) % 2 == 0</code>, flip here.</li>
+<li>Flipping: if <code>i + k &gt; n</code> return −1; else <code>flips += 1</code>, count++, and mark <code>diff[i+k] += 1</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — nums = [0,1,0], k = 1</h2>
+<pre class="viz">i0 val0 → flip (count1) ; i1 val1 ok ; i2 val0 → flip (count2)
+Answer: 2</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def minKBitFlips(nums, k):
+    n = len(nums)
+    diff = [0] * (n + 1)
+    flips = 0                      # active flips affecting current index (parity)
+    count = 0
+    for i in range(n):
+        flips += diff[i]
+        if (nums[i] + flips) % 2 == 0:      # current effective bit is 0
+            if i + k &gt; n:
+                return -1                    # can't place a full flip
+            count += 1
+            flips += 1
+            diff[i + k] -= 1                 # this flip stops affecting here
+    return count</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — one pass. <strong>Space O(n)</strong> for the diff array (O(1) possible with a queue of endpoints).</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Already all 1s → 0 flips.</li>
+<li>A trailing 0 within <code>k</code> of the end that needs flipping → −1.</li>
+<li>k = n → at most one flip decides everything.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Literally flipping bits (too slow).</li>
+<li>Forgetting the impossibility check <code>i + k &gt; n</code>.</li>
+<li>Mismanaging the diff/parity so the running effect is wrong.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Bulb switcher / range-toggle problems use the same diff-parity idea.</li>
+<li>Minimum flips with variable block size → harder.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0141-lc1004-max-consecutive-ones-iii.html">#1004</a> · <a href="0166-lc239-sliding-window-maximum.html">#239</a> · <a href="0538-lc1109-corporate-flight-bookings.html">#1109</a></p>
+
 
 <div class="pager"><a href="../problems/0139-lc643-maximum-average-subarray-i.html"><span class="lbl">← Previous</span>#643 Maximum Average Subarray I</a><a href="../problems/0141-lc1004-max-consecutive-ones-iii.html" style="text-align:right"><span class="lbl">Next →</span>#1004 Max Consecutive Ones III</a></div>
 </div>

@@ -36,34 +36,66 @@
 
 <h2>📋 The problem</h2><p>Return the node that comes immediately after a given node in a BST's inorder order (or null).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Tree DFS - Recursive Inorder Traversal</strong> — Visit left, root, right — yields sorted order on a BST; used for kth-smallest, BST validation.</p>
+<h2>🧭 How to think about it</h2>
+<p>Find the node that comes right after a given node <code>p</code> in inorder (the smallest value strictly greater than <code>p.val</code>). Use the BST property: walk from the root, and whenever you go <strong>left</strong> (because the current node is bigger than <code>p</code>), remember that node as a candidate successor.</p>
 
-<h2>Why this pattern?</h2><ul><li>"level", "depth", "nearest", "zigzag by rows" → BFS</li><li>"path sum", "ancestor", "validate", "diameter" → DFS</li><li>BST + "k-th smallest / sorted order" → inorder</li><li>"serialize / reconstruct" → preorder</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Tree Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>def dfs(node, state):                 # state flows DOWN (bounds, path...)
-    if not node:
-        return base                       # e.g. 0, True, None
-    L = dfs(node.left,  new_state)
-    R = dfs(node.right, new_state)
-    return combine(node.val, L, R)        # answer flows UP
+<h2>🐢 Brute force first</h2>
+<p>Full inorder, find <code>p</code>, return the next node → O(n). The BST walk is O(h).</p>
 
-from collections import deque             # BFS by levels
-q = deque([root])
-while q:
-    for _ in range(len(q)):               # freeze current level size
-        node = q.popleft()
-        if node.left:  q.append(node.left)
-        if node.right: q.append(node.right)</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> the successor is the deepest ancestor for which <code>p</code> is in the left subtree. Descend: if <code>root.val &gt; p.val</code>, this root could be the successor — record it and go left; otherwise go right (successor lies further right/up).</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li><code>succ = None</code>, <code>cur = root</code>.</li>
+<li>If <code>cur.val &gt; p.val</code>: <code>succ = cur</code>; go left.</li>
+<li>Else go right.</li>
+<li>Return <code>succ</code> when <code>cur</code> becomes null.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — BST [2,1,3], p = 1</h2>
+<pre class="viz">at 2: 2&gt;1 → succ=2, go left to 1 ; 1 not &gt;1 → go right null
+Successor = 2</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def inorderSuccessor(root, p):
+    succ = None
+    cur = root
+    while cur:
+        if cur.val &gt; p.val:
+            succ = cur                 # candidate; smaller ones may lie left
+            cur = cur.left
+        else:
+            cur = cur.right            # need something bigger
+    return succ</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(h)</strong> — one root-to-leaf descent. <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li><code>p</code> is the maximum → no successor, return null.</li>
+<li><code>p</code> has a right subtree → successor is that subtree's minimum (the walk finds it).</li>
+<li>Duplicates absent (BST assumption) → strict <code>&gt;</code>.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Only handling the "has right subtree" case and missing the ancestor case.</li>
+<li>Recording candidates when going right (wrong direction).</li>
+<li>Using ≥ and returning <code>p</code> itself.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Predecessor → mirror (go right, record when <code>root.val &lt; p.val</code>).</li>
+<li>Successor with parent pointers → different formulation.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0113-lc230-kth-smallest-element-in-a-bst.html">#230</a> · <a href="0112-lc173-binary-search-tree-iterator.html">#173</a> · <a href="0109-lc98-validate-binary-search-tree.html">#98</a></p>
+
 
 <div class="pager"><a href="../problems/0113-lc230-kth-smallest-element-in-a-bst.html"><span class="lbl">← Previous</span>#230 Kth Smallest Element in a BST</a><a href="../problems/0115-lc450-delete-node-in-a-bst.html" style="text-align:right"><span class="lbl">Next →</span>#450 Delete Node in a BST</a></div>
 </div>

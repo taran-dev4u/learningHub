@@ -36,34 +36,71 @@
 
 <h2>📋 The problem</h2><p>Return all root-to-leaf paths of a binary tree as strings.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Tree DFS - Recursive Preorder Traversal</strong> — Visit root, then left subtree, then right — used for tree cloning, serialization, path building.</p>
+<h2>🧭 How to think about it</h2>
+<p>List every root-to-leaf path as a string like <code>"1-&gt;2-&gt;5"</code>. This is a <strong>DFS with backtracking</strong>: build up the path of values as you descend and, at each leaf, join and record it.</p>
 
-<h2>Why this pattern?</h2><ul><li>"level", "depth", "nearest", "zigzag by rows" → BFS</li><li>"path sum", "ancestor", "validate", "diameter" → DFS</li><li>BST + "k-th smallest / sorted order" → inorder</li><li>"serialize / reconstruct" → preorder</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Tree Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>def dfs(node, state):                 # state flows DOWN (bounds, path...)
-    if not node:
-        return base                       # e.g. 0, True, None
-    L = dfs(node.left,  new_state)
-    R = dfs(node.right, new_state)
-    return combine(node.val, L, R)        # answer flows UP
+<h2>🐢 Brute force first</h2>
+<p>There's no cheaper approach — you must enumerate paths. The choice is between passing an accumulating string (simple) or a list you join at leaves (avoids repeated string concatenation).</p>
 
-from collections import deque             # BFS by levels
-q = deque([root])
-while q:
-    for _ in range(len(q)):               # freeze current level size
-        node = q.popleft()
-        if node.left:  q.append(node.left)
-        if node.right: q.append(node.right)</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> carry a list <code>path</code>; append the node, and at a leaf join with <code>"-&gt;"</code> and store it; pop on the way back so siblings reuse the prefix cleanly.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>DFS appending each node's value to <code>path</code>.</li>
+<li>At a leaf, add <code>"-&gt;".join(path)</code> to results.</li>
+<li>Recurse into children, then pop.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — [1,2,3,null,5]</h2>
+<pre class="viz">1→2→5 leaf → "1-&gt;2-&gt;5"
+1→3 leaf → "1-&gt;3"
+Result: ["1-&gt;2-&gt;5","1-&gt;3"]</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def binaryTreePaths(root):
+    res, path = [], []
+    def dfs(node):
+        if not node:
+            return
+        path.append(str(node.val))
+        if not node.left and not node.right:
+            res.append("-&gt;".join(path))
+        else:
+            dfs(node.left)
+            dfs(node.right)
+        path.pop()                       # backtrack
+    if root:
+        dfs(root)
+    return res</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n·h)</strong> — building strings of length up to <code>h</code>. <strong>Space O(h)</strong> recursion plus output.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Single node → one path with just that value.</li>
+<li>Empty tree → empty list.</li>
+<li>One-child nodes → included in the path (not leaves).</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Forgetting to backtrack (<code>path.pop()</code>).</li>
+<li>Recording at internal nodes.</li>
+<li>Building strings with <code>+</code> at every node (quadratic churn).</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Sum of the path numbers (<a href="0102-lc129-sum-root-to-leaf-numbers.html">#129</a>).</li>
+<li>Return paths that meet a condition (<a href="0100-lc113-path-sum-ii.html">#113</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0100-lc113-path-sum-ii.html">#113</a> · <a href="0102-lc129-sum-root-to-leaf-numbers.html">#129</a> · <a href="0106-lc988-smallest-string-starting-from-leaf.html">#988</a></p>
+
 
 <div class="pager"><a href="../problems/0103-lc226-invert-binary-tree.html"><span class="lbl">← Previous</span>#226 Invert Binary Tree</a><a href="../problems/0105-lc572-subtree-of-another-tree.html" style="text-align:right"><span class="lbl">Next →</span>#572 Subtree of Another Tree</a></div>
 </div>

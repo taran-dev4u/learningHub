@@ -36,34 +36,65 @@
 
 <h2>📋 The problem</h2><p>Return the postorder traversal (left, right, node) of a binary tree's values.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Tree DFS - Recursive Postorder Traversal</strong> — Visit left, right, then root — used when children's results are needed before computing the parent.</p>
+<h2>🧭 How to think about it</h2>
+<p>Postorder is <strong>left, right, node</strong>. Recursively it's trivial; iteratively, a neat trick is to do a modified preorder (node, right, left) and <strong>reverse</strong> the result — that produces left, right, node.</p>
 
-<h2>Why this pattern?</h2><ul><li>"level", "depth", "nearest", "zigzag by rows" → BFS</li><li>"path sum", "ancestor", "validate", "diameter" → DFS</li><li>BST + "k-th smallest / sorted order" → inorder</li><li>"serialize / reconstruct" → preorder</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Tree Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>def dfs(node, state):                 # state flows DOWN (bounds, path...)
-    if not node:
-        return base                       # e.g. 0, True, None
-    L = dfs(node.left,  new_state)
-    R = dfs(node.right, new_state)
-    return combine(node.val, L, R)        # answer flows UP
+<h2>🐢 Brute force first</h2>
+<p>Recursion is O(n). The iterative challenge is doing it without recursion; the reverse-preorder approach is the simplest correct method.</p>
 
-from collections import deque             # BFS by levels
-q = deque([root])
-while q:
-    for _ in range(len(q)):               # freeze current level size
-        node = q.popleft()
-        if node.left:  q.append(node.left)
-        if node.right: q.append(node.right)</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> push root, then pop and record; push its <em>left</em> then <em>right</em> children (so right is processed first). This yields node-right-left order; reverse it to get postorder.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Stack with the root; output list.</li>
+<li>Pop a node, append its value, push left then right.</li>
+<li>Reverse the output at the end.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — [1,null,2,3]</h2>
+<pre class="viz">pop1 out[1] push2 ; pop2 out[1,2] push3 ; pop3 out[1,2,3]
+reverse → [3,2,1]</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def postorderTraversal(root):
+    if not root:
+        return []
+    stack, out = [root], []
+    while stack:
+        node = stack.pop()
+        out.append(node.val)            # node, then (below) right, left
+        if node.left:  stack.append(node.left)
+        if node.right: stack.append(node.right)
+    return out[::-1]                    # reverse node-right-left → left-right-node</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong>, <strong>Space O(n)</strong> for the stack and output.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Empty tree → <code>[]</code>.</li>
+<li>Single node → <code>[val]</code>.</li>
+<li>Skewed tree → linear stack usage.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Pushing right before left and forgetting the final reverse.</li>
+<li>Trying a one-stack "true" postorder without tracking the last-visited node (harder to get right).</li>
+<li>Reversing the tree instead of the output.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Inorder / preorder iterative (<a href="0108-lc94-binary-tree-inorder-traversal.html">#94</a>).</li>
+<li>Morris postorder → O(1) space, intricate.</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0108-lc94-binary-tree-inorder-traversal.html">#94</a> · <a href="0120-lc104-maximum-depth-of-binary-tree.html">#104</a> · <a href="0122-lc124-binary-tree-maximum-path-sum.html">#124</a></p>
+
 
 <div class="pager"><a href="../problems/0122-lc124-binary-tree-maximum-path-sum.html"><span class="lbl">← Previous</span>#124 Binary Tree Maximum Path Sum</a><a href="../problems/0124-lc222-count-complete-tree-nodes.html" style="text-align:right"><span class="lbl">Next →</span>#222 Count Complete Tree Nodes</a></div>
 </div>

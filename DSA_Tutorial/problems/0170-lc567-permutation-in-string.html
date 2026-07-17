@@ -36,30 +36,71 @@
 
 <h2>📋 The problem</h2><p>Decide whether s2 contains any permutation of s1 as a substring.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Character Frequency Matching</strong> — Maintain a frequency map and a 'match count' — used for anagram windows and permutation-in-string.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Same as 438 but return true on the first fully matched window.</div>
-<h2>Why this pattern?</h2><ul><li>"contiguous subarray / substring" + longest/shortest/max/min/count</li><li>fixed size k ("every window of size k")</li><li>a constraint to maintain: "at most k distinct", "no repeats", "sum ≥ target"</li><li>strings + character frequency ("anagram of", "contains all chars of")</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Sliding Window master template and adapt the marked parts to this problem:</p><pre><code># Variable-size window (the general form)
-state = {}                              # counts / sum — whatever the constraint needs
-left = 0
-best = 0
-for right in range(len(s)):
-    add(s[right], state)                # 1) window grows
-    while invalid(state):               # 2) shrink until constraint holds again
-        remove(s[left], state)
-        left += 1
-    best = max(best, right - left + 1)  # 3) window is valid here</code></pre>
-<h2>How to work on it now</h2>
+<h2>🧭 How to think about it</h2>
+<p>Return true if <code>s2</code> contains any permutation of <code>s1</code> as a contiguous substring. It's <a href="0169-lc438-find-all-anagrams-in-a-string.html">#438</a> with an early exit: slide a fixed window of length <code>|s1|</code> over <code>s2</code> comparing letter counts, and return <code>True</code> on the first exact match.</p>
+
+<h2>🐢 Brute force first</h2>
+<p>Check each window's sorted form against <code>s1</code> → O(n·|s1| log|s1|). The count-window is O(n).</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> a permutation match means identical letter counts. Keep a running 26-count window; slide by add-right/remove-left; the first time it equals <code>s1</code>'s counts, a permutation is present.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Build <code>need</code> counts for <code>s1</code>, plus the first window of <code>s2</code>.</li>
+<li>Slide; on each step compare counts.</li>
+<li>Return True at the first match; False if none.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — s1 = "ab", s2 = "eidbaooo"</h2>
+<pre class="viz">windows "ei","id","db","ba" → "ba" matches counts of "ab" → True</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>from collections import Counter
+def checkInclusion(s1, s2):
+    if len(s1) &gt; len(s2):
+        return False
+    need = Counter(s1)
+    window = Counter(s2[:len(s1)])
+    if window == need:
+        return True
+    for i in range(len(s1), len(s2)):
+        window[s2[i]] += 1
+        left = s2[i - len(s1)]
+        window[left] -= 1
+        if window[left] == 0:
+            del window[left]
+        if window == need:
+            return True                   # first match is enough
+    return False</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — O(26) comparisons. <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li><code>s1</code> longer than <code>s2</code> → False.</li>
+<li>Immediate match at index 0 → checked before sliding.</li>
+<li>Repeated letters → counts capture multiplicity.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Returning all matches instead of a boolean (that's <a href="0169-lc438-find-all-anagrams-in-a-string.html">#438</a>).</li>
+<li>Forgetting to delete zero-count keys.</li>
+<li>Not checking the very first window.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Return all start indices (<a href="0169-lc438-find-all-anagrams-in-a-string.html">#438</a>).</li>
+<li>Minimum window substring (<a href="0146-lc76-minimum-window-substring.html">#76</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0169-lc438-find-all-anagrams-in-a-string.html">#438</a> · <a href="0146-lc76-minimum-window-substring.html">#76</a> · <a href="0437-lc242-valid-anagram.html">#242</a></p>
+
 
 <div class="pager"><a href="../problems/0169-lc438-find-all-anagrams-in-a-string.html"><span class="lbl">← Previous</span>#438 Find All Anagrams in a String</a><a href="../patterns/p06-stack.html" style="text-align:right"><span class="lbl">Next →</span>Stack</a></div>
 </div>

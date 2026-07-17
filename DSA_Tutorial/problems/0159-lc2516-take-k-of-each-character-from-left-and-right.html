@@ -36,30 +36,70 @@
 
 <h2>📋 The problem</h2><p>Take characters only from the two ends so you collect at least k of each of a, b, c; minimize characters taken (longest valid middle window).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Variable Size / Condition-Based</strong> — Grow the right pointer; shrink the left while a constraint is violated — captures max/min subarray meeting a condition.</p>
+<h2>🧭 How to think about it</h2>
+<p>You take characters only from the two ends and must collect at least <code>k</code> each of <code>a</code>, <code>b</code>, <code>c</code>; minimize how many you take. Flip it: the characters you <strong>leave</strong> form a contiguous middle. So find the <strong>longest middle window</strong> whose removal still leaves ≥ <code>k</code> of each letter outside it; the answer is <code>n − thatLength</code>.</p>
 
-<h2>Why this pattern?</h2><ul><li>"contiguous subarray / substring" + longest/shortest/max/min/count</li><li>fixed size k ("every window of size k")</li><li>a constraint to maintain: "at most k distinct", "no repeats", "sum ≥ target"</li><li>strings + character frequency ("anagram of", "contains all chars of")</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Sliding Window master template and adapt the marked parts to this problem:</p><pre><code># Variable-size window (the general form)
-state = {}                              # counts / sum — whatever the constraint needs
-left = 0
-best = 0
-for right in range(len(s)):
-    add(s[right], state)                # 1) window grows
-    while invalid(state):               # 2) shrink until constraint holds again
-        remove(s[left], state)
-        left += 1
-    best = max(best, right - left + 1)  # 3) window is valid here</code></pre>
-<h2>How to work on it now</h2>
+<h2>🐢 Brute force first</h2>
+<p>Enumerating end-take splits is O(n²). The complementary longest-window approach is O(n).</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> count the total of each letter. A middle window is allowed if, for every letter, <code>total − insideWindow ≥ k</code> (enough remain at the ends). Slide the largest such window; taking the rest from the ends is minimal.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>If any letter's total &lt; k → −1.</li>
+<li>Window counts inside; it's valid when each letter still has ≥ k outside.</li>
+<li>Maximize the window length; answer = <code>n − best</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — s = "aabaaaacaabc", k = 2</h2>
+<pre class="viz">longest middle we can leave while keeping ≥2 of each at the ends → length 4 (example)
+answer = n − 4 = 8</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>from collections import Counter
+def takeCharacters(s, k):
+    total = Counter(s)
+    if any(total[c] &lt; k for c in "abc"):
+        return -1
+    inside = Counter()
+    left = best = 0
+    for right, ch in enumerate(s):
+        inside[ch] += 1
+        # shrink while removing this window would drop some letter below k
+        while any(total[c] - inside[c] &lt; k for c in "abc"):
+            inside[s[left]] -= 1
+            left += 1
+        best = max(best, right - left + 1)
+    return len(s) - best</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — the "any over 3 letters" check is O(1). <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Some letter appears fewer than k times → −1.</li>
+<li>k = 0 → take nothing (answer 0).</li>
+<li>Need the entire string → best window 0.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Trying to directly simulate taking from both ends.</li>
+<li>Checking counts inside the window instead of what remains outside.</li>
+<li>Missing the impossibility check.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Reduce X to zero from ends (<a href="0156-lc1658-minimum-operations-to-reduce-x-to-zero.html">#1658</a>).</li>
+<li>Minimum window substring (<a href="0146-lc76-minimum-window-substring.html">#76</a>).</li>
+</ul>
+
+<h2>🔗 Related problems</h2>
+<p><a href="0156-lc1658-minimum-operations-to-reduce-x-to-zero.html">#1658</a> · <a href="0146-lc76-minimum-window-substring.html">#76</a> · <a href="0147-lc209-minimum-size-subarray-sum.html">#209</a></p>
+
 
 <div class="pager"><a href="../problems/0158-lc2461-maximum-sum-of-distinct-subarrays-with-length-k.html"><span class="lbl">← Previous</span>#2461 Maximum Sum of Distinct Subarrays With Length K</a><a href="../problems/0160-lc2762-continuous-subarrays.html" style="text-align:right"><span class="lbl">Next →</span>#2762 Continuous Subarrays</a></div>
 </div>
