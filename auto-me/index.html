@@ -233,7 +233,7 @@ const CLOSED = new Set(["done","known","skipped"]);
 const SLOT   = {dsa:"--s1",sd:"--s2",rtwk:"--s3",mock:"--s4",cs:"--s5",
                 cloud:"--s6",ai:"--s7",bh:"--s8"};
 
-let RM=null, PLAN=null, TUT={}, BY={}, TR={}, P=null, SHA=null;
+let RM=null, PLAN=null, TUT={}, BY={}, TR={}, P=null, SHA=null, LATEST={};
 let TIER = localStorage.getItem(LS.tier) || "target";
 let VIEW = "today";
 let saveTimer=null, syncing=false;
@@ -441,9 +441,22 @@ function renderToday(){
   if(!PLAN||!PLAN.sections){v.innerHTML=`<div class="empty">No plan yet. The 6:00 AM task will publish one.</div>`;return;}
   const pick=s=>TIER==="all"?s.items:s[TIER];
   let all=[],h="";
+  const req=(PLAN.requiredCount||PLAN.counts.target), tierReq=PLAN.advanceOn||"target";
+  const reqIds=[]; for(const s of PLAN.sections) reqIds.push(...(tierReq==="all"?s.items:s[tierReq]));
+  const cleared=reqIds.filter(i=>CLOSED.has(statusOf(i))).length;
+  const leftN=reqIds.length-cleared;
+  const dayNo=PLAN.dayNumber||LATEST.dayNumber||1;
+  const attempt=PLAN.attempt||LATEST.attempt||1;
   h+=`<div class="card">
-     <h2>${esc(PLAN.weekday)}, ${esc(PLAN.date)}</h2>
-     <div class="note">${TUT.headline?esc(TUT.headline):"Today's plan"}</div>
+     <h2>Day ${dayNo}${attempt>1?` <span class="pill">attempt ${attempt}</span>`:""}</h2>
+     <div class="note">${esc(PLAN.weekday)}, ${esc(LATEST.servedOn||PLAN.date)} · ${
+       TUT.headline?esc(TUT.headline):"Today's plan"}</div>
+     ${leftN>0
+       ? `<div class="pat" style="border-left-color:var(--warn);background:color-mix(in oklab,var(--warn) 10%,var(--card))">
+            <b style="color:var(--warn)">Day ${dayNo} stays until it is finished.</b>
+            ${cleared} of ${reqIds.length} cleared — <b>${leftN} left</b>.
+            Day ${dayNo+1} does not open until every one of them is ticked.</div>`
+       : `<div class="pat"><b>Day ${dayNo} complete.</b> Day ${dayNo+1} opens on the next 6&nbsp;AM run.</div>`}
      <div class="tiers" id="tiers">
        <button data-t="min">Min</button><button data-t="target">Target</button>
        <button data-t="stretch">Stretch</button><button data-t="all">All</button>
@@ -472,7 +485,7 @@ function renderToday(){
     h+=`</div>`;
   }
   h+=`<div class="card" style="text-align:center">
-      <button class="btn ok wide" id="closeDay">Mark everything above done</button></div>`;
+      <button class="btn ok wide" id="closeDay">Mark everything above done</button>\n      <div class="note" style="margin:8px 0 0;text-align:center">Only a fully cleared day unlocks the next one.</div></div>`;
   v.innerHTML=h;
   document.querySelectorAll("#tiers button").forEach(b=>
     b.setAttribute("aria-pressed", b.dataset.t===TIER));
@@ -704,9 +717,8 @@ async function boot(){
   catch(e){ P=blankProgress(); }
 
   const bust="?v="+Date.now();
-  let latest={};
-  try{ latest=await (await fetch("./data/latest.json"+bust,{cache:"no-store"})).json(); }catch(e){}
-  const day=latest.date||new Date().toISOString().slice(0,10);
+  try{ LATEST=await (await fetch("./data/latest.json"+bust,{cache:"no-store"})).json(); }catch(e){ LATEST={}; }
+  const day=LATEST.date||new Date().toISOString().slice(0,10);
 
   try{ RM=await (await fetch("./data/master-roadmap.json")).json(); }
   catch(e){ document.querySelector(".wrap").innerHTML=

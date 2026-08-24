@@ -1,1 +1,10 @@
-{"date": "2026-08-19"}
+{
+  "date": "2026-08-19",
+  "servedOn": "2026-08-19",
+  "dayNumber": 1,
+  "attempt": 1,
+  "carried": false,
+  "cleared": 0,
+  "required": 20,
+  "advanceOn": "target"
+}
