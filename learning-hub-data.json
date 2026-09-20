@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-20T21:01:34.320Z",
+  "generatedAt": "2026-09-20T21:12:50.346Z",
   "stats": {
     "domains": 7,
     "sections": 103,
@@ -65465,34 +65465,34 @@
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-string-reversal-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-string-reversal",
-      "title": "🔎 Search GeeksforGeeks — String Reversal GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-string-reversal-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-string-reversal",
+      "title": "🔎 Search GeeksforGeeks — String Reversal Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+String+Reversal",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-string-reversal-youtube:https-www-youtube-com-results-search-query-string-reversal-algorithm-leetcode",
-      "title": "🔎 Search YouTube — String Reversal YouTube",
+      "id": "dsa:search-youtube-string-reversal-video-search:https-www-youtube-com-results-search-query-string-reversal-algorithm-leetcode",
+      "title": "🔎 Search YouTube — String Reversal Video search",
       "url": "https://www.youtube.com/results?search_query=String+Reversal+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-in-place-array-modification-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-in-place-array-modificati",
-      "title": "🔎 Search GeeksforGeeks — In-place Array Modification GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-in-place-array-modification-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-in-place-array-modificati",
+      "title": "🔎 Search GeeksforGeeks — In-place Array Modification Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+In-place+Array+Modification",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-in-place-array-modification-youtube:https-www-youtube-com-results-search-query-in-place-array-modification-algorithm",
-      "title": "🔎 Search YouTube — In-place Array Modification YouTube",
+      "id": "dsa:search-youtube-in-place-array-modification-video-search:https-www-youtube-com-results-search-query-in-place-array-modification-algorithm",
+      "title": "🔎 Search YouTube — In-place Array Modification Video search",
       "url": "https://www.youtube.com/results?search_query=In-place+Array+Modification+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
@@ -65505,34 +65505,34 @@
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-fixed-separation-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-fixed-separation",
-      "title": "🔎 Search GeeksforGeeks — Fixed Separation GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-fixed-separation-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-fixed-separation",
+      "title": "🔎 Search GeeksforGeeks — Fixed Separation Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Fixed+Separation",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-fixed-separation-youtube:https-www-youtube-com-results-search-query-fixed-separation-algorithm-leetcode",
-      "title": "🔎 Search YouTube — Fixed Separation YouTube",
+      "id": "dsa:search-youtube-fixed-separation-video-search:https-www-youtube-com-results-search-query-fixed-separation-algorithm-leetcode",
+      "title": "🔎 Search YouTube — Fixed Separation Video search",
       "url": "https://www.youtube.com/results?search_query=Fixed+Separation+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-string-comparison-with-special-characters-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-string-comparison-with-sp",
-      "title": "🔎 Search GeeksforGeeks — String Comparison with Special Characters GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-string-comparison-with-special-characters-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-string-comparison-with-sp",
+      "title": "🔎 Search GeeksforGeeks — String Comparison with Special Characters Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+String+Comparison+with+Special+Characters",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-string-comparison-with-special-characters-youtube:https-www-youtube-com-results-search-query-string-comparison-with-special-charac",
-      "title": "🔎 Search YouTube — String Comparison with Special Characters YouTube",
+      "id": "dsa:search-youtube-string-comparison-with-special-characters-video-search:https-www-youtube-com-results-search-query-string-comparison-with-special-charac",
+      "title": "🔎 Search YouTube — String Comparison with Special Characters Video search",
       "url": "https://www.youtube.com/results?search_query=String+Comparison+with+Special+Characters+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
@@ -65641,18 +65641,18 @@
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-set-matrix-zeroes-in-place-marking-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-set-matrix-zeroes-2f-in-p",
-      "title": "🔎 Search GeeksforGeeks — Set Matrix Zeroes / In-place Marking GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-set-matrix-zeroes-in-place-marking-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-set-matrix-zeroes-2f-in-p",
+      "title": "🔎 Search GeeksforGeeks — Set Matrix Zeroes / In-place Marking Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Set+Matrix+Zeroes+%2F+In-place+Marking",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-set-matrix-zeroes-in-place-marking-youtube:https-www-youtube-com-results-search-query-set-matrix-zeroes-2f-in-place-marking",
-      "title": "🔎 Search YouTube — Set Matrix Zeroes / In-place Marking YouTube",
+      "id": "dsa:search-youtube-set-matrix-zeroes-in-place-marking-video-search:https-www-youtube-com-results-search-query-set-matrix-zeroes-2f-in-place-marking",
+      "title": "🔎 Search YouTube — Set Matrix Zeroes / In-place Marking Video search",
       "url": "https://www.youtube.com/results?search_query=Set+Matrix+Zeroes+%2F+In-place+Marking+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
@@ -65665,34 +65665,34 @@
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-plus-one-handling-carry-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-plus-one-2f-handling-carr",
-      "title": "🔎 Search GeeksforGeeks — Plus One / Handling Carry GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-plus-one-handling-carry-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-plus-one-2f-handling-carr",
+      "title": "🔎 Search GeeksforGeeks — Plus One / Handling Carry Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Plus+One+%2F+Handling+Carry",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-plus-one-handling-carry-youtube:https-www-youtube-com-results-search-query-plus-one-2f-handling-carry-algorithm-",
-      "title": "🔎 Search YouTube — Plus One / Handling Carry YouTube",
+      "id": "dsa:search-youtube-plus-one-handling-carry-video-search:https-www-youtube-com-results-search-query-plus-one-2f-handling-carry-algorithm-",
+      "title": "🔎 Search YouTube — Plus One / Handling Carry Video search",
       "url": "https://www.youtube.com/results?search_query=Plus+One+%2F+Handling+Carry+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-merge-sorted-array-in-place-from-end-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-merge-sorted-array-2f-in-",
-      "title": "🔎 Search GeeksforGeeks — Merge Sorted Array / In-place from End GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-merge-sorted-array-in-place-from-end-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-merge-sorted-array-2f-in-",
+      "title": "🔎 Search GeeksforGeeks — Merge Sorted Array / In-place from End Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Merge+Sorted+Array+%2F+In-place+from+End",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-merge-sorted-array-in-place-from-end-youtube:https-www-youtube-com-results-search-query-merge-sorted-array-2f-in-place-from-e",
-      "title": "🔎 Search YouTube — Merge Sorted Array / In-place from End YouTube",
+      "id": "dsa:search-youtube-merge-sorted-array-in-place-from-end-video-search:https-www-youtube-com-results-search-query-merge-sorted-array-2f-in-place-from-e",
+      "title": "🔎 Search YouTube — Merge Sorted Array / In-place from End Video search",
       "url": "https://www.youtube.com/results?search_query=Merge+Sorted+Array+%2F+In-place+from+End+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
@@ -65705,34 +65705,34 @@
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-matrix-search-sorted-matrix-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-matrix-search-2f-sorted-m",
-      "title": "🔎 Search GeeksforGeeks — Matrix Search / Sorted Matrix GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-matrix-search-sorted-matrix-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-matrix-search-2f-sorted-m",
+      "title": "🔎 Search GeeksforGeeks — Matrix Search / Sorted Matrix Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Matrix+Search+%2F+Sorted+Matrix",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-matrix-search-sorted-matrix-youtube:https-www-youtube-com-results-search-query-matrix-search-2f-sorted-matrix-algori",
-      "title": "🔎 Search YouTube — Matrix Search / Sorted Matrix YouTube",
+      "id": "dsa:search-youtube-matrix-search-sorted-matrix-video-search:https-www-youtube-com-results-search-query-matrix-search-2f-sorted-matrix-algori",
+      "title": "🔎 Search YouTube — Matrix Search / Sorted Matrix Video search",
       "url": "https://www.youtube.com/results?search_query=Matrix+Search+%2F+Sorted+Matrix+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-prefix-sum-running-sum-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-prefix-sum-2f-running-sum",
-      "title": "🔎 Search GeeksforGeeks — Prefix Sum / Running Sum GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-prefix-sum-running-sum-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-prefix-sum-2f-running-sum",
+      "title": "🔎 Search GeeksforGeeks — Prefix Sum / Running Sum Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Prefix+Sum+%2F+Running+Sum",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-prefix-sum-running-sum-youtube:https-www-youtube-com-results-search-query-prefix-sum-2f-running-sum-algorithm-l",
-      "title": "🔎 Search YouTube — Prefix Sum / Running Sum YouTube",
+      "id": "dsa:search-youtube-prefix-sum-running-sum-video-search:https-www-youtube-com-results-search-query-prefix-sum-2f-running-sum-algorithm-l",
+      "title": "🔎 Search YouTube — Prefix Sum / Running Sum Video search",
       "url": "https://www.youtube.com/results?search_query=Prefix+Sum+%2F+Running+Sum+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
@@ -65825,82 +65825,82 @@
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-in-place-reversal-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-in-place-reversal",
-      "title": "🔎 Search GeeksforGeeks — In-place Reversal GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-in-place-reversal-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-in-place-reversal",
+      "title": "🔎 Search GeeksforGeeks — In-place Reversal Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+In-place+Reversal",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-in-place-reversal-youtube:https-www-youtube-com-results-search-query-in-place-reversal-algorithm-leetcode",
-      "title": "🔎 Search YouTube — In-place Reversal YouTube",
+      "id": "dsa:search-youtube-in-place-reversal-video-search:https-www-youtube-com-results-search-query-in-place-reversal-algorithm-leetcode",
+      "title": "🔎 Search YouTube — In-place Reversal Video search",
       "url": "https://www.youtube.com/results?search_query=In-place+Reversal+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-merging-two-sorted-lists-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-merging-two-sorted-lists",
-      "title": "🔎 Search GeeksforGeeks — Merging Two Sorted Lists GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-merging-two-sorted-lists-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-merging-two-sorted-lists",
+      "title": "🔎 Search GeeksforGeeks — Merging Two Sorted Lists Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Merging+Two+Sorted+Lists",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-merging-two-sorted-lists-youtube:https-www-youtube-com-results-search-query-merging-two-sorted-lists-algorithm-le",
-      "title": "🔎 Search YouTube — Merging Two Sorted Lists YouTube",
+      "id": "dsa:search-youtube-merging-two-sorted-lists-video-search:https-www-youtube-com-results-search-query-merging-two-sorted-lists-algorithm-le",
+      "title": "🔎 Search YouTube — Merging Two Sorted Lists Video search",
       "url": "https://www.youtube.com/results?search_query=Merging+Two+Sorted+Lists+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-addition-of-numbers-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-addition-of-numbers",
-      "title": "🔎 Search GeeksforGeeks — Addition of Numbers GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-addition-of-numbers-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-addition-of-numbers",
+      "title": "🔎 Search GeeksforGeeks — Addition of Numbers Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Addition+of+Numbers",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-addition-of-numbers-youtube:https-www-youtube-com-results-search-query-addition-of-numbers-algorithm-leetcod",
-      "title": "🔎 Search YouTube — Addition of Numbers YouTube",
+      "id": "dsa:search-youtube-addition-of-numbers-video-search:https-www-youtube-com-results-search-query-addition-of-numbers-algorithm-leetcod",
+      "title": "🔎 Search YouTube — Addition of Numbers Video search",
       "url": "https://www.youtube.com/results?search_query=Addition+of+Numbers+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-intersection-detection-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-intersection-detection",
-      "title": "🔎 Search GeeksforGeeks — Intersection Detection GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-intersection-detection-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-intersection-detection",
+      "title": "🔎 Search GeeksforGeeks — Intersection Detection Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Intersection+Detection",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-intersection-detection-youtube:https-www-youtube-com-results-search-query-intersection-detection-algorithm-leet",
-      "title": "🔎 Search YouTube — Intersection Detection YouTube",
+      "id": "dsa:search-youtube-intersection-detection-video-search:https-www-youtube-com-results-search-query-intersection-detection-algorithm-leet",
+      "title": "🔎 Search YouTube — Intersection Detection Video search",
       "url": "https://www.youtube.com/results?search_query=Intersection+Detection+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-reordering-partitioning-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-reordering-2f-partitionin",
-      "title": "🔎 Search GeeksforGeeks — Reordering / Partitioning GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-reordering-partitioning-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-reordering-2f-partitionin",
+      "title": "🔎 Search GeeksforGeeks — Reordering / Partitioning Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Reordering+%2F+Partitioning",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-reordering-partitioning-youtube:https-www-youtube-com-results-search-query-reordering-2f-partitioning-algorithm-",
-      "title": "🔎 Search YouTube — Reordering / Partitioning YouTube",
+      "id": "dsa:search-youtube-reordering-partitioning-video-search:https-www-youtube-com-results-search-query-reordering-2f-partitioning-algorithm-",
+      "title": "🔎 Search YouTube — Reordering / Partitioning Video search",
       "url": "https://www.youtube.com/results?search_query=Reordering+%2F+Partitioning+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
@@ -66017,18 +66017,18 @@
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-tree-dfs-recursive-preorder-traversal-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-tree-dfs-recursive-preord",
-      "title": "🔎 Search GeeksforGeeks — Tree DFS - Recursive Preorder Traversal GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-tree-dfs-recursive-preorder-traversal-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-tree-dfs-recursive-preord",
+      "title": "🔎 Search GeeksforGeeks — Tree DFS - Recursive Preorder Traversal Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Tree+DFS+-+Recursive+Preorder+Traversal",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-tree-dfs-recursive-preorder-traversal-youtube:https-www-youtube-com-results-search-query-tree-dfs-recursive-preorder-traversal",
-      "title": "🔎 Search YouTube — Tree DFS - Recursive Preorder Traversal YouTube",
+      "id": "dsa:search-youtube-tree-dfs-recursive-preorder-traversal-video-search:https-www-youtube-com-results-search-query-tree-dfs-recursive-preorder-traversal",
+      "title": "🔎 Search YouTube — Tree DFS - Recursive Preorder Traversal Video search",
       "url": "https://www.youtube.com/results?search_query=Tree+DFS+-+Recursive+Preorder+Traversal+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
@@ -66041,18 +66041,18 @@
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-tree-dfs-recursive-postorder-traversal-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-tree-dfs-recursive-postor",
-      "title": "🔎 Search GeeksforGeeks — Tree DFS - Recursive Postorder Traversal GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-tree-dfs-recursive-postorder-traversal-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-tree-dfs-recursive-postor",
+      "title": "🔎 Search GeeksforGeeks — Tree DFS - Recursive Postorder Traversal Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Tree+DFS+-+Recursive+Postorder+Traversal",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-tree-dfs-recursive-postorder-traversal-youtube:https-www-youtube-com-results-search-query-tree-dfs-recursive-postorder-traversa",
-      "title": "🔎 Search YouTube — Tree DFS - Recursive Postorder Traversal YouTube",
+      "id": "dsa:search-youtube-tree-dfs-recursive-postorder-traversal-video-search:https-www-youtube-com-results-search-query-tree-dfs-recursive-postorder-traversa",
+      "title": "🔎 Search YouTube — Tree DFS - Recursive Postorder Traversal Video search",
       "url": "https://www.youtube.com/results?search_query=Tree+DFS+-+Recursive+Postorder+Traversal+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
@@ -66161,18 +66161,18 @@
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-character-frequency-matching-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-character-frequency-match",
-      "title": "🔎 Search GeeksforGeeks — Character Frequency Matching GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-character-frequency-matching-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-character-frequency-match",
+      "title": "🔎 Search GeeksforGeeks — Character Frequency Matching Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Character+Frequency+Matching",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-character-frequency-matching-youtube:https-www-youtube-com-results-search-query-character-frequency-matching-algorith",
-      "title": "🔎 Search YouTube — Character Frequency Matching YouTube",
+      "id": "dsa:search-youtube-character-frequency-matching-video-search:https-www-youtube-com-results-search-query-character-frequency-matching-algorith",
+      "title": "🔎 Search YouTube — Character Frequency Matching Video search",
       "url": "https://www.youtube.com/results?search_query=Character+Frequency+Matching+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
@@ -66249,18 +66249,18 @@
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-valid-parentheses-matching-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-valid-parentheses-matchin",
-      "title": "🔎 Search GeeksforGeeks — Valid Parentheses Matching GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-valid-parentheses-matching-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-valid-parentheses-matchin",
+      "title": "🔎 Search GeeksforGeeks — Valid Parentheses Matching Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Valid+Parentheses+Matching",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-valid-parentheses-matching-youtube:https-www-youtube-com-results-search-query-valid-parentheses-matching-algorithm-",
-      "title": "🔎 Search YouTube — Valid Parentheses Matching YouTube",
+      "id": "dsa:search-youtube-valid-parentheses-matching-video-search:https-www-youtube-com-results-search-query-valid-parentheses-matching-algorithm-",
+      "title": "🔎 Search YouTube — Valid Parentheses Matching Video search",
       "url": "https://www.youtube.com/results?search_query=Valid+Parentheses+Matching+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
@@ -66281,50 +66281,50 @@
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-expression-evaluation-rpn-infix-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-expression-evaluation-2f-",
-      "title": "🔎 Search GeeksforGeeks — Expression Evaluation / RPN / Infix GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-expression-evaluation-rpn-infix-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-expression-evaluation-2f-",
+      "title": "🔎 Search GeeksforGeeks — Expression Evaluation / RPN / Infix Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Expression+Evaluation+%2F+RPN+%2F+Infix",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-expression-evaluation-rpn-infix-youtube:https-www-youtube-com-results-search-query-expression-evaluation-2f-rpn-2f-infix",
-      "title": "🔎 Search YouTube — Expression Evaluation / RPN / Infix YouTube",
+      "id": "dsa:search-youtube-expression-evaluation-rpn-infix-video-search:https-www-youtube-com-results-search-query-expression-evaluation-2f-rpn-2f-infix",
+      "title": "🔎 Search YouTube — Expression Evaluation / RPN / Infix Video search",
       "url": "https://www.youtube.com/results?search_query=Expression+Evaluation+%2F+RPN+%2F+Infix+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-simulation-backtracking-helper-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-simulation-2f-backtrackin",
-      "title": "🔎 Search GeeksforGeeks — Simulation / Backtracking Helper GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-simulation-backtracking-helper-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-simulation-2f-backtrackin",
+      "title": "🔎 Search GeeksforGeeks — Simulation / Backtracking Helper Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Simulation+%2F+Backtracking+Helper",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-simulation-backtracking-helper-youtube:https-www-youtube-com-results-search-query-simulation-2f-backtracking-helper-alg",
-      "title": "🔎 Search YouTube — Simulation / Backtracking Helper YouTube",
+      "id": "dsa:search-youtube-simulation-backtracking-helper-video-search:https-www-youtube-com-results-search-query-simulation-2f-backtracking-helper-alg",
+      "title": "🔎 Search YouTube — Simulation / Backtracking Helper Video search",
       "url": "https://www.youtube.com/results?search_query=Simulation+%2F+Backtracking+Helper+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-min-stack-design-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-min-stack-design",
-      "title": "🔎 Search GeeksforGeeks — Min Stack Design GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-min-stack-design-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-min-stack-design",
+      "title": "🔎 Search GeeksforGeeks — Min Stack Design Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Min+Stack+Design",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-min-stack-design-youtube:https-www-youtube-com-results-search-query-min-stack-design-algorithm-leetcode",
-      "title": "🔎 Search YouTube — Min Stack Design YouTube",
+      "id": "dsa:search-youtube-min-stack-design-video-search:https-www-youtube-com-results-search-query-min-stack-design-algorithm-leetcode",
+      "title": "🔎 Search YouTube — Min Stack Design Video search",
       "url": "https://www.youtube.com/results?search_query=Min+Stack+Design+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
@@ -66441,18 +66441,18 @@
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-scheduling-minimum-cost-with-priority-queue-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-scheduling-2f-minimum-cos",
-      "title": "🔎 Search GeeksforGeeks — Scheduling / Minimum Cost with Priority Queue GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-scheduling-minimum-cost-with-priority-queue-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-scheduling-2f-minimum-cos",
+      "title": "🔎 Search GeeksforGeeks — Scheduling / Minimum Cost with Priority Queue Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Scheduling+%2F+Minimum+Cost+with+Priority+Queue",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-scheduling-minimum-cost-with-priority-queue-youtube:https-www-youtube-com-results-search-query-scheduling-2f-minimum-cost-with-prior",
-      "title": "🔎 Search YouTube — Scheduling / Minimum Cost with Priority Queue YouTube",
+      "id": "dsa:search-youtube-scheduling-minimum-cost-with-priority-queue-video-search:https-www-youtube-com-results-search-query-scheduling-2f-minimum-cost-with-prior",
+      "title": "🔎 Search YouTube — Scheduling / Minimum Cost with Priority Queue Video search",
       "url": "https://www.youtube.com/results?search_query=Scheduling+%2F+Minimum+Cost+with+Priority+Queue+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
@@ -66553,18 +66553,18 @@
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-find-first-last-occurrence-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-find-first-2flast-occurre",
-      "title": "🔎 Search GeeksforGeeks — Find First/Last Occurrence GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-find-first-last-occurrence-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-find-first-2flast-occurre",
+      "title": "🔎 Search GeeksforGeeks — Find First/Last Occurrence Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Find+First%2FLast+Occurrence",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-find-first-last-occurrence-youtube:https-www-youtube-com-results-search-query-find-first-2flast-occurrence-algorith",
-      "title": "🔎 Search YouTube — Find First/Last Occurrence YouTube",
+      "id": "dsa:search-youtube-find-first-last-occurrence-video-search:https-www-youtube-com-results-search-query-find-first-2flast-occurrence-algorith",
+      "title": "🔎 Search YouTube — Find First/Last Occurrence Video search",
       "url": "https://www.youtube.com/results?search_query=Find+First%2FLast+Occurrence+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
@@ -66833,18 +66833,18 @@
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-graph-bfs-connected-components-island-counting-geeksforgeek:https-www-google-com-search-q-site-3ageeksforgeeks-org-graph-bfs-connected-compo",
-      "title": "🔎 Search GeeksforGeeks — Graph BFS - Connected Components / Island Counting GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-graph-bfs-connected-components-island-counting-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-graph-bfs-connected-compo",
+      "title": "🔎 Search GeeksforGeeks — Graph BFS - Connected Components / Island Counting Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Graph+BFS+-+Connected+Components+%2F+Island+Counting",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-graph-bfs-connected-components-island-counting-youtube:https-www-youtube-com-results-search-query-graph-bfs-connected-components-2f-isl",
-      "title": "🔎 Search YouTube — Graph BFS - Connected Components / Island Counting YouTube",
+      "id": "dsa:search-youtube-graph-bfs-connected-components-island-counting-video-search:https-www-youtube-com-results-search-query-graph-bfs-connected-components-2f-isl",
+      "title": "🔎 Search YouTube — Graph BFS - Connected Components / Island Counting Video search",
       "url": "https://www.youtube.com/results?search_query=Graph+BFS+-+Connected+Components+%2F+Island+Counting+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
@@ -66921,18 +66921,18 @@
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-graph-bfs-on-state-space-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-graph-bfs-on-state-space",
-      "title": "🔎 Search GeeksforGeeks — Graph - BFS on State Space GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-graph-bfs-on-state-space-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-graph-bfs-on-state-space",
+      "title": "🔎 Search GeeksforGeeks — Graph - BFS on State Space Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Graph+-+BFS+on+State+Space",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-graph-bfs-on-state-space-youtube:https-www-youtube-com-results-search-query-graph-bfs-on-state-space-algorithm-le",
-      "title": "🔎 Search YouTube — Graph - BFS on State Space YouTube",
+      "id": "dsa:search-youtube-graph-bfs-on-state-space-video-search:https-www-youtube-com-results-search-query-graph-bfs-on-state-space-algorithm-le",
+      "title": "🔎 Search YouTube — Graph - BFS on State Space Video search",
       "url": "https://www.youtube.com/results?search_query=Graph+-+BFS+on+State+Space+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
@@ -67001,98 +67001,98 @@
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-jump-game-reachability-minimization-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-jump-game-reachability-2f",
-      "title": "🔎 Search GeeksforGeeks — Jump Game Reachability / Minimization GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-jump-game-reachability-minimization-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-jump-game-reachability-2f",
+      "title": "🔎 Search GeeksforGeeks — Jump Game Reachability / Minimization Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Jump+Game+Reachability+%2F+Minimization",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-jump-game-reachability-minimization-youtube:https-www-youtube-com-results-search-query-jump-game-reachability-2f-minimizatio",
-      "title": "🔎 Search YouTube — Jump Game Reachability / Minimization YouTube",
+      "id": "dsa:search-youtube-jump-game-reachability-minimization-video-search:https-www-youtube-com-results-search-query-jump-game-reachability-2f-minimizatio",
+      "title": "🔎 Search YouTube — Jump Game Reachability / Minimization Video search",
       "url": "https://www.youtube.com/results?search_query=Jump+Game+Reachability+%2F+Minimization+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-buy-sell-stock-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-buy-2fsell-stock",
-      "title": "🔎 Search GeeksforGeeks — Buy/Sell Stock GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-buy-sell-stock-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-buy-2fsell-stock",
+      "title": "🔎 Search GeeksforGeeks — Buy/Sell Stock Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Buy%2FSell+Stock",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-buy-sell-stock-youtube:https-www-youtube-com-results-search-query-buy-2fsell-stock-algorithm-leetcode",
-      "title": "🔎 Search YouTube — Buy/Sell Stock YouTube",
+      "id": "dsa:search-youtube-buy-sell-stock-video-search:https-www-youtube-com-results-search-query-buy-2fsell-stock-algorithm-leetcode",
+      "title": "🔎 Search YouTube — Buy/Sell Stock Video search",
       "url": "https://www.youtube.com/results?search_query=Buy%2FSell+Stock+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-gas-station-circuit-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-gas-station-circuit",
-      "title": "🔎 Search GeeksforGeeks — Gas Station Circuit GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-gas-station-circuit-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-gas-station-circuit",
+      "title": "🔎 Search GeeksforGeeks — Gas Station Circuit Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Gas+Station+Circuit",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-gas-station-circuit-youtube:https-www-youtube-com-results-search-query-gas-station-circuit-algorithm-leetcod",
-      "title": "🔎 Search YouTube — Gas Station Circuit YouTube",
+      "id": "dsa:search-youtube-gas-station-circuit-video-search:https-www-youtube-com-results-search-query-gas-station-circuit-algorithm-leetcod",
+      "title": "🔎 Search YouTube — Gas Station Circuit Video search",
       "url": "https://www.youtube.com/results?search_query=Gas+Station+Circuit+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-task-scheduling-frequency-based-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-task-scheduling-2f-freque",
-      "title": "🔎 Search GeeksforGeeks — Task Scheduling / Frequency Based GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-task-scheduling-frequency-based-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-task-scheduling-2f-freque",
+      "title": "🔎 Search GeeksforGeeks — Task Scheduling / Frequency Based Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Task+Scheduling+%2F+Frequency+Based",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-task-scheduling-frequency-based-youtube:https-www-youtube-com-results-search-query-task-scheduling-2f-frequency-based-al",
-      "title": "🔎 Search YouTube — Task Scheduling / Frequency Based YouTube",
+      "id": "dsa:search-youtube-task-scheduling-frequency-based-video-search:https-www-youtube-com-results-search-query-task-scheduling-2f-frequency-based-al",
+      "title": "🔎 Search YouTube — Task Scheduling / Frequency Based Video search",
       "url": "https://www.youtube.com/results?search_query=Task+Scheduling+%2F+Frequency+Based+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-partition-labels-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-partition-2f-labels",
-      "title": "🔎 Search GeeksforGeeks — Partition / Labels GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-partition-labels-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-partition-2f-labels",
+      "title": "🔎 Search GeeksforGeeks — Partition / Labels Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Partition+%2F+Labels",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-partition-labels-youtube:https-www-youtube-com-results-search-query-partition-2f-labels-algorithm-leetcod",
-      "title": "🔎 Search YouTube — Partition / Labels YouTube",
+      "id": "dsa:search-youtube-partition-labels-video-search:https-www-youtube-com-results-search-query-partition-2f-labels-algorithm-leetcod",
+      "title": "🔎 Search YouTube — Partition / Labels Video search",
       "url": "https://www.youtube.com/results?search_query=Partition+%2F+Labels+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-assign-resource-allocation-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-assign-2f-resource-alloca",
-      "title": "🔎 Search GeeksforGeeks — Assign / Resource Allocation GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-assign-resource-allocation-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-assign-2f-resource-alloca",
+      "title": "🔎 Search GeeksforGeeks — Assign / Resource Allocation Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Assign+%2F+Resource+Allocation",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-assign-resource-allocation-youtube:https-www-youtube-com-results-search-query-assign-2f-resource-allocation-algorit",
-      "title": "🔎 Search YouTube — Assign / Resource Allocation YouTube",
+      "id": "dsa:search-youtube-assign-resource-allocation-video-search:https-www-youtube-com-results-search-query-assign-2f-resource-allocation-algorit",
+      "title": "🔎 Search YouTube — Assign / Resource Allocation Video search",
       "url": "https://www.youtube.com/results?search_query=Assign+%2F+Resource+Allocation+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
@@ -67161,114 +67161,114 @@
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-subsets-include-exclude-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-subsets-2f-include-exclud",
-      "title": "🔎 Search GeeksforGeeks — Subsets / Include-Exclude GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-subsets-include-exclude-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-subsets-2f-include-exclud",
+      "title": "🔎 Search GeeksforGeeks — Subsets / Include-Exclude Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Subsets+%2F+Include-Exclude",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-subsets-include-exclude-youtube:https-www-youtube-com-results-search-query-subsets-2f-include-exclude-algorithm-",
-      "title": "🔎 Search YouTube — Subsets / Include-Exclude YouTube",
+      "id": "dsa:search-youtube-subsets-include-exclude-video-search:https-www-youtube-com-results-search-query-subsets-2f-include-exclude-algorithm-",
+      "title": "🔎 Search YouTube — Subsets / Include-Exclude Video search",
       "url": "https://www.youtube.com/results?search_query=Subsets+%2F+Include-Exclude+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-permutations-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-permutations",
-      "title": "🔎 Search GeeksforGeeks — Permutations GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-permutations-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-permutations",
+      "title": "🔎 Search GeeksforGeeks — Permutations Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Permutations",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-permutations-youtube:https-www-youtube-com-results-search-query-permutations-algorithm-leetcode",
-      "title": "🔎 Search YouTube — Permutations YouTube",
+      "id": "dsa:search-youtube-permutations-video-search:https-www-youtube-com-results-search-query-permutations-algorithm-leetcode",
+      "title": "🔎 Search YouTube — Permutations Video search",
       "url": "https://www.youtube.com/results?search_query=Permutations+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-combination-sum-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-combination-sum",
-      "title": "🔎 Search GeeksforGeeks — Combination Sum GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-combination-sum-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-combination-sum",
+      "title": "🔎 Search GeeksforGeeks — Combination Sum Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Combination+Sum",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-combination-sum-youtube:https-www-youtube-com-results-search-query-combination-sum-algorithm-leetcode",
-      "title": "🔎 Search YouTube — Combination Sum YouTube",
+      "id": "dsa:search-youtube-combination-sum-video-search:https-www-youtube-com-results-search-query-combination-sum-algorithm-leetcode",
+      "title": "🔎 Search YouTube — Combination Sum Video search",
       "url": "https://www.youtube.com/results?search_query=Combination+Sum+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-parentheses-generation-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-parentheses-generation",
-      "title": "🔎 Search GeeksforGeeks — Parentheses Generation GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-parentheses-generation-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-parentheses-generation",
+      "title": "🔎 Search GeeksforGeeks — Parentheses Generation Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Parentheses+Generation",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-parentheses-generation-youtube:https-www-youtube-com-results-search-query-parentheses-generation-algorithm-leet",
-      "title": "🔎 Search YouTube — Parentheses Generation YouTube",
+      "id": "dsa:search-youtube-parentheses-generation-video-search:https-www-youtube-com-results-search-query-parentheses-generation-algorithm-leet",
+      "title": "🔎 Search YouTube — Parentheses Generation Video search",
       "url": "https://www.youtube.com/results?search_query=Parentheses+Generation+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-word-search-path-finding-in-grid-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-word-search-2f-path-findi",
-      "title": "🔎 Search GeeksforGeeks — Word Search / Path Finding in Grid GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-word-search-path-finding-in-grid-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-word-search-2f-path-findi",
+      "title": "🔎 Search GeeksforGeeks — Word Search / Path Finding in Grid Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Word+Search+%2F+Path+Finding+in+Grid",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-word-search-path-finding-in-grid-youtube:https-www-youtube-com-results-search-query-word-search-2f-path-finding-in-grid-a",
-      "title": "🔎 Search YouTube — Word Search / Path Finding in Grid YouTube",
+      "id": "dsa:search-youtube-word-search-path-finding-in-grid-video-search:https-www-youtube-com-results-search-query-word-search-2f-path-finding-in-grid-a",
+      "title": "🔎 Search YouTube — Word Search / Path Finding in Grid Video search",
       "url": "https://www.youtube.com/results?search_query=Word+Search+%2F+Path+Finding+in+Grid+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-n-queens-constraint-satisfaction-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-n-queens-2f-constraint-sa",
-      "title": "🔎 Search GeeksforGeeks — N-Queens / Constraint Satisfaction GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-n-queens-constraint-satisfaction-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-n-queens-2f-constraint-sa",
+      "title": "🔎 Search GeeksforGeeks — N-Queens / Constraint Satisfaction Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+N-Queens+%2F+Constraint+Satisfaction",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-n-queens-constraint-satisfaction-youtube:https-www-youtube-com-results-search-query-n-queens-2f-constraint-satisfaction-a",
-      "title": "🔎 Search YouTube — N-Queens / Constraint Satisfaction YouTube",
+      "id": "dsa:search-youtube-n-queens-constraint-satisfaction-video-search:https-www-youtube-com-results-search-query-n-queens-2f-constraint-satisfaction-a",
+      "title": "🔎 Search YouTube — N-Queens / Constraint Satisfaction Video search",
       "url": "https://www.youtube.com/results?search_query=N-Queens+%2F+Constraint+Satisfaction+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-palindrome-partitioning-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-palindrome-partitioning",
-      "title": "🔎 Search GeeksforGeeks — Palindrome Partitioning GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-palindrome-partitioning-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-palindrome-partitioning",
+      "title": "🔎 Search GeeksforGeeks — Palindrome Partitioning Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Palindrome+Partitioning",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-palindrome-partitioning-youtube:https-www-youtube-com-results-search-query-palindrome-partitioning-algorithm-lee",
-      "title": "🔎 Search YouTube — Palindrome Partitioning YouTube",
+      "id": "dsa:search-youtube-palindrome-partitioning-video-search:https-www-youtube-com-results-search-query-palindrome-partitioning-algorithm-lee",
+      "title": "🔎 Search YouTube — Palindrome Partitioning Video search",
       "url": "https://www.youtube.com/results?search_query=Palindrome+Partitioning+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
@@ -67401,18 +67401,18 @@
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-1d-array-word-break-style-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-1d-array-2f-word-break-st",
-      "title": "🔎 Search GeeksforGeeks — 1D Array / Word Break Style GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-1d-array-word-break-style-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-1d-array-2f-word-break-st",
+      "title": "🔎 Search GeeksforGeeks — 1D Array / Word Break Style Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+1D+Array+%2F+Word+Break+Style",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-1d-array-word-break-style-youtube:https-www-youtube-com-results-search-query-1d-array-2f-word-break-style-algorith",
-      "title": "🔎 Search YouTube — 1D Array / Word Break Style YouTube",
+      "id": "dsa:search-youtube-1d-array-word-break-style-video-search:https-www-youtube-com-results-search-query-1d-array-2f-word-break-style-algorith",
+      "title": "🔎 Search YouTube — 1D Array / Word Break Style Video search",
       "url": "https://www.youtube.com/results?search_query=1D+Array+%2F+Word+Break+Style+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
@@ -67433,18 +67433,18 @@
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-2d-array-unique-paths-on-grid-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-2d-array-2f-unique-paths-",
-      "title": "🔎 Search GeeksforGeeks — 2D Array / Unique Paths on Grid GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-2d-array-unique-paths-on-grid-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-2d-array-2f-unique-paths-",
+      "title": "🔎 Search GeeksforGeeks — 2D Array / Unique Paths on Grid Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+2D+Array+%2F+Unique+Paths+on+Grid",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-2d-array-unique-paths-on-grid-youtube:https-www-youtube-com-results-search-query-2d-array-2f-unique-paths-on-grid-algo",
-      "title": "🔎 Search YouTube — 2D Array / Unique Paths on Grid YouTube",
+      "id": "dsa:search-youtube-2d-array-unique-paths-on-grid-video-search:https-www-youtube-com-results-search-query-2d-array-2f-unique-paths-on-grid-algo",
+      "title": "🔎 Search YouTube — 2D Array / Unique Paths on Grid Video search",
       "url": "https://www.youtube.com/results?search_query=2D+Array+%2F+Unique+Paths+on+Grid+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
@@ -67545,82 +67545,82 @@
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-palindrome-check-two-pointers-reverse-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-palindrome-check-2f-two-p",
-      "title": "🔎 Search GeeksforGeeks — Palindrome Check / Two Pointers / Reverse GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-palindrome-check-two-pointers-reverse-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-palindrome-check-2f-two-p",
+      "title": "🔎 Search GeeksforGeeks — Palindrome Check / Two Pointers / Reverse Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Palindrome+Check+%2F+Two+Pointers+%2F+Reverse",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-palindrome-check-two-pointers-reverse-youtube:https-www-youtube-com-results-search-query-palindrome-check-2f-two-pointers-2f-r",
-      "title": "🔎 Search YouTube — Palindrome Check / Two Pointers / Reverse YouTube",
+      "id": "dsa:search-youtube-palindrome-check-two-pointers-reverse-video-search:https-www-youtube-com-results-search-query-palindrome-check-2f-two-pointers-2f-r",
+      "title": "🔎 Search YouTube — Palindrome Check / Two Pointers / Reverse Video search",
       "url": "https://www.youtube.com/results?search_query=Palindrome+Check+%2F+Two+Pointers+%2F+Reverse+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-anagram-check-frequency-count-sort-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-anagram-check-2f-frequenc",
-      "title": "🔎 Search GeeksforGeeks — Anagram Check / Frequency Count / Sort GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-anagram-check-frequency-count-sort-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-anagram-check-2f-frequenc",
+      "title": "🔎 Search GeeksforGeeks — Anagram Check / Frequency Count / Sort Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Anagram+Check+%2F+Frequency+Count+%2F+Sort",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-anagram-check-frequency-count-sort-youtube:https-www-youtube-com-results-search-query-anagram-check-2f-frequency-count-2f-s",
-      "title": "🔎 Search YouTube — Anagram Check / Frequency Count / Sort YouTube",
+      "id": "dsa:search-youtube-anagram-check-frequency-count-sort-video-search:https-www-youtube-com-results-search-query-anagram-check-2f-frequency-count-2f-s",
+      "title": "🔎 Search YouTube — Anagram Check / Frequency Count / Sort Video search",
       "url": "https://www.youtube.com/results?search_query=Anagram+Check+%2F+Frequency+Count+%2F+Sort+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-roman-to-integer-conversion-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-roman-to-integer-conversi",
-      "title": "🔎 Search GeeksforGeeks — Roman to Integer Conversion GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-roman-to-integer-conversion-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-roman-to-integer-conversi",
+      "title": "🔎 Search GeeksforGeeks — Roman to Integer Conversion Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Roman+to+Integer+Conversion",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-roman-to-integer-conversion-youtube:https-www-youtube-com-results-search-query-roman-to-integer-conversion-algorithm",
-      "title": "🔎 Search YouTube — Roman to Integer Conversion YouTube",
+      "id": "dsa:search-youtube-roman-to-integer-conversion-video-search:https-www-youtube-com-results-search-query-roman-to-integer-conversion-algorithm",
+      "title": "🔎 Search YouTube — Roman to Integer Conversion Video search",
       "url": "https://www.youtube.com/results?search_query=Roman+to+Integer+Conversion+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-string-to-integer-atoi-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-string-to-integer-28atoi-",
-      "title": "🔎 Search GeeksforGeeks — String to Integer (atoi) GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-string-to-integer-atoi-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-string-to-integer-28atoi-",
+      "title": "🔎 Search GeeksforGeeks — String to Integer (atoi) Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+String+to+Integer+%28atoi%29",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-string-to-integer-atoi-youtube:https-www-youtube-com-results-search-query-string-to-integer-28atoi-29-algorithm",
-      "title": "🔎 Search YouTube — String to Integer (atoi) YouTube",
+      "id": "dsa:search-youtube-string-to-integer-atoi-video-search:https-www-youtube-com-results-search-query-string-to-integer-28atoi-29-algorithm",
+      "title": "🔎 Search YouTube — String to Integer (atoi) Video search",
       "url": "https://www.youtube.com/results?search_query=String+to+Integer+%28atoi%29+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-multiply-strings-manual-simulation-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-multiply-strings-2f-manua",
-      "title": "🔎 Search GeeksforGeeks — Multiply Strings / Manual Simulation GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-multiply-strings-manual-simulation-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-multiply-strings-2f-manua",
+      "title": "🔎 Search GeeksforGeeks — Multiply Strings / Manual Simulation Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Multiply+Strings+%2F+Manual+Simulation",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-multiply-strings-manual-simulation-youtube:https-www-youtube-com-results-search-query-multiply-strings-2f-manual-simulation",
-      "title": "🔎 Search YouTube — Multiply Strings / Manual Simulation YouTube",
+      "id": "dsa:search-youtube-multiply-strings-manual-simulation-video-search:https-www-youtube-com-results-search-query-multiply-strings-2f-manual-simulation",
+      "title": "🔎 Search YouTube — Multiply Strings / Manual Simulation Video search",
       "url": "https://www.youtube.com/results?search_query=Multiply+Strings+%2F+Manual+Simulation+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
@@ -67633,18 +67633,18 @@
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-repeated-substring-pattern-detection-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-repeated-substring-patter",
-      "title": "🔎 Search GeeksforGeeks — Repeated Substring Pattern Detection GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-repeated-substring-pattern-detection-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-repeated-substring-patter",
+      "title": "🔎 Search GeeksforGeeks — Repeated Substring Pattern Detection Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Repeated+Substring+Pattern+Detection",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-repeated-substring-pattern-detection-youtube:https-www-youtube-com-results-search-query-repeated-substring-pattern-detection-",
-      "title": "🔎 Search YouTube — Repeated Substring Pattern Detection YouTube",
+      "id": "dsa:search-youtube-repeated-substring-pattern-detection-video-search:https-www-youtube-com-results-search-query-repeated-substring-pattern-detection-",
+      "title": "🔎 Search YouTube — Repeated Substring Pattern Detection Video search",
       "url": "https://www.youtube.com/results?search_query=Repeated+Substring+Pattern+Detection+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
@@ -67729,18 +67729,18 @@
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-bitwise-and-counting-set-bits-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-bitwise-and-2f-counting-s",
-      "title": "🔎 Search GeeksforGeeks — Bitwise AND / Counting Set Bits GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-bitwise-and-counting-set-bits-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-bitwise-and-2f-counting-s",
+      "title": "🔎 Search GeeksforGeeks — Bitwise AND / Counting Set Bits Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Bitwise+AND+%2F+Counting+Set+Bits",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-bitwise-and-counting-set-bits-youtube:https-www-youtube-com-results-search-query-bitwise-and-2f-counting-set-bits-algo",
-      "title": "🔎 Search YouTube — Bitwise AND / Counting Set Bits YouTube",
+      "id": "dsa:search-youtube-bitwise-and-counting-set-bits-video-search:https-www-youtube-com-results-search-query-bitwise-and-2f-counting-set-bits-algo",
+      "title": "🔎 Search YouTube — Bitwise AND / Counting Set Bits Video search",
       "url": "https://www.youtube.com/results?search_query=Bitwise+AND+%2F+Counting+Set+Bits+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
@@ -67753,18 +67753,18 @@
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-bitwise-operations-power-of-two-or-four-check-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-bitwise-operations-2f-pow",
-      "title": "🔎 Search GeeksforGeeks — Bitwise Operations / Power of Two or Four Check GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-bitwise-operations-power-of-two-or-four-check-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-bitwise-operations-2f-pow",
+      "title": "🔎 Search GeeksforGeeks — Bitwise Operations / Power of Two or Four Check Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Bitwise+Operations+%2F+Power+of+Two+or+Four+Check",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-bitwise-operations-power-of-two-or-four-check-youtube:https-www-youtube-com-results-search-query-bitwise-operations-2f-power-of-two-or",
-      "title": "🔎 Search YouTube — Bitwise Operations / Power of Two or Four Check YouTube",
+      "id": "dsa:search-youtube-bitwise-operations-power-of-two-or-four-check-video-search:https-www-youtube-com-results-search-query-bitwise-operations-2f-power-of-two-or",
+      "title": "🔎 Search YouTube — Bitwise Operations / Power of Two or Four Check Video search",
       "url": "https://www.youtube.com/results?search_query=Bitwise+Operations+%2F+Power+of+Two+or+Four+Check+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
@@ -67833,34 +67833,34 @@
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-general-specific-data-structure-design-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-general-2f-specific-data-",
-      "title": "🔎 Search GeeksforGeeks — General / Specific Data Structure Design GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-general-specific-data-structure-design-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-general-2f-specific-data-",
+      "title": "🔎 Search GeeksforGeeks — General / Specific Data Structure Design Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+General+%2F+Specific+Data+Structure+Design",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-general-specific-data-structure-design-youtube:https-www-youtube-com-results-search-query-general-2f-specific-data-structure-de",
-      "title": "🔎 Search YouTube — General / Specific Data Structure Design YouTube",
+      "id": "dsa:search-youtube-general-specific-data-structure-design-video-search:https-www-youtube-com-results-search-query-general-2f-specific-data-structure-de",
+      "title": "🔎 Search YouTube — General / Specific Data Structure Design Video search",
       "url": "https://www.youtube.com/results?search_query=General+%2F+Specific+Data+Structure+Design+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-trie-prefix-tree-design-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-trie-2f-prefix-tree-desig",
-      "title": "🔎 Search GeeksforGeeks — Trie / Prefix Tree Design GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-trie-prefix-tree-design-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-trie-2f-prefix-tree-desig",
+      "title": "🔎 Search GeeksforGeeks — Trie / Prefix Tree Design Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Trie+%2F+Prefix+Tree+Design",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-trie-prefix-tree-design-youtube:https-www-youtube-com-results-search-query-trie-2f-prefix-tree-design-algorithm-",
-      "title": "🔎 Search YouTube — Trie / Prefix Tree Design YouTube",
+      "id": "dsa:search-youtube-trie-prefix-tree-design-video-search:https-www-youtube-com-results-search-query-trie-2f-prefix-tree-design-algorithm-",
+      "title": "🔎 Search YouTube — Trie / Prefix Tree Design Video search",
       "url": "https://www.youtube.com/results?search_query=Trie+%2F+Prefix+Tree+Design+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
@@ -68009,18 +68009,18 @@
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-range-sum-query-static-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-range-sum-query-28static-",
-      "title": "🔎 Search GeeksforGeeks — Range Sum Query (Static) GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-range-sum-query-static-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-range-sum-query-28static-",
+      "title": "🔎 Search GeeksforGeeks — Range Sum Query (Static) Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Range+Sum+Query+%28Static%29",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-range-sum-query-static-youtube:https-www-youtube-com-results-search-query-range-sum-query-28static-29-algorithm",
-      "title": "🔎 Search YouTube — Range Sum Query (Static) YouTube",
+      "id": "dsa:search-youtube-range-sum-query-static-video-search:https-www-youtube-com-results-search-query-range-sum-query-28static-29-algorithm",
+      "title": "🔎 Search YouTube — Range Sum Query (Static) Video search",
       "url": "https://www.youtube.com/results?search_query=Range+Sum+Query+%28Static%29+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
@@ -68033,18 +68033,18 @@
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-prefix-xor-prefix-product-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-prefix-xor-2f-prefix-prod",
-      "title": "🔎 Search GeeksforGeeks — Prefix XOR / Prefix Product GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-prefix-xor-prefix-product-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-prefix-xor-2f-prefix-prod",
+      "title": "🔎 Search GeeksforGeeks — Prefix XOR / Prefix Product Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Prefix+XOR+%2F+Prefix+Product",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-prefix-xor-prefix-product-youtube:https-www-youtube-com-results-search-query-prefix-xor-2f-prefix-product-algorith",
-      "title": "🔎 Search YouTube — Prefix XOR / Prefix Product YouTube",
+      "id": "dsa:search-youtube-prefix-xor-prefix-product-video-search:https-www-youtube-com-results-search-query-prefix-xor-2f-prefix-product-algorith",
+      "title": "🔎 Search YouTube — Prefix XOR / Prefix Product Video search",
       "url": "https://www.youtube.com/results?search_query=Prefix+XOR+%2F+Prefix+Product+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
@@ -68089,18 +68089,18 @@
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-grouping-frequency-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-grouping-2f-frequency",
-      "title": "🔎 Search GeeksforGeeks — Grouping / Frequency GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-grouping-frequency-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-grouping-2f-frequency",
+      "title": "🔎 Search GeeksforGeeks — Grouping / Frequency Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Grouping+%2F+Frequency",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-grouping-frequency-youtube:https-www-youtube-com-results-search-query-grouping-2f-frequency-algorithm-leetc",
-      "title": "🔎 Search YouTube — Grouping / Frequency YouTube",
+      "id": "dsa:search-youtube-grouping-frequency-video-search:https-www-youtube-com-results-search-query-grouping-2f-frequency-algorithm-leetc",
+      "title": "🔎 Search YouTube — Grouping / Frequency Video search",
       "url": "https://www.youtube.com/results?search_query=Grouping+%2F+Frequency+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
@@ -68121,34 +68121,34 @@
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-time-based-snapshot-storage-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-time-based-2f-snapshot-st",
-      "title": "🔎 Search GeeksforGeeks — Time-Based / Snapshot Storage GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-time-based-snapshot-storage-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-time-based-2f-snapshot-st",
+      "title": "🔎 Search GeeksforGeeks — Time-Based / Snapshot Storage Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Time-Based+%2F+Snapshot+Storage",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-time-based-snapshot-storage-youtube:https-www-youtube-com-results-search-query-time-based-2f-snapshot-storage-algori",
-      "title": "🔎 Search YouTube — Time-Based / Snapshot Storage YouTube",
+      "id": "dsa:search-youtube-time-based-snapshot-storage-video-search:https-www-youtube-com-results-search-query-time-based-2f-snapshot-storage-algori",
+      "title": "🔎 Search YouTube — Time-Based / Snapshot Storage Video search",
       "url": "https://www.youtube.com/results?search_query=Time-Based+%2F+Snapshot+Storage+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-hashmap-random-access-o-1-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-hashmap-2b-random-access-",
-      "title": "🔎 Search GeeksforGeeks — Hashmap + Random Access O(1) GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-hashmap-random-access-o-1-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-hashmap-2b-random-access-",
+      "title": "🔎 Search GeeksforGeeks — Hashmap + Random Access O(1) Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Hashmap+%2B+Random+Access+O%281%29",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-hashmap-random-access-o-1-youtube:https-www-youtube-com-results-search-query-hashmap-2b-random-access-o-281-29-alg",
-      "title": "🔎 Search YouTube — Hashmap + Random Access O(1) YouTube",
+      "id": "dsa:search-youtube-hashmap-random-access-o-1-video-search:https-www-youtube-com-results-search-query-hashmap-2b-random-access-o-281-29-alg",
+      "title": "🔎 Search YouTube — Hashmap + Random Access O(1) Video search",
       "url": "https://www.youtube.com/results?search_query=Hashmap+%2B+Random+Access+O%281%29+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
@@ -68241,18 +68241,18 @@
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-number-representation-conversion-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-number-representation-con",
-      "title": "🔎 Search GeeksforGeeks — Number Representation Conversion GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-number-representation-conversion-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-number-representation-con",
+      "title": "🔎 Search GeeksforGeeks — Number Representation Conversion Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Number+Representation+Conversion",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-number-representation-conversion-youtube:https-www-youtube-com-results-search-query-number-representation-conversion-algo",
-      "title": "🔎 Search YouTube — Number Representation Conversion YouTube",
+      "id": "dsa:search-youtube-number-representation-conversion-video-search:https-www-youtube-com-results-search-query-number-representation-conversion-algo",
+      "title": "🔎 Search YouTube — Number Representation Conversion Video search",
       "url": "https://www.youtube.com/results?search_query=Number+Representation+Conversion+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
@@ -68337,18 +68337,18 @@
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-trie-with-wildcards-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-trie-with-wildcards",
-      "title": "🔎 Search GeeksforGeeks — Trie with Wildcards GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-trie-with-wildcards-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-trie-with-wildcards",
+      "title": "🔎 Search GeeksforGeeks — Trie with Wildcards Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Trie+with+Wildcards",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-trie-with-wildcards-youtube:https-www-youtube-com-results-search-query-trie-with-wildcards-algorithm-leetcod",
-      "title": "🔎 Search YouTube — Trie with Wildcards YouTube",
+      "id": "dsa:search-youtube-trie-with-wildcards-video-search:https-www-youtube-com-results-search-query-trie-with-wildcards-algorithm-leetcod",
+      "title": "🔎 Search YouTube — Trie with Wildcards Video search",
       "url": "https://www.youtube.com/results?search_query=Trie+with+Wildcards+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
@@ -68417,34 +68417,34 @@
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-interval-merging-insertion-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-interval-merging-2f-inser",
-      "title": "🔎 Search GeeksforGeeks — Interval Merging / Insertion GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-interval-merging-insertion-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-interval-merging-2f-inser",
+      "title": "🔎 Search GeeksforGeeks — Interval Merging / Insertion Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Interval+Merging+%2F+Insertion",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-interval-merging-insertion-youtube:https-www-youtube-com-results-search-query-interval-merging-2f-insertion-algorit",
-      "title": "🔎 Search YouTube — Interval Merging / Insertion YouTube",
+      "id": "dsa:search-youtube-interval-merging-insertion-video-search:https-www-youtube-com-results-search-query-interval-merging-2f-insertion-algorit",
+      "title": "🔎 Search YouTube — Interval Merging / Insertion Video search",
       "url": "https://www.youtube.com/results?search_query=Interval+Merging+%2F+Insertion+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-meeting-rooms-scheduling-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-meeting-rooms-26-scheduli",
-      "title": "🔎 Search GeeksforGeeks — Meeting Rooms & Scheduling GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-meeting-rooms-scheduling-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-meeting-rooms-26-scheduli",
+      "title": "🔎 Search GeeksforGeeks — Meeting Rooms & Scheduling Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Meeting+Rooms+%26+Scheduling",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-meeting-rooms-scheduling-youtube:https-www-youtube-com-results-search-query-meeting-rooms-26-scheduling-algorithm",
-      "title": "🔎 Search YouTube — Meeting Rooms & Scheduling YouTube",
+      "id": "dsa:search-youtube-meeting-rooms-scheduling-video-search:https-www-youtube-com-results-search-query-meeting-rooms-26-scheduling-algorithm",
+      "title": "🔎 Search YouTube — Meeting Rooms & Scheduling Video search",
       "url": "https://www.youtube.com/results?search_query=Meeting+Rooms+%26+Scheduling+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
@@ -68457,18 +68457,18 @@
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-calendar-booking-treemap-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-calendar-2f-booking-28tre",
-      "title": "🔎 Search GeeksforGeeks — Calendar / Booking (TreeMap) GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-calendar-booking-treemap-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-calendar-2f-booking-28tre",
+      "title": "🔎 Search GeeksforGeeks — Calendar / Booking (TreeMap) Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Calendar+%2F+Booking+%28TreeMap%29",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-calendar-booking-treemap-youtube:https-www-youtube-com-results-search-query-calendar-2f-booking-28treemap-29-algo",
-      "title": "🔎 Search YouTube — Calendar / Booking (TreeMap) YouTube",
+      "id": "dsa:search-youtube-calendar-booking-treemap-video-search:https-www-youtube-com-results-search-query-calendar-2f-booking-28treemap-29-algo",
+      "title": "🔎 Search YouTube — Calendar / Booking (TreeMap) Video search",
       "url": "https://www.youtube.com/results?search_query=Calendar+%2F+Booking+%28TreeMap%29+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
@@ -68505,18 +68505,18 @@
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-include-exclude-on-tree-tree-robber-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-include-2fexclude-on-tree",
-      "title": "🔎 Search GeeksforGeeks — Include/Exclude on Tree (Tree Robber) GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-include-exclude-on-tree-tree-robber-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-include-2fexclude-on-tree",
+      "title": "🔎 Search GeeksforGeeks — Include/Exclude on Tree (Tree Robber) Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Include%2FExclude+on+Tree+%28Tree+Robber%29",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-include-exclude-on-tree-tree-robber-youtube:https-www-youtube-com-results-search-query-include-2fexclude-on-tree-28tree-robb",
-      "title": "🔎 Search YouTube — Include/Exclude on Tree (Tree Robber) YouTube",
+      "id": "dsa:search-youtube-include-exclude-on-tree-tree-robber-video-search:https-www-youtube-com-results-search-query-include-2fexclude-on-tree-28tree-robb",
+      "title": "🔎 Search YouTube — Include/Exclude on Tree (Tree Robber) Video search",
       "url": "https://www.youtube.com/results?search_query=Include%2FExclude+on+Tree+%28Tree+Robber%29+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
@@ -68537,18 +68537,18 @@
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-subtree-summary-dp-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-subtree-summary-dp",
-      "title": "🔎 Search GeeksforGeeks — Subtree Summary DP GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-subtree-summary-dp-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-subtree-summary-dp",
+      "title": "🔎 Search GeeksforGeeks — Subtree Summary DP Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Subtree+Summary+DP",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-subtree-summary-dp-youtube:https-www-youtube-com-results-search-query-subtree-summary-dp-algorithm-leetcode",
-      "title": "🔎 Search YouTube — Subtree Summary DP YouTube",
+      "id": "dsa:search-youtube-subtree-summary-dp-video-search:https-www-youtube-com-results-search-query-subtree-summary-dp-algorithm-leetcode",
+      "title": "🔎 Search YouTube — Subtree Summary DP Video search",
       "url": "https://www.youtube.com/results?search_query=Subtree+Summary+DP+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
@@ -68649,18 +68649,18 @@
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-grid-cost-dp-paint-house-cherry-pickup-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-grid-cost-dp-28paint-hous",
-      "title": "🔎 Search GeeksforGeeks — Grid-Cost DP (Paint House / Cherry Pickup) GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-grid-cost-dp-paint-house-cherry-pickup-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-grid-cost-dp-28paint-hous",
+      "title": "🔎 Search GeeksforGeeks — Grid-Cost DP (Paint House / Cherry Pickup) Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Grid-Cost+DP+%28Paint+House+%2F+Cherry+Pickup%29",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-grid-cost-dp-paint-house-cherry-pickup-youtube:https-www-youtube-com-results-search-query-grid-cost-dp-28paint-house-2f-cherry-",
-      "title": "🔎 Search YouTube — Grid-Cost DP (Paint House / Cherry Pickup) YouTube",
+      "id": "dsa:search-youtube-grid-cost-dp-paint-house-cherry-pickup-video-search:https-www-youtube-com-results-search-query-grid-cost-dp-28paint-house-2f-cherry-",
+      "title": "🔎 Search YouTube — Grid-Cost DP (Paint House / Cherry Pickup) Video search",
       "url": "https://www.youtube.com/results?search_query=Grid-Cost+DP+%28Paint+House+%2F+Cherry+Pickup%29+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
@@ -68809,18 +68809,18 @@
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-dijkstra-variants-on-weighted-grids-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-dijkstra-variants-on-weig",
-      "title": "🔎 Search GeeksforGeeks — Dijkstra Variants on Weighted Grids GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-dijkstra-variants-on-weighted-grids-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-dijkstra-variants-on-weig",
+      "title": "🔎 Search GeeksforGeeks — Dijkstra Variants on Weighted Grids Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Dijkstra+Variants+on+Weighted+Grids",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-dijkstra-variants-on-weighted-grids-youtube:https-www-youtube-com-results-search-query-dijkstra-variants-on-weighted-grids-a",
-      "title": "🔎 Search YouTube — Dijkstra Variants on Weighted Grids YouTube",
+      "id": "dsa:search-youtube-dijkstra-variants-on-weighted-grids-video-search:https-www-youtube-com-results-search-query-dijkstra-variants-on-weighted-grids-a",
+      "title": "🔎 Search YouTube — Dijkstra Variants on Weighted Grids Video search",
       "url": "https://www.youtube.com/results?search_query=Dijkstra+Variants+on+Weighted+Grids+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
@@ -68849,18 +68849,18 @@
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-functional-graph-safe-state-analysis-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-functional-graph-2f-safe-",
-      "title": "🔎 Search GeeksforGeeks — Functional Graph / Safe-State Analysis GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-functional-graph-safe-state-analysis-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-functional-graph-2f-safe-",
+      "title": "🔎 Search GeeksforGeeks — Functional Graph / Safe-State Analysis Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Functional+Graph+%2F+Safe-State+Analysis",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-functional-graph-safe-state-analysis-youtube:https-www-youtube-com-results-search-query-functional-graph-2f-safe-state-analys",
-      "title": "🔎 Search YouTube — Functional Graph / Safe-State Analysis YouTube",
+      "id": "dsa:search-youtube-functional-graph-safe-state-analysis-video-search:https-www-youtube-com-results-search-query-functional-graph-2f-safe-state-analys",
+      "title": "🔎 Search YouTube — Functional Graph / Safe-State Analysis Video search",
       "url": "https://www.youtube.com/results?search_query=Functional+Graph+%2F+Safe-State+Analysis+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
@@ -68897,18 +68897,18 @@
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-multi-source-distance-bfs-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-multi-source-distance-bfs",
-      "title": "🔎 Search GeeksforGeeks — Multi-Source Distance BFS GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-multi-source-distance-bfs-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-multi-source-distance-bfs",
+      "title": "🔎 Search GeeksforGeeks — Multi-Source Distance BFS Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Multi-Source+Distance+BFS",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-multi-source-distance-bfs-youtube:https-www-youtube-com-results-search-query-multi-source-distance-bfs-algorithm-l",
-      "title": "🔎 Search YouTube — Multi-Source Distance BFS YouTube",
+      "id": "dsa:search-youtube-multi-source-distance-bfs-video-search:https-www-youtube-com-results-search-query-multi-source-distance-bfs-algorithm-l",
+      "title": "🔎 Search YouTube — Multi-Source Distance BFS Video search",
       "url": "https://www.youtube.com/results?search_query=Multi-Source+Distance+BFS+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
@@ -68953,98 +68953,98 @@
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-bst-iterator-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-bst-iterator",
-      "title": "🔎 Search GeeksforGeeks — BST Iterator GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-bst-iterator-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-bst-iterator",
+      "title": "🔎 Search GeeksforGeeks — BST Iterator Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+BST+Iterator",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-bst-iterator-youtube:https-www-youtube-com-results-search-query-bst-iterator-algorithm-leetcode",
-      "title": "🔎 Search YouTube — BST Iterator YouTube",
+      "id": "dsa:search-youtube-bst-iterator-video-search:https-www-youtube-com-results-search-query-bst-iterator-algorithm-leetcode",
+      "title": "🔎 Search YouTube — BST Iterator Video search",
       "url": "https://www.youtube.com/results?search_query=BST+Iterator+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-peeking-wrapping-iterators-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-peeking-2f-wrapping-itera",
-      "title": "🔎 Search GeeksforGeeks — Peeking / Wrapping Iterators GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-peeking-wrapping-iterators-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-peeking-2f-wrapping-itera",
+      "title": "🔎 Search GeeksforGeeks — Peeking / Wrapping Iterators Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Peeking+%2F+Wrapping+Iterators",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-peeking-wrapping-iterators-youtube:https-www-youtube-com-results-search-query-peeking-2f-wrapping-iterators-algorit",
-      "title": "🔎 Search YouTube — Peeking / Wrapping Iterators YouTube",
+      "id": "dsa:search-youtube-peeking-wrapping-iterators-video-search:https-www-youtube-com-results-search-query-peeking-2f-wrapping-iterators-algorit",
+      "title": "🔎 Search YouTube — Peeking / Wrapping Iterators Video search",
       "url": "https://www.youtube.com/results?search_query=Peeking+%2F+Wrapping+Iterators+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-multi-source-iterators-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-multi-source-iterators",
-      "title": "🔎 Search GeeksforGeeks — Multi-Source Iterators GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-multi-source-iterators-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-multi-source-iterators",
+      "title": "🔎 Search GeeksforGeeks — Multi-Source Iterators Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Multi-Source+Iterators",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-multi-source-iterators-youtube:https-www-youtube-com-results-search-query-multi-source-iterators-algorithm-leet",
-      "title": "🔎 Search YouTube — Multi-Source Iterators YouTube",
+      "id": "dsa:search-youtube-multi-source-iterators-video-search:https-www-youtube-com-results-search-query-multi-source-iterators-algorithm-leet",
+      "title": "🔎 Search YouTube — Multi-Source Iterators Video search",
       "url": "https://www.youtube.com/results?search_query=Multi-Source+Iterators+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-nested-list-2d-iterator-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-nested-list-2f-2d-iterato",
-      "title": "🔎 Search GeeksforGeeks — Nested List / 2D Iterator GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-nested-list-2d-iterator-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-nested-list-2f-2d-iterato",
+      "title": "🔎 Search GeeksforGeeks — Nested List / 2D Iterator Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Nested+List+%2F+2D+Iterator",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-nested-list-2d-iterator-youtube:https-www-youtube-com-results-search-query-nested-list-2f-2d-iterator-algorithm-",
-      "title": "🔎 Search YouTube — Nested List / 2D Iterator YouTube",
+      "id": "dsa:search-youtube-nested-list-2d-iterator-video-search:https-www-youtube-com-results-search-query-nested-list-2f-2d-iterator-algorithm-",
+      "title": "🔎 Search YouTube — Nested List / 2D Iterator Video search",
       "url": "https://www.youtube.com/results?search_query=Nested+List+%2F+2D+Iterator+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-streaming-statistics-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-streaming-statistics",
-      "title": "🔎 Search GeeksforGeeks — Streaming Statistics GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-streaming-statistics-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-streaming-statistics",
+      "title": "🔎 Search GeeksforGeeks — Streaming Statistics Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Streaming+Statistics",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-streaming-statistics-youtube:https-www-youtube-com-results-search-query-streaming-statistics-algorithm-leetco",
-      "title": "🔎 Search YouTube — Streaming Statistics YouTube",
+      "id": "dsa:search-youtube-streaming-statistics-video-search:https-www-youtube-com-results-search-query-streaming-statistics-algorithm-leetco",
+      "title": "🔎 Search YouTube — Streaming Statistics Video search",
       "url": "https://www.youtube.com/results?search_query=Streaming+Statistics+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-stack-queue-conversion-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-stack-2f-queue-conversion",
-      "title": "🔎 Search GeeksforGeeks — Stack / Queue Conversion GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-stack-queue-conversion-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-stack-2f-queue-conversion",
+      "title": "🔎 Search GeeksforGeeks — Stack / Queue Conversion Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Stack+%2F+Queue+Conversion",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-stack-queue-conversion-youtube:https-www-youtube-com-results-search-query-stack-2f-queue-conversion-algorithm-l",
-      "title": "🔎 Search YouTube — Stack / Queue Conversion YouTube",
+      "id": "dsa:search-youtube-stack-queue-conversion-video-search:https-www-youtube-com-results-search-query-stack-2f-queue-conversion-algorithm-l",
+      "title": "🔎 Search YouTube — Stack / Queue Conversion Video search",
       "url": "https://www.youtube.com/results?search_query=Stack+%2F+Queue+Conversion+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
@@ -69153,18 +69153,18 @@
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-custom-comparator-sort-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-custom-comparator-sort",
-      "title": "🔎 Search GeeksforGeeks — Custom-Comparator Sort GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-custom-comparator-sort-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-custom-comparator-sort",
+      "title": "🔎 Search GeeksforGeeks — Custom-Comparator Sort Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Custom-Comparator+Sort",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-custom-comparator-sort-youtube:https-www-youtube-com-results-search-query-custom-comparator-sort-algorithm-leet",
-      "title": "🔎 Search YouTube — Custom-Comparator Sort YouTube",
+      "id": "dsa:search-youtube-custom-comparator-sort-video-search:https-www-youtube-com-results-search-query-custom-comparator-sort-algorithm-leet",
+      "title": "🔎 Search YouTube — Custom-Comparator Sort Video search",
       "url": "https://www.youtube.com/results?search_query=Custom-Comparator+Sort+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
@@ -69225,18 +69225,18 @@
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-random-pick-with-blacklist-geeksforgeeks:https-www-google-com-search-q-site-3ageeksforgeeks-org-random-pick-with-blacklis",
-      "title": "🔎 Search GeeksforGeeks — Random Pick with Blacklist GeeksforGeeks",
+      "id": "dsa:search-geeksforgeeks-random-pick-with-blacklist-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-random-pick-with-blacklis",
+      "title": "🔎 Search GeeksforGeeks — Random Pick with Blacklist Web search",
       "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Random+Pick+with+Blacklist",
-      "source": "GeeksforGeeks",
+      "source": "Web search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-youtube-random-pick-with-blacklist-youtube:https-www-youtube-com-results-search-query-random-pick-with-blacklist-algorithm-",
-      "title": "🔎 Search YouTube — Random Pick with Blacklist YouTube",
+      "id": "dsa:search-youtube-random-pick-with-blacklist-video-search:https-www-youtube-com-results-search-query-random-pick-with-blacklist-algorithm-",
+      "title": "🔎 Search YouTube — Random Pick with Blacklist Video search",
       "url": "https://www.youtube.com/results?search_query=Random+Pick+with+Blacklist+algorithm+leetcode",
-      "source": "YouTube",
+      "source": "Video search",
       "domain": "dsa",
       "domainTitle": "DSA Ultimate Index"
     },
