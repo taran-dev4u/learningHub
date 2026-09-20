@@ -57,7 +57,7 @@ export function simpleHubHtml(data) {
   const totals = {
     items: data.sources.reduce((sum, s) => sum + s.itemCount, 0),
     sections: data.sources.reduce((sum, s) => sum + s.sections.length, 0),
-    resources: data.sources.reduce((sum, s) => sum + s.resourceCount, 0),
+    resources: data.stats.resources,
   };
 
   const cards = data.sources.map((source, index) => {
@@ -314,7 +314,8 @@ a { color: inherit; }
   font-size: 16px;
   font-variant-numeric: tabular-nums;
 }
-.card-body { padding: 18px 18px 16px; display: flex; flex-direction: column; min-width: 0; }
+.page-card { display: flex; }
+.card-body { padding: 18px 18px 16px; display: flex; flex-direction: column; min-width: 0; flex: 1; }
 .card-diagram {
   position: relative;
   min-height: 86px;
@@ -404,15 +405,17 @@ a { color: inherit; }
 .card-progress span { display: block; width: 0; height: 100%; background: var(--card-color); transition: width .4s ease; }
 .card-footer {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  margin-top: 12px;
+  margin-top: auto;
+  padding-top: 12px;
   color: var(--muted);
   font-size: 12px;
   font-weight: 800;
 }
-.card-links { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
+.card-links { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; margin-left: auto; }
 .card-footer a {
   display: inline-flex;
   align-items: center;
@@ -454,10 +457,9 @@ a { color: inherit; }
   <div class="topbar">
     <section class="brand">
       <h1>Taran's Learning Hub</h1>
-      <p>Seven connected study spaces for my interview prep and engineering growth. Pick a page, follow the content inside it, and let progress/bookmarks stay synced across every open tab in this browser.</p>
+      <p>${data.sources.length} connected study spaces for my interview prep and engineering growth. Pick a page, follow the content inside it, and let progress/bookmarks stay synced across every open tab in this browser.</p>
     </section>
     <div class="actions">
-      <button class="hub-btn" id="theme">Theme</button>
       <button class="hub-btn" id="export-progress" title="Download progress and bookmarks as JSON">Backup</button>
       <button class="hub-btn" id="import-progress" title="Restore progress from a backup file">Restore</button>
       <input type="file" id="import-file" accept="application/json" hidden>
@@ -495,12 +497,9 @@ a { color: inherit; }
   function applyTheme(theme) {
     document.documentElement.classList.toggle("dark", theme === "dark");
   }
-  applyTheme(localStorage.getItem(themeKey) || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"));
-  document.getElementById("theme").addEventListener("click", function () {
-    const next = document.documentElement.classList.contains("dark") ? "light" : "dark";
-    localStorage.setItem(themeKey, next);
-    applyTheme(next);
-  });
+  // The shared navbar (assets/learning-hub-shared.js) owns the theme for every
+  // page; this page only mirrors whatever it decided.
+  applyTheme(document.documentElement.getAttribute("data-theme") || localStorage.getItem(themeKey) || "light");
 
   // Per-card progress + overall totals
   let doneTotal = 0;
@@ -660,6 +659,26 @@ a { color: inherit; }
   });
 })();
 </script>
+</body>
+</html>
+`;
+}
+
+// hub.html used to be a byte-identical copy of index.html. Keep the URL alive
+// as a redirect so old links work without maintaining two copies of the page.
+export function redirectHtml(target = "index.html") {
+  return `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="refresh" content="0; url=${target}">
+<link rel="canonical" href="${target}">
+<title>Taran's Learning Hub</title>
+<script>window.location.replace("${target}" + window.location.hash);</script>
+</head>
+<body>
+<p>Redirecting to <a href="${target}">the learning hub</a>…</p>
 </body>
 </html>
 `;

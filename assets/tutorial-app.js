@@ -156,7 +156,7 @@
               pre.replaceWith(div);
             }
           });
-          mermaid.run();
+          typeof mermaid !== "undefined" && mermaid.run();
         }
       }
     } catch (e) { /* diagrams are optional */ }

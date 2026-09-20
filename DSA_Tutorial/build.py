@@ -52,20 +52,8 @@ def shell(title, body, depth, prev_page, next_page, crumb_html, mid_label):
 <script defer src="{rel}assets/app.js?v=2"></script>
 </head>
 <body>
-<nav class="global-learning-nav" aria-label="Learning hub navigation">
-<a href="{root_rel}index.html">Hub</a>
-<a href="{root_rel}DSA_Ultimate_Index.html">DSA Index</a>
-<a class="current" href="{rel}index.html" aria-current="page">DSA Tutorial</a>
-<a href="{root_rel}system_design.html">System Design</a>
-<a href="{root_rel}System_Design_Tutorial/index.html">System Tutorial</a>
-<a href="{root_rel}cs_fundamentals.html">CS</a>
-<a href="{root_rel}behavioral.html">Behavioral</a>
-<a href="{root_rel}ai_engineering.html">AI</a>
-<a href="{root_rel}cloud_aws_azure.html">Cloud</a>
-<a href="{root_rel}interview_prep.html">Interview Prep</a>
-</nav>
 <div class="nav-bar">{prev_a}<div class="mid"><a href="{rel}index.html">🏠 DSA Tutorial</a> · {mid_label}</div>
-<div style="display:flex;gap:8px;align-items:center">{next_a}<button class="theme-btn" title="Toggle theme">☀️</button></div></div>
+<div style="display:flex;gap:8px;align-items:center">{next_a}</div></div>
 <div class="container">
 <div class="crumbs">{crumb_html}</div>
 {body}
@@ -104,6 +92,7 @@ for pi, pat in enumerate(CURR, 1):
             prob['_path'] = fn
 
 TOTAL = seq
+UNIQUE_PROBLEMS = len({p['prob']['lc'] for p in pages if p['kind'] == 'problem'})
 
 # duplicate map: lc -> list of seqs
 from collections import defaultdict
@@ -144,7 +133,7 @@ def render_hub():
     body = f'''
 <h1>📘 DSA Tutorial</h1>
 <p>A complete, beginner-first Data Structures &amp; Algorithms course. Start with the Python Primer,
-build the Foundations, then master all {len(CURR)} patterns and {TOTAL} problems.
+build the Foundations, then master all {len(CURR)} patterns and {UNIQUE_PROBLEMS} problems.
 Every page teaches — LeetCode is just one click away when you want to practice.</p>
 <p class="progress-note">Tip: use <kbd>←</kbd> and <kbd>→</kbd> to move between pages; every page follows the previous one in the curriculum.</p>
 <input class="searchbar" id="hub-search" placeholder="🔍 Filter topics… (e.g. sliding window, heap, dp)">
@@ -275,13 +264,31 @@ os.makedirs(os.path.join(ROOT, 'patterns'), exist_ok=True)
 os.makedirs(os.path.join(ROOT, 'python'), exist_ok=True)
 os.makedirs(os.path.join(ROOT, 'foundations'), exist_ok=True)
 
+def write_page(path, text):
+    """Write atomically: overwriting in place can fail with EINVAL on mounted
+    filesystems, so write a temp file next to the target and rename it."""
+    import time
+    last = None
+    for _ in range(4):
+        try:
+            tmp = path + '.tmp'
+            with open(tmp, 'w', encoding='utf-8') as f:
+                f.write(text)
+            os.replace(tmp, path)
+            return
+        except OSError as exc:
+            last = exc
+            time.sleep(0.2)
+    raise last
+
+
+
 for pg in pages:
     if pg['kind'] == 'hub': out = render_hub()
     elif pg['kind'] == 'pattern': out = render_pattern(pg)
     elif pg['kind'] == 'problem': out = render_problem(pg)
     else: out = render_content(pg)
-    with open(os.path.join(ROOT, pg['path'].replace('/', os.sep)), 'w', encoding='utf-8') as f:
-        f.write(out)
+    write_page(os.path.join(ROOT, pg['path'].replace('/', os.sep)), out)
 
 # ---------------------------------------------------------------- PROGRESS.md
 lines = ['# DSA Tutorial — Deepening Progress', '',

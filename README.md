@@ -4,24 +4,24 @@ A personal static learning hub generated from the HTML sites in this folder.
 
 ## Included sites
 
-- DSA Ultimate Index: 609 problems, 29 sections, 518 resources
-- System Design: 322 concepts, 15 sections, 263 resources
-- CS Fundamentals: 156 concepts, 7 sections, 53 resources
-- Behavioral and Leadership: 145 concepts, 6 sections, 37 resources
-- AI Engineering: 180 concepts, 11 sections, 60 resources
-- Cloud - AWS and Azure: 194 concepts, 11 sections, 58 resources
-- Interview Prep: 92 concepts, 6 sections, 17 resources
+- DSA Ultimate Index: 940 problems, 47 sections, 427 resources
+- System Design: 322 concepts, 15 sections, 216 resources
+- CS Fundamentals: 156 concepts, 7 sections, 43 resources
+- Behavioral and Leadership: 145 concepts, 6 sections, 25 resources
+- AI Engineering: 177 concepts, 11 sections, 56 resources
+- Cloud - AWS and Azure: 194 concepts, 11 sections, 55 resources
+- Interview Prep: 92 concepts, 6 sections, 16 resources
 
 ## Added tutorial sub-sites
 
-- DSA Tutorial: `DSA_Tutorial/index.html` with 755 generated pages and 707 problem tutorials.
-- System Design Tutorial Hub: `System_Design_Tutorial/index.html` with 15 sections, 62 mapped topics, and 102 bundled markdown lessons.
+- DSA Tutorial: `DSA_Tutorial/index.html` with 747 generated pages and 699 problem tutorials (one page per problem per pattern; duplicates inside a pattern removed).
+- System Design Tutorial Hub: `System_Design_Tutorial/index.html` with 15 sections, 62 mapped topics, and 62 bundled markdown lessons.
 - Interview Prep: `interview_prep.html` with answer methods, HR questions, behavioral story themes, technical communication practice, and a word-by-word transcript runner.
 
 ## Current UI
 
-- `index.html` and `hub.html` show only the seven page entry cards.
-- Each source page has shared cross-site navigation.
+- `index.html` and `hub.html` show the page entry cards.
+- Every page shares one navigation bar and one theme, rendered by `assets/learning-hub-shared.js`.
 - Resource panels start closed by default.
 - Progress and bookmarks are stored locally in the browser and refresh across open tabs.
 - DSA and System Design cards/pages link to their deeper local tutorial sub-sites.

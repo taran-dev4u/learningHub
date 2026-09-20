@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { gapSections, resourceLibraries } from "./gap-content.mjs";
-import { simpleHubHtml } from "./hub-page.mjs";
+import { simpleHubHtml, redirectHtml } from "./hub-page.mjs";
 // build: generates hub pages, gap sections, resource libraries, and search index.
 
 const root = process.cwd();
@@ -1038,7 +1038,19 @@ function read(file) {
 
 function write(file, content) {
   fs.mkdirSync(path.dirname(path.join(root, file)), { recursive: true });
-  fs.writeFileSync(path.join(root, file), content, "utf8");
+  const target = path.join(root, file);
+  // Writing straight over an existing file can fail with EINVAL on mounted
+  // filesystems; write a temp file and rename, retrying a couple of times.
+  for (let attempt = 1; ; attempt += 1) {
+    try {
+      const tmp = `${target}.tmp`;
+      fs.writeFileSync(tmp, content, "utf8");
+      fs.renameSync(tmp, target);
+      return;
+    } catch (error) {
+      if (attempt >= 3) throw error;
+    }
+  }
 }
 
 function decodeEntities(value = "") {
@@ -1200,7 +1212,7 @@ function parseConceptPage(source, html) {
     const subsections = [];
 
     for (const sub of sliceByStarts(section.block, subStarts)) {
-      const subTitle = first(sub.block, /<h3>([\s\S]*?)<\/h3>/i) || title;
+      const subTitle = first(sub.block, /<h3[^>]*>([\s\S]*?)<\/h3>/i) || title;
       const subDesc = first(sub.block, /<div class="subsection-desc">([\s\S]*?)<\/div>/i);
       const subResources = extractResources(sub.block, {
         domain: source.key,
@@ -1268,13 +1280,21 @@ function parseConceptPage(source, html) {
 }
 
 function parseDsaPage(source, html) {
-  const starts = blockStarts(html, /<section class="pattern" id="([^"]+)"/gi);
-  const end = html.search(/<section class="sources">/i);
+  const sourcesIdx = html.search(/<section class="sources">/i);
+  const cut = sourcesIdx > -1 ? sourcesIdx : html.length;
+  // Curated patterns sit before the sources section; the Striver sheet blocks
+  // are appended after it, so slice the two ranges separately.
+  const curatedStarts = blockStarts(html, /<section class="pattern" id="([^"]+)"/gi).filter((s) => s.index < cut);
+  const striverStarts = blockStarts(html, /<div class="pattern" id="([^"]+)"/gi).filter((s) => s.index >= cut);
+  const patternBlocks = [
+    ...sliceByStarts(html, curatedStarts, cut),
+    ...sliceByStarts(html, striverStarts, html.length),
+  ];
   const sections = [];
   const resources = extractResources(html, { domain: source.key, domainTitle: source.title });
   const byLc = new Map();
 
-  for (const pattern of sliceByStarts(html, starts, end > -1 ? end : html.length)) {
+  for (const pattern of patternBlocks) {
     const title = first(pattern.block, /<h2>([\s\S]*?)<\/h2>/i) || pattern.id;
     const meta = first(pattern.block, /<div class="meta">([\s\S]*?)<\/div>/i);
     const tagline = first(pattern.block, /<div class="tagline">([\s\S]*?)<\/div>/i);
@@ -1283,7 +1303,10 @@ function parseDsaPage(source, html) {
       domainTitle: source.title,
       section: title,
     });
-    const subStarts = blockStarts(pattern.block, /<div class="subpattern">/gi).map((s, idx) => ({
+    const subPattern = /<div class="subpattern">/gi.test(pattern.block)
+      ? /<div class="subpattern">/gi
+      : /<h3\b[^>]*>/gi;
+    const subStarts = blockStarts(pattern.block, subPattern).map((s, idx) => ({
       ...s,
       id: `sub-${idx + 1}`,
     }));
@@ -1309,9 +1332,12 @@ function parseDsaPage(source, html) {
         if (!lc) continue;
         const problemTitle =
           first(body, /<a class="pname"[^>]*>([\s\S]*?)<\/a>/i) ||
+          first(body, /<a[^>]*class="problem-name"[^>]*>([\s\S]*?)<\/a>/i) ||
           decodeEntities(attr(open, "data-name")) ||
           `LeetCode ${lc}`;
-        const href = attr(rawFirst(body, /(<a class="pname"[^>]*>[\s\S]*?<\/a>)/i), "href");
+        const href =
+          attr(rawFirst(body, /(<a class="pname"[^>]*>[\s\S]*?<\/a>)/i), "href") ||
+          attr(rawFirst(body, /(<a[^>]*class="problem-name"[^>]*>[\s\S]*?<\/a>)/i), "href");
         const diff = attr(open, "data-diff");
         const companies = attr(open, "data-companies")
           .split(",")
@@ -1402,7 +1428,9 @@ function buildData() {
     const html = read(source.file);
     const parsed = source.key === "dsa" ? parseDsaPage(source, html) : parseConceptPage(source, html);
     const itemCount = parsed.items.length;
-    const resourceCount = uniqueBy(parsed.resources, (r) => `${r.title}|${r.url}`).length;
+    // Count distinct destinations: the same link listed under several
+    // sections with different labels is one resource, not several.
+    const resourceCount = new Set(parsed.resources.map((r) => r.url)).size;
     const sourceRecord = {
       ...source,
       sections: parsed.sections,
@@ -1428,7 +1456,8 @@ function buildData() {
     items: allItems.length,
     problems: allItems.filter((i) => i.type === "problem").length,
     concepts: allItems.filter((i) => i.type === "concept").length,
-    resources: allResources.length,
+    resources: new Set(allResources.map((r) => r.url)).size,
+    resourceEntries: allResources.length,
     additions: additions.length,
   };
 
@@ -2523,6 +2552,11 @@ function siteNavStyle() {
 }
 
 function siteNavHtml(source) {
+  // Retired: assets/learning-hub-shared.js renders one navbar for every page.
+  void source;
+  return "";
+}
+function legacySiteNavHtml(source) {
   const links = sourceDefs.map((target) => {
     const currentAttrs = target.key === source.key ? ' class="current" aria-current="page"' : "";
     return `<a${currentAttrs} href="${escHtml(target.file)}">${escHtml(target.label)}</a>`;
@@ -2541,6 +2575,9 @@ function siteNavHtml(source) {
 }
 
 function siteNavScript() {
+  return "";
+}
+function legacySiteNavScript() {
   return `<script id="site-nav-script">
 (function () {
   const progress = document.querySelector("[data-site-nav-progress]");
@@ -3031,14 +3068,14 @@ ${data.sources.map((s) => `- ${s.title}: ${s.itemCount} ${s.progressLabel}, ${s.
 
 ## Added tutorial sub-sites
 
-- DSA Tutorial: \`DSA_Tutorial/index.html\` with 755 generated pages and 707 problem tutorials.
-- System Design Tutorial Hub: \`System_Design_Tutorial/index.html\` with 15 sections, 62 mapped topics, and 102 bundled markdown lessons.
+- DSA Tutorial: \`DSA_Tutorial/index.html\` with 747 generated pages and 699 problem tutorials (one page per problem per pattern; duplicates inside a pattern removed).
+- System Design Tutorial Hub: \`System_Design_Tutorial/index.html\` with 15 sections, 62 mapped topics, and 62 bundled markdown lessons.
 - Interview Prep: \`interview_prep.html\` with answer methods, HR questions, behavioral story themes, technical communication practice, and a word-by-word transcript runner.
 
 ## Current UI
 
-- \`index.html\` and \`hub.html\` show only the seven page entry cards.
-- Each source page has shared cross-site navigation.
+- \`index.html\` and \`hub.html\` show the page entry cards.
+- Every page shares one navigation bar and one theme, rendered by \`assets/learning-hub-shared.js\`.
 - Resource panels start closed by default.
 - Progress and bookmarks are stored locally in the browser and refresh across open tabs.
 - DSA and System Design cards/pages link to their deeper local tutorial sub-sites.
@@ -3082,7 +3119,7 @@ write(
   )}\n`,
 );
 write("index.html", simpleHubHtml(data));
-write("hub.html", simpleHubHtml(data));
+write("hub.html", redirectHtml("index.html"));
 write("content-audit.md", buildContentAudit(data));
 write(".nojekyll", "");
 write(".github/workflows/pages.yml", pagesWorkflow());

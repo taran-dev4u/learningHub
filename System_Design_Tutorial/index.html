@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../assets/algomaster-theme.css?v=1">
 </head>
 <body class="am">
+    <h1 style="position:absolute;left:-9999px">System Design Tutorial Hub</h1>
     <nav class="global-learning-nav" aria-label="Learning hub navigation">
         <a href="../index.html">Hub</a>
         <a href="../DSA_Ultimate_Index.html">DSA Index</a>
@@ -29,20 +30,14 @@
     </nav>
 
     <header class="am-topbar">
-        <a class="am-brand" href="#" style="text-decoration:none;color:inherit">
+        <a class="am-brand" href="index.html" style="text-decoration:none;color:inherit">
             <span class="am-logo">🏗️</span>
             <span><b>System Design Tutorial</b><br><span>High-Level Design</span></span>
         </a>
         <nav class="am-top-links">
             <a class="current" href="#">Curriculum</a>
-            <a href="../LLD_Tutorial/index.html">LLD Tutorial</a>
-            <a href="../interview_prep.html">Interview Prep</a>
-            <a href="../index.html">Hub</a>
         </nav>
-        <div class="am-top-actions">
-            <button class="am-btn am-icon-btn" type="button" id="am-theme" title="Toggle light / dark">◐</button>
-        </div>
-    </header>
+        </header>
 
     <main class="am-wrap" id="am-root"></main>
 
@@ -50,7 +45,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.5/purify.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10.8.0/dist/mermaid.min.js"></script>
-    <script>mermaid.initialize({ startOnLoad: false, theme: 'base' });</script>
+    <script>if (typeof mermaid !== 'undefined') mermaid.initialize({ startOnLoad: false, theme: 'base' });</script>
     <script>
       window.TUTORIAL_CONFIG = {
         title: 'Learn System Design Systematically',

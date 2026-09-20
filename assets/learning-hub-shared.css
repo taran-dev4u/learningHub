@@ -96,3 +96,142 @@ html.learning-hub-locked body > :not(#learning-hub-lock) {
   font-size: 13px;
   font-weight: 800;
 }
+
+/* ============================================================
+   Shared navigation bar — one bar on every page, any depth.
+   Self-theming: reads the same tokens in dark and light mode.
+   ============================================================ */
+:root {
+  --hub-nav-bg: #ffffff;
+  --hub-nav-fg: #1f2430;
+  --hub-nav-muted: #59617a;
+  --hub-nav-border: #e2e6ef;
+  --hub-nav-accent: #2459d6;
+  --hub-nav-accent-fg: #ffffff;
+}
+html.dark, html[data-theme="dark"] {
+  --hub-nav-bg: #161a23;
+  --hub-nav-fg: #e9edf5;
+  --hub-nav-muted: #9aa3b7;
+  --hub-nav-border: #2b3142;
+  --hub-nav-accent: #7c9eff;
+  --hub-nav-accent-fg: #10131a;
+}
+
+.hub-skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100000;
+  padding: 10px 16px;
+  background: var(--hub-nav-accent);
+  color: var(--hub-nav-accent-fg);
+  font: 700 14px/1.2 Inter, system-ui, sans-serif;
+  border-radius: 0 0 8px 0;
+  text-decoration: none;
+}
+.hub-skip-link:focus { left: 0; }
+
+nav.hub-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  background: var(--hub-nav-bg);
+  border-bottom: 1px solid var(--hub-nav-border);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+}
+nav.hub-nav .hub-nav-brand {
+  flex: 0 0 auto;
+  color: var(--hub-nav-fg);
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: -0.01em;
+  padding-right: 10px;
+  border-right: 1px solid var(--hub-nav-border);
+}
+nav.hub-nav .hub-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1 1 auto;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+nav.hub-nav .hub-nav-links::-webkit-scrollbar { display: none; }
+nav.hub-nav .hub-nav-links a {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 11px;
+  border-radius: 8px;
+  color: var(--hub-nav-muted);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  border: 1px solid transparent;
+}
+nav.hub-nav .hub-nav-links a:hover {
+  color: var(--hub-nav-fg);
+  border-color: var(--hub-nav-border);
+}
+nav.hub-nav .hub-nav-links a.is-current {
+  background: var(--hub-nav-accent);
+  color: var(--hub-nav-accent-fg);
+}
+nav.hub-nav .hub-nav-links a.is-external::after {
+  content: "↗";
+  margin-left: 5px;
+  font-size: 11px;
+  opacity: .75;
+}
+nav.hub-nav .hub-nav-links a:focus-visible,
+nav.hub-nav .hub-nav-theme:focus-visible,
+.hub-skip-link:focus-visible {
+  outline: 2px solid var(--hub-nav-accent);
+  outline-offset: 2px;
+}
+nav.hub-nav .hub-nav-theme {
+  flex: 0 0 auto;
+  min-width: 36px;
+  min-height: 36px;
+  border-radius: 8px;
+  border: 1px solid var(--hub-nav-border);
+  background: transparent;
+  color: var(--hub-nav-fg);
+  font-size: 15px;
+  cursor: pointer;
+  line-height: 1;
+}
+nav.hub-nav .hub-nav-theme:hover { border-color: var(--hub-nav-accent); }
+
+@media (max-width: 860px) {
+  nav.hub-nav { padding: 6px 10px; gap: 8px; }
+  nav.hub-nav .hub-nav-brand { display: none; }
+  nav.hub-nav .hub-nav-links a { padding: 0 9px; font-size: 12.5px; }
+}
+
+/* ---- cross-site fixes that belong to every page ---- */
+pre, code, .code, table { max-width: 100%; }
+pre { overflow-x: auto; }
+.solutions { flex-wrap: wrap; }
+.sol-link { max-width: 100%; overflow-wrap: anywhere; }
+@media (max-width: 520px) {
+  .res-grid { grid-template-columns: 1fr !important; }
+}
+
+/* long link text must not push the page sideways on a phone */
+.res-link, .res-title, .sol-link, .sub-res-link, .pname, .problem-name,
+.card-links a, .coverage-links a { overflow-wrap: anywhere; }
+code { overflow-wrap: anywhere; }
+nav.hub-nav .hub-nav-brand { display: inline-flex; align-items: center; min-height: 36px; }
+/* grid children default to min-width:auto, which lets a long link set the
+   column width and push the whole page sideways on a phone */
+.res-grid, .resources-body, .sub-resources { max-width: 100%; }
+.res-grid > *, .resources-body > *, .sub-resources > * { min-width: 0; max-width: 100%; box-sizing: border-box; }

@@ -9,7 +9,8 @@ HTML_TEMPLATE = """<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
-<link rel="stylesheet" href="../assets/learning-hub-shared.css">
+<link rel="stylesheet" href="{root}assets/learning-hub-shared.css">
+<script src="{root}assets/learning-hub-shared.js"></script>
 <style>
 :root {{
   --bg: #f4f6f8;
@@ -84,7 +85,7 @@ th, td {{
 <body>
 <div class="wrap">
   <div class="header">
-    <a href="../library.html" class="btn-back">Back to Library</a>
+    <a href="{root}library.html" class="btn-back">Back to Library</a>
   </div>
   <div class="content">
     {content}
@@ -115,7 +116,9 @@ def convert_pdfs():
             # Form final HTML
             rel_path = os.path.relpath(pdf_path, resources_dir)
             title = os.path.basename(pdf_path).replace('.pdf', '')
-            final_html = HTML_TEMPLATE.format(title=title, content=html_content)
+            depth = len(os.path.relpath(out_file, output_dir).replace("\\", "/").split("/")) - 1
+            root = "../" * (depth + 1)
+            final_html = HTML_TEMPLATE.format(title=title, content=html_content, root=root)
             
             out_file = os.path.join(output_dir, rel_path.replace('.pdf', '.html'))
             

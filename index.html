@@ -221,7 +221,8 @@ a { color: inherit; }
   font-size: 16px;
   font-variant-numeric: tabular-nums;
 }
-.card-body { padding: 18px 18px 16px; display: flex; flex-direction: column; min-width: 0; }
+.page-card { display: flex; }
+.card-body { padding: 18px 18px 16px; display: flex; flex-direction: column; min-width: 0; flex: 1; }
 .card-diagram {
   position: relative;
   min-height: 86px;
@@ -311,15 +312,17 @@ a { color: inherit; }
 .card-progress span { display: block; width: 0; height: 100%; background: var(--card-color); transition: width .4s ease; }
 .card-footer {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  margin-top: 12px;
+  margin-top: auto;
+  padding-top: 12px;
   color: var(--muted);
   font-size: 12px;
   font-weight: 800;
 }
-.card-links { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
+.card-links { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; margin-left: auto; }
 .card-footer a {
   display: inline-flex;
   align-items: center;
@@ -356,28 +359,27 @@ a { color: inherit; }
 </style>
 </head>
 <body>
-<script id="hub-data" type="application/json">{"sources":[{"key":"dsa","title":"DSA Ultimate Index","file":"DSA_Ultimate_Index.html","label":"DSA","color":"#2f6fdd","storage":{"done":"dsa_index_solved_v1","bookmark":"dsa_index_bookmark_v1"},"itemCount":609,"progressLabel":"problems","relatedLinks":[["Open Deep DSA Tutorial","DSA_Tutorial/index.html"]]},{"key":"sd","title":"System Design","file":"system_design.html","label":"Systems","color":"#d84f86","storage":{"done":"hub_done_sd","bookmark":"hub_bm_sd"},"itemCount":322,"progressLabel":"concepts","relatedLinks":[["Open System Design Tutorial","System_Design_Tutorial/index.html"],["Open LLD Tutorial","LLD_Tutorial/index.html"]]},{"key":"cs","title":"CS Fundamentals","file":"cs_fundamentals.html","label":"CS","color":"#15875f","storage":{"done":"hub_done_cs","bookmark":"hub_bm_cs"},"itemCount":156,"progressLabel":"concepts","relatedLinks":[]},{"key":"bh","title":"Behavioral and Leadership","file":"behavioral.html","label":"Behavioral","color":"#c9692d","storage":{"done":"hub_done_bh","bookmark":"hub_bm_bh"},"itemCount":145,"progressLabel":"concepts","relatedLinks":[]},{"key":"ai","title":"AI Engineering","file":"ai_engineering.html","label":"AI","color":"#7b61d8","storage":{"done":"hub_done_ai","bookmark":"hub_bm_ai"},"itemCount":180,"progressLabel":"concepts","relatedLinks":[]},{"key":"cloud","title":"Cloud - AWS and Azure","file":"cloud_aws_azure.html","label":"Cloud","color":"#0786a3","storage":{"done":"hub_done_cloud","bookmark":"hub_bm_cloud"},"itemCount":194,"progressLabel":"concepts","relatedLinks":[]},{"key":"interview","title":"Interview Prep","file":"interview_prep.html","label":"Interview","color":"#e04768","storage":{"done":"hub_done_interview","bookmark":"hub_bm_interview"},"itemCount":92,"progressLabel":"concepts","relatedLinks":[]}]}</script>
+<script id="hub-data" type="application/json">{"sources":[{"key":"dsa","title":"DSA Ultimate Index","file":"DSA_Ultimate_Index.html","label":"DSA","color":"#2f6fdd","storage":{"done":"dsa_index_solved_v1","bookmark":"dsa_index_bookmark_v1"},"itemCount":940,"progressLabel":"problems","relatedLinks":[["Open Deep DSA Tutorial","DSA_Tutorial/index.html"]]},{"key":"sd","title":"System Design","file":"system_design.html","label":"Systems","color":"#d84f86","storage":{"done":"hub_done_sd","bookmark":"hub_bm_sd"},"itemCount":322,"progressLabel":"concepts","relatedLinks":[["Open System Design Tutorial","System_Design_Tutorial/index.html"]]},{"key":"cs","title":"CS Fundamentals","file":"cs_fundamentals.html","label":"CS","color":"#15875f","storage":{"done":"hub_done_cs","bookmark":"hub_bm_cs"},"itemCount":156,"progressLabel":"concepts","relatedLinks":[]},{"key":"bh","title":"Behavioral and Leadership","file":"behavioral.html","label":"Behavioral","color":"#c9692d","storage":{"done":"hub_done_bh","bookmark":"hub_bm_bh"},"itemCount":145,"progressLabel":"concepts","relatedLinks":[]},{"key":"ai","title":"AI Engineering","file":"ai_engineering.html","label":"AI","color":"#7b61d8","storage":{"done":"hub_done_ai","bookmark":"hub_bm_ai"},"itemCount":177,"progressLabel":"concepts","relatedLinks":[]},{"key":"cloud","title":"Cloud - AWS and Azure","file":"cloud_aws_azure.html","label":"Cloud","color":"#0786a3","storage":{"done":"hub_done_cloud","bookmark":"hub_bm_cloud"},"itemCount":194,"progressLabel":"concepts","relatedLinks":[]},{"key":"interview","title":"Interview Prep","file":"interview_prep.html","label":"Interview","color":"#e04768","storage":{"done":"hub_done_interview","bookmark":"hub_bm_interview"},"itemCount":92,"progressLabel":"concepts","relatedLinks":[]}]}</script>
 <main class="wrap">
   <div class="topbar">
     <section class="brand">
       <h1>Taran's Learning Hub</h1>
-      <p>Seven connected study spaces for my interview prep and engineering growth. Pick a page, follow the content inside it, and let progress/bookmarks stay synced across every open tab in this browser.</p>
+      <p>7 connected study spaces for my interview prep and engineering growth. Pick a page, follow the content inside it, and let progress/bookmarks stay synced across every open tab in this browser.</p>
     </section>
     <div class="actions">
-      <button class="hub-btn" id="theme">Theme</button>
       <button class="hub-btn" id="export-progress" title="Download progress and bookmarks as JSON">Backup</button>
       <button class="hub-btn" id="import-progress" title="Restore progress from a backup file">Restore</button>
       <input type="file" id="import-file" accept="application/json" hidden>
     </div>
   </div>
   <section class="stats-strip" aria-label="Overall stats">
-    <div class="stat-chip"><b id="total-done">0 / 1698</b><span>items complete</span><div class="overall-progress"><i id="total-fill"></i></div></div>
+    <div class="stat-chip"><b id="total-done">0 / 2026</b><span>items complete</span><div class="overall-progress"><i id="total-fill"></i></div></div>
     <div class="stat-chip"><b>7</b><span>study spaces</span></div>
-    <div class="stat-chip"><b>85</b><span>sections</span></div>
-    <div class="stat-chip"><b>1006</b><span>resources</span></div>
+    <div class="stat-chip"><b>103</b><span>sections</span></div>
+    <div class="stat-chip"><b>823</b><span>resources</span></div>
   </section>
   <section class="search-block" aria-label="Global search">
-    <input class="search-input" id="global-search" type="search" placeholder="Search all 1698 topics and problems across every page…" autocomplete="off">
+    <input class="search-input" id="global-search" type="search" placeholder="Search all 2026 topics and problems across every page…" autocomplete="off">
     <div class="search-results" id="search-results"></div>
   </section>
   <section class="review-panel" id="review-panel" aria-label="Bookmarked items">
@@ -388,7 +390,7 @@ a { color: inherit; }
     <div class="review-body" id="review-body"></div>
   </section>
   <section class="page-grid" aria-label="Learning pages">
-
+    
     <article class="page-card" data-page-card="dsa" style="--card-color:#2f6fdd">
       <div class="card-index">01</div>
       <div class="card-body">
@@ -400,15 +402,15 @@ a { color: inherit; }
         <h2>DSA Ultimate Index</h2>
         <p>My primary coding-interview practice map: patterns first, problems second, repeat weak spots until they feel automatic.</p>
         <div class="card-stats">
-          <span>29 sections</span>
-          <span>609 problems</span>
-          <span>518 resources</span>
+          <span>47 sections</span>
+          <span>940 problems</span>
+          <span>427 resources</span>
         </div>
         <div class="card-progress" aria-label="Progress for DSA Ultimate Index">
           <span data-page-progress-fill="dsa"></span>
         </div>
         <div class="card-footer">
-          <span data-page-progress-text="dsa">0 / 609 complete</span>
+          <span data-page-progress-text="dsa">0 / 940 complete</span>
           <div class="card-links">
             <a href="DSA_Ultimate_Index.html">Open</a>
             <a class="secondary" href="DSA_Tutorial/index.html">Deep DSA Tutorial</a>
@@ -429,7 +431,7 @@ a { color: inherit; }
         <div class="card-stats">
           <span>15 sections</span>
           <span>322 concepts</span>
-          <span>263 resources</span>
+          <span>216 resources</span>
         </div>
         <div class="card-progress" aria-label="Progress for System Design">
           <span data-page-progress-fill="sd"></span>
@@ -439,7 +441,6 @@ a { color: inherit; }
           <div class="card-links">
             <a href="system_design.html">Open</a>
             <a class="secondary" href="System_Design_Tutorial/index.html">System Design Tutorial</a>
-            <a class="secondary" href="LLD_Tutorial/index.html">LLD Tutorial</a>
           </div>
         </div>
       </div>
@@ -457,7 +458,7 @@ a { color: inherit; }
         <div class="card-stats">
           <span>7 sections</span>
           <span>156 concepts</span>
-          <span>53 resources</span>
+          <span>43 resources</span>
         </div>
         <div class="card-progress" aria-label="Progress for CS Fundamentals">
           <span data-page-progress-fill="cs"></span>
@@ -483,7 +484,7 @@ a { color: inherit; }
         <div class="card-stats">
           <span>6 sections</span>
           <span>145 concepts</span>
-          <span>37 resources</span>
+          <span>25 resources</span>
         </div>
         <div class="card-progress" aria-label="Progress for Behavioral and Leadership">
           <span data-page-progress-fill="bh"></span>
@@ -508,14 +509,14 @@ a { color: inherit; }
         <p>My AI engineering track: LLM apps, RAG, agents, evals, MLOps, and production quality constraints.</p>
         <div class="card-stats">
           <span>11 sections</span>
-          <span>180 concepts</span>
-          <span>60 resources</span>
+          <span>177 concepts</span>
+          <span>56 resources</span>
         </div>
         <div class="card-progress" aria-label="Progress for AI Engineering">
           <span data-page-progress-fill="ai"></span>
         </div>
         <div class="card-footer">
-          <span data-page-progress-text="ai">0 / 180 complete</span>
+          <span data-page-progress-text="ai">0 / 177 complete</span>
           <div class="card-links">
             <a href="ai_engineering.html">Open</a>
           </div>
@@ -535,7 +536,7 @@ a { color: inherit; }
         <div class="card-stats">
           <span>11 sections</span>
           <span>194 concepts</span>
-          <span>58 resources</span>
+          <span>55 resources</span>
         </div>
         <div class="card-progress" aria-label="Progress for Cloud - AWS and Azure">
           <span data-page-progress-fill="cloud"></span>
@@ -561,7 +562,7 @@ a { color: inherit; }
         <div class="card-stats">
           <span>6 sections</span>
           <span>92 concepts</span>
-          <span>17 resources</span>
+          <span>16 resources</span>
         </div>
         <div class="card-progress" aria-label="Progress for Interview Prep">
           <span data-page-progress-fill="interview"></span>
@@ -570,19 +571,6 @@ a { color: inherit; }
           <span data-page-progress-text="interview">0 / 92 complete</span>
           <div class="card-links">
             <a href="interview_prep.html">Open</a>
-          </div>
-        </div>
-      </div>
-    </article>
-    <article class="page-card" data-page-card="library" style="--card-color:#eab308">
-      <div class="card-index">08</div>
-      <div class="card-body">
-        <p class="card-kicker">Resources / PDF</p>
-        <h2>Library</h2>
-        <p>A collection of PDF books, guides, and converted resources for deep reading.</p>
-        <div class="card-footer">
-          <div class="card-links">
-            <a href="library.html">Open Library</a>
           </div>
         </div>
       </div>
@@ -600,12 +588,9 @@ a { color: inherit; }
   function applyTheme(theme) {
     document.documentElement.classList.toggle("dark", theme === "dark");
   }
-  applyTheme(localStorage.getItem(themeKey) || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"));
-  document.getElementById("theme").addEventListener("click", function () {
-    const next = document.documentElement.classList.contains("dark") ? "light" : "dark";
-    localStorage.setItem(themeKey, next);
-    applyTheme(next);
-  });
+  // The shared navbar (assets/learning-hub-shared.js) owns the theme for every
+  // page; this page only mirrors whatever it decided.
+  applyTheme(document.documentElement.getAttribute("data-theme") || localStorage.getItem(themeKey) || "light");
 
   // Per-card progress + overall totals
   let doneTotal = 0;

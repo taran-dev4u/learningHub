@@ -1,6 +1,6 @@
 # Taran's Learning Hub Content Audit
 
-Generated: 2026-07-09T21:34:35.020Z
+Generated: 2026-09-20T21:01:34.320Z
 
 ## Research References
 
@@ -30,9 +30,9 @@ Generated: 2026-07-09T21:34:35.020Z
 
 ## DSA Ultimate Index
 
-- Inventory: 29 sections, 158 subsections, 609 problems, 518 resources.
+- Inventory: 47 sections, 220 subsections, 940 problems, 427 resources.
 - Formatting focus: consistent navigation, closed resources, clean headings, and better fallback search links.
-- Duplicate subsection names to review: none found by title.
+- Duplicate subsection names to review: Striver: Learn the basics (7), Striver: Learn Important Sorting Techniques (2), Striver: Solve Problems on Arrays [Easy -> Medium -> Hard] (3), Striver: Binary Search [1D, 2D Arrays, Search Space] (3), Striver: Strings [Basic and Medium] (2), Striver: Learn LinkedList [Single LL, Double LL, Medium, Hard Problems] (5), Striver: Recursion [PatternWise] (3), Striver: Bit Manipulation [Concepts & Problems] (3)
 - Weak/generic subsection names to review: none found by heuristic.
 - Coverage source: NeetCode / Striver-style pattern coverage.
 - Missing/priority candidates: Pattern recognition drills, Complexity trade-offs, Edge-case checklist, Mock interview communication, Re-solving weak bookmarked problems.
@@ -47,14 +47,14 @@ Sections:
 - Stack Patterns: 32 items, 6 subsections, 20 resources.
 - Heap (Priority Queue) Patterns: 30 items, 4 subsections, 15 resources.
 - Binary Search Patterns: 29 items, 5 subsections, 15 resources.
-- Graph Traversal Patterns (DFS & BFS): 69 items, 11 subsections, 45 resources.
+- Graph Traversal Patterns (DFS & BFS): 65 items, 11 subsections, 45 resources.
 - Greedy Patterns: 25 items, 7 subsections, 20 resources.
 - Backtracking Patterns: 27 items, 7 subsections, 22 resources.
 - Dynamic Programming (DP) Patterns: 50 items, 12 subsections, 26 resources.
 - String Manipulation Patterns: 23 items, 7 subsections, 21 resources.
 - Bit Manipulation Patterns: 16 items, 4 subsections, 15 resources.
-- Design Patterns: 43 items, 2 subsections, 12 resources.
-- Segment Tree & Fenwick Tree Patterns: 12 items, 2 subsections, 12 resources.
+- Design Patterns: 40 items, 2 subsections, 12 resources.
+- Segment Tree & Fenwick Tree Patterns: 11 items, 2 subsections, 12 resources.
 - Prefix Sum & Difference Array Patterns: 13 items, 4 subsections, 11 resources.
 - Hash Map & Cache Design Patterns: 10 items, 5 subsections, 14 resources.
 - Math, Number Theory & Geometry Patterns: 20 items, 5 subsections, 17 resources.
@@ -68,10 +68,28 @@ Sections:
 - Sorting Algorithms & Selection Patterns: 8 items, 4 subsections, 15 resources.
 - Randomized Algorithm Patterns: 6 items, 4 subsections, 9 resources.
 - Advanced String Algorithm Patterns: 7 items, 3 subsections, 13 resources.
+- Striver: Learn the basics: 52 items, 7 subsections, 0 resources.
+- Striver: Learn Important Sorting Techniques: 7 items, 2 subsections, 0 resources.
+- Striver: Solve Problems on Arrays [Easy -> Medium -> Hard]: 33 items, 3 subsections, 0 resources.
+- Striver: Binary Search [1D, 2D Arrays, Search Space]: 22 items, 3 subsections, 0 resources.
+- Striver: Strings [Basic and Medium]: 9 items, 2 subsections, 0 resources.
+- Striver: Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]: 31 items, 5 subsections, 0 resources.
+- Striver: Recursion [PatternWise]: 13 items, 3 subsections, 0 resources.
+- Striver: Bit Manipulation [Concepts & Problems]: 16 items, 3 subsections, 0 resources.
+- Striver: Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]: 22 items, 4 subsections, 0 resources.
+- Striver: Sliding Window & Two Pointer Combined Problems: 3 items, 2 subsections, 0 resources.
+- Striver: Heaps [Learning, Medium, Hard Problems]: 9 items, 3 subsections, 0 resources.
+- Striver: Greedy Algorithms [Easy, Medium/Hard]: 8 items, 2 subsections, 0 resources.
+- Striver: Binary Trees [Traversals, Medium and Hard Problems]: 36 items, 3 subsections, 0 resources.
+- Striver: Binary Search Trees [Concept and Problems]: 16 items, 2 subsections, 0 resources.
+- Striver: Graphs [Concepts & Problems]: 36 items, 6 subsections, 0 resources.
+- Striver: Dynamic Programming [Patterns and Problems]: 34 items, 9 subsections, 0 resources.
+- Striver: Tries: 6 items, 2 subsections, 0 resources.
+- Striver: Strings: 6 items, 1 subsections, 0 resources.
 
 ## System Design
 
-- Inventory: 15 sections, 62 subsections, 322 concepts, 263 resources.
+- Inventory: 15 sections, 62 subsections, 322 concepts, 216 resources.
 - Formatting focus: consistent navigation, closed resources, clean headings, and better fallback search links.
 - Duplicate subsection names to review: none found by title.
 - Weak/generic subsection names to review: none found by heuristic.
@@ -307,7 +325,7 @@ Sections:
 
 ## CS Fundamentals
 
-- Inventory: 7 sections, 31 subsections, 156 concepts, 53 resources.
+- Inventory: 7 sections, 31 subsections, 156 concepts, 43 resources.
 - Formatting focus: consistent navigation, closed resources, clean headings, and better fallback search links.
 - Duplicate subsection names to review: none found by title.
 - Weak/generic subsection names to review: IPC
@@ -326,7 +344,7 @@ Sections:
 
 ## Behavioral and Leadership
 
-- Inventory: 6 sections, 41 subsections, 145 concepts, 37 resources.
+- Inventory: 6 sections, 41 subsections, 145 concepts, 25 resources.
 - Formatting focus: consistent navigation, closed resources, clean headings, and better fallback search links.
 - Duplicate subsection names to review: Failure & Learning (2)
 - Weak/generic subsection names to review: none found by heuristic.
@@ -354,7 +372,7 @@ Sections:
 
 ## AI Engineering
 
-- Inventory: 11 sections, 37 subsections, 180 concepts, 60 resources.
+- Inventory: 11 sections, 37 subsections, 177 concepts, 56 resources.
 - Formatting focus: consistent navigation, closed resources, clean headings, and better fallback search links.
 - Duplicate subsection names to review: none found by title.
 - Weak/generic subsection names to review: none found by heuristic.
@@ -376,7 +394,7 @@ Sections:
 
 Sections:
 - LLM Fundamentals: 15 items, 3 subsections, 4 resources.
-- Prompt Engineering: 15 items, 3 subsections, 4 resources.
+- Prompt Engineering: 12 items, 3 subsections, 4 resources.
 - RAG (Retrieval-Augmented Generation): 19 items, 3 subsections, 4 resources.
 - Agents & Tool Use: 16 items, 3 subsections, 4 resources.
 - Evals & Testing: 10 items, 2 subsections, 4 resources.
@@ -389,7 +407,7 @@ Sections:
 
 ## Cloud - AWS and Azure
 
-- Inventory: 11 sections, 34 subsections, 194 concepts, 58 resources.
+- Inventory: 11 sections, 34 subsections, 194 concepts, 55 resources.
 - Formatting focus: consistent navigation, closed resources, clean headings, and better fallback search links.
 - Duplicate subsection names to review: none found by title.
 - Weak/generic subsection names to review: none found by heuristic.
@@ -412,7 +430,7 @@ Sections:
 
 ## Interview Prep
 
-- Inventory: 6 sections, 18 subsections, 92 concepts, 17 resources.
+- Inventory: 6 sections, 18 subsections, 92 concepts, 16 resources.
 - Formatting focus: consistent navigation, closed resources, clean headings, and better fallback search links.
 - Duplicate subsection names to review: none found by title.
 - Weak/generic subsection names to review: none found by heuristic.
