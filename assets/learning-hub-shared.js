@@ -172,7 +172,12 @@
     skip.textContent = "Skip to content";
     document.body.insertBefore(skip, document.body.firstChild);
     var main = document.querySelector("main, .wrap, .container, .content-area, #app");
-    if (main && !document.getElementById("hub-main")) main.id = "hub-main";
+    /* never rename an element that already has an id: page scripts look it up
+       (the tutorials render into #am-root, other pages into #app) */
+    if (main) {
+      if (!main.id) main.id = "hub-main";
+      skip.href = "#" + main.id;
+    }
 
     nav.querySelector("[data-hub-theme]").addEventListener("click", toggleTheme);
     applyTheme(document.documentElement.getAttribute("data-theme") || "light", false);
@@ -289,4 +294,25 @@
   } else {
     mountLock();
   }
+})();
+
+
+/* ---------- in-page YouTube side panel on every hub page ---------- */
+(function () {
+  if (window.__hubVideoPanelLoaded) return;
+  window.__hubVideoPanelLoaded = true;
+  var root = "";
+  var scripts = document.getElementsByTagName("script");
+  for (var i = 0; i < scripts.length; i++) {
+    var m = (scripts[i].getAttribute("src") || "").match(/^(.*?)assets\/learning-hub-shared\.js/);
+    if (m) { root = m[1]; break; }
+  }
+  var css = document.createElement("link");
+  css.rel = "stylesheet";
+  css.href = root + "assets/video-panel.css?v=1";
+  document.head.appendChild(css);
+  var js = document.createElement("script");
+  js.src = root + "assets/video-panel.js?v=1";
+  js.defer = true;
+  document.head.appendChild(js);
 })();
