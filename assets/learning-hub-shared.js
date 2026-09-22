@@ -309,10 +309,10 @@
   }
   var css = document.createElement("link");
   css.rel = "stylesheet";
-  css.href = root + "assets/video-panel.css?v=1";
+  css.href = root + "assets/video-panel.css?v=2";
   document.head.appendChild(css);
   var js = document.createElement("script");
-  js.src = root + "assets/video-panel.js?v=1";
+  js.src = root + "assets/video-panel.js?v=2";
   js.defer = true;
   document.head.appendChild(js);
 })();
