@@ -785,14 +785,78 @@ const coreLldOutline = [
 ];
 
 const coreBehavioralPatterns = [
-  ["STAR Method", ["Situation Examples", "Task Breakdown", "Action Planning", "Result Measurement"]],
-  ["Conflict Resolution", ["Identifying Issues", "Stakeholder Management", "Negotiation Tactics", "Resolution Follow-up"]],
-  ["Team Leadership", ["Team Building", "Motivation Techniques", "Delegation Skills", "Performance Management"]],
-  ["Project Management", ["Planning & Scoping", "Risk Management", "Timeline Management", "Cross-functional Coordination"]],
-  ["Communication", ["Stakeholder Communication", "Technical Explanation", "Active Listening", "Feedback Delivery"]],
-  ["Problem Solving", ["Root Cause Analysis", "Creative Solutions", "Data-Driven Decisions", "Implementation Strategy"]],
-  ["Adaptability", ["Change Management", "Learning Agility", "Resilience Building", "Flexibility in Approach"]],
-  ["Cultural Fit", ["Company Values Alignment", "Team Dynamics", "Work Style Preferences", "Growth Mindset"]],
+  [
+    "STAR Method",
+    [
+      ["Situation Examples", "https://www.themuse.com/advice/star-interview-method"],
+      ["Task Breakdown", "https://www.theforage.com/blog/interview-prep/star-method"],
+      ["Action Planning", "https://www.techinterviewhandbook.org/behavioral-interview/#answering-behavioral-questions"],
+      ["Result Measurement", "https://www.tryexponent.com/blog/star-method-interview"],
+    ],
+  ],
+  [
+    "Conflict Resolution",
+    [
+      ["Identifying Issues", "https://hbr.org/2015/01/how-to-resolve-a-conflict-with-a-peer-at-work"],
+      ["Stakeholder Management", "https://staffeng.com/guides/managing-stakeholders/"],
+      ["Negotiation Tactics", "https://hbr.org/2014/12/the-art-of-saying-no-at-work"],
+      ["Resolution Follow-up", "https://www.atlassian.com/team-playbook/plays/retrospective"],
+    ],
+  ],
+  [
+    "Team Leadership",
+    [
+      ["Team Building", "https://rework.withgoogle.com/guides/understanding-team-effectiveness/"],
+      ["Motivation Techniques", "https://hbr.org/2014/11/what-motivates-employees-to-walk-the-extra-mile"],
+      ["Delegation Skills", "https://hbr.org/2020/10/to-be-a-great-leader-you-have-to-learn-how-to-delegate-well"],
+      ["Performance Management", "https://larahogan.me/blog/manager-volcano-feedback/"],
+    ],
+  ],
+  [
+    "Project Management",
+    [
+      ["Planning & Scoping", "https://staffeng.com/guides/project-lead/"],
+      ["Risk Management", "https://aws.amazon.com/builders-library/automating-safe-hands-off-deployments/"],
+      ["Timeline Management", "https://www.atlassian.com/agile/project-management/critical-path"],
+      ["Cross-functional Coordination", "https://svpg.com/the-product-team/"],
+    ],
+  ],
+  [
+    "Communication",
+    [
+      ["Stakeholder Communication", "https://hbr.org/2021/01/how-to-communicate-effectively-with-executives"],
+      ["Technical Explanation", "https://fs.blog/feynman-technique/"],
+      ["Active Listening", "https://hbr.org/2021/12/what-is-active-listening"],
+      ["Feedback Delivery", "https://google.github.io/eng-practices/review/reviewer/"],
+    ],
+  ],
+  [
+    "Problem Solving",
+    [
+      ["Root Cause Analysis", "https://sre.google/sre-book/postmortem-culture/"],
+      ["Creative Solutions", "https://www.allthingsdistributed.com/2023/11/the-frugal-architect.html"],
+      ["Data-Driven Decisions", "https://netflixtechblog.com/what-is-an-a-b-test-b08064f2f45c"],
+      ["Implementation Strategy", "https://martinfowler.com/articles/feature-toggles.html"],
+    ],
+  ],
+  [
+    "Adaptability",
+    [
+      ["Change Management", "https://martinfowler.com/articles/microservices.html#EvolutionaryDesign"],
+      ["Learning Agility", "https://www.danieldavies.com/articles/learning-fast/"],
+      ["Resilience Building", "https://sre.google/sre-book/incident-management/"],
+      ["Flexibility in Approach", "https://kentbeck.github.io/TestDesiderata/"],
+    ],
+  ],
+  [
+    "Cultural Fit",
+    [
+      ["Company Values Alignment", "https://www.amazon.jobs/content/en/our-workplace/leadership-principles"],
+      ["Team Dynamics", "https://rework.withgoogle.com/guides/understanding-team-effectiveness/"],
+      ["Work Style Preferences", "https://about.gitlab.com/handbook/values/"],
+      ["Growth Mindset", "https://hbr.org/2016/01/what-having-a-growth-mindset-actually-means"],
+    ],
+  ],
 ];
 
 const dataScienceFoundationsOutline = [
@@ -2668,13 +2732,18 @@ function systemDesignSourceExtractHtml() {
 
 function behavioralSourceExtractHtml() {
   const cards = coreBehavioralPatterns.map(([pattern, subs]) => `<article class="source-extract-card">
-    <span class="source-status">Core Framework</span>
+    <span class="source-status">STAR</span>
     <h3>${escHtml(pattern)}</h3>
-    <ul>${subs.map((sub) => `<li>${escHtml(sub)}</li>`).join("")}</ul>
+    <ul>${subs.map(([sub, url]) => `<li><a href="${escHtml(url)}" target="_blank" rel="noopener">${escHtml(sub)}</a></li>`).join("")}</ul>
   </article>`).join("");
   return `<aside class="source-extract" id="behavioral-source-extracts">
-  <h2>Behavioral Framework: 8 Core Patterns &amp; STAR Guide</h2>
-  <p>8 behavioral patterns and 32 subpatterns structured to help prepare and deliver high-impact STAR responses across interview rounds.</p>
+  <h2>Extracted Source Map: Behavioral Interview Sheet</h2>
+  <p>8 behavioral patterns and 32 subpatterns structured to help prepare and deliver high-impact STAR responses across interview rounds, with direct practice guides for each subtopic.</p>
+  <div class="source-direct-links">${linkChips([
+    ["Behavioral Interview Guide", "https://www.techinterviewhandbook.org/behavioral-interview/"],
+    ["Amazon Leadership Principles", "https://www.amazon.jobs/content/en/our-workplace/leadership-principles"],
+    ["STAR Method Blueprint", "https://www.themuse.com/advice/star-interview-method"],
+  ])}</div>
   <div class="source-extract-grid">${cards}</div>
 </aside>`;
 }
@@ -2989,7 +3058,7 @@ function buildContentAudit(data) {
     if (source.key === "bh") {
       lines.push("- Extracted framework added to page: 8 core behavioral patterns and 32 subpatterns for STAR preparation.");
       lines.push("- Behavioral extracted outline:");
-      for (const [pattern, subs] of coreBehavioralPatterns) lines.push(`  - ${pattern}: ${subs.join(", ")}.`);
+      for (const [pattern, subs] of coreBehavioralPatterns) lines.push(`  - ${pattern}: ${subs.map((s) => s[0]).join(", ")}.`);
     }
     if (source.key === "ai") {
       lines.push("- Foundations extract added to page: Data Science & ML curriculum as an AI/ML foundations bridge.");
