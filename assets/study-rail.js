@@ -87,7 +87,9 @@
   function buildRail(d) {
     var wrap = el("div", "hub-actions");
     wrap.setAttribute("data-no-panel", "");
-    var readableDocs = d.docs.filter(function (x) { return readable(x[1]); });
+    /* Every curated article is worth a button: the panel renders the ones that
+       allow embedding and opens the rest in a new tab. */
+    var readableDocs = d.docs;
 
     if (d.primary && d.primary[1]) {
       wrap.appendChild(link("custom primary-link", d.primary[0], d.primary[1], "Open " + d.primary[0] + " in a new tab"));
@@ -229,11 +231,16 @@
       rows: function () { return document.querySelectorAll(".am-rows > a.am-row"); },
       read: function (row) {
         var title = clean((row.querySelector(".am-title") || row).textContent);
-        var found = lessonLinks(row.getAttribute("href") || "");
+        var href = row.getAttribute("href") || "";
+        var found = lessonLinks(href);
+        var picked = curated(href);
         return {
           title: title,
           query: topicQuery(title, document.title.replace(/\s*[—|].*$/, "")),
-          videos: found.videos, docs: found.docs, primary: null
+          /* hand-picked resources first, then anything the lesson text links to */
+          videos: merge(picked.videos, found.videos),
+          docs: merge(picked.docs, found.docs),
+          primary: null
         };
       },
       mount: function (row, rail) {
@@ -244,6 +251,35 @@
       }
     }
   ];
+
+
+  /* Hand-picked resources for this roadmap, keyed by concept then by lesson file.
+     See System_Design_Tutorial/resources.js — every video there was verified
+     against YouTube's oEmbed API. */
+  function curated(hash) {
+    var out = { videos: [], docs: [] };
+    var store = window.sdResources;
+    if (!store) return out;
+    var key = String(hash).replace(/^#/, "");
+    var hit = store.concepts && store.concepts[key];
+    if (!hit) {
+      var sub = key.split("/")[0], file = null;
+      (window.topicsData || []).forEach(function (sec) {
+        (sec.subsections || []).forEach(function (s) { if (s.id === sub) file = s.file; });
+      });
+      hit = file && store.lessons && store.lessons[file];
+    }
+    if (!hit) return out;
+    return { videos: (hit.videos || []).slice(), docs: (hit.docs || []).slice() };
+  }
+  function merge(a, b) {
+    var out = a.slice();
+    (b || []).forEach(function (x) {
+      var dup = out.some(function (y) { return y[0] === x[0] || y[1] === x[1]; });
+      if (!dup && out.length < MAX) out.push(x);
+    });
+    return out;
+  }
 
   /* Pull the links out of the markdown lesson that backs a roadmap row. */
   function slugOf(headingLine) {
