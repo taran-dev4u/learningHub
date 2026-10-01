@@ -1,6 +1,14 @@
-# Taran's Learning Hub - Project Context And Handoff
+# Taran's Learning Hub - Project Context And Handoff (HISTORICAL)
 
-Last updated: 2026-06-12
+> **This is the June 2026 snapshot and is out of date.** The current handoff is
+> [`AGENTS.md`](AGENTS.md) — read that first. Everything below describes the site as it
+> stood at commit `48eb7ca`, before the Sep 20 dedupe/design round, the study rail and
+> side panel, the three themes, the System Design curation, and the Oct 1 full-page
+> audit. Page counts, file maps, feature descriptions and the deployment notes here are
+> all superseded. Keep it for the extraction history in sections 10-13, which is still
+> the only record of where the source content came from.
+
+Last updated: 2026-06-12 (superseded 2026-10-01)
 
 Live site: https://taran-dev4u.github.io/learningHub/
 

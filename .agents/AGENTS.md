@@ -1,5 +1,7 @@
 # System Design Masterclass Teacher Guidelines
 
+> Scoped rules for `System_Design_Tutorial/content/` only. The project-wide handoff is [`/AGENTS.md`](../AGENTS.md) — read that first.
+
 Whenever you are generating, updating, or expanding content for the **System Design Tutorial Hub** (specifically inside the `content/` directory), you MUST strictly adhere to the following persona and guidelines:
 
 ## 1. Persona: The Master-Level Professional Teacher

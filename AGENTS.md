@@ -1,1 +1,317 @@
-## Imported Claude Cowork project instructions
+# AGENTS.md — Taran's Learning Hub
+
+**Read this file end to end before touching anything.** It is the master handoff.
+`PROJECT_CONTEXT.md` is the June 2026 snapshot and is now historical — where the two
+disagree, this file wins.
+
+- Live: https://taran-dev4u.github.io/learningHub/
+- Repo: https://github.com/taran-dev4u/learningHub (public, branch `main`)
+- Workspace: `E:\Absolute learning\learningHub`
+- Companion repo the hub links out to: `E:\Absolute learning\Interview-Process\Amazon`
+  → deployed at https://amazon-sde-preparation-hub.interview-prep-hub.workers.dev/
+- Last full audit: Oct 1 2026, commit `bb6d796`
+
+---
+
+## 1. What this is
+
+A **static** personal study site for Taran — one place for DSA, System Design, LLD,
+CS fundamentals, behavioral, AI engineering, cloud and interview prep. 764 HTML pages,
+no framework, no build server. GitHub Pages serves the repo root directly.
+
+It is a *study tool*, not a publication. Everything on it is for one person: progress
+ticks, bookmarks and notes live in that browser's `localStorage`. Design decisions should
+favour "fast to study from" over "nice to look at".
+
+The whole site is gated behind a **client-side passcode** (see §7). That is a speed bump,
+not security — the repo is public.
+
+## 2. Page inventory
+
+| Page | What it is | Who writes it |
+|---|---|---|
+| `index.html` | hub landing, global search over all 2,026 items | **generated** |
+| `hub.html` | 442-byte redirect to `index.html` | **generated** |
+| `DSA_Ultimate_Index.html` | 2 MB. 47 patterns, 219 subpatterns, 940 distinct problems | **hand-maintained** |
+| `system_design.html` | 15 topics, 62 subtopics, 322 concepts | hand + generator injects |
+| `cs_fundamentals.html` | 7 domains, 31 subsections, 156 concepts | hand + generator injects |
+| `behavioral.html` | 6 domains, 145 concepts, 16 Amazon LPs | hand + generator injects |
+| `ai_engineering.html` | 11 domains, 37 subsections, 177 concepts | hand + generator injects |
+| `cloud_aws_azure.html` | 11 domains, 34 subsections, 194 concepts | hand + generator injects |
+| `interview_prep.html` | 92 items + transcript runner + Amazon companion panel | **fully generated** |
+| `DSA_Tutorial/` | 747 pages: 29 patterns, 699 problems, 12 foundations, 6 python | **generated** by `build.py` |
+| `System_Design_Tutorial/` | 1 shell page + `topics.js` + `contentBundle.js` (62 lessons) | data-driven |
+| `LLD_Tutorial/` | 1 shell page + `topics.js` + `contentBundle.js` | data-driven |
+| `library.html`, `auto-me/`, `ConvertedDocs/` | reading library, habit engine, 4 converted docs | misc |
+
+Counts that appear on a page are **claims about that page** and must match the rows
+underneath them. `tools/audit_site.py` checks this; see §6.
+
+## 3. The runtime decoration pattern — understand this first
+
+There are 764 pages. **Do not regenerate them to add a feature.** Every page loads two
+lines in `<head>`:
+
+```html
+<link rel="stylesheet" href="assets/learning-hub-shared.css">
+<script src="assets/learning-hub-shared.js"></script>
+```
+
+`learning-hub-shared.js` works out its own depth (hub vs `/DSA_Tutorial/` vs
+`/DSA_Tutorial/problems/`) and at runtime injects the navbar, the theme switch and the
+passcode gate, then loads `study-rail.js` and `video-panel.js`. **A site-wide UI change is
+an edit to one file in `assets/`.** That is the single most important convention here.
+
+### `assets/` — what each file owns
+
+| File | Owns |
+|---|---|
+| `learning-hub-shared.js` | nav registry (14 links incl. Amazon SDE `↗`), 3-theme cycle, passcode gate, shared localStorage helpers |
+| `learning-hub-shared.css` | navbar, black-theme token layer, width overrides, row reflow |
+| `study-rail.js` | the per-row **Watch / Read / G** buttons, across 5 surfaces |
+| `study-rail.css` | `.study-link` styling, ported from the Amazon prep site |
+| `video-panel.js` / `.css` | the side panel: dock left/right, collapse to a 46px rail, videos + reader tabs |
+| `dsa-resources.js` | generated map `{leetcode-slug: {v,t,d,p,l}}`, 450 problems from NeetCode's `.problemSiteData.json` |
+| `tutorial-app.js` | renders `topics.js` into roadmap rows for both tutorials; `splitTitle()` splits "Long name — detail" into title + description |
+| `algomaster-theme.css` | tutorial layout |
+
+### Themes
+
+Three, cycled by the navbar button: `light` → `dark` → `black`. Canonical key
+`learning_hub_theme`; four legacy keys (`hub_theme`, `learning_hub_theme_v2`,
+`dsa-tut-theme`, `theme`) are **mirrored** on every write so each page's own older theme
+code keeps working. `applyTheme(..., persist=true)` on first load is deliberate — without
+it each page falls back to its own default and you get light/dark whiplash between pages.
+
+Black theme wins specificity with `html.black:root` (0,2,1) so it outranks per-page
+`:root` blocks whatever order the stylesheets load in. Same trick for `html:root .wrap`.
+
+### The study rail
+
+`study-rail.js` defines 5 surfaces, matched by selector:
+
+| Surface | Rows |
+|---|---|
+| `dsa-index` | `ol.problems > li[data-lc]` on `DSA_Ultimate_Index.html` |
+| `dsa-pattern` | `ul.plist > li` on DSA Tutorial pattern pages |
+| `dsa-problem` | DSA Tutorial problem pages |
+| `concepts` | `li[data-cid]` on all six concept pages |
+| `am-roadmap` | `.am-rows > a.am-row` in both tutorials |
+
+Decoration is **lazy** via `IntersectionObserver` with `rootMargin: 500px` — a 1,058-row
+page would stall otherwise. **This makes it look broken in a headless test:** rows on the
+DSA index start ~5,400px down, so scrolling to 2,500px decorates nothing. Use
+`element.scrollIntoView()` and wait ~1.5s before asserting. A zero rail count is almost
+always the test, not the code.
+
+Buttons fall back to a **labelled** search when nothing is curated — never a bare
+`youtube.com/results?search_query=<whole long title>`. Taran complained about exactly that;
+`shortTitle()` + `subject()` exist to keep queries searchable.
+
+## 4. Generators — who owns which bytes
+
+**Check this before editing any HTML by hand. If a generator owns the file, your edit is
+gone on the next build.**
+
+### `tools/build-learning-hub.mjs` (Node, no deps)
+
+```bash
+node tools/build-learning-hub.mjs
+```
+
+- **Writes whole files**: `index.html`, `hub.html`, `interview_prep.html`,
+  `learning-hub-data.json`, `search-index.json`, `content-audit.md`, `README.md`,
+  `.nojekyll`, `.github/workflows/pages.yml`.
+  → to change Interview Prep or the hub landing page, **edit this script**.
+- **Injects into** the 6 concept source pages (`transformSourcePage`): shared nav/CSS,
+  coverage panel, source-extract panel, gap sections, link rewriting. Your hand edits to
+  the *content* of those pages survive; the injected chrome is replaced.
+- It **re-derives counts from the pages**, so after editing `DSA_Ultimate_Index.html` you
+  must re-run it or `index.html` and `README.md` go stale.
+- It collapses `class="resources-section open"` to closed (line ~2917). A panel you mark
+  open in the script will render closed. That is deliberate — every resource panel on the
+  site starts collapsed.
+- It reads both `<section class="pattern">` (29 curated) **and** `<div class="pattern">`
+  (18 Striver) blocks. It originally only matched the first, which is why 331 Striver
+  problems were invisible to hub search for months.
+- It is **idempotent** — running it twice produces an identical tree. If a second run
+  dirties files, you have introduced an injection that nothing strips; fix it rather than
+  committing the churn. (It used to append a blank line to six pages on every build.)
+
+### `DSA_Tutorial/build.py` (Python)
+
+Generates all 747 tutorial pages from the `content_*.py` modules.
+**Delete `problems/*.html` etc. before rebuilding** — renumbered output otherwise lands
+*alongside* the old files and you end up with 1,125 pages.
+
+### `tools/build_sd_resources.py` (+ `part1/2/3.py`)
+
+Builds `System_Design_Tutorial/resources.js` (`window.sdResources`, 242 links, 39 verified
+videos). It validates every lesson filename and every `lessonId`/anchor against
+`topics.js` and **refuses to write on a mismatch** — if it refuses, fix the data, do not
+weaken the check.
+
+## 5. Working rules
+
+1. **Never hand-edit a generated file.** §4 says who owns what.
+2. **Edit shared behaviour in `assets/`**, not in 764 pages.
+3. **Edit files in place on the machine** (`sed -i`, a short read-modify-write script).
+   Never re-type a file's content from tool output — these files are up to 2 MB and output
+   gets truncated; that silently destroys content.
+4. **Write atomically.** Both builders use temp-file + rename + retry because writing over
+   an existing file on this mounted Windows drive intermittently fails with `EINVAL` and
+   killed two builds mid-run. Any new script that writes into the repo must do the same.
+5. **Re-derive, never guess, a number.** Every count on a page must be computed from that
+   page. A wrong count has been the single most common defect in this repo's history.
+6. **Dedupe by container, not by document.** A problem legitimately appears under several
+   patterns. Only duplicates *inside one pattern* are bugs. An earlier pass used a regex
+   that matched nothing (`<div class="pattern" id=` where curated blocks use
+   `<section class="pattern" id=`), grouped everything as one bucket, and nearly deleted
+   98 valid cross-pattern entries.
+7. **When you remove rows, fix everything downstream**: the subpattern count, the pattern
+   banner, the table-of-contents entry, the header chips, the subtitle, and
+   `data-pattern-lcs`. Then re-run the generator. Then run the auditor.
+8. **Verify by rendering, not by reading the diff.** A stale stat chip and an overflowing
+   row only show up in a screenshot.
+
+## 6. Verification
+
+```bash
+python3 tools/audit_site.py          # all 764 pages, exits non-zero on any finding
+node   tools/build-learning-hub.mjs  # re-derive hub/index/README/search
+node   tools/verify-learning-hub.mjs
+node --check assets/*.js
+```
+
+`tools/verify-learning-hub.mjs` is the lighter per-page gate (shared-asset wiring, no
+legacy navbar, no default-open resource panels, no duplicate `data-cid`, one hub card per
+site). Both are green at `bb6d796`+. Its nav checks were stale for weeks — they asserted a
+static `<nav class="site-nav">` that the Sep 2026 round deliberately removed, and a
+hardcoded card count. **If a verifier fails on something the site deliberately changed, fix
+the verifier, don't reintroduce the markup.**
+
+`tools/audit_site.py` checks broken links, dead anchors, duplicate ids, stated-vs-actual
+counts, orphan stat chips, empty sections, duplicate rows in a list, SUBPATTERN numbering,
+`data-pattern-lcs` drift, template leaks, placeholders, mojibake, inline secrets,
+hardcoded local paths, and shared-asset wiring. **Its header explains the two false-positive
+traps that burned previous passes — read it before believing a large report.** Baseline as
+of `bb6d796` is **0 findings**; anything above 0 is yours.
+
+Rendered check (container, Playwright + Chromium already installed):
+set `localStorage['taran_learning_hub_unlocked_v1'] = '1'` and reload to get past the gate,
+then assert at 1440px in `light` and `black`: no page errors, no console errors,
+`scrollWidth === clientWidth`, 15 nav links, and 3 study-rail buttons on a row you
+scrolled into view.
+
+## 7. The passcode gate
+
+`learning-hub-shared.js` adds `html.learning-hub-locked` and an overlay until
+`taran_learning_hub_unlocked_v1 === "1"` in `localStorage`. The passcode is **not** in the
+source any more — it is compared as two independent 32-bit digests (`PASS_DJB2`,
+`PASS_SDBM`, `PASS_LEN`). It used to sit in the file as `var PASSWORD = "736537"` in a
+public repo.
+
+Still only a speed bump: anyone can set the flag in devtools. Do not add anything to this
+site that would matter if it leaked, and do not advertise the gate as security.
+
+## 8. Deploying
+
+```bash
+git add -A && git commit -m "..." && git push origin main
+```
+
+GitHub Pages (`.github/workflows/pages.yml`) deploys the root on every push to `main`;
+live in roughly 60–90s. There is exactly **one** workflow — a second one (`static.yml`)
+used to race it on the same concurrency group and was deleted. Do not add another.
+
+**Known friction when an agent is driving this from a sandbox:**
+
+- The Linux VM that `device_bash` runs in has **no git credentials**, so `git push` fails
+  with `could not read Username for 'https://github.com'`. Commit on the CLI, then push via
+  **GitHub Desktop** through computer-use. GitHub Desktop caches its view — click
+  *Fetch origin* first or it will still show your commit as uncommitted changes. Both
+  executable paths need granting (the launcher and the versioned `app-3.6.6` one).
+- Stale `.git/HEAD.lock` and `tmp_obj_*` files block commits and need delete permission,
+  which is lost whenever the MCP server reconnects. Expect to request it more than once.
+- The cloud container's proxy **blocks `github.io`**, so `curl` cannot verify the live
+  site. Use the in-app browser instead.
+
+## 9. State of the content
+
+- **DSA index**: 47 patterns · 219 subpatterns · 940 distinct problems
+  (609 curated + 331 Striver A2Z) · 244 E / 485 M / 211 H · 73 Blind 75 · 121 NeetCode 150 ·
+  425 distinct resource URLs. All verified against the markup at `bb6d796`.
+- **Hub totals**: 7 sites · 103 sections · 2,026 items · 829 resources.
+- **System Design**: 62 roadmap lessons with curated, verified links; 39 verified videos.
+- **DSA videos**: 450 problems carry a NeetCode walkthrough, sourced from
+  `neetcode-gh/leetcode`'s `.problemSiteData.json`. YouTube links were verified through the
+  oEmbed API (`youtube.com/oembed?url=...&format=json`) — it returns the real title and
+  channel, which is how to check a video id is live and is what it claims.
+
+## 10. Known open items
+
+Ordered by how much they'd bother Taran.
+
+1. **~490 DSA problems outside NeetCode's catalogue have no curated video** — the rail
+   falls back to a labelled search. He has asked for real links "one by one, without
+   missing anything"; this is the main outstanding ask.
+2. **23 System Design lessons** have articles but no video.
+3. **874 items share a recycled description** — the subsection blurb repeated on every item
+   inside it (36 problems all read "Compose hashmap + secondary structure…"). Needs ~900
+   written descriptions; a script cannot do it well.
+4. **DSA Tutorial pattern topics and six concept pages** are not curated the way System
+   Design is.
+5. **45 MB of PDFs** are tracked in git and shipped on every deploy.
+6. **135 resource links appear under more than one section** (Striver sheet 8×, AlgoMaster
+   7×). Deduped within a panel; across sections they act as per-section pointers. Probably fine.
+7. Page backgrounds still differ 1–2% between families (`#f4f6f8`, `#fafbfc`, `#f8fafc`).
+
+## 11. What Taran has asked for, in his words
+
+Useful for judging whether a change is wanted:
+
+- One navbar, every page reachable from every other page.
+- The Amazon SDE prep hub linked **from the interview page**, to the live site — not just
+  the navbar. (There is now a companion panel under the hero with 8 deep links.)
+- Direct-link buttons on the **right side** of every roadmap row, styled like the Amazon
+  prep site, opening in a side panel that collapses and can dock left or right —
+  "comfortable for watching videos".
+- Three themes, expand/collapse everywhere.
+- **Use the full width.** He said the site "looks zoomed out even at 100%" because of wasted
+  left/right margins. Don't reintroduce narrow content columns.
+- **Short titles with a description underneath**, not one long run-on title.
+- **No generic searches** that return unrelated videos because the query was the whole title.
+- "Check each and every page and each and every section and identify the mistakes."
+
+## 12. History
+
+Written up in the attached Claude project (`learning-Hub`):
+
+- `learningHub-audit-and-plan.md` — the original study and plan
+- `learningHub-defect-report.md` — how each defect was measured
+- `learningHub-fixes-applied.md` — the Sep 20 dedupe + design-unify round
+- `system-design-curated-resources.md` — the SD curation pass
+- `learningHub-full-page-audit.md` — the Oct 1 full-page audit (this file's companion)
+
+Commit history worth knowing: `4c7a264` dedupe + unify nav/theme/layout · `8c50d0a` study
+rail · `c3b27bb`/`7a56896` side panel · `f83707c` SD curation · `0fbe45d` three themes +
+collapse · `04e88aa` full-width + title split · `7f92463` DSA videos and direct links ·
+`bb6d796` full-page audit.
+
+---
+
+## Appendix — content voice (System Design masterclass)
+
+When generating or expanding markdown under `System_Design_Tutorial/content/`, write as an
+elite System Design instructor (Alex Xu / ByteByteGo / staff engineer):
+
+- **Do not summarize.** Long, exhaustive, as a transcribed 45-minute lecture would read.
+- **Explain the why.** Not "Cassandra uses consistent hashing" but why that avoids a full
+  data migration when a node joins.
+- **Analogies** for every complex concept.
+- **Tables** for trade-offs (SQL vs NoSQL, RabbitMQ vs Kafka, long polling vs WebSockets).
+- **Teacher FAQ / Common Beginner Mistakes** at the end of each major section, as
+  `> [!NOTE]` blockquotes, answering the doubts a beginner actually has.
+- **Exact formulas and numbers to memorize** wherever there is math or latency.
+- `#` title, `##` sections, `###` concepts; `> [!TIP]` / `> [!NOTE]` / `> [!WARNING]`; bold
+  key terms; config or SQL snippets where they help.

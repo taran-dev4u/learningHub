@@ -2921,9 +2921,16 @@ function transformSourcePage(source) {
   html = rewriteConceptSearchLinks(html, source);
   if (source.key === "cloud") html = formatCloudQa(html);
   html = html.replace("</head>", `<link rel="stylesheet" href="assets/learning-hub-shared.css">\n<script src="assets/learning-hub-shared.js"></script>\n${siteNavStyle()}\n</head>`);
-  html = html.replace('<div class="wrap">', `<div class="wrap">\n${siteNavHtml(source)}\n`);
+  // siteNavHtml/siteNavScript are retired (the shared script renders the navbar).
+  // Only inject when they actually return markup, otherwise every build appends a
+  // blank line that nothing strips and the file grows on each run.
+  const navMarkup = siteNavHtml(source);
+  if (navMarkup) html = html.replace('<div class="wrap">', `<div class="wrap">\n${navMarkup}\n`);
   html = html.replace(/(<nav class="toc">)/, `${coveragePanelHtml(source)}\n${sourceExtractHtml(source)}\n$1`);
-  html = html.replace("</body>", `${siteNavScript()}\n</body>`);
+  const navScript = siteNavScript();
+  if (navScript) html = html.replace("</body>", `${navScript}\n</body>`);
+  // one-time cleanup of blank lines earlier builds appended
+  html = html.replace(/\n{3,}(?=<\/head>)/g, "\n").replace(/\n{3,}(?=<\/body>)/g, "\n");
   fs.writeFileSync(filePath, html, "utf8");
 }
 
