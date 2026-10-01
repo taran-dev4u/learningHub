@@ -7,7 +7,7 @@ If you confuse Latency and Throughput in an interview, it is an immediate red fl
 
 ---
 
-## Latency vs Throughput (The Highway Analogy)
+## Latency vs Throughput Fundamentals
 
 To understand the difference, imagine a highway.
 - **Latency:** How long it takes one car to travel from City A to City B. (Speed).
@@ -27,7 +27,7 @@ If you want to improve **Throughput**, you build more lanes on the highway so mo
 
 ---
 
-## P50 / P95 / P99 — tail latency dominates user experience
+## Percentiles & Tail Latency (P50, P95, P99)
 
 If you have 100 API requests, and you calculate the *Average (Mean)* latency, you are doing it wrong. Averages hide terrible performance. 
 
@@ -43,7 +43,7 @@ If Amazon's web page requires 100 different microservices to load, and *each* mi
 
 ---
 
-## Vertical scaling (scale-up) — simpler, limited by hardware
+## Vertical Scaling (Scale-Up)
 
 When your server hits 100% CPU, how do you handle more traffic? The easiest way is **Vertical Scaling (Scaling Up)**.
 
@@ -58,7 +58,7 @@ You turn off your server, throw away the small CPU, and put in a massive 64-core
 
 ---
 
-## Horizontal scaling (scale-out) — stateless apps, requires LB
+## Horizontal Scaling (Scale-Out)
 
 Because Vertical Scaling has a physical ceiling, tech giants use **Horizontal Scaling (Scaling Out)**.
 
@@ -78,7 +78,7 @@ You must move all state (sessions, data) out of the application servers and into
 
 ---
 
-## Batching increases throughput at the cost of latency
+## Batching vs Streaming Trade-offs
 
 We mentioned the Cargo Ship analogy earlier. This is the concept of **Batching**.
 

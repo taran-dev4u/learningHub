@@ -26,7 +26,7 @@ An operation is **Idempotent** if performing it once has the exact same effect a
 
 ---
 
-## Status codes: 2xx success · 3xx redirect · 4xx client · 5xx server
+## HTTP Status Code Categories
 
 Status codes tell the client what happened without parsing a JSON body.
 

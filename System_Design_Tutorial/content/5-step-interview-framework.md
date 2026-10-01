@@ -24,7 +24,7 @@ This module provides the ultimate **5-Step System Design Framework**. Treat this
 
 ---
 
-## Step 1 — Clarify requirements (5 min)
+## Phase 1: Clarifying Requirements & Scope
 
 When the interviewer says, *"Design Twitter"*, your first instinct might be to start drawing boxes. **Stop!** The prompt is intentionally vague. Your first job is to extract the actual requirements.
 
@@ -44,7 +44,7 @@ Determine the scale and physics of the system.
 
 ---
 
-## Step 2 — Back-of-envelope estimates
+## Phase 2: Scale & Capacity Estimation
 
 Now that you know what to build, you must calculate *how big* it needs to be. (See the Capacity Estimation masterclass for the deep dive).
 
@@ -58,7 +58,7 @@ Because these numbers dictate your design. If you calculate 100 QPS and 50 GB of
 
 ---
 
-## Step 3 — High-level design (15 min)
+## Phase 3: High-Level Architectural Design
 
 This is the core of the interview. You will draw your Level 2 Container Diagram.
 
@@ -91,7 +91,7 @@ By speaking out loud while tracing the path, you prove that you understand exact
 
 ---
 
-## Step 4 — Deep dives (15 min)
+## Phase 4: Component Deep Dives & Bottlenecks
 
 You have successfully drawn the happy path. Now, the interviewer wants to see how you handle complexity.
 
@@ -108,7 +108,7 @@ At the end of Step 3, literally ask: *"We have the High-Level Design. Would you 
 
 ---
 
-## Step 5 — Trade-offs (5 min)
+## Phase 5: Failure Modes & Scalability Limits
 
 There is no "perfect" system design. Every choice you make introduces a weakness.
 

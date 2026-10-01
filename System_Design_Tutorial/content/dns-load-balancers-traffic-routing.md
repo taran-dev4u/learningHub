@@ -7,7 +7,7 @@ This masterclass covers the journey of a network request: from translating a hum
 
 ---
 
-## DNS resolution: recursive resolver → root → TLD → authoritative
+## Hierarchical DNS Resolution Flow
 
 DNS (Domain Name System) is the phonebook of the internet. It translates `google.com` to `142.250.190.46`.
 

@@ -32,7 +32,7 @@
     { label: "AI",            short: "AI",        href: "ai_engineering.html" },
     { label: "Cloud",         short: "Cloud",     href: "cloud_aws_azure.html" },
     { label: "Interview Prep",short: "Interview", href: "interview_prep.html" },
-    { label: "Amazon SDE",    short: "Amazon",    href: "https://amazon-sde-preparation-hub.interview-prep-hub.workers.dev/", external: true },
+    { label: "Companies",     short: "Companies", href: "companies.html" },
     { label: "Library",       short: "Library",   href: "library.html" },
     { label: "Auto-Me",       short: "Auto-Me",   href: "auto-me/index.html" }
   ];

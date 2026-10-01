@@ -7,7 +7,7 @@ If you memorize the reference numbers in this cheat sheet, you will be able to e
 
 ---
 
-## Powers of 2: 2^10=1K · 2^20=1M · 2^30=1B · 2^40=1T
+## Powers of Two & Data Volume Units
 
 Computers operate in base-2. You must know how to translate powers of 2 into human-readable numbers (thousands, millions, billions). 
 
@@ -24,7 +24,7 @@ Memorize this table:
 
 ---
 
-## Read latencies: L1 0.5ns · L2 7ns · RAM 100ns · SSD 150μs · HDD 10ms · WAN 150ms
+## Storage Hierarchy & Read Latencies
 
 We covered this in the Capacity Estimation module, but it is so important it bears repeating. 
 *Note: ns = nanosecond, μs = microsecond, ms = millisecond.*
@@ -41,7 +41,7 @@ We covered this in the Capacity Estimation module, but it is so important it bea
 
 ---
 
-## 1B users, 10% DAU, 1 request/day → ~1157 QPS
+## Daily Active Users to QPS Conversion
 
 You will often be given Monthly Active Users (MAU) or Total Users. You need to convert this to QPS (Queries Per Second).
 
@@ -58,7 +58,7 @@ Let's do the math:
 
 ---
 
-## 100GB/day data → ~3TB/month → ~36TB/year → can a single machine hold it?
+## Annual Data Growth & Storage Sizing
 
 Storage math is crucial for determining if you need a distributed database (Sharding).
 
@@ -75,7 +75,7 @@ Therefore, you must explicitly state: *"Since our 5-year storage is 180TB, a sin
 
 ---
 
-## Text tweet: ~280 chars → image tweet: ~500KB → video: ~100MB
+## Payload & Media Storage Sizing
 
 When estimating storage, you must make assumptions about the size of a single object. If the interviewer does not provide object sizes, state your assumptions clearly using these industry standards:
 

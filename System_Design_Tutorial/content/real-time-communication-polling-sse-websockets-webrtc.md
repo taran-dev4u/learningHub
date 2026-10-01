@@ -29,7 +29,7 @@ To fix the wastefulness of Short Polling, engineers invented Long Polling.
 
 ---
 
-## SSE (Server-Sent Events) — HTTP-based, server→client only, auto-reconnect
+## Server-Sent Events (SSE)
 
 **Server-Sent Events (SSE)** is an elegant, native browser API that solves Long Polling's overhead while staying within standard HTTP.
 

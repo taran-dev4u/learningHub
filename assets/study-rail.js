@@ -93,25 +93,39 @@
     var m = String(href).match(/leetcode\.com\/problems\/([a-z0-9-]+)/i);
     return m ? m[1].toLowerCase() : "";
   }
-  function dsaExtras(href, found) {
+  function dsaExtras(href, found, li) {
     var slug = lcSlug(href);
-    if (!slug) return found;
-    var hit = window.dsaResources && window.dsaResources[slug];
-    if (hit && hit.v) {
-      var label = (hit.t || "") + " — NeetCode walkthrough";
-      var existing = null;
-      found.videos.forEach(function (v) { if (v[0] === hit.v) existing = v; });
-      if (existing) {
-        /* the row linked the same video behind a badge like "NC✓" — give it a real name */
-        existing[1] = label;
-        existing[2] = "NeetCode";
-      } else {
-        found.videos.unshift([hit.v, label, "NeetCode", ""]);
+    var lcNum = li ? (li.getAttribute("data-lc") || "") : "";
+    var digits = lcNum.replace(/^[^0-9]+/, "");
+    if (digits && !isNaN(digits)) {
+      var padded = digits.padStart(4, "0");
+      var walkccc = "https://walkccc.me/LeetCode/problems/" + padded + "/";
+      if (!found.docs.some(function (d) { return d[1] === walkccc; })) {
+        found.docs.unshift(["Walkccc Multi-Approach Solutions", walkccc]);
       }
     }
-    var sol = "https://leetcode.com/problems/" + slug + "/solutions/";
-    if (!found.docs.some(function (d) { return d[1] === sol; })) {
-      found.docs.unshift(["LeetCode solutions", sol]);
+    if (slug) {
+      var hit = window.dsaResources && window.dsaResources[slug];
+      if (hit && hit.v) {
+        var label = (hit.t || "") + " — NeetCode walkthrough";
+        var existing = null;
+        found.videos.forEach(function (v) { if (v[0] === hit.v) existing = v; });
+        if (existing) {
+          /* the row linked the same video behind a badge like "NC✓" — give it a real name */
+          existing[1] = label;
+          existing[2] = "NeetCode";
+        } else {
+          found.videos.unshift([hit.v, label, "NeetCode", ""]);
+        }
+      }
+      var neetcodeUrl = "https://neetcode.io/problems/" + slug;
+      if (!found.docs.some(function (d) { return d[1] === neetcodeUrl; })) {
+        found.docs.push(["NeetCode Solutions", neetcodeUrl]);
+      }
+      var sol = "https://leetcode.com/problems/" + slug + "/solutions/";
+      if (!found.docs.some(function (d) { return d[1] === sol; })) {
+        found.docs.push(["LeetCode Solutions (external ↗)", sol]);
+      }
     }
     return found;
   }
@@ -177,6 +191,7 @@
     if (!d) return;
     e.preventDefault();
     e.stopPropagation();
+    var row = b.closest("li, tr, .am-row, [data-cid], .subsection") || b;
     if (!window.VideoPanel) { window.open(b.getAttribute("data-sr") === "watch" ? ytSearchUrl(d.query) : googleUrl(d.query), "_blank", "noopener"); return; }
     window.VideoPanel.open({
       title: d.title,
@@ -184,7 +199,8 @@
       videos: d.videos,
       anim: [],
       docs: d.docs,
-      tab: b.getAttribute("data-sr") === "read" ? "read" : "videos"
+      tab: b.getAttribute("data-sr") === "read" ? "read" : "videos",
+      originEl: row
     });
   }, true);
 
@@ -218,11 +234,19 @@
         var title = clean(name ? name.textContent : li.getAttribute("data-name"));
         var found = harvest(li.querySelector(".solutions") || li);
         var href = name && name.getAttribute("href");
-        found = dsaExtras(href, found);
+        found = dsaExtras(href, found, li);
         /* the problem name itself already links to LeetCode, so no source button */
         return { title: title, query: topicQuery(title, "leetcode solution"), videos: found.videos, docs: found.docs, primary: null };
       },
-      mount: function (li, rail) { (li.querySelector(".solutions") || li).appendChild(rail); }
+      mount: function (li, rail) {
+        var sol = li.querySelector(".solutions");
+        if (sol) {
+          sol.querySelectorAll(".sol-link").forEach(function (x) { x.style.display = "none"; });
+          sol.appendChild(rail);
+        } else {
+          li.appendChild(rail);
+        }
+      }
     },
     {
       /* DSA Tutorial — pattern pages list their problems */
@@ -233,7 +257,7 @@
         var num = li.querySelector(".num");
         var title = clean(a ? a.textContent : "");
         var url = li.getAttribute("data-lc-url");
-        var found = dsaExtras(url, { videos: [], docs: [] });
+        var found = dsaExtras(url, { videos: [], docs: [] }, li);
         return {
           title: title,
           query: topicQuery(title, "leetcode " + clean(num ? num.textContent : "")),

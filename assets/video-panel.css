@@ -23,7 +23,7 @@
 .vp-panel.vp-dragging .vp-frame { pointer-events: none; }
 
 /* page makes room for the panel on desktop */
-html.vp-active body { padding-right: var(--vp-offset, 0px); transition: padding-right .22s ease; }
+html.vp-active body { padding-right: var(--vp-offset, 0px); }
 
 .vp-resize {
   position: absolute; left: -5px; top: 0; bottom: 0; width: 10px; cursor: col-resize; z-index: 2;
@@ -181,7 +181,7 @@ html[data-theme="dark"] .vp-panel, html.dark .vp-panel { box-shadow: -18px 0 40p
 .vp-panel.vp-dock-left.vp-open { transform: none; }
 .vp-panel.vp-dock-left .vp-resize { left: auto; right: -5px; }
 .vp-panel.vp-dock-left .vp-resize::after { left: auto; right: 3px; }
-html.vp-active.vp-left body { padding-right: 0; padding-left: var(--vp-offset, 0px); transition: padding-left .22s ease; }
+html.vp-active.vp-left body { padding-right: 0; padding-left: var(--vp-offset, 0px); }
 @media (max-width: 860px) {
   .vp-panel.vp-dock-left { left: 0; right: 0; transform: translateY(105%); }
   .vp-panel.vp-dock-left.vp-open { transform: none; }

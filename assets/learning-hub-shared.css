@@ -222,6 +222,8 @@ pre, code, .code, table { max-width: 100%; }
 pre { overflow-x: auto; }
 .solutions { flex-wrap: wrap; }
 .sol-link { max-width: 100%; overflow-wrap: anywhere; }
+/* When study rail is active on DSA index, hide legacy duplicated action links */
+.solutions:has(.hub-actions) > .sol-link { display: none !important; }
 @media (max-width: 520px) {
   .res-grid { grid-template-columns: 1fr !important; }
 }

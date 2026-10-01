@@ -7,7 +7,7 @@ In System Design, we don't just hope the system stays up. We mathematically guar
 
 ---
 
-## SLI / SLO / SLA — indicator, objective, agreement
+## SLI, SLO, and SLA Metrics
 
 If you don't measure it, you can't guarantee it. The industry uses three acronyms to discuss uptime:
 
@@ -23,7 +23,7 @@ If you don't measure it, you can't guarantee it. The industry uses three acronym
 
 ---
 
-## 99.9% (8.76 hrs/yr) · 99.99% (52 min/yr) · 99.999% (5.25 min/yr)
+## High Availability & Uptime Calculations (The Nines)
 
 When people talk about "High Availability," they measure it in "Nines." You must memorize how much downtime each "Nine" translates to.
 
@@ -38,7 +38,7 @@ When people talk about "High Availability," they measure it in "Nines." You must
 
 ---
 
-## Availability in series: multiply (A1 × A2) — cascades
+## Cascading Availability in Series
 
 When you chain services together (Service A calls Service B), your overall availability **drops**.
 
@@ -51,7 +51,7 @@ Because the request requires *all three* components to be alive, the system is l
 
 ---
 
-## Availability in parallel: 1 - (1-A)^n — redundancy helps
+## Redundancy & Parallel Availability
 
 If chaining components lowers availability, how do we increase it? We put components in **Parallel (Redundancy)**.
 

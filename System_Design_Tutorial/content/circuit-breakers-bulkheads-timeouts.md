@@ -70,7 +70,7 @@ Total requests hitting Service B = $3 \times 3 \times 3 = 27$ requests per singl
 
 ---
 
-## 4. Circuit breaker states: Closed (normal) → Open (failing) → Half-Open (testing)
+## Circuit Breaker State Machine
 
 Retries are great for transient faults (a temporary network blip). But what if the downstream database is completely offline? Retrying 10,000 times will not bring it back. It will only consume CPU and network bandwidth.
 

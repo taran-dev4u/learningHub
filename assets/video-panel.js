@@ -47,30 +47,34 @@
   }
   function applyWidth(w) {
     if (!el) return;
-    if (isMobile()) {
-      el.style.width = '';
-      document.documentElement.style.removeProperty('--vp-offset');
-      return;
-    }
-    el.style.width = w + 'px';
-    if (el.classList.contains('vp-open')) document.documentElement.style.setProperty('--vp-offset', w + 'px');
+    withPin(lastOriginEl, function () {
+      if (isMobile()) {
+        el.style.width = '';
+        document.documentElement.style.removeProperty('--vp-offset');
+        return;
+      }
+      el.style.width = w + 'px';
+      if (el.classList.contains('vp-open')) document.documentElement.style.setProperty('--vp-offset', w + 'px');
+    });
   }
   var C_KEY = 'vp-collapsed', RAIL_W = 46;
   function savedCollapsed() { try { return localStorage.getItem(C_KEY) === '1'; } catch (e) { return false; } }
   function applyCollapsed(on) {
     if (!el) return;
-    el.classList.toggle('vp-collapsed', !!on);
-    var btn = el.querySelector('.vp-collapse');
-    if (btn) btn.setAttribute('aria-expanded', String(!on));
-    var rail = el.querySelector('.vp-rail-text');
-    if (rail) rail.textContent = state.title || 'Study panel';
-    if (isMobile()) return;
-    if (on) {
-      el.style.width = RAIL_W + 'px';
-      if (el.classList.contains('vp-open')) document.documentElement.style.setProperty('--vp-offset', RAIL_W + 'px');
-    } else {
-      applyWidth(savedWidth());
-    }
+    withPin(lastOriginEl, function () {
+      el.classList.toggle('vp-collapsed', !!on);
+      var btn = el.querySelector('.vp-collapse');
+      if (btn) btn.setAttribute('aria-expanded', String(!on));
+      var rail = el.querySelector('.vp-rail-text');
+      if (rail) rail.textContent = state.title || 'Study panel';
+      if (isMobile()) return;
+      if (on) {
+        el.style.width = RAIL_W + 'px';
+        if (el.classList.contains('vp-open')) document.documentElement.style.setProperty('--vp-offset', RAIL_W + 'px');
+      } else {
+        applyWidth(savedWidth());
+      }
+    });
   }
   function setCollapsed(on) {
     try { localStorage.setItem(C_KEY, on ? '1' : '0'); } catch (e) {}
@@ -80,8 +84,10 @@
   function savedDock() { try { return localStorage.getItem(D_KEY) === 'left' ? 'left' : 'right'; } catch (e) { return 'right'; } }
   function applyDock(side) {
     if (!el) return;
-    el.classList.toggle('vp-dock-left', side === 'left');
-    document.documentElement.classList.toggle('vp-left', side === 'left');
+    withPin(lastOriginEl, function () {
+      el.classList.toggle('vp-dock-left', side === 'left');
+      document.documentElement.classList.toggle('vp-left', side === 'left');
+    });
   }
   function googleUrl(q) { return 'https://www.google.com/search?q=' + encodeURIComponent(q || ''); }
 
@@ -384,6 +390,46 @@
       });
   }
 
+  var lastOriginEl = null;
+  var pinRafId = null;
+  function withPin(targetEl, mutationFn) {
+    var elToPin = targetEl || lastOriginEl;
+    if (!elToPin || !elToPin.getBoundingClientRect) {
+      if (mutationFn) mutationFn();
+      return;
+    }
+    if (pinRafId) {
+      cancelAnimationFrame(pinRafId);
+      pinRafId = null;
+    }
+    var targetY = elToPin.getBoundingClientRect().top;
+    if (mutationFn) mutationFn();
+
+    // Immediate synchronous scroll compensation prevents visible layout jumps
+    var shift = elToPin.getBoundingClientRect().top - targetY;
+    if (Math.abs(shift) > 0.5) {
+      try { window.scrollBy({ top: shift, behavior: "instant" }); }
+      catch (e) { window.scrollBy(0, shift); }
+    }
+
+    // Follow-up RAF stabilization for deferred font loads or iframe rendering
+    var start = performance.now();
+    function step() {
+      if (!elToPin.isConnected) return;
+      var curDiff = elToPin.getBoundingClientRect().top - targetY;
+      if (Math.abs(curDiff) > 0.5) {
+        try { window.scrollBy({ top: curDiff, behavior: "instant" }); }
+        catch (e) { window.scrollBy(0, curDiff); }
+      }
+      if (performance.now() - start < 300) {
+        pinRafId = requestAnimationFrame(step);
+      } else {
+        pinRafId = null;
+      }
+    }
+    pinRafId = requestAnimationFrame(step);
+  }
+
   /* ---------- open / close ---------- */
   function clean(v) { return (v || []).filter(function (x) { return x && x[0]; }); }
   function open(opts) {
@@ -402,20 +448,25 @@
     titleEl.title = state.title;
     googleLink.href = googleUrl(state.query);
     googleLink.title = 'Google: ' + state.query;
-    el.classList.add('vp-open');
-    document.documentElement.classList.add('vp-active');
-    applyCollapsed(savedCollapsed());
-    setTab(tab);
+    if (opts.originEl) lastOriginEl = opts.originEl;
+    withPin(opts.originEl, function () {
+      el.classList.add('vp-open');
+      document.documentElement.classList.add('vp-active');
+      applyCollapsed(savedCollapsed());
+      setTab(tab);
+    });
     return true;
   }
 
   function close() {
     if (!el) return;
-    el.classList.remove('vp-open');
-    document.documentElement.classList.remove('vp-active');
-    document.documentElement.style.removeProperty('--vp-offset');
-    frame.src = 'about:blank';
-    viewer.innerHTML = '';
+    withPin(lastOriginEl, function () {
+      el.classList.remove('vp-open');
+      document.documentElement.classList.remove('vp-active');
+      document.documentElement.style.removeProperty('--vp-offset');
+      frame.src = 'about:blank';
+      viewer.innerHTML = '';
+    });
   }
 
   function ytId(href) {
@@ -520,7 +571,8 @@
       tab = 'read';
     }
     var title = topic || (id ? (vids[start] && vids[start][1]) : a.textContent.trim()) || 'Study';
-    open({ title: title, videos: vids, anim: anim, docs: docs, index: tab === 'videos' ? start : 0, docIndex: docIndex, tab: tab, query: a.dataset.vquery || title });
+    var row = a.closest('li, tr, .am-row, [data-cid], .subsection') || a;
+    open({ title: title, videos: vids, anim: anim, docs: docs, index: tab === 'videos' ? start : 0, docIndex: docIndex, tab: tab, query: a.dataset.vquery || title, originEl: row });
     if (tab === 'anim' && start) play(start);
   }, true);
 

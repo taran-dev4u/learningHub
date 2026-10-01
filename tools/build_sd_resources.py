@@ -5,7 +5,7 @@ from part1 import L1
 from part2 import L2
 from part3 import C
 
-ROOT = os.path.expanduser('~/mnt/learningHub/System_Design_Tutorial')
+ROOT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'System_Design_Tutorial')
 t = open(os.path.join(ROOT, 'topics.js'), encoding='utf-8').read()
 topics = json.loads(t[t.index('['):t.rindex(']')+1])
 

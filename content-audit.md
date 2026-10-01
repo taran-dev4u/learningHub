@@ -1,6 +1,6 @@
 # Taran's Learning Hub Content Audit
 
-Generated: 2026-10-01T19:36:49.324Z
+Generated: 2026-10-01T20:06:30.628Z
 
 ## Research References
 
@@ -430,7 +430,7 @@ Sections:
 
 ## Interview Prep
 
-- Inventory: 6 sections, 18 subsections, 92 concepts, 24 resources.
+- Inventory: 6 sections, 18 subsections, 92 concepts, 25 resources.
 - Formatting focus: consistent navigation, closed resources, clean headings, and better fallback search links.
 - Duplicate subsection names to review: none found by title.
 - Weak/generic subsection names to review: none found by heuristic.
