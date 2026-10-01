@@ -96,8 +96,37 @@
   function dsaExtras(href, found, li) {
     var slug = lcSlug(href);
     var lcNum = li ? (li.getAttribute("data-lc") || "") : "";
-    var digits = lcNum.replace(/^[^0-9]+/, "");
-    if (digits && !isNaN(digits)) {
+    var isStriver = lcNum.charAt(0) === "s";
+    var digits = isStriver ? "" : lcNum.replace(/^[^0-9]+/, "");
+    var res = window.dsaResources || {};
+    var hit = res[lcNum] || (slug ? res[slug] : null) || (digits ? res[digits] : null);
+
+    if (hit) {
+      if (hit.videos && Array.isArray(hit.videos) && hit.videos.length) {
+        hit.videos.forEach(function (v) {
+          if (v && v[0] && !found.videos.some(function (x) { return x[0] === v[0]; })) {
+            found.videos.push([v[0], v[1] || "Video", v[2] || "YouTube", v[3] || ""]);
+          }
+        });
+      } else if (hit.v) {
+        var label = (hit.t || "") + " — Walkthrough";
+        if (!found.videos.some(function (v) { return v[0] === hit.v; })) {
+          found.videos.push([hit.v, label, "NeetCode", ""]);
+        }
+      }
+
+      if (hit.reads && Array.isArray(hit.reads) && hit.reads.length) {
+        hit.reads.forEach(function (r) {
+          var name = r[0] || "Read";
+          var url = r[1] || "";
+          if (url && !found.docs.some(function (d) { return d[1] === url; })) {
+            found.docs.push([name, url, { embed: r[3], approach: r[2], complexity: r[4], languages: r[5] }]);
+          }
+        });
+      }
+    }
+
+    if (!isStriver && digits && !isNaN(digits)) {
       var padded = digits.padStart(4, "0");
       var walkccc = "https://walkccc.me/LeetCode/problems/" + padded + "/";
       if (!found.docs.some(function (d) { return d[1] === walkccc; })) {
@@ -105,19 +134,6 @@
       }
     }
     if (slug) {
-      var hit = window.dsaResources && window.dsaResources[slug];
-      if (hit && hit.v) {
-        var label = (hit.t || "") + " — NeetCode walkthrough";
-        var existing = null;
-        found.videos.forEach(function (v) { if (v[0] === hit.v) existing = v; });
-        if (existing) {
-          /* the row linked the same video behind a badge like "NC✓" — give it a real name */
-          existing[1] = label;
-          existing[2] = "NeetCode";
-        } else {
-          found.videos.unshift([hit.v, label, "NeetCode", ""]);
-        }
-      }
       var neetcodeUrl = "https://neetcode.io/problems/" + slug;
       if (!found.docs.some(function (d) { return d[1] === neetcodeUrl; })) {
         found.docs.push(["NeetCode Solutions", neetcodeUrl]);
@@ -178,7 +194,7 @@
       r.appendChild(count(readableDocs.length));
       wrap.appendChild(r);
     }
-    wrap.appendChild(link("google icon-only", "", googleUrl(d.query), "Search Google: " + d.query));
+    wrap.appendChild(link("google icon-only", "G", googleUrl(d.query), "Search Google: " + d.query));
     wrap.__sr = d;
     return wrap;
   }

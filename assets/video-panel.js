@@ -30,7 +30,7 @@
     marked: 'https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js',
     purify: 'https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.6/purify.min.js'
   };
-  var el, frame, list, titleEl, kickerEl, openLink, moreLink, googleLink, tabsEl, videoView, readView, docsEl, viewer;
+  var el, frame, list, titleEl, kickerEl, openLink, moreLink, googleLink, tabsEl, videoView, readView, docsEl, viewer, channelBar;
   var state = { videos: [], anim: [], docs: [], tab: 'videos', idx: 0, title: '', query: '', doc: -1 };
 
   function esc(s) {
@@ -152,6 +152,7 @@
       '<button type="button" class="vp-rail" title="Expand the panel" aria-label="Expand the panel"><span class="vp-rail-icon">▸</span><span class="vp-rail-text"></span></button>' +
       '<div class="vp-tabs" role="tablist"></div>' +
       '<div class="vp-video-view">' +
+        '<div class="vp-channel-bar"></div>' +
         '<div class="vp-player"><iframe class="vp-frame" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>' +
         '<div class="vp-list-head"><span>More videos on this topic</span></div>' +
         '<div class="vp-list"></div>' +
@@ -164,6 +165,7 @@
     document.body.appendChild(el);
     frame = el.querySelector('.vp-frame');
     list = el.querySelector('.vp-list');
+    channelBar = el.querySelector('.vp-channel-bar');
     titleEl = el.querySelector('.vp-title');
     kickerEl = el.querySelector('.vp-kicker');
     openLink = el.querySelector('.vp-open-yt');
@@ -193,6 +195,10 @@
         setCollapsed(false);
         applyWidth(w);
       });
+    });
+    channelBar.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-vp-i]');
+      if (b) play(parseInt(b.dataset.vpI, 10));
     });
     list.addEventListener('click', function (e) {
       var item = e.target.closest('[data-vp-i]');
@@ -259,6 +265,10 @@
     kickerEl.textContent = tab === 'anim' ? '🎬 Animated' : isRead ? '📄 Read' : '▶ Watch';
     if (isRead) {
       frame.src = 'about:blank';
+      if (channelBar) {
+        channelBar.style.display = 'none';
+        channelBar.innerHTML = '';
+      }
       renderDocs();
       showDoc(state.doc >= 0 ? state.doc : 0);
       return;
@@ -269,6 +279,10 @@
     moreLink.href = 'https://www.youtube.com/results?search_query=' + encodeURIComponent(state.query + (tab === 'anim' ? ' animation visualized' : ''));
     if (!vids.length) {
       frame.src = 'about:blank';
+      if (channelBar) {
+        channelBar.style.display = 'none';
+        channelBar.innerHTML = '';
+      }
       list.innerHTML = '<div class="vp-empty"><b>No ' + (tab === 'anim' ? 'animated' : '') + ' videos picked for this topic yet.</b>' +
         '<p>Search YouTube for an animated explanation instead:</p>' +
         '<a class="vp-cta" target="_blank" rel="noopener noreferrer" href="' + esc(moreLink.href) + '">🎬 “' + esc(state.query) + '” animation ↗</a></div>';
@@ -277,8 +291,24 @@
       return;
     }
     el.querySelector('.vp-player').style.display = '';
+    renderChannelBar();
     renderList();
     play(tab === 'videos' ? Math.min(state.idx, vids.length - 1) : 0);
+  }
+
+  function renderChannelBar() {
+    if (!channelBar) return;
+    var vids = curVideos();
+    if (!vids.length || vids.length <= 1) {
+      channelBar.style.display = 'none';
+      channelBar.innerHTML = '';
+      return;
+    }
+    channelBar.style.display = '';
+    channelBar.innerHTML = vids.map(function (v, i) {
+      var ch = v[2] || ('Instructor ' + (i + 1));
+      return '<button type="button" class="vp-chan-btn' + (i === state.idx ? ' active' : '') + '" data-vp-i="' + i + '">' + esc(ch) + '</button>';
+    }).join('');
   }
 
   function renderList() {
@@ -299,6 +329,9 @@
     openLink.href = 'https://www.youtube.com/watch?v=' + encodeURIComponent(v[0]);
     openLink.title = 'Open this video on YouTube';
     list.querySelectorAll('.vp-item').forEach(function (b, k) { b.classList.toggle('active', k === i); });
+    if (channelBar) {
+      channelBar.querySelectorAll('button').forEach(function (b, k) { b.classList.toggle('active', k === i); });
+    }
   }
 
   /* ---------- reader ---------- */

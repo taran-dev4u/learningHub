@@ -189,8 +189,7 @@ def render_problem(pg):
     badges = ''.join(BADGE_HTML[b] for b in prob['badges'])
     lc_icon = LC_SVG.format(url=prob['url']) if prob['url'] else ''
     comp = ''.join(f'<span class="chip">{esc(c.title())}</span>' for c in prob['companies'])
-    video = (f'<a class="chip" href="{prob["video"]}" target="_blank" rel="noopener">🎬 Video walkthrough</a>'
-             if prob.get('video') else '')
+    video = ''
     dups = [o for o in occ[prob['lc']] if o['seq'] != pg['seq']]
     dup_html = ''
     if dups:
@@ -237,7 +236,7 @@ deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</d
     body = f'''
 <h1><span class="num" style="color:var(--text-dim)">#{prob['lc']}</span> {esc(prob['name'])}
 <span class="pill {prob['diff']}">{ {'E':'Easy','M':'Medium','H':'Hard'}[prob['diff']] }</span>{badges}{lc_icon}</h1>
-<p>{comp} {video} &nbsp; {solved_cb}</p>
+<p>{comp} &nbsp; {solved_cb}</p>
 <p class="progress-note">Pattern: <a href="../{pat['_page']['path'].replace('patterns/','../patterns/')[3:]}">{esc(pat['title'])}</a>
  › Subpattern {esc(sub['tag'])}: {esc(sub['name'])} · Problem {pg['seq']} of {TOTAL}</p>
 {dup_html}
