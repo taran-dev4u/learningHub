@@ -146,9 +146,8 @@
         var name = li.querySelector(".pname, .problem-name");
         var title = clean(name ? name.textContent : li.getAttribute("data-name"));
         var found = harvest(li.querySelector(".solutions") || li);
-        var href = name && name.getAttribute("href");
-        var primary = href && !isLocal(name) ? [/leetcode\.com/.test(href) ? "LeetCode" : "Source", name.href] : null;
-        return { title: title, query: topicQuery(title, "leetcode solution"), videos: found.videos, docs: found.docs, primary: primary };
+        /* the problem name itself already links to LeetCode, so no source button */
+        return { title: title, query: topicQuery(title, "leetcode solution"), videos: found.videos, docs: found.docs, primary: null };
       },
       mount: function (li, rail) { (li.querySelector(".solutions") || li).appendChild(rail); }
     },
