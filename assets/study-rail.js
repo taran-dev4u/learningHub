@@ -64,6 +64,58 @@
     return out;
   }
 
+  /* ---------- DSA: NeetCode walkthrough + LeetCode solutions, per problem ----------
+     assets/dsa-resources.js maps a LeetCode slug to the video NeetCode publishes
+     for that exact problem, so the link always matches the row. Loaded lazily,
+     only on pages that actually list problems. */
+  var dsaPending = false;
+  function ensureDsaData(onReady) {
+    if (window.dsaResources) { onReady && onReady(); return true; }
+    if (dsaPending) return false;
+    dsaPending = true;
+    var s = document.createElement("script");
+    s.src = root() + "assets/dsa-resources.js?v=1";
+    s.onload = function () { onReady && onReady(); };
+    s.onerror = function () { window.dsaResources = {}; onReady && onReady(); };
+    document.head.appendChild(s);
+    return false;
+  }
+  function root() {
+    var scripts = document.getElementsByTagName("script");
+    for (var i = 0; i < scripts.length; i++) {
+      var m = (scripts[i].getAttribute("src") || "").match(/^(.*?)assets\/study-rail\.js/);
+      if (m) return m[1];
+    }
+    return "";
+  }
+  function lcSlug(href) {
+    if (!href) return "";
+    var m = String(href).match(/leetcode\.com\/problems\/([a-z0-9-]+)/i);
+    return m ? m[1].toLowerCase() : "";
+  }
+  function dsaExtras(href, found) {
+    var slug = lcSlug(href);
+    if (!slug) return found;
+    var hit = window.dsaResources && window.dsaResources[slug];
+    if (hit && hit.v) {
+      var label = (hit.t || "") + " — NeetCode walkthrough";
+      var existing = null;
+      found.videos.forEach(function (v) { if (v[0] === hit.v) existing = v; });
+      if (existing) {
+        /* the row linked the same video behind a badge like "NC✓" — give it a real name */
+        existing[1] = label;
+        existing[2] = "NeetCode";
+      } else {
+        found.videos.unshift([hit.v, label, "NeetCode", ""]);
+      }
+    }
+    var sol = "https://leetcode.com/problems/" + slug + "/solutions/";
+    if (!found.docs.some(function (d) { return d[1] === sol; })) {
+      found.docs.unshift(["LeetCode solutions", sol]);
+    }
+    return found;
+  }
+
   /* ---------- the rail ---------- */
   function el(tag, cls, text) {
     var n = document.createElement(tag);
@@ -165,6 +217,8 @@
         var name = li.querySelector(".pname, .problem-name");
         var title = clean(name ? name.textContent : li.getAttribute("data-name"));
         var found = harvest(li.querySelector(".solutions") || li);
+        var href = name && name.getAttribute("href");
+        found = dsaExtras(href, found);
         /* the problem name itself already links to LeetCode, so no source button */
         return { title: title, query: topicQuery(title, "leetcode solution"), videos: found.videos, docs: found.docs, primary: null };
       },
@@ -179,10 +233,11 @@
         var num = li.querySelector(".num");
         var title = clean(a ? a.textContent : "");
         var url = li.getAttribute("data-lc-url");
+        var found = dsaExtras(url, { videos: [], docs: [] });
         return {
           title: title,
           query: topicQuery(title, "leetcode " + clean(num ? num.textContent : "")),
-          videos: [], docs: [],
+          videos: found.videos, docs: found.docs,
           primary: url ? ["LeetCode", url] : null
         };
       },
@@ -199,6 +254,7 @@
         var title = clean(h.textContent);
         var found = harvest(h.parentElement || document.querySelector(".container"));
         var lc = document.querySelector("a.lc-icon");
+        found = dsaExtras(lc && lc.getAttribute("href"), found);
         return {
           title: title,
           query: topicQuery(title, "leetcode solution explained"),
@@ -366,6 +422,9 @@
     });
   }
   function scan() {
+    if (document.querySelector("ol.problems > li[data-lc], ul.plist > li, a.lc-icon") && !window.dsaResources) {
+      if (!ensureDsaData(function () { scan(); })) return;
+    }
     SURFACES.forEach(function (s) {
       var nodes;
       try { nodes = s.rows(); } catch (e) { return; }

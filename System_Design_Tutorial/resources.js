@@ -1230,7 +1230,13 @@ window.sdResources = {
  },
  "concepts": {
   "foundational-designs/url-shortener-tinyurl-bit-ly-hash-base62-collision-handling-analytics": {
-   "videos": [],
+   "videos": [
+    [
+     "xFeWVugaouk",
+     "Design a URL Shortener (TinyURL, Bit.ly)",
+     "Jordan has no life"
+    ]
+   ],
    "docs": [
     [
      "AlgoMaster — Design a URL shortener",
@@ -1332,7 +1338,13 @@ window.sdResources = {
    ]
   },
   "core-interview-designs/chat-whatsapp-slack-websockets-message-ordering-presence-fan-out": {
-   "videos": [],
+   "videos": [
+    [
+     "cr6p0n0N-VA",
+     "Design WhatsApp: system design interview with an ex-Meta senior manager",
+     "Hello Interview"
+    ]
+   ],
    "docs": [
     [
      "AlgoMaster — Design WhatsApp",
@@ -1384,7 +1396,13 @@ window.sdResources = {
    ]
   },
   "core-interview-designs/instagram-photo-sharing-media-upload-feed-generation-s3-cdn": {
-   "videos": [],
+   "videos": [
+    [
+     "VJpfO6KdyWE",
+     "System design mock interview: design Instagram",
+     "Exponent"
+    ]
+   ],
    "docs": [
     [
      "AlgoMaster — Design Instagram",
@@ -1397,7 +1415,13 @@ window.sdResources = {
    ]
   },
   "core-interview-designs/notification-system-multi-channel-push-email-sms-queues-templates-dedup": {
-   "videos": [],
+   "videos": [
+    [
+     "CUwt9_l0DOg",
+     "Notification service system design for billions of users",
+     "codeKarle"
+    ]
+   ],
    "docs": [
     [
      "AlgoMaster — Design a notification service",
@@ -1532,7 +1556,13 @@ window.sdResources = {
    ]
   },
   "core-interview-designs/autocomplete-typeahead-trie-top-k-redis-sorted-sets-prefix-cache": {
-   "videos": [],
+   "videos": [
+    [
+     "xrYTjaK5QVM",
+     "Architecture for auto suggestions / type ahead (Amazon question)",
+     "Tech Dummies - Narendra Lakshmana Gowda"
+    ]
+   ],
    "docs": [
     [
      "Redis — Sorted sets for top-K and typeahead",
@@ -1628,7 +1658,13 @@ window.sdResources = {
    ]
   },
   "advanced-senior-level-designs/stock-exchange-ultra-low-latency-order-matching-engine-fifo-fairness": {
-   "videos": [],
+   "videos": [
+    [
+     "dGYfpO3WJ1o",
+     "High throughput stock exchange",
+     "Jordan has no life"
+    ]
+   ],
    "docs": [
     [
      "LMAX — The LMAX architecture (Martin Fowler)",
