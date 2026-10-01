@@ -175,3 +175,17 @@ html[data-theme="dark"] .vp-panel, html.dark .vp-panel { box-shadow: -18px 0 40p
 
 /* read-trigger on cards */
 .study-link.vp-read { cursor: pointer; font-family: inherit; }
+
+/* ---- dock the panel on the left instead of the right ---- */
+.vp-panel.vp-dock-left { right: auto; left: 0; transform: translateX(-105%); }
+.vp-panel.vp-dock-left.vp-open { transform: none; }
+.vp-panel.vp-dock-left .vp-resize { left: auto; right: -5px; }
+.vp-panel.vp-dock-left .vp-resize::after { left: auto; right: 3px; }
+html.vp-active.vp-left body { padding-right: 0; padding-left: var(--vp-offset, 0px); transition: padding-left .22s ease; }
+@media (max-width: 860px) {
+  .vp-panel.vp-dock-left { left: 0; right: 0; transform: translateY(105%); }
+  .vp-panel.vp-dock-left.vp-open { transform: none; }
+  html.vp-active.vp-left body { padding-left: 0; }
+}
+.vp-tab-yt { color: #cc0000; }
+.vp-tab-google + .vp-tab-yt { margin-left: 10px; }

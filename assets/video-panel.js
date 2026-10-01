@@ -55,6 +55,13 @@
     el.style.width = w + 'px';
     if (el.classList.contains('vp-open')) document.documentElement.style.setProperty('--vp-offset', w + 'px');
   }
+  var D_KEY = 'vp-dock';
+  function savedDock() { try { return localStorage.getItem(D_KEY) === 'left' ? 'left' : 'right'; } catch (e) { return 'right'; } }
+  function applyDock(side) {
+    if (!el) return;
+    el.classList.toggle('vp-dock-left', side === 'left');
+    document.documentElement.classList.toggle('vp-left', side === 'left');
+  }
   function googleUrl(q) { return 'https://www.google.com/search?q=' + encodeURIComponent(q || ''); }
 
   /* ---------- doc classification ---------- */
@@ -107,6 +114,7 @@
         '<div class="vp-titles"><span class="vp-kicker">▶ Watch</span><b class="vp-title"></b></div>' +
         '<div class="vp-actions">' +
           '<a class="vp-btn vp-google" target="_blank" rel="noopener noreferrer" title="Search Google for this topic">G</a>' +
+          '<button type="button" class="vp-btn vp-dock" title="Move the panel to the other side" aria-label="Move the panel to the other side">⇄</button>' +
           '<button type="button" class="vp-btn vp-size" data-size="s" title="Narrow">⇤</button>' +
           '<button type="button" class="vp-btn vp-size" data-size="l" title="Wide">⇥</button>' +
           '<a class="vp-btn vp-open-yt" target="_blank" rel="noopener noreferrer" title="Open in a new tab">↗</a>' +
@@ -139,6 +147,12 @@
     viewer = el.querySelector('.vp-viewer');
 
     el.querySelector('.vp-close').addEventListener('click', close);
+    applyDock(savedDock());
+    el.querySelector('.vp-dock').addEventListener('click', function () {
+      applyDock(el.classList.contains('vp-dock-left') ? 'right' : 'left');
+      try { localStorage.setItem(D_KEY, el.classList.contains('vp-dock-left') ? 'left' : 'right'); } catch (e) {}
+      applyWidth(savedWidth());
+    });
     el.querySelectorAll('.vp-size').forEach(function (b) {
       b.addEventListener('click', function () {
         var w = b.dataset.size === 's' ? Math.round(window.innerWidth * 0.30) : Math.round(window.innerWidth * 0.6);
@@ -167,7 +181,7 @@
       handle.setPointerCapture(e.pointerId);
       el.classList.add('vp-dragging');
       function move(ev) {
-        var w = Math.round(window.innerWidth - ev.clientX);
+        var w = el.classList.contains('vp-dock-left') ? Math.round(ev.clientX) : Math.round(window.innerWidth - ev.clientX);
         applyWidth(Math.max(MIN_W, Math.min(w, Math.round(window.innerWidth * MAX_FRAC))));
       }
       function up() {
@@ -198,7 +212,8 @@
       return '<button type="button" role="tab" class="vp-tab' + (state.tab === t[0] ? ' active' : '') + (t[2] ? '' : ' empty') +
         '" data-vp-tab="' + t[0] + '" aria-selected="' + (state.tab === t[0]) + '">' + t[1] + ' <span>' + t[2] + '</span></button>';
     }).join('') +
-      '<a class="vp-tab vp-tab-google" target="_blank" rel="noopener noreferrer" href="' + esc(googleUrl(state.query)) + '" title="Google: ' + esc(state.query) + '">Google ↗</a>';
+      '<a class="vp-tab vp-tab-google" target="_blank" rel="noopener noreferrer" href="' + esc(googleUrl(state.query)) + '" title="Google: ' + esc(state.query) + '">Google ↗</a>' +
+      '<a class="vp-tab vp-tab-yt" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=' + encodeURIComponent(state.query + (state.tab === 'anim' ? ' animation visualized' : '')) + '" title="Search YouTube: ' + esc(state.query) + '">YouTube ↗</a>';
   }
   function curVideos() { return state.tab === 'anim' ? state.anim : state.videos; }
 

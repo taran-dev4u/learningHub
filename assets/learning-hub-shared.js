@@ -315,4 +315,14 @@
   js.src = root + "assets/video-panel.js?v=2";
   js.defer = true;
   document.head.appendChild(js);
+
+  /* row-level action buttons that open the panel */
+  var railCss = document.createElement("link");
+  railCss.rel = "stylesheet";
+  railCss.href = root + "assets/study-rail.css?v=1";
+  document.head.appendChild(railCss);
+  var railJs = document.createElement("script");
+  railJs.src = root + "assets/study-rail.js?v=1";
+  railJs.defer = true;
+  document.head.appendChild(railJs);
 })();

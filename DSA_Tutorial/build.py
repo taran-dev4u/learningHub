@@ -175,7 +175,7 @@ def render_pattern(pg):
         items = ''
         for prob in sub['problems']:
             badges = ''.join(BADGE_HTML[b] for b in prob['badges'])
-            items += (f'<li><input type="checkbox" data-id="p{pi:02d}-lc{prob["lc"]}" title="mark solved">'
+            items += (f'<li data-lc="{prob["lc"]}" data-lc-url="{esc(prob["url"] or "")}"><input type="checkbox" data-id="p{pi:02d}-lc{prob["lc"]}" title="mark solved">'
                       f'<span class="num">#{prob["lc"]}</span><span class="pill {prob["diff"]}">{prob["diff"]}</span>'
                       f'<a href="../{prob["_path"]}">{esc(prob["name"])}</a>{badges}</li>')
         parts.append(f'<h3>{esc(sub["tag"])} — {esc(sub["name"])}</h3>'
