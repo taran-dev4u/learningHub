@@ -137,6 +137,23 @@
   }, true);
 
   /* ---------- surfaces ---------- */
+  /* Long roadmap names ("Rate Limiter (distributed) — token bucket in Redis,
+     per-user limits") make terrible search queries. Use the part before the
+     dash, plus the roadmap's subject, so Google and YouTube find the topic. */
+  function shortTitle(value) {
+    var s = clean(value);
+    var m = s.match(/^(.*?)\s+[—–]\s+/) || s.match(/^([^:]{3,60}):\s+/);
+    var out = m ? clean(m[1]) : s;
+    return out && out.length <= 72 ? out : s;
+  }
+  function subject() {
+    var p = location.pathname;
+    if (/System_Design_Tutorial/i.test(p)) return "system design";
+    if (/LLD_Tutorial/i.test(p)) return "low level design";
+    if (/DSA_Tutorial|DSA_Ultimate_Index/i.test(p)) return "";
+    return "";
+  }
+
   function topicQuery(title, extra) { return clean(title + " " + (extra || "")); }
 
   var SURFACES = [
@@ -213,8 +230,8 @@
         }
         var heading = (sub && sub.querySelector("h3")) || (section && section.querySelector("h2"));
         return {
-          title: title,
-          query: topicQuery(title, clean(heading ? heading.textContent : "")),
+          title: shortTitle(title),
+          query: topicQuery(shortTitle(title), ""),
           videos: found.videos, docs: found.docs, primary: null
         };
       },
@@ -230,13 +247,14 @@
       name: "am-roadmap",
       rows: function () { return document.querySelectorAll(".am-rows > a.am-row"); },
       read: function (row) {
-        var title = clean((row.querySelector(".am-title") || row).textContent);
+        var full = clean(row.getAttribute("data-full-title") || (row.querySelector(".am-title") || row).textContent);
+        var title = clean(row.getAttribute("data-short-title")) || shortTitle(full);
         var href = row.getAttribute("href") || "";
         var found = lessonLinks(href);
         var picked = curated(href);
         return {
           title: title,
-          query: topicQuery(title, document.title.replace(/\s*[—|].*$/, "")),
+          query: topicQuery(title, subject()),
           /* hand-picked resources first, then anything the lesson text links to */
           videos: merge(picked.videos, found.videos),
           docs: merge(picked.docs, found.docs),

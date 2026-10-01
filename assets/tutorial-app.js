@@ -72,6 +72,21 @@
     if (x.indexOf('adv') === 0) return 'adv';
     return 'plain';
   }
+  /* Topic names carry their detail inline ("Rate Limiter (distributed) — token
+     bucket in Redis, per-user limits"). Split it so the row shows a short title
+     with the detail underneath, and so searches use the short name. */
+  function splitTitle(value) {
+    var s = String(value == null ? '' : value).trim();
+    var m = s.match(/^(.*?)\s+[—–]\s+(.+)$/);
+    if (!m) {
+      m = s.match(/^([^:]{3,60}):\s+(.+)$/);
+    }
+    if (!m) return { short: s, detail: '' };
+    var short = m[1].trim(), detail = m[2].trim();
+    if (!short || short.length > 72) return { short: s, detail: '' };
+    return { short: short, detail: detail.charAt(0).toUpperCase() + detail.slice(1) };
+  }
+
   function firstLine(md, anchor) {
     if (!md) return '';
     var re = new RegExp('^##\\s+.*$', 'gm'), m, idx = -1, next = md.length;
@@ -210,11 +225,14 @@
           if (filters.status === 'todo' && done) return;
           if (filters.status === 'done' && !done) return;
           if (q && (concept.title + ' ' + section.section + ' ' + sub.title).toLowerCase().indexOf(q) === -1) return;
-          rows.push('<a class="am-row' + (done ? ' done' : '') + '" href="#' + sub.id + '/' + concept.anchor + '">' +
+          var parts = splitTitle(concept.title);
+          var detail = parts.detail || firstLine(md, concept.anchor);
+          rows.push('<a class="am-row' + (done ? ' done' : '') + '" href="#' + sub.id + '/' + concept.anchor + '"' +
+            ' data-short-title="' + esc(parts.short) + '">' +
             '<button class="am-check' + (done ? ' on' : '') + '" type="button" data-done="' + esc(sub.id + '/' + concept.anchor) + '" ' +
-              'title="Mark as completed" aria-label="Mark ' + esc(concept.title) + ' as completed">✓</button>' +
-            '<span class="am-title">' + esc(concept.title) + '</span>' +
-            '<span class="am-sub">' + esc(firstLine(md, concept.anchor)) + '</span></a>');
+              'title="Mark as completed" aria-label="Mark ' + esc(parts.short) + ' as completed">✓</button>' +
+            '<span class="am-title">' + esc(parts.short) + '</span>' +
+            '<span class="am-sub">' + esc(detail) + '</span></a>');
         });
       });
       if (!rows.length) return;
@@ -266,7 +284,8 @@
           var item = flat.find(function (f) { return f.pageId === sub.id && f.conceptId === concept.anchor; });
           var cls = 'am-side-link' + (item && isDone(item) ? ' studied' : '') +
             (current && current.pageId === sub.id && current.conceptId === concept.anchor ? ' active' : '');
-          links.push('<a class="' + cls + '" href="#' + sub.id + '/' + concept.anchor + '">' + esc(concept.title) + '</a>');
+          var sp = splitTitle(concept.title);
+          links.push('<a class="' + cls + '" href="#' + sub.id + '/' + concept.anchor + '" title="' + esc(concept.title) + '">' + esc(sp.short) + '</a>');
         });
       });
       var open = section.subsections.some(function (sub) { return current && sub.id === current.pageId; });
@@ -287,14 +306,14 @@
         '<div class="am-main">' +
           '<div class="am-chapter-head">' +
             '<button class="am-btn am-icon-btn am-side-toggle" type="button" id="am-side-btn" aria-label="Open curriculum">☰</button>' +
-            '<span class="am-crumb">' + esc(item.sectionTitle) + ' &rsaquo; <b>' + esc(item.conceptTitle) + '</b></span>' +
+            '<span class="am-crumb">' + esc(item.sectionTitle) + ' &rsaquo; <b>' + esc(splitTitle(item.conceptTitle).short) + '</b></span>' +
             '<span class="am-spacer"></span>' +
             '<button class="am-btn' + (done ? ' is-done' : '') + '" type="button" id="am-done">' + (done ? '✓ Completed' : 'Mark completed') + '</button>' +
           '</div>' +
           '<article class="am-article am-fade" id="am-article"><div class="am-loading">Loading…</div></article>' +
           '<div class="am-pager">' +
-            '<button class="am-btn" type="button" id="am-prev"' + (prev ? '' : ' disabled') + '>← ' + esc(prev ? prev.conceptTitle : 'Start') + '</button>' +
-            '<button class="am-btn primary" type="button" id="am-next"' + (next ? '' : ' disabled') + '>' + esc(next ? next.conceptTitle : 'End') + ' →</button>' +
+            '<button class="am-btn" type="button" id="am-prev"' + (prev ? '' : ' disabled') + '>← ' + esc(prev ? splitTitle(prev.conceptTitle).short : 'Start') + '</button>' +
+            '<button class="am-btn primary" type="button" id="am-next"' + (next ? '' : ' disabled') + '>' + esc(next ? splitTitle(next.conceptTitle).short : 'End') + ' →</button>' +
           '</div>' +
         '</div>' +
       '</div>';
