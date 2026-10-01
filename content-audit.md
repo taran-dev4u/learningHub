@@ -1,6 +1,6 @@
 # Taran's Learning Hub Content Audit
 
-Generated: 2026-10-01T21:20:59.918Z
+Generated: 2026-10-01T21:35:47.762Z
 
 ## Research References
 
@@ -15,10 +15,6 @@ Generated: 2026-10-01T21:20:59.918Z
 - System Design Primer: https://github.com/donnemartin/system-design-primer
 - GeeksforGeeks System Design Tutorial: https://www.geeksforgeeks.org/system-design/system-design-tutorial/
 - DesignGurus Grokking System Design Interview: https://www.designgurus.io/course/grokking-the-system-design-interview
-- Thita Behavioral Sheet: https://www.thita.ai/behavioral-sheet
-- Thita System Design HLD: https://www.thita.ai/system-design
-- Thita Data Science Learning Path: https://thita.ai/dashboard/learning-path/data-science
-- Thita LLD Learning Path: https://thita.ai/dashboard/learning-path/lld
 
 ## Global Actions Applied
 
@@ -96,7 +92,7 @@ Sections:
 - Coverage source: roadmap.sh System Design + System Design Primer + GeeksforGeeks System Design Tutorial.
 - Reorganized coverage areas: Capacity estimation, HLD vs LLD boundaries, Functional and non-functional requirements, UML and HLD diagrams, CDNs and edge caching, Proxies and API gateways, Testing and CI/CD, Cost estimation, Search systems, Observability and SLOs, Threat modeling.
 - Recommended next resources: Local System Design Tutorial Hub, roadmap.sh System Design, System Design Primer, GeeksforGeeks System Design Tutorial, Google SRE Book.
-- Uploaded/source extracts added to page: GeeksforGeeks topic map, DesignGurus direct lesson links, Thita HLD outline, and Thita LLD outline.
+- Uploaded/source extracts added to page: GeeksforGeeks topic map, DesignGurus direct lesson links, and comprehensive HLD/LLD outlines.
 - GFG priority gaps: HLD vs LLD distinction and when to switch levels, Functional vs non-functional requirement checklist, System life cycle / SDLC and requirements gathering, HLD diagrams, activity diagrams, and UML diagram practice, LLD foundations: OOP, OOAD, interfaces, SOLID, DRY, KISS, YAGNI, Testing and delivery: unit, integration, load, stress, CI/CD, Cost estimation and cost-vs-performance trade-offs, Backup and disaster recovery planning, Ticket booking / BookMyShow and Messenger-style design prompts.
 - GFG direct topic links included: 115.
 - DesignGurus direct links included: 55.
@@ -231,7 +227,7 @@ Sections:
   - Behavioral Design Patterns: https://www.geeksforgeeks.org/system-design/behavioral-design-patterns/
   - Design Patterns Cheat Sheet: https://www.geeksforgeeks.org/system-design/design-patterns-cheat-sheet-when-to-use-which-design-pattern/
   - Interview Q&A: https://www.geeksforgeeks.org/system-design/top-10-system-design-interview-questions-and-answers/
-- Thita HLD extracted outline:
+- Comprehensive HLD extracted outline:
   - Foundations: 45-minute framework, estimation, CAP and consistency, availability and SLAs.
   - Networking and APIs: protocols, API design, gRPC, advanced API patterns, chat design.
   - Databases: SQL vs NoSQL, replication, sharding, indexing, storage, LSM trees, WAL.
@@ -240,7 +236,7 @@ Sections:
   - Scalability: consistent hashing, scaling reads vs writes, service architecture, feed design.
   - Coordination and transactions: consensus, locks, distributed transactions, Raft, gossip, quorum, stock exchange design.
   - Search, geo and aggregation: search, geospatial systems, real-time aggregation, Elasticsearch, maps and leaderboard designs.
-- Thita LLD extracted outline:
+- Comprehensive LLD extracted outline:
   - OOP foundations and class design.
   - Strategy and factory patterns.
   - State pattern and state machines.
@@ -351,8 +347,8 @@ Sections:
 - Coverage source: STAR interview prep + leadership story coverage.
 - Missing/priority candidates: Ambiguity, Ownership, Conflict, Failure, Mentoring, Prioritization, Customer impact, Technical judgment.
 - Recommended next resources: Amazon Leadership Principles, Google Interview Prep, STAR Method Guide.
-- Uploaded/source extract added to page: Thita Behavioral Sheet with direct STAR/pattern practice links.
-- Thita behavioral extracted outline:
+- Extracted framework added to page: 8 core behavioral patterns and 32 subpatterns for STAR preparation.
+- Behavioral extracted outline:
   - STAR Method: Situation Examples, Task Breakdown, Action Planning, Result Measurement.
   - Conflict Resolution: Identifying Issues, Stakeholder Management, Negotiation Tactics, Resolution Follow-up.
   - Team Leadership: Team Building, Motivation Techniques, Delegation Skills, Performance Management.
@@ -379,10 +375,9 @@ Sections:
 - Coverage source: roadmap.sh AI Engineer + OpenAI Cookbook + production LLM practice.
 - Missing/priority candidates: Structured outputs, Function/tool calling, RAG evaluation, Agent reliability, Prompt/version management, LLM observability, Safety and guardrails, Cost and latency optimization.
 - Recommended next resources: roadmap.sh AI Engineer, OpenAI Cookbook, Hugging Face NLP Course.
-- Uploaded/source extract added to page: Thita Data Science path as an AI/ML foundations bridge.
+- Foundations extract added to page: Data Science & ML curriculum as an AI/ML foundations bridge.
 - Data Science extracted topics: Business Analytics and Metrics, Data Manipulation and Preprocessing, Deep Learning Fundamentals, Exploratory Data Analysis, Feature Selection and Dimensionality Reduction, Full Pattern Problem Practice, Model Selection and Validation, Natural Language Processing, Statistics and Probability Fundamentals, Supervised Learning - Classification, Supervised Learning - Regression, Time Series Analysis, Unsupervised Learning.
 - Data Science direct resources:
-  - Thita Data Science Learning Path: https://thita.ai/dashboard/learning-path/data-science
   - Kaggle Learn Python: https://www.kaggle.com/learn/python
   - Kaggle Learn Pandas: https://www.kaggle.com/learn/pandas
   - Kaggle Learn Data Visualization: https://www.kaggle.com/learn/data-visualization

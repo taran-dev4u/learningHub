@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-01T21:20:59.918Z",
+  "generatedAt": "2026-10-01T21:35:47.762Z",
   "stats": {
     "domains": 7,
     "sections": 103,
@@ -63434,10 +63434,10 @@
       "domainTitle": "System Design"
     },
     {
-      "id": "sd:thita-lld-learning-path:https-thita-ai-dashboard-learning-path-lld",
-      "title": "Thita LLD Learning Path",
-      "url": "https://thita.ai/dashboard/learning-path/lld",
-      "source": "Thita",
+      "id": "sd:refactoring-guru-design-patterns:https-refactoring-guru-design-patterns",
+      "title": "Refactoring Guru: Design Patterns",
+      "url": "https://refactoring.guru/design-patterns",
+      "source": "RefactoringGuru",
       "domain": "sd",
       "domainTitle": "System Design"
     },
@@ -64018,10 +64018,10 @@
       "domainTitle": "Behavioral and Leadership"
     },
     {
-      "id": "bh:thita-behavioral-sheet:https-www-thita-ai-behavioral-sheet",
-      "title": "Thita Behavioral Sheet",
-      "url": "https://www.thita.ai/behavioral-sheet",
-      "source": "thita.ai",
+      "id": "bh:dan-croitor-behavioral-interview-prep:https-www-youtube-com-dancroitor",
+      "title": "Dan Croitor (Behavioral Interview Prep)",
+      "url": "https://www.youtube.com/@DanCroitor",
+      "source": "youtube.com",
       "domain": "bh",
       "domainTitle": "Behavioral and Leadership"
     },

@@ -16,7 +16,7 @@ export const gapSections = {
       ["Doc", "SOLID Principles", "GeeksforGeeks", "https://www.geeksforgeeks.org/system-design/solid-principle-in-programming-understand-with-real-life-examples/"],
       ["Doc", "UML Introduction", "GeeksforGeeks", "https://www.geeksforgeeks.org/system-design/unified-modeling-language-uml-introduction/"],
       ["Doc", "Design Patterns", "GeeksforGeeks", "https://www.geeksforgeeks.org/system-design/software-design-patterns/"],
-      ["Course", "Thita LLD Learning Path", "Thita", "https://thita.ai/dashboard/learning-path/lld"],
+      ["Doc", "Refactoring Guru: Design Patterns", "RefactoringGuru", "https://refactoring.guru/design-patterns"],
     ],
     subsections: [
       ["HLD vs LLD Boundaries", "Know which level of detail the interviewer is asking for.", [
@@ -341,7 +341,7 @@ export const resourceLibraries = {
       ["The Manager's Path (book)", "https://www.oreilly.com/library/view/the-managers-path/9781491973882/"],
       ["Staff Engineer Stories (StaffEng)", "https://staffeng.com/stories/"],
       ["Glassdoor Interview Questions", "https://www.glassdoor.com/Interview/index.htm"],
-      ["Thita Behavioral Sheet", "https://www.thita.ai/behavioral-sheet"],
+      ["Dan Croitor (Behavioral Interview Prep)", "https://www.youtube.com/@DanCroitor"],
     ],
   },
   cloud: {

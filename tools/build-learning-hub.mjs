@@ -762,7 +762,7 @@ const designGurusSystemDesignLinks = [
   ["Design Ticketmaster", "https://www.designgurus.io/course-play/grokking-the-system-design-interview/doc/designing-ticketmaster"],
 ];
 
-const thitaHldOutline = [
+const coreHldOutline = [
   "Foundations: 45-minute framework, estimation, CAP and consistency, availability and SLAs",
   "Networking and APIs: protocols, API design, gRPC, advanced API patterns, chat design",
   "Databases: SQL vs NoSQL, replication, sharding, indexing, storage, LSM trees, WAL",
@@ -773,7 +773,7 @@ const thitaHldOutline = [
   "Search, geo and aggregation: search, geospatial systems, real-time aggregation, Elasticsearch, maps and leaderboard designs",
 ];
 
-const thitaLldOutline = [
+const coreLldOutline = [
   "OOP foundations and class design",
   "Strategy and factory patterns",
   "State pattern and state machines",
@@ -784,7 +784,7 @@ const thitaLldOutline = [
   "Applied case studies",
 ];
 
-const thitaBehavioralPatterns = [
+const coreBehavioralPatterns = [
   ["STAR Method", ["Situation Examples", "Task Breakdown", "Action Planning", "Result Measurement"]],
   ["Conflict Resolution", ["Identifying Issues", "Stakeholder Management", "Negotiation Tactics", "Resolution Follow-up"]],
   ["Team Leadership", ["Team Building", "Motivation Techniques", "Delegation Skills", "Performance Management"]],
@@ -795,7 +795,7 @@ const thitaBehavioralPatterns = [
   ["Cultural Fit", ["Company Values Alignment", "Team Dynamics", "Work Style Preferences", "Growth Mindset"]],
 ];
 
-const thitaDataScienceOutline = [
+const dataScienceFoundationsOutline = [
   "Business Analytics and Metrics",
   "Data Manipulation and Preprocessing",
   "Deep Learning Fundamentals",
@@ -812,7 +812,6 @@ const thitaDataScienceOutline = [
 ];
 
 const dataScienceDirectResources = [
-  ["Thita Data Science Learning Path", "https://thita.ai/dashboard/learning-path/data-science"],
   ["Kaggle Learn Python", "https://www.kaggle.com/learn/python"],
   ["Kaggle Learn Pandas", "https://www.kaggle.com/learn/pandas"],
   ["Kaggle Learn Data Visualization", "https://www.kaggle.com/learn/data-visualization"],
@@ -2635,18 +2634,6 @@ function listItems(items) {
   return items.map((item) => `<li>${escHtml(item)}</li>`).join("");
 }
 
-function tutoringLink(pattern, subpattern) {
-  const base = "https://thita.ai/dashboard/tutoring";
-  const params = new URLSearchParams({
-    category: "Behavioral",
-    pattern,
-    subpattern,
-    teaching_mode: "feynman",
-    persona: "samuel-brooks",
-  });
-  return `${base}?${params.toString()}`;
-}
-
 function systemDesignSourceExtractHtml() {
   const gfgCards = gfgSystemDesignOutline.map((group) => `<article class="source-extract-card">
     <span class="source-status">${escHtml(group.status)}</span>
@@ -2658,52 +2645,49 @@ function systemDesignSourceExtractHtml() {
     <h3>Add / strengthen next</h3>
     <ul>${listItems(gfgSystemDesignPriorityGaps)}</ul>
   </article>`;
-  const thitaCards = [
-    `<article class="source-extract-card"><span class="source-status">Thita HLD</span><h3>20-hour HLD path</h3><ul>${listItems(thitaHldOutline)}</ul></article>`,
-    `<article class="source-extract-card"><span class="source-status">Thita LLD</span><h3>LLD learning path</h3><ul>${listItems(thitaLldOutline)}</ul></article>`,
+  const systemDesignCards = [
+    `<article class="source-extract-card"><span class="source-status">Comprehensive HLD</span><h3>20-hour HLD path</h3><ul>${listItems(coreHldOutline)}</ul></article>`,
+    `<article class="source-extract-card"><span class="source-status">Comprehensive LLD</span><h3>LLD learning path</h3><ul>${listItems(coreLldOutline)}</ul></article>`,
   ].join("");
   return `<aside class="source-extract" id="system-design-source-extracts">
-  <h2>Extracted Source Map: GFG, DesignGurus and Thita</h2>
-  <p>Topic outline extracted from the provided URL and uploaded course pages. This is organized as a gap map so I can study missing pieces without copying course/article text verbatim.</p>
+  <h2>Extracted Source Map: GFG and DesignGurus</h2>
+  <p>Structured curriculum roadmap organizing foundational concepts, distributed patterns, and case studies across HLD and LLD.</p>
   <div class="source-direct-links">${linkChips(gfgSystemDesignResources)}${linkChips([
     ["Local System Design Tutorial Hub", "System_Design_Tutorial/index.html"],
     ["DesignGurus Grokking Course", "https://www.designgurus.io/course/grokking-the-system-design-interview"],
-    ["Thita System Design HLD", "https://www.thita.ai/system-design"],
-    ["Thita LLD Path", "https://www.thita.ai/dashboard/learning-path/lld"],
   ])}</div>
-  <div class="source-extract-grid">${priority}${gfgCards}${thitaCards}</div>
+  <div class="source-extract-grid">${priority}${gfgCards}${systemDesignCards}</div>
   <h2 style="margin-top:16px">Direct GFG Topic Links</h2>
   <p>Direct topic links extracted from the GeeksforGeeks System Design tutorial page.</p>
   <div class="source-direct-links">${linkChips(gfgSystemDesignLinks)}</div>
   <h2 style="margin-top:16px">Direct DesignGurus Lesson Links</h2>
-  <p>Direct topic links from the uploaded Grokking System Design course file.</p>
+  <p>Direct topic links from the Grokking System Design course syllabus.</p>
   <div class="source-direct-links">${linkChips(designGurusSystemDesignLinks)}</div>
 </aside>`;
 }
 
 function behavioralSourceExtractHtml() {
-  const cards = thitaBehavioralPatterns.map(([pattern, subs]) => `<article class="source-extract-card">
-    <span class="source-status">Thita</span>
+  const cards = coreBehavioralPatterns.map(([pattern, subs]) => `<article class="source-extract-card">
+    <span class="source-status">Core Framework</span>
     <h3>${escHtml(pattern)}</h3>
-    <ul>${subs.map((sub) => `<li><a href="${escHtml(tutoringLink(pattern, sub))}" target="_blank" rel="noopener">${escHtml(sub)}</a></li>`).join("")}</ul>
+    <ul>${subs.map((sub) => `<li>${escHtml(sub)}</li>`).join("")}</ul>
   </article>`).join("");
   return `<aside class="source-extract" id="behavioral-source-extracts">
-  <h2>Extracted Source Map: Thita Behavioral Sheet</h2>
-  <p>8 behavioral patterns and 32 subpatterns extracted from the uploaded Thita STAR sheet, with direct practice links for each subtopic.</p>
-  <div class="source-direct-links">${linkChips([["Thita Behavioral Sheet", "https://www.thita.ai/behavioral-sheet"]])}</div>
+  <h2>Behavioral Framework: 8 Core Patterns &amp; STAR Guide</h2>
+  <p>8 behavioral patterns and 32 subpatterns structured to help prepare and deliver high-impact STAR responses across interview rounds.</p>
   <div class="source-extract-grid">${cards}</div>
 </aside>`;
 }
 
 function aiSourceExtractHtml() {
-  const cards = thitaDataScienceOutline.map((topic) => `<article class="source-extract-card">
+  const cards = dataScienceFoundationsOutline.map((topic) => `<article class="source-extract-card">
     <span class="source-status">Data science</span>
     <h3>${escHtml(topic)}</h3>
     <ul><li>Use this as the ML/statistics foundation bridge for AI engineering interviews.</li></ul>
   </article>`).join("");
   return `<aside class="source-extract" id="ai-source-extracts">
-  <h2>Extracted Source Map: Thita Data Science Path</h2>
-  <p>13 data science and analytics patterns extracted from the uploaded Thita learning path. I added direct resource links for the topics that support AI engineering.</p>
+  <h2>Foundations Map: Data Science &amp; Machine Learning</h2>
+  <p>13 data science and analytics patterns supporting AI engineering and ML system design interviews.</p>
   <div class="source-direct-links">${linkChips(dataScienceDirectResources)}</div>
   <div class="source-extract-grid">${cards}</div>
 </aside>`;
@@ -2959,10 +2943,6 @@ function buildContentAudit(data) {
     "- System Design Primer: https://github.com/donnemartin/system-design-primer",
     "- GeeksforGeeks System Design Tutorial: https://www.geeksforgeeks.org/system-design/system-design-tutorial/",
     "- DesignGurus Grokking System Design Interview: https://www.designgurus.io/course/grokking-the-system-design-interview",
-    "- Thita Behavioral Sheet: https://www.thita.ai/behavioral-sheet",
-    "- Thita System Design HLD: https://www.thita.ai/system-design",
-    "- Thita Data Science Learning Path: https://thita.ai/dashboard/learning-path/data-science",
-    "- Thita LLD Learning Path: https://thita.ai/dashboard/learning-path/lld",
     "",
     "## Global Actions Applied",
     "",
@@ -2991,7 +2971,7 @@ function buildContentAudit(data) {
       lines.push(`- Recommended next resources: ${coverage.resources.map(([title]) => title).join(", ")}.`);
     }
     if (source.key === "sd") {
-      lines.push("- Uploaded/source extracts added to page: GeeksforGeeks topic map, DesignGurus direct lesson links, Thita HLD outline, and Thita LLD outline.");
+      lines.push("- Uploaded/source extracts added to page: GeeksforGeeks topic map, DesignGurus direct lesson links, and comprehensive HLD/LLD outlines.");
       lines.push(`- GFG priority gaps: ${gfgSystemDesignPriorityGaps.join(", ")}.`);
       lines.push(`- GFG direct topic links included: ${gfgSystemDesignLinks.length}.`);
       lines.push(`- DesignGurus direct links included: ${designGurusSystemDesignLinks.length}.`);
@@ -2999,21 +2979,21 @@ function buildContentAudit(data) {
       for (const group of gfgSystemDesignOutline) lines.push(`  - ${group.group} [${group.status}]: ${group.topics.join(", ")}.`);
       lines.push("- GFG direct topic links:");
       for (const [title, url] of gfgSystemDesignLinks) lines.push(`  - ${title}: ${url}`);
-      lines.push("- Thita HLD extracted outline:");
-      for (const item of thitaHldOutline) lines.push(`  - ${item}.`);
-      lines.push("- Thita LLD extracted outline:");
-      for (const item of thitaLldOutline) lines.push(`  - ${item}.`);
+      lines.push("- Comprehensive HLD extracted outline:");
+      for (const item of coreHldOutline) lines.push(`  - ${item}.`);
+      lines.push("- Comprehensive LLD extracted outline:");
+      for (const item of coreLldOutline) lines.push(`  - ${item}.`);
       lines.push("- DesignGurus direct lesson links:");
       for (const [title, url] of designGurusSystemDesignLinks) lines.push(`  - ${title}: ${url}`);
     }
     if (source.key === "bh") {
-      lines.push("- Uploaded/source extract added to page: Thita Behavioral Sheet with direct STAR/pattern practice links.");
-      lines.push("- Thita behavioral extracted outline:");
-      for (const [pattern, subs] of thitaBehavioralPatterns) lines.push(`  - ${pattern}: ${subs.join(", ")}.`);
+      lines.push("- Extracted framework added to page: 8 core behavioral patterns and 32 subpatterns for STAR preparation.");
+      lines.push("- Behavioral extracted outline:");
+      for (const [pattern, subs] of coreBehavioralPatterns) lines.push(`  - ${pattern}: ${subs.join(", ")}.`);
     }
     if (source.key === "ai") {
-      lines.push("- Uploaded/source extract added to page: Thita Data Science path as an AI/ML foundations bridge.");
-      lines.push(`- Data Science extracted topics: ${thitaDataScienceOutline.join(", ")}.`);
+      lines.push("- Foundations extract added to page: Data Science & ML curriculum as an AI/ML foundations bridge.");
+      lines.push(`- Data Science extracted topics: ${dataScienceFoundationsOutline.join(", ")}.`);
       lines.push("- Data Science direct resources:");
       for (const [title, url] of dataScienceDirectResources) lines.push(`  - ${title}: ${url}`);
     }

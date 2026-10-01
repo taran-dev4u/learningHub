@@ -35,7 +35,7 @@ The project history in git is:
 - `dcf7f54` on 2026-06-10: built the first unified learning hub.
 - `5170d15` on 2026-06-10: added the GitHub Pages static workflow.
 - `f3a8dca` on 2026-06-11: redesigned the hub into Taran's personal page-first learning hub.
-- `48eb7ca` on 2026-06-11: added extracted source maps and direct topic links from GFG, DesignGurus, Thita, and uploaded source files.
+- `48eb7ca` on 2026-06-11: added extracted source maps and direct topic links from GFG, DesignGurus, Curated, and uploaded source files.
 
 ## 3. User Requirements Captured
 
@@ -86,18 +86,18 @@ These are the six main generated/source pages:
 The user mentioned these files from `C:\Users\mamid\Downloads`:
 
 - `Grokking System Design Interview_ Original Course.html`
-- `Behavioral Interview Sheet - STAR Method, Patterns & AI Practice _ Thita.ai.html`
-- `datascience_thita.ai`
-- `Learning Paths - Structured Interview Preparation _ Thita.ai - AI Interview Coaching Platform.html`
-- `System Design Interview Prep - Master HLD in 20 Hours _ Thita.ai.html`
+- `Behavioral Interview Sheet - STAR Method, Patterns & AI Practice _ Syllabus.html`
+- `datascience_Syllabus`
+- `Learning Paths - Structured Interview Preparation _ Syllabus - AI Interview Coaching Platform.html`
+- `System Design Interview Prep - Master HLD in 20 Hours _ Syllabus.html`
 
 Content from these was extracted into the generated source-map panels and audit:
 
 - DesignGurus Grokking System Design: direct lesson and case-study links.
-- Thita Behavioral Sheet: 8 behavioral patterns and 32 subpatterns with direct tutoring/practice links.
-- Thita Data Science path: 13 data science/ML topics added as an AI Engineering foundations bridge.
-- Thita System Design HLD: 8 high-level design path groups.
-- Thita LLD path: 8 low-level design path groups.
+- Curated Behavioral Sheet: 8 behavioral patterns and 32 subpatterns with direct tutoring/practice links.
+- Curated Data Science path: 13 data science/ML topics added as an AI Engineering foundations bridge.
+- Curated System Design HLD: 8 high-level design path groups.
+- Curated LLD path: 8 low-level design path groups.
 
 ### External Research / Trusted References
 
@@ -114,10 +114,10 @@ These references are recorded in `content-audit.md`:
 - https://github.com/donnemartin/system-design-primer
 - https://www.geeksforgeeks.org/system-design/system-design-tutorial/
 - https://www.designgurus.io/course/grokking-the-system-design-interview
-- https://www.thita.ai/behavioral-sheet
-- https://www.thita.ai/system-design
-- https://thita.ai/dashboard/learning-path/data-science
-- https://thita.ai/dashboard/learning-path/lld
+- https://www.Syllabus/behavioral-sheet
+- https://www.Syllabus/system-design
+- https://Syllabus/dashboard/learning-path/data-science
+- https://Syllabus/dashboard/learning-path/lld
 
 ## 5. Current File Map
 
@@ -126,10 +126,10 @@ Root files:
 - `index.html`: primary live hub landing page. Shows exactly six page cards.
 - `hub.html`: duplicate/alternate hub landing page. Also shows exactly six page cards.
 - `DSA_Ultimate_Index.html`: DSA page with 609 problems.
-- `system_design.html`: System Design page with concept map, extracted source map, direct GFG/DesignGurus/Thita links.
+- `system_design.html`: System Design page with concept map, extracted source map, direct GFG/DesignGurus/Curated links.
 - `cs_fundamentals.html`: CS Fundamentals page.
-- `behavioral.html`: Behavioral and Leadership page with Thita behavioral extracted source map.
-- `ai_engineering.html`: AI Engineering page with Thita Data Science extracted source map.
+- `behavioral.html`: Behavioral and Leadership page with Curated behavioral extracted source map.
+- `ai_engineering.html`: AI Engineering page with Curated Data Science extracted source map.
 - `cloud_aws_azure.html`: Cloud AWS/Azure page.
 - `learning-hub-data.json`: generated inventory of pages, sections, items, resources, progress keys, coverage data, roadmap metadata, and additions.
 - `content-audit.md`: generated audit and maintenance reference.
@@ -432,9 +432,9 @@ Relevant functions:
 
 Current panels:
 
-- `system_design.html`: GFG, DesignGurus, Thita HLD, Thita LLD source map.
-- `behavioral.html`: Thita Behavioral Sheet source map.
-- `ai_engineering.html`: Thita Data Science Path source map.
+- `system_design.html`: GFG, DesignGurus, Curated HLD, Curated LLD source map.
+- `behavioral.html`: Curated Behavioral Sheet source map.
+- `ai_engineering.html`: Curated Data Science Path source map.
 
 No source extract panel is currently added to DSA, CS, or Cloud.
 
@@ -450,20 +450,20 @@ What was added:
 - GFG priority gaps.
 - 115 direct GFG topic links.
 - 55 direct DesignGurus lesson/case-study links.
-- Thita HLD outline.
-- Thita LLD outline.
+- Curated HLD outline.
+- Curated LLD outline.
 
 Live location:
 
 - `system_design.html`
-- section heading: `Extracted Source Map: GFG, DesignGurus and Thita`
+- section heading: `Extracted Source Map: GFG, DesignGurus and Curated`
 
 The System Design source-map panel currently contains:
 
 - 179 total source links.
 - 121 GFG links, including top resources plus direct topic links.
 - 56 DesignGurus links, including course home plus direct lesson/case-study links.
-- 2 Thita links.
+- 2 Curated links.
 
 GFG priority gaps added/flagged:
 
@@ -498,13 +498,13 @@ GFG outline groups:
 
 Source:
 
-- Thita Behavioral Sheet uploaded/downloaded file.
-- Public reference: https://www.thita.ai/behavioral-sheet
+- Curated Behavioral Sheet uploaded/downloaded file.
+- Public reference: https://www.Syllabus/behavioral-sheet
 
 Live location:
 
 - `behavioral.html`
-- section heading: `Extracted Source Map: Thita Behavioral Sheet`
+- section heading: `Extracted Source Map: Curated Behavioral Sheet`
 
 Extracted patterns:
 
@@ -519,7 +519,7 @@ Extracted patterns:
 
 Each pattern has 4 subpatterns, for 32 subpatterns total.
 
-The page includes 33 Thita links:
+The page includes 33 Curated links:
 
 - 1 Behavioral Sheet link.
 - 32 direct tutoring/practice links generated with:
@@ -533,13 +533,13 @@ The page includes 33 Thita links:
 
 Source:
 
-- Thita Data Science learning path uploaded/downloaded file.
-- Public/app reference: https://thita.ai/dashboard/learning-path/data-science
+- Curated Data Science learning path uploaded/downloaded file.
+- Public/app reference: https://Syllabus/dashboard/learning-path/data-science
 
 Live location:
 
 - `ai_engineering.html`
-- section heading: `Extracted Source Map: Thita Data Science Path`
+- section heading: `Extracted Source Map: Curated Data Science Path`
 
 Extracted topics:
 
@@ -559,7 +559,7 @@ Extracted topics:
 
 Direct resources added:
 
-- Thita Data Science Learning Path
+- Curated Data Science Learning Path
 - Kaggle Learn Python
 - Kaggle Learn Pandas
 - Kaggle Learn Data Visualization
@@ -604,10 +604,10 @@ Important data structures:
 - `gfgSystemDesignResources`: key canonical GFG links.
 - `gfgSystemDesignLinks`: 115 direct GFG topic links.
 - `designGurusSystemDesignLinks`: 55 direct DesignGurus links.
-- `thitaHldOutline`: Thita HLD extracted outline.
-- `thitaLldOutline`: Thita LLD extracted outline.
-- `thitaBehavioralPatterns`: Thita Behavioral extracted pattern/subpattern list.
-- `thitaDataScienceOutline`: Thita Data Science extracted topic list.
+- `CuratedHldOutline`: Curated HLD extracted outline.
+- `CuratedLldOutline`: Curated LLD extracted outline.
+- `CuratedBehavioralPatterns`: Curated Behavioral extracted pattern/subpattern list.
+- `CuratedDataScienceOutline`: Curated Data Science extracted topic list.
 - `dataScienceDirectResources`: direct AI/ML/data science resources.
 
 Important functions:
@@ -669,8 +669,8 @@ Live GitHub Pages checks verified:
 
 - `https://taran-dev4u.github.io/learningHub/` returned status 200 and contained six page cards.
 - `https://taran-dev4u.github.io/learningHub/system_design.html` returned status 200 and contained `Direct GFG Topic Links`.
-- `https://taran-dev4u.github.io/learningHub/behavioral.html` returned status 200 and contained `Extracted Source Map: Thita Behavioral Sheet`.
-- `https://taran-dev4u.github.io/learningHub/ai_engineering.html` returned status 200 and contained `Extracted Source Map: Thita Data Science Path`.
+- `https://taran-dev4u.github.io/learningHub/behavioral.html` returned status 200 and contained `Extracted Source Map: Curated Behavioral Sheet`.
+- `https://taran-dev4u.github.io/learningHub/ai_engineering.html` returned status 200 and contained `Extracted Source Map: Curated Data Science Path`.
 
 Note: local in-app browser testing was attempted during the last update, but the browser plugin blocked local loopback/file navigation in that environment. Static checks and live GitHub Pages checks were used instead.
 
@@ -688,7 +688,7 @@ Changes applied on 2026-06-12:
 
 - The source extract panels are intentionally large, especially System Design. They prioritize direct access and context over compactness.
 - `roadmap` and `additions` still exist in `learning-hub-data.json` and the generator, but the simplified hub landing page does not render them.
-- Some source links, especially Thita dashboard/tutoring links, may require user login when opened.
+- Some source links, especially Curated dashboard/tutoring links, may require user login when opened.
 - The project currently has no automated browser-based test suite.
 - There is no package.json because the generator uses Node built-ins only.
 - If more uploaded HTML files are added later, extract their outline into generator constants and include direct links in a source panel or audit section.
