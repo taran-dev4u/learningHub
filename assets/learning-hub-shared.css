@@ -235,3 +235,78 @@ nav.hub-nav .hub-nav-brand { display: inline-flex; align-items: center; min-heig
    column width and push the whole page sideways on a phone */
 .res-grid, .resources-body, .sub-resources { max-width: 100%; }
 .res-grid > *, .resources-body > *, .sub-resources > * { min-width: 0; max-width: 100%; box-sizing: border-box; }
+
+/* ============================================================
+   Black theme — a true-black variant of dark, for OLED screens
+   and night reading. Pages keep their .dark rules; this layer
+   repaints the surfaces. html.black:root outranks the per-page
+   :root / html.light blocks whatever order they load in.
+   ============================================================ */
+html.black:root {
+  color-scheme: dark;
+
+  /* hub / library / generic */
+  --bg: #000000;
+  --surface: #0b0d11;
+  --surface-2: #14171d;
+  --text: #f2f4f8;
+  --muted: #98a1b2;
+  --faint: #6c7484;
+  --border: #1e222a;
+  --strong: #ffffff;
+  --accent: #6f9bff;
+  --shadow: 0 14px 36px rgba(0, 0, 0, .75);
+  --shadow-lift: 0 22px 48px rgba(0, 0, 0, .85);
+
+  /* concept pages + DSA index */
+  --bg-elev: #0b0d11;
+  --bg-card: #0e1116;
+  --bg-row-alt: #090b0f;
+  --text-dim: #98a1b2;
+  --text-faint: #6c7484;
+  --border-strong: #2a2f3a;
+  --accent-dim: rgba(111, 155, 255, .16);
+  --link: #8fb0ff;
+  --quote-bg: rgba(111, 155, 255, .07);
+  --code-bg: #0a0c10;
+  --bg-soft: #0a0c10;
+
+  /* AlgoMaster layout (System Design + LLD tutorials) */
+  --am-bg: #000000;
+  --am-surface: #0b0d11;
+  --am-surface-2: #14171d;
+  --am-text: #f2f4f8;
+  --am-muted: #98a1b2;
+  --am-faint: #6c7484;
+  --am-border: #1e222a;
+  --am-accent: #6f9bff;
+  --am-accent-soft: rgba(111, 155, 255, .16);
+
+  /* auto-me */
+  --card: #0b0d11;
+  --ink: #f2f4f8;
+  --ink2: #98a1b2;
+  --grid: #1e222a;
+
+  /* shared navbar + study rail */
+  --hub-nav-bg: #000000;
+  --hub-nav-fg: #f2f4f8;
+  --hub-nav-muted: #98a1b2;
+  --hub-nav-border: #1e222a;
+  --hub-nav-accent: #6f9bff;
+  --hub-nav-accent-fg: #000000;
+  --sr-surface: #0b0d11;
+  --sr-border: #1e222a;
+  --sr-muted: #98a1b2;
+  --sr-accent: #6f9bff;
+  --sr-chip: #14171d;
+}
+html.black:root body { background: #000; }
+html.black .vp-panel {
+  --vp-bg: #000000;
+  --vp-bg-2: #0e1116;
+  --vp-text: #f2f4f8;
+  --vp-muted: #98a1b2;
+  --vp-border: #1e222a;
+  --vp-accent: #6f9bff;
+}

@@ -189,3 +189,42 @@ html.vp-active.vp-left body { padding-right: 0; padding-left: var(--vp-offset, 0
 }
 .vp-tab-yt { color: #cc0000; }
 .vp-tab-google + .vp-tab-yt { margin-left: 10px; }
+
+/* ---- collapsed state: the panel shrinks to a rail you can click to reopen ---- */
+.vp-rail { display: none; }
+.vp-panel.vp-collapsed { width: 46px !important; min-width: 46px; }
+.vp-panel.vp-collapsed .vp-head,
+.vp-panel.vp-collapsed .vp-tabs,
+.vp-panel.vp-collapsed .vp-video-view,
+.vp-panel.vp-collapsed .vp-read-view { display: none; }
+.vp-panel.vp-collapsed .vp-rail {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  width: 100%;
+  height: 100%;
+  padding: 14px 0;
+  border: 0;
+  background: transparent;
+  color: var(--vp-muted);
+  font: inherit;
+  font-size: .8rem;
+  font-weight: 700;
+  cursor: pointer;
+  writing-mode: vertical-rl;
+}
+.vp-panel.vp-collapsed .vp-rail:hover { color: var(--vp-accent); }
+.vp-panel.vp-collapsed .vp-rail-icon { transform: rotate(90deg); font-size: 1rem; }
+.vp-panel.vp-collapsed.vp-dock-left .vp-rail-icon { transform: rotate(-90deg); }
+.vp-panel.vp-collapsed .vp-rail-text {
+  max-height: calc(100% - 40px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@media (max-width: 860px) {
+  .vp-panel.vp-collapsed { width: 100% !important; height: 46px; top: auto; }
+  .vp-panel.vp-collapsed .vp-rail { writing-mode: horizontal-tb; justify-content: center; padding: 0 14px; }
+  .vp-panel.vp-collapsed .vp-rail-icon { transform: none; }
+}

@@ -43,7 +43,7 @@
 
   function preferredTheme() {
     var v = readStore(THEME_KEY);
-    if (v === "dark" || v === "light") return v;
+    if (normalizeTheme(v)) return v;
     for (var i = 0; i < LEGACY_KEYS.length; i++) {
       var legacy = readStore(LEGACY_KEYS[i]);
       if (legacy === "dark" || legacy === "light") return legacy;
@@ -54,27 +54,48 @@
     return "light";
   }
 
+  /* Three themes, cycled in this order. "black" is a true-black variant of dark:
+     page stylesheets still see .dark, and a token layer in the shared stylesheet
+     paints the backgrounds black on top. */
+  var THEMES = ["light", "dark", "black"];
+  var THEME_ICON = { light: "☀", dark: "◐", black: "●" };
+  var THEME_NAME = { light: "Light", dark: "Dark", black: "Black" };
+
+  function normalizeTheme(value) {
+    return THEMES.indexOf(value) >= 0 ? value : null;
+  }
+
   function applyTheme(theme, persist) {
+    theme = normalizeTheme(theme) || "light";
     var root = document.documentElement;
-    var dark = theme === "dark";
+    var dark = theme !== "light";
     root.classList.toggle("dark", dark);
     root.classList.toggle("light", !dark);
+    root.classList.toggle("black", theme === "black");
     root.setAttribute("data-theme", theme);
     if (persist !== false) {
       writeStore(THEME_KEY, theme);
-      for (var i = 0; i < LEGACY_KEYS.length; i++) writeStore(LEGACY_KEYS[i], theme);
+      /* page-level scripts only understand light/dark */
+      var legacyValue = dark ? "dark" : "light";
+      for (var i = 0; i < LEGACY_KEYS.length; i++) writeStore(LEGACY_KEYS[i], legacyValue);
     }
+    var next = THEMES[(THEMES.indexOf(theme) + 1) % THEMES.length];
     var btn = document.querySelector("[data-hub-theme]");
     if (btn) {
-      btn.textContent = dark ? "☀" : "☾";
-      btn.setAttribute("aria-label", dark ? "Switch to light theme" : "Switch to dark theme");
-      btn.setAttribute("title", dark ? "Switch to light theme" : "Switch to dark theme");
+      btn.textContent = THEME_ICON[theme];
+      var label = "Theme: " + THEME_NAME[theme] + ". Switch to " + THEME_NAME[next];
+      btn.setAttribute("aria-label", label);
+      btn.setAttribute("title", label);
     }
     window.LearningHubTheme = theme;
+    try {
+      window.dispatchEvent(new CustomEvent("learning-hub-theme", { detail: { theme: theme } }));
+    } catch (e) {}
   }
 
   function toggleTheme() {
-    applyTheme(document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark", true);
+    var cur = normalizeTheme(document.documentElement.getAttribute("data-theme")) || "light";
+    applyTheme(THEMES[(THEMES.indexOf(cur) + 1) % THEMES.length], true);
   }
 
   /* Legacy per-page theme buttons write their own keys; mirror those writes so
@@ -85,7 +106,9 @@
       localStorage.setItem = function (key, value) {
         native(key, value);
         if (LEGACY_KEYS.indexOf(key) !== -1 && (value === "dark" || value === "light")) {
-          if (window.LearningHubTheme !== value) applyTheme(value, true);
+          /* a page button flipping to dark must not drop us out of black */
+          var want = value === "dark" && window.LearningHubTheme === "black" ? "black" : value;
+          if (window.LearningHubTheme !== want) applyTheme(want, true);
         }
       };
     } catch (e) {}

@@ -55,6 +55,27 @@
     el.style.width = w + 'px';
     if (el.classList.contains('vp-open')) document.documentElement.style.setProperty('--vp-offset', w + 'px');
   }
+  var C_KEY = 'vp-collapsed', RAIL_W = 46;
+  function savedCollapsed() { try { return localStorage.getItem(C_KEY) === '1'; } catch (e) { return false; } }
+  function applyCollapsed(on) {
+    if (!el) return;
+    el.classList.toggle('vp-collapsed', !!on);
+    var btn = el.querySelector('.vp-collapse');
+    if (btn) btn.setAttribute('aria-expanded', String(!on));
+    var rail = el.querySelector('.vp-rail-text');
+    if (rail) rail.textContent = state.title || 'Study panel';
+    if (isMobile()) return;
+    if (on) {
+      el.style.width = RAIL_W + 'px';
+      if (el.classList.contains('vp-open')) document.documentElement.style.setProperty('--vp-offset', RAIL_W + 'px');
+    } else {
+      applyWidth(savedWidth());
+    }
+  }
+  function setCollapsed(on) {
+    try { localStorage.setItem(C_KEY, on ? '1' : '0'); } catch (e) {}
+    applyCollapsed(on);
+  }
   var D_KEY = 'vp-dock';
   function savedDock() { try { return localStorage.getItem(D_KEY) === 'left' ? 'left' : 'right'; } catch (e) { return 'right'; } }
   function applyDock(side) {
@@ -114,6 +135,7 @@
         '<div class="vp-titles"><span class="vp-kicker">▶ Watch</span><b class="vp-title"></b></div>' +
         '<div class="vp-actions">' +
           '<a class="vp-btn vp-google" target="_blank" rel="noopener noreferrer" title="Search Google for this topic">G</a>' +
+          '<button type="button" class="vp-btn vp-collapse" title="Collapse the panel" aria-label="Collapse the panel" aria-expanded="true">⤡</button>' +
           '<button type="button" class="vp-btn vp-dock" title="Move the panel to the other side" aria-label="Move the panel to the other side">⇄</button>' +
           '<button type="button" class="vp-btn vp-size" data-size="s" title="Narrow">⇤</button>' +
           '<button type="button" class="vp-btn vp-size" data-size="l" title="Wide">⇥</button>' +
@@ -121,6 +143,7 @@
           '<button type="button" class="vp-btn vp-close" title="Close (Esc)" aria-label="Close panel">✕</button>' +
         '</div>' +
       '</div>' +
+      '<button type="button" class="vp-rail" title="Expand the panel" aria-label="Expand the panel"><span class="vp-rail-icon">▸</span><span class="vp-rail-text"></span></button>' +
       '<div class="vp-tabs" role="tablist"></div>' +
       '<div class="vp-video-view">' +
         '<div class="vp-player"><iframe class="vp-frame" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>' +
@@ -148,6 +171,9 @@
 
     el.querySelector('.vp-close').addEventListener('click', close);
     applyDock(savedDock());
+    applyCollapsed(savedCollapsed());
+    el.querySelector('.vp-collapse').addEventListener('click', function () { setCollapsed(true); });
+    el.querySelector('.vp-rail').addEventListener('click', function () { setCollapsed(false); });
     el.querySelector('.vp-dock').addEventListener('click', function () {
       applyDock(el.classList.contains('vp-dock-left') ? 'right' : 'left');
       try { localStorage.setItem(D_KEY, el.classList.contains('vp-dock-left') ? 'left' : 'right'); } catch (e) {}
@@ -158,6 +184,7 @@
         var w = b.dataset.size === 's' ? Math.round(window.innerWidth * 0.30) : Math.round(window.innerWidth * 0.6);
         w = Math.max(MIN_W, Math.min(w, Math.round(window.innerWidth * MAX_FRAC)));
         try { localStorage.setItem(W_KEY, String(w)); } catch (e) {}
+        setCollapsed(false);
         applyWidth(w);
       });
     });
@@ -377,7 +404,7 @@
     googleLink.title = 'Google: ' + state.query;
     el.classList.add('vp-open');
     document.documentElement.classList.add('vp-active');
-    applyWidth(savedWidth());
+    applyCollapsed(savedCollapsed());
     setTab(tab);
     return true;
   }
