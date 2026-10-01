@@ -1,6 +1,6 @@
 # Taran's Learning Hub Content Audit
 
-Generated: 2026-09-20T21:12:50.346Z
+Generated: 2026-10-01T19:18:38.366Z
 
 ## Research References
 
@@ -30,7 +30,7 @@ Generated: 2026-09-20T21:12:50.346Z
 
 ## DSA Ultimate Index
 
-- Inventory: 47 sections, 220 subsections, 940 problems, 427 resources.
+- Inventory: 47 sections, 219 subsections, 940 problems, 425 resources.
 - Formatting focus: consistent navigation, closed resources, clean headings, and better fallback search links.
 - Duplicate subsection names to review: Striver: Learn the basics (7), Striver: Learn Important Sorting Techniques (2), Striver: Solve Problems on Arrays [Easy -> Medium -> Hard] (3), Striver: Binary Search [1D, 2D Arrays, Search Space] (3), Striver: Strings [Basic and Medium] (2), Striver: Learn LinkedList [Single LL, Double LL, Medium, Hard Problems] (5), Striver: Recursion [PatternWise] (3), Striver: Bit Manipulation [Concepts & Problems] (3)
 - Weak/generic subsection names to review: none found by heuristic.
@@ -53,7 +53,7 @@ Sections:
 - Dynamic Programming (DP) Patterns: 50 items, 12 subsections, 26 resources.
 - String Manipulation Patterns: 23 items, 7 subsections, 21 resources.
 - Bit Manipulation Patterns: 16 items, 4 subsections, 15 resources.
-- Design Patterns: 40 items, 2 subsections, 12 resources.
+- Design Patterns: 40 items, 1 subsections, 10 resources.
 - Segment Tree & Fenwick Tree Patterns: 11 items, 2 subsections, 12 resources.
 - Prefix Sum & Difference Array Patterns: 13 items, 4 subsections, 11 resources.
 - Hash Map & Cache Design Patterns: 10 items, 5 subsections, 14 resources.
@@ -430,7 +430,7 @@ Sections:
 
 ## Interview Prep
 
-- Inventory: 6 sections, 18 subsections, 92 concepts, 16 resources.
+- Inventory: 6 sections, 18 subsections, 92 concepts, 24 resources.
 - Formatting focus: consistent navigation, closed resources, clean headings, and better fallback search links.
 - Duplicate subsection names to review: none found by title.
 - Weak/generic subsection names to review: none found by heuristic.

@@ -213,7 +213,26 @@
 })();
 
 (function () {
-  var PASSWORD = "736537";
+  // Client-side gate only (a static site cannot keep a real secret).
+  // The literal passcode is no longer in the source; two independent
+  // 32-bit digests of it are compared instead.
+  var PASS_DJB2 = 0xdcba3946;
+  var PASS_SDBM = 0x365c1c7f;
+  var PASS_LEN = 6;
+  function digests(value) {
+    var s = String(value == null ? "" : value), a = 5381, b = 0, i, c;
+    for (i = 0; i < s.length; i++) {
+      c = s.charCodeAt(i);
+      a = ((a * 33) ^ c) >>> 0;
+      b = (c + (b << 6) + (b << 16) - b) >>> 0;
+    }
+    return [a, b];
+  }
+  function passwordMatches(value) {
+    if (String(value).length !== PASS_LEN) return false;
+    var d = digests(value);
+    return d[0] === PASS_DJB2 && d[1] === PASS_SDBM;
+  }
   var AUTH_KEY = "taran_learning_hub_unlocked_v1";
   var WATCHED_KEYS = [
     /^dsa_index_solved_v1$/,
@@ -300,7 +319,7 @@
     var error = document.getElementById("learning-lock-error");
     document.getElementById("learning-lock-form").addEventListener("submit", function (event) {
       event.preventDefault();
-      if (input.value === PASSWORD) {
+      if (passwordMatches(input.value)) {
         storageSet(AUTH_KEY, "1");
         document.documentElement.classList.remove("learning-hub-locked");
         overlay.remove();

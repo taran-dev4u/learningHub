@@ -1,14 +1,14 @@
 {
-  "generatedAt": "2026-09-20T21:12:50.346Z",
+  "generatedAt": "2026-10-01T19:18:38.366Z",
   "stats": {
     "domains": 7,
     "sections": 103,
-    "subsections": 443,
+    "subsections": 442,
     "items": 2026,
     "problems": 940,
     "concepts": 1086,
-    "resources": 823,
-    "resourceEntries": 1006,
+    "resources": 829,
+    "resourceEntries": 1012,
     "additions": 5
   },
   "sources": [
@@ -444,7 +444,7 @@
         {
           "id": "pattern-9",
           "title": "Graph Traversal Patterns (DFS & BFS)",
-          "meta": "11 subpatterns · 69 problems",
+          "meta": "11 subpatterns · 65 problems",
           "tagline": "Graph traversal foundations — DFS/BFS for components, cycles, topological order, shortest paths, and connectivity.",
           "rows": [
             "When to use. Any problem framed on nodes and edges: islands, courses, network flow, dependencies, coloring, MST.",
@@ -828,7 +828,7 @@
         {
           "id": "pattern-15",
           "title": "Design Patterns",
-          "meta": "2 subpatterns · 43 problems",
+          "meta": "1 subpattern · 40 problems",
           "tagline": "Build data structures with the right operation guarantees — O(1) cache, O(log n) ordered set, Trie prefix lookup.",
           "rows": [
             "When to use. Interview prompts that start with 'Design a class that supports …' — LRU, LFU, Twitter feed, hit counter, autocomplete.",
@@ -837,18 +837,12 @@
           ],
           "link": "DSA_Ultimate_Index.html#pattern-15",
           "itemCount": 40,
-          "resourceCount": 12,
+          "resourceCount": 10,
           "subsections": [
             {
               "title": "General / Specific Data Structure Design",
               "description": "Compose hashmap + secondary structure (linked list, heap, set) to give each operation the right complexity.",
               "itemCount": 40,
-              "resourceCount": 2
-            },
-            {
-              "title": "Trie / Prefix Tree Design",
-              "description": "Insert/search words in O(L); add wildcard matching for advanced variants.",
-              "itemCount": 0,
               "resourceCount": 2
             }
           ]
@@ -856,7 +850,7 @@
         {
           "id": "pattern-16",
           "title": "Segment Tree & Fenwick Tree Patterns",
-          "meta": "2 subpatterns · 12 problems",
+          "meta": "2 subpatterns · 11 problems",
           "tagline": "Tree-based range data structures — segment tree for arbitrary range queries, Fenwick (BIT) for prefix sums.",
           "rows": [
             "When to use. Range sum/min/max with point or range updates, inversion counting, online interval problems, coordinate compression.",
@@ -1258,7 +1252,7 @@
         {
           "id": "pattern-25",
           "title": "Multi-Source BFS Patterns",
-          "meta": "1 subpatterns · 6 problems",
+          "meta": "1 subpattern · 6 problems",
           "tagline": "Seed the BFS queue with ALL starting cells at distance 0 and expand simultaneously.",
           "rows": [
             "When to use. Multi-origin shortest-distance problems on grids: rotting fruit, walls and gates, distance to nearest 1, fire spread.",
@@ -2033,7 +2027,7 @@
         }
       ],
       "itemCount": 940,
-      "resourceCount": 427,
+      "resourceCount": 425,
       "progressLabel": "problems",
       "coverage": {
         "title": "DSA Coverage Check",
@@ -4530,7 +4524,7 @@
         }
       ],
       "itemCount": 92,
-      "resourceCount": 16,
+      "resourceCount": 24,
       "progressLabel": "concepts",
       "coverage": {
         "title": "Interview Prep Coverage Check",
@@ -35600,7 +35594,7 @@
       "description": "",
       "section": "Striver: Heaps [Learning, Medium, Hard Problems]",
       "subsection": "Striver: Heaps [Learning, Medium, Hard Problems]",
-      "url": "#",
+      "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Implement+Min+Heap+leetcode",
       "link": "DSA_Ultimate_Index.html#pattern-striver_110",
       "diff": "M",
       "companies": [],
@@ -35652,7 +35646,7 @@
       "description": "",
       "section": "Striver: Heaps [Learning, Medium, Hard Problems]",
       "subsection": "Striver: Heaps [Learning, Medium, Hard Problems]",
-      "url": "#",
+      "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Convert+Min+Heap+to+Max+Heap+leetcode",
       "link": "DSA_Ultimate_Index.html#pattern-striver_110",
       "diff": "M",
       "companies": [],
@@ -36744,7 +36738,7 @@
       "description": "",
       "section": "Striver: Binary Trees [Traversals, Medium and Hard Problems]",
       "subsection": "Striver: Binary Trees [Traversals, Medium and Hard Problems]",
-      "url": "#",
+      "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Requirements+needed+to+construct+a+unique+BT+leetcode",
       "link": "DSA_Ultimate_Index.html#pattern-striver_112",
       "diff": "M",
       "companies": [],
@@ -36952,7 +36946,7 @@
       "description": "",
       "section": "Striver: Binary Search Trees [Concept and Problems]",
       "subsection": "Striver: Binary Search Trees [Concept and Problems]",
-      "url": "#",
+      "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Floor+and+Ceil+in+a+BST+leetcode",
       "link": "DSA_Ultimate_Index.html#pattern-striver_113",
       "diff": "E",
       "companies": [],
@@ -38902,7 +38896,7 @@
       "description": "",
       "section": "Striver: Tries",
       "subsection": "Striver: Tries",
-      "url": "#",
+      "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Longest+Word+with+All+Prefixes+leetcode",
       "link": "DSA_Ultimate_Index.html#pattern-striver_116",
       "diff": "M",
       "companies": [],
@@ -38954,7 +38948,7 @@
       "description": "",
       "section": "Striver: Tries",
       "subsection": "Striver: Tries",
-      "url": "#",
+      "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Bit+PreRequisites+for+TRIE+Problems+leetcode",
       "link": "DSA_Ultimate_Index.html#pattern-striver_116",
       "diff": "E",
       "companies": [],
@@ -39058,7 +39052,7 @@
       "description": "",
       "section": "Striver: Strings",
       "subsection": "Striver: Strings",
-      "url": "#",
+      "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Z+function+leetcode",
       "link": "DSA_Ultimate_Index.html#pattern-striver_117",
       "diff": "H",
       "companies": [],
@@ -67849,22 +67843,6 @@
       "domainTitle": "DSA Ultimate Index"
     },
     {
-      "id": "dsa:search-geeksforgeeks-trie-prefix-tree-design-web-search:https-www-google-com-search-q-site-3ageeksforgeeks-org-trie-2f-prefix-tree-desig",
-      "title": "🔎 Search GeeksforGeeks — Trie / Prefix Tree Design Web search",
-      "url": "https://www.google.com/search?q=site%3Ageeksforgeeks.org+Trie+%2F+Prefix+Tree+Design",
-      "source": "Web search",
-      "domain": "dsa",
-      "domainTitle": "DSA Ultimate Index"
-    },
-    {
-      "id": "dsa:search-youtube-trie-prefix-tree-design-video-search:https-www-youtube-com-results-search-query-trie-2f-prefix-tree-design-algorithm-",
-      "title": "🔎 Search YouTube — Trie / Prefix Tree Design Video search",
-      "url": "https://www.youtube.com/results?search_query=Trie+%2F+Prefix+Tree+Design+algorithm+leetcode",
-      "source": "Video search",
-      "domain": "dsa",
-      "domainTitle": "DSA Ultimate Index"
-    },
-    {
       "id": "dsa:segment-tree-geeksforgeeks:https-www-geeksforgeeks-org-segment-tree-data-structure",
       "title": "Segment Tree — GeeksforGeeks",
       "url": "https://www.geeksforgeeks.org/segment-tree-data-structure/",
@@ -73103,6 +73081,70 @@
       "source": "CNCF",
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure"
+    },
+    {
+      "id": "interview:open-the-live-hub:https-amazon-sde-preparation-hub-interview-prep-hub-workers-dev",
+      "title": "Open the live hub",
+      "url": "https://amazon-sde-preparation-hub.interview-prep-hub.workers.dev/",
+      "source": "Full Amazon SDE prep site",
+      "domain": "interview",
+      "domainTitle": "Interview Prep"
+    },
+    {
+      "id": "interview:interview-process-rounds:https-amazon-sde-preparation-hub-interview-prep-hub-workers-dev-interview",
+      "title": "Interview process & rounds",
+      "url": "https://amazon-sde-preparation-hub.interview-prep-hub.workers.dev/#/interview",
+      "source": "Loop structure, timelines, what each round tests",
+      "domain": "interview",
+      "domainTitle": "Interview Prep"
+    },
+    {
+      "id": "interview:16-leadership-principles:https-amazon-sde-preparation-hub-interview-prep-hub-workers-dev-lp16",
+      "title": "16 Leadership Principles",
+      "url": "https://amazon-sde-preparation-hub.interview-prep-hub.workers.dev/#/lp16",
+      "source": "Every LP with signals interviewers look for",
+      "domain": "interview",
+      "domainTitle": "Interview Prep"
+    },
+    {
+      "id": "interview:star-story-bank:https-amazon-sde-preparation-hub-interview-prep-hub-workers-dev-stories",
+      "title": "STAR story bank",
+      "url": "https://amazon-sde-preparation-hub.interview-prep-hub.workers.dev/#/stories",
+      "source": "Your stories mapped to the LPs",
+      "domain": "interview",
+      "domainTitle": "Interview Prep"
+    },
+    {
+      "id": "interview:reported-questions:https-amazon-sde-preparation-hub-interview-prep-hub-workers-dev-reported",
+      "title": "Reported questions",
+      "url": "https://amazon-sde-preparation-hub.interview-prep-hub.workers.dev/#/reported",
+      "source": "Questions candidates reported, by round",
+      "domain": "interview",
+      "domainTitle": "Interview Prep"
+    },
+    {
+      "id": "interview:mock-interviews:https-amazon-sde-preparation-hub-interview-prep-hub-workers-dev-mocks",
+      "title": "Mock interviews",
+      "url": "https://amazon-sde-preparation-hub.interview-prep-hub.workers.dev/#/mocks",
+      "source": "Timed mock loops with feedback prompts",
+      "domain": "interview",
+      "domainTitle": "Interview Prep"
+    },
+    {
+      "id": "interview:daily-drill:https-amazon-sde-preparation-hub-interview-prep-hub-workers-dev-drill",
+      "title": "Daily drill",
+      "url": "https://amazon-sde-preparation-hub.interview-prep-hub.workers.dev/#/drill",
+      "source": "Short daily reps across DSA, LLD and LP",
+      "domain": "interview",
+      "domainTitle": "Interview Prep"
+    },
+    {
+      "id": "interview:readiness-dashboard:https-amazon-sde-preparation-hub-interview-prep-hub-workers-dev-dashboard",
+      "title": "Readiness dashboard",
+      "url": "https://amazon-sde-preparation-hub.interview-prep-hub.workers.dev/#/dashboard",
+      "source": "Progress across every track",
+      "domain": "interview",
+      "domainTitle": "Interview Prep"
     },
     {
       "id": "interview:star-method-guide:https-www-themuse-com-advice-star-interview-method",

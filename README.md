@@ -4,13 +4,13 @@ A personal static learning hub generated from the HTML sites in this folder.
 
 ## Included sites
 
-- DSA Ultimate Index: 940 problems, 47 sections, 427 resources
+- DSA Ultimate Index: 940 problems, 47 sections, 425 resources
 - System Design: 322 concepts, 15 sections, 216 resources
 - CS Fundamentals: 156 concepts, 7 sections, 43 resources
 - Behavioral and Leadership: 145 concepts, 6 sections, 25 resources
 - AI Engineering: 177 concepts, 11 sections, 56 resources
 - Cloud - AWS and Azure: 194 concepts, 11 sections, 55 resources
-- Interview Prep: 92 concepts, 6 sections, 16 resources
+- Interview Prep: 92 concepts, 6 sections, 24 resources
 
 ## Added tutorial sub-sites
 
