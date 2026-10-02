@@ -21,20 +21,18 @@
 
   /* ---------- the one list of destinations ---------- */
   var LINKS = [
-    { label: "Hub",           short: "Hub",       href: "index.html" },
-    { label: "DSA Index",     short: "DSA",       href: "DSA_Ultimate_Index.html" },
-    { label: "DSA Tutorial",  short: "DSA Tut",   href: "DSA_Tutorial/index.html" },
-    { label: "System Design", short: "Systems",   href: "system_design.html" },
-    { label: "SD Tutorial",   short: "SD Tut",    href: "System_Design_Tutorial/index.html" },
-    { label: "LLD Tutorial",  short: "LLD",       href: "LLD_Tutorial/index.html" },
-    { label: "CS",            short: "CS",        href: "cs_fundamentals.html" },
-    { label: "Behavioral",    short: "Behavioral",href: "behavioral.html" },
-    { label: "AI",            short: "AI",        href: "ai_engineering.html" },
-    { label: "Cloud",         short: "Cloud",     href: "cloud_aws_azure.html" },
-    { label: "Interview Prep",short: "Interview", href: "interview_prep.html" },
-    { label: "Companies",     short: "Companies", href: "companies.html" },
-    { label: "Library",       short: "Library",   href: "library.html" },
-    { label: "Auto-Me",       short: "Auto-Me",   href: "auto-me/index.html" }
+    { label: "Hub",           short: "Hub",           href: "index.html" },
+    { label: "DSA",           short: "DSA",           href: "DSA_Ultimate_Index.html" },
+    { label: "System Design", short: "System Design", href: "system_design.html" },
+    { label: "LLD Tutorial",  short: "LLD",           href: "LLD_Tutorial/index.html" },
+    { label: "CS",            short: "CS",            href: "cs_fundamentals.html" },
+    { label: "Behavioral",    short: "Behavioral",    href: "behavioral.html" },
+    { label: "AI",            short: "AI",            href: "ai_engineering.html" },
+    { label: "Cloud",         short: "Cloud",         href: "cloud_aws_azure.html" },
+    { label: "Interview Prep",short: "Interview",     href: "interview_prep.html" },
+    { label: "Companies",     short: "Companies",     href: "companies.html" },
+    { label: "Library",       short: "Library",       href: "library.html" },
+    { label: "Auto-Me",       short: "Auto-Me",       href: "auto-me/index.html" }
   ];
 
   /* ---------- theme ---------- */
@@ -129,10 +127,17 @@
 
   function isCurrent(link, here) {
     if (link.external) return false;
+    var p = window.location.pathname.replace(/\\/g, "/");
+    if (link.href === "DSA_Ultimate_Index.html") {
+      return here.file === "DSA_Ultimate_Index.html" || p.indexOf("/DSA_Tutorial/") >= 0 || p.endsWith("/DSA_Tutorial") || here.parent === "DSA_Tutorial";
+    }
+    if (link.href === "system_design.html") {
+      return here.file === "system_design.html" || p.indexOf("/System_Design_Tutorial/") >= 0 || p.endsWith("/System_Design_Tutorial") || here.parent === "System_Design_Tutorial";
+    }
     var target = link.href.split("/");
     var targetFile = target[target.length - 1];
     var targetDir = target.length > 1 ? target[target.length - 2] : "";
-    if (targetDir) return here.parent === targetDir;
+    if (targetDir) return here.parent === targetDir || p.indexOf("/" + targetDir + "/") >= 0;
     return here.file === targetFile && !here.parent.match(/^(DSA_Tutorial|LLD_Tutorial|System_Design_Tutorial|auto-me|ConvertedDocs)$/);
   }
 

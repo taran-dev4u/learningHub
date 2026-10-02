@@ -199,7 +199,19 @@
 
   function homeView() {
     var q = filters.q.toLowerCase();
+    var companionBanner = '';
+    if (CFG.companionLink) {
+      companionBanner = '<div class="am-companion-card" style="margin:0 0 20px;padding:14px 18px;border-radius:10px;border:1px solid var(--border,#2b3142);border-left:4px solid var(--accent,#2459d6);background:var(--bg-card,#161922);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">' +
+        '<div>' +
+          '<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent,#2459d6);margin-bottom:2px;">' + esc(CFG.companionLink.tag || 'Companion Guide') + '</div>' +
+          '<div style="font-size:15px;font-weight:700;color:var(--text,#e6e8ee);margin-bottom:2px;">' + esc(CFG.companionLink.title || '') + '</div>' +
+          '<div style="font-size:12.5px;color:var(--text-dim,#9aa0b0);">' + esc(CFG.companionLink.desc || '') + '</div>' +
+        '</div>' +
+        '<a href="' + esc(CFG.companionLink.href) + '" style="display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:7px;background:var(--accent,#2459d6);color:#fff;text-decoration:none;font-size:13px;font-weight:700;white-space:nowrap;">' + esc(CFG.companionLink.label || 'Open Companion →') + '</a>' +
+      '</div>';
+    }
     var html = '<div class="am-hero"><h1>' + esc(CFG.title || 'Curriculum') + '</h1><p>' + esc(CFG.subtitle || '') + '</p></div>' +
+      companionBanner +
       '<div class="am-filters">' +
         '<div class="am-field"><label for="am-q">Search</label>' +
           '<input id="am-q" type="search" placeholder="Search topics…" value="' + esc(filters.q) + '"></div>' +

@@ -53,7 +53,7 @@ def shell(title, body, depth, prev_page, next_page, crumb_html, mid_label):
 </head>
 <body>
 <div class="nav-bar">{prev_a}<div class="mid"><a href="{rel}index.html">🏠 DSA Tutorial</a> · {mid_label}</div>
-<div style="display:flex;gap:8px;align-items:center">{next_a}</div></div>
+<div style="display:flex;gap:8px;align-items:center"><a href="{root_rel}DSA_Ultimate_Index.html" class="dsa-switch-link" title="Switch to DSA Ultimate Index (940 Problems Sheet)">📊 DSA Index ↗</a>{next_a}</div></div>
 <div class="container">
 <div class="crumbs">{crumb_html}</div>
 {body}
@@ -135,6 +135,16 @@ def render_hub():
 <p>A complete, beginner-first Data Structures &amp; Algorithms course. Start with the Python Primer,
 build the Foundations, then master all {len(CURR)} patterns and {UNIQUE_PROBLEMS} problems.
 Every page teaches — LeetCode is just one click away when you want to practice.</p>
+
+<div class="companion-switch-banner" style="background:var(--bg-card);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:10px;padding:14px 18px;margin:18px 0 22px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+  <div>
+    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);margin-bottom:2px;">Comprehensive Problem Sheet &amp; Tracker</div>
+    <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:2px;">DSA Ultimate Index (940 Problems Sheet)</div>
+    <div style="font-size:12.5px;color:var(--text-dim);">Switch to the 47-pattern master sheet with Blind 75, NeetCode 150, Striver A2Z, multi-video side panel, multi-approach reader, and progress tracking.</div>
+  </div>
+  <a href="../DSA_Ultimate_Index.html" style="display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:7px;background:var(--accent);color:#fff;text-decoration:none;font-size:13px;font-weight:700;white-space:nowrap;">Switch to DSA Ultimate Index (940 Problems) &rarr;</a>
+</div>
+
 <p class="progress-note">Tip: use <kbd>←</kbd> and <kbd>→</kbd> to move between pages; every page follows the previous one in the curriculum.</p>
 <input class="searchbar" id="hub-search" placeholder="🔍 Filter topics… (e.g. sliding window, heap, dp)">
 
