@@ -22,7 +22,7 @@
   var MIN_W = 340, MAX_FRAC = 0.8;
   // Hosts verified to allow being shown inside another page.
   var FRAME_HOSTS = [
-    'walkccc.me', 'leetcode.doocs.org', 'neetcode.io', 'java-design-patterns.com', 'docs.oracle.com',
+    'walkccc.me', 'leetcode.doocs.org', 'java-design-patterns.com', 'docs.oracle.com',
     'docs.python.org', 'en.wikipedia.org', 'genai.owasp.org', 'sre.google', 'pages.cs.wisc.edu',
     'www.allthingsdistributed.com', 'static.googleusercontent.com'
   ];

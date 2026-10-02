@@ -148,10 +148,6 @@
        them when the row is not in the registry at all, or they get appended
        after the external links and the order the registry chose is lost. */
     if (!curated && slug) {
-      var neetcodeUrl = "https://neetcode.io/problems/" + slug;
-      if (!found.docs.some(function (d) { return d[1] === neetcodeUrl; })) {
-        found.docs.push(["NeetCode editorial", neetcodeUrl]);
-      }
       var sol = "https://leetcode.com/problems/" + slug + "/solutions/";
       if (!found.docs.some(function (d) { return d[1] === sol; })) {
         found.docs.push(["Community solutions ↗", sol]);
