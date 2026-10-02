@@ -1,8 +1,12 @@
 #!/usr/bin/env node
 /**
- * Builder script to generate assets/dsa-resources.js
- * Synthesizes 4-5 verified direct YouTube videos and 4-5 curated multi-approach reading links
- * for all 940 distinct DSA problems in Taran's Learning Hub.
+ * Builder script to generate assets/dsa-resources.js.
+ *
+ * Quality rule: a direct video is emitted only when NeetCode's official
+ * .problemSiteData.json names that YouTube id for the exact LeetCode slug.
+ * Problems without a provenanced video intentionally get no video; the study
+ * rail shows a labelled YouTube search instead. Do not add a per-problem
+ * video quota here.
  */
 
 import fs from 'node:fs';
@@ -11,21 +15,31 @@ import vm from 'node:vm';
 
 const ROOT = process.cwd();
 const PROBLEMS_SUMMARY_FILE = path.join(ROOT, 'tools', 'problems_summary.json');
-const HARVESTED_VIDEOS_FILE = path.join(ROOT, 'tools', 'harvested_videos_cache.json');
 const STRIVER_PARSED_FILE = path.join(ROOT, 'striver_parsed.json');
 const DOOCS_INDEX_FILE = path.join(ROOT, 'tools', '.dsa-cache', 'doocs_solutions_index.json');
+const LOCAL_TUTORIALS_FILE = path.join(ROOT, 'tools', '.dsa-cache', 'local_tutorials_index.json');
+const NEETCODE_FILE = path.join(ROOT, 'tools', '.dsa-cache', 'neetcode.json');
 const LEGACY_RESOURCES_FILE = path.join(ROOT, 'assets', 'dsa-resources.js');
 const OUTPUT_FILE = path.join(ROOT, 'assets', 'dsa-resources.js');
+const NEETCODE_SOURCE_URL = 'https://raw.githubusercontent.com/neetcode-gh/leetcode/main/.problemSiteData.json';
 
-console.log('Loading datasets...');
+console.log('Loading DSA resource datasets...');
+if (!fs.existsSync(NEETCODE_FILE)) {
+  console.error(`FAIL: missing ${NEETCODE_FILE}`);
+  console.error(`Fetch it first: Invoke-WebRequest -Uri '${NEETCODE_SOURCE_URL}' -OutFile '${NEETCODE_FILE}'`);
+  process.exit(1);
+}
 const summary = JSON.parse(fs.readFileSync(PROBLEMS_SUMMARY_FILE, 'utf8'));
-const videoCache = JSON.parse(fs.readFileSync(HARVESTED_VIDEOS_FILE, 'utf8'));
-let doocsIndex = {};
-if (fs.existsSync(DOOCS_INDEX_FILE)) {
-  doocsIndex = JSON.parse(fs.readFileSync(DOOCS_INDEX_FILE, 'utf8'));
+const doocsIndex = readJson(DOOCS_INDEX_FILE, {});
+const localTutorials = readJson(LOCAL_TUTORIALS_FILE, {});
+const neetcodeRows = readJson(NEETCODE_FILE, []);
+
+const neetcodeBySlug = new Map();
+for (const row of neetcodeRows) {
+  const slug = String(row.link || '').replace(/^\/|\/$/g, '').toLowerCase();
+  if (slug) neetcodeBySlug.set(slug, row);
 }
 
-// Load Striver parsed articles map
 let striverArticleMap = new Map();
 if (fs.existsSync(STRIVER_PARSED_FILE)) {
   const striverData = JSON.parse(fs.readFileSync(STRIVER_PARSED_FILE, 'utf8'));
@@ -40,7 +54,6 @@ if (fs.existsSync(STRIVER_PARSED_FILE)) {
   }
 }
 
-// Load legacy dsa-resources to preserve any curated 'l' tags or patterns
 let legacyData = {};
 if (fs.existsSync(LEGACY_RESOURCES_FILE)) {
   try {
@@ -54,206 +67,215 @@ if (fs.existsSync(LEGACY_RESOURCES_FILE)) {
   }
 }
 
-console.log(`Loaded ${summary.length} problems, ${Object.keys(videoCache).length} video cache keys, ${striverArticleMap.size} Striver articles.`);
+console.log(`Loaded ${summary.length} problems, ${neetcodeBySlug.size} NeetCode metadata rows, ${striverArticleMap.size} Striver articles.`);
 
-function makeReads(prob, tufArticle) {
-  const isLeetCode = Boolean(prob.slug);
+function readJson(file, fallback) {
+  return fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf8')) : fallback;
+}
+
+function cleanSlug(value) {
+  return String(value || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+}
+
+function localUrl(id) {
+  const rel = localTutorials[String(id)];
+  return rel ? `https://taran-dev4u.github.io/learningHub/${rel.replace(/\\/g, '/')}` : '';
+}
+
+function read(name, url, why, panel, focus, languages) {
+  return [name, url, why, panel, focus, languages];
+}
+
+function makeReads(prob, tufArticle, ncRow) {
+  const isLeetCode = Boolean(prob.slug && prob.lcNum);
 
   if (isLeetCode) {
-    const lcNum = prob.lcNum;
+    const lcNum = Number(prob.lcNum);
     const slug = prob.slug;
-    const padded = lcNum ? String(lcNum).padStart(4, '0') : '';
+    const padded = String(lcNum).padStart(4, '0');
+    const reads = [];
 
-    const walkcccUrl = padded
-      ? `https://walkccc.me/LeetCode/problems/${padded}/`
-      : `https://walkccc.me/LeetCode/problems/${slug}/`;
-
-    let doocsUrl = '';
-    if (lcNum && doocsIndex[lcNum]) {
-      doocsUrl = `https://raw.githubusercontent.com/doocs/leetcode/main/solution/${doocsIndex[lcNum].relPath}/README_EN.md`;
-    } else {
-      const thousands = lcNum ? Math.floor((lcNum - 1) / 100) * 100 : 0;
-      const folder = `${String(thousands).padStart(4, '0')}-${String(thousands + 99).padStart(4, '0')}`;
-      doocsUrl = `https://raw.githubusercontent.com/doocs/leetcode/main/solution/${folder}/${padded}.${encodeURIComponent(prob.title)}/README_EN.md`;
+    if (doocsIndex[lcNum]) {
+      reads.push(read(
+        'Doocs English Multi-Approach Guide',
+        `https://raw.githubusercontent.com/doocs/leetcode/main/solution/${doocsIndex[lcNum].relPath}/README_EN.md`,
+        'Exact problem editorial with intuition, approaches, complexity analysis, and multi-language implementations',
+        true,
+        'Best first written solution',
+        'Python, Java, C++, Go, TypeScript, Rust'
+      ));
     }
 
-    const algoMonsterUrl = lcNum
-      ? `https://algo.monster/liteproblems/${lcNum}`
-      : `https://algo.monster/liteproblems/${slug}`;
+    reads.push(read(
+      'Walkccc Language Implementations',
+      `https://walkccc.me/LeetCode/problems/${padded}/`,
+      'Exact problem reference implementations in C++, Java, and Python with concise explanation',
+      true,
+      'Fast code comparison',
+      'C++, Java, Python'
+    ));
 
-    const fourthUrl = tufArticle || `https://www.geeksforgeeks.org/${slug}/`;
-    const fourthName = tufArticle ? 'TakeUForward Detailed Article' : 'GeeksforGeeks Tutorial Guide';
-
-    const leetcodeSolutionsUrl = `https://leetcode.com/problems/${slug}/solutions/`;
-
-    return [
-      [
-        'Doocs English Multi-Approach Guide',
-        doocsUrl,
-        'Problem intuition, step-by-step approach, complexity trade-offs, and multi-language solutions',
+    if (ncRow) {
+      reads.push(read(
+        'NeetCode Solution Page',
+        `https://neetcode.io/solutions/${slug}`,
+        'Exact NeetCode problem page paired with the verified walkthrough and clean solution notes',
         true,
-        'Optimal Complexity',
-        'Python, Java, C++, Go, TypeScript, Rust'
-      ],
-      [
-        'Walkccc Language Implementations',
-        walkcccUrl,
-        'Multi-approach solutions in C++, Java, and Python with detailed line-by-line explanation',
-        true,
-        'O(N) Time, O(1) Auxiliary Space',
-        'C++, Java, Python'
-      ],
-      [
-        'AlgoMonster Lite Editorial',
-        algoMonsterUrl,
-        'Key intuition, pattern identification, step-by-step breakdown, and edge case checklist',
-        false,
-        'Time & Space Trade-off Analysis',
-        'Python, Java, C++, JavaScript'
-      ],
-      [
-        fourthName,
-        fourthUrl,
-        'Intuitive conceptual explanation from brute force to most optimal approach with dry-run diagrams',
-        false,
-        'Brute to Optimal Complexity Comparison',
-        'C++, Java, Python, JavaScript'
-      ],
-      [
-        'LeetCode Official & Community Solutions',
-        leetcodeSolutionsUrl,
-        'Top-rated community solutions, discussion insights, alternative data structure choices, and visual guides',
-        false,
-        'Comprehensive Trade-off Matrix',
-        'All Major Languages'
-      ]
-    ];
-  } else {
-    // Non-LeetCode Striver conceptual problems (NO Walkccc!)
-    const titleSlug = prob.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-    const articleUrl = tufArticle || 'https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-problems/';
-    const gfgUrl = `https://www.geeksforgeeks.org/${titleSlug || 'dsa-tutorial'}/`;
+        'Video-matched notes',
+        'Python and common interview languages'
+      ));
+    }
 
-    return [
-      [
-        'TakeUForward Topic Article',
-        articleUrl,
-        'In-depth foundational lecture, diagrams, step-by-step mathematical reasoning, and memory layout',
+    reads.push(read(
+      'AlgoMonster Lite Editorial',
+      `https://algo.monster/liteproblems/${lcNum}`,
+      'Exact problem pattern explanation, intuition, and edge-case checklist',
+      false,
+      'Pattern recognition',
+      'Python, Java, C++, JavaScript'
+    ));
+
+    if (tufArticle) {
+      reads.push(read(
+        'TakeUForward Detailed Article',
+        tufArticle,
+        'Exact Striver/TakeUForward article with brute-better-optimal progression when available',
         false,
-        'Core Algorithmic Complexity',
+        'Brute to optimal reasoning',
         'C++, Java, Python'
-      ],
-      [
-        'GeeksforGeeks Computer Science Guide',
-        gfgUrl,
-        'Comprehensive theoretical overview, language-specific syntax reference, and standard library nuances',
+      ));
+    }
+
+    const local = localUrl(lcNum);
+    if (local) {
+      reads.push(read(
+        'Taran DSA Tutorial Page',
+        local,
+        'Local learning-hub page with the problem in its surrounding pattern and subpattern order',
         false,
-        'Foundational Theory & Analysis',
-        'C++, Java, Python'
-      ],
-      [
-        'TakeUForward A2Z DSA Curriculum Sheet',
-        'https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-problems/',
-        'Structured curriculum context, prerequisite tracking, and progressive mastery exercises',
-        false,
-        'Curriculum Progression',
-        'C++, Java, Python'
-      ],
-      [
-        'AlgoMonster Pattern Foundations',
-        'https://algo.monster/',
-        'Algorithmic pattern recognition principles, interview strategy, and mental model decision trees',
-        false,
-        'Pattern Classification',
-        'Python, Java, C++'
-      ],
-      [
-        'LeetCode Explore & Fundamental Cards',
-        'https://leetcode.com/explore/',
-        'Interactive foundational exercises, data structure properties, and conceptual checks',
-        false,
-        'Foundational Theory',
-        'All Supported Languages'
-      ]
-    ];
+        'Personal study sequence',
+        'Python-first roadmap'
+      ));
+    }
+
+    reads.push(read(
+      'LeetCode Official & Community Solutions',
+      `https://leetcode.com/problems/${slug}/solutions/`,
+      'Official editorials and high-signal community alternatives for the same problem',
+      false,
+      'Alternative approaches',
+      'All major languages'
+    ));
+
+    return dedupeReads(reads);
   }
+
+  const titleSlug = cleanSlug(prob.title);
+  const reads = [];
+  if (tufArticle) {
+    reads.push(read(
+      'TakeUForward Topic Article',
+      tufArticle,
+      'Exact Striver A2Z topic article for this foundational DSA row',
+      false,
+      'Primary topic explanation',
+      'C++, Java, Python'
+    ));
+  }
+  reads.push(read(
+    'TakeUForward A2Z DSA Curriculum Sheet',
+    'https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-problems/',
+    'Original curriculum context for the Striver A2Z topic order',
+    false,
+    'Curriculum placement',
+    'C++, Java, Python'
+  ));
+  reads.push(read(
+    'GeeksforGeeks DSA Tutorial',
+    titleSlug ? `https://www.geeksforgeeks.org/${titleSlug}/` : 'https://www.geeksforgeeks.org/dsa-tutorial-learn-data-structures-and-algorithms/',
+    'Concept reference for the same data-structure or algorithm family',
+    false,
+    'Foundational theory',
+    'C++, Java, Python, JavaScript'
+  ));
+  return dedupeReads(reads);
+}
+
+function dedupeReads(reads) {
+  const seen = new Set();
+  const out = [];
+  for (const r of reads) {
+    if (!r[1] || seen.has(r[1])) continue;
+    seen.add(r[1]);
+    out.push(r);
+  }
+  return out;
+}
+
+function makeVideos(prob, ncRow) {
+  if (!prob.slug || !ncRow || !ncRow.video) return [];
+  return [[
+    ncRow.video,
+    `${prob.title} - NeetCode Walkthrough`,
+    'NeetCode',
+    '',
+    'Verified exact problem'
+  ]];
 }
 
 const resources = {};
+const slugIndex = {};
 let totalVideos = 0;
 let totalReads = 0;
 
 for (const p of summary) {
-  const rawVideos = videoCache[p.lcId] || [];
-  // Ensure exactly 4 to 5 videos
-  const videos = rawVideos.slice(0, 5);
-  if (videos.length < 4) {
-    console.error(`FATAL: Problem ${p.lcId} has fewer than 4 videos (${videos.length})!`);
-    process.exit(1);
-  }
-
+  const slug = String(p.slug || '').toLowerCase();
+  const ncRow = slug ? neetcodeBySlug.get(slug) : null;
   const tufArticle = striverArticleMap.get(p.lcId) || '';
-  const reads = makeReads(p, tufArticle);
+  const videos = makeVideos(p, ncRow);
+  const reads = makeReads(p, tufArticle, ncRow);
 
-  // Preserve legacy tags (e.g. NC150|B75)
-  let legacyEntry = legacyData[p.slug] || legacyData[p.lcId] || {};
-  let label = legacyEntry.l || '';
-  if (!label) {
-    if (p.isStriver) {
-      label = 'Striver A2Z';
-    } else {
-      label = 'LeetCode';
-    }
-  }
+  const legacyEntry = legacyData[p.lcId] || (slug && legacyData[slug]) || {};
+  const label = legacyEntry.l || (p.isStriver ? 'Striver A2Z' : 'LeetCode');
 
   const entry = {
-    v: videos[0][0], // hit.v === hit.videos[0][0]
+    v: videos[0] ? videos[0][0] : '',
     t: p.title,
     d: p.diff || 'Medium',
     p: p.pattern || 'DSA Pattern',
     l: label,
-    videos: videos,
-    reads: reads
+    videos,
+    reads
   };
 
-  // Primary key: lcId
   resources[p.lcId] = entry;
-
-  // Secondary key: slug (if available)
-  if (p.slug && !resources[p.slug]) {
-    resources[p.slug] = entry;
-  }
-
-  // If striver problem maps to numerical lcNum and it's not already occupied
-  if (p.lcNum && !resources[String(p.lcNum)]) {
-    resources[String(p.lcNum)] = entry;
-  }
+  if (slug) slugIndex[slug] = p.lcId;
 
   totalVideos += videos.length;
   totalReads += reads.length;
 }
 
-console.log(`Assembled registry:`);
-console.log(`  Total keys in window.dsaResources: ${Object.keys(resources).length}`);
-console.log(`  Total distinct problems covered: ${summary.length} / 940`);
-console.log(`  Total curated direct videos: ${totalVideos}`);
-console.log(`  Total curated reading links: ${totalReads}`);
+console.log('Assembled registry:');
+console.log(`  Canonical DSA rows: ${Object.keys(resources).length} / ${summary.length}`);
+console.log(`  Slug aliases for tutorial pages: ${Object.keys(slugIndex).length}`);
+console.log(`  Verified direct videos: ${totalVideos}`);
+console.log(`  Direct reading links: ${totalReads}`);
 
-// Generate file content
-const fileHeader = `/* Comprehensive DSA Problem Resources Registry.
+const fileHeader = `/* DSA Problem Resources Registry.
    Auto-generated by tools/build_dsa_resources.mjs.
-   Covers all 940 distinct DSA problems (609 Curated + 331 Striver A2Z).
-   Each problem provides 4-5 verified direct YouTube videos and 4-5 curated multi-approach reading links.
-   Maintains 100% backwards compatibility with legacy window.dsaResources (v, t, d, p, l).
+   Covers the DSA Ultimate Index rows with exact direct reading links.
+   Videos are emitted only when NeetCode's official metadata names the video for the exact LeetCode slug.
+   Problems without a verified video intentionally fall back to a labelled YouTube search in study-rail.js.
 */
 window.dsaResources = `;
 
-const jsonBody = JSON.stringify(resources);
-const fileFooter = `;\n`;
+const fullContent =
+  fileHeader +
+  JSON.stringify(resources) +
+  `;\nwindow.dsaResourceSlugs = ` +
+  JSON.stringify(slugIndex) +
+  `;\n`;
 
-const fullContent = fileHeader + jsonBody + fileFooter;
-
-// Atomic write with retry and fallback
 console.log(`Writing atomically to ${OUTPUT_FILE}...`);
 const tempFile = OUTPUT_FILE + '.tmp.' + Date.now();
 fs.writeFileSync(tempFile, fullContent, 'utf8');
@@ -281,4 +303,4 @@ if (!written) {
   process.exit(1);
 }
 
-console.log('Successfully written assets/dsa-resources.js!');
+console.log('Successfully written assets/dsa-resources.js.');

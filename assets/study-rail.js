@@ -83,7 +83,7 @@
     if (dsaPending) return false;
     dsaPending = true;
     var s = document.createElement("script");
-    s.src = root() + "assets/dsa-resources.js?v=1";
+    s.src = root() + "assets/dsa-resources.js?v=2";
     s.onload = function () { onReady && onReady(); };
     s.onerror = function () { window.dsaResources = {}; onReady && onReady(); };
     document.head.appendChild(s);
@@ -108,7 +108,9 @@
     var isStriver = lcNum.charAt(0) === "s";
     var digits = isStriver ? "" : lcNum.replace(/^[^0-9]+/, "");
     var res = window.dsaResources || {};
-    var hit = res[lcNum] || (slug ? res[slug] : null) || (digits ? res[digits] : null);
+    var bySlug = window.dsaResourceSlugs || {};
+    var slugKey = slug && bySlug[slug];
+    var hit = res[lcNum] || (slugKey ? res[slugKey] : null) || (digits ? res[digits] : null);
     var curated = false;
 
     if (hit) {

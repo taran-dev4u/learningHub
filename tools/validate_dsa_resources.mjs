@@ -33,6 +33,7 @@ const sandbox = { window: {} };
 vm.createContext(sandbox);
 vm.runInContext(fs.readFileSync(REG, 'utf8'), sandbox);
 const reg = sandbox.window.dsaResources;
+const slugIndex = sandbox.window.dsaResourceSlugs || {};
 check(!!reg, 'window.dsaResources did not load');
 
 const html = fs.readFileSync(INDEX, 'utf8');
@@ -42,6 +43,9 @@ const keys = Object.keys(reg);
 check(keys.length === pageIds.size, `registry has ${keys.length} entries, page has ${pageIds.size} rows`);
 for (const id of pageIds) check(reg[id], `row ${id} has no registry entry`);
 for (const k of keys) check(pageIds.has(k), `registry entry ${k} is not a row on the page`);
+for (const [slug, id] of Object.entries(slugIndex)) {
+  check(pageIds.has(String(id)), `slug alias ${slug} points at missing row ${id}`);
+}
 
 /* every video id must come from NeetCode's own data, and must be the video
    they list for that problem — this is the check the old data could not pass */
