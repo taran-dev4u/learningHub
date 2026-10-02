@@ -3,7 +3,7 @@
    Uses the host page's colours when present, with safe fallbacks.
    ========================================================================== */
 .vp-panel {
-  --vp-bg: var(--surface, var(--am-surface, #ffffff));
+  --vp-bg: var(--card, var(--surface, var(--am-surface, #ffffff)));
   --vp-bg-2: var(--bg, var(--am-surface-2, #f3f5f8));
   --vp-text: var(--text, var(--am-text, #0f172a));
   --vp-muted: var(--muted, var(--am-muted, #5b6578));
@@ -17,6 +17,22 @@
   box-shadow: -18px 0 40px rgba(15, 23, 42, .16);
   transform: translateX(105%); transition: transform .22s ease;
   font-family: inherit;
+}
+html.dark .vp-panel, html[data-theme="dark"] .vp-panel {
+  --vp-bg: #161b22;
+  --vp-bg-2: #0d1117;
+  --vp-text: #e6edf3;
+  --vp-muted: #8b949e;
+  --vp-border: #30363d;
+  --vp-accent: #58a6ff;
+}
+html.black .vp-panel, html[data-theme="black"] .vp-panel, html.black:root .vp-panel {
+  --vp-bg: #000000;
+  --vp-bg-2: #0a0a0a;
+  --vp-text: #ffffff;
+  --vp-muted: #888888;
+  --vp-border: #222222;
+  --vp-accent: #3b82f6;
 }
 .vp-panel.vp-open { transform: none; }
 .vp-panel.vp-dragging { transition: none; user-select: none; }
@@ -192,16 +208,29 @@ html[data-theme="dark"] .vp-panel, html.dark .vp-panel { box-shadow: -18px 0 40p
 .vp-fb-host { font-size: .72rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--vp-muted); }
 .vp-fb-actions { display: flex; gap: 8px; flex-wrap: wrap; }
 
-.vp-md { padding: 16px 18px 24px; font-size: .9rem; line-height: 1.6; overflow-wrap: anywhere; }
-.vp-md h1 { font-size: 1.3rem; margin: 0 0 .6em; }
-.vp-md h2 { font-size: 1.1rem; margin: 1.3em 0 .5em; padding-bottom: .25em; border-bottom: 1px solid var(--vp-border); }
-.vp-md h3, .vp-md h4 { font-size: .98rem; margin: 1.1em 0 .4em; }
+.vp-md { padding: 20px 22px 36px; font-size: .92rem; line-height: 1.68; overflow-wrap: anywhere; color: var(--vp-text); background: var(--vp-bg); }
+.vp-md h1 { font-size: 1.45rem; font-weight: 800; margin: 0 0 .6em; color: var(--vp-text); }
+.vp-md h2 { font-size: 1.2rem; font-weight: 700; margin: 1.5em 0 .5em; padding-bottom: .3em; border-bottom: 1px solid var(--vp-border); color: var(--vp-text); }
+.vp-md h3 { font-size: 1.05rem; font-weight: 700; margin: 1.2em 0 .4em; color: var(--vp-text); }
+.vp-md h4 {
+  font-size: .88rem; font-weight: 700; margin: 1.3em 0 .4em;
+  display: inline-block; padding: 3px 10px; border-radius: 6px;
+  background: var(--vp-bg-2); border: 1px solid var(--vp-border); color: var(--vp-accent);
+}
+.vp-md p { color: var(--vp-text); margin: 0 0 1em; }
+.vp-md blockquote {
+  margin: 14px 0; padding: 12px 16px; border-left: 3px solid var(--vp-accent);
+  background: var(--vp-bg-2); border-radius: 0 8px 8px 0; color: var(--vp-text);
+}
+.vp-md blockquote p { margin: 4px 0; color: var(--vp-text); }
+.vp-md blockquote strong { color: var(--vp-accent); }
 .vp-md img { max-width: 100%; height: auto; border-radius: 8px; background: #fff; }
-.vp-md pre { background: #0f172a; color: #e2e8f0; padding: 12px 14px; border-radius: 10px; overflow-x: auto; font-size: .8rem; line-height: 1.5; }
+.vp-md pre { background: #0b101b; color: #e2e8f0; border: 1px solid var(--vp-border); padding: 14px 16px; border-radius: 10px; overflow-x: auto; font-size: .82rem; line-height: 1.55; margin: 8px 0 16px; }
 .vp-md code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
-.vp-md :not(pre) > code { background: var(--vp-bg-2); padding: 1px 5px; border-radius: 5px; font-size: .85em; }
-.vp-md table { border-collapse: collapse; width: 100%; font-size: .82rem; display: block; overflow-x: auto; }
-.vp-md th, .vp-md td { border: 1px solid var(--vp-border); padding: 5px 8px; }
+.vp-md :not(pre) > code { background: var(--vp-bg-2); border: 1px solid var(--vp-border); padding: 1px 6px; border-radius: 5px; font-size: .85em; color: var(--vp-accent); }
+.vp-md table { border-collapse: collapse; width: 100%; font-size: .84rem; margin: 12px 0; overflow-x: auto; display: block; }
+.vp-md th, .vp-md td { border: 1px solid var(--vp-border); padding: 8px 12px; }
+.vp-md th { background: var(--vp-bg-2); font-weight: 700; color: var(--vp-text); }
 .vp-md a { color: var(--vp-accent); }
 .vp-md pre code.hljs { background: transparent; padding: 0; }
 .vp-code-head { display: flex; justify-content: space-between; gap: 8px; margin-bottom: 8px; font-size: .8rem; color: var(--vp-muted); }

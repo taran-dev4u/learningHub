@@ -184,6 +184,7 @@
   }
 
   function mountNav() {
+    if (window.self !== window.top) return;
     if (document.querySelector("nav.hub-nav")) return;
     var nav = buildNav();
     var legacy = document.querySelector("nav.site-nav, nav.global-learning-nav");

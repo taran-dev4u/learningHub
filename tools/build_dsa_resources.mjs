@@ -13,12 +13,17 @@ const ROOT = process.cwd();
 const PROBLEMS_SUMMARY_FILE = path.join(ROOT, 'tools', 'problems_summary.json');
 const HARVESTED_VIDEOS_FILE = path.join(ROOT, 'tools', 'harvested_videos_cache.json');
 const STRIVER_PARSED_FILE = path.join(ROOT, 'striver_parsed.json');
+const DOOCS_INDEX_FILE = path.join(ROOT, 'tools', '.dsa-cache', 'doocs_solutions_index.json');
 const LEGACY_RESOURCES_FILE = path.join(ROOT, 'assets', 'dsa-resources.js');
 const OUTPUT_FILE = path.join(ROOT, 'assets', 'dsa-resources.js');
 
 console.log('Loading datasets...');
 const summary = JSON.parse(fs.readFileSync(PROBLEMS_SUMMARY_FILE, 'utf8'));
 const videoCache = JSON.parse(fs.readFileSync(HARVESTED_VIDEOS_FILE, 'utf8'));
+let doocsIndex = {};
+if (fs.existsSync(DOOCS_INDEX_FILE)) {
+  doocsIndex = JSON.parse(fs.readFileSync(DOOCS_INDEX_FILE, 'utf8'));
+}
 
 // Load Striver parsed articles map
 let striverArticleMap = new Map();
@@ -63,9 +68,14 @@ function makeReads(prob, tufArticle) {
       ? `https://walkccc.me/LeetCode/problems/${padded}/`
       : `https://walkccc.me/LeetCode/problems/${slug}/`;
 
-    const thousands = lcNum ? Math.floor((lcNum - 1) / 100) * 100 : 0;
-    const folder = `${String(thousands).padStart(4, '0')}-${String(thousands + 99).padStart(4, '0')}`;
-    const doocsUrl = `https://leetcode.doocs.org/#/solution/${folder}/${padded}.${encodeURIComponent(prob.title)}/README`;
+    let doocsUrl = '';
+    if (lcNum && doocsIndex[lcNum]) {
+      doocsUrl = `https://raw.githubusercontent.com/doocs/leetcode/main/solution/${doocsIndex[lcNum].relPath}/README_EN.md`;
+    } else {
+      const thousands = lcNum ? Math.floor((lcNum - 1) / 100) * 100 : 0;
+      const folder = `${String(thousands).padStart(4, '0')}-${String(thousands + 99).padStart(4, '0')}`;
+      doocsUrl = `https://raw.githubusercontent.com/doocs/leetcode/main/solution/${folder}/${padded}.${encodeURIComponent(prob.title)}/README_EN.md`;
+    }
 
     const algoMonsterUrl = lcNum
       ? `https://algo.monster/liteproblems/${lcNum}`
@@ -78,20 +88,20 @@ function makeReads(prob, tufArticle) {
 
     return [
       [
-        'Walkccc Comprehensive Solutions',
+        'Doocs English Multi-Approach Guide',
+        doocsUrl,
+        'Problem intuition, step-by-step approach, complexity trade-offs, and multi-language solutions',
+        true,
+        'Optimal Complexity',
+        'Python, Java, C++, Go, TypeScript, Rust'
+      ],
+      [
+        'Walkccc Language Implementations',
         walkcccUrl,
         'Multi-approach solutions in C++, Java, and Python with detailed line-by-line explanation',
         true,
         'O(N) Time, O(1) Auxiliary Space',
         'C++, Java, Python'
-      ],
-      [
-        'Doocs Open-Source Solutions',
-        doocsUrl,
-        'Optimized algorithmic implementations with clean syntax across modern languages',
-        true,
-        'Optimal Asymptotic Complexity',
-        'Java, C++, Python, Go, Rust, TypeScript'
       ],
       [
         'AlgoMonster Lite Editorial',

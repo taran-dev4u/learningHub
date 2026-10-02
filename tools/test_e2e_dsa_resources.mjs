@@ -595,6 +595,7 @@ function createBrowserEnv() {
     resetScrollOffset: () => { scrollOffset = { top: 0, left: 0 }; },
     requestAnimationFrame: (fn) => setTimeout(fn, 16),
     cancelAnimationFrame: (id) => clearTimeout(id),
+    fetch: globalThis.fetch ? globalThis.fetch.bind(globalThis) : (() => Promise.resolve({ ok: true, status: 200, text: () => Promise.resolve("# Solution\n\nExplanation") })),
     dsaResources: loadDsaResources() || {}
   };
 
@@ -613,7 +614,8 @@ function createVmContext(env) {
     console: globalThis.console,
     performance: globalThis.performance || { now: () => Date.now() },
     requestAnimationFrame: env.requestAnimationFrame,
-    cancelAnimationFrame: env.cancelAnimationFrame
+    cancelAnimationFrame: env.cancelAnimationFrame,
+    fetch: env.fetch || (globalThis.fetch ? globalThis.fetch.bind(globalThis) : (() => Promise.resolve({ ok: true, status: 200, text: () => Promise.resolve("# Solution\n\nExplanation") })))
   };
 }
 
@@ -1764,13 +1766,17 @@ test("T4_SCEN_1_TWOSUM", "Scenario 1: End-to-end study journey on LC #1 Two Sum 
   assert(!env.document.querySelector(".vp-read-view").hidden, "Reader view must be visible");
 
   // 6. Verify Walkccc loads in iframe
+  const docPills = env.document.querySelectorAll(".vp-docs [data-vp-doc]");
+  assert(docPills.length >= 4, `Expected at least 4 doc pills, found ${docPills.length}`);
+  const walkPill = Array.from(docPills).find(p => /walkccc/i.test((p.textContent || '') + (p.getAttribute('title') || '')));
+  if (walkPill) walkPill.dispatchEvent({ type: "click" });
   const docFrame = env.document.querySelector("iframe.vp-doc-frame");
   assert(docFrame !== null, "Walkccc must render in iframe");
 
   // 7. Click AlgoMonster external card
-  const docPills = env.document.querySelectorAll(".vp-docs [data-vp-doc]");
-  if (docPills.length > 2) {
-    docPills[2].dispatchEvent({ type: "click" });
+  const algoPill = Array.from(docPills).find(p => /algo\.?monster/i.test((p.textContent || '') + (p.getAttribute('title') || '')));
+  if (algoPill) {
+    algoPill.dispatchEvent({ type: "click" });
     const viewer = env.document.querySelector(".vp-viewer");
     assert(/algo\.monster|Solution/i.test(viewer.innerHTML), "AlgoMonster solution card must display");
   }

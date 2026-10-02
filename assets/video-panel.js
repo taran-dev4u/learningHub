@@ -106,7 +106,7 @@
     if (h === 'raw.githubusercontent.com' && p.length >= 4) {
       return { kind: /\.(md|markdown)$/i.test(u.pathname) ? 'md' : 'code', raw: u.href, repo: p[0] + '/' + p[1], branch: p[2], dir: p.slice(3, -1).join('/') };
     }
-    if (u.protocol === 'https:' && FRAME_HOSTS.indexOf(h) >= 0) return { kind: 'frame', src: u.href };
+    if (u.origin === location.origin || (u.protocol === 'https:' && FRAME_HOSTS.indexOf(h) >= 0)) return { kind: 'frame', src: u.href };
     return { kind: 'link' };
   }
   function readable(href) { return docKind(href).kind !== 'link'; }
