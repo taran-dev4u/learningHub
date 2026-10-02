@@ -263,3 +263,16 @@ html.vp-active.vp-left body { padding-right: 0; padding-left: var(--vp-offset, 0
   .vp-panel.vp-collapsed .vp-rail { writing-mode: horizontal-tb; justify-content: center; padding: 0 14px; }
   .vp-panel.vp-collapsed .vp-rail-icon { transform: none; }
 }
+
+/* reader: the boundary between docs the panel renders and docs that open away */
+.vp-doc-sep {
+  margin: 8px 2px 4px; padding-top: 7px; border-top: 1px solid var(--vp-border, rgba(128,128,128,.28));
+  font-size: 10.5px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--vp-faint, #8a93a3);
+}
+.vp-doc.vp-doc-ext .vp-doc-l { opacity: .88; }
+
+.vp-md pre.vp-plain {
+  white-space: pre-wrap; word-break: break-word; font-size: 12.5px; line-height: 1.55;
+  padding: 12px; border-radius: 8px;
+}

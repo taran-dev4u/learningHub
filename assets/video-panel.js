@@ -337,10 +337,19 @@
   /* ---------- reader ---------- */
   function renderDocs() {
     if (!state.docs.length) { docsEl.innerHTML = ''; return; }
+    /* The list arrives panel-openable first (assets/study-rail.js sorts it).
+       Mark where the new-tab ones start so it is obvious which is which. */
+    var seenExternal = false;
     docsEl.innerHTML = state.docs.map(function (d, i) {
       var k = docKind(d[1]).kind;
       var icon = k === 'md' || k === 'code' ? '🐙' : k === 'frame' ? '📄' : '↗';
-      return '<button type="button" class="vp-doc' + (i === state.doc ? ' active' : '') + '" data-vp-doc="' + i + '" title="' + esc(d[1]) + '">' +
+      var head = '';
+      if (k === 'link' && !seenExternal) {
+        seenExternal = true;
+        head = '<div class="vp-doc-sep">Opens in a new tab</div>';
+      }
+      return head + '<button type="button" class="vp-doc' + (i === state.doc ? ' active' : '') + (k === 'link' ? ' vp-doc-ext' : '') +
+        '" data-vp-doc="' + i + '" title="' + esc(d[1]) + '">' +
         '<span class="vp-doc-i">' + icon + '</span><span class="vp-doc-l">' + esc(d[0]) + '</span><span class="vp-doc-h">' + esc(hostOf(d[1])) + '</span></button>';
     }).join('');
   }
@@ -354,6 +363,20 @@
         '<a class="vp-cta" href="' + esc(d[1]) + '" target="_blank" rel="noopener noreferrer">Open in new tab ↗</a>' +
         '<a class="vp-cta ghost" href="' + esc(googleUrl(state.query)) + '" target="_blank" rel="noopener noreferrer">Search Google ↗</a>' +
       '</div></div>';
+  }
+
+  /* Upstream solution files carry editorial scaffolding that is noise in the
+     panel: a YAML front-matter block, <!-- problem:start --> style markers, and
+     a link to the Chinese translation. Taran reads these in English. */
+  function tidyMarkdown(text) {
+    var s = String(text || '');
+    s = s.replace(/^\uFEFF/, '');
+    s = s.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n/, '');
+    s = s.replace(/<!--[\s\S]*?-->/g, '');
+    s = s.replace(/^.*\[中文文档\][^\n]*$/gm, '');
+    s = s.replace(/^\s*\[[^\]]*\]\(\/solution\/[^)]*README\.md\)\s*$/gm, '');
+    s = s.replace(/\n{3,}/g, '\n\n');
+    return s.trim();
   }
 
   function absolutize(root, info, docUrl) {
@@ -388,20 +411,41 @@
     if (info.kind === 'frame') {
       viewer.innerHTML = '<iframe class="vp-doc-frame" title="' + esc(d[0]) + '" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms"></iframe>' +
         '<div class="vp-frame-note">Not loading? <a href="' + esc(d[1]) + '" target="_blank" rel="noopener noreferrer">Open in new tab ↗</a></div>';
-      viewer.querySelector('iframe').src = info.src;
+      var ifr = viewer.querySelector('iframe');
+      /* A site that refuses to be framed fires no error, it just stays blank.
+         Give it a few seconds, then say so instead of showing an empty panel. */
+      var ftoken = {};
+      showDoc.token = ftoken;
+      var settled = false;
+      ifr.addEventListener('load', function () { settled = true; });
+      setTimeout(function () {
+        if (settled || showDoc.token !== ftoken || state.doc !== i) return;
+        fallback(d, hostOf(d[1]) + ' did not load inside the panel — it may not allow being embedded.');
+      }, 6000);
+      ifr.src = info.src;
       return;
     }
     if (info.kind === 'link') { fallback(d); return; }
     viewer.innerHTML = '<div class="vp-loading">Loading from GitHub…</div>';
     var token = {};
     showDoc.token = token;
-    Promise.all([fetch(info.raw).then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); }), info.kind === 'md' ? ensureLibs() : 0])
+    /* The markdown renderer comes from a CDN. The solution write-ups are now the
+       first thing most Read buttons open, so a blocked CDN must not turn into
+       "could not load" — fall back to the raw text, which is still readable. */
+    Promise.all([
+      fetch(info.raw).then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); }),
+      info.kind === 'md' ? ensureLibs().catch(function () { return 'no-libs'; }) : 0
+    ])
       .then(function (res) {
         if (showDoc.token !== token) return;
-        var text = res[0];
+        var text = info.kind === 'md' ? tidyMarkdown(res[0]) : res[0];
         var wrap = document.createElement('div');
         wrap.className = 'vp-md';
-        if (info.kind === 'md') {
+        var canRender = window.marked && window.DOMPurify;
+        if (info.kind === 'md' && !canRender) {
+          wrap.innerHTML = '<div class="vp-code-head"><b>' + esc(d[0]) + '</b><span>plain text</span></div><pre class="vp-plain"></pre>';
+          wrap.querySelector('pre').textContent = text;
+        } else if (info.kind === 'md') {
           var html = window.marked.parse ? window.marked.parse(text) : window.marked(text);
           wrap.innerHTML = window.DOMPurify.sanitize(html, { ADD_ATTR: ['target'] });
           absolutize(wrap, info, d[1]);

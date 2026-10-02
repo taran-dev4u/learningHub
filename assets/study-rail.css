@@ -42,6 +42,8 @@
 .study-link.primary-link { color: var(--sr-accent); border-color: color-mix(in srgb, var(--sr-accent) 45%, var(--sr-border)); }
 .study-link.icon-only { min-width: 32px; justify-content: center; padding: 0 8px; }
 .study-link.icon-only::before { margin-right: 0 !important; }
+/* a search is not a saved video: show a magnifier, not a play triangle */
+.study-link.youtube.yt-search::before { content: "⌕"; font-size: 15px; font-weight: 900; }
 .study-link .sr-count {
   display: inline-block;
   min-width: 16px;

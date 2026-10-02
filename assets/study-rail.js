@@ -35,6 +35,15 @@
   function readable(href) {
     return !!(href && window.VideoPanel && window.VideoPanel.readable && window.VideoPanel.readable(href));
   }
+  /* Reads that the side panel can open inline come first; the ones that have to
+     open in a new tab come after. Stable, so the curated order survives inside
+     each group. Without this a link harvested from the row, or one of the
+     fallbacks below, lands above a doc the panel could have rendered. */
+  function panelFirst(docs) {
+    var inline = [], external = [], i;
+    for (i = 0; i < docs.length; i++) (readable(docs[i][1]) ? inline : external).push(docs[i]);
+    return inline.concat(external);
+  }
   function isSearch(href) { return /google\.[a-z.]+\/search|youtube\.com\/results|bing\.com\/search/.test(href || ""); }
   function isLocal(a) {
     try { return new URL(a.href, location.href).hostname === location.hostname; } catch (e) { return true; }
@@ -100,6 +109,7 @@
     var digits = isStriver ? "" : lcNum.replace(/^[^0-9]+/, "");
     var res = window.dsaResources || {};
     var hit = res[lcNum] || (slug ? res[slug] : null) || (digits ? res[digits] : null);
+    var curated = false;
 
     if (hit) {
       if (hit.videos && Array.isArray(hit.videos) && hit.videos.length) {
@@ -116,6 +126,7 @@
       }
 
       if (hit.reads && Array.isArray(hit.reads) && hit.reads.length) {
+        curated = true;
         hit.reads.forEach(function (r) {
           var name = r[0] || "Read";
           var url = r[1] || "";
@@ -126,23 +137,27 @@
       }
     }
 
-    if (!isStriver && digits && !isNaN(digits)) {
+    if (!curated && !isStriver && digits && !isNaN(digits)) {
       var padded = digits.padStart(4, "0");
       var walkccc = "https://walkccc.me/LeetCode/problems/" + padded + "/";
       if (!found.docs.some(function (d) { return d[1] === walkccc; })) {
-        found.docs.unshift(["Walkccc Multi-Approach Solutions", walkccc]);
+        found.docs.push(["Reference solutions — C++, Java, Python", walkccc]);
       }
     }
-    if (slug) {
+    /* assets/dsa-resources.js already lists these, in the right order. Only add
+       them when the row is not in the registry at all, or they get appended
+       after the external links and the order the registry chose is lost. */
+    if (!curated && slug) {
       var neetcodeUrl = "https://neetcode.io/problems/" + slug;
       if (!found.docs.some(function (d) { return d[1] === neetcodeUrl; })) {
-        found.docs.push(["NeetCode Solutions", neetcodeUrl]);
+        found.docs.push(["NeetCode editorial", neetcodeUrl]);
       }
       var sol = "https://leetcode.com/problems/" + slug + "/solutions/";
       if (!found.docs.some(function (d) { return d[1] === sol; })) {
-        found.docs.push(["LeetCode Solutions (external ↗)", sol]);
+        found.docs.push(["Community solutions ↗", sol]);
       }
     }
+    found.docs = panelFirst(found.docs);
     return found;
   }
 
@@ -171,6 +186,7 @@
     wrap.setAttribute("data-no-panel", "");
     /* Every curated article is worth a button: the panel renders the ones that
        allow embedding and opens the rest in a new tab. */
+    d.docs = panelFirst(d.docs || []);
     var readableDocs = d.docs;
 
     if (d.primary && d.primary[1]) {
@@ -184,7 +200,9 @@
       w.appendChild(count(d.videos.length));
       wrap.appendChild(w);
     } else {
-      wrap.appendChild(link("youtube icon-only", "", ytSearchUrl(d.query), "Search YouTube: " + d.query));
+      /* No curated video for this one. Say so with a magnifier rather than a
+         play triangle, which would imply a video is waiting. */
+      wrap.appendChild(link("youtube icon-only yt-search", "", ytSearchUrl(d.query), "No saved video for this problem — search YouTube for: " + d.query));
     }
     if (readableDocs.length) {
       var r = el("button", "study-link read", "Read");
@@ -252,7 +270,17 @@
         var href = name && name.getAttribute("href");
         found = dsaExtras(href, found, li);
         /* the problem name itself already links to LeetCode, so no source button */
-        return { title: title, query: topicQuery(title, "leetcode solution"), videos: found.videos, docs: found.docs, primary: null };
+        /* "Two Sum leetcode 1 solution explained" finds the problem; the bare
+           title does not — that is what made the fallback searches useless.
+           The Striver basics rows are not LeetCode problems at all, so sending
+           "leetcode" with them returns nothing useful. */
+        var id = li.getAttribute("data-lc") || "";
+        var isLc = !!(href && /leetcode\.com\/problems\//.test(href));
+        var tail;
+        if (isLc && id && id.charAt(0) !== "s") tail = "leetcode " + id + " solution explained";
+        else if (isLc) tail = "leetcode solution explained";
+        else tail = "dsa tutorial explained";
+        return { title: title, query: topicQuery(title, tail), videos: found.videos, docs: found.docs, primary: null };
       },
       mount: function (li, rail) {
         var sol = li.querySelector(".solutions");
