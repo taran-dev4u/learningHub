@@ -451,13 +451,14 @@
   }
   .note-btn.has-note { background: #fff3cd; color: #856404; border-color: #ffe69c; }
   html.light .note-btn.has-note { background: #fff8e1; color: #8a6d1a; border-color: #ffe082; }
-  .note-btn:hover { background: var(--accent); color: white; border-color: var(--accent); }
-  .note-editor {
-    display: none; grid-column: 1 / -1;
+  .note-editor,
+  li.note-editor:not(.open) {
+    display: none !important; grid-column: 1 / -1;
     background: var(--bg-card); border: 1px solid var(--border);
     border-radius: 6px; padding: 10px; margin: 6px 0;
   }
-  .note-editor.open { display: block; }
+  .note-editor.open,
+  li.note-editor.open { display: block !important; width: 100% !important; }
   .note-editor textarea {
     width: 100%; min-height: 80px; padding: 8px;
     background: var(--bg-elev); border: 1px solid var(--border);
@@ -650,7 +651,7 @@
     .pattern-banner { flex-direction: column; align-items: flex-start; }
     .pattern-banner .ppg { min-width: 100%; text-align: left; }
     .hero h1 { font-size: 24px; }
-    ol.problems li {
+    ol.problems li:not(.note-editor) {
       display: grid !important;
       grid-template-columns: 24px 20px 48px 28px 1fr !important;
       grid-template-rows: auto auto !important;
@@ -658,28 +659,28 @@
       column-gap: 6px !important;
       padding: 8px 10px !important;
     }
-    ol.problems li .solve-check { grid-column: 1; grid-row: 1; }
-    ol.problems li .bookmark-star { grid-column: 2; grid-row: 1; }
-    ol.problems li .lc { grid-column: 3; grid-row: 1; }
-    ol.problems li .diff-pill { grid-column: 4; grid-row: 1; }
-    ol.problems li .pname-wrap { grid-column: 5 / -1 !important; grid-row: 1 !important; min-width: 0 !important; }
-    ol.problems li .pname { white-space: normal !important; line-height: 1.35 !important; }
-    ol.problems li .solutions {
+    ol.problems li:not(.note-editor) .solve-check { grid-column: 1; grid-row: 1; }
+    ol.problems li:not(.note-editor) .bookmark-star { grid-column: 2; grid-row: 1; }
+    ol.problems li:not(.note-editor) .lc { grid-column: 3; grid-row: 1; }
+    ol.problems li:not(.note-editor) .diff-pill { grid-column: 4; grid-row: 1; }
+    ol.problems li:not(.note-editor) .pname-wrap { grid-column: 5 / -1 !important; grid-row: 1 !important; min-width: 0 !important; }
+    ol.problems li:not(.note-editor) .pname { white-space: normal !important; line-height: 1.35 !important; }
+    ol.problems li:not(.note-editor) .solutions {
       grid-column: 1 / 5 !important; grid-row: 2 !important;
       display: flex !important; gap: 4px !important; flex-wrap: wrap !important; align-items: center !important;
     }
-    ol.problems li .note-btn {
+    ol.problems li:not(.note-editor) .note-btn {
       grid-column: 5 !important; grid-row: 2 !important;
       justify-self: start !important; align-self: center !important;
     }
-    ol.problems li .company-row {
+    ol.problems li:not(.note-editor) .company-row {
       grid-column: 5 / -1 !important; grid-row: 2 !important;
       justify-self: end !important; align-self: center !important;
       display: flex !important; gap: 3px !important;
     }
-    ol.problems li .company-row .company-chip:nth-child(n+3):not(.more) { display: none !important; }
-    ol.problems li .note-editor:not(.open) { display: none !important; }
-    ol.problems li .note-editor.open { display: block !important; grid-column: 1 / -1 !important; grid-row: 3 !important; width: 100% !important; }
+    ol.problems li:not(.note-editor) .company-row .company-chip:nth-child(n+3):not(.more) { display: none !important; }
+    ol.problems li.note-editor:not(.open) { display: none !important; }
+    ol.problems li.note-editor.open { display: block !important; width: 100% !important; }
     .filter-btn { padding: 4px 8px; font-size: 10px; }
   }
 
