@@ -38,7 +38,9 @@ html.black .vp-panel, html[data-theme="black"] .vp-panel, html.black:root .vp-pa
 .vp-panel.vp-dragging { transition: none; user-select: none; }
 .vp-panel.vp-dragging .vp-frame { pointer-events: none; }
 
-/* page makes room for the panel on desktop */
+/* page makes room for the panel on desktop when docked right.
+   Left dock stays as an overlay: dense tables like the DSA index become
+   unusably congested if the whole page is squeezed from the left. */
 html.vp-active body { padding-right: var(--vp-offset, 0px); }
 
 .vp-resize {
@@ -245,7 +247,7 @@ html[data-theme="dark"] .vp-panel, html.dark .vp-panel { box-shadow: -18px 0 40p
 .vp-panel.vp-dock-left.vp-open { transform: none; }
 .vp-panel.vp-dock-left .vp-resize { left: auto; right: -5px; }
 .vp-panel.vp-dock-left .vp-resize::after { left: auto; right: 3px; }
-html.vp-active.vp-left body { padding-right: 0; padding-left: var(--vp-offset, 0px); }
+html.vp-active.vp-left body { padding-right: 0; padding-left: 0; }
 @media (max-width: 860px) {
   .vp-panel.vp-dock-left { left: 0; right: 0; transform: translateY(105%); }
   .vp-panel.vp-dock-left.vp-open { transform: none; }
