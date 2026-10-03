@@ -90,15 +90,30 @@ function read(name, url, why, panel, focus, languages) {
 }
 
 function makeReads(prob, tufArticle, ncRow) {
-  const isLeetCode = Boolean(prob.slug && prob.lcNum);
+  let slug = prob.slug ? String(prob.slug).toLowerCase() : '';
+  let lcNum = prob.lcNum ? Number(prob.lcNum) : null;
+  if (!lcNum && ncRow && ncRow.code) {
+    const m = ncRow.code.match(/^(\d+)-/);
+    if (m) lcNum = parseInt(m[1], 10);
+  }
+
+  const isLeetCode = Boolean(slug);
+  const titleSlug = cleanSlug(prob.title);
 
   if (isLeetCode) {
-    const lcNum = Number(prob.lcNum);
-    const slug = prob.slug;
-    const padded = String(lcNum).padStart(4, '0');
+    const padded = lcNum ? String(lcNum).padStart(4, '0') : '';
     const reads = [];
 
-    if (doocsIndex[lcNum]) {
+    reads.push(read(
+      'NeetCode Solution Page',
+      `https://neetcode.io/solutions/${slug}`,
+      'Exact NeetCode problem page paired with the verified walkthrough and clean solution notes',
+      true,
+      'Video-matched notes',
+      'Python and common interview languages'
+    ));
+
+    if (lcNum && doocsIndex[lcNum]) {
       reads.push(read(
         'Doocs Multi-Approach Solution',
         `https://raw.githubusercontent.com/doocs/leetcode/main/solution/${doocsIndex[lcNum].relPath}/README_EN.md`,
@@ -109,34 +124,27 @@ function makeReads(prob, tufArticle, ncRow) {
       ));
     }
 
-    reads.push(read(
-      'Walkccc Language Implementations',
-      `https://walkccc.me/LeetCode/problems/${padded}/`,
-      'Exact problem reference implementations in C++, Java, and Python with concise explanation',
-      true,
-      'Fast code comparison',
-      'C++, Java, Python'
-    ));
-
-    if (ncRow) {
+    if (padded) {
       reads.push(read(
-        'NeetCode Solution Page',
-        `https://neetcode.io/solutions/${slug}`,
-        'Exact NeetCode problem page paired with the verified walkthrough and clean solution notes',
+        'Walkccc Language Implementations',
+        `https://walkccc.me/LeetCode/problems/${padded}/`,
+        'Exact problem reference implementations in C++, Java, and Python with concise explanation',
         true,
-        'Video-matched notes',
-        'Python and common interview languages'
+        'Fast code comparison',
+        'C++, Java, Python'
       ));
     }
 
-    reads.push(read(
-      'AlgoMonster Lite Editorial',
-      `https://algo.monster/liteproblems/${lcNum}`,
-      'Exact problem pattern explanation, intuition, and edge-case checklist',
-      false,
-      'Pattern recognition',
-      'Python, Java, C++, JavaScript'
-    ));
+    if (lcNum) {
+      reads.push(read(
+        'AlgoMonster Lite Editorial',
+        `https://algo.monster/liteproblems/${lcNum}`,
+        'Exact problem pattern explanation, intuition, and edge-case checklist',
+        false,
+        'Pattern recognition',
+        'Python, Java, C++, JavaScript'
+      ));
+    }
 
     if (tufArticle) {
       reads.push(read(
@@ -149,18 +157,6 @@ function makeReads(prob, tufArticle, ncRow) {
       ));
     }
 
-    const local = localUrl(lcNum);
-    if (local) {
-      reads.push(read(
-        'Taran DSA Tutorial Page',
-        local,
-        'Local learning-hub page with the problem in its surrounding pattern and subpattern order',
-        false,
-        'Personal study sequence',
-        'Python-first roadmap'
-      ));
-    }
-
     reads.push(read(
       'LeetCode Official & Community Solutions',
       `https://leetcode.com/problems/${slug}/solutions/`,
@@ -170,21 +166,36 @@ function makeReads(prob, tufArticle, ncRow) {
       'All major languages'
     ));
 
-    if (doocsIndex[lcNum]) {
-      reads.push(read(
-        'Doocs Web Page',
-        `https://leetcode.doocs.org/en/lc/${lcNum}/`,
-        'Same Doocs solution as a website page; kept as an external fallback if you want the original page chrome',
-        false,
-        'External page backup',
-        'Python, Java, C++, Go, TypeScript, Rust'
-      ));
-    }
+    reads.push(read(
+      'GeeksforGeeks DSA Tutorial',
+      titleSlug ? `https://www.geeksforgeeks.org/${titleSlug}/` : 'https://www.geeksforgeeks.org/dsa-tutorial-learn-data-structures-and-algorithms/',
+      'Concept reference for the same data-structure or algorithm family',
+      false,
+      'Foundational theory',
+      'C++, Java, Python, JavaScript'
+    ));
 
-    return dedupeReads(reads);
+    reads.push(read(
+      'TakeUForward A2Z DSA Curriculum Sheet',
+      'https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-problems/',
+      'Original curriculum context for the Striver A2Z topic order',
+      false,
+      'Curriculum placement',
+      'C++, Java, Python'
+    ));
+
+    reads.push(read(
+      'LeetCode Explore Cards',
+      'https://leetcode.com/explore/',
+      'Interactive data-structure and algorithm practice cards for reinforcing the topic',
+      false,
+      'Practice reinforcement',
+      'All supported languages'
+    ));
+
+    return dedupeReads(reads).slice(0, 5);
   }
 
-  const titleSlug = cleanSlug(prob.title);
   const reads = [];
   if (tufArticle) {
     reads.push(read(
@@ -213,20 +224,12 @@ function makeReads(prob, tufArticle, ncRow) {
     'C++, Java, Python, JavaScript'
   ));
   reads.push(read(
-    'Programiz Data Structures and Algorithms',
-    'https://www.programiz.com/dsa',
-    'Beginner-friendly topic explanations with diagrams and implementation notes',
+    'GeeksforGeeks Topic Guide',
+    'https://www.geeksforgeeks.org/fundamentals-of-algorithms/',
+    'Algorithmic foundations and complexity reference',
     false,
-    'Beginner concept reinforcement',
-    'Python, Java, C, C++'
-  ));
-  reads.push(read(
-    'W3Schools DSA Reference',
-    'https://www.w3schools.com/dsa/',
-    'Quick interactive reference for core data-structure and algorithm concepts',
-    false,
-    'Fast syntax and concept review',
-    'Python, Java, JavaScript'
+    'Core foundations',
+    'C++, Java, Python'
   ));
   reads.push(read(
     'LeetCode Explore Cards',
@@ -236,7 +239,23 @@ function makeReads(prob, tufArticle, ncRow) {
     'Practice reinforcement',
     'All supported languages'
   ));
-  return dedupeReads(reads);
+  reads.push(read(
+    'GeeksforGeeks Practice Sheet',
+    titleSlug ? `https://www.geeksforgeeks.org/problems/${titleSlug}/1` : 'https://www.geeksforgeeks.org/explore?page=1',
+    'Interactive implementation and practice platform for this data structure concept',
+    false,
+    'Hands-on practice',
+    'C++, Java, Python'
+  ));
+  reads.push(read(
+    'LeetCode Practice Problems',
+    'https://leetcode.com/problemset/all/',
+    'Official LeetCode problemset for practicing related algorithmic patterns',
+    false,
+    'Practice reinforcement',
+    'All supported languages'
+  ));
+  return dedupeReads(reads).slice(0, 5);
 }
 
 function dedupeReads(reads) {

@@ -331,8 +331,9 @@
   /* ===== PROBLEMS TABLE ===== */
   ol.problems {
     list-style: none; padding: 0; margin: 8px 0 0;
-    border-radius: 8px; overflow: hidden;
+    border-radius: 8px; overflow-x: auto; overflow-y: hidden;
     border: 1px solid var(--border);
+    -webkit-overflow-scrolling: touch;
   }
   ol.problems li {
     display: grid;
@@ -342,6 +343,7 @@
     border-bottom: 1px solid var(--border);
     background: var(--bg-elev);
     transition: background 0.12s;
+    min-width: 680px;
   }
   ol.problems li:last-child { border-bottom: none; }
   ol.problems li:nth-child(even) { background: var(--bg-row-alt); }

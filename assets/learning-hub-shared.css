@@ -362,3 +362,17 @@ html:root .am-row .am-check { margin-top: 2px; }
 @media (max-width: 760px) {
   html:root .am-row .am-title { flex: 1 1 100%; }
 }
+
+/* ---- side panel active: adapt content container and maintain problem row geometry ---- */
+html.vp-active:root .wrap,
+html.vp-active:root .am-wrap {
+  width: calc(100% - 24px);
+  max-width: none;
+}
+html:root ol.problems {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+html:root ol.problems > li {
+  min-width: 680px;
+}

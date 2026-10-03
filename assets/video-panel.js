@@ -19,10 +19,13 @@
   if (window.VideoPanel) return;
 
   var W_KEY = 'video_panel_width_v1';
-  var MIN_W = 340, MAX_FRAC = 0.8;
+  var MIN_W = 380;
+  function maxAllowedWidth() {
+    return Math.max(MIN_W, Math.min(Math.round(window.innerWidth * 0.70), window.innerWidth - 460));
+  }
   // Hosts verified to allow being shown inside another page.
   var FRAME_HOSTS = [
-    'walkccc.me', 'neetcode.io', 'java-design-patterns.com', 'docs.oracle.com',
+    'walkccc.me', 'neetcode.io', 'leetcode.doocs.org', 'java-design-patterns.com', 'docs.oracle.com',
     'docs.python.org', 'en.wikipedia.org', 'genai.owasp.org', 'sre.google', 'pages.cs.wisc.edu',
     'www.allthingsdistributed.com', 'static.googleusercontent.com'
   ];
@@ -43,7 +46,8 @@
     var w = 0;
     try { w = parseInt(localStorage.getItem(W_KEY), 10) || 0; } catch (e) {}
     if (!w) w = Math.round(window.innerWidth * 0.42);
-    return Math.max(MIN_W, Math.min(w, Math.round(window.innerWidth * MAX_FRAC)));
+    var maxW = maxAllowedWidth();
+    return Math.max(MIN_W, Math.min(w, maxW));
   }
   function applyWidth(w) {
     if (!el) return;
@@ -220,8 +224,9 @@
       handle.setPointerCapture(e.pointerId);
       el.classList.add('vp-dragging');
       function move(ev) {
+        var maxW = maxAllowedWidth();
         var w = el.classList.contains('vp-dock-left') ? Math.round(ev.clientX) : Math.round(window.innerWidth - ev.clientX);
-        applyWidth(Math.max(MIN_W, Math.min(w, Math.round(window.innerWidth * MAX_FRAC))));
+        applyWidth(Math.max(MIN_W, Math.min(w, maxW)));
       }
       function up() {
         handle.releasePointerCapture(e.pointerId);
@@ -409,20 +414,9 @@
     openLink.title = 'Open in a new tab';
     var info = docKind(d[1]);
     if (info.kind === 'frame') {
-      viewer.innerHTML = '<iframe class="vp-doc-frame" title="' + esc(d[0]) + '" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms"></iframe>' +
+      viewer.innerHTML = '<iframe class="vp-doc-frame" title="' + esc(d[0]) + '" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>' +
         '<div class="vp-frame-note">Not loading? <a href="' + esc(d[1]) + '" target="_blank" rel="noopener noreferrer">Open in new tab ↗</a></div>';
-      var ifr = viewer.querySelector('iframe');
-      /* A site that refuses to be framed fires no error, it just stays blank.
-         Give it a few seconds, then say so instead of showing an empty panel. */
-      var ftoken = {};
-      showDoc.token = ftoken;
-      var settled = false;
-      ifr.addEventListener('load', function () { settled = true; });
-      setTimeout(function () {
-        if (settled || showDoc.token !== ftoken || state.doc !== i) return;
-        fallback(d, hostOf(d[1]) + ' did not load inside the panel — it may not allow being embedded.');
-      }, 6000);
-      ifr.src = info.src;
+      viewer.querySelector('iframe').src = info.src;
       return;
     }
     if (info.kind === 'link') { fallback(d); return; }

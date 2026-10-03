@@ -138,7 +138,12 @@ function loadDsaResources() {
   const ctx = { window: {} };
   vm.createContext(ctx);
   vm.runInContext(code, ctx);
-  return ctx.window.dsaResources || {};
+  const res = ctx.window.dsaResources || {};
+  const slugs = ctx.window.dsaResourceSlugs || {};
+  for (const [slug, id] of Object.entries(slugs)) {
+    if (!res[slug] && res[id]) res[slug] = res[id];
+  }
+  return res;
 }
 
 function loadTutorialProblemPages() {
