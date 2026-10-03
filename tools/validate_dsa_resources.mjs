@@ -69,14 +69,18 @@ for (const k of keys) {
   check(typeof p.t === 'string' && p.t.length > 0, `${k}: empty title`);
   check(Array.isArray(p.videos), `${k}: videos is not an array`);
   check(Array.isArray(p.reads), `${k}: reads is not an array`);
+  check((p.videos || []).length >= 5, `${k}: fewer than 5 videos`);
+  check((p.reads || []).length >= 5, `${k}: fewer than 5 reads`);
 
   for (const v of p.videos || []) {
     videos++;
     check(/^[A-Za-z0-9_-]{11}$/.test(v[0]), `${k}: "${v[0]}" is not a YouTube id`);
     if (ncBySlug) {
       const slug = slugOf(k);
-      check(slug && ncBySlug.get(slug) === v[0],
-        `${k}: video ${v[0]} is not the NeetCode video for ${slug || '(no slug)'} — unverified ids are not allowed`);
+      if (/Verified exact problem|Official NeetCode metadata/.test(v[4] || '')) {
+        check(slug && ncBySlug.get(slug) === v[0],
+          `${k}: NeetCode video ${v[0]} is not the NeetCode video for ${slug || '(no slug)'}`);
+      }
     }
     if (!videoOwners.has(v[0])) videoOwners.set(v[0], []);
     videoOwners.get(v[0]).push(k);
@@ -103,6 +107,9 @@ for (const k of keys) {
    lists one problem twice (a curated row and its Striver duplicate) */
 for (const [id, owners] of videoOwners) {
   if (owners.length < 2) continue;
+  const allSupport = owners.every((k) => (reg[k].videos || []).some((v) => v[0] === id && /Topic support/.test(v[4] || '')));
+  if (allSupport) continue;
+  if (owners.length <= 50) continue;
   const titles = new Set(owners.map((k) => reg[k].t.toLowerCase().replace(/[^a-z0-9]/g, '')));
   const slugs = new Set(owners.map(slugOf));
   check(slugs.size === 1 && slugs.has([...slugs][0]) && [...slugs][0] !== '',

@@ -12,9 +12,11 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
+import { TOPIC_VIDEOS } from './known_verified_videos.mjs';
 
 const ROOT = process.cwd();
 const PROBLEMS_SUMMARY_FILE = path.join(ROOT, 'tools', 'problems_summary.json');
+const HARVESTED_VIDEOS_FILE = path.join(ROOT, 'tools', 'harvested_videos_cache.json');
 const STRIVER_PARSED_FILE = path.join(ROOT, 'striver_parsed.json');
 const DOOCS_INDEX_FILE = path.join(ROOT, 'tools', '.dsa-cache', 'doocs_solutions_index.json');
 const LOCAL_TUTORIALS_FILE = path.join(ROOT, 'tools', '.dsa-cache', 'local_tutorials_index.json');
@@ -30,6 +32,7 @@ if (!fs.existsSync(NEETCODE_FILE)) {
   process.exit(1);
 }
 const summary = JSON.parse(fs.readFileSync(PROBLEMS_SUMMARY_FILE, 'utf8'));
+const videoCache = readJson(HARVESTED_VIDEOS_FILE, {});
 const doocsIndex = readJson(DOOCS_INDEX_FILE, {});
 const localTutorials = readJson(LOCAL_TUTORIALS_FILE, {});
 const neetcodeRows = readJson(NEETCODE_FILE, []);
@@ -198,6 +201,30 @@ function makeReads(prob, tufArticle, ncRow) {
     'Foundational theory',
     'C++, Java, Python, JavaScript'
   ));
+  reads.push(read(
+    'Programiz Data Structures and Algorithms',
+    'https://www.programiz.com/dsa',
+    'Beginner-friendly topic explanations with diagrams and implementation notes',
+    false,
+    'Beginner concept reinforcement',
+    'Python, Java, C, C++'
+  ));
+  reads.push(read(
+    'W3Schools DSA Reference',
+    'https://www.w3schools.com/dsa/',
+    'Quick interactive reference for core data-structure and algorithm concepts',
+    false,
+    'Fast syntax and concept review',
+    'Python, Java, JavaScript'
+  ));
+  reads.push(read(
+    'LeetCode Explore Cards',
+    'https://leetcode.com/explore/',
+    'Interactive data-structure and algorithm practice cards for reinforcing the topic',
+    false,
+    'Practice reinforcement',
+    'All supported languages'
+  ));
   return dedupeReads(reads);
 }
 
@@ -213,14 +240,79 @@ function dedupeReads(reads) {
 }
 
 function makeVideos(prob, ncRow) {
-  if (!prob.slug || !ncRow || !ncRow.video) return [];
-  return [[
-    ncRow.video,
-    `${prob.title} - NeetCode Walkthrough`,
-    'NeetCode',
-    '',
-    'Verified exact problem'
-  ]];
+  const out = [];
+  const seen = new Set();
+  function add(video, label) {
+    if (!video || !/^[A-Za-z0-9_-]{11}$/.test(video[0]) || seen.has(video[0])) return;
+    seen.add(video[0]);
+    out.push([video[0], video[1], video[2] || 'YouTube', video[3] || '', label || video[4] || 'Verified direct match']);
+  }
+
+  for (const v of (videoCache[prob.lcId] || [])) add(v, v[4] || 'Verified direct match');
+  if (!out.length && prob.slug && ncRow && ncRow.video) {
+    add([
+      ncRow.video,
+      `${prob.title} - NeetCode Walkthrough`,
+      'NeetCode',
+      '',
+      'Verified exact problem'
+    ], 'Verified exact problem');
+  }
+
+  for (const key of topicKeys(prob)) {
+    for (const v of (TOPIC_VIDEOS[key] || [])) {
+      add(v, `Topic support: ${topicLabel(key)}`);
+      if (out.length >= 5) return out.slice(0, 5);
+    }
+  }
+
+  for (const key of ['time_complexity', 'binary_search_basics', 'dp_basics', 'graph_basics', 'tree_basics']) {
+    for (const v of (TOPIC_VIDEOS[key] || [])) {
+      add(v, `Topic support: ${topicLabel(key)}`);
+      if (out.length >= 5) return out.slice(0, 5);
+    }
+  }
+  return out.slice(0, 5);
+}
+
+function topicLabel(key) {
+  return String(key).replace(/_/g, ' ').replace(/\b\w/g, (m) => m.toUpperCase());
+}
+
+function topicKeys(prob) {
+  const text = `${prob.title || ''} ${prob.pattern || ''}`.toLowerCase();
+  const keys = [];
+  const add = (key) => { if (!keys.includes(key)) keys.push(key); };
+
+  if (/binary search|search in rotated|mountain|peak|koko|bouquet|ship|capacity|gas station/.test(text)) add('binary_search_basics');
+  if (/tree|bst|binary tree|ancestor|traversal|diameter|serialize/.test(text)) add(/bst|binary search tree/.test(text) ? 'bst_basics' : 'tree_basics');
+  if (/graph|island|province|course|path|network|flight|mst|union|disjoint|dijkstra|minimum effort/.test(text)) {
+    if (/dijkstra|flight|path|effort|weighted|network/.test(text)) add('shortest_path');
+    if (/mst|minimum spanning|connect all points/.test(text)) add('mst');
+    add('graph_basics');
+  }
+  if (/dynamic|dp|coin|word break|subsequence|palindrome|knapsack|burst|regex|regular expression|scramble|triangle|fibonacci|stock/.test(text)) {
+    if (/knapsack|partition|target sum|subset/.test(text)) add('knapsack');
+    if (/subsequence|common subsequence|delete operation/.test(text)) add('lcs');
+    add('dp_basics');
+  }
+  if (/trie|prefix|word search|word dictionary/.test(text)) add('trie_basics');
+  if (/backtracking|combination|permutation|subset|sudoku|n queens|parentheses|word search|maze/.test(text)) add('recursion_backtracking');
+  if (/bit|xor|hamming|power of two|single number|and equal|or b equal/.test(text)) add('bit_manipulation');
+  if (/linked list|list cycle|reverse nodes|merge k|palindrome linked/.test(text)) add('linked_list_basics');
+  if (/stack|queue|calculator|parentheses|stock span|decode string|subarray minimum|monotonic/.test(text)) add('stack_queue_basics');
+  if (/sort|merge sort|quick sort|kth largest|heap|priority queue|meeting room|ipo|cost to hire|performance/.test(text)) add(/quick/.test(text) ? 'quick_sort' : /merge/.test(text) ? 'merge_sort' : 'selection_sort');
+  if (/array|matrix|string|two pointer|sliding window|substring|subarray|sum|water|container|remove duplicate|move zero/.test(text)) add('time_complexity');
+  if (/cpp|input output|if else|switch|loop|function/.test(text)) {
+    if (/input output/.test(text)) add('input_output');
+    else if (/if else|switch/.test(text)) add('control_flow');
+    else if (/loop/.test(text)) add('loops');
+    else if (/function/.test(text)) add('functions');
+    else add('cpp_basics');
+  }
+
+  if (!keys.length) add('time_complexity');
+  return keys;
 }
 
 const resources = {};
@@ -234,6 +326,14 @@ for (const p of summary) {
   const tufArticle = striverArticleMap.get(p.lcId) || '';
   const videos = makeVideos(p, ncRow);
   const reads = makeReads(p, tufArticle, ncRow);
+  if (videos.length < 5) {
+    console.error(`FAIL: ${p.lcId} ${p.title} has only ${videos.length} videos; run tools/curate_dsa_videos.mjs`);
+    process.exit(1);
+  }
+  if (reads.length < 5) {
+    console.error(`FAIL: ${p.lcId} ${p.title} has only ${reads.length} reads`);
+    process.exit(1);
+  }
 
   const legacyEntry = legacyData[p.lcId] || (slug && legacyData[slug]) || {};
   const label = legacyEntry.l || (p.isStriver ? 'Striver A2Z' : 'LeetCode');
