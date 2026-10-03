@@ -21,7 +21,7 @@
   var W_KEY = 'video_panel_width_v1';
   var MIN_W = 380;
   function maxAllowedWidth() {
-    return Math.max(MIN_W, Math.min(Math.round(window.innerWidth * 0.70), window.innerWidth - 460));
+    return Math.max(MIN_W, Math.min(Math.round(window.innerWidth * 0.55), window.innerWidth - 680));
   }
   // Hosts verified to allow being shown inside another page.
   var FRAME_HOSTS = [
@@ -45,7 +45,7 @@
   function savedWidth() {
     var w = 0;
     try { w = parseInt(localStorage.getItem(W_KEY), 10) || 0; } catch (e) {}
-    if (!w) w = Math.round(window.innerWidth * 0.42);
+    if (!w) w = Math.min(480, Math.max(MIN_W, Math.round(window.innerWidth * 0.35)));
     var maxW = maxAllowedWidth();
     return Math.max(MIN_W, Math.min(w, maxW));
   }
@@ -193,8 +193,8 @@
     });
     el.querySelectorAll('.vp-size').forEach(function (b) {
       b.addEventListener('click', function () {
-        var w = b.dataset.size === 's' ? Math.round(window.innerWidth * 0.30) : Math.round(window.innerWidth * 0.6);
-        w = Math.max(MIN_W, Math.min(w, Math.round(window.innerWidth * MAX_FRAC)));
+        var w = b.dataset.size === 's' ? Math.round(window.innerWidth * 0.28) : Math.round(window.innerWidth * 0.45);
+        w = Math.max(MIN_W, Math.min(w, maxAllowedWidth()));
         try { localStorage.setItem(W_KEY, String(w)); } catch (e) {}
         setCollapsed(false);
         applyWidth(w);

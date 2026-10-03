@@ -96,11 +96,11 @@
 
   /* ===== STICKY CONTROL BAR ===== */
   .controls {
-    position: sticky; top: 0; z-index: 50;
+    position: sticky; top: var(--hub-nav-h, 53px); z-index: 50;
     background: var(--bg); backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border);
-    padding: 10px 0;
-    margin: 0 0 20px;
+    padding: 8px 0;
+    margin: 0 0 16px;
   }
   .controls-row {
     display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
@@ -188,6 +188,7 @@
   }
 
   /* ===== PATTERN ===== */
+  .pattern, .subpattern, section[id] { scroll-margin-top: 140px; }
   .pattern { margin: 48px 0 0; }
   .pattern-banner {
     border-radius: 12px; padding: 18px 24px; color: white;
@@ -337,7 +338,7 @@
   }
   ol.problems li {
     display: grid;
-    grid-template-columns: 28px 22px 56px 32px 1fr auto auto auto;
+    grid-template-columns: 28px 22px 56px 32px minmax(180px, 1fr) auto auto auto;
     gap: 8px; align-items: center;
     padding: 7px 10px;
     border-bottom: 1px solid var(--border);

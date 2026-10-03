@@ -102,6 +102,7 @@ html.learning-hub-locked body > :not(#learning-hub-lock) {
    Self-theming: reads the same tokens in dark and light mode.
    ============================================================ */
 :root {
+  --hub-nav-h: 53px;
   --hub-nav-bg: #ffffff;
   --hub-nav-fg: #1f2430;
   --hub-nav-muted: #59617a;
@@ -366,8 +367,32 @@ html:root .am-row .am-check { margin-top: 2px; }
 /* ---- side panel active: adapt content container and maintain problem row geometry ---- */
 html.vp-active:root .wrap,
 html.vp-active:root .am-wrap {
-  width: calc(100% - 24px);
+  width: 100%;
   max-width: none;
+  padding: 12px 14px 80px;
+  box-sizing: border-box;
+}
+html.vp-active .subpattern,
+html.vp-active .pattern-desc,
+html.vp-active .resources-section {
+  margin-left: 0 !important;
+}
+html.vp-active .controls {
+  top: var(--hub-nav-h, 53px);
+  padding: 5px 0;
+  margin: 0 0 12px;
+}
+html.vp-active .controls-row {
+  padding: 6px 10px;
+  gap: 5px 6px;
+}
+html.vp-active .filter-btn {
+  padding: 4px 8px;
+  font-size: 10.5px;
+}
+html.vp-active .search input {
+  padding: 5px 8px;
+  font-size: 12px;
 }
 html:root ol.problems {
   overflow-x: auto;
@@ -375,4 +400,14 @@ html:root ol.problems {
 }
 html:root ol.problems > li {
   min-width: 680px;
+  grid-template-columns: 28px 24px 56px 30px minmax(180px, 1fr) auto auto auto;
+  gap: 6px;
+  padding: 7px 8px;
+}
+html.vp-active .company-row {
+  max-width: 150px;
+  overflow: hidden;
+}
+html.vp-active .company-row .company-chip:nth-child(n+3):not(.more) {
+  display: none;
 }
