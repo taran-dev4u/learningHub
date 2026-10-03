@@ -462,8 +462,13 @@ html.vp-active .company-row .company-chip:nth-child(n+3):not(.more) {
   html:root ol.problems > li .company-row .company-chip:nth-child(n+3):not(.more) {
     display: none !important;
   }
-  html:root ol.problems > li .note-editor {
+  html:root ol.problems > li .note-editor:not(.open) {
+    display: none !important;
+  }
+  html:root ol.problems > li .note-editor.open {
+    display: block !important;
     grid-column: 1 / -1 !important;
     grid-row: 3 !important;
+    width: 100% !important;
   }
 }

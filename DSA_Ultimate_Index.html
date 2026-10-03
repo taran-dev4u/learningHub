@@ -678,7 +678,8 @@
       display: flex !important; gap: 3px !important;
     }
     ol.problems li .company-row .company-chip:nth-child(n+3):not(.more) { display: none !important; }
-    ol.problems li .note-editor { grid-column: 1 / -1 !important; grid-row: 3 !important; }
+    ol.problems li .note-editor:not(.open) { display: none !important; }
+    ol.problems li .note-editor.open { display: block !important; grid-column: 1 / -1 !important; grid-row: 3 !important; width: 100% !important; }
     .filter-btn { padding: 4px 8px; font-size: 10px; }
   }
 
