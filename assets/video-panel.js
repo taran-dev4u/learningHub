@@ -95,6 +95,47 @@
   }
   function googleUrl(q) { return 'https://www.google.com/search?q=' + encodeURIComponent(q || ''); }
 
+  var RES_KEY = 'vp_res_collapsed';
+  function savedResCollapsed() { try { return localStorage.getItem(RES_KEY) === '1'; } catch (e) { return false; } }
+  function applyResCollapsed(on) {
+    if (!el) return;
+    el.classList.toggle('vp-res-collapsed', !!on);
+    var headBtn = el.querySelector('.vp-btn-res-toggle');
+    if (headBtn) {
+      headBtn.textContent = on ? '▼' : '▲';
+      headBtn.title = on ? 'Expand resource header' : 'Collapse resource header for more reading space';
+      headBtn.setAttribute('aria-expanded', String(!on));
+    }
+    renderTabs();
+  }
+  function setResCollapsed(on) {
+    try { localStorage.setItem(RES_KEY, on ? '1' : '0'); } catch (e) {}
+    applyResCollapsed(on);
+  }
+
+  function setMaximized(on) {
+    if (!el) return;
+    var maxBtn = el.querySelector('.vp-btn-max');
+    if (on) {
+      el.classList.add('vp-maximized');
+      document.documentElement.classList.add('vp-maximized');
+      if (maxBtn) {
+        maxBtn.textContent = '⊡';
+        maxBtn.title = 'Restore panel width';
+        maxBtn.setAttribute('aria-expanded', 'true');
+      }
+    } else {
+      el.classList.remove('vp-maximized');
+      document.documentElement.classList.remove('vp-maximized');
+      if (maxBtn) {
+        maxBtn.textContent = '⛶';
+        maxBtn.title = 'Full screen (100% width) for maximum reading space';
+        maxBtn.setAttribute('aria-expanded', 'false');
+      }
+      applyWidth(savedWidth());
+    }
+  }
+
   /* ---------- doc classification ---------- */
   function docKind(href) {
     var u;
@@ -145,10 +186,12 @@
         '<div class="vp-titles"><span class="vp-kicker">▶ Watch</span><b class="vp-title"></b></div>' +
         '<div class="vp-actions">' +
           '<a class="vp-btn vp-google" target="_blank" rel="noopener noreferrer" title="Search Google for this topic">G</a>' +
-          '<button type="button" class="vp-btn vp-collapse" title="Collapse the panel" aria-label="Collapse the panel" aria-expanded="true">⤡</button>' +
+          '<button type="button" class="vp-btn vp-btn-res-toggle" title="Collapse / expand resources bar for more reading space" aria-label="Collapse / expand resources bar">▲</button>' +
+          '<button type="button" class="vp-btn vp-collapse" title="Collapse the panel to rail" aria-label="Collapse the panel" aria-expanded="true">⤡</button>' +
           '<button type="button" class="vp-btn vp-dock" title="Move the panel to the other side" aria-label="Move the panel to the other side">⇄</button>' +
           '<button type="button" class="vp-btn vp-size" data-size="s" title="Narrow">⇤</button>' +
           '<button type="button" class="vp-btn vp-size" data-size="l" title="Wide">⇥</button>' +
+          '<button type="button" class="vp-btn vp-size vp-btn-max" data-size="xl" title="Full screen (100% width) for maximum reading space">⛶</button>' +
           '<a class="vp-btn vp-open-yt" target="_blank" rel="noopener noreferrer" title="Open in a new tab">↗</a>' +
           '<button type="button" class="vp-btn vp-close" title="Close (Esc)" aria-label="Close panel">✕</button>' +
         '</div>' +
@@ -184,15 +227,29 @@
     el.querySelector('.vp-close').addEventListener('click', close);
     applyDock(savedDock());
     applyCollapsed(savedCollapsed());
-    el.querySelector('.vp-collapse').addEventListener('click', function () { setCollapsed(true); });
+    applyResCollapsed(savedResCollapsed());
+    el.querySelector('.vp-collapse').addEventListener('click', function () {
+      setMaximized(false);
+      setCollapsed(true);
+    });
     el.querySelector('.vp-rail').addEventListener('click', function () { setCollapsed(false); });
+    el.querySelector('.vp-btn-res-toggle').addEventListener('click', function () {
+      setResCollapsed(!savedResCollapsed());
+    });
     el.querySelector('.vp-dock').addEventListener('click', function () {
+      setMaximized(false);
       applyDock(el.classList.contains('vp-dock-left') ? 'right' : 'left');
       try { localStorage.setItem(D_KEY, el.classList.contains('vp-dock-left') ? 'left' : 'right'); } catch (e) {}
       applyWidth(savedWidth());
     });
     el.querySelectorAll('.vp-size').forEach(function (b) {
       b.addEventListener('click', function () {
+        if (b.dataset.size === 'xl') {
+          setMaximized(!el.classList.contains('vp-maximized'));
+          setCollapsed(false);
+          return;
+        }
+        setMaximized(false);
         var w = b.dataset.size === 's' ? Math.round(window.innerWidth * 0.32) : Math.round(window.innerWidth * 0.70);
         w = Math.max(MIN_W, Math.min(w, maxAllowedWidth()));
         try { localStorage.setItem(W_KEY, String(w)); } catch (e) {}
@@ -209,10 +266,28 @@
       if (item) play(parseInt(item.dataset.vpI, 10));
     });
     tabsEl.addEventListener('click', function (e) {
+      var toggleBtn = e.target.closest('.vp-tab-toggle');
+      if (toggleBtn) {
+        setResCollapsed(!savedResCollapsed());
+        return;
+      }
       var t = e.target.closest('[data-vp-tab]');
-      if (t) setTab(t.dataset.vpTab);
+      if (t) {
+        if (t.dataset.vpTab === state.tab) {
+          setResCollapsed(!savedResCollapsed());
+        } else {
+          setTab(t.dataset.vpTab);
+        }
+      }
     });
     docsEl.addEventListener('click', function (e) {
+      var sep = e.target.closest('.vp-doc-sep-toggle');
+      if (sep) {
+        docsEl.classList.toggle('vp-ext-collapsed');
+        var chevron = sep.querySelector('.vp-sep-chevron');
+        if (chevron) chevron.textContent = docsEl.classList.contains('vp-ext-collapsed') ? '▸' : '▾';
+        return;
+      }
       var d = e.target.closest('[data-vp-doc]');
       if (d) showDoc(parseInt(d.dataset.vpDoc, 10));
     });
@@ -252,12 +327,18 @@
       ['anim', '🎬 Animated', state.anim.length],
       ['read', '📄 Read', state.docs.length]
     ];
+    var isCollapsed = savedResCollapsed();
+    var count = state.tab === 'anim' ? state.anim.length : state.tab === 'read' ? state.docs.length : state.videos.length;
+    var toggleLabel = isCollapsed ? '▼ Expand (' + count + ')' : '▲ Collapse';
+    var toggleTitle = isCollapsed ? 'Expand resources header' : 'Collapse resources header for more reading space';
+
     tabsEl.innerHTML = tabs.map(function (t) {
       return '<button type="button" role="tab" class="vp-tab' + (state.tab === t[0] ? ' active' : '') + (t[2] ? '' : ' empty') +
         '" data-vp-tab="' + t[0] + '" aria-selected="' + (state.tab === t[0]) + '">' + t[1] + ' <span>' + t[2] + '</span></button>';
     }).join('') +
       '<a class="vp-tab vp-tab-google" target="_blank" rel="noopener noreferrer" href="' + esc(googleUrl(state.query)) + '" title="Google: ' + esc(state.query) + '">Google ↗</a>' +
-      '<a class="vp-tab vp-tab-yt" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=' + encodeURIComponent(state.query + (state.tab === 'anim' ? ' animation visualized' : '')) + '" title="Search YouTube: ' + esc(state.query) + '">YouTube ↗</a>';
+      '<a class="vp-tab vp-tab-yt" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=' + encodeURIComponent(state.query + (state.tab === 'anim' ? ' animation visualized' : '')) + '" title="Search YouTube: ' + esc(state.query) + '">YouTube ↗</a>' +
+      '<button type="button" class="vp-tab vp-tab-toggle' + (isCollapsed ? ' is-collapsed' : '') + '" title="' + esc(toggleTitle) + '" aria-expanded="' + (!isCollapsed) + '">' + toggleLabel + '</button>';
   }
   function curVideos() { return state.tab === 'anim' ? state.anim : state.videos; }
 
@@ -351,7 +432,7 @@
       var head = '';
       if (k === 'link' && !seenExternal) {
         seenExternal = true;
-        head = '<div class="vp-doc-sep">Opens in a new tab</div>';
+        head = '<div class="vp-doc-sep vp-doc-sep-toggle" title="Click to collapse / expand external links"><span>Opens in a new tab</span><span class="vp-sep-chevron">' + (docsEl && docsEl.classList.contains('vp-ext-collapsed') ? '▸' : '▾') + '</span></div>';
       }
       return head + '<button type="button" class="vp-doc' + (i === state.doc ? ' active' : '') + (k === 'link' ? ' vp-doc-ext' : '') +
         '" data-vp-doc="' + i + '" title="' + esc(d[1]) + '">' +
@@ -524,6 +605,7 @@
       el.classList.add('vp-open');
       document.documentElement.classList.add('vp-active');
       applyCollapsed(savedCollapsed());
+      applyResCollapsed(savedResCollapsed());
       setTab(tab);
     });
     return true;
@@ -532,6 +614,7 @@
   function close() {
     if (!el) return;
     withPin(lastOriginEl, function () {
+      setMaximized(false);
       el.classList.remove('vp-open');
       document.documentElement.classList.remove('vp-active');
       document.documentElement.style.removeProperty('--vp-offset');
