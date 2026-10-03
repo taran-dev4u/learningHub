@@ -23,7 +23,7 @@ const NEETCODE = path.join(ROOT, 'tools', '.dsa-cache', 'neetcode.json');
 /* hosts assets/video-panel.js can render inside the panel */
 const PANEL_HOSTS = new Set([
   'raw.githubusercontent.com', 'github.com',
-  'walkccc.me', 'leetcode.doocs.org', 'neetcode.io',
+  'walkccc.me', 'neetcode.io',
 ]);
 
 const fail = [];

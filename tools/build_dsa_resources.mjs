@@ -100,19 +100,11 @@ function makeReads(prob, tufArticle, ncRow) {
 
     if (doocsIndex[lcNum]) {
       reads.push(read(
-        'Doocs LeetCode Multi-Approach Page',
-        `https://leetcode.doocs.org/en/lc/${lcNum}/`,
-        'Exact LeetCode problem page with multiple approaches, intuition, complexity analysis, and implementations',
+        'Doocs Multi-Approach Solution',
+        `https://raw.githubusercontent.com/doocs/leetcode/main/solution/${doocsIndex[lcNum].relPath}/README_EN.md`,
+        'Exact multi-approach solution rendered directly in the sidebar with intuition, complexity analysis, and implementations',
         true,
         'Best first multi-approach solution',
-        'Python, Java, C++, Go, TypeScript, Rust'
-      ));
-      reads.push(read(
-        'Doocs Raw Markdown Backup',
-        `https://raw.githubusercontent.com/doocs/leetcode/main/solution/${doocsIndex[lcNum].relPath}/README_EN.md`,
-        'Same Doocs multi-approach content as raw markdown, useful if the page frame is slow',
-        true,
-        'Sidebar markdown backup',
         'Python, Java, C++, Go, TypeScript, Rust'
       ));
     }
@@ -177,6 +169,17 @@ function makeReads(prob, tufArticle, ncRow) {
       'Alternative approaches',
       'All major languages'
     ));
+
+    if (doocsIndex[lcNum]) {
+      reads.push(read(
+        'Doocs Web Page',
+        `https://leetcode.doocs.org/en/lc/${lcNum}/`,
+        'Same Doocs solution as a website page; kept as an external fallback if you want the original page chrome',
+        false,
+        'External page backup',
+        'Python, Java, C++, Go, TypeScript, Rust'
+      ));
+    }
 
     return dedupeReads(reads);
   }
