@@ -297,6 +297,7 @@ html.vp-active.vp-left body { padding-right: 0; padding-left: var(--vp-offset, 0
 
 /* reader: the boundary between docs the panel renders and docs that open away */
 .vp-doc-sep {
+  width: 100%;
   margin: 8px 2px 4px; padding-top: 7px; border-top: 1px solid var(--vp-border, rgba(128,128,128,.28));
   font-size: 10.5px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
   color: var(--vp-faint, #8a93a3);

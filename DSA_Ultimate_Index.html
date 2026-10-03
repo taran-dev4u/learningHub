@@ -335,6 +335,7 @@
     border-radius: 8px; overflow-x: auto; overflow-y: hidden;
     border: 1px solid var(--border);
     -webkit-overflow-scrolling: touch;
+    container-type: inline-size;
   }
   ol.problems li {
     display: grid;
@@ -344,7 +345,7 @@
     border-bottom: 1px solid var(--border);
     background: var(--bg-elev);
     transition: background 0.12s;
-    min-width: 680px;
+    min-width: 0;
   }
   ol.problems li:last-child { border-bottom: none; }
   ol.problems li:nth-child(even) { background: var(--bg-row-alt); }
@@ -650,10 +651,34 @@
     .pattern-banner .ppg { min-width: 100%; text-align: left; }
     .hero h1 { font-size: 24px; }
     ol.problems li {
-      grid-template-columns: 24px 20px 48px 28px 1fr auto;
-      gap: 6px; padding: 6px 8px;
+      display: grid !important;
+      grid-template-columns: 24px 20px 48px 28px 1fr !important;
+      grid-template-rows: auto auto !important;
+      row-gap: 6px !important;
+      column-gap: 6px !important;
+      padding: 8px 10px !important;
     }
-    ol.problems .company-row, ol.problems .note-btn { display: none; }
+    ol.problems li .solve-check { grid-column: 1; grid-row: 1; }
+    ol.problems li .bookmark-star { grid-column: 2; grid-row: 1; }
+    ol.problems li .lc { grid-column: 3; grid-row: 1; }
+    ol.problems li .diff-pill { grid-column: 4; grid-row: 1; }
+    ol.problems li .pname-wrap { grid-column: 5 / -1 !important; grid-row: 1 !important; min-width: 0 !important; }
+    ol.problems li .pname { white-space: normal !important; line-height: 1.35 !important; }
+    ol.problems li .solutions {
+      grid-column: 1 / 5 !important; grid-row: 2 !important;
+      display: flex !important; gap: 4px !important; flex-wrap: wrap !important; align-items: center !important;
+    }
+    ol.problems li .note-btn {
+      grid-column: 5 !important; grid-row: 2 !important;
+      justify-self: start !important; align-self: center !important;
+    }
+    ol.problems li .company-row {
+      grid-column: 5 / -1 !important; grid-row: 2 !important;
+      justify-self: end !important; align-self: center !important;
+      display: flex !important; gap: 3px !important;
+    }
+    ol.problems li .company-row .company-chip:nth-child(n+3):not(.more) { display: none !important; }
+    ol.problems li .note-editor { grid-column: 1 / -1 !important; grid-row: 3 !important; }
     .filter-btn { padding: 4px 8px; font-size: 10px; }
   }
 
