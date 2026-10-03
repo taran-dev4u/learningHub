@@ -22171,10 +22171,14 @@ class Trie:
       const li = nb.closest('li[data-lc]');
       if (!lc || !li) return;
       const editor = noteEditorFor(li, lc);
-      const isOpen = editor.style.display === 'block';
+      const isOpen = editor.classList.contains('open') || editor.style.display === 'block';
       // Close all editors first
-      document.querySelectorAll('.note-editor').forEach(ed => ed.style.display = 'none');
+      document.querySelectorAll('.note-editor').forEach(ed => {
+        ed.style.display = 'none';
+        ed.classList.remove('open');
+      });
       if (!isOpen) {
+        editor.classList.add('open');
         editor.style.display = 'block';
         editor.querySelector('textarea').value = notes[lc] || '';
         editor.querySelector('textarea').focus();
@@ -22189,6 +22193,7 @@ class Trie:
     const editor = target.closest('.note-editor');
     if (!editor) return;
     if (target.closest('.note-editor-actions .cancel')) {
+      editor.classList.remove('open');
       editor.style.display = 'none';
       return;
     }
@@ -22198,6 +22203,7 @@ class Trie:
     const txt = editor.querySelector('textarea').value;
     if (txt.trim()) notes[lc] = txt; else delete notes[lc];
     saveObj(STORAGE_NOTES, notes);
+    editor.classList.remove('open');
     editor.style.display = 'none';
     renderState();
   });
