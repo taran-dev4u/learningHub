@@ -100,11 +100,19 @@ function makeReads(prob, tufArticle, ncRow) {
 
     if (doocsIndex[lcNum]) {
       reads.push(read(
-        'Doocs English Multi-Approach Guide',
-        `https://raw.githubusercontent.com/doocs/leetcode/main/solution/${doocsIndex[lcNum].relPath}/README_EN.md`,
-        'Exact problem editorial with intuition, approaches, complexity analysis, and multi-language implementations',
+        'Doocs LeetCode Multi-Approach Page',
+        `https://leetcode.doocs.org/en/lc/${lcNum}/`,
+        'Exact LeetCode problem page with multiple approaches, intuition, complexity analysis, and implementations',
         true,
-        'Best first written solution',
+        'Best first multi-approach solution',
+        'Python, Java, C++, Go, TypeScript, Rust'
+      ));
+      reads.push(read(
+        'Doocs Raw Markdown Backup',
+        `https://raw.githubusercontent.com/doocs/leetcode/main/solution/${doocsIndex[lcNum].relPath}/README_EN.md`,
+        'Same Doocs multi-approach content as raw markdown, useful if the page frame is slow',
+        true,
+        'Sidebar markdown backup',
         'Python, Java, C++, Go, TypeScript, Rust'
       ));
     }
