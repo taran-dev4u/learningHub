@@ -10,7 +10,7 @@ A personal static learning hub generated from the HTML sites in this folder.
 - Behavioral and Leadership: 145 concepts, 6 sections, 25 resources
 - AI Engineering: 177 concepts, 11 sections, 56 resources
 - Cloud - AWS and Azure: 194 concepts, 11 sections, 55 resources
-- Interview Prep: 92 concepts, 6 sections, 25 resources
+- Interview Prep: 109 concepts, 7 sections, 28 resources
 
 ## Added tutorial sub-sites
 

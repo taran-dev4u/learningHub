@@ -1,6 +1,6 @@
 # Taran's Learning Hub Content Audit
 
-Generated: 2026-10-05T09:31:41.364Z
+Generated: 2026-10-05T09:51:26.753Z
 
 ## Research References
 
@@ -425,7 +425,7 @@ Sections:
 
 ## Interview Prep
 
-- Inventory: 6 sections, 18 subsections, 92 concepts, 25 resources.
+- Inventory: 7 sections, 22 subsections, 109 concepts, 28 resources.
 - Formatting focus: consistent navigation, closed resources, clean headings, and better fallback search links.
 - Duplicate subsection names to review: none found by title.
 - Weak/generic subsection names to review: none found by heuristic.
@@ -440,4 +440,5 @@ Sections:
 - HR and Recruiter Questions: 16 items, 3 subsections, 3 resources.
 - Technical Communication: 15 items, 3 subsections, 3 resources.
 - Transcript Practice Lab: 10 items, 2 subsections, 3 resources.
+- Company Preparation Tracks: 17 items, 4 subsections, 4 resources.
 
