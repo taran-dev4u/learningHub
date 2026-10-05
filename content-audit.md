@@ -1,6 +1,6 @@
 # Taran's Learning Hub Content Audit
 
-Generated: 2026-10-03T18:48:00.557Z
+Generated: 2026-10-05T08:30:37.642Z
 
 ## Research References
 
