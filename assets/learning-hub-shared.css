@@ -364,9 +364,10 @@ html:root .am-row .am-check { margin-top: 2px; }
   html:root .am-row .am-title { flex: 1 1 100%; }
 }
 
-/* ---- side panel active: adapt content container and maintain problem row geometry ---- */
+/* ---- side panel active: adapt content container and maintain flexible reflow ---- */
 html.vp-active:root .wrap,
-html.vp-active:root .am-wrap {
+html.vp-active:root .am-wrap,
+html.vp-active:root .container {
   width: 100%;
   max-width: none;
   padding: 12px 14px 80px;
@@ -374,8 +375,37 @@ html.vp-active:root .am-wrap {
 }
 html.vp-active .subpattern,
 html.vp-active .pattern-desc,
-html.vp-active .resources-section {
+html.vp-active .resources-section,
+html.vp-active .subsection,
+html.vp-active .section-desc {
   margin-left: 0 !important;
+}
+html.vp-active .pattern-banner,
+html.vp-active .section-banner {
+  flex-wrap: wrap !important;
+  gap: 10px !important;
+  padding: 12px 14px !important;
+}
+html.vp-active .pattern-banner .ppg,
+html.vp-active .section-banner .ppg {
+  min-width: 100% !important;
+  text-align: left !important;
+}
+html.vp-active .overall-progress {
+  flex-wrap: wrap !important;
+  gap: 8px 12px !important;
+  padding: 10px 14px !important;
+}
+html.vp-active .overall-progress .bar-track {
+  min-width: 100% !important;
+  order: 3 !important;
+}
+html.vp-active .toc-grid {
+  grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr)) !important;
+  gap: 4px 8px !important;
+}
+html.vp-active .res-grid {
+  grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr)) !important;
 }
 html.vp-active .controls {
   top: var(--hub-nav-h, 53px);
@@ -385,6 +415,7 @@ html.vp-active .controls {
 html.vp-active .controls-row {
   padding: 6px 10px;
   gap: 5px 6px;
+  flex-wrap: wrap;
 }
 html.vp-active .filter-btn {
   padding: 4px 8px;
@@ -394,6 +425,64 @@ html.vp-active .search input {
   padding: 5px 8px;
   font-size: 12px;
 }
+
+/* System Design / LLD Tutorial side panel active layout adjustments */
+html.vp-active:root .am-layout {
+  grid-template-columns: 1fr !important;
+}
+html.vp-active:root .am-side {
+  position: fixed !important;
+  inset: var(--hub-nav-h, 53px) auto 0 0 !important;
+  width: min(320px, 85vw) !important;
+  z-index: 55 !important;
+  border-radius: 0 !important;
+  max-height: none !important;
+  height: calc(100vh - var(--hub-nav-h, 53px)) !important;
+  transform: translateX(-102%) !important;
+  transition: transform .22s ease !important;
+}
+html.vp-active:root .am-side.open {
+  transform: none !important;
+}
+html.vp-active:root .am-side-toggle {
+  display: inline-flex !important;
+}
+
+/* Tutorial Roadmap row container reflow */
+html:root .am-rows {
+  container-type: inline-size;
+}
+@container (max-width: 780px) {
+  html:root .am-row {
+    display: grid !important;
+    grid-template-columns: 24px 1fr auto !important;
+    row-gap: 6px !important;
+    column-gap: 8px !important;
+    padding: 10px 12px !important;
+  }
+  html:root .am-row .am-check { grid-column: 1 !important; grid-row: 1 !important; }
+  html:root .am-row .am-title { grid-column: 2 / -1 !important; grid-row: 1 !important; width: 100% !important; }
+  html:root .am-row .am-sub { grid-column: 2 / -1 !important; grid-row: 2 !important; white-space: normal !important; }
+  html:root .am-row .solutions { grid-column: 2 / -1 !important; grid-row: 3 !important; }
+}
+
+/* DSA Tutorial plist container query */
+.plist li {
+  container-type: inline-size;
+}
+@container (max-width: 600px) {
+  .plist li {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 6px 8px !important;
+  }
+  .plist li .solutions {
+    width: 100% !important;
+    margin-top: 4px !important;
+  }
+}
+
+/* DSA Index Problem Rows Container & Grid System */
 html:root ol.problems {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -474,13 +563,11 @@ ol.problems > li.note-editor.open {
   width: 100% !important;
 }
 
-/* Responsive Tier 1: Constrained problem table (e.g. side panel open, width <= 1020px)
-   Reflows cleanly into organized vertical tiers:
-   - Row 1: Problem Identity (Checkbox, Star, LC#, Diff, Problem Name spanning full remaining width!)
-   - Row 2: Study Rail Solutions on the left, Note button on the right!
-   - Row 3: Company tags!
-   Zero overlap, zero truncation, maximum flexibility. */
-@container (max-width: 1020px) {
+/* Responsive Tier 1: Moderate width (761px - 1040px)
+   - Row 1: Problem Identity & Title
+   - Row 2: Solutions buttons on left, Note button on right
+   - Row 3: Company tags */
+@container (max-width: 1040px) {
   html:root ol.problems > li:not(.note-editor) {
     display: grid !important;
     grid-template-columns: 26px 22px 50px 28px 1fr auto !important;
@@ -498,6 +585,10 @@ ol.problems > li.note-editor.open {
     grid-column: 5 / -1 !important;
     grid-row: 1 !important;
     min-width: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 4px 6px !important;
   }
   html:root ol.problems > li:not(.note-editor) .problem-name {
     grid-column: 3 / -1 !important;
@@ -544,48 +635,67 @@ ol.problems > li.note-editor.open {
   }
 }
 
-/* Responsive Tier 2: Ultra-Narrow available space (<= 460px)
-   (e.g. user drags study panel very wide to 75%+ screen, or mobile)
-   Problem title moves to its own line for maximum readability,
-   actions and companies stack downward seamlessly without collision. */
-@container (max-width: 460px) {
+/* Responsive Tier 2: Constrained / Narrow width (<= 760px)
+   (Triggered whenever the study panel is open or widened on desktop)
+   - Row 1: Left controls (Solve check, Bookmark star, LC#, Diff pill) + Note button right-aligned
+   - Row 2: Problem Name ("మధ్యది") reflows down to its own line spanning 100% width! Zero squishing!
+   - Row 3: Study Rail buttons (Watch, Read, Google) spanning 100% width!
+   - Row 4: Company tags! */
+@container (max-width: 760px) {
   html:root ol.problems > li:not(.note-editor) {
     display: grid !important;
-    grid-template-columns: 24px 20px auto auto 1fr auto !important;
+    grid-template-columns: 26px 22px auto auto 1fr auto !important;
     grid-template-rows: auto auto auto !important;
-    row-gap: 5px !important;
-    column-gap: 5px !important;
-    padding: 7px 8px !important;
+    row-gap: 6px !important;
+    column-gap: 6px !important;
+    padding: 8px 10px !important;
+    align-items: center !important;
   }
+  /* Row 1: Left items + Note button */
   html:root ol.problems > li:not(.note-editor) .solve-check { grid-column: 1 !important; grid-row: 1 !important; }
   html:root ol.problems > li:not(.note-editor) .bookmark-star { grid-column: 2 !important; grid-row: 1 !important; }
   html:root ol.problems > li:not(.note-editor) .lc { grid-column: 3 !important; grid-row: 1 !important; }
   html:root ol.problems > li:not(.note-editor) .diff-pill { grid-column: 4 !important; grid-row: 1 !important; }
-  html:root ol.problems > li:not(.note-editor) .pname-wrap {
-    grid-column: 1 / -1 !important;
-    grid-row: 2 !important;
-    min-width: 0 !important;
-  }
-  html:root ol.problems > li:not(.note-editor) .problem-name {
-    grid-column: 1 / -1 !important;
-    grid-row: 2 !important;
-    min-width: 0 !important;
-  }
   html:root ol.problems > li:not(.note-editor) .note-btn {
     grid-column: -2 / -1 !important;
     grid-row: 1 !important;
     justify-self: end !important;
     align-self: center !important;
   }
+  /* Row 2: Problem Name goes DOWN to its own line with 100% width! */
+  html:root ol.problems > li:not(.note-editor) .pname-wrap {
+    grid-column: 1 / -1 !important;
+    grid-row: 2 !important;
+    min-width: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 4px 6px !important;
+  }
+  html:root ol.problems > li:not(.note-editor) .problem-name {
+    grid-column: 1 / -1 !important;
+    grid-row: 2 !important;
+    min-width: 0 !important;
+  }
+  html:root ol.problems > li:not(.note-editor) .pname,
+  html:root ol.problems > li:not(.note-editor) .problem-name {
+    white-space: normal !important;
+    line-height: 1.35 !important;
+    font-weight: 600 !important;
+    word-break: break-word !important;
+  }
+  /* Row 3: Action Buttons (Watch, Read, Google) */
   html:root ol.problems > li:not(.note-editor) .solutions {
     grid-column: 1 / -1 !important;
     grid-row: 3 !important;
     display: flex !important;
-    gap: 4px !important;
+    gap: 5px !important;
     flex-wrap: wrap !important;
     align-items: center !important;
     justify-self: start !important;
+    min-width: 0 !important;
   }
+  /* Row 4: Company tags */
   html:root ol.problems > li:not(.note-editor) .company-row {
     grid-column: 1 / -1 !important;
     grid-row: 4 !important;
@@ -595,12 +705,42 @@ ol.problems > li.note-editor.open {
     flex-wrap: wrap !important;
     gap: 3px !important;
   }
+  html:root ol.problems > li:not(.note-editor) .company-row:empty {
+    display: none !important;
+  }
+  html:root ol.problems > li:not(.note-editor) .company-row .company-chip:nth-child(n+3):not(.more) {
+    display: none !important;
+  }
+}
+
+/* Responsive Tier 3: Ultra-Narrow available space (<= 420px)
+   (e.g. user drags study panel very wide to 75%+ screen, or mobile) */
+@container (max-width: 420px) {
+  html:root ol.problems > li:not(.note-editor) {
+    grid-template-columns: 22px 18px auto auto 1fr auto !important;
+    row-gap: 5px !important;
+    column-gap: 4px !important;
+    padding: 6px 8px !important;
+  }
+  html:root ol.problems > li:not(.note-editor) .solutions {
+    gap: 3px !important;
+  }
 }
 
 /* Concept page rows (.concepts li) flexible downward reflow */
 html:root .concepts {
   container-type: inline-size;
 }
+html:root .concepts li .res-links {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 4px !important;
+  align-items: center !important;
+}
+html:root .concepts li .res-links:empty {
+  display: none !important;
+}
+
 @container (max-width: 860px) {
   html:root .concepts li {
     display: grid !important;
@@ -613,7 +753,17 @@ html:root .concepts {
   }
   html:root .concepts li .done-check { grid-column: 1 !important; grid-row: 1 !important; }
   html:root .concepts li .bookmark-star { grid-column: 2 !important; grid-row: 1 !important; }
-  html:root .concepts li .cname { grid-column: 3 / -1 !important; grid-row: 1 !important; min-width: 0 !important; }
+  html:root .concepts li > div:not(.done-check):not(.bookmark-star):not(.res-links):not(.hub-actions) {
+    grid-column: 3 / -1 !important;
+    grid-row: 1 !important;
+    min-width: 0 !important;
+  }
+  html:root .concepts li .cname {
+    white-space: normal !important;
+    word-break: break-word !important;
+    line-height: 1.35 !important;
+    font-weight: 600 !important;
+  }
   html:root .concepts li .hub-actions {
     grid-column: 1 / -1 !important;
     grid-row: 2 !important;
@@ -632,6 +782,27 @@ html:root .concepts {
     align-items: center !important;
     justify-self: start !important;
   }
-  html:root .concepts li .res-links:empty { display: none !important; }
 }
+
+@container (max-width: 480px) {
+  html:root .concepts li {
+    grid-template-columns: 24px 20px 1fr !important;
+    padding: 6px 8px !important;
+  }
+  html:root .concepts li .done-check { grid-column: 1 !important; grid-row: 1 !important; }
+  html:root .concepts li .bookmark-star { grid-column: 2 !important; grid-row: 1 !important; }
+  html:root .concepts li > div:not(.done-check):not(.bookmark-star):not(.res-links):not(.hub-actions) {
+    grid-column: 1 / -1 !important;
+    grid-row: 2 !important;
+  }
+  html:root .concepts li .hub-actions {
+    grid-column: 1 / -1 !important;
+    grid-row: 3 !important;
+  }
+  html:root .concepts li .res-links {
+    grid-column: 1 / -1 !important;
+    grid-row: 4 !important;
+  }
+}
+
 

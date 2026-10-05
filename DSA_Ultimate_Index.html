@@ -693,6 +693,31 @@
     ol.problems li.note-editor.open { display: block !important; width: 100% !important; }
     .filter-btn { padding: 4px 8px; font-size: 10px; }
   }
+  @media (max-width: 760px) {
+    ol.problems li:not(.note-editor) {
+      grid-template-columns: 26px 22px auto auto 1fr auto !important;
+      grid-template-rows: auto auto auto !important;
+    }
+    ol.problems li:not(.note-editor) .note-btn {
+      grid-column: -2 / -1 !important; grid-row: 1 !important;
+      justify-self: end !important; align-self: center !important;
+    }
+    ol.problems li:not(.note-editor) .pname-wrap {
+      grid-column: 1 / -1 !important; grid-row: 2 !important;
+      display: flex !important; align-items: center !important;
+      flex-wrap: wrap !important; gap: 4px 6px !important;
+    }
+    ol.problems li:not(.note-editor) .problem-name {
+      grid-column: 1 / -1 !important; grid-row: 2 !important;
+    }
+    ol.problems li:not(.note-editor) .solutions {
+      grid-column: 1 / -1 !important; grid-row: 3 !important;
+      gap: 5px !important;
+    }
+    ol.problems li:not(.note-editor) .company-row {
+      grid-column: 1 / -1 !important; grid-row: 4 !important;
+    }
+  }
 
   /* ===== PRINT ===== */
   @media print {
