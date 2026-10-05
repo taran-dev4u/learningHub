@@ -33,7 +33,7 @@ L2 = {
   ["Alistair Cockburn — Hexagonal architecture", "https://alistair.cockburn.us/hexagonal-architecture/"],
   ["Martin Fowler — PresentationDomainDataLayering", "https://martinfowler.com/bliki/PresentationDomainDataLayering.html"]]},
 
-"circuit-breakers-bulkheads-timeouts.md": {"videos": [], "docs": [
+"circuit-breakers-bulkheads-timeouts.md": {"videos": [["ADHcBxEXvFA", "Circuit Breaker Pattern - Fault Tolerant Microservices", "Defog Tech"]], "docs": [
   ["Martin Fowler — Circuit breaker", "https://martinfowler.com/bliki/CircuitBreaker.html"],
   ["AWS Builders' Library — Timeouts, retries and backoff with jitter", "https://aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/"],
   ["microservices.io — Circuit breaker pattern", "https://microservices.io/patterns/reliability/circuit-breaker.html"],
@@ -54,7 +54,7 @@ L2 = {
   ["Redis — Distributed locks (Redlock)", "https://redis.io/docs/latest/develop/clients/patterns/distributed-locks/"],
   ["Stripe — Designing robust and predictable APIs with idempotency", "https://stripe.com/blog/idempotency"]]},
 
-"consensus-algorithms-raft-paxos.md": {"videos": [], "docs": [
+"consensus-algorithms-raft-paxos.md": {"videos": [["Ry2fIFIThP8", "The hardest problem in databases: consensus", "Ben Dicken"]], "docs": [
   ["The Secret Lives of Data — Raft, visualised", "https://thesecretlivesofdata.com/raft/"],
   ["Raft — the consensus algorithm (official site)", "https://raft.github.io/"],
   ["Paxos: the part-time parliament (paper)", "https://lamport.azurewebsites.net/pubs/lamport-paxos.pdf"],
@@ -65,7 +65,7 @@ L2 = {
   ["ZooKeeper: wait-free coordination (paper)", "https://www.usenix.org/legacy/event/usenix10/tech/full_papers/Hunt.pdf"],
   ["The Chubby lock service (paper)", "https://static.googleusercontent.com/media/research.google.com/en//archive/chubby-osdi06.pdf"]]},
 
-"distributed-transactions-sagas.md": {"videos": [], "docs": [
+"distributed-transactions-sagas.md": {"videos": [["rO9BXsl4AMQ", "Sagas: Event Choreography & Orchestration (NServiceBus)", "CodeOpinion"]], "docs": [
   ["microservices.io — Saga pattern", "https://microservices.io/patterns/data/saga.html"],
   ["Airbnb — Avoiding double payments in a distributed payments system", "https://medium.com/airbnb-engineering/avoiding-double-payments-in-a-distributed-payments-system-2981f6b070bb"],
   ["Two-phase commit protocol", "https://en.wikipedia.org/wiki/Two-phase_commit_protocol"]]},

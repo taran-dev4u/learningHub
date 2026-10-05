@@ -106,7 +106,13 @@ window.sdResources = {
    ]
   },
   "latency-throughput-scalability-basics.md": {
-   "videos": [],
+   "videos": [
+    [
+     "xpDnVSmNFX0",
+     "System Design BASICS: Horizontal vs. Vertical Scaling",
+     "Gaurav Sen"
+    ]
+   ],
    "docs": [
     [
      "AlgoMaster — Scalability",
@@ -171,7 +177,13 @@ window.sdResources = {
    ]
   },
   "cap-pacelc-theorems.md": {
-   "videos": [],
+   "videos": [
+    [
+     "BHqjEjzAicA",
+     "CAP Theorem Simplified",
+     "ByteByteGo"
+    ]
+   ],
    "docs": [
     [
      "CAP theorem revisited (Robert Greiner)",
@@ -261,7 +273,13 @@ window.sdResources = {
    ]
   },
   "proxies-api-gateways-service-mesh.md": {
-   "videos": [],
+   "videos": [
+    [
+     "leNTolBJFS4",
+     "API Gateway vs Reverse Proxy Explained Like a Pro ?? The Secret Behind Scalable Systems!",
+     "Escoding"
+    ]
+   ],
    "docs": [
     [
      "AlgoMaster — Proxy vs reverse proxy",
@@ -370,7 +388,13 @@ window.sdResources = {
    ]
   },
   "acid-transactions-isolation.md": {
-   "videos": [],
+   "videos": [
+    [
+     "icb17Vzp2Bc",
+     "What is a DBMS? (RDBMS, ACID, and How It All Works)",
+     "Topictrick"
+    ]
+   ],
    "docs": [
     [
      "PostgreSQL — Transaction isolation levels",
@@ -412,7 +436,13 @@ window.sdResources = {
    ]
   },
   "replication-read-scaling.md": {
-   "videos": [],
+   "videos": [
+    [
+     "pyvkQABUNvg",
+     "23 - What is Binary Log / Logging in MySQL Part-1 | MySQL DBA Tutorial",
+     "Mughees Ahmed"
+    ]
+   ],
    "docs": [
     [
      "MySQL — Replication",
@@ -552,7 +582,13 @@ window.sdResources = {
    ]
   },
   "redis-distributed-caching.md": {
-   "videos": [],
+   "videos": [
+    [
+     "VLTPqImLapM",
+     "Can Redis be used as a Primary database?",
+     "Hussein Nasser"
+    ]
+   ],
    "docs": [
     [
      "AlgoMaster — Distributed caching",
@@ -756,7 +792,13 @@ window.sdResources = {
    ]
   },
   "circuit-breakers-bulkheads-timeouts.md": {
-   "videos": [],
+   "videos": [
+    [
+     "ADHcBxEXvFA",
+     "Circuit Breaker Pattern - Fault Tolerant Microservices",
+     "Defog Tech"
+    ]
+   ],
    "docs": [
     [
      "Martin Fowler — Circuit breaker",
@@ -834,7 +876,13 @@ window.sdResources = {
    ]
   },
   "consensus-algorithms-raft-paxos.md": {
-   "videos": [],
+   "videos": [
+    [
+     "Ry2fIFIThP8",
+     "The hardest problem in databases: consensus",
+     "Ben Dicken"
+    ]
+   ],
    "docs": [
     [
      "The Secret Lives of Data — Raft, visualised",
@@ -872,7 +920,13 @@ window.sdResources = {
    ]
   },
   "distributed-transactions-sagas.md": {
-   "videos": [],
+   "videos": [
+    [
+     "rO9BXsl4AMQ",
+     "Sagas: Event Choreography & Orchestration (NServiceBus)",
+     "CodeOpinion"
+    ]
+   ],
    "docs": [
     [
      "microservices.io — Saga pattern",

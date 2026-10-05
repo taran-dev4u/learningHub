@@ -32,7 +32,7 @@ L1 = {
   ["Interactive latency numbers (by year)", "https://colin-scott.github.io/personal_website/research/interactive_latency.html"],
   ["AlgoMaster — Latency vs throughput vs bandwidth", "https://algomaster.io/learn/system-design/latency-vs-throughput"]]},
 
-"latency-throughput-scalability-basics.md": {"videos": [], "docs": [
+"latency-throughput-scalability-basics.md": {"videos": [["xpDnVSmNFX0", "System Design BASICS: Horizontal vs. Vertical Scaling", "Gaurav Sen"]], "docs": [
   ["AlgoMaster — Scalability", "https://algomaster.io/learn/system-design/scalability"],
   ["AlgoMaster — Vertical vs horizontal scaling", "https://algomaster.io/learn/system-design/vertical-vs-horizontal-scaling"],
   ["AWS — Throughput vs latency", "https://aws.amazon.com/compare/the-difference-between-throughput-and-latency/"],
@@ -49,7 +49,7 @@ L1 = {
   ["AlgoMaster — Strong vs eventual consistency", "https://blog.algomaster.io/p/strong-vs-eventual-consistency"],
   ["Kleppmann — Linearizability vs serializability", "https://www.bailis.org/blog/linearizability-versus-serializability/"]]},
 
-"cap-pacelc-theorems.md": {"videos": [], "docs": [
+"cap-pacelc-theorems.md": {"videos": [["BHqjEjzAicA", "CAP Theorem Simplified", "ByteByteGo"]], "docs": [
   ["CAP theorem revisited (Robert Greiner)", "https://robertgreiner.com/cap-theorem-revisited/"],
   ["The CAP FAQ (Henry Robinson)", "https://github.com/henryr/cap-faq"],
   ["AlgoMaster — CAP theorem", "https://algomaster.io/learn/system-design/cap-theorem"],
@@ -73,7 +73,7 @@ L1 = {
   ["NGINX — Inside NGINX: designed for performance and scale", "https://www.nginx.com/blog/inside-nginx-how-we-designed-for-performance-scale/"],
   ["Google SRE Book — Load balancing at the datacenter", "https://sre.google/sre-book/load-balancing-datacenter/"]]},
 
-"proxies-api-gateways-service-mesh.md": {"videos": [], "docs": [
+"proxies-api-gateways-service-mesh.md": {"videos": [["leNTolBJFS4", "API Gateway vs Reverse Proxy Explained Like a Pro ?? The Secret Behind Scalable Systems!", "Escoding"]], "docs": [
   ["AlgoMaster — Proxy vs reverse proxy", "https://blog.algomaster.io/p/proxy-vs-reverse-proxy-explained"],
   ["AlgoMaster — What is an API gateway?", "https://blog.algomaster.io/p/what-is-an-api-gateway"],
   ["microservices.io — API gateway pattern", "https://microservices.io/patterns/apigateway.html"],
@@ -101,7 +101,7 @@ L1 = {
   ["MongoDB — Data modelling introduction", "https://www.mongodb.com/docs/manual/data-modeling/"],
   ["System Design Primer — SQL or NoSQL", "https://github.com/donnemartin/system-design-primer#sql-or-nosql"]]},
 
-"acid-transactions-isolation.md": {"videos": [], "docs": [
+"acid-transactions-isolation.md": {"videos": [["icb17Vzp2Bc", "What is a DBMS? (RDBMS, ACID, and How It All Works)", "Topictrick"]], "docs": [
   ["PostgreSQL — Transaction isolation levels", "https://www.postgresql.org/docs/current/transaction-iso.html"],
   ["AlgoMaster — ACID transactions", "https://algomaster.io/learn/system-design/acid-transactions"],
   ["Jepsen — Consistency and isolation models", "https://jepsen.io/consistency"],
@@ -113,7 +113,7 @@ L1 = {
   ["AlgoMaster — Database indexing", "https://algomaster.io/learn/system-design/indexing"],
   ["MySQL — Slow query log", "https://dev.mysql.com/doc/refman/8.0/en/slow-query-log.html"]]},
 
-"replication-read-scaling.md": {"videos": [], "docs": [
+"replication-read-scaling.md": {"videos": [["pyvkQABUNvg", "23 - What is Binary Log / Logging in MySQL Part-1 | MySQL DBA Tutorial", "Mughees Ahmed"]], "docs": [
   ["MySQL — Replication", "https://dev.mysql.com/doc/refman/8.0/en/replication.html"],
   ["AlgoMaster — How to scale a database", "https://blog.algomaster.io/p/system-design-how-to-scale-a-database"],
   ["PostgreSQL — High availability and replication", "https://www.postgresql.org/docs/current/high-availability.html"]]},
@@ -149,7 +149,7 @@ L1 = {
   ["Facebook — Scaling Memcache at Facebook (paper)", "https://www.usenix.org/system/files/conference/nsdi13/nsdi13-final170_update.pdf"],
   ["Cache stampede", "https://en.wikipedia.org/wiki/Cache_stampede"]]},
 
-"redis-distributed-caching.md": {"videos": [], "docs": [
+"redis-distributed-caching.md": {"videos": [["VLTPqImLapM", "Can Redis be used as a Primary database?", "Hussein Nasser"]], "docs": [
   ["AlgoMaster — Distributed caching", "https://blog.algomaster.io/p/distributed-caching"],
   ["Redis — Data types and when to use them", "https://redis.io/docs/latest/develop/data-types/"],
   ["Redis — Distributed locks with Redlock", "https://redis.io/docs/latest/develop/clients/patterns/distributed-locks/"],
