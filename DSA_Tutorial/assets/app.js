@@ -122,12 +122,26 @@
       updateCounts();
     });
 
-    // Hub search
+    // Hub/search page filtering. Parent sheet sections stay visible when a child matches.
     var s = document.getElementById('hub-search');
     if (s) s.addEventListener('input', function () {
-      var q = s.value.toLowerCase();
-      document.querySelectorAll('[data-search]').forEach(function (el) {
-        el.style.display = el.getAttribute('data-search').indexOf(q) >= 0 ? '' : 'none';
+      var q = s.value.toLowerCase().trim();
+      var searchable = document.querySelectorAll('[data-search]');
+      if (!q) {
+        searchable.forEach(function (el) { el.style.display = ''; });
+        return;
+      }
+      document.querySelectorAll('.sheet-topic, .sheet-subtopic, .foundation-row, .card').forEach(function (el) {
+        var text = el.getAttribute('data-search') || '';
+        el.style.display = text.indexOf(q) >= 0 ? '' : 'none';
+      });
+      document.querySelectorAll('.sheet-section').forEach(function (section) {
+        var own = (section.getAttribute('data-search') || '').indexOf(q) >= 0;
+        var child = Array.prototype.some.call(
+          section.querySelectorAll('.sheet-topic, .sheet-subtopic, .foundation-row'),
+          function (el) { return el.style.display !== 'none'; }
+        );
+        section.style.display = own || child ? '' : 'none';
       });
     });
   });
