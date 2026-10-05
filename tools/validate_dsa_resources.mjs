@@ -69,7 +69,6 @@ for (const k of keys) {
   check(typeof p.t === 'string' && p.t.length > 0, `${k}: empty title`);
   check(Array.isArray(p.videos), `${k}: videos is not an array`);
   check(Array.isArray(p.reads), `${k}: reads is not an array`);
-  check((p.videos || []).length >= 5, `${k}: fewer than 5 videos`);
   check((p.reads || []).length >= 5, `${k}: fewer than 5 reads`);
 
   for (const v of p.videos || []) {

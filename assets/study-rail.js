@@ -210,7 +210,7 @@
       r.appendChild(count(readableDocs.length));
       wrap.appendChild(r);
     }
-    wrap.appendChild(link("google icon-only", "G", googleUrl(d.query), "Search Google: " + d.query));
+    wrap.appendChild(link("google icon-only", "", googleUrl(d.query), "Search Google: " + d.query));
     wrap.__sr = d;
     return wrap;
   }

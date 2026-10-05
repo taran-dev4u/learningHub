@@ -7,3 +7,5 @@ striver_raw.txt
 striver_parsed.json
 sd_extracted.json
 tools/.dsa-cache/
+tools/linkcheck/links.json
+tools/linkcheck/cache.json.local
