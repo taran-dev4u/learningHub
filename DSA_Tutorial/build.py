@@ -11,7 +11,9 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 import content_python, content_foundations, content_patterns, content_problems, content_statements
 
 CURR = json.load(open(os.path.join(ROOT, 'data', 'curriculum.json'), encoding='utf-8'))
-CURR = [p for p in CURR if p['subpatterns']]  # drop empty trailing sections
+for pat in CURR:
+    pat['subpatterns'] = [sub for sub in pat.get('subpatterns', []) if sub.get('problems')]
+CURR = [p for p in CURR if p['subpatterns']]  # drop empty trailing sections and empty concept buckets
 
 def slugify(s):
     s = re.sub(r'[^a-z0-9]+', '-', s.lower()).strip('-')
@@ -19,6 +21,9 @@ def slugify(s):
 
 def esc(s):
     return html.escape(s, quote=False)
+
+def plural(n, word):
+    return f'{n} {word}' + ('' if n == 1 else 's')
 
 BADGE_HTML = {'B75': '<span class="badge b75" title="Blind 75">★75</span>',
               'NC150': '<span class="badge nc" title="NeetCode 150">★NC</span>',
@@ -66,6 +71,7 @@ def shell(title, body, depth, prev_page, next_page, crumb_html, mid_label):
 pages = []  # each: {path, short, title, kind, ...}
 
 pages.append({'path': 'index.html', 'short': 'Home', 'title': 'DSA Tutorial', 'kind': 'hub'})
+pages.append({'path': 'concepts.html', 'short': 'Concepts', 'title': 'DSA Concept Index', 'kind': 'concepts'})
 
 for pg in content_python.PAGES:
     pages.append({'path': f'python/{pg["id"]}.html', 'short': pg['short'], 'title': pg['title'],
@@ -235,7 +241,7 @@ def render_hub():
                 f'<div class="topic-top"><div><span class="sheet-index">P{pi:02d}</span>'
                 f'<h3>{esc(pat["title"])}</h3><p>{esc(meta.get("short", ""))}</p></div>'
                 f'<a class="learn-btn" href="{pp["path"]}">Open full tutorial</a></div>'
-                f'<div class="topic-meta"><span>{len(pat["subpatterns"])} subtopics</span>'
+                f'<div class="topic-meta"><span>{plural(len(pat["subpatterns"]), "subtopic")}</span>'
                 f'<span>{len(all_probs)} practice pages</span>{diff_summary(all_probs)}'
                 f'<span data-count-of="p{pi:02d}-" data-lcs="{",".join(str(p["lc"]) for p in all_probs)}"></span></div>'
                 f'<div class="keyword-line">{"".join(f"<span>{esc(k)}</span>" for k in keywords)}</div>'
@@ -245,7 +251,7 @@ def render_hub():
             f'<section class="sheet-section" id="phase-{key}" data-search="{esc(label.lower())}">'
             f'<div class="sheet-section-head"><div><span class="stage-label">{esc(label)}</span>'
             f'<h2>{esc(label.split(". ", 1)[1])}</h2></div>'
-            f'<span class="sheet-count">{len(matching)} topics · {total_subs} subtopics · {total_probs} practice pages</span></div>'
+            f'<span class="sheet-count">{plural(len(matching), "topic")} · {plural(total_subs, "subtopic")} · {plural(total_probs, "practice page")}</span></div>'
             f'<div class="sheet-topic-list">{"".join(pattern_html)}</div></section>'
         )
 
@@ -288,6 +294,15 @@ def render_hub():
   <a href="../DSA_Ultimate_Index.html" style="display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:7px;background:var(--accent);color:#fff;text-decoration:none;font-size:13px;font-weight:700;white-space:nowrap;">Switch to DSA Ultimate Index (940 Problems) &rarr;</a>
 </div>
 
+<div class="companion-switch-banner concepts-banner" style="background:var(--bg-card);border:1px solid var(--border);border-left:4px solid #22c55e;border-radius:10px;padding:14px 18px;margin:0 0 22px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+  <div>
+    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#22c55e;margin-bottom:2px;">Separate Concept Curriculum</div>
+    <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:2px;">DSA Concept Index</div>
+    <div style="font-size:12.5px;color:var(--text-dim);">Use this as the material-first map: foundations, topic mental models, subtopics, recognition signals, and direct tutorial links.</div>
+  </div>
+  <a href="concepts.html" style="display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:7px;background:#22c55e;color:#05140c;text-decoration:none;font-size:13px;font-weight:800;white-space:nowrap;">Open DSA Concept Index &rarr;</a>
+</div>
+
 <div class="sheet-toolbar">
   <input class="searchbar" id="hub-search" placeholder="Filter concepts, subtopics, keywords, or problems...">
   <div class="phase-nav">{phase_nav}</div>
@@ -303,11 +318,111 @@ def render_hub():
 '''
     return shell('DSA Tutorial', body, 0, None, None, 'Home', 'Beginner → Interview-ready')
 
+def render_concepts_page():
+    phase_labels = dict(PHASES)
+    foundation_rows = []
+    for label, prefix, entries in (
+        ('Python Primer', 'python', content_python.PAGES),
+        ('Foundations', 'foundations', content_foundations.PAGES),
+    ):
+        for idx, pg in enumerate(entries, 1):
+            foundation_rows.append(
+                f'<a class="concept-row" href="{prefix}/{pg["id"]}.html" data-search="{esc((label + " " + pg["title"] + " " + pg["blurb"]).lower())}">'
+                f'<span class="concept-num">{idx:02d}</span><span class="concept-body"><strong>{esc(pg["title"])}</strong>'
+                f'<small>{esc(pg["blurb"])}</small></span><span class="concept-kind">{esc(label)}</span></a>'
+            )
+
+    phase_sections = []
+    total_topic_rows = 0
+    total_subtopic_rows = 0
+    for key, label in PHASES[1:]:
+        matching = [pat for pat in CURR if phase_for_title(pat['title']) == key]
+        if not matching:
+            continue
+        rows = []
+        for pat in matching:
+            meta = content_patterns.PATTERNS.get(pat['title'], {})
+            pi = pat['_page']['pi']
+            keywords = keyword_list(
+                pat['title'], meta.get('short', ''), meta.get('intuition', ''),
+                ' '.join(meta.get('signals', [])),
+                limit=10,
+            )
+            signals = ''.join(f'<li>{esc(plain_text(s))}</li>' for s in meta.get('signals', [])[:4])
+            total_topic_rows += 1
+            rows.append(
+                f'<article class="concept-card topic-concept" data-search="{esc((label + " " + pat["title"] + " " + meta.get("short", "")).lower())}">'
+                f'<div class="concept-card-top"><span class="concept-num">P{pi:02d}</span><div><h3>{esc(pat["title"])}</h3>'
+                f'<p>{esc(meta.get("short", ""))}</p></div><a href="{pat["_page"]["path"]}">Open tutorial</a></div>'
+                f'<div class="keyword-line">{"".join(f"<span>{esc(k)}</span>" for k in keywords)}</div>'
+                f'<div class="signal-box compact"><strong>Recognition signals</strong><ul>{signals}</ul></div></article>'
+            )
+            for sub in pat['subpatterns']:
+                total_subtopic_rows += 1
+                samples = ', '.join(f'#{p["lc"]} {p["name"]}' for p in sub['problems'][:3])
+                more = f' +{len(sub["problems"]) - 3} more' if len(sub['problems']) > 3 else ''
+                rows.append(
+                    f'<a class="concept-row subtopic-concept" href="{pat["_page"]["path"]}#{subtopic_anchor(sub)}" '
+                    f'data-search="{esc((pat["title"] + " " + sub["tag"] + " " + sub["name"] + " " + sub["desc"] + " " + samples).lower())}">'
+                    f'<span class="concept-num">{esc(sub["tag"])}</span><span class="concept-body"><strong>{esc(sub["name"])}</strong>'
+                    f'<small>{esc(sub["desc"])}</small><em>{esc(samples + more)}</em></span>'
+                    f'<span class="concept-kind">{plural(len(sub["problems"]), "practice page")}</span></a>'
+                )
+        phase_sections.append(
+            f'<section class="concept-section" id="concept-{key}"><div class="sheet-section-head"><div>'
+            f'<span class="stage-label">{esc(label)}</span><h2>{esc(label.split(". ", 1)[1])}</h2></div>'
+            f'<span class="sheet-count">{plural(len(matching), "topic")} · {plural(sum(len(p["subpatterns"]) for p in matching), "subtopic")}</span></div>'
+            f'<div class="concept-list">{"".join(rows)}</div></section>'
+        )
+
+    phase_nav = ''.join(f'<a href="#concept-{key}">{esc(label)}</a>' for key, label in PHASES[1:])
+    total_foundations = len(content_python.PAGES) + len(content_foundations.PAGES)
+    total_concepts = total_foundations + total_topic_rows + total_subtopic_rows
+    body = f'''
+<div class="tutorial-sheet concepts-page">
+<section class="sheet-hero">
+  <div>
+    <span class="eyebrow">Taran's DSA Tutorial</span>
+    <h1>DSA Concept Index</h1>
+    <p>A material-first companion to the practice sheet: foundations, mental models, subtopics, recognition signals, and direct lesson links without the problem-tracker density.</p>
+  </div>
+  <div class="sheet-stats">
+    <span><b>{total_concepts}</b> concept entries</span>
+    <span><b>{total_foundations}</b> foundations</span>
+    <span><b>{total_topic_rows}</b> topics</span>
+    <span><b>{total_subtopic_rows}</b> subtopics</span>
+  </div>
+</section>
+
+<div class="companion-switch-banner" style="background:var(--bg-card);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:10px;padding:14px 18px;margin:18px 0 22px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+  <div>
+    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);margin-bottom:2px;">Practice-first Sheet</div>
+    <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:2px;">Concept-first DSA learning sheet</div>
+    <div style="font-size:12.5px;color:var(--text-dim);">Return to the phase roadmap with progress checkboxes and all practice pages.</div>
+  </div>
+  <a href="index.html" style="display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:7px;background:var(--accent);color:#fff;text-decoration:none;font-size:13px;font-weight:700;white-space:nowrap;">Back to DSA Tutorial &rarr;</a>
+</div>
+
+<div class="sheet-toolbar">
+  <input class="searchbar" id="hub-search" placeholder="Filter concepts, subtopics, signals, or practice examples...">
+  <div class="phase-nav">{phase_nav}</div>
+</div>
+
+<section class="concept-section" id="concept-foundation">
+  <div class="sheet-section-head"><div><span class="stage-label">0. Language &amp; Foundations</span><h2>Build the base before patterns</h2></div><span class="sheet-count">{plural(total_foundations, "lesson")}</span></div>
+  <div class="concept-list">{"".join(foundation_rows)}</div>
+</section>
+
+{''.join(phase_sections)}
+</div>
+'''
+    return shell('DSA Concept Index', body, 0, pages[0], pages[2] if len(pages) > 2 else None, '<a href="index.html">Home</a> › Concepts', 'Concept curriculum')
+
 def render_pattern(pg):
     pat, meta, pi = pg['pat'], pg['meta'], pg['pi']
     n = sum(len(s['problems']) for s in pat['subpatterns'])
     parts = [f'<h1>🧩 {esc(pat["title"])}</h1>'
-             f'<p class="progress-note">{len(pat["subpatterns"])} subpatterns · {n} problems · <span data-count-of="p{pi:02d}-"></span></p>']
+             f'<p class="progress-note">{plural(len(pat["subpatterns"]), "subpattern")} · {plural(n, "problem")} · <span data-count-of="p{pi:02d}-"></span></p>']
     if meta.get('intuition'):
         parts.append(f'<h2>1. Intuition — the mental model</h2>{meta["intuition"]}')
     if meta.get('aha'):
@@ -438,6 +553,7 @@ def write_page(path, text):
 
 for pg in pages:
     if pg['kind'] == 'hub': out = render_hub()
+    elif pg['kind'] == 'concepts': out = render_concepts_page()
     elif pg['kind'] == 'pattern': out = render_pattern(pg)
     elif pg['kind'] == 'problem': out = render_problem(pg)
     else: out = render_content(pg)

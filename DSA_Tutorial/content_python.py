@@ -22,7 +22,7 @@ print(a)       # [1, 2, 3, 4]  ← a changed too!</code></pre>
 <p>Why it matters: only <strong>immutable</strong> things can be dictionary keys or set members (they must have a stable hash). Strings being immutable means <code>s += ch</code> in a loop copies the whole string every time — O(n²) total. Build a list and <code>''.join()</code> it instead.</p>
 
 <h2>3. Truthiness — the hidden if</h2>
-<p>Every value converts to True/False. These are False: <code>0, 0.0, "", [], {{}}, set(), None, False</code>. Everything else is True. That's why Pythonic code says:</p>
+<p>Every value converts to True/False. These are False: <code>0, 0.0, "", [], {}, set(), None, False</code>. Everything else is True. That's why Pythonic code says:</p>
 <pre><code>if not stack:          # stack is empty
 if node:               # node is not None
 while queue:           # keep going until queue is empty</code></pre>

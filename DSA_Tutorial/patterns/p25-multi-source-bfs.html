@@ -15,7 +15,7 @@
 <div style="display:flex;gap:8px;align-items:center"><a href="../../DSA_Ultimate_Index.html" class="dsa-switch-link" title="Switch to DSA Ultimate Index (940 Problems Sheet)">📊 DSA Index ↗</a><a href="../problems/0660-lc286-walls-and-gates.html">#286 Walls and Gates →</a></div></div>
 <div class="container">
 <div class="crumbs"><a href="../index.html">Home</a> › Patterns › Multi-Source BFS Patterns</div>
-<h1>🧩 Multi-Source BFS Patterns</h1><p class="progress-note">1 subpatterns · 6 problems · <span data-count-of="p25-"></span></p>
+<h1>🧩 Multi-Source BFS Patterns</h1><p class="progress-note">1 subpattern · 6 problems · <span data-count-of="p25-"></span></p>
 <h2>1. Intuition — the mental model</h2><p>"How far is each cell from the nearest X?" Running BFS from every X separately costs O(sources × V). Instead seed the queue with <em>all</em> X's at distance 0 and run ONE BFS: the wavefronts expand together, and whichever front reaches a cell first is, by BFS's order guarantee, the nearest source.</p>
 <div class="insight"><strong>💡 The “aha” insight</strong><br>Flip the direction: don't search FROM each cell FOR the nearest source — flood FROM all sources TO every cell simultaneously. It's equivalent to adding a virtual super-source connected to all real sources. One pass, O(V+E) total.</div>
 <h2>2. Recognition signals</h2><p>Think of this pattern when the problem says:</p><ul><li>"distance to nearest 0/gate/land" for EVERY cell</li><li>simultaneous spreading: rotting oranges, fire, infection + "how long until…"</li><li>"highest cell / farthest from any coast" (max of min-distances)</li><li>many starting points, one uniform spread speed</li></ul>

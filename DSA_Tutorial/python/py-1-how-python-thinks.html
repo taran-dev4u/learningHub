@@ -11,7 +11,7 @@
 <script defer src="../assets/app.js?v=2"></script>
 </head>
 <body>
-<div class="nav-bar"><a href="../index.html">← Home</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Python Primer</div>
+<div class="nav-bar"><a href="../concepts.html">← Concepts</a><div class="mid"><a href="../index.html">🏠 DSA Tutorial</a> · Python Primer</div>
 <div style="display:flex;gap:8px;align-items:center"><a href="../../DSA_Ultimate_Index.html" class="dsa-switch-link" title="Switch to DSA Ultimate Index (940 Problems Sheet)">📊 DSA Index ↗</a><a href="../python/py-2-builtin-functions.html">Built-in Functions →</a></div></div>
 <div class="container">
 <div class="crumbs"><a href="../index.html">Home</a> › Python Primer › How Python Thinks</div>
@@ -34,7 +34,7 @@ print(a)       # [1, 2, 3, 4]  ← a changed too!</code></pre>
 <p>Why it matters: only <strong>immutable</strong> things can be dictionary keys or set members (they must have a stable hash). Strings being immutable means <code>s += ch</code> in a loop copies the whole string every time — O(n²) total. Build a list and <code>''.join()</code> it instead.</p>
 
 <h2>3. Truthiness — the hidden if</h2>
-<p>Every value converts to True/False. These are False: <code>0, 0.0, "", [], {{}}, set(), None, False</code>. Everything else is True. That's why Pythonic code says:</p>
+<p>Every value converts to True/False. These are False: <code>0, 0.0, "", [], {}, set(), None, False</code>. Everything else is True. That's why Pythonic code says:</p>
 <pre><code>if not stack:          # stack is empty
 if node:               # node is not None
 while queue:           # keep going until queue is empty</code></pre>
@@ -63,7 +63,7 @@ x = y or default               # y if y is truthy, else default</code></pre>
 
 <div class="tip"><strong>Self-check:</strong> Why does <code>a = b = []</code> then <code>a.append(1)</code> make <code>b == [1]</code>? (Answer: both names tag the same list object.)</div>
 
-<div class="pager"><a href="../index.html"><span class="lbl">← Previous</span>Home</a><a href="../python/py-2-builtin-functions.html" style="text-align:right"><span class="lbl">Next →</span>Built-in Functions</a></div>
+<div class="pager"><a href="../concepts.html"><span class="lbl">← Previous</span>Concepts</a><a href="../python/py-2-builtin-functions.html" style="text-align:right"><span class="lbl">Next →</span>Built-in Functions</a></div>
 </div>
 </body>
 </html>
