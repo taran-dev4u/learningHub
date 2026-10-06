@@ -106,6 +106,14 @@
     function updateCounts() {
       document.querySelectorAll('[data-count-of]').forEach(function (el) {
         var prefix = el.getAttribute('data-count-of');
+        var lcs = (el.getAttribute('data-lcs') || '').split(',').filter(Boolean);
+        if (lcs.length) {
+          solved = readSolvedSet();
+          var unique = Array.from(new Set(lcs));
+          var doneByLc = unique.filter(function (lc) { return solved.has(lc); }).length;
+          el.textContent = doneByLc + '/' + unique.length + ' solved';
+          return;
+        }
         var boxes = document.querySelectorAll('input[data-id^="' + prefix + '"]');
         var done = 0;
         boxes.forEach(function (b) { if (b.checked) done++; });

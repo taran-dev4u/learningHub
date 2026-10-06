@@ -166,12 +166,8 @@ def diff_summary(problems):
         counts[prob['diff']] = counts.get(prob['diff'], 0) + 1
     return ''.join(f'<span class="mini-diff {k}">{k}: {v}</span>' for k, v in counts.items() if v)
 
-def problem_chip(prob, pi):
-    badges = ''.join(BADGE_HTML[b] for b in prob['badges'])
-    return (f'<label class="sheet-problem" title="Mark solved and open the tutorial page">'
-            f'<input type="checkbox" data-id="p{pi:02d}-lc{prob["lc"]}">'
-            f'<span class="pill {prob["diff"]}">{prob["diff"]}</span>'
-            f'<a href="{prob["_path"]}">#{prob["lc"]} {esc(prob["name"])}</a>{badges}</label>')
+def subtopic_anchor(sub):
+    return 'subtopic-' + re.sub(r'[^a-z0-9]+', '-', sub['tag'].lower()).strip('-')
 
 def render_hub():
     foundation_rows = []
@@ -221,13 +217,17 @@ def render_hub():
             )
             sub_rows = []
             for sub in pat['subpatterns']:
-                sample = ''.join(problem_chip(prob, pi) for prob in sub['problems'])
                 row_search = f'{pat["title"]} {sub["tag"]} {sub["name"]} {sub["desc"]} ' + ' '.join(p['name'] for p in sub['problems'])
+                samples = ', '.join(f'#{p["lc"]} {p["name"]}' for p in sub['problems'][:4])
+                more = f' +{len(sub["problems"]) - 4} more' if len(sub['problems']) > 4 else ''
                 sub_rows.append(
-                    f'<details class="sheet-subtopic" data-search="{esc(row_search.lower())}">'
-                    f'<summary><span><b>{esc(sub["tag"])}</b> {esc(sub["name"])}</span>'
-                    f'<em>{len(sub["problems"])} practice pages</em></summary>'
-                    f'<p>{esc(sub["desc"])}</p><div class="sheet-problems">{sample}</div></details>')
+                    f'<div class="sheet-subtopic" data-search="{esc(row_search.lower())}">'
+                    f'<div class="subtopic-copy"><a href="{pp["path"]}#{subtopic_anchor(sub)}">'
+                    f'<b>{esc(sub["tag"])}</b> {esc(sub["name"])}</a>'
+                    f'<p>{esc(sub["desc"])}</p>'
+                    f'<small>{esc(samples + more)}</small></div>'
+                    f'<a class="subtopic-open" href="{pp["path"]}#{subtopic_anchor(sub)}">'
+                    f'{len(sub["problems"])} practice pages</a></div>')
             signal_html = ''.join(f'<li>{s}</li>' for s in meta.get('signals', [])[:4])
             search_text = f'{label} {pat["title"]} {meta.get("short", "")} ' + ' '.join(keywords)
             pattern_html.append(
@@ -237,7 +237,7 @@ def render_hub():
                 f'<a class="learn-btn" href="{pp["path"]}">Open full tutorial</a></div>'
                 f'<div class="topic-meta"><span>{len(pat["subpatterns"])} subtopics</span>'
                 f'<span>{len(all_probs)} practice pages</span>{diff_summary(all_probs)}'
-                f'<span data-count-of="p{pi:02d}-"></span></div>'
+                f'<span data-count-of="p{pi:02d}-" data-lcs="{",".join(str(p["lc"]) for p in all_probs)}"></span></div>'
                 f'<div class="keyword-line">{"".join(f"<span>{esc(k)}</span>" for k in keywords)}</div>'
                 f'<div class="signal-box"><strong>Use this when:</strong><ul>{signal_html}</ul></div>'
                 f'<div class="sheet-subtopics">{"".join(sub_rows)}</div></article>')
@@ -332,7 +332,7 @@ def render_pattern(pg):
             items += (f'<li data-lc="{prob["lc"]}" data-lc-url="{esc(prob["url"] or "")}"><input type="checkbox" data-id="p{pi:02d}-lc{prob["lc"]}" title="mark solved">'
                       f'<span class="num">#{prob["lc"]}</span><span class="pill {prob["diff"]}">{prob["diff"]}</span>'
                       f'<a href="../{prob["_path"]}">{esc(prob["name"])}</a>{badges}</li>')
-        parts.append(f'<h3>{esc(sub["tag"])} — {esc(sub["name"])}</h3>'
+        parts.append(f'<h3 id="{subtopic_anchor(sub)}">{esc(sub["tag"])} — {esc(sub["name"])}</h3>'
                      f'<p class="progress-note">{esc(sub["desc"])}</p><ul class="plist">{items}</ul>')
     crumb = f'<a href="../index.html">Home</a> › Patterns › {esc(pat["title"])}'
     return shell(pat['title'], '\n'.join(parts), 1, pg['_prev'], pg['_next'], crumb, f'Pattern {pi} of {len(CURR)}')
