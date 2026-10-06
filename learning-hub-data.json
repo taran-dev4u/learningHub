@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-06T16:10:38.530Z",
+  "generatedAt": "2026-10-06T21:09:41.664Z",
   "stats": {
     "domains": 7,
     "sections": 104,
@@ -65561,65 +65561,65 @@
       "domainTitle": "Interview Prep"
     },
     {
-      "id": "interview:open-the-live-hub:https-amazon-sde-preparation-hub-interview-prep-hub-workers-dev",
+      "id": "interview:open-the-live-hub:https-amazon-interview-prep-hub-workers-dev",
       "title": "Open the live hub",
-      "url": "https://amazon-sde-preparation-hub.interview-prep-hub.workers.dev/",
+      "url": "https://amazon.interview-prep-hub.workers.dev/",
       "source": "Full Amazon SDE prep site",
       "domain": "interview",
       "domainTitle": "Interview Prep"
     },
     {
-      "id": "interview:interview-process-rounds:https-amazon-sde-preparation-hub-interview-prep-hub-workers-dev-interview",
+      "id": "interview:interview-process-rounds:https-amazon-interview-prep-hub-workers-dev-interview",
       "title": "Interview process & rounds",
-      "url": "https://amazon-sde-preparation-hub.interview-prep-hub.workers.dev/#/interview",
+      "url": "https://amazon.interview-prep-hub.workers.dev/#/interview",
       "source": "Loop structure, timelines, what each round tests",
       "domain": "interview",
       "domainTitle": "Interview Prep"
     },
     {
-      "id": "interview:16-leadership-principles:https-amazon-sde-preparation-hub-interview-prep-hub-workers-dev-lp16",
+      "id": "interview:16-leadership-principles:https-amazon-interview-prep-hub-workers-dev-lp16",
       "title": "16 Leadership Principles",
-      "url": "https://amazon-sde-preparation-hub.interview-prep-hub.workers.dev/#/lp16",
+      "url": "https://amazon.interview-prep-hub.workers.dev/#/lp16",
       "source": "Every LP with signals interviewers look for",
       "domain": "interview",
       "domainTitle": "Interview Prep"
     },
     {
-      "id": "interview:star-story-bank:https-amazon-sde-preparation-hub-interview-prep-hub-workers-dev-stories",
+      "id": "interview:star-story-bank:https-amazon-interview-prep-hub-workers-dev-stories",
       "title": "STAR story bank",
-      "url": "https://amazon-sde-preparation-hub.interview-prep-hub.workers.dev/#/stories",
+      "url": "https://amazon.interview-prep-hub.workers.dev/#/stories",
       "source": "Your stories mapped to the LPs",
       "domain": "interview",
       "domainTitle": "Interview Prep"
     },
     {
-      "id": "interview:reported-questions:https-amazon-sde-preparation-hub-interview-prep-hub-workers-dev-reported",
+      "id": "interview:reported-questions:https-amazon-interview-prep-hub-workers-dev-reported",
       "title": "Reported questions",
-      "url": "https://amazon-sde-preparation-hub.interview-prep-hub.workers.dev/#/reported",
+      "url": "https://amazon.interview-prep-hub.workers.dev/#/reported",
       "source": "Questions candidates reported, by round",
       "domain": "interview",
       "domainTitle": "Interview Prep"
     },
     {
-      "id": "interview:mock-interviews:https-amazon-sde-preparation-hub-interview-prep-hub-workers-dev-mocks",
+      "id": "interview:mock-interviews:https-amazon-interview-prep-hub-workers-dev-mocks",
       "title": "Mock interviews",
-      "url": "https://amazon-sde-preparation-hub.interview-prep-hub.workers.dev/#/mocks",
+      "url": "https://amazon.interview-prep-hub.workers.dev/#/mocks",
       "source": "Timed mock loops with feedback prompts",
       "domain": "interview",
       "domainTitle": "Interview Prep"
     },
     {
-      "id": "interview:daily-drill:https-amazon-sde-preparation-hub-interview-prep-hub-workers-dev-drill",
+      "id": "interview:daily-drill:https-amazon-interview-prep-hub-workers-dev-drill",
       "title": "Daily drill",
-      "url": "https://amazon-sde-preparation-hub.interview-prep-hub.workers.dev/#/drill",
+      "url": "https://amazon.interview-prep-hub.workers.dev/#/drill",
       "source": "Short daily reps across DSA, LLD and LP",
       "domain": "interview",
       "domainTitle": "Interview Prep"
     },
     {
-      "id": "interview:readiness-dashboard:https-amazon-sde-preparation-hub-interview-prep-hub-workers-dev-dashboard",
+      "id": "interview:readiness-dashboard:https-amazon-interview-prep-hub-workers-dev-dashboard",
       "title": "Readiness dashboard",
-      "url": "https://amazon-sde-preparation-hub.interview-prep-hub.workers.dev/#/dashboard",
+      "url": "https://amazon.interview-prep-hub.workers.dev/#/dashboard",
       "source": "Progress across every track",
       "domain": "interview",
       "domainTitle": "Interview Prep"

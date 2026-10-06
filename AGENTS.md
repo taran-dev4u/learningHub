@@ -8,7 +8,7 @@ disagree, this file wins.
 - Repo: https://github.com/taran-dev4u/learningHub (public, branch `main`)
 - Workspace: `E:\Absolute learning\learningHub`
 - Companion repo the hub links out to: `E:\Absolute learning\Interview-Process\Amazon`
-  → deployed at https://amazon-sde-preparation-hub.interview-prep-hub.workers.dev/
+  → deployed at https://amazon.interview-prep-hub.workers.dev/
 - Last full audit: Oct 1 2026, commit `bb6d796`
 
 ---

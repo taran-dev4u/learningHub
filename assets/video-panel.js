@@ -33,8 +33,10 @@
     marked: 'https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js',
     purify: 'https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.6/purify.min.js'
   };
-  var el, frame, list, titleEl, kickerEl, openLink, moreLink, googleLink, tabsEl, videoView, readView, docsEl, viewer, channelBar;
-  var state = { videos: [], anim: [], docs: [], tab: 'videos', idx: 0, title: '', query: '', doc: -1 };
+  var el, frame, list, titleEl, kickerEl, openLink, moreLink, googleLink, tabsEl, videoView, readView, docsEl, viewer, channelBar, speedBar;
+  var SPEED_KEY = 'vp_playback_speed_v1';
+  var SPEEDS = [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2];
+  var state = { videos: [], anim: [], docs: [], tab: 'videos', idx: 0, title: '', query: '', doc: -1, speed: 1 };
 
   function esc(s) {
     return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
@@ -42,6 +44,15 @@
     });
   }
   function isMobile() { return window.innerWidth < 900; }
+  function savedSpeed() {
+    var s = 1;
+    try { s = parseFloat(localStorage.getItem(SPEED_KEY)) || 1; } catch (e) {}
+    return SPEEDS.indexOf(s) >= 0 ? s : 1;
+  }
+  function speedLabel(s) { return (s === 1 ? '1' : String(s).replace(/\.0$/, '')) + 'x'; }
+  function ytOrigin() {
+    try { return location.origin === 'null' ? '' : location.origin; } catch (e) { return ''; }
+  }
   function savedWidth() {
     var w = 0;
     try { w = parseInt(localStorage.getItem(W_KEY), 10) || 0; } catch (e) {}
@@ -209,8 +220,9 @@
       '<button type="button" class="vp-rail" title="Expand the panel" aria-label="Expand the panel"><span class="vp-rail-icon">▸</span><span class="vp-rail-text"></span></button>' +
       '<div class="vp-tabs" role="tablist"></div>' +
       '<div class="vp-video-view">' +
-        '<div class="vp-channel-bar"></div>' +
         '<div class="vp-player"><iframe class="vp-frame" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>' +
+        '<div class="vp-speedbar" aria-label="Video playback speed"></div>' +
+        '<div class="vp-channel-bar"></div>' +
         '<div class="vp-list-head"><span>More videos on this topic</span></div>' +
         '<div class="vp-list"></div>' +
         '<a class="vp-more" target="_blank" rel="noopener noreferrer">Search YouTube for more ↗</a>' +
@@ -223,6 +235,7 @@
     frame = el.querySelector('.vp-frame');
     list = el.querySelector('.vp-list');
     channelBar = el.querySelector('.vp-channel-bar');
+    speedBar = el.querySelector('.vp-speedbar');
     titleEl = el.querySelector('.vp-title');
     kickerEl = el.querySelector('.vp-kicker');
     openLink = el.querySelector('.vp-open-yt');
@@ -267,9 +280,15 @@
         applyWidth(w);
       });
     });
-    channelBar.addEventListener('click', function (e) {
-      var b = e.target.closest('[data-vp-i]');
-      if (b) play(parseInt(b.dataset.vpI, 10));
+    if (channelBar) {
+      channelBar.addEventListener('click', function (e) {
+        var b = e.target.closest('[data-vp-i]');
+        if (b) play(parseInt(b.dataset.vpI, 10));
+      });
+    }
+    speedBar.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-vp-speed]');
+      if (b) setSpeed(parseFloat(b.dataset.vpSpeed) || 1, true);
     });
     list.addEventListener('click', function (e) {
       var item = e.target.closest('[data-vp-i]');
@@ -352,6 +371,33 @@
   }
   function curVideos() { return state.tab === 'anim' ? state.anim : state.videos; }
 
+  function renderSpeedBar() {
+    if (!speedBar) return;
+    speedBar.innerHTML = '<span class="vp-speed-label">Speed</span>' + SPEEDS.map(function (s) {
+      return '<button type="button" class="vp-speed' + (state.speed === s ? ' active' : '') + '" data-vp-speed="' + s + '">' + speedLabel(s) + '</button>';
+    }).join('');
+  }
+
+  function postSpeed() {
+    if (!frame || !frame.contentWindow) return;
+    try {
+      frame.contentWindow.postMessage(JSON.stringify({
+        event: 'command',
+        func: 'setPlaybackRate',
+        args: [state.speed]
+      }), 'https://www.youtube-nocookie.com');
+    } catch (e) {}
+  }
+
+  function setSpeed(speed, persist) {
+    state.speed = SPEEDS.indexOf(speed) >= 0 ? speed : 1;
+    if (persist) {
+      try { localStorage.setItem(SPEED_KEY, String(state.speed)); } catch (e) {}
+    }
+    renderSpeedBar();
+    postSpeed();
+  }
+
   function setTab(tab) {
     state.tab = tab;
     renderTabs();
@@ -361,6 +407,7 @@
     kickerEl.textContent = tab === 'anim' ? '🎬 Animated' : isRead ? '📄 Read' : '▶ Watch';
     if (isRead) {
       frame.src = 'about:blank';
+      if (speedBar) speedBar.style.display = 'none';
       if (channelBar) {
         channelBar.style.display = 'none';
         channelBar.innerHTML = '';
@@ -383,10 +430,12 @@
         '<p>Search YouTube for an animated explanation instead:</p>' +
         '<a class="vp-cta" target="_blank" rel="noopener noreferrer" href="' + esc(moreLink.href) + '">🎬 “' + esc(state.query) + '” animation ↗</a></div>';
       el.querySelector('.vp-player').style.display = 'none';
+      if (speedBar) speedBar.style.display = 'none';
       openLink.removeAttribute('href');
       return;
     }
     el.querySelector('.vp-player').style.display = '';
+    if (speedBar) speedBar.style.display = '';
     renderChannelBar();
     renderList();
     play(tab === 'videos' ? Math.min(state.idx, vids.length - 1) : 0);
@@ -394,17 +443,8 @@
 
   function renderChannelBar() {
     if (!channelBar) return;
-    var vids = curVideos();
-    if (!vids.length || vids.length <= 1) {
-      channelBar.style.display = 'none';
-      channelBar.innerHTML = '';
-      return;
-    }
-    channelBar.style.display = '';
-    channelBar.innerHTML = vids.map(function (v, i) {
-      var ch = v[2] || ('Instructor ' + (i + 1));
-      return '<button type="button" class="vp-chan-btn' + (i === state.idx ? ' active' : '') + '" data-vp-i="' + i + '">' + esc(ch) + '</button>';
-    }).join('');
+    channelBar.style.display = 'none';
+    channelBar.innerHTML = '';
   }
 
   function renderList() {
@@ -421,13 +461,16 @@
     var v = curVideos()[i];
     if (!v) return;
     if (state.tab === 'videos') state.idx = i;
-    frame.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(v[0]) + '?autoplay=1&rel=0&modestbranding=1';
+    var origin = ytOrigin();
+    frame.onload = function () { setTimeout(postSpeed, 600); };
+    frame.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(v[0]) + '?autoplay=1&rel=0&modestbranding=1&playsinline=1&enablejsapi=1' + (origin ? '&origin=' + encodeURIComponent(origin) : '');
     openLink.href = 'https://www.youtube.com/watch?v=' + encodeURIComponent(v[0]);
     openLink.title = 'Open this video on YouTube';
     list.querySelectorAll('.vp-item').forEach(function (b, k) { b.classList.toggle('active', k === i); });
     if (channelBar) {
       channelBar.querySelectorAll('button').forEach(function (b, k) { b.classList.toggle('active', k === i); });
     }
+    renderSpeedBar();
   }
 
   /* ---------- reader ---------- */
@@ -604,6 +647,7 @@
     state.query = opts.query || opts.title || '';
     state.idx = Math.max(0, opts.index || 0);
     state.doc = opts.docIndex == null ? -1 : opts.docIndex;
+    state.speed = savedSpeed();
     if (!state.videos.length && !state.anim.length && !state.docs.length) return false;
     var tab = opts.tab || (state.videos.length ? 'videos' : state.anim.length ? 'anim' : 'read');
     titleEl.textContent = state.title;
