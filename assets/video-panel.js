@@ -137,6 +137,15 @@
   }
 
   /* ---------- doc classification ---------- */
+  function isLocalHtmlPage(url) {
+    try {
+      var u = new URL(url, location.href);
+      return u.origin === location.origin && /\.html?$/i.test(u.pathname);
+    } catch (e) {
+      return false;
+    }
+  }
+
   function docKind(href) {
     var u;
     try { u = new URL(href, location.href); } catch (e) { return { kind: 'link' }; }
@@ -151,6 +160,7 @@
     if (h === 'raw.githubusercontent.com' && p.length >= 4) {
       return { kind: /\.(md|markdown)$/i.test(u.pathname) ? 'md' : 'code', raw: u.href, repo: p[0] + '/' + p[1], branch: p[2], dir: p.slice(3, -1).join('/') };
     }
+    if (isLocalHtmlPage(u.href)) return { kind: 'link' };
     if (u.origin === location.origin || (u.protocol === 'https:' && FRAME_HOSTS.indexOf(h) >= 0)) return { kind: 'frame', src: u.href };
     return { kind: 'link' };
   }
