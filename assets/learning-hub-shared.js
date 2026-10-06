@@ -360,7 +360,7 @@
   css.href = root + "assets/video-panel.css?v=3";
   document.head.appendChild(css);
   var js = document.createElement("script");
-  js.src = root + "assets/video-panel.js?v=3";
+  js.src = root + "assets/video-panel.js?v=4";
   js.defer = true;
   document.head.appendChild(js);
 
