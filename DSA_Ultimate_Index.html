@@ -1007,7 +1007,7 @@
 <span class="res-source">LeetCode Discuss</span>
 </a>
 </div></div></section>
-<section class="learning-aid open">
+    <section class="learning-aid">
 <div class="head" onclick="this.parentElement.classList.toggle('open')">
 <h3><span class="ic">🎯</span>Pattern Recognition Cheat Sheet — the single best mental model</h3>
 <span class="chevron">▶</span></div>
@@ -1312,7 +1312,7 @@
 <div class="row"><b>Key idea.</b> Maintain two pointers with an invariant (sum, distance, parity) and advance them based on a comparison; eliminate one direction of search per step.</div>
 <div class="row"><b>Complexity.</b> Typically O(n) time, O(1) extra space.</div>
 </div>
-<div class="code-template open">
+        <div class="code-template">
 <div class="ct-head" onclick="this.parentElement.classList.toggle('open')">
 <span>💻 Code Template — Two Pointers — converging</span>
 <span style="display:flex;align-items:center;gap:8px;"><button class="ct-copy-btn" onclick="event.stopPropagation();navigator.clipboard.writeText(this.closest('.code-template').querySelector('pre').textContent);this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1500);">Copy</button><span class="chev">▶</span></span>
@@ -4640,7 +4640,7 @@ def has_cycle(head):
 <div class="row"><b>Key idea.</b> Two pointers define the window; expand the right, contract the left when the condition is violated, track answer on each valid window.</div>
 <div class="row"><b>Complexity.</b> O(n) amortized — each element enters and exits the window once.</div>
 </div>
-<div class="code-template open">
+        <div class="code-template">
 <div class="ct-head" onclick="this.parentElement.classList.toggle('open')">
 <span>💻 Code Template — Variable Sliding Window</span>
 <span style="display:flex;align-items:center;gap:8px;"><button class="ct-copy-btn" onclick="event.stopPropagation();navigator.clipboard.writeText(this.closest('.code-template').querySelector('pre').textContent);this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1500);">Copy</button><span class="chev">▶</span></span>
@@ -5407,7 +5407,7 @@ def has_cycle(head):
 <div class="row"><b>Key idea.</b> Push when a condition is open or unresolved; pop when it&#x27;s matched/closed. A monotonic stack maintains sorted order to answer range queries.</div>
 <div class="row"><b>Complexity.</b> O(n) amortized; each element pushed/popped at most once.</div>
 </div>
-<div class="code-template open">
+        <div class="code-template">
 <div class="ct-head" onclick="this.parentElement.classList.toggle('open')">
 <span>💻 Code Template — Monotonic Stack</span>
 <span style="display:flex;align-items:center;gap:8px;"><button class="ct-copy-btn" onclick="event.stopPropagation();navigator.clipboard.writeText(this.closest('.code-template').querySelector('pre').textContent);this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1500);">Copy</button><span class="chev">▶</span></span>
@@ -6185,7 +6185,7 @@ def has_cycle(head):
 <div class="row"><b>Key idea.</b> Maintain a heap of size k (for top-k) or two heaps balanced around the median; push/pop are O(log n).</div>
 <div class="row"><b>Complexity.</b> O(n log k) for top-k, O(log n) per insert/extract.</div>
 </div>
-<div class="code-template open">
+        <div class="code-template">
 <div class="ct-head" onclick="this.parentElement.classList.toggle('open')">
 <span>💻 Code Template — Top K with Heap</span>
 <span style="display:flex;align-items:center;gap:8px;"><button class="ct-copy-btn" onclick="event.stopPropagation();navigator.clipboard.writeText(this.closest('.code-template').querySelector('pre').textContent);this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1500);">Copy</button><span class="chev">▶</span></span>
@@ -6903,7 +6903,7 @@ def top_k_frequent(nums, k):
 <div class="row"><b>Key idea.</b> Maintain [lo, hi] with an invariant; halve the range each step. The hardest variant is binary search on the answer (parametric search).</div>
 <div class="row"><b>Complexity.</b> O(log n) for direct search, O(n log answer-range) for binary search on the answer.</div>
 </div>
-<div class="code-template open">
+        <div class="code-template">
 <div class="ct-head" onclick="this.parentElement.classList.toggle('open')">
 <span>💻 Code Template — Binary Search — lower_bound template</span>
 <span style="display:flex;align-items:center;gap:8px;"><button class="ct-copy-btn" onclick="event.stopPropagation();navigator.clipboard.writeText(this.closest('.code-template').querySelector('pre').textContent);this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1500);">Copy</button><span class="chev">▶</span></span>
@@ -7617,7 +7617,7 @@ def min_value_satisfying(lo, hi, ok):
 <div class="row"><b>Key idea.</b> Choose the right traversal: DFS for path/cycle/topological, BFS for unweighted shortest path, Dijkstra for weighted, Union-Find for connectivity queries.</div>
 <div class="row"><b>Complexity.</b> O(V+E) for DFS/BFS, O((V+E) log V) for Dijkstra, O(E α(V)) for Union-Find.</div>
 </div>
-<div class="code-template open">
+        <div class="code-template">
 <div class="ct-head" onclick="this.parentElement.classList.toggle('open')">
 <span>💻 Code Template — BFS, DFS, Dijkstra, Union-Find</span>
 <span style="display:flex;align-items:center;gap:8px;"><button class="ct-copy-btn" onclick="event.stopPropagation();navigator.clipboard.writeText(this.closest('.code-template').querySelector('pre').textContent);this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1500);">Copy</button><span class="chev">▶</span></span>
@@ -9892,7 +9892,7 @@ class DSU:
 <div class="row"><b>Key idea.</b> Maintain a partial solution; at each step, try each valid choice, recurse, then undo. Prune branches that can&#x27;t lead to a valid answer.</div>
 <div class="row"><b>Complexity.</b> Exponential in the worst case — O(2ⁿ), O(n!), or similar; pruning is critical.</div>
 </div>
-<div class="code-template open">
+        <div class="code-template">
 <div class="ct-head" onclick="this.parentElement.classList.toggle('open')">
 <span>💻 Code Template — Backtracking — subsets / permutations / N-Queens</span>
 <span style="display:flex;align-items:center;gap:8px;"><button class="ct-copy-btn" onclick="event.stopPropagation();navigator.clipboard.writeText(this.closest('.code-template').querySelector('pre').textContent);this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1500);">Copy</button><span class="chev">▶</span></span>
@@ -10605,7 +10605,7 @@ def permutations(nums):
 <div class="row"><b>Key idea.</b> Define state precisely, write a recurrence, decide top-down (memoization) or bottom-up (tabulation), then optimize space when possible.</div>
 <div class="row"><b>Complexity.</b> Polynomial — states × transitions; classic DPs are O(n²) or O(n·m).</div>
 </div>
-<div class="code-template open">
+        <div class="code-template">
 <div class="ct-head" onclick="this.parentElement.classList.toggle('open')">
 <span>💻 Code Template — DP — top-down memo + bottom-up tabulation</span>
 <span style="display:flex;align-items:center;gap:8px;"><button class="ct-copy-btn" onclick="event.stopPropagation();navigator.clipboard.writeText(this.closest('.code-template').querySelector('pre').textContent);this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1500);">Copy</button><span class="chev">▶</span></span>
@@ -13707,7 +13707,7 @@ def knapsack(weights, values, W):
 <div class="row"><b>Key idea.</b> Segment tree is more flexible (lazy propagation for range updates); Fenwick is simpler and faster for prefix-sum style queries.</div>
 <div class="row"><b>Complexity.</b> O(n) build, O(log n) per query/update.</div>
 </div>
-<div class="code-template open">
+        <div class="code-template">
 <div class="ct-head" onclick="this.parentElement.classList.toggle('open')">
 <span>💻 Code Template — Iterative Segment Tree (sum)</span>
 <span style="display:flex;align-items:center;gap:8px;"><button class="ct-copy-btn" onclick="event.stopPropagation();navigator.clipboard.writeText(this.closest('.code-template').querySelector('pre').textContent);this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1500);">Copy</button><span class="chev">▶</span></span>
@@ -14051,7 +14051,7 @@ def knapsack(weights, values, W):
 <div class="row"><b>Key idea.</b> prefix[i] = a[0]+…+a[i-1]; range sum = prefix[r+1]-prefix[l]. With hashmap, count subarrays whose prefix difference equals k.</div>
 <div class="row"><b>Complexity.</b> O(n) build, O(1) per range query; difference array gives O(1) range updates.</div>
 </div>
-<div class="code-template open">
+        <div class="code-template">
 <div class="ct-head" onclick="this.parentElement.classList.toggle('open')">
 <span>💻 Code Template — Prefix Sum + HashMap</span>
 <span style="display:flex;align-items:center;gap:8px;"><button class="ct-copy-btn" onclick="event.stopPropagation();navigator.clipboard.writeText(this.closest('.code-template').querySelector('pre').textContent);this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1500);">Copy</button><span class="chev">▶</span></span>
@@ -15262,7 +15262,7 @@ def knapsack(weights, values, W):
 <div class="row"><b>Key idea.</b> Insert/search are O(L) where L is word length; combine with DFS/backtracking when searching a grid for many words at once.</div>
 <div class="row"><b>Complexity.</b> O(sum of word lengths) to build, O(L) per query.</div>
 </div>
-<div class="code-template open">
+        <div class="code-template">
 <div class="ct-head" onclick="this.parentElement.classList.toggle('open')">
 <span>💻 Code Template — Trie — insert / search / startsWith</span>
 <span style="display:flex;align-items:center;gap:8px;"><button class="ct-copy-btn" onclick="event.stopPropagation();navigator.clipboard.writeText(this.closest('.code-template').querySelector('pre').textContent);this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1500);">Copy</button><span class="chev">▶</span></span>
