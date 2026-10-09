@@ -16,6 +16,28 @@ const pages = [
   "interview_prep.html",
 ];
 
+function listHtmlFiles(dir, out = []) {
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    if (entry.name === ".git" || entry.name === "node_modules") continue;
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) listHtmlFiles(full, out);
+    else if (entry.isFile() && entry.name.endsWith(".html")) out.push(full);
+  }
+  return out;
+}
+
+function defaultOpenAccordions(html) {
+  const issues = [];
+  const watched = new Set(["resources-section", "learning-aid", "code-template"]);
+  for (const match of html.matchAll(/class=(["'])(.*?)\1/gs)) {
+    const classes = match[2].split(/\s+/).filter(Boolean);
+    if (!classes.includes("open")) continue;
+    if (classes.some((name) => watched.has(name))) issues.push(match[0].slice(0, 120));
+  }
+  if (/<details\b[^>]*\sopen(?:\s|=|>)/i.test(html)) issues.push("<details open>");
+  return issues;
+}
+
 let failures = 0;
 function check(name, ok, detail = "") {
   if (ok) {
@@ -38,7 +60,7 @@ for (const file of pages) {
   check("no empty href", !html.includes('href=""'));
   check("no 'undefined' text", !/undefined/.test(html));
   check("no NaN", !/>NaN</.test(html));
-  check("no default-open resources", !/resources-section open/.test(html));
+  check("no default-open accordions", defaultOpenAccordions(html).length === 0);
   if (isHub) {
     // one card per generated site; read the expected number from the data the
     // generator wrote rather than hardcoding it (it was stuck at 8 for months)
@@ -58,6 +80,16 @@ for (const file of pages) {
     check("no duplicate data-cid", dupes.length === 0, [...new Set(dupes)].slice(0, 5).join(", "));
   }
 }
+
+const defaultOpenFiles = listHtmlFiles(root)
+  .map((file) => [path.relative(root, file), fs.readFileSync(file, "utf8")])
+  .map(([file, html]) => [file, defaultOpenAccordions(html)])
+  .filter(([, issues]) => issues.length > 0);
+check(
+  "no default-open accordions anywhere",
+  defaultOpenFiles.length === 0,
+  defaultOpenFiles.slice(0, 8).map(([file]) => file).join(", ")
+);
 
 console.log("");
 if (failures) {

@@ -212,8 +212,26 @@
     applyTheme(document.documentElement.getAttribute("data-theme") || "light", false);
   }
 
+  function collapseDefaultOpenSections() {
+    var selectors = [
+      ".resources-section.open",
+      ".learning-aid.open",
+      ".code-template.open",
+      "details[open]"
+    ];
+    var nodes = document.querySelectorAll(selectors.join(","));
+    for (var i = 0; i < nodes.length; i++) {
+      var node = nodes[i];
+      if (node.closest(".vp-panel, [data-keep-open]")) continue;
+      if (node.tagName && node.tagName.toLowerCase() === "details") node.removeAttribute("open");
+      else node.classList.remove("open");
+    }
+  }
+
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", mountNav);
   else mountNav();
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", collapseDefaultOpenSections);
+  else collapseDefaultOpenSections();
 
   window.LearningHubNav = { links: LINKS, root: ROOT, setTheme: applyTheme, toggleTheme: toggleTheme };
 })();
