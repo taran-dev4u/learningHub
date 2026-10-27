@@ -23,35 +23,70 @@
  › Subpattern 10.4: Gas Station Circuit · Problem 341 of 699</p>
 
 <h2>📋 The problem</h2><p>Gas stations on a circle each give gas[i] and cost cost[i] to reach the next; return the unique starting station from which you can complete the loop, or -1.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>There are <code>n</code> gas stations along a circular route, where the amount of gas at the <code>i</code>-th station is <code>gas[i]</code>. It costs <code>cost[i]</code> of gas to travel from the <code>i</code>-th station to its next <code>(i + 1)</code>-th station. You begin the journey with an empty tank at one of the gas stations. Return the starting gas station's index if you can travel around the circuit once in the clockwise direction, otherwise return <code>-1</code>. If there exists a solution, it is guaranteed to be unique.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Gas Station Circuit</strong> — Either everyone can be reached from one station, or no one can — single pass with running tank.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>If total gas ≥ total cost an answer exists; restart the candidate at i+1 whenever the running tank goes negative.</div>
-<h2>Why this pattern?</h2><ul><li>"maximum number of non-overlapping…" / "minimum number of intervals to remove"</li><li>"minimum arrows/platforms/refuels" resource covering</li><li>a swap/exchange argument feels available ("taking the smaller first is never worse")</li><li>candidates can be sorted so that decisions never need revisiting</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Greedy master template and adapt the marked parts to this problem:</p><pre><code># Interval scheduling: max non-overlapping
-intervals.sort(key=lambda iv: iv[1])     # sort by END time
-count, free_at = 0, float('-inf')
-for start, end in intervals:
-    if start &gt;= free_at:                 # doesn't clash with last taken
-        count += 1
-        free_at = end                    # commit — never look back
-
-# Reachability sweep (jump game)
-far = 0
-for i, step in enumerate(nums):
-    if i &gt; far: return False             # gap we can never cross
-    far = max(far, i + step)
-return True</code></pre>
-<h2>How to work on it now</h2>
+<h2>🐢 Brute force vs optimal</h2>
+<p>Simulating every possible starting station takes <code>O(N^2)</code>. The Greedy approach solves this in <code>O(N)</code> time using two core mathematical principles:</p>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+  <li>If <code>sum(gas) < sum(cost)</code>, the total gas in the system is insufficient to complete the circuit &rarr; return <code>-1</code> immediately.</li>
+  <li>If <code>sum(gas) >= sum(cost)</code>, a valid starting station is <strong>guaranteed to exist</strong>! Furthermore, if starting at station <code>A</code> fails at station <code>B</code>, no station between <code>A</code> and <code>B</code> could possibly be the start! The next candidate must be <code>B + 1</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<div class="insight">💡 <strong>Key insight:</strong> Maintain <code>total_tank</code> and <code>curr_tank</code>. Iterate <code>i</code> from <code>0</code> to <code>n - 1</code>. Add <code>gas[i] - cost[i]</code> to both. If <code>curr_tank < 0</code>, we cannot reach station <code>i + 1</code> from our current start &rarr; reset <code>start = i + 1</code> and <code>curr_tank = 0</code>!</div>
+
+<h2>🪜 The approach, step by step</h2>
+<ol>
+<li>If <code>sum(gas) < sum(cost)</code>, return <code>-1</code>.</li>
+<li>Initialize <code>start = 0</code>, <code>curr_tank = 0</code>.</li>
+<li>For <code>i</code> in range <code>len(gas)</code>:
+  <ul>
+    <li><code>curr_tank += gas[i] - cost[i]</code></li>
+    <li>If <code>curr_tank < 0</code>:
+      <code>start = i + 1</code>; <code>curr_tank = 0</code>.</li>
+  </ul>
+</li>
+<li>Return <code>start</code>.</li>
+</ol>
+
+<h2>🎞️ Visual dry run — gas = [1,2,3,4,5], cost = [3,4,5,1,2]:</h2>
+<pre class="viz">sum(gas) = 15, sum(cost) = 15. sum(gas) >= sum(cost) -> Solution exists!
+
+i=0: net = 1 - 3 = -2. curr_tank = -2 < 0 -> start = 1, curr_tank = 0.
+i=1: net = 2 - 4 = -2. curr_tank = -2 < 0 -> start = 2, curr_tank = 0.
+i=2: net = 3 - 5 = -2. curr_tank = -2 < 0 -> start = 3, curr_tank = 0.
+i=3: net = 4 - 1 = +3. curr_tank = 3 >= 0.
+i=4: net = 5 - 2 = +3. curr_tank = 6 >= 0.
+Loop finishes!
+Valid start station: 3 (gas[3]=4, cost[3]=1) ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def canCompleteCircuit(gas: list[int], cost: list[int]) -> int:
+    """
+    Finds unique starting gas station to complete circuit in O(N) time and O(1) space.
+    """
+    if sum(gas) < sum(cost):
+        return -1
+        
+    start = 0
+    curr_tank = 0
+    
+    for i in range(len(gas)):
+        curr_tank += gas[i] - cost[i]
+        if curr_tank < 0:
+            start = i + 1
+            curr_tank = 0
+            
+    return start
+</code></pre>
+</details>
+
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O(N)</code>. Single pass to sum and single pass to find the starting index.</li>
+<li><strong>Space Complexity:</strong> <code>O(1)</code>.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0340-lc1014-best-sightseeing-pair.html"><span class="lbl">← Previous</span>#1014 Best Sightseeing Pair</a><a href="../problems/0342-lc376-wiggle-subsequence.html" style="text-align:right"><span class="lbl">Next →</span>#376 Wiggle Subsequence</a></div>
 </div>

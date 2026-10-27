@@ -23,35 +23,70 @@
  › Subpattern 10.1: Interval Merging / Scheduling · Problem 330 of 699</p>
 
 <h2>📋 The problem</h2><p>Balloons occupy x-ranges; an arrow shot at x pops every balloon whose range contains x. Return the fewest arrows to pop all.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>There are spherical balloons taped to a flat wall. Each balloon is represented by a 2D integer array <code>points</code> where <code>points[i] = [x_start, x_end]</code>. An arrow shot vertically from <code>x</code> bursts all balloons with <code>x_start &le; x &le; x_end</code>. Find the minimum number of arrows that must be shot to burst all balloons.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Interval Merging / Scheduling</strong> — Sort intervals by start (or end); merge or schedule with a single sweep.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Sort by end; shoot at the current balloon's end; every balloon starting before that arrow's x is popped free.</div>
-<h2>Why this pattern?</h2><ul><li>"maximum number of non-overlapping…" / "minimum number of intervals to remove"</li><li>"minimum arrows/platforms/refuels" resource covering</li><li>a swap/exchange argument feels available ("taking the smaller first is never worse")</li><li>candidates can be sorted so that decisions never need revisiting</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Greedy master template and adapt the marked parts to this problem:</p><pre><code># Interval scheduling: max non-overlapping
-intervals.sort(key=lambda iv: iv[1])     # sort by END time
-count, free_at = 0, float('-inf')
-for start, end in intervals:
-    if start &gt;= free_at:                 # doesn't clash with last taken
-        count += 1
-        free_at = end                    # commit — never look back
+<p>Every arrow should burst as many overlapping balloons as possible. Like interval scheduling, we want to shoot our arrow at the <strong>earliest end coordinate</strong> among remaining balloons.</p>
 
-# Reachability sweep (jump game)
-far = 0
-for i, step in enumerate(nums):
-    if i &gt; far: return False             # gap we can never cross
-    far = max(far, i + step)
-return True</code></pre>
-<h2>How to work on it now</h2>
+<h2>🐢 Brute force vs optimal</h2>
+<p>Sorting by <code>x_end</code> coordinates lets us greedily place an arrow at <code>x_end</code> of the first unburst balloon, guaranteeing that every balloon overlapping that coordinate is burst in <code>O(N log N)</code> time.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Sort by <code>x_end</code>. Shoot the first arrow at <code>points[0][1]</code>. For each subsequent balloon, if its <code>start <= arrow_pos</code>, it is already burst by the current arrow! If its <code>start > arrow_pos</code>, the current arrow cannot reach it &rarr; increment arrows by 1 and shoot a new arrow at this balloon's <code>end</code>!</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>If <code>not points</code>, return <code>0</code>.</li>
+<li>Sort <code>points</code> by end coordinate: <code>points.sort(key=lambda x: x[1])</code>.</li>
+<li>Initialize <code>arrows = 1</code>, <code>arrow_pos = points[0][1]</code>.</li>
+<li>For each <code>start, end</code> in <code>points[1:]</code>:
+  <ul>
+    <li>If <code>start > arrow_pos</code>:
+      <code>arrows += 1</code>; <code>arrow_pos = end</code>.</li>
+  </ul>
+</li>
+<li>Return <code>arrows</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — points = [[10,16],[2,8],[1,6],[7,12]]:</h2>
+<pre class="viz">Sorted by end:
+[1,6]   (end 6)
+[2,8]   (end 8)
+[7,12]  (end 12)
+[10,16] (end 16)
+
+1. Shoot arrow 1 at pos = 6.
+2. [2,8]: start 2 <= 6 -> Burst!
+3. [7,12]: start 7 > 6 -> Cannot burst! Shoot arrow 2 at pos = 12. arrows = 2.
+4. [10,16]: start 10 <= 12 -> Burst!
+Total arrows = 2 ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def findMinArrowShots(points: list[list[int]]) -> int:
+    """
+    Finds minimum arrows to burst all balloons by sorting by end coordinate.
+    """
+    if not points:
+        return 0
+        
+    points.sort(key=lambda x: x[1])
+    arrows = 1
+    arrow_pos = points[0][1]
+    
+    for start, end in points[1:]:
+        if start > arrow_pos:
+            arrows += 1
+            arrow_pos = end
+            
+    return arrows
+</code></pre>
+</details>
+
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O(N log N)</code> for sorting.</li>
+<li><strong>Space Complexity:</strong> <code>O(1)</code> auxiliary space.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0329-lc435-non-overlapping-intervals.html"><span class="lbl">← Previous</span>#435 Non-overlapping Intervals</a><a href="../problems/0331-lc759-employee-free-time.html" style="text-align:right"><span class="lbl">Next →</span>#759 Employee Free Time</a></div>
 </div>

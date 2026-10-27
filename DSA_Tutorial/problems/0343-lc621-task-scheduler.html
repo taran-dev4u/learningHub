@@ -23,35 +23,53 @@
  › Subpattern 10.5: Task Scheduling / Frequency Based · Problem 343 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0221-lc621-task-scheduler.html">Heap (Priority Queue)</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Schedule tasks (each identical letter needs a cooldown of n slots between repeats); return the minimum total intervals including idles.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given a characters array <code>tasks</code> representing the tasks a CPU needs to do, where each letter represents a different task. Tasks could be done in any order. Each task is done in one unit of time. For each unit of time, the CPU could complete either one task or be idle. However, there is a non-negative integer <code>n</code> that represents the cooldown period between two <strong>same tasks</strong> (must be at least <code>n</code> intervals apart). Return the least number of units of times that the CPU will take to finish all the given tasks.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Task Scheduling / Frequency Based</strong> — Always schedule the most-frequent task next, separated by cooldown — heap or count-based.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Most frequent task dominates: slots = (max_count−1)×(n+1) + tasks_tying_max; answer = max(that, len(tasks)).</div>
-<h2>Why this pattern?</h2><ul><li>"maximum number of non-overlapping…" / "minimum number of intervals to remove"</li><li>"minimum arrows/platforms/refuels" resource covering</li><li>a swap/exchange argument feels available ("taking the smaller first is never worse")</li><li>candidates can be sorted so that decisions never need revisiting</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Greedy master template and adapt the marked parts to this problem:</p><pre><code># Interval scheduling: max non-overlapping
-intervals.sort(key=lambda iv: iv[1])     # sort by END time
-count, free_at = 0, float('-inf')
-for start, end in intervals:
-    if start &gt;= free_at:                 # doesn't clash with last taken
-        count += 1
-        free_at = end                    # commit — never look back
+<h2>🐢 Brute force vs optimal</h2>
+<p>Simulating cooling queues with a max-heap takes <code>O(T log 26)</code>. The problem can be solved mathematically in <code>O(T)</code> time by analyzing the <strong>most frequent task</strong>!</p>
 
-# Reachability sweep (jump game)
-far = 0
-for i, step in enumerate(nums):
-    if i &gt; far: return False             # gap we can never cross
-    far = max(far, i + step)
-return True</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<div class="insight">💡 <strong>Key insight:</strong> The most frequent task dictates the minimum frame structure.
+<br><br>
+Let <code>max_freq</code> be the frequency of the most common task, and <code>count_max</code> be the number of tasks having this maximum frequency.
+These tasks create <code>(max_freq - 1)</code> chunks, each requiring <code>(n + 1)</code> slots, plus <code>count_max</code> tasks in the final chunk:
+$$	ext{min\_time} = (	ext{max\_freq} - 1) 	imes (n + 1) + 	ext{count\_max}$$
+If there are enough other tasks to fill all idle slots without needing any idling, the total time is simply <code>len(tasks)</code>!
+Therefore, answer = <code>max(len(tasks), (max_freq - 1) * (n + 1) + count_max)</code>.</div>
+
+<h2>🎞️ Visual dry run — tasks = ["A","A","A","B","B","B"], n = 2:</h2>
+<pre class="viz">max_freq = 3 (A and B both appear 3 times). count_max = 2 (A and B).
+Frame layout:
+Chunk 1: A B (idle) -> length n + 1 = 3
+Chunk 2: A B (idle) -> length n + 1 = 3
+Last:    A B        -> length count_max = 2
+
+Total slots = (3 - 1) * (2 + 1) + 2 = 2 * 3 + 2 = 8 slots:
+[A, B, idle, A, B, idle, A, B]
+Output: 8 ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">from collections import Counter
+
+def leastInterval(tasks: list[str], n: int) -> int:
+    """
+    Computes minimum CPU intervals to execute tasks with cooling period n.
+    """
+    counts = Counter(tasks)
+    max_freq = max(counts.values())
+    count_max = sum(1 for val in counts.values() if val == max_freq)
+    
+    empty_slots_time = (max_freq - 1) * (n + 1) + count_max
+    return max(len(tasks), empty_slots_time)
+</code></pre>
+</details>
+
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O(T)</code> where <code>T = len(tasks)</code> to count frequencies. The alphabet size is at most 26.</li>
+<li><strong>Space Complexity:</strong> <code>O(1)</code> space (at most 26 uppercase letters in hash map).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0342-lc376-wiggle-subsequence.html"><span class="lbl">← Previous</span>#376 Wiggle Subsequence</a><a href="../problems/0344-lc846-hand-of-straights.html" style="text-align:right"><span class="lbl">Next →</span>#846 Hand of Straights</a></div>
 </div>

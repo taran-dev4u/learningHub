@@ -23,35 +23,63 @@
  › Subpattern 10.7: Assign / Resource Allocation · Problem 346 of 699</p>
 
 <h2>📋 The problem</h2><p>Children in a line have ratings; give each at least one candy so higher-rated kids get more than their neighbors, minimizing total candy.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
-
-<h2>Where this fits</h2>
-<p><strong>Assign / Resource Allocation</strong> — Sort by a property (deadline, ratio, capacity) and assign one-by-one — assignment problems, two-city scheduling.</p>
-
-<h2>Why this pattern?</h2><ul><li>"maximum number of non-overlapping…" / "minimum number of intervals to remove"</li><li>"minimum arrows/platforms/refuels" resource covering</li><li>a swap/exchange argument feels available ("taking the smaller first is never worse")</li><li>candidates can be sorted so that decisions never need revisiting</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Greedy master template and adapt the marked parts to this problem:</p><pre><code># Interval scheduling: max non-overlapping
-intervals.sort(key=lambda iv: iv[1])     # sort by END time
-count, free_at = 0, float('-inf')
-for start, end in intervals:
-    if start &gt;= free_at:                 # doesn't clash with last taken
-        count += 1
-        free_at = end                    # commit — never look back
-
-# Reachability sweep (jump game)
-far = 0
-for i, step in enumerate(nums):
-    if i &gt; far: return False             # gap we can never cross
-    far = max(far, i + step)
-return True</code></pre>
-<h2>How to work on it now</h2>
+<h2>🧭 How to think about it</h2>
+<p>There are <code>n</code> children standing in a line. Each child is assigned a rating value given in the integer array <code>ratings</code>. You are giving candies to these children subjected to the following requirements:
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+  <li>Each child must have at least one candy.</li>
+  <li>Children with a higher rating get more candies than their neighbors.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+Return the minimum number of candies you need to have to distribute the candies to the children.</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Each child has two neighbors: left neighbor and right neighbor. A two-pass greedy strategy satisfies both constraints independently:</p>
+<ol>
+  <li><strong>Left-to-Right Pass:</strong> If <code>ratings[i] > ratings[i - 1]</code>, child <code>i</code> must have more candies than child <code>i - 1</code>: <code>candies[i] = candies[i - 1] + 1</code>.</li>
+  <li><strong>Right-to-Left Pass:</strong> If <code>ratings[i] > ratings[i + 1]</code>, child <code>i</code> must also have more candies than child <code>i + 1</code>: <code>candies[i] = max(candies[i], candies[i + 1] + 1)</code>.</li>
+</ol>
+
+<div class="insight">💡 <strong>Key insight:</strong> Two passes guarantee that both local conditions (left-neighbor and right-neighbor) are simultaneously satisfied while using the minimum possible candies.</div>
+
+<h2>🎞️ Visual dry run — ratings = [1, 0, 2]:</h2>
+<pre class="viz">1. Initialize: candies = [1, 1, 1]
+2. Left-to-right:
+   i=1: ratings[1]=0 <= ratings[0]=1 -> candies[1] stays 1
+   i=2: ratings[2]=2 > ratings[1]=0 -> candies[2] = candies[1] + 1 = 2
+   candies after L-to-R: [1, 1, 2]
+3. Right-to-left:
+   i=1: ratings[1]=0 <= ratings[2]=2 -> stays 1
+   i=0: ratings[0]=1 > ratings[1]=0 -> candies[0] = max(1, candies[1] + 1) = 2!
+   candies after R-to-L: [2, 1, 2]
+Total candies = 2 + 1 + 2 = 5 ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def candy(ratings: list[int]) -> int:
+    """
+    Distributes minimum candies satisfying neighbor rating constraints via two passes.
+    """
+    n = len(ratings)
+    candies = [1] * n
+    
+    # Left-to-right pass
+    for i in range(1, n):
+        if ratings[i] > ratings[i - 1]:
+            candies[i] = candies[i - 1] + 1
+            
+    # Right-to-left pass
+    for i in range(n - 2, -1, -1):
+        if ratings[i] > ratings[i + 1]:
+            candies[i] = max(candies[i], candies[i + 1] + 1)
+            
+    return sum(candies)
+</code></pre>
+</details>
+
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O(N)</code>. Two linear passes.</li>
+<li><strong>Space Complexity:</strong> <code>O(N)</code> for the candies array.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0345-lc763-partition-labels.html"><span class="lbl">← Previous</span>#763 Partition Labels</a><a href="../problems/0347-lc406-queue-reconstruction-by-height.html" style="text-align:right"><span class="lbl">Next →</span>#406 Queue Reconstruction by Height</a></div>
 </div>

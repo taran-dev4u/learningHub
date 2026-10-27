@@ -23,35 +23,59 @@
  › Subpattern 10.6: Partition / Labels · Problem 345 of 699</p>
 
 <h2>📋 The problem</h2><p>Split a string into as many parts as possible so no letter appears in two parts; return the part sizes.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>You are given a string <code>s</code>. We want to partition the string into as many parts as possible so that each letter appears in at most one part. Return a list of integers representing the size of these parts.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Partition / Labels</strong> — Greedy partition by extending the current segment to cover the latest seen index of any character.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Record each letter's last index; extend the current partition to the max last-index seen; cut when i reaches it.</div>
-<h2>Why this pattern?</h2><ul><li>"maximum number of non-overlapping…" / "minimum number of intervals to remove"</li><li>"minimum arrows/platforms/refuels" resource covering</li><li>a swap/exchange argument feels available ("taking the smaller first is never worse")</li><li>candidates can be sorted so that decisions never need revisiting</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Greedy master template and adapt the marked parts to this problem:</p><pre><code># Interval scheduling: max non-overlapping
-intervals.sort(key=lambda iv: iv[1])     # sort by END time
-count, free_at = 0, float('-inf')
-for start, end in intervals:
-    if start &gt;= free_at:                 # doesn't clash with last taken
-        count += 1
-        free_at = end                    # commit — never look back
+<h2>🐢 Brute force vs optimal</h2>
+<p>In a pre-pass, find the <strong>last occurrence index</strong> of each character. Then scan the string from left to right, maintaining an expanding boundary <code>end</code>. When our scan index reaches <code>end</code>, every character encountered so far will never appear again &rarr; close the partition!</p>
 
-# Reachability sweep (jump game)
-far = 0
-for i, step in enumerate(nums):
-    if i &gt; far: return False             # gap we can never cross
-    far = max(far, i + step)
-return True</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<div class="insight">💡 <strong>Key insight:</strong>
+1. <code>last = {c: i for i, c in enumerate(s)}</code>.
+2. Maintain <code>start = 0</code> and <code>end = 0</code>.
+3. For index <code>i, c</code>: update <code>end = max(end, last[c])</code>.
+4. If <code>i == end</code>: partition complete! Size is <code>end - start + 1</code>. Update <code>start = i + 1</code>.</div>
+
+<h2>🎞️ Visual dry run — s = "ababcbacadefegdehijhklij":</h2>
+<pre class="viz">Chars in first block: 'a', 'b', 'c'.
+Last index of 'a' is 8, 'b' is 5, 'c' is 7 -> max end = 8.
+At index 8: i == end (8==8)!
+Partition 1 size = 8 - 0 + 1 = 9 ("ababcbaca"). start = 9.
+
+Next block: 'd', 'e', 'f', 'g'.
+Last of 'd' is 14, 'e' is 15 -> max end = 15.
+At index 15: i == end (15==15)!
+Partition 2 size = 15 - 9 + 1 = 7 ("defegde"). start = 16.
+
+Final block: 'h'..'j'.
+Partition 3 size = 8 ("hijhklij").
+Output: [9, 7, 8] ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def partitionLabels(s: str) -> list[int]:
+    """
+    Partitions string such that each letter appears in at most one partition.
+    """
+    last = {c: i for i, c in enumerate(s)}
+    res = []
+    start = 0
+    end = 0
+    
+    for i, c in enumerate(s):
+        end = max(end, last[c])
+        if i == end:
+            res.append(end - start + 1)
+            start = i + 1
+            
+    return res
+</code></pre>
+</details>
+
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O(N)</code>. Two linear passes over string.</li>
+<li><strong>Space Complexity:</strong> <code>O(1)</code> space (at most 26 alphabet characters in hash map).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0344-lc846-hand-of-straights.html"><span class="lbl">← Previous</span>#846 Hand of Straights</a><a href="../problems/0346-lc135-candy.html" style="text-align:right"><span class="lbl">Next →</span>#135 Candy</a></div>
 </div>

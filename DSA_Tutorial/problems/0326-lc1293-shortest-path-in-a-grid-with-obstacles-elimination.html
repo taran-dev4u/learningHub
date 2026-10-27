@@ -23,44 +23,113 @@
  › Subpattern 9.11: Graph - BFS on State Space · Problem 326 of 699</p>
 
 <h2>📋 The problem</h2><p>Shortest path from corner to corner of a grid when you may remove up to k obstacles (BFS over (cell, removals-left)).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>You are given an <code>m x n</code> integer matrix <code>grid</code> where each cell is either <code>0</code> (empty) or <code>1</code> (obstacle). You can move up, down, left, or right. You can eliminate at most <code>k</code> obstacles. Return the minimum number of steps to walk from <code>(0, 0)</code> to <code>(m - 1, n - 1)</code>, or <code>-1</code> if no such walk exists.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Graph - BFS on State Space</strong> — BFS where states are not graph nodes but encoded situations — word transformations, lock combinations.</p>
+<p>Because each step has unit cost 1, the shortest path is solved with <strong>Breadth-First Search (BFS)</strong>. However, this is not a standard 2D grid BFS—it is a <strong>3D State Space BFS</strong> where a state is defined by <code>(row, col, remaining_eliminations)</code>!</p>
 
-<h2>Why this pattern?</h2><ul><li>"islands", "connected", "regions", "provinces" → component DFS/BFS</li><li>"minimum steps / moves / days to reach" → BFS</li><li>"prerequisites", "build order", "course schedule" → topological sort</li><li>states-and-moves puzzles (word ladder, locks) → BFS over implicit graph</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Graph Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>from collections import deque, defaultdict
-# BFS shortest steps
-q, seen = deque([(start, 0)]), {start}
-while q:
-    node, d = q.popleft()
-    if node == goal: return d
-    for nb in neighbors(node):
-        if nb not in seen:
-            seen.add(nb)                 # mark on ENQUEUE
-            q.append((nb, d + 1))
+<h2>🐢 Brute force vs optimal</h2>
+<p>DFS explores all exponential branching paths. In BFS, each layer represents 1 additional step. If we track visited states as <code>(r, c, k_remaining)</code>, the first time we pop destination <code>(m - 1, n - 1)</code>, its step count is guaranteed to be globally minimal!</p>
 
-# Topological sort (Kahn's)
-indeg = defaultdict(int)
-for u in graph:
-    for v in graph[u]: indeg[v] += 1
-q = deque([u for u in graph if indeg[u] == 0])
-order = []
-while q:
-    u = q.popleft(); order.append(u)
-    for v in graph[u]:
-        indeg[v] -= 1
-        if indeg[v] == 0: q.append(v)
-# len(order) &lt; number of nodes  ⇒  cycle exists</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+  <li><strong>Manhattan Distance Shortcut:</strong> The shortest possible path from <code>(0,0)</code> to <code>(m-1, n-1)</code> without any obstacles is <code>m + n - 2</code>. If <code>k >= m + n - 2</code>, we have enough eliminations to blast straight through every single obstacle along the Manhattan path! Return <code>m + n - 2</code> immediately in O(1)!</li>
+  <li><strong>State Pruning:</strong> If we have already visited cell <code>(r, c)</code> with <code>rem_k</code> eliminations remaining, visiting it later with &le; <code>rem_k</code> eliminations is strictly worse and can be pruned! Maintain <code>visited[r][c] = max_k_remaining_seen</code>.</li>
+</ol></div>
+
+<h2>🪜 The approach, step by step</h2>
+<ol>
+<li>Let <code>m = len(grid), n = len(grid[0])</code>.</li>
+<li>If <code>k >= m + n - 2</code>, return <code>m + n - 2</code>.</li>
+<li>Initialize queue: <code>q = deque([(0, 0, k, 0)])</code> representing <code>(r, c, k_rem, steps)</code>.</li>
+<li>Initialize <code>visited = {(0, 0): k}</code> mapping <code>(r, c) &rarr; max_k_remaining</code>.</li>
+<li>While <code>q</code>:
+  <ul>
+    <li>Pop <code>(r, c, k_rem, steps)</code>.</li>
+    <li>If <code>r == m - 1 and c == n - 1</code>, return <code>steps</code>!</li>
+    <li>For each neighbor <code>(nr, nc)</code>:
+      <ul>
+        <li>If inside grid:
+          <ul>
+            <li>Calculate new eliminations: <code>next_k = k_rem - grid[nr][nc]</code>.</li>
+            <li>If <code>next_k >= 0</code> and <code>next_k > visited.get((nr, nc), -1)</code>:
+              <ul>
+                <li>Record <code>visited[(nr, nc)] = next_k</code>.</li>
+                <li>Push <code>(nr, nc, next_k, steps + 1)</code> into <code>q</code>.</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</li>
+<li>Return <code>-1</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run:</h2>
+<pre class="viz">grid = [[0,1,1],[1,1,0],[1,0,0]], k = 1
+
+(0,0) [k=1, step 0]
+ -> step 1: (0,1) obstacle! k=0. steps=1.
+    -> step 2: (0,2) obstacle! k=-1 (Invalid!)
+    -> step 2: (1,1) obstacle! k=-1 (Invalid!)
+ -> step 1: (1,0) obstacle! k=0. steps=1.
+    -> step 2: (2,0) obstacle! k=-1 (Invalid!)
+    -> step 2: (1,1) obstacle! k=-1 (Invalid!)
+Obstacle wall blocks all paths with k=1! Returns -1 ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">from collections import deque
+
+def shortestPath(grid: list[list[int]], k: int) -> int:
+    """
+    Finds shortest path in grid with at most k obstacle eliminations using 3D State BFS.
+    """
+    m, n = len(grid)
+    if m == 1 and n == 1:
+        return 0
+        
+    # Manhattan shortcut: if k is large enough, walk direct shortest path
+    if k >= m + n - 2:
+        return m + n - 2
+        
+    # Queue stores: (row, col, k_remaining, steps)
+    q = deque([(0, 0, k, 0)])
+    # visited maps (row, col) -> max k_remaining seen so far
+    visited = {(0, 0): k}
+    dirs = [(1, 0), (-1, 0), (0, 1), (0, -1)]
+    
+    while q:
+        r, c, k_rem, steps = q.popleft()
+        
+        if r == m - 1 and c == n - 1:
+            return steps
+            
+        for dr, dc in dirs:
+            nr, nc = r + dr, c + dc
+            if 0 <= nr < m and 0 <= nc < n:
+                next_k = k_rem - grid[nr][nc]
+                if next_k >= 0 and next_k > visited.get((nr, nc), -1):
+                    visited[(nr, nc)] = next_k
+                    q.append((nr, nc, next_k, steps + 1))
+                    
+    return -1
+</code></pre>
+</details>
+
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O(M &times; N &times; K)</code>. Each state <code>(r, c, k_remaining)</code> is enqueued at most once. Transitions take <code>O(1)</code> across 4 directions.</li>
+<li><strong>Space Complexity:</strong> <code>O(M &times; N &times; K)</code> for the visited dictionary and BFS queue.</li>
+</ul>
+
+<h2>🚨 Edge cases to watch out for</h2>
+<ul>
+<li><code>m = 1, n = 1</code>: Returns <code>0</code> immediately.</li>
+<li><code>grid[0][0] == 1</code>: If start cell has obstacle, handled by decrementing initial <code>k</code>.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0325-lc864-shortest-path-to-get-all-keys.html"><span class="lbl">← Previous</span>#864 Shortest Path to Get All Keys</a><a href="../patterns/p10-greedy.html" style="text-align:right"><span class="lbl">Next →</span>Greedy</a></div>
 </div>

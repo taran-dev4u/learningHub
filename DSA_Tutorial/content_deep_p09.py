@@ -2450,4 +2450,394 @@ Stop count k=1 reached. Output = 200 ✓</pre>
 <li><code>target == "0000"</code>: Returns <code>0</code> immediately.</li>
 </ul>''',
 
+# ============================================================ LC 1584
+1584: '''<h2>🧭 How to think about it</h2>
+<p>You are given an array <code>points</code> representing integer coordinates of <code>n</code> points on a 2D plane, where <code>points[i] = [xi, yi]</code>. The cost of connecting two points <code>[xi, yi]</code> and <code>[xj, yj]</code> is the Manhattan distance: <code>|xi - xj| + |yi - yj|</code>. Return the minimum cost to make all points connected such that there is exactly one simple path between any pair of points.</p>
+
+<p>Connecting all <code>n</code> points with minimum total cost and zero cycles is the textbook definition of a <strong>Minimum Spanning Tree (MST)</strong>. Because every pair of points can be connected, the graph is a <strong>dense complete graph</strong> with <code>V = n</code> vertices and <code>E = n(n - 1) / 2</code> edges.</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Testing all spanning trees is exponential. For finding an MST on a dense graph where <code>E &approx; V^2</code>:
+<ul>
+  <li><strong>Kruskal's Algorithm:</strong> Requires creating and sorting all <code>O(V^2)</code> edges &rarr; <code>O(V^2 log V)</code> time and <code>O(V^2)</code> memory.</li>
+  <li><strong>Prim's Algorithm (Dense Array Variant):</strong> Maintains <code>min_cost[i]</code> for each node. At each step, finds the node outside the tree with smallest cost in <code>O(V)</code> time. Repeating <code>V</code> times takes <code>O(V^2)</code> time and only <code>O(V)</code> space!</li>
+</ul></p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Dense Prim's algorithm starts with point 0 in the tree. We maintain <code>min_dist = [inf] * n</code>. At each iteration, pick the unvisited node <code>u</code> with the smallest distance, mark it visited, add its distance to the total cost, and update all other unvisited nodes <code>v</code>: <code>min_dist[v] = min(min_dist[v], manhattan_dist(u, v))</code>. No heap needed! Runs in pure O(N^2) time with zero allocation overhead.</div>
+
+<h2>🪜 The approach, step by step (Dense Prim's)</h2>
+<ol>
+<li>Let <code>n = len(points)</code>. If <code>n &le; 1</code>, return <code>0</code>.</li>
+<li>Initialize <code>min_dist = [float('inf')] * n</code> with <code>min_dist[0] = 0</code>.</li>
+<li>Initialize <code>visited = [False] * n</code>, <code>total_cost = 0</code>.</li>
+<li>Loop <code>n</code> times (to add all <code>n</code> nodes to the tree):
+  <ul>
+    <li>Find unvisited node <code>u</code> with minimum <code>min_dist[u]</code>.</li>
+    <li>Mark <code>visited[u] = True</code>.</li>
+    <li>Add <code>total_cost += min_dist[u]</code>.</li>
+    <li>For every unvisited node <code>v</code> from <code>0</code> to <code>n - 1</code>:
+      <ul>
+        <li>Calculate Manhattan distance: <code>d = abs(points[u][0] - points[v][0]) + abs(points[u][1] - points[v][1])</code>.</li>
+        <li>Update <code>min_dist[v] = min(min_dist[v], d)</code>.</li>
+      </ul>
+    </li>
+  </ul>
+</li>
+<li>Return <code>total_cost</code>.</li>
+</ol>
+
+<h2>🎞️ Visual dry run — points = [[0,0],[2,2],[3,10],[5,2],[7,0]]:</h2>
+<pre class="viz">1. Start at node 0 [0,0]: cost = 0.
+   Distances from 0: node 1(2,2)=4, node 2(3,10)=13, node 3(5,2)=7, node 4(7,0)=7.
+2. Pick min unvisited: node 1 (dist 4). total_cost = 0 + 4 = 4.
+   Update distances using node 1:
+   node 2: min(13, |2-3|+|2-10|=9) = 9
+   node 3: min(7, |2-5|+|2-2|=3) = 3!
+   node 4: min(7, |2-7|+|2-0|=7) = 7
+3. Pick min unvisited: node 3 (dist 3). total_cost = 4 + 3 = 7.
+   Update distances using node 3:
+   node 2: min(9, |5-3|+|2-10|=10) = 9
+   node 4: min(7, |5-7|+|2-0|=4) = 4!
+4. Pick min unvisited: node 4 (dist 4). total_cost = 7 + 4 = 11.
+   node 2: min(9, |7-3|+|0-10|=14) = 9
+5. Pick last unvisited: node 2 (dist 9). total_cost = 11 + 9 = 20.
+All 5 points connected into MST! Total cost = 20 ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def minCostConnectPoints(points: list[list[int]]) -> int:
+    """
+    Computes Minimum Spanning Tree on complete Euclidean point graph using Dense Prim's.
+    """
+    n = len(points)
+    if n <= 1:
+        return 0
+        
+    min_dist = [float('inf')] * n
+    min_dist[0] = 0
+    visited = [False] * n
+    total_cost = 0
+    
+    for _ in range(n):
+        # 1. Pick unvisited vertex with smallest connecting distance
+        curr = -1
+        curr_dist = float('inf')
+        for i in range(n):
+            if not visited[i] and min_dist[i] < curr_dist:
+                curr_dist = min_dist[i]
+                curr = i
+                
+        # 2. Add vertex to tree
+        visited[curr] = True
+        total_cost += curr_dist
+        x1, y1 = points[curr]
+        
+        # 3. Update minimum distance to remaining unvisited vertices
+        for nxt in range(n):
+            if not visited[nxt]:
+                x2, y2 = points[nxt]
+                dist = abs(x1 - x2) + abs(y1 - y2)
+                if dist < min_dist[nxt]:
+                    min_dist[nxt] = dist
+                    
+    return total_cost
+</code></pre>
+</details>
+
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O(N^2)</code>. There are <code>N</code> outer iterations; each iteration scans <code>N</code> nodes to find the minimum and another <code>N</code> nodes to update distances. For a dense graph with <code>N(N-1)/2</code> edges, <code>O(N^2)</code> is strictly optimal and beats heap Prim's / Kruskal's <code>O(N^2 log N)</code>.</li>
+<li><strong>Space Complexity:</strong> <code>O(N)</code> to store <code>min_dist</code> and <code>visited</code> arrays. Zero storage needed for explicit edges!</li>
+</ul>
+
+<h2>🚨 Edge cases to watch out for</h2>
+<ul>
+<li><code>n = 1</code>: Cost is 0 (a single point is already connected).</li>
+<li><strong>Coincident points:</strong> Distance is 0; correctly handled.</li>
+</ul>''',
+
+# ============================================================ LC 1135
+1135: '''<h2>🧭 How to think about it</h2>
+<p>There are <code>n</code> cities labeled <code>1</code> to <code>n</code>. You are given an array <code>connections</code> where <code>connections[i] = [city1, city2, cost]</code> represents the cost to build a bidirectional road between two cities. Return the minimum cost to connect all <code>n</code> cities such that there is a path between any pair of cities. If it is impossible, return <code>-1</code>.</p>
+
+<p>This is a classic <strong>Minimum Spanning Tree</strong> problem on a sparse graph with explicit edge costs, solved directly by <strong>Kruskal's Algorithm</strong> using Disjoint Set Union (DSU).</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Kruskal's algorithm greedily considers edges in increasing order of weight. If the edge connects two cities that are not yet in the same connected component, we add it to the spanning tree. If all <code>n</code> cities are connected using exactly <code>n - 1</code> edges, the sum of weights is guaranteed to be minimal!</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Sort edges by cost in ascending order. Process each edge: if <code>union(city1, city2)</code> successfully merges two previously disjoint components, increment our edge counter and accumulate the cost. If we place <code>n - 1</code> edges, return total cost; if edges run out before reaching <code>n - 1</code> edges, the graph is disconnected &rarr; return <code>-1</code>!</div>
+
+<h2>🪜 The approach, step by step</h2>
+<ol>
+<li>If <code>len(connections) < n - 1</code>, return <code>-1</code> immediately (impossible to connect <code>n</code> nodes).</li>
+<li>Sort <code>connections</code> by cost: <code>connections.sort(key=lambda x: x[2])</code>.</li>
+<li>Initialize DSU with <code>parent = list(range(n + 1))</code> (1-indexed) and <code>rank = [1] * (n + 1)</code>.</li>
+<li>Initialize <code>total_cost = 0</code>, <code>edges_used = 0</code>.</li>
+<li>For each <code>u, v, cost</code> in sorted connections:
+  <ul>
+    <li>If <code>union(u, v)</code> succeeds:
+      <ul>
+        <li><code>total_cost += cost</code></li>
+        <li><code>edges_used += 1</code></li>
+        <li>If <code>edges_used == n - 1</code>, break early!</li>
+      </ul>
+    </li>
+  </ul>
+</li>
+<li>Return <code>total_cost</code> if <code>edges_used == n - 1</code> else <code>-1</code>.</li>
+</ol>
+
+<h2>🎞️ Visual dry run — n=3, connections=[[1,2,5],[1,3,6],[2,3,1]]:</h2>
+<pre class="viz">1. Sort by cost: [[2,3,1], [1,2,5], [1,3,6]]
+2. Edge [2,3,1]: union(2,3) -> success! cost = 1, edges_used = 1.
+3. Edge [1,2,5]: union(1,2) -> success! cost = 1 + 5 = 6, edges_used = 2.
+4. edges_used == n - 1 (3 - 1 = 2) -> Done!
+Result: 6 ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def minimumCost(n: int, connections: list[list[int]]) -> int:
+    """
+    Computes minimum cost to connect n cities via Kruskal's MST algorithm.
+    """
+    if len(connections) < n - 1:
+        return -1
+        
+    # 1. Sort edges by weight
+    connections.sort(key=lambda x: x[2])
+    
+    parent = list(range(n + 1))
+    rank = [1] * (n + 1)
+    
+    def find(x):
+        if parent[x] != x:
+            parent[x] = find(parent[x])
+        return parent[x]
+        
+    def union(x, y):
+        rx, ry = find(x), find(y)
+        if rx == ry:
+            return False
+        if rank[rx] < rank[ry]:
+            parent[rx] = ry
+        elif rank[rx] > rank[ry]:
+            parent[ry] = rx
+        else:
+            parent[ry] = rx
+            rank[rx] += 1
+        return True
+        
+    total_cost = 0
+    edges_count = 0
+    
+    for u, v, cost in connections:
+        if union(u, v):
+            total_cost += cost
+            edges_count += 1
+            if edges_count == n - 1:
+                return total_cost
+                
+    return -1
+</code></pre>
+</details>
+
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O(E log E)</code> to sort the edges, where <code>E = len(connections)</code>. The DSU operations take near-linear <code>O(E &times; &alpha;(V))</code> time.</li>
+<li><strong>Space Complexity:</strong> <code>O(V)</code> for the parent and rank arrays.</li>
+</ul>
+
+<h2>🚨 Edge cases to watch out for</h2>
+<ul>
+<li><strong>Fewer than n-1 edges:</strong> Handled by upfront check <code>len(connections) < n - 1</code>.</li>
+<li><strong>Disconnected components:</strong> If edge count never reaches <code>n - 1</code>, returns <code>-1</code>.</li>
+</ul>''',
+
+# ============================================================ LC 1293
+1293: '''<h2>🧭 How to think about it</h2>
+<p>You are given an <code>m x n</code> integer matrix <code>grid</code> where each cell is either <code>0</code> (empty) or <code>1</code> (obstacle). You can move up, down, left, or right. You can eliminate at most <code>k</code> obstacles. Return the minimum number of steps to walk from <code>(0, 0)</code> to <code>(m - 1, n - 1)</code>, or <code>-1</code> if no such walk exists.</p>
+
+<p>Because each step has unit cost 1, the shortest path is solved with <strong>Breadth-First Search (BFS)</strong>. However, this is not a standard 2D grid BFS—it is a <strong>3D State Space BFS</strong> where a state is defined by <code>(row, col, remaining_eliminations)</code>!</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>DFS explores all exponential branching paths. In BFS, each layer represents 1 additional step. If we track visited states as <code>(r, c, k_remaining)</code>, the first time we pop destination <code>(m - 1, n - 1)</code>, its step count is guaranteed to be globally minimal!</p>
+
+<div class="insight">💡 <strong>Key insight:</strong>
+<ol>
+  <li><strong>Manhattan Distance Shortcut:</strong> The shortest possible path from <code>(0,0)</code> to <code>(m-1, n-1)</code> without any obstacles is <code>m + n - 2</code>. If <code>k >= m + n - 2</code>, we have enough eliminations to blast straight through every single obstacle along the Manhattan path! Return <code>m + n - 2</code> immediately in O(1)!</li>
+  <li><strong>State Pruning:</strong> If we have already visited cell <code>(r, c)</code> with <code>rem_k</code> eliminations remaining, visiting it later with &le; <code>rem_k</code> eliminations is strictly worse and can be pruned! Maintain <code>visited[r][c] = max_k_remaining_seen</code>.</li>
+</ol></div>
+
+<h2>🪜 The approach, step by step</h2>
+<ol>
+<li>Let <code>m = len(grid), n = len(grid[0])</code>.</li>
+<li>If <code>k >= m + n - 2</code>, return <code>m + n - 2</code>.</li>
+<li>Initialize queue: <code>q = deque([(0, 0, k, 0)])</code> representing <code>(r, c, k_rem, steps)</code>.</li>
+<li>Initialize <code>visited = {(0, 0): k}</code> mapping <code>(r, c) &rarr; max_k_remaining</code>.</li>
+<li>While <code>q</code>:
+  <ul>
+    <li>Pop <code>(r, c, k_rem, steps)</code>.</li>
+    <li>If <code>r == m - 1 and c == n - 1</code>, return <code>steps</code>!</li>
+    <li>For each neighbor <code>(nr, nc)</code>:
+      <ul>
+        <li>If inside grid:
+          <ul>
+            <li>Calculate new eliminations: <code>next_k = k_rem - grid[nr][nc]</code>.</li>
+            <li>If <code>next_k >= 0</code> and <code>next_k > visited.get((nr, nc), -1)</code>:
+              <ul>
+                <li>Record <code>visited[(nr, nc)] = next_k</code>.</li>
+                <li>Push <code>(nr, nc, next_k, steps + 1)</code> into <code>q</code>.</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</li>
+<li>Return <code>-1</code>.</li>
+</ol>
+
+<h2>🎞️ Visual dry run:</h2>
+<pre class="viz">grid = [[0,1,1],[1,1,0],[1,0,0]], k = 1
+
+(0,0) [k=1, step 0]
+ -> step 1: (0,1) obstacle! k=0. steps=1.
+    -> step 2: (0,2) obstacle! k=-1 (Invalid!)
+    -> step 2: (1,1) obstacle! k=-1 (Invalid!)
+ -> step 1: (1,0) obstacle! k=0. steps=1.
+    -> step 2: (2,0) obstacle! k=-1 (Invalid!)
+    -> step 2: (1,1) obstacle! k=-1 (Invalid!)
+Obstacle wall blocks all paths with k=1! Returns -1 ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">from collections import deque
+
+def shortestPath(grid: list[list[int]], k: int) -> int:
+    """
+    Finds shortest path in grid with at most k obstacle eliminations using 3D State BFS.
+    """
+    m, n = len(grid)
+    if m == 1 and n == 1:
+        return 0
+        
+    # Manhattan shortcut: if k is large enough, walk direct shortest path
+    if k >= m + n - 2:
+        return m + n - 2
+        
+    # Queue stores: (row, col, k_remaining, steps)
+    q = deque([(0, 0, k, 0)])
+    # visited maps (row, col) -> max k_remaining seen so far
+    visited = {(0, 0): k}
+    dirs = [(1, 0), (-1, 0), (0, 1), (0, -1)]
+    
+    while q:
+        r, c, k_rem, steps = q.popleft()
+        
+        if r == m - 1 and c == n - 1:
+            return steps
+            
+        for dr, dc in dirs:
+            nr, nc = r + dr, c + dc
+            if 0 <= nr < m and 0 <= nc < n:
+                next_k = k_rem - grid[nr][nc]
+                if next_k >= 0 and next_k > visited.get((nr, nc), -1):
+                    visited[(nr, nc)] = next_k
+                    q.append((nr, nc, next_k, steps + 1))
+                    
+    return -1
+</code></pre>
+</details>
+
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O(M &times; N &times; K)</code>. Each state <code>(r, c, k_remaining)</code> is enqueued at most once. Transitions take <code>O(1)</code> across 4 directions.</li>
+<li><strong>Space Complexity:</strong> <code>O(M &times; N &times; K)</code> for the visited dictionary and BFS queue.</li>
+</ul>
+
+<h2>🚨 Edge cases to watch out for</h2>
+<ul>
+<li><code>m = 1, n = 1</code>: Returns <code>0</code> immediately.</li>
+<li><code>grid[0][0] == 1</code>: If start cell has obstacle, handled by decrementing initial <code>k</code>.</li>
+</ul>''',
+
+# ============================================================ LC 1319
+1319: '''<h2>🧭 How to think about it</h2>
+<p>There are <code>n</code> computers numbered from <code>0</code> to <code>n - 1</code> connected by ethernet cables <code>connections</code>. You can extract redundant cables from connected computers and reconnect them to unconnected computers. Return the minimum number of times you need to do this to make all computers connected. If it is impossible, return <code>-1</code>.</p>
+
+<p>To connect <code>n</code> nodes into a single connected component, we mathematically need <strong>at least <code>n - 1</code> cables</strong>.
+<ul>
+  <li>If <code>len(connections) < n - 1</code>: Impossible! Even if we rearrange every cable optimally, there simply aren't enough edges. Return <code>-1</code>.</li>
+  <li>If <code>len(connections) >= n - 1</code>: By Graph Theory, any connected graph with <code>C</code> separate components can be linked together into a single component using exactly <code>C - 1</code> edges! Since we know there are surplus redundant edges, the answer is simply <code>components - 1</code>!</li>
+</ul></p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>We only need to count the number of connected components in the graph using <strong>Disjoint Set Union (DSU)</strong> or <strong>DFS</strong> in <code>O(V + E)</code> time!</p>
+
+<div class="insight">💡 <strong>Key insight:</strong>
+Check <code>len(connections) < n - 1</code> first. Then count the number of disjoint components <code>components</code>. Every successful union reduces component count. The answer is <code>components - 1</code>!</div>
+
+<h2>🪜 The approach, step by step</h2>
+<ol>
+<li>If <code>len(connections) < n - 1</code>, return <code>-1</code>.</li>
+<li>Initialize <code>parent = list(range(n))</code>, <code>components = n</code>.</li>
+<li>Define <code>find(x)</code> with path compression.</li>
+<li>For each <code>u, v</code> in <code>connections</code>:
+  <ul>
+    <li><code>ru, rv = find(u), find(v)</code>.</li>
+    <li>If <code>ru != rv</code>: <code>parent[ru] = rv</code>, <code>components -= 1</code>.</li>
+  </ul>
+</li>
+<li>Return <code>components - 1</code>.</li>
+</ol>
+
+<h2>🎞️ Visual dry run — n=4, connections=[[0,1],[0,2],[1,2]]:</h2>
+<pre class="viz">1. len(connections) = 3 >= 4 - 1 = 3. Possible!
+2. Initial components = 4: {0}, {1}, {2}, {3}
+3. Edge (0, 1): components = 3 ({0, 1}, {2}, {3})
+4. Edge (0, 2): components = 2 ({0, 1, 2}, {3})
+5. Edge (1, 2): find(1)==find(2). Redundant edge! components stays 2.
+Final components = 2.
+Operations needed = components - 1 = 2 - 1 = 1 ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def makeConnected(n: int, connections: list[list[int]]) -> int:
+    """
+    Computes minimum cable rewirings to connect all computers via DSU.
+    """
+    if len(connections) < n - 1:
+        return -1
+        
+    parent = list(range(n))
+    components = n
+    
+    def find(x):
+        if parent[x] != x:
+            parent[x] = find(parent[x])
+        return parent[x]
+        
+    for u, v in connections:
+        ru, rv = find(u), find(v)
+        if ru != rv:
+            parent[ru] = rv
+            components -= 1
+            
+    return components - 1
+</code></pre>
+</details>
+
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O(N + E &times; &alpha;(N)) &approx; O(N + E)</code>. Initial check is <code>O(1)</code>, and DSU runs in near-linear time.</li>
+<li><strong>Space Complexity:</strong> <code>O(N)</code> for the parent array.</li>
+</ul>
+
+<h2>🚨 Edge cases to watch out for</h2>
+<ul>
+<li><code>len(connections) < n - 1</code>: Returns <code>-1</code> immediately.</li>
+<li><code>n = 1</code>: <code>components = 1</code>, returns <code>0</code> (already connected).</li>
+</ul>''',
+
 }

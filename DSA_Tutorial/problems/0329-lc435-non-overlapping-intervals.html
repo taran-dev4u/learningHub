@@ -23,35 +23,72 @@
  › Subpattern 10.1: Interval Merging / Scheduling · Problem 329 of 699</p>
 
 <h2>📋 The problem</h2><p>Return the minimum number of intervals to remove so the rest don't overlap.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given an array of intervals, return the minimum number of intervals you need to remove to make the rest of the intervals non-overlapping.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Interval Merging / Scheduling</strong> — Sort intervals by start (or end); merge or schedule with a single sweep.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Sort by end time; greedily keep intervals that start after the last kept end; removals = rest.</div>
-<h2>Why this pattern?</h2><ul><li>"maximum number of non-overlapping…" / "minimum number of intervals to remove"</li><li>"minimum arrows/platforms/refuels" resource covering</li><li>a swap/exchange argument feels available ("taking the smaller first is never worse")</li><li>candidates can be sorted so that decisions never need revisiting</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Greedy master template and adapt the marked parts to this problem:</p><pre><code># Interval scheduling: max non-overlapping
-intervals.sort(key=lambda iv: iv[1])     # sort by END time
-count, free_at = 0, float('-inf')
-for start, end in intervals:
-    if start &gt;= free_at:                 # doesn't clash with last taken
-        count += 1
-        free_at = end                    # commit — never look back
+<p>Minimizing removals is mathematically equivalent to <strong>maximizing the number of mutually compatible intervals you keep</strong>. This is the classic <strong>Activity Selection Problem</strong>.</p>
 
-# Reachability sweep (jump game)
-far = 0
-for i, step in enumerate(nums):
-    if i &gt; far: return False             # gap we can never cross
-    far = max(far, i + step)
-return True</code></pre>
-<h2>How to work on it now</h2>
+<h2>🐢 Brute force vs optimal</h2>
+<p>Dynamic programming takes <code>O(N^2)</code> (longest non-overlapping chain). Greedily sorting by <strong>end time</strong> solves this in <code>O(N log N)</code> time.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Always keep the interval that <strong>finishes earliest</strong>! Why? The earlier an interval finishes, the more available time is left on the timeline for subsequent intervals to fit in without conflict. If an interval overlaps with the last kept interval, it MUST be removed!</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Sort intervals by their end times: <code>intervals.sort(key=lambda x: x[1])</code>.</li>
+<li>Initialize <code>removals = 0</code>, <code>prev_end = intervals[0][1]</code>.</li>
+<li>For each <code>start, end</code> in <code>intervals[1:]</code>:
+  <ul>
+    <li>If <code>start < prev_end</code>: overlap detected! We must remove this interval to keep the earlier-ending one &rarr; <code>removals += 1</code>.</li>
+    <li>Else: no overlap! We can safely keep this interval &rarr; update <code>prev_end = end</code>.</li>
+  </ul>
+</li>
+<li>Return <code>removals</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — intervals = [[1,2],[2,3],[3,4],[1,3]]:</h2>
+<pre class="viz">Sorted by end time:
+[1,2] (end 2)
+[2,3] (end 3)
+[1,3] (end 3)
+[3,4] (end 4)
+
+1. Keep [1,2]. prev_end = 2.
+2. [2,3]: start 2 >= 2 -> Keep! prev_end = 3.
+3. [1,3]: start 1 < 3 -> Overlap! Remove! removals = 1.
+4. [3,4]: start 3 >= 3 -> Keep! prev_end = 4.
+Total removed = 1 ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def eraseOverlapIntervals(intervals: list[list[int]]) -> int:
+    """
+    Minimizes removals by greedily keeping intervals that finish earliest.
+    """
+    if not intervals:
+        return 0
+        
+    # Sort by end time
+    intervals.sort(key=lambda x: x[1])
+    
+    removals = 0
+    prev_end = intervals[0][1]
+    
+    for start, end in intervals[1:]:
+        if start < prev_end:
+            removals += 1
+        else:
+            prev_end = end
+            
+    return removals
+</code></pre>
+</details>
+
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O(N log N)</code> for sorting. The linear scan is <code>O(N)</code>.</li>
+<li><strong>Space Complexity:</strong> <code>O(1)</code> auxiliary space (excluding sort stack).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0328-lc57-insert-interval.html"><span class="lbl">← Previous</span>#57 Insert Interval</a><a href="../problems/0330-lc452-minimum-number-of-arrows-to-burst-balloons.html" style="text-align:right"><span class="lbl">Next →</span>#452 Minimum Number of Arrows to Burst Balloons</a></div>
 </div>

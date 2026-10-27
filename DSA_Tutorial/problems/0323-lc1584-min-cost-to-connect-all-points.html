@@ -23,44 +23,110 @@
  › Subpattern 9.10: Graph - Minimum Spanning Tree · Problem 323 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0642-lc1584-min-cost-to-connect-all-points.html">Advanced Graph Algorithm</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Connect all points at minimum total Manhattan-distance cost (MST — Prim's fits dense complete graphs).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>You are given an array <code>points</code> representing integer coordinates of <code>n</code> points on a 2D plane, where <code>points[i] = [xi, yi]</code>. The cost of connecting two points <code>[xi, yi]</code> and <code>[xj, yj]</code> is the Manhattan distance: <code>|xi - xj| + |yi - yj|</code>. Return the minimum cost to make all points connected such that there is exactly one simple path between any pair of points.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Graph - Minimum Spanning Tree</strong> — Kruskal (sort edges + Union-Find) or Prim (heap-based expansion) for minimum spanning tree.</p>
+<p>Connecting all <code>n</code> points with minimum total cost and zero cycles is the textbook definition of a <strong>Minimum Spanning Tree (MST)</strong>. Because every pair of points can be connected, the graph is a <strong>dense complete graph</strong> with <code>V = n</code> vertices and <code>E = n(n - 1) / 2</code> edges.</p>
 
-<h2>Why this pattern?</h2><ul><li>"islands", "connected", "regions", "provinces" → component DFS/BFS</li><li>"minimum steps / moves / days to reach" → BFS</li><li>"prerequisites", "build order", "course schedule" → topological sort</li><li>states-and-moves puzzles (word ladder, locks) → BFS over implicit graph</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Graph Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>from collections import deque, defaultdict
-# BFS shortest steps
-q, seen = deque([(start, 0)]), {start}
-while q:
-    node, d = q.popleft()
-    if node == goal: return d
-    for nb in neighbors(node):
-        if nb not in seen:
-            seen.add(nb)                 # mark on ENQUEUE
-            q.append((nb, d + 1))
+<h2>🐢 Brute force vs optimal</h2>
+<p>Testing all spanning trees is exponential. For finding an MST on a dense graph where <code>E &approx; V^2</code>:
+<ul>
+  <li><strong>Kruskal's Algorithm:</strong> Requires creating and sorting all <code>O(V^2)</code> edges &rarr; <code>O(V^2 log V)</code> time and <code>O(V^2)</code> memory.</li>
+  <li><strong>Prim's Algorithm (Dense Array Variant):</strong> Maintains <code>min_cost[i]</code> for each node. At each step, finds the node outside the tree with smallest cost in <code>O(V)</code> time. Repeating <code>V</code> times takes <code>O(V^2)</code> time and only <code>O(V)</code> space!</li>
+</ul></p>
 
-# Topological sort (Kahn's)
-indeg = defaultdict(int)
-for u in graph:
-    for v in graph[u]: indeg[v] += 1
-q = deque([u for u in graph if indeg[u] == 0])
-order = []
-while q:
-    u = q.popleft(); order.append(u)
-    for v in graph[u]:
-        indeg[v] -= 1
-        if indeg[v] == 0: q.append(v)
-# len(order) &lt; number of nodes  ⇒  cycle exists</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> Dense Prim's algorithm starts with point 0 in the tree. We maintain <code>min_dist = [inf] * n</code>. At each iteration, pick the unvisited node <code>u</code> with the smallest distance, mark it visited, add its distance to the total cost, and update all other unvisited nodes <code>v</code>: <code>min_dist[v] = min(min_dist[v], manhattan_dist(u, v))</code>. No heap needed! Runs in pure O(N^2) time with zero allocation overhead.</div>
+
+<h2>🪜 The approach, step by step (Dense Prim's)</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Let <code>n = len(points)</code>. If <code>n &le; 1</code>, return <code>0</code>.</li>
+<li>Initialize <code>min_dist = [float('inf')] * n</code> with <code>min_dist[0] = 0</code>.</li>
+<li>Initialize <code>visited = [False] * n</code>, <code>total_cost = 0</code>.</li>
+<li>Loop <code>n</code> times (to add all <code>n</code> nodes to the tree):
+  <ul>
+    <li>Find unvisited node <code>u</code> with minimum <code>min_dist[u]</code>.</li>
+    <li>Mark <code>visited[u] = True</code>.</li>
+    <li>Add <code>total_cost += min_dist[u]</code>.</li>
+    <li>For every unvisited node <code>v</code> from <code>0</code> to <code>n - 1</code>:
+      <ul>
+        <li>Calculate Manhattan distance: <code>d = abs(points[u][0] - points[v][0]) + abs(points[u][1] - points[v][1])</code>.</li>
+        <li>Update <code>min_dist[v] = min(min_dist[v], d)</code>.</li>
+      </ul>
+    </li>
+  </ul>
+</li>
+<li>Return <code>total_cost</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — points = [[0,0],[2,2],[3,10],[5,2],[7,0]]:</h2>
+<pre class="viz">1. Start at node 0 [0,0]: cost = 0.
+   Distances from 0: node 1(2,2)=4, node 2(3,10)=13, node 3(5,2)=7, node 4(7,0)=7.
+2. Pick min unvisited: node 1 (dist 4). total_cost = 0 + 4 = 4.
+   Update distances using node 1:
+   node 2: min(13, |2-3|+|2-10|=9) = 9
+   node 3: min(7, |2-5|+|2-2|=3) = 3!
+   node 4: min(7, |2-7|+|2-0|=7) = 7
+3. Pick min unvisited: node 3 (dist 3). total_cost = 4 + 3 = 7.
+   Update distances using node 3:
+   node 2: min(9, |5-3|+|2-10|=10) = 9
+   node 4: min(7, |5-7|+|2-0|=4) = 4!
+4. Pick min unvisited: node 4 (dist 4). total_cost = 7 + 4 = 11.
+   node 2: min(9, |7-3|+|0-10|=14) = 9
+5. Pick last unvisited: node 2 (dist 9). total_cost = 11 + 9 = 20.
+All 5 points connected into MST! Total cost = 20 ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def minCostConnectPoints(points: list[list[int]]) -> int:
+    """
+    Computes Minimum Spanning Tree on complete Euclidean point graph using Dense Prim's.
+    """
+    n = len(points)
+    if n <= 1:
+        return 0
+        
+    min_dist = [float('inf')] * n
+    min_dist[0] = 0
+    visited = [False] * n
+    total_cost = 0
+    
+    for _ in range(n):
+        # 1. Pick unvisited vertex with smallest connecting distance
+        curr = -1
+        curr_dist = float('inf')
+        for i in range(n):
+            if not visited[i] and min_dist[i] < curr_dist:
+                curr_dist = min_dist[i]
+                curr = i
+                
+        # 2. Add vertex to tree
+        visited[curr] = True
+        total_cost += curr_dist
+        x1, y1 = points[curr]
+        
+        # 3. Update minimum distance to remaining unvisited vertices
+        for nxt in range(n):
+            if not visited[nxt]:
+                x2, y2 = points[nxt]
+                dist = abs(x1 - x2) + abs(y1 - y2)
+                if dist < min_dist[nxt]:
+                    min_dist[nxt] = dist
+                    
+    return total_cost
+</code></pre>
+</details>
+
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O(N^2)</code>. There are <code>N</code> outer iterations; each iteration scans <code>N</code> nodes to find the minimum and another <code>N</code> nodes to update distances. For a dense graph with <code>N(N-1)/2</code> edges, <code>O(N^2)</code> is strictly optimal and beats heap Prim's / Kruskal's <code>O(N^2 log N)</code>.</li>
+<li><strong>Space Complexity:</strong> <code>O(N)</code> to store <code>min_dist</code> and <code>visited</code> arrays. Zero storage needed for explicit edges!</li>
+</ul>
+
+<h2>🚨 Edge cases to watch out for</h2>
+<ul>
+<li><code>n = 1</code>: Cost is 0 (a single point is already connected).</li>
+<li><strong>Coincident points:</strong> Distance is 0; correctly handled.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0322-lc1489-find-critical-and-pseudo-critical-edges-in-minimum-spanning-.html"><span class="lbl">← Previous</span>#1489 Find Critical and Pseudo-Critical Edges in Minimum Spanning Tree</a><a href="../problems/0324-lc752-open-the-lock.html" style="text-align:right"><span class="lbl">Next →</span>#752 Open the Lock</a></div>
 </div>

@@ -23,35 +23,75 @@
  › Subpattern 10.2: Jump Game Reachability / Minimization · Problem 334 of 699</p>
 
 <h2>📋 The problem</h2><p>Each array value is your maximum jump length from that index. Return the minimum number of jumps to reach the last index.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>You are given a 0-indexed array of integers <code>nums</code> of length <code>n</code>. You are initially positioned at <code>nums[0]</code>. Each element represents your maximum jump length. Return the <strong>minimum number of jumps</strong> to reach <code>nums[n - 1]</code> (guaranteed reachable).</p>
 
-<h2>Where this fits</h2>
-<p><strong>Jump Game Reachability / Minimization</strong> — Track the farthest reachable index; greedy jump count via 'current end vs farthest seen'.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Greedy BFS-like layers: within the current reach, compute the farthest next reach; each layer = one jump.</div>
-<h2>Why this pattern?</h2><ul><li>"maximum number of non-overlapping…" / "minimum number of intervals to remove"</li><li>"minimum arrows/platforms/refuels" resource covering</li><li>a swap/exchange argument feels available ("taking the smaller first is never worse")</li><li>candidates can be sorted so that decisions never need revisiting</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Greedy master template and adapt the marked parts to this problem:</p><pre><code># Interval scheduling: max non-overlapping
-intervals.sort(key=lambda iv: iv[1])     # sort by END time
-count, free_at = 0, float('-inf')
-for start, end in intervals:
-    if start &gt;= free_at:                 # doesn't clash with last taken
-        count += 1
-        free_at = end                    # commit — never look back
+<h2>🐢 Brute force vs optimal</h2>
+<p>DP takes <code>O(N^2)</code>. By viewing this problem through <strong>BFS levels</strong>, we can find the minimum jumps in pure <code>O(N)</code> time. Every jump moves us from the current level to the next level of reachable indices.</p>
 
-# Reachability sweep (jump game)
-far = 0
-for i, step in enumerate(nums):
-    if i &gt; far: return False             # gap we can never cross
-    far = max(far, i + step)
-return True</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> Maintain <code>cur_end</code> (the furthest boundary reachable with the current number of jumps) and <code>farthest</code> (the furthest index reachable by jumping from any point seen so far). When our scan reaches <code>cur_end</code>, we MUST jump! Increment <code>jumps += 1</code> and set <code>cur_end = farthest</code>.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>If <code>len(nums) <= 1</code>, return <code>0</code>.</li>
+<li>Initialize <code>jumps = 0</code>, <code>cur_end = 0</code>, <code>farthest = 0</code>.</li>
+<li>Iterate <code>i</code> from <code>0</code> to <code>len(nums) - 2</code>:
+  <ul>
+    <li>Update <code>farthest = max(farthest, i + nums[i])</code>.</li>
+    <li>If <code>i == cur_end</code>:
+      <ul>
+        <li><code>jumps += 1</code></li>
+        <li><code>cur_end = farthest</code></li>
+        <li>If <code>cur_end >= len(nums) - 1</code>, break early!</li>
+      </ul>
+    </li>
+  </ul>
+</li>
+<li>Return <code>jumps</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — nums = [2,3,1,1,4]:</h2>
+<pre class="viz">i=0: num=2. farthest = max(0, 0+2) = 2.
+     i == cur_end (0==0) -> Must jump! jumps = 1, cur_end = 2.
+
+i=1: num=3. farthest = max(2, 1+3) = 4.
+i=2: num=1. farthest = max(4, 2+1) = 4.
+     i == cur_end (2==2) -> Must jump! jumps = 2, cur_end = 4.
+cur_end >= 4 (target reached!). Stop!
+Result = 2 jumps ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def jump(nums: list[int]) -> int:
+    """
+    Finds minimum jumps to reach end using level-by-level greedy BFS.
+    """
+    n = len(nums)
+    if n <= 1:
+        return 0
+        
+    jumps = 0
+    cur_end = 0
+    farthest = 0
+    
+    # We do not need to process the last element (n - 1)
+    for i in range(n - 1):
+        farthest = max(farthest, i + nums[i])
+        if i == cur_end:
+            jumps += 1
+            cur_end = farthest
+            if cur_end >= n - 1:
+                break
+                
+    return jumps
+</code></pre>
+</details>
+
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O(N)</code>. Single linear scan.</li>
+<li><strong>Space Complexity:</strong> <code>O(1)</code>. Constant extra space.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0333-lc2406-divide-intervals-into-minimum-number-of-groups.html"><span class="lbl">← Previous</span>#2406 Divide Intervals Into Minimum Number of Groups</a><a href="../problems/0335-lc55-jump-game.html" style="text-align:right"><span class="lbl">Next →</span>#55 Jump Game</a></div>
 </div>

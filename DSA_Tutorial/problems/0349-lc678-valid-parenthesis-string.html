@@ -23,35 +23,55 @@
  › Subpattern 10.7: Assign / Resource Allocation · Problem 349 of 699</p>
 
 <h2>📋 The problem</h2><p>With '(' ')' and '*' (wildcard: '(' or ')' or empty), decide whether a string can be a valid parentheses string.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given a string <code>s</code> containing only three types of characters: <code>'('</code>, <code>')'</code>, and <code>'*'</code>, return <code>true</code> if <code>s</code> is valid. An <code>'*'</code> could be treated as a single right parenthesis <code>')'</code> or a single left parenthesis <code>'('</code> or an empty string <code>""</code>.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Assign / Resource Allocation</strong> — Sort by a property (deadline, ratio, capacity) and assign one-by-one — assignment problems, two-city scheduling.</p>
+<h2>🐢 Brute force vs optimal</h2>
+<p>Because each <code>'*'</code> has 3 choices, branching recursion takes <code>O(3^N)</code>. Dynamic programming takes <code>O(N^2)</code>. The Greedy approach tracks the <strong>range of possible open parentheses count</strong> <code>[cmin, cmax]</code> in <code>O(N)</code> time and <code>O(1)</code> space!</p>
 
-<h2>Why this pattern?</h2><ul><li>"maximum number of non-overlapping…" / "minimum number of intervals to remove"</li><li>"minimum arrows/platforms/refuels" resource covering</li><li>a swap/exchange argument feels available ("taking the smaller first is never worse")</li><li>candidates can be sorted so that decisions never need revisiting</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Greedy master template and adapt the marked parts to this problem:</p><pre><code># Interval scheduling: max non-overlapping
-intervals.sort(key=lambda iv: iv[1])     # sort by END time
-count, free_at = 0, float('-inf')
-for start, end in intervals:
-    if start &gt;= free_at:                 # doesn't clash with last taken
-        count += 1
-        free_at = end                    # commit — never look back
+<div class="insight">💡 <strong>Key insight:</strong> Maintain <code>cmin</code> (minimum possible unclosed open parentheses) and <code>cmax</code> (maximum possible unclosed open parentheses):
+<ul>
+  <li><code>'('</code>: <code>cmin += 1</code>, <code>cmax += 1</code>.</li>
+  <li><code>')'</code>: <code>cmin -= 1</code>, <code>cmax -= 1</code>.</li>
+  <li><code>'*'</code>: Can act as <code>')'</code> (decrement), <code>'('</code> (increment), or <code>""</code> (unchanged) &rarr; <code>cmin -= 1</code>, <code>cmax += 1</code>.</li>
+</ul>
+If <code>cmax < 0</code>, we have more <code>')'</code> than could ever be matched &rarr; return <code>False</code>.
+Clamp <code>cmin = max(cmin, 0)</code> (an <code>'*'</code> never forces open count below 0).
+At the end, return <code>cmin == 0</code>!</div>
 
-# Reachability sweep (jump game)
-far = 0
-for i, step in enumerate(nums):
-    if i &gt; far: return False             # gap we can never cross
-    far = max(far, i + step)
-return True</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def checkValidString(s: str) -> bool:
+    """
+    Validates parenthesis string with wildcards by tracking open count range [cmin, cmax].
+    """
+    cmin = 0  # Min possible open brackets
+    cmax = 0  # Max possible open brackets
+    
+    for ch in s:
+        if ch == '(':
+            cmin += 1
+            cmax += 1
+        elif ch == ')':
+            cmin -= 1
+            cmax -= 1
+        else:  # ch == '*'
+            cmin -= 1
+            cmax += 1
+            
+        if cmax < 0:
+            return False  # Too many closing parentheses
+        cmin = max(cmin, 0)
+        
+    return cmin == 0
+</code></pre>
+</details>
+
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O(N)</code>. Single pass.</li>
+<li><strong>Space Complexity:</strong> <code>O(1)</code>. Two integer counters.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0348-lc455-assign-cookies.html"><span class="lbl">← Previous</span>#455 Assign Cookies</a><a href="../problems/0350-lc1029-two-city-scheduling.html" style="text-align:right"><span class="lbl">Next →</span>#1029 Two City Scheduling</a></div>
 </div>

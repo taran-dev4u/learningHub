@@ -23,35 +23,37 @@
  › Subpattern 10.3: Buy/Sell Stock · Problem 337 of 699</p>
 
 <h2>📋 The problem</h2><p>With unlimited buy-sell transactions (sell before buying again), return the maximum total profit from a price series.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>You are given an integer array <code>prices</code> where <code>prices[i]</code> is the price of a given stock on the <code>i</code>-th day. On each day, you may decide to buy and/or sell the stock. You can only hold at most one share of the stock at any time. Find and return the maximum profit you can achieve.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Buy/Sell Stock</strong> — Track running min cost (or running min price) and update max profit greedily.</p>
+<h2>🐢 Brute force vs optimal</h2>
+<p>Because you can make unlimited transactions, you can capture **every single price increase** from day to day!
+If prices are <code>[1, 5, 8]</code>:
+- Buying at 1 and selling at 8 gives profit: <code>8 - 1 = 7</code>.
+- Capturing daily gains: <code>(5 - 1) + (8 - 5) = 4 + 3 = 7</code>!
+The sum of all upward slopes equals the total gain from valley to peak!</p>
 
-<h2>Why this pattern?</h2><ul><li>"maximum number of non-overlapping…" / "minimum number of intervals to remove"</li><li>"minimum arrows/platforms/refuels" resource covering</li><li>a swap/exchange argument feels available ("taking the smaller first is never worse")</li><li>candidates can be sorted so that decisions never need revisiting</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Greedy master template and adapt the marked parts to this problem:</p><pre><code># Interval scheduling: max non-overlapping
-intervals.sort(key=lambda iv: iv[1])     # sort by END time
-count, free_at = 0, float('-inf')
-for start, end in intervals:
-    if start &gt;= free_at:                 # doesn't clash with last taken
-        count += 1
-        free_at = end                    # commit — never look back
+<div class="insight">💡 <strong>Key insight:</strong> Whenever <code>prices[i] > prices[i - 1]</code>, greedily add <code>prices[i] - prices[i - 1]</code> to profit! If tomorrow is higher than today, buy today and sell tomorrow.</div>
 
-# Reachability sweep (jump game)
-far = 0
-for i, step in enumerate(nums):
-    if i &gt; far: return False             # gap we can never cross
-    far = max(far, i + step)
-return True</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def maxProfit(prices: list[int]) -> int:
+    """
+    Captures all positive price deltas across consecutive trading days.
+    """
+    profit = 0
+    for i in range(1, len(prices)):
+        if prices[i] > prices[i - 1]:
+            profit += prices[i] - prices[i - 1]
+    return profit
+</code></pre>
+</details>
+
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O(N)</code>.</li>
+<li><strong>Space Complexity:</strong> <code>O(1)</code>.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0336-lc121-best-time-to-buy-and-sell-stock.html"><span class="lbl">← Previous</span>#121 Best Time to Buy and Sell Stock</a><a href="../problems/0338-lc860-lemonade-change.html" style="text-align:right"><span class="lbl">Next →</span>#860 Lemonade Change</a></div>
 </div>
