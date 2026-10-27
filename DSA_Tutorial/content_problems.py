@@ -46,6 +46,8 @@ import content_deep_p18
 DEEP.update({(18, lc): body for lc, body in content_deep_p18.DEEP.items()})
 import content_deep_p19
 DEEP.update({(19, lc): body for lc, body in content_deep_p19.DEEP.items()})
+import content_deep_p20
+DEEP.update({(20, lc): body for lc, body in content_deep_p20.DEEP.items()})
 
 INSIGHTS = {
 1:   "Store each value's index in a dict as you scan; for each x, ask in O(1) whether target − x was already seen.",

@@ -23,43 +23,77 @@
  › Subpattern 20.1: Trie Core (Insert/Search) · Problem 564 of 699</p>
 
 <h2>📋 The problem</h2><p>A trie that also counts how many inserted words equal, and how many start with, a query string.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h3>Problem Overview</h3>
+<p>Extend the standard Trie to support:
+<ul>
+  <li><code>insert(word)</code>: Insert string <code>word</code> into trie.</li>
+  <li><code>countWordsEqualTo(word)</code>: Return number of instances of <code>word</code> in trie.</li>
+  <li><code>countWordsStartingWith(prefix)</code>: Return number of words that have <code>prefix</code> as prefix.</li>
+  <li><code>erase(word)</code>: Erase one instance of <code>word</code> from trie.</li>
+</ul></p>
 
-<h2>Where this fits</h2>
-<p><strong>Trie Core (Insert/Search)</strong> — Children dict/array + isEnd flag; insert and search in O(L).</p>
-
-<h2>Why this pattern?</h2><ul><li>"startsWith", autocomplete, longest common prefix over many strings</li><li>wildcard search ('.' matches anything) → branch at the dot</li><li>find many words in a letter grid simultaneously</li><li>XOR maximization → binary trie over bits</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Trie / Prefix Tree master template and adapt the marked parts to this problem:</p><pre><code>class TrieNode:
-    __slots__ = ('kids', 'end')
-    def __init__(self):
-        self.kids = {}                 # char → TrieNode
-        self.end = False               # a word ends here
-
-root = TrieNode()
-def insert(word):                      # O(len)
-    node = root
-    for ch in word:
-        node = node.kids.setdefault(ch, TrieNode())
-    node.end = True
-
-def search(word, node=None, i=0):      # supports '.' wildcard
-    node = node or root
-    for j in range(i, len(word)):
-        ch = word[j]
-        if ch == '.':
-            return any(search(word, kid, j+1) for kid in node.kids.values())
-        if ch not in node.kids: return False
-        node = node.kids[ch]
-    return node.end</code></pre>
-<h2>How to work on it now</h2>
+<h3>Key Insights</h3>
+<p>Each node maintains two counters:
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+  <li><code>pass_count</code>: Incremented when inserting, decremented when erasing. Tells how many words pass through this node.</li>
+  <li><code>end_count</code>: Incremented at the final character node when inserting, decremented when erasing. Tells how many exact words end here.</li>
+</ol></p>
+
+<details>
+<summary><strong>Python 3 Solution (Click to Expand)</strong></summary>
+<div class="code-block">
+<pre><code class="language-python">class TrieNode:
+    def __init__(self):
+        self.children = {}
+        self.pass_count = 0
+        self.end_count = 0
+
+class Trie:
+    def __init__(self):
+        self.root = TrieNode()
+
+    def insert(self, word: str) -> None:
+        curr = self.root
+        curr.pass_count += 1
+        for ch in word:
+            if ch not in curr.children:
+                curr.children[ch] = TrieNode()
+            curr = curr.children[ch]
+            curr.pass_count += 1
+        curr.end_count += 1
+
+    def countWordsEqualTo(self, word: str) -> int:
+        curr = self.root
+        for ch in word:
+            if ch not in curr.children:
+                return 0
+            curr = curr.children[ch]
+        return curr.end_count
+
+    def countWordsStartingWith(self, prefix: str) -> int:
+        curr = self.root
+        for ch in prefix:
+            if ch not in curr.children:
+                return 0
+            curr = curr.children[ch]
+        return curr.pass_count
+
+    def erase(self, word: str) -> None:
+        curr = self.root
+        curr.pass_count -= 1
+        for ch in word:
+            curr = curr.children[ch]
+            curr.pass_count -= 1
+        curr.end_count -= 1
+</code></pre>
+</div>
+</details>
+
+<h3>Complexity & Edge Cases</h3>
+<ul>
+  <li><strong>Time Complexity:</strong> $O(L)$ for all four operations.</li>
+  <li><strong>Space Complexity:</strong> $O(N 	imes L)$.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0563-lc677-map-sum-pairs.html"><span class="lbl">← Previous</span>#677 Map Sum Pairs</a><a href="../problems/0565-lc211-design-add-and-search-words-data-structure.html" style="text-align:right"><span class="lbl">Next →</span>#211 Design Add and Search Words Data Structure</a></div>
 </div>

@@ -23,43 +23,57 @@
  › Subpattern 20.4: Streaming / Autocomplete / Suffix Trie · Problem 569 of 699</p>
 
 <h2>📋 The problem</h2><p>From a word list, return every word that is a concatenation of at least two other words from the list.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h3>Problem Overview</h3>
+<p>Given an array of strings <code>words</code> (without duplicates), return all the concatenated words in the given list of words. A concatenated word is a word that can be formed entirely by concatenating at least two shorter words of the given array.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Streaming / Autocomplete / Suffix Trie</strong> — Insert/remove on demand and answer streaming queries (suffix matching, autocomplete).</p>
+<h3>Key Insights</h3>
+<p>Sort words by length ascending: <code>words.sort(key=len)</code>.
+This guarantees that when evaluating word $w$, any shorter constituent word has already been processed and placed into our dictionary set <code>word_set</code>!
+For each word, check if it can be partitioned into words in <code>word_set</code> using standard 1D Word Break DP:
+$$dp[j] = 	ext{true if } \exists i < j 	ext{ s.t. } dp[i] 	ext{ is true and } w[i:j] \in word_set$$</p>
 
-<h2>Why this pattern?</h2><ul><li>"startsWith", autocomplete, longest common prefix over many strings</li><li>wildcard search ('.' matches anything) → branch at the dot</li><li>find many words in a letter grid simultaneously</li><li>XOR maximization → binary trie over bits</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Trie / Prefix Tree master template and adapt the marked parts to this problem:</p><pre><code>class TrieNode:
-    __slots__ = ('kids', 'end')
-    def __init__(self):
-        self.kids = {}                 # char → TrieNode
-        self.end = False               # a word ends here
+<details>
+<summary><strong>Python 3 Solution (Click to Expand)</strong></summary>
+<div class="code-block">
+<pre><code class="language-python">from typing import List
 
-root = TrieNode()
-def insert(word):                      # O(len)
-    node = root
-    for ch in word:
-        node = node.kids.setdefault(ch, TrieNode())
-    node.end = True
+class Solution:
+    def findAllConcatenatedWordsInADict(self, words: List[str]) -> List[str]:
+        words.sort(key=len)
+        word_set = set()
+        res = []
+        
+        def can_form(w: str) -> bool:
+            if not word_set:
+                return False
+            n = len(w)
+            dp = [False] * (n + 1)
+            dp[0] = True
+            for i in range(n):
+                if not dp[i]:
+                    continue
+                for j in range(i + 1, n + 1):
+                    if w[i:j] in word_set:
+                        dp[j] = True
+                if dp[n]:
+                    return True
+            return dp[n]
+            
+        for w in words:
+            if can_form(w):
+                res.append(w)
+            word_set.add(w)
+            
+        return res
+</code></pre>
+</div>
+</details>
 
-def search(word, node=None, i=0):      # supports '.' wildcard
-    node = node or root
-    for j in range(i, len(word)):
-        ch = word[j]
-        if ch == '.':
-            return any(search(word, kid, j+1) for kid in node.kids.values())
-        if ch not in node.kids: return False
-        node = node.kids[ch]
-    return node.end</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h3>Complexity & Edge Cases</h3>
+<ul>
+  <li><strong>Time Complexity:</strong> $O(N \log N + N 	imes L^2)$.</li>
+  <li><strong>Space Complexity:</strong> $O(N 	imes L)$.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0568-lc336-palindrome-pairs.html"><span class="lbl">← Previous</span>#336 Palindrome Pairs</a><a href="../problems/0570-lc642-design-search-autocomplete-system.html" style="text-align:right"><span class="lbl">Next →</span>#642 Design Search Autocomplete System</a></div>
 </div>

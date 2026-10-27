@@ -23,43 +23,79 @@
  › Subpattern 20.3: Trie + DFS on Grid / Strings · Problem 567 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0369-lc212-word-search-ii.html">Backtracking</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Given a letter grid and a word list, return every word that can be traced through adjacent cells without reusing a cell.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h3>Problem Overview</h3>
+<p>Given an $m 	imes n$ <code>board</code> of characters and a list of strings <code>words</code>, return all words on the board. Each word must be constructed from letters of sequentially adjacent cells (horizontally or vertically neighboring). The same letter cell may not be used more than once in a word.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Trie + DFS on Grid / Strings</strong> — Build a Trie of words; DFS the grid and walk the Trie in parallel.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Build a trie of all words; DFS the grid walking the trie in lockstep, pruning dead branches — finds all words in one search.</div>
-<h2>Why this pattern?</h2><ul><li>"startsWith", autocomplete, longest common prefix over many strings</li><li>wildcard search ('.' matches anything) → branch at the dot</li><li>find many words in a letter grid simultaneously</li><li>XOR maximization → binary trie over bits</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Trie / Prefix Tree master template and adapt the marked parts to this problem:</p><pre><code>class TrieNode:
-    __slots__ = ('kids', 'end')
-    def __init__(self):
-        self.kids = {}                 # char → TrieNode
-        self.end = False               # a word ends here
-
-root = TrieNode()
-def insert(word):                      # O(len)
-    node = root
-    for ch in word:
-        node = node.kids.setdefault(ch, TrieNode())
-    node.end = True
-
-def search(word, node=None, i=0):      # supports '.' wildcard
-    node = node or root
-    for j in range(i, len(word)):
-        ch = word[j]
-        if ch == '.':
-            return any(search(word, kid, j+1) for kid in node.kids.values())
-        if ch not in node.kids: return False
-        node = node.kids[ch]
-    return node.end</code></pre>
-<h2>How to work on it now</h2>
+<h3>Key Insights</h3>
+<p>Running individual DFS for each word from every cell takes $O(W 	imes M 	imes N 	imes 4^L)$, which will TLE.</p>
+<p><strong>Optimal Trie + Simultaneous DFS Backtracking:</strong>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+  <li>Build a Trie containing all words. Store the entire word string <code>node.word = word</code> at the terminal node for $O(1)$ result collection.</li>
+  <li>Start DFS from every cell $(r, c)$. As we walk the grid, walk the Trie simultaneously!</li>
+  <li><strong>Pruning (Crucial optimization):</strong> When a word is found, set <code>node.word = None</code> so it is not added again. If a node has no remaining children, prune it from its parent's <code>children</code> dict to prevent re-traversing dead branches!</li>
+</ol></p>
+
+<details>
+<summary><strong>Python 3 Solution (Trie + In-Place Backtracking + Pruning)</strong></summary>
+<div class="code-block">
+<pre><code class="language-python">from typing import List
+
+class TrieNode:
+    def __init__(self):
+        self.children = {}
+        self.word = None
+
+class Solution:
+    def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
+        root = TrieNode()
+        for w in words:
+            curr = root
+            for ch in w:
+                if ch not in curr.children:
+                    curr.children[ch] = TrieNode()
+                curr = curr.children[ch]
+            curr.word = w
+
+        R, C = len(board), len(board[0])
+        result = []
+
+        def dfs(r: int, c: int, parent: TrieNode):
+            ch = board[r][c]
+            curr = parent.children.get(ch)
+            if not curr:
+                return
+
+            if curr.word:
+                result.append(curr.word)
+                curr.word = None  # Avoid duplicates
+
+            # Backtrack marker
+            board[r][c] = '#'
+            for dr, dc in ((-1, 0), (1, 0), (0, -1), (0, 1)):
+                nr, nc = r + dr, c + dc
+                if 0 <= nr < R and 0 <= nc < C and board[nr][nc] != '#':
+                    dfs(nr, nc, curr)
+            board[r][c] = ch
+
+            # Trie leaf pruning
+            if not curr.children:
+                del parent.children[ch]
+
+        for r in range(R):
+            for c in range(C):
+                if board[r][c] in root.children:
+                    dfs(r, c, root)
+
+        return result
+</code></pre>
+</div>
+</details>
+
+<h3>Complexity & Edge Cases</h3>
+<ul>
+  <li><strong>Time Complexity:</strong> $O(M 	imes N 	imes 4^L)$ bounded heavily by Trie pruning.</li>
+  <li><strong>Space Complexity:</strong> $O(\sum |w|)$ for Trie nodes.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0566-lc140-word-break-ii.html"><span class="lbl">← Previous</span>#140 Word Break II</a><a href="../problems/0568-lc336-palindrome-pairs.html" style="text-align:right"><span class="lbl">Next →</span>#336 Palindrome Pairs</a></div>
 </div>

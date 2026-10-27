@@ -23,43 +23,54 @@
  › Subpattern 20.3: Trie + DFS on Grid / Strings · Problem 566 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0368-lc140-word-break-ii.html">Backtracking</a>, <a href="0396-lc140-word-break-ii.html">Dynamic Programming (DP)</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Return every sentence you can form by segmenting a string into dictionary words.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h3>Problem Overview</h3>
+<p>Given a string <code>s</code> and a dictionary of strings <code>wordDict</code>, add spaces in <code>s</code> to construct a sentence where each word is a valid dictionary word. Return all such possible sentences.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Trie + DFS on Grid / Strings</strong> — Build a Trie of words; DFS the grid and walk the Trie in parallel.</p>
+<h3>Key Insights</h3>
+<p>Store <code>wordDict</code> in a Trie (or HashSet) for $O(1)$ prefix matches. Use <strong>DFS with Memoization</strong>:
+<code>memo[start_idx]</code> stores all valid sentence tails from index <code>start_idx</code> to end of string $s$.
+At index $i$, match prefixes of $s[i:]$ against the Trie. For every matching word ending at $j$, recursively obtain sentences for $s[j:]$, prepending the matched word.</p>
 
-<h2>Why this pattern?</h2><ul><li>"startsWith", autocomplete, longest common prefix over many strings</li><li>wildcard search ('.' matches anything) → branch at the dot</li><li>find many words in a letter grid simultaneously</li><li>XOR maximization → binary trie over bits</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Trie / Prefix Tree master template and adapt the marked parts to this problem:</p><pre><code>class TrieNode:
-    __slots__ = ('kids', 'end')
-    def __init__(self):
-        self.kids = {}                 # char → TrieNode
-        self.end = False               # a word ends here
+<details>
+<summary><strong>Python 3 Solution (DFS with Memoization)</strong></summary>
+<div class="code-block">
+<pre><code class="language-python">from typing import List
 
-root = TrieNode()
-def insert(word):                      # O(len)
-    node = root
-    for ch in word:
-        node = node.kids.setdefault(ch, TrieNode())
-    node.end = True
+class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> List[str]:
+        words = set(wordDict)
+        memo = {}
+        
+        def dfs(start: int) -> List[str]:
+            if start == len(s):
+                return [""]
+            if start in memo:
+                return memo[start]
+                
+            res = []
+            for end in range(start + 1, len(s) + 1):
+                word = s[start:end]
+                if word in words:
+                    sub_sentences = dfs(end)
+                    for sub in sub_sentences:
+                        if sub:
+                            res.append(word + " " + sub)
+                        else:
+                            res.append(word)
+                            
+            memo[start] = res
+            return res
+            
+        return dfs(0)
+</code></pre>
+</div>
+</details>
 
-def search(word, node=None, i=0):      # supports '.' wildcard
-    node = node or root
-    for j in range(i, len(word)):
-        ch = word[j]
-        if ch == '.':
-            return any(search(word, kid, j+1) for kid in node.kids.values())
-        if ch not in node.kids: return False
-        node = node.kids[ch]
-    return node.end</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h3>Complexity & Edge Cases</h3>
+<ul>
+  <li><strong>Time Complexity:</strong> $O(2^N)$ worst-case output sentences, bounded by memoization on non-matching subproblems.</li>
+  <li><strong>Space Complexity:</strong> $O(N 	imes 2^N)$ to store sentences.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0565-lc211-design-add-and-search-words-data-structure.html"><span class="lbl">← Previous</span>#211 Design Add and Search Words Data Structure</a><a href="../problems/0567-lc212-word-search-ii.html" style="text-align:right"><span class="lbl">Next →</span>#212 Word Search II</a></div>
 </div>
