@@ -23,34 +23,59 @@
  › Subpattern 13.5: Multiply Strings / Manual Simulation · Problem 438 of 699</p>
 
 <h2>📋 The problem</h2><p>Convert a non-negative integer into its English words ('12345' → 'Twelve Thousand Three Hundred Forty Five').</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Convert a non-negative integer <code>num</code> to its English words representation.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Multiply Strings / Manual Simulation</strong> — Simulate grade-school multiplication digit-by-digit into an int array.</p>
+<p>Every group of 3 digits is named in the exact same way with a thousands-magnitude suffix:
+- <code>10^9</code>: "Billion"
+- <code>10^6</code>: "Million"
+- <code>10^3</code>: "Thousand"
+- <code>10^0</code>: ""</p>
+<p>Write a helper function <code>words_under_1000(n)</code> that converts any number from 1 to 999:
+- If $n \ge 100$: <code>BELOW_20[n // 100] + " Hundred"</code>
+- Remainder $< 20$: lookup in <code>BELOW_20</code>
+- Remainder $\ge 20$: <code>TENS[rem // 10] + " " + BELOW_20[rem % 10]</code></p>
 
-<h2>Why this pattern?</h2><ul><li>"anagram", "permutation of", "rearrange"</li><li>"group the strings that…" → canonical key + dict</li><li>palindromes (two pointers or expand-from-center)</li><li>parse/normalize (spaces, signs, overflow) — careful state machines</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the String Manipulation master template and adapt the marked parts to this problem:</p><pre><code>from collections import defaultdict, Counter
-# Group by canonical signature
-groups = defaultdict(list)
-for w in words:
-    key = tuple(sorted(w))        # or 26-tuple of counts: O(k) vs O(k log k)
-    groups[key].append(w)
+<h2>🐢 Brute force vs optimal</h2>
+<p>Chunk by 1,000 using division and modulo. Runs in $O(1)$ time because 32-bit integers are bounded by 2 Billion ($2^{31} - 1$).</p>
 
-# Expand from center (palindromes)
-def expand(s, l, r):
-    while l &gt;= 0 and r &lt; len(s) and s[l] == s[r]:
-        l -= 1; r += 1
-    return s[l+1:r]               # overshoot by one on both sides
-# try (i, i) and (i, i+1) for every center: odd + even lengths</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<div class="insight">💡 <strong>Key insight:</strong> Process chunks of 1,000 using triplets <code>("Billion", "Million", "Thousand", "")</code>. Format 3-digit numbers with <code>Hundreds + Tens + Ones</code> lookup arrays.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def numberToWords(num: int) -> str:
+    if num == 0:
+        return "Zero"
+        
+    LESS_THAN_20 = ["", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten",
+                    "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"]
+    TENS = ["", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"]
+    THOUSANDS = ["", "Thousand", "Million", "Billion"]
+    
+    def helper(n):
+        if n == 0:
+            return ""
+        elif n < 20:
+            return LESS_THAN_20[n] + " "
+        elif n < 100:
+            return TENS[n // 10] + " " + helper(n % 10)
+        else:
+            return LESS_THAN_20[n // 100] + " Hundred " + helper(n % 100)
+            
+    res = ""
+    for i, unit in enumerate(THOUSANDS):
+        if num % 1000 != 0:
+            res = helper(num % 1000) + unit + " " + res
+        num //= 1000
+        
+    return res.strip()
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(1)$ — At most 4 chunks of 3 digits.<br>
+<strong>Space:</strong> $O(1)$ — Constant size lookup tables.</p>
+
 
 <div class="pager"><a href="../problems/0437-lc43-multiply-strings.html"><span class="lbl">← Previous</span>#43 Multiply Strings</a><a href="../problems/0439-lc6-zigzag-conversion.html" style="text-align:right"><span class="lbl">Next →</span>#6 Zigzag Conversion</a></div>
 </div>

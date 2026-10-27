@@ -23,34 +23,40 @@
  › Subpattern 13.2: Anagram Check / Frequency Count / Sort · Problem 433 of 699</p>
 
 <h2>📋 The problem</h2><p>Decide whether one string is an anagram of another.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given two strings <code>s</code> and <code>t</code>, return <code>true</code> if <code>t</code> is an anagram of <code>s</code>, and <code>false</code> otherwise.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Anagram Check / Frequency Count / Sort</strong> — Sort characters or use frequency arrays of length 26 to compare strings as multisets.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Counter(s) == Counter(t) — or a 26-slot array diff.</div>
-<h2>Why this pattern?</h2><ul><li>"anagram", "permutation of", "rearrange"</li><li>"group the strings that…" → canonical key + dict</li><li>palindromes (two pointers or expand-from-center)</li><li>parse/normalize (spaces, signs, overflow) — careful state machines</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the String Manipulation master template and adapt the marked parts to this problem:</p><pre><code>from collections import defaultdict, Counter
-# Group by canonical signature
-groups = defaultdict(list)
-for w in words:
-    key = tuple(sorted(w))        # or 26-tuple of counts: O(k) vs O(k log k)
-    groups[key].append(w)
+<p>If $	ext{len}(s) 
+e 	ext{len}(t)$, they cannot be anagrams.
+Maintain a single frequency table of size 26:
+- Increment count for each character in $s$: <code>table[ord(c) - 97] += 1</code>.
+- Decrement count for each character in $t$: <code>table[ord(c) - 97] -= 1</code>.
+- If any count drops below 0, return <code>False</code> immediately!</p>
 
-# Expand from center (palindromes)
-def expand(s, l, r):
-    while l &gt;= 0 and r &lt; len(s) and s[l] == s[r]:
-        l -= 1; r += 1
-    return s[l+1:r]               # overshoot by one on both sides
-# try (i, i) and (i, i+1) for every center: odd + even lengths</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h2>🐢 Brute force vs optimal</h2>
+<p>Sorting both strings takes $O(n \log n)$ time and $O(n)$ space. A fixed 26-int frequency array runs in $O(n)$ time with $O(1)$ constant space.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Fixed 26-element integer array. One pass increments from $s$ and decrements from $t$. If all frequencies balance to 0, they are anagrams.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def isAnagram(s: str, t: str) -> bool:
+    if len(s) != len(t):
+        return False
+        
+    counts = [0] * 26
+    for c1, c2 in zip(s, t):
+        counts[ord(c1) - ord('a')] += 1
+        counts[ord(c2) - ord('a')] -= 1
+        
+    return all(c == 0 for c in counts)
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n)$ — Single linear pass over length $n$.<br>
+<strong>Space:</strong> $O(1)$ — Exactly 26 integers allocated.</p>
+
 
 <div class="pager"><a href="../problems/0432-lc49-group-anagrams.html"><span class="lbl">← Previous</span>#49 Group Anagrams</a><a href="../problems/0434-lc13-roman-to-integer.html" style="text-align:right"><span class="lbl">Next →</span>#13 Roman to Integer</a></div>
 </div>

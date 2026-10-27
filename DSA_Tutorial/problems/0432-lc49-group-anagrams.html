@@ -23,34 +23,40 @@
  › Subpattern 13.2: Anagram Check / Frequency Count / Sort · Problem 432 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0532-lc49-group-anagrams.html">Hash Map &amp; Cache Design</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Group a list of words so that words that are anagrams of each other end up in the same group.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given an array of strings <code>strs</code>, group the anagrams together. You can return the answer in any order.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Anagram Check / Frequency Count / Sort</strong> — Sort characters or use frequency arrays of length 26 to compare strings as multisets.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Group by canonical key: tuple(sorted(word)) or the 26-count tuple.</div>
-<h2>Why this pattern?</h2><ul><li>"anagram", "permutation of", "rearrange"</li><li>"group the strings that…" → canonical key + dict</li><li>palindromes (two pointers or expand-from-center)</li><li>parse/normalize (spaces, signs, overflow) — careful state machines</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the String Manipulation master template and adapt the marked parts to this problem:</p><pre><code>from collections import defaultdict, Counter
-# Group by canonical signature
-groups = defaultdict(list)
-for w in words:
-    key = tuple(sorted(w))        # or 26-tuple of counts: O(k) vs O(k log k)
-    groups[key].append(w)
+<p>Two strings are anagrams if and only if they contain the exact same characters with identical frequencies.
+We can map each word to a canonical key in a hash table:
+1. <strong>Sorting Key:</strong> <code>tuple(sorted(word))</code>. Time per word: $O(L \log L)$.
+2. <strong>Character Count Tuple Key:</strong> a 26-element tuple of counts for <code>'a'</code> through <code>'z'</code>. Time per word: $O(L)$.</p>
 
-# Expand from center (palindromes)
-def expand(s, l, r):
-    while l &gt;= 0 and r &lt; len(s) and s[l] == s[r]:
-        l -= 1; r += 1
-    return s[l+1:r]               # overshoot by one on both sides
-# try (i, i) and (i, i+1) for every center: odd + even lengths</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h2>🐢 Brute force vs optimal</h2>
+<p>Comparing every pair takes $O(n^2 \cdot L)$. Hash map grouping with character count or sorted tuple runs in $O(n \cdot L)$ or $O(n \cdot L \log L)$.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Group in a hash map using the 26-character frequency tuple <code>tuple(count)</code> as the dictionary key. Appends anagrams in $O(n \cdot L)$ time!</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">from collections import defaultdict
+
+def groupAnagrams(strs: list[str]) -> list[list[str]]:
+    groups = defaultdict(list)
+    
+    for s in strs:
+        count = [0] * 26
+        for ch in s:
+            count[ord(ch) - ord('a')] += 1
+        groups[tuple(count)].append(s)
+        
+    return list(groups.values())
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n \cdot L)$ where $n = 	ext{len}(strs)$ and $L$ is max word length.<br>
+<strong>Space:</strong> $O(n \cdot L)$ to store grouped strings in the hash map.</p>
+
 
 <div class="pager"><a href="../problems/0431-lc680-valid-palindrome-ii.html"><span class="lbl">← Previous</span>#680 Valid Palindrome II</a><a href="../problems/0433-lc242-valid-anagram.html" style="text-align:right"><span class="lbl">Next →</span>#242 Valid Anagram</a></div>
 </div>

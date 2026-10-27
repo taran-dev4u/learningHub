@@ -23,34 +23,59 @@
  › Subpattern 13.6: String Matching / Naive / KMP / Rabin-Karp · Problem 445 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0694-lc214-shortest-palindrome.html">Advanced String Algorithm</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Return the shortest palindrome obtainable by adding characters in front of the given string.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>You are given a string <code>s</code>. You can convert <code>s</code> to a palindrome by adding characters in front of it. Return the shortest palindrome you can find by performing this transformation.</p>
 
-<h2>Where this fits</h2>
-<p><strong>String Matching / Naive / KMP / Rabin-Karp</strong> — Naive O(nm) substring search; KMP and Rabin-Karp give O(n+m) and O(n) average.</p>
+<p>To minimize characters added to the front, we must find the <strong>longest palindromic prefix</strong> of <code>s</code>!
+Once we find the longest palindromic prefix of length $L$, the remaining suffix $s[L:]$ reversed and prepended to $s$ forms the shortest palindrome:
+$$	ext{Result} = 	ext{reverse}(s[L:]) + s$$</p>
 
-<h2>Why this pattern?</h2><ul><li>"anagram", "permutation of", "rearrange"</li><li>"group the strings that…" → canonical key + dict</li><li>palindromes (two pointers or expand-from-center)</li><li>parse/normalize (spaces, signs, overflow) — careful state machines</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the String Manipulation master template and adapt the marked parts to this problem:</p><pre><code>from collections import defaultdict, Counter
-# Group by canonical signature
-groups = defaultdict(list)
-for w in words:
-    key = tuple(sorted(w))        # or 26-tuple of counts: O(k) vs O(k log k)
-    groups[key].append(w)
+<p><strong>The KMP Prefix Function Trick:</strong>
+Form a combined string $T = s + 	ext{"#"} + 	ext{reverse}(s)$.
+The value of $LPS[-1]$ (longest prefix of $T$ that is also suffix) is <strong>exactly</strong> the length of the longest palindromic prefix of $s$!</p>
 
-# Expand from center (palindromes)
-def expand(s, l, r):
-    while l &gt;= 0 and r &lt; len(s) and s[l] == s[r]:
-        l -= 1; r += 1
-    return s[l+1:r]               # overshoot by one on both sides
-# try (i, i) and (i, i+1) for every center: odd + even lengths</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h2>🐢 Brute force vs optimal</h2>
+<p>Checking palindromes from $n$ down to 1 takes $O(n^2)$. KMP LPS table computes the longest palindromic prefix in $O(n)$ linear time!</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Build $T = s + 	ext{'#'} + 	ext{reverse}(s)$. Run KMP failure function. $l = LPS[-1]$ is the longest palindromic prefix! Prepend $s[l:][::-1]$.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def shortestPalindrome(s: str) -> str:
+    if not s:
+        return ""
+        
+    rev_s = s[::-1]
+    temp = s + "#" + rev_s
+    
+    # Compute KMP LPS table
+    lps = [0] * len(temp)
+    prev = 0
+    i = 1
+    while i < len(temp):
+        if temp[i] == temp[prev]:
+            prev += 1
+            lps[i] = prev
+            i += 1
+        elif prev > 0:
+            prev = lps[prev - 1]
+        else:
+            lps[i] = 0
+            i += 1
+            
+    # Length of longest palindromic prefix in s
+    pal_len = lps[-1]
+    
+    # Suffix not included in palindrome must be reversed and prepended
+    add_on = rev_s[:len(s) - pal_len]
+    return add_on + s
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n)$ — Linear KMP LPS computation on string of length $2n + 1$.<br>
+<strong>Space:</strong> $O(n)$ — LPS array and concatenated string.</p>
+
 
 <div class="pager"><a href="../problems/0444-lc151-reverse-words-in-a-string.html"><span class="lbl">← Previous</span>#151 Reverse Words in a String</a><a href="../problems/0446-lc271-encode-and-decode-strings.html" style="text-align:right"><span class="lbl">Next →</span>#271 Encode and Decode Strings</a></div>
 </div>

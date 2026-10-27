@@ -23,34 +23,42 @@
  › Subpattern 13.3: Roman to Integer Conversion · Problem 434 of 699</p>
 
 <h2>📋 The problem</h2><p>Convert a Roman numeral string into its integer value, honoring subtractive pairs like IV and CM.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Roman numerals are represented by seven symbols: <code>I(1), V(5), X(10), L(50), C(100), D(500), M(1000)</code>.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Roman to Integer Conversion</strong> — Walk left-to-right; subtract when a smaller numeral precedes a larger one.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Sum symbol values; subtract twice when a smaller symbol precedes a larger (IV = −1 + 5 + ...).</div>
-<h2>Why this pattern?</h2><ul><li>"anagram", "permutation of", "rearrange"</li><li>"group the strings that…" → canonical key + dict</li><li>palindromes (two pointers or expand-from-center)</li><li>parse/normalize (spaces, signs, overflow) — careful state machines</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the String Manipulation master template and adapt the marked parts to this problem:</p><pre><code>from collections import defaultdict, Counter
-# Group by canonical signature
-groups = defaultdict(list)
-for w in words:
-    key = tuple(sorted(w))        # or 26-tuple of counts: O(k) vs O(k log k)
-    groups[key].append(w)
+<p>Roman numerals are usually written largest to smallest from left to right.
+<strong>The Subtraction Rule:</strong> If a smaller numeral appears immediately <em>before</em> a larger numeral (e.g. <code>IV = 4</code>, <code>IX = 9</code>, <code>XL = 40</code>), it is subtracted instead of added!
+Therefore:
+- If <code>val[s[i]] < val[s[i + 1]]</code>: subtract <code>val[s[i]]</code>.
+- Otherwise: add <code>val[s[i]]</code>.</p>
 
-# Expand from center (palindromes)
-def expand(s, l, r):
-    while l &gt;= 0 and r &lt; len(s) and s[l] == s[r]:
-        l -= 1; r += 1
-    return s[l+1:r]               # overshoot by one on both sides
-# try (i, i) and (i, i+1) for every center: odd + even lengths</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h2>🐢 Brute force vs optimal</h2>
+<p>Linear scan from left to right with a simple one-character lookahead runs in $O(n)$ time and $O(1)$ space.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Lookahead comparison: if current symbol value is strictly less than next symbol value, subtract it; else add it.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def romanToInt(s: str) -> int:
+    values = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+    total = 0
+    n = len(s)
+    
+    for i in range(n):
+        curr = values[s[i]]
+        if i + 1 < n and curr < values[s[i + 1]]:
+            total -= curr
+        else:
+            total += curr
+            
+    return total
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n)$ — Single pass through the string (max length 15).<br>
+<strong>Space:</strong> $O(1)$ — Fixed dictionary of 7 symbols.</p>
+
 
 <div class="pager"><a href="../problems/0433-lc242-valid-anagram.html"><span class="lbl">← Previous</span>#242 Valid Anagram</a><a href="../problems/0435-lc8-string-to-integer-atoi.html" style="text-align:right"><span class="lbl">Next →</span>#8 String to Integer (atoi)</a></div>
 </div>

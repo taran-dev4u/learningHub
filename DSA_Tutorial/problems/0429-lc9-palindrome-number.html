@@ -23,34 +23,43 @@
  › Subpattern 13.1: Palindrome Check / Two Pointers / Reverse · Problem 429 of 699</p>
 
 <h2>📋 The problem</h2><p>Determine whether an integer reads the same forwards and backwards, without converting it to a string.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given an integer <code>x</code>, return <code>true</code> if <code>x</code> is a palindrome, and <code>false</code> otherwise.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Palindrome Check / Two Pointers / Reverse</strong> — Two-pointer or reverse-and-compare to check palindromes; consider ignoring non-alphanumeric.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Reverse only half the number and compare halves — no string needed.</div>
-<h2>Why this pattern?</h2><ul><li>"anagram", "permutation of", "rearrange"</li><li>"group the strings that…" → canonical key + dict</li><li>palindromes (two pointers or expand-from-center)</li><li>parse/normalize (spaces, signs, overflow) — careful state machines</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the String Manipulation master template and adapt the marked parts to this problem:</p><pre><code>from collections import defaultdict, Counter
-# Group by canonical signature
-groups = defaultdict(list)
-for w in words:
-    key = tuple(sorted(w))        # or 26-tuple of counts: O(k) vs O(k log k)
-    groups[key].append(w)
+<p>Negative numbers cannot be palindromes (e.g. <code>-121</code> reversed is <code>121-</code>).
+Also, any positive number ending in <code>0</code> (except <code>0</code> itself) cannot be a palindrome (leading digit cannot be <code>0</code>).</p>
+<p><strong>The O(1) Space Half-Reversal Trick:</strong>
+Instead of converting to string (which takes $O(\log_{10} x)$ memory) or reversing the entire integer (which risks 32-bit overflow), reverse only the <strong>second half</strong> of the number!
+When <code>x <= reversed_num</code>, we have reached the midpoint:
+- For even digits (e.g. 1221): <code>x == reversed_num</code> (12 == 12).
+- For odd digits (e.g. 12321): <code>x == reversed_num // 10</code> (12 == 123 // 10).</p>
 
-# Expand from center (palindromes)
-def expand(s, l, r):
-    while l &gt;= 0 and r &lt; len(s) and s[l] == s[r]:
-        l -= 1; r += 1
-    return s[l+1:r]               # overshoot by one on both sides
-# try (i, i) and (i, i+1) for every center: odd + even lengths</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h2>🐢 Brute force vs optimal</h2>
+<p>String conversion uses heap allocation and $O(n)$ space. Half-number arithmetic reversal runs in $O(\log_{10} n)$ time with zero string allocations and zero overflow risk.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Reverse digits from the right into <code>rev = rev * 10 + x % 10; x //= 10</code> until <code>x <= rev</code>. Check <code>x == rev or x == rev // 10</code>.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def isPalindrome(x: int) -> bool:
+    # Negative numbers and non-zero multiples of 10 cannot be palindromes
+    if x < 0 or (x % 10 == 0 and x != 0):
+        return False
+        
+    rev = 0
+    while x > rev:
+        rev = rev * 10 + (x % 10)
+        x //= 10
+        
+    # When length is odd, discard middle digit via rev // 10
+    return x == rev or x == rev // 10
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(\log_{10} n)$ — Divide by 10 at each step; takes at most $\approx 5$ iterations for 32-bit int.<br>
+<strong>Space:</strong> $O(1)$ — Only arithmetic scalar variables.</p>
+
 
 <div class="pager"><a href="../patterns/p13-string-manipulation.html"><span class="lbl">← Previous</span>String Manipulation</a><a href="../problems/0430-lc125-valid-palindrome.html" style="text-align:right"><span class="lbl">Next →</span>#125 Valid Palindrome</a></div>
 </div>

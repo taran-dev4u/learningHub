@@ -23,34 +23,36 @@
  › Subpattern 13.6: String Matching / Naive / KMP / Rabin-Karp · Problem 449 of 699</p>
 
 <h2>📋 The problem</h2><p>Decide whether one string becomes another after some number of left rotations.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given two strings <code>s</code> and <code>goal</code>, return <code>true</code> if and only if <code>s</code> can become <code>goal</code> after some number of shifts on <code>s</code>. A shift on <code>s</code> consists of moving the leftmost character of <code>s</code> to the rightmost position.</p>
 
-<h2>Where this fits</h2>
-<p><strong>String Matching / Naive / KMP / Rabin-Karp</strong> — Naive O(nm) substring search; KMP and Rabin-Karp give O(n+m) and O(n) average.</p>
+<p><strong>The Concatenation Invariance:</strong>
+Any cyclic rotation of string <code>s</code> of length $n$ must be a substring of <code>s + s</code>!
+For example: <code>s = "abcde"</code> $\to$ <code>s + s = "abcdeabcde"</code>.
+All rotations (<code>"bcdea"</code>, <code>"cdeab"</code>, <code>"deabc"</code>, <code>"eabcd"</code>) are present inside <code>s + s</code>!</p>
+<p>Therefore, <code>goal</code> is a rotation of <code>s</code> if and only if:
+1. $	ext{len}(s) == 	ext{len}(goal)$
+2. <code>goal in (s + s)</code></p>
 
-<h2>Why this pattern?</h2><ul><li>"anagram", "permutation of", "rearrange"</li><li>"group the strings that…" → canonical key + dict</li><li>palindromes (two pointers or expand-from-center)</li><li>parse/normalize (spaces, signs, overflow) — careful state machines</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the String Manipulation master template and adapt the marked parts to this problem:</p><pre><code>from collections import defaultdict, Counter
-# Group by canonical signature
-groups = defaultdict(list)
-for w in words:
-    key = tuple(sorted(w))        # or 26-tuple of counts: O(k) vs O(k log k)
-    groups[key].append(w)
+<h2>🐢 Brute force vs optimal</h2>
+<p>Simulating all $n$ shifts takes $O(n^2)$. String containment check in <code>s + s</code> runs in $O(n)$ time with KMP.</p>
 
-# Expand from center (palindromes)
-def expand(s, l, r):
-    while l &gt;= 0 and r &lt; len(s) and s[l] == s[r]:
-        l -= 1; r += 1
-    return s[l+1:r]               # overshoot by one on both sides
-# try (i, i) and (i, i+1) for every center: odd + even lengths</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<div class="insight">💡 <strong>Key insight:</strong> Return <code>len(s) == len(goal) and goal in (s + s)</code>. Every valid cyclic shift is a substring of the doubled string.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def rotateString(s: str, goal: str) -> bool:
+    """
+    Checks if goal is a rotation of s in O(n) time.
+    """
+    return len(s) == len(goal) and goal in (s + s)
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n)$ — Substring search in string of length $2n$.<br>
+<strong>Space:</strong> $O(n)$ — Concatenated string <code>s + s</code>.</p>
+
 
 <div class="pager"><a href="../problems/0448-lc791-custom-sort-string.html"><span class="lbl">← Previous</span>#791 Custom Sort String</a><a href="../problems/0450-lc3008-find-beautiful-indices-in-the-given-array-ii.html" style="text-align:right"><span class="lbl">Next →</span>#3008 Find Beautiful Indices in the Given Array II</a></div>
 </div>

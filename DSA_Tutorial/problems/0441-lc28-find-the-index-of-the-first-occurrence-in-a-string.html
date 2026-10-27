@@ -23,34 +23,67 @@
  › Subpattern 13.6: String Matching / Naive / KMP / Rabin-Karp · Problem 441 of 699</p>
 
 <h2>📋 The problem</h2><p>Return the index of the first occurrence of a needle string inside a haystack string, or -1 if absent.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given two strings <code>needle</code> and <code>haystack</code>, return the index of the first occurrence of <code>needle</code> in <code>haystack</code>, or <code>-1</code> if <code>needle</code> is not part of <code>haystack</code>.</p>
 
-<h2>Where this fits</h2>
-<p><strong>String Matching / Naive / KMP / Rabin-Karp</strong> — Naive O(nm) substring search; KMP and Rabin-Karp give O(n+m) and O(n) average.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Naive windows fine here, or KMP for the O(n+m) answer.</div>
-<h2>Why this pattern?</h2><ul><li>"anagram", "permutation of", "rearrange"</li><li>"group the strings that…" → canonical key + dict</li><li>palindromes (two pointers or expand-from-center)</li><li>parse/normalize (spaces, signs, overflow) — careful state machines</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the String Manipulation master template and adapt the marked parts to this problem:</p><pre><code>from collections import defaultdict, Counter
-# Group by canonical signature
-groups = defaultdict(list)
-for w in words:
-    key = tuple(sorted(w))        # or 26-tuple of counts: O(k) vs O(k log k)
-    groups[key].append(w)
+<p>The standard benchmark algorithm for string searching is the <strong>Knuth-Morris-Pratt (KMP) Algorithm</strong>.
+Instead of resetting the search pointer all the way back upon a mismatch ($O(n \times m)$ worst case), KMP utilizes a precomputed <strong>LPS (Longest Proper Prefix which is also Suffix)</strong> table of the needle to skip redundant character comparisons!</p>
 
-# Expand from center (palindromes)
-def expand(s, l, r):
-    while l &gt;= 0 and r &lt; len(s) and s[l] == s[r]:
-        l -= 1; r += 1
-    return s[l+1:r]               # overshoot by one on both sides
-# try (i, i) and (i, i+1) for every center: odd + even lengths</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<p><strong>LPS Array Construction:</strong>
+<code>lps[i]</code> stores the length of the longest proper prefix of <code>needle[0..i]</code> that is also a suffix of <code>needle[0..i]</code>.
+When a mismatch occurs at <code>needle[j]</code> against <code>haystack[i]</code>, we don't back up <code>i</code>; we simply update <code>j = lps[j - 1]</code> and continue!</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Naive sliding window takes $O((n - m + 1) \times m)$ time. KMP guarantees strict $O(n + m)$ linear time with $O(m)$ space.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> KMP failure function: precompute <code>lps</code> array in $O(m)$. On mismatch at <code>needle[j]</code>, roll back <code>j = lps[j - 1]</code> without ever rewinding pointer <code>i</code> in haystack!</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def strStr(haystack: str, needle: str) -> int:
+    if not needle:
+        return 0
+    m, n = len(needle), len(haystack)
+    if m > n:
+        return -1
+        
+    # 1. Build KMP LPS array
+    lps = [0] * m
+    prev_lps = 0
+    i = 1
+    while i < m:
+        if needle[i] == needle[prev_lps]:
+            prev_lps += 1
+            lps[i] = prev_lps
+            i += 1
+        elif prev_lps > 0:
+            prev_lps = lps[prev_lps - 1]
+        else:
+            lps[i] = 0
+            i += 1
+            
+    # 2. Search needle in haystack
+    i = 0 # pointer for haystack
+    j = 0 # pointer for needle
+    while i < n:
+        if haystack[i] == needle[j]:
+            i += 1
+            j += 1
+            if j == m:
+                return i - m # Match found!
+        elif j > 0:
+            j = lps[j - 1]
+        else:
+            i += 1
+            
+    return -1
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n + m)$ — $O(m)$ for LPS preprocessing, $O(n)$ for search pass.<br>
+<strong>Space:</strong> $O(m)$ — LPS array for needle of length $m$.</p>
+
 
 <div class="pager"><a href="../problems/0440-lc14-longest-common-prefix.html"><span class="lbl">← Previous</span>#14 Longest Common Prefix</a><a href="../problems/0442-lc38-count-and-say.html" style="text-align:right"><span class="lbl">Next →</span>#38 Count and Say</a></div>
 </div>

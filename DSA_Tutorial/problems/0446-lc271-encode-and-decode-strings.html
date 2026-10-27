@@ -23,34 +23,53 @@
  › Subpattern 13.6: String Matching / Naive / KMP / Rabin-Karp · Problem 446 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0475-lc271-encode-and-decode-strings.html">Design</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Design encode/decode so any list of strings becomes one string and back, safely handling any characters.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Design an algorithm to encode a list of strings to a string. The encoded string is then sent over the network and decoded back to the original list of strings.</p>
 
-<h2>Where this fits</h2>
-<p><strong>String Matching / Naive / KMP / Rabin-Karp</strong> — Naive O(nm) substring search; KMP and Rabin-Karp give O(n+m) and O(n) average.</p>
+<p>Why can't we just use a delimiter like <code>','</code> or <code>'#'</code>?
+Because any arbitrary delimiter character can appear <em>inside</em> the strings themselves (e.g. <code>["hello#world", "foo,bar"]</code>)!</p>
 
-<h2>Why this pattern?</h2><ul><li>"anagram", "permutation of", "rearrange"</li><li>"group the strings that…" → canonical key + dict</li><li>palindromes (two pointers or expand-from-center)</li><li>parse/normalize (spaces, signs, overflow) — careful state machines</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the String Manipulation master template and adapt the marked parts to this problem:</p><pre><code>from collections import defaultdict, Counter
-# Group by canonical signature
-groups = defaultdict(list)
-for w in words:
-    key = tuple(sorted(w))        # or 26-tuple of counts: O(k) vs O(k log k)
-    groups[key].append(w)
+<p><strong>The Length-Prefixed Protocol (Chunking):</strong>
+Prefix each word with its length, followed by a separator: <code>f"{len(word)}#{word}"</code>.
+When decoding:
+1. Read digits until encountering <code>'#'</code> to get integer $L$.
+2. The next $L$ characters are guaranteed to be the exact content of the original string, regardless of what characters appear inside!
+3. Advance pointer past $L$ and repeat.</p>
 
-# Expand from center (palindromes)
-def expand(s, l, r):
-    while l &gt;= 0 and r &lt; len(s) and s[l] == s[r]:
-        l -= 1; r += 1
-    return s[l+1:r]               # overshoot by one on both sides
-# try (i, i) and (i, i+1) for every center: odd + even lengths</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h2>🐢 Brute force vs optimal</h2>
+<p>Escaping delimiters requires parsing escape sequences. Length-prefix chunking is stateless, foolproof, and executes in $O(N)$ linear time.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Length-prefixed framing: encode each string as <code>f"{len(s)}#{s}"</code>. Decode reads length until <code>'#'</code>, then slices exactly $L$ bytes.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">class Codec:
+    def encode(self, strs: list[str]) -> str:
+        """Encodes a list of strings to a single string."""
+        res = []
+        for s in strs:
+            res.append(f"{len(s)}#{s}")
+        return "".join(res)
+
+    def decode(self, s: str) -> list[str]:
+        """Decodes a single string to a list of strings."""
+        res = []
+        i = 0
+        while i < len(s):
+            # Find delimiter '#'
+            j = s.find('#', i)
+            length = int(s[i:j])
+            word = s[j + 1 : j + 1 + length]
+            res.append(word)
+            i = j + 1 + length
+        return res
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(N)$ — Single pass encode and decode where $N$ is total character count.<br>
+<strong>Space:</strong> $O(N)$ — Single contiguous string wire format.</p>
+
 
 <div class="pager"><a href="../problems/0445-lc214-shortest-palindrome.html"><span class="lbl">← Previous</span>#214 Shortest Palindrome</a><a href="../problems/0447-lc686-repeated-string-match.html" style="text-align:right"><span class="lbl">Next →</span>#686 Repeated String Match</a></div>
 </div>

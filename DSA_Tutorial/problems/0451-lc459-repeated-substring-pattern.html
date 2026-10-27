@@ -23,34 +23,37 @@
  › Subpattern 13.7: Repeated Substring Pattern Detection · Problem 451 of 699</p>
 
 <h2>📋 The problem</h2><p>Decide whether a string equals some substring of itself repeated multiple times.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given a string <code>s</code>, check if it can be constructed by taking a substring of it and appending one or more copies of the substring together.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Repeated Substring Pattern Detection</strong> — Use KMP failure function or string concatenation tricks to detect periodic patterns.</p>
+<p><strong>Approach 1: The Doubled String Theorem:</strong>
+If a string $s$ is composed of repeated sub-patterns, then shifting $s$ cyclically will produce $s$ again!
+Therefore, $s$ is periodic if and only if $s$ appears as a substring inside $(s + s)[1:-1]$ (stripping the first and last character so we don't match the original copies at indices $0$ and $n$).</p>
 
-<h2>Why this pattern?</h2><ul><li>"anagram", "permutation of", "rearrange"</li><li>"group the strings that…" → canonical key + dict</li><li>palindromes (two pointers or expand-from-center)</li><li>parse/normalize (spaces, signs, overflow) — careful state machines</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the String Manipulation master template and adapt the marked parts to this problem:</p><pre><code>from collections import defaultdict, Counter
-# Group by canonical signature
-groups = defaultdict(list)
-for w in words:
-    key = tuple(sorted(w))        # or 26-tuple of counts: O(k) vs O(k log k)
-    groups[key].append(w)
+<p><strong>Approach 2: KMP LPS Property:</strong>
+Let $L = lps[-1]$ be the longest prefix that is also a suffix of $s$.
+The remaining characters $P = n - L$ represent the length of the candidate repeating unit!
+If $L > 0$ and $n \pmod{n - L} == 0$, then $s$ is periodically constructed from the prefix of length $n - L$!</p>
 
-# Expand from center (palindromes)
-def expand(s, l, r):
-    while l &gt;= 0 and r &lt; len(s) and s[l] == s[r]:
-        l -= 1; r += 1
-    return s[l+1:r]               # overshoot by one on both sides
-# try (i, i) and (i, i+1) for every center: odd + even lengths</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h2>🐢 Brute force vs optimal</h2>
+<p>Both the Doubled String trick <code>s in (s + s)[1:-1]</code> and KMP LPS check run in $O(n)$ time.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> KMP LPS: let $L = lps[-1]$. If $L > 0$ and $n \% (n - L) == 0$, $s$ is periodic! Or simply return <code>s in (s + s)[1:-1]</code>.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def repeatedSubstringPattern(s: str) -> bool:
+    """
+    Checks if string is periodic in O(n) time.
+    """
+    return s in (s + s)[1:-1]
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n)$ — Linear substring search in string of length $2n - 2$.<br>
+<strong>Space:</strong> $O(n)$ — Sliced string buffer.</p>
+
 
 <div class="pager"><a href="../problems/0450-lc3008-find-beautiful-indices-in-the-given-array-ii.html"><span class="lbl">← Previous</span>#3008 Find Beautiful Indices in the Given Array II</a><a href="../patterns/p14-bit-manipulation.html" style="text-align:right"><span class="lbl">Next →</span>Bit Manipulation</a></div>
 </div>

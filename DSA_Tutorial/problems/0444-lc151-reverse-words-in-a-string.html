@@ -23,34 +23,34 @@
  › Subpattern 13.6: String Matching / Naive / KMP / Rabin-Karp · Problem 444 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0013-lc151-reverse-words-in-a-string.html">Two Pointer</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Reverse the order of words in a string, cleaning up any extra spaces.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given an input string <code>s</code>, reverse the order of the words. A word is defined as a sequence of non-space characters. The words in <code>s</code> will be separated by at least one space. Return a string of the words in reverse order concatenated by a single space.</p>
 
-<h2>Where this fits</h2>
-<p><strong>String Matching / Naive / KMP / Rabin-Karp</strong> — Naive O(nm) substring search; KMP and Rabin-Karp give O(n+m) and O(n) average.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>split() handles all whitespace; reverse the word list; join with single spaces.</div>
-<h2>Why this pattern?</h2><ul><li>"anagram", "permutation of", "rearrange"</li><li>"group the strings that…" → canonical key + dict</li><li>palindromes (two pointers or expand-from-center)</li><li>parse/normalize (spaces, signs, overflow) — careful state machines</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the String Manipulation master template and adapt the marked parts to this problem:</p><pre><code>from collections import defaultdict, Counter
-# Group by canonical signature
-groups = defaultdict(list)
-for w in words:
-    key = tuple(sorted(w))        # or 26-tuple of counts: O(k) vs O(k log k)
-    groups[key].append(w)
+<p>To solve in $O(1)$ auxiliary space (in mutable char arrays / C++ / Java):
+1. Reverse the entire string.
+2. Reverse each individual word in place.
+3. Clean up multiple consecutive spaces and trim edges.</p>
+<p>In Python: <code>" ".join(reversed(s.split()))</code> handles multi-spaces and edge whitespaces naturally.</p>
 
-# Expand from center (palindromes)
-def expand(s, l, r):
-    while l &gt;= 0 and r &lt; len(s) and s[l] == s[r]:
-        l -= 1; r += 1
-    return s[l+1:r]               # overshoot by one on both sides
-# try (i, i) and (i, i+1) for every center: odd + even lengths</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h2>🐢 Brute force vs optimal</h2>
+<p>Splitting on whitespace skips all multiple spaces and reverses words in $O(n)$ time.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> <code>s.split()</code> in Python automatically strips leading/trailing spaces and groups runs of spaces. Reverse the word list and join with a single space.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def reverseWords(s: str) -> str:
+    """
+    Reverses words in string, cleaning excess whitespace in O(n) time.
+    """
+    return " ".join(reversed(s.split()))
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n)$ — Single pass to split, reverse, and join.<br>
+<strong>Space:</strong> $O(n)$ — Words list buffer.</p>
+
 
 <div class="pager"><a href="../problems/0443-lc68-text-justification.html"><span class="lbl">← Previous</span>#68 Text Justification</a><a href="../problems/0445-lc214-shortest-palindrome.html" style="text-align:right"><span class="lbl">Next →</span>#214 Shortest Palindrome</a></div>
 </div>

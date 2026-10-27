@@ -23,34 +23,56 @@
  › Subpattern 13.5: Multiply Strings / Manual Simulation · Problem 437 of 699</p>
 
 <h2>📋 The problem</h2><p>Multiply two non-negative integers given as strings and return the product as a string, without big-integer libraries.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given two non-negative integers <code>num1</code> and <code>num2</code> represented as strings, return the product of <code>num1</code> and <code>num2</code>, also represented as a string. Note: You must not use any built-in BigInteger library or convert the inputs to integer directly.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Multiply Strings / Manual Simulation</strong> — Simulate grade-school multiplication digit-by-digit into an int array.</p>
+<p>Elementary school multiplication simulation!
+A number of length $m$ multiplied by a number of length $n$ will have at most $m + n$ digits (e.g. $99 \times 99 = 9801$, length 2 + 2 = 4).
+Let <code>res</code> be an array of size $m + n$ initialized to zeros.
+When multiplying digit $num1[i]$ and $num2[j]$:
+- The product <code>mul = int(num1[i]) * int(num2[j])</code> contributes to indices <code>p1 = i + j</code> and <code>p2 = i + j + 1</code>.
+- <code>total = mul + res[p2]</code>
+- <code>res[p2] = total % 10</code>
+- <code>res[p1] += total // 10</code></p>
 
-<h2>Why this pattern?</h2><ul><li>"anagram", "permutation of", "rearrange"</li><li>"group the strings that…" → canonical key + dict</li><li>palindromes (two pointers or expand-from-center)</li><li>parse/normalize (spaces, signs, overflow) — careful state machines</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the String Manipulation master template and adapt the marked parts to this problem:</p><pre><code>from collections import defaultdict, Counter
-# Group by canonical signature
-groups = defaultdict(list)
-for w in words:
-    key = tuple(sorted(w))        # or 26-tuple of counts: O(k) vs O(k log k)
-    groups[key].append(w)
+<h2>🐢 Brute force vs optimal</h2>
+<p>Simulating digit by digit in an array of size $m + n$ executes in $O(m \times n)$ time and $O(m + n)$ space without any library cheat.</p>
 
-# Expand from center (palindromes)
-def expand(s, l, r):
-    while l &gt;= 0 and r &lt; len(s) and s[l] == s[r]:
-        l -= 1; r += 1
-    return s[l+1:r]               # overshoot by one on both sides
-# try (i, i) and (i, i+1) for every center: odd + even lengths</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<div class="insight">💡 <strong>Key insight:</strong> The product of digit at index $i$ and index $j$ lands at indices $i + j$ (carry) and $i + j + 1$ (digit) in the output array.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def multiply(num1: str, num2: str) -> str:
+    if num1 == "0" or num2 == "0":
+        return "0"
+        
+    m, n = len(num1), len(num2)
+    res = [0] * (m + n)
+    
+    for i in range(m - 1, -1, -1):
+        d1 = ord(num1[i]) - ord('0')
+        for j in range(n - 1, -1, -1):
+            d2 = ord(num2[j]) - ord('0')
+            mul = d1 * d2
+            p1, p2 = i + j, i + j + 1
+            
+            total = mul + res[p2]
+            res[p2] = total % 10
+            res[p1] += total // 10
+            
+    # Skip leading zeros
+    start = 0
+    while start < len(res) and res[start] == 0:
+        start += 1
+        
+    return "".join(map(str, res[start:]))
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(m \times n)$ — Each digit pair multiplied once.<br>
+<strong>Space:</strong> $O(m + n)$ — Digits array of size $m + n$.</p>
+
 
 <div class="pager"><a href="../problems/0436-lc12-integer-to-roman.html"><span class="lbl">← Previous</span>#12 Integer to Roman</a><a href="../problems/0438-lc273-integer-to-english-words.html" style="text-align:right"><span class="lbl">Next →</span>#273 Integer to English Words</a></div>
 </div>

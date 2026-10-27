@@ -23,34 +23,38 @@
  › Subpattern 13.6: String Matching / Naive / KMP / Rabin-Karp · Problem 440 of 699</p>
 
 <h2>📋 The problem</h2><p>Given an array of strings, return the longest prefix shared by all of them (empty string if none).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Write a function to find the longest common prefix string amongst an array of strings. If there is no common prefix, return an empty string <code>""</code>.</p>
 
-<h2>Where this fits</h2>
-<p><strong>String Matching / Naive / KMP / Rabin-Karp</strong> — Naive O(nm) substring search; KMP and Rabin-Karp give O(n+m) and O(n) average.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Sort helps: only the first and last string can differ most — common prefix of those two.</div>
-<h2>Why this pattern?</h2><ul><li>"anagram", "permutation of", "rearrange"</li><li>"group the strings that…" → canonical key + dict</li><li>palindromes (two pointers or expand-from-center)</li><li>parse/normalize (spaces, signs, overflow) — careful state machines</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the String Manipulation master template and adapt the marked parts to this problem:</p><pre><code>from collections import defaultdict, Counter
-# Group by canonical signature
-groups = defaultdict(list)
-for w in words:
-    key = tuple(sorted(w))        # or 26-tuple of counts: O(k) vs O(k log k)
-    groups[key].append(w)
+<p><strong>Vertical Scanning:</strong>
+Look at index <code>i</code> across all strings simultaneously.
+If index <code>i</code> exceeds any string's length or <code>strs[j][i] != strs[0][i]</code>, the common prefix ends right before index <code>i</code>!</p>
 
-# Expand from center (palindromes)
-def expand(s, l, r):
-    while l &gt;= 0 and r &lt; len(s) and s[l] == s[r]:
-        l -= 1; r += 1
-    return s[l+1:r]               # overshoot by one on both sides
-# try (i, i) and (i, i+1) for every center: odd + even lengths</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h2>🐢 Brute force vs optimal</h2>
+<p>Vertical scanning stops at the earliest mismatch point. Worst-case time is $O(S)$ where $S$ is total characters across all strings; best case takes only $O(n \times 	ext{min\_len})$ operations.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Vertical scanning: check character at column $i$ for all strings. Stop at the very first mismatch or end-of-string.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def longestCommonPrefix(strs: list[str]) -> str:
+    if not strs:
+        return ""
+        
+    for i in range(len(strs[0])):
+        ch = strs[0][i]
+        for s in strs[1:]:
+            if i >= len(s) or s[i] != ch:
+                return strs[0][:i]
+                
+    return strs[0]
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(S)$ where $S$ is sum of all characters in all strings.<br>
+<strong>Space:</strong> $O(1)$ — No extra space allocated.</p>
+
 
 <div class="pager"><a href="../problems/0439-lc6-zigzag-conversion.html"><span class="lbl">← Previous</span>#6 Zigzag Conversion</a><a href="../problems/0441-lc28-find-the-index-of-the-first-occurrence-in-a-string.html" style="text-align:right"><span class="lbl">Next →</span>#28 Find the Index of the First Occurrence in a String</a></div>
 </div>
