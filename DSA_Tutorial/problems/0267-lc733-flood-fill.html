@@ -23,44 +23,77 @@
  › Subpattern 9.1: Graph DFS - Connected Components / Island Counting · Problem 267 of 699</p>
 
 <h2>📋 The problem</h2><p>Starting from a pixel, recolor its entire connected same-color region with a new color (paint-bucket fill).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>An image is represented by an <code>m x n</code> integer grid <code>image</code> where <code>image[i][j]</code> represents the pixel value. You are given <code>sr, sc</code> and <code>color</code>. Perform a flood fill on the image starting from pixel <code>image[sr][sc]</code>: change the color of the starting pixel and all 4-directionally connected pixels with the same initial color to <code>color</code>.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Graph DFS - Connected Components / Island Counting</strong> — DFS from each unvisited cell/node to count connected components or islands.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Flood fill = DFS/BFS recoloring from the start pixel (guard: new color == old color → no-op).</div>
-<h2>Why this pattern?</h2><ul><li>"islands", "connected", "regions", "provinces" → component DFS/BFS</li><li>"minimum steps / moves / days to reach" → BFS</li><li>"prerequisites", "build order", "course schedule" → topological sort</li><li>states-and-moves puzzles (word ladder, locks) → BFS over implicit graph</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Graph Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>from collections import deque, defaultdict
-# BFS shortest steps
-q, seen = deque([(start, 0)]), {start}
-while q:
-    node, d = q.popleft()
-    if node == goal: return d
-    for nb in neighbors(node):
-        if nb not in seen:
-            seen.add(nb)                 # mark on ENQUEUE
-            q.append((nb, d + 1))
+<h2>🐢 Brute force first</h2>
+<p>Standard BFS/DFS traversal. The critical trap is an <strong>infinite loop</strong> when the target <code>color</code> is already equal to the starting cell's color (<code>image[sr][sc] == color</code>)!</p>
 
-# Topological sort (Kahn's)
-indeg = defaultdict(int)
-for u in graph:
-    for v in graph[u]: indeg[v] += 1
-q = deque([u for u in graph if indeg[u] == 0])
-order = []
-while q:
-    u = q.popleft(); order.append(u)
-    for v in graph[u]:
-        indeg[v] -= 1
-        if indeg[v] == 0: q.append(v)
-# len(order) &lt; number of nodes  ⇒  cycle exists</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> If <code>image[sr][sc] == color</code>, return <code>image</code> immediately without any traversal! Otherwise, record <code>original_color = image[sr][sc]</code> and run DFS from <code>(sr, sc)</code>, replacing any neighboring cell with <code>original_color</code> with <code>color</code>.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Let <code>orig = image[sr][sc]</code>.</li>
+<li>If <code>orig == color</code>, return <code>image</code> immediately (prevents infinite recursion).</li>
+<li>Define <code>dfs(r, c)</code>:
+  <ul>
+    <li>If <code>r, c</code> out of bounds or <code>image[r][c] != orig</code>, return.</li>
+    <li>Change color: <code>image[r][c] = color</code>.</li>
+    <li>Recurse 4 directions: <code>(r+1, c), (r-1, c), (r, c+1), (r, c-1)</code>.</li>
+  </ul>
+</li>
+<li>Call <code>dfs(sr, sc)</code> and return <code>image</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — image = [[1,1,1],[1,1,0],[1,0,1]], sr=1, sc=1, color=2</h2>
+<pre class="viz">orig = image[1][1] = 1. color = 2.
+DFS starts at (1,1):
+  (1,1) -> 2
+  (0,1) -> 2, (0,0) -> 2, (0,2) -> 2
+  (1,0) -> 2, (2,0) -> 2
+  (2,2) remains 1 because it's separated by 0!
+Result:
+[[2, 2, 2],
+ [2, 2, 0],
+ [2, 0, 1]] ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def floodFill(image, sr, sc, color):
+    orig = image[sr][sc]
+    if orig == color:
+        return image
+        
+    m, n = len(image), len(image[0])
+    
+    def dfs(r, c):
+        if r < 0 or r >= m or c < 0 or c >= n or image[r][c] != orig:
+            return
+            
+        image[r][c] = color
+        dfs(r + 1, c)
+        dfs(r - 1, c)
+        dfs(r, c + 1)
+        dfs(r, c - 1)
+        
+    dfs(sr, sc)
+    return image</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(m * n)</strong>. <strong>Space O(m * n)</strong> call stack.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li><code>orig == color</code>: handled immediately by upfront check.</li>
+<li>1x1 image.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Number of Islands (<a href="0263-lc200-number-of-islands.html">#200</a>).</li>
+<li>Coloring A Border (#1034).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0266-lc695-max-area-of-island.html"><span class="lbl">← Previous</span>#695 Max Area of Island</a><a href="../problems/0268-lc841-keys-and-rooms.html" style="text-align:right"><span class="lbl">Next →</span>#841 Keys and Rooms</a></div>
 </div>

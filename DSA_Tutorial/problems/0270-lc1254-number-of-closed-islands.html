@@ -23,44 +23,74 @@
  › Subpattern 9.1: Graph DFS - Connected Components / Island Counting · Problem 270 of 699</p>
 
 <h2>📋 The problem</h2><p>Count the islands of 0s that never touch the grid border ('closed' islands).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given a 2D grid consists of <code>0</code>s (land) and <code>1</code>s (water). An island is a maximal 4-directionally connected group of <code>0</code>s and a <strong>closed island</strong> is totally surrounded by <code>1</code>s (i.e. does not touch the boundary of the grid). Return the number of closed islands.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Graph DFS - Connected Components / Island Counting</strong> — DFS from each unvisited cell/node to count connected components or islands.</p>
+<h2>🐢 Brute force first</h2>
+<p>Notice the inverted notation: <code>0</code> is land, <code>1</code> is water! Any land component that touches the boundary is not closed.</p>
 
-<h2>Why this pattern?</h2><ul><li>"islands", "connected", "regions", "provinces" → component DFS/BFS</li><li>"minimum steps / moves / days to reach" → BFS</li><li>"prerequisites", "build order", "course schedule" → topological sort</li><li>states-and-moves puzzles (word ladder, locks) → BFS over implicit graph</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Graph Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>from collections import deque, defaultdict
-# BFS shortest steps
-q, seen = deque([(start, 0)]), {start}
-while q:
-    node, d = q.popleft()
-    if node == goal: return d
-    for nb in neighbors(node):
-        if nb not in seen:
-            seen.add(nb)                 # mark on ENQUEUE
-            q.append((nb, d + 1))
+<div class="insight">💡 <strong>Key insight:</strong> First, eliminate all land (<code>0</code>s) connected to the grid boundary by running DFS from the 4 borders and turning them into water (<code>1</code>s). Then, standard island counting: any remaining <code>0</code> is guaranteed to be a closed island!</div>
 
-# Topological sort (Kahn's)
-indeg = defaultdict(int)
-for u in graph:
-    for v in graph[u]: indeg[v] += 1
-q = deque([u for u in graph if indeg[u] == 0])
-order = []
-while q:
-    u = q.popleft(); order.append(u)
-    for v in graph[u]:
-        indeg[v] -= 1
-        if indeg[v] == 0: q.append(v)
-# len(order) &lt; number of nodes  ⇒  cycle exists</code></pre>
-<h2>How to work on it now</h2>
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Iterate borders: if <code>grid[r][c] == 0</code>, run <code>dfs(r, c)</code> to turn into <code>1</code>.</li>
+<li>Now scan interior: if <code>grid[r][c] == 0</code>, <code>closed_islands += 1</code>, run <code>dfs(r, c)</code> to sink the island.</li>
+<li>Return <code>closed_islands</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run:</h2>
+<pre class="viz">1 1 1 1
+1 0 0 1  <-- Land 0s completely surrounded by 1s!
+1 0 0 1
+1 1 1 1
+Closed island count = 1! ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def closedIsland(grid):
+    m, n = len(grid), len(grid[0])
+    
+    def dfs(r, c):
+        if r < 0 or r >= m or c < 0 or c >= n or grid[r][c] == 1:
+            return
+        grid[r][c] = 1  # Turn land into water
+        dfs(r + 1, c)
+        dfs(r - 1, c)
+        dfs(r, c + 1)
+        dfs(r, c - 1)
+        
+    # Step 1: Sink boundary-connected land
+    for r in range(m):
+        for c in (0, n - 1):
+            if grid[r][c] == 0: dfs(r, c)
+    for c in range(n):
+        for r in (0, m - 1):
+            if grid[r][c] == 0: dfs(r, c)
+            
+    # Step 2: Count closed islands
+    closed = 0
+    for r in range(1, m - 1):
+        for c in range(1, n - 1):
+            if grid[r][c] == 0:
+                closed += 1
+                dfs(r, c)
+                
+    return closed</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(m * n)</strong>. <strong>Space O(m * n)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Grid of size &lt;= 2: no closed islands possible, returns 0.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Number of Islands (<a href="0263-lc200-number-of-islands.html">#200</a>).</li>
+<li>Number of Enclaves (<a href="0269-lc1020-number-of-enclaves.html">#1020</a>).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0269-lc1020-number-of-enclaves.html"><span class="lbl">← Previous</span>#1020 Number of Enclaves</a><a href="../problems/0271-lc1905-count-sub-islands.html" style="text-align:right"><span class="lbl">Next →</span>#1905 Count Sub Islands</a></div>
 </div>

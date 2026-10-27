@@ -23,44 +23,62 @@
  › Subpattern 9.1: Graph DFS - Connected Components / Island Counting · Problem 268 of 699</p>
 
 <h2>📋 The problem</h2><p>Rooms hold keys to other rooms; starting with room 0 unlocked, decide whether every room can be visited.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>There are <code>n</code> rooms labeled <code>0</code> to <code>n - 1</code>, and all the rooms are locked except for room <code>0</code>. Each room has a list of keys <code>rooms[i]</code> to other rooms. Return <code>true</code> if you can visit <strong>all</strong> the rooms, or <code>false</code> otherwise.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Graph DFS - Connected Components / Island Counting</strong> — DFS from each unvisited cell/node to count connected components or islands.</p>
+<h2>🐢 Brute force first</h2>
+<p>This is standard graph reachability starting from source node 0. Traverse all reachable nodes via BFS/DFS; check if <code>len(visited) == n</code>.</p>
 
-<h2>Why this pattern?</h2><ul><li>"islands", "connected", "regions", "provinces" → component DFS/BFS</li><li>"minimum steps / moves / days to reach" → BFS</li><li>"prerequisites", "build order", "course schedule" → topological sort</li><li>states-and-moves puzzles (word ladder, locks) → BFS over implicit graph</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Graph Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>from collections import deque, defaultdict
-# BFS shortest steps
-q, seen = deque([(start, 0)]), {start}
-while q:
-    node, d = q.popleft()
-    if node == goal: return d
-    for nb in neighbors(node):
-        if nb not in seen:
-            seen.add(nb)                 # mark on ENQUEUE
-            q.append((nb, d + 1))
+<div class="insight">💡 <strong>Key insight:</strong> Standard BFS/DFS traversal with a <code>visited</code> set starting at <code>0</code>. When traversal completes, if <code>len(visited) == len(rooms)</code>, all rooms were unlocked!</div>
 
-# Topological sort (Kahn's)
-indeg = defaultdict(int)
-for u in graph:
-    for v in graph[u]: indeg[v] += 1
-q = deque([u for u in graph if indeg[u] == 0])
-order = []
-while q:
-    u = q.popleft(); order.append(u)
-    for v in graph[u]:
-        indeg[v] -= 1
-        if indeg[v] == 0: q.append(v)
-# len(order) &lt; number of nodes  ⇒  cycle exists</code></pre>
-<h2>How to work on it now</h2>
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li><code>visited = {0}</code>, stack = <code>[0]</code>.</li>
+<li>While stack is not empty:
+  <ul>
+    <li>Pop <code>room = stack.pop()</code>.</li>
+    <li>For key in <code>rooms[room]</code>: if <code>key not in visited</code>: add to <code>visited</code>, push to stack.</li>
+  </ul>
+</li>
+<li>Return <code>len(visited) == len(rooms)</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — rooms = [[1],[2],[3],[]]</h2>
+<pre class="viz">Start at 0: visited = {0}, keys: [1]
+Visit 1: visited = {0, 1}, keys: [2]
+Visit 2: visited = {0, 1, 2}, keys: [3]
+Visit 3: visited = {0, 1, 2, 3}, keys: []
+len(visited) == 4 == len(rooms) -> True! ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def canVisitAllRooms(rooms):
+    visited = {0}
+    stack = [0]
+    
+    while stack:
+        room = stack.pop()
+        for key in rooms[room]:
+            if key not in visited:
+                visited.add(key)
+                stack.append(key)
+                
+    return len(visited) == len(rooms)</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(V + E)</strong> where <code>V = len(rooms)</code> and <code>E = total keys</code>. <strong>Space O(V)</strong> for visited set.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Cycles in keys (e.g. room 0 has key 1, room 1 has key 0): handled cleanly by <code>visited</code> set.</li>
+<li>Isolated room with no incoming keys: returns False.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Course Schedule (<a href="0278-lc207-course-schedule.html">#207</a>).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0267-lc733-flood-fill.html"><span class="lbl">← Previous</span>#733 Flood Fill</a><a href="../problems/0269-lc1020-number-of-enclaves.html" style="text-align:right"><span class="lbl">Next →</span>#1020 Number of Enclaves</a></div>
 </div>

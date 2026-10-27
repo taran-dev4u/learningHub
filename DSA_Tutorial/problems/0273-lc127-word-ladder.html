@@ -23,44 +23,107 @@
  › Subpattern 9.2: Graph BFS - Connected Components / Island Counting · Problem 273 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0647-lc127-word-ladder.html">Advanced Graph Algorithm</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Given start and end words and a dictionary, return the length of the shortest sequence of one-letter changes (each intermediate word must be in the dictionary).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>A transformation sequence from <code>beginWord</code> to <code>endWord</code> using a dictionary <code>wordList</code> is a sequence of words where every adjacent pair of words differs by exactly one letter, and every word in the sequence exists in <code>wordList</code>. Given <code>beginWord</code>, <code>endWord</code>, and <code>wordList</code>, return the <strong>number of words in the shortest transformation sequence</strong> from <code>beginWord</code> to <code>endWord</code>, or <code>0</code> if no such sequence exists.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Graph BFS - Connected Components / Island Counting</strong> — BFS variant of the above — preferred when you also need shortest path or you want to avoid recursion depth.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>BFS over words where neighbors differ by one letter; generate neighbors by mutating 26 letters per position.</div>
-<h2>Why this pattern?</h2><ul><li>"islands", "connected", "regions", "provinces" → component DFS/BFS</li><li>"minimum steps / moves / days to reach" → BFS</li><li>"prerequisites", "build order", "course schedule" → topological sort</li><li>states-and-moves puzzles (word ladder, locks) → BFS over implicit graph</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Graph Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>from collections import deque, defaultdict
-# BFS shortest steps
-q, seen = deque([(start, 0)]), {start}
-while q:
-    node, d = q.popleft()
-    if node == goal: return d
-    for nb in neighbors(node):
-        if nb not in seen:
-            seen.add(nb)                 # mark on ENQUEUE
-            q.append((nb, d + 1))
+<h2>🐢 Brute force first</h2>
+<p>Testing all pairs of words for 1-letter difference takes O(N^2 * L) to build an adjacency graph. When N = 5,000, N^2 = 25,000,000 operations.</p>
 
-# Topological sort (Kahn's)
-indeg = defaultdict(int)
-for u in graph:
-    for v in graph[u]: indeg[v] += 1
-q = deque([u for u in graph if indeg[u] == 0])
-order = []
-while q:
-    u = q.popleft(); order.append(u)
-    for v in graph[u]:
-        indeg[v] -= 1
-        if indeg[v] == 0: q.append(v)
-# len(order) &lt; number of nodes  ⇒  cycle exists</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> Treat each word as a graph node. An edge exists between words that differ by 1 letter. To find the shortest path, use BFS!
+Instead of comparing word-to-word (O(N)), generate all <code>26 * L</code> possible single-character mutations of the current word and check set membership in O(1)! Even faster: <strong>Bidirectional BFS</strong>, expanding from both <code>beginWord</code> and <code>endWord</code> simultaneously, reducing the search space from $b^d$ to $2 	imes b^{d/2}$!</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Convert <code>wordList</code> into a hash set for O(1) lookups. If <code>endWord not in wordList</code>, return 0.</li>
+<li>Initialize two sets: <code>begin_set = {beginWord}</code>, <code>end_set = {endWord}</code>.</li>
+<li><code>step = 1</code>.</li>
+<li>While <code>begin_set</code> and <code>end_set</code> are non-empty:
+  <ul>
+    <li>Always expand the <strong>smaller set</strong> to minimize branching factor: if <code>len(begin_set) > len(end_set)</code>, swap them.</li>
+    <li><code>next_set = set()</code>.</li>
+    <li>For each word in <code>begin_set</code>:</li>
+    <li>Try all 26 character substitutions at each of the <code>L</code> positions.</li>
+    <li>If mutated word is in <code>end_set</code>: return <code>step + 1</code> (search frontiers met!).</li>
+    <li>If mutated word in <code>word_set</code>: add to <code>next_set</code>, remove from <code>word_set</code> to prevent cycles.</li>
+    <li><code>begin_set = next_set; step += 1</code>.</li>
+  </ul>
+</li>
+<li>Return 0.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — beginWord = "hit", endWord = "cog", wordList = ["hot","dot","dog","lot","log","cog"]</h2>
+<pre class="viz">Step 1: begin_set = {"hit"}, end_set = {"cog"}
+  Expand "hit" -> "hot" (valid).
+  next_set = {"hot"}. step = 2.
+
+Step 2: begin_set = {"hot"} (len 1), end_set = {"cog"} (len 1).
+  Expand "hot" -> "dot", "lot".
+  next_set = {"dot", "lot"}. step = 3.
+
+Step 3: Swap so begin_set = {"cog"} (len 1), end_set = {"dot", "lot"} (len 2).
+  Expand "cog" -> "dog", "log".
+  next_set = {"dog", "log"}. step = 4.
+
+Step 4: Expand "dog" -> matches "dot" in end_set!
+Frontiers meet! Return step + 1 = 4 + 1 = 5 words!
+("hit" -> "hot" -> "dot" -> "dog" -> "cog") ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def ladderLength(beginWord, endWord, wordList):
+    word_set = set(wordList)
+    if endWord not in word_set:
+        return 0
+        
+    begin_set = {beginWord}
+    end_set = {endWord}
+    step = 1
+    L = len(beginWord)
+    
+    while begin_set and end_set:
+        # Always expand the smaller frontier
+        if len(begin_set) > len(end_set):
+            begin_set, end_set = end_set, begin_set
+            
+        next_set = set()
+        for word in begin_set:
+            word_chars = list(word)
+            for i in range(L):
+                orig_char = word_chars[i]
+                for c in 'abcdefghijklmnopqrstuvwxyz':
+                    if c == orig_char:
+                        continue
+                    word_chars[i] = c
+                    mutated = ''.join(word_chars)
+                    
+                    if mutated in end_set:
+                        return step + 1
+                    if mutated in word_set:
+                        next_set.add(mutated)
+                        word_set.remove(mutated)  # Mark visited
+                word_chars[i] = orig_char
+                
+        begin_set = next_set
+        step += 1
+        
+    return 0</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(M * N * 26)</strong> = O(M * N) where <code>M</code> is length of words and <code>N</code> is total words in dictionary. <strong>Space O(N)</strong> for word sets.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li><code>endWord</code> not in wordList: returns 0 immediately.</li>
+<li>No valid transformation path exists.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Word Ladder II (<a href="0646-lc126-word-ladder-ii.html">#126</a>) — return all shortest transformation sequences.</li>
+<li>Minimum Genetic Mutation (<a href="0648-lc433-minimum-genetic-mutation.html">#433</a>).</li>
+<li>Open the Lock (<a href="0324-lc752-open-the-lock.html">#752</a>).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0272-lc2101-detonate-the-maximum-bombs.html"><span class="lbl">← Previous</span>#2101 Detonate the Maximum Bombs</a><a href="../problems/0274-lc542-01-matrix.html" style="text-align:right"><span class="lbl">Next →</span>#542 01 Matrix</a></div>
 </div>

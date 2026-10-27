@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-27T01:44:10.044Z",
+  "generatedAt": "2026-10-27T01:48:38.564Z",
   "stats": {
     "domains": 7,
     "sections": 108,
@@ -50762,11 +50762,11 @@
       "resources": [
         {
           "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=compute+%2F+vms+aws+ec2+azure+virtual+machines+AWS+Azure+cloud+explained"
+          "url": "https://www.youtube.com/results?search_query=compute+%2F+vms+aws+AWS+Azure+cloud+explained"
         },
         {
           "title": "🔍G",
-          "url": "https://www.google.com/search?q=compute+%2F+vms+aws+ec2+azure+virtual+machines+AWS+Azure+cloud+tutorial"
+          "url": "https://www.google.com/search?q=compute+%2F+vms+aws+AWS+Azure+cloud+tutorial"
         }
       ],
       "search": "compute / vms: aws 'ec2' ↔ azure 'azure virtual machines' aws ec2 (nitro hypervisor architecture with dedicated hardware offload for vpc, ebs, and crypto) vs azure virtual machines (hyper-v / azure boost architecture with managed ephemeral os disks). both offer spot/burstable/compute-optimized instances; ec2 offers more granular instance families while azure provides tighter integration with windows server licensing (hybrid benefit). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.1"
@@ -50786,11 +50786,11 @@
       "resources": [
         {
           "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=auto+scaling+aws+auto+scaling+groups+azure+vm+scale+sets+AWS+Azure+cloud+explained"
+          "url": "https://www.youtube.com/results?search_query=auto+scaling+aws+AWS+Azure+cloud+explained"
         },
         {
           "title": "🔍G",
-          "url": "https://www.google.com/search?q=auto+scaling+aws+auto+scaling+groups+azure+vm+scale+sets+AWS+Azure+cloud+tutorial"
+          "url": "https://www.google.com/search?q=auto+scaling+aws+AWS+Azure+cloud+tutorial"
         }
       ],
       "search": "auto scaling: aws 'auto scaling groups' ↔ azure 'vm scale sets' aws auto scaling groups (launch templates, target tracking policies, predictive scaling based on ml, step scaling) vs azure virtual machine scale sets (vmss, flexible vs uniform orchestration modes, autoscale rules based on cpu/ram metrics). both support multi-az spreading and spot instance mix. cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.2"
@@ -50810,11 +50810,11 @@
       "resources": [
         {
           "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=containers+aws+ecs+%2F+eks+azure+aci+%2F+aks+AWS+Azure+cloud+explained"
+          "url": "https://www.youtube.com/results?search_query=containers+aws+AWS+Azure+cloud+explained"
         },
         {
           "title": "🔍G",
-          "url": "https://www.google.com/search?q=containers+aws+ecs+%2F+eks+azure+aci+%2F+aks+AWS+Azure+cloud+tutorial"
+          "url": "https://www.google.com/search?q=containers+aws+AWS+Azure+cloud+tutorial"
         }
       ],
       "search": "containers: aws 'ecs / eks' ↔ azure 'aci / aks' aws ecs (native aws container orchestrator with fargate serverless compute) & eks (upstream kubernetes with managed control plane) vs azure aci (azure container instances for fast serverless container execution) & aks (azure kubernetes service with free control plane tier and integrated azure cni networking). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.3"
@@ -50834,11 +50834,11 @@
       "resources": [
         {
           "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=container+registry+aws+ecr+azure+container+registry+AWS+Azure+cloud+explained"
+          "url": "https://www.youtube.com/results?search_query=container+registry+aws+AWS+Azure+cloud+explained"
         },
         {
           "title": "🔍G",
-          "url": "https://www.google.com/search?q=container+registry+aws+ecr+azure+container+registry+AWS+Azure+cloud+tutorial"
+          "url": "https://www.google.com/search?q=container+registry+aws+AWS+Azure+cloud+tutorial"
         }
       ],
       "search": "container registry: aws 'ecr' ↔ azure 'azure container registry' aws ecr (elastic container registry, immutable image tags, kms encryption, automated trivy vulnerability scanning, cross-region replication) vs azure container registry (acr, geo-replicated container registry, private endpoints, acr tasks for automated container builds on git commit). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.4"
@@ -50858,11 +50858,11 @@
       "resources": [
         {
           "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=serverless+aws+lambda+azure+functions+AWS+Azure+cloud+explained"
+          "url": "https://www.youtube.com/results?search_query=serverless+aws+AWS+Azure+cloud+explained"
         },
         {
           "title": "🔍G",
-          "url": "https://www.google.com/search?q=serverless+aws+lambda+azure+functions+AWS+Azure+cloud+tutorial"
+          "url": "https://www.google.com/search?q=serverless+aws+AWS+Azure+cloud+tutorial"
         }
       ],
       "search": "serverless: aws 'lambda' ↔ azure 'azure functions' aws lambda (firecracker microvm isolation, 15-minute execution limit, snapstart for instant java startup, event source mappings) vs azure functions (consumption plan, premium plan with pre-warmed instances, durable functions for stateful serverless workflows via orchestrator and entity functions). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.5"
@@ -50882,11 +50882,11 @@
       "resources": [
         {
           "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=object+storage+aws+s3+azure+blob+storage+AWS+Azure+cloud+explained"
+          "url": "https://www.youtube.com/results?search_query=object+storage+aws+AWS+Azure+cloud+explained"
         },
         {
           "title": "🔍G",
-          "url": "https://www.google.com/search?q=object+storage+aws+s3+azure+blob+storage+AWS+Azure+cloud+tutorial"
+          "url": "https://www.google.com/search?q=object+storage+aws+AWS+Azure+cloud+tutorial"
         }
       ],
       "search": "object storage: aws 's3' ↔ azure 'azure blob storage' aws s3 (11 9s durability, bucket policies, acls, s3 object lock, lifecycle rules, s3 intelligent-tiering) vs azure blob storage (block blobs for files, append blobs for logging, page blobs for vhd disks, hierarchical namespace for azure data lake storage gen2 analytics). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.6"
@@ -50906,11 +50906,11 @@
       "resources": [
         {
           "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=block+storage+aws+ebs+azure+managed+disks+AWS+Azure+cloud+explained"
+          "url": "https://www.youtube.com/results?search_query=block+storage+aws+AWS+Azure+cloud+explained"
         },
         {
           "title": "🔍G",
-          "url": "https://www.google.com/search?q=block+storage+aws+ebs+azure+managed+disks+AWS+Azure+cloud+tutorial"
+          "url": "https://www.google.com/search?q=block+storage+aws+AWS+Azure+cloud+tutorial"
         }
       ],
       "search": "block storage: aws 'ebs' ↔ azure 'azure managed disks' aws ebs (elastic block store: gp3 baseline 3000 iops/125mbps, io2 block express up to 256k iops/4000mbps) vs azure managed disks (standard hdd, standard ssd, premium ssd v2, and ultra disk up to 160k iops for mission-critical databases; supports shared disks for clustering). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.7"
@@ -50930,11 +50930,11 @@
       "resources": [
         {
           "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=file+storage+aws+efs+%2F+fsx+azure+files+AWS+Azure+cloud+explained"
+          "url": "https://www.youtube.com/results?search_query=file+storage+aws+AWS+Azure+cloud+explained"
         },
         {
           "title": "🔍G",
-          "url": "https://www.google.com/search?q=file+storage+aws+efs+%2F+fsx+azure+files+AWS+Azure+cloud+tutorial"
+          "url": "https://www.google.com/search?q=file+storage+aws+AWS+Azure+cloud+tutorial"
         }
       ],
       "search": "file storage: aws 'efs / fsx' ↔ azure 'azure files' aws efs (elastic file system, elastic posix nfsv4 shared across thousands of ec2 instances) & fsx (specialized for lustre, windows file server, netapp ontap) vs azure files (managed smb 3.0 and nfsv4.1 shares, azure file sync for caching cloud files on on-premises windows servers). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.8"
@@ -50954,11 +50954,11 @@
       "resources": [
         {
           "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=archive+aws+s3+glacier+azure+archive+storage+AWS+Azure+cloud+explained"
+          "url": "https://www.youtube.com/results?search_query=archive+aws+AWS+Azure+cloud+explained"
         },
         {
           "title": "🔍G",
-          "url": "https://www.google.com/search?q=archive+aws+s3+glacier+azure+archive+storage+AWS+Azure+cloud+tutorial"
+          "url": "https://www.google.com/search?q=archive+aws+AWS+Azure+cloud+tutorial"
         }
       ],
       "search": "archive: aws 's3 glacier' ↔ azure 'azure archive storage' aws s3 glacier flexible & deep archive (retrieval times from minutes in expedited to 12 hours in deep archive; lowest cost long-term cold storage) vs azure archive storage (offline blob tier with rehydration priority options: high priority 1-hour vs standard 15-hour rehydration). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.9"
@@ -50978,11 +50978,11 @@
       "resources": [
         {
           "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=managed+sql+db+aws+rds+%2F+aurora+azure+sql+%2F+AWS+Azure+cloud+explained"
+          "url": "https://www.youtube.com/results?search_query=managed+sql+db+aws+AWS+Azure+cloud+explained"
         },
         {
           "title": "🔍G",
-          "url": "https://www.google.com/search?q=managed+sql+db+aws+rds+%2F+aurora+azure+sql+%2F+AWS+Azure+cloud+tutorial"
+          "url": "https://www.google.com/search?q=managed+sql+db+aws+AWS+Azure+cloud+tutorial"
         }
       ],
       "search": "managed sql db: aws 'rds / aurora' ↔ azure 'azure sql / cosmos db sql' aws rds (managed postgres, mysql, mariadb, oracle, sql server) & aurora (cloud-native engine with decoupled storage, 6 copies across 3 azs, 15 read replicas) vs azure sql database (hyperscale architecture with decoupled storage up to 100tb) & azure database for postgresql flexible server. cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.10"
@@ -51002,11 +51002,11 @@
       "resources": [
         {
           "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=nosql+aws+dynamodb+azure+cosmos+db+AWS+Azure+cloud+explained"
+          "url": "https://www.youtube.com/results?search_query=nosql+aws+AWS+Azure+cloud+explained"
         },
         {
           "title": "🔍G",
-          "url": "https://www.google.com/search?q=nosql+aws+dynamodb+azure+cosmos+db+AWS+Azure+cloud+tutorial"
+          "url": "https://www.google.com/search?q=nosql+aws+AWS+Azure+cloud+tutorial"
         }
       ],
       "search": "nosql: aws 'dynamodb' ↔ azure 'cosmos db' aws dynamodb (fully managed distributed key-value/document store, single-digit ms latency, partition/sort key design, global tables for active-active multi-region) vs azure cosmos db (turnkey multi-region multi-master, 5 well-defined consistency levels, sla guarantees for latency and throughput). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.11"
@@ -51026,11 +51026,11 @@
       "resources": [
         {
           "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=cache+aws+elasticache+azure+cache+for+redis+AWS+Azure+cloud+explained"
+          "url": "https://www.youtube.com/results?search_query=cache+aws+AWS+Azure+cloud+explained"
         },
         {
           "title": "🔍G",
-          "url": "https://www.google.com/search?q=cache+aws+elasticache+azure+cache+for+redis+AWS+Azure+cloud+tutorial"
+          "url": "https://www.google.com/search?q=cache+aws+AWS+Azure+cloud+tutorial"
         }
       ],
       "search": "cache: aws 'elasticache' ↔ azure 'azure cache for redis' aws elasticache (managed redis oss / valkey and memcached, cluster mode enabled with automated failover and read replicas) vs azure cache for redis (basic/standard/premium tiers, enterprise tier powered by redis enterprise with active-active geo-replication and redis modules). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.12"
@@ -51050,11 +51050,11 @@
       "resources": [
         {
           "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=data+warehouse+aws+redshift+azure+synapse+analytics+AWS+Azure+cloud+explained"
+          "url": "https://www.youtube.com/results?search_query=data+warehouse+aws+AWS+Azure+cloud+explained"
         },
         {
           "title": "🔍G",
-          "url": "https://www.google.com/search?q=data+warehouse+aws+redshift+azure+synapse+analytics+AWS+Azure+cloud+tutorial"
+          "url": "https://www.google.com/search?q=data+warehouse+aws+AWS+Azure+cloud+tutorial"
         }
       ],
       "search": "data warehouse: aws 'redshift' ↔ azure 'azure synapse analytics' aws redshift (petabyte-scale columnar mpp data warehouse, ra3 nodes with decoupled compute and managed storage, redshift serverless) vs azure synapse analytics (formerly sql dw, dedicated sql pools with mpp architecture, serverless on-demand queries, integrated apache spark). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.13"
@@ -51074,11 +51074,11 @@
       "resources": [
         {
           "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=virtual+network+aws+vpc+azure+vnet+AWS+Azure+cloud+explained"
+          "url": "https://www.youtube.com/results?search_query=virtual+network+aws+AWS+Azure+cloud+explained"
         },
         {
           "title": "🔍G",
-          "url": "https://www.google.com/search?q=virtual+network+aws+vpc+azure+vnet+AWS+Azure+cloud+tutorial"
+          "url": "https://www.google.com/search?q=virtual+network+aws+AWS+Azure+cloud+tutorial"
         }
       ],
       "search": "virtual network: aws 'vpc' ↔ azure 'vnet' aws vpc (virtual private cloud: cidr blocks, public/private subnets, internet gateways, nat gateways, route tables, vpc peering) vs azure vnet (virtual network: vnet address spaces, subnets, network security groups / nsgs, vnet peering, virtual wan hub-and-spoke). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.14"
@@ -51098,11 +51098,11 @@
       "resources": [
         {
           "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=l4+load+balancer+aws+nlb+azure+load+balancer+AWS+Azure+cloud+explained"
+          "url": "https://www.youtube.com/results?search_query=l4+load+balancer+aws+AWS+Azure+cloud+explained"
         },
         {
           "title": "🔍G",
-          "url": "https://www.google.com/search?q=l4+load+balancer+aws+nlb+azure+load+balancer+AWS+Azure+cloud+tutorial"
+          "url": "https://www.google.com/search?q=l4+load+balancer+aws+AWS+Azure+cloud+tutorial"
         }
       ],
       "search": "l4 load balancer: aws 'nlb' ↔ azure 'azure load balancer' aws network load balancer (nlb: layer 4 high-throughput ultra-low latency, static elastic ips per az, preserves source ip, handles millions of tcp/udp connections) vs azure load balancer (layer 4 ultra-low latency load balancer, standard sku with zone redundancy and outbound snat rules). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.15"
@@ -51122,11 +51122,11 @@
       "resources": [
         {
           "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=l7+load+balancer+aws+alb+azure+application+gateway+AWS+Azure+cloud+explained"
+          "url": "https://www.youtube.com/results?search_query=l7+load+balancer+aws+AWS+Azure+cloud+explained"
         },
         {
           "title": "🔍G",
-          "url": "https://www.google.com/search?q=l7+load+balancer+aws+alb+azure+application+gateway+AWS+Azure+cloud+tutorial"
+          "url": "https://www.google.com/search?q=l7+load+balancer+aws+AWS+Azure+cloud+tutorial"
         }
       ],
       "search": "l7 load balancer: aws 'alb' ↔ azure 'application gateway' aws application load balancer (alb: layer 7 http/https/grpc routing, host/path/header rules, tls termination, integrated cognito authentication) vs azure application gateway (layer 7 adc with integrated web application firewall / waf v2, url-based routing, multi-site hosting, cookie affinity). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.16"
@@ -51146,11 +51146,11 @@
       "resources": [
         {
           "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=api+gateway+aws+api+gateway+azure+api+management+AWS+Azure+cloud+explained"
+          "url": "https://www.youtube.com/results?search_query=api+gateway+aws+AWS+Azure+cloud+explained"
         },
         {
           "title": "🔍G",
-          "url": "https://www.google.com/search?q=api+gateway+aws+api+gateway+azure+api+management+AWS+Azure+cloud+tutorial"
+          "url": "https://www.google.com/search?q=api+gateway+aws+AWS+Azure+cloud+tutorial"
         }
       ],
       "search": "api gateway: aws 'api gateway' ↔ azure 'azure api management' aws api gateway (managed rest, http, and websocket apis, api key management, usage plans, throttling, lambda authorizers) vs azure api management (apim: developer portal, policy engine via xml transforms, mock responses, multi-gateway deployment for hybrid on-premises). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.17"
@@ -51170,11 +51170,11 @@
       "resources": [
         {
           "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=cdn+aws+cloudfront+azure+cdn+%2F+front+door+AWS+Azure+cloud+explained"
+          "url": "https://www.youtube.com/results?search_query=cdn+aws+AWS+Azure+cloud+explained"
         },
         {
           "title": "🔍G",
-          "url": "https://www.google.com/search?q=cdn+aws+cloudfront+azure+cdn+%2F+front+door+AWS+Azure+cloud+tutorial"
+          "url": "https://www.google.com/search?q=cdn+aws+AWS+Azure+cloud+tutorial"
         }
       ],
       "search": "cdn: aws 'cloudfront' ↔ azure 'azure cdn / front door' aws cloudfront (global cdn edge network, tls 1.3, origin shield, lambda@edge and cloudfront functions for edge compute) vs azure front door & azure cdn (global anycast l7 network combining cdn, global load balancing, ssl offload, and waf at microsoft's global network edge). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.18"
@@ -51194,11 +51194,11 @@
       "resources": [
         {
           "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=dns+aws+route+53+azure+dns+AWS+Azure+cloud+explained"
+          "url": "https://www.youtube.com/results?search_query=dns+aws+AWS+Azure+cloud+explained"
         },
         {
           "title": "🔍G",
-          "url": "https://www.google.com/search?q=dns+aws+route+53+azure+dns+AWS+Azure+cloud+tutorial"
+          "url": "https://www.google.com/search?q=dns+aws+AWS+Azure+cloud+tutorial"
         }
       ],
       "search": "dns: aws 'route 53' ↔ azure 'azure dns' aws route 53 (highly available global authoritative dns, latency-based, weighted, geolocation, geoproximity, and failover routing with health checks) vs azure dns (hosted dns zones) & azure traffic manager (dns-based global traffic routing across endpoints). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.19"
@@ -51218,11 +51218,11 @@
       "resources": [
         {
           "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=identity+aws+iam+azure+entra+id+aad+AWS+Azure+cloud+explained"
+          "url": "https://www.youtube.com/results?search_query=identity+aws+AWS+Azure+cloud+explained"
         },
         {
           "title": "🔍G",
-          "url": "https://www.google.com/search?q=identity+aws+iam+azure+entra+id+aad+AWS+Azure+cloud+tutorial"
+          "url": "https://www.google.com/search?q=identity+aws+AWS+Azure+cloud+tutorial"
         }
       ],
       "search": "identity: aws 'iam' ↔ azure 'azure entra id (aad)' aws iam (identity and access management: users, user groups, assumable iam roles, json identity and resource-based policies, permission boundaries) vs azure entra id (formerly azure active directory: cloud identity provider, oauth2/oidc, conditional access policies, azure rbac roles). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.20"
@@ -51242,11 +51242,11 @@
       "resources": [
         {
           "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=secrets+aws+secrets+manager+azure+key+vault+AWS+Azure+cloud+explained"
+          "url": "https://www.youtube.com/results?search_query=secrets+aws+AWS+Azure+cloud+explained"
         },
         {
           "title": "🔍G",
-          "url": "https://www.google.com/search?q=secrets+aws+secrets+manager+azure+key+vault+AWS+Azure+cloud+tutorial"
+          "url": "https://www.google.com/search?q=secrets+aws+AWS+Azure+cloud+tutorial"
         }
       ],
       "search": "secrets: aws 'secrets manager' ↔ azure 'key vault' aws secrets manager (secure storage, fine-grained iam access, automated lifecycle rotation for rds/redshift passwords via lambda) vs azure key vault (fips 140-2 validated hsm-backed storage for cryptographic keys, secrets, and ssl/tls certificates with auto-renewal). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.21"
@@ -51266,11 +51266,11 @@
       "resources": [
         {
           "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=monitoring+%2F+metrics+aws+cloudwatch+azure+monitor+AWS+Azure+cloud+explained"
+          "url": "https://www.youtube.com/results?search_query=monitoring+%2F+metrics+aws+AWS+Azure+cloud+explained"
         },
         {
           "title": "🔍G",
-          "url": "https://www.google.com/search?q=monitoring+%2F+metrics+aws+cloudwatch+azure+monitor+AWS+Azure+cloud+tutorial"
+          "url": "https://www.google.com/search?q=monitoring+%2F+metrics+aws+AWS+Azure+cloud+tutorial"
         }
       ],
       "search": "monitoring / metrics: aws 'cloudwatch' ↔ azure 'azure monitor' aws cloudwatch (centralized operational telemetry: infrastructure metrics, custom metrics, high-resolution alarms, metric math, synthetic canaries) vs azure monitor (unified platform for collecting metrics, metric alerts, dynamic threshold anomaly detection, workbooks). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.22"
@@ -51290,11 +51290,11 @@
       "resources": [
         {
           "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=logging+aws+cloudwatch+logs+azure+log+analytics+AWS+Azure+cloud+explained"
+          "url": "https://www.youtube.com/results?search_query=logging+aws+AWS+Azure+cloud+explained"
         },
         {
           "title": "🔍G",
-          "url": "https://www.google.com/search?q=logging+aws+cloudwatch+logs+azure+log+analytics+AWS+Azure+cloud+tutorial"
+          "url": "https://www.google.com/search?q=logging+aws+AWS+Azure+cloud+tutorial"
         }
       ],
       "search": "logging: aws 'cloudwatch logs' ↔ azure 'log analytics' aws cloudwatch logs (log groups, log streams, metric filters, cloudwatch logs insights with sql-like syntax, subscription filters to kinesis/opensearch) vs azure log analytics (part of azure monitor, centralized log aggregation, powerful kusto query language / kql for analytics). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.23"
@@ -51314,11 +51314,11 @@
       "resources": [
         {
           "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=tracing+aws+x-ray+azure+application+insights+AWS+Azure+cloud+explained"
+          "url": "https://www.youtube.com/results?search_query=tracing+aws+AWS+Azure+cloud+explained"
         },
         {
           "title": "🔍G",
-          "url": "https://www.google.com/search?q=tracing+aws+x-ray+azure+application+insights+AWS+Azure+cloud+tutorial"
+          "url": "https://www.google.com/search?q=tracing+aws+AWS+Azure+cloud+tutorial"
         }
       ],
       "search": "tracing: aws 'x-ray' ↔ azure 'application insights' aws x-ray (distributed request tracing, x-ray daemon, trace segment propagation, service map visualization, latency bottleneck analysis) vs azure application insights (distributed tracing, live metrics stream, application map, smart detection for failure anomalies). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.24"
@@ -51338,11 +51338,11 @@
       "resources": [
         {
           "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=event+bus+aws+eventbridge+azure+event+grid+AWS+Azure+cloud+explained"
+          "url": "https://www.youtube.com/results?search_query=event+bus+aws+AWS+Azure+cloud+explained"
         },
         {
           "title": "🔍G",
-          "url": "https://www.google.com/search?q=event+bus+aws+eventbridge+azure+event+grid+AWS+Azure+cloud+tutorial"
+          "url": "https://www.google.com/search?q=event+bus+aws+AWS+Azure+cloud+tutorial"
         }
       ],
       "search": "event bus: aws 'eventbridge' ↔ azure 'event grid' aws eventbridge (serverless event bus routing json events between aws services, saas applications, and custom microservices with content filtering rules) vs azure event grid (event-driven routing engine using cloudevents standard, high-throughput reactive pub-sub delivery). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.25"
@@ -51362,11 +51362,11 @@
       "resources": [
         {
           "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=message+queue+aws+sqs+azure+service+bus+queues+AWS+Azure+cloud+explained"
+          "url": "https://www.youtube.com/results?search_query=message+queue+aws+AWS+Azure+cloud+explained"
         },
         {
           "title": "🔍G",
-          "url": "https://www.google.com/search?q=message+queue+aws+sqs+azure+service+bus+queues+AWS+Azure+cloud+tutorial"
+          "url": "https://www.google.com/search?q=message+queue+aws+AWS+Azure+cloud+tutorial"
         }
       ],
       "search": "message queue: aws 'sqs' ↔ azure 'service bus queues' aws sqs (simple queue service: standard queues with near-unlimited throughput and at-least-once delivery; fifo queues with strictly ordered exactly-once processing) vs azure service bus queues (enterprise messaging queue with ordered sessions, dead-lettering, duplicate detection, transactions). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.26"
@@ -51386,11 +51386,11 @@
       "resources": [
         {
           "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=pub-sub+aws+sns+azure+service+bus+topics+AWS+Azure+cloud+explained"
+          "url": "https://www.youtube.com/results?search_query=pub-sub+aws+AWS+Azure+cloud+explained"
         },
         {
           "title": "🔍G",
-          "url": "https://www.google.com/search?q=pub-sub+aws+sns+azure+service+bus+topics+AWS+Azure+cloud+tutorial"
+          "url": "https://www.google.com/search?q=pub-sub+aws+AWS+Azure+cloud+tutorial"
         }
       ],
       "search": "pub-sub: aws 'sns' ↔ azure 'service bus topics' aws sns (simple notification service: pub-sub topic fan-out pushing messages to thousands of sqs queues, http webhooks, lambda functions, mobile push, and sms) vs azure service bus topics (pub-sub topics with multiple subscriptions, each with individual sql filter rules and actions). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.27"
@@ -51410,11 +51410,11 @@
       "resources": [
         {
           "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=streaming+aws+kinesis+azure+event+hubs+AWS+Azure+cloud+explained"
+          "url": "https://www.youtube.com/results?search_query=streaming+aws+AWS+Azure+cloud+explained"
         },
         {
           "title": "🔍G",
-          "url": "https://www.google.com/search?q=streaming+aws+kinesis+azure+event+hubs+AWS+Azure+cloud+tutorial"
+          "url": "https://www.google.com/search?q=streaming+aws+AWS+Azure+cloud+tutorial"
         }
       ],
       "search": "streaming: aws 'kinesis' ↔ azure 'event hubs' aws kinesis data streams (real-time streaming ingestion partitioned into shards, 1mb/s write per shard, replayable retention up to 365 days, kcl consumer scaling) vs azure event hubs (real-time event ingestion partitioned for horizontal scale, event hubs capture to blob/data lake). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.28"
@@ -51434,11 +51434,11 @@
       "resources": [
         {
           "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=iac+aws+cloudformation+%2F+cdk+azure+arm+templates+%2F+bicep+AWS+Azure+cloud+explained"
+          "url": "https://www.youtube.com/results?search_query=iac+aws+AWS+Azure+cloud+explained"
         },
         {
           "title": "🔍G",
-          "url": "https://www.google.com/search?q=iac+aws+cloudformation+%2F+cdk+azure+arm+templates+%2F+bicep+AWS+Azure+cloud+tutorial"
+          "url": "https://www.google.com/search?q=iac+aws+AWS+Azure+cloud+tutorial"
         }
       ],
       "search": "iac: aws 'cloudformation / cdk' ↔ azure 'arm templates / bicep' aws cloudformation & aws cdk (declarative json/yaml templates or imperative typescript/python code synthesizing cloudformation stacks with drift detection) vs azure arm templates & bicep (azure resource manager declarative json or concise domain-specific bicep language). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.29"
@@ -51458,11 +51458,11 @@
       "resources": [
         {
           "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=email+aws+ses+azure+communication+services+AWS+Azure+cloud+explained"
+          "url": "https://www.youtube.com/results?search_query=email+aws+AWS+Azure+cloud+explained"
         },
         {
           "title": "🔍G",
-          "url": "https://www.google.com/search?q=email+aws+ses+azure+communication+services+AWS+Azure+cloud+tutorial"
+          "url": "https://www.google.com/search?q=email+aws+AWS+Azure+cloud+tutorial"
         }
       ],
       "search": "email: aws 'ses' ↔ azure 'azure communication services' aws ses (simple email service: cost-effective high-deliverability platform for transactional and marketing emails with dkim, spf, and dmarc verification) vs azure communication services (multi-channel communications platform providing email, sms, voice, and video sdks). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.30"

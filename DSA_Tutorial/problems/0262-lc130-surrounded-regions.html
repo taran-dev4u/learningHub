@@ -23,44 +23,89 @@
  › Subpattern 9.1: Graph DFS - Connected Components / Island Counting · Problem 262 of 699</p>
 
 <h2>📋 The problem</h2><p>In a grid of X and O, flip every O region that is completely surrounded by X (regions touching the border survive).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given an <code>m x n</code> matrix <code>board</code> containing <code>'X'</code> and <code>'O'</code>, capture all regions that are 4-directionally surrounded by <code>'X'</code>. A region is captured by flipping all <code>'O'</code>s into <code>'X'</code>s in that surrounded region.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Graph DFS - Connected Components / Island Counting</strong> — DFS from each unvisited cell/node to count connected components or islands.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Invert the problem: DFS from border O's marks the safe ones; flip everything unmarked.</div>
-<h2>Why this pattern?</h2><ul><li>"islands", "connected", "regions", "provinces" → component DFS/BFS</li><li>"minimum steps / moves / days to reach" → BFS</li><li>"prerequisites", "build order", "course schedule" → topological sort</li><li>states-and-moves puzzles (word ladder, locks) → BFS over implicit graph</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Graph Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>from collections import deque, defaultdict
-# BFS shortest steps
-q, seen = deque([(start, 0)]), {start}
-while q:
-    node, d = q.popleft()
-    if node == goal: return d
-    for nb in neighbors(node):
-        if nb not in seen:
-            seen.add(nb)                 # mark on ENQUEUE
-            q.append((nb, d + 1))
+<h2>🐢 Brute force first</h2>
+<p>Checking each 'O' to see if it can reach the boundary takes O((m*n)^2). Invert the perspective: which 'O's CANNOT be captured?</p>
 
-# Topological sort (Kahn's)
-indeg = defaultdict(int)
-for u in graph:
-    for v in graph[u]: indeg[v] += 1
-q = deque([u for u in graph if indeg[u] == 0])
-order = []
-while q:
-    u = q.popleft(); order.append(u)
-    for v in graph[u]:
-        indeg[v] -= 1
-        if indeg[v] == 0: q.append(v)
-# len(order) &lt; number of nodes  ⇒  cycle exists</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> Any <code>'O'</code> on the <strong>border</strong> (or connected to a border <code>'O'</code>) can NEVER be surrounded! Therefore, reverse the logic:
+1. Start DFS from all <code>'O'</code>s located on the 4 borders of the matrix. Mark them and all connected <code>'O'</code>s with a temporary marker (e.g. <code>'E'</code> for Escaped).
+2. Now, all remaining <code>'O'</code>s are completely surrounded! Flip them to <code>'X'</code>.
+3. Finally, restore the escaped <code>'E'</code> cells back to <code>'O'</code>.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Identify all boundary cells: first row, last row, first col, last col.</li>
+<li>For each boundary cell where <code>board[r][c] == 'O'</code>, run DFS to mark all connected <code>'O'</code>s as <code>'E'</code>.</li>
+<li>Iterate through the entire board:
+  <ul>
+    <li>If <code>board[r][c] == 'O'</code>: flip to <code>'X'</code> (it was truly surrounded).</li>
+    <li>If <code>board[r][c] == 'E'</code>: restore to <code>'O'</code> (it was connected to border).</li>
+  </ul>
+</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — board:</h2>
+<pre class="viz">X X X X       Phase 1 (Border DFS):     Phase 2 (Flip & Restore):
+X O O X  -->  (1,1) & (1,2) are not --> X X X X
+X X O X       connected to border.      X X X X
+X O X X       (3,1) is on border -> E   X X X X
+                                        X O X X ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def solve(board):
+    """
+    Do not return anything, modify board in-place instead.
+    """
+    if not board or not board[0]:
+        return
+        
+    m, n = len(board), len(board[0])
+    
+    def dfs(r, c):
+        if r < 0 or r >= m or c < 0 or c >= n or board[r][c] != 'O':
+            return
+        board[r][c] = 'E'  # Mark as escaped / border-connected
+        dfs(r + 1, c)
+        dfs(r - 1, c)
+        dfs(r, c + 1)
+        dfs(r, c - 1)
+        
+    # Step 1: Run DFS from all border 'O's
+    for r in range(m):
+        for c in (0, n - 1):
+            if board[r][c] == 'O':
+                dfs(r, c)
+    for c in range(n):
+        for r in (0, m - 1):
+            if board[r][c] == 'O':
+                dfs(r, c)
+                
+    # Step 2: Flip captured 'O' -> 'X', and restore 'E' -> 'O'
+    for r in range(m):
+        for c in range(n):
+            if board[r][c] == 'O':
+                board[r][c] = 'X'
+            elif board[r][c] == 'E':
+                board[r][c] = 'O'</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(m * n)</strong>. <strong>Space O(m * n)</strong> recursion stack.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Grid of size &lt;= 2: no inner cell can be surrounded; all cells are on the border.</li>
+<li>Board containing only 'X' or only 'O'.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Pacific Atlantic Water Flow (<a href="0264-lc417-pacific-atlantic-water-flow.html">#417</a>).</li>
+<li>Number of Enclaves (<a href="0269-lc1020-number-of-enclaves.html">#1020</a>).</li>
+</ul>
 
 <div class="pager"><a href="../patterns/p09-graph-traversal.html"><span class="lbl">← Previous</span>Graph Traversal (DFS &amp; BFS)</a><a href="../problems/0263-lc200-number-of-islands.html" style="text-align:right"><span class="lbl">Next →</span>#200 Number of Islands</a></div>
 </div>

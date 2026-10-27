@@ -23,44 +23,92 @@
  › Subpattern 9.2: Graph BFS - Connected Components / Island Counting · Problem 276 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0663-lc994-rotting-oranges.html">Multi-Source BFS</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Each minute rotten oranges rot their fresh 4-neighbors; return the minutes until no fresh orange remains (-1 if some never rot).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>You are given an <code>m x n</code> grid where <code>0</code> represents an empty cell, <code>1</code> represents a fresh orange, and <code>2</code> represents a rotten orange. Every minute, any fresh orange that is 4-directionally adjacent to a rotten orange becomes rotten. Return the minimum number of minutes that must elapse until no cell has a fresh orange. If this is impossible, return <code>-1</code>.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Graph BFS - Connected Components / Island Counting</strong> — BFS variant of the above — preferred when you also need shortest path or you want to avoid recursion depth.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Multi-source BFS from all rotten oranges at once; rounds = minutes; leftover fresh ⇒ −1.</div>
-<h2>Why this pattern?</h2><ul><li>"islands", "connected", "regions", "provinces" → component DFS/BFS</li><li>"minimum steps / moves / days to reach" → BFS</li><li>"prerequisites", "build order", "course schedule" → topological sort</li><li>states-and-moves puzzles (word ladder, locks) → BFS over implicit graph</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Graph Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>from collections import deque, defaultdict
-# BFS shortest steps
-q, seen = deque([(start, 0)]), {start}
-while q:
-    node, d = q.popleft()
-    if node == goal: return d
-    for nb in neighbors(node):
-        if nb not in seen:
-            seen.add(nb)                 # mark on ENQUEUE
-            q.append((nb, d + 1))
+<h2>🐢 Brute force first</h2>
+<p>Simulate minute-by-minute with full grid scans: O((m*n)^2). Multi-source BFS simulates simultaneous propagation in a single pass.</p>
 
-# Topological sort (Kahn's)
-indeg = defaultdict(int)
-for u in graph:
-    for v in graph[u]: indeg[v] += 1
-q = deque([u for u in graph if indeg[u] == 0])
-order = []
-while q:
-    u = q.popleft(); order.append(u)
-    for v in graph[u]:
-        indeg[v] -= 1
-        if indeg[v] == 0: q.append(v)
-# len(order) &lt; number of nodes  ⇒  cycle exists</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> All rotten oranges rot their neighbors <strong>simultaneously</strong>! This is the signature textbook problem for <strong>Multi-Source BFS</strong>.
+1. Add all initially rotten oranges <code>(r, c)</code> into a FIFO queue at time 0.
+2. Count initial <code>fresh</code> oranges.
+3. Pop level-by-level (by minutes): for each rotten orange, infect adjacent fresh oranges, decrement <code>fresh</code>, and append newly infected oranges to queue.
+4. When queue is empty, if <code>fresh == 0</code> return minutes; else return <code>-1</code> (some fresh oranges were unreachable).</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Initialize <code>queue = deque()</code> and <code>fresh = 0</code>.</li>
+<li>Scan grid: if cell == 2, <code>queue.append((r, c))</code>; if cell == 1, <code>fresh += 1</code>.</li>
+<li>If <code>fresh == 0</code>, return 0 immediately.</li>
+<li><code>minutes = 0</code>. While queue and fresh > 0:
+  <ul>
+    <li>For _ in range(len(queue)):</li>
+    <li>Pop <code>(r, c)</code>. For 4 neighbors: if in bounds and cell == 1: turn to 2, <code>fresh -= 1</code>, <code>queue.append((nr, nc))</code>.</li>
+    <li><code>minutes += 1</code>.</li>
+  </ul>
+</li>
+<li>Return <code>minutes</code> if <code>fresh == 0</code> else <code>-1</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — grid = [[2,1,1],[1,1,0],[0,1,1]]</h2>
+<pre class="viz">Initial: Queue = [(0,0)], fresh = 6.
+Minute 1: (0,0) rots (0,1) and (1,0). fresh = 4. Queue = [(0,1), (1,0)]
+Minute 2: (0,1) rots (0,2); (1,0) rots (1,1). fresh = 2. Queue = [(0,2), (1,1)]
+Minute 3: (1,1) rots (2,1). fresh = 1. Queue = [(2,1)]
+Minute 4: (2,1) rots (2,2). fresh = 0.
+fresh == 0! Return 4 minutes. ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>from collections import deque
+
+def orangesRotting(grid):
+    m, n = len(grid), len(grid[0])
+    queue = deque()
+    fresh = 0
+    
+    # 1. Enqueue all rotten oranges & count fresh ones
+    for r in range(m):
+        for c in range(n):
+            if grid[r][c] == 2:
+                queue.append((r, c))
+            elif grid[r][c] == 1:
+                fresh += 1
+                
+    if fresh == 0:
+        return 0
+        
+    minutes = 0
+    # 2. Multi-source BFS level-by-level
+    while queue and fresh > 0:
+        minutes += 1
+        for _ in range(len(queue)):
+            r, c = queue.popleft()
+            for dr, dc in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
+                nr, nc = r + dr, c + dc
+                if 0 <= nr < m and 0 <= nc < n and grid[nr][nc] == 1:
+                    grid[nr][nc] = 2
+                    fresh -= 1
+                    queue.append((nr, nc))
+                    
+    return minutes if fresh == 0 else -1</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(m * n)</strong> — Each cell is processed at most once. <strong>Space O(m * n)</strong> for the BFS queue.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>No fresh oranges at start: returns 0.</li>
+<li>Fresh orange isolated by empty cells: cannot be reached, returns -1.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>01 Matrix (<a href="0274-lc542-01-matrix.html">#542</a>).</li>
+<li>Shortest Path in Binary Matrix (<a href="0277-lc1091-shortest-path-in-binary-matrix.html">#1091</a>).</li>
+<li>Walls and Gates (<a href="0660-lc286-walls-and-gates.html">#286</a>).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0275-lc909-snakes-and-ladders.html"><span class="lbl">← Previous</span>#909 Snakes and Ladders</a><a href="../problems/0277-lc1091-shortest-path-in-binary-matrix.html" style="text-align:right"><span class="lbl">Next →</span>#1091 Shortest Path in Binary Matrix</a></div>
 </div>

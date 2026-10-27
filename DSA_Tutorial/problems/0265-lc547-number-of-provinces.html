@@ -23,44 +23,70 @@
  › Subpattern 9.1: Graph DFS - Connected Components / Island Counting · Problem 265 of 699</p>
 
 <h2>📋 The problem</h2><p>Given an adjacency matrix of friendships, count the friend circles (connected components).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>There are <code>n</code> cities. Some are connected, some are not. If city <code>a</code> is connected to <code>b</code>, and <code>b</code> is connected to <code>c</code>, then <code>a</code> is connected indirectly to <code>c</code>. A province is a group of directly or indirectly connected cities. Given an <code>n x n</code> adjacency matrix <code>isConnected</code> where <code>isConnected[i][j] = 1</code> if connected, return the total number of provinces.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Graph DFS - Connected Components / Island Counting</strong> — DFS from each unvisited cell/node to count connected components or islands.</p>
+<h2>🐢 Brute force first</h2>
+<p>Standard connected component counting on an undirected graph with <code>n</code> nodes. Can be solved with DFS, BFS, or Union-Find.</p>
 
-<h2>Why this pattern?</h2><ul><li>"islands", "connected", "regions", "provinces" → component DFS/BFS</li><li>"minimum steps / moves / days to reach" → BFS</li><li>"prerequisites", "build order", "course schedule" → topological sort</li><li>states-and-moves puzzles (word ladder, locks) → BFS over implicit graph</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Graph Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>from collections import deque, defaultdict
-# BFS shortest steps
-q, seen = deque([(start, 0)]), {start}
-while q:
-    node, d = q.popleft()
-    if node == goal: return d
-    for nb in neighbors(node):
-        if nb not in seen:
-            seen.add(nb)                 # mark on ENQUEUE
-            q.append((nb, d + 1))
+<div class="insight">💡 <strong>Key insight:</strong> Maintain a <code>visited</code> set. Loop through each city <code>i</code> from <code>0</code> to <code>n-1</code>: if <code>i</code> is not visited, we found a new province! Increment count, and run DFS from <code>i</code> to visit all cities connected to <code>i</code>.</div>
 
-# Topological sort (Kahn's)
-indeg = defaultdict(int)
-for u in graph:
-    for v in graph[u]: indeg[v] += 1
-q = deque([u for u in graph if indeg[u] == 0])
-order = []
-while q:
-    u = q.popleft(); order.append(u)
-    for v in graph[u]:
-        indeg[v] -= 1
-        if indeg[v] == 0: q.append(v)
-# len(order) &lt; number of nodes  ⇒  cycle exists</code></pre>
-<h2>How to work on it now</h2>
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Let <code>n = len(isConnected)</code>, <code>visited = set()</code>, <code>provinces = 0</code>.</li>
+<li>For city <code>i</code> in <code>0 .. n-1</code>:</li>
+<li>If <code>i not in visited</code>:
+  <ul>
+    <li><code>provinces += 1</code>.</li>
+    <li>Run <code>dfs(i)</code>: mark <code>i</code> visited; for each neighbor <code>j</code>, if <code>isConnected[i][j] == 1</code> and <code>j not in visited</code>, recurse <code>dfs(j)</code>.</li>
+  </ul>
+</li>
+<li>Return <code>provinces</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — isConnected = [[1,1,0],[1,1,0],[0,0,1]]</h2>
+<pre class="viz">City 0: unvisited -> provinces = 1.
+  DFS(0): visits 0, sees connection to 1 -> visits 1.
+City 1: already visited.
+City 2: unvisited -> provinces = 2.
+  DFS(2): visits 2.
+Total provinces = 2! ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def findCircleNum(isConnected):
+    n = len(isConnected)
+    visited = set()
+    provinces = 0
+    
+    def dfs(city):
+        visited.add(city)
+        for neighbor in range(n):
+            if isConnected[city][neighbor] == 1 and neighbor not in visited:
+                dfs(neighbor)
+                
+    for i in range(n):
+        if i not in visited:
+            provinces += 1
+            dfs(i)
+            
+    return provinces</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n^2)</strong> — Traverses the <code>n x n</code> adjacency matrix. <strong>Space O(n)</strong> for <code>visited</code> set and recursion stack.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>All cities disconnected (identity matrix): <code>n</code> provinces.</li>
+<li>All cities connected: 1 province.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Number of Connected Components in an Undirected Graph (<a href="0304-lc323-number-of-connected-components-in-an-undirected-graph.html">#323</a>).</li>
+<li>Redundant Connection (<a href="0306-lc684-redundant-connection.html">#684</a>) via Union-Find.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0264-lc417-pacific-atlantic-water-flow.html"><span class="lbl">← Previous</span>#417 Pacific Atlantic Water Flow</a><a href="../problems/0266-lc695-max-area-of-island.html" style="text-align:right"><span class="lbl">Next →</span>#695 Max Area of Island</a></div>
 </div>

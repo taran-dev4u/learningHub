@@ -23,44 +23,92 @@
  › Subpattern 9.1: Graph DFS - Connected Components / Island Counting · Problem 264 of 699</p>
 
 <h2>📋 The problem</h2><p>In a height grid, water flows to lower-or-equal neighbors; return cells from which water can reach both the top-left (Pacific) and bottom-right (Atlantic) borders.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>There is an <code>m x n</code> rectangular island bordered by the Pacific Ocean (top and left edges) and the Atlantic Ocean (bottom and right edges). Water flows from cell to neighbor if the neighbor's height is <strong>less than or equal</strong> to the current cell's height. Find all grid coordinates where rain water can flow to <strong>both</strong> the Pacific and Atlantic oceans.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Graph DFS - Connected Components / Island Counting</strong> — DFS from each unvisited cell/node to count connected components or islands.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Reverse-flow: DFS from each ocean's border inland (uphill); answer = cells reached by both.</div>
-<h2>Why this pattern?</h2><ul><li>"islands", "connected", "regions", "provinces" → component DFS/BFS</li><li>"minimum steps / moves / days to reach" → BFS</li><li>"prerequisites", "build order", "course schedule" → topological sort</li><li>states-and-moves puzzles (word ladder, locks) → BFS over implicit graph</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Graph Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>from collections import deque, defaultdict
-# BFS shortest steps
-q, seen = deque([(start, 0)]), {start}
-while q:
-    node, d = q.popleft()
-    if node == goal: return d
-    for nb in neighbors(node):
-        if nb not in seen:
-            seen.add(nb)                 # mark on ENQUEUE
-            q.append((nb, d + 1))
+<h2>🐢 Brute force first</h2>
+<p>Run DFS from every cell to see if it can reach both oceans: O((m*n)^2). Flowing downhill from every cell causes massive duplicate work.</p>
 
-# Topological sort (Kahn's)
-indeg = defaultdict(int)
-for u in graph:
-    for v in graph[u]: indeg[v] += 1
-q = deque([u for u in graph if indeg[u] == 0])
-order = []
-while q:
-    u = q.popleft(); order.append(u)
-    for v in graph[u]:
-        indeg[v] -= 1
-        if indeg[v] == 0: q.append(v)
-# len(order) &lt; number of nodes  ⇒  cycle exists</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> Reverse the flow! Instead of simulating water flowing downhill from every internal cell to the oceans, simulate water flowing <strong>uphill</strong> from the oceans into the island!
+1. Start BFS/DFS from all Pacific boundary cells moving to neighbors with <code>height >= current_height</code>. Mark reachable in <code>pacific</code> set.
+2. Start BFS/DFS from all Atlantic boundary cells moving uphill. Mark in <code>atlantic</code> set.
+3. The intersection <code>pacific & atlantic</code> is the exact set of coordinates that can reach both oceans!</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Create two boolean sets: <code>pacific = set()</code> and <code>atlantic = set()</code>.</li>
+<li>Helper <code>dfs(r, c, visited)</code>:
+  <ul>
+    <li>Add <code>(r, c)</code> to <code>visited</code>.</li>
+    <li>For 4 neighbors <code>(nr, nc)</code>: if in bounds, not in <code>visited</code>, and <code>heights[nr][nc] >= heights[r][c]</code> (uphill!), recurse <code>dfs(nr, nc, visited)</code>.</li>
+  </ul>
+</li>
+<li>Run DFS for all Pacific border cells: top row <code>r=0</code> and left col <code>c=0</code>.</li>
+<li>Run DFS for all Atlantic border cells: bottom row <code>r=m-1</code> and right col <code>c=n-1</code>.</li>
+<li>Return <code>list(pacific & atlantic)</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run:</h2>
+<pre class="viz">Pacific is top/left. Atlantic is bottom/right.
+Heights:
+[1, 2, 2, 3, 5]
+[3, 2, 3, 4, 4]
+[2, 4, 5, 3, 1]
+[6, 7, 1, 4, 5]
+[5, 1, 1, 2, 4]
+
+Cells reached by Pacific (flowing uphill from top & left).
+Cells reached by Atlantic (flowing uphill from bottom & right).
+Intersection: [[0,4],[1,3],[1,4],[2,2],[3,0],[3,1],[4,0]] ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def pacificAtlantic(heights):
+    if not heights or not heights[0]:
+        return []
+        
+    m, n = len(heights), len(heights[0])
+    pacific = set()
+    atlantic = set()
+    
+    def dfs(r, c, visited):
+        visited.add((r, c))
+        for dr, dc in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
+            nr, nc = r + dr, c + dc
+            if 0 <= nr < m and 0 <= nc < n and (nr, nc) not in visited:
+                # Water flows uphill: neighbor must be >= current cell
+                if heights[nr][nc] >= heights[r][c]:
+                    dfs(nr, nc, visited)
+                    
+    # Pacific border: row 0 and col 0
+    for r in range(m):
+        dfs(r, 0, pacific)
+    for c in range(n):
+        dfs(0, c, pacific)
+        
+    # Atlantic border: row m-1 and col n-1
+    for r in range(m):
+        dfs(r, n - 1, atlantic)
+    for c in range(n):
+        dfs(m - 1, c, atlantic)
+        
+    return [list(coord) for coord in (pacific & atlantic)]</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(m * n)</strong> — Each cell is visited at most twice per ocean. <strong>Space O(m * n)</strong> for the two visited sets.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>1x1 grid: cell touches both Pacific and Atlantic, returns <code>[[0, 0]]</code>.</li>
+<li>All cells equal height: every cell can reach both oceans.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Surrounded Regions (<a href="0262-lc130-surrounded-regions.html">#130</a>).</li>
+<li>Swim in Rising Water (<a href="0292-lc778-swim-in-rising-water.html">#778</a>).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0263-lc200-number-of-islands.html"><span class="lbl">← Previous</span>#200 Number of Islands</a><a href="../problems/0265-lc547-number-of-provinces.html" style="text-align:right"><span class="lbl">Next →</span>#547 Number of Provinces</a></div>
 </div>

@@ -23,44 +23,90 @@
  › Subpattern 9.3: Graph DFS - Cycle Detection (Directed Graph) · Problem 278 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0651-lc207-course-schedule.html">Advanced Graph Algorithm</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Given course prerequisite pairs, decide whether all courses can be finished (i.e., the prerequisite graph has no cycle).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>There are a total of <code>numCourses</code> courses you have to take, labeled from <code>0</code> to <code>numCourses - 1</code>. You are given an array <code>prerequisites</code> where <code>prerequisites[i] = [a_i, b_i]</code> indicates that you must take course <code>b_i</code> first if you want to take course <code>a_i</code>. Return <code>true</code> if you can finish all courses, or <code>false</code> otherwise.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Graph DFS - Cycle Detection (Directed Graph)</strong> — DFS with three colors (white/gray/black) detects back edges in directed graphs.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Cycle detection: Kahn's topological sort finishes all nodes iff no cycle.</div>
-<h2>Why this pattern?</h2><ul><li>"islands", "connected", "regions", "provinces" → component DFS/BFS</li><li>"minimum steps / moves / days to reach" → BFS</li><li>"prerequisites", "build order", "course schedule" → topological sort</li><li>states-and-moves puzzles (word ladder, locks) → BFS over implicit graph</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Graph Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>from collections import deque, defaultdict
-# BFS shortest steps
-q, seen = deque([(start, 0)]), {start}
-while q:
-    node, d = q.popleft()
-    if node == goal: return d
-    for nb in neighbors(node):
-        if nb not in seen:
-            seen.add(nb)                 # mark on ENQUEUE
-            q.append((nb, d + 1))
+<h2>🐢 Brute force first</h2>
+<p>Attempting all permutations of course orders is factorial O(n!).</p>
 
-# Topological sort (Kahn's)
-indeg = defaultdict(int)
-for u in graph:
-    for v in graph[u]: indeg[v] += 1
-q = deque([u for u in graph if indeg[u] == 0])
-order = []
-while q:
-    u = q.popleft(); order.append(u)
-    for v in graph[u]:
-        indeg[v] -= 1
-        if indeg[v] == 0: q.append(v)
-# len(order) &lt; number of nodes  ⇒  cycle exists</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> Can you complete all courses? Only if there is <strong>NO CYCLE in the directed prerequisite graph</strong>! A directed graph without cycles is a DAG (Directed Acyclic Graph). We can detect cycles using either:
+1. <strong>Kahn's Algorithm (BFS with In-degrees)</strong>: Count in-degrees (prerequisites needed). Courses with 0 in-degrees can be taken immediately. Decrement in-degrees of their dependent courses. If total taken courses == <code>numCourses</code>, no cycle exists!
+2. <strong>DFS 3-State Coloring</strong>: 0 = unvisited, 1 = visiting (in current recursion stack), 2 = visited. If a neighbor is in state 1, a back-edge (cycle) exists!</div>
+
+<h2>🪜 The approach, step by step (Kahn's Algorithm)</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Build adjacency list <code>graph = {i: []}</code> and compute <code>in_degree = [0] * numCourses</code>.</li>
+<li>For <code>dest, src in prerequisites</code>: <code>graph[src].append(dest)</code>, <code>in_degree[dest] += 1</code>.</li>
+<li>Add all courses with <code>in_degree[i] == 0</code> to a queue (courses with no prerequisites).</li>
+<li><code>taken = 0</code>.</li>
+<li>While queue:
+  <ul>
+    <li><code>course = queue.popleft()</code>; <code>taken += 1</code>.</li>
+    <li>For neighbor in <code>graph[course]</code>:
+      <ul>
+        <li><code>in_degree[neighbor] -= 1</code>.</li>
+        <li>If <code>in_degree[neighbor] == 0</code>: <code>queue.append(neighbor)</code>.</li>
+      </ul>
+    </li>
+  </ul>
+</li>
+<li>Return <code>taken == numCourses</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — prerequisites = [[1, 0], [0, 1]] (Cycle!)</h2>
+<pre class="viz">Edge 0 -> 1 (to take 1, need 0)
+Edge 1 -> 0 (to take 0, need 1)
+in_degrees: 0: 1, 1: 1
+Queue: empty! No course has in_degree == 0.
+Loop terminates immediately.
+taken = 0 != 2.
+Return False (Deadlock/Cycle detected!). ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>from collections import deque, defaultdict
+
+def canFinish(numCourses, prerequisites):
+    """
+    Kahn's Algorithm for Topological Sort / Cycle Detection.
+    """
+    graph = defaultdict(list)
+    in_degree = [0] * numCourses
+    
+    for dest, src in prerequisites:
+        graph[src].append(dest)
+        in_degree[dest] += 1
+        
+    queue = deque([i for i in range(numCourses) if in_degree[i] == 0])
+    taken = 0
+    
+    while queue:
+        course = queue.popleft()
+        taken += 1
+        
+        for neighbor in graph[course]:
+            in_degree[neighbor] -= 1
+            if in_degree[neighbor] == 0:
+                queue.append(neighbor)
+                
+    return taken == numCourses</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(V + E)</strong> where <code>V = numCourses</code> and <code>E = len(prerequisites)</code>. <strong>Space O(V + E)</strong> for graph and queue.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>No prerequisites: all courses have in-degree 0, returns True.</li>
+<li>Self-dependency <code>[0, 0]</code>: in-degree never reaches 0, returns False.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Course Schedule II (<a href="0279-lc210-course-schedule-ii.html">#210</a>) — return the topological ordering.</li>
+<li>Alien Dictionary (<a href="0282-lc269-alien-dictionary.html">#269</a>).</li>
+<li>Parallel Courses (<a href="0285-lc1136-parallel-courses.html">#1136</a>).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0277-lc1091-shortest-path-in-binary-matrix.html"><span class="lbl">← Previous</span>#1091 Shortest Path in Binary Matrix</a><a href="../problems/0279-lc210-course-schedule-ii.html" style="text-align:right"><span class="lbl">Next →</span>#210 Course Schedule II</a></div>
 </div>

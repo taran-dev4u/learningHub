@@ -23,44 +23,82 @@
  › Subpattern 9.5: Graph - Deep Copy / Cloning · Problem 290 of 699</p>
 
 <h2>📋 The problem</h2><p>Given a reference to a node in a connected undirected graph, return a deep copy of the whole graph.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given a reference of a node in a connected undirected graph, return a <strong>deep copy</strong> (clone) of the graph. Each node in the graph contains a value (<code>int</code>) and a list of its neighbors (<code>List[Node]</code>).</p>
 
-<h2>Where this fits</h2>
-<p><strong>Graph - Deep Copy / Cloning</strong> — DFS/BFS with a hashmap mapping old node → new node — copy nodes and links once each.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>BFS/DFS with a dict old-node → clone; create the clone on first sight, wire neighbors as you traverse.</div>
-<h2>Why this pattern?</h2><ul><li>"islands", "connected", "regions", "provinces" → component DFS/BFS</li><li>"minimum steps / moves / days to reach" → BFS</li><li>"prerequisites", "build order", "course schedule" → topological sort</li><li>states-and-moves puzzles (word ladder, locks) → BFS over implicit graph</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Graph Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>from collections import deque, defaultdict
-# BFS shortest steps
-q, seen = deque([(start, 0)]), {start}
-while q:
-    node, d = q.popleft()
-    if node == goal: return d
-    for nb in neighbors(node):
-        if nb not in seen:
-            seen.add(nb)                 # mark on ENQUEUE
-            q.append((nb, d + 1))
+<h2>🐢 Brute force first</h2>
+<p>Traversing without tracking visited clones causes an infinite loop because undirected graphs contain bidirectional cycles!</p>
 
-# Topological sort (Kahn's)
-indeg = defaultdict(int)
-for u in graph:
-    for v in graph[u]: indeg[v] += 1
-q = deque([u for u in graph if indeg[u] == 0])
-order = []
-while q:
-    u = q.popleft(); order.append(u)
-    for v in graph[u]:
-        indeg[v] -= 1
-        if indeg[v] == 0: q.append(v)
-# len(order) &lt; number of nodes  ⇒  cycle exists</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> Use a hash map <code>cloned = {original_node: new_cloned_node}</code>.
+When visiting <code>node</code>:
+1. If <code>node</code> is already in <code>cloned</code>, return <code>cloned[node]</code>.
+2. Create clone: <code>copy = Node(node.val)</code> and store in <code>cloned[node] = copy</code>.
+3. For each neighbor in <code>node.neighbors</code>: recursively clone it and append to <code>copy.neighbors</code>.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>If <code>node is None</code>, return <code>None</code>.</li>
+<li><code>cloned = {}</code>.</li>
+<li>Define <code>dfs(curr)</code>:
+  <ul>
+    <li>If <code>curr in cloned</code>, return <code>cloned[curr]</code>.</li>
+    <li><code>copy = Node(curr.val)</code>; <code>cloned[curr] = copy</code>.</li>
+    <li>For neighbor in <code>curr.neighbors</code>: <code>copy.neighbors.append(dfs(neighbor))</code>.</li>
+    <li>Return <code>copy</code>.</li>
+  </ul>
+</li>
+<li>Return <code>dfs(node)</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run:</h2>
+<pre class="viz">Graph: 1 -- 2
+       |    |
+       4 -- 3
+
+dfs(1): creates clone(1), cloned={1: c1}
+  neighbor 2 -> dfs(2): creates clone(2), cloned={1: c1, 2: c2}
+    neighbor 3 -> dfs(3): creates clone(3)
+      neighbor 4 -> dfs(4): creates clone(4)
+        neighbor 1 -> 1 in cloned! Returns c1 immediately without looping!
+Graph deep cloned successfully! ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def cloneGraph(node):
+    if not node:
+        return None
+        
+    cloned = {}
+    
+    def dfs(curr):
+        if curr in cloned:
+            return cloned[curr]
+            
+        copy = Node(curr.val)
+        cloned[curr] = copy
+        
+        for neighbor in curr.neighbors:
+            copy.neighbors.append(dfs(neighbor))
+            
+        return copy
+        
+    return dfs(node)</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(V + E)</strong> — Visits each node and edge once. <strong>Space O(V)</strong> for hash map and recursion stack.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li><code>node is None</code>: returns <code>None</code>.</li>
+<li>Single node with no neighbors: returns copy with empty neighbors list.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Copy List with Random Pointer (<a href="0075-lc138-copy-list-with-random-pointer.html">#138</a>).</li>
+<li>Clone Binary Tree with Random Pointer (#1485).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0289-lc2392-build-a-matrix-with-conditions.html"><span class="lbl">← Previous</span>#2392 Build a Matrix With Conditions</a><a href="../problems/0291-lc743-network-delay-time.html" style="text-align:right"><span class="lbl">Next →</span>#743 Network Delay Time</a></div>
 </div>

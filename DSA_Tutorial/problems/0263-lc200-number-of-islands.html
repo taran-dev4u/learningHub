@@ -23,44 +23,101 @@
  › Subpattern 9.1: Graph DFS - Connected Components / Island Counting · Problem 263 of 699</p>
 
 <h2>📋 The problem</h2><p>Count the islands in a grid of '1' (land) and '0' (water); land connects horizontally and vertically.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given an <code>m x n</code> 2D binary grid <code>grid</code> representing a map of <code>'1'</code>s (land) and <code>'0'</code>s (water), return the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Graph DFS - Connected Components / Island Counting</strong> — DFS from each unvisited cell/node to count connected components or islands.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Scan all cells; each unvisited land cell starts one DFS/BFS flood — count the starts.</div>
-<h2>Why this pattern?</h2><ul><li>"islands", "connected", "regions", "provinces" → component DFS/BFS</li><li>"minimum steps / moves / days to reach" → BFS</li><li>"prerequisites", "build order", "course schedule" → topological sort</li><li>states-and-moves puzzles (word ladder, locks) → BFS over implicit graph</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Graph Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>from collections import deque, defaultdict
-# BFS shortest steps
-q, seen = deque([(start, 0)]), {start}
-while q:
-    node, d = q.popleft()
-    if node == goal: return d
-    for nb in neighbors(node):
-        if nb not in seen:
-            seen.add(nb)                 # mark on ENQUEUE
-            q.append((nb, d + 1))
+<h2>🐢 Brute force first</h2>
+<p>Checking every pair of land cells for path connectivity via pairwise BFS takes O((m*n)^2). Suboptimal because connected components can be traversed in a single pass.</p>
 
-# Topological sort (Kahn's)
-indeg = defaultdict(int)
-for u in graph:
-    for v in graph[u]: indeg[v] += 1
-q = deque([u for u in graph if indeg[u] == 0])
-order = []
-while q:
-    u = q.popleft(); order.append(u)
-    for v in graph[u]:
-        indeg[v] -= 1
-        if indeg[v] == 0: q.append(v)
-# len(order) &lt; number of nodes  ⇒  cycle exists</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> Iterate over every cell in the grid. When you encounter an unvisited land cell <code>'1'</code>, you have discovered a <strong>new island</strong>! Increment the island count, then immediately launch a DFS or BFS traversal from that cell to visit and "sink" (or mark visited) the entire connected component of land. Every cell is visited at most a constant number of times.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Initialize <code>islands = 0</code>. Let <code>m = len(grid), n = len(grid[0])</code>.</li>
+<li>Iterate through row <code>r</code> from <code>0</code> to <code>m-1</code> and col <code>c</code> from <code>0</code> to <code>n-1</code>:</li>
+<li>If <code>grid[r][c] == '1'</code>:
+  <ul>
+    <li>Increment <code>islands += 1</code>.</li>
+    <li>Trigger <code>dfs(r, c)</code> to sink the island.</li>
+  </ul>
+</li>
+<li>In <code>dfs(r, c)</code>:
+  <ul>
+    <li>Base case: if out of bounds (<code>r < 0 or r >= m or c < 0 or c >= n</code>) or <code>grid[r][c] != '1'</code>, return.</li>
+    <li>Mark cell as visited: <code>grid[r][c] = '0'</code> (in-place modification avoids an extra visited set).</li>
+    <li>Recursively call <code>dfs</code> on 4 neighbors: <code>(r+1, c), (r-1, c), (r, c+1), (r, c-1)</code>.</li>
+  </ul>
+</li>
+<li>Return <code>islands</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — grid:</h2>
+<pre class="viz">1 1 0 0
+1 1 0 0
+0 0 1 0
+0 0 0 1
+
+1. At (0,0)='1': islands=1. DFS sinks (0,0), (0,1), (1,0), (1,1) to '0'.
+   Grid becomes:
+   0 0 0 0
+   0 0 0 0
+   0 0 1 0
+   0 0 0 1
+
+2. Scan advances to (2,2)='1': islands=2. DFS sinks (2,2) to '0'.
+3. Scan advances to (3,3)='1': islands=3. DFS sinks (3,3) to '0'.
+Total islands = 3! ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def numIslands(grid):
+    """
+    Connected components count via in-place DFS flood fill.
+    """
+    if not grid or not grid[0]:
+        return 0
+        
+    m, n = len(grid), len(grid[0])
+    islands = 0
+    
+    def dfs(r, c):
+        if r < 0 or r >= m or c < 0 or c >= n or grid[r][c] != '1':
+            return
+            
+        # Sink the land cell to mark as visited
+        grid[r][c] = '0'
+        
+        # Explore 4 orthogonal directions
+        dfs(r + 1, c)
+        dfs(r - 1, c)
+        dfs(r, c + 1)
+        dfs(r, c - 1)
+        
+    for r in range(m):
+        for c in range(n):
+            if grid[r][c] == '1':
+                islands += 1
+                dfs(r, c)
+                
+    return islands</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(m * n)</strong> — Every cell is visited at most twice (once by nested loops, once by DFS). <strong>Space O(m * n)</strong> in worst-case recursion stack (e.g., grid full of land).</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Grid containing only water: returns 0.</li>
+<li>Grid containing only land: returns 1 (sunk in first DFS).</li>
+<li>1x1 grid with '0' or '1'.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Max Area of Island (<a href="0266-lc695-max-area-of-island.html">#695</a>).</li>
+<li>Number of Closed Islands (<a href="0270-lc1254-number-of-closed-islands.html">#1254</a>).</li>
+<li>Surrounded Regions (<a href="0262-lc130-surrounded-regions.html">#130</a>).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0262-lc130-surrounded-regions.html"><span class="lbl">← Previous</span>#130 Surrounded Regions</a><a href="../problems/0264-lc417-pacific-atlantic-water-flow.html" style="text-align:right"><span class="lbl">Next →</span>#417 Pacific Atlantic Water Flow</a></div>
 </div>

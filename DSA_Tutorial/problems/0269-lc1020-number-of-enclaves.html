@@ -23,44 +23,71 @@
  › Subpattern 9.1: Graph DFS - Connected Components / Island Counting · Problem 269 of 699</p>
 
 <h2>📋 The problem</h2><p>Count the land cells that cannot walk off the grid boundary (flood from the border, count what's left).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>You are given an <code>m x n</code> binary matrix <code>grid</code>, where <code>0</code> represents a sea cell and <code>1</code> represents a land cell. A move consists of walking from one land cell to another adjacent land cell or walking off the boundary of the grid. Return the number of land cells in <code>grid</code> for which we <strong>cannot walk off the boundary</strong> of the grid in any number of moves.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Graph DFS - Connected Components / Island Counting</strong> — DFS from each unvisited cell/node to count connected components or islands.</p>
+<h2>🐢 Brute force first</h2>
+<p>Count how many 1s are strictly trapped inside surrounded components. Similar to LC 130 Surrounded Regions!</p>
 
-<h2>Why this pattern?</h2><ul><li>"islands", "connected", "regions", "provinces" → component DFS/BFS</li><li>"minimum steps / moves / days to reach" → BFS</li><li>"prerequisites", "build order", "course schedule" → topological sort</li><li>states-and-moves puzzles (word ladder, locks) → BFS over implicit graph</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Graph Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>from collections import deque, defaultdict
-# BFS shortest steps
-q, seen = deque([(start, 0)]), {start}
-while q:
-    node, d = q.popleft()
-    if node == goal: return d
-    for nb in neighbors(node):
-        if nb not in seen:
-            seen.add(nb)                 # mark on ENQUEUE
-            q.append((nb, d + 1))
+<div class="insight">💡 <strong>Key insight:</strong> Reverse thinking! Run DFS/BFS starting from all land cells on the <strong>boundary</strong> of the grid and sink them to <code>0</code> (or mark them as reached). Once all boundary-connected land is eliminated, count the remaining <code>1</code>s in the grid! Those remaining <code>1</code>s are the enclaves.</div>
 
-# Topological sort (Kahn's)
-indeg = defaultdict(int)
-for u in graph:
-    for v in graph[u]: indeg[v] += 1
-q = deque([u for u in graph if indeg[u] == 0])
-order = []
-while q:
-    u = q.popleft(); order.append(u)
-    for v in graph[u]:
-        indeg[v] -= 1
-        if indeg[v] == 0: q.append(v)
-# len(order) &lt; number of nodes  ⇒  cycle exists</code></pre>
-<h2>How to work on it now</h2>
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>For all cells on the 4 borders: if <code>grid[r][c] == 1</code>, run <code>dfs(r, c)</code> to sink all reachable land to <code>0</code>.</li>
+<li>Count remaining <code>1</code>s: <code>sum(row.count(1) for row in grid)</code>.</li>
+<li>Return the count.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — grid:</h2>
+<pre class="viz">0 0 0 0
+1 0 1 0
+0 1 1 0
+0 0 0 0
+
+Border land at (1,0) is sunk to 0.
+Inner land cells at (1,2), (2,1), (2,2) cannot reach border.
+Count remaining 1s = 3! ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def numEnclaves(grid):
+    m, n = len(grid), len(grid[0])
+    
+    def dfs(r, c):
+        if r < 0 or r >= m or c < 0 or c >= n or grid[r][c] == 0:
+            return
+        grid[r][c] = 0  # Sink boundary-connected land
+        dfs(r + 1, c)
+        dfs(r - 1, c)
+        dfs(r, c + 1)
+        dfs(r, c - 1)
+        
+    # Sink all boundary land
+    for r in range(m):
+        if grid[r][0] == 1: dfs(r, 0)
+        if grid[r][n - 1] == 1: dfs(r, n - 1)
+    for c in range(n):
+        if grid[0][c] == 1: dfs(0, c)
+        if grid[m - 1][c] == 1: dfs(m - 1, c)
+        
+    # Count remaining trapped enclaves
+    return sum(row.count(1) for row in grid)</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(m * n)</strong>. <strong>Space O(m * n)</strong> recursion stack.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>All land touches the boundary: returns 0.</li>
+<li>No land: returns 0.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Surrounded Regions (<a href="0262-lc130-surrounded-regions.html">#130</a>).</li>
+<li>Number of Closed Islands (<a href="0270-lc1254-number-of-closed-islands.html">#1254</a>).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0268-lc841-keys-and-rooms.html"><span class="lbl">← Previous</span>#841 Keys and Rooms</a><a href="../problems/0270-lc1254-number-of-closed-islands.html" style="text-align:right"><span class="lbl">Next →</span>#1254 Number of Closed Islands</a></div>
 </div>
