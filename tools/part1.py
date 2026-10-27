@@ -2,32 +2,32 @@
 # Curated System Design roadmap resources — part 1 (lessons 1-31).
 # Format: file.md -> {"videos": [[id, title, channel]], "docs": [[label, url]]}
 L1 = {
-"requirements-scope.md": {"videos": [], "docs": [
+"requirements-scope.md": {"videos": [["quLrc3PbuIw", "What is System Design and how is it useful?", "Gaurav Sen"]], "docs": [
   ["AlgoMaster — How to answer a system design question", "https://algomaster.io/learn/system-design-interviews/answering-framework"],
   ["Hello Interview — System design in a hurry: requirements", "https://www.hellointerview.com/learn/system-design/in-a-hurry/delivery"],
   ["System Design Primer — Step 1: outline use cases and constraints", "https://github.com/donnemartin/system-design-primer#step-1-outline-use-cases-constraints-and-assumptions"]]},
 
-"capacity-estimation.md": {"videos": [], "docs": [
+"capacity-estimation.md": {"videos": [["WZjSFNPS9Lo", "8. Back-Of-The-Envelope Estimation for System Design Interview | Capacity Planning of Facebook | HLD", "Concept && Coding - by Shrayansh"]], "docs": [
   ["Latency numbers every programmer should know", "https://gist.github.com/jboner/2841832"],
   ["Interactive latency numbers (by year)", "https://colin-scott.github.io/personal_website/research/interactive_latency.html"],
   ["System Design Primer — Back-of-the-envelope calculations", "https://github.com/donnemartin/system-design-primer#back-of-the-envelope-calculations"]]},
 
-"architecture-diagrams-communication.md": {"videos": [], "docs": [
+"architecture-diagrams-communication.md": {"videos": [["KvoBrUd1-5E", "The C4 model for visualising software architecture by Simon Brown", "Devoxx"]], "docs": [
   ["The C4 model for software architecture", "https://c4model.com/"],
   ["Martin Fowler — Software architecture guide", "https://martinfowler.com/architecture/"],
   ["AWS architecture icons and diagram conventions", "https://aws.amazon.com/architecture/icons/"]]},
 
-"5-step-interview-framework.md": {"videos": [], "docs": [
+"5-step-interview-framework.md": {"videos": [["7h-MeIZyVZA", "How to Approach ANY System Design Interview Question (6-Step Framework)", "Bits of Code by Anand"]], "docs": [
   ["AlgoMaster — Answering framework", "https://algomaster.io/learn/system-design-interviews/answering-framework"],
   ["Hello Interview — System design in a hurry", "https://www.hellointerview.com/learn/system-design/in-a-hurry/introduction"],
   ["System Design Primer — How to approach a system design interview", "https://github.com/donnemartin/system-design-primer#how-to-approach-a-system-design-interview-question"]]},
 
-"senior-engineer-signals.md": {"videos": [], "docs": [
+"senior-engineer-signals.md": {"videos": [["iyLqwyFL0Zc", "Design Tinder - System Design Interview (with TikTok Senior Engineer)", "Aced (formerly Exponent)"]], "docs": [
   ["Google SRE Book — Embracing risk", "https://sre.google/sre-book/embracing-risk/"],
   ["AWS Builders' Library — Challenges with distributed systems", "https://aws.amazon.com/builders-library/challenges-with-distributed-systems/"],
   ["Martin Fowler — Architectural trade-offs (Software Architecture Guide)", "https://martinfowler.com/architecture/"]]},
 
-"reference-numbers-estimation-cheat-sheet.md": {"videos": [], "docs": [
+"reference-numbers-estimation-cheat-sheet.md": {"videos": [["K8JocBxFcEo", "Latency Numbers Every Programmer Should Know (Explained Visually)", "Dev Primer"]], "docs": [
   ["Latency numbers every programmer should know", "https://gist.github.com/jboner/2841832"],
   ["Interactive latency numbers (by year)", "https://colin-scott.github.io/personal_website/research/interactive_latency.html"],
   ["AlgoMaster — Latency vs throughput vs bandwidth", "https://algomaster.io/learn/system-design/latency-vs-throughput"]]},
@@ -38,7 +38,7 @@ L1 = {
   ["AWS — Throughput vs latency", "https://aws.amazon.com/compare/the-difference-between-throughput-and-latency/"],
   ["Universal Scalability Law (Gunther)", "https://en.wikipedia.org/wiki/Neil_J._Gunther#Universal_Law_of_Computational_Scalability"]]},
 
-"availability-reliability-slas.md": {"videos": [], "docs": [
+"availability-reliability-slas.md": {"videos": [["LdvduBxZRLs", "Design Patterns for High Availability: What gets you 99.999% uptime?", "Gaurav Sen"]], "docs": [
   ["AlgoMaster — Availability", "https://algomaster.io/learn/system-design/availability"],
   ["Google SRE Book — Service level objectives", "https://sre.google/sre-book/service-level-objectives/"],
   ["Cockroach Labs — What is fault tolerance?", "https://www.cockroachlabs.com/blog/what-is-fault-tolerance/"],
@@ -55,13 +55,13 @@ L1 = {
   ["AlgoMaster — CAP theorem", "https://algomaster.io/learn/system-design/cap-theorem"],
   ["PACELC theorem", "https://en.wikipedia.org/wiki/PACELC_theorem"]]},
 
-"http-tls-protocol-fundamentals.md": {"videos": [], "docs": [
+"http-tls-protocol-fundamentals.md": {"videos": [["0OrmKCB0UrQ", "Hyper Text Transfer Protocol Crash Course - HTTP 1.0, 1.1, HTTP/2, HTTP/3", "Hussein Nasser"]], "docs": [
   ["High Performance Browser Networking (free book)", "https://hpbn.co/"],
   ["Cloudflare — What is SSL/TLS?", "https://www.cloudflare.com/learning/ssl/what-is-ssl/"],
   ["MDN — HTTP overview", "https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview"],
   ["AlgoMaster — TCP vs UDP", "https://algomaster.io/learn/system-design/tcp-vs-udp"]]},
 
-"api-styles-rest-graphql-grpc.md": {"videos": [], "docs": [
+"api-styles-rest-graphql-grpc.md": {"videos": [["4vLxWqE94l4", "Top 6 Most Popular API Architecture Styles", "ByteByteGo"]], "docs": [
   ["AlgoMaster — REST vs GraphQL", "https://blog.algomaster.io/p/rest-vs-graphql"],
   ["gRPC — Introduction and core concepts", "https://grpc.io/docs/what-is-grpc/introduction/"],
   ["GraphQL — Learn", "https://graphql.org/learn/"],
@@ -90,12 +90,12 @@ L1 = {
   ["MDN — WebSockets API", "https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API"],
   ["WebRTC — Getting started", "https://webrtc.org/getting-started/overview"]]},
 
-"storage-types-block-object-file.md": {"videos": [], "docs": [
+"storage-types-block-object-file.md": {"videos": [["xM4aE7IWwnE", "44. Block vs File vs Object Storage Explained | System Design Fundamentals", "Vivek Panchal"]], "docs": [
   ["AWS — Block vs file vs object storage", "https://aws.amazon.com/compare/the-difference-between-block-file-object-storage/"],
   ["Amazon S3 — How S3 works", "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html"],
   ["The Google File System (paper)", "https://static.googleusercontent.com/media/research.google.com/en//archive/gfs-sosp2003.pdf"]]},
 
-"sql-vs-nosql-decision-framework.md": {"videos": [], "docs": [
+"sql-vs-nosql-decision-framework.md": {"videos": [["QzLhb1WBFjQ", "SQL vs NoSQL - Tradeoffs", "Gaurav Sen"]], "docs": [
   ["AlgoMaster — SQL vs NoSQL", "https://algomaster.io/learn/system-design/sql-vs-nosql"],
   ["AlgoMaster — 15 types of databases", "https://blog.algomaster.io/p/15-types-of-databases"],
   ["MongoDB — Data modelling introduction", "https://www.mongodb.com/docs/manual/data-modeling/"],
@@ -107,7 +107,7 @@ L1 = {
   ["Jepsen — Consistency and isolation models", "https://jepsen.io/consistency"],
   ["A critique of ANSI SQL isolation levels (paper)", "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/tr-95-51.pdf"]]},
 
-"indexes-query-optimization.md": {"videos": [], "docs": [
+"indexes-query-optimization.md": {"videos": [["-qNSXK7s7_w", "Database Indexing Explained (with PostgreSQL)", "Hussein Nasser"]], "docs": [
   ["Use The Index, Luke! — SQL indexing and tuning", "https://use-the-index-luke.com/"],
   ["PostgreSQL — Indexes", "https://www.postgresql.org/docs/current/indexes.html"],
   ["AlgoMaster — Database indexing", "https://algomaster.io/learn/system-design/indexing"],
@@ -128,23 +128,23 @@ L1 = {
   ["The magic of consistent hashing", "http://www.paperplanes.de/2011/12/9/the-magic-of-consistent-hashing.html"],
   ["Dynamo: Amazon's highly available key-value store (paper)", "https://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf"]]},
 
-"nosql-internals.md": {"videos": [], "docs": [
+"nosql-internals.md": {"videos": [["I6jB0nM9SKU", "The Secret Sauce Behind NoSQL: LSM Tree", "ByteByteGo"]], "docs": [
   ["The Log-Structured Merge-Tree (LSM-tree) paper", "https://www.cs.umb.edu/~poneil/lsmtree.pdf"],
   ["Bigtable: a distributed storage system (paper)", "https://static.googleusercontent.com/media/research.google.com/en//archive/bigtable-osdi06.pdf"],
   ["AlgoMaster — Bloom filters", "https://algomaster.io/learn/system-design/bloom-filters"],
   ["Cassandra — Storage engine and architecture", "https://cassandra.apache.org/doc/latest/cassandra/architecture/storage-engine.html"]]},
 
-"cache-strategies.md": {"videos": [], "docs": [
+"cache-strategies.md": {"videos": [["dGAgxozNWFE", "Cache Systems Every Developer Should Know", "ByteByteGo"]], "docs": [
   ["AlgoMaster — Caching strategies", "https://algomaster.io/learn/system-design/caching-strategies"],
   ["AWS Builders' Library — Caching challenges and strategies", "https://aws.amazon.com/builders-library/caching-challenges-and-strategies/"],
   ["AlgoMaster — Read-through vs write-through cache", "https://blog.algomaster.io/p/59cae60d-9717-4e20-a59e-759e370db4e5"]]},
 
-"cache-eviction-ttl-invalidation.md": {"videos": [], "docs": [
+"cache-eviction-ttl-invalidation.md": {"videos": [["U3RkDLtS7uY", "What are Distributed CACHES and how do they manage DATA CONSISTENCY?", "Gaurav Sen"]], "docs": [
   ["AlgoMaster — 7 cache eviction strategies", "https://blog.algomaster.io/p/7-cache-eviction-strategies"],
   ["Cache replacement policies", "https://en.wikipedia.org/wiki/Cache_replacement_policies"],
   ["Redis — Key eviction policies", "https://redis.io/docs/latest/develop/reference/eviction/"]]},
 
-"cache-failure-modes-pitfalls.md": {"videos": [], "docs": [
+"cache-failure-modes-pitfalls.md": {"videos": [["wh98s0XhMmQ", "Caching Pitfalls Every Developer Should Know", "ByteByteGo"]], "docs": [
   ["AWS Builders' Library — Caching challenges and strategies", "https://aws.amazon.com/builders-library/caching-challenges-and-strategies/"],
   ["Facebook — Scaling Memcache at Facebook (paper)", "https://www.usenix.org/system/files/conference/nsdi13/nsdi13-final170_update.pdf"],
   ["Cache stampede", "https://en.wikipedia.org/wiki/Cache_stampede"]]},
@@ -160,7 +160,7 @@ L1 = {
   ["Push vs pull CDNs", "https://www.geeksforgeeks.org/system-design/pull-cdn-vs-push-cdn/"],
   ["MDN — HTTP caching", "https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching"]]},
 
-"edge-delivery-global-acceleration.md": {"videos": [], "docs": [
+"edge-delivery-global-acceleration.md": {"videos": [["RI9np1LWzqw", "What Is A CDN? How Does It Work?", "ByteByteGo"]], "docs": [
   ["Cloudflare — What is edge computing?", "https://www.cloudflare.com/learning/serverless/glossary/what-is-edge-computing/"],
   ["AWS — Global Accelerator: how it works", "https://docs.aws.amazon.com/global-accelerator/latest/dg/introduction-how-it-works.html"],
   ["Cloudflare — Anycast network", "https://www.cloudflare.com/learning/cdn/glossary/anycast-network/"]]},

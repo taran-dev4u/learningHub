@@ -4,7 +4,13 @@
 window.sdResources = {
  "lessons": {
   "requirements-scope.md": {
-   "videos": [],
+   "videos": [
+    [
+     "quLrc3PbuIw",
+     "What is System Design and how is it useful?",
+     "Gaurav Sen"
+    ]
+   ],
    "docs": [
     [
      "AlgoMaster — How to answer a system design question",
@@ -21,7 +27,13 @@ window.sdResources = {
    ]
   },
   "capacity-estimation.md": {
-   "videos": [],
+   "videos": [
+    [
+     "WZjSFNPS9Lo",
+     "8. Back-Of-The-Envelope Estimation for System Design Interview | Capacity Planning of Facebook | HLD",
+     "Concept && Coding - by Shrayansh"
+    ]
+   ],
    "docs": [
     [
      "Latency numbers every programmer should know",
@@ -38,7 +50,13 @@ window.sdResources = {
    ]
   },
   "architecture-diagrams-communication.md": {
-   "videos": [],
+   "videos": [
+    [
+     "KvoBrUd1-5E",
+     "The C4 model for visualising software architecture by Simon Brown",
+     "Devoxx"
+    ]
+   ],
    "docs": [
     [
      "The C4 model for software architecture",
@@ -55,7 +73,13 @@ window.sdResources = {
    ]
   },
   "5-step-interview-framework.md": {
-   "videos": [],
+   "videos": [
+    [
+     "7h-MeIZyVZA",
+     "How to Approach ANY System Design Interview Question (6-Step Framework)",
+     "Bits of Code by Anand"
+    ]
+   ],
    "docs": [
     [
      "AlgoMaster — Answering framework",
@@ -72,7 +96,13 @@ window.sdResources = {
    ]
   },
   "senior-engineer-signals.md": {
-   "videos": [],
+   "videos": [
+    [
+     "iyLqwyFL0Zc",
+     "Design Tinder - System Design Interview (with TikTok Senior Engineer)",
+     "Aced (formerly Exponent)"
+    ]
+   ],
    "docs": [
     [
      "Google SRE Book — Embracing risk",
@@ -89,7 +119,13 @@ window.sdResources = {
    ]
   },
   "reference-numbers-estimation-cheat-sheet.md": {
-   "videos": [],
+   "videos": [
+    [
+     "K8JocBxFcEo",
+     "Latency Numbers Every Programmer Should Know (Explained Visually)",
+     "Dev Primer"
+    ]
+   ],
    "docs": [
     [
      "Latency numbers every programmer should know",
@@ -133,7 +169,13 @@ window.sdResources = {
    ]
   },
   "availability-reliability-slas.md": {
-   "videos": [],
+   "videos": [
+    [
+     "LdvduBxZRLs",
+     "Design Patterns for High Availability: What gets you 99.999% uptime?",
+     "Gaurav Sen"
+    ]
+   ],
    "docs": [
     [
      "AlgoMaster — Availability",
@@ -204,7 +246,13 @@ window.sdResources = {
    ]
   },
   "http-tls-protocol-fundamentals.md": {
-   "videos": [],
+   "videos": [
+    [
+     "0OrmKCB0UrQ",
+     "Hyper Text Transfer Protocol Crash Course - HTTP 1.0, 1.1, HTTP/2, HTTP/3",
+     "Hussein Nasser"
+    ]
+   ],
    "docs": [
     [
      "High Performance Browser Networking (free book)",
@@ -225,7 +273,13 @@ window.sdResources = {
    ]
   },
   "api-styles-rest-graphql-grpc.md": {
-   "videos": [],
+   "videos": [
+    [
+     "4vLxWqE94l4",
+     "Top 6 Most Popular API Architecture Styles",
+     "ByteByteGo"
+    ]
+   ],
    "docs": [
     [
      "AlgoMaster — REST vs GraphQL",
@@ -350,7 +404,13 @@ window.sdResources = {
    ]
   },
   "storage-types-block-object-file.md": {
-   "videos": [],
+   "videos": [
+    [
+     "xM4aE7IWwnE",
+     "44. Block vs File vs Object Storage Explained | System Design Fundamentals",
+     "Vivek Panchal"
+    ]
+   ],
    "docs": [
     [
      "AWS — Block vs file vs object storage",
@@ -367,7 +427,13 @@ window.sdResources = {
    ]
   },
   "sql-vs-nosql-decision-framework.md": {
-   "videos": [],
+   "videos": [
+    [
+     "QzLhb1WBFjQ",
+     "SQL vs NoSQL - Tradeoffs",
+     "Gaurav Sen"
+    ]
+   ],
    "docs": [
     [
      "AlgoMaster — SQL vs NoSQL",
@@ -415,7 +481,13 @@ window.sdResources = {
    ]
   },
   "indexes-query-optimization.md": {
-   "videos": [],
+   "videos": [
+    [
+     "-qNSXK7s7_w",
+     "Database Indexing Explained (with PostgreSQL)",
+     "Hussein Nasser"
+    ]
+   ],
    "docs": [
     [
      "Use The Index, Luke! — SQL indexing and tuning",
@@ -510,7 +582,13 @@ window.sdResources = {
    ]
   },
   "nosql-internals.md": {
-   "videos": [],
+   "videos": [
+    [
+     "I6jB0nM9SKU",
+     "The Secret Sauce Behind NoSQL: LSM Tree",
+     "ByteByteGo"
+    ]
+   ],
    "docs": [
     [
      "The Log-Structured Merge-Tree (LSM-tree) paper",
@@ -531,7 +609,13 @@ window.sdResources = {
    ]
   },
   "cache-strategies.md": {
-   "videos": [],
+   "videos": [
+    [
+     "dGAgxozNWFE",
+     "Cache Systems Every Developer Should Know",
+     "ByteByteGo"
+    ]
+   ],
    "docs": [
     [
      "AlgoMaster — Caching strategies",
@@ -548,7 +632,13 @@ window.sdResources = {
    ]
   },
   "cache-eviction-ttl-invalidation.md": {
-   "videos": [],
+   "videos": [
+    [
+     "U3RkDLtS7uY",
+     "What are Distributed CACHES and how do they manage DATA CONSISTENCY?",
+     "Gaurav Sen"
+    ]
+   ],
    "docs": [
     [
      "AlgoMaster — 7 cache eviction strategies",
@@ -565,7 +655,13 @@ window.sdResources = {
    ]
   },
   "cache-failure-modes-pitfalls.md": {
-   "videos": [],
+   "videos": [
+    [
+     "wh98s0XhMmQ",
+     "Caching Pitfalls Every Developer Should Know",
+     "ByteByteGo"
+    ]
+   ],
    "docs": [
     [
      "AWS Builders' Library — Caching challenges and strategies",
@@ -632,7 +728,13 @@ window.sdResources = {
    ]
   },
   "edge-delivery-global-acceleration.md": {
-   "videos": [],
+   "videos": [
+    [
+     "RI9np1LWzqw",
+     "What Is A CDN? How Does It Work?",
+     "ByteByteGo"
+    ]
+   ],
    "docs": [
     [
      "Cloudflare — What is edge computing?",
@@ -695,7 +797,13 @@ window.sdResources = {
    ]
   },
   "delivery-semantics-reliability.md": {
-   "videos": [],
+   "videos": [
+    [
+     "oUJbuFMyBDk",
+     "What is a MESSAGE QUEUE and Where is it used?",
+     "Gaurav Sen"
+    ]
+   ],
    "docs": [
     [
      "Confluent — Exactly-once semantics in Kafka",
@@ -712,7 +820,13 @@ window.sdResources = {
    ]
   },
   "event-driven-architecture.md": {
-   "videos": [],
+   "videos": [
+    [
+     "YZNX4p4uYPU",
+     "#40 Publish/Subscribe Pattern | System Design Fundamentals",
+     "Software Interviews Prep"
+    ]
+   ],
    "docs": [
     [
      "Martin Fowler — What do you mean by event-driven?",
@@ -733,7 +847,13 @@ window.sdResources = {
    ]
   },
   "monolith-vs-microservices-vs-serverless.md": {
-   "videos": [],
+   "videos": [
+    [
+     "lTAcCNbJ7KE",
+     "What Are Microservices Really All About? (And When Not To Use It)",
+     "ByteByteGo"
+    ]
+   ],
    "docs": [
     [
      "Martin Fowler — Microservices",
@@ -754,7 +874,13 @@ window.sdResources = {
    ]
   },
   "microservices-patterns.md": {
-   "videos": [],
+   "videos": [
+    [
+     "RqfaTIWc3LQ",
+     "Reverse Proxy vs API Gateway vs Load Balancer",
+     "ByteByteGo"
+    ]
+   ],
    "docs": [
     [
      "microservices.io — Pattern catalogue",
@@ -775,7 +901,13 @@ window.sdResources = {
    ]
   },
   "clean-layered-hexagonal-architecture.md": {
-   "videos": [],
+   "videos": [
+    [
+     "G08FxxwPjXE",
+     "Clean Architecture – Robert (Uncle Bob) Martin",
+     "DevTernity Conference"
+    ]
+   ],
    "docs": [
     [
      "Uncle Bob — The clean architecture",
@@ -819,7 +951,13 @@ window.sdResources = {
    ]
   },
   "backpressure-throttling-load-protection.md": {
-   "videos": [],
+   "videos": [
+    [
+     "YXkOdWBwqaA",
+     "Rate Limiter System Design: Token Bucket, Leaky Bucket, Scaling",
+     "ByteByteGo"
+    ]
+   ],
    "docs": [
     [
      "Apply back pressure when overloaded (Mechanical Sympathy)",
@@ -836,7 +974,13 @@ window.sdResources = {
    ]
   },
   "graceful-degradation-load-shedding.md": {
-   "videos": [],
+   "videos": [
+    [
+     "TmNiHbh-6Wg",
+     "AWS re:Invent 2021 - Keeping Netflix reliable using prioritized load shedding",
+     "AWS Events"
+    ]
+   ],
    "docs": [
     [
      "Google SRE Book — Handling overload",
@@ -903,7 +1047,13 @@ window.sdResources = {
    ]
   },
   "leader-election-heartbeats-failure-detection.md": {
-   "videos": [],
+   "videos": [
+    [
+     "vYp4LYbnnW8",
+     "Designing for Understandability: The Raft Consensus Algorithm",
+     "Diego Ongaro"
+    ]
+   ],
    "docs": [
     [
      "AlgoMaster — Heartbeats in distributed systems",
@@ -989,7 +1139,13 @@ window.sdResources = {
    ]
   },
   "logging-distributed-tracing.md": {
-   "videos": [],
+   "videos": [
+    [
+     "AZhIjNHzURQ",
+     "Google Dapper, a Large-Scale Distributed Systems Tracing Infrastructure",
+     "Gaurav Sen"
+    ]
+   ],
    "docs": [
     [
      "OpenTelemetry — Observability primer",
@@ -1006,7 +1162,13 @@ window.sdResources = {
    ]
   },
   "slos-error-budgets-golden-signals.md": {
-   "videos": [],
+   "videos": [
+    [
+     "U53wC2A75Is",
+     "Getting started with SLOs",
+     "Google Cloud Tech"
+    ]
+   ],
    "docs": [
     [
      "Google SRE Book — Service level objectives",
@@ -1023,7 +1185,13 @@ window.sdResources = {
    ]
   },
   "testing-chaos-safe-deployment.md": {
-   "videos": [],
+   "videos": [
+    [
+     "Q4nniyAarbs",
+     "Chaos & Intuition Engineering at Netflix • Casey Rosenthal",
+     "GOTO Conferences"
+    ]
+   ],
    "docs": [
     [
      "Principles of chaos engineering",
@@ -1071,7 +1239,13 @@ window.sdResources = {
    ]
   },
   "owasp-top-10-api-security.md": {
-   "videos": [],
+   "videos": [
+    [
+     "YYe0FdfdgDU",
+     "OWASP API Security Top 10 Course Secure Your Web Apps",
+     "freeCodeCamp.org"
+    ]
+   ],
    "docs": [
     [
      "OWASP API Security Top 10 (2023)",
@@ -1088,7 +1262,13 @@ window.sdResources = {
    ]
   },
   "threat-modeling-abuse-cases.md": {
-   "videos": [],
+   "videos": [
+    [
+     "rEnJYNkUde0",
+     "STRIDE Threat Modeling for Beginners - In 20 Minutes",
+     "Netsec Explained"
+    ]
+   ],
    "docs": [
     [
      "OWASP — Threat modeling cheat sheet",
@@ -1105,7 +1285,13 @@ window.sdResources = {
    ]
   },
   "cost-estimation-build-vs-buy-trade-offs.md": {
-   "videos": [],
+   "videos": [
+    [
+     "8HaKO0Lw6Us",
+     "A FinOps guide to re:Invent 2025 | The Keys to AWS Optimization",
+     "AWS Events"
+    ]
+   ],
    "docs": [
     [
      "AWS Well-Architected — Cost optimization pillar",
@@ -1122,7 +1308,13 @@ window.sdResources = {
    ]
   },
   "hld-vs-lld-boundaries.md": {
-   "videos": [],
+   "videos": [
+    [
+     "ASPL5E0AIJw",
+     "HLD Vs LLD | System Design Essentials",
+     "Algorithms Made Easy"
+    ]
+   ],
    "docs": [
     [
      "Hello Interview — System design in a hurry",
@@ -1139,7 +1331,13 @@ window.sdResources = {
    ]
   },
   "object-oriented-foundations.md": {
-   "videos": [],
+   "videos": [
+    [
+     "pTB0EiLXUC8",
+     "Object-Oriented Programming, Simplified",
+     "Programming with Mosh"
+    ]
+   ],
    "docs": [
     [
      "Refactoring Guru — OOP basics",
@@ -1156,7 +1354,13 @@ window.sdResources = {
    ]
   },
   "design-principles.md": {
-   "videos": [],
+   "videos": [
+    [
+     "pTB30aXS77U",
+     "Uncle Bob's SOLID Principles Made Easy - In Python!",
+     "ArjanCodes"
+    ]
+   ],
    "docs": [
     [
      "Java design patterns — principles",
@@ -1173,7 +1377,13 @@ window.sdResources = {
    ]
   },
   "uml-interaction-modeling.md": {
-   "videos": [],
+   "videos": [
+    [
+     "6XrL5jXmTwM",
+     "UML class diagrams",
+     "Lucid Software"
+    ]
+   ],
    "docs": [
     [
      "UML class diagrams reference",
@@ -1190,7 +1400,13 @@ window.sdResources = {
    ]
   },
   "design-patterns-for-lld.md": {
-   "videos": [],
+   "videos": [
+    [
+     "vNHpsC5ng_E",
+     "Design Patterns Video Tutorial",
+     "Derek Banas"
+    ]
+   ],
    "docs": [
     [
      "Refactoring Guru — Design patterns catalogue",
@@ -1231,7 +1447,13 @@ window.sdResources = {
    ]
   },
   "foundational-designs.md": {
-   "videos": [],
+   "videos": [
+    [
+     "HHUi8F_qAXM",
+     "How Does a URL Shortener Work?",
+     "ByteByteGo"
+    ]
+   ],
    "docs": [
     [
      "AlgoMaster — Design a URL shortener",
@@ -1248,7 +1470,13 @@ window.sdResources = {
    ]
   },
   "core-interview-designs.md": {
-   "videos": [],
+   "videos": [
+    [
+     "vvhC64hQZMk",
+     "WHATSAPP System Design: Chat Messaging Systems for Interviews",
+     "Gaurav Sen"
+    ]
+   ],
    "docs": [
     [
      "AlgoMaster — Design WhatsApp",
@@ -1265,7 +1493,13 @@ window.sdResources = {
    ]
   },
   "advanced-senior-level-designs.md": {
-   "videos": [],
+   "videos": [
+    [
+     "_UZ1ngy-kOI",
+     "Design Dropbox or Google Drive w/ a Ex-Meta Staff Engineer",
+     "Hello Interview"
+    ]
+   ],
    "docs": [
     [
      "Discord — How Discord stores trillions of messages",

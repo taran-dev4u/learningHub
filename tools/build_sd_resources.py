@@ -33,9 +33,10 @@ for d in list(lessons.values()) + list(C.values()):
 print("total links:", len(urls), "| distinct:", len(set(urls)))
 vids = sorted({v[0] for d in list(lessons.values()) + list(C.values()) for v in d['videos']})
 print("distinct videos:", len(vids))
-open('video_ids.txt','w').write("\n".join(vids))
+HERE = os.path.dirname(os.path.abspath(__file__))
+open(os.path.join(HERE, 'video_ids.txt'),'w').write("\n".join(vids))
 docs = sorted({doc[1] for d in list(lessons.values()) + list(C.values()) for doc in d['docs']})
-open('doc_urls.txt','w').write("\n".join(docs))
+open(os.path.join(HERE, 'doc_urls.txt'),'w').write("\n".join(docs))
 print("distinct docs:", len(docs))
 
 if bad_files or bad_anchor or missing:
