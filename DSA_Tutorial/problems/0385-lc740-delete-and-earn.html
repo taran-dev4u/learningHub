@@ -23,34 +23,46 @@
  › Subpattern 12.1: 1D Array / Fibonacci Style · Problem 385 of 699</p>
 
 <h2>📋 The problem</h2><p>Taking a value earns its total but deletes all values one less and one greater; maximize points (House Robber over values).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>You are given an integer array <code>nums</code>. You want to maximize points earned. If you pick <code>nums[i]</code>, you earn <code>nums[i]</code> points, but must delete every element equal to <code>nums[i] - 1</code> and <code>nums[i] + 1</code>.</p>
 
-<h2>Where this fits</h2>
-<p><strong>1D Array / Fibonacci Style</strong> — dp[i] depends on dp[i-1] (and maybe dp[i-2]) — climb stairs, house robber.</p>
+<p>Notice the conflict: picking value <code>x</code> deletes all instances of <code>x - 1</code> and <code>x + 1</code>. But if you decide to take value <code>x</code>, you should take <strong>all</strong> occurrences of <code>x</code>, earning <code>x * count[x]</code> total points!</p>
+<p>This transforms the problem exactly into <strong>House Robber (LC 198)</strong> over bucket values $0 \dots \max(nums)$. You cannot rob adjacent value buckets!</p>
 
-<h2>Why this pattern?</h2><ul><li>"count the number of ways…"</li><li>"minimum/maximum cost/value to reach…"</li><li>choices at each step + overlapping futures (take/skip an item)</li><li>"longest/shortest subsequence" (non-contiguous!)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Dynamic Programming (DP) master template and adapt the marked parts to this problem:</p><pre><code># Top-down: brute-force recursion + cache
-from functools import lru_cache
-@lru_cache(None)
-def dp(i):
-    if i &lt;= base: return base_value
-    return best(dp(smaller_1), dp(smaller_2), ...)   # the recurrence
+<h2>🐢 Brute force vs optimal</h2>
+<p>Trying all subsets of numbers is exponential. By aggregating total points per value into a frequency bucket array <code>points[v] = v * count[v]</code>, the recurrence is:
+$$dp[v] = \max(dp[v - 1], \; dp[v - 2] + points[v])$$
+which runs in $O(M)$ time where $M = \max(nums)$.</p>
 
-# Bottom-up: same recurrence, loop order = dependency order
-dp = [0] * (n + 1)
-dp[0] = base_value
-for i in range(1, n + 1):
-    dp[i] = best(dp[i-1] + ..., dp[i-2] + ...)
-# often only last 2 values needed → two variables, O(1) space</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<div class="insight">💡 <strong>Key insight:</strong> Pre-aggregate into value buckets: <code>points[v] = v * frequency</code>. Then run standard House Robber <code>rob, skip = max(skip + points[v], rob), rob</code>.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">from collections import Counter
+
+def deleteAndEarn(nums: list[int]) -> int:
+    if not nums:
+        return 0
+    counts = Counter(nums)
+    max_val = max(nums)
+    
+    prev2 = 0
+    prev1 = 0
+    
+    for v in range(max_val + 1):
+        gain = v * counts.get(v, 0)
+        curr = max(prev1, prev2 + gain)
+        prev2 = prev1
+        prev1 = curr
+        
+    return prev1
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n + M)$ where $n = \text{len}(nums)$ and $M = \max(nums)$.<br>
+<strong>Space:</strong> $O(n)$ for the frequency map, $O(1)$ DP registers.</p>
+
 
 <div class="pager"><a href="../problems/0384-lc509-fibonacci-number.html"><span class="lbl">← Previous</span>#509 Fibonacci Number</a><a href="../problems/0386-lc746-min-cost-climbing-stairs.html" style="text-align:right"><span class="lbl">Next →</span>#746 Min Cost Climbing Stairs</a></div>
 </div>

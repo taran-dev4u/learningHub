@@ -23,34 +23,39 @@
  › Subpattern 12.8: 2D Array / Unique Paths on Grid · Problem 411 of 699</p>
 
 <h2>📋 The problem</h2><p>Count the square submatrices of all 1s in a binary matrix (DP: largest square ending at each cell, summed).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given a <code>m * n</code> matrix of ones and zeros, return how many square submatrices have all ones.</p>
 
-<h2>Where this fits</h2>
-<p><strong>2D Array / Unique Paths on Grid</strong> — dp[i][j] = ways/min-cost to reach (i,j) — usually dp[i-1][j] + dp[i][j-1] with obstacles.</p>
+<p>Recall <strong>Maximal Square (LC 221)</strong>: if $dp[i][j] = k$, it means the largest square ending at $(i, j)$ has side length $k$. That automatically implies there are squares of side length $1, 2, \dots, k$ all sharing $(i, j)$ as their bottom-right corner!
+Therefore, the number of square submatrices with bottom-right corner at $(i, j)$ is exactly $dp[i][j]$!</p>
+<p>$$\text{Total Squares} = \sum_{i, j} dp[i][j]$$</p>
 
-<h2>Why this pattern?</h2><ul><li>"count the number of ways…"</li><li>"minimum/maximum cost/value to reach…"</li><li>choices at each step + overlapping futures (take/skip an item)</li><li>"longest/shortest subsequence" (non-contiguous!)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Dynamic Programming (DP) master template and adapt the marked parts to this problem:</p><pre><code># Top-down: brute-force recursion + cache
-from functools import lru_cache
-@lru_cache(None)
-def dp(i):
-    if i &lt;= base: return base_value
-    return best(dp(smaller_1), dp(smaller_2), ...)   # the recurrence
+<h2>🐢 Brute force vs optimal</h2>
+<p>Iterating all submatrices takes $O(m \cdot n \cdot \min(m, n))$. With DP, each cell is $O(1)$, so total time is $O(m \cdot n)$!</p>
 
-# Bottom-up: same recurrence, loop order = dependency order
-dp = [0] * (n + 1)
-dp[0] = base_value
-for i in range(1, n + 1):
-    dp[i] = best(dp[i-1] + ..., dp[i-2] + ...)
-# often only last 2 values needed → two variables, O(1) space</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<div class="insight">💡 <strong>Key insight:</strong> <code>dp[i][j]</code> is both the maximum side length AND the exact count of squares whose bottom-right corner is at $(i, j)$. Simply sum all <code>dp[i][j]</code>!</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def countSquares(matrix: list[list[int]]) -> int:
+    m, n = len(matrix), len(matrix[0])
+    total = 0
+    
+    for r in range(m):
+        for c in range(n):
+            if matrix[r][c] == 1:
+                if r > 0 and c > 0:
+                    matrix[r][c] = 1 + min(matrix[r - 1][c], matrix[r][c - 1], matrix[r - 1][c - 1])
+                total += matrix[r][c]
+                
+    return total
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(m \times n)$ — Single pass in place.<br>
+<strong>Space:</strong> $O(1)$ — Modified in place (or $O(n)$ if matrix immutable).</p>
+
 
 <div class="pager"><a href="../problems/0410-lc931-minimum-falling-path-sum.html"><span class="lbl">← Previous</span>#931 Minimum Falling Path Sum</a><a href="../problems/0412-lc312-burst-balloons.html" style="text-align:right"><span class="lbl">Next →</span>#312 Burst Balloons</a></div>
 </div>

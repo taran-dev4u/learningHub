@@ -23,34 +23,43 @@
  › Subpattern 12.8: 2D Array / Unique Paths on Grid · Problem 406 of 699</p>
 
 <h2>📋 The problem</h2><p>Same right/down robot walk, but some grid cells contain obstacles that cannot be entered; count the paths.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>You are given an <code>m x n</code> integer array <code>obstacleGrid</code>. A <code>1</code> represents an obstacle and <code>0</code> represents an empty space. A robot starts at the top-left corner and moves only down or right. Return the number of unique paths to the bottom-right corner.</p>
 
-<h2>Where this fits</h2>
-<p><strong>2D Array / Unique Paths on Grid</strong> — dp[i][j] = ways/min-cost to reach (i,j) — usually dp[i-1][j] + dp[i][j-1] with obstacles.</p>
+<p>Transition rule:
+- If <code>obstacleGrid[i][j] == 1</code>, $dp[i][j] = 0$ (impassable!).
+- If <code>obstacleGrid[i][j] == 0</code>, $dp[i][j] = dp[i - 1][j] + dp[i][j - 1]$.</p>
 
-<h2>Why this pattern?</h2><ul><li>"count the number of ways…"</li><li>"minimum/maximum cost/value to reach…"</li><li>choices at each step + overlapping futures (take/skip an item)</li><li>"longest/shortest subsequence" (non-contiguous!)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Dynamic Programming (DP) master template and adapt the marked parts to this problem:</p><pre><code># Top-down: brute-force recursion + cache
-from functools import lru_cache
-@lru_cache(None)
-def dp(i):
-    if i &lt;= base: return base_value
-    return best(dp(smaller_1), dp(smaller_2), ...)   # the recurrence
+<h2>🐢 Brute force vs optimal</h2>
+<p>Instead of an $m \times n$ 2D matrix, we only need the current row and the row above. We can reduce space to $O(n)$ using a 1D rolling array!</p>
 
-# Bottom-up: same recurrence, loop order = dependency order
-dp = [0] * (n + 1)
-dp[0] = base_value
-for i in range(1, n + 1):
-    dp[i] = best(dp[i-1] + ..., dp[i-2] + ...)
-# often only last 2 values needed → two variables, O(1) space</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<div class="insight">💡 <strong>Key insight:</strong> 1D DP: <code>dp[j]</code> represents paths to cell $(i, j)$. If cell has obstacle, set <code>dp[j] = 0</code>. Otherwise add left neighbor: <code>dp[j] += dp[j - 1]</code>.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def uniquePathsWithObstacles(obstacleGrid: list[list[int]]) -> int:
+    if not obstacleGrid or obstacleGrid[0][0] == 1:
+        return 0
+        
+    m, n = len(obstacleGrid), len(obstacleGrid[0])
+    dp = [0] * n
+    dp[0] = 1
+    
+    for r in range(m):
+        for c in range(n):
+            if obstacleGrid[r][c] == 1:
+                dp[c] = 0
+            elif c > 0:
+                dp[c] += dp[c - 1]
+                
+    return dp[n - 1]
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(m \times n)$ — Every cell evaluated once.<br>
+<strong>Space:</strong> $O(n)$ — Single 1D array of width $n$.</p>
+
 
 <div class="pager"><a href="../problems/0405-lc62-unique-paths.html"><span class="lbl">← Previous</span>#62 Unique Paths</a><a href="../problems/0407-lc64-minimum-path-sum.html" style="text-align:right"><span class="lbl">Next →</span>#64 Minimum Path Sum</a></div>
 </div>

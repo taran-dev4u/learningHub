@@ -23,34 +23,37 @@
  › Subpattern 12.8: 2D Array / Unique Paths on Grid · Problem 407 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0625-lc64-minimum-path-sum.html">Advanced Dynamic Programming</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Find the path from top-left to bottom-right of a grid of non-negative numbers (moving right or down) minimizing the sum of visited cells.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given an <code>m x n</code> grid filled with non-negative numbers, find a path from top left to bottom right which minimizes the sum of all numbers along its path. You can only move down or right.</p>
 
-<h2>Where this fits</h2>
-<p><strong>2D Array / Unique Paths on Grid</strong> — dp[i][j] = ways/min-cost to reach (i,j) — usually dp[i-1][j] + dp[i][j-1] with obstacles.</p>
+<p>At cell $(i, j)$, you arrived from either $(i - 1, j)$ or $(i, j - 1)$:
+$$dp[i][j] = grid[i][j] + \min(dp[i - 1][j], \; dp[i][j - 1])$$</p>
 
-<h2>Why this pattern?</h2><ul><li>"count the number of ways…"</li><li>"minimum/maximum cost/value to reach…"</li><li>choices at each step + overlapping futures (take/skip an item)</li><li>"longest/shortest subsequence" (non-contiguous!)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Dynamic Programming (DP) master template and adapt the marked parts to this problem:</p><pre><code># Top-down: brute-force recursion + cache
-from functools import lru_cache
-@lru_cache(None)
-def dp(i):
-    if i &lt;= base: return base_value
-    return best(dp(smaller_1), dp(smaller_2), ...)   # the recurrence
+<h2>🐢 Brute force vs optimal</h2>
+<p>We can solve this with $O(n)$ extra space using a 1D array, or even $O(1)$ extra space by updating <code>grid</code> in place.</p>
 
-# Bottom-up: same recurrence, loop order = dependency order
-dp = [0] * (n + 1)
-dp[0] = base_value
-for i in range(1, n + 1):
-    dp[i] = best(dp[i-1] + ..., dp[i-2] + ...)
-# often only last 2 values needed → two variables, O(1) space</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<div class="insight">💡 <strong>Key insight:</strong> Maintain 1D array: <code>dp[c] = grid[r][c] + min(dp[c], dp[c - 1])</code>.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def minPathSum(grid: list[list[int]]) -> int:
+    m, n = len(grid), len(grid[0])
+    dp = [float('inf')] * n
+    dp[0] = 0
+    
+    for r in range(m):
+        dp[0] += grid[r][0]
+        for c in range(1, n):
+            dp[c] = grid[r][c] + min(dp[c], dp[c - 1])
+            
+    return dp[-1]
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(m \times n)$ — Grid traversed cell by cell.<br>
+<strong>Space:</strong> $O(n)$ — 1D array of width $n$.</p>
+
 
 <div class="pager"><a href="../problems/0406-lc63-unique-paths-ii.html"><span class="lbl">← Previous</span>#63 Unique Paths II</a><a href="../problems/0408-lc120-triangle.html" style="text-align:right"><span class="lbl">Next →</span>#120 Triangle</a></div>
 </div>

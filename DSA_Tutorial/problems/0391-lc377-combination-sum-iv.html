@@ -23,34 +23,39 @@
  › Subpattern 12.3: 1D Array / Coin Change / Unbounded Knapsack Style · Problem 391 of 699</p>
 
 <h2>📋 The problem</h2><p>Count sequences of numbers (order matters, reuse allowed) drawn from an array that sum to a target.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given an array of distinct integers <code>nums</code> and a target integer <code>target</code>, return the number of possible combinations that add up to <code>target</code>. Note that different sequences (order matters, e.g., <code>[1, 2]</code> and <code>[2, 1]</code>) are counted as different permutations.</p>
 
-<h2>Where this fits</h2>
-<p><strong>1D Array / Coin Change / Unbounded Knapsack Style</strong> — Unbounded knapsack — outer over items, inner over capacities in increasing order.</p>
+<p>Because order matters, this is counting permutations! To reach target sum <code>i</code>, the last number chosen could be any <code>num \in nums</code> where <code>num <= i</code>:
+$$dp[i] = \sum_{num \in nums, num \le i} dp[i - num]$$
+with base case $dp[0] = 1$ (one way to form sum 0: empty set).</p>
 
-<h2>Why this pattern?</h2><ul><li>"count the number of ways…"</li><li>"minimum/maximum cost/value to reach…"</li><li>choices at each step + overlapping futures (take/skip an item)</li><li>"longest/shortest subsequence" (non-contiguous!)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Dynamic Programming (DP) master template and adapt the marked parts to this problem:</p><pre><code># Top-down: brute-force recursion + cache
-from functools import lru_cache
-@lru_cache(None)
-def dp(i):
-    if i &lt;= base: return base_value
-    return best(dp(smaller_1), dp(smaller_2), ...)   # the recurrence
+<h2>🐢 Brute force vs optimal</h2>
+<p>Notice the loop order:
+- In <strong>Coin Change II (LC 518)</strong> (combinations, order does NOT matter), outer loop is coins, inner loop is amounts.
+- In <strong>Combination Sum IV (LC 377)</strong> (permutations, order DOES matter), outer loop is target amounts $1 \dots \text{target}$, inner loop is numbers!</p>
 
-# Bottom-up: same recurrence, loop order = dependency order
-dp = [0] * (n + 1)
-dp[0] = base_value
-for i in range(1, n + 1):
-    dp[i] = best(dp[i-1] + ..., dp[i-2] + ...)
-# often only last 2 values needed → two variables, O(1) space</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<div class="insight">💡 <strong>Key insight:</strong> Loop targets outer, coins inner: <code>for i in range(1, target + 1): for x in nums: dp[i] += dp[i - x]</code>.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def combinationSum4(nums: list[int], target: int) -> int:
+    dp = [0] * (target + 1)
+    dp[0] = 1
+    
+    for i in range(1, target + 1):
+        for num in nums:
+            if i >= num:
+                dp[i] += dp[i - num]
+                
+    return dp[target]
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(\text{target} \times |nums|)$ — Nested iterations.<br>
+<strong>Space:</strong> $O(\text{target})$ — 1D DP table.</p>
+
 
 <div class="pager"><a href="../problems/0390-lc322-coin-change.html"><span class="lbl">← Previous</span>#322 Coin Change</a><a href="../problems/0392-lc518-coin-change-ii.html" style="text-align:right"><span class="lbl">Next →</span>#518 Coin Change II</a></div>
 </div>

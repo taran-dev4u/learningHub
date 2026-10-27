@@ -549,4 +549,525 @@ Two equivalent approaches:
 <li><strong>Space Complexity:</strong> <code>O(N)</code> rolling array space.</li>
 </ul>''',
 
+
+509: '''<h2>🧭 How to think about it</h2>
+<p>The Fibonacci numbers form a sequence where each number is the sum of the two preceding ones, starting from <code>0</code> and <code>1</code>:</p>
+<p>$$F(0) = 0, \\quad F(1) = 1, \\quad F(n) = F(n - 1) + F(n - 2) \\quad \\text{for } n \\ge 2$$</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Naive recursion computes the recurrence tree with branching factor 2, leading to exponential $O(2^n)$ time and $O(n)$ call stack depth. By recognizing that we only ever need the previous two terms ($F(i-1)$ and $F(i-2)$), we can iterate linearly with two variables, reducing time to $O(n)$ and space to $O(1)$.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Rolling state update with two scalar registers <code>a, b = b, a + b</code> computes the nth term in $O(n)$ time and $O(1)$ space. For astronomical $n$, Matrix Exponentiation or Binet's Formula solves it in $O(\\log n)$.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def fib(n: int) -> int:
+    """
+    Computes F(n) in O(n) time and O(1) space.
+    """
+    if n <= 1:
+        return n
+    a, b = 0, 1
+    for _ in range(2, n + 1):
+        a, b = b, a + b
+    return b
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n)$ — Single linear pass from 2 to n.<br>
+<strong>Space:</strong> $O(1)$ — Only two integer variables maintained.</p>
+''',
+746: '''<h2>🧭 How to think about it</h2>
+<p>You are given an integer array <code>cost</code> where <code>cost[i]</code> is the cost of <code>i</code>-th step on a staircase. Once you pay the cost, you can either climb one or two steps. You can start from step <code>0</code> or step <code>1</code>. Return the minimum cost to reach the top floor (index <code>n</code>).</p>
+
+<p>To stand on step <code>i</code>, you must have stepped from either <code>i - 1</code> or <code>i - 2</code>.
+Therefore, the cost to reach step <code>i</code> is:
+$$dp[i] = \\min(dp[i - 1] + cost[i - 1], \\; dp[i - 2] + cost[i - 2])$$</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Exploring both 1-step and 2-step choices recursively yields an $O(2^n)$ recurrence tree. Since subproblems overlap, we memoize or tabulate. Moreover, step <code>i</code> only depends on <code>dp[i - 1]</code> and <code>dp[i - 2]</code>, so two variables suffice for $O(1)$ auxiliary space.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Define <code>dp1</code> and <code>dp2</code> as the minimum cost to arrive at the current and previous steps. At each index, transition via <code>curr = min(dp1 + cost[i - 1], dp2 + cost[i - 2])</code>.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def minCostClimbingStairs(cost: list[int]) -> int:
+    """
+    Computes min cost to reach top floor using rolling DP.
+    """
+    # dp1: cost to reach step 1, dp2: cost to reach step 0
+    dp2, dp1 = 0, 0
+    for i in range(2, len(cost) + 1):
+        curr = min(dp1 + cost[i - 1], dp2 + cost[i - 2])
+        dp2, dp1 = dp1, curr
+    return dp1
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n)$ — Single pass through the array.<br>
+<strong>Space:</strong> $O(1)$ — Only two rolling variables.</p>
+''',
+1137: '''<h2>🧭 How to think about it</h2>
+<p>The Tribonacci sequence $T_n$ is defined as:</p>
+<p>$$T_0 = 0, \\quad T_1 = 1, \\quad T_2 = 1$$
+$$T_{n+3} = T_n + T_{n+1} + T_{n+2} \\quad \\text{for } n \\ge 0$$</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Recursive branching of 3 yields $O(3^n)$ time. Rolling three registers ($t_0, t_1, t_2$) allows $O(n)$ computation in $O(1)$ extra memory.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Shift three scalar values on each step: <code>t0, t1, t2 = t1, t2, t0 + t1 + t2</code>.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def tribonacci(n: int) -> int:
+    if n == 0:
+        return 0
+    if n <= 2:
+        return 1
+    t0, t1, t2 = 0, 1, 1
+    for _ in range(3, n + 1):
+        t0, t1, t2 = t1, t2, t0 + t1 + t2
+    return t2
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n)$ — Linear iterative progression.<br>
+<strong>Space:</strong> $O(1)$ — Three rolling variables.</p>
+''',
+740: '''<h2>🧭 How to think about it</h2>
+<p>You are given an integer array <code>nums</code>. You want to maximize points earned. If you pick <code>nums[i]</code>, you earn <code>nums[i]</code> points, but must delete every element equal to <code>nums[i] - 1</code> and <code>nums[i] + 1</code>.</p>
+
+<p>Notice the conflict: picking value <code>x</code> deletes all instances of <code>x - 1</code> and <code>x + 1</code>. But if you decide to take value <code>x</code>, you should take <strong>all</strong> occurrences of <code>x</code>, earning <code>x * count[x]</code> total points!</p>
+<p>This transforms the problem exactly into <strong>House Robber (LC 198)</strong> over bucket values $0 \\dots \\max(nums)$. You cannot rob adjacent value buckets!</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Trying all subsets of numbers is exponential. By aggregating total points per value into a frequency bucket array <code>points[v] = v * count[v]</code>, the recurrence is:
+$$dp[v] = \\max(dp[v - 1], \\; dp[v - 2] + points[v])$$
+which runs in $O(M)$ time where $M = \\max(nums)$.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Pre-aggregate into value buckets: <code>points[v] = v * frequency</code>. Then run standard House Robber <code>rob, skip = max(skip + points[v], rob), rob</code>.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">from collections import Counter
+
+def deleteAndEarn(nums: list[int]) -> int:
+    if not nums:
+        return 0
+    counts = Counter(nums)
+    max_val = max(nums)
+    
+    prev2 = 0
+    prev1 = 0
+    
+    for v in range(max_val + 1):
+        gain = v * counts.get(v, 0)
+        curr = max(prev1, prev2 + gain)
+        prev2 = prev1
+        prev1 = curr
+        
+    return prev1
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n + M)$ where $n = \\text{len}(nums)$ and $M = \\max(nums)$.<br>
+<strong>Space:</strong> $O(n)$ for the frequency map, $O(1)$ DP registers.</p>
+''',
+337: '''<h2>🧭 How to think about it</h2>
+<p>The thief has found himself in a new neighborhood where houses form a binary tree. If two directly-linked houses are broken into on the same night, the alarm automatically alerts the police. Find the maximum amount of money the thief can rob without alerting the police.</p>
+
+<p>For any subtree rooted at <code>node</code>, the thief has two mutual exclusive choices:
+1. <strong>Rob this node:</strong> We gain <code>node.val</code>, but we <strong>cannot</strong> rob either of its immediate children. We must take the optimal "not robbed" values from both children.
+2. <strong>Do not rob this node:</strong> We are free to either rob or not rob each child independently (taking $\\max(\\text{rob}, \\text{not\\_rob})$ for each).</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>A naive recursive approach checking grandparents causes exponential recomputations. Instead, post-order DFS returns a tuple <code>(rob_node, not_rob_node)</code> for each subtree in a single bottom-up pass in $O(n)$ time.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Post-order traversal returns <code>(rob, not_rob)</code>:
+<br><code>rob = node.val + left_not_rob + right_not_rob</code>
+<br><code>not_rob = max(left_rob, left_not_rob) + max(right_rob, right_not_rob)</code>.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def rob(root) -> int:
+    def dfs(node):
+        if not node:
+            return (0, 0) # (rob_this, skip_this)
+            
+        left_rob, left_skip = dfs(node.left)
+        right_rob, right_skip = dfs(node.right)
+        
+        # If we rob this node, we cannot rob left or right children
+        rob_curr = node.val + left_skip + right_skip
+        
+        # If we skip this node, children can either be robbed or skipped
+        skip_curr = max(left_rob, left_skip) + max(right_rob, right_skip)
+        
+        return (rob_curr, skip_curr)
+        
+    return max(dfs(root))
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n)$ — Every tree node is visited exactly once.<br>
+<strong>Space:</strong> $O(h)$ — Call stack height where $h$ is tree height ($O(\\log n)$ balanced, $O(n)$ skewed).</p>
+''',
+279: '''<h2>🧭 How to think about it</h2>
+<p>Given an integer <code>n</code>, return the least number of perfect square numbers that sum to <code>n</code>. A perfect square is an integer that is the square of an integer (e.g., 1, 4, 9, 16...).</p>
+
+<p>This is an <strong>unbounded knapsack</strong> problem where coin values are squares $1, 4, 9, \\dots, s^2 \\le n$.
+Let $dp[i]$ be the minimum number of square numbers summing to $i$:
+$$dp[i] = 1 + \\min_{j \\times j \\le i} dp[i - j \\times j]$$</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Exhaustive search is exponential. Dynamic programming tabulates bottom-up in $O(n \\sqrt{n})$ time. Alternatively, Legendre's Three-Square Theorem classifies answers into 1, 2, 3, or 4 in $O(\\sqrt{n})$ time.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Standard 1D DP: initialize $dp[0]=0, dp[i]=\\infty$. For each $i$ from 1 to $n$, iterate over all $j \\times j \\le i$ and minimize $1 + dp[i - j^2]$.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def numSquares(n: int) -> int:
+    dp = [float('inf')] * (n + 1)
+    dp[0] = 0
+    
+    # Precompute squares <= n
+    squares = [j * j for j in range(1, int(n**0.5) + 1)]
+    
+    for i in range(1, n + 1):
+        for sq in squares:
+            if sq > i:
+                break
+            if dp[i - sq] + 1 < dp[i]:
+                dp[i] = dp[i - sq] + 1
+                
+    return dp[n]
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n \\sqrt{n})$ — Outer loop runs $n$ times; inner loop runs $\\sqrt{n}$ times.<br>
+<strong>Space:</strong> $O(n)$ — 1D array of size $n+1$.</p>
+''',
+377: '''<h2>🧭 How to think about it</h2>
+<p>Given an array of distinct integers <code>nums</code> and a target integer <code>target</code>, return the number of possible combinations that add up to <code>target</code>. Note that different sequences (order matters, e.g., <code>[1, 2]</code> and <code>[2, 1]</code>) are counted as different permutations.</p>
+
+<p>Because order matters, this is counting permutations! To reach target sum <code>i</code>, the last number chosen could be any <code>num \\in nums</code> where <code>num <= i</code>:
+$$dp[i] = \\sum_{num \\in nums, num \\le i} dp[i - num]$$
+with base case $dp[0] = 1$ (one way to form sum 0: empty set).</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Notice the loop order:
+- In <strong>Coin Change II (LC 518)</strong> (combinations, order does NOT matter), outer loop is coins, inner loop is amounts.
+- In <strong>Combination Sum IV (LC 377)</strong> (permutations, order DOES matter), outer loop is target amounts $1 \\dots \\text{target}$, inner loop is numbers!</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Loop targets outer, coins inner: <code>for i in range(1, target + 1): for x in nums: dp[i] += dp[i - x]</code>.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def combinationSum4(nums: list[int], target: int) -> int:
+    dp = [0] * (target + 1)
+    dp[0] = 1
+    
+    for i in range(1, target + 1):
+        for num in nums:
+            if i >= num:
+                dp[i] += dp[i - num]
+                
+    return dp[target]
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(\\text{target} \\times |nums|)$ — Nested iterations.<br>
+<strong>Space:</strong> $O(\\text{target})$ — 1D DP table.</p>
+''',
+494: '''<h2>🧭 How to think about it</h2>
+<p>You are given an integer array <code>nums</code> and an integer <code>target</code>. Build an expression by adding <code>+</code> or <code>-</code> before each integer in <code>nums</code>. Return the number of different expressions that evaluate to <code>target</code>.</p>
+
+<p>Divide <code>nums</code> into two disjoint subsets: $P$ (elements assigned <code>+</code>) and $N$ (elements assigned <code>-</code>).
+$$\\sum P - \\sum N = \\text{target}$$
+Adding $\\sum P + \\sum N = \\text{total\\_sum}$ to both sides:
+$$2 \\times \\sum P = \\text{target} + \\text{total\\_sum} \\implies \\sum P = \\frac{\\text{target} + \\text{total\\_sum}}{2}$$</p>
+<p>This transforms Target Sum into finding the number of subsets with sum $S = (\\text{target} + \\text{total\\_sum}) / 2$ — standard <strong>0-1 Knapsack Subset Sum</strong>!</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Trying all $2^n$ sign assignments is $O(2^n)$. The subset sum reduction solves it in $O(n \\times S)$ time with 1D space rolling backwards!</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Check parity: if <code>target + total_sum</code> is odd or <code>abs(target) > total_sum</code>, return 0. Otherwise, count subsets with target sum $S$ traversing backward to prevent reusing elements.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def findTargetSumWays(nums: list[int], target: int) -> int:
+    total = sum(nums)
+    if (target + total) % 2 != 0 or abs(target) > total:
+        return 0
+        
+    s = (target + total) // 2
+    dp = [0] * (s + 1)
+    dp[0] = 1
+    
+    for num in nums:
+        for j in range(s, num - 1, -1):
+            dp[j] += dp[j - num]
+            
+    return dp[s]
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n \\times S)$ where $S = (\\text{target} + \\text{total}) / 2$.<br>
+<strong>Space:</strong> $O(S)$ — 1D space optimized backward traversal.</p>
+''',
+140: '''<h2>🧭 How to think about it</h2>
+<p>Given a string <code>s</code> and a dictionary of strings <code>wordDict</code>, add spaces in <code>s</code> to construct a sentence where each word is a valid dictionary word. Return all such possible sentences in any order.</p>
+
+<p>Unlike <strong>Word Break I (LC 139)</strong> which asks for a boolean existence, Word Break II asks to construct <em>all</em> sentences. If every partition is valid, the number of outputs can be exponential (e.g. <code>s = "aaaaa", wordDict = ["a", "aa"]</code>). We use <strong>memoized backtracking (top-down DP)</strong> to cache results for subproblems <code>dfs(i)</code> returning all valid suffixes starting at index <code>i</code>.</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Plain backtracking explores overlapping suffixes multiple times. Memoizing <code>memo[i] = list of valid sentences for s[i:]</code> ensures each unique suffix is computed only once, skipping doomed branches instantly.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Top-down DFS with memoization: <code>memo[start]</code> stores all valid sentences formable from suffix <code>s[start:]</code>. Prunes dead ends immediately.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def wordBreak(s: str, wordDict: list[str]) -> list[str]:
+    word_set = set(wordDict)
+    memo = {}
+    
+    def dfs(start: int) -> list[str]:
+        if start in memo:
+            return memo[start]
+        if start == len(s):
+            return [""]
+            
+        res = []
+        for end in range(start + 1, len(s) + 1):
+            word = s[start:end]
+            if word in word_set:
+                sub_sentences = dfs(end)
+                for sub in sub_sentences:
+                    res.append(word + ("" if not sub else " " + sub))
+                    
+        memo[start] = res
+        return res
+        
+    return dfs(0)
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n^2 + 2^n)$ in worst-case dense matchings, but heavily pruned in practice.<br>
+<strong>Space:</strong> $O(n \\times 2^n)$ to store all reconstructed paths and recursion stack.</p>
+''',
+63: '''<h2>🧭 How to think about it</h2>
+<p>You are given an <code>m x n</code> integer array <code>obstacleGrid</code>. A <code>1</code> represents an obstacle and <code>0</code> represents an empty space. A robot starts at the top-left corner and moves only down or right. Return the number of unique paths to the bottom-right corner.</p>
+
+<p>Transition rule:
+- If <code>obstacleGrid[i][j] == 1</code>, $dp[i][j] = 0$ (impassable!).
+- If <code>obstacleGrid[i][j] == 0</code>, $dp[i][j] = dp[i - 1][j] + dp[i][j - 1]$.</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Instead of an $m \\times n$ 2D matrix, we only need the current row and the row above. We can reduce space to $O(n)$ using a 1D rolling array!</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> 1D DP: <code>dp[j]</code> represents paths to cell $(i, j)$. If cell has obstacle, set <code>dp[j] = 0</code>. Otherwise add left neighbor: <code>dp[j] += dp[j - 1]</code>.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def uniquePathsWithObstacles(obstacleGrid: list[list[int]]) -> int:
+    if not obstacleGrid or obstacleGrid[0][0] == 1:
+        return 0
+        
+    m, n = len(obstacleGrid), len(obstacleGrid[0])
+    dp = [0] * n
+    dp[0] = 1
+    
+    for r in range(m):
+        for c in range(n):
+            if obstacleGrid[r][c] == 1:
+                dp[c] = 0
+            elif c > 0:
+                dp[c] += dp[c - 1]
+                
+    return dp[n - 1]
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(m \\times n)$ — Every cell evaluated once.<br>
+<strong>Space:</strong> $O(n)$ — Single 1D array of width $n$.</p>
+''',
+64: '''<h2>🧭 How to think about it</h2>
+<p>Given an <code>m x n</code> grid filled with non-negative numbers, find a path from top left to bottom right which minimizes the sum of all numbers along its path. You can only move down or right.</p>
+
+<p>At cell $(i, j)$, you arrived from either $(i - 1, j)$ or $(i, j - 1)$:
+$$dp[i][j] = grid[i][j] + \\min(dp[i - 1][j], \\; dp[i][j - 1])$$</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>We can solve this with $O(n)$ extra space using a 1D array, or even $O(1)$ extra space by updating <code>grid</code> in place.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Maintain 1D array: <code>dp[c] = grid[r][c] + min(dp[c], dp[c - 1])</code>.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def minPathSum(grid: list[list[int]]) -> int:
+    m, n = len(grid), len(grid[0])
+    dp = [float('inf')] * n
+    dp[0] = 0
+    
+    for r in range(m):
+        dp[0] += grid[r][0]
+        for c in range(1, n):
+            dp[c] = grid[r][c] + min(dp[c], dp[c - 1])
+            
+    return dp[-1]
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(m \\times n)$ — Grid traversed cell by cell.<br>
+<strong>Space:</strong> $O(n)$ — 1D array of width $n$.</p>
+''',
+120: '''<h2>🧭 How to think about it</h2>
+<p>Given a <code>triangle</code> array, return the minimum path sum from top to bottom. For each step, you may move to an adjacent number on the row below (i.e. from index <code>i</code> on current row to index <code>i</code> or <code>i + 1</code> on the next row).</p>
+
+<p>Top-down DP requires handling boundary conditions. <strong>Bottom-up DP</strong> starting from the base of the triangle is vastly cleaner and eliminates all edge cases!</p>
+<p>$$dp[j] = \\text{triangle}[r][j] + \\min(dp[j], \\; dp[j + 1])$$</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Starting from the bottom row, collapse upwards row by row. At the top, <code>dp[0]</code> contains the global minimum path sum!</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Initialize <code>dp = triangle[-1][:]</code>. Iterate from row $n-2$ down to 0, updating <code>dp[c] = triangle[r][c] + min(dp[c], dp[c + 1])</code>.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def minimumTotal(triangle: list[list[int]]) -> int:
+    dp = triangle[-1][:]
+    
+    for r in range(len(triangle) - 2, -1, -1):
+        for c in range(len(triangle[r])):
+            dp[c] = triangle[r][c] + min(dp[c], dp[c + 1])
+            
+    return dp[0]
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(N)$ where $N$ is total number of cells in triangle ($n(n+1)/2$).<br>
+<strong>Space:</strong> $O(n)$ — 1D buffer the length of the bottom row.</p>
+''',
+221: '''<h2>🧭 How to think about it</h2>
+<p>Given an <code>m x n</code> binary matrix filled with <code>'0'</code>s and <code>'1'</code>s, find the largest square containing only <code>'1'</code>s and return its area.</p>
+
+<p>Let $dp[i][j]$ be the side length of the largest square whose <strong>bottom-right corner</strong> is at $(i, j)$.
+If <code>matrix[i][j] == '1'</code>, $(i, j)$ can extend a square only if its top, left, and top-left diagonal neighbors can also form squares:
+$$dp[i][j] = 1 + \\min(dp[i - 1][j], \\; dp[i][j - 1], \\; dp[i - 1][j - 1])$$
+If <code>matrix[i][j] == '0'</code>, $dp[i][j] = 0$.</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Checking every possible square of size $k \\times k$ takes $O(m \\times n \\times \\min(m, n)^2)$ which is $O((m \\cdot n)^2)$. DP reduces this to a single pass $O(m \\cdot n)$ with $O(n)$ space.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> The bottom-right corner of a square of size $k$ requires size $k-1$ from top, left, and top-left diagonal simultaneously.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def maximalSquare(matrix: list[list[str]]) -> int:
+    if not matrix:
+        return 0
+    m, n = len(matrix), len(matrix[0])
+    dp = [0] * (n + 1)
+    max_side = 0
+    prev_diag = 0
+    
+    for r in range(m):
+        prev_diag = 0
+        for c in range(n):
+            temp = dp[c + 1]
+            if matrix[r][c] == '1':
+                dp[c + 1] = 1 + min(dp[c], dp[c + 1], prev_diag)
+                max_side = max(max_side, dp[c + 1])
+            else:
+                dp[c + 1] = 0
+            prev_diag = temp
+            
+    return max_side * max_side
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(m \\times n)$ — Each cell visited once.<br>
+<strong>Space:</strong> $O(n)$ — Single 1D row array.</p>
+''',
+931: '''<h2>🧭 How to think about it</h2>
+<p>Given an <code>n x n</code> array of integers <code>matrix</code>, return the minimum sum of any falling path through <code>matrix</code>. A falling path starts at any element in the first row and chooses the element in the next row that is either directly below or diagonally left/right.</p>
+
+<p>$$dp[r][c] = matrix[r][c] + \\min(dp[r - 1][c - 1], \\; dp[r - 1][c], \\; dp[r - 1][c + 1])$$</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Branching factor 3 at each row yields $O(3^n)$ recursion. Standard DP computes row by row in $O(n^2)$ time and $O(n)$ memory.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Rolling 1D array: <code>dp[c] = matrix[r][c] + min(prev[max(0, c-1) : min(n, c+2)])</code>.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def minFallingPathSum(matrix: list[list[int]]) -> int:
+    n = len(matrix)
+    dp = matrix[0][:]
+    
+    for r in range(1, n):
+        new_dp = [0] * n
+        for c in range(n):
+            best_prev = dp[c]
+            if c > 0:
+                best_prev = min(best_prev, dp[c - 1])
+            if c < n - 1:
+                best_prev = min(best_prev, dp[c + 1])
+            new_dp[c] = matrix[r][c] + best_prev
+        dp = new_dp
+        
+    return min(dp)
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n^2)$ — $n \\times n$ matrix cells.<br>
+<strong>Space:</strong> $O(n)$ — Single row of size $n$.</p>
+''',
+1277: '''<h2>🧭 How to think about it</h2>
+<p>Given a <code>m * n</code> matrix of ones and zeros, return how many square submatrices have all ones.</p>
+
+<p>Recall <strong>Maximal Square (LC 221)</strong>: if $dp[i][j] = k$, it means the largest square ending at $(i, j)$ has side length $k$. That automatically implies there are squares of side length $1, 2, \\dots, k$ all sharing $(i, j)$ as their bottom-right corner!
+Therefore, the number of square submatrices with bottom-right corner at $(i, j)$ is exactly $dp[i][j]$!</p>
+<p>$$\\text{Total Squares} = \\sum_{i, j} dp[i][j]$$</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Iterating all submatrices takes $O(m \\cdot n \\cdot \\min(m, n))$. With DP, each cell is $O(1)$, so total time is $O(m \\cdot n)$!</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> <code>dp[i][j]</code> is both the maximum side length AND the exact count of squares whose bottom-right corner is at $(i, j)$. Simply sum all <code>dp[i][j]</code>!</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def countSquares(matrix: list[list[int]]) -> int:
+    m, n = len(matrix), len(matrix[0])
+    total = 0
+    
+    for r in range(m):
+        for c in range(n):
+            if matrix[r][c] == 1:
+                if r > 0 and c > 0:
+                    matrix[r][c] = 1 + min(matrix[r - 1][c], matrix[r][c - 1], matrix[r - 1][c - 1])
+                total += matrix[r][c]
+                
+    return total
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(m \\times n)$ — Single pass in place.<br>
+<strong>Space:</strong> $O(1)$ — Modified in place (or $O(n)$ if matrix immutable).</p>
+''',
 }

@@ -23,34 +23,42 @@
  › Subpattern 12.3: 1D Array / Coin Change / Unbounded Knapsack Style · Problem 389 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0551-lc279-perfect-squares.html">Math, Number Theory &amp; Geometry</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Return the fewest perfect square numbers that sum to n.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given an integer <code>n</code>, return the least number of perfect square numbers that sum to <code>n</code>. A perfect square is an integer that is the square of an integer (e.g., 1, 4, 9, 16...).</p>
 
-<h2>Where this fits</h2>
-<p><strong>1D Array / Coin Change / Unbounded Knapsack Style</strong> — Unbounded knapsack — outer over items, inner over capacities in increasing order.</p>
+<p>This is an <strong>unbounded knapsack</strong> problem where coin values are squares $1, 4, 9, \dots, s^2 \le n$.
+Let $dp[i]$ be the minimum number of square numbers summing to $i$:
+$$dp[i] = 1 + \min_{j \times j \le i} dp[i - j \times j]$$</p>
 
-<h2>Why this pattern?</h2><ul><li>"count the number of ways…"</li><li>"minimum/maximum cost/value to reach…"</li><li>choices at each step + overlapping futures (take/skip an item)</li><li>"longest/shortest subsequence" (non-contiguous!)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Dynamic Programming (DP) master template and adapt the marked parts to this problem:</p><pre><code># Top-down: brute-force recursion + cache
-from functools import lru_cache
-@lru_cache(None)
-def dp(i):
-    if i &lt;= base: return base_value
-    return best(dp(smaller_1), dp(smaller_2), ...)   # the recurrence
+<h2>🐢 Brute force vs optimal</h2>
+<p>Exhaustive search is exponential. Dynamic programming tabulates bottom-up in $O(n \sqrt{n})$ time. Alternatively, Legendre's Three-Square Theorem classifies answers into 1, 2, 3, or 4 in $O(\sqrt{n})$ time.</p>
 
-# Bottom-up: same recurrence, loop order = dependency order
-dp = [0] * (n + 1)
-dp[0] = base_value
-for i in range(1, n + 1):
-    dp[i] = best(dp[i-1] + ..., dp[i-2] + ...)
-# often only last 2 values needed → two variables, O(1) space</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<div class="insight">💡 <strong>Key insight:</strong> Standard 1D DP: initialize $dp[0]=0, dp[i]=\infty$. For each $i$ from 1 to $n$, iterate over all $j \times j \le i$ and minimize $1 + dp[i - j^2]$.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def numSquares(n: int) -> int:
+    dp = [float('inf')] * (n + 1)
+    dp[0] = 0
+    
+    # Precompute squares <= n
+    squares = [j * j for j in range(1, int(n**0.5) + 1)]
+    
+    for i in range(1, n + 1):
+        for sq in squares:
+            if sq > i:
+                break
+            if dp[i - sq] + 1 < dp[i]:
+                dp[i] = dp[i - sq] + 1
+                
+    return dp[n]
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n \sqrt{n})$ — Outer loop runs $n$ times; inner loop runs $\sqrt{n}$ times.<br>
+<strong>Space:</strong> $O(n)$ — 1D array of size $n+1$.</p>
+
 
 <div class="pager"><a href="../problems/0388-lc53-maximum-subarray.html"><span class="lbl">← Previous</span>#53 Maximum Subarray</a><a href="../problems/0390-lc322-coin-change.html" style="text-align:right"><span class="lbl">Next →</span>#322 Coin Change</a></div>
 </div>

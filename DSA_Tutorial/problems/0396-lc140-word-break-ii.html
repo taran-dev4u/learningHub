@@ -23,34 +23,47 @@
  › Subpattern 12.5: 1D Array / Word Break Style · Problem 396 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0368-lc140-word-break-ii.html">Backtracking</a>, <a href="0566-lc140-word-break-ii.html">Trie / Prefix Tree</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Return every sentence you can form by segmenting a string into dictionary words.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given a string <code>s</code> and a dictionary of strings <code>wordDict</code>, add spaces in <code>s</code> to construct a sentence where each word is a valid dictionary word. Return all such possible sentences in any order.</p>
 
-<h2>Where this fits</h2>
-<p><strong>1D Array / Word Break Style</strong> — dp[i] = OR over all dict words w of dp[i-len(w)] when s[i-len(w):i]==w.</p>
+<p>Unlike <strong>Word Break I (LC 139)</strong> which asks for a boolean existence, Word Break II asks to construct <em>all</em> sentences. If every partition is valid, the number of outputs can be exponential (e.g. <code>s = "aaaaa", wordDict = ["a", "aa"]</code>). We use <strong>memoized backtracking (top-down DP)</strong> to cache results for subproblems <code>dfs(i)</code> returning all valid suffixes starting at index <code>i</code>.</p>
 
-<h2>Why this pattern?</h2><ul><li>"count the number of ways…"</li><li>"minimum/maximum cost/value to reach…"</li><li>choices at each step + overlapping futures (take/skip an item)</li><li>"longest/shortest subsequence" (non-contiguous!)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Dynamic Programming (DP) master template and adapt the marked parts to this problem:</p><pre><code># Top-down: brute-force recursion + cache
-from functools import lru_cache
-@lru_cache(None)
-def dp(i):
-    if i &lt;= base: return base_value
-    return best(dp(smaller_1), dp(smaller_2), ...)   # the recurrence
+<h2>🐢 Brute force vs optimal</h2>
+<p>Plain backtracking explores overlapping suffixes multiple times. Memoizing <code>memo[i] = list of valid sentences for s[i:]</code> ensures each unique suffix is computed only once, skipping doomed branches instantly.</p>
 
-# Bottom-up: same recurrence, loop order = dependency order
-dp = [0] * (n + 1)
-dp[0] = base_value
-for i in range(1, n + 1):
-    dp[i] = best(dp[i-1] + ..., dp[i-2] + ...)
-# often only last 2 values needed → two variables, O(1) space</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<div class="insight">💡 <strong>Key insight:</strong> Top-down DFS with memoization: <code>memo[start]</code> stores all valid sentences formable from suffix <code>s[start:]</code>. Prunes dead ends immediately.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def wordBreak(s: str, wordDict: list[str]) -> list[str]:
+    word_set = set(wordDict)
+    memo = {}
+    
+    def dfs(start: int) -> list[str]:
+        if start in memo:
+            return memo[start]
+        if start == len(s):
+            return [""]
+            
+        res = []
+        for end in range(start + 1, len(s) + 1):
+            word = s[start:end]
+            if word in word_set:
+                sub_sentences = dfs(end)
+                for sub in sub_sentences:
+                    res.append(word + ("" if not sub else " " + sub))
+                    
+        memo[start] = res
+        return res
+        
+    return dfs(0)
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n^2 + 2^n)$ in worst-case dense matchings, but heavily pruned in practice.<br>
+<strong>Space:</strong> $O(n \times 2^n)$ to store all reconstructed paths and recursion stack.</p>
+
 
 <div class="pager"><a href="../problems/0395-lc139-word-break.html"><span class="lbl">← Previous</span>#139 Word Break</a><a href="../problems/0397-lc87-scramble-string.html" style="text-align:right"><span class="lbl">Next →</span>#87 Scramble String</a></div>
 </div>
