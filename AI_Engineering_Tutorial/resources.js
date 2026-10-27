@@ -1,7 +1,663 @@
+/* Curated resources for the AI Engineering roadmap.
+   Every video id was verified against YouTube's oEmbed API.
+   Generated and curated for Learning Hub. */
 window.aiResources = {
+  "lessons": {
+    "phase-00.md": {
+      "videos": [
+        [
+          "zjkBMFhNj_g",
+          "[1hr Talk] Intro to Large Language Models",
+          "Andrej Karpathy"
+        ]
+      ],
+      "docs": [
+        [
+          "Interactive Curriculum (Phase 00: Setup & Tooling)",
+          "https://aiengineeringfromscratch.com/lesson?path=phases%2Fphase-00"
+        ]
+      ]
+    },
+    "phase-01.md": {
+      "videos": [
+        [
+          "fNk_zzaMoSs",
+          "Vectors | Chapter 1, Essence of linear algebra",
+          "3Blue1Brown"
+        ]
+      ],
+      "docs": [
+        [
+          "Interactive Curriculum (Phase 01: Math Foundations)",
+          "https://aiengineeringfromscratch.com/lesson?path=phases%2Fphase-01"
+        ]
+      ]
+    },
+    "phase-02.md": {
+      "videos": [
+        [
+          "sDv4f4s2SB8",
+          "Gradient Descent, Step-by-Step",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
+      "docs": [
+        [
+          "Interactive Curriculum (Phase 02: ML Fundamentals)",
+          "https://aiengineeringfromscratch.com/lesson?path=phases%2Fphase-02"
+        ]
+      ]
+    },
+    "phase-03.md": {
+      "videos": [
+        [
+          "aircAruvnKk",
+          "But what is a neural network? | Deep learning, chapter 1",
+          "3Blue1Brown"
+        ]
+      ],
+      "docs": [
+        [
+          "Interactive Curriculum (Phase 03: Deep Learning Core)",
+          "https://aiengineeringfromscratch.com/lesson?path=phases%2Fphase-03"
+        ]
+      ]
+    },
+    "phase-04.md": {
+      "videos": [
+        [
+          "KuXjwB4LzSA",
+          "But what is a convolution?",
+          "3Blue1Brown"
+        ]
+      ],
+      "docs": [
+        [
+          "Interactive Curriculum (Phase 04: Computer Vision)",
+          "https://aiengineeringfromscratch.com/lesson?path=phases%2Fphase-04"
+        ]
+      ]
+    },
+    "phase-05.md": {
+      "videos": [
+        [
+          "viZrOnJclY0",
+          "Word2Vec, Clearly Explained!!!",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
+      "docs": [
+        [
+          "Interactive Curriculum (Phase 05: NLP: Foundations to Advanced)",
+          "https://aiengineeringfromscratch.com/lesson?path=phases%2Fphase-05"
+        ]
+      ]
+    },
+    "phase-06.md": {
+      "videos": [
+        [
+          "t3YJ5hKiMQ0",
+          "Building makemore Part 5: Building a WaveNet",
+          "Andrej Karpathy"
+        ]
+      ],
+      "docs": [
+        [
+          "Interactive Curriculum (Phase 06: Speech & Audio)",
+          "https://aiengineeringfromscratch.com/lesson?path=phases%2Fphase-06"
+        ]
+      ]
+    },
+    "phase-07.md": {
+      "videos": [
+        [
+          "eMlx5fFNoYc",
+          "Attention in transformers, step-by-step | Deep Learning Chapter 6",
+          "3Blue1Brown"
+        ]
+      ],
+      "docs": [
+        [
+          "Interactive Curriculum (Phase 07: Transformers Deep Dive)",
+          "https://aiengineeringfromscratch.com/lesson?path=phases%2Fphase-07"
+        ]
+      ]
+    },
+    "phase-08.md": {
+      "videos": [
+        [
+          "1CIpzeNxIhU",
+          "Diffusion Models Explained - Computerphile",
+          "Computerphile"
+        ]
+      ],
+      "docs": [
+        [
+          "Interactive Curriculum (Phase 08: Generative AI)",
+          "https://aiengineeringfromscratch.com/lesson?path=phases%2Fphase-08"
+        ]
+      ]
+    },
+    "phase-09.md": {
+      "videos": [
+        [
+          "2pWv7GOvuf0",
+          "RL Course by David Silver - Lecture 1: Introduction to Reinforcement Learning",
+          "DeepMind"
+        ]
+      ],
+      "docs": [
+        [
+          "Interactive Curriculum (Phase 09: Reinforcement Learning)",
+          "https://aiengineeringfromscratch.com/lesson?path=phases%2Fphase-09"
+        ]
+      ]
+    },
+    "phase-10.md": {
+      "videos": [
+        [
+          "kCc8FmEb1nY",
+          "Let's build GPT: from scratch, in code, spelled out.",
+          "Andrej Karpathy"
+        ]
+      ],
+      "docs": [
+        [
+          "Interactive Curriculum (Phase 10: LLMs from Scratch)",
+          "https://aiengineeringfromscratch.com/lesson?path=phases%2Fphase-10"
+        ]
+      ]
+    },
+    "phase-11.md": {
+      "videos": [
+        [
+          "8OJC21T2SL4",
+          "5 Levels Of Text Splitting For Retrieval",
+          "Greg Kamradt"
+        ]
+      ],
+      "docs": [
+        [
+          "Interactive Curriculum (Phase 11: LLM Engineering)",
+          "https://aiengineeringfromscratch.com/lesson?path=phases%2Fphase-11"
+        ]
+      ]
+    },
+    "phase-12.md": {
+      "videos": [
+        [
+          "wjZofJX0v4M",
+          "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
+          "3Blue1Brown"
+        ]
+      ],
+      "docs": [
+        [
+          "Interactive Curriculum (Phase 12: Multimodal AI)",
+          "https://aiengineeringfromscratch.com/lesson?path=phases%2Fphase-12"
+        ]
+      ]
+    },
+    "phase-13.md": {
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
+      "docs": [
+        [
+          "Interactive Curriculum (Phase 13: Tools & Protocols)",
+          "https://aiengineeringfromscratch.com/lesson?path=phases%2Fphase-13"
+        ]
+      ]
+    },
+    "phase-14.md": {
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
+      "docs": [
+        [
+          "Interactive Curriculum (Phase 14: Agent Engineering)",
+          "https://aiengineeringfromscratch.com/lesson?path=phases%2Fphase-14"
+        ]
+      ]
+    },
+    "phase-15.md": {
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
+      "docs": [
+        [
+          "Interactive Curriculum (Phase 15: Autonomous Systems)",
+          "https://aiengineeringfromscratch.com/lesson?path=phases%2Fphase-15"
+        ]
+      ]
+    },
+    "phase-16.md": {
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
+      "docs": [
+        [
+          "Interactive Curriculum (Phase 16: Multi-Agent & Swarms)",
+          "https://aiengineeringfromscratch.com/lesson?path=phases%2Fphase-16"
+        ]
+      ]
+    },
+    "phase-17.md": {
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
+      "docs": [
+        [
+          "Interactive Curriculum (Phase 17: Infrastructure & Production)",
+          "https://aiengineeringfromscratch.com/lesson?path=phases%2Fphase-17"
+        ]
+      ]
+    },
+    "phase-18.md": {
+      "videos": [
+        [
+          "2MBJOuVq380",
+          "Training AI with Human Feedback (RLHF) - Computerphile",
+          "Computerphile"
+        ]
+      ],
+      "docs": [
+        [
+          "Interactive Curriculum (Phase 18: Ethics, Safety & Alignment)",
+          "https://aiengineeringfromscratch.com/lesson?path=phases%2Fphase-18"
+        ]
+      ]
+    },
+    "phase-19.md": {
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
+      "docs": [
+        [
+          "Interactive Curriculum (Phase 19: Capstone Projects)",
+          "https://aiengineeringfromscratch.com/lesson?path=phases%2Fphase-19"
+        ]
+      ]
+    },
+    "manual-a2a-101.md": {
+      "videos": [
+        [
+          "Tud9HLTk8hg",
+          "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
+          "IBM Technology"
+        ]
+      ],
+      "docs": [
+        [
+          "Interactive Curriculum (A2A 101)",
+          "https://aiengineeringfromscratch.com/lesson?path=phases%2Fmanuals-a2a-101"
+        ]
+      ]
+    },
+    "manual-docker-sandboxes-and-docker-agent-101.md": {
+      "videos": [
+        [
+          "CI3kL5uNV5A",
+          "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
+          "Engineering Community"
+        ]
+      ],
+      "docs": [
+        [
+          "Interactive Curriculum (Docker Sandboxes and Docker Agent 101)",
+          "https://aiengineeringfromscratch.com/lesson?path=phases%2Fmanuals-docker-sandboxes-and-docker-agent-101"
+        ]
+      ]
+    },
+    "manual-miles-101.md": {
+      "videos": [
+        [
+          "5E-RdE6elMo",
+          "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
+          "Saurav Prateek"
+        ]
+      ],
+      "docs": [
+        [
+          "Interactive Curriculum (Miles 101)",
+          "https://aiengineeringfromscratch.com/lesson?path=phases%2Fmanuals-miles-101"
+        ]
+      ]
+    },
+    "manual-reverse-engineering-101.md": {
+      "videos": [
+        [
+          "I4ERWLNinic",
+          "AI Automations 101: Reverse Engineer Any API",
+          "Hichem's Journey"
+        ]
+      ],
+      "docs": [
+        [
+          "Interactive Curriculum (Reverse Engineering 101)",
+          "https://aiengineeringfromscratch.com/lesson?path=phases%2Fmanuals-reverse-engineering-101"
+        ]
+      ]
+    },
+    "manual-sglang-101.md": {
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
+      "docs": [
+        [
+          "Interactive Curriculum (SGLang 101)",
+          "https://aiengineeringfromscratch.com/lesson?path=phases%2Fmanuals-sglang-101"
+        ]
+      ]
+    },
+    "manual-vllm-101.md": {
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
+      "docs": [
+        [
+          "Interactive Curriculum (vLLM 101)",
+          "https://aiengineeringfromscratch.com/lesson?path=phases%2Fmanuals-vllm-101"
+        ]
+      ]
+    },
+    "practice-implement.md": {
+      "videos": [
+        [
+          "8ib4Qnh2HFE",
+          "Full AI Prompting Course with Andrew Ng",
+          "DeepLearningAI"
+        ]
+      ],
+      "docs": [
+        [
+          "Interactive Curriculum (Practice: Implement)",
+          "https://aiengineeringfromscratch.com/lesson?path=phases%2Fpractice-implement"
+        ]
+      ]
+    },
+    "practice-research.md": {
+      "videos": [
+        [
+          "sVcwVQRHIc8",
+          "Learn RAG From Scratch \u2013 Python AI Tutorial from a LangChain Engineer",
+          "freeCodeCamp.org"
+        ]
+      ],
+      "docs": [
+        [
+          "Interactive Curriculum (Practice: Research)",
+          "https://aiengineeringfromscratch.com/lesson?path=phases%2Fpractice-research"
+        ]
+      ]
+    },
+    "practice-train.md": {
+      "videos": [
+        [
+          "rtvZFF0xpkU",
+          "1   Building an AI tool in 5 minutes",
+          " Ibrahim Hussain"
+        ]
+      ],
+      "docs": [
+        [
+          "Interactive Curriculum (Practice: Train)",
+          "https://aiengineeringfromscratch.com/lesson?path=phases%2Fpractice-train"
+        ]
+      ]
+    },
+    "practice-lab.md": {
+      "videos": [
+        [
+          "oHu_xWe0agI",
+          "A Practical Guide To Becoming An AI Engineer (2026)",
+          "CodeHead"
+        ]
+      ],
+      "docs": [
+        [
+          "Interactive Curriculum (Practice: Lab)",
+          "https://aiengineeringfromscratch.com/lesson?path=phases%2Fpractice-lab"
+        ]
+      ]
+    },
+    "learning-paths.md": {
+      "videos": [
+        [
+          "oHu_xWe0agI",
+          "A Practical Guide To Becoming An AI Engineer (2026)",
+          "CodeHead"
+        ]
+      ],
+      "docs": [
+        [
+          "Interactive Curriculum (Specialized Career Tracks)",
+          "https://aiengineeringfromscratch.com/lesson?path=phases%2Flearning-paths"
+        ]
+      ]
+    },
+    "glossary-math-training.md": {
+      "videos": [
+        [
+          "0z6AhrOSrRs",
+          "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
+          "My Lesson"
+        ]
+      ],
+      "docs": [
+        [
+          "Interactive Curriculum (Glossary: Math & training)",
+          "https://aiengineeringfromscratch.com/lesson?path=phases%2Fglossary-math-training"
+        ]
+      ]
+    },
+    "glossary-models-inference.md": {
+      "videos": [
+        [
+          "XtT5i0ZeHHE",
+          "AI Inference: The Secret to AI's Superpowers",
+          "IBM Technology"
+        ]
+      ],
+      "docs": [
+        [
+          "Interactive Curriculum (Glossary: Models & inference)",
+          "https://aiengineeringfromscratch.com/lesson?path=phases%2Fglossary-models-inference"
+        ]
+      ]
+    },
+    "glossary-data-representations.md": {
+      "videos": [
+        [
+          "VSFuqMh4hus",
+          "7 AI Terms You Need to Know: Agents, RAG, ASI & More",
+          "IBM Technology"
+        ]
+      ],
+      "docs": [
+        [
+          "Interactive Curriculum (Glossary: Data & representations)",
+          "https://aiengineeringfromscratch.com/lesson?path=phases%2Fglossary-data-representations"
+        ]
+      ]
+    },
+    "glossary-retrieval-generation.md": {
+      "videos": [
+        [
+          "T-D1OfcDW1M",
+          "What is Retrieval-Augmented Generation (RAG)?",
+          "IBM Technology"
+        ]
+      ],
+      "docs": [
+        [
+          "Interactive Curriculum (Glossary: Retrieval & generation)",
+          "https://aiengineeringfromscratch.com/lesson?path=phases%2Fglossary-retrieval-generation"
+        ]
+      ]
+    },
+    "glossary-prompting-context.md": {
+      "videos": [
+        [
+          "vD0E3EUb8-8",
+          "Context Engineering vs. Prompt Engineering: Smarter AI with RAG & Agents",
+          "IBM Technology"
+        ]
+      ],
+      "docs": [
+        [
+          "Interactive Curriculum (Glossary: Prompting & context)",
+          "https://aiengineeringfromscratch.com/lesson?path=phases%2Fglossary-prompting-context"
+        ]
+      ]
+    },
+    "glossary-agents-tools.md": {
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
+      "docs": [
+        [
+          "Interactive Curriculum (Glossary: Agents & tools)",
+          "https://aiengineeringfromscratch.com/lesson?path=phases%2Fglossary-agents-tools"
+        ]
+      ]
+    },
+    "glossary-evaluation-safety.md": {
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
+      "docs": [
+        [
+          "Interactive Curriculum (Glossary: Evaluation & safety)",
+          "https://aiengineeringfromscratch.com/lesson?path=phases%2Fglossary-evaluation-safety"
+        ]
+      ]
+    },
+    "glossary-ai-native-development.md": {
+      "videos": [
+        [
+          "9u6xvcNJaxc",
+          "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
+          "AI Engineer"
+        ]
+      ],
+      "docs": [
+        [
+          "Interactive Curriculum (Glossary: AI-native development)",
+          "https://aiengineeringfromscratch.com/lesson?path=phases%2Fglossary-ai-native-development"
+        ]
+      ]
+    },
+    "glossary-infrastructure-serving.md": {
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
+      "docs": [
+        [
+          "Interactive Curriculum (Glossary: Infrastructure & serving)",
+          "https://aiengineeringfromscratch.com/lesson?path=phases%2Fglossary-infrastructure-serving"
+        ]
+      ]
+    },
+    "glossary-reliability-operations.md": {
+      "videos": [
+        [
+          "kASZ4Y7lrcU",
+          "Concepts behind the AI Glossary",
+          "Technology Debunk"
+        ]
+      ],
+      "docs": [
+        [
+          "Interactive Curriculum (Glossary: Reliability & operations)",
+          "https://aiengineeringfromscratch.com/lesson?path=phases%2Fglossary-reliability-operations"
+        ]
+      ]
+    },
+    "glossary-security-governance.md": {
+      "videos": [
+        [
+          "4QXtObc61Lw",
+          "Security & AI Governance: Reducing Risks in AI Systems",
+          "IBM Technology"
+        ]
+      ],
+      "docs": [
+        [
+          "Interactive Curriculum (Glossary: Security & governance)",
+          "https://aiengineeringfromscratch.com/lesson?path=phases%2Fglossary-security-governance"
+        ]
+      ]
+    },
+    "glossary-multimodal-systems.md": {
+      "videos": [
+        [
+          "J51oZYcNvP8",
+          "What is Multimodal AI? How LLMs Process Text, Images, and More",
+          "IBM Technology"
+        ]
+      ],
+      "docs": [
+        [
+          "Interactive Curriculum (Glossary: Multimodal systems)",
+          "https://aiengineeringfromscratch.com/lesson?path=phases%2Fglossary-multimodal-systems"
+        ]
+      ]
+    }
+  },
   "concepts": {
     "phase-00/dev-environment": {
-      "videos": [],
+      "videos": [
+        [
+          "zjkBMFhNj_g",
+          "[1hr Talk] Intro to Large Language Models",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -24,7 +680,13 @@ window.aiResources = {
       ]
     },
     "phase-00/git-collaboration": {
-      "videos": [],
+      "videos": [
+        [
+          "zjkBMFhNj_g",
+          "[1hr Talk] Intro to Large Language Models",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -47,7 +709,13 @@ window.aiResources = {
       ]
     },
     "phase-00/gpu-setup-cloud": {
-      "videos": [],
+      "videos": [
+        [
+          "zjkBMFhNj_g",
+          "[1hr Talk] Intro to Large Language Models",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -70,7 +738,13 @@ window.aiResources = {
       ]
     },
     "phase-00/apis-keys": {
-      "videos": [],
+      "videos": [
+        [
+          "zjkBMFhNj_g",
+          "[1hr Talk] Intro to Large Language Models",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -93,7 +767,13 @@ window.aiResources = {
       ]
     },
     "phase-00/jupyter-notebooks": {
-      "videos": [],
+      "videos": [
+        [
+          "zjkBMFhNj_g",
+          "[1hr Talk] Intro to Large Language Models",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -116,7 +796,13 @@ window.aiResources = {
       ]
     },
     "phase-00/python-environments": {
-      "videos": [],
+      "videos": [
+        [
+          "zjkBMFhNj_g",
+          "[1hr Talk] Intro to Large Language Models",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -139,7 +825,13 @@ window.aiResources = {
       ]
     },
     "phase-00/docker-for-ai": {
-      "videos": [],
+      "videos": [
+        [
+          "zjkBMFhNj_g",
+          "[1hr Talk] Intro to Large Language Models",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -162,7 +854,13 @@ window.aiResources = {
       ]
     },
     "phase-00/editor-setup": {
-      "videos": [],
+      "videos": [
+        [
+          "zjkBMFhNj_g",
+          "[1hr Talk] Intro to Large Language Models",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -185,7 +883,13 @@ window.aiResources = {
       ]
     },
     "phase-00/data-management": {
-      "videos": [],
+      "videos": [
+        [
+          "zjkBMFhNj_g",
+          "[1hr Talk] Intro to Large Language Models",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -208,7 +912,13 @@ window.aiResources = {
       ]
     },
     "phase-00/terminal-shell": {
-      "videos": [],
+      "videos": [
+        [
+          "zjkBMFhNj_g",
+          "[1hr Talk] Intro to Large Language Models",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -231,7 +941,13 @@ window.aiResources = {
       ]
     },
     "phase-00/linux-for-ai": {
-      "videos": [],
+      "videos": [
+        [
+          "zjkBMFhNj_g",
+          "[1hr Talk] Intro to Large Language Models",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -254,7 +970,13 @@ window.aiResources = {
       ]
     },
     "phase-00/debugging-profiling": {
-      "videos": [],
+      "videos": [
+        [
+          "zjkBMFhNj_g",
+          "[1hr Talk] Intro to Large Language Models",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -277,7 +999,13 @@ window.aiResources = {
       ]
     },
     "phase-00/python-for-ai-engineering": {
-      "videos": [],
+      "videos": [
+        [
+          "zjkBMFhNj_g",
+          "[1hr Talk] Intro to Large Language Models",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -300,7 +1028,13 @@ window.aiResources = {
       ]
     },
     "phase-01/linear-algebra-intuition": {
-      "videos": [],
+      "videos": [
+        [
+          "fNk_zzaMoSs",
+          "Vectors | Chapter 1, Essence of linear algebra",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -323,7 +1057,13 @@ window.aiResources = {
       ]
     },
     "phase-01/vectors-matrices-operations": {
-      "videos": [],
+      "videos": [
+        [
+          "fNk_zzaMoSs",
+          "Vectors | Chapter 1, Essence of linear algebra",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -346,7 +1086,13 @@ window.aiResources = {
       ]
     },
     "phase-01/matrix-transformations-eigenvalues": {
-      "videos": [],
+      "videos": [
+        [
+          "fNk_zzaMoSs",
+          "Vectors | Chapter 1, Essence of linear algebra",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -369,7 +1115,13 @@ window.aiResources = {
       ]
     },
     "phase-01/calculus-for-ml-derivatives-gradients": {
-      "videos": [],
+      "videos": [
+        [
+          "fNk_zzaMoSs",
+          "Vectors | Chapter 1, Essence of linear algebra",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -392,7 +1144,13 @@ window.aiResources = {
       ]
     },
     "phase-01/chain-rule-automatic-differentiation": {
-      "videos": [],
+      "videos": [
+        [
+          "fNk_zzaMoSs",
+          "Vectors | Chapter 1, Essence of linear algebra",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -415,7 +1173,13 @@ window.aiResources = {
       ]
     },
     "phase-01/probability-distributions": {
-      "videos": [],
+      "videos": [
+        [
+          "fNk_zzaMoSs",
+          "Vectors | Chapter 1, Essence of linear algebra",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -438,7 +1202,13 @@ window.aiResources = {
       ]
     },
     "phase-01/bayes-theorem-statistical-thinking": {
-      "videos": [],
+      "videos": [
+        [
+          "fNk_zzaMoSs",
+          "Vectors | Chapter 1, Essence of linear algebra",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -461,7 +1231,13 @@ window.aiResources = {
       ]
     },
     "phase-01/optimization-gradient-descent-family": {
-      "videos": [],
+      "videos": [
+        [
+          "fNk_zzaMoSs",
+          "Vectors | Chapter 1, Essence of linear algebra",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -484,7 +1260,13 @@ window.aiResources = {
       ]
     },
     "phase-01/information-theory-entropy-kl-divergence": {
-      "videos": [],
+      "videos": [
+        [
+          "fNk_zzaMoSs",
+          "Vectors | Chapter 1, Essence of linear algebra",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -507,7 +1289,13 @@ window.aiResources = {
       ]
     },
     "phase-01/dimensionality-reduction-pca-t-sne-umap": {
-      "videos": [],
+      "videos": [
+        [
+          "fNk_zzaMoSs",
+          "Vectors | Chapter 1, Essence of linear algebra",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -530,7 +1318,13 @@ window.aiResources = {
       ]
     },
     "phase-01/singular-value-decomposition": {
-      "videos": [],
+      "videos": [
+        [
+          "fNk_zzaMoSs",
+          "Vectors | Chapter 1, Essence of linear algebra",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -553,7 +1347,13 @@ window.aiResources = {
       ]
     },
     "phase-01/tensor-operations": {
-      "videos": [],
+      "videos": [
+        [
+          "fNk_zzaMoSs",
+          "Vectors | Chapter 1, Essence of linear algebra",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -576,7 +1376,13 @@ window.aiResources = {
       ]
     },
     "phase-01/numerical-stability": {
-      "videos": [],
+      "videos": [
+        [
+          "fNk_zzaMoSs",
+          "Vectors | Chapter 1, Essence of linear algebra",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -599,7 +1405,13 @@ window.aiResources = {
       ]
     },
     "phase-01/norms-distances": {
-      "videos": [],
+      "videos": [
+        [
+          "fNk_zzaMoSs",
+          "Vectors | Chapter 1, Essence of linear algebra",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -622,7 +1434,13 @@ window.aiResources = {
       ]
     },
     "phase-01/statistics-for-ml": {
-      "videos": [],
+      "videos": [
+        [
+          "fNk_zzaMoSs",
+          "Vectors | Chapter 1, Essence of linear algebra",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -645,7 +1463,13 @@ window.aiResources = {
       ]
     },
     "phase-01/sampling-methods": {
-      "videos": [],
+      "videos": [
+        [
+          "fNk_zzaMoSs",
+          "Vectors | Chapter 1, Essence of linear algebra",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -668,7 +1492,13 @@ window.aiResources = {
       ]
     },
     "phase-01/linear-systems": {
-      "videos": [],
+      "videos": [
+        [
+          "fNk_zzaMoSs",
+          "Vectors | Chapter 1, Essence of linear algebra",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -691,7 +1521,13 @@ window.aiResources = {
       ]
     },
     "phase-01/convex-optimization": {
-      "videos": [],
+      "videos": [
+        [
+          "fNk_zzaMoSs",
+          "Vectors | Chapter 1, Essence of linear algebra",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -714,7 +1550,13 @@ window.aiResources = {
       ]
     },
     "phase-01/complex-numbers-for-ai": {
-      "videos": [],
+      "videos": [
+        [
+          "fNk_zzaMoSs",
+          "Vectors | Chapter 1, Essence of linear algebra",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -737,7 +1579,13 @@ window.aiResources = {
       ]
     },
     "phase-01/the-fourier-transform": {
-      "videos": [],
+      "videos": [
+        [
+          "fNk_zzaMoSs",
+          "Vectors | Chapter 1, Essence of linear algebra",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -760,7 +1608,13 @@ window.aiResources = {
       ]
     },
     "phase-01/graph-theory-for-ml": {
-      "videos": [],
+      "videos": [
+        [
+          "fNk_zzaMoSs",
+          "Vectors | Chapter 1, Essence of linear algebra",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -783,7 +1637,13 @@ window.aiResources = {
       ]
     },
     "phase-01/stochastic-processes": {
-      "videos": [],
+      "videos": [
+        [
+          "fNk_zzaMoSs",
+          "Vectors | Chapter 1, Essence of linear algebra",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -806,7 +1666,13 @@ window.aiResources = {
       ]
     },
     "phase-02/what-is-machine-learning": {
-      "videos": [],
+      "videos": [
+        [
+          "sDv4f4s2SB8",
+          "Gradient Descent, Step-by-Step",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -829,7 +1695,13 @@ window.aiResources = {
       ]
     },
     "phase-02/linear-regression-from-scratch": {
-      "videos": [],
+      "videos": [
+        [
+          "sDv4f4s2SB8",
+          "Gradient Descent, Step-by-Step",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -852,7 +1724,13 @@ window.aiResources = {
       ]
     },
     "phase-02/logistic-regression-classification": {
-      "videos": [],
+      "videos": [
+        [
+          "sDv4f4s2SB8",
+          "Gradient Descent, Step-by-Step",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -875,7 +1753,13 @@ window.aiResources = {
       ]
     },
     "phase-02/decision-trees-random-forests": {
-      "videos": [],
+      "videos": [
+        [
+          "_L39rN6gz7Y",
+          "Decision and Classification Trees, Clearly Explained!!!",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -898,7 +1782,13 @@ window.aiResources = {
       ]
     },
     "phase-02/support-vector-machines": {
-      "videos": [],
+      "videos": [
+        [
+          "efR1C6CvhmE",
+          "Support Vector Machines Part 1 (of 3): Main Ideas!!!",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -921,7 +1811,13 @@ window.aiResources = {
       ]
     },
     "phase-02/knn-distance-metrics": {
-      "videos": [],
+      "videos": [
+        [
+          "sDv4f4s2SB8",
+          "Gradient Descent, Step-by-Step",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -944,7 +1840,13 @@ window.aiResources = {
       ]
     },
     "phase-02/unsupervised-learning-k-means-dbscan": {
-      "videos": [],
+      "videos": [
+        [
+          "RDZUdRSDOok",
+          "Clustering with DBSCAN, Clearly Explained!!!",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -967,7 +1869,13 @@ window.aiResources = {
       ]
     },
     "phase-02/feature-engineering-selection": {
-      "videos": [],
+      "videos": [
+        [
+          "sDv4f4s2SB8",
+          "Gradient Descent, Step-by-Step",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -990,7 +1898,13 @@ window.aiResources = {
       ]
     },
     "phase-02/model-evaluation-metrics-cross-validation": {
-      "videos": [],
+      "videos": [
+        [
+          "sDv4f4s2SB8",
+          "Gradient Descent, Step-by-Step",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -1013,7 +1927,13 @@ window.aiResources = {
       ]
     },
     "phase-02/bias-variance-the-learning-curve": {
-      "videos": [],
+      "videos": [
+        [
+          "sDv4f4s2SB8",
+          "Gradient Descent, Step-by-Step",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -1036,7 +1956,13 @@ window.aiResources = {
       ]
     },
     "phase-02/ensemble-methods-boosting-bagging-stacking": {
-      "videos": [],
+      "videos": [
+        [
+          "sDv4f4s2SB8",
+          "Gradient Descent, Step-by-Step",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -1059,7 +1985,13 @@ window.aiResources = {
       ]
     },
     "phase-02/hyperparameter-tuning": {
-      "videos": [],
+      "videos": [
+        [
+          "sDv4f4s2SB8",
+          "Gradient Descent, Step-by-Step",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -1082,7 +2014,13 @@ window.aiResources = {
       ]
     },
     "phase-02/ml-pipelines-experiment-tracking": {
-      "videos": [],
+      "videos": [
+        [
+          "sDv4f4s2SB8",
+          "Gradient Descent, Step-by-Step",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -1105,7 +2043,13 @@ window.aiResources = {
       ]
     },
     "phase-02/naive-bayes": {
-      "videos": [],
+      "videos": [
+        [
+          "O2L2Uv9pdDA",
+          "Naive Bayes, Clearly Explained!!!",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -1128,7 +2072,13 @@ window.aiResources = {
       ]
     },
     "phase-02/time-series-fundamentals": {
-      "videos": [],
+      "videos": [
+        [
+          "sDv4f4s2SB8",
+          "Gradient Descent, Step-by-Step",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -1151,7 +2101,13 @@ window.aiResources = {
       ]
     },
     "phase-02/anomaly-detection": {
-      "videos": [],
+      "videos": [
+        [
+          "sDv4f4s2SB8",
+          "Gradient Descent, Step-by-Step",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -1174,7 +2130,13 @@ window.aiResources = {
       ]
     },
     "phase-02/handling-imbalanced-data": {
-      "videos": [],
+      "videos": [
+        [
+          "sDv4f4s2SB8",
+          "Gradient Descent, Step-by-Step",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -1197,7 +2159,13 @@ window.aiResources = {
       ]
     },
     "phase-02/feature-selection": {
-      "videos": [],
+      "videos": [
+        [
+          "dsqwxls1h8o",
+          "What is Feature Selection in Machine Learning Explained For Beginners (With Examples)",
+          "Learn with Whiteboard"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -1220,7 +2188,13 @@ window.aiResources = {
       ]
     },
     "phase-02/ml-system-design-from-problem-to-deployed-model": {
-      "videos": [],
+      "videos": [
+        [
+          "sDv4f4s2SB8",
+          "Gradient Descent, Step-by-Step",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -1243,7 +2217,13 @@ window.aiResources = {
       ]
     },
     "phase-02/monitoring-models-in-production-data-drift-and-concept-drift": {
-      "videos": [],
+      "videos": [
+        [
+          "QJTRNxUxmuc",
+          "Machine Learning Model Drift - Concept Drift & Data Drift in ML - Explanation",
+          "1littlecoder"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -1266,7 +2246,13 @@ window.aiResources = {
       ]
     },
     "phase-02/feature-stores-and-training-serving-skew": {
-      "videos": [],
+      "videos": [
+        [
+          "sDv4f4s2SB8",
+          "Gradient Descent, Step-by-Step",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -1289,7 +2275,13 @@ window.aiResources = {
       ]
     },
     "phase-03/the-perceptron-where-it-all-started": {
-      "videos": [],
+      "videos": [
+        [
+          "aircAruvnKk",
+          "But what is a neural network? | Deep learning, chapter 1",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -1312,7 +2304,13 @@ window.aiResources = {
       ]
     },
     "phase-03/multi-layer-networks-forward-pass": {
-      "videos": [],
+      "videos": [
+        [
+          "aircAruvnKk",
+          "But what is a neural network? | Deep learning, chapter 1",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -1335,7 +2333,13 @@ window.aiResources = {
       ]
     },
     "phase-03/backpropagation-from-scratch": {
-      "videos": [],
+      "videos": [
+        [
+          "aircAruvnKk",
+          "But what is a neural network? | Deep learning, chapter 1",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -1358,7 +2362,13 @@ window.aiResources = {
       ]
     },
     "phase-03/activation-functions-relu-sigmoid-gelu-why": {
-      "videos": [],
+      "videos": [
+        [
+          "aircAruvnKk",
+          "But what is a neural network? | Deep learning, chapter 1",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -1381,7 +2391,13 @@ window.aiResources = {
       ]
     },
     "phase-03/loss-functions-mse-cross-entropy-contrastive": {
-      "videos": [],
+      "videos": [
+        [
+          "v_ueBW_5dLg",
+          "What is a Loss Function? Understanding How AI Models Learn",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -1404,7 +2420,13 @@ window.aiResources = {
       ]
     },
     "phase-03/optimizers-sgd-momentum-adam-adamw": {
-      "videos": [],
+      "videos": [
+        [
+          "aircAruvnKk",
+          "But what is a neural network? | Deep learning, chapter 1",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -1427,7 +2449,13 @@ window.aiResources = {
       ]
     },
     "phase-03/regularization-dropout-weight-decay-batchnorm": {
-      "videos": [],
+      "videos": [
+        [
+          "aircAruvnKk",
+          "But what is a neural network? | Deep learning, chapter 1",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -1450,7 +2478,13 @@ window.aiResources = {
       ]
     },
     "phase-03/weight-initialization-training-stability": {
-      "videos": [],
+      "videos": [
+        [
+          "aircAruvnKk",
+          "But what is a neural network? | Deep learning, chapter 1",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -1473,7 +2507,13 @@ window.aiResources = {
       ]
     },
     "phase-03/learning-rate-schedules-warmup": {
-      "videos": [],
+      "videos": [
+        [
+          "aircAruvnKk",
+          "But what is a neural network? | Deep learning, chapter 1",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -1496,7 +2536,13 @@ window.aiResources = {
       ]
     },
     "phase-03/build-your-own-mini-framework": {
-      "videos": [],
+      "videos": [
+        [
+          "aircAruvnKk",
+          "But what is a neural network? | Deep learning, chapter 1",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -1519,7 +2565,13 @@ window.aiResources = {
       ]
     },
     "phase-03/introduction-to-pytorch": {
-      "videos": [],
+      "videos": [
+        [
+          "aircAruvnKk",
+          "But what is a neural network? | Deep learning, chapter 1",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -1542,7 +2594,13 @@ window.aiResources = {
       ]
     },
     "phase-03/introduction-to-jax": {
-      "videos": [],
+      "videos": [
+        [
+          "aircAruvnKk",
+          "But what is a neural network? | Deep learning, chapter 1",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -1565,7 +2623,13 @@ window.aiResources = {
       ]
     },
     "phase-03/debugging-neural-networks": {
-      "videos": [],
+      "videos": [
+        [
+          "aircAruvnKk",
+          "But what is a neural network? | Deep learning, chapter 1",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -1588,7 +2652,13 @@ window.aiResources = {
       ]
     },
     "phase-04/image-fundamentals-pixels-channels-color-spaces": {
-      "videos": [],
+      "videos": [
+        [
+          "KuXjwB4LzSA",
+          "But what is a convolution?",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -1611,7 +2681,13 @@ window.aiResources = {
       ]
     },
     "phase-04/convolutions-from-scratch": {
-      "videos": [],
+      "videos": [
+        [
+          "KuXjwB4LzSA",
+          "But what is a convolution?",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -1634,7 +2710,13 @@ window.aiResources = {
       ]
     },
     "phase-04/cnns-lenet-to-resnet": {
-      "videos": [],
+      "videos": [
+        [
+          "KuXjwB4LzSA",
+          "But what is a convolution?",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -1657,7 +2739,13 @@ window.aiResources = {
       ]
     },
     "phase-04/image-classification": {
-      "videos": [],
+      "videos": [
+        [
+          "KuXjwB4LzSA",
+          "But what is a convolution?",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -1680,7 +2768,13 @@ window.aiResources = {
       ]
     },
     "phase-04/transfer-learning-fine-tuning": {
-      "videos": [],
+      "videos": [
+        [
+          "KuXjwB4LzSA",
+          "But what is a convolution?",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -1703,7 +2797,13 @@ window.aiResources = {
       ]
     },
     "phase-04/object-detection-yolo-from-scratch": {
-      "videos": [],
+      "videos": [
+        [
+          "KuXjwB4LzSA",
+          "But what is a convolution?",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -1726,7 +2826,13 @@ window.aiResources = {
       ]
     },
     "phase-04/semantic-segmentation-u-net": {
-      "videos": [],
+      "videos": [
+        [
+          "KuXjwB4LzSA",
+          "But what is a convolution?",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -1749,7 +2855,13 @@ window.aiResources = {
       ]
     },
     "phase-04/instance-segmentation-mask-r-cnn": {
-      "videos": [],
+      "videos": [
+        [
+          "KuXjwB4LzSA",
+          "But what is a convolution?",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -1772,7 +2884,13 @@ window.aiResources = {
       ]
     },
     "phase-04/image-generation-gans": {
-      "videos": [],
+      "videos": [
+        [
+          "KuXjwB4LzSA",
+          "But what is a convolution?",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -1795,7 +2913,13 @@ window.aiResources = {
       ]
     },
     "phase-04/image-generation-diffusion-models": {
-      "videos": [],
+      "videos": [
+        [
+          "KuXjwB4LzSA",
+          "But what is a convolution?",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -1818,7 +2942,13 @@ window.aiResources = {
       ]
     },
     "phase-04/stable-diffusion-architecture-fine-tuning": {
-      "videos": [],
+      "videos": [
+        [
+          "KuXjwB4LzSA",
+          "But what is a convolution?",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -1841,7 +2971,13 @@ window.aiResources = {
       ]
     },
     "phase-04/video-understanding-temporal-modeling": {
-      "videos": [],
+      "videos": [
+        [
+          "KuXjwB4LzSA",
+          "But what is a convolution?",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -1864,7 +3000,13 @@ window.aiResources = {
       ]
     },
     "phase-04/3d-vision-point-clouds-nerfs": {
-      "videos": [],
+      "videos": [
+        [
+          "KuXjwB4LzSA",
+          "But what is a convolution?",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -1887,7 +3029,13 @@ window.aiResources = {
       ]
     },
     "phase-04/vision-transformers-vit": {
-      "videos": [],
+      "videos": [
+        [
+          "KuXjwB4LzSA",
+          "But what is a convolution?",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -1910,7 +3058,13 @@ window.aiResources = {
       ]
     },
     "phase-04/real-time-vision-edge-deployment": {
-      "videos": [],
+      "videos": [
+        [
+          "KuXjwB4LzSA",
+          "But what is a convolution?",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -1933,7 +3087,13 @@ window.aiResources = {
       ]
     },
     "phase-04/build-a-complete-vision-pipeline": {
-      "videos": [],
+      "videos": [
+        [
+          "KuXjwB4LzSA",
+          "But what is a convolution?",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -1956,7 +3116,13 @@ window.aiResources = {
       ]
     },
     "phase-04/self-supervised-vision-simclr-dino-mae": {
-      "videos": [],
+      "videos": [
+        [
+          "KuXjwB4LzSA",
+          "But what is a convolution?",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -1979,7 +3145,13 @@ window.aiResources = {
       ]
     },
     "phase-04/open-vocabulary-vision-clip": {
-      "videos": [],
+      "videos": [
+        [
+          "KuXjwB4LzSA",
+          "But what is a convolution?",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -2002,7 +3174,13 @@ window.aiResources = {
       ]
     },
     "phase-04/ocr-document-understanding": {
-      "videos": [],
+      "videos": [
+        [
+          "KuXjwB4LzSA",
+          "But what is a convolution?",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -2025,7 +3203,13 @@ window.aiResources = {
       ]
     },
     "phase-04/image-retrieval-metric-learning": {
-      "videos": [],
+      "videos": [
+        [
+          "KuXjwB4LzSA",
+          "But what is a convolution?",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -2048,7 +3232,13 @@ window.aiResources = {
       ]
     },
     "phase-04/keypoint-detection-pose-estimation": {
-      "videos": [],
+      "videos": [
+        [
+          "KuXjwB4LzSA",
+          "But what is a convolution?",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -2071,7 +3261,13 @@ window.aiResources = {
       ]
     },
     "phase-04/3d-gaussian-splatting-from-scratch": {
-      "videos": [],
+      "videos": [
+        [
+          "KuXjwB4LzSA",
+          "But what is a convolution?",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -2094,7 +3290,13 @@ window.aiResources = {
       ]
     },
     "phase-04/diffusion-transformers-rectified-flow": {
-      "videos": [],
+      "videos": [
+        [
+          "KuXjwB4LzSA",
+          "But what is a convolution?",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -2117,7 +3319,13 @@ window.aiResources = {
       ]
     },
     "phase-04/sam-3-open-vocabulary-segmentation": {
-      "videos": [],
+      "videos": [
+        [
+          "KuXjwB4LzSA",
+          "But what is a convolution?",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -2140,7 +3348,13 @@ window.aiResources = {
       ]
     },
     "phase-04/vision-language-models-vit-mlp-llm": {
-      "videos": [],
+      "videos": [
+        [
+          "KuXjwB4LzSA",
+          "But what is a convolution?",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -2163,7 +3377,13 @@ window.aiResources = {
       ]
     },
     "phase-04/monocular-depth-geometry-estimation": {
-      "videos": [],
+      "videos": [
+        [
+          "KuXjwB4LzSA",
+          "But what is a convolution?",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -2186,7 +3406,13 @@ window.aiResources = {
       ]
     },
     "phase-04/multi-object-tracking-video-memory": {
-      "videos": [],
+      "videos": [
+        [
+          "KuXjwB4LzSA",
+          "But what is a convolution?",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -2209,7 +3435,13 @@ window.aiResources = {
       ]
     },
     "phase-04/world-models-video-diffusion": {
-      "videos": [],
+      "videos": [
+        [
+          "KuXjwB4LzSA",
+          "But what is a convolution?",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -2232,7 +3464,13 @@ window.aiResources = {
       ]
     },
     "phase-05/text-processing-tokenization-stemming-lemmatization": {
-      "videos": [],
+      "videos": [
+        [
+          "viZrOnJclY0",
+          "Word2Vec, Clearly Explained!!!",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -2255,7 +3493,13 @@ window.aiResources = {
       ]
     },
     "phase-05/bag-of-words-tf-idf-text-representation": {
-      "videos": [],
+      "videos": [
+        [
+          "viZrOnJclY0",
+          "Word2Vec, Clearly Explained!!!",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -2278,7 +3522,13 @@ window.aiResources = {
       ]
     },
     "phase-05/word-embeddings-word2vec-from-scratch": {
-      "videos": [],
+      "videos": [
+        [
+          "viZrOnJclY0",
+          "Word2Vec, Clearly Explained!!!",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -2301,7 +3551,13 @@ window.aiResources = {
       ]
     },
     "phase-05/glove-fasttext-subword-embeddings": {
-      "videos": [],
+      "videos": [
+        [
+          "viZrOnJclY0",
+          "Word2Vec, Clearly Explained!!!",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -2324,7 +3580,13 @@ window.aiResources = {
       ]
     },
     "phase-05/sentiment-analysis": {
-      "videos": [],
+      "videos": [
+        [
+          "viZrOnJclY0",
+          "Word2Vec, Clearly Explained!!!",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -2347,7 +3609,13 @@ window.aiResources = {
       ]
     },
     "phase-05/named-entity-recognition-ner": {
-      "videos": [],
+      "videos": [
+        [
+          "viZrOnJclY0",
+          "Word2Vec, Clearly Explained!!!",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -2370,7 +3638,13 @@ window.aiResources = {
       ]
     },
     "phase-05/pos-tagging-syntactic-parsing": {
-      "videos": [],
+      "videos": [
+        [
+          "viZrOnJclY0",
+          "Word2Vec, Clearly Explained!!!",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -2393,7 +3667,13 @@ window.aiResources = {
       ]
     },
     "phase-05/text-classification-cnns-rnns-for-text": {
-      "videos": [],
+      "videos": [
+        [
+          "viZrOnJclY0",
+          "Word2Vec, Clearly Explained!!!",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -2416,7 +3696,13 @@ window.aiResources = {
       ]
     },
     "phase-05/sequence-to-sequence-models": {
-      "videos": [],
+      "videos": [
+        [
+          "viZrOnJclY0",
+          "Word2Vec, Clearly Explained!!!",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -2439,7 +3725,13 @@ window.aiResources = {
       ]
     },
     "phase-05/attention-mechanism-the-breakthrough": {
-      "videos": [],
+      "videos": [
+        [
+          "viZrOnJclY0",
+          "Word2Vec, Clearly Explained!!!",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -2462,7 +3754,13 @@ window.aiResources = {
       ]
     },
     "phase-05/machine-translation": {
-      "videos": [],
+      "videos": [
+        [
+          "viZrOnJclY0",
+          "Word2Vec, Clearly Explained!!!",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -2485,7 +3783,13 @@ window.aiResources = {
       ]
     },
     "phase-05/text-summarization": {
-      "videos": [],
+      "videos": [
+        [
+          "viZrOnJclY0",
+          "Word2Vec, Clearly Explained!!!",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -2508,7 +3812,13 @@ window.aiResources = {
       ]
     },
     "phase-05/question-answering-systems": {
-      "videos": [],
+      "videos": [
+        [
+          "viZrOnJclY0",
+          "Word2Vec, Clearly Explained!!!",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -2531,7 +3841,13 @@ window.aiResources = {
       ]
     },
     "phase-05/information-retrieval-search": {
-      "videos": [],
+      "videos": [
+        [
+          "viZrOnJclY0",
+          "Word2Vec, Clearly Explained!!!",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -2554,7 +3870,13 @@ window.aiResources = {
       ]
     },
     "phase-05/topic-modeling-lda-bertopic": {
-      "videos": [],
+      "videos": [
+        [
+          "viZrOnJclY0",
+          "Word2Vec, Clearly Explained!!!",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -2577,7 +3899,13 @@ window.aiResources = {
       ]
     },
     "phase-05/text-generation": {
-      "videos": [],
+      "videos": [
+        [
+          "viZrOnJclY0",
+          "Word2Vec, Clearly Explained!!!",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -2600,7 +3928,13 @@ window.aiResources = {
       ]
     },
     "phase-05/chatbots-rule-based-to-neural": {
-      "videos": [],
+      "videos": [
+        [
+          "viZrOnJclY0",
+          "Word2Vec, Clearly Explained!!!",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -2623,7 +3957,13 @@ window.aiResources = {
       ]
     },
     "phase-05/multilingual-nlp": {
-      "videos": [],
+      "videos": [
+        [
+          "viZrOnJclY0",
+          "Word2Vec, Clearly Explained!!!",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -2646,7 +3986,13 @@ window.aiResources = {
       ]
     },
     "phase-05/subword-tokenization-bpe-wordpiece-unigram-sentencepiece": {
-      "videos": [],
+      "videos": [
+        [
+          "viZrOnJclY0",
+          "Word2Vec, Clearly Explained!!!",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -2669,7 +4015,13 @@ window.aiResources = {
       ]
     },
     "phase-05/structured-outputs-constrained-decoding": {
-      "videos": [],
+      "videos": [
+        [
+          "viZrOnJclY0",
+          "Word2Vec, Clearly Explained!!!",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -2692,7 +4044,13 @@ window.aiResources = {
       ]
     },
     "phase-05/nli-textual-entailment": {
-      "videos": [],
+      "videos": [
+        [
+          "viZrOnJclY0",
+          "Word2Vec, Clearly Explained!!!",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -2715,7 +4073,13 @@ window.aiResources = {
       ]
     },
     "phase-05/embedding-models-deep-dive": {
-      "videos": [],
+      "videos": [
+        [
+          "viZrOnJclY0",
+          "Word2Vec, Clearly Explained!!!",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -2738,7 +4102,13 @@ window.aiResources = {
       ]
     },
     "phase-05/chunking-strategies-for-rag": {
-      "videos": [],
+      "videos": [
+        [
+          "8OJC21T2SL4",
+          "5 Levels Of Text Splitting For Retrieval",
+          "Greg Kamradt"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -2761,7 +4131,13 @@ window.aiResources = {
       ]
     },
     "phase-05/coreference-resolution": {
-      "videos": [],
+      "videos": [
+        [
+          "viZrOnJclY0",
+          "Word2Vec, Clearly Explained!!!",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -2784,7 +4160,13 @@ window.aiResources = {
       ]
     },
     "phase-05/entity-linking-disambiguation": {
-      "videos": [],
+      "videos": [
+        [
+          "viZrOnJclY0",
+          "Word2Vec, Clearly Explained!!!",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -2807,7 +4189,13 @@ window.aiResources = {
       ]
     },
     "phase-05/relation-extraction-knowledge-graph-construction": {
-      "videos": [],
+      "videos": [
+        [
+          "viZrOnJclY0",
+          "Word2Vec, Clearly Explained!!!",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -2830,7 +4218,13 @@ window.aiResources = {
       ]
     },
     "phase-05/llm-evaluation-ragas-deepeval-g-eval": {
-      "videos": [],
+      "videos": [
+        [
+          "viZrOnJclY0",
+          "Word2Vec, Clearly Explained!!!",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -2853,7 +4247,13 @@ window.aiResources = {
       ]
     },
     "phase-05/long-context-evaluation-niah-ruler-longbench-mrcr": {
-      "videos": [],
+      "videos": [
+        [
+          "viZrOnJclY0",
+          "Word2Vec, Clearly Explained!!!",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -2876,7 +4276,13 @@ window.aiResources = {
       ]
     },
     "phase-05/dialogue-state-tracking": {
-      "videos": [],
+      "videos": [
+        [
+          "viZrOnJclY0",
+          "Word2Vec, Clearly Explained!!!",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -2899,7 +4305,13 @@ window.aiResources = {
       ]
     },
     "phase-06/audio-fundamentals-waveforms-sampling-fft": {
-      "videos": [],
+      "videos": [
+        [
+          "t3YJ5hKiMQ0",
+          "Building makemore Part 5: Building a WaveNet",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -2922,7 +4334,13 @@ window.aiResources = {
       ]
     },
     "phase-06/spectrograms-mel-scale-audio-features": {
-      "videos": [],
+      "videos": [
+        [
+          "t3YJ5hKiMQ0",
+          "Building makemore Part 5: Building a WaveNet",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -2945,7 +4363,13 @@ window.aiResources = {
       ]
     },
     "phase-06/audio-classification": {
-      "videos": [],
+      "videos": [
+        [
+          "t3YJ5hKiMQ0",
+          "Building makemore Part 5: Building a WaveNet",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -2968,7 +4392,13 @@ window.aiResources = {
       ]
     },
     "phase-06/speech-recognition-asr": {
-      "videos": [],
+      "videos": [
+        [
+          "t3YJ5hKiMQ0",
+          "Building makemore Part 5: Building a WaveNet",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -2991,7 +4421,13 @@ window.aiResources = {
       ]
     },
     "phase-06/whisper-architecture-fine-tuning": {
-      "videos": [],
+      "videos": [
+        [
+          "t3YJ5hKiMQ0",
+          "Building makemore Part 5: Building a WaveNet",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -3014,7 +4450,13 @@ window.aiResources = {
       ]
     },
     "phase-06/speaker-recognition-verification": {
-      "videos": [],
+      "videos": [
+        [
+          "t3YJ5hKiMQ0",
+          "Building makemore Part 5: Building a WaveNet",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -3037,7 +4479,13 @@ window.aiResources = {
       ]
     },
     "phase-06/text-to-speech-tts": {
-      "videos": [],
+      "videos": [
+        [
+          "t3YJ5hKiMQ0",
+          "Building makemore Part 5: Building a WaveNet",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -3060,7 +4508,13 @@ window.aiResources = {
       ]
     },
     "phase-06/voice-cloning-voice-conversion": {
-      "videos": [],
+      "videos": [
+        [
+          "t3YJ5hKiMQ0",
+          "Building makemore Part 5: Building a WaveNet",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -3083,7 +4537,13 @@ window.aiResources = {
       ]
     },
     "phase-06/music-generation": {
-      "videos": [],
+      "videos": [
+        [
+          "t3YJ5hKiMQ0",
+          "Building makemore Part 5: Building a WaveNet",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -3106,7 +4566,13 @@ window.aiResources = {
       ]
     },
     "phase-06/audio-language-models": {
-      "videos": [],
+      "videos": [
+        [
+          "t3YJ5hKiMQ0",
+          "Building makemore Part 5: Building a WaveNet",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -3129,7 +4595,13 @@ window.aiResources = {
       ]
     },
     "phase-06/real-time-audio-processing": {
-      "videos": [],
+      "videos": [
+        [
+          "t3YJ5hKiMQ0",
+          "Building makemore Part 5: Building a WaveNet",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -3152,7 +4624,13 @@ window.aiResources = {
       ]
     },
     "phase-06/build-a-voice-assistant-pipeline": {
-      "videos": [],
+      "videos": [
+        [
+          "t3YJ5hKiMQ0",
+          "Building makemore Part 5: Building a WaveNet",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -3175,7 +4653,13 @@ window.aiResources = {
       ]
     },
     "phase-06/neural-audio-codecs-encodec-snac-mimi-dac": {
-      "videos": [],
+      "videos": [
+        [
+          "t3YJ5hKiMQ0",
+          "Building makemore Part 5: Building a WaveNet",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -3198,7 +4682,13 @@ window.aiResources = {
       ]
     },
     "phase-06/voice-activity-detection-turn-taking": {
-      "videos": [],
+      "videos": [
+        [
+          "t3YJ5hKiMQ0",
+          "Building makemore Part 5: Building a WaveNet",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -3221,7 +4711,13 @@ window.aiResources = {
       ]
     },
     "phase-06/streaming-speech-to-speech-moshi-hibiki": {
-      "videos": [],
+      "videos": [
+        [
+          "t3YJ5hKiMQ0",
+          "Building makemore Part 5: Building a WaveNet",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -3244,7 +4740,13 @@ window.aiResources = {
       ]
     },
     "phase-06/voice-anti-spoofing-audio-watermarking": {
-      "videos": [],
+      "videos": [
+        [
+          "t3YJ5hKiMQ0",
+          "Building makemore Part 5: Building a WaveNet",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -3267,7 +4769,13 @@ window.aiResources = {
       ]
     },
     "phase-06/audio-evaluation-wer-mos-mmau-leaderboards": {
-      "videos": [],
+      "videos": [
+        [
+          "t3YJ5hKiMQ0",
+          "Building makemore Part 5: Building a WaveNet",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -3290,7 +4798,13 @@ window.aiResources = {
       ]
     },
     "phase-07/why-transformers-the-problems-with-rnns": {
-      "videos": [],
+      "videos": [
+        [
+          "eMlx5fFNoYc",
+          "Attention in transformers, step-by-step | Deep Learning Chapter 6",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -3313,7 +4827,13 @@ window.aiResources = {
       ]
     },
     "phase-07/self-attention-from-scratch": {
-      "videos": [],
+      "videos": [
+        [
+          "eMlx5fFNoYc",
+          "Attention in transformers, step-by-step | Deep Learning Chapter 6",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -3336,7 +4856,13 @@ window.aiResources = {
       ]
     },
     "phase-07/multi-head-attention": {
-      "videos": [],
+      "videos": [
+        [
+          "eMlx5fFNoYc",
+          "Attention in transformers, step-by-step | Deep Learning Chapter 6",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -3359,7 +4885,13 @@ window.aiResources = {
       ]
     },
     "phase-07/positional-encoding-sinusoidal-rope-alibi": {
-      "videos": [],
+      "videos": [
+        [
+          "eMlx5fFNoYc",
+          "Attention in transformers, step-by-step | Deep Learning Chapter 6",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -3382,7 +4914,13 @@ window.aiResources = {
       ]
     },
     "phase-07/the-full-transformer-encoder-decoder": {
-      "videos": [],
+      "videos": [
+        [
+          "eMlx5fFNoYc",
+          "Attention in transformers, step-by-step | Deep Learning Chapter 6",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -3405,7 +4943,13 @@ window.aiResources = {
       ]
     },
     "phase-07/bert-masked-language-modeling": {
-      "videos": [],
+      "videos": [
+        [
+          "eMlx5fFNoYc",
+          "Attention in transformers, step-by-step | Deep Learning Chapter 6",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -3428,7 +4972,13 @@ window.aiResources = {
       ]
     },
     "phase-07/gpt-causal-language-modeling": {
-      "videos": [],
+      "videos": [
+        [
+          "eMlx5fFNoYc",
+          "Attention in transformers, step-by-step | Deep Learning Chapter 6",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -3451,7 +5001,13 @@ window.aiResources = {
       ]
     },
     "phase-07/t5-bart-encoder-decoder-models": {
-      "videos": [],
+      "videos": [
+        [
+          "eMlx5fFNoYc",
+          "Attention in transformers, step-by-step | Deep Learning Chapter 6",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -3474,7 +5030,13 @@ window.aiResources = {
       ]
     },
     "phase-07/vision-transformers-vit": {
-      "videos": [],
+      "videos": [
+        [
+          "eMlx5fFNoYc",
+          "Attention in transformers, step-by-step | Deep Learning Chapter 6",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -3497,7 +5059,13 @@ window.aiResources = {
       ]
     },
     "phase-07/audio-transformers-whisper-architecture": {
-      "videos": [],
+      "videos": [
+        [
+          "eMlx5fFNoYc",
+          "Attention in transformers, step-by-step | Deep Learning Chapter 6",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -3520,7 +5088,13 @@ window.aiResources = {
       ]
     },
     "phase-07/mixture-of-experts-moe": {
-      "videos": [],
+      "videos": [
+        [
+          "eMlx5fFNoYc",
+          "Attention in transformers, step-by-step | Deep Learning Chapter 6",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -3543,7 +5117,13 @@ window.aiResources = {
       ]
     },
     "phase-07/kv-cache-flash-attention-inference-optimization": {
-      "videos": [],
+      "videos": [
+        [
+          "eMlx5fFNoYc",
+          "Attention in transformers, step-by-step | Deep Learning Chapter 6",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -3566,7 +5146,13 @@ window.aiResources = {
       ]
     },
     "phase-07/scaling-laws": {
-      "videos": [],
+      "videos": [
+        [
+          "eMlx5fFNoYc",
+          "Attention in transformers, step-by-step | Deep Learning Chapter 6",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -3589,7 +5175,13 @@ window.aiResources = {
       ]
     },
     "phase-07/build-a-transformer-from-scratch": {
-      "videos": [],
+      "videos": [
+        [
+          "eMlx5fFNoYc",
+          "Attention in transformers, step-by-step | Deep Learning Chapter 6",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -3612,7 +5204,13 @@ window.aiResources = {
       ]
     },
     "phase-07/attention-variants-sliding-window-sparse-differential": {
-      "videos": [],
+      "videos": [
+        [
+          "eMlx5fFNoYc",
+          "Attention in transformers, step-by-step | Deep Learning Chapter 6",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -3635,7 +5233,13 @@ window.aiResources = {
       ]
     },
     "phase-07/speculative-decoding-draft-verify-repeat": {
-      "videos": [],
+      "videos": [
+        [
+          "VkWlLSTdHs8",
+          "Faster LLMs: Accelerate Inference with Speculative Decoding",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -3658,7 +5262,13 @@ window.aiResources = {
       ]
     },
     "phase-08/generative-models-taxonomy-history": {
-      "videos": [],
+      "videos": [
+        [
+          "1CIpzeNxIhU",
+          "Diffusion Models Explained - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -3681,7 +5291,13 @@ window.aiResources = {
       ]
     },
     "phase-08/autoencoders-vae": {
-      "videos": [],
+      "videos": [
+        [
+          "1CIpzeNxIhU",
+          "Diffusion Models Explained - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -3704,7 +5320,13 @@ window.aiResources = {
       ]
     },
     "phase-08/gans-generator-vs-discriminator": {
-      "videos": [],
+      "videos": [
+        [
+          "1CIpzeNxIhU",
+          "Diffusion Models Explained - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -3727,7 +5349,13 @@ window.aiResources = {
       ]
     },
     "phase-08/conditional-gans-pix2pix": {
-      "videos": [],
+      "videos": [
+        [
+          "1CIpzeNxIhU",
+          "Diffusion Models Explained - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -3750,7 +5378,13 @@ window.aiResources = {
       ]
     },
     "phase-08/stylegan": {
-      "videos": [],
+      "videos": [
+        [
+          "1CIpzeNxIhU",
+          "Diffusion Models Explained - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -3773,7 +5407,13 @@ window.aiResources = {
       ]
     },
     "phase-08/diffusion-models-ddpm-from-scratch": {
-      "videos": [],
+      "videos": [
+        [
+          "1CIpzeNxIhU",
+          "Diffusion Models Explained - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -3796,7 +5436,13 @@ window.aiResources = {
       ]
     },
     "phase-08/latent-diffusion-stable-diffusion": {
-      "videos": [],
+      "videos": [
+        [
+          "1CIpzeNxIhU",
+          "Diffusion Models Explained - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -3819,7 +5465,13 @@ window.aiResources = {
       ]
     },
     "phase-08/controlnet-lora-conditioning": {
-      "videos": [],
+      "videos": [
+        [
+          "1CIpzeNxIhU",
+          "Diffusion Models Explained - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -3842,7 +5494,13 @@ window.aiResources = {
       ]
     },
     "phase-08/inpainting-outpainting-editing": {
-      "videos": [],
+      "videos": [
+        [
+          "1CIpzeNxIhU",
+          "Diffusion Models Explained - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -3865,7 +5523,13 @@ window.aiResources = {
       ]
     },
     "phase-08/video-generation": {
-      "videos": [],
+      "videos": [
+        [
+          "1CIpzeNxIhU",
+          "Diffusion Models Explained - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -3888,7 +5552,13 @@ window.aiResources = {
       ]
     },
     "phase-08/audio-generation": {
-      "videos": [],
+      "videos": [
+        [
+          "1CIpzeNxIhU",
+          "Diffusion Models Explained - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -3911,7 +5581,13 @@ window.aiResources = {
       ]
     },
     "phase-08/3d-generation": {
-      "videos": [],
+      "videos": [
+        [
+          "1CIpzeNxIhU",
+          "Diffusion Models Explained - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -3934,7 +5610,13 @@ window.aiResources = {
       ]
     },
     "phase-08/flow-matching-rectified-flows": {
-      "videos": [],
+      "videos": [
+        [
+          "1CIpzeNxIhU",
+          "Diffusion Models Explained - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -3957,7 +5639,13 @@ window.aiResources = {
       ]
     },
     "phase-08/evaluation-fid-clip-score": {
-      "videos": [],
+      "videos": [
+        [
+          "1CIpzeNxIhU",
+          "Diffusion Models Explained - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -3980,7 +5668,13 @@ window.aiResources = {
       ]
     },
     "phase-08/visual-autoregressive-modeling-var-next-scale-prediction": {
-      "videos": [],
+      "videos": [
+        [
+          "1CIpzeNxIhU",
+          "Diffusion Models Explained - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -4003,7 +5697,13 @@ window.aiResources = {
       ]
     },
     "phase-09/mdps-states-actions-rewards": {
-      "videos": [],
+      "videos": [
+        [
+          "2pWv7GOvuf0",
+          "RL Course by David Silver - Lecture 1: Introduction to Reinforcement Learning",
+          "DeepMind"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -4026,7 +5726,13 @@ window.aiResources = {
       ]
     },
     "phase-09/dynamic-programming": {
-      "videos": [],
+      "videos": [
+        [
+          "2pWv7GOvuf0",
+          "RL Course by David Silver - Lecture 1: Introduction to Reinforcement Learning",
+          "DeepMind"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -4049,7 +5755,13 @@ window.aiResources = {
       ]
     },
     "phase-09/monte-carlo-methods": {
-      "videos": [],
+      "videos": [
+        [
+          "2pWv7GOvuf0",
+          "RL Course by David Silver - Lecture 1: Introduction to Reinforcement Learning",
+          "DeepMind"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -4072,7 +5784,13 @@ window.aiResources = {
       ]
     },
     "phase-09/q-learning-sarsa": {
-      "videos": [],
+      "videos": [
+        [
+          "2pWv7GOvuf0",
+          "RL Course by David Silver - Lecture 1: Introduction to Reinforcement Learning",
+          "DeepMind"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -4095,7 +5813,13 @@ window.aiResources = {
       ]
     },
     "phase-09/deep-q-networks-dqn": {
-      "videos": [],
+      "videos": [
+        [
+          "2pWv7GOvuf0",
+          "RL Course by David Silver - Lecture 1: Introduction to Reinforcement Learning",
+          "DeepMind"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -4118,7 +5842,13 @@ window.aiResources = {
       ]
     },
     "phase-09/policy-gradients-reinforce": {
-      "videos": [],
+      "videos": [
+        [
+          "2pWv7GOvuf0",
+          "RL Course by David Silver - Lecture 1: Introduction to Reinforcement Learning",
+          "DeepMind"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -4141,7 +5871,13 @@ window.aiResources = {
       ]
     },
     "phase-09/actor-critic-a2c-a3c": {
-      "videos": [],
+      "videos": [
+        [
+          "2pWv7GOvuf0",
+          "RL Course by David Silver - Lecture 1: Introduction to Reinforcement Learning",
+          "DeepMind"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -4164,7 +5900,13 @@ window.aiResources = {
       ]
     },
     "phase-09/ppo": {
-      "videos": [],
+      "videos": [
+        [
+          "efR1C6CvhmE",
+          "Support Vector Machines Part 1 (of 3): Main Ideas!!!",
+          "StatQuest with Josh Starmer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -4187,7 +5929,13 @@ window.aiResources = {
       ]
     },
     "phase-09/reward-modeling-rlhf": {
-      "videos": [],
+      "videos": [
+        [
+          "2pWv7GOvuf0",
+          "RL Course by David Silver - Lecture 1: Introduction to Reinforcement Learning",
+          "DeepMind"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -4210,7 +5958,13 @@ window.aiResources = {
       ]
     },
     "phase-09/multi-agent-rl": {
-      "videos": [],
+      "videos": [
+        [
+          "2pWv7GOvuf0",
+          "RL Course by David Silver - Lecture 1: Introduction to Reinforcement Learning",
+          "DeepMind"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -4233,7 +5987,13 @@ window.aiResources = {
       ]
     },
     "phase-09/sim-to-real-transfer": {
-      "videos": [],
+      "videos": [
+        [
+          "2pWv7GOvuf0",
+          "RL Course by David Silver - Lecture 1: Introduction to Reinforcement Learning",
+          "DeepMind"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -4256,7 +6016,13 @@ window.aiResources = {
       ]
     },
     "phase-09/rl-for-games": {
-      "videos": [],
+      "videos": [
+        [
+          "2pWv7GOvuf0",
+          "RL Course by David Silver - Lecture 1: Introduction to Reinforcement Learning",
+          "DeepMind"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -4279,7 +6045,13 @@ window.aiResources = {
       ]
     },
     "phase-10/tokenizers-bpe-wordpiece-sentencepiece": {
-      "videos": [],
+      "videos": [
+        [
+          "kCc8FmEb1nY",
+          "Let's build GPT: from scratch, in code, spelled out.",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -4302,7 +6074,13 @@ window.aiResources = {
       ]
     },
     "phase-10/building-a-tokenizer-from-scratch": {
-      "videos": [],
+      "videos": [
+        [
+          "kCc8FmEb1nY",
+          "Let's build GPT: from scratch, in code, spelled out.",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -4325,7 +6103,13 @@ window.aiResources = {
       ]
     },
     "phase-10/data-pipelines-for-pre-training": {
-      "videos": [],
+      "videos": [
+        [
+          "kCc8FmEb1nY",
+          "Let's build GPT: from scratch, in code, spelled out.",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -4348,7 +6132,13 @@ window.aiResources = {
       ]
     },
     "phase-10/pre-training-a-mini-gpt-124m": {
-      "videos": [],
+      "videos": [
+        [
+          "kCc8FmEb1nY",
+          "Let's build GPT: from scratch, in code, spelled out.",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -4371,7 +6161,13 @@ window.aiResources = {
       ]
     },
     "phase-10/distributed-training-fsdp-deepspeed": {
-      "videos": [],
+      "videos": [
+        [
+          "kCc8FmEb1nY",
+          "Let's build GPT: from scratch, in code, spelled out.",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -4394,7 +6190,13 @@ window.aiResources = {
       ]
     },
     "phase-10/instruction-tuning-sft": {
-      "videos": [],
+      "videos": [
+        [
+          "kCc8FmEb1nY",
+          "Let's build GPT: from scratch, in code, spelled out.",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -4417,7 +6219,13 @@ window.aiResources = {
       ]
     },
     "phase-10/rlhf-reward-model-ppo": {
-      "videos": [],
+      "videos": [
+        [
+          "kCc8FmEb1nY",
+          "Let's build GPT: from scratch, in code, spelled out.",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -4440,7 +6248,13 @@ window.aiResources = {
       ]
     },
     "phase-10/dpo-direct-preference-optimization": {
-      "videos": [],
+      "videos": [
+        [
+          "kCc8FmEb1nY",
+          "Let's build GPT: from scratch, in code, spelled out.",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -4463,7 +6277,13 @@ window.aiResources = {
       ]
     },
     "phase-10/constitutional-ai-self-improvement": {
-      "videos": [],
+      "videos": [
+        [
+          "kCc8FmEb1nY",
+          "Let's build GPT: from scratch, in code, spelled out.",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -4486,7 +6306,13 @@ window.aiResources = {
       ]
     },
     "phase-10/evaluation-benchmarks-evals": {
-      "videos": [],
+      "videos": [
+        [
+          "kCc8FmEb1nY",
+          "Let's build GPT: from scratch, in code, spelled out.",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -4509,7 +6335,13 @@ window.aiResources = {
       ]
     },
     "phase-10/quantization-int8-gptq-awq-gguf": {
-      "videos": [],
+      "videos": [
+        [
+          "kCc8FmEb1nY",
+          "Let's build GPT: from scratch, in code, spelled out.",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -4532,7 +6364,13 @@ window.aiResources = {
       ]
     },
     "phase-10/inference-optimization": {
-      "videos": [],
+      "videos": [
+        [
+          "kCc8FmEb1nY",
+          "Let's build GPT: from scratch, in code, spelled out.",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -4555,7 +6393,13 @@ window.aiResources = {
       ]
     },
     "phase-10/building-a-complete-llm-pipeline": {
-      "videos": [],
+      "videos": [
+        [
+          "kCc8FmEb1nY",
+          "Let's build GPT: from scratch, in code, spelled out.",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -4578,7 +6422,13 @@ window.aiResources = {
       ]
     },
     "phase-10/open-models-architecture-walkthroughs": {
-      "videos": [],
+      "videos": [
+        [
+          "kCc8FmEb1nY",
+          "Let's build GPT: from scratch, in code, spelled out.",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -4601,7 +6451,13 @@ window.aiResources = {
       ]
     },
     "phase-10/speculative-decoding-and-eagle-3": {
-      "videos": [],
+      "videos": [
+        [
+          "VkWlLSTdHs8",
+          "Faster LLMs: Accelerate Inference with Speculative Decoding",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -4624,7 +6480,13 @@ window.aiResources = {
       ]
     },
     "phase-10/differential-attention-v2": {
-      "videos": [],
+      "videos": [
+        [
+          "kCc8FmEb1nY",
+          "Let's build GPT: from scratch, in code, spelled out.",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -4647,7 +6509,13 @@ window.aiResources = {
       ]
     },
     "phase-10/native-sparse-attention-deepseek-nsa": {
-      "videos": [],
+      "videos": [
+        [
+          "kCc8FmEb1nY",
+          "Let's build GPT: from scratch, in code, spelled out.",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -4670,7 +6538,13 @@ window.aiResources = {
       ]
     },
     "phase-10/multi-token-prediction-mtp": {
-      "videos": [],
+      "videos": [
+        [
+          "kCc8FmEb1nY",
+          "Let's build GPT: from scratch, in code, spelled out.",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -4693,7 +6567,13 @@ window.aiResources = {
       ]
     },
     "phase-10/dualpipe-parallelism": {
-      "videos": [],
+      "videos": [
+        [
+          "kCc8FmEb1nY",
+          "Let's build GPT: from scratch, in code, spelled out.",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -4716,7 +6596,13 @@ window.aiResources = {
       ]
     },
     "phase-10/deepseek-v3-architecture-walkthrough": {
-      "videos": [],
+      "videos": [
+        [
+          "kCc8FmEb1nY",
+          "Let's build GPT: from scratch, in code, spelled out.",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -4739,7 +6625,13 @@ window.aiResources = {
       ]
     },
     "phase-10/jamba-hybrid-ssm-transformer": {
-      "videos": [],
+      "videos": [
+        [
+          "kCc8FmEb1nY",
+          "Let's build GPT: from scratch, in code, spelled out.",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -4762,7 +6654,13 @@ window.aiResources = {
       ]
     },
     "phase-10/async-and-hogwild-inference": {
-      "videos": [],
+      "videos": [
+        [
+          "kCc8FmEb1nY",
+          "Let's build GPT: from scratch, in code, spelled out.",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -4785,7 +6683,13 @@ window.aiResources = {
       ]
     },
     "phase-10/speculative-decoding-and-eagle": {
-      "videos": [],
+      "videos": [
+        [
+          "VkWlLSTdHs8",
+          "Faster LLMs: Accelerate Inference with Speculative Decoding",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -4808,7 +6712,13 @@ window.aiResources = {
       ]
     },
     "phase-10/gradient-checkpointing-and-activation-recomputation": {
-      "videos": [],
+      "videos": [
+        [
+          "kCc8FmEb1nY",
+          "Let's build GPT: from scratch, in code, spelled out.",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -4831,7 +6741,13 @@ window.aiResources = {
       ]
     },
     "phase-11/prompt-engineering-techniques-patterns": {
-      "videos": [],
+      "videos": [
+        [
+          "8OJC21T2SL4",
+          "5 Levels Of Text Splitting For Retrieval",
+          "Greg Kamradt"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -4854,7 +6770,13 @@ window.aiResources = {
       ]
     },
     "phase-11/few-shot-cot-tree-of-thought": {
-      "videos": [],
+      "videos": [
+        [
+          "8OJC21T2SL4",
+          "5 Levels Of Text Splitting For Retrieval",
+          "Greg Kamradt"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -4877,7 +6799,13 @@ window.aiResources = {
       ]
     },
     "phase-11/structured-outputs": {
-      "videos": [],
+      "videos": [
+        [
+          "8OJC21T2SL4",
+          "5 Levels Of Text Splitting For Retrieval",
+          "Greg Kamradt"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -4900,7 +6828,13 @@ window.aiResources = {
       ]
     },
     "phase-11/embeddings-vector-representations": {
-      "videos": [],
+      "videos": [
+        [
+          "8OJC21T2SL4",
+          "5 Levels Of Text Splitting For Retrieval",
+          "Greg Kamradt"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -4923,7 +6857,13 @@ window.aiResources = {
       ]
     },
     "phase-11/context-engineering": {
-      "videos": [],
+      "videos": [
+        [
+          "8OJC21T2SL4",
+          "5 Levels Of Text Splitting For Retrieval",
+          "Greg Kamradt"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -4946,7 +6886,13 @@ window.aiResources = {
       ]
     },
     "phase-11/rag-retrieval-augmented-generation": {
-      "videos": [],
+      "videos": [
+        [
+          "8OJC21T2SL4",
+          "5 Levels Of Text Splitting For Retrieval",
+          "Greg Kamradt"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -4969,7 +6915,13 @@ window.aiResources = {
       ]
     },
     "phase-11/advanced-rag-chunking-reranking": {
-      "videos": [],
+      "videos": [
+        [
+          "8OJC21T2SL4",
+          "5 Levels Of Text Splitting For Retrieval",
+          "Greg Kamradt"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -4992,7 +6944,13 @@ window.aiResources = {
       ]
     },
     "phase-11/fine-tuning-with-lora-qlora": {
-      "videos": [],
+      "videos": [
+        [
+          "8OJC21T2SL4",
+          "5 Levels Of Text Splitting For Retrieval",
+          "Greg Kamradt"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -5015,7 +6973,13 @@ window.aiResources = {
       ]
     },
     "phase-11/function-calling-tool-use": {
-      "videos": [],
+      "videos": [
+        [
+          "8OJC21T2SL4",
+          "5 Levels Of Text Splitting For Retrieval",
+          "Greg Kamradt"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -5038,7 +7002,13 @@ window.aiResources = {
       ]
     },
     "phase-11/evaluation-testing": {
-      "videos": [],
+      "videos": [
+        [
+          "8OJC21T2SL4",
+          "5 Levels Of Text Splitting For Retrieval",
+          "Greg Kamradt"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -5061,7 +7031,13 @@ window.aiResources = {
       ]
     },
     "phase-11/caching-rate-limiting-cost": {
-      "videos": [],
+      "videos": [
+        [
+          "8OJC21T2SL4",
+          "5 Levels Of Text Splitting For Retrieval",
+          "Greg Kamradt"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -5084,7 +7060,13 @@ window.aiResources = {
       ]
     },
     "phase-11/guardrails-safety": {
-      "videos": [],
+      "videos": [
+        [
+          "8OJC21T2SL4",
+          "5 Levels Of Text Splitting For Retrieval",
+          "Greg Kamradt"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -5107,7 +7089,13 @@ window.aiResources = {
       ]
     },
     "phase-11/building-a-production-llm-app": {
-      "videos": [],
+      "videos": [
+        [
+          "8OJC21T2SL4",
+          "5 Levels Of Text Splitting For Retrieval",
+          "Greg Kamradt"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -5130,7 +7118,13 @@ window.aiResources = {
       ]
     },
     "phase-11/model-context-protocol-mcp": {
-      "videos": [],
+      "videos": [
+        [
+          "8OJC21T2SL4",
+          "5 Levels Of Text Splitting For Retrieval",
+          "Greg Kamradt"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -5153,7 +7147,13 @@ window.aiResources = {
       ]
     },
     "phase-11/prompt-caching-context-caching": {
-      "videos": [],
+      "videos": [
+        [
+          "8OJC21T2SL4",
+          "5 Levels Of Text Splitting For Retrieval",
+          "Greg Kamradt"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -5176,7 +7176,13 @@ window.aiResources = {
       ]
     },
     "phase-11/agent-state-machines-graphs-nodes-checkpoints": {
-      "videos": [],
+      "videos": [
+        [
+          "8OJC21T2SL4",
+          "5 Levels Of Text Splitting For Retrieval",
+          "Greg Kamradt"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -5199,7 +7205,13 @@ window.aiResources = {
       ]
     },
     "phase-11/agent-framework-tradeoffs": {
-      "videos": [],
+      "videos": [
+        [
+          "8OJC21T2SL4",
+          "5 Levels Of Text Splitting For Retrieval",
+          "Greg Kamradt"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -5222,7 +7234,13 @@ window.aiResources = {
       ]
     },
     "phase-12/vision-transformers-and-the-patch-token-primitive": {
-      "videos": [],
+      "videos": [
+        [
+          "wjZofJX0v4M",
+          "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -5245,7 +7263,13 @@ window.aiResources = {
       ]
     },
     "phase-12/clip-and-contrastive-vision-language-pretraining": {
-      "videos": [],
+      "videos": [
+        [
+          "wjZofJX0v4M",
+          "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -5268,7 +7292,13 @@ window.aiResources = {
       ]
     },
     "phase-12/blip-2-q-former-as-modality-bridge": {
-      "videos": [],
+      "videos": [
+        [
+          "wjZofJX0v4M",
+          "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -5291,7 +7321,13 @@ window.aiResources = {
       ]
     },
     "phase-12/flamingo-and-gated-cross-attention": {
-      "videos": [],
+      "videos": [
+        [
+          "wjZofJX0v4M",
+          "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -5314,7 +7350,13 @@ window.aiResources = {
       ]
     },
     "phase-12/llava-and-visual-instruction-tuning": {
-      "videos": [],
+      "videos": [
+        [
+          "wjZofJX0v4M",
+          "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -5337,7 +7379,13 @@ window.aiResources = {
       ]
     },
     "phase-12/any-resolution-vision-patch-n-pack-and-naflex": {
-      "videos": [],
+      "videos": [
+        [
+          "wjZofJX0v4M",
+          "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -5360,7 +7408,13 @@ window.aiResources = {
       ]
     },
     "phase-12/open-weight-vlm-recipes-what-actually-matters": {
-      "videos": [],
+      "videos": [
+        [
+          "wjZofJX0v4M",
+          "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -5383,7 +7437,13 @@ window.aiResources = {
       ]
     },
     "phase-12/llava-onevision-single-multi-video": {
-      "videos": [],
+      "videos": [
+        [
+          "wjZofJX0v4M",
+          "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -5406,7 +7466,13 @@ window.aiResources = {
       ]
     },
     "phase-12/qwen-vl-family-and-dynamic-fps-video": {
-      "videos": [],
+      "videos": [
+        [
+          "wjZofJX0v4M",
+          "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -5429,7 +7495,13 @@ window.aiResources = {
       ]
     },
     "phase-12/internvl3-native-multimodal-pretraining": {
-      "videos": [],
+      "videos": [
+        [
+          "wjZofJX0v4M",
+          "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -5452,7 +7524,13 @@ window.aiResources = {
       ]
     },
     "phase-12/chameleon-early-fusion-token-only": {
-      "videos": [],
+      "videos": [
+        [
+          "wjZofJX0v4M",
+          "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -5475,7 +7553,13 @@ window.aiResources = {
       ]
     },
     "phase-12/emu3-next-token-prediction-for-generation": {
-      "videos": [],
+      "videos": [
+        [
+          "wjZofJX0v4M",
+          "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -5498,7 +7582,13 @@ window.aiResources = {
       ]
     },
     "phase-12/transfusion-autoregressive-diffusion": {
-      "videos": [],
+      "videos": [
+        [
+          "wjZofJX0v4M",
+          "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -5521,7 +7611,13 @@ window.aiResources = {
       ]
     },
     "phase-12/show-o-discrete-diffusion-unified": {
-      "videos": [],
+      "videos": [
+        [
+          "wjZofJX0v4M",
+          "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -5544,7 +7640,13 @@ window.aiResources = {
       ]
     },
     "phase-12/janus-pro-decoupled-encoders": {
-      "videos": [],
+      "videos": [
+        [
+          "wjZofJX0v4M",
+          "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -5567,7 +7669,13 @@ window.aiResources = {
       ]
     },
     "phase-12/mio-any-to-any-streaming": {
-      "videos": [],
+      "videos": [
+        [
+          "wjZofJX0v4M",
+          "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -5590,7 +7698,13 @@ window.aiResources = {
       ]
     },
     "phase-12/video-language-temporal-grounding": {
-      "videos": [],
+      "videos": [
+        [
+          "wjZofJX0v4M",
+          "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -5613,7 +7727,13 @@ window.aiResources = {
       ]
     },
     "phase-12/long-video-at-million-token-context": {
-      "videos": [],
+      "videos": [
+        [
+          "wjZofJX0v4M",
+          "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -5636,7 +7756,13 @@ window.aiResources = {
       ]
     },
     "phase-12/audio-language-models-whisper-to-af3": {
-      "videos": [],
+      "videos": [
+        [
+          "wjZofJX0v4M",
+          "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -5659,7 +7785,13 @@ window.aiResources = {
       ]
     },
     "phase-12/omni-models-thinker-talker-streaming": {
-      "videos": [],
+      "videos": [
+        [
+          "wjZofJX0v4M",
+          "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -5682,7 +7814,13 @@ window.aiResources = {
       ]
     },
     "phase-12/embodied-vlas-rt-2-openvla-0-gr00t": {
-      "videos": [],
+      "videos": [
+        [
+          "wjZofJX0v4M",
+          "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -5705,7 +7843,13 @@ window.aiResources = {
       ]
     },
     "phase-12/document-and-diagram-understanding": {
-      "videos": [],
+      "videos": [
+        [
+          "wjZofJX0v4M",
+          "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -5728,7 +7872,13 @@ window.aiResources = {
       ]
     },
     "phase-12/colpali-vision-native-document-rag": {
-      "videos": [],
+      "videos": [
+        [
+          "wjZofJX0v4M",
+          "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -5751,7 +7901,13 @@ window.aiResources = {
       ]
     },
     "phase-12/multimodal-rag-and-cross-modal-retrieval": {
-      "videos": [],
+      "videos": [
+        [
+          "wjZofJX0v4M",
+          "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -5774,7 +7930,13 @@ window.aiResources = {
       ]
     },
     "phase-12/multimodal-agents-and-computer-use-capstone": {
-      "videos": [],
+      "videos": [
+        [
+          "wjZofJX0v4M",
+          "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -5797,7 +7959,13 @@ window.aiResources = {
       ]
     },
     "phase-13/the-tool-interface": {
-      "videos": [],
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -5820,7 +7988,13 @@ window.aiResources = {
       ]
     },
     "phase-13/function-calling-deep-dive": {
-      "videos": [],
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -5843,7 +8017,13 @@ window.aiResources = {
       ]
     },
     "phase-13/parallel-and-streaming-tool-calls": {
-      "videos": [],
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -5866,7 +8046,13 @@ window.aiResources = {
       ]
     },
     "phase-13/structured-output": {
-      "videos": [],
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -5889,7 +8075,13 @@ window.aiResources = {
       ]
     },
     "phase-13/tool-schema-design": {
-      "videos": [],
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -5912,7 +8104,13 @@ window.aiResources = {
       ]
     },
     "phase-13/mcp-fundamentals-stateless-requests-and-json-rpc": {
-      "videos": [],
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -5935,7 +8133,13 @@ window.aiResources = {
       ]
     },
     "phase-13/building-an-mcp-server-stateless-python-and-typescript": {
-      "videos": [],
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -5958,7 +8162,13 @@ window.aiResources = {
       ]
     },
     "phase-13/building-an-mcp-client-discovery-routing-and-dual-era-fallba": {
-      "videos": [],
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -5981,7 +8191,13 @@ window.aiResources = {
       ]
     },
     "phase-13/mcp-transports-stdio-and-stateless-streamable-http": {
-      "videos": [],
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -6004,7 +8220,13 @@ window.aiResources = {
       ]
     },
     "phase-13/mcp-resources-and-prompts-addressable-context-for-stateless-": {
-      "videos": [],
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -6027,7 +8249,13 @@ window.aiResources = {
       ]
     },
     "phase-13/mcp-model-input-sampling-migration-and-stateless-mrtr": {
-      "videos": [],
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -6050,7 +8278,13 @@ window.aiResources = {
       ]
     },
     "phase-13/explicit-scope-and-stateless-elicitation": {
-      "videos": [],
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -6073,7 +8307,13 @@ window.aiResources = {
       ]
     },
     "phase-13/mcp-tasks-extension-durable-work-on-a-stateless-core": {
-      "videos": [],
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -6096,7 +8336,13 @@ window.aiResources = {
       ]
     },
     "phase-13/mcp-apps-on-the-stateless-protocol": {
-      "videos": [],
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -6119,7 +8365,13 @@ window.aiResources = {
       ]
     },
     "phase-13/mcp-security-poisoned-metadata-routing-and-mrtr-state": {
-      "videos": [],
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -6142,7 +8394,13 @@ window.aiResources = {
       ]
     },
     "phase-13/mcp-authorization-cimd-issuer-binding-pkce-and-step-up": {
-      "videos": [],
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -6165,7 +8423,13 @@ window.aiResources = {
       ]
     },
     "phase-13/stateless-mcp-gateways-and-registry-admission": {
-      "videos": [],
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -6188,7 +8452,13 @@ window.aiResources = {
       ]
     },
     "phase-13/mcp-auth-in-production-issuer-bound-enrollment-and-tokens": {
-      "videos": [],
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -6211,7 +8481,13 @@ window.aiResources = {
       ]
     },
     "phase-13/a2a-protocol": {
-      "videos": [],
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -6234,7 +8510,13 @@ window.aiResources = {
       ]
     },
     "phase-13/opentelemetry-genai": {
-      "videos": [],
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -6257,7 +8539,13 @@ window.aiResources = {
       ]
     },
     "phase-13/llm-routing-layer": {
-      "videos": [],
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -6280,7 +8568,13 @@ window.aiResources = {
       ]
     },
     "phase-13/agent-skills-portable-contract-and-runtime-boundary": {
-      "videos": [],
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -6303,7 +8597,13 @@ window.aiResources = {
       ]
     },
     "phase-13/capstone-stateless-tool-ecosystem": {
-      "videos": [],
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -6326,7 +8626,13 @@ window.aiResources = {
       ]
     },
     "phase-13/skill-discovery-and-progressive-disclosure": {
-      "videos": [],
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -6349,7 +8655,13 @@ window.aiResources = {
       ]
     },
     "phase-13/skill-invocation-and-routing": {
-      "videos": [],
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -6372,7 +8684,13 @@ window.aiResources = {
       ]
     },
     "phase-13/skill-permissions-sandboxes-and-trust": {
-      "videos": [],
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -6395,7 +8713,13 @@ window.aiResources = {
       ]
     },
     "phase-13/skill-evals-packaging-and-portability": {
-      "videos": [],
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -6418,7 +8742,13 @@ window.aiResources = {
       ]
     },
     "phase-13/mcp-tool-contracts-and-content": {
-      "videos": [],
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -6441,7 +8771,13 @@ window.aiResources = {
       ]
     },
     "phase-13/mcp-reliability-cancellation-and-flow-control": {
-      "videos": [],
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -6464,7 +8800,13 @@ window.aiResources = {
       ]
     },
     "phase-13/mcp-registry-supply-chain-admission-drift-and-rollback": {
-      "videos": [],
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -6487,7 +8829,13 @@ window.aiResources = {
       ]
     },
     "phase-13/mcp-conformance-engineering-versioning-evidence-and-operatio": {
-      "videos": [],
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -6510,7 +8858,13 @@ window.aiResources = {
       ]
     },
     "phase-13/program-anatomy-an-elf-reader-from-scratch": {
-      "videos": [],
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -6533,7 +8887,13 @@ window.aiResources = {
       ]
     },
     "phase-13/disassembly-and-control-flow-from-bytes-to-a-graph-you-can-c": {
-      "videos": [],
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -6556,7 +8916,13 @@ window.aiResources = {
       ]
     },
     "phase-13/lifting-to-pseudocode-ir-ssa-and-structuring-from-scratch": {
-      "videos": [],
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -6579,7 +8945,13 @@ window.aiResources = {
       ]
     },
     "phase-13/evidence-confidence-and-unknowns-in-binary-analysis": {
-      "videos": [],
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -6602,7 +8974,13 @@ window.aiResources = {
       ]
     },
     "phase-13/rebuild-and-prove-equal-differential-tests-byte-comparison-a": {
-      "videos": [],
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -6625,7 +9003,13 @@ window.aiResources = {
       ]
     },
     "phase-13/the-reverse-engineering-landscape-history-tool-families-and-": {
-      "videos": [],
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -6648,7 +9032,13 @@ window.aiResources = {
       ]
     },
     "phase-13/calling-conventions-and-stack-frames-system-v-windows-x64-an": {
-      "videos": [],
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -6671,7 +9061,13 @@ window.aiResources = {
       ]
     },
     "phase-13/compiler-idioms-what-optimization-does-to-your-code-and-how-": {
-      "videos": [],
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -6694,7 +9090,13 @@ window.aiResources = {
       ]
     },
     "phase-13/linking-loading-and-stripped-binaries-plt-got-imports-fixups": {
-      "videos": [],
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -6717,7 +9119,13 @@ window.aiResources = {
       ]
     },
     "phase-13/recovering-data-and-types-structs-arrays-c-objects-and-dwarf": {
-      "videos": [],
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -6740,7 +9148,13 @@ window.aiResources = {
       ]
     },
     "phase-13/dynamic-analysis-of-your-own-program-debuggers-traces-and-co": {
-      "videos": [],
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -6763,7 +9177,13 @@ window.aiResources = {
       ]
     },
     "phase-13/beyond-native-code-python-jvm-net-and-webassembly-bytecode": {
-      "videos": [],
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -6786,7 +9206,13 @@ window.aiResources = {
       ]
     },
     "phase-13/binary-diffing-and-symbolic-execution-matching-functions-and": {
-      "videos": [],
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -6809,7 +9235,13 @@ window.aiResources = {
       ]
     },
     "phase-13/ai-assisted-reverse-engineering-llm-decompilers-analysis-age": {
-      "videos": [],
+      "videos": [
+        [
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -6832,7 +9264,13 @@ window.aiResources = {
       ]
     },
     "phase-14/the-agent-loop": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -6855,7 +9293,13 @@ window.aiResources = {
       ]
     },
     "phase-14/rewoo-and-plan-and-execute": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -6878,7 +9322,13 @@ window.aiResources = {
       ]
     },
     "phase-14/reflexion-and-verbal-reinforcement-learning": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -6901,7 +9351,13 @@ window.aiResources = {
       ]
     },
     "phase-14/tree-of-thoughts-and-lats": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -6924,7 +9380,13 @@ window.aiResources = {
       ]
     },
     "phase-14/self-refine-and-critic": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -6947,7 +9409,13 @@ window.aiResources = {
       ]
     },
     "phase-14/tool-use-and-function-calling": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -6970,7 +9438,13 @@ window.aiResources = {
       ]
     },
     "phase-14/agent-memory-virtual-context-and-memory-paging": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -6993,7 +9467,13 @@ window.aiResources = {
       ]
     },
     "phase-14/memory-blocks-and-sleep-time-compute": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -7016,7 +9496,13 @@ window.aiResources = {
       ]
     },
     "phase-14/hybrid-memory-vector-graph-kv": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -7039,7 +9525,13 @@ window.aiResources = {
       ]
     },
     "phase-14/skill-libraries-and-lifelong-learning-voyager": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -7062,7 +9554,13 @@ window.aiResources = {
       ]
     },
     "phase-14/planning-with-htn-and-evolutionary-search": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -7085,7 +9583,13 @@ window.aiResources = {
       ]
     },
     "phase-14/anthropic-s-workflow-patterns": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -7108,7 +9612,13 @@ window.aiResources = {
       ]
     },
     "phase-14/stateful-graph-orchestration-durable-execution-and-checkpoin": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -7131,7 +9641,13 @@ window.aiResources = {
       ]
     },
     "phase-14/the-actor-model-for-agents": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -7154,7 +9670,13 @@ window.aiResources = {
       ]
     },
     "phase-14/role-based-agent-teams-roles-tasks-processes": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -7177,7 +9699,13 @@ window.aiResources = {
       ]
     },
     "phase-14/openai-agents-sdk-handoffs-guardrails-tracing": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -7200,7 +9728,13 @@ window.aiResources = {
       ]
     },
     "phase-14/the-harness-as-a-library-subagents-and-session-store": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -7223,7 +9757,13 @@ window.aiResources = {
       ]
     },
     "phase-14/production-agent-runtimes": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -7246,7 +9786,13 @@ window.aiResources = {
       ]
     },
     "phase-14/benchmarks-swe-bench-gaia-agentbench": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -7269,7 +9815,13 @@ window.aiResources = {
       ]
     },
     "phase-14/benchmarks-webarena-and-osworld": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -7292,7 +9844,13 @@ window.aiResources = {
       ]
     },
     "phase-14/computer-use-claude-openai-cua-gemini": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -7315,7 +9873,13 @@ window.aiResources = {
       ]
     },
     "phase-14/voice-agents-pipecat-and-livekit": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -7338,7 +9902,13 @@ window.aiResources = {
       ]
     },
     "phase-14/opentelemetry-genai-semantic-conventions": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -7361,7 +9931,13 @@ window.aiResources = {
       ]
     },
     "phase-14/agent-observability-langfuse-phoenix-opik": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -7384,7 +9960,13 @@ window.aiResources = {
       ]
     },
     "phase-14/multi-agent-debate-and-collaboration": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -7407,7 +9989,13 @@ window.aiResources = {
       ]
     },
     "phase-14/failure-modes-why-agents-break": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -7430,7 +10018,13 @@ window.aiResources = {
       ]
     },
     "phase-14/prompt-injection-and-the-pve-defense": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -7453,7 +10047,13 @@ window.aiResources = {
       ]
     },
     "phase-14/orchestration-patterns-supervisor-swarm-hierarchical": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -7476,7 +10076,13 @@ window.aiResources = {
       ]
     },
     "phase-14/production-runtimes-queue-event-cron": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -7499,7 +10105,13 @@ window.aiResources = {
       ]
     },
     "phase-14/eval-driven-agent-development": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -7522,7 +10134,13 @@ window.aiResources = {
       ]
     },
     "phase-14/agent-workbench-why-capable-models-still-fail": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -7545,7 +10163,13 @@ window.aiResources = {
       ]
     },
     "phase-14/the-minimal-agent-workbench": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -7568,7 +10192,13 @@ window.aiResources = {
       ]
     },
     "phase-14/agent-instructions-as-executable-constraints": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -7591,7 +10221,13 @@ window.aiResources = {
       ]
     },
     "phase-14/repo-memory-and-durable-state": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -7614,7 +10250,13 @@ window.aiResources = {
       ]
     },
     "phase-14/initialization-scripts-for-agents": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -7637,7 +10279,13 @@ window.aiResources = {
       ]
     },
     "phase-14/scope-contracts-and-task-boundaries": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -7660,7 +10308,13 @@ window.aiResources = {
       ]
     },
     "phase-14/runtime-feedback-loops": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -7683,7 +10337,13 @@ window.aiResources = {
       ]
     },
     "phase-14/verification-gates": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -7706,7 +10366,13 @@ window.aiResources = {
       ]
     },
     "phase-14/reviewer-agent-separate-builder-from-marker": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -7729,7 +10395,13 @@ window.aiResources = {
       ]
     },
     "phase-14/multi-session-handoff": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -7752,7 +10424,13 @@ window.aiResources = {
       ]
     },
     "phase-14/the-workbench-on-a-real-repo": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -7775,7 +10453,13 @@ window.aiResources = {
       ]
     },
     "phase-14/capstone-ship-a-reusable-agent-workbench-pack": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -7798,7 +10482,13 @@ window.aiResources = {
       ]
     },
     "phase-14/frame-the-task-before-the-agent-writes-code": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -7821,7 +10511,13 @@ window.aiResources = {
       ]
     },
     "phase-14/build-an-evidence-backed-execution-plan": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -7844,7 +10540,13 @@ window.aiResources = {
       ]
     },
     "phase-14/delegate-agent-work-with-isolation-and-merge-contracts": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -7867,7 +10569,13 @@ window.aiResources = {
       ]
     },
     "phase-14/turn-every-agent-correction-into-a-system-improvement": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -7890,7 +10598,13 @@ window.aiResources = {
       ]
     },
     "phase-14/define-the-outcome-before-you-choose-the-output": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -7913,7 +10627,13 @@ window.aiResources = {
       ]
     },
     "phase-14/discover-the-workflow-people-actually-perform": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -7936,7 +10656,13 @@ window.aiResources = {
       ]
     },
     "phase-14/map-assumptions-and-resolve-the-riskiest-one-first": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -7959,7 +10685,13 @@ window.aiResources = {
       ]
     },
     "phase-14/choose-the-smallest-slice-that-can-change-the-decision": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -7982,7 +10714,13 @@ window.aiResources = {
       ]
     },
     "phase-14/write-specifications-that-preserve-judgment": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -8005,7 +10743,13 @@ window.aiResources = {
       ]
     },
     "phase-14/design-success-metrics-before-the-result-exists": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -8028,7 +10772,13 @@ window.aiResources = {
       ]
     },
     "phase-14/choose-prototype-pilot-or-production-deliberately": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -8051,7 +10801,13 @@ window.aiResources = {
       ]
     },
     "phase-14/build-a-feedback-ratchet-with-ownership-and-retirement": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -8074,7 +10830,13 @@ window.aiResources = {
       ]
     },
     "phase-15/from-chatbots-to-long-horizon-agents-metr": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -8097,7 +10859,13 @@ window.aiResources = {
       ]
     },
     "phase-15/star-v-star-quiet-star-self-taught-reasoning": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -8120,7 +10888,13 @@ window.aiResources = {
       ]
     },
     "phase-15/alphaevolve-evolutionary-coding-agents": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -8143,7 +10917,13 @@ window.aiResources = {
       ]
     },
     "phase-15/darwin-g-del-machine-self-modifying-agents": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -8166,7 +10946,13 @@ window.aiResources = {
       ]
     },
     "phase-15/ai-scientist-v2-workshop-level-research": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -8189,7 +10975,13 @@ window.aiResources = {
       ]
     },
     "phase-15/automated-alignment-research-anthropic-aar": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -8212,7 +11004,13 @@ window.aiResources = {
       ]
     },
     "phase-15/recursive-self-improvement-capability-vs-alignment": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -8235,7 +11033,13 @@ window.aiResources = {
       ]
     },
     "phase-15/bounded-self-improvement-designs": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -8258,7 +11062,13 @@ window.aiResources = {
       ]
     },
     "phase-15/autonomous-coding-agent-landscape-swe-bench-codeact": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -8281,7 +11091,13 @@ window.aiResources = {
       ]
     },
     "phase-15/permission-modes-for-autonomous-agents": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -8304,7 +11120,13 @@ window.aiResources = {
       ]
     },
     "phase-15/browser-agents-and-indirect-prompt-injection": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -8327,7 +11149,13 @@ window.aiResources = {
       ]
     },
     "phase-15/durable-execution-for-long-running-agents": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -8350,7 +11178,13 @@ window.aiResources = {
       ]
     },
     "phase-15/action-budgets-iteration-caps-cost-governors": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -8373,7 +11207,13 @@ window.aiResources = {
       ]
     },
     "phase-15/kill-switches-circuit-breakers-canary-tokens": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -8396,7 +11236,13 @@ window.aiResources = {
       ]
     },
     "phase-15/hitl-propose-then-commit": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -8419,7 +11265,13 @@ window.aiResources = {
       ]
     },
     "phase-15/checkpoints-and-rollback": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -8442,7 +11294,13 @@ window.aiResources = {
       ]
     },
     "phase-15/constitutional-ai-and-rule-overrides": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -8465,7 +11323,13 @@ window.aiResources = {
       ]
     },
     "phase-15/llama-guard-and-input-output-classification": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -8488,7 +11352,13 @@ window.aiResources = {
       ]
     },
     "phase-15/anthropic-responsible-scaling-policy-v3-0": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -8511,7 +11381,13 @@ window.aiResources = {
       ]
     },
     "phase-15/openai-preparedness-framework-and-deepmind-fsf": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -8534,7 +11410,13 @@ window.aiResources = {
       ]
     },
     "phase-15/metr-time-horizons-and-external-evaluation": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -8557,7 +11439,13 @@ window.aiResources = {
       ]
     },
     "phase-15/cais-caisi-and-societal-scale-risk": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -8580,7 +11468,13 @@ window.aiResources = {
       ]
     },
     "phase-16/why-multi-agent": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -8603,7 +11497,13 @@ window.aiResources = {
       ]
     },
     "phase-16/fipa-acl-heritage-and-speech-acts": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -8626,7 +11526,13 @@ window.aiResources = {
       ]
     },
     "phase-16/communication-protocols": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -8649,7 +11555,13 @@ window.aiResources = {
       ]
     },
     "phase-16/the-multi-agent-primitive-model": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -8672,7 +11584,13 @@ window.aiResources = {
       ]
     },
     "phase-16/supervisor-orchestrator-worker-pattern": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -8695,7 +11613,13 @@ window.aiResources = {
       ]
     },
     "phase-16/hierarchical-architecture-and-decomposition-drift": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -8718,7 +11642,13 @@ window.aiResources = {
       ]
     },
     "phase-16/society-of-mind-and-multi-agent-debate": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -8741,7 +11671,13 @@ window.aiResources = {
       ]
     },
     "phase-16/role-specialization-planner-critic-executor-verifier": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -8764,7 +11700,13 @@ window.aiResources = {
       ]
     },
     "phase-16/parallel-swarm-and-networked-architectures": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -8787,7 +11729,13 @@ window.aiResources = {
       ]
     },
     "phase-16/group-chat-and-speaker-selection": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -8810,7 +11758,13 @@ window.aiResources = {
       ]
     },
     "phase-16/handoffs-and-routines-stateless-orchestration": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -8833,7 +11787,13 @@ window.aiResources = {
       ]
     },
     "phase-16/a2a-the-agent-to-agent-protocol": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -8856,7 +11816,13 @@ window.aiResources = {
       ]
     },
     "phase-16/shared-memory-and-blackboard-patterns": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -8879,7 +11845,13 @@ window.aiResources = {
       ]
     },
     "phase-16/consensus-and-byzantine-fault-tolerance": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -8902,7 +11874,13 @@ window.aiResources = {
       ]
     },
     "phase-16/voting-self-consistency-and-debate-topology": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -8925,7 +11903,13 @@ window.aiResources = {
       ]
     },
     "phase-16/negotiation-and-bargaining": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -8948,7 +11932,13 @@ window.aiResources = {
       ]
     },
     "phase-16/generative-agents-and-emergent-simulation": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -8971,7 +11961,13 @@ window.aiResources = {
       ]
     },
     "phase-16/theory-of-mind-and-emergent-coordination": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -8994,7 +11990,13 @@ window.aiResources = {
       ]
     },
     "phase-16/swarm-optimization-pso-aco": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -9017,7 +12019,13 @@ window.aiResources = {
       ]
     },
     "phase-16/marl-maddpg-qmix-mappo": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -9040,7 +12048,13 @@ window.aiResources = {
       ]
     },
     "phase-16/agent-economies-token-incentives-reputation": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -9063,7 +12077,13 @@ window.aiResources = {
       ]
     },
     "phase-16/production-scaling-queues-checkpoints-durability": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -9086,7 +12106,13 @@ window.aiResources = {
       ]
     },
     "phase-16/failure-modes-mast-groupthink-monoculture": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -9109,7 +12135,13 @@ window.aiResources = {
       ]
     },
     "phase-16/evaluation-and-coordination-benchmarks": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -9132,7 +12164,13 @@ window.aiResources = {
       ]
     },
     "phase-16/case-studies-and-2026-state-of-the-art": {
-      "videos": [],
+      "videos": [
+        [
+          "sal78ACtGTc",
+          "What's next for AI agentic workflows ft. Andrew Ng",
+          "The AI Grid"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -9155,7 +12193,13 @@ window.aiResources = {
       ]
     },
     "phase-17/managed-llm-platforms-bedrock-azure-openai-vertex-ai": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -9178,7 +12222,13 @@ window.aiResources = {
       ]
     },
     "phase-17/inference-platform-economics-fireworks-together-baseten-moda": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -9201,7 +12251,13 @@ window.aiResources = {
       ]
     },
     "phase-17/gpu-autoscaling-on-kubernetes-karpenter-kai-scheduler": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -9224,7 +12280,13 @@ window.aiResources = {
       ]
     },
     "phase-17/serving-engine-internals-pagedattention-continuous-batching-": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -9247,7 +12309,13 @@ window.aiResources = {
       ]
     },
     "phase-17/eagle-3-speculative-decoding-in-production": {
-      "videos": [],
+      "videos": [
+        [
+          "VkWlLSTdHs8",
+          "Faster LLMs: Accelerate Inference with Speculative Decoding",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -9270,7 +12338,13 @@ window.aiResources = {
       ]
     },
     "phase-17/prefix-cache-serving-radixattention-and-kv-reuse": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -9293,7 +12367,13 @@ window.aiResources = {
       ]
     },
     "phase-17/hardware-specialized-inference-compilation-fp8-and-nvfp4-on-": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -9316,7 +12396,13 @@ window.aiResources = {
       ]
     },
     "phase-17/inference-metrics-ttft-tpot-itl-goodput-p99": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -9339,7 +12425,13 @@ window.aiResources = {
       ]
     },
     "phase-17/production-quantization-awq-gptq-gguf-fp8-nvfp4": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -9362,7 +12454,13 @@ window.aiResources = {
       ]
     },
     "phase-17/cold-start-mitigation-for-serverless-llms": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -9385,7 +12483,13 @@ window.aiResources = {
       ]
     },
     "phase-17/multi-region-llm-serving-and-kv-cache-locality": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -9408,7 +12512,13 @@ window.aiResources = {
       ]
     },
     "phase-17/edge-inference-ane-hexagon-webgpu-jetson": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -9431,7 +12541,13 @@ window.aiResources = {
       ]
     },
     "phase-17/llm-observability-stack-selection": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -9454,7 +12570,13 @@ window.aiResources = {
       ]
     },
     "phase-17/prompt-caching-and-semantic-caching-economics": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -9477,7 +12599,13 @@ window.aiResources = {
       ]
     },
     "phase-17/batch-apis-the-50-discount-as-industry-standard": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -9500,7 +12628,13 @@ window.aiResources = {
       ]
     },
     "phase-17/model-routing-as-a-cost-reduction-primitive": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -9523,7 +12657,13 @@ window.aiResources = {
       ]
     },
     "phase-17/disaggregated-prefill-decode-nvidia-dynamo-and-llm-d": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -9546,7 +12686,13 @@ window.aiResources = {
       ]
     },
     "phase-17/production-serving-stack-kv-offloading-and-cache-aware-routi": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -9569,7 +12715,13 @@ window.aiResources = {
       ]
     },
     "phase-17/ai-gateways-litellm-portkey-kong-bifrost": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -9592,7 +12744,13 @@ window.aiResources = {
       ]
     },
     "phase-17/shadow-canary-and-progressive-deployment": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -9615,7 +12773,13 @@ window.aiResources = {
       ]
     },
     "phase-17/a-b-testing-llm-features-growthbook-and-statsig": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -9638,7 +12802,13 @@ window.aiResources = {
       ]
     },
     "phase-17/load-testing-llm-apis-k6-llmperf-genai-perf": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -9661,7 +12831,13 @@ window.aiResources = {
       ]
     },
     "phase-17/sre-for-ai-multi-agent-incident-response": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -9684,7 +12860,13 @@ window.aiResources = {
       ]
     },
     "phase-17/chaos-engineering-for-llm-production": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -9707,7 +12889,13 @@ window.aiResources = {
       ]
     },
     "phase-17/security-secrets-pii-scrubbing-audit-logs": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -9730,7 +12918,13 @@ window.aiResources = {
       ]
     },
     "phase-17/compliance-soc-2-hipaa-gdpr-eu-ai-act-iso-42001": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -9753,7 +12947,13 @@ window.aiResources = {
       ]
     },
     "phase-17/finops-for-llms-unit-economics-and-multi-tenant-attribution": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -9776,7 +12976,13 @@ window.aiResources = {
       ]
     },
     "phase-17/self-hosted-serving-selection-matching-engine-to-hardware-an": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -9799,7 +13005,13 @@ window.aiResources = {
       ]
     },
     "phase-17/model-demo-interfaces-from-a-function-to-a-shareable-app": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -9822,7 +13034,13 @@ window.aiResources = {
       ]
     },
     "phase-18/instruction-following-as-alignment-signal": {
-      "videos": [],
+      "videos": [
+        [
+          "2MBJOuVq380",
+          "Training AI with Human Feedback (RLHF) - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -9845,7 +13063,13 @@ window.aiResources = {
       ]
     },
     "phase-18/reward-hacking-goodhart-s-law": {
-      "videos": [],
+      "videos": [
+        [
+          "2MBJOuVq380",
+          "Training AI with Human Feedback (RLHF) - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -9868,7 +13092,13 @@ window.aiResources = {
       ]
     },
     "phase-18/direct-preference-optimization-family": {
-      "videos": [],
+      "videos": [
+        [
+          "2MBJOuVq380",
+          "Training AI with Human Feedback (RLHF) - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -9891,7 +13121,13 @@ window.aiResources = {
       ]
     },
     "phase-18/sycophancy-as-rlhf-amplification": {
-      "videos": [],
+      "videos": [
+        [
+          "2MBJOuVq380",
+          "Training AI with Human Feedback (RLHF) - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -9914,7 +13150,13 @@ window.aiResources = {
       ]
     },
     "phase-18/constitutional-ai-rlaif": {
-      "videos": [],
+      "videos": [
+        [
+          "2MBJOuVq380",
+          "Training AI with Human Feedback (RLHF) - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -9937,7 +13179,13 @@ window.aiResources = {
       ]
     },
     "phase-18/mesa-optimization-deceptive-alignment": {
-      "videos": [],
+      "videos": [
+        [
+          "2MBJOuVq380",
+          "Training AI with Human Feedback (RLHF) - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -9960,7 +13208,13 @@ window.aiResources = {
       ]
     },
     "phase-18/sleeper-agents-persistent-deception": {
-      "videos": [],
+      "videos": [
+        [
+          "2MBJOuVq380",
+          "Training AI with Human Feedback (RLHF) - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -9983,7 +13237,13 @@ window.aiResources = {
       ]
     },
     "phase-18/in-context-scheming-in-frontier-models": {
-      "videos": [],
+      "videos": [
+        [
+          "2MBJOuVq380",
+          "Training AI with Human Feedback (RLHF) - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -10006,7 +13266,13 @@ window.aiResources = {
       ]
     },
     "phase-18/alignment-faking": {
-      "videos": [],
+      "videos": [
+        [
+          "2MBJOuVq380",
+          "Training AI with Human Feedback (RLHF) - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -10029,7 +13295,13 @@ window.aiResources = {
       ]
     },
     "phase-18/ai-control-safety-despite-subversion": {
-      "videos": [],
+      "videos": [
+        [
+          "2MBJOuVq380",
+          "Training AI with Human Feedback (RLHF) - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -10052,7 +13324,13 @@ window.aiResources = {
       ]
     },
     "phase-18/scalable-oversight-weak-to-strong": {
-      "videos": [],
+      "videos": [
+        [
+          "2MBJOuVq380",
+          "Training AI with Human Feedback (RLHF) - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -10075,7 +13353,13 @@ window.aiResources = {
       ]
     },
     "phase-18/red-teaming-pair-automated-attacks": {
-      "videos": [],
+      "videos": [
+        [
+          "2MBJOuVq380",
+          "Training AI with Human Feedback (RLHF) - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -10098,7 +13382,13 @@ window.aiResources = {
       ]
     },
     "phase-18/many-shot-jailbreaking": {
-      "videos": [],
+      "videos": [
+        [
+          "2MBJOuVq380",
+          "Training AI with Human Feedback (RLHF) - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -10121,7 +13411,13 @@ window.aiResources = {
       ]
     },
     "phase-18/ascii-art-visual-jailbreaks": {
-      "videos": [],
+      "videos": [
+        [
+          "2MBJOuVq380",
+          "Training AI with Human Feedback (RLHF) - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -10144,7 +13440,13 @@ window.aiResources = {
       ]
     },
     "phase-18/indirect-prompt-injection": {
-      "videos": [],
+      "videos": [
+        [
+          "2MBJOuVq380",
+          "Training AI with Human Feedback (RLHF) - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -10167,7 +13469,13 @@ window.aiResources = {
       ]
     },
     "phase-18/red-team-tooling-garak-llama-guard-pyrit": {
-      "videos": [],
+      "videos": [
+        [
+          "2MBJOuVq380",
+          "Training AI with Human Feedback (RLHF) - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -10190,7 +13498,13 @@ window.aiResources = {
       ]
     },
     "phase-18/wmdp-dual-use-capability-evaluation": {
-      "videos": [],
+      "videos": [
+        [
+          "2MBJOuVq380",
+          "Training AI with Human Feedback (RLHF) - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -10213,7 +13527,13 @@ window.aiResources = {
       ]
     },
     "phase-18/frontier-safety-frameworks-rsp-pf-fsf": {
-      "videos": [],
+      "videos": [
+        [
+          "2MBJOuVq380",
+          "Training AI with Human Feedback (RLHF) - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -10236,7 +13556,13 @@ window.aiResources = {
       ]
     },
     "phase-18/model-welfare-research": {
-      "videos": [],
+      "videos": [
+        [
+          "2MBJOuVq380",
+          "Training AI with Human Feedback (RLHF) - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -10259,7 +13585,13 @@ window.aiResources = {
       ]
     },
     "phase-18/bias-representational-harm": {
-      "videos": [],
+      "videos": [
+        [
+          "2MBJOuVq380",
+          "Training AI with Human Feedback (RLHF) - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -10282,7 +13614,13 @@ window.aiResources = {
       ]
     },
     "phase-18/fairness-criteria-group-individual-counterfactual": {
-      "videos": [],
+      "videos": [
+        [
+          "2MBJOuVq380",
+          "Training AI with Human Feedback (RLHF) - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -10305,7 +13643,13 @@ window.aiResources = {
       ]
     },
     "phase-18/differential-privacy-for-llms": {
-      "videos": [],
+      "videos": [
+        [
+          "2MBJOuVq380",
+          "Training AI with Human Feedback (RLHF) - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -10328,7 +13672,13 @@ window.aiResources = {
       ]
     },
     "phase-18/watermarking-synthid-stable-signature-c2pa": {
-      "videos": [],
+      "videos": [
+        [
+          "2MBJOuVq380",
+          "Training AI with Human Feedback (RLHF) - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -10351,7 +13701,13 @@ window.aiResources = {
       ]
     },
     "phase-18/regulatory-frameworks-eu-us-uk-korea": {
-      "videos": [],
+      "videos": [
+        [
+          "2MBJOuVq380",
+          "Training AI with Human Feedback (RLHF) - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -10374,7 +13730,13 @@ window.aiResources = {
       ]
     },
     "phase-18/echoleak-cves-for-ai": {
-      "videos": [],
+      "videos": [
+        [
+          "2MBJOuVq380",
+          "Training AI with Human Feedback (RLHF) - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -10397,7 +13759,13 @@ window.aiResources = {
       ]
     },
     "phase-18/model-system-dataset-cards": {
-      "videos": [],
+      "videos": [
+        [
+          "2MBJOuVq380",
+          "Training AI with Human Feedback (RLHF) - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -10420,7 +13788,13 @@ window.aiResources = {
       ]
     },
     "phase-18/data-provenance-training-data-governance": {
-      "videos": [],
+      "videos": [
+        [
+          "2MBJOuVq380",
+          "Training AI with Human Feedback (RLHF) - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -10443,7 +13817,13 @@ window.aiResources = {
       ]
     },
     "phase-18/alignment-research-ecosystem-mats-redwood-apollo-metr": {
-      "videos": [],
+      "videos": [
+        [
+          "2MBJOuVq380",
+          "Training AI with Human Feedback (RLHF) - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -10466,7 +13846,13 @@ window.aiResources = {
       ]
     },
     "phase-18/moderation-systems-openai-perspective-llama-guard": {
-      "videos": [],
+      "videos": [
+        [
+          "2MBJOuVq380",
+          "Training AI with Human Feedback (RLHF) - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -10489,7 +13875,13 @@ window.aiResources = {
       ]
     },
     "phase-18/dual-use-risk-cyber-bio-chem-nuclear": {
-      "videos": [],
+      "videos": [
+        [
+          "2MBJOuVq380",
+          "Training AI with Human Feedback (RLHF) - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -10512,7 +13904,13 @@ window.aiResources = {
       ]
     },
     "phase-19/terminal-native-coding-agent": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -10535,7 +13933,13 @@ window.aiResources = {
       ]
     },
     "phase-19/rag-over-codebase-cross-repo-semantic-search": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -10558,7 +13962,13 @@ window.aiResources = {
       ]
     },
     "phase-19/real-time-voice-assistant-asr-llm-tts": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -10581,7 +13991,13 @@ window.aiResources = {
       ]
     },
     "phase-19/multimodal-document-qa-vision-first": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -10604,7 +14020,13 @@ window.aiResources = {
       ]
     },
     "phase-19/autonomous-research-agent-ai-scientist-class": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -10627,7 +14049,13 @@ window.aiResources = {
       ]
     },
     "phase-19/devops-troubleshooting-agent-for-kubernetes": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -10650,7 +14078,13 @@ window.aiResources = {
       ]
     },
     "phase-19/end-to-end-fine-tuning-pipeline": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -10673,7 +14107,13 @@ window.aiResources = {
       ]
     },
     "phase-19/production-rag-chatbot-regulated-vertical": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -10696,7 +14136,13 @@ window.aiResources = {
       ]
     },
     "phase-19/code-migration-agent-repo-level-upgrade": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -10719,7 +14165,13 @@ window.aiResources = {
       ]
     },
     "phase-19/multi-agent-software-engineering-team": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -10742,7 +14194,13 @@ window.aiResources = {
       ]
     },
     "phase-19/llm-observability-eval-dashboard": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -10765,7 +14223,13 @@ window.aiResources = {
       ]
     },
     "phase-19/video-understanding-pipeline-scene-qa": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -10788,7 +14252,13 @@ window.aiResources = {
       ]
     },
     "phase-19/stateless-mcp-server-with-registry-and-governance": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -10811,7 +14281,13 @@ window.aiResources = {
       ]
     },
     "phase-19/speculative-decoding-inference-server": {
-      "videos": [],
+      "videos": [
+        [
+          "VkWlLSTdHs8",
+          "Faster LLMs: Accelerate Inference with Speculative Decoding",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -10834,7 +14310,13 @@ window.aiResources = {
       ]
     },
     "phase-19/constitutional-safety-harness-red-team-range": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -10857,7 +14339,13 @@ window.aiResources = {
       ]
     },
     "phase-19/github-issue-to-pr-autonomous-agent": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -10880,7 +14368,13 @@ window.aiResources = {
       ]
     },
     "phase-19/personal-ai-tutor-adaptive-multimodal": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -10903,7 +14397,13 @@ window.aiResources = {
       ]
     },
     "phase-19/agent-harness-loop-contract": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -10926,7 +14426,13 @@ window.aiResources = {
       ]
     },
     "phase-19/tool-registry-with-schema-validation": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -10949,7 +14455,13 @@ window.aiResources = {
       ]
     },
     "phase-19/json-rpc-2-0-over-newline-delimited-stdio": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -10972,7 +14484,13 @@ window.aiResources = {
       ]
     },
     "phase-19/function-call-dispatcher": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -10995,7 +14513,13 @@ window.aiResources = {
       ]
     },
     "phase-19/plan-execute-control-flow": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -11018,7 +14542,13 @@ window.aiResources = {
       ]
     },
     "phase-19/verification-gates-and-observation-budget": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -11041,7 +14571,13 @@ window.aiResources = {
       ]
     },
     "phase-19/sandbox-runner-with-denylist-and-path-jail": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -11064,7 +14600,13 @@ window.aiResources = {
       ]
     },
     "phase-19/eval-harness-with-fixture-tasks": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -11087,7 +14629,13 @@ window.aiResources = {
       ]
     },
     "phase-19/observability-with-otel-genai-spans-and-prometheus-metrics": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -11110,7 +14658,13 @@ window.aiResources = {
       ]
     },
     "phase-19/end-to-end-coding-agent-on-the-harness": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -11133,7 +14687,13 @@ window.aiResources = {
       ]
     },
     "phase-19/bpe-tokenizer-from-scratch": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -11156,7 +14716,13 @@ window.aiResources = {
       ]
     },
     "phase-19/tokenized-dataset-with-sliding-window": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -11179,7 +14745,13 @@ window.aiResources = {
       ]
     },
     "phase-19/token-and-positional-embeddings": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -11202,7 +14774,13 @@ window.aiResources = {
       ]
     },
     "phase-19/multi-head-self-attention": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -11225,7 +14803,13 @@ window.aiResources = {
       ]
     },
     "phase-19/transformer-block-from-scratch": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -11248,7 +14832,13 @@ window.aiResources = {
       ]
     },
     "phase-19/gpt-model-assembly": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -11271,7 +14861,13 @@ window.aiResources = {
       ]
     },
     "phase-19/training-loop-and-evaluation": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -11294,7 +14890,13 @@ window.aiResources = {
       ]
     },
     "phase-19/loading-pretrained-weights": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -11317,7 +14919,13 @@ window.aiResources = {
       ]
     },
     "phase-19/classifier-fine-tuning-by-head-swap": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -11340,7 +14948,13 @@ window.aiResources = {
       ]
     },
     "phase-19/instruction-tuning-by-supervised-fine-tuning": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -11363,7 +14977,13 @@ window.aiResources = {
       ]
     },
     "phase-19/direct-preference-optimization-from-scratch": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -11386,7 +15006,13 @@ window.aiResources = {
       ]
     },
     "phase-19/full-evaluation-pipeline": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -11409,7 +15035,13 @@ window.aiResources = {
       ]
     },
     "phase-19/large-corpus-downloader": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -11432,7 +15064,13 @@ window.aiResources = {
       ]
     },
     "phase-19/hdf5-tokenized-corpus": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -11455,7 +15093,13 @@ window.aiResources = {
       ]
     },
     "phase-19/cosine-lr-with-linear-warmup": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -11478,7 +15122,13 @@ window.aiResources = {
       ]
     },
     "phase-19/gradient-clipping-and-mixed-precision": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -11501,7 +15151,13 @@ window.aiResources = {
       ]
     },
     "phase-19/gradient-accumulation": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -11524,7 +15180,13 @@ window.aiResources = {
       ]
     },
     "phase-19/checkpoint-save-and-resume": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -11547,7 +15209,13 @@ window.aiResources = {
       ]
     },
     "phase-19/distributed-data-parallel-and-fsdp-from-scratch": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -11570,7 +15238,13 @@ window.aiResources = {
       ]
     },
     "phase-19/language-model-evaluation-harness": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -11593,7 +15267,13 @@ window.aiResources = {
       ]
     },
     "phase-19/hypothesis-generator": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -11616,7 +15296,13 @@ window.aiResources = {
       ]
     },
     "phase-19/literature-retrieval": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -11639,7 +15325,13 @@ window.aiResources = {
       ]
     },
     "phase-19/experiment-runner": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -11662,7 +15354,13 @@ window.aiResources = {
       ]
     },
     "phase-19/result-evaluator": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -11685,7 +15383,13 @@ window.aiResources = {
       ]
     },
     "phase-19/paper-writer": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -11708,7 +15412,13 @@ window.aiResources = {
       ]
     },
     "phase-19/critic-loop": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -11731,7 +15441,13 @@ window.aiResources = {
       ]
     },
     "phase-19/iteration-scheduler": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -11754,7 +15470,13 @@ window.aiResources = {
       ]
     },
     "phase-19/end-to-end-research-demo": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -11777,7 +15499,13 @@ window.aiResources = {
       ]
     },
     "phase-19/vision-encoder-patches": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -11800,7 +15528,13 @@ window.aiResources = {
       ]
     },
     "phase-19/vision-transformer-encoder": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -11823,7 +15557,13 @@ window.aiResources = {
       ]
     },
     "phase-19/projection-layer-for-modality-alignment": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -11846,7 +15586,13 @@ window.aiResources = {
       ]
     },
     "phase-19/cross-attention-fusion": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -11869,7 +15615,13 @@ window.aiResources = {
       ]
     },
     "phase-19/vision-language-pretraining": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -11892,7 +15644,13 @@ window.aiResources = {
       ]
     },
     "phase-19/multimodal-evaluation": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -11915,7 +15673,13 @@ window.aiResources = {
       ]
     },
     "phase-19/chunking-strategies-compared": {
-      "videos": [],
+      "videos": [
+        [
+          "8OJC21T2SL4",
+          "5 Levels Of Text Splitting For Retrieval",
+          "Greg Kamradt"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -11938,7 +15702,13 @@ window.aiResources = {
       ]
     },
     "phase-19/hybrid-retrieval-with-bm25-and-dense-embeddings": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -11961,7 +15731,13 @@ window.aiResources = {
       ]
     },
     "phase-19/cross-encoder-reranker": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -11984,7 +15760,13 @@ window.aiResources = {
       ]
     },
     "phase-19/query-rewriting-hyde-multi-query-and-decomposition": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -12007,7 +15789,13 @@ window.aiResources = {
       ]
     },
     "phase-19/rag-evaluation-precision-recall-mrr-ndcg-faithfulness-answer": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -12030,7 +15818,13 @@ window.aiResources = {
       ]
     },
     "phase-19/end-to-end-rag-system": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -12053,7 +15847,13 @@ window.aiResources = {
       ]
     },
     "phase-19/task-spec-format": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -12076,7 +15876,13 @@ window.aiResources = {
       ]
     },
     "phase-19/classical-metrics": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -12099,7 +15905,13 @@ window.aiResources = {
       ]
     },
     "phase-19/code-exec-metric": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -12122,7 +15934,13 @@ window.aiResources = {
       ]
     },
     "phase-19/perplexity-and-calibration": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -12145,7 +15963,13 @@ window.aiResources = {
       ]
     },
     "phase-19/leaderboard-aggregation": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -12168,7 +15992,13 @@ window.aiResources = {
       ]
     },
     "phase-19/end-to-end-eval-runner": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -12191,7 +16021,13 @@ window.aiResources = {
       ]
     },
     "phase-19/collective-ops-from-scratch": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -12214,7 +16050,13 @@ window.aiResources = {
       ]
     },
     "phase-19/data-parallel-ddp-from-scratch": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -12237,7 +16079,13 @@ window.aiResources = {
       ]
     },
     "phase-19/zero-optimizer-state-sharding": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -12260,7 +16108,13 @@ window.aiResources = {
       ]
     },
     "phase-19/pipeline-parallel-and-bubble-analysis": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -12283,7 +16137,13 @@ window.aiResources = {
       ]
     },
     "phase-19/sharded-checkpoint-and-atomic-resume": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -12306,7 +16166,13 @@ window.aiResources = {
       ]
     },
     "phase-19/end-to-end-distributed-training": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -12329,7 +16195,13 @@ window.aiResources = {
       ]
     },
     "phase-19/jailbreak-taxonomy": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -12352,7 +16224,13 @@ window.aiResources = {
       ]
     },
     "phase-19/prompt-injection-detector": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -12375,7 +16253,13 @@ window.aiResources = {
       ]
     },
     "phase-19/refusal-evaluation": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -12398,7 +16282,13 @@ window.aiResources = {
       ]
     },
     "phase-19/content-classifier-integration": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -12421,7 +16311,13 @@ window.aiResources = {
       ]
     },
     "phase-19/constitutional-rules-engine": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -12444,7 +16340,13 @@ window.aiResources = {
       ]
     },
     "phase-19/end-to-end-safety-gate": {
-      "videos": [],
+      "videos": [
+        [
+          "zduSFxRajkE",
+          "State of GPT | BRK216HFS",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Interactive Lesson (aiengineeringfromscratch.com)",
@@ -12467,7 +16369,13 @@ window.aiResources = {
       ]
     },
     "manuals-a2a-101/how-to-read-this-manual": {
-      "videos": [],
+      "videos": [
+        [
+          "Tud9HLTk8hg",
+          "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "How to read this manual (Full Manual)",
@@ -12478,7 +16386,13 @@ window.aiResources = {
       ]
     },
     "manuals-a2a-101/1-1-what-a2a-standardizes": {
-      "videos": [],
+      "videos": [
+        [
+          "Tud9HLTk8hg",
+          "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "1.1 What A2A standardizes (Full Manual)",
@@ -12489,7 +16403,13 @@ window.aiResources = {
       ]
     },
     "manuals-a2a-101/1-2-one-task-request-by-request": {
-      "videos": [],
+      "videos": [
+        [
+          "Tud9HLTk8hg",
+          "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "1.2 One task, request by request (Full Manual)",
@@ -12500,7 +16420,13 @@ window.aiResources = {
       ]
     },
     "manuals-a2a-101/2-1-agentcard-fields": {
-      "videos": [],
+      "videos": [
+        [
+          "Tud9HLTk8hg",
+          "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "2.1 AgentCard fields (Full Manual)",
@@ -12511,7 +16437,13 @@ window.aiResources = {
       ]
     },
     "manuals-a2a-101/2-2-discovery-and-supportedinterfaces": {
-      "videos": [],
+      "videos": [
+        [
+          "Tud9HLTk8hg",
+          "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "2.2 Discovery and supportedInterfaces (Full Manual)",
@@ -12522,7 +16454,13 @@ window.aiResources = {
       ]
     },
     "manuals-a2a-101/2-3-extended-cards-and-signatures": {
-      "videos": [],
+      "videos": [
+        [
+          "Tud9HLTk8hg",
+          "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "2.3 Extended cards and signatures (Full Manual)",
@@ -12533,7 +16471,13 @@ window.aiResources = {
       ]
     },
     "manuals-a2a-101/3-1-message": {
-      "videos": [],
+      "videos": [
+        [
+          "Tud9HLTk8hg",
+          "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "3.1 Message (Full Manual)",
@@ -12544,7 +16488,13 @@ window.aiResources = {
       ]
     },
     "manuals-a2a-101/3-2-part": {
-      "videos": [],
+      "videos": [
+        [
+          "Tud9HLTk8hg",
+          "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "3.2 Part (Full Manual)",
@@ -12555,7 +16505,13 @@ window.aiResources = {
       ]
     },
     "manuals-a2a-101/3-3-artifact-and-chunks": {
-      "videos": [],
+      "videos": [
+        [
+          "Tud9HLTk8hg",
+          "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "3.3 Artifact and chunks (Full Manual)",
@@ -12566,7 +16522,13 @@ window.aiResources = {
       ]
     },
     "manuals-a2a-101/3-4-task-taskstatus-and-taskstate": {
-      "videos": [],
+      "videos": [
+        [
+          "Tud9HLTk8hg",
+          "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "3.4 Task, TaskStatus, and TaskState (Full Manual)",
@@ -12577,7 +16539,13 @@ window.aiResources = {
       ]
     },
     "manuals-a2a-101/3-5-contextid": {
-      "videos": [],
+      "videos": [
+        [
+          "Tud9HLTk8hg",
+          "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "3.5 contextId (Full Manual)",
@@ -12588,7 +16556,13 @@ window.aiResources = {
       ]
     },
     "manuals-a2a-101/4-1-sendmessage": {
-      "videos": [],
+      "videos": [
+        [
+          "Tud9HLTk8hg",
+          "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "4.1 SendMessage (Full Manual)",
@@ -12599,7 +16573,13 @@ window.aiResources = {
       ]
     },
     "manuals-a2a-101/4-2-interrupted-states-input-required-and-auth-required": {
-      "videos": [],
+      "videos": [
+        [
+          "Tud9HLTk8hg",
+          "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "4.2 Interrupted states: INPUT_REQUIRED and AUTH_REQUIRED (Full Manual)",
@@ -12610,7 +16590,13 @@ window.aiResources = {
       ]
     },
     "manuals-a2a-101/4-3-gettask-and-listtasks": {
-      "videos": [],
+      "videos": [
+        [
+          "Tud9HLTk8hg",
+          "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "4.3 GetTask and ListTasks (Full Manual)",
@@ -12621,7 +16607,13 @@ window.aiResources = {
       ]
     },
     "manuals-a2a-101/4-4-canceltask-and-terminal-states": {
-      "videos": [],
+      "videos": [
+        [
+          "Tud9HLTk8hg",
+          "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "4.4 CancelTask and terminal states (Full Manual)",
@@ -12632,7 +16624,13 @@ window.aiResources = {
       ]
     },
     "manuals-a2a-101/4-5-sendstreamingmessage-and-subscribetotask": {
-      "videos": [],
+      "videos": [
+        [
+          "Tud9HLTk8hg",
+          "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "4.5 SendStreamingMessage and SubscribeToTask (Full Manual)",
@@ -12643,7 +16641,13 @@ window.aiResources = {
       ]
     },
     "manuals-a2a-101/4-6-push-notification-configs": {
-      "videos": [],
+      "videos": [
+        [
+          "Tud9HLTk8hg",
+          "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "4.6 Push notification configs (Full Manual)",
@@ -12654,7 +16658,13 @@ window.aiResources = {
       ]
     },
     "manuals-a2a-101/5-1-json-rpc": {
-      "videos": [],
+      "videos": [
+        [
+          "Tud9HLTk8hg",
+          "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "5.1 JSON-RPC (Full Manual)",
@@ -12665,7 +16675,13 @@ window.aiResources = {
       ]
     },
     "manuals-a2a-101/5-2-http-json": {
-      "videos": [],
+      "videos": [
+        [
+          "Tud9HLTk8hg",
+          "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "5.2 HTTP+JSON (Full Manual)",
@@ -12676,7 +16692,13 @@ window.aiResources = {
       ]
     },
     "manuals-a2a-101/5-3-grpc": {
-      "videos": [],
+      "videos": [
+        [
+          "Tud9HLTk8hg",
+          "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "5.3 gRPC (Full Manual)",
@@ -12687,7 +16709,13 @@ window.aiResources = {
       ]
     },
     "manuals-a2a-101/5-4-a2a-version-and-a2a-extensions": {
-      "videos": [],
+      "videos": [
+        [
+          "Tud9HLTk8hg",
+          "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "5.4 A2A-Version and A2A-Extensions (Full Manual)",
@@ -12698,7 +16726,13 @@ window.aiResources = {
       ]
     },
     "manuals-a2a-101/5-5-errors": {
-      "videos": [],
+      "videos": [
+        [
+          "Tud9HLTk8hg",
+          "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "5.5 Errors (Full Manual)",
@@ -12709,7 +16743,13 @@ window.aiResources = {
       ]
     },
     "manuals-a2a-101/6-1-security-schemes-and-in-task-authorization": {
-      "videos": [],
+      "videos": [
+        [
+          "Tud9HLTk8hg",
+          "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "6.1 Security schemes and in-task authorization (Full Manual)",
@@ -12720,7 +16760,13 @@ window.aiResources = {
       ]
     },
     "manuals-a2a-101/6-2-extensions": {
-      "videos": [],
+      "videos": [
+        [
+          "Tud9HLTk8hg",
+          "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "6.2 Extensions (Full Manual)",
@@ -12731,7 +16777,13 @@ window.aiResources = {
       ]
     },
     "manuals-a2a-101/6-3-security-requirements": {
-      "videos": [],
+      "videos": [
+        [
+          "Tud9HLTk8hg",
+          "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "6.3 Security requirements (Full Manual)",
@@ -12742,7 +16794,13 @@ window.aiResources = {
       ]
     },
     "manuals-a2a-101/7-1-a-client": {
-      "videos": [],
+      "videos": [
+        [
+          "Tud9HLTk8hg",
+          "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "7.1 A client (Full Manual)",
@@ -12753,7 +16811,13 @@ window.aiResources = {
       ]
     },
     "manuals-a2a-101/7-2-a-server": {
-      "videos": [],
+      "videos": [
+        [
+          "Tud9HLTk8hg",
+          "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "7.2 A server (Full Manual)",
@@ -12764,7 +16828,13 @@ window.aiResources = {
       ]
     },
     "manuals-a2a-101/7-3-conformance-testing": {
-      "videos": [],
+      "videos": [
+        [
+          "Tud9HLTk8hg",
+          "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "7.3 Conformance testing (Full Manual)",
@@ -12775,7 +16845,13 @@ window.aiResources = {
       ]
     },
     "manuals-a2a-101/7-4-from-0-3-to-1-0": {
-      "videos": [],
+      "videos": [
+        [
+          "Tud9HLTk8hg",
+          "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "7.4 From 0.3 to 1.0 (Full Manual)",
@@ -12786,7 +16862,13 @@ window.aiResources = {
       ]
     },
     "manuals-a2a-101/r-1-operations-by-binding": {
-      "videos": [],
+      "videos": [
+        [
+          "Tud9HLTk8hg",
+          "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "R.1 Operations by binding (Full Manual)",
@@ -12797,7 +16879,13 @@ window.aiResources = {
       ]
     },
     "manuals-a2a-101/r-2-objects-and-fields": {
-      "videos": [],
+      "videos": [
+        [
+          "Tud9HLTk8hg",
+          "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "R.2 Objects and fields (Full Manual)",
@@ -12808,7 +16896,13 @@ window.aiResources = {
       ]
     },
     "manuals-a2a-101/r-3-task-states": {
-      "videos": [],
+      "videos": [
+        [
+          "Tud9HLTk8hg",
+          "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "R.3 Task states (Full Manual)",
@@ -12819,7 +16913,13 @@ window.aiResources = {
       ]
     },
     "manuals-a2a-101/r-4-errors": {
-      "videos": [],
+      "videos": [
+        [
+          "Tud9HLTk8hg",
+          "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "R.4 Errors (Full Manual)",
@@ -12830,7 +16930,13 @@ window.aiResources = {
       ]
     },
     "manuals-a2a-101/r-5-glossary": {
-      "videos": [],
+      "videos": [
+        [
+          "Tud9HLTk8hg",
+          "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "R.5 Glossary (Full Manual)",
@@ -12841,7 +16947,13 @@ window.aiResources = {
       ]
     },
     "manuals-a2a-101/r-6-sources": {
-      "videos": [],
+      "videos": [
+        [
+          "Tud9HLTk8hg",
+          "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "R.6 Sources (Full Manual)",
@@ -12852,7 +16964,13 @@ window.aiResources = {
       ]
     },
     "manuals-a2a-101/r-7-index-of-figures": {
-      "videos": [],
+      "videos": [
+        [
+          "Tud9HLTk8hg",
+          "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "R.7 Index of figures (Full Manual)",
@@ -12863,7 +16981,13 @@ window.aiResources = {
       ]
     },
     "manuals-docker-sandboxes-and-docker-agent-101/how-to-read-this-manual": {
-      "videos": [],
+      "videos": [
+        [
+          "CI3kL5uNV5A",
+          "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
+          "Engineering Community"
+        ]
+      ],
       "docs": [
         [
           "How to read this manual (Full Manual)",
@@ -12874,7 +16998,13 @@ window.aiResources = {
       ]
     },
     "manuals-docker-sandboxes-and-docker-agent-101/1-1-sbx-and-docker-agent": {
-      "videos": [],
+      "videos": [
+        [
+          "CI3kL5uNV5A",
+          "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
+          "Engineering Community"
+        ]
+      ],
       "docs": [
         [
           "1.1 sbx and docker-agent (Full Manual)",
@@ -12885,7 +17015,13 @@ window.aiResources = {
       ]
     },
     "manuals-docker-sandboxes-and-docker-agent-101/1-2-docker-agent-run-sandbox-one-run-end-to-end": {
-      "videos": [],
+      "videos": [
+        [
+          "CI3kL5uNV5A",
+          "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
+          "Engineering Community"
+        ]
+      ],
       "docs": [
         [
           "1.2 docker-agent run --sandbox, one run end to end (Full Manual)",
@@ -12896,7 +17032,13 @@ window.aiResources = {
       ]
     },
     "manuals-docker-sandboxes-and-docker-agent-101/2-1-sbx-run-sbx-create-sbx-stop-and-sbx-rm": {
-      "videos": [],
+      "videos": [
+        [
+          "CI3kL5uNV5A",
+          "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
+          "Engineering Community"
+        ]
+      ],
       "docs": [
         [
           "2.1 sbx run, sbx create, sbx stop, and sbx rm (Full Manual)",
@@ -12907,7 +17049,13 @@ window.aiResources = {
       ]
     },
     "manuals-docker-sandboxes-and-docker-agent-101/2-2-sbx-exec-sbx-cp-and-sbx-ports": {
-      "videos": [],
+      "videos": [
+        [
+          "CI3kL5uNV5A",
+          "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
+          "Engineering Community"
+        ]
+      ],
       "docs": [
         [
           "2.2 sbx exec, sbx cp, and sbx ports (Full Manual)",
@@ -12918,7 +17066,13 @@ window.aiResources = {
       ]
     },
     "manuals-docker-sandboxes-and-docker-agent-101/2-3-sbx-template-save-and-sbx-template-load": {
-      "videos": [],
+      "videos": [
+        [
+          "CI3kL5uNV5A",
+          "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
+          "Engineering Community"
+        ]
+      ],
       "docs": [
         [
           "2.3 sbx template save and sbx template load (Full Manual)",
@@ -12929,7 +17083,13 @@ window.aiResources = {
       ]
     },
     "manuals-docker-sandboxes-and-docker-agent-101/2-4-sandboxd-sbx-diagnose-and-sbx-reset": {
-      "videos": [],
+      "videos": [
+        [
+          "CI3kL5uNV5A",
+          "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
+          "Engineering Community"
+        ]
+      ],
       "docs": [
         [
           "2.4 sandboxd, sbx diagnose, and sbx reset (Full Manual)",
@@ -12940,7 +17100,13 @@ window.aiResources = {
       ]
     },
     "manuals-docker-sandboxes-and-docker-agent-101/2-5-sbx-settings-list": {
-      "videos": [],
+      "videos": [
+        [
+          "CI3kL5uNV5A",
+          "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
+          "Engineering Community"
+        ]
+      ],
       "docs": [
         [
           "2.5 sbx settings list (Full Manual)",
@@ -12951,7 +17117,13 @@ window.aiResources = {
       ]
     },
     "manuals-docker-sandboxes-and-docker-agent-101/3-1-sbx-diagnose-and-the-microvm-boundary": {
-      "videos": [],
+      "videos": [
+        [
+          "CI3kL5uNV5A",
+          "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
+          "Engineering Community"
+        ]
+      ],
       "docs": [
         [
           "3.1 sbx diagnose and the microVM boundary (Full Manual)",
@@ -12962,7 +17134,13 @@ window.aiResources = {
       ]
     },
     "manuals-docker-sandboxes-and-docker-agent-101/3-2-clone-and-run-sandbox-source": {
-      "videos": [],
+      "videos": [
+        [
+          "CI3kL5uNV5A",
+          "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
+          "Engineering Community"
+        ]
+      ],
       "docs": [
         [
           "3.2 --clone and /run/sandbox/source (Full Manual)",
@@ -12973,7 +17151,13 @@ window.aiResources = {
       ]
     },
     "manuals-docker-sandboxes-and-docker-agent-101/3-3-sbx-policy-init-allow-network-deny-network-and-check-net": {
-      "videos": [],
+      "videos": [
+        [
+          "CI3kL5uNV5A",
+          "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
+          "Engineering Community"
+        ]
+      ],
       "docs": [
         [
           "3.3 sbx policy init, allow network, deny network, and check network (Full Manual)",
@@ -12984,7 +17168,13 @@ window.aiResources = {
       ]
     },
     "manuals-docker-sandboxes-and-docker-agent-101/3-4-sbx-policy-log-and-the-proxy": {
-      "videos": [],
+      "videos": [
+        [
+          "CI3kL5uNV5A",
+          "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
+          "Engineering Community"
+        ]
+      ],
       "docs": [
         [
           "3.4 sbx policy log and the proxy (Full Manual)",
@@ -12995,7 +17185,13 @@ window.aiResources = {
       ]
     },
     "manuals-docker-sandboxes-and-docker-agent-101/3-5-sbx-secret-set-sbx-secret-import-and-sbx-secret-set-cust": {
-      "videos": [],
+      "videos": [
+        [
+          "CI3kL5uNV5A",
+          "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
+          "Engineering Community"
+        ]
+      ],
       "docs": [
         [
           "3.5 sbx secret set, sbx secret import, and sbx secret set-custom (Full Manual)",
@@ -13006,7 +17202,13 @@ window.aiResources = {
       ]
     },
     "manuals-docker-sandboxes-and-docker-agent-101/3-6-sbx-mcp-add-sbx-mcp-load-and-static-mcp": {
-      "videos": [],
+      "videos": [
+        [
+          "CI3kL5uNV5A",
+          "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
+          "Engineering Community"
+        ]
+      ],
       "docs": [
         [
           "3.6 sbx mcp add, sbx mcp load, and --static-mcp (Full Manual)",
@@ -13017,7 +17219,13 @@ window.aiResources = {
       ]
     },
     "manuals-docker-sandboxes-and-docker-agent-101/4-1-syntax-docker-sandbox-kit-3-and-kit-yaml": {
-      "videos": [],
+      "videos": [
+        [
+          "CI3kL5uNV5A",
+          "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
+          "Engineering Community"
+        ]
+      ],
       "docs": [
         [
           "4.1 `# syntax=docker/sandbox-kit:3` and kit.yaml (Full Manual)",
@@ -13028,7 +17236,13 @@ window.aiResources = {
       ]
     },
     "manuals-docker-sandboxes-and-docker-agent-101/4-2-com-docker-sandbox-capabilities": {
-      "videos": [],
+      "videos": [
+        [
+          "CI3kL5uNV5A",
+          "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
+          "Engineering Community"
+        ]
+      ],
       "docs": [
         [
           "4.2 `com.docker.sandbox/*` capabilities (Full Manual)",
@@ -13039,7 +17253,13 @@ window.aiResources = {
       ]
     },
     "manuals-docker-sandboxes-and-docker-agent-101/4-3-sbx-kit-pack-sbx-kit-push-sign-and-sbx-kit-verify": {
-      "videos": [],
+      "videos": [
+        [
+          "CI3kL5uNV5A",
+          "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
+          "Engineering Community"
+        ]
+      ],
       "docs": [
         [
           "4.3 `sbx kit pack`, `sbx kit push --sign`, and `sbx kit verify` (Full Manual)",
@@ -13050,7 +17270,13 @@ window.aiResources = {
       ]
     },
     "manuals-docker-sandboxes-and-docker-agent-101/4-4-sbxenv-yaml-and-sbx-env-plan": {
-      "videos": [],
+      "videos": [
+        [
+          "CI3kL5uNV5A",
+          "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
+          "Engineering Community"
+        ]
+      ],
       "docs": [
         [
           "4.4 sbxenv.yaml and `sbx env plan` (Full Manual)",
@@ -13061,7 +17287,13 @@ window.aiResources = {
       ]
     },
     "manuals-docker-sandboxes-and-docker-agent-101/4-5-sbx-skills-add-and-skills-true": {
-      "videos": [],
+      "videos": [
+        [
+          "CI3kL5uNV5A",
+          "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
+          "Engineering Community"
+        ]
+      ],
       "docs": [
         [
           "4.5 `sbx skills add` and `skills: true` (Full Manual)",
@@ -13072,7 +17304,13 @@ window.aiResources = {
       ]
     },
     "manuals-docker-sandboxes-and-docker-agent-101/5-1-docker-agent-run-new-and-doctor": {
-      "videos": [],
+      "videos": [
+        [
+          "CI3kL5uNV5A",
+          "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
+          "Engineering Community"
+        ]
+      ],
       "docs": [
         [
           "5.1 docker-agent run, new, and doctor (Full Manual)",
@@ -13083,7 +17321,13 @@ window.aiResources = {
       ]
     },
     "manuals-docker-sandboxes-and-docker-agent-101/5-2-agents-models-and-providers": {
-      "videos": [],
+      "videos": [
+        [
+          "CI3kL5uNV5A",
+          "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
+          "Engineering Community"
+        ]
+      ],
       "docs": [
         [
           "5.2 agents, models, and providers (Full Manual)",
@@ -13094,7 +17338,13 @@ window.aiResources = {
       ]
     },
     "manuals-docker-sandboxes-and-docker-agent-101/5-3-toolsets-and-mcps": {
-      "videos": [],
+      "videos": [
+        [
+          "CI3kL5uNV5A",
+          "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
+          "Engineering Community"
+        ]
+      ],
       "docs": [
         [
           "5.3 toolsets and mcps (Full Manual)",
@@ -13105,7 +17355,13 @@ window.aiResources = {
       ]
     },
     "manuals-docker-sandboxes-and-docker-agent-101/5-4-sub-agents-transfer-task-and-background-agents": {
-      "videos": [],
+      "videos": [
+        [
+          "CI3kL5uNV5A",
+          "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
+          "Engineering Community"
+        ]
+      ],
       "docs": [
         [
           "5.4 sub_agents, transfer_task, and background_agents (Full Manual)",
@@ -13116,7 +17372,13 @@ window.aiResources = {
       ]
     },
     "manuals-docker-sandboxes-and-docker-agent-101/5-5-permissions-safety-and-hooks": {
-      "videos": [],
+      "videos": [
+        [
+          "CI3kL5uNV5A",
+          "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
+          "Engineering Community"
+        ]
+      ],
       "docs": [
         [
           "5.5 permissions, --safety, and hooks (Full Manual)",
@@ -13127,7 +17389,13 @@ window.aiResources = {
       ]
     },
     "manuals-docker-sandboxes-and-docker-agent-101/5-6-session-db-sessions-diff-and-eval": {
-      "videos": [],
+      "videos": [
+        [
+          "CI3kL5uNV5A",
+          "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
+          "Engineering Community"
+        ]
+      ],
       "docs": [
         [
           "5.6 session.db, sessions diff, and eval (Full Manual)",
@@ -13138,7 +17406,13 @@ window.aiResources = {
       ]
     },
     "manuals-docker-sandboxes-and-docker-agent-101/6-1-serve-api-and-serve-chat": {
-      "videos": [],
+      "videos": [
+        [
+          "CI3kL5uNV5A",
+          "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
+          "Engineering Community"
+        ]
+      ],
       "docs": [
         [
           "6.1 serve api and serve chat (Full Manual)",
@@ -13149,7 +17423,13 @@ window.aiResources = {
       ]
     },
     "manuals-docker-sandboxes-and-docker-agent-101/6-2-serve-mcp-and-serve-acp": {
-      "videos": [],
+      "videos": [
+        [
+          "CI3kL5uNV5A",
+          "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
+          "Engineering Community"
+        ]
+      ],
       "docs": [
         [
           "6.2 serve mcp and serve acp (Full Manual)",
@@ -13160,7 +17440,13 @@ window.aiResources = {
       ]
     },
     "manuals-docker-sandboxes-and-docker-agent-101/6-3-serve-a2a": {
-      "videos": [],
+      "videos": [
+        [
+          "CI3kL5uNV5A",
+          "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
+          "Engineering Community"
+        ]
+      ],
       "docs": [
         [
           "6.3 serve a2a (Full Manual)",
@@ -13171,7 +17457,13 @@ window.aiResources = {
       ]
     },
     "manuals-docker-sandboxes-and-docker-agent-101/6-4-share-push-and-share-pull": {
-      "videos": [],
+      "videos": [
+        [
+          "CI3kL5uNV5A",
+          "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
+          "Engineering Community"
+        ]
+      ],
       "docs": [
         [
           "6.4 share push and share pull (Full Manual)",
@@ -13182,7 +17474,13 @@ window.aiResources = {
       ]
     },
     "manuals-docker-sandboxes-and-docker-agent-101/6-5-dmr-compose-models-and-the-docker-mcp-gateway-service": {
-      "videos": [],
+      "videos": [
+        [
+          "CI3kL5uNV5A",
+          "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
+          "Engineering Community"
+        ]
+      ],
       "docs": [
         [
           "6.5 DMR, Compose models, and the docker/mcp-gateway service (Full Manual)",
@@ -13193,7 +17491,13 @@ window.aiResources = {
       ]
     },
     "manuals-docker-sandboxes-and-docker-agent-101/7-1-sbx-cloud-run-sbx-move-and-sbx-ttl": {
-      "videos": [],
+      "videos": [
+        [
+          "CI3kL5uNV5A",
+          "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
+          "Engineering Community"
+        ]
+      ],
       "docs": [
         [
           "7.1 sbx --cloud run, sbx move, and sbx ttl (Full Manual)",
@@ -13204,7 +17508,13 @@ window.aiResources = {
       ]
     },
     "manuals-docker-sandboxes-and-docker-agent-101/7-2-sbx-policy-ls-source-org-profile-and-the-audit-jsonl": {
-      "videos": [],
+      "videos": [
+        [
+          "CI3kL5uNV5A",
+          "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
+          "Engineering Community"
+        ]
+      ],
       "docs": [
         [
           "7.2 sbx policy ls --source org, --profile, and the audit JSONL (Full Manual)",
@@ -13215,7 +17525,13 @@ window.aiResources = {
       ]
     },
     "manuals-docker-sandboxes-and-docker-agent-101/7-3-from-docker-sandbox-and-cagent-to-sbx-and-docker-agent": {
-      "videos": [],
+      "videos": [
+        [
+          "CI3kL5uNV5A",
+          "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
+          "Engineering Community"
+        ]
+      ],
       "docs": [
         [
           "7.3 From docker sandbox and cagent to sbx and docker-agent (Full Manual)",
@@ -13226,7 +17542,13 @@ window.aiResources = {
       ]
     },
     "manuals-docker-sandboxes-and-docker-agent-101/7-4-kit-tck-sbx-diagnose-and-the-claims-this-manual-checked": {
-      "videos": [],
+      "videos": [
+        [
+          "CI3kL5uNV5A",
+          "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
+          "Engineering Community"
+        ]
+      ],
       "docs": [
         [
           "7.4 kit-tck, sbx diagnose, and the claims this manual checked (Full Manual)",
@@ -13237,7 +17559,13 @@ window.aiResources = {
       ]
     },
     "manuals-docker-sandboxes-and-docker-agent-101/r-1-sbx-commands": {
-      "videos": [],
+      "videos": [
+        [
+          "CI3kL5uNV5A",
+          "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
+          "Engineering Community"
+        ]
+      ],
       "docs": [
         [
           "R.1 sbx commands (Full Manual)",
@@ -13248,7 +17576,13 @@ window.aiResources = {
       ]
     },
     "manuals-docker-sandboxes-and-docker-agent-101/r-2-docker-agent-commands": {
-      "videos": [],
+      "videos": [
+        [
+          "CI3kL5uNV5A",
+          "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
+          "Engineering Community"
+        ]
+      ],
       "docs": [
         [
           "R.2 docker-agent commands (Full Manual)",
@@ -13259,7 +17593,13 @@ window.aiResources = {
       ]
     },
     "manuals-docker-sandboxes-and-docker-agent-101/r-3-settings-keys-environment-variables-and-paths": {
-      "videos": [],
+      "videos": [
+        [
+          "CI3kL5uNV5A",
+          "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
+          "Engineering Community"
+        ]
+      ],
       "docs": [
         [
           "R.3 Settings keys, environment variables, and paths (Full Manual)",
@@ -13270,7 +17610,13 @@ window.aiResources = {
       ]
     },
     "manuals-docker-sandboxes-and-docker-agent-101/r-4-agent-file-keys": {
-      "videos": [],
+      "videos": [
+        [
+          "CI3kL5uNV5A",
+          "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
+          "Engineering Community"
+        ]
+      ],
       "docs": [
         [
           "R.4 Agent file keys (Full Manual)",
@@ -13281,7 +17627,13 @@ window.aiResources = {
       ]
     },
     "manuals-docker-sandboxes-and-docker-agent-101/r-5-toolsets": {
-      "videos": [],
+      "videos": [
+        [
+          "CI3kL5uNV5A",
+          "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
+          "Engineering Community"
+        ]
+      ],
       "docs": [
         [
           "R.5 Toolsets (Full Manual)",
@@ -13292,7 +17644,13 @@ window.aiResources = {
       ]
     },
     "manuals-docker-sandboxes-and-docker-agent-101/r-6-providers-and-models": {
-      "videos": [],
+      "videos": [
+        [
+          "CI3kL5uNV5A",
+          "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
+          "Engineering Community"
+        ]
+      ],
       "docs": [
         [
           "R.6 Providers and models (Full Manual)",
@@ -13303,7 +17661,13 @@ window.aiResources = {
       ]
     },
     "manuals-docker-sandboxes-and-docker-agent-101/r-7-sources-and-the-conflicts-register": {
-      "videos": [],
+      "videos": [
+        [
+          "CI3kL5uNV5A",
+          "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
+          "Engineering Community"
+        ]
+      ],
       "docs": [
         [
           "R.7 Sources and the conflicts register (Full Manual)",
@@ -13314,7 +17678,13 @@ window.aiResources = {
       ]
     },
     "manuals-docker-sandboxes-and-docker-agent-101/r-8-glossary-and-index-of-figures": {
-      "videos": [],
+      "videos": [
+        [
+          "CI3kL5uNV5A",
+          "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
+          "Engineering Community"
+        ]
+      ],
       "docs": [
         [
           "R.8 Glossary and index of figures (Full Manual)",
@@ -13325,7 +17695,13 @@ window.aiResources = {
       ]
     },
     "manuals-miles-101/how-to-read-this-manual": {
-      "videos": [],
+      "videos": [
+        [
+          "5E-RdE6elMo",
+          "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
+          "Saurav Prateek"
+        ]
+      ],
       "docs": [
         [
           "How to read this manual (Full Manual)",
@@ -13336,7 +17712,13 @@ window.aiResources = {
       ]
     },
     "manuals-miles-101/1-1-run-grpo-on-one-gpu-with-the-radixark-miles-image": {
-      "videos": [],
+      "videos": [
+        [
+          "5E-RdE6elMo",
+          "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
+          "Saurav Prateek"
+        ]
+      ],
       "docs": [
         [
           "1.1 Run GRPO on one GPU with the radixark/miles image (Full Manual)",
@@ -13347,7 +17729,13 @@ window.aiResources = {
       ]
     },
     "manuals-miles-101/1-2-add-a-watchdog-before-you-leave-a-run-alone": {
-      "videos": [],
+      "videos": [
+        [
+          "5E-RdE6elMo",
+          "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
+          "Saurav Prateek"
+        ]
+      ],
       "docs": [
         [
           "1.2 Add a watchdog before you leave a run alone (Full Manual)",
@@ -13358,7 +17746,13 @@ window.aiResources = {
       ]
     },
     "manuals-miles-101/1-3-read-your-first-ten-steps": {
-      "videos": [],
+      "videos": [
+        [
+          "5E-RdE6elMo",
+          "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
+          "Saurav Prateek"
+        ]
+      ],
       "docs": [
         [
           "1.3 Read your first ten steps (Full Manual)",
@@ -13369,7 +17763,13 @@ window.aiResources = {
       ]
     },
     "manuals-miles-101/2-1-pick-a-model-size-for-one-gpu": {
-      "videos": [],
+      "videos": [
+        [
+          "5E-RdE6elMo",
+          "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
+          "Saurav Prateek"
+        ]
+      ],
       "docs": [
         [
           "2.1 Pick a model size for one GPU (Full Manual)",
@@ -13380,7 +17780,13 @@ window.aiResources = {
       ]
     },
     "manuals-miles-101/2-2-choose-what-to-offload-between-phases": {
-      "videos": [],
+      "videos": [
+        [
+          "5E-RdE6elMo",
+          "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
+          "Saurav Prateek"
+        ]
+      ],
       "docs": [
         [
           "2.2 Choose what to offload between phases (Full Manual)",
@@ -13391,7 +17797,13 @@ window.aiResources = {
       ]
     },
     "manuals-miles-101/2-3-stop-ray-from-killing-the-job-on-unified-memory": {
-      "videos": [],
+      "videos": [
+        [
+          "5E-RdE6elMo",
+          "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
+          "Saurav Prateek"
+        ]
+      ],
       "docs": [
         [
           "2.3 Stop Ray from killing the job on unified memory (Full Manual)",
@@ -13402,7 +17814,13 @@ window.aiResources = {
       ]
     },
     "manuals-miles-101/2-4-size-the-weight-update": {
-      "videos": [],
+      "videos": [
+        [
+          "5E-RdE6elMo",
+          "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
+          "Saurav Prateek"
+        ]
+      ],
       "docs": [
         [
           "2.4 Size the weight update (Full Manual)",
@@ -13413,7 +17831,13 @@ window.aiResources = {
       ]
     },
     "manuals-miles-101/3-1-train-math-reasoning-on-gsm8k": {
-      "videos": [],
+      "videos": [
+        [
+          "5E-RdE6elMo",
+          "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
+          "Saurav Prateek"
+        ]
+      ],
       "docs": [
         [
           "3.1 Train math reasoning on GSM8K (Full Manual)",
@@ -13424,7 +17848,13 @@ window.aiResources = {
       ]
     },
     "manuals-miles-101/3-2-train-with-the-dapo-filter": {
-      "videos": [],
+      "videos": [
+        [
+          "5E-RdE6elMo",
+          "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
+          "Saurav Prateek"
+        ]
+      ],
       "docs": [
         [
           "3.2 Train with the DAPO filter (Full Manual)",
@@ -13435,7 +17865,13 @@ window.aiResources = {
       ]
     },
     "manuals-miles-101/3-3-train-an-agent-with-tool-calls-and-many-turns": {
-      "videos": [],
+      "videos": [
+        [
+          "5E-RdE6elMo",
+          "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
+          "Saurav Prateek"
+        ]
+      ],
       "docs": [
         [
           "3.3 Train an agent with tool calls and many turns (Full Manual)",
@@ -13446,7 +17882,13 @@ window.aiResources = {
       ]
     },
     "manuals-miles-101/3-4-train-a-mixture-of-experts-model-with-routing-replay": {
-      "videos": [],
+      "videos": [
+        [
+          "5E-RdE6elMo",
+          "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
+          "Saurav Prateek"
+        ]
+      ],
       "docs": [
         [
           "3.4 Train a mixture-of-experts model with routing replay (Full Manual)",
@@ -13457,7 +17899,13 @@ window.aiResources = {
       ]
     },
     "manuals-miles-101/3-5-write-a-custom-reward-function": {
-      "videos": [],
+      "videos": [
+        [
+          "5E-RdE6elMo",
+          "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
+          "Saurav Prateek"
+        ]
+      ],
       "docs": [
         [
           "3.5 Write a custom reward function (Full Manual)",
@@ -13468,7 +17916,13 @@ window.aiResources = {
       ]
     },
     "manuals-miles-101/4-1-run-rollout-and-training-at-the-same-time": {
-      "videos": [],
+      "videos": [
+        [
+          "5E-RdE6elMo",
+          "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
+          "Saurav Prateek"
+        ]
+      ],
       "docs": [
         [
           "4.1 Run rollout and training at the same time (Full Manual)",
@@ -13479,7 +17933,13 @@ window.aiResources = {
       ]
     },
     "manuals-miles-101/4-2-handle-long-responses-with-partial-rollout": {
-      "videos": [],
+      "videos": [
+        [
+          "5E-RdE6elMo",
+          "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
+          "Saurav Prateek"
+        ]
+      ],
       "docs": [
         [
           "4.2 Handle long responses with partial rollout (Full Manual)",
@@ -13490,7 +17950,13 @@ window.aiResources = {
       ]
     },
     "manuals-miles-101/4-3-roll-out-in-fp8-and-train-in-bf16": {
-      "videos": [],
+      "videos": [
+        [
+          "5E-RdE6elMo",
+          "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
+          "Saurav Prateek"
+        ]
+      ],
       "docs": [
         [
           "4.3 Roll out in FP8 and train in BF16 (Full Manual)",
@@ -13501,7 +17967,13 @@ window.aiResources = {
       ]
     },
     "manuals-miles-101/4-4-lower-the-log-probability-gap-with-top-p-and-top-k": {
-      "videos": [],
+      "videos": [
+        [
+          "5E-RdE6elMo",
+          "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
+          "Saurav Prateek"
+        ]
+      ],
       "docs": [
         [
           "4.4 Lower the log probability gap with top-p and top-k (Full Manual)",
@@ -13512,7 +17984,13 @@ window.aiResources = {
       ]
     },
     "manuals-miles-101/4-5-know-what-deterministic-inference-fixes": {
-      "videos": [],
+      "videos": [
+        [
+          "5E-RdE6elMo",
+          "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
+          "Saurav Prateek"
+        ]
+      ],
       "docs": [
         [
           "4.5 Know what deterministic inference fixes (Full Manual)",
@@ -13523,7 +18001,13 @@ window.aiResources = {
       ]
     },
     "manuals-miles-101/4-6-check-if-your-gpu-can-run-true-on-policy-mode": {
-      "videos": [],
+      "videos": [
+        [
+          "5E-RdE6elMo",
+          "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
+          "Saurav Prateek"
+        ]
+      ],
       "docs": [
         [
           "4.6 Check if your GPU can run true on-policy mode (Full Manual)",
@@ -13534,7 +18018,13 @@ window.aiResources = {
       ]
     },
     "manuals-miles-101/5-1-read-the-run-from-its-signals": {
-      "videos": [],
+      "videos": [
+        [
+          "5E-RdE6elMo",
+          "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
+          "Saurav Prateek"
+        ]
+      ],
       "docs": [
         [
           "5.1 Read the run from its signals (Full Manual)",
@@ -13545,7 +18035,13 @@ window.aiResources = {
       ]
     },
     "manuals-miles-101/5-2-check-the-first-step-before-you-trust-the-run": {
-      "videos": [],
+      "videos": [
+        [
+          "5E-RdE6elMo",
+          "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
+          "Saurav Prateek"
+        ]
+      ],
       "docs": [
         [
           "5.2 Check the first step before you trust the run (Full Manual)",
@@ -13556,7 +18052,13 @@ window.aiResources = {
       ]
     },
     "manuals-miles-101/5-3-repeat-a-run-and-compare": {
-      "videos": [],
+      "videos": [
+        [
+          "5E-RdE6elMo",
+          "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
+          "Saurav Prateek"
+        ]
+      ],
       "docs": [
         [
           "5.3 Repeat a run and compare (Full Manual)",
@@ -13567,7 +18069,13 @@ window.aiResources = {
       ]
     },
     "manuals-miles-101/6-1-split-rollout-and-training-across-gpus": {
-      "videos": [],
+      "videos": [
+        [
+          "5E-RdE6elMo",
+          "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
+          "Saurav Prateek"
+        ]
+      ],
       "docs": [
         [
           "6.1 Split rollout and training across GPUs (Full Manual)",
@@ -13578,7 +18086,13 @@ window.aiResources = {
       ]
     },
     "manuals-miles-101/6-2-run-evaluation-without-stopping-training": {
-      "videos": [],
+      "videos": [
+        [
+          "5E-RdE6elMo",
+          "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
+          "Saurav Prateek"
+        ]
+      ],
       "docs": [
         [
           "6.2 Run evaluation without stopping training (Full Manual)",
@@ -13589,7 +18103,13 @@ window.aiResources = {
       ]
     },
     "manuals-miles-101/6-3-keep-a-long-run-going-after-a-failure": {
-      "videos": [],
+      "videos": [
+        [
+          "5E-RdE6elMo",
+          "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
+          "Saurav Prateek"
+        ]
+      ],
       "docs": [
         [
           "6.3 Keep a long run going after a failure (Full Manual)",
@@ -13600,7 +18120,13 @@ window.aiResources = {
       ]
     },
     "manuals-miles-101/6-4-pick-an-image-for-your-gpu": {
-      "videos": [],
+      "videos": [
+        [
+          "5E-RdE6elMo",
+          "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
+          "Saurav Prateek"
+        ]
+      ],
       "docs": [
         [
           "6.4 Pick an image for your GPU (Full Manual)",
@@ -13611,7 +18137,13 @@ window.aiResources = {
       ]
     },
     "manuals-miles-101/7-1-troubleshoot-by-symptom": {
-      "videos": [],
+      "videos": [
+        [
+          "5E-RdE6elMo",
+          "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
+          "Saurav Prateek"
+        ]
+      ],
       "docs": [
         [
           "7.1 Troubleshoot by symptom (Full Manual)",
@@ -13622,7 +18154,13 @@ window.aiResources = {
       ]
     },
     "manuals-miles-101/7-2-keep-runs-comparable": {
-      "videos": [],
+      "videos": [
+        [
+          "5E-RdE6elMo",
+          "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
+          "Saurav Prateek"
+        ]
+      ],
       "docs": [
         [
           "7.2 Keep runs comparable (Full Manual)",
@@ -13633,7 +18171,13 @@ window.aiResources = {
       ]
     },
     "manuals-miles-101/8-1-why-an-rl-framework-owns-an-inference-engine": {
-      "videos": [],
+      "videos": [
+        [
+          "5E-RdE6elMo",
+          "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
+          "Saurav Prateek"
+        ]
+      ],
       "docs": [
         [
           "8.1 Why an RL framework owns an inference engine (Full Manual)",
@@ -13644,7 +18188,13 @@ window.aiResources = {
       ]
     },
     "manuals-miles-101/8-2-the-correction-methods-for-the-gap": {
-      "videos": [],
+      "videos": [
+        [
+          "5E-RdE6elMo",
+          "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
+          "Saurav Prateek"
+        ]
+      ],
       "docs": [
         [
           "8.2 The correction methods for the gap (Full Manual)",
@@ -13655,7 +18205,13 @@ window.aiResources = {
       ]
     },
     "manuals-miles-101/8-3-why-true-on-policy-mode-is-a-contract": {
-      "videos": [],
+      "videos": [
+        [
+          "5E-RdE6elMo",
+          "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
+          "Saurav Prateek"
+        ]
+      ],
       "docs": [
         [
           "8.3 Why true on-policy mode is a contract (Full Manual)",
@@ -13666,7 +18222,13 @@ window.aiResources = {
       ]
     },
     "manuals-miles-101/8-4-memory-and-weight-updates-on-unified-memory": {
-      "videos": [],
+      "videos": [
+        [
+          "5E-RdE6elMo",
+          "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
+          "Saurav Prateek"
+        ]
+      ],
       "docs": [
         [
           "8.4 Memory and weight updates on unified memory (Full Manual)",
@@ -13677,7 +18239,13 @@ window.aiResources = {
       ]
     },
     "manuals-miles-101/8-5-how-rollout-functions-plug-in": {
-      "videos": [],
+      "videos": [
+        [
+          "5E-RdE6elMo",
+          "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
+          "Saurav Prateek"
+        ]
+      ],
       "docs": [
         [
           "8.5 How rollout functions plug in (Full Manual)",
@@ -13688,7 +18256,13 @@ window.aiResources = {
       ]
     },
     "manuals-miles-101/8-6-which-router-to-use": {
-      "videos": [],
+      "videos": [
+        [
+          "5E-RdE6elMo",
+          "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
+          "Saurav Prateek"
+        ]
+      ],
       "docs": [
         [
           "8.6 Which router to use (Full Manual)",
@@ -13699,7 +18273,13 @@ window.aiResources = {
       ]
     },
     "manuals-miles-101/8-7-where-miles-came-from": {
-      "videos": [],
+      "videos": [
+        [
+          "5E-RdE6elMo",
+          "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
+          "Saurav Prateek"
+        ]
+      ],
       "docs": [
         [
           "8.7 Where Miles came from (Full Manual)",
@@ -13710,7 +18290,13 @@ window.aiResources = {
       ]
     },
     "manuals-miles-101/r-1-flags-by-job": {
-      "videos": [],
+      "videos": [
+        [
+          "5E-RdE6elMo",
+          "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
+          "Saurav Prateek"
+        ]
+      ],
       "docs": [
         [
           "R.1 Flags by job (Full Manual)",
@@ -13721,7 +18307,13 @@ window.aiResources = {
       ]
     },
     "manuals-miles-101/r-2-metrics": {
-      "videos": [],
+      "videos": [
+        [
+          "5E-RdE6elMo",
+          "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
+          "Saurav Prateek"
+        ]
+      ],
       "docs": [
         [
           "R.2 Metrics (Full Manual)",
@@ -13732,7 +18324,13 @@ window.aiResources = {
       ]
     },
     "manuals-miles-101/r-3-lab-notes": {
-      "videos": [],
+      "videos": [
+        [
+          "5E-RdE6elMo",
+          "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
+          "Saurav Prateek"
+        ]
+      ],
       "docs": [
         [
           "R.3 Lab notes (Full Manual)",
@@ -13743,7 +18341,13 @@ window.aiResources = {
       ]
     },
     "manuals-miles-101/r-4-sources": {
-      "videos": [],
+      "videos": [
+        [
+          "5E-RdE6elMo",
+          "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
+          "Saurav Prateek"
+        ]
+      ],
       "docs": [
         [
           "R.4 Sources (Full Manual)",
@@ -13754,7 +18358,13 @@ window.aiResources = {
       ]
     },
     "manuals-miles-101/r-5-index-of-figures": {
-      "videos": [],
+      "videos": [
+        [
+          "5E-RdE6elMo",
+          "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
+          "Saurav Prateek"
+        ]
+      ],
       "docs": [
         [
           "R.5 Index of figures (Full Manual)",
@@ -13765,7 +18375,13 @@ window.aiResources = {
       ]
     },
     "manuals-reverse-engineering-101/how-to-read-this-manual": {
-      "videos": [],
+      "videos": [
+        [
+          "I4ERWLNinic",
+          "AI Automations 101: Reverse Engineer Any API",
+          "Hichem's Journey"
+        ]
+      ],
       "docs": [
         [
           "How to read this manual (Full Manual)",
@@ -13776,7 +18392,13 @@ window.aiResources = {
       ]
     },
     "manuals-reverse-engineering-101/1-1-rea-providers-and-evidence": {
-      "videos": [],
+      "videos": [
+        [
+          "I4ERWLNinic",
+          "AI Automations 101: Reverse Engineer Any API",
+          "Hichem's Journey"
+        ]
+      ],
       "docs": [
         [
           "1.1 rea, providers, and Evidence (Full Manual)",
@@ -13787,7 +18409,13 @@ window.aiResources = {
       ]
     },
     "manuals-reverse-engineering-101/1-2-rea-function-end-to-end": {
-      "videos": [],
+      "videos": [
+        [
+          "I4ERWLNinic",
+          "AI Automations 101: Reverse Engineer Any API",
+          "Hichem's Journey"
+        ]
+      ],
       "docs": [
         [
           "1.2 rea function, end to end (Full Manual)",
@@ -13798,7 +18426,13 @@ window.aiResources = {
       ]
     },
     "manuals-reverse-engineering-101/2-1-the-readme-use-rule-and-the-law": {
-      "videos": [],
+      "videos": [
+        [
+          "I4ERWLNinic",
+          "AI Automations 101: Reverse Engineer Any API",
+          "Hichem's Journey"
+        ]
+      ],
       "docs": [
         [
           "2.1 The README use rule and the law (Full Manual)",
@@ -13809,7 +18443,13 @@ window.aiResources = {
       ]
     },
     "manuals-reverse-engineering-101/2-2-rea-doctor-and-the-ghidra-provider": {
-      "videos": [],
+      "videos": [
+        [
+          "I4ERWLNinic",
+          "AI Automations 101: Reverse Engineer Any API",
+          "Hichem's Journey"
+        ]
+      ],
       "docs": [
         [
           "2.2 rea doctor and the Ghidra provider (Full Manual)",
@@ -13820,7 +18460,13 @@ window.aiResources = {
       ]
     },
     "manuals-reverse-engineering-101/2-3-rea-capabilities": {
-      "videos": [],
+      "videos": [
+        [
+          "I4ERWLNinic",
+          "AI Automations 101: Reverse Engineer Any API",
+          "Hichem's Journey"
+        ]
+      ],
       "docs": [
         [
           "2.3 rea capabilities (Full Manual)",
@@ -13831,7 +18477,13 @@ window.aiResources = {
       ]
     },
     "manuals-reverse-engineering-101/3-1-inspect-artifact": {
-      "videos": [],
+      "videos": [
+        [
+          "I4ERWLNinic",
+          "AI Automations 101: Reverse Engineer Any API",
+          "Hichem's Journey"
+        ]
+      ],
       "docs": [
         [
           "3.1 inspect-artifact (Full Manual)",
@@ -13842,7 +18494,13 @@ window.aiResources = {
       ]
     },
     "manuals-reverse-engineering-101/3-2-inspect-binary-layout-and-the-load-image": {
-      "videos": [],
+      "videos": [
+        [
+          "I4ERWLNinic",
+          "AI Automations 101: Reverse Engineer Any API",
+          "Hichem's Journey"
+        ]
+      ],
       "docs": [
         [
           "3.2 inspect-binary-layout and the load image (Full Manual)",
@@ -13853,7 +18511,13 @@ window.aiResources = {
       ]
     },
     "manuals-reverse-engineering-101/3-3-address-to-file-offset": {
-      "videos": [],
+      "videos": [
+        [
+          "I4ERWLNinic",
+          "AI Automations 101: Reverse Engineer Any API",
+          "Hichem's Journey"
+        ]
+      ],
       "docs": [
         [
           "3.3 address-to-file-offset (Full Manual)",
@@ -13864,7 +18528,13 @@ window.aiResources = {
       ]
     },
     "manuals-reverse-engineering-101/3-4-analyze-and-the-binary-overview-record": {
-      "videos": [],
+      "videos": [
+        [
+          "I4ERWLNinic",
+          "AI Automations 101: Reverse Engineer Any API",
+          "Hichem's Journey"
+        ]
+      ],
       "docs": [
         [
           "3.4 analyze and the binary_overview record (Full Manual)",
@@ -13875,7 +18545,13 @@ window.aiResources = {
       ]
     },
     "manuals-reverse-engineering-101/4-1-open-binary-and-the-headless-bridge": {
-      "videos": [],
+      "videos": [
+        [
+          "I4ERWLNinic",
+          "AI Automations 101: Reverse Engineer Any API",
+          "Hichem's Journey"
+        ]
+      ],
       "docs": [
         [
           "4.1 open_binary and the headless bridge (Full Manual)",
@@ -13886,7 +18562,13 @@ window.aiResources = {
       ]
     },
     "manuals-reverse-engineering-101/4-2-list-procedures-and-function-bodies": {
-      "videos": [],
+      "videos": [
+        [
+          "I4ERWLNinic",
+          "AI Automations 101: Reverse Engineer Any API",
+          "Hichem's Journey"
+        ]
+      ],
       "docs": [
         [
           "4.2 list_procedures and function bodies (Full Manual)",
@@ -13897,7 +18579,13 @@ window.aiResources = {
       ]
     },
     "manuals-reverse-engineering-101/4-3-procedure-assembly": {
-      "videos": [],
+      "videos": [
+        [
+          "I4ERWLNinic",
+          "AI Automations 101: Reverse Engineer Any API",
+          "Hichem's Journey"
+        ]
+      ],
       "docs": [
         [
           "4.3 procedure_assembly (Full Manual)",
@@ -13908,7 +18596,13 @@ window.aiResources = {
       ]
     },
     "manuals-reverse-engineering-101/4-4-xrefs-and-the-jump-table": {
-      "videos": [],
+      "videos": [
+        [
+          "I4ERWLNinic",
+          "AI Automations 101: Reverse Engineer Any API",
+          "Hichem's Journey"
+        ]
+      ],
       "docs": [
         [
           "4.4 xrefs and the jump table (Full Manual)",
@@ -13919,7 +18613,13 @@ window.aiResources = {
       ]
     },
     "manuals-reverse-engineering-101/4-5-list-strings": {
-      "videos": [],
+      "videos": [
+        [
+          "I4ERWLNinic",
+          "AI Automations 101: Reverse Engineer Any API",
+          "Hichem's Journey"
+        ]
+      ],
       "docs": [
         [
           "4.5 list_strings (Full Manual)",
@@ -13930,7 +18630,13 @@ window.aiResources = {
       ]
     },
     "manuals-reverse-engineering-101/4-6-analyze-function-and-pseudocode": {
-      "videos": [],
+      "videos": [
+        [
+          "I4ERWLNinic",
+          "AI Automations 101: Reverse Engineer Any API",
+          "Hichem's Journey"
+        ]
+      ],
       "docs": [
         [
           "4.6 analyze_function and pseudocode (Full Manual)",
@@ -13941,7 +18647,13 @@ window.aiResources = {
       ]
     },
     "manuals-reverse-engineering-101/5-1-the-evidence-record": {
-      "videos": [],
+      "videos": [
+        [
+          "I4ERWLNinic",
+          "AI Automations 101: Reverse Engineer Any API",
+          "Hichem's Journey"
+        ]
+      ],
       "docs": [
         [
           "5.1 The Evidence record (Full Manual)",
@@ -13952,7 +18664,13 @@ window.aiResources = {
       ]
     },
     "manuals-reverse-engineering-101/5-2-residualunknown-record-unknown-and-coverage": {
-      "videos": [],
+      "videos": [
+        [
+          "I4ERWLNinic",
+          "AI Automations 101: Reverse Engineer Any API",
+          "Hichem's Journey"
+        ]
+      ],
       "docs": [
         [
           "5.2 ResidualUnknown, record_unknown, and coverage (Full Manual)",
@@ -13963,7 +18681,13 @@ window.aiResources = {
       ]
     },
     "manuals-reverse-engineering-101/5-3-analysissnapshot-and-the-exact-match-answer-cache": {
-      "videos": [],
+      "videos": [
+        [
+          "I4ERWLNinic",
+          "AI Automations 101: Reverse Engineer Any API",
+          "Hichem's Journey"
+        ]
+      ],
       "docs": [
         [
           "5.3 AnalysisSnapshot and the exact-match answer cache (Full Manual)",
@@ -13974,7 +18698,13 @@ window.aiResources = {
       ]
     },
     "manuals-reverse-engineering-101/5-4-export-evidence-bundle-evidence-export-and-evidence-impo": {
-      "videos": [],
+      "videos": [
+        [
+          "I4ERWLNinic",
+          "AI Automations 101: Reverse Engineer Any API",
+          "Hichem's Journey"
+        ]
+      ],
       "docs": [
         [
           "5.4 export_evidence_bundle, evidence-export, and evidence-import (Full Manual)",
@@ -13985,7 +18715,13 @@ window.aiResources = {
       ]
     },
     "manuals-reverse-engineering-101/5-5-compare-functions-and-rea-compare": {
-      "videos": [],
+      "videos": [
+        [
+          "I4ERWLNinic",
+          "AI Automations 101: Reverse Engineer Any API",
+          "Hichem's Journey"
+        ]
+      ],
       "docs": [
         [
           "5.5 compare_functions and rea compare (Full Manual)",
@@ -13996,7 +18732,13 @@ window.aiResources = {
       ]
     },
     "manuals-reverse-engineering-101/6-1-analyze-javascript-application-and-the-application-graph": {
-      "videos": [],
+      "videos": [
+        [
+          "I4ERWLNinic",
+          "AI Automations 101: Reverse Engineer Any API",
+          "Hichem's Journey"
+        ]
+      ],
       "docs": [
         [
           "6.1 analyze-javascript-application and the application graph (Full Manual)",
@@ -14007,7 +18749,13 @@ window.aiResources = {
       ]
     },
     "manuals-reverse-engineering-101/6-2-inspect-wasm-artifact-and-the-wabt-provider": {
-      "videos": [],
+      "videos": [
+        [
+          "I4ERWLNinic",
+          "AI Automations 101: Reverse Engineer Any API",
+          "Hichem's Journey"
+        ]
+      ],
       "docs": [
         [
           "6.2 inspect-wasm-artifact and the WABT provider (Full Manual)",
@@ -14018,7 +18766,13 @@ window.aiResources = {
       ]
     },
     "manuals-reverse-engineering-101/7-1-verify-reconstruction": {
-      "videos": [],
+      "videos": [
+        [
+          "I4ERWLNinic",
+          "AI Automations 101: Reverse Engineer Any API",
+          "Hichem's Journey"
+        ]
+      ],
       "docs": [
         [
           "7.1 verify_reconstruction (Full Manual)",
@@ -14029,7 +18783,13 @@ window.aiResources = {
       ]
     },
     "manuals-reverse-engineering-101/7-2-a-proof-harness-beyond-compare-functions": {
-      "videos": [],
+      "videos": [
+        [
+          "I4ERWLNinic",
+          "AI Automations 101: Reverse Engineer Any API",
+          "Hichem's Journey"
+        ]
+      ],
       "docs": [
         [
           "7.2 A proof harness beyond compare_functions (Full Manual)",
@@ -14040,7 +18800,13 @@ window.aiResources = {
       ]
     },
     "manuals-reverse-engineering-101/8-1-rea-mcp-initialize-tools-list-and-the-startup-deadline": {
-      "videos": [],
+      "videos": [
+        [
+          "I4ERWLNinic",
+          "AI Automations 101: Reverse Engineer Any API",
+          "Hichem's Journey"
+        ]
+      ],
       "docs": [
         [
           "8.1 rea mcp: initialize, tools/list, and the startup deadline (Full Manual)",
@@ -14051,7 +18817,13 @@ window.aiResources = {
       ]
     },
     "manuals-reverse-engineering-101/8-2-one-agent-investigation-over-list-procedures-analyze-fun": {
-      "videos": [],
+      "videos": [
+        [
+          "I4ERWLNinic",
+          "AI Automations 101: Reverse Engineer Any API",
+          "Hichem's Journey"
+        ]
+      ],
       "docs": [
         [
           "8.2 One agent investigation over list_procedures, analyze_function, and list_strings (Full Manual)",
@@ -14062,7 +18834,13 @@ window.aiResources = {
       ]
     },
     "manuals-reverse-engineering-101/r-1-commands-and-tools-used-in-this-manual": {
-      "videos": [],
+      "videos": [
+        [
+          "I4ERWLNinic",
+          "AI Automations 101: Reverse Engineer Any API",
+          "Hichem's Journey"
+        ]
+      ],
       "docs": [
         [
           "R.1 Commands and tools used in this manual (Full Manual)",
@@ -14073,7 +18851,13 @@ window.aiResources = {
       ]
     },
     "manuals-reverse-engineering-101/r-2-evidence-fields": {
-      "videos": [],
+      "videos": [
+        [
+          "I4ERWLNinic",
+          "AI Automations 101: Reverse Engineer Any API",
+          "Hichem's Journey"
+        ]
+      ],
       "docs": [
         [
           "R.2 Evidence fields (Full Manual)",
@@ -14084,7 +18868,13 @@ window.aiResources = {
       ]
     },
     "manuals-reverse-engineering-101/r-3-errors-seen-in-the-captures": {
-      "videos": [],
+      "videos": [
+        [
+          "I4ERWLNinic",
+          "AI Automations 101: Reverse Engineer Any API",
+          "Hichem's Journey"
+        ]
+      ],
       "docs": [
         [
           "R.3 Errors seen in the captures (Full Manual)",
@@ -14095,7 +18885,13 @@ window.aiResources = {
       ]
     },
     "manuals-reverse-engineering-101/r-4-glossary": {
-      "videos": [],
+      "videos": [
+        [
+          "I4ERWLNinic",
+          "AI Automations 101: Reverse Engineer Any API",
+          "Hichem's Journey"
+        ]
+      ],
       "docs": [
         [
           "R.4 Glossary (Full Manual)",
@@ -14106,7 +18902,13 @@ window.aiResources = {
       ]
     },
     "manuals-reverse-engineering-101/r-5-sources": {
-      "videos": [],
+      "videos": [
+        [
+          "I4ERWLNinic",
+          "AI Automations 101: Reverse Engineer Any API",
+          "Hichem's Journey"
+        ]
+      ],
       "docs": [
         [
           "R.5 Sources (Full Manual)",
@@ -14117,7 +18919,13 @@ window.aiResources = {
       ]
     },
     "manuals-reverse-engineering-101/r-6-index-of-figures": {
-      "videos": [],
+      "videos": [
+        [
+          "I4ERWLNinic",
+          "AI Automations 101: Reverse Engineer Any API",
+          "Hichem's Journey"
+        ]
+      ],
       "docs": [
         [
           "R.6 Index of figures (Full Manual)",
@@ -14128,7 +18936,13 @@ window.aiResources = {
       ]
     },
     "manuals-sglang-101/how-to-read-this-manual": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "How to read this manual (Full Manual)",
@@ -14139,7 +18953,13 @@ window.aiResources = {
       ]
     },
     "manuals-sglang-101/1-1-install-sglang-and-serve-your-first-model": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "1.1 Install SGLang and serve your first model (Full Manual)",
@@ -14150,7 +18970,13 @@ window.aiResources = {
       ]
     },
     "manuals-sglang-101/1-2-check-that-the-server-is-healthy": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "1.2 Check that the server is healthy (Full Manual)",
@@ -14161,7 +18987,13 @@ window.aiResources = {
       ]
     },
     "manuals-sglang-101/1-3-what-the-server-does-with-your-request": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "1.3 What the server does with your request (Full Manual)",
@@ -14172,7 +19004,13 @@ window.aiResources = {
       ]
     },
     "manuals-sglang-101/2-1-sglang-serve-and-the-three-processes": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "2.1 sglang serve and the three processes (Full Manual)",
@@ -14183,7 +19021,13 @@ window.aiResources = {
       ]
     },
     "manuals-sglang-101/2-2-the-scheduler-loop-and-schedule-policy": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "2.2 The scheduler loop and --schedule-policy (Full Manual)",
@@ -14194,7 +19038,13 @@ window.aiResources = {
       ]
     },
     "manuals-sglang-101/2-3-admission-and-retraction": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "2.3 Admission and retraction (Full Manual)",
@@ -14205,7 +19055,13 @@ window.aiResources = {
       ]
     },
     "manuals-sglang-101/2-4-the-overlap-scheduler": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "2.4 The overlap scheduler (Full Manual)",
@@ -14216,7 +19072,13 @@ window.aiResources = {
       ]
     },
     "manuals-sglang-101/2-5-streaming-stop-strings-and-the-openai-api": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "2.5 Streaming, stop strings, and the OpenAI API (Full Manual)",
@@ -14227,7 +19089,13 @@ window.aiResources = {
       ]
     },
     "manuals-sglang-101/3-1-the-kv-pool-and-bytes-per-token": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "3.1 The KV pool and bytes per token (Full Manual)",
@@ -14238,7 +19106,13 @@ window.aiResources = {
       ]
     },
     "manuals-sglang-101/3-2-mem-fraction-static-and-startup-sizing": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "3.2 --mem-fraction-static and startup sizing (Full Manual)",
@@ -14249,7 +19123,13 @@ window.aiResources = {
       ]
     },
     "manuals-sglang-101/3-3-radixcache": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "3.3 RadixCache (Full Manual)",
@@ -14260,7 +19140,13 @@ window.aiResources = {
       ]
     },
     "manuals-sglang-101/3-4-prefix-friendly-prompts": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "3.4 Prefix-friendly prompts (Full Manual)",
@@ -14271,7 +19157,13 @@ window.aiResources = {
       ]
     },
     "manuals-sglang-101/3-5-eviction-policies-and-hicache": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "3.5 Eviction policies and HiCache (Full Manual)",
@@ -14282,7 +19174,13 @@ window.aiResources = {
       ]
     },
     "manuals-sglang-101/3-6-hybrid-models-and-the-cache": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "3.6 Hybrid models and the cache (Full Manual)",
@@ -14293,7 +19191,13 @@ window.aiResources = {
       ]
     },
     "manuals-sglang-101/4-1-forwardmode-and-cuda-graphs": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "4.1 ForwardMode and CUDA graphs (Full Manual)",
@@ -14304,7 +19208,13 @@ window.aiResources = {
       ]
     },
     "manuals-sglang-101/4-2-attention-backend": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "4.2 --attention-backend (Full Manual)",
@@ -14315,7 +19225,13 @@ window.aiResources = {
       ]
     },
     "manuals-sglang-101/4-3-quantization-and-kv-cache-dtype": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "4.3 --quantization and --kv-cache-dtype (Full Manual)",
@@ -14326,7 +19242,13 @@ window.aiResources = {
       ]
     },
     "manuals-sglang-101/4-4-speculative-algorithm": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "4.4 --speculative-algorithm (Full Manual)",
@@ -14337,7 +19259,13 @@ window.aiResources = {
       ]
     },
     "manuals-sglang-101/4-5-grammar-backend-and-structured-outputs": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "4.5 --grammar-backend and structured outputs (Full Manual)",
@@ -14348,7 +19276,13 @@ window.aiResources = {
       ]
     },
     "manuals-sglang-101/4-6-enable-deterministic-inference-and-logprobs": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "4.6 --enable-deterministic-inference and logprobs (Full Manual)",
@@ -14359,7 +19293,13 @@ window.aiResources = {
       ]
     },
     "manuals-sglang-101/5-1-sglang-benchmark-serving": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "5.1 sglang.benchmark.serving (Full Manual)",
@@ -14370,7 +19310,13 @@ window.aiResources = {
       ]
     },
     "manuals-sglang-101/5-2-the-metrics-endpoint": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "5.2 The /metrics endpoint (Full Manual)",
@@ -14381,7 +19327,13 @@ window.aiResources = {
       ]
     },
     "manuals-sglang-101/5-3-reading-other-people-s-sglang-benchmarks": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "5.3 Reading other people's SGLang benchmarks (Full Manual)",
@@ -14392,7 +19344,13 @@ window.aiResources = {
       ]
     },
     "manuals-sglang-101/6-1-tp-size-dp-size-and-attn-dp-size": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "6.1 --tp-size, --dp-size, and --attn-dp-size (Full Manual)",
@@ -14403,7 +19361,13 @@ window.aiResources = {
       ]
     },
     "manuals-sglang-101/6-2-moe-serving-moe-a2a-backend-deepep-and-eplb": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "6.2 MoE serving: --moe-a2a-backend, DeepEP, and EPLB (Full Manual)",
@@ -14414,7 +19378,13 @@ window.aiResources = {
       ]
     },
     "manuals-sglang-101/6-3-prefill-decode-disaggregation-disaggregation-mode": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "6.3 Prefill-decode disaggregation: --disaggregation-mode (Full Manual)",
@@ -14425,7 +19395,13 @@ window.aiResources = {
       ]
     },
     "manuals-sglang-101/6-4-sgl-model-gateway-and-cache-aware-routing": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "6.4 sgl-model-gateway and cache-aware routing (Full Manual)",
@@ -14436,7 +19412,13 @@ window.aiResources = {
       ]
     },
     "manuals-sglang-101/7-1-operating-sglang": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "7.1 Operating SGLang (Full Manual)",
@@ -14447,7 +19429,13 @@ window.aiResources = {
       ]
     },
     "manuals-sglang-101/7-2-sglang-as-an-rl-rollout-engine": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "7.2 SGLang as an RL rollout engine (Full Manual)",
@@ -14458,7 +19446,13 @@ window.aiResources = {
       ]
     },
     "manuals-sglang-101/r-1-flags-and-defaults": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "R.1 Flags and defaults (Full Manual)",
@@ -14469,7 +19463,13 @@ window.aiResources = {
       ]
     },
     "manuals-sglang-101/r-2-metrics": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "R.2 Metrics (Full Manual)",
@@ -14480,7 +19480,13 @@ window.aiResources = {
       ]
     },
     "manuals-sglang-101/r-3-incident-index": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "R.3 Incident index (Full Manual)",
@@ -14491,7 +19497,13 @@ window.aiResources = {
       ]
     },
     "manuals-sglang-101/r-4-glossary": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "R.4 Glossary (Full Manual)",
@@ -14502,7 +19514,13 @@ window.aiResources = {
       ]
     },
     "manuals-sglang-101/r-5-sources": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "R.5 Sources (Full Manual)",
@@ -14513,7 +19531,13 @@ window.aiResources = {
       ]
     },
     "manuals-sglang-101/r-6-index-of-figures": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "R.6 Index of figures (Full Manual)",
@@ -14524,7 +19548,13 @@ window.aiResources = {
       ]
     },
     "manuals-sglang-101/r-7-how-this-manual-was-made": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "R.7 How this manual was made (Full Manual)",
@@ -14535,7 +19565,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/how-to-read-this-manual": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "How to read this manual (Full Manual)",
@@ -14546,7 +19582,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/1-1-install-vllm-and-serve-your-first-model": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "1.1 Install vLLM and serve your first model (Full Manual)",
@@ -14557,7 +19599,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/1-2-check-that-the-server-is-healthy": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "1.2 Check that the server is healthy (Full Manual)",
@@ -14568,7 +19616,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/1-3-understand-what-happens-to-your-request": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "1.3 Understand what happens to your request (Full Manual)",
@@ -14579,7 +19633,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/1-4-set-the-server-options-every-deployment-needs": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "1.4 Set the server options every deployment needs (Full Manual)",
@@ -14590,7 +19650,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/2-1-count-the-memory-before-you-pick-a-gpu": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "2.1 Count the memory before you pick a GPU (Full Manual)",
@@ -14601,7 +19667,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/2-2-fix-out-of-memory-at-startup": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "2.2 Fix out of memory at startup (Full Manual)",
@@ -14612,7 +19684,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/2-3-size-memory-on-a-dgx-spark": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "2.3 Size memory on a DGX Spark (Full Manual)",
@@ -14623,7 +19701,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/2-4-fit-more-users-with-an-fp8-kv-cache": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "2.4 Fit more users with an FP8 KV cache (Full Manual)",
@@ -14634,7 +19718,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/2-5-fit-a-bigger-model-with-fp8-weights": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "2.5 Fit a bigger model with FP8 weights (Full Manual)",
@@ -14645,7 +19735,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/2-6-serve-long-contexts-and-hybrid-models": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "2.6 Serve long contexts and hybrid models (Full Manual)",
@@ -14656,7 +19752,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/3-1-tune-chat-for-many-users": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "3.1 Tune chat for many users (Full Manual)",
@@ -14667,7 +19769,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/3-2-make-repeated-prompts-hit-the-prefix-cache": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "3.2 Make repeated prompts hit the prefix cache (Full Manual)",
@@ -14678,7 +19786,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/3-3-keep-long-prompts-from-stalling-short-ones": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "3.3 Keep long prompts from stalling short ones (Full Manual)",
@@ -14689,7 +19803,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/3-4-keep-long-sessions-cheap": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "3.4 Keep long sessions cheap (Full Manual)",
@@ -14700,7 +19820,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/3-5-return-valid-json-and-tool-calls": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "3.5 Return valid JSON and tool calls (Full Manual)",
@@ -14711,7 +19837,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/3-6-run-batch-and-offline-jobs": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "3.6 Run batch and offline jobs (Full Manual)",
@@ -14722,7 +19854,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/3-7-serve-many-fine-tunes-with-multi-lora": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "3.7 Serve many fine-tunes with multi-LoRA (Full Manual)",
@@ -14733,7 +19871,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/3-8-get-reproducible-outputs": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "3.8 Get reproducible outputs (Full Manual)",
@@ -14744,7 +19888,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/3-9-use-vllm-as-an-rl-rollout-engine": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "3.9 Use vLLM as an RL rollout engine (Full Manual)",
@@ -14755,7 +19905,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/3-10-serve-reasoning-models": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "3.10 Serve reasoning models (Full Manual)",
@@ -14766,7 +19922,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/4-1-speed-up-decode-with-eagle3": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "4.1 Speed up decode with EAGLE3 (Full Manual)",
@@ -14777,7 +19939,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/4-2-use-n-gram-speculation-for-copy-heavy-work": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "4.2 Use n-gram speculation for copy-heavy work (Full Manual)",
@@ -14788,7 +19956,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/4-3-keep-cuda-graphs-and-compile-on": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "4.3 Keep CUDA graphs and compile on (Full Manual)",
@@ -14799,7 +19973,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/4-4-leave-async-scheduling-on": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "4.4 Leave async scheduling on (Full Manual)",
@@ -14810,7 +19990,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/4-5-change-the-attention-backend-only-for-a-reason": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "4.5 Change the attention backend only for a reason (Full Manual)",
@@ -14821,7 +20007,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/5-1-benchmark-your-server-in-15-minutes": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "5.1 Benchmark your server in 15 minutes (Full Manual)",
@@ -14832,7 +20024,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/5-2-watch-vllm-in-production": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "5.2 Watch vLLM in production (Full Manual)",
@@ -14843,7 +20041,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/5-3-decide-between-vllm-and-sglang": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "5.3 Decide between vLLM and SGLang (Full Manual)",
@@ -14854,7 +20058,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/6-1-choose-tensor-pipeline-or-data-parallelism": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "6.1 Choose tensor, pipeline, or data parallelism (Full Manual)",
@@ -14865,7 +20075,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/6-2-serve-moe-models-with-expert-parallelism": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "6.2 Serve MoE models with expert parallelism (Full Manual)",
@@ -14876,7 +20092,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/6-3-split-prefill-and-decode": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "6.3 Split prefill and decode (Full Manual)",
@@ -14887,7 +20109,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/6-4-run-vllm-on-kubernetes": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "6.4 Run vLLM on Kubernetes (Full Manual)",
@@ -14898,7 +20126,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/6-5-run-vllm-on-other-accelerators": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "6.5 Run vLLM on other accelerators (Full Manual)",
@@ -14909,7 +20143,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/7-1-troubleshoot-by-symptom": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "7.1 Troubleshoot by symptom (Full Manual)",
@@ -14920,7 +20160,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/7-2-run-vllm-in-production": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "7.2 Run vLLM in production (Full Manual)",
@@ -14931,7 +20177,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/8-1-why-vllm-runs-three-kinds-of-process": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "8.1 Why vLLM runs three kinds of process (Full Manual)",
@@ -14942,7 +20194,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/8-2-why-one-token-budget-replaces-a-prefill-phase": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "8.2 Why one token budget replaces a prefill phase (Full Manual)",
@@ -14953,7 +20211,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/8-3-how-the-block-pool-manages-kv-memory": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "8.3 How the block pool manages KV memory (Full Manual)",
@@ -14964,7 +20228,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/8-4-how-vllm-picks-an-attention-backend": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "8.4 How vLLM picks an attention backend (Full Manual)",
@@ -14975,7 +20245,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/8-5-what-model-runner-v2-changed": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "8.5 What Model Runner V2 changed (Full Manual)",
@@ -14986,7 +20262,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/8-6-how-compile-and-cuda-graphs-are-captured": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "8.6 How compile and CUDA graphs are captured (Full Manual)",
@@ -14997,7 +20279,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/8-7-how-speculative-decoding-checks-drafts": {
-      "videos": [],
+      "videos": [
+        [
+          "VkWlLSTdHs8",
+          "Faster LLMs: Accelerate Inference with Speculative Decoding",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "8.7 How speculative decoding checks drafts (Full Manual)",
@@ -15008,7 +20296,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/8-8-how-kv-connectors-move-the-cache": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "8.8 How KV connectors move the cache (Full Manual)",
@@ -15019,7 +20313,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/8-9-where-vllm-came-from": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "8.9 Where vLLM came from (Full Manual)",
@@ -15030,7 +20330,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/r-1-flags-and-defaults": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "R.1 Flags and defaults (Full Manual)",
@@ -15041,7 +20347,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/r-2-metrics": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "R.2 Metrics (Full Manual)",
@@ -15052,7 +20364,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/r-3-incident-index": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "R.3 Incident index (Full Manual)",
@@ -15063,7 +20381,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/r-4-version-pins": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "R.4 Version pins (Full Manual)",
@@ -15074,7 +20398,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/r-5-glossary": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "R.5 Glossary (Full Manual)",
@@ -15085,7 +20415,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/r-6-sources": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "R.6 Sources (Full Manual)",
@@ -15096,7 +20432,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/r-7-lab-notes": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "R.7 Lab notes (Full Manual)",
@@ -15107,7 +20449,13 @@ window.aiResources = {
       ]
     },
     "manuals-vllm-101/r-8-index-of-figures": {
-      "videos": [],
+      "videos": [
+        [
+          "6uPnLkCiy5g",
+          "PagedAttention: Behind vLLM's Insane Speed",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "R.8 Index of figures (Full Manual)",
@@ -15118,7 +20466,13 @@ window.aiResources = {
       ]
     },
     "practice-implement/power-iteration-for-the-top-eigenpair": {
-      "videos": [],
+      "videos": [
+        [
+          "8ib4Qnh2HFE",
+          "Full AI Prompting Course with Andrew Ng",
+          "DeepLearningAI"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: Power iteration for the top eigenpair",
@@ -15129,7 +20483,13 @@ window.aiResources = {
       ]
     },
     "practice-implement/vectorized-pairwise-distances": {
-      "videos": [],
+      "videos": [
+        [
+          "8ib4Qnh2HFE",
+          "Full AI Prompting Course with Andrew Ng",
+          "DeepLearningAI"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: Vectorized pairwise distances",
@@ -15140,7 +20500,13 @@ window.aiResources = {
       ]
     },
     "practice-implement/linear-regression-by-gradient-descent": {
-      "videos": [],
+      "videos": [
+        [
+          "8ib4Qnh2HFE",
+          "Full AI Prompting Course with Andrew Ng",
+          "DeepLearningAI"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: Linear regression by gradient descent",
@@ -15151,7 +20517,13 @@ window.aiResources = {
       ]
     },
     "practice-implement/logistic-regression-from-scratch": {
-      "videos": [],
+      "videos": [
+        [
+          "8ib4Qnh2HFE",
+          "Full AI Prompting Course with Andrew Ng",
+          "DeepLearningAI"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: Logistic regression from scratch",
@@ -15162,7 +20534,13 @@ window.aiResources = {
       ]
     },
     "practice-implement/gini-impurity-and-the-best-split": {
-      "videos": [],
+      "videos": [
+        [
+          "8ib4Qnh2HFE",
+          "Full AI Prompting Course with Andrew Ng",
+          "DeepLearningAI"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: Gini impurity and the best split",
@@ -15173,7 +20551,13 @@ window.aiResources = {
       ]
     },
     "practice-implement/k-means-assignment-and-update": {
-      "videos": [],
+      "videos": [
+        [
+          "8ib4Qnh2HFE",
+          "Full AI Prompting Course with Andrew Ng",
+          "DeepLearningAI"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: K-means assignment and update",
@@ -15184,7 +20568,13 @@ window.aiResources = {
       ]
     },
     "practice-implement/backpropagation-through-a-two-layer-mlp": {
-      "videos": [],
+      "videos": [
+        [
+          "8ib4Qnh2HFE",
+          "Full AI Prompting Course with Andrew Ng",
+          "DeepLearningAI"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: Backpropagation through a two-layer MLP",
@@ -15195,7 +20585,13 @@ window.aiResources = {
       ]
     },
     "practice-implement/stable-softmax-and-cross-entropy": {
-      "videos": [],
+      "videos": [
+        [
+          "8ib4Qnh2HFE",
+          "Full AI Prompting Course with Andrew Ng",
+          "DeepLearningAI"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: Stable softmax and cross-entropy",
@@ -15206,7 +20602,13 @@ window.aiResources = {
       ]
     },
     "practice-implement/sgd-with-momentum": {
-      "videos": [],
+      "videos": [
+        [
+          "8ib4Qnh2HFE",
+          "Full AI Prompting Course with Andrew Ng",
+          "DeepLearningAI"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: SGD with momentum",
@@ -15217,7 +20619,13 @@ window.aiResources = {
       ]
     },
     "practice-implement/adam-and-adamw-step": {
-      "videos": [],
+      "videos": [
+        [
+          "8ib4Qnh2HFE",
+          "Full AI Prompting Course with Andrew Ng",
+          "DeepLearningAI"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: Adam and AdamW step",
@@ -15228,7 +20636,13 @@ window.aiResources = {
       ]
     },
     "practice-implement/inverted-dropout": {
-      "videos": [],
+      "videos": [
+        [
+          "8ib4Qnh2HFE",
+          "Full AI Prompting Course with Andrew Ng",
+          "DeepLearningAI"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: Inverted dropout",
@@ -15239,7 +20653,13 @@ window.aiResources = {
       ]
     },
     "practice-implement/batch-normalization-forward-and-backward": {
-      "videos": [],
+      "videos": [
+        [
+          "Oh2t8XXiFgU",
+          "How Batch Normalization works to solve Internal Covariate Shift",
+          "Developers Hutt"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: Batch normalization forward and backward",
@@ -15250,7 +20670,13 @@ window.aiResources = {
       ]
     },
     "practice-implement/beam-search-with-eos-and-length-normalization": {
-      "videos": [],
+      "videos": [
+        [
+          "8ib4Qnh2HFE",
+          "Full AI Prompting Course with Andrew Ng",
+          "DeepLearningAI"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: Beam search with EOS and length normalization",
@@ -15261,7 +20687,13 @@ window.aiResources = {
       ]
     },
     "practice-implement/bm25-ranking": {
-      "videos": [],
+      "videos": [
+        [
+          "8ib4Qnh2HFE",
+          "Full AI Prompting Course with Andrew Ng",
+          "DeepLearningAI"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: BM25 ranking",
@@ -15272,7 +20704,13 @@ window.aiResources = {
       ]
     },
     "practice-implement/scaled-dot-product-attention-with-a-mask": {
-      "videos": [],
+      "videos": [
+        [
+          "8ib4Qnh2HFE",
+          "Full AI Prompting Course with Andrew Ng",
+          "DeepLearningAI"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: Scaled dot-product attention with a mask",
@@ -15283,7 +20721,13 @@ window.aiResources = {
       ]
     },
     "practice-implement/split-heads-merge-heads-multi-head-attention": {
-      "videos": [],
+      "videos": [
+        [
+          "8ib4Qnh2HFE",
+          "Full AI Prompting Course with Andrew Ng",
+          "DeepLearningAI"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: Split heads, merge heads, multi-head attention",
@@ -15294,7 +20738,13 @@ window.aiResources = {
       ]
     },
     "practice-implement/sinusoidal-positional-encoding": {
-      "videos": [],
+      "videos": [
+        [
+          "8ib4Qnh2HFE",
+          "Full AI Prompting Course with Andrew Ng",
+          "DeepLearningAI"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: Sinusoidal positional encoding",
@@ -15305,7 +20755,13 @@ window.aiResources = {
       ]
     },
     "practice-implement/rotary-position-embedding": {
-      "videos": [],
+      "videos": [
+        [
+          "8ib4Qnh2HFE",
+          "Full AI Prompting Course with Andrew Ng",
+          "DeepLearningAI"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: Rotary position embedding",
@@ -15316,7 +20772,13 @@ window.aiResources = {
       ]
     },
     "practice-implement/layernorm-and-rmsnorm": {
-      "videos": [],
+      "videos": [
+        [
+          "8ib4Qnh2HFE",
+          "Full AI Prompting Course with Andrew Ng",
+          "DeepLearningAI"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: LayerNorm and RMSNorm",
@@ -15327,7 +20789,13 @@ window.aiResources = {
       ]
     },
     "practice-implement/temperature-top-k-and-top-p-sampling": {
-      "videos": [],
+      "videos": [
+        [
+          "8ib4Qnh2HFE",
+          "Full AI Prompting Course with Andrew Ng",
+          "DeepLearningAI"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: Temperature, top-k and top-p sampling",
@@ -15338,7 +20806,13 @@ window.aiResources = {
       ]
     },
     "practice-implement/fixed-capacity-kv-cache": {
-      "videos": [],
+      "videos": [
+        [
+          "8ib4Qnh2HFE",
+          "Full AI Prompting Course with Andrew Ng",
+          "DeepLearningAI"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: Fixed-capacity KV cache",
@@ -15349,7 +20823,13 @@ window.aiResources = {
       ]
     },
     "practice-implement/q-learning-and-sarsa-updates": {
-      "videos": [],
+      "videos": [
+        [
+          "8ib4Qnh2HFE",
+          "Full AI Prompting Course with Andrew Ng",
+          "DeepLearningAI"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: Q-learning and SARSA updates",
@@ -15360,7 +20840,13 @@ window.aiResources = {
       ]
     },
     "practice-implement/discounted-returns-with-episode-ends": {
-      "videos": [],
+      "videos": [
+        [
+          "8ib4Qnh2HFE",
+          "Full AI Prompting Course with Andrew Ng",
+          "DeepLearningAI"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: Discounted returns with episode ends",
@@ -15371,7 +20857,13 @@ window.aiResources = {
       ]
     },
     "practice-implement/generalized-advantage-estimation": {
-      "videos": [],
+      "videos": [
+        [
+          "8ib4Qnh2HFE",
+          "Full AI Prompting Course with Andrew Ng",
+          "DeepLearningAI"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: Generalized advantage estimation",
@@ -15382,7 +20874,13 @@ window.aiResources = {
       ]
     },
     "practice-implement/ppo-clipped-surrogate-loss": {
-      "videos": [],
+      "videos": [
+        [
+          "8ib4Qnh2HFE",
+          "Full AI Prompting Course with Andrew Ng",
+          "DeepLearningAI"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: PPO clipped surrogate loss",
@@ -15393,7 +20891,13 @@ window.aiResources = {
       ]
     },
     "practice-implement/symmetric-int8-quantization": {
-      "videos": [],
+      "videos": [
+        [
+          "8ib4Qnh2HFE",
+          "Full AI Prompting Course with Andrew Ng",
+          "DeepLearningAI"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: Symmetric int8 quantization",
@@ -15404,7 +20908,13 @@ window.aiResources = {
       ]
     },
     "practice-implement/cosine-similarity-top-k-search": {
-      "videos": [],
+      "videos": [
+        [
+          "8ib4Qnh2HFE",
+          "Full AI Prompting Course with Andrew Ng",
+          "DeepLearningAI"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: Cosine similarity top-k search",
@@ -15415,7 +20925,13 @@ window.aiResources = {
       ]
     },
     "practice-implement/lora-linear-layer": {
-      "videos": [],
+      "videos": [
+        [
+          "8ib4Qnh2HFE",
+          "Full AI Prompting Course with Andrew Ng",
+          "DeepLearningAI"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: LoRA linear layer",
@@ -15426,7 +20942,13 @@ window.aiResources = {
       ]
     },
     "practice-implement/parse-and-validate-tool-calls": {
-      "videos": [],
+      "videos": [
+        [
+          "8ib4Qnh2HFE",
+          "Full AI Prompting Course with Andrew Ng",
+          "DeepLearningAI"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: Parse and validate tool calls",
@@ -15437,7 +20959,13 @@ window.aiResources = {
       ]
     },
     "practice-implement/bpe-pair-counts-and-merges": {
-      "videos": [],
+      "videos": [
+        [
+          "8ib4Qnh2HFE",
+          "Full AI Prompting Course with Andrew Ng",
+          "DeepLearningAI"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: BPE pair counts and merges",
@@ -15448,7 +20976,13 @@ window.aiResources = {
       ]
     },
     "practice-implement/reciprocal-rank-fusion": {
-      "videos": [],
+      "videos": [
+        [
+          "8ib4Qnh2HFE",
+          "Full AI Prompting Course with Andrew Ng",
+          "DeepLearningAI"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: Reciprocal rank fusion",
@@ -15459,7 +20993,13 @@ window.aiResources = {
       ]
     },
     "practice-research/focal-loss": {
-      "videos": [],
+      "videos": [
+        [
+          "sVcwVQRHIc8",
+          "Learn RAG From Scratch \u2013 Python AI Tutorial from a LangChain Engineer",
+          "freeCodeCamp.org"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: Focal loss",
@@ -15470,7 +21010,13 @@ window.aiResources = {
       ]
     },
     "practice-research/clip-symmetric-contrastive-loss": {
-      "videos": [],
+      "videos": [
+        [
+          "sVcwVQRHIc8",
+          "Learn RAG From Scratch \u2013 Python AI Tutorial from a LangChain Engineer",
+          "freeCodeCamp.org"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: CLIP symmetric contrastive loss",
@@ -15481,7 +21027,13 @@ window.aiResources = {
       ]
     },
     "practice-research/grouped-query-attention": {
-      "videos": [],
+      "videos": [
+        [
+          "sVcwVQRHIc8",
+          "Learn RAG From Scratch \u2013 Python AI Tutorial from a LangChain Engineer",
+          "freeCodeCamp.org"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: Grouped-query attention",
@@ -15492,7 +21044,13 @@ window.aiResources = {
       ]
     },
     "practice-research/top-k-moe-gating-and-the-switch-load-balancing-loss": {
-      "videos": [],
+      "videos": [
+        [
+          "sVcwVQRHIc8",
+          "Learn RAG From Scratch \u2013 Python AI Tutorial from a LangChain Engineer",
+          "freeCodeCamp.org"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: Top-k MoE gating and the Switch load-balancing loss",
@@ -15503,7 +21061,13 @@ window.aiResources = {
       ]
     },
     "practice-research/tiled-attention-with-an-online-softmax": {
-      "videos": [],
+      "videos": [
+        [
+          "sVcwVQRHIc8",
+          "Learn RAG From Scratch \u2013 Python AI Tutorial from a LangChain Engineer",
+          "freeCodeCamp.org"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: Tiled attention with an online softmax",
@@ -15514,7 +21078,13 @@ window.aiResources = {
       ]
     },
     "practice-research/speculative-decoding-accept-reject-and-resample": {
-      "videos": [],
+      "videos": [
+        [
+          "VkWlLSTdHs8",
+          "Faster LLMs: Accelerate Inference with Speculative Decoding",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: Speculative decoding: accept, reject and resample",
@@ -15525,7 +21095,13 @@ window.aiResources = {
       ]
     },
     "practice-research/ddpm-noise-schedule-closed-form-noising-and-posterior": {
-      "videos": [],
+      "videos": [
+        [
+          "sVcwVQRHIc8",
+          "Learn RAG From Scratch \u2013 Python AI Tutorial from a LangChain Engineer",
+          "freeCodeCamp.org"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: DDPM noise schedule, closed form noising and posterior",
@@ -15536,7 +21112,13 @@ window.aiResources = {
       ]
     },
     "practice-research/rectified-flow-loss-and-euler-sampler": {
-      "videos": [],
+      "videos": [
+        [
+          "sVcwVQRHIc8",
+          "Learn RAG From Scratch \u2013 Python AI Tutorial from a LangChain Engineer",
+          "freeCodeCamp.org"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: Rectified flow loss and Euler sampler",
@@ -15547,7 +21129,13 @@ window.aiResources = {
       ]
     },
     "practice-research/grpo-group-advantages-and-clipped-objective": {
-      "videos": [],
+      "videos": [
+        [
+          "sVcwVQRHIc8",
+          "Learn RAG From Scratch \u2013 Python AI Tutorial from a LangChain Engineer",
+          "freeCodeCamp.org"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: GRPO group advantages and clipped objective",
@@ -15558,7 +21146,13 @@ window.aiResources = {
       ]
     },
     "practice-research/dpo-loss-and-implicit-rewards": {
-      "videos": [],
+      "videos": [
+        [
+          "sVcwVQRHIc8",
+          "Learn RAG From Scratch \u2013 Python AI Tutorial from a LangChain Engineer",
+          "freeCodeCamp.org"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: DPO loss and implicit rewards",
@@ -15569,7 +21163,13 @@ window.aiResources = {
       ]
     },
     "practice-train/train-softmax-regression-on-four-blobs": {
-      "videos": [],
+      "videos": [
+        [
+          "rtvZFF0xpkU",
+          "1   Building an AI tool in 5 minutes",
+          " Ibrahim Hussain"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: Train softmax regression on four blobs",
@@ -15580,7 +21180,13 @@ window.aiResources = {
       ]
     },
     "practice-train/train-a-2-4-1-network-on-xor": {
-      "videos": [],
+      "videos": [
+        [
+          "rtvZFF0xpkU",
+          "1   Building an AI tool in 5 minutes",
+          " Ibrahim Hussain"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: Train a 2-4-1 network on XOR",
@@ -15591,7 +21197,13 @@ window.aiResources = {
       ]
     },
     "practice-train/fit-a-sine-curve-with-a-tanh-network": {
-      "videos": [],
+      "videos": [
+        [
+          "rtvZFF0xpkU",
+          "1   Building an AI tool in 5 minutes",
+          " Ibrahim Hussain"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: Fit a sine curve with a tanh network",
@@ -15602,7 +21214,13 @@ window.aiResources = {
       ]
     },
     "practice-train/train-a-tanh-network-on-two-spirals": {
-      "videos": [],
+      "videos": [
+        [
+          "rtvZFF0xpkU",
+          "1   Building an AI tool in 5 minutes",
+          " Ibrahim Hussain"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: Train a tanh network on two spirals",
@@ -15613,7 +21231,13 @@ window.aiResources = {
       ]
     },
     "practice-train/train-a-character-bigram-language-model": {
-      "videos": [],
+      "videos": [
+        [
+          "rtvZFF0xpkU",
+          "1   Building an AI tool in 5 minutes",
+          " Ibrahim Hussain"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: Train a character bigram language model",
@@ -15624,7 +21248,13 @@ window.aiResources = {
       ]
     },
     "practice-lab/measure-bias-and-variance": {
-      "videos": [],
+      "videos": [
+        [
+          "oHu_xWe0agI",
+          "A Practical Guide To Becoming An AI Engineer (2026)",
+          "CodeHead"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: Measure bias and variance",
@@ -15635,7 +21265,13 @@ window.aiResources = {
       ]
     },
     "practice-lab/sweep-the-learning-rate": {
-      "videos": [],
+      "videos": [
+        [
+          "oHu_xWe0agI",
+          "A Practical Guide To Becoming An AI Engineer (2026)",
+          "CodeHead"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: Sweep the learning rate",
@@ -15646,7 +21282,13 @@ window.aiResources = {
       ]
     },
     "practice-lab/sweep-the-sampling-temperature": {
-      "videos": [],
+      "videos": [
+        [
+          "oHu_xWe0agI",
+          "A Practical Guide To Becoming An AI Engineer (2026)",
+          "CodeHead"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: Sweep the sampling temperature",
@@ -15657,7 +21299,13 @@ window.aiResources = {
       ]
     },
     "practice-lab/sweep-the-quantization-bit-width": {
-      "videos": [],
+      "videos": [
+        [
+          "oHu_xWe0agI",
+          "A Practical Guide To Becoming An AI Engineer (2026)",
+          "CodeHead"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: Sweep the quantization bit width",
@@ -15668,7 +21316,13 @@ window.aiResources = {
       ]
     },
     "practice-lab/read-an-sglang-sweep-on-an-l4": {
-      "videos": [],
+      "videos": [
+        [
+          "oHu_xWe0agI",
+          "A Practical Guide To Becoming An AI Engineer (2026)",
+          "CodeHead"
+        ]
+      ],
       "docs": [
         [
           "Practice Task: Read an SGLang sweep on an L4",
@@ -15679,7 +21333,13 @@ window.aiResources = {
       ]
     },
     "glossary-math-training/activation-checkpointing": {
-      "videos": [],
+      "videos": [
+        [
+          "0z6AhrOSrRs",
+          "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
+          "My Lesson"
+        ]
+      ],
       "docs": [
         [
           "Training Deep Nets with Sublinear Memory Cost",
@@ -15696,7 +21356,13 @@ window.aiResources = {
       ]
     },
     "glossary-math-training/activation-function": {
-      "videos": [],
+      "videos": [
+        [
+          "-jRDvP2NdMA",
+          "Activation Functions in Neural Networks \u2013 Part 2 | Leaky ReLU, PReLU, ELU, Swish, GELU & More",
+          "Bellic Robotics"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Activation Function",
@@ -15707,7 +21373,13 @@ window.aiResources = {
       ]
     },
     "glossary-math-training/adam-optimizer": {
-      "videos": [],
+      "videos": [
+        [
+          "0z6AhrOSrRs",
+          "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
+          "My Lesson"
+        ]
+      ],
       "docs": [
         [
           "Adam paper",
@@ -15724,7 +21396,13 @@ window.aiResources = {
       ]
     },
     "glossary-math-training/adamw": {
-      "videos": [],
+      "videos": [
+        [
+          "sn0Eex-3F_c",
+          "AdamW Optimizer Explained #datascience #machinelearning #deeplearning #optimization",
+          "DataMListic"
+        ]
+      ],
       "docs": [
         [
           "Decoupled Weight Decay Regularization",
@@ -15741,7 +21419,13 @@ window.aiResources = {
       ]
     },
     "glossary-math-training/autograd": {
-      "videos": [],
+      "videos": [
+        [
+          "0z6AhrOSrRs",
+          "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
+          "My Lesson"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Autograd",
@@ -15752,7 +21436,13 @@ window.aiResources = {
       ]
     },
     "glossary-math-training/backpropagation": {
-      "videos": [],
+      "videos": [
+        [
+          "tIeHLnjs5U8",
+          "Backpropagation calculus | Deep learning, chapter 4",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Backpropagation",
@@ -15763,7 +21453,13 @@ window.aiResources = {
       ]
     },
     "glossary-math-training/batch-size": {
-      "videos": [],
+      "videos": [
+        [
+          "vGYcWvYnXiI",
+          "AI Basics: Accuracy, Epochs, Learning Rate, Batch Size and Loss",
+          "Prof. Ryan Ahmed"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Batch Size",
@@ -15774,7 +21470,13 @@ window.aiResources = {
       ]
     },
     "glossary-math-training/contrastive-learning": {
-      "videos": [],
+      "videos": [
+        [
+          "0z6AhrOSrRs",
+          "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
+          "My Lesson"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Contrastive Learning",
@@ -15785,7 +21487,13 @@ window.aiResources = {
       ]
     },
     "glossary-math-training/cross-entropy": {
-      "videos": [],
+      "videos": [
+        [
+          "0z6AhrOSrRs",
+          "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
+          "My Lesson"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Cross-Entropy",
@@ -15796,7 +21504,13 @@ window.aiResources = {
       ]
     },
     "glossary-math-training/data-augmentation": {
-      "videos": [],
+      "videos": [
+        [
+          "0z6AhrOSrRs",
+          "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
+          "My Lesson"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Data Augmentation",
@@ -15807,7 +21521,13 @@ window.aiResources = {
       ]
     },
     "glossary-math-training/dpo-direct-preference-optimization": {
-      "videos": [],
+      "videos": [
+        [
+          "0z6AhrOSrRs",
+          "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
+          "My Lesson"
+        ]
+      ],
       "docs": [
         [
           "Direct Preference Optimization paper",
@@ -15824,7 +21544,13 @@ window.aiResources = {
       ]
     },
     "glossary-math-training/dropout": {
-      "videos": [],
+      "videos": [
+        [
+          "_SlPBbxuqas",
+          "NN - 16 - L2 Regularization / Weight Decay (Theory + @PyTorch code)",
+          "Meerkat Statistics"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Dropout",
@@ -15835,7 +21561,13 @@ window.aiResources = {
       ]
     },
     "glossary-math-training/eigenvalue": {
-      "videos": [],
+      "videos": [
+        [
+          "0z6AhrOSrRs",
+          "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
+          "My Lesson"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Eigenvalue",
@@ -15846,7 +21578,13 @@ window.aiResources = {
       ]
     },
     "glossary-math-training/epoch": {
-      "videos": [],
+      "videos": [
+        [
+          "vGYcWvYnXiI",
+          "AI Basics: Accuracy, Epochs, Learning Rate, Batch Size and Loss",
+          "Prof. Ryan Ahmed"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Epoch",
@@ -15857,7 +21595,13 @@ window.aiResources = {
       ]
     },
     "glossary-math-training/fine-tuning": {
-      "videos": [],
+      "videos": [
+        [
+          "0z6AhrOSrRs",
+          "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
+          "My Lesson"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Fine-tuning",
@@ -15868,7 +21612,13 @@ window.aiResources = {
       ]
     },
     "glossary-math-training/gradient": {
-      "videos": [],
+      "videos": [
+        [
+          "zUDxEL3jwQ0",
+          "Gradient Boosting vs AdaBoost vs XGBoost vs LightGBM vs CatBoost | Boosting Explained \ud83d\udd25",
+          "Analytics Vidhya"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Gradient",
@@ -15879,7 +21629,13 @@ window.aiResources = {
       ]
     },
     "glossary-math-training/gradient-accumulation": {
-      "videos": [],
+      "videos": [
+        [
+          "0z6AhrOSrRs",
+          "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
+          "My Lesson"
+        ]
+      ],
       "docs": [
         [
           "PyTorch AMP examples: Gradient accumulation",
@@ -15896,7 +21652,13 @@ window.aiResources = {
       ]
     },
     "glossary-math-training/gradient-clipping": {
-      "videos": [],
+      "videos": [
+        [
+          "0z6AhrOSrRs",
+          "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
+          "My Lesson"
+        ]
+      ],
       "docs": [
         [
           "On the difficulty of training recurrent neural networks",
@@ -15913,7 +21675,13 @@ window.aiResources = {
       ]
     },
     "glossary-math-training/gradient-descent": {
-      "videos": [],
+      "videos": [
+        [
+          "tIeHLnjs5U8",
+          "Backpropagation calculus | Deep learning, chapter 4",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Gradient Descent",
@@ -15924,7 +21692,13 @@ window.aiResources = {
       ]
     },
     "glossary-math-training/hyperparameter": {
-      "videos": [],
+      "videos": [
+        [
+          "vGYcWvYnXiI",
+          "AI Basics: Accuracy, Epochs, Learning Rate, Batch Size and Loss",
+          "Prof. Ryan Ahmed"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Hyperparameter",
@@ -15935,7 +21709,13 @@ window.aiResources = {
       ]
     },
     "glossary-math-training/jax": {
-      "videos": [],
+      "videos": [
+        [
+          "0z6AhrOSrRs",
+          "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
+          "My Lesson"
+        ]
+      ],
       "docs": [
         [
           "JAX documentation",
@@ -15952,7 +21732,13 @@ window.aiResources = {
       ]
     },
     "glossary-math-training/knowledge-distillation": {
-      "videos": [],
+      "videos": [
+        [
+          "0z6AhrOSrRs",
+          "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
+          "My Lesson"
+        ]
+      ],
       "docs": [
         [
           "Distilling the Knowledge in a Neural Network",
@@ -15969,7 +21755,13 @@ window.aiResources = {
       ]
     },
     "glossary-math-training/learning-rate": {
-      "videos": [],
+      "videos": [
+        [
+          "0z6AhrOSrRs",
+          "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
+          "My Lesson"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Learning Rate",
@@ -15980,7 +21772,13 @@ window.aiResources = {
       ]
     },
     "glossary-math-training/learning-rate-schedule": {
-      "videos": [],
+      "videos": [
+        [
+          "0z6AhrOSrRs",
+          "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
+          "My Lesson"
+        ]
+      ],
       "docs": [
         [
           "SGDR",
@@ -16003,7 +21801,13 @@ window.aiResources = {
       ]
     },
     "glossary-math-training/lora-low-rank-adaptation": {
-      "videos": [],
+      "videos": [
+        [
+          "0z6AhrOSrRs",
+          "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
+          "My Lesson"
+        ]
+      ],
       "docs": [
         [
           "LoRA paper",
@@ -16020,7 +21824,13 @@ window.aiResources = {
       ]
     },
     "glossary-math-training/loss-function": {
-      "videos": [],
+      "videos": [
+        [
+          "v_ueBW_5dLg",
+          "What is a Loss Function? Understanding How AI Models Learn",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Loss Function",
@@ -16031,7 +21841,13 @@ window.aiResources = {
       ]
     },
     "glossary-math-training/mixed-precision": {
-      "videos": [],
+      "videos": [
+        [
+          "0z6AhrOSrRs",
+          "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
+          "My Lesson"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Mixed Precision",
@@ -16042,7 +21858,13 @@ window.aiResources = {
       ]
     },
     "glossary-math-training/nan-not-a-number": {
-      "videos": [],
+      "videos": [
+        [
+          "0z6AhrOSrRs",
+          "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
+          "My Lesson"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: NaN (Not a Number)",
@@ -16053,7 +21875,13 @@ window.aiResources = {
       ]
     },
     "glossary-math-training/normalization": {
-      "videos": [],
+      "videos": [
+        [
+          "P6sfmUTpUmc",
+          "Building makemore Part 3: Activations & Gradients, BatchNorm",
+          "Andrej Karpathy"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Normalization",
@@ -16064,7 +21892,13 @@ window.aiResources = {
       ]
     },
     "glossary-math-training/optimizer": {
-      "videos": [],
+      "videos": [
+        [
+          "SknYgMpC-VI",
+          "Evaluator - Optimizer Design Pattern | Agentic Workflow | Human in the Loop, LangChain, Python",
+          "Saurav Prateek"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Optimizer",
@@ -16075,7 +21909,13 @@ window.aiResources = {
       ]
     },
     "glossary-math-training/overfitting": {
-      "videos": [],
+      "videos": [
+        [
+          "0z6AhrOSrRs",
+          "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
+          "My Lesson"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Overfitting",
@@ -16086,7 +21926,13 @@ window.aiResources = {
       ]
     },
     "glossary-math-training/qlora": {
-      "videos": [],
+      "videos": [
+        [
+          "oM4VmoabDAI",
+          "LoRA: Low-Rank Adaptation of Large Language Models - Explained with Code",
+          "Umar Jamil"
+        ]
+      ],
       "docs": [
         [
           "QLoRA paper",
@@ -16103,7 +21949,13 @@ window.aiResources = {
       ]
     },
     "glossary-math-training/relu": {
-      "videos": [],
+      "videos": [
+        [
+          "-jRDvP2NdMA",
+          "Activation Functions in Neural Networks \u2013 Part 2 | Leaky ReLU, PReLU, ELU, Swish, GELU & More",
+          "Bellic Robotics"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: ReLU",
@@ -16114,7 +21966,13 @@ window.aiResources = {
       ]
     },
     "glossary-math-training/rlhf-reinforcement-learning-from-human-feedback": {
-      "videos": [],
+      "videos": [
+        [
+          "0z6AhrOSrRs",
+          "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
+          "My Lesson"
+        ]
+      ],
       "docs": [
         [
           "InstructGPT paper",
@@ -16131,7 +21989,13 @@ window.aiResources = {
       ]
     },
     "glossary-math-training/sft-supervised-fine-tuning": {
-      "videos": [],
+      "videos": [
+        [
+          "0z6AhrOSrRs",
+          "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
+          "My Lesson"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: SFT (Supervised Fine-Tuning)",
@@ -16142,7 +22006,13 @@ window.aiResources = {
       ]
     },
     "glossary-math-training/softmax": {
-      "videos": [],
+      "videos": [
+        [
+          "0z6AhrOSrRs",
+          "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
+          "My Lesson"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Softmax",
@@ -16153,7 +22023,13 @@ window.aiResources = {
       ]
     },
     "glossary-math-training/stochastic-gradient-descent-sgd": {
-      "videos": [],
+      "videos": [
+        [
+          "0z6AhrOSrRs",
+          "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
+          "My Lesson"
+        ]
+      ],
       "docs": [
         [
           "Optimization Methods for Large-Scale Machine Learning",
@@ -16176,7 +22052,13 @@ window.aiResources = {
       ]
     },
     "glossary-math-training/transfer-learning": {
-      "videos": [],
+      "videos": [
+        [
+          "0z6AhrOSrRs",
+          "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
+          "My Lesson"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Transfer Learning",
@@ -16187,7 +22069,13 @@ window.aiResources = {
       ]
     },
     "glossary-math-training/underfitting": {
-      "videos": [],
+      "videos": [
+        [
+          "0z6AhrOSrRs",
+          "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
+          "My Lesson"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Underfitting",
@@ -16198,7 +22086,13 @@ window.aiResources = {
       ]
     },
     "glossary-math-training/warmup": {
-      "videos": [],
+      "videos": [
+        [
+          "0z6AhrOSrRs",
+          "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
+          "My Lesson"
+        ]
+      ],
       "docs": [
         [
           "Accurate, Large Minibatch SGD",
@@ -16215,7 +22109,13 @@ window.aiResources = {
       ]
     },
     "glossary-math-training/weight": {
-      "videos": [],
+      "videos": [
+        [
+          "WelZ-lfuO5E",
+          "How LLMs generate Text",
+          "Chroma"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Weight",
@@ -16226,7 +22126,13 @@ window.aiResources = {
       ]
     },
     "glossary-math-training/weight-decay": {
-      "videos": [],
+      "videos": [
+        [
+          "_SlPBbxuqas",
+          "NN - 16 - L2 Regularization / Weight Decay (Theory + @PyTorch code)",
+          "Meerkat Statistics"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Weight Decay",
@@ -16237,7 +22143,13 @@ window.aiResources = {
       ]
     },
     "glossary-models-inference/attention": {
-      "videos": [],
+      "videos": [
+        [
+          "eMlx5fFNoYc",
+          "Attention in transformers, step-by-step | Deep Learning Chapter 6",
+          "3Blue1Brown"
+        ]
+      ],
       "docs": [
         [
           "Attention Is All You Need",
@@ -16254,7 +22166,13 @@ window.aiResources = {
       ]
     },
     "glossary-models-inference/autoregressive": {
-      "videos": [],
+      "videos": [
+        [
+          "XtT5i0ZeHHE",
+          "AI Inference: The Secret to AI's Superpowers",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Autoregressive",
@@ -16265,7 +22183,13 @@ window.aiResources = {
       ]
     },
     "glossary-models-inference/cnn-convolutional-neural-network": {
-      "videos": [],
+      "videos": [
+        [
+          "XtT5i0ZeHHE",
+          "AI Inference: The Secret to AI's Superpowers",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: CNN (Convolutional Neural Network)",
@@ -16276,7 +22200,13 @@ window.aiResources = {
       ]
     },
     "glossary-models-inference/cuda": {
-      "videos": [],
+      "videos": [
+        [
+          "XtT5i0ZeHHE",
+          "AI Inference: The Secret to AI's Superpowers",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: CUDA",
@@ -16287,7 +22217,13 @@ window.aiResources = {
       ]
     },
     "glossary-models-inference/decoder": {
-      "videos": [],
+      "videos": [
+        [
+          "hRHnEXyU-YY",
+          "Encoder vs Decoder vs Encoder-Decoder Models Explained",
+          "AIChalkboord"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Decoder",
@@ -16298,7 +22234,13 @@ window.aiResources = {
       ]
     },
     "glossary-models-inference/decoding-strategy": {
-      "videos": [],
+      "videos": [
+        [
+          "XtT5i0ZeHHE",
+          "AI Inference: The Secret to AI's Superpowers",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "The Curious Case of Neural Text Degeneration",
@@ -16315,7 +22257,13 @@ window.aiResources = {
       ]
     },
     "glossary-models-inference/diffusion-model": {
-      "videos": [],
+      "videos": [
+        [
+          "1CIpzeNxIhU",
+          "Diffusion Models Explained - Computerphile",
+          "Computerphile"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Diffusion Model",
@@ -16326,7 +22274,13 @@ window.aiResources = {
       ]
     },
     "glossary-models-inference/encoder": {
-      "videos": [],
+      "videos": [
+        [
+          "hRHnEXyU-YY",
+          "Encoder vs Decoder vs Encoder-Decoder Models Explained",
+          "AIChalkboord"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Encoder",
@@ -16337,7 +22291,13 @@ window.aiResources = {
       ]
     },
     "glossary-models-inference/gan-generative-adversarial-network": {
-      "videos": [],
+      "videos": [
+        [
+          "XtT5i0ZeHHE",
+          "AI Inference: The Secret to AI's Superpowers",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: GAN (Generative Adversarial Network)",
@@ -16348,7 +22308,13 @@ window.aiResources = {
       ]
     },
     "glossary-models-inference/gpt": {
-      "videos": [],
+      "videos": [
+        [
+          "WmvZwR4rKJg",
+          "LLM Quantization Explained: GPTQ, AWQ, QLoRA, GGUF and More",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: GPT",
@@ -16359,7 +22325,13 @@ window.aiResources = {
       ]
     },
     "glossary-models-inference/inductive-bias": {
-      "videos": [],
+      "videos": [
+        [
+          "XtT5i0ZeHHE",
+          "AI Inference: The Secret to AI's Superpowers",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Inductive Bias",
@@ -16370,7 +22342,13 @@ window.aiResources = {
       ]
     },
     "glossary-models-inference/inference": {
-      "videos": [],
+      "videos": [
+        [
+          "VlmDWthjEzc",
+          "Temperature vs Top-P vs Top-K | Day -10 : AI Concepts You Can't Ignore",
+          "AI Foundry Hub"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Inference",
@@ -16381,7 +22359,13 @@ window.aiResources = {
       ]
     },
     "glossary-models-inference/kv-cache": {
-      "videos": [],
+      "videos": [
+        [
+          "XtT5i0ZeHHE",
+          "AI Inference: The Secret to AI's Superpowers",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: KV Cache",
@@ -16392,7 +22376,13 @@ window.aiResources = {
       ]
     },
     "glossary-models-inference/llm-large-language-model": {
-      "videos": [],
+      "videos": [
+        [
+          "XtT5i0ZeHHE",
+          "AI Inference: The Secret to AI's Superpowers",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: LLM (Large Language Model)",
@@ -16403,7 +22393,13 @@ window.aiResources = {
       ]
     },
     "glossary-models-inference/logits": {
-      "videos": [],
+      "videos": [
+        [
+          "XtT5i0ZeHHE",
+          "AI Inference: The Secret to AI's Superpowers",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Attention Is All You Need",
@@ -16420,7 +22416,13 @@ window.aiResources = {
       ]
     },
     "glossary-models-inference/moe-mixture-of-experts": {
-      "videos": [],
+      "videos": [
+        [
+          "XtT5i0ZeHHE",
+          "AI Inference: The Secret to AI's Superpowers",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: MoE (Mixture of Experts)",
@@ -16431,7 +22433,13 @@ window.aiResources = {
       ]
     },
     "glossary-models-inference/nucleus-sampling-top-p": {
-      "videos": [],
+      "videos": [
+        [
+          "XtT5i0ZeHHE",
+          "AI Inference: The Secret to AI's Superpowers",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "The Curious Case of Neural Text Degeneration",
@@ -16448,7 +22456,13 @@ window.aiResources = {
       ]
     },
     "glossary-models-inference/parameter": {
-      "videos": [],
+      "videos": [
+        [
+          "vGYcWvYnXiI",
+          "AI Basics: Accuracy, Epochs, Learning Rate, Batch Size and Loss",
+          "Prof. Ryan Ahmed"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Parameter",
@@ -16459,7 +22473,13 @@ window.aiResources = {
       ]
     },
     "glossary-models-inference/perplexity": {
-      "videos": [],
+      "videos": [
+        [
+          "T64FfSf7TQw",
+          "Perplexity Deep Research Tutorial: Full Reports in Minutes (Free)",
+          "AI Unboxed"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Perplexity",
@@ -16470,7 +22490,13 @@ window.aiResources = {
       ]
     },
     "glossary-models-inference/quantization": {
-      "videos": [],
+      "videos": [
+        [
+          "WmvZwR4rKJg",
+          "LLM Quantization Explained: GPTQ, AWQ, QLoRA, GGUF and More",
+          "Tales Of Tensors"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Quantization",
@@ -16481,7 +22507,13 @@ window.aiResources = {
       ]
     },
     "glossary-models-inference/self-attention": {
-      "videos": [],
+      "videos": [
+        [
+          "XtT5i0ZeHHE",
+          "AI Inference: The Secret to AI's Superpowers",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Self-Attention",
@@ -16492,7 +22524,13 @@ window.aiResources = {
       ]
     },
     "glossary-models-inference/speculative-decoding": {
-      "videos": [],
+      "videos": [
+        [
+          "VkWlLSTdHs8",
+          "Faster LLMs: Accelerate Inference with Speculative Decoding",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Fast Inference from Transformers via Speculative Decoding",
@@ -16509,7 +22547,13 @@ window.aiResources = {
       ]
     },
     "glossary-models-inference/stop-sequence": {
-      "videos": [],
+      "videos": [
+        [
+          "XtT5i0ZeHHE",
+          "AI Inference: The Secret to AI's Superpowers",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Transformers text-generation documentation",
@@ -16526,7 +22570,13 @@ window.aiResources = {
       ]
     },
     "glossary-models-inference/streaming": {
-      "videos": [],
+      "videos": [
+        [
+          "kWLhv9ds9tc",
+          "Answering AI Engineer Interview Question 2 \u2014 Streaming Tokens over SSE",
+          "tMain"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Streaming",
@@ -16537,7 +22587,13 @@ window.aiResources = {
       ]
     },
     "glossary-models-inference/temperature": {
-      "videos": [],
+      "videos": [
+        [
+          "VlmDWthjEzc",
+          "Temperature vs Top-P vs Top-K | Day -10 : AI Concepts You Can't Ignore",
+          "AI Foundry Hub"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Temperature",
@@ -16548,7 +22604,13 @@ window.aiResources = {
       ]
     },
     "glossary-models-inference/time-to-first-token-ttft": {
-      "videos": [],
+      "videos": [
+        [
+          "XtT5i0ZeHHE",
+          "AI Inference: The Secret to AI's Superpowers",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Time to First Token (TTFT)",
@@ -16559,7 +22621,13 @@ window.aiResources = {
       ]
     },
     "glossary-models-inference/top-k-sampling": {
-      "videos": [],
+      "videos": [
+        [
+          "XtT5i0ZeHHE",
+          "AI Inference: The Secret to AI's Superpowers",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "The Curious Case of Neural Text Degeneration",
@@ -16576,7 +22644,13 @@ window.aiResources = {
       ]
     },
     "glossary-models-inference/transformer": {
-      "videos": [],
+      "videos": [
+        [
+          "LUqKUTI9YBQ",
+          "Embeddings in AI Explained in 60 Seconds!",
+          "Analytics Vidhya"
+        ]
+      ],
       "docs": [
         [
           "Attention Is All You Need",
@@ -16593,7 +22667,13 @@ window.aiResources = {
       ]
     },
     "glossary-models-inference/vae-variational-autoencoder": {
-      "videos": [],
+      "videos": [
+        [
+          "XtT5i0ZeHHE",
+          "AI Inference: The Secret to AI's Superpowers",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Auto-Encoding Variational Bayes",
@@ -16610,7 +22690,13 @@ window.aiResources = {
       ]
     },
     "glossary-data-representations/byte-pair-encoding-bpe": {
-      "videos": [],
+      "videos": [
+        [
+          "VSFuqMh4hus",
+          "7 AI Terms You Need to Know: Agents, RAG, ASI & More",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Neural Machine Translation of Rare Words with Subword Units",
@@ -16627,7 +22713,13 @@ window.aiResources = {
       ]
     },
     "glossary-data-representations/cosine-similarity": {
-      "videos": [],
+      "videos": [
+        [
+          "VSFuqMh4hus",
+          "7 AI Terms You Need to Know: Agents, RAG, ASI & More",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Cosine Similarity",
@@ -16638,7 +22730,13 @@ window.aiResources = {
       ]
     },
     "glossary-data-representations/data-deduplication": {
-      "videos": [],
+      "videos": [
+        [
+          "VSFuqMh4hus",
+          "7 AI Terms You Need to Know: Agents, RAG, ASI & More",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Deduplicating Training Data Makes Language Models Better",
@@ -16655,7 +22753,13 @@ window.aiResources = {
       ]
     },
     "glossary-data-representations/data-leakage": {
-      "videos": [],
+      "videos": [
+        [
+          "j9X8m5KSQAc",
+          "What is data leakage in machine learning #ml #datascience",
+          "Karina Data Scientist"
+        ]
+      ],
       "docs": [
         [
           "scikit-learn: Data leakage",
@@ -16672,7 +22776,13 @@ window.aiResources = {
       ]
     },
     "glossary-data-representations/data-provenance": {
-      "videos": [],
+      "videos": [
+        [
+          "VSFuqMh4hus",
+          "7 AI Terms You Need to Know: Agents, RAG, ASI & More",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "W3C PROV Overview",
@@ -16689,7 +22799,13 @@ window.aiResources = {
       ]
     },
     "glossary-data-representations/dataset-split": {
-      "videos": [],
+      "videos": [
+        [
+          "VSFuqMh4hus",
+          "7 AI Terms You Need to Know: Agents, RAG, ASI & More",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Datasheets for Datasets",
@@ -16706,7 +22822,13 @@ window.aiResources = {
       ]
     },
     "glossary-data-representations/embedding": {
-      "videos": [],
+      "videos": [
+        [
+          "LUqKUTI9YBQ",
+          "Embeddings in AI Explained in 60 Seconds!",
+          "Analytics Vidhya"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Embedding",
@@ -16717,7 +22839,13 @@ window.aiResources = {
       ]
     },
     "glossary-data-representations/feature": {
-      "videos": [],
+      "videos": [
+        [
+          "qizyCPjk8x4",
+          "AI Cost Engineering Explained | 5 Areas to Optimize AI Costs",
+          "Mohamed Naji Aboo"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Feature",
@@ -16728,7 +22856,13 @@ window.aiResources = {
       ]
     },
     "glossary-data-representations/latent-space": {
-      "videos": [],
+      "videos": [
+        [
+          "VSFuqMh4hus",
+          "7 AI Terms You Need to Know: Agents, RAG, ASI & More",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Latent Space",
@@ -16739,7 +22873,13 @@ window.aiResources = {
       ]
     },
     "glossary-data-representations/tensor": {
-      "videos": [],
+      "videos": [
+        [
+          "VSFuqMh4hus",
+          "7 AI Terms You Need to Know: Agents, RAG, ASI & More",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Tensor",
@@ -16750,7 +22890,13 @@ window.aiResources = {
       ]
     },
     "glossary-data-representations/token": {
-      "videos": [],
+      "videos": [
+        [
+          "VEZXyhSxMCk",
+          "Tokenization explained: how an LLM turns text into numbers (BPE, token IDs, cost)",
+          "The AI Foundry"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Token",
@@ -16761,7 +22907,13 @@ window.aiResources = {
       ]
     },
     "glossary-data-representations/tokenization": {
-      "videos": [],
+      "videos": [
+        [
+          "VSFuqMh4hus",
+          "7 AI Terms You Need to Know: Agents, RAG, ASI & More",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Neural Machine Translation of Rare Words with Subword Units",
@@ -16778,7 +22930,13 @@ window.aiResources = {
       ]
     },
     "glossary-data-representations/vocabulary": {
-      "videos": [],
+      "videos": [
+        [
+          "VSFuqMh4hus",
+          "7 AI Terms You Need to Know: Agents, RAG, ASI & More",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Neural Machine Translation of Rare Words with Subword Units",
@@ -16795,7 +22953,13 @@ window.aiResources = {
       ]
     },
     "glossary-retrieval-generation/approximate-nearest-neighbor-ann": {
-      "videos": [],
+      "videos": [
+        [
+          "T-D1OfcDW1M",
+          "What is Retrieval-Augmented Generation (RAG)?",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Efficient and Robust Approximate Nearest Neighbor Search Using HNSW",
@@ -16812,7 +22976,13 @@ window.aiResources = {
       ]
     },
     "glossary-retrieval-generation/bm25": {
-      "videos": [],
+      "videos": [
+        [
+          "T-D1OfcDW1M",
+          "What is Retrieval-Augmented Generation (RAG)?",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "The Probabilistic Relevance Framework: BM25 and Beyond",
@@ -16829,7 +22999,13 @@ window.aiResources = {
       ]
     },
     "glossary-retrieval-generation/chunking": {
-      "videos": [],
+      "videos": [
+        [
+          "8OJC21T2SL4",
+          "5 Levels Of Text Splitting For Retrieval",
+          "Greg Kamradt"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Chunking",
@@ -16840,7 +23016,13 @@ window.aiResources = {
       ]
     },
     "glossary-retrieval-generation/dense-retrieval": {
-      "videos": [],
+      "videos": [
+        [
+          "T-D1OfcDW1M",
+          "What is Retrieval-Augmented Generation (RAG)?",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Dense Passage Retrieval",
@@ -16857,7 +23039,13 @@ window.aiResources = {
       ]
     },
     "glossary-retrieval-generation/grounding": {
-      "videos": [],
+      "videos": [
+        [
+          "T-D1OfcDW1M",
+          "What is Retrieval-Augmented Generation (RAG)?",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Grounding",
@@ -16868,7 +23056,13 @@ window.aiResources = {
       ]
     },
     "glossary-retrieval-generation/hnsw": {
-      "videos": [],
+      "videos": [
+        [
+          "T-D1OfcDW1M",
+          "What is Retrieval-Augmented Generation (RAG)?",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Efficient and Robust Approximate Nearest Neighbor Search Using HNSW",
@@ -16885,7 +23079,13 @@ window.aiResources = {
       ]
     },
     "glossary-retrieval-generation/hybrid-retrieval": {
-      "videos": [],
+      "videos": [
+        [
+          "T-D1OfcDW1M",
+          "What is Retrieval-Augmented Generation (RAG)?",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Hybrid Retrieval",
@@ -16896,7 +23096,13 @@ window.aiResources = {
       ]
     },
     "glossary-retrieval-generation/maximum-marginal-relevance-mmr": {
-      "videos": [],
+      "videos": [
+        [
+          "T-D1OfcDW1M",
+          "What is Retrieval-Augmented Generation (RAG)?",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "The Use of MMR, Diversity-Based Reranking for Reordering Documents and Producing Summaries",
@@ -16913,7 +23119,13 @@ window.aiResources = {
       ]
     },
     "glossary-retrieval-generation/rag-retrieval-augmented-generation": {
-      "videos": [],
+      "videos": [
+        [
+          "T-D1OfcDW1M",
+          "What is Retrieval-Augmented Generation (RAG)?",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Retrieval-Augmented Generation paper",
@@ -16930,7 +23142,13 @@ window.aiResources = {
       ]
     },
     "glossary-retrieval-generation/recall-k": {
-      "videos": [],
+      "videos": [
+        [
+          "T-D1OfcDW1M",
+          "What is Retrieval-Augmented Generation (RAG)?",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "BEIR",
@@ -16947,7 +23165,13 @@ window.aiResources = {
       ]
     },
     "glossary-retrieval-generation/reciprocal-rank-fusion-rrf": {
-      "videos": [],
+      "videos": [
+        [
+          "T-D1OfcDW1M",
+          "What is Retrieval-Augmented Generation (RAG)?",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Reciprocal Rank Fusion Outperforms Condorcet and Individual Rank Learning Methods",
@@ -16964,7 +23188,13 @@ window.aiResources = {
       ]
     },
     "glossary-retrieval-generation/reranker": {
-      "videos": [],
+      "videos": [
+        [
+          "T-D1OfcDW1M",
+          "What is Retrieval-Augmented Generation (RAG)?",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Reranker",
@@ -16975,7 +23205,13 @@ window.aiResources = {
       ]
     },
     "glossary-retrieval-generation/semantic-search": {
-      "videos": [],
+      "videos": [
+        [
+          "T-D1OfcDW1M",
+          "What is Retrieval-Augmented Generation (RAG)?",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Semantic Search",
@@ -16986,7 +23222,13 @@ window.aiResources = {
       ]
     },
     "glossary-retrieval-generation/vector-database": {
-      "videos": [],
+      "videos": [
+        [
+          "T-D1OfcDW1M",
+          "What is Retrieval-Augmented Generation (RAG)?",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Vector Database",
@@ -16997,7 +23239,13 @@ window.aiResources = {
       ]
     },
     "glossary-prompting-context/chain-of-thought-cot": {
-      "videos": [],
+      "videos": [
+        [
+          "vD0E3EUb8-8",
+          "Context Engineering vs. Prompt Engineering: Smarter AI with RAG & Agents",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Chain of Thought (CoT)",
@@ -17008,7 +23256,13 @@ window.aiResources = {
       ]
     },
     "glossary-prompting-context/context-compression": {
-      "videos": [],
+      "videos": [
+        [
+          "vD0E3EUb8-8",
+          "Context Engineering vs. Prompt Engineering: Smarter AI with RAG & Agents",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "LLMLingua",
@@ -17025,7 +23279,13 @@ window.aiResources = {
       ]
     },
     "glossary-prompting-context/context-engineering": {
-      "videos": [],
+      "videos": [
+        [
+          "vD0E3EUb8-8",
+          "Context Engineering vs. Prompt Engineering: Smarter AI with RAG & Agents",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Context Engineering",
@@ -17036,7 +23296,13 @@ window.aiResources = {
       ]
     },
     "glossary-prompting-context/context-window": {
-      "videos": [],
+      "videos": [
+        [
+          "-QVoIxEpFkM",
+          "What is a Context Window? Unlocking LLM Secrets",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Context Window",
@@ -17047,7 +23313,13 @@ window.aiResources = {
       ]
     },
     "glossary-prompting-context/few-shot": {
-      "videos": [],
+      "videos": [
+        [
+          "vD0E3EUb8-8",
+          "Context Engineering vs. Prompt Engineering: Smarter AI with RAG & Agents",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Few-Shot",
@@ -17058,7 +23330,13 @@ window.aiResources = {
       ]
     },
     "glossary-prompting-context/in-context-learning": {
-      "videos": [],
+      "videos": [
+        [
+          "vD0E3EUb8-8",
+          "Context Engineering vs. Prompt Engineering: Smarter AI with RAG & Agents",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Language Models are Few-Shot Learners",
@@ -17075,7 +23353,13 @@ window.aiResources = {
       ]
     },
     "glossary-prompting-context/instruction-following": {
-      "videos": [],
+      "videos": [
+        [
+          "vD0E3EUb8-8",
+          "Context Engineering vs. Prompt Engineering: Smarter AI with RAG & Agents",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Finetuned Language Models Are Zero-Shot Learners",
@@ -17092,7 +23376,13 @@ window.aiResources = {
       ]
     },
     "glossary-prompting-context/instruction-hierarchy": {
-      "videos": [],
+      "videos": [
+        [
+          "vD0E3EUb8-8",
+          "Context Engineering vs. Prompt Engineering: Smarter AI with RAG & Agents",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "The Instruction Hierarchy",
@@ -17109,7 +23399,13 @@ window.aiResources = {
       ]
     },
     "glossary-prompting-context/lost-in-the-middle": {
-      "videos": [],
+      "videos": [
+        [
+          "vD0E3EUb8-8",
+          "Context Engineering vs. Prompt Engineering: Smarter AI with RAG & Agents",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Lost in the Middle",
@@ -17126,7 +23422,13 @@ window.aiResources = {
       ]
     },
     "glossary-prompting-context/prompt-cache": {
-      "videos": [],
+      "videos": [
+        [
+          "vD0E3EUb8-8",
+          "Context Engineering vs. Prompt Engineering: Smarter AI with RAG & Agents",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Prompt Cache",
@@ -17137,7 +23439,13 @@ window.aiResources = {
       ]
     },
     "glossary-prompting-context/prompt-engineering": {
-      "videos": [],
+      "videos": [
+        [
+          "vD0E3EUb8-8",
+          "Context Engineering vs. Prompt Engineering: Smarter AI with RAG & Agents",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Prompt Engineering",
@@ -17148,7 +23456,13 @@ window.aiResources = {
       ]
     },
     "glossary-prompting-context/prompt-sensitivity": {
-      "videos": [],
+      "videos": [
+        [
+          "vD0E3EUb8-8",
+          "Context Engineering vs. Prompt Engineering: Smarter AI with RAG & Agents",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "ProSA",
@@ -17165,7 +23479,13 @@ window.aiResources = {
       ]
     },
     "glossary-prompting-context/system-prompt": {
-      "videos": [],
+      "videos": [
+        [
+          "WiG9z4tqB5U",
+          "System prompt vs user prompt: what's the difference? #chatgpt  #promptengineering  #ai  #llm",
+          "AI Literacy Lab"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: System Prompt",
@@ -17176,7 +23496,13 @@ window.aiResources = {
       ]
     },
     "glossary-prompting-context/token-budget": {
-      "videos": [],
+      "videos": [
+        [
+          "vD0E3EUb8-8",
+          "Context Engineering vs. Prompt Engineering: Smarter AI with RAG & Agents",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Token Budget",
@@ -17187,7 +23513,13 @@ window.aiResources = {
       ]
     },
     "glossary-prompting-context/zero-shot": {
-      "videos": [],
+      "videos": [
+        [
+          "vD0E3EUb8-8",
+          "Context Engineering vs. Prompt Engineering: Smarter AI with RAG & Agents",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Zero-Shot",
@@ -17198,7 +23530,13 @@ window.aiResources = {
       ]
     },
     "glossary-agents-tools/agent": {
-      "videos": [],
+      "videos": [
+        [
+          "8HqeY5v0ohM",
+          "AutoGen vs CrewAI vs LangGraph \u2013 Best AI Agent Framework In 2025!",
+          "Digibase Media"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Agent",
@@ -17209,7 +23547,13 @@ window.aiResources = {
       ]
     },
     "glossary-agents-tools/agent-harness": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Agent Harness",
@@ -17220,7 +23564,13 @@ window.aiResources = {
       ]
     },
     "glossary-agents-tools/agent-memory": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Generative Agents",
@@ -17237,7 +23587,13 @@ window.aiResources = {
       ]
     },
     "glossary-agents-tools/agent-state": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Agent State",
@@ -17248,7 +23604,13 @@ window.aiResources = {
       ]
     },
     "glossary-agents-tools/agent-skill": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Agent Skills specification",
@@ -17265,7 +23627,13 @@ window.aiResources = {
       ]
     },
     "glossary-agents-tools/approval-gate": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Approval Gate",
@@ -17276,7 +23644,13 @@ window.aiResources = {
       ]
     },
     "glossary-agents-tools/checkpoint": {
-      "videos": [],
+      "videos": [
+        [
+          "9iS-YYLIXiw",
+          "What is Human In The Loop with AI? How HITL Shapes AI Systems",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Checkpoint",
@@ -17287,7 +23661,13 @@ window.aiResources = {
       ]
     },
     "glossary-agents-tools/compensating-action": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Sagas",
@@ -17304,7 +23684,13 @@ window.aiResources = {
       ]
     },
     "glossary-agents-tools/delegation": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Building Effective Agents",
@@ -17321,7 +23707,13 @@ window.aiResources = {
       ]
     },
     "glossary-agents-tools/durable-execution": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Durable Execution",
@@ -17332,7 +23724,13 @@ window.aiResources = {
       ]
     },
     "glossary-agents-tools/function-calling": {
-      "videos": [],
+      "videos": [
+        [
+          "TEKLOiCZMOo",
+          "What Is Function Calling in AI? \ud83e\udd16 Explained with a Simple Example #Shorts",
+          "#NaghmasTechWorld"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Function Calling",
@@ -17343,7 +23741,13 @@ window.aiResources = {
       ]
     },
     "glossary-agents-tools/human-in-the-loop-hitl": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Human-in-the-Loop (HITL)",
@@ -17354,7 +23758,13 @@ window.aiResources = {
       ]
     },
     "glossary-agents-tools/mcp-model-context-protocol": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "MCP 2026-07-28 key changes",
@@ -17371,7 +23781,13 @@ window.aiResources = {
       ]
     },
     "glossary-agents-tools/multi-round-trip-request-mrtr": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "MCP Multi Round-Trip Requests",
@@ -17388,7 +23804,13 @@ window.aiResources = {
       ]
     },
     "glossary-agents-tools/orchestration": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Building Effective Agents",
@@ -17405,7 +23827,13 @@ window.aiResources = {
       ]
     },
     "glossary-agents-tools/planning": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "LLM+P",
@@ -17422,7 +23850,13 @@ window.aiResources = {
       ]
     },
     "glossary-agents-tools/react": {
-      "videos": [],
+      "videos": [
+        [
+          "K0Bl2ecW5s8",
+          "How AI Agents Actually Think | ReAct (Reason + Act) Explained Simply",
+          "SomethingTalk1 -  AI Meets Engineering Thinking"
+        ]
+      ],
       "docs": [
         [
           "ReAct",
@@ -17439,7 +23873,13 @@ window.aiResources = {
       ]
     },
     "glossary-agents-tools/sandbox": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Sandbox",
@@ -17450,7 +23890,13 @@ window.aiResources = {
       ]
     },
     "glossary-agents-tools/skill-bundle": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Agent Skills specification",
@@ -17467,7 +23913,13 @@ window.aiResources = {
       ]
     },
     "glossary-agents-tools/skill-catalog": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Agent Skills specification",
@@ -17484,7 +23936,13 @@ window.aiResources = {
       ]
     },
     "glossary-agents-tools/skill-discovery": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Agent Skills client implementation guide",
@@ -17501,7 +23959,13 @@ window.aiResources = {
       ]
     },
     "glossary-agents-tools/skill-invocation": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Evaluating Agent Skills",
@@ -17518,7 +23982,13 @@ window.aiResources = {
       ]
     },
     "glossary-agents-tools/stateless-mcp": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "MCP 2026-07-28 key changes",
@@ -17541,7 +24011,13 @@ window.aiResources = {
       ]
     },
     "glossary-agents-tools/structured-output": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Structured Output",
@@ -17552,7 +24028,13 @@ window.aiResources = {
       ]
     },
     "glossary-agents-tools/swarm": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Swarm",
@@ -17563,7 +24045,13 @@ window.aiResources = {
       ]
     },
     "glossary-agents-tools/termination-condition": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "AutoGen",
@@ -17580,7 +24068,13 @@ window.aiResources = {
       ]
     },
     "glossary-agents-tools/tool-contract": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Tool Contract",
@@ -17591,7 +24085,13 @@ window.aiResources = {
       ]
     },
     "glossary-evaluation-safety/alignment": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Alignment",
@@ -17602,7 +24102,13 @@ window.aiResources = {
       ]
     },
     "glossary-evaluation-safety/benchmark-contamination": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Investigating Data Contamination in Modern Benchmarks for Large Language Models",
@@ -17619,7 +24125,13 @@ window.aiResources = {
       ]
     },
     "glossary-evaluation-safety/calibration": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "On Calibration of Modern Neural Networks",
@@ -17636,7 +24148,13 @@ window.aiResources = {
       ]
     },
     "glossary-evaluation-safety/distribution-shift": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "WILDS",
@@ -17653,7 +24171,13 @@ window.aiResources = {
       ]
     },
     "glossary-evaluation-safety/eval-set": {
-      "videos": [],
+      "videos": [
+        [
+          "Mk8mUXh20r8",
+          "Context Engineering and How to Run a Successful Eval | Applied AI Technology Conference",
+          "Business Analysis Community"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Eval Set",
@@ -17664,7 +24188,13 @@ window.aiResources = {
       ]
     },
     "glossary-evaluation-safety/evaluation-eval": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Evaluation (Eval)",
@@ -17675,7 +24205,13 @@ window.aiResources = {
       ]
     },
     "glossary-evaluation-safety/exact-match-em": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "SQuAD",
@@ -17692,7 +24228,13 @@ window.aiResources = {
       ]
     },
     "glossary-evaluation-safety/guardrails": {
-      "videos": [],
+      "videos": [
+        [
+          "c9O72YmuUuc",
+          "Part 7 | AI Output Can Be Dangerous \u2014 Output Guardrails Explained | AI Security",
+          "Pentest Diaries"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Guardrails",
@@ -17703,7 +24245,13 @@ window.aiResources = {
       ]
     },
     "glossary-evaluation-safety/hallucination": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Hallucination",
@@ -17714,7 +24262,13 @@ window.aiResources = {
       ]
     },
     "glossary-evaluation-safety/least-privilege": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Least Privilege",
@@ -17725,7 +24279,13 @@ window.aiResources = {
       ]
     },
     "glossary-evaluation-safety/llm-as-a-judge": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: LLM-as-a-Judge",
@@ -17736,7 +24296,13 @@ window.aiResources = {
       ]
     },
     "glossary-evaluation-safety/model-card": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Model Cards for Model Reporting",
@@ -17753,7 +24319,13 @@ window.aiResources = {
       ]
     },
     "glossary-evaluation-safety/pass-k": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Evaluating Large Language Models Trained on Code",
@@ -17770,7 +24342,13 @@ window.aiResources = {
       ]
     },
     "glossary-evaluation-safety/precision-recall": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Precision & Recall",
@@ -17781,7 +24359,13 @@ window.aiResources = {
       ]
     },
     "glossary-evaluation-safety/prompt-injection": {
-      "videos": [],
+      "videos": [
+        [
+          "jrHRe9lSqqA",
+          "What Is a Prompt Injection Attack?",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "OWASP prompt injection guidance",
@@ -17798,7 +24382,13 @@ window.aiResources = {
       ]
     },
     "glossary-evaluation-safety/rouge": {
-      "videos": [],
+      "videos": [
+        [
+          "M05L1DhFqcw",
+          "What is the BLEU metric?",
+          "Hugging Face"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: ROUGE",
@@ -17809,7 +24399,13 @@ window.aiResources = {
       ]
     },
     "glossary-evaluation-safety/verification-gate": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Verification Gate",
@@ -17820,7 +24416,13 @@ window.aiResources = {
       ]
     },
     "glossary-ai-native-development/backpressure": {
-      "videos": [],
+      "videos": [
+        [
+          "9u6xvcNJaxc",
+          "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
+          "AI Engineer"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Backpressure",
@@ -17831,7 +24433,13 @@ window.aiResources = {
       ]
     },
     "glossary-ai-native-development/circuit-breaker": {
-      "videos": [],
+      "videos": [
+        [
+          "9u6xvcNJaxc",
+          "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
+          "AI Engineer"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Circuit Breaker",
@@ -17842,7 +24450,13 @@ window.aiResources = {
       ]
     },
     "glossary-ai-native-development/coding-agent": {
-      "videos": [],
+      "videos": [
+        [
+          "9u6xvcNJaxc",
+          "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
+          "AI Engineer"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Coding Agent",
@@ -17853,7 +24467,13 @@ window.aiResources = {
       ]
     },
     "glossary-ai-native-development/cost-per-successful-task": {
-      "videos": [],
+      "videos": [
+        [
+          "9u6xvcNJaxc",
+          "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
+          "AI Engineer"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Cost per Successful Task",
@@ -17864,7 +24484,13 @@ window.aiResources = {
       ]
     },
     "glossary-ai-native-development/flaky-test": {
-      "videos": [],
+      "videos": [
+        [
+          "9u6xvcNJaxc",
+          "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
+          "AI Engineer"
+        ]
+      ],
       "docs": [
         [
           "De-Flake Your Tests",
@@ -17881,7 +24507,13 @@ window.aiResources = {
       ]
     },
     "glossary-ai-native-development/handoff": {
-      "videos": [],
+      "videos": [
+        [
+          "9u6xvcNJaxc",
+          "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
+          "AI Engineer"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Handoff",
@@ -17892,7 +24524,13 @@ window.aiResources = {
       ]
     },
     "glossary-ai-native-development/idempotency": {
-      "videos": [],
+      "videos": [
+        [
+          "9u6xvcNJaxc",
+          "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
+          "AI Engineer"
+        ]
+      ],
       "docs": [
         [
           "HTTP Semantics: idempotent methods",
@@ -17909,7 +24547,13 @@ window.aiResources = {
       ]
     },
     "glossary-ai-native-development/model-router": {
-      "videos": [],
+      "videos": [
+        [
+          "9u6xvcNJaxc",
+          "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
+          "AI Engineer"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Model Router",
@@ -17920,7 +24564,13 @@ window.aiResources = {
       ]
     },
     "glossary-ai-native-development/observability": {
-      "videos": [],
+      "videos": [
+        [
+          "9u6xvcNJaxc",
+          "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
+          "AI Engineer"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Observability",
@@ -17931,7 +24581,13 @@ window.aiResources = {
       ]
     },
     "glossary-ai-native-development/patch": {
-      "videos": [],
+      "videos": [
+        [
+          "9u6xvcNJaxc",
+          "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
+          "AI Engineer"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Patch",
@@ -17942,7 +24598,13 @@ window.aiResources = {
       ]
     },
     "glossary-ai-native-development/progressive-disclosure": {
-      "videos": [],
+      "videos": [
+        [
+          "9u6xvcNJaxc",
+          "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
+          "AI Engineer"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Progressive Disclosure",
@@ -17953,7 +24615,13 @@ window.aiResources = {
       ]
     },
     "glossary-ai-native-development/rate-limit": {
-      "videos": [],
+      "videos": [
+        [
+          "9u6xvcNJaxc",
+          "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
+          "AI Engineer"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Rate Limit",
@@ -17964,7 +24632,13 @@ window.aiResources = {
       ]
     },
     "glossary-ai-native-development/regression-test": {
-      "videos": [],
+      "videos": [
+        [
+          "A3PVpmvyNDg",
+          "AI Regression Testing: Same Idea, New Approach!",
+          "Latitude"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Regression Test",
@@ -17975,7 +24649,13 @@ window.aiResources = {
       ]
     },
     "glossary-ai-native-development/repository-instructions": {
-      "videos": [],
+      "videos": [
+        [
+          "9u6xvcNJaxc",
+          "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
+          "AI Engineer"
+        ]
+      ],
       "docs": [
         [
           "AGENTS.md specification",
@@ -17992,7 +24672,13 @@ window.aiResources = {
       ]
     },
     "glossary-ai-native-development/repository-map": {
-      "videos": [],
+      "videos": [
+        [
+          "9u6xvcNJaxc",
+          "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
+          "AI Engineer"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Repository Map",
@@ -18003,7 +24689,13 @@ window.aiResources = {
       ]
     },
     "glossary-ai-native-development/reproducible-build": {
-      "videos": [],
+      "videos": [
+        [
+          "9u6xvcNJaxc",
+          "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
+          "AI Engineer"
+        ]
+      ],
       "docs": [
         [
           "Reproducible Builds definition",
@@ -18020,7 +24712,13 @@ window.aiResources = {
       ]
     },
     "glossary-ai-native-development/retry-with-backoff": {
-      "videos": [],
+      "videos": [
+        [
+          "9u6xvcNJaxc",
+          "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
+          "AI Engineer"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Retry with Backoff",
@@ -18031,7 +24729,13 @@ window.aiResources = {
       ]
     },
     "glossary-ai-native-development/reviewer-agent": {
-      "videos": [],
+      "videos": [
+        [
+          "9u6xvcNJaxc",
+          "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
+          "AI Engineer"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Reviewer Agent",
@@ -18042,7 +24746,13 @@ window.aiResources = {
       ]
     },
     "glossary-ai-native-development/scope-contract": {
-      "videos": [],
+      "videos": [
+        [
+          "9u6xvcNJaxc",
+          "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
+          "AI Engineer"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Scope Contract",
@@ -18053,7 +24763,13 @@ window.aiResources = {
       ]
     },
     "glossary-ai-native-development/semantic-cache": {
-      "videos": [],
+      "videos": [
+        [
+          "9u6xvcNJaxc",
+          "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
+          "AI Engineer"
+        ]
+      ],
       "docs": [
         [
           "Term Glossary Page: Semantic Cache",
@@ -18064,7 +24780,13 @@ window.aiResources = {
       ]
     },
     "glossary-ai-native-development/test-oracle": {
-      "videos": [],
+      "videos": [
+        [
+          "9u6xvcNJaxc",
+          "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
+          "AI Engineer"
+        ]
+      ],
       "docs": [
         [
           "The Oracle Problem in Software Testing",
@@ -18081,7 +24803,13 @@ window.aiResources = {
       ]
     },
     "glossary-ai-native-development/trace": {
-      "videos": [],
+      "videos": [
+        [
+          "9u6xvcNJaxc",
+          "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
+          "AI Engineer"
+        ]
+      ],
       "docs": [
         [
           "OpenTelemetry traces",
@@ -18098,7 +24826,13 @@ window.aiResources = {
       ]
     },
     "glossary-ai-native-development/worktree": {
-      "videos": [],
+      "videos": [
+        [
+          "9u6xvcNJaxc",
+          "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
+          "AI Engineer"
+        ]
+      ],
       "docs": [
         [
           "git-worktree documentation",
@@ -18115,7 +24849,13 @@ window.aiResources = {
       ]
     },
     "glossary-infrastructure-serving/autoscaling": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Kubernetes Horizontal Pod Autoscaling",
@@ -18132,7 +24872,13 @@ window.aiResources = {
       ]
     },
     "glossary-infrastructure-serving/chunked-prefill": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Sarathi-Serve",
@@ -18149,7 +24895,13 @@ window.aiResources = {
       ]
     },
     "glossary-infrastructure-serving/continuous-batching": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Orca",
@@ -18166,7 +24918,13 @@ window.aiResources = {
       ]
     },
     "glossary-infrastructure-serving/decode-phase": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "DistServe",
@@ -18183,7 +24941,13 @@ window.aiResources = {
       ]
     },
     "glossary-infrastructure-serving/disaggregated-serving": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "DistServe",
@@ -18200,7 +24964,13 @@ window.aiResources = {
       ]
     },
     "glossary-infrastructure-serving/dynamic-batching": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "NVIDIA Triton: Models and Schedulers",
@@ -18217,7 +24987,13 @@ window.aiResources = {
       ]
     },
     "glossary-infrastructure-serving/expert-parallelism": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "GShard",
@@ -18234,7 +25010,13 @@ window.aiResources = {
       ]
     },
     "glossary-infrastructure-serving/flashattention": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "FlashAttention",
@@ -18251,7 +25033,13 @@ window.aiResources = {
       ]
     },
     "glossary-infrastructure-serving/goodput": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "DistServe",
@@ -18268,7 +25056,13 @@ window.aiResources = {
       ]
     },
     "glossary-infrastructure-serving/inter-token-latency-itl": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "DistServe",
@@ -18285,7 +25079,13 @@ window.aiResources = {
       ]
     },
     "glossary-infrastructure-serving/model-serving": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Clipper",
@@ -18302,7 +25102,13 @@ window.aiResources = {
       ]
     },
     "glossary-infrastructure-serving/paged-kv-cache": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Efficient Memory Management for Large Language Model Serving with PagedAttention",
@@ -18319,7 +25125,13 @@ window.aiResources = {
       ]
     },
     "glossary-infrastructure-serving/pipeline-parallelism": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "GPipe",
@@ -18336,7 +25148,13 @@ window.aiResources = {
       ]
     },
     "glossary-infrastructure-serving/prefill": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Sarathi-Serve",
@@ -18359,7 +25177,13 @@ window.aiResources = {
       ]
     },
     "glossary-infrastructure-serving/prefix-caching": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "SGLang",
@@ -18376,7 +25200,13 @@ window.aiResources = {
       ]
     },
     "glossary-infrastructure-serving/tensor-parallelism": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Megatron-LM",
@@ -18393,7 +25223,13 @@ window.aiResources = {
       ]
     },
     "glossary-infrastructure-serving/time-per-output-token-tpot": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "DistServe",
@@ -18410,7 +25246,13 @@ window.aiResources = {
       ]
     },
     "glossary-infrastructure-serving/tokens-per-second-tps": {
-      "videos": [],
+      "videos": [
+        [
+          "SIZsFGvtClM",
+          "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Sarathi-Serve",
@@ -18427,7 +25269,13 @@ window.aiResources = {
       ]
     },
     "glossary-reliability-operations/admission-control": {
-      "videos": [],
+      "videos": [
+        [
+          "kASZ4Y7lrcU",
+          "Concepts behind the AI Glossary",
+          "Technology Debunk"
+        ]
+      ],
       "docs": [
         [
           "Google SRE: Handling Overload",
@@ -18444,7 +25292,13 @@ window.aiResources = {
       ]
     },
     "glossary-reliability-operations/availability": {
-      "videos": [],
+      "videos": [
+        [
+          "kASZ4Y7lrcU",
+          "Concepts behind the AI Glossary",
+          "Technology Debunk"
+        ]
+      ],
       "docs": [
         [
           "Google SRE: Service Level Objectives",
@@ -18461,7 +25315,13 @@ window.aiResources = {
       ]
     },
     "glossary-reliability-operations/canary-release": {
-      "videos": [],
+      "videos": [
+        [
+          "kASZ4Y7lrcU",
+          "Concepts behind the AI Glossary",
+          "Technology Debunk"
+        ]
+      ],
       "docs": [
         [
           "Kubernetes Deployments: Canary Deployment",
@@ -18478,7 +25338,13 @@ window.aiResources = {
       ]
     },
     "glossary-reliability-operations/deadline-propagation": {
-      "videos": [],
+      "videos": [
+        [
+          "kASZ4Y7lrcU",
+          "Concepts behind the AI Glossary",
+          "Technology Debunk"
+        ]
+      ],
       "docs": [
         [
           "gRPC Deadlines",
@@ -18495,7 +25361,13 @@ window.aiResources = {
       ]
     },
     "glossary-reliability-operations/error-budget": {
-      "videos": [],
+      "videos": [
+        [
+          "kASZ4Y7lrcU",
+          "Concepts behind the AI Glossary",
+          "Technology Debunk"
+        ]
+      ],
       "docs": [
         [
           "Google SRE Workbook: Error Budget Policy",
@@ -18512,7 +25384,13 @@ window.aiResources = {
       ]
     },
     "glossary-reliability-operations/graceful-degradation": {
-      "videos": [],
+      "videos": [
+        [
+          "kASZ4Y7lrcU",
+          "Concepts behind the AI Glossary",
+          "Technology Debunk"
+        ]
+      ],
       "docs": [
         [
           "Google SRE: Addressing Cascading Failures",
@@ -18529,7 +25407,13 @@ window.aiResources = {
       ]
     },
     "glossary-reliability-operations/incident-response": {
-      "videos": [],
+      "videos": [
+        [
+          "kASZ4Y7lrcU",
+          "Concepts behind the AI Glossary",
+          "Technology Debunk"
+        ]
+      ],
       "docs": [
         [
           "Google SRE: Managing Incidents",
@@ -18552,7 +25436,13 @@ window.aiResources = {
       ]
     },
     "glossary-reliability-operations/load-shedding": {
-      "videos": [],
+      "videos": [
+        [
+          "kASZ4Y7lrcU",
+          "Concepts behind the AI Glossary",
+          "Technology Debunk"
+        ]
+      ],
       "docs": [
         [
           "Google SRE: Handling Overload",
@@ -18569,7 +25459,13 @@ window.aiResources = {
       ]
     },
     "glossary-reliability-operations/postmortem": {
-      "videos": [],
+      "videos": [
+        [
+          "kASZ4Y7lrcU",
+          "Concepts behind the AI Glossary",
+          "Technology Debunk"
+        ]
+      ],
       "docs": [
         [
           "Google SRE: Postmortem Culture",
@@ -18586,7 +25482,13 @@ window.aiResources = {
       ]
     },
     "glossary-reliability-operations/readiness-probe": {
-      "videos": [],
+      "videos": [
+        [
+          "kASZ4Y7lrcU",
+          "Concepts behind the AI Glossary",
+          "Technology Debunk"
+        ]
+      ],
       "docs": [
         [
           "Kubernetes Liveness, Readiness, and Startup Probes",
@@ -18603,7 +25505,13 @@ window.aiResources = {
       ]
     },
     "glossary-reliability-operations/retry-budget": {
-      "videos": [],
+      "videos": [
+        [
+          "kASZ4Y7lrcU",
+          "Concepts behind the AI Glossary",
+          "Technology Debunk"
+        ]
+      ],
       "docs": [
         [
           "Google SRE: Addressing Cascading Failures",
@@ -18620,7 +25528,13 @@ window.aiResources = {
       ]
     },
     "glossary-reliability-operations/rollback": {
-      "videos": [],
+      "videos": [
+        [
+          "kASZ4Y7lrcU",
+          "Concepts behind the AI Glossary",
+          "Technology Debunk"
+        ]
+      ],
       "docs": [
         [
           "Kubernetes Deployments: Rolling Back",
@@ -18637,7 +25551,13 @@ window.aiResources = {
       ]
     },
     "glossary-reliability-operations/saturation": {
-      "videos": [],
+      "videos": [
+        [
+          "kASZ4Y7lrcU",
+          "Concepts behind the AI Glossary",
+          "Technology Debunk"
+        ]
+      ],
       "docs": [
         [
           "Google SRE: Monitoring Distributed Systems",
@@ -18654,7 +25574,13 @@ window.aiResources = {
       ]
     },
     "glossary-reliability-operations/service-level-indicator-sli": {
-      "videos": [],
+      "videos": [
+        [
+          "kASZ4Y7lrcU",
+          "Concepts behind the AI Glossary",
+          "Technology Debunk"
+        ]
+      ],
       "docs": [
         [
           "Google SRE: Service Level Objectives",
@@ -18671,7 +25597,13 @@ window.aiResources = {
       ]
     },
     "glossary-reliability-operations/service-level-objective-slo": {
-      "videos": [],
+      "videos": [
+        [
+          "kASZ4Y7lrcU",
+          "Concepts behind the AI Glossary",
+          "Technology Debunk"
+        ]
+      ],
       "docs": [
         [
           "Google SRE: Service Level Objectives",
@@ -18688,7 +25620,13 @@ window.aiResources = {
       ]
     },
     "glossary-reliability-operations/shadow-traffic": {
-      "videos": [],
+      "videos": [
+        [
+          "kASZ4Y7lrcU",
+          "Concepts behind the AI Glossary",
+          "Technology Debunk"
+        ]
+      ],
       "docs": [
         [
           "Istio Traffic Mirroring",
@@ -18705,7 +25643,13 @@ window.aiResources = {
       ]
     },
     "glossary-reliability-operations/tail-latency": {
-      "videos": [],
+      "videos": [
+        [
+          "kASZ4Y7lrcU",
+          "Concepts behind the AI Glossary",
+          "Technology Debunk"
+        ]
+      ],
       "docs": [
         [
           "The Tail at Scale",
@@ -18722,7 +25666,13 @@ window.aiResources = {
       ]
     },
     "glossary-security-governance/ai-risk-assessment": {
-      "videos": [],
+      "videos": [
+        [
+          "4QXtObc61Lw",
+          "Security & AI Governance: Reducing Risks in AI Systems",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "NIST AI Risk Management Framework",
@@ -18739,7 +25689,13 @@ window.aiResources = {
       ]
     },
     "glossary-security-governance/audit-log": {
-      "videos": [],
+      "videos": [
+        [
+          "4QXtObc61Lw",
+          "Security & AI Governance: Reducing Risks in AI Systems",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "NIST SP 800-92",
@@ -18756,7 +25712,13 @@ window.aiResources = {
       ]
     },
     "glossary-security-governance/content-provenance": {
-      "videos": [],
+      "videos": [
+        [
+          "4QXtObc61Lw",
+          "Security & AI Governance: Reducing Risks in AI Systems",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "C2PA Technical Specification",
@@ -18773,7 +25735,13 @@ window.aiResources = {
       ]
     },
     "glossary-security-governance/data-classification": {
-      "videos": [],
+      "videos": [
+        [
+          "4QXtObc61Lw",
+          "Security & AI Governance: Reducing Risks in AI Systems",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "NIST SP 1800-39 Initial Public Draft: Data Classification Practices",
@@ -18796,7 +25764,13 @@ window.aiResources = {
       ]
     },
     "glossary-security-governance/data-exfiltration": {
-      "videos": [],
+      "videos": [
+        [
+          "4QXtObc61Lw",
+          "Security & AI Governance: Reducing Risks in AI Systems",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "NIST SP 800-53 Rev. 5: AC-4 Information Flow Enforcement",
@@ -18813,7 +25787,13 @@ window.aiResources = {
       ]
     },
     "glossary-security-governance/data-lineage": {
-      "videos": [],
+      "videos": [
+        [
+          "4QXtObc61Lw",
+          "Security & AI Governance: Reducing Risks in AI Systems",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "W3C PROV-O",
@@ -18830,7 +25810,13 @@ window.aiResources = {
       ]
     },
     "glossary-security-governance/data-minimization": {
-      "videos": [],
+      "videos": [
+        [
+          "4QXtObc61Lw",
+          "Security & AI Governance: Reducing Risks in AI Systems",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "General Data Protection Regulation, Article 5(1)(c)",
@@ -18847,7 +25833,13 @@ window.aiResources = {
       ]
     },
     "glossary-security-governance/datasheet-for-datasets": {
-      "videos": [],
+      "videos": [
+        [
+          "4QXtObc61Lw",
+          "Security & AI Governance: Reducing Risks in AI Systems",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Datasheets for Datasets",
@@ -18864,7 +25856,13 @@ window.aiResources = {
       ]
     },
     "glossary-security-governance/defense-in-depth": {
-      "videos": [],
+      "videos": [
+        [
+          "4QXtObc61Lw",
+          "Security & AI Governance: Reducing Risks in AI Systems",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "NIST Glossary: Defense in Depth",
@@ -18881,7 +25879,13 @@ window.aiResources = {
       ]
     },
     "glossary-security-governance/indirect-prompt-injection": {
-      "videos": [],
+      "videos": [
+        [
+          "4QXtObc61Lw",
+          "Security & AI Governance: Reducing Risks in AI Systems",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection",
@@ -18898,7 +25902,13 @@ window.aiResources = {
       ]
     },
     "glossary-security-governance/jailbreak": {
-      "videos": [],
+      "videos": [
+        [
+          "DabrWAKNQZc",
+          "Episode 1: What is AI Red Teaming? | AI Red Teaming 101 with Amanda and Gary",
+          "Microsoft Developer"
+        ]
+      ],
       "docs": [
         [
           "Universal and Transferable Adversarial Attacks on Aligned Language Models",
@@ -18915,7 +25925,13 @@ window.aiResources = {
       ]
     },
     "glossary-security-governance/membership-inference": {
-      "videos": [],
+      "videos": [
+        [
+          "4QXtObc61Lw",
+          "Security & AI Governance: Reducing Risks in AI Systems",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Membership Inference Attacks Against Machine Learning Models",
@@ -18932,7 +25948,13 @@ window.aiResources = {
       ]
     },
     "glossary-security-governance/provenance-attestation": {
-      "videos": [],
+      "videos": [
+        [
+          "4QXtObc61Lw",
+          "Security & AI Governance: Reducing Risks in AI Systems",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "SLSA Software Attestations",
@@ -18949,7 +25971,13 @@ window.aiResources = {
       ]
     },
     "glossary-security-governance/purpose-limitation": {
-      "videos": [],
+      "videos": [
+        [
+          "4QXtObc61Lw",
+          "Security & AI Governance: Reducing Risks in AI Systems",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "General Data Protection Regulation, Article 5(1)(b)",
@@ -18966,7 +25994,13 @@ window.aiResources = {
       ]
     },
     "glossary-security-governance/red-teaming": {
-      "videos": [],
+      "videos": [
+        [
+          "4QXtObc61Lw",
+          "Security & AI Governance: Reducing Risks in AI Systems",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Red Teaming Language Models with Language Models",
@@ -18983,7 +26017,13 @@ window.aiResources = {
       ]
     },
     "glossary-security-governance/separation-of-duties": {
-      "videos": [],
+      "videos": [
+        [
+          "4QXtObc61Lw",
+          "Security & AI Governance: Reducing Risks in AI Systems",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "NIST SP 800-53 Rev. 5",
@@ -19000,7 +26040,13 @@ window.aiResources = {
       ]
     },
     "glossary-security-governance/software-bill-of-materials-sbom": {
-      "videos": [],
+      "videos": [
+        [
+          "4QXtObc61Lw",
+          "Security & AI Governance: Reducing Risks in AI Systems",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "SPDX 3.0.1 specification",
@@ -19017,7 +26063,13 @@ window.aiResources = {
       ]
     },
     "glossary-security-governance/threat-model": {
-      "videos": [],
+      "videos": [
+        [
+          "4QXtObc61Lw",
+          "Security & AI Governance: Reducing Risks in AI Systems",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "NIST SP 800-154",
@@ -19040,7 +26092,13 @@ window.aiResources = {
       ]
     },
     "glossary-security-governance/trust-boundary": {
-      "videos": [],
+      "videos": [
+        [
+          "4QXtObc61Lw",
+          "Security & AI Governance: Reducing Risks in AI Systems",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Microsoft Learn: Trust Boundary, the Trust Zone Change Element",
@@ -19063,7 +26121,13 @@ window.aiResources = {
       ]
     },
     "glossary-security-governance/zero-trust": {
-      "videos": [],
+      "videos": [
+        [
+          "4QXtObc61Lw",
+          "Security & AI Governance: Reducing Risks in AI Systems",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "NIST SP 800-207",
@@ -19080,7 +26144,13 @@ window.aiResources = {
       ]
     },
     "glossary-multimodal-systems/audio-token": {
-      "videos": [],
+      "videos": [
+        [
+          "J51oZYcNvP8",
+          "What is Multimodal AI? How LLMs Process Text, Images, and More",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "SoundStream",
@@ -19097,7 +26167,13 @@ window.aiResources = {
       ]
     },
     "glossary-multimodal-systems/automatic-speech-recognition-asr": {
-      "videos": [],
+      "videos": [
+        [
+          "J51oZYcNvP8",
+          "What is Multimodal AI? How LLMs Process Text, Images, and More",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Connectionist Temporal Classification",
@@ -19114,7 +26190,13 @@ window.aiResources = {
       ]
     },
     "glossary-multimodal-systems/cross-attention": {
-      "videos": [],
+      "videos": [
+        [
+          "J51oZYcNvP8",
+          "What is Multimodal AI? How LLMs Process Text, Images, and More",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Attention Is All You Need",
@@ -19131,7 +26213,13 @@ window.aiResources = {
       ]
     },
     "glossary-multimodal-systems/early-fusion": {
-      "videos": [],
+      "videos": [
+        [
+          "J51oZYcNvP8",
+          "What is Multimodal AI? How LLMs Process Text, Images, and More",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Chameleon: Mixed-Modal Early-Fusion Foundation Models",
@@ -19154,7 +26242,13 @@ window.aiResources = {
       ]
     },
     "glossary-multimodal-systems/image-token": {
-      "videos": [],
+      "videos": [
+        [
+          "J51oZYcNvP8",
+          "What is Multimodal AI? How LLMs Process Text, Images, and More",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Vision Transformer",
@@ -19177,7 +26271,13 @@ window.aiResources = {
       ]
     },
     "glossary-multimodal-systems/late-fusion": {
-      "videos": [],
+      "videos": [
+        [
+          "J51oZYcNvP8",
+          "What is Multimodal AI? How LLMs Process Text, Images, and More",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Multimodal Deep Learning",
@@ -19200,7 +26300,13 @@ window.aiResources = {
       ]
     },
     "glossary-multimodal-systems/modality": {
-      "videos": [],
+      "videos": [
+        [
+          "J51oZYcNvP8",
+          "What is Multimodal AI? How LLMs Process Text, Images, and More",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "ImageBind: One Embedding Space To Bind Them All",
@@ -19223,7 +26329,13 @@ window.aiResources = {
       ]
     },
     "glossary-multimodal-systems/modality-alignment": {
-      "videos": [],
+      "videos": [
+        [
+          "J51oZYcNvP8",
+          "What is Multimodal AI? How LLMs Process Text, Images, and More",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Learning Transferable Visual Models From Natural Language Supervision",
@@ -19240,7 +26352,13 @@ window.aiResources = {
       ]
     },
     "glossary-multimodal-systems/multimodal-fusion": {
-      "videos": [],
+      "videos": [
+        [
+          "J51oZYcNvP8",
+          "What is Multimodal AI? How LLMs Process Text, Images, and More",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Multimodal Deep Learning",
@@ -19263,7 +26381,13 @@ window.aiResources = {
       ]
     },
     "glossary-multimodal-systems/multimodal-model": {
-      "videos": [],
+      "videos": [
+        [
+          "J51oZYcNvP8",
+          "What is Multimodal AI? How LLMs Process Text, Images, and More",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Flamingo: a Visual Language Model for Few-Shot Learning",
@@ -19286,7 +26410,13 @@ window.aiResources = {
       ]
     },
     "glossary-multimodal-systems/patch-embedding": {
-      "videos": [],
+      "videos": [
+        [
+          "J51oZYcNvP8",
+          "What is Multimodal AI? How LLMs Process Text, Images, and More",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "An Image is Worth 16x16 Words",
@@ -19303,7 +26433,13 @@ window.aiResources = {
       ]
     },
     "glossary-multimodal-systems/shared-embedding-space": {
-      "videos": [],
+      "videos": [
+        [
+          "J51oZYcNvP8",
+          "What is Multimodal AI? How LLMs Process Text, Images, and More",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "Learning Transferable Visual Models From Natural Language Supervision",
@@ -19320,7 +26456,13 @@ window.aiResources = {
       ]
     },
     "glossary-multimodal-systems/vision-language-model-vlm": {
-      "videos": [],
+      "videos": [
+        [
+          "J51oZYcNvP8",
+          "What is Multimodal AI? How LLMs Process Text, Images, and More",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "CLIP",
@@ -19343,7 +26485,13 @@ window.aiResources = {
       ]
     },
     "glossary-multimodal-systems/vision-transformer-vit": {
-      "videos": [],
+      "videos": [
+        [
+          "J51oZYcNvP8",
+          "What is Multimodal AI? How LLMs Process Text, Images, and More",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "An Image is Worth 16x16 Words",
@@ -19360,7 +26508,13 @@ window.aiResources = {
       ]
     },
     "glossary-multimodal-systems/visual-grounding": {
-      "videos": [],
+      "videos": [
+        [
+          "J51oZYcNvP8",
+          "What is Multimodal AI? How LLMs Process Text, Images, and More",
+          "IBM Technology"
+        ]
+      ],
       "docs": [
         [
           "MDETR",
@@ -19376,6 +26530,5 @@ window.aiResources = {
         ]
       ]
     }
-  },
-  "lessons": {}
+  }
 };

@@ -411,15 +411,14 @@
     if (!store) return out;
     var key = String(hash).replace(/^#/, "");
     var hit = store.concepts && store.concepts[key];
-    if (!hit) {
-      var sub = key.split("/")[0], file = null;
-      (window.topicsData || []).forEach(function (sec) {
-        (sec.subsections || []).forEach(function (s) { if (s.id === sub) file = s.file; });
-      });
-      hit = file && store.lessons && store.lessons[file];
-    }
-    if (!hit) return out;
-    return { videos: (hit.videos || []).slice(), docs: (hit.docs || []).slice() };
+    var sub = key.split("/")[0], file = null;
+    (window.topicsData || []).forEach(function (sec) {
+      (sec.subsections || []).forEach(function (s) { if (s.id === sub) file = s.file; });
+    });
+    var parent = file && store.lessons && store.lessons[file];
+    var vids = (hit && hit.videos && hit.videos.length) ? hit.videos : (parent && parent.videos ? parent.videos : []);
+    var docs = (hit && hit.docs && hit.docs.length) ? hit.docs : (parent && parent.docs ? parent.docs : []);
+    return { videos: vids.slice(), docs: docs.slice() };
   }
   function merge(a, b) {
     var out = a.slice();

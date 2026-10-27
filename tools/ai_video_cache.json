@@ -1,0 +1,992 @@
+{
+  "1.1.2_Multi-head attention": [
+    "bCz4OMemCcA",
+    "Attention is all you need (Transformer) - Model & Math Explained",
+    "Umar Jamil"
+  ],
+  "1.1.1_Self-attention mechanism": [
+    "eMlx5fFNoYc",
+    "Attention in transformers, step-by-step | Deep Learning Chapter 6",
+    "3Blue1Brown"
+  ],
+  "1.1.5_Layer normalization &amp; residual connections": [
+    "P6sfmUTpUmc",
+    "Building makemore Part 3: Activations & Gradients, BatchNorm",
+    "Andrej Karpathy"
+  ],
+  "1.2.3_Context window limits": [
+    "-QVoIxEpFkM",
+    "What is a Context Window? Unlocking LLM Secrets",
+    "IBM Technology"
+  ],
+  "1.3.3_RLHF (Reinforcement Learning from Human Feedback)": [
+    "2MBJOuVq380",
+    "Training AI with Human Feedback (RLHF) - Computerphile",
+    "Computerphile"
+  ],
+  "1.2.1_Byte-Pair Encoding (BPE)": [
+    "NzpMvNdjnZw",
+    "Byte Pair Encoding Explained | BPE Tokenizer Step by Step",
+    "Laxmi Kant | KGP Talkie"
+  ],
+  "1.2.4_Token cost optimization": [
+    "HB1Vb2KYUF8",
+    "AI Tokenomics: The Hidden Cost of AI",
+    "Bernard Marr"
+  ],
+  "1.3.1_Pretraining (next-token prediction)": [
+    "L-czurV9i2E",
+    "Pretraining & Next-Token Prediction Explained | Day 11 of 88",
+    "Code & Tech with Yash"
+  ],
+  "1.1.3_Positional encoding (sinusoidal, RoPE)": [
+    "dWkm4nFikgM",
+    "Positional Encoding in Transformer | Sinusoidal Positional Encoding Explained",
+    "ExplainingAI"
+  ],
+  "1.2.2_Tokenizer behavior (whitespace, unicode)": [
+    "VEZXyhSxMCk",
+    "Tokenization explained: how an LLM turns text into numbers (BPE, token IDs, cost)",
+    "The AI Foundry"
+  ],
+  "1.1.4_Encoder vs decoder vs encoder-decoder": [
+    "hRHnEXyU-YY",
+    "Encoder vs Decoder vs Encoder-Decoder Models Explained",
+    "AIChalkboord"
+  ],
+  "1.3.2_Supervised fine-tuning (SFT)": [
+    "pTeIO215FgQ",
+    "Supervised Finetuning (SFT) vs Reinforcement Learning (RL) #ai #research #openai #google #tech",
+    "tony jiang"
+  ],
+  "1.3.4_DPO (Direct Preference Optimization)": [
+    "XZLc09hkMwA",
+    "Direct Preference Optimization: Your Language Model is Secretly a Reward Model | DPO paper explained",
+    "AI Coffee Break with Letitia"
+  ],
+  "1.3.5_Inference: temperature, top-p, top-k": [
+    "VlmDWthjEzc",
+    "Temperature vs Top-P vs Top-K | Day -10 : AI Concepts You Can't Ignore",
+    "AI Foundry Hub"
+  ],
+  "2.1.3_Chain-of-Thought (CoT)": [
+    "2kvCNlpDFK0",
+    "Chain of thought (CoT) prompting",
+    "Google Cloud Tech"
+  ],
+  "2.1.1_Zero-shot prompting": [
+    "sW5xoicq5TY",
+    "Zero-shot, One-shot and Few-shot Prompting Explained | Prompt Engineering 101",
+    "Analytics Vidhya"
+  ],
+  "2.1.2_Few-shot prompting": [
+    "sW5xoicq5TY",
+    "Zero-shot, One-shot and Few-shot Prompting Explained | Prompt Engineering 101",
+    "Analytics Vidhya"
+  ],
+  "1.3.6_Sampling strategies": [
+    "VbdIA8WO2a4",
+    "Sampling Methods (Techniques of selection of samples in research)",
+    "Mr Who Am I ?"
+  ],
+  "2.1.4_Self-consistency": [
+    "5-Fv_ZoAwrE",
+    "Chain of Thought Prompting | Self Consistency Prompting Explained | Prompt Engineering 101",
+    "Analytics Vidhya"
+  ],
+  "2.1.5_Tree of Thoughts (ToT)": [
+    "Ht8Bk3P4oPc",
+    "38. Tree of Thoughts (ToT) Explained | Advanced AI Prompt Engineering for Smarter LLM Reasoning",
+    "Micro Learning"
+  ],
+  "2.2.1_JSON mode / response_format": [
+    "CllLqPwCjD4",
+    "Getting Structured Output in JSON format",
+    "Telusko"
+  ],
+  "3.1.2_Chunking strategies": [
+    "8OJC21T2SL4",
+    "5 Levels Of Text Splitting For Retrieval",
+    "Greg Kamradt"
+  ],
+  "2.1.7_System prompts vs user prompts": [
+    "WiG9z4tqB5U",
+    "System prompt vs user prompt: what's the difference? #chatgpt  #promptengineering  #ai  #llm",
+    "AI Literacy Lab"
+  ],
+  "2.2.2_Function/tool calling": [
+    "YK_6Gy76-ec",
+    "Function Calling Explained: How LLMs Use Tools | Quick AI #31 #Shorts",
+    "Engineering counter"
+  ],
+  "2.2.3_XML tags for structure (Anthropic)": [
+    "lQ37K6B3Ios",
+    "Is XML the secret weapon for your AI prompts?",
+    "MPC Studios"
+  ],
+  "3.1.1_Document loading &amp; parsing": [
+    "zSA7ylHP6AY",
+    "What Is Docling? Transforming Unstructured Data for RAG and AI",
+    "IBM Technology"
+  ],
+  "2.3.2_Self-critique / refinement loop": [
+    "DQBqh6gcx7U",
+    "What Is Loop Engineering? Building Better AI Agents",
+    "IBM Technology"
+  ],
+  "2.2.4_Pydantic / Instructor for typed outputs": [
+    "pvW65K8Lcyc",
+    "Pydantic Structured Outputs: Stop LLMs From Breaking Code  | Agentic AI Engineer Course S1 - E3",
+    "Indian AI Production"
+  ],
+  "2.3.1_Prompt chaining (decomposition)": [
+    "IGdiKtCzhRc",
+    "Prompt Engineering Course Part 3 - Prompt Chaining",
+    "WaldoGPT"
+  ],
+  "3.1.4_Vector storage &amp; ANN search": [
+    "gl1r1XV0SLw",
+    "What is a Vector Database? Powering Semantic Search & AI Applications",
+    "IBM Technology"
+  ],
+  "3.1.5_Retrieval (dense, sparse, hybrid)": [
+    "r0Dciuq0knU",
+    "Top 3 RAG Retrieval Strategies: Sparse, Dense, & Hybrid Explained",
+    "IBM Technology"
+  ],
+  "3.1.7_Prompt construction with retrieved context": [
+    "vD0E3EUb8-8",
+    "Context Engineering vs. Prompt Engineering: Smarter AI with RAG & Agents",
+    "IBM Technology"
+  ],
+  "3.2.6_FAISS (in-process)": [
+    "4jRBRDbJemM",
+    "ROC and AUC, Clearly Explained!",
+    "StatQuest with Josh Starmer"
+  ],
+  "3.1.3_Embeddings (sentence-transformers, OpenAI ada)": [
+    "LUqKUTI9YBQ",
+    "Embeddings in AI Explained in 60 Seconds!",
+    "Analytics Vidhya"
+  ],
+  "3.2.2_Weaviate (open source)": [
+    "QIaR2gOE8Rs",
+    "Weaviate Explained in 2 Min..",
+    "Orbilearn"
+  ],
+  "3.1.6_Reranking (Cohere, cross-encoder)": [
+    "C5DcGfHMmvo",
+    "What is a Re-Ranker? (Eg. Cohere Rerank)",
+    "What's AI by Louis-Fran\u00e7ois Bouchard"
+  ],
+  "3.2.3_Qdrant (Rust)": [
+    "HVowmBLLzrk",
+    "Qdrant in 14 Seconds: Next-Gen Rust Vector Database",
+    "AI Star Pick"
+  ],
+  "3.2.1_Pinecone": [
+    "1nfPmT15K3o",
+    "What is Pinecone?",
+    "Nagesh Polu"
+  ],
+  "3.2.4_Chroma (lightweight)": [
+    "WelZ-lfuO5E",
+    "How LLMs generate Text",
+    "Chroma"
+  ],
+  "3.3.1_Query rewriting / decomposition": [
+    "4pgI-MX24Cg",
+    "GenAI Concept #33 | What is Query Rewriting?\ud83e\udd16 | GenAI Explained",
+    "NovaPromptix"
+  ],
+  "3.2.5_Postgres + pgvector": [
+    "cBTRHXC12UY",
+    "What is PGVector? PostgreSQL Extension for Storing Embeddings #ai",
+    "Sunny Solanki - CoderzColumn"
+  ],
+  "3.3.6_Long-context vs RAG tradeoff": [
+    "UabBYexBD4k",
+    "Is RAG Still Needed? Choosing the Best Approach for LLMs",
+    "IBM Technology"
+  ],
+  "3.3.2_HyDE (Hypothetical Document Embeddings)": [
+    "v_BnBEubv58",
+    "Advanced RAG 05 - HyDE - Hypothetical Document Embeddings",
+    "Sam Witteveen"
+  ],
+  "3.3.3_Contextual retrieval (Anthropic)": [
+    "tmiBae2goJM",
+    "The Best RAG Technique Yet? Anthropic\u2019s Contextual Retrieval Explained!",
+    "Prompt Engineering"
+  ],
+  "3.3.4_Multi-hop RAG": [
+    "zZswoghDF3k",
+    "Why RAG Struggles: Multi-Hop Reasoning & GraphRAG Explained",
+    "10 Minutes of AI"
+  ],
+  "3.3.5_RAG evaluation (Ragas, TruLens)": [
+    "Iyb7Y89oR-A",
+    "RAG Evaluation Frameworks Explained: RAGAS vs TruLens vs DeepEval",
+    "The ThinkLab by Saurabh"
+  ],
+  "4.1.1_Tool-augmented LLM (function calling loop)": [
+    "TEKLOiCZMOo",
+    "What Is Function Calling in AI? \ud83e\udd16 Explained with a Simple Example #Shorts",
+    "#NaghmasTechWorld"
+  ],
+  "4.1.2_ReAct (Reason + Act)": [
+    "K0Bl2ecW5s8",
+    "How AI Agents Actually Think | ReAct (Reason + Act) Explained Simply",
+    "SomethingTalk1 -  AI Meets Engineering Thinking"
+  ],
+  "4.1.7_Evaluator-Optimizer loop": [
+    "SknYgMpC-VI",
+    "Evaluator - Optimizer Design Pattern | Agentic Workflow | Human in the Loop, LangChain, Python",
+    "Saurav Prateek"
+  ],
+  "4.2.4_MCP (Model Context Protocol)": [
+    "CQywdSdi5iA",
+    "The Model Context Protocol (MCP)",
+    "Anthropic"
+  ],
+  "4.1.4_Router pattern": [
+    "gp2Y0GzF7Jg",
+    "The LLM Router Scam (Why You Aren't Saving Money) \ud83d\udcb8\ud83d\udc80 #shorts",
+    "AutoByte"
+  ],
+  "4.1.3_Plan-and-Execute": [
+    "-PAavWCzhF4",
+    "4 pillars of context engineering for AI agents",
+    "Google Cloud Tech"
+  ],
+  "4.1.6_Orchestrator-Workers": [
+    "AwrLcTW0lNM",
+    "What Is an AI Orchestrator? AI Agent Orchestration Explained",
+    "TestMu AI (Formerly LambdaTest)"
+  ],
+  "4.2.1_Function/tool calling schema": [
+    "YK_6Gy76-ec",
+    "Function Calling Explained: How LLMs Use Tools | Quick AI #31 #Shorts",
+    "Engineering counter"
+  ],
+  "4.3.1_LangChain / LangGraph": [
+    "vJOGC8QJZJQ",
+    "LangChain vs LangGraph vs LangSmith",
+    "codebasics"
+  ],
+  "4.1.5_Parallelization (fan-out)": [
+    "QtWFRfQcskE",
+    "How AI Agents Multitask With Fan-Out & Fan-In",
+    "Rynaut \u2014 Architecting Automation"
+  ],
+  "4.2.3_Error handling in tools": [
+    "nXC4W5gS-vQ",
+    "29. Headroom Error Handling Tutorial: Build Reliable LLM Apps with Safe Compression & AI Resilience",
+    "Micro Learning"
+  ],
+  "4.2.2_Tool descriptions (clear, concise)": [
+    "anM7apNSeEU",
+    "What Is AI Engineering? (Explained Simply)",
+    "Bit by Bit"
+  ],
+  "4.3.2_LlamaIndex": [
+    "VsPOQd1eSXM",
+    "Why we need Langchain & LlamaIndex to make AI apps?",
+    "Build with Akshit"
+  ],
+  "4.3.3_DSPy": [
+    "_ROckQHGHsU",
+    "Complete DSPy Tutorial - Master LLM Prompt Programming in 8 amazing examples!",
+    "Neural Breakdown with AVB"
+  ],
+  "4.3.4_Crew AI / AutoGen (multi-agent)": [
+    "8HqeY5v0ohM",
+    "AutoGen vs CrewAI vs LangGraph \u2013 Best AI Agent Framework In 2025!",
+    "Digibase Media"
+  ],
+  "4.3.5_Vanilla SDK (recommended for production)": [
+    "nlWD4uUl5-M",
+    "Claude vs GPT-4o vs Gemini \u2014 Best AI SDK for JavaScript (2025)",
+    "DailyDev Dose"
+  ],
+  "5.1.2_Reference-free metrics (perplexity, embedding sim)": [
+    "T64FfSf7TQw",
+    "Perplexity Deep Research Tutorial: Full Reports in Minutes (Free)",
+    "AI Unboxed"
+  ],
+  "5.1.1_Reference-based metrics (BLEU, ROUGE)": [
+    "M05L1DhFqcw",
+    "What is the BLEU metric?",
+    "Hugging Face"
+  ],
+  "5.1.5_Task-specific assertions": [
+    "JzoeMi17udo",
+    "12 Context Engineering Techniques Every AI Developer Should Know",
+    "Ultra Lab"
+  ],
+  "5.1.3_LLM-as-judge": [
+    "trfUBIDeI1Y",
+    "LLM as a Judge: Scaling AI Evaluation Strategies",
+    "IBM Technology"
+  ],
+  "6.1.2_LoRA / QLoRA": [
+    "oM4VmoabDAI",
+    "LoRA: Low-Rank Adaptation of Large Language Models - Explained with Code",
+    "Umar Jamil"
+  ],
+  "5.1.4_Human evaluation": [
+    "7UvlGe7Ht50",
+    "The One Human Need AI Will Never Replace | Chase Hughes",
+    "Marc The Beginning"
+  ],
+  "5.2.4_Continuous monitoring (Langfuse, LangSmith)": [
+    "9VgBZz8-hJ4",
+    "Langfuse vs LangSmith #ai #llm #langfuse #langsmith #langchain #softwareengineering #shorts",
+    "TryPitch"
+  ],
+  "5.2.1_Eval set construction (start with 50-100 examples)": [
+    "Mk8mUXh20r8",
+    "Context Engineering and How to Run a Successful Eval | Applied AI Technology Conference",
+    "Business Analysis Community"
+  ],
+  "5.2.2_Regression testing on every prompt change": [
+    "A3PVpmvyNDg",
+    "AI Regression Testing: Same Idea, New Approach!",
+    "Latitude"
+  ],
+  "5.2.3_A/B testing in production": [
+    "fdU3bX8RCmU",
+    "What Is A/B Testing? How to Run Experiments That Convert",
+    "Statwide"
+  ],
+  "6.1.1_Prompt tuning (soft prompts)": [
+    "yu27PWzJI_Y",
+    "What is Prompt Tuning?",
+    "IBM Technology"
+  ],
+  "6.1.4_Instruction tuning (SFT)": [
+    "zYGDpG-pTho",
+    "RAG vs Fine-Tuning vs Prompt Engineering: Optimizing AI Models",
+    "IBM Technology"
+  ],
+  "6.1.6_When to fine-tune vs prompt vs RAG": [
+    "zYGDpG-pTho",
+    "RAG vs Fine-Tuning vs Prompt Engineering: Optimizing AI Models",
+    "IBM Technology"
+  ],
+  "6.1.3_Full fine-tuning": [
+    "zYGDpG-pTho",
+    "RAG vs Fine-Tuning vs Prompt Engineering: Optimizing AI Models",
+    "IBM Technology"
+  ],
+  "6.1.5_Preference tuning (DPO, IPO, KTO)": [
+    "lBzw9ku86dg",
+    "4 Ways to Align LLMs: RLHF, DPO, KTO, and ORPO",
+    "Snorkel AI"
+  ],
+  "6.2.1_Dataset preparation (quality &gt; quantity)": [
+    "P8ERBy91Y90",
+    "How is data prepared for machine learning?",
+    "AltexSoft"
+  ],
+  "6.2.2_Hyperparameters (LR, batch size, epochs)": [
+    "vGYcWvYnXiI",
+    "AI Basics: Accuracy, Epochs, Learning Rate, Batch Size and Loss",
+    "Prof. Ryan Ahmed"
+  ],
+  "5.2.5_Red-teaming for safety/jailbreaks": [
+    "DabrWAKNQZc",
+    "Episode 1: What is AI Red Teaming? | AI Red Teaming 101 with Amanda and Gary",
+    "Microsoft Developer"
+  ],
+  "6.2.3_Distributed training (DeepSpeed, FSDP)": [
+    "4pIpM0QvEtg",
+    "How to Train Billion-Parameter Models: DeepSpeed ZeRO vs. PyTorch FSDP",
+    "SH AI Academy"
+  ],
+  "7.1.2_Prompt caching (Anthropic, OpenAI)": [
+    "u57EnkQaUTY",
+    "What is Prompt Caching? Optimize LLM Latency with AI Transformers",
+    "IBM Technology"
+  ],
+  "6.2.4_Quantization (GGUF, AWQ, GPTQ)": [
+    "WmvZwR4rKJg",
+    "LLM Quantization Explained: GPTQ, AWQ, QLoRA, GGUF and More",
+    "Tales Of Tensors"
+  ],
+  "7.1.1_Streaming responses (SSE)": [
+    "kWLhv9ds9tc",
+    "Answering AI Engineer Interview Question 2 \u2014 Streaming Tokens over SSE",
+    "tMain"
+  ],
+  "7.1.3_Model routing (cheap \u2192 expensive)": [
+    "j2_genIHO-0",
+    "Cheap AI First, Smart AI Only When Needed \ud83e\udde0 | Model Routing",
+    "Learn Coding Visual"
+  ],
+  "7.1.4_Batching requests": [
+    "cXFxBygOlSs",
+    "OpenAI Batch API - A Complete guide to cut OpenAI bill by 50% \ud83d\udcb8",
+    "That Average Tech Bro"
+  ],
+  "7.1.5_Speculative decoding": [
+    "VkWlLSTdHs8",
+    "Faster LLMs: Accelerate Inference with Speculative Decoding",
+    "IBM Technology"
+  ],
+  "7.2.2_Fallback models (provider redundancy)": [
+    "0_rGe1XVLBQ",
+    "The LLM Fallback Pattern: A Second Provider You Have Actually Tested",
+    "Vasily At Scale"
+  ],
+  "7.2.1_Retries with exponential backoff": [
+    "yGO4Igb45V0",
+    "Every engineer should know this (retries with jitter)",
+    "Software Developer Diaries"
+  ],
+  "7.2.4_Guardrails (input/output filtering)": [
+    "c9O72YmuUuc",
+    "Part 7 | AI Output Can Be Dangerous \u2014 Output Guardrails Explained | AI Security",
+    "Pentest Diaries"
+  ],
+  "8.1.1_Linear &amp; Logistic Regression": [
+    "yIYKR4sgzI8",
+    "Logistic Regression",
+    "StatQuest with Josh Starmer"
+  ],
+  "8.1.2_Decision Trees": [
+    "_L39rN6gz7Y",
+    "Decision and Classification Trees, Clearly Explained!!!",
+    "StatQuest with Josh Starmer"
+  ],
+  "8.1.3_Random Forest": [
+    "J4Wdy0Wc_xQ",
+    "Random Forests Part 1 - Building, Using and Evaluating",
+    "StatQuest with Josh Starmer"
+  ],
+  "7.2.3_Timeout strategies": [
+    "zB_brjdzu10",
+    "Stop 504 Timeouts in Your AI Agents",
+    "Betta"
+  ],
+  "8.1.5_Support Vector Machines (SVM)": [
+    "efR1C6CvhmE",
+    "Support Vector Machines Part 1 (of 3): Main Ideas!!!",
+    "StatQuest with Josh Starmer"
+  ],
+  "8.1.6_k-Nearest Neighbors (kNN)": [
+    "HVXime0nQeI",
+    "K-nearest neighbors, Clearly Explained",
+    "StatQuest with Josh Starmer"
+  ],
+  "7.4.1_Prompt injection defense": [
+    "jrHRe9lSqqA",
+    "What Is a Prompt Injection Attack?",
+    "IBM Technology"
+  ],
+  "7.3.1_Tracing (Langfuse, LangSmith, Helicone)": [
+    "VhqsXifzdvQ",
+    "How Benchling's Team Actually Looks at AI Traces | Max Agency",
+    "LangChain"
+  ],
+  "7.3.3_Quality monitoring (drift, regressions)": [
+    "iH34bdWFDcs",
+    "#16 LLM Evaluation & Monitoring Explained: Golden Sets, SLAs & Drift Detection",
+    "Tech@AI-Info"
+  ],
+  "8.1.7_Naive Bayes": [
+    "O2L2Uv9pdDA",
+    "Naive Bayes, Clearly Explained!!!",
+    "StatQuest with Josh Starmer"
+  ],
+  "8.2.4_PCA (dimensionality reduction)": [
+    "FgakZw6K1QQ",
+    "Principal Component Analysis (PCA), Step-by-Step",
+    "StatQuest with Josh Starmer"
+  ],
+  "8.2.5_t-SNE &amp; UMAP (visualization)": [
+    "NEaUSP4YerM",
+    "StatQuest: t-SNE, Clearly Explained",
+    "StatQuest with Josh Starmer"
+  ],
+  "8.2.1_k-Means clustering": [
+    "4b5d3muPQmA",
+    "StatQuest: K-means clustering",
+    "StatQuest with Josh Starmer"
+  ],
+  "8.3.2_k-Fold cross-validation": [
+    "fSytzGwwBVw",
+    "Machine Learning Fundamentals: Cross Validation",
+    "StatQuest with Josh Starmer"
+  ],
+  "8.3.3_Classification metrics (accuracy, F1, AUC)": [
+    "4jRBRDbJemM",
+    "ROC and AUC, Clearly Explained!",
+    "StatQuest with Josh Starmer"
+  ],
+  "7.3.2_Cost tracking per user/feature": [
+    "qizyCPjk8x4",
+    "AI Cost Engineering Explained | 5 Areas to Optimize AI Costs",
+    "Mohamed Naji Aboo"
+  ],
+  "8.3.5_Bias-variance tradeoff": [
+    "EuBBz3bI-aA",
+    "Machine Learning Fundamentals: Bias and Variance",
+    "StatQuest with Josh Starmer"
+  ],
+  "7.4.2_Output validation (don&#x27;t trust LLM)": [
+    "KT7gCuWzbpU",
+    "Structured Outputs: How an AI Is Forced to Write Valid JSON",
+    "StackCraft"
+  ],
+  "8.1.4_Gradient Boosting (XGBoost, LightGBM, CatBoost)": [
+    "zUDxEL3jwQ0",
+    "Gradient Boosting vs AdaBoost vs XGBoost vs LightGBM vs CatBoost | Boosting Explained \ud83d\udd25",
+    "Analytics Vidhya"
+  ],
+  "8.2.3_DBSCAN": [
+    "RDZUdRSDOok",
+    "Clustering with DBSCAN, Clearly Explained!!!",
+    "StatQuest with Josh Starmer"
+  ],
+  "8.2.2_Hierarchical clustering": [
+    "7xHsRkOdVwo",
+    "StatQuest: Hierarchical Clustering",
+    "StatQuest with Josh Starmer"
+  ],
+  "7.4.3_PII handling + data residency": [
+    "UedwRvb6P0w",
+    "Question #75 - How do we handle PII in AI prompts and outputs?",
+    "Praxis Lending Solutions"
+  ],
+  "8.3.1_Train/val/test splits": [
+    "NPWlj9G1Si8",
+    "Validation data: How it works and why you need it  - Machine Learning Basics Explained",
+    "Galaxy Inferno Codes"
+  ],
+  "9.1.1_Backpropagation &amp; gradient descent": [
+    "tIeHLnjs5U8",
+    "Backpropagation calculus | Deep learning, chapter 4",
+    "3Blue1Brown"
+  ],
+  "8.3.6_Data leakage (the #1 silent killer)": [
+    "j9X8m5KSQAc",
+    "What is data leakage in machine learning #ml #datascience",
+    "Karina Data Scientist"
+  ],
+  "8.3.4_Regression metrics (MAE, RMSE, R\u00b2)": [
+    "w1RySTwe6Dk",
+    "Regression Metrics in Machine Learning | MAE, MSE, RMSE, R2 Score(R-Squared) \ud83d\udcca\ud83d\udd0d",
+    "AI_INFO"
+  ],
+  "8.4.1_Numeric features (scaling, log, binning)": [
+    "iv_ec0EfXcE",
+    "Machine Learning Tutorial 10 - Binning Data",
+    "Caleb Curry"
+  ],
+  "8.4.3_Text features (TF-IDF, embeddings)": [
+    "drKL--kjxcc",
+    "How does TF-IDF work? #datascience #naturallanguageprocessing #machinelearning #nlp #ml",
+    "DataMListic"
+  ],
+  "8.4.2_Categorical encoding (one-hot, target, embedding)": [
+    "589nCGeWG1w",
+    "One-Hot, Label, Target and K-Fold Target Encoding, Clearly Explained!!!",
+    "StatQuest with Josh Starmer"
+  ],
+  "9.1.3_Loss functions": [
+    "v_ueBW_5dLg",
+    "What is a Loss Function? Understanding How AI Models Learn",
+    "IBM Technology"
+  ],
+  "8.4.4_Missing value strategies": [
+    "6syEBkrY3VU",
+    "Fixing missing values in data - Part 1",
+    "M\u0131sra Turp"
+  ],
+  "8.4.5_Feature selection": [
+    "dsqwxls1h8o",
+    "What is Feature Selection in Machine Learning Explained For Beginners (With Examples)",
+    "Learn with Whiteboard"
+  ],
+  "9.2.4_Diffusion models (image generation)": [
+    "1CIpzeNxIhU",
+    "Diffusion Models Explained - Computerphile",
+    "Computerphile"
+  ],
+  "9.1.2_Activation functions (ReLU, GELU, Swish)": [
+    "-jRDvP2NdMA",
+    "Activation Functions in Neural Networks \u2013 Part 2 | Leaky ReLU, PReLU, ELU, Swish, GELU & More",
+    "Bellic Robotics"
+  ],
+  "9.2.2_RNNs / LSTMs (sequence, mostly historical)": [
+    "AsNTP8Kwu80",
+    "Recurrent Neural Networks (RNNs), Clearly Explained!!!",
+    "StatQuest with Josh Starmer"
+  ],
+  "9.1.4_Optimizers (SGD, Adam, AdamW)": [
+    "sn0Eex-3F_c",
+    "AdamW Optimizer Explained #datascience #machinelearning #deeplearning #optimization",
+    "DataMListic"
+  ],
+  "9.2.3_Transformers (covered in section 1)": [
+    "wjZofJX0v4M",
+    "Transformers, the tech behind LLMs | Deep Learning Chapter 5",
+    "3Blue1Brown"
+  ],
+  "9.2.5_Mixture of Experts (MoE)": [
+    "sYDlVVyJYn4",
+    "What is Mixture of Experts?",
+    "IBM Technology"
+  ],
+  "9.1.5_Regularization (dropout, weight decay, augmentation)": [
+    "_SlPBbxuqas",
+    "NN - 16 - L2 Regularization / Weight Decay (Theory + @PyTorch code)",
+    "Meerkat Statistics"
+  ],
+  "9.2.1_CNNs (computer vision)": [
+    "QzY57FaENXg",
+    "What are Convolutional Neural Networks (CNNs)?",
+    "IBM Technology"
+  ],
+  "9.1.6_Batch normalization": [
+    "Oh2t8XXiFgU",
+    "How Batch Normalization works to solve Internal Covariate Shift",
+    "Developers Hutt"
+  ],
+  "10.1.1_Experiment tracking (MLflow, W&amp;B)": [
+    "ksYIVDue8ak",
+    "01. Introduction To MLflow | Track Your Machine Learning Experiments | MLOps",
+    "DSwithBappy"
+  ],
+  "10.1.3_Model registry (MLflow, HF Hub)": [
+    "mrXiBDfhv_M",
+    "MLflow Explained in Under 60 Seconds",
+    "AI with Vimal"
+  ],
+  "10.1.2_Data versioning (DVC, LakeFS)": [
+    "2amxzJomLQI",
+    "Data Versioning & Lineage Tracking: DVC & LakeFS for Reliable ML | Uplatz",
+    "Uplatz"
+  ],
+  "10.2.4_Shadow deployment": [
+    "OejCJL2EC3k",
+    "What is MLOps?",
+    "IBM Technology"
+  ],
+  "10.2.1_Batch prediction": [
+    "xutAo6ltr7A",
+    "MLOps Explained in 30 Seconds \ud83d\udd25",
+    "DecisionForest"
+  ],
+  "10.2.3_Streaming prediction": [
+    "OejCJL2EC3k",
+    "What is MLOps?",
+    "IBM Technology"
+  ],
+  "10.2.2_Online prediction (REST API)": [
+    "LP7G8hpipkY",
+    "Model Serving Explained | REST API vs Streaming | ML Deployment for Beginners \ud83d\ude80",
+    "Fusionpact"
+  ],
+  "10.1.4_Feature stores (Feast, Tecton)": [
+    "DESBDukN9gw",
+    "What is a Feature Store for Machine Learning?",
+    "Hopsworks"
+  ],
+  "10.3.3_Model performance monitoring": [
+    "mOh8_Sf40M8",
+    "From Prototype to Production: AI Deployment, Monitoring & MLOps Basics | Lesson 29",
+    "Seumora"
+  ],
+  "10.4.1_Kubernetes for ML (KubeFlow, Kserve)": [
+    "Dbwj-NHnHfw",
+    "What is Kubeflow?",
+    "IBM Technology"
+  ],
+  "10.2.5_Canary / A/B testing": [
+    "MGuj13NcdjE",
+    "MLOps: A/B Testing with MLflow, Kafka, and DuckLake",
+    "Data Lab Tech"
+  ],
+  "10.3.2_Concept drift": [
+    "QJTRNxUxmuc",
+    "Machine Learning Model Drift - Concept Drift & Data Drift in ML - Explanation",
+    "1littlecoder"
+  ],
+  "10.3.1_Data drift detection": [
+    "ZSd4uixtc8Y",
+    "Data Drift Explained | Keep Your ML Models Accurate in Production",
+    "Micro Learning"
+  ],
+  "10.4.2_GPU clusters &amp; cost optimization": [
+    "OejCJL2EC3k",
+    "What is MLOps?",
+    "IBM Technology"
+  ],
+  "10.4.3_CI/CD for ML (GitHub Actions, Jenkins)": [
+    "f91RNQnSScs",
+    "CICD For Data Science & Machine Learning - Whiteboard",
+    "Gus Cavanaugh"
+  ],
+  "10.3.4_Logging predictions + features": [
+    "CE4vyoUL0c4",
+    "MLOps Explained: A Beginner's Guide to Machine Learning Systems",
+    "CodeLucky"
+  ],
+  "11.1.3_Tool selection and routing": [
+    "2hH5vA9zQVo",
+    "Smart AI routing explained",
+    "IBM Technology"
+  ],
+  "11.1.1_JSON mode and schema-constrained decoding": [
+    "qcnSdRnMF38",
+    "How AI Models Guarantee Valid JSON (Constrained Decoding Explained)",
+    "Call Stack"
+  ],
+  "11.1.4_Parallel tool calls": [
+    "FtWHUC3fyUc",
+    "Parallel Tool Calls \u2014 5 API Calls, 1x the Wait Time #AIEngineering",
+    "DPO"
+  ],
+  "11.1.2_Function calling APIs": [
+    "oHo6IoxPbDc",
+    "Function Calling vs Tool Calling \u26a1 How AI actually uses tools! #AI #Python ##dataorbitai",
+    "DataOrbitAI"
+  ],
+  "11.1.5_Validating and repairing output": [
+    "GxYOVJbmLU8",
+    "Beyond the output: Assessing the true value of AI in professional decision-making.",
+    "Niels Brabandt EMBA MBA MSc"
+  ],
+  "11.2.1_Retrieval metrics (recall@k, MRR)": [
+    "Zg0do894s9w",
+    "RAG retrieval metrics explained: recall@k, precision@k, MRR, nDCG",
+    "The AI Foundry"
+  ],
+  "11.2.2_Faithfulness and groundedness": [
+    "udWEw-mEENw",
+    "Faithfulness vs Answer Relevancy \ud83e\udd16 | RAG Evaluation Explained #Shorts",
+    "Nidhi Chouhan"
+  ],
+  "11.2.3_Golden datasets and synthetic evals": [
+    "LOqM5WlD5BE",
+    "Golden Dataset Explained: The Answer Key for Your AI \u2b50 | AI Evals Ep 4",
+    "AgentCodeAcademy"
+  ],
+  "11.3.1_Agent failure modes": [
+    "BwXremQ-i6I",
+    "Context Engineering for AI Agents: 4 Failure Modes to Avoid",
+    "IBM Technology"
+  ],
+  "11.3.3_Human-in-the-loop checkpoints": [
+    "9iS-YYLIXiw",
+    "What is Human In The Loop with AI? How HITL Shapes AI Systems",
+    "IBM Technology"
+  ],
+  "11.2.4_End-to-end RAG eval pipelines": [
+    "sVcwVQRHIc8",
+    "Learn RAG From Scratch \u2013 Python AI Tutorial from a LangChain Engineer",
+    "freeCodeCamp.org"
+  ],
+  "11.3.4_Tracing agent decisions": [
+    "166wZbeCM3M",
+    "Decision Trace Architecture Explained",
+    "AI in Production"
+  ],
+  "11.4.1_Prompt registries and versioning": [
+    "Cc8lLHJ03DI",
+    "MLflow Prompt Management: Versioning, Registries, and GenAI Lifecycles (Notebook 1.5)",
+    "MLflow"
+  ],
+  "11.3.2_Guardrails on actions and budgets": [
+    "nr942N6cehA",
+    "What Are AI Agent Guardrails? \ud83d\udee1\ufe0f How AI Is Kept in Check | AI Simply #22",
+    "AI Simply"
+  ],
+  "11.4.3_Regression testing on prompt change": [
+    "jvga0NxhKA8",
+    "AI Regression Testing: Why It's Different From Code Tests!",
+    "Latitude"
+  ],
+  "11.4.4_Templates and variable hygiene": [
+    "zkrP78UDRLI",
+    "Make a 20-Minute AI Template and Sell It on Etsy Again and Again",
+    "CLIPPER369"
+  ],
+  "11.4.2_A/B testing prompts": [
+    "JT9v1xvJSQM",
+    "Prompt Engineering Testing & Iteration Explained | A/B Testing for AI Prompts #programming #coding",
+    "Sheikhzaddii Codes"
+  ],
+  "11.5.1_Token, cost and latency dashboards": [
+    "zqeWklz36IQ",
+    "Stop Burning Money on AI APIs: Latency, Cost & Tokens",
+    "AI60secLab"
+  ],
+  "11.5.2_Logging completions safely": [
+    "zgNeoEbkTVU",
+    "Prompt, context, harness, loop, graph engineering explained",
+    "Aish Reganti"
+  ],
+  "11.5.4_User feedback loops": [
+    "DQBqh6gcx7U",
+    "What Is Loop Engineering? Building Better AI Agents",
+    "IBM Technology"
+  ],
+  "11.6.2_Prompt injection defenses": [
+    "jrHRe9lSqqA",
+    "What Is a Prompt Injection Attack?",
+    "IBM Technology"
+  ],
+  "11.5.3_Quality drift detection": [
+    "flSt6RIMn3k",
+    "Enterprise Observability, Tracing & Drift Detection",
+    "Auro AI"
+  ],
+  "11.6.1_Input and output content filtering": [
+    "vD0E3EUb8-8",
+    "Context Engineering vs. Prompt Engineering: Smarter AI with RAG & Agents",
+    "IBM Technology"
+  ],
+  "11.6.4_PII redaction": [
+    "DQLvz1IPESw",
+    "Build a PII Detection and Redaction Pipeline with OpenAI!",
+    "The AI Opus"
+  ],
+  "11.6.3_Jailbreak detection": [
+    "BVK0LBhTddY",
+    "LLM Jailbreak Detection: A Taxonomy-Driven Approach to AI Guardrails",
+    "The Macroscope"
+  ],
+  "11.7.2_Caching (exact and semantic)": [
+    "u57EnkQaUTY",
+    "What is Prompt Caching? Optimize LLM Latency with AI Transformers",
+    "IBM Technology"
+  ],
+  "11.7.1_Model routing and cascades": [
+    "QHBjufYK8TA",
+    "The State of Model Routing \u2014 NVIDIA, Cognition, OpenRouter",
+    "AI Engineer"
+  ],
+  "11.7.5_Context window budgeting": [
+    "-QVoIxEpFkM",
+    "What is a Context Window? Unlocking LLM Secrets",
+    "IBM Technology"
+  ],
+  "11.7.4_Quantization and distillation": [
+    "rqjsnRnMASs",
+    "AI-35 | Quantization and Distillation: How Big Models Become Small | AI Engineering",
+    "RV Learn"
+  ],
+  "11.7.3_Batching and streaming": [
+    "8FXSOrk3Bhs",
+    "Batch Processing vs Stream Processing explained with examples",
+    "System Design Lab"
+  ],
+  "lesson_manual-a2a-101.md": [
+    "Tud9HLTk8hg",
+    "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
+    "IBM Technology"
+  ],
+  "lesson_practice-implement.md": [
+    "8ib4Qnh2HFE",
+    "Full AI Prompting Course with Andrew Ng",
+    "DeepLearningAI"
+  ],
+  "lesson_manual-docker-sandboxes-and-docker-agent-101.md": [
+    "CI3kL5uNV5A",
+    "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
+    "Engineering Community"
+  ],
+  "lesson_manual-reverse-engineering-101.md": [
+    "I4ERWLNinic",
+    "AI Automations 101: Reverse Engineer Any API",
+    "Hichem's Journey"
+  ],
+  "lesson_manual-miles-101.md": [
+    "5E-RdE6elMo",
+    "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
+    "Saurav Prateek"
+  ],
+  "lesson_practice-lab.md": [
+    "oHu_xWe0agI",
+    "A Practical Guide To Becoming An AI Engineer (2026)",
+    "CodeHead"
+  ],
+  "lesson_practice-research.md": [
+    "sVcwVQRHIc8",
+    "Learn RAG From Scratch \u2013 Python AI Tutorial from a LangChain Engineer",
+    "freeCodeCamp.org"
+  ],
+  "lesson_practice-train.md": [
+    "rtvZFF0xpkU",
+    "1   Building an AI tool in 5 minutes",
+    " Ibrahim Hussain"
+  ],
+  "lesson_glossary-data-representations.md": [
+    "VSFuqMh4hus",
+    "7 AI Terms You Need to Know: Agents, RAG, ASI & More",
+    "IBM Technology"
+  ],
+  "lesson_glossary-agents-tools.md": [
+    "SIZsFGvtClM",
+    "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+    "IBM Technology"
+  ],
+  "lesson_glossary-evaluation-safety.md": [
+    "SIZsFGvtClM",
+    "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+    "IBM Technology"
+  ],
+  "lesson_learning-paths.md": [
+    "oHu_xWe0agI",
+    "A Practical Guide To Becoming An AI Engineer (2026)",
+    "CodeHead"
+  ],
+  "lesson_glossary-retrieval-generation.md": [
+    "T-D1OfcDW1M",
+    "What is Retrieval-Augmented Generation (RAG)?",
+    "IBM Technology"
+  ],
+  "lesson_glossary-models-inference.md": [
+    "XtT5i0ZeHHE",
+    "AI Inference: The Secret to AI's Superpowers",
+    "IBM Technology"
+  ],
+  "lesson_glossary-infrastructure-serving.md": [
+    "SIZsFGvtClM",
+    "Agentic Engineering: 5 Terms Every AI Developer Should Know",
+    "IBM Technology"
+  ],
+  "lesson_glossary-prompting-context.md": [
+    "vD0E3EUb8-8",
+    "Context Engineering vs. Prompt Engineering: Smarter AI with RAG & Agents",
+    "IBM Technology"
+  ],
+  "lesson_glossary-math-training.md": [
+    "0z6AhrOSrRs",
+    "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
+    "My Lesson"
+  ],
+  "lesson_glossary-ai-native-development.md": [
+    "9u6xvcNJaxc",
+    "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
+    "AI Engineer"
+  ],
+  "lesson_glossary-security-governance.md": [
+    "4QXtObc61Lw",
+    "Security & AI Governance: Reducing Risks in AI Systems",
+    "IBM Technology"
+  ],
+  "lesson_glossary-reliability-operations.md": [
+    "kASZ4Y7lrcU",
+    "Concepts behind the AI Glossary",
+    "Technology Debunk"
+  ],
+  "lesson_glossary-multimodal-systems.md": [
+    "J51oZYcNvP8",
+    "What is Multimodal AI? How LLMs Process Text, Images, and More",
+    "IBM Technology"
+  ]
+}

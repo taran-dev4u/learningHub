@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-27T10:26:22.706Z",
+  "generatedAt": "2026-10-27T11:17:36.535Z",
   "stats": {
     "domains": 7,
     "sections": 108,
@@ -46311,11 +46311,11 @@
       "link": "ai_engineering.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=self-attention+mechanism+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=eMlx5fFNoYc"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=self-attention+mechanism+AI+engineering+tutorial"
         }
       ],
@@ -46335,11 +46335,11 @@
       "link": "ai_engineering.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=multi-head+attention+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=bCz4OMemCcA"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=multi-head+attention+AI+engineering+tutorial"
         }
       ],
@@ -46359,11 +46359,11 @@
       "link": "ai_engineering.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=positional+encoding+sinusoidal+rope+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=dWkm4nFikgM"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=positional+encoding+sinusoidal+rope+AI+engineering+tutorial"
         }
       ],
@@ -46383,11 +46383,11 @@
       "link": "ai_engineering.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=encoder+vs+decoder+vs+encoder-decoder+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=hRHnEXyU-YY"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=encoder+vs+decoder+vs+encoder-decoder+AI+engineering+tutorial"
         }
       ],
@@ -46407,11 +46407,11 @@
       "link": "ai_engineering.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=layer+normalization+residual+connections+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=P6sfmUTpUmc"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=layer+normalization+residual+connections+AI+engineering+tutorial"
         }
       ],
@@ -46431,11 +46431,11 @@
       "link": "ai_engineering.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=byte-pair+encoding+bpe+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NzpMvNdjnZw"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=byte-pair+encoding+bpe+AI+engineering+tutorial"
         }
       ],
@@ -46455,11 +46455,11 @@
       "link": "ai_engineering.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=tokenizer+behavior+whitespace+unicode+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=VEZXyhSxMCk"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=tokenizer+behavior+whitespace+unicode+AI+engineering+tutorial"
         }
       ],
@@ -46479,11 +46479,11 @@
       "link": "ai_engineering.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=context+window+limits+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=-QVoIxEpFkM"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=context+window+limits+AI+engineering+tutorial"
         }
       ],
@@ -46503,11 +46503,11 @@
       "link": "ai_engineering.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=token+cost+optimization+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=HB1Vb2KYUF8"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=token+cost+optimization+AI+engineering+tutorial"
         }
       ],
@@ -46527,11 +46527,11 @@
       "link": "ai_engineering.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=pretraining+next-token+prediction+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=L-czurV9i2E"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=pretraining+next-token+prediction+AI+engineering+tutorial"
         }
       ],
@@ -46551,11 +46551,11 @@
       "link": "ai_engineering.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=supervised+fine-tuning+sft+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=pTeIO215FgQ"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=supervised+fine-tuning+sft+AI+engineering+tutorial"
         }
       ],
@@ -46575,11 +46575,11 @@
       "link": "ai_engineering.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=rlhf+reinforcement+learning+from+human+feedback+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=2MBJOuVq380"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=rlhf+reinforcement+learning+from+human+feedback+AI+engineering+tutorial"
         }
       ],
@@ -46599,11 +46599,11 @@
       "link": "ai_engineering.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=dpo+direct+preference+optimization+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=XZLc09hkMwA"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=dpo+direct+preference+optimization+AI+engineering+tutorial"
         }
       ],
@@ -46623,11 +46623,11 @@
       "link": "ai_engineering.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=inference+temperature+top-p+top-k+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=VlmDWthjEzc"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=inference+temperature+top-p+top-k+AI+engineering+tutorial"
         }
       ],
@@ -46647,11 +46647,11 @@
       "link": "ai_engineering.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=sampling+strategies+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=VbdIA8WO2a4"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=sampling+strategies+AI+engineering+tutorial"
         }
       ],
@@ -46671,11 +46671,11 @@
       "link": "ai_engineering.html#section-2",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=zero-shot+prompting+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=sW5xoicq5TY"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=zero-shot+prompting+AI+engineering+tutorial"
         }
       ],
@@ -46695,11 +46695,11 @@
       "link": "ai_engineering.html#section-2",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=few-shot+prompting+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=sW5xoicq5TY"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=few-shot+prompting+AI+engineering+tutorial"
         }
       ],
@@ -46719,11 +46719,11 @@
       "link": "ai_engineering.html#section-2",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=chain-of-thought+cot+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=2kvCNlpDFK0"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=chain-of-thought+cot+AI+engineering+tutorial"
         }
       ],
@@ -46743,11 +46743,11 @@
       "link": "ai_engineering.html#section-2",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=self-consistency+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=5-Fv_ZoAwrE"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=self-consistency+AI+engineering+tutorial"
         }
       ],
@@ -46767,11 +46767,11 @@
       "link": "ai_engineering.html#section-2",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=tree+of+thoughts+tot+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=Ht8Bk3P4oPc"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=tree+of+thoughts+tot+AI+engineering+tutorial"
         }
       ],
@@ -46791,11 +46791,11 @@
       "link": "ai_engineering.html#section-2",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=system+prompts+vs+user+prompts+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=WiG9z4tqB5U"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=system+prompts+vs+user+prompts+AI+engineering+tutorial"
         }
       ],
@@ -46815,11 +46815,11 @@
       "link": "ai_engineering.html#section-2",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=json+mode+%2F+response_format+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=CllLqPwCjD4"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=json+mode+%2F+response_format+AI+engineering+tutorial"
         }
       ],
@@ -46839,11 +46839,11 @@
       "link": "ai_engineering.html#section-2",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=function%2Ftool+calling+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=YK_6Gy76-ec"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=function%2Ftool+calling+AI+engineering+tutorial"
         }
       ],
@@ -46863,11 +46863,11 @@
       "link": "ai_engineering.html#section-2",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=xml+tags+for+structure+anthropic+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=lQ37K6B3Ios"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=xml+tags+for+structure+anthropic+AI+engineering+tutorial"
         }
       ],
@@ -46887,11 +46887,11 @@
       "link": "ai_engineering.html#section-2",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=pydantic+%2F+instructor+for+typed+outputs+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=pvW65K8Lcyc"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=pydantic+%2F+instructor+for+typed+outputs+AI+engineering+tutorial"
         }
       ],
@@ -46911,11 +46911,11 @@
       "link": "ai_engineering.html#section-2",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=prompt+chaining+decomposition+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=IGdiKtCzhRc"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=prompt+chaining+decomposition+AI+engineering+tutorial"
         }
       ],
@@ -46935,11 +46935,11 @@
       "link": "ai_engineering.html#section-2",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=self-critique+%2F+refinement+loop+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=DQBqh6gcx7U"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=self-critique+%2F+refinement+loop+AI+engineering+tutorial"
         }
       ],
@@ -46959,11 +46959,11 @@
       "link": "ai_engineering.html#section-3",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=document+loading+parsing+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=zSA7ylHP6AY"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=document+loading+parsing+AI+engineering+tutorial"
         }
       ],
@@ -46983,11 +46983,11 @@
       "link": "ai_engineering.html#section-3",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=chunking+strategies+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=8OJC21T2SL4"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=chunking+strategies+AI+engineering+tutorial"
         }
       ],
@@ -47007,11 +47007,11 @@
       "link": "ai_engineering.html#section-3",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=embeddings+sentence-transformers+openai+ada+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=LUqKUTI9YBQ"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=embeddings+sentence-transformers+openai+ada+AI+engineering+tutorial"
         }
       ],
@@ -47031,11 +47031,11 @@
       "link": "ai_engineering.html#section-3",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=vector+storage+ann+search+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=gl1r1XV0SLw"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=vector+storage+ann+search+AI+engineering+tutorial"
         }
       ],
@@ -47055,11 +47055,11 @@
       "link": "ai_engineering.html#section-3",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=retrieval+dense+sparse+hybrid+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=r0Dciuq0knU"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=retrieval+dense+sparse+hybrid+AI+engineering+tutorial"
         }
       ],
@@ -47079,11 +47079,11 @@
       "link": "ai_engineering.html#section-3",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=reranking+cohere+cross-encoder+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=C5DcGfHMmvo"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=reranking+cohere+cross-encoder+AI+engineering+tutorial"
         }
       ],
@@ -47103,11 +47103,11 @@
       "link": "ai_engineering.html#section-3",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=prompt+construction+with+retrieved+context+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=vD0E3EUb8-8"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=prompt+construction+with+retrieved+context+AI+engineering+tutorial"
         }
       ],
@@ -47127,11 +47127,11 @@
       "link": "ai_engineering.html#section-3",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=pinecone+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=1nfPmT15K3o"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=pinecone+AI+engineering+tutorial"
         }
       ],
@@ -47151,11 +47151,11 @@
       "link": "ai_engineering.html#section-3",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=weaviate+open+source+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=QIaR2gOE8Rs"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=weaviate+open+source+AI+engineering+tutorial"
         }
       ],
@@ -47175,11 +47175,11 @@
       "link": "ai_engineering.html#section-3",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=qdrant+rust+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=HVowmBLLzrk"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=qdrant+rust+AI+engineering+tutorial"
         }
       ],
@@ -47199,11 +47199,11 @@
       "link": "ai_engineering.html#section-3",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=chroma+lightweight+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=WelZ-lfuO5E"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=chroma+lightweight+AI+engineering+tutorial"
         }
       ],
@@ -47223,11 +47223,11 @@
       "link": "ai_engineering.html#section-3",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=postgres+%2B+pgvector+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=cBTRHXC12UY"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=postgres+%2B+pgvector+AI+engineering+tutorial"
         }
       ],
@@ -47247,11 +47247,11 @@
       "link": "ai_engineering.html#section-3",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=faiss+in-process+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=4jRBRDbJemM"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=faiss+in-process+AI+engineering+tutorial"
         }
       ],
@@ -47271,11 +47271,11 @@
       "link": "ai_engineering.html#section-3",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=query+rewriting+%2F+decomposition+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=4pgI-MX24Cg"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=query+rewriting+%2F+decomposition+AI+engineering+tutorial"
         }
       ],
@@ -47295,11 +47295,11 @@
       "link": "ai_engineering.html#section-3",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=hyde+hypothetical+document+embeddings+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=v_BnBEubv58"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=hyde+hypothetical+document+embeddings+AI+engineering+tutorial"
         }
       ],
@@ -47319,11 +47319,11 @@
       "link": "ai_engineering.html#section-3",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=contextual+retrieval+anthropic+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=tmiBae2goJM"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=contextual+retrieval+anthropic+AI+engineering+tutorial"
         }
       ],
@@ -47343,11 +47343,11 @@
       "link": "ai_engineering.html#section-3",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=multi-hop+rag+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=zZswoghDF3k"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=multi-hop+rag+AI+engineering+tutorial"
         }
       ],
@@ -47367,11 +47367,11 @@
       "link": "ai_engineering.html#section-3",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=rag+evaluation+ragas+trulens+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=Iyb7Y89oR-A"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=rag+evaluation+ragas+trulens+AI+engineering+tutorial"
         }
       ],
@@ -47391,11 +47391,11 @@
       "link": "ai_engineering.html#section-3",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=long-context+vs+rag+tradeoff+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=UabBYexBD4k"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=long-context+vs+rag+tradeoff+AI+engineering+tutorial"
         }
       ],
@@ -47415,11 +47415,11 @@
       "link": "ai_engineering.html#section-4",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=tool-augmented+llm+function+calling+loop+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=TEKLOiCZMOo"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=tool-augmented+llm+function+calling+loop+AI+engineering+tutorial"
         }
       ],
@@ -47439,11 +47439,11 @@
       "link": "ai_engineering.html#section-4",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=react+reason+%2B+act+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=K0Bl2ecW5s8"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=react+reason+%2B+act+AI+engineering+tutorial"
         }
       ],
@@ -47463,11 +47463,11 @@
       "link": "ai_engineering.html#section-4",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=plan-and-execute+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=-PAavWCzhF4"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=plan-and-execute+AI+engineering+tutorial"
         }
       ],
@@ -47487,11 +47487,11 @@
       "link": "ai_engineering.html#section-4",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=router+pattern+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=gp2Y0GzF7Jg"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=router+pattern+AI+engineering+tutorial"
         }
       ],
@@ -47511,11 +47511,11 @@
       "link": "ai_engineering.html#section-4",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=parallelization+fan-out+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=QtWFRfQcskE"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=parallelization+fan-out+AI+engineering+tutorial"
         }
       ],
@@ -47535,11 +47535,11 @@
       "link": "ai_engineering.html#section-4",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=orchestrator-workers+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=AwrLcTW0lNM"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=orchestrator-workers+AI+engineering+tutorial"
         }
       ],
@@ -47559,11 +47559,11 @@
       "link": "ai_engineering.html#section-4",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=evaluator-optimizer+loop+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SknYgMpC-VI"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=evaluator-optimizer+loop+AI+engineering+tutorial"
         }
       ],
@@ -47583,11 +47583,11 @@
       "link": "ai_engineering.html#section-4",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=function%2Ftool+calling+schema+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=YK_6Gy76-ec"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=function%2Ftool+calling+schema+AI+engineering+tutorial"
         }
       ],
@@ -47607,11 +47607,11 @@
       "link": "ai_engineering.html#section-4",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=tool+descriptions+clear+concise+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=anM7apNSeEU"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=tool+descriptions+clear+concise+AI+engineering+tutorial"
         }
       ],
@@ -47631,11 +47631,11 @@
       "link": "ai_engineering.html#section-4",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=error+handling+in+tools+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=nXC4W5gS-vQ"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=error+handling+in+tools+AI+engineering+tutorial"
         }
       ],
@@ -47655,11 +47655,11 @@
       "link": "ai_engineering.html#section-4",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=mcp+model+context+protocol+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=CQywdSdi5iA"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=mcp+model+context+protocol+AI+engineering+tutorial"
         }
       ],
@@ -47679,11 +47679,11 @@
       "link": "ai_engineering.html#section-4",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=langchain+%2F+langgraph+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=vJOGC8QJZJQ"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=langchain+%2F+langgraph+AI+engineering+tutorial"
         }
       ],
@@ -47703,11 +47703,11 @@
       "link": "ai_engineering.html#section-4",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=llamaindex+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=VsPOQd1eSXM"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=llamaindex+AI+engineering+tutorial"
         }
       ],
@@ -47727,11 +47727,11 @@
       "link": "ai_engineering.html#section-4",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=dspy+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=_ROckQHGHsU"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=dspy+AI+engineering+tutorial"
         }
       ],
@@ -47751,11 +47751,11 @@
       "link": "ai_engineering.html#section-4",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=crew+ai+%2F+autogen+multi-agent+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=8HqeY5v0ohM"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=crew+ai+%2F+autogen+multi-agent+AI+engineering+tutorial"
         }
       ],
@@ -47775,11 +47775,11 @@
       "link": "ai_engineering.html#section-4",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=vanilla+sdk+recommended+for+production+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=nlWD4uUl5-M"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=vanilla+sdk+recommended+for+production+AI+engineering+tutorial"
         }
       ],
@@ -47799,11 +47799,11 @@
       "link": "ai_engineering.html#section-5",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=reference-based+metrics+bleu+rouge+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=M05L1DhFqcw"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=reference-based+metrics+bleu+rouge+AI+engineering+tutorial"
         }
       ],
@@ -47823,11 +47823,11 @@
       "link": "ai_engineering.html#section-5",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=reference-free+metrics+perplexity+embedding+sim+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=T64FfSf7TQw"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=reference-free+metrics+perplexity+embedding+sim+AI+engineering+tutorial"
         }
       ],
@@ -47847,11 +47847,11 @@
       "link": "ai_engineering.html#section-5",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=llm-as-judge+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=trfUBIDeI1Y"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=llm-as-judge+AI+engineering+tutorial"
         }
       ],
@@ -47871,11 +47871,11 @@
       "link": "ai_engineering.html#section-5",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=human+evaluation+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=7UvlGe7Ht50"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=human+evaluation+AI+engineering+tutorial"
         }
       ],
@@ -47895,11 +47895,11 @@
       "link": "ai_engineering.html#section-5",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=task-specific+assertions+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=JzoeMi17udo"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=task-specific+assertions+AI+engineering+tutorial"
         }
       ],
@@ -47919,11 +47919,11 @@
       "link": "ai_engineering.html#section-5",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=eval+set+construction+start+with+50-100+examples+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=Mk8mUXh20r8"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=eval+set+construction+start+with+50-100+examples+AI+engineering+tutorial"
         }
       ],
@@ -47943,11 +47943,11 @@
       "link": "ai_engineering.html#section-5",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=regression+testing+on+every+prompt+change+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=A3PVpmvyNDg"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=regression+testing+on+every+prompt+change+AI+engineering+tutorial"
         }
       ],
@@ -47967,11 +47967,11 @@
       "link": "ai_engineering.html#section-5",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=a%2Fb+testing+in+production+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=fdU3bX8RCmU"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=a%2Fb+testing+in+production+AI+engineering+tutorial"
         }
       ],
@@ -47991,11 +47991,11 @@
       "link": "ai_engineering.html#section-5",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=continuous+monitoring+langfuse+langsmith+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=9VgBZz8-hJ4"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=continuous+monitoring+langfuse+langsmith+AI+engineering+tutorial"
         }
       ],
@@ -48015,11 +48015,11 @@
       "link": "ai_engineering.html#section-5",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=red-teaming+for+safety%2Fjailbreaks+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=DabrWAKNQZc"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=red-teaming+for+safety%2Fjailbreaks+AI+engineering+tutorial"
         }
       ],
@@ -48039,11 +48039,11 @@
       "link": "ai_engineering.html#section-6",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=prompt+tuning+soft+prompts+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=yu27PWzJI_Y"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=prompt+tuning+soft+prompts+AI+engineering+tutorial"
         }
       ],
@@ -48063,11 +48063,11 @@
       "link": "ai_engineering.html#section-6",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=lora+%2F+qlora+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=oM4VmoabDAI"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=lora+%2F+qlora+AI+engineering+tutorial"
         }
       ],
@@ -48087,11 +48087,11 @@
       "link": "ai_engineering.html#section-6",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=full+fine-tuning+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=zYGDpG-pTho"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=full+fine-tuning+AI+engineering+tutorial"
         }
       ],
@@ -48111,11 +48111,11 @@
       "link": "ai_engineering.html#section-6",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=instruction+tuning+sft+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=zYGDpG-pTho"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=instruction+tuning+sft+AI+engineering+tutorial"
         }
       ],
@@ -48135,11 +48135,11 @@
       "link": "ai_engineering.html#section-6",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=preference+tuning+dpo+ipo+kto+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=lBzw9ku86dg"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=preference+tuning+dpo+ipo+kto+AI+engineering+tutorial"
         }
       ],
@@ -48159,11 +48159,11 @@
       "link": "ai_engineering.html#section-6",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=when+to+fine-tune+vs+prompt+vs+rag+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=zYGDpG-pTho"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=when+to+fine-tune+vs+prompt+vs+rag+AI+engineering+tutorial"
         }
       ],
@@ -48183,11 +48183,11 @@
       "link": "ai_engineering.html#section-6",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=dataset+preparation+quality+quantity+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=P8ERBy91Y90"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=dataset+preparation+quality+quantity+AI+engineering+tutorial"
         }
       ],
@@ -48207,11 +48207,11 @@
       "link": "ai_engineering.html#section-6",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=hyperparameters+lr+batch+size+epochs+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=vGYcWvYnXiI"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=hyperparameters+lr+batch+size+epochs+AI+engineering+tutorial"
         }
       ],
@@ -48231,11 +48231,11 @@
       "link": "ai_engineering.html#section-6",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=distributed+training+deepspeed+fsdp+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=4pIpM0QvEtg"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=distributed+training+deepspeed+fsdp+AI+engineering+tutorial"
         }
       ],
@@ -48255,11 +48255,11 @@
       "link": "ai_engineering.html#section-6",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=quantization+gguf+awq+gptq+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=WmvZwR4rKJg"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=quantization+gguf+awq+gptq+AI+engineering+tutorial"
         }
       ],
@@ -48279,11 +48279,11 @@
       "link": "ai_engineering.html#section-7",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=streaming+responses+sse+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=kWLhv9ds9tc"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=streaming+responses+sse+AI+engineering+tutorial"
         }
       ],
@@ -48303,11 +48303,11 @@
       "link": "ai_engineering.html#section-7",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=prompt+caching+anthropic+openai+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=u57EnkQaUTY"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=prompt+caching+anthropic+openai+AI+engineering+tutorial"
         }
       ],
@@ -48327,11 +48327,11 @@
       "link": "ai_engineering.html#section-7",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=model+routing+cheap+expensive+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=j2_genIHO-0"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=model+routing+cheap+expensive+AI+engineering+tutorial"
         }
       ],
@@ -48351,11 +48351,11 @@
       "link": "ai_engineering.html#section-7",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=batching+requests+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=cXFxBygOlSs"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=batching+requests+AI+engineering+tutorial"
         }
       ],
@@ -48375,11 +48375,11 @@
       "link": "ai_engineering.html#section-7",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=speculative+decoding+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=VkWlLSTdHs8"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=speculative+decoding+AI+engineering+tutorial"
         }
       ],
@@ -48399,11 +48399,11 @@
       "link": "ai_engineering.html#section-7",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=retries+with+exponential+backoff+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=yGO4Igb45V0"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=retries+with+exponential+backoff+AI+engineering+tutorial"
         }
       ],
@@ -48423,11 +48423,11 @@
       "link": "ai_engineering.html#section-7",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=fallback+models+provider+redundancy+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=0_rGe1XVLBQ"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=fallback+models+provider+redundancy+AI+engineering+tutorial"
         }
       ],
@@ -48447,11 +48447,11 @@
       "link": "ai_engineering.html#section-7",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=timeout+strategies+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=zB_brjdzu10"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=timeout+strategies+AI+engineering+tutorial"
         }
       ],
@@ -48471,11 +48471,11 @@
       "link": "ai_engineering.html#section-7",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=guardrails+input%2Foutput+filtering+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=c9O72YmuUuc"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=guardrails+input%2Foutput+filtering+AI+engineering+tutorial"
         }
       ],
@@ -48495,11 +48495,11 @@
       "link": "ai_engineering.html#section-7",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=tracing+langfuse+langsmith+helicone+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=VhqsXifzdvQ"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=tracing+langfuse+langsmith+helicone+AI+engineering+tutorial"
         }
       ],
@@ -48519,11 +48519,11 @@
       "link": "ai_engineering.html#section-7",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=cost+tracking+per+user%2Ffeature+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=qizyCPjk8x4"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=cost+tracking+per+user%2Ffeature+AI+engineering+tutorial"
         }
       ],
@@ -48543,11 +48543,11 @@
       "link": "ai_engineering.html#section-7",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=quality+monitoring+drift+regressions+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=iH34bdWFDcs"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=quality+monitoring+drift+regressions+AI+engineering+tutorial"
         }
       ],
@@ -48567,11 +48567,11 @@
       "link": "ai_engineering.html#section-7",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=prompt+injection+defense+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=jrHRe9lSqqA"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=prompt+injection+defense+AI+engineering+tutorial"
         }
       ],
@@ -48591,11 +48591,11 @@
       "link": "ai_engineering.html#section-7",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=output+validation+don+t+trust+llm+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=KT7gCuWzbpU"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=output+validation+don+t+trust+llm+AI+engineering+tutorial"
         }
       ],
@@ -48615,11 +48615,11 @@
       "link": "ai_engineering.html#section-7",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=pii+handling+%2B+data+residency+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=UedwRvb6P0w"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=pii+handling+%2B+data+residency+AI+engineering+tutorial"
         }
       ],
@@ -48639,11 +48639,11 @@
       "link": "ai_engineering.html#section-8",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=linear+logistic+regression+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=yIYKR4sgzI8"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=linear+logistic+regression+AI+engineering+tutorial"
         }
       ],
@@ -48663,11 +48663,11 @@
       "link": "ai_engineering.html#section-8",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=decision+trees+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=_L39rN6gz7Y"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=decision+trees+AI+engineering+tutorial"
         }
       ],
@@ -48687,11 +48687,11 @@
       "link": "ai_engineering.html#section-8",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=random+forest+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=J4Wdy0Wc_xQ"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=random+forest+AI+engineering+tutorial"
         }
       ],
@@ -48711,11 +48711,11 @@
       "link": "ai_engineering.html#section-8",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=gradient+boosting+xgboost+lightgbm+catboost+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=zUDxEL3jwQ0"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=gradient+boosting+xgboost+lightgbm+catboost+AI+engineering+tutorial"
         }
       ],
@@ -48735,11 +48735,11 @@
       "link": "ai_engineering.html#section-8",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=support+vector+machines+svm+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=efR1C6CvhmE"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=support+vector+machines+svm+AI+engineering+tutorial"
         }
       ],
@@ -48759,11 +48759,11 @@
       "link": "ai_engineering.html#section-8",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=k-nearest+neighbors+knn+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=HVXime0nQeI"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=k-nearest+neighbors+knn+AI+engineering+tutorial"
         }
       ],
@@ -48783,11 +48783,11 @@
       "link": "ai_engineering.html#section-8",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=naive+bayes+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=O2L2Uv9pdDA"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=naive+bayes+AI+engineering+tutorial"
         }
       ],
@@ -48807,11 +48807,11 @@
       "link": "ai_engineering.html#section-8",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=k-means+clustering+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=4b5d3muPQmA"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=k-means+clustering+AI+engineering+tutorial"
         }
       ],
@@ -48831,11 +48831,11 @@
       "link": "ai_engineering.html#section-8",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=hierarchical+clustering+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=7xHsRkOdVwo"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=hierarchical+clustering+AI+engineering+tutorial"
         }
       ],
@@ -48855,11 +48855,11 @@
       "link": "ai_engineering.html#section-8",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=dbscan+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=RDZUdRSDOok"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=dbscan+AI+engineering+tutorial"
         }
       ],
@@ -48879,11 +48879,11 @@
       "link": "ai_engineering.html#section-8",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=pca+dimensionality+reduction+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=FgakZw6K1QQ"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=pca+dimensionality+reduction+AI+engineering+tutorial"
         }
       ],
@@ -48903,11 +48903,11 @@
       "link": "ai_engineering.html#section-8",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=t-sne+umap+visualization+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NEaUSP4YerM"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=t-sne+umap+visualization+AI+engineering+tutorial"
         }
       ],
@@ -48927,11 +48927,11 @@
       "link": "ai_engineering.html#section-8",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=train%2Fval%2Ftest+splits+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NPWlj9G1Si8"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=train%2Fval%2Ftest+splits+AI+engineering+tutorial"
         }
       ],
@@ -48951,11 +48951,11 @@
       "link": "ai_engineering.html#section-8",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=k-fold+cross-validation+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=fSytzGwwBVw"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=k-fold+cross-validation+AI+engineering+tutorial"
         }
       ],
@@ -48975,11 +48975,11 @@
       "link": "ai_engineering.html#section-8",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=classification+metrics+accuracy+f1+auc+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=4jRBRDbJemM"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=classification+metrics+accuracy+f1+auc+AI+engineering+tutorial"
         }
       ],
@@ -48999,11 +48999,11 @@
       "link": "ai_engineering.html#section-8",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=regression+metrics+mae+rmse+r+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=w1RySTwe6Dk"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=regression+metrics+mae+rmse+r+AI+engineering+tutorial"
         }
       ],
@@ -49023,11 +49023,11 @@
       "link": "ai_engineering.html#section-8",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=bias-variance+tradeoff+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=EuBBz3bI-aA"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=bias-variance+tradeoff+AI+engineering+tutorial"
         }
       ],
@@ -49047,11 +49047,11 @@
       "link": "ai_engineering.html#section-8",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=data+leakage+the+%231+silent+killer+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=j9X8m5KSQAc"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=data+leakage+the+%231+silent+killer+AI+engineering+tutorial"
         }
       ],
@@ -49071,11 +49071,11 @@
       "link": "ai_engineering.html#section-8",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=numeric+features+scaling+log+binning+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=iv_ec0EfXcE"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=numeric+features+scaling+log+binning+AI+engineering+tutorial"
         }
       ],
@@ -49095,11 +49095,11 @@
       "link": "ai_engineering.html#section-8",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=categorical+encoding+one-hot+target+embedding+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=589nCGeWG1w"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=categorical+encoding+one-hot+target+embedding+AI+engineering+tutorial"
         }
       ],
@@ -49119,11 +49119,11 @@
       "link": "ai_engineering.html#section-8",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=text+features+tf-idf+embeddings+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=drKL--kjxcc"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=text+features+tf-idf+embeddings+AI+engineering+tutorial"
         }
       ],
@@ -49143,11 +49143,11 @@
       "link": "ai_engineering.html#section-8",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=missing+value+strategies+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=6syEBkrY3VU"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=missing+value+strategies+AI+engineering+tutorial"
         }
       ],
@@ -49167,11 +49167,11 @@
       "link": "ai_engineering.html#section-8",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=feature+selection+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=dsqwxls1h8o"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=feature+selection+AI+engineering+tutorial"
         }
       ],
@@ -49191,11 +49191,11 @@
       "link": "ai_engineering.html#section-9",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=backpropagation+gradient+descent+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=tIeHLnjs5U8"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=backpropagation+gradient+descent+AI+engineering+tutorial"
         }
       ],
@@ -49215,11 +49215,11 @@
       "link": "ai_engineering.html#section-9",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=activation+functions+relu+gelu+swish+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=-jRDvP2NdMA"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=activation+functions+relu+gelu+swish+AI+engineering+tutorial"
         }
       ],
@@ -49239,11 +49239,11 @@
       "link": "ai_engineering.html#section-9",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=loss+functions+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=v_ueBW_5dLg"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=loss+functions+AI+engineering+tutorial"
         }
       ],
@@ -49263,11 +49263,11 @@
       "link": "ai_engineering.html#section-9",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=optimizers+sgd+adam+adamw+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=sn0Eex-3F_c"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=optimizers+sgd+adam+adamw+AI+engineering+tutorial"
         }
       ],
@@ -49287,11 +49287,11 @@
       "link": "ai_engineering.html#section-9",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=regularization+dropout+weight+decay+augmentation+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=_SlPBbxuqas"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=regularization+dropout+weight+decay+augmentation+AI+engineering+tutorial"
         }
       ],
@@ -49311,11 +49311,11 @@
       "link": "ai_engineering.html#section-9",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=batch+normalization+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=Oh2t8XXiFgU"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=batch+normalization+AI+engineering+tutorial"
         }
       ],
@@ -49335,11 +49335,11 @@
       "link": "ai_engineering.html#section-9",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=cnns+computer+vision+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=QzY57FaENXg"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=cnns+computer+vision+AI+engineering+tutorial"
         }
       ],
@@ -49359,11 +49359,11 @@
       "link": "ai_engineering.html#section-9",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=rnns+%2F+lstms+sequence+mostly+historical+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=AsNTP8Kwu80"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=rnns+%2F+lstms+sequence+mostly+historical+AI+engineering+tutorial"
         }
       ],
@@ -49383,11 +49383,11 @@
       "link": "ai_engineering.html#section-9",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=transformers+covered+in+section+1+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=wjZofJX0v4M"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=transformers+covered+in+section+1+AI+engineering+tutorial"
         }
       ],
@@ -49407,11 +49407,11 @@
       "link": "ai_engineering.html#section-9",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=diffusion+models+image+generation+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=1CIpzeNxIhU"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=diffusion+models+image+generation+AI+engineering+tutorial"
         }
       ],
@@ -49431,11 +49431,11 @@
       "link": "ai_engineering.html#section-9",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=mixture+of+experts+moe+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=sYDlVVyJYn4"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=mixture+of+experts+moe+AI+engineering+tutorial"
         }
       ],
@@ -49455,11 +49455,11 @@
       "link": "ai_engineering.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=experiment+tracking+mlflow+w+b+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=ksYIVDue8ak"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=experiment+tracking+mlflow+w+b+AI+engineering+tutorial"
         }
       ],
@@ -49479,11 +49479,11 @@
       "link": "ai_engineering.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=data+versioning+dvc+lakefs+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=2amxzJomLQI"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=data+versioning+dvc+lakefs+AI+engineering+tutorial"
         }
       ],
@@ -49503,11 +49503,11 @@
       "link": "ai_engineering.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=model+registry+mlflow+hf+hub+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=mrXiBDfhv_M"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=model+registry+mlflow+hf+hub+AI+engineering+tutorial"
         }
       ],
@@ -49527,11 +49527,11 @@
       "link": "ai_engineering.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=feature+stores+feast+tecton+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=DESBDukN9gw"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=feature+stores+feast+tecton+AI+engineering+tutorial"
         }
       ],
@@ -49551,11 +49551,11 @@
       "link": "ai_engineering.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=batch+prediction+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=xutAo6ltr7A"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=batch+prediction+AI+engineering+tutorial"
         }
       ],
@@ -49575,11 +49575,11 @@
       "link": "ai_engineering.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=online+prediction+rest+api+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=LP7G8hpipkY"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=online+prediction+rest+api+AI+engineering+tutorial"
         }
       ],
@@ -49599,11 +49599,11 @@
       "link": "ai_engineering.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=streaming+prediction+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=OejCJL2EC3k"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=streaming+prediction+AI+engineering+tutorial"
         }
       ],
@@ -49623,11 +49623,11 @@
       "link": "ai_engineering.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=shadow+deployment+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=OejCJL2EC3k"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=shadow+deployment+AI+engineering+tutorial"
         }
       ],
@@ -49647,11 +49647,11 @@
       "link": "ai_engineering.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=canary+%2F+a%2Fb+testing+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=MGuj13NcdjE"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=canary+%2F+a%2Fb+testing+AI+engineering+tutorial"
         }
       ],
@@ -49671,11 +49671,11 @@
       "link": "ai_engineering.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=data+drift+detection+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=ZSd4uixtc8Y"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=data+drift+detection+AI+engineering+tutorial"
         }
       ],
@@ -49695,11 +49695,11 @@
       "link": "ai_engineering.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=concept+drift+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=QJTRNxUxmuc"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=concept+drift+AI+engineering+tutorial"
         }
       ],
@@ -49719,11 +49719,11 @@
       "link": "ai_engineering.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=model+performance+monitoring+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=mOh8_Sf40M8"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=model+performance+monitoring+AI+engineering+tutorial"
         }
       ],
@@ -49743,11 +49743,11 @@
       "link": "ai_engineering.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=logging+predictions+%2B+features+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=CE4vyoUL0c4"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=logging+predictions+%2B+features+AI+engineering+tutorial"
         }
       ],
@@ -49767,11 +49767,11 @@
       "link": "ai_engineering.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=kubernetes+for+ml+kubeflow+kserve+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=Dbwj-NHnHfw"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=kubernetes+for+ml+kubeflow+kserve+AI+engineering+tutorial"
         }
       ],
@@ -49791,11 +49791,11 @@
       "link": "ai_engineering.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=gpu+clusters+cost+optimization+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=OejCJL2EC3k"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=gpu+clusters+cost+optimization+AI+engineering+tutorial"
         }
       ],
@@ -49815,11 +49815,11 @@
       "link": "ai_engineering.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=ci%2Fcd+for+ml+github+actions+jenkins+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=f91RNQnSScs"
         },
         {
-          "title": "🔍G",
+          "title": "🌐G",
           "url": "https://www.google.com/search?q=ci%2Fcd+for+ml+github+actions+jenkins+AI+engineering+tutorial"
         }
       ],
