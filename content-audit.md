@@ -1,6 +1,6 @@
 # Taran's Learning Hub Content Audit
 
-Generated: 2026-10-06T21:09:41.664Z
+Generated: 2026-10-27T00:36:38.522Z
 
 ## Research References
 
@@ -425,13 +425,13 @@ Sections:
 
 ## Interview Prep
 
-- Inventory: 7 sections, 22 subsections, 109 concepts, 28 resources.
+- Inventory: 11 sections, 34 subsections, 153 concepts, 44 resources.
 - Formatting focus: consistent navigation, closed resources, clean headings, and better fallback search links.
 - Duplicate subsection names to review: none found by title.
 - Weak/generic subsection names to review: none found by heuristic.
-- Coverage source: behavioral, HR, recruiter, and communication interview practice.
-- Missing/priority candidates: STAR, CARL, SOAR, PREP, and PEEL answer methods, Tell me about yourself, Strengths and weaknesses, Conflict and failure, Ambiguity and ownership, Salary and offer conversations, Questions to ask the interviewer, Mock interview scorecard.
-- Recommended next resources: Google Interview Tips, Indeed Common Interview Questions, MIT CAPD Behavioral Interviews.
+- Coverage source: behavioral, HR, recruiter, GenAI systems, AI agents, FDE, and system design practice.
+- Missing/priority candidates: STAR, CARL, SOAR, PREP, and PEEL answer methods, Tell me about yourself, Strengths and weaknesses, Conflict and failure, Ambiguity and ownership, Salary and offer conversations, Questions to ask the interviewer, Mock interview scorecard, Generative AI & LLM Systems (KV cache, PagedAttention, speculative decoding, DPO, RoPE), AI Agents & Autonomous Tool Calling (ReAct, constrained decoding, memory, sandboxing), Forward Deployed Engineering (air-gapped enclaves, PrivateLink, document RBAC, dirty ETL), AI System Design (real-time copilot, multimodal search, 3-tier caching, continuous evals).
+- Recommended next resources: Google Interview Tips, Indeed Common Interview Questions, MIT CAPD Behavioral Interviews, vLLM Architecture & PagedAttention, OpenAI Function Calling Guide, Palantir Forward Deployed Engineering.
 
 Sections:
 - Answer Frameworks: 15 items, 3 subsections, 3 resources.
@@ -441,4 +441,8 @@ Sections:
 - Technical Communication: 15 items, 3 subsections, 3 resources.
 - Transcript Practice Lab: 10 items, 2 subsections, 3 resources.
 - Company Preparation Tracks: 17 items, 4 subsections, 4 resources.
+- Generative AI & LLM Systems: 13 items, 3 subsections, 4 resources.
+- AI Agents & Autonomous Tool Calling: 11 items, 3 subsections, 4 resources.
+- Forward Deployed Engineering (FDE) & Enterprise AI: 11 items, 3 subsections, 4 resources.
+- AI System Design & Real-World Case Studies: 9 items, 3 subsections, 4 resources.
 

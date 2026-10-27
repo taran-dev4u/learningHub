@@ -10,13 +10,13 @@ A personal static learning hub generated from the HTML sites in this folder.
 - Behavioral and Leadership: 145 concepts, 6 sections, 25 resources
 - AI Engineering: 177 concepts, 11 sections, 56 resources
 - Cloud - AWS and Azure: 194 concepts, 11 sections, 55 resources
-- Interview Prep: 109 concepts, 7 sections, 28 resources
+- Interview Prep: 153 concepts, 11 sections, 44 resources
 
 ## Added tutorial sub-sites
 
 - DSA Tutorial: `DSA_Tutorial/index.html` with 747 generated pages and 699 problem tutorials (one page per problem per pattern; duplicates inside a pattern removed).
 - System Design Tutorial Hub: `System_Design_Tutorial/index.html` with 15 sections, 62 mapped topics, and 62 bundled markdown lessons.
-- Interview Prep: `interview_prep.html` with answer methods, HR questions, behavioral story themes, technical communication practice, and a word-by-word transcript runner.
+- Interview Prep: `interview_prep.html` with answer methods, behavioral stories, Generative AI & LLM systems, Autonomous AI Agents, Forward Deployed Engineering (FDE), AI system design case studies, and a word-by-word transcript runner.
 
 ## Current UI
 

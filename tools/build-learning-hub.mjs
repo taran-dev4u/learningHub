@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { gapSections, resourceLibraries } from "./gap-content.mjs";
 import { simpleHubHtml, redirectHtml } from "./hub-page.mjs";
+import { aiInterviewPrepSections } from "./ai_interview_sections.mjs";
 // build: generates hub pages, gap sections, resource libraries, and search index.
 
 const root = process.cwd();
@@ -77,7 +78,7 @@ const sourceDefs = [
     label: "Interview",
     color: "#e04768",
     storage: { done: "hub_done_interview", bookmark: "hub_bm_interview" },
-    summary: "Behavioral, HR, communication, salary, and mock-answer practice with a word-by-word transcript trainer.",
+    summary: "Behavioral, HR, GenAI systems, AI agents, Forward Deployed Engineering (FDE), AI system design, and mock-answer practice.",
   },
 ];
 
@@ -327,11 +328,12 @@ const coverageBySource = {
   },
   interview: {
     title: "Interview Prep Coverage Check",
-    source: "behavioral, HR, recruiter, and communication interview practice",
+    source: "behavioral, HR, recruiter, GenAI systems, AI agents, FDE, and system design practice",
     notes: [
       "Practice the structure first, then personalize every answer with your own project evidence.",
       "Keep each answer readable as a 60-90 second transcript and expandable into a deeper story.",
       "Use the transcript runner for pacing, clarity, and word-by-word rehearsal.",
+      "Master the elite Q&A structure: TL;DR, Core Mechanism, Trade-offs & Failure Modes, and Production Metrics.",
     ],
     topics: [
       "STAR, CARL, SOAR, PREP, and PEEL answer methods",
@@ -342,11 +344,18 @@ const coverageBySource = {
       "Salary and offer conversations",
       "Questions to ask the interviewer",
       "Mock interview scorecard",
+      "Generative AI & LLM Systems (KV cache, PagedAttention, speculative decoding, DPO, RoPE)",
+      "AI Agents & Autonomous Tool Calling (ReAct, constrained decoding, memory, sandboxing)",
+      "Forward Deployed Engineering (air-gapped enclaves, PrivateLink, document RBAC, dirty ETL)",
+      "AI System Design (real-time copilot, multimodal search, 3-tier caching, continuous evals)",
     ],
     resources: [
       ["Google Interview Tips", "https://www.google.com/about/careers/applications/interview-tips/"],
       ["Indeed Common Interview Questions", "https://www.indeed.com/career-advice/interviewing/top-interview-questions-and-answers"],
       ["MIT CAPD Behavioral Interviews", "https://capd.mit.edu/resources/behavioral-interviews/"],
+      ["vLLM Architecture & PagedAttention", "https://docs.vllm.ai/en/latest/"],
+      ["OpenAI Function Calling Guide", "https://platform.openai.com/docs/guides/function-calling"],
+      ["Palantir Forward Deployed Engineering", "https://www.palantir.com/careers/forward-deployed/"],
     ],
   },
 };
@@ -1132,6 +1141,7 @@ const interviewPrepSections = [
       ]],
     ],
   },
+  ...aiInterviewPrepSections,
 ];
 
 function read(file) {
@@ -1333,7 +1343,7 @@ function parseConceptPage(source, html) {
           first(body, /<div class="cname">([\s\S]*?)<\/div>/i) ||
           decodeEntities(attr(open, "data-name")) ||
           cid;
-        const descCandidates = [...body.matchAll(/<div style=["'][^"']*margin-top:2px[^"']*["']>([\s\S]*?)<\/div>/gi)]
+        const descCandidates = [...body.matchAll(/<div\b[^>]*style=["'][^"']*margin-top:2px[^"']*["'][^>]*>([\s\S]*?)<\/div>/gi)]
           .map((m) => clean(m[1]))
           .filter(Boolean);
         const description = descCandidates[0] || subDesc || tagline;
@@ -1798,7 +1808,7 @@ function interviewPrepHtml() {
   }).join("");
   const sections = interviewPrepSections.map((section, index) => {
     const num = index + 1;
-    const hue = [350, 28, 165, 210, 265, 315][index % 6];
+    const hue = [350, 28, 165, 210, 265, 315, 190, 220, 155, 35, 275][index % 11];
     const count = section.subsections.reduce((sum, [, , concepts]) => sum + concepts.length, 0);
     const resources = section.resources.map(([title, url]) => (
       `<a class="res-link" href="${escHtml(url)}" target="_blank" rel="noopener"><span class="res-icon">Link</span><span class="res-title">${escHtml(title)}</span><span class="res-source">${escHtml(new URL(url).hostname.replace(/^www\./, ""))}</span></a>`
@@ -1810,7 +1820,25 @@ function interviewPrepHtml() {
         const topic = normalizeSearchTopic(name);
         const yt = `https://www.youtube.com/results?search_query=${queryEncode(`${topic} interview answer explained`)}`;
         const google = `https://www.google.com/search?q=${queryEncode(`${topic} interview answer examples`)}`;
-        return `<li data-cid="${cid}" data-name="${escHtml(name.toLowerCase())}"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">${escHtml(name)}</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">${escHtml(desc)}</div></div><div class="res-links"><a class="video" href="${yt}" target="_blank" rel="noopener">YT</a><a href="${google}" target="_blank" rel="noopener">Google</a></div></li>`;
+
+        let bodyHtml = "";
+        let isQa = false;
+        let dataName = name;
+        if (typeof desc === "object" && desc !== null) {
+          isQa = true;
+          const tagClass = (desc.tag || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+          const tagBadge = desc.tag ? `<span class="qa-badge ${tagClass}">${escHtml(desc.tag)}</span>` : "";
+          const tldr = desc.tldr ? `<p class="qa-block qa-tldr"><span class="qa-k">TL;DR:</span> <span class="qa-v">${escHtml(desc.tldr)}</span></p>` : "";
+          const arch = desc.architecture ? `<p class="qa-block qa-arch"><span class="qa-k">Core Mechanism:</span> <span class="qa-v">${escHtml(desc.architecture)}</span></p>` : "";
+          const trade = desc.tradeoffs ? `<p class="qa-block qa-trade"><span class="qa-k">Trade-offs &amp; Failure Modes:</span> <span class="qa-v">${escHtml(desc.tradeoffs)}</span></p>` : "";
+          const metric = desc.metrics ? `<p class="qa-block qa-metric"><span class="qa-k">Production Impact:</span> <span class="qa-v">${escHtml(desc.metrics)}</span></p>` : "";
+          bodyHtml = `<div><div class="cname">${tagBadge}<span class="qa-qtitle">${escHtml(name)}</span></div><div class="qa-details" style="font-size:11.5px;color:var(--text-faint);margin-top:2px">${tldr}${arch}${trade}${metric}</div></div>`;
+          dataName = `${desc.tag || ""} ${name} ${desc.tldr || ""}`;
+        } else {
+          bodyHtml = `<div><div class="cname">${escHtml(name)}</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">${escHtml(desc)}</div></div>`;
+        }
+
+        return `<li data-cid="${cid}" data-name="${escHtml(dataName.toLowerCase())}"${isQa ? ' class="qa-item"' : ''}><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div>${bodyHtml}<div class="res-links"><a class="video" href="${yt}" target="_blank" rel="noopener">YT</a><a href="${google}" target="_blank" rel="noopener">Google</a></div></li>`;
       }).join("");
       return `<div class="subsection"><div class="subsection-head"><span class="subsection-tag">${tag}</span><h3>${escHtml(subTitle)}</h3><span style="font-size:11px;color:var(--text-faint);">${concepts.length} items</span></div><div class="subsection-desc">${escHtml(subDesc)}</div><ol class="concepts">${lis}</ol></div>`;
     }).join("\n");
@@ -1831,7 +1859,7 @@ ${subsections}
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Taran's personal interview preparation site with answer methods, HR questions, behavioral stories, and a word-by-word transcript trainer.">
+<meta name="description" content="Taran's personal interview preparation site with answer methods, behavioral stories, Generative AI, AI Agents, Forward Deployed Engineering, and AI system design.">
 <title>Interview Prep - Taran's Learning Hub</title>
 <link rel="stylesheet" href="assets/learning-hub-shared.css">
 <script src="assets/learning-hub-shared.js"></script>
@@ -1899,7 +1927,7 @@ a { color:inherit; } .wrap { max-width:1280px; margin:0 auto; padding:24px 20px 
 <body>
 <div class="wrap">
 <header class="hero">
-<div><span class="edition">Taran's Interview Prep</span><h1>Interview Prep</h1><p>One practice space for behavioral answers, HR questions, recruiter screens, technical communication, and transcript rehearsal. Mark each method or question when it is ready, save weak areas, and practice answers word by word.</p></div>
+<div><span class="edition">Taran's Interview Prep</span><h1>Interview Prep</h1><p>Comprehensive practice space for behavioral answers, recruiter screens, Generative AI &amp; LLM systems, Autonomous AI Agents, Forward Deployed Engineering (FDE) client architectures, and AI system design case studies.</p></div>
 <div class="interview-diagram" aria-label="Interview prep flow diagram">
 <div class="diagram-row" style="--chip-color:#e04768"><span class="diagram-chip">Structure</span><span class="diagram-line"></span></div>
 <div class="diagram-row" style="--chip-color:#ef8a3a"><span class="diagram-chip">Story</span><span class="diagram-line"></span></div>
@@ -3167,7 +3195,7 @@ ${data.sources.map((s) => `- ${s.title}: ${s.itemCount} ${s.progressLabel}, ${s.
 
 - DSA Tutorial: \`DSA_Tutorial/index.html\` with 747 generated pages and 699 problem tutorials (one page per problem per pattern; duplicates inside a pattern removed).
 - System Design Tutorial Hub: \`System_Design_Tutorial/index.html\` with 15 sections, 62 mapped topics, and 62 bundled markdown lessons.
-- Interview Prep: \`interview_prep.html\` with answer methods, HR questions, behavioral story themes, technical communication practice, and a word-by-word transcript runner.
+- Interview Prep: \`interview_prep.html\` with answer methods, behavioral stories, Generative AI & LLM systems, Autonomous AI Agents, Forward Deployed Engineering (FDE), AI system design case studies, and a word-by-word transcript runner.
 
 ## Current UI
 

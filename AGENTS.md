@@ -38,7 +38,7 @@ not security — the repo is public.
 | `behavioral.html` | 6 domains, 145 concepts, 16 Amazon LPs | hand + generator injects |
 | `ai_engineering.html` | 11 domains, 37 subsections, 177 concepts | hand + generator injects |
 | `cloud_aws_azure.html` | 11 domains, 34 subsections, 194 concepts | hand + generator injects |
-| `interview_prep.html` | 92 items + transcript runner + Amazon companion panel | **fully generated** |
+| `interview_prep.html` | 11 sections, 153 items + transcript runner + Amazon companion panel | **fully generated** |
 | `DSA_Tutorial/` | 747 pages: 29 patterns, 699 problems, 12 foundations, 6 python | **generated** by `build.py` |
 | `System_Design_Tutorial/` | 1 shell page + `topics.js` + `contentBundle.js` (62 lessons) | data-driven |
 | `LLD_Tutorial/` | 1 shell page + `topics.js` + `contentBundle.js` | data-driven |
@@ -266,7 +266,7 @@ used to race it on the same concurrency group and was deleted. Do not add anothe
 - **DSA index**: 47 patterns · 219 subpatterns · 940 distinct problems
   (609 curated + 331 Striver A2Z) · 244 E / 485 M / 211 H · 73 Blind 75 · 121 NeetCode 150 ·
   425 distinct resource URLs. All verified against the markup at `bb6d796`.
-- **Hub totals**: 7 sites · 103 sections · 2,026 items · 829 resources.
+- **Hub totals**: 7 sites · 108 sections · 2,087 items · 848 resources.
 - **System Design**: 62 roadmap lessons with curated, verified links; 39 verified videos.
 - **DSA videos**: 450 problems carry a NeetCode walkthrough, sourced from
   `neetcode-gh/leetcode`'s `.problemSiteData.json`. YouTube links were verified through the

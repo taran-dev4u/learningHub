@@ -443,8 +443,17 @@
 
   function renderChannelBar() {
     if (!channelBar) return;
-    channelBar.style.display = 'none';
-    channelBar.innerHTML = '';
+    var vids = curVideos();
+    if (!vids.length || vids.length <= 1) {
+      channelBar.style.display = 'none';
+      channelBar.innerHTML = '';
+      return;
+    }
+    channelBar.style.display = '';
+    channelBar.innerHTML = vids.map(function (v, i) {
+      var ch = v[2] || ('Instructor ' + (i + 1));
+      return '<button type="button" class="vp-chan-btn' + (i === state.idx ? ' active' : '') + '" data-vp-i="' + i + '">' + esc(ch) + '</button>';
+    }).join('');
   }
 
   function renderList() {
