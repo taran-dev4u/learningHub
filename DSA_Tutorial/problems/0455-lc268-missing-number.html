@@ -23,33 +23,33 @@
  › Subpattern 14.1: Bitwise XOR / Finding Single or Missing Number · Problem 455 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0048-lc268-missing-number.html">Array/Matrix Manipulation</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>An array holds n distinct numbers from 0..n; return the one number missing from the range.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given an array <code>nums</code> containing <code>n</code> distinct numbers in the range <code>[0, n]</code>, return the only number in the range that is missing from the array.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Bitwise XOR / Finding Single or Missing Number</strong> — XOR all elements — pairs cancel, leaving the singleton.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>XOR all indices 0..n and all values — everything pairs off except the missing number.</div>
-<h2>Why this pattern?</h2><ul><li>"every element appears twice except…" → XOR</li><li>"without using +/-" arithmetic → bit ops</li><li>count/check/flip individual bits, powers of two</li><li>n ≤ 20 with subset enumeration → bitmask (possibly + DP)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Bit Manipulation master template and adapt the marked parts to this problem:</p><pre><code>x &amp; 1            # is odd? (last bit)
-x &gt;&gt; 1, x &lt;&lt; 1   # halve / double
-x &amp; (x - 1)      # clear lowest set bit  → == 0 means power of two
-x &amp; (-x)         # isolate lowest set bit
-x ^= y           # toggle by mask; pairs cancel
-(x &gt;&gt; i) &amp; 1     # read bit i
-x | (1 &lt;&lt; i)     # set bit i
-x &amp; ~(1 &lt;&lt; i)    # clear bit i
+<p><strong>XOR Invariance:</strong>
+XOR all numbers in <code>nums</code> and all indices from $0$ to $n$:
+$$	ext{missing} = n \oplus \left( \bigoplus_{i=0}^{n-1} (i \oplus nums[i]) \right)$$
+Every number that is present appears twice (once in range $[0, n]$, once in <code>nums</code>) and cancels out to 0. The missing number appears only once!</p>
 
-# Bitmask subsets: iterate all 2^n subsets of n items
-for mask in range(1 &lt;&lt; n):
-    if mask &amp; (1 &lt;&lt; i):  ...   # item i is in this subset</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h2>🐢 Brute force vs optimal</h2>
+<p>Gauss sum $rac{n(n+1)}{2} - \sum nums$ can suffer integer overflow in 32-bit fixed integer types. XOR avoids all arithmetic overflow completely in $O(n)$ time and $O(1)$ space.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> <code>res = len(nums); for i, x in enumerate(nums): res ^= i ^ x</code>. Returns the missing number in $O(n)$ time and $O(1)$ space.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def missingNumber(nums: list[int]) -> int:
+    res = len(nums)
+    for i, x in enumerate(nums):
+        res ^= i ^ x
+    return res
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n)$ — Single linear loop.<br>
+<strong>Space:</strong> $O(1)$ — Single accumulator variable.</p>
+
 
 <div class="pager"><a href="../problems/0454-lc260-single-number-iii.html"><span class="lbl">← Previous</span>#260 Single Number III</a><a href="../problems/0456-lc389-find-the-difference.html" style="text-align:right"><span class="lbl">Next →</span>#389 Find the Difference</a></div>
 </div>

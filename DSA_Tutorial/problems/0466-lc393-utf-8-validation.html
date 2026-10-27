@@ -23,33 +23,55 @@
  › Subpattern 14.4: Bitwise Operations / Power of Two or Four Check · Problem 466 of 699</p>
 
 <h2>📋 The problem</h2><p>Validate whether an integer array encodes a legal UTF-8 byte sequence.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given an integer array <code>data</code> representing the data, return whether it is a valid UTF-8 encoding.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Bitwise Operations / Power of Two or Four Check</strong> — n &amp; (n-1) == 0 ⇔ power of two; mask with 0x55555555 for power of four.</p>
+<p>UTF-8 encoding rules:
+1. <strong>1-byte character:</strong> starts with bit <code>0</code> (<code>0xxxxxxx</code>).
+2. <strong>n-byte character ($2 \le n \le 4$):</strong>
+   - First byte has $n$ leading <code>1</code>s followed by a <code>0</code> (e.g. <code>110xxxxx</code> for 2 bytes, <code>1110xxxx</code> for 3 bytes, <code>11110xxx</code> for 4 bytes).
+   - Followed by $n - 1$ continuation bytes, each strictly starting with <code>10xxxxxx</code>.</p>
 
-<h2>Why this pattern?</h2><ul><li>"every element appears twice except…" → XOR</li><li>"without using +/-" arithmetic → bit ops</li><li>count/check/flip individual bits, powers of two</li><li>n ≤ 20 with subset enumeration → bitmask (possibly + DP)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Bit Manipulation master template and adapt the marked parts to this problem:</p><pre><code>x &amp; 1            # is odd? (last bit)
-x &gt;&gt; 1, x &lt;&lt; 1   # halve / double
-x &amp; (x - 1)      # clear lowest set bit  → == 0 means power of two
-x &amp; (-x)         # isolate lowest set bit
-x ^= y           # toggle by mask; pairs cancel
-(x &gt;&gt; i) &amp; 1     # read bit i
-x | (1 &lt;&lt; i)     # set bit i
-x &amp; ~(1 &lt;&lt; i)    # clear bit i
+<h2>🐢 Brute force vs optimal</h2>
+<p>Track <code>n_bytes</code> remaining.
+For each byte:
+- If <code>n_bytes == 0</code>: count leading 1s. If 0, it's 1-byte char; if 2, 3, or 4, set <code>n_bytes = count - 1</code>. If 1 or $> 4$, invalid!
+- If <code>n_bytes > 0</code>: verify byte starts with <code>10xxxxxx</code> (<code>(byte >> 6) == 0b10</code>) and decrement <code>n_bytes -= 1</code>.
+At end, verify <code>n_bytes == 0</code>.</p>
 
-# Bitmask subsets: iterate all 2^n subsets of n items
-for mask in range(1 &lt;&lt; n):
-    if mask &amp; (1 &lt;&lt; i):  ...   # item i is in this subset</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<div class="insight">💡 <strong>Key insight:</strong> State machine tracking continuation bytes: inspect top bits via right-shifts. First byte dictates expected continuation count.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def validUtf8(data: list[int]) -> bool:
+    n_bytes = 0
+    
+    for num in data:
+        byte = num & 0xFF
+        if n_bytes == 0:
+            if (byte >> 7) == 0:
+                continue
+            elif (byte >> 5) == 0b110:
+                n_bytes = 1
+            elif (byte >> 4) == 0b1110:
+                n_bytes = 2
+            elif (byte >> 3) == 0b11110:
+                n_bytes = 3
+            else:
+                return False
+        else:
+            if (byte >> 6) != 0b10:
+                return False
+            n_bytes -= 1
+            
+    return n_bytes == 0
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n)$ — Single linear pass over bytes.<br>
+<strong>Space:</strong> $O(1)$ — Single state tracker.</p>
+
 
 <div class="pager"><a href="../problems/0465-lc371-sum-of-two-integers.html"><span class="lbl">← Previous</span>#371 Sum of Two Integers</a><a href="../problems/0467-lc1318-minimum-flips-to-make-a-or-b-equal-to-c.html" style="text-align:right"><span class="lbl">Next →</span>#1318 Minimum Flips to Make a OR b Equal to c</a></div>
 </div>

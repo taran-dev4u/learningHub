@@ -23,33 +23,41 @@
  › Subpattern 14.4: Bitwise Operations / Power of Two or Four Check · Problem 465 of 699</p>
 
 <h2>📋 The problem</h2><p>Compute the sum of two integers without using + or - operators (bit manipulation).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given two integers <code>a</code> and <code>b</code>, return the sum of the two integers without using the operators <code>+</code> and <code>-</code>.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Bitwise Operations / Power of Two or Four Check</strong> — n &amp; (n-1) == 0 ⇔ power of two; mask with 0x55555555 for power of four.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Sum without +: XOR is the carry-less sum, AND<<1 is the carry; loop until carry dies (mask for 32-bit in Python).</div>
-<h2>Why this pattern?</h2><ul><li>"every element appears twice except…" → XOR</li><li>"without using +/-" arithmetic → bit ops</li><li>count/check/flip individual bits, powers of two</li><li>n ≤ 20 with subset enumeration → bitmask (possibly + DP)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Bit Manipulation master template and adapt the marked parts to this problem:</p><pre><code>x &amp; 1            # is odd? (last bit)
-x &gt;&gt; 1, x &lt;&lt; 1   # halve / double
-x &amp; (x - 1)      # clear lowest set bit  → == 0 means power of two
-x &amp; (-x)         # isolate lowest set bit
-x ^= y           # toggle by mask; pairs cancel
-(x &gt;&gt; i) &amp; 1     # read bit i
-x | (1 &lt;&lt; i)     # set bit i
-x &amp; ~(1 &lt;&lt; i)    # clear bit i
+<p><strong>Half Adder Circuit:</strong>
+- Bitwise XOR (<code>a ^ b</code>) performs addition <strong>without carry</strong> ($0+0=0, 1+0=1, 0+1=1, 1+1=0$).
+- Bitwise AND (<code>a & b</code>) identifies where carries occur ($1+1$ generates carry). Shifted left by 1 (<code>(a & b) << 1</code>), it becomes the carry input for the next position!</p>
+<p>Repeat until carry becomes 0:
+- <code>sum = a ^ b</code>
+- <code>carry = (a & b) << 1</code></p>
+<p>In Python, integers have arbitrary precision, so mask with <code>0xFFFFFFFF</code> to simulate 32-bit signed two's complement integer arithmetic!</p>
 
-# Bitmask subsets: iterate all 2^n subsets of n items
-for mask in range(1 &lt;&lt; n):
-    if mask &amp; (1 &lt;&lt; i):  ...   # item i is in this subset</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h2>🐢 Brute force vs optimal</h2>
+<p>Simulates hardware ALU adder in $O(1)$ (at most 32 carry propagations).</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Half adder: <code>while b: carry = (a & b) << 1; a = a ^ b; b = carry</code>. In Python, mask with <code>0xFFFFFFFF</code> to enforce 32-bit limits.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def getSum(a: int, b: int) -> int:
+    mask = 0xFFFFFFFF
+    
+    while (b & mask) > 0:
+        carry = (a & b) << 1
+        a = a ^ b
+        b = carry
+        
+    # If a is a negative 32-bit number, sign-extend it in Python
+    return (a & mask) if b > 0 else a
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(1)$ — Carries propagate at most 32 times.<br>
+<strong>Space:</strong> $O(1)$ — Two integer registers.</p>
+
 
 <div class="pager"><a href="../problems/0464-lc342-power-of-four.html"><span class="lbl">← Previous</span>#342 Power of Four</a><a href="../problems/0466-lc393-utf-8-validation.html" style="text-align:right"><span class="lbl">Next →</span>#393 UTF-8 Validation</a></div>
 </div>

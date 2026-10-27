@@ -23,33 +23,47 @@
  › Subpattern 14.4: Bitwise Operations / Power of Two or Four Check · Problem 467 of 699</p>
 
 <h2>📋 The problem</h2><p>Return the minimum bit flips in a and/or b so that a OR b equals c (per-bit case analysis).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given 3 positives numbers <code>a</code>, <code>b</code> and <code>c</code>. Return the minimum flips to make <code>(a OR b == c)</code>. In one flip, you can change any single bit (from 1 to 0, or 0 to 1) in <code>a</code> or <code>b</code>.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Bitwise Operations / Power of Two or Four Check</strong> — n &amp; (n-1) == 0 ⇔ power of two; mask with 0x55555555 for power of four.</p>
+<p>Inspect bit by bit from $0$ to $31$:
+- Let $bit_a = (a >> i) \& 1$, $bit_b = (b >> i) \& 1$, $bit_c = (c >> i) \& 1$.
+- <strong>Case 1 ($bit_c == 1$):</strong>
+  We need $(bit_a \lor bit_b) == 1$.
+  If both $bit_a == 0$ and $bit_b == 0$, we need <strong>1 flip</strong> (flip either $a$ or $b$ to 1).
+- <strong>Case 2 ($bit_c == 0$):</strong>
+  We need $(bit_a \lor bit_b) == 0$.
+  Both bits must be 0!
+  If $bit_a == 1$, add 1 flip. If $bit_b == 1$, add 1 flip (up to <strong>2 flips</strong>).</p>
 
-<h2>Why this pattern?</h2><ul><li>"every element appears twice except…" → XOR</li><li>"without using +/-" arithmetic → bit ops</li><li>count/check/flip individual bits, powers of two</li><li>n ≤ 20 with subset enumeration → bitmask (possibly + DP)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Bit Manipulation master template and adapt the marked parts to this problem:</p><pre><code>x &amp; 1            # is odd? (last bit)
-x &gt;&gt; 1, x &lt;&lt; 1   # halve / double
-x &amp; (x - 1)      # clear lowest set bit  → == 0 means power of two
-x &amp; (-x)         # isolate lowest set bit
-x ^= y           # toggle by mask; pairs cancel
-(x &gt;&gt; i) &amp; 1     # read bit i
-x | (1 &lt;&lt; i)     # set bit i
-x &amp; ~(1 &lt;&lt; i)    # clear bit i
+<h2>🐢 Brute force vs optimal</h2>
+<p>Loop runs exactly 32 times ($O(1)$ time and space).</p>
 
-# Bitmask subsets: iterate all 2^n subsets of n items
-for mask in range(1 &lt;&lt; n):
-    if mask &amp; (1 &lt;&lt; i):  ...   # item i is in this subset</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<div class="insight">💡 <strong>Key insight:</strong> If $c_i = 1$: flip $= 1$ only if both $a_i=0$ and $b_i=0$. If $c_i = 0$: flip $= a_i + b_i$ (both must be turned off).</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def minFlips(a: int, b: int, c: int) -> int:
+    flips = 0
+    for i in range(32):
+        bit_a = (a >> i) & 1
+        bit_b = (b >> i) & 1
+        bit_c = (c >> i) & 1
+        
+        if bit_c == 1:
+            if bit_a == 0 and bit_b == 0:
+                flips += 1
+        else:
+            flips += bit_a + bit_b
+            
+    return flips
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(1)$ — 32 bit comparisons.<br>
+<strong>Space:</strong> $O(1)$ — Scalar counter.</p>
+
 
 <div class="pager"><a href="../problems/0466-lc393-utf-8-validation.html"><span class="lbl">← Previous</span>#393 UTF-8 Validation</a><a href="../patterns/p15-design.html" style="text-align:right"><span class="lbl">Next →</span>Design</a></div>
 </div>

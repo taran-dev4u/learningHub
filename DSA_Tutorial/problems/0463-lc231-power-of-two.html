@@ -23,33 +23,35 @@
  › Subpattern 14.4: Bitwise Operations / Power of Two or Four Check · Problem 463 of 699</p>
 
 <h2>📋 The problem</h2><p>Decide whether an integer is a power of two, ideally without loops.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given an integer <code>n</code>, return <code>true</code> if it is a power of two. Otherwise, return <code>false</code>.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Bitwise Operations / Power of Two or Four Check</strong> — n &amp; (n-1) == 0 ⇔ power of two; mask with 0x55555555 for power of four.</p>
+<p>A power of two in binary has <strong>exactly one set bit</strong> (e.g. $1=2^0=1_2, 2=2^1=10_2, 4=2^2=100_2, 8=2^3=1000_2$).
+Recall Brian Kernighan's bit trick:
+$$n \;\&\; (n - 1)$$
+clears the lowest set bit!
+If $n$ has only one set bit, clearing it leaves <strong>0</strong>:
+$$n > 0 \quad 	ext{and} \quad (n \;\&\; (n - 1)) == 0$$</p>
 
-<h2>Why this pattern?</h2><ul><li>"every element appears twice except…" → XOR</li><li>"without using +/-" arithmetic → bit ops</li><li>count/check/flip individual bits, powers of two</li><li>n ≤ 20 with subset enumeration → bitmask (possibly + DP)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Bit Manipulation master template and adapt the marked parts to this problem:</p><pre><code>x &amp; 1            # is odd? (last bit)
-x &gt;&gt; 1, x &lt;&lt; 1   # halve / double
-x &amp; (x - 1)      # clear lowest set bit  → == 0 means power of two
-x &amp; (-x)         # isolate lowest set bit
-x ^= y           # toggle by mask; pairs cancel
-(x &gt;&gt; i) &amp; 1     # read bit i
-x | (1 &lt;&lt; i)     # set bit i
-x &amp; ~(1 &lt;&lt; i)    # clear bit i
+<h2>🐢 Brute force vs optimal</h2>
+<p>Repeated division by 2 takes $O(\log n)$. The single bitwise check runs in $O(1)$ constant time.</p>
 
-# Bitmask subsets: iterate all 2^n subsets of n items
-for mask in range(1 &lt;&lt; n):
-    if mask &amp; (1 &lt;&lt; i):  ...   # item i is in this subset</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<div class="insight">💡 <strong>Key insight:</strong> Power of two check: <code>n > 0 and (n & (n - 1)) == 0</code>. Executes in a single CPU cycle!</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def isPowerOfTwo(n: int) -> bool:
+    """
+    Checks power of two in O(1) time and space.
+    """
+    return n > 0 and (n & (n - 1)) == 0
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(1)$ — Single bitwise operation.<br>
+<strong>Space:</strong> $O(1)$ — No memory allocated.</p>
+
 
 <div class="pager"><a href="../problems/0462-lc190-reverse-bits.html"><span class="lbl">← Previous</span>#190 Reverse Bits</a><a href="../problems/0464-lc342-power-of-four.html" style="text-align:right"><span class="lbl">Next →</span>#342 Power of Four</a></div>
 </div>

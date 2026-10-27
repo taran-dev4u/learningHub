@@ -23,33 +23,35 @@
  › Subpattern 14.3: Bitwise DP / Counting Bits Optimization · Problem 460 of 699</p>
 
 <h2>📋 The problem</h2><p>For every i from 0 to n, output how many 1-bits i has, ideally in O(n) total.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given an integer <code>n</code>, return an array <code>ans</code> of length <code>n + 1</code> such that for each <code>i</code> ($0 \le i \le n$), <code>ans[i]</code> is the number of <code>1</code>'s in the binary representation of <code>i</code>.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Bitwise DP / Counting Bits Optimization</strong> — dp[i] = dp[i&gt;&gt;1] + (i&amp;1) — counts set bits for 0..n.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>dp: bits(i) = bits(i >> 1) + (i & 1).</div>
-<h2>Why this pattern?</h2><ul><li>"every element appears twice except…" → XOR</li><li>"without using +/-" arithmetic → bit ops</li><li>count/check/flip individual bits, powers of two</li><li>n ≤ 20 with subset enumeration → bitmask (possibly + DP)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Bit Manipulation master template and adapt the marked parts to this problem:</p><pre><code>x &amp; 1            # is odd? (last bit)
-x &gt;&gt; 1, x &lt;&lt; 1   # halve / double
-x &amp; (x - 1)      # clear lowest set bit  → == 0 means power of two
-x &amp; (-x)         # isolate lowest set bit
-x ^= y           # toggle by mask; pairs cancel
-(x &gt;&gt; i) &amp; 1     # read bit i
-x | (1 &lt;&lt; i)     # set bit i
-x &amp; ~(1 &lt;&lt; i)    # clear bit i
+<p><strong>Bit DP Recurrence:</strong>
+Notice that shifting right by 1 (<code>i >> 1</code>) divides $i$ by 2 and drops the lowest bit:
+$$dp[i] = dp[i >> 1] + (i \;\&\; 1)$$
+Alternatively, using Brian Kernighan's lowest bit clear:
+$$dp[i] = dp[i \;\&\; (i - 1)] + 1$$
+Both relations allow computing $dp[i]$ in $O(1)$ time using previously computed entries!</p>
 
-# Bitmask subsets: iterate all 2^n subsets of n items
-for mask in range(1 &lt;&lt; n):
-    if mask &amp; (1 &lt;&lt; i):  ...   # item i is in this subset</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h2>🐢 Brute force vs optimal</h2>
+<p>Counting bits independently for each number takes $O(n \log n)$. Bit DP computes the entire array in $O(n)$ linear time.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> <code>dp[i] = dp[i >> 1] + (i & 1)</code>. The bit count of $i$ is the bit count of $i // 2$ plus the lowest bit!</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def countBits(n: int) -> list[int]:
+    dp = [0] * (n + 1)
+    for i in range(1, n + 1):
+        dp[i] = dp[i >> 1] + (i & 1)
+    return dp
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n)$ — Single pass from 1 to $n$.<br>
+<strong>Space:</strong> $O(n)$ — Output array of size $n+1$.</p>
+
 
 <div class="pager"><a href="../problems/0459-lc477-total-hamming-distance.html"><span class="lbl">← Previous</span>#477 Total Hamming Distance</a><a href="../problems/0461-lc1863-sum-of-all-subset-xor-totals.html" style="text-align:right"><span class="lbl">Next →</span>#1863 Sum of All Subset XOR Totals</a></div>
 </div>

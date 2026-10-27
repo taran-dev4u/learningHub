@@ -23,33 +23,41 @@
  › Subpattern 14.2: Bitwise AND / Counting Set Bits · Problem 459 of 699</p>
 
 <h2>📋 The problem</h2><p>Return the sum of Hamming distances (differing bit positions) over all pairs in an array.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>The Hamming distance between two integers is the number of positions at which the corresponding bits are different. Given an integer array <code>nums</code>, return the sum of Hamming distances between all pairs of integers in <code>nums</code>.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Bitwise AND / Counting Set Bits</strong> — Count set bits with n &amp; (n-1) until n is zero.</p>
+<p>Instead of comparing pairs $(i, j)$ ($O(n^2)$ time), calculate the contribution of each bit position $0 \dots 31$ independently across all numbers!
+For any bit position $b$:
+- Let $k$ be the count of numbers in <code>nums</code> that have the $b$-th bit set to <code>1</code>.
+- Then $n - k$ numbers have the $b$-th bit set to <code>0</code>.
+Each pairing between a number with bit <code>1</code> and a number with bit <code>0</code> contributes exactly 1 to the Hamming distance!
+$$	ext{Hamming Contribution at bit } b = k \times (n - k)$$
+Total Hamming distance is simply $\sum_{b=0}^{31} k_b \times (n - k_b)$!</p>
 
-<h2>Why this pattern?</h2><ul><li>"every element appears twice except…" → XOR</li><li>"without using +/-" arithmetic → bit ops</li><li>count/check/flip individual bits, powers of two</li><li>n ≤ 20 with subset enumeration → bitmask (possibly + DP)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Bit Manipulation master template and adapt the marked parts to this problem:</p><pre><code>x &amp; 1            # is odd? (last bit)
-x &gt;&gt; 1, x &lt;&lt; 1   # halve / double
-x &amp; (x - 1)      # clear lowest set bit  → == 0 means power of two
-x &amp; (-x)         # isolate lowest set bit
-x ^= y           # toggle by mask; pairs cancel
-(x &gt;&gt; i) &amp; 1     # read bit i
-x | (1 &lt;&lt; i)     # set bit i
-x &amp; ~(1 &lt;&lt; i)    # clear bit i
+<h2>🐢 Brute force vs optimal</h2>
+<p>Comparing all $n(n-1)/2$ pairs takes $O(n^2)$ time. Column-wise bit counting runs in $32 \times n = O(n)$ linear time and $O(1)$ space.</p>
 
-# Bitmask subsets: iterate all 2^n subsets of n items
-for mask in range(1 &lt;&lt; n):
-    if mask &amp; (1 &lt;&lt; i):  ...   # item i is in this subset</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<div class="insight">💡 <strong>Key insight:</strong> At bit $b$, if $k$ numbers have <code>1</code> and $n-k$ numbers have <code>0</code>, they form $k \times (n - k)$ differing pairs. Sum over 32 bit positions!</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def totalHammingDistance(nums: list[int]) -> int:
+    n = len(nums)
+    total = 0
+    
+    for b in range(32):
+        ones = sum((x >> b) & 1 for x in nums)
+        zeros = n - ones
+        total += ones * zeros
+        
+    return total
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(32 \times n) = O(n)$ — 32 passes over array.<br>
+<strong>Space:</strong> $O(1)$ — Constant scalar variables.</p>
+
 
 <div class="pager"><a href="../problems/0458-lc201-bitwise-and-of-numbers-range.html"><span class="lbl">← Previous</span>#201 Bitwise AND of Numbers Range</a><a href="../problems/0460-lc338-counting-bits.html" style="text-align:right"><span class="lbl">Next →</span>#338 Counting Bits</a></div>
 </div>

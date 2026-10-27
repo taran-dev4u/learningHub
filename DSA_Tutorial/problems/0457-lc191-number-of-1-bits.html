@@ -23,33 +23,37 @@
  › Subpattern 14.2: Bitwise AND / Counting Set Bits · Problem 457 of 699</p>
 
 <h2>📋 The problem</h2><p>Count how many bits are set to 1 in the binary representation of an integer.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Write a function that takes the binary representation of a positive integer and returns the number of set bits it has (also known as the Hamming weight).</p>
 
-<h2>Where this fits</h2>
-<p><strong>Bitwise AND / Counting Set Bits</strong> — Count set bits with n &amp; (n-1) until n is zero.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>n &= n−1 clears the lowest set bit; count iterations.</div>
-<h2>Why this pattern?</h2><ul><li>"every element appears twice except…" → XOR</li><li>"without using +/-" arithmetic → bit ops</li><li>count/check/flip individual bits, powers of two</li><li>n ≤ 20 with subset enumeration → bitmask (possibly + DP)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Bit Manipulation master template and adapt the marked parts to this problem:</p><pre><code>x &amp; 1            # is odd? (last bit)
-x &gt;&gt; 1, x &lt;&lt; 1   # halve / double
-x &amp; (x - 1)      # clear lowest set bit  → == 0 means power of two
-x &amp; (-x)         # isolate lowest set bit
-x ^= y           # toggle by mask; pairs cancel
-(x &gt;&gt; i) &amp; 1     # read bit i
-x | (1 &lt;&lt; i)     # set bit i
-x &amp; ~(1 &lt;&lt; i)    # clear bit i
+<p><strong>Brian Kernighan's Algorithm:</strong>
+The bitwise operation:
+$$n \;\&\; (n - 1)$$
+always clears the <strong>lowest set bit</strong> of $n$!
+- If $n = 12$ (<code>1100</code>): $n - 1 = 11$ (<code>1011</code>) $	o n \;\&\; (n - 1) = 8$ (<code>1000</code>).
+- If $n = 8$ (<code>1000</code>): $n - 1 = 7$ (<code>0111</code>) $	o n \;\&\; (n - 1) = 0$ (<code>0000</code>).</p>
+<p>By repeatedly executing $n = n \;\&\; (n - 1)$ until $n == 0$, the loop runs in <strong>strictly $O(k)$ iterations</strong> where $k$ is the number of <code>1</code> bits, skipping all <code>0</code> bits entirely!</p>
 
-# Bitmask subsets: iterate all 2^n subsets of n items
-for mask in range(1 &lt;&lt; n):
-    if mask &amp; (1 &lt;&lt; i):  ...   # item i is in this subset</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h2>🐢 Brute force vs optimal</h2>
+<p>Testing all 32 bits takes 32 iterations. Brian Kernighan's algorithm takes only as many iterations as there are set bits.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> <code>while n: n &= (n - 1); count += 1</code>. Clears one set bit per loop iteration.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def hammingWeight(n: int) -> int:
+    count = 0
+    while n:
+        n &= (n - 1)
+        count += 1
+    return count
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(k)$ where $k \le 32$ is the number of set bits.<br>
+<strong>Space:</strong> $O(1)$ — Single counter.</p>
+
 
 <div class="pager"><a href="../problems/0456-lc389-find-the-difference.html"><span class="lbl">← Previous</span>#389 Find the Difference</a><a href="../problems/0458-lc201-bitwise-and-of-numbers-range.html" style="text-align:right"><span class="lbl">Next →</span>#201 Bitwise AND of Numbers Range</a></div>
 </div>

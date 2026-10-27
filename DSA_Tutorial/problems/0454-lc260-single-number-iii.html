@@ -23,33 +23,52 @@
  › Subpattern 14.1: Bitwise XOR / Finding Single or Missing Number · Problem 454 of 699</p>
 
 <h2>📋 The problem</h2><p>Exactly two values appear once and everything else twice; find those two in O(n) time and O(1) space.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given an integer array <code>nums</code>, in which exactly two elements appear once and all other elements appear twice. Find the two elements that appear only once.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Bitwise XOR / Finding Single or Missing Number</strong> — XOR all elements — pairs cancel, leaving the singleton.</p>
+<p>Let the two unique numbers be $A$ and $B$.
+1. XOR all numbers in <code>nums</code>:
+   $$	ext{diff} = A \oplus B$$
+   Since $A 
+e B$, $	ext{diff} 
+e 0$. There must be at least one bit position where $A$ and $B$ differ (one has <code>1</code>, the other has <code>0</code>)!
+2. <strong>Isolate lowest set bit:</strong>
+   $$	ext{mask} = 	ext{diff} \;\&\; (-	ext{diff})$$
+3. <strong>Partition into two groups:</strong>
+   - Group 1: numbers where bit <code>mask</code> is 1 (contains $A$ and pairs).
+   - Group 2: numbers where bit <code>mask</code> is 0 (contains $B$ and pairs).
+XORing each group independently isolates $A$ and $B$!</p>
 
-<h2>Why this pattern?</h2><ul><li>"every element appears twice except…" → XOR</li><li>"without using +/-" arithmetic → bit ops</li><li>count/check/flip individual bits, powers of two</li><li>n ≤ 20 with subset enumeration → bitmask (possibly + DP)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Bit Manipulation master template and adapt the marked parts to this problem:</p><pre><code>x &amp; 1            # is odd? (last bit)
-x &gt;&gt; 1, x &lt;&lt; 1   # halve / double
-x &amp; (x - 1)      # clear lowest set bit  → == 0 means power of two
-x &amp; (-x)         # isolate lowest set bit
-x ^= y           # toggle by mask; pairs cancel
-(x &gt;&gt; i) &amp; 1     # read bit i
-x | (1 &lt;&lt; i)     # set bit i
-x &amp; ~(1 &lt;&lt; i)    # clear bit i
+<h2>🐢 Brute force vs optimal</h2>
+<p>Hash map requires $O(n)$ auxiliary space. Two-pass XOR partitioning isolates both elements in $O(n)$ time and $O(1)$ memory.</p>
 
-# Bitmask subsets: iterate all 2^n subsets of n items
-for mask in range(1 &lt;&lt; n):
-    if mask &amp; (1 &lt;&lt; i):  ...   # item i is in this subset</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<div class="insight">💡 <strong>Key insight:</strong> <code>diff = xor_all</code>. Isolate lowest set bit <code>diff & (-diff)</code>. Partition array into two buckets based on this bit; XOR each bucket to find the two unique numbers!</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def singleNumber(nums: list[int]) -> list[int]:
+    diff = 0
+    for x in nums:
+        diff ^= x
+        
+    # Isolate lowest set bit
+    mask = diff & (-diff)
+    
+    a, b = 0, 0
+    for x in nums:
+        if x & mask:
+            a ^= x
+        else:
+            b ^= x
+            
+    return [a, b]
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n)$ — Two passes over array.<br>
+<strong>Space:</strong> $O(1)$ — Constant scalar variables.</p>
+
 
 <div class="pager"><a href="../problems/0453-lc137-single-number-ii.html"><span class="lbl">← Previous</span>#137 Single Number II</a><a href="../problems/0455-lc268-missing-number.html" style="text-align:right"><span class="lbl">Next →</span>#268 Missing Number</a></div>
 </div>
