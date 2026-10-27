@@ -23,34 +23,45 @@
  › Subpattern 12.12: Palindrome DP · Problem 426 of 699</p>
 
 <h2>📋 The problem</h2><p>Return the length of the longest palindromic subsequence of a string.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given a string <code>s</code>, find the longest palindromic subsequence's length in <code>s</code>. A subsequence is a sequence that can be derived from another sequence by deleting some or no elements without changing the order of the remaining elements.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Palindrome DP</strong> — dp[i][j] = whether s[i..j] is a palindrome / length of longest palindromic subsequence.</p>
+<div class="insight">💡 <strong>Key insight:</strong>
+Two equivalent approaches:
+1. <strong>LCS with Reverse:</strong> The Longest Palindromic Subsequence of <code>s</code> is mathematically identical to the <strong>Longest Common Subsequence</strong> of <code>s</code> and its reverse <code>s[::-1]</code>!
+2. <strong>Interval DP:</strong> Let <code>dp[i][j]</code> be LPS length in substring <code>s[i..j]</code>:
+   - If <code>s[i] == s[j]</code>: <code>dp[i][j] = 2 + dp[i + 1][j - 1]</code>.
+   - Else: <code>dp[i][j] = max(dp[i + 1][j], dp[i][j - 1])</code>.</div>
 
-<h2>Why this pattern?</h2><ul><li>"count the number of ways…"</li><li>"minimum/maximum cost/value to reach…"</li><li>choices at each step + overlapping futures (take/skip an item)</li><li>"longest/shortest subsequence" (non-contiguous!)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Dynamic Programming (DP) master template and adapt the marked parts to this problem:</p><pre><code># Top-down: brute-force recursion + cache
-from functools import lru_cache
-@lru_cache(None)
-def dp(i):
-    if i &lt;= base: return base_value
-    return best(dp(smaller_1), dp(smaller_2), ...)   # the recurrence
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def longestPalindromeSubseq(s: str) -> int:
+    """
+    Computes LPS length via Interval DP in O(N^2) time and O(N) space.
+    """
+    n = len(s)
+    # dp[j] stores LPS length for substring ending at j
+    dp = [0] * n
+    
+    for i in range(n - 1, -1, -1):
+        new_dp = [0] * n
+        new_dp[i] = 1  # Single character palindrome
+        for j in range(i + 1, n):
+            if s[i] == s[j]:
+                new_dp[j] = 2 + dp[j - 1]
+            else:
+                new_dp[j] = max(dp[j], new_dp[j - 1])
+        dp = new_dp
+        
+    return dp[n - 1]
+</code></pre>
+</details>
 
-# Bottom-up: same recurrence, loop order = dependency order
-dp = [0] * (n + 1)
-dp[0] = base_value
-for i in range(1, n + 1):
-    dp[i] = best(dp[i-1] + ..., dp[i-2] + ...)
-# often only last 2 values needed → two variables, O(1) space</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O(N^2)</code>.</li>
+<li><strong>Space Complexity:</strong> <code>O(N)</code> rolling array space.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0425-lc132-palindrome-partitioning-ii.html"><span class="lbl">← Previous</span>#132 Palindrome Partitioning II</a><a href="../problems/0427-lc647-palindromic-substrings.html" style="text-align:right"><span class="lbl">Next →</span>#647 Palindromic Substrings</a></div>
 </div>

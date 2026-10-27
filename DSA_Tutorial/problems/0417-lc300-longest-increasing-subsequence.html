@@ -23,34 +23,48 @@
  › Subpattern 12.11: Longest Increasing Subsequence (LIS) · Problem 417 of 699</p>
 
 <h2>📋 The problem</h2><p>Return the length of the longest strictly increasing subsequence of an array (not necessarily contiguous).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given an integer array <code>nums</code>, return the length of the longest strictly increasing subsequence.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Longest Increasing Subsequence (LIS)</strong> — dp[i] = length of LIS ending at i; O(n²) basic, O(n log n) with patience-sort/binary search.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Patience: tails[k] = smallest tail of an increasing subsequence of length k+1; bisect each element in — O(n log n).</div>
-<h2>Why this pattern?</h2><ul><li>"count the number of ways…"</li><li>"minimum/maximum cost/value to reach…"</li><li>choices at each step + overlapping futures (take/skip an item)</li><li>"longest/shortest subsequence" (non-contiguous!)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Dynamic Programming (DP) master template and adapt the marked parts to this problem:</p><pre><code># Top-down: brute-force recursion + cache
-from functools import lru_cache
-@lru_cache(None)
-def dp(i):
-    if i &lt;= base: return base_value
-    return best(dp(smaller_1), dp(smaller_2), ...)   # the recurrence
+<h2>🐢 Brute force vs optimal</h2>
+<p>Traditional DP takes <code>O(N^2)</code>: <code>dp[i] = max(dp[j] + 1) for j < i if nums[j] < nums[i]</code>.
+<strong>Patience Sorting with Binary Search</strong> finds the LIS in <code>O(N log N)</code> time!</p>
 
-# Bottom-up: same recurrence, loop order = dependency order
-dp = [0] * (n + 1)
-dp[0] = base_value
-for i in range(1, n + 1):
-    dp[i] = best(dp[i-1] + ..., dp[i-2] + ...)
-# often only last 2 values needed → two variables, O(1) space</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<div class="insight">💡 <strong>Key insight (Patience Sorting):</strong>
+Maintain an array <code>tails</code> where <code>tails[i]</code> is the smallest tail element of all increasing subsequences of length <code>i + 1</code> found so far.
+For each <code>x</code> in <code>nums</code>:
+Binary search for the first element &ge; <code>x</code> in <code>tails</code> (using <code>bisect_left</code>):
+<ul>
+  <li>If <code>x</code> is larger than all elements in <code>tails</code>: append <code>x</code> to <code>tails</code> (extends LIS length!).</li>
+  <li>Else: replace the element at index <code>idx</code> with <code>x</code> (lowers the tail value, making future extensions easier!).</li>
+</ul>
+At the end, <code>len(tails)</code> is the exact length of the LIS!</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">from bisect import bisect_left
+
+def lengthOfLIS(nums: list[int]) -> int:
+    """
+    Computes LIS length via Patience Sorting & Binary Search in O(N log N) time and O(N) space.
+    """
+    tails = []
+    for x in nums:
+        idx = bisect_left(tails, x)
+        if idx == len(tails):
+            tails.append(x)
+        else:
+            tails[idx] = x
+            
+    return len(tails)
+</code></pre>
+</details>
+
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O(N log N)</code>. For each of the N numbers, binary search takes <code>O(log N)</code>.</li>
+<li><strong>Space Complexity:</strong> <code>O(N)</code> for the tails array.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0416-lc241-different-ways-to-add-parentheses.html"><span class="lbl">← Previous</span>#241 Different Ways to Add Parentheses</a><a href="../problems/0418-lc354-russian-doll-envelopes.html" style="text-align:right"><span class="lbl">Next →</span>#354 Russian Doll Envelopes</a></div>
 </div>

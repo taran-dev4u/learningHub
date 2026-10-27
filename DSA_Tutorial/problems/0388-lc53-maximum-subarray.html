@@ -23,34 +23,44 @@
  › Subpattern 12.2: 1D Array / Kadane's Algorithm for Max/Min Subarray · Problem 388 of 699</p>
 
 <h2>📋 The problem</h2><p>Find the contiguous subarray with the largest sum and return that sum.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given an integer array <code>nums</code>, find the subarray with the largest sum, and return its sum.</p>
 
-<h2>Where this fits</h2>
-<p><strong>1D Array / Kadane's Algorithm for Max/Min Subarray</strong> — Maintain running max-ending-here and global max — classic max-subarray.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Kadane: best ending here = x + max(0, best ending at previous); global max of those.</div>
-<h2>Why this pattern?</h2><ul><li>"count the number of ways…"</li><li>"minimum/maximum cost/value to reach…"</li><li>choices at each step + overlapping futures (take/skip an item)</li><li>"longest/shortest subsequence" (non-contiguous!)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Dynamic Programming (DP) master template and adapt the marked parts to this problem:</p><pre><code># Top-down: brute-force recursion + cache
-from functools import lru_cache
-@lru_cache(None)
-def dp(i):
-    if i &lt;= base: return base_value
-    return best(dp(smaller_1), dp(smaller_2), ...)   # the recurrence
+<h2>🐢 Brute force vs optimal</h2>
+<p>Testing all subarrays takes <code>O(N^2)</code>. <strong>Kadane's Algorithm</strong> computes the global maximum subarray in a single linear pass in <code>O(N)</code> time and <code>O(1)</code> space!</p>
 
-# Bottom-up: same recurrence, loop order = dependency order
-dp = [0] * (n + 1)
-dp[0] = base_value
-for i in range(1, n + 1):
-    dp[i] = best(dp[i-1] + ..., dp[i-2] + ...)
-# often only last 2 values needed → two variables, O(1) space</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> At element <code>nums[i]</code>, we have two choices:
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+  <li>Extend the existing subarray: <code>curr_sum + nums[i]</code>.</li>
+  <li>Discard previous sum (if it was negative) and start a new subarray at <code>nums[i]</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+Thus: <code>curr_sum = max(nums[i], curr_sum + nums[i])</code>. Update <code>max_sum = max(max_sum, curr_sum)</code>.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def maxSubArray(nums: list[int]) -> int:
+    """
+    Kadane's algorithm for maximum subarray sum in O(N) time and O(1) space.
+    """
+    max_sum = nums[0]
+    curr_sum = 0
+    
+    for x in nums:
+        if curr_sum < 0:
+            curr_sum = 0
+        curr_sum += x
+        if curr_sum > max_sum:
+            max_sum = curr_sum
+            
+    return max_sum
+</code></pre>
+</details>
+
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O(N)</code>. Single pass.</li>
+<li><strong>Space Complexity:</strong> <code>O(1)</code>.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0387-lc1137-n-th-tribonacci-number.html"><span class="lbl">← Previous</span>#1137 N-th Tribonacci Number</a><a href="../problems/0389-lc279-perfect-squares.html" style="text-align:right"><span class="lbl">Next →</span>#279 Perfect Squares</a></div>
 </div>

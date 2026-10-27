@@ -23,34 +23,37 @@
  › Subpattern 12.3: 1D Array / Coin Change / Unbounded Knapsack Style · Problem 390 of 699</p>
 
 <h2>📋 The problem</h2><p>Given coin denominations and an amount, return the fewest coins needed to make the amount exactly (or -1).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>You are given an integer array <code>coins</code> representing coins of different denominations and an integer <code>amount</code>. Return the fewest number of coins that you need to make up that amount. If that amount cannot be made up by any combination, return <code>-1</code>. Each coin can be used an <strong>unlimited number of times</strong> (Unbounded Knapsack).</p>
 
-<h2>Where this fits</h2>
-<p><strong>1D Array / Coin Change / Unbounded Knapsack Style</strong> — Unbounded knapsack — outer over items, inner over capacities in increasing order.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Unbounded knapsack: dp[amount] = 1 + min(dp[amount − coin]) over coins; 0 base, inf = unreachable.</div>
-<h2>Why this pattern?</h2><ul><li>"count the number of ways…"</li><li>"minimum/maximum cost/value to reach…"</li><li>choices at each step + overlapping futures (take/skip an item)</li><li>"longest/shortest subsequence" (non-contiguous!)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Dynamic Programming (DP) master template and adapt the marked parts to this problem:</p><pre><code># Top-down: brute-force recursion + cache
-from functools import lru_cache
-@lru_cache(None)
-def dp(i):
-    if i &lt;= base: return base_value
-    return best(dp(smaller_1), dp(smaller_2), ...)   # the recurrence
+<div class="insight">💡 <strong>Key insight:</strong> Let <code>dp[a]</code> be the minimum coins to form amount <code>a</code>.
+For each amount <code>a</code> from <code>1</code> to <code>amount</code>:
+$$dp[a] = \min_{c \in coins, c \le a} (dp[a - c] + 1)$$
+Initialize <code>dp = [inf] * (amount + 1)</code> with <code>dp[0] = 0</code>.</div>
 
-# Bottom-up: same recurrence, loop order = dependency order
-dp = [0] * (n + 1)
-dp[0] = base_value
-for i in range(1, n + 1):
-    dp[i] = best(dp[i-1] + ..., dp[i-2] + ...)
-# often only last 2 values needed → two variables, O(1) space</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def coinChange(coins: list[int], amount: int) -> int:
+    """
+    Computes minimum coins to make amount using Unbounded Knapsack DP.
+    """
+    dp = [float('inf')] * (amount + 1)
+    dp[0] = 0
+    
+    for a in range(1, amount + 1):
+        for c in coins:
+            if a >= c:
+                dp[a] = min(dp[a], dp[a - c] + 1)
+                
+    return dp[amount] if dp[amount] != float('inf') else -1
+</code></pre>
+</details>
+
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O(amount &times; len(coins))</code>.</li>
+<li><strong>Space Complexity:</strong> <code>O(amount)</code> for the DP array.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0389-lc279-perfect-squares.html"><span class="lbl">← Previous</span>#279 Perfect Squares</a><a href="../problems/0391-lc377-combination-sum-iv.html" style="text-align:right"><span class="lbl">Next →</span>#377 Combination Sum IV</a></div>
 </div>
