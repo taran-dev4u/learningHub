@@ -1562,4 +1562,621 @@ class RangeModule:
 <p><strong>Time:</strong> <code>queryRange</code>: $O(\\log N)$ binary search. <code>addRange</code>, <code>removeRange</code>: $O(N)$ array slice.<br>
 <strong>Space:</strong> $O(N)$ — Disjoint interval boundaries.</p>
 ''',
+
+900: '''<h2>🧭 How to think about it</h2>
+<p>We can use run-length encoding (RLE) to encode a sequence of integers. Design an iterator that iterates through a run-length encoded sequence given by <code>encoding</code> where even indices are counts and odd indices are values.</p>
+
+<p>Maintain:
+- <code>idx</code>: pointer to current count in <code>encoding</code>.
+- During <code>next(n)</code>:
+  While <code>idx < len(encoding)</code> and <code>n > 0</code>:
+  - If <code>encoding[idx] >= n</code>: decrement <code>encoding[idx] -= n</code> and return <code>encoding[idx + 1]</code> (the value!).
+  - If <code>encoding[idx] < n</code>: exhaust this entire run: <code>n -= encoding[idx]; idx += 2</code>.
+  If we run out of elements, return -1!</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Decompressing the entire sequence takes $O(\text{Total Counts})$ memory which exceeds 32-bit limits. The pointer consumes $O(1)$ auxiliary space and skips entire runs in $O(1)$!</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Decrement counts directly in-place: subtract $n$ from <code>encoding[idx]</code>. If exhausted, advance <code>idx += 2</code>. Runs in $O(1)$ space!</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">class RLEIterator:
+    def __init__(self, encoding: list[int]):
+        self.enc = encoding
+        self.idx = 0
+
+    def next(self, n: int) -> int:
+        while self.idx < len(self.enc):
+            if self.enc[self.idx] >= n:
+                self.enc[self.idx] -= n
+                return self.enc[self.idx + 1]
+            else:
+                n -= self.enc[self.idx]
+                self.idx += 2
+        return -1
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(1)$ amortized per <code>next()</code> call.<br>
+<strong>Space:</strong> $O(1)$ auxiliary memory.</p>
+''',
+981: '''<h2>🧭 How to think about it</h2>
+<p>Design a time-based key-value data structure that can store multiple values for the same key at different time stamps and retrieve the key's value at a certain timestamp.</p>
+
+<p>Notice the critical constraint: <strong>All timestamps for <code>set</code> are strictly increasing!</strong>
+Therefore, for each key, the list of <code>(timestamp, value)</code> pairs is <strong>already naturally sorted by timestamp</strong>!</p>
+<p>To <code>get(key, timestamp)</code>:
+1. Lookup the sorted list for <code>key</code> in a hash map: <code>history = data[key]</code>.
+2. Use <strong>Binary Search (<code>bisect_right</code>)</strong> to find the largest timestamp $\\le \text{target timestamp}$ in $O(\\log N)$ time!</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Linear scan of history takes $O(N)$ per query. Binary search evaluates in $O(\\log N)$ time.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Timestamps are monotonically increasing: store pairs <code>(timestamp, value)</code> in a list per key. Query with <code>bisect_right</code> in $O(\\log N)$!</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">from collections import defaultdict
+import bisect
+
+class TimeMap:
+    def __init__(self):
+        # key -> list of (timestamp, value)
+        self.data = defaultdict(list)
+
+    def set(self, key: str, value: str, timestamp: int) -> None:
+        self.data[key].append((timestamp, value))
+
+    def get(self, key: str, timestamp: int) -> str:
+        if key not in self.data:
+            return ""
+        history = self.data[key]
+        # Binary search for rightmost timestamp <= query timestamp
+        idx = bisect.bisect_right(history, (timestamp, chr(127))) - 1
+        if idx >= 0:
+            return history[idx][1]
+        return ""
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> <code>set</code>: $O(1)$ append. <code>get</code>: $O(\\log N)$ binary search.<br>
+<strong>Space:</strong> $O(Total \\; Sets)$ — List storage per key.</p>
+''',
+1146: '''<h2>🧭 How to think about it</h2>
+<p>Implement a SnapshotArray that supports pre-allocating an array of length <code>length</code>, taking <code>snap()</code> which returns snapshot id, <code>set(index, val)</code>, and <code>get(index, snap_id)</code>.</p>
+
+<p>Do NOT copy the entire array of size 50,000 on every snapshot ($O(N \\times S)$ would memory limit exceed!).
+Instead, maintain history <strong>per index</strong>:
+<code>history[index] = [(snap_id, val)]</code></p>
+<p>- <code>snap()</code>: simply increments a global integer counter <code>curr_snap_id += 1</code> in $O(1)$!
+- <code>set(index, val)</code>: append <code>(curr_snap_id, val)</code> to <code>history[index]</code>.
+- <code>get(index, snap_id)</code>: run binary search (<code>bisect_right</code>) on <code>history[index]</code> to find the latest value recorded at or before <code>snap_id</code> in $O(\\log S)$!</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Copying the array on snapshot takes $O(N)$ time and space per snapshot. Per-index version lists take $O(1)$ for <code>snap</code> and $O(\\log S)$ for <code>get</code>.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Version history per cell: <code>history[idx].append((snap_id, val))</code>. Binary search finds state at any past snapshot in $O(\\log S)$ time.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">import bisect
+
+class SnapshotArray:
+    def __init__(self, length: int):
+        self.snap_id = 0
+        # For each index: list of (snap_id, val)
+        self.history = [[(0, 0)] for _ in range(length)]
+
+    def set(self, index: int, val: int) -> None:
+        if self.history[index][-1][0] == self.snap_id:
+            # Overwrite value in current active snapshot
+            self.history[index][-1] = (self.snap_id, val)
+        else:
+            self.history[index].append((self.snap_id, val))
+
+    def snap(self) -> int:
+        self.snap_id += 1
+        return self.snap_id - 1
+
+    def get(self, index: int, snap_id: int) -> int:
+        hist = self.history[index]
+        # Binary search for rightmost entry with recorded_snap <= query snap_id
+        idx = bisect.bisect_right(hist, (snap_id, float('inf'))) - 1
+        return hist[idx][1]
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> <code>set</code>: $O(1)$. <code>snap</code>: $O(1)$. <code>get</code>: $O(\\log S)$ where $S$ is mutations per index.<br>
+<strong>Space:</strong> $O(N + \text{Total Sets})$ — Only modified cells consume memory.</p>
+''',
+1348: '''<h2>🧭 How to think about it</h2>
+<p>A social media company wants to track frequency of tweets. Implement <code>recordTweet(tweetName, time)</code> and <code>getTweetCountsPerFrequency(freq, tweetName, startTime, endTime)</code> where <code>freq</code> is <code>"minute"</code> (60s), <code>"hour"</code> (3600s), or <code>"day"</code> (86400s).</p>
+
+<p>For each <code>tweetName</code>, maintain a sorted list of tweet timestamps (or insert using <code>bisect.insort</code>).
+During query:
+1. Bucket interval length $\\Delta = 60, 3600, \text{or } 86400$.
+2. Total chunks $k = (endTime - startTime) // \\Delta + 1$.
+3. Binary search for timestamps in range $[startTime, endTime]$.
+4. For each timestamp $t$, map it into chunk index: <code>chunk = (t - startTime) // delta</code> and increment <code>res[chunk] += 1</code>.</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Sorting or maintaining binary search lists ensures queries inspect only relevant timestamps in $O(\\log N + M)$ time.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Sorted timestamps: binary search slice $[start, end]$, map each timestamp into bucket <code>(t - start) // delta</code> in $O(M)$ time.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">from collections import defaultdict
+import bisect
+
+class TweetCounts:
+    def __init__(self):
+        self.tweets = defaultdict(list)
+
+    def recordTweet(self, tweetName: str, time: int) -> None:
+        bisect.insort(self.tweets[tweetName], time)
+
+    def getTweetCountsPerFrequency(self, freq: str, tweetName: str, startTime: int, endTime: int) -> list[int]:
+        delta = 60 if freq == "minute" else (3600 if freq == "hour" else 86400)
+        chunks = (endTime - startTime) // delta + 1
+        res = [0] * chunks
+        
+        times = self.tweets[tweetName]
+        l = bisect.bisect_left(times, startTime)
+        r = bisect.bisect_right(times, endTime)
+        
+        for i in range(l, r):
+            bucket = (times[i] - startTime) // delta
+            res[bucket] += 1
+            
+        return res
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> <code>recordTweet</code>: $O(N)$ insertion. <code>getTweetCountsPerFrequency</code>: $O(\\log N + M)$ where $M$ is tweets in interval.<br>
+<strong>Space:</strong> $O(N)$ timestamps stored per tweet.</p>
+''',
+1352: '''<h2>🧭 How to think about it</h2>
+<p>Design an algorithm that accepts a stream of integers and retrieves the product of the last <code>k</code> integers of the stream in <strong>$O(1)$ time complexity</strong>!</p>
+
+<p><strong>Prefix Product Array:</strong>
+Let $prefix[i]$ be the cumulative product of all numbers up to index $i$.
+The product of the last $k$ numbers is simply:
+$$\text{Product} = \\frac{prefix[-1]}{prefix[-1 - k]}$$</p>
+
+<p><strong>The Zero Reset Problem:</strong>
+If a <code>0</code> is added to the stream:
+Any product that includes that <code>0</code> will be 0! Any product that does NOT include that <code>0</code> will only look at numbers added <em>after</em> the 0!
+Therefore, whenever <code>num == 0</code>:
+Clear the prefix product array completely and reset <code>prefix = [1]</code>!
+If a query requests $k \\ge \text{len}(prefix)$, it means the product spans across the zero, so return <code>0</code> immediately!</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Multiplying last $k$ numbers takes $O(k)$ time. Prefix products calculate the quotient in strict $O(1)$ time.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Prefix products: <code>prefix.append(prefix[-1] * num)</code>. If $num == 0$, reset <code>prefix = [1]</code>. Product of last $k$ is <code>prefix[-1] // prefix[-1 - k]</code> in $O(1)$!</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">class ProductOfNumbers:
+    def __init__(self):
+        self.prefix = [1]
+
+    def add(self, num: int) -> None:
+        if num == 0:
+            # A zero invalidates all previous products
+            self.prefix = [1]
+        else:
+            self.prefix.append(self.prefix[-1] * num)
+
+    def getProduct(self, k: int) -> int:
+        if k >= len(self.prefix):
+            return 0
+        return self.prefix[-1] // self.prefix[-1 - k]
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(1)$ for both <code>add</code> and <code>getProduct</code>.<br>
+<strong>Space:</strong> $O(N)$ — Prefix product buffer.</p>
+''',
+1381: '''<h2>🧭 How to think about it</h2>
+<p>Design a stack that supports <code>push</code>, <code>pop</code>, and incrementing the bottom <code>k</code> elements of the stack by <code>val</code> in <strong>$O(1)$ time complexity</strong>!</p>
+
+<p>If we literally iterate through the bottom $k$ elements on every increment, <code>increment</code> takes $O(k)$ time.
+<strong>The Lazy Propagation Array:</strong>
+Maintain a parallel array <code>inc = [0] * maxSize</code>:
+When <code>increment(k, val)</code> is called:
+Only add <code>val</code> to the boundary element at index $idx = \\min(k, \text{len}(stack)) - 1$:
+<code>inc[idx] += val</code>!</p>
+<p>When <code>pop()</code> is called:
+1. The popped element value is: <code>stack[-1] + inc[-1]</code>.
+2. <strong>Pass the lazy increment down to the element beneath it</strong>:
+   If index $> 0$: <code>inc[i - 1] += inc[i]</code>!
+3. Pop from stack and reset <code>inc</code> entry!</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Lazy propagation reduces <code>increment</code> from $O(k)$ to strict $O(1)$ time while maintaining $O(1)$ <code>push</code> and <code>pop</code>.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Lazy propagation: record increment only at index $k-1$. On <code>pop()</code>, propagate the lazy increment down to index $k-2$. Strict $O(1)$!</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">class CustomStack:
+    def __init__(self, maxSize: int):
+        self.max_size = maxSize
+        self.stack = []
+        self.inc = []
+
+    def push(self, x: int) -> None:
+        if len(self.stack) < self.max_size:
+            self.stack.append(x)
+            self.inc.append(0)
+
+    def pop(self) -> int:
+        if not self.stack:
+            return -1
+        idx = len(self.stack) - 1
+        val = self.stack.pop() + self.inc[idx]
+        lazy = self.inc.pop()
+        if idx > 0:
+            self.inc[idx - 1] += lazy
+        return val
+
+    def increment(self, k: int, val: int) -> None:
+        if self.stack:
+            idx = min(k, len(self.stack)) - 1
+            self.inc[idx] += val
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(1)$ for <code>push</code>, <code>pop</code>, and <code>increment</code>.<br>
+<strong>Space:</strong> $O(\text{maxSize})$ — Pre-allocated stack buffers.</p>
+''',
+1396: '''<h2>🧭 How to think about it</h2>
+<p>An underground railway system is keeping track of customer travel times between stations. Design a system to support <code>checkIn(id, stationName, t)</code>, <code>checkOut(id, stationName, t)</code>, and <code>getAverageTime(startStation, endStation)</code>.</p>
+
+<p>Maintain two hash maps:
+1. <code>check_ins</code>: <code>userId -> (startStation, checkInTime)</code>.
+2. <code>routes</code>: <code>(startStation, endStation) -> [total_travel_time, trip_count]</code>.</p>
+<p>- On <code>checkIn</code>: record passenger entry in <code>check_ins[id]</code>.
+- On <code>checkOut</code>: retrieve start info, compute duration $t - t_{in}$, add to <code>routes[(start, end)]</code>, and remove passenger from <code>check_ins</code>.
+- On <code>getAverageTime</code>: return <code>total_time / trip_count</code> in $O(1)$!</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Both check-ins and average queries execute in constant $O(1)$ time with zero historical trip scanning.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Two maps: active passenger states in <code>check_ins[id]</code>; accumulated route metrics in <code>routes[(start, end)] = [total_time, count]</code>. $O(1)$ throughout.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">class UndergroundSystem:
+    def __init__(self):
+        # id -> (station, time)
+        self.check_ins = {}
+        # (start, end) -> [total_time, count]
+        self.routes = {}
+
+    def checkIn(self, id: int, stationName: str, t: int) -> None:
+        self.check_ins[id] = (stationName, t)
+
+    def checkOut(self, id: int, stationName: str, t: int) -> None:
+        start_station, start_time = self.check_ins.pop(id)
+        route_key = (start_station, stationName)
+        duration = t - start_time
+        
+        if route_key not in self.routes:
+            self.routes[route_key] = [duration, 1]
+        else:
+            self.routes[route_key][0] += duration
+            self.routes[route_key][1] += 1
+
+    def getAverageTime(self, startStation: str, endStation: str) -> float:
+        total_time, count = self.routes[(startStation, endStation)]
+        return total_time / count
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(1)$ for <code>checkIn</code>, <code>checkOut</code>, and <code>getAverageTime</code>.<br>
+<strong>Space:</strong> $O(P + S^2)$ where $P$ is active passengers and $S$ is number of stations.</p>
+''',
+1472: '''<h2>🧭 How to think about it</h2>
+<p>You have a browser of one tab where you start on the <code>homepage</code> and you can visit another url, get back in the history number of steps and move forward in the history number of steps.</p>
+
+<p><strong>Dynamic Array with Two Pointers:</strong>
+Instead of two stacks (back stack and forward stack):
+Maintain a single dynamic array <code>history</code> and two integer pointers:
+- <code>curr</code>: current page index.
+- <code>max_bound</code>: rightmost reachable history index.</p>
+<p>- <code>visit(url)</code>: advance <code>curr += 1</code>. If <code>curr == len(history)</code>, append; otherwise overwrite <code>history[curr] = url</code>. Set <code>max_bound = curr</code> (clears forward history!).
+- <code>back(steps)</code>: <code>curr = max(0, curr - steps)</code>. Return <code>history[curr]</code>.
+- <code>forward(steps)</code>: <code>curr = min(max_bound, curr + steps)</code>. Return <code>history[curr]</code>.</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Two stacks require moving elements back and forth. A pointer on a single array executes all three operations in $O(1)$ time.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Single array with <code>curr</code> and <code>max_bound</code> pointers. <code>visit</code> overwrites forward history. <code>back</code> and <code>forward</code> are simple $O(1)$ integer clamping!</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">class BrowserHistory:
+    def __init__(self, homepage: str):
+        self.history = [homepage]
+        self.curr = 0
+        self.max_bound = 0
+
+    def visit(self, url: str) -> None:
+        self.curr += 1
+        if self.curr < len(self.history):
+            self.history[self.curr] = url
+        else:
+            self.history.append(url)
+        self.max_bound = self.curr
+
+    def back(self, steps: int) -> str:
+        self.curr = max(0, self.curr - steps)
+        return self.history[self.curr]
+
+    def forward(self, steps: int) -> str:
+        self.curr = min(self.max_bound, self.curr + steps)
+        return self.history[self.curr]
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(1)$ for <code>visit</code>, <code>back</code>, and <code>forward</code>.<br>
+<strong>Space:</strong> $O(N)$ where $N$ is total visited URLs.</p>
+''',
+1756: '''<h2>🧭 How to think about it</h2>
+<p>Design a queue-like data structure that moves the most recently used element to the end of the queue. Support <code>fetch(k)</code> which moves the $k$-th element (1-indexed) to the end and returns it.</p>
+
+<p><strong>Square Root Decomposition (or Fenwick Tree / Balanced BST):</strong>
+With $n = 2000$, a standard list <code>pop(k-1)</code> and <code>append()</code> takes $O(n)$ time.
+Using <strong>$\\sqrt{N}$ Buckets</strong>:
+Divide the $n$ elements into $pprox \\sqrt{N}$ small buckets of size $pprox \\sqrt{N}$.
+To fetch the $k$-th element:
+1. Locate which bucket contains $k$ in $O(\\sqrt{N})$ time.
+2. Pop element from that bucket and append to the last bucket.
+3. If necessary, rebalance bucket sizes in $O(\\sqrt{N})$ time.</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Python's dynamic array <code>list.pop(k-1)</code> and <code>append()</code> is extremely optimized in C and passes within 50ms for $N = 2000$. For $N = 10^5$, $\\sqrt{N}$ decomposition guarantees $O(\\sqrt{N})$ per fetch.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> $\\sqrt{N}$ bucket decomposition or dynamic list slicing: fetch locates target in $O(\\sqrt{N})$, extracts, and appends to rear.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">class MRUQueue:
+    def __init__(self, n: int):
+        self.q = list(range(1, n + 1))
+
+    def fetch(self, k: int) -> int:
+        val = self.q.pop(k - 1)
+        self.q.append(val)
+        return val
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n)$ worst case, $O(\\sqrt{n})$ with block decomposition.<br>
+<strong>Space:</strong> $O(n)$ — Queue storage.</p>
+''',
+2013: '''<h2>🧭 How to think about it</h2>
+<p>Design a data structure that counts the number of ways to form axis-aligned squares with given points. Support <code>add(point)</code> and <code>count(point)</code>.</p>
+
+<p>Let the query point be $P_1 = (x_1, y_1)$.
+A square is uniquely determined by choosing its <strong>diagonal opposite point</strong> $P_3 = (x_3, y_3)$!
+Iterate over all existing points $(x_3, y_3)$:
+1. A valid diagonal must satisfy: $|x_1 - x_3| == |y_1 - y_3|$ and $x_1 \ne x_3$.
+2. Once $P_1$ and $P_3$ are chosen, the other two corners are <strong>fixed and mandatory</strong>:
+   $$P_2 = (x_1, y_3) \\quad \text{and} \\quad P_4 = (x_3, y_1)$$
+3. The number of squares formed with diagonal $(P_1, P_3)$ is:
+   $$\text{count}(P_3) \\times \text{count}(P_2) \\times \text{count}(P_4)$$</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Checking all 3-tuples takes $O(N^3)$. Iterating only over diagonal points takes $O(N)$ where $N$ is distinct points added.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> For query point $(x_1, y_1)$, iterate over all points $(x_3, y_3)$. If $|x_1 - x_3| == |y_1 - y_3| > 0$, multiply frequencies of $(x_1, y_3)$ and $(x_3, y_1)$!</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">from collections import Counter
+
+class DetectSquares:
+    def __init__(self):
+        self.pts = Counter()
+
+    def add(self, point: list[int]) -> None:
+        self.pts[tuple(point)] += 1
+
+    def count(self, point: list[int]) -> int:
+        x1, y1 = point
+        total = 0
+        
+        # Iterate over all registered points as potential diagonal opposites
+        for (x3, y3), count3 in self.pts.items():
+            # Must form non-zero square diagonal
+            if abs(x1 - x3) == abs(y1 - y3) and x1 != x3:
+                p2 = (x1, y3)
+                p4 = (x3, y1)
+                if p2 in self.pts and p4 in self.pts:
+                    total += count3 * self.pts[p2] * self.pts[p4]
+                    
+        return total
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> <code>add</code>: $O(1)$. <code>count</code>: $O(N)$ where $N$ is distinct points.<br>
+<strong>Space:</strong> $O(N)$ — Frequency map of points.</p>
+''',
+2034: '''<h2>🧭 How to think about it</h2>
+<p>Design a stock price fluctuation system that can receive out-of-order price records, correct existing prices, and retrieve <code>current()</code>, <code>maximum()</code>, and <code>minimum()</code> stock prices in $O(\\log N)$ time.</p>
+
+<p><strong>Hash Map + Min/Max Heaps with Lazy Deletion:</strong>
+1. <code>prices</code>: <code>timestamp -> latest_price</code> (authoritative ground truth!).
+2. <code>max_timestamp</code>: scalar tracking the latest timestamp seen so far (for <code>current()</code> in $O(1)$).
+3. <code>max_heap</code>: stores <code>(-price, timestamp)</code>.
+4. <code>min_heap</code>: stores <code>(price, timestamp)</code>.</p>
+
+<p><strong>Lazy Deletion on Heap Reads:</strong>
+When retrieving <code>maximum()</code>:
+While <code>-max_heap[0][0] != prices[max_heap[0][1]]</code>:
+The heap top price is stale (it was updated later)! Discard it with <code>heappop()</code>!
+Return the first valid top element!</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Scanning all prices for min/max takes $O(N)$ per query. Two heaps with lazy garbage collection execute in $O(\\log N)$ time.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Hash map holds true latest price per timestamp. Min/max heaps discard stale entries lazily: <code>while heap[0].price != map[heap[0].time]: heappop()</code>.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">import heapq
+
+class StockPrice:
+    def __init__(self):
+        self.prices = {} # timestamp -> price
+        self.latest_time = 0
+        self.max_heap = [] # (-price, timestamp)
+        self.min_heap = [] # (price, timestamp)
+
+    def update(self, timestamp: int, price: int) -> None:
+        self.prices[timestamp] = price
+        self.latest_time = max(self.latest_time, timestamp)
+        heapq.heappush(self.max_heap, (-price, timestamp))
+        heapq.heappush(self.min_heap, (price, timestamp))
+
+    def current(self) -> int:
+        return self.prices[self.latest_time]
+
+    def maximum(self) -> int:
+        while -self.max_heap[0][0] != self.prices[self.max_heap[0][1]]:
+            heapq.heappop(self.max_heap) # Discard stale entry
+        return -self.max_heap[0][0]
+
+    def minimum(self) -> int:
+        while self.min_heap[0][0] != self.prices[self.min_heap[0][1]]:
+            heapq.heappop(self.min_heap) # Discard stale entry
+        return self.min_heap[0][0]
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> <code>update</code>, <code>maximum</code>, <code>minimum</code>: $O(\\log N)$ amortized. <code>current</code>: $O(1)$.<br>
+<strong>Space:</strong> $O(N)$ — Map and heaps storing price history.</p>
+''',
+2296: '''<h2>🧭 How to think about it</h2>
+<p>Design a text editor with a cursor that supports:
+- <code>addText(text)</code>: Insert text at cursor.
+- <code>deleteText(k)</code>: Delete up to $k$ characters to the left of cursor.
+- <code>cursorLeft(k)</code>: Move cursor left up to $k$ times and return last min(10, len) characters to the left.
+- <code>cursorRight(k)</code>: Move cursor right up to $k$ times and return last min(10, len) characters to the left.</p>
+
+<p><strong>The Two Stacks (Gap Buffer) Pattern:</strong>
+Maintain two stacks of characters:
+- <code>left</code>: characters strictly to the left of the cursor.
+- <code>right</code>: characters strictly to the right of the cursor (in reverse order, top of stack is immediately right of cursor!).</p>
+<p>Operations:
+- <code>addText(text)</code>: append characters to <code>left</code>.
+- <code>deleteText(k)</code>: pop up to $k$ characters from <code>left</code> in $O(1)$!
+- <code>cursorLeft(k)</code>: pop from <code>left</code> and push to <code>right</code> up to $k$ times.
+- <code>cursorRight(k)</code>: pop from <code>right</code> and push to <code>left</code> up to $k$ times.</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Single string slicing takes $O(N)$ per edit. The two-stack gap buffer executes all character additions and deletions in $O(k)$ time without shifting arrays.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Two stacks representing text to left and right of cursor. Moving cursor transfers characters between stacks in $O(1)$ per step!</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">class TextEditor:
+    def __init__(self):
+        self.left = []
+        self.right = []
+
+    def addText(self, text: str) -> None:
+        self.left.extend(list(text))
+
+    def deleteText(self, k: int) -> int:
+        num_delete = min(k, len(self.left))
+        for _ in range(num_delete):
+            self.left.pop()
+        return num_delete
+
+    def cursorLeft(self, k: int) -> str:
+        num_move = min(k, len(self.left))
+        for _ in range(num_move):
+            self.right.append(self.left.pop())
+        return "".join(self.left[-10:])
+
+    def cursorRight(self, k: int) -> str:
+        num_move = min(k, len(self.right))
+        for _ in range(num_move):
+            self.left.append(self.right.pop())
+        return "".join(self.left[-10:])
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(k)$ for all operations where $k$ is characters added/moved.<br>
+<strong>Space:</strong> $O(N)$ where $N$ is total text characters.</p>
+''',
+2336: '''<h2>🧭 How to think about it</h2>
+<p>You have a set which contains all positive integers <code>[1, 2, 3, 4, 5, ...]</code>. Implement the <code>SmallestInfiniteSet</code> class:
+- <code>popSmallest()</code>: Removes and returns the smallest integer.
+- <code>addBack(num)</code>: Adds positive integer back into set if not already present.</p>
+
+<p>You cannot store an infinite set in memory!
+Instead, notice that all integers from $1$ to $\\infty$ are naturally present in increasing order.
+Maintain:
+1. <code>curr_smallest = 1</code>: pointer tracking the next virgin integer that has never been popped yet.
+2. <code>added_back_heap</code>: Min-Heap storing numbers smaller than <code>curr_smallest</code> that were popped and subsequently added back!
+3. <code>added_back_set</code>: Hash set to prevent duplicates in the heap.</p>
+
+<p>- <code>popSmallest()</code>: If <code>added_back_heap</code> is non-empty, pop its smallest element. Otherwise, return <code>curr_smallest</code> and increment <code>curr_smallest += 1</code>!
+- <code>addBack(num)</code>: Only add if $num < curr\\_smallest$ and $num \\notin added\\_back\\_set$!</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Heap + pointer simulates an infinite set in $O(\\log K)$ time where $K$ is the count of re-added numbers.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Pointer <code>curr_smallest</code> tracks the infinite frontier. Min-heap stores re-added numbers that fall below the frontier. $O(\\log K)$ operations!</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">import heapq
+
+class SmallestInfiniteSet:
+    def __init__(self):
+        self.curr_smallest = 1
+        self.added_heap = []
+        self.added_set = set()
+
+    def popSmallest(self) -> int:
+        if self.added_heap:
+            val = heapq.heappop(self.added_heap)
+            self.added_set.remove(val)
+            return val
+        res = self.curr_smallest
+        self.curr_smallest += 1
+        return res
+
+    def addBack(self, num: int) -> None:
+        if num < self.curr_smallest and num not in self.added_set:
+            self.added_set.add(num)
+            heapq.heappush(self.added_heap, num)
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(\\log K)$ for <code>popSmallest</code> and <code>addBack</code> where $K$ is re-added numbers.<br>
+<strong>Space:</strong> $O(K)$ — Only stores numbers currently added back.</p>
+''',
 }

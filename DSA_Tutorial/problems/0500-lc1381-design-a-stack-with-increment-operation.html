@@ -23,42 +23,60 @@
  › Subpattern 15.1: General / Specific Data Structure Design · Problem 500 of 699</p>
 
 <h2>📋 The problem</h2><p>Design a stack with push, pop, and increment(k, val) — add val to the bottom k elements — all O(1) (lazy increments).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Design a stack that supports <code>push</code>, <code>pop</code>, and incrementing the bottom <code>k</code> elements of the stack by <code>val</code> in <strong>$O(1)$ time complexity</strong>!</p>
 
-<h2>Where this fits</h2>
-<p><strong>General / Specific Data Structure Design</strong> — Compose hashmap + secondary structure (linked list, heap, set) to give each operation the right complexity.</p>
+<p>If we literally iterate through the bottom $k$ elements on every increment, <code>increment</code> takes $O(k)$ time.
+<strong>The Lazy Propagation Array:</strong>
+Maintain a parallel array <code>inc = [0] * maxSize</code>:
+When <code>increment(k, val)</code> is called:
+Only add <code>val</code> to the boundary element at index $idx = \min(k, 	ext{len}(stack)) - 1$:
+<code>inc[idx] += val</code>!</p>
+<p>When <code>pop()</code> is called:
+1. The popped element value is: <code>stack[-1] + inc[-1]</code>.
+2. <strong>Pass the lazy increment down to the element beneath it</strong>:
+   If index $> 0$: <code>inc[i - 1] += inc[i]</code>!
+3. Pop from stack and reset <code>inc</code> entry!</p>
 
-<h2>Why this pattern?</h2><ul><li>"Design/implement a class with operations X, Y, Z"</li><li>explicit per-op complexity targets ("all in O(1)")</li><li>eviction rules (LRU/LFU), recency, frequency</li><li>"getRandom", "getMin", snapshots, iterators</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Design master template and adapt the marked parts to this problem:</p><pre><code># The composition method:
-# 1. Ops:      get(k), put(k,v), evict_least_recent
-# 2. Targets:  O(1),   O(1),     O(1)
-# 3. Pick:     dict  → O(1) get/put by key
-#              DLL   → O(1) move-to-front / evict-tail
-#              glue: dict maps key → its DLL node
+<h2>🐢 Brute force vs optimal</h2>
+<p>Lazy propagation reduces <code>increment</code> from $O(k)$ to strict $O(1)$ time while maintaining $O(1)$ <code>push</code> and <code>pop</code>.</p>
 
-# In Python interviews, OrderedDict is the accepted shortcut:
-from collections import OrderedDict
-class LRUCache:
-    def __init__(self, cap):
-        self.d, self.cap = OrderedDict(), cap
-    def get(self, k):
-        if k not in self.d: return -1
-        self.d.move_to_end(k)            # mark most-recent
-        return self.d[k]
-    def put(self, k, v):
-        if k in self.d: self.d.move_to_end(k)
-        self.d[k] = v
-        if len(self.d) &gt; self.cap:
-            self.d.popitem(last=False)   # evict least-recent</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<div class="insight">💡 <strong>Key insight:</strong> Lazy propagation: record increment only at index $k-1$. On <code>pop()</code>, propagate the lazy increment down to index $k-2$. Strict $O(1)$!</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">class CustomStack:
+    def __init__(self, maxSize: int):
+        self.max_size = maxSize
+        self.stack = []
+        self.inc = []
+
+    def push(self, x: int) -> None:
+        if len(self.stack) < self.max_size:
+            self.stack.append(x)
+            self.inc.append(0)
+
+    def pop(self) -> int:
+        if not self.stack:
+            return -1
+        idx = len(self.stack) - 1
+        val = self.stack.pop() + self.inc[idx]
+        lazy = self.inc.pop()
+        if idx > 0:
+            self.inc[idx - 1] += lazy
+        return val
+
+    def increment(self, k: int, val: int) -> None:
+        if self.stack:
+            idx = min(k, len(self.stack)) - 1
+            self.inc[idx] += val
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(1)$ for <code>push</code>, <code>pop</code>, and <code>increment</code>.<br>
+<strong>Space:</strong> $O(	ext{maxSize})$ — Pre-allocated stack buffers.</p>
+
 
 <div class="pager"><a href="../problems/0499-lc1352-product-of-the-last-k-numbers.html"><span class="lbl">← Previous</span>#1352 Product of the Last K Numbers</a><a href="../problems/0501-lc1396-design-underground-system.html" style="text-align:right"><span class="lbl">Next →</span>#1396 Design Underground System</a></div>
 </div>

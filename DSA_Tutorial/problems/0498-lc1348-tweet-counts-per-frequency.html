@@ -23,42 +23,54 @@
  › Subpattern 15.1: General / Specific Data Structure Design · Problem 498 of 699</p>
 
 <h2>📋 The problem</h2><p>Design tweet-frequency queries: record tweets by time and answer per-minute/hour/day counts in a time range.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>A social media company wants to track frequency of tweets. Implement <code>recordTweet(tweetName, time)</code> and <code>getTweetCountsPerFrequency(freq, tweetName, startTime, endTime)</code> where <code>freq</code> is <code>"minute"</code> (60s), <code>"hour"</code> (3600s), or <code>"day"</code> (86400s).</p>
 
-<h2>Where this fits</h2>
-<p><strong>General / Specific Data Structure Design</strong> — Compose hashmap + secondary structure (linked list, heap, set) to give each operation the right complexity.</p>
+<p>For each <code>tweetName</code>, maintain a sorted list of tweet timestamps (or insert using <code>bisect.insort</code>).
+During query:
+1. Bucket interval length $\Delta = 60, 3600, 	ext{or } 86400$.
+2. Total chunks $k = (endTime - startTime) // \Delta + 1$.
+3. Binary search for timestamps in range $[startTime, endTime]$.
+4. For each timestamp $t$, map it into chunk index: <code>chunk = (t - startTime) // delta</code> and increment <code>res[chunk] += 1</code>.</p>
 
-<h2>Why this pattern?</h2><ul><li>"Design/implement a class with operations X, Y, Z"</li><li>explicit per-op complexity targets ("all in O(1)")</li><li>eviction rules (LRU/LFU), recency, frequency</li><li>"getRandom", "getMin", snapshots, iterators</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Design master template and adapt the marked parts to this problem:</p><pre><code># The composition method:
-# 1. Ops:      get(k), put(k,v), evict_least_recent
-# 2. Targets:  O(1),   O(1),     O(1)
-# 3. Pick:     dict  → O(1) get/put by key
-#              DLL   → O(1) move-to-front / evict-tail
-#              glue: dict maps key → its DLL node
+<h2>🐢 Brute force vs optimal</h2>
+<p>Sorting or maintaining binary search lists ensures queries inspect only relevant timestamps in $O(\log N + M)$ time.</p>
 
-# In Python interviews, OrderedDict is the accepted shortcut:
-from collections import OrderedDict
-class LRUCache:
-    def __init__(self, cap):
-        self.d, self.cap = OrderedDict(), cap
-    def get(self, k):
-        if k not in self.d: return -1
-        self.d.move_to_end(k)            # mark most-recent
-        return self.d[k]
-    def put(self, k, v):
-        if k in self.d: self.d.move_to_end(k)
-        self.d[k] = v
-        if len(self.d) &gt; self.cap:
-            self.d.popitem(last=False)   # evict least-recent</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<div class="insight">💡 <strong>Key insight:</strong> Sorted timestamps: binary search slice $[start, end]$, map each timestamp into bucket <code>(t - start) // delta</code> in $O(M)$ time.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">from collections import defaultdict
+import bisect
+
+class TweetCounts:
+    def __init__(self):
+        self.tweets = defaultdict(list)
+
+    def recordTweet(self, tweetName: str, time: int) -> None:
+        bisect.insort(self.tweets[tweetName], time)
+
+    def getTweetCountsPerFrequency(self, freq: str, tweetName: str, startTime: int, endTime: int) -> list[int]:
+        delta = 60 if freq == "minute" else (3600 if freq == "hour" else 86400)
+        chunks = (endTime - startTime) // delta + 1
+        res = [0] * chunks
+        
+        times = self.tweets[tweetName]
+        l = bisect.bisect_left(times, startTime)
+        r = bisect.bisect_right(times, endTime)
+        
+        for i in range(l, r):
+            bucket = (times[i] - startTime) // delta
+            res[bucket] += 1
+            
+        return res
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> <code>recordTweet</code>: $O(N)$ insertion. <code>getTweetCountsPerFrequency</code>: $O(\log N + M)$ where $M$ is tweets in interval.<br>
+<strong>Space:</strong> $O(N)$ timestamps stored per tweet.</p>
+
 
 <div class="pager"><a href="../problems/0497-lc1146-snapshot-array.html"><span class="lbl">← Previous</span>#1146 Snapshot Array</a><a href="../problems/0499-lc1352-product-of-the-last-k-numbers.html" style="text-align:right"><span class="lbl">Next →</span>#1352 Product of the Last K Numbers</a></div>
 </div>

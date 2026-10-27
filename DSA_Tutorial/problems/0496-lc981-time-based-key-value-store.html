@@ -23,42 +23,49 @@
  › Subpattern 15.1: General / Specific Data Structure Design · Problem 496 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0539-lc981-time-based-key-value-store.html">Hash Map &amp; Cache Design</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Design a key-value store where set stamps a timestamp and get(key, t) returns the value set at the latest time ≤ t.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Design a time-based key-value data structure that can store multiple values for the same key at different time stamps and retrieve the key's value at a certain timestamp.</p>
 
-<h2>Where this fits</h2>
-<p><strong>General / Specific Data Structure Design</strong> — Compose hashmap + secondary structure (linked list, heap, set) to give each operation the right complexity.</p>
+<p>Notice the critical constraint: <strong>All timestamps for <code>set</code> are strictly increasing!</strong>
+Therefore, for each key, the list of <code>(timestamp, value)</code> pairs is <strong>already naturally sorted by timestamp</strong>!</p>
+<p>To <code>get(key, timestamp)</code>:
+1. Lookup the sorted list for <code>key</code> in a hash map: <code>history = data[key]</code>.
+2. Use <strong>Binary Search (<code>bisect_right</code>)</strong> to find the largest timestamp $\le 	ext{target timestamp}$ in $O(\log N)$ time!</p>
 
-<h2>Why this pattern?</h2><ul><li>"Design/implement a class with operations X, Y, Z"</li><li>explicit per-op complexity targets ("all in O(1)")</li><li>eviction rules (LRU/LFU), recency, frequency</li><li>"getRandom", "getMin", snapshots, iterators</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Design master template and adapt the marked parts to this problem:</p><pre><code># The composition method:
-# 1. Ops:      get(k), put(k,v), evict_least_recent
-# 2. Targets:  O(1),   O(1),     O(1)
-# 3. Pick:     dict  → O(1) get/put by key
-#              DLL   → O(1) move-to-front / evict-tail
-#              glue: dict maps key → its DLL node
+<h2>🐢 Brute force vs optimal</h2>
+<p>Linear scan of history takes $O(N)$ per query. Binary search evaluates in $O(\log N)$ time.</p>
 
-# In Python interviews, OrderedDict is the accepted shortcut:
-from collections import OrderedDict
-class LRUCache:
-    def __init__(self, cap):
-        self.d, self.cap = OrderedDict(), cap
-    def get(self, k):
-        if k not in self.d: return -1
-        self.d.move_to_end(k)            # mark most-recent
-        return self.d[k]
-    def put(self, k, v):
-        if k in self.d: self.d.move_to_end(k)
-        self.d[k] = v
-        if len(self.d) &gt; self.cap:
-            self.d.popitem(last=False)   # evict least-recent</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<div class="insight">💡 <strong>Key insight:</strong> Timestamps are monotonically increasing: store pairs <code>(timestamp, value)</code> in a list per key. Query with <code>bisect_right</code> in $O(\log N)$!</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">from collections import defaultdict
+import bisect
+
+class TimeMap:
+    def __init__(self):
+        # key -> list of (timestamp, value)
+        self.data = defaultdict(list)
+
+    def set(self, key: str, value: str, timestamp: int) -> None:
+        self.data[key].append((timestamp, value))
+
+    def get(self, key: str, timestamp: int) -> str:
+        if key not in self.data:
+            return ""
+        history = self.data[key]
+        # Binary search for rightmost timestamp <= query timestamp
+        idx = bisect.bisect_right(history, (timestamp, chr(127))) - 1
+        if idx >= 0:
+            return history[idx][1]
+        return ""
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> <code>set</code>: $O(1)$ append. <code>get</code>: $O(\log N)$ binary search.<br>
+<strong>Space:</strong> $O(Total \; Sets)$ — List storage per key.</p>
+
 
 <div class="pager"><a href="../problems/0495-lc900-rle-iterator.html"><span class="lbl">← Previous</span>#900 RLE Iterator</a><a href="../problems/0497-lc1146-snapshot-array.html" style="text-align:right"><span class="lbl">Next →</span>#1146 Snapshot Array</a></div>
 </div>
