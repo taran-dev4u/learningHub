@@ -23,38 +23,67 @@
  › Subpattern 7.1: Top K Elements / Selection / Frequency · Problem 209 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0556-lc973-k-closest-points-to-origin.html">Math, Number Theory &amp; Geometry</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Return the k points closest to the origin.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given <code>points</code> in 2D space, return the <code>k</code> closest points to <code>(0, 0)</code>. Distance squared is <code>x^2 + y^2</code> (no need for square root since distance is monotonic). We need the k smallest distances, so maintain a <strong>max-heap of size k</strong>: the point with the largest distance among the top k is at the root. If a new point has a smaller distance, it replaces the root.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Top K Elements / Selection / Frequency</strong> — Min-heap of size k to find the k largest, or max-heap of size k for k smallest.</p>
+<h2>🐢 Brute force first</h2>
+<p>Compute distance for all points, sort by distance, and take the first k points → O(n log n) time.</p>
 
-<h2>Why this pattern?</h2><ul><li>"k largest / k closest / k most frequent / k-th …"</li><li>merge k sorted lists/streams</li><li>"median of a stream" / balance two halves → two heaps</li><li>scheduling: always take the earliest end / most frequent / cheapest next</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Heap (Priority Queue) master template and adapt the marked parts to this problem:</p><pre><code>import heapq
-# Top-k largest: min-heap of size k
-h = []
-for x in nums:
-    heapq.heappush(h, x)
-    if len(h) &gt; k:
-        heapq.heappop(h)                 # evict the smallest of the k+1
-# h holds the k largest; h[0] is the k-th largest
+<div class="insight">💡 <strong>Key insight:</strong> use a <strong>max-heap of size k</strong> storing <code>(-dist, x, y)</code>. At any point, the heap holds the k closest points seen so far. If a new point is closer than the current worst in the heap, pop the worst and push the new one.</div>
 
-# k-way merge: heap of (value, which_list, index)
-h = [(lst[0], i, 0) for i, lst in enumerate(lists) if lst]
-heapq.heapify(h)
-while h:
-    val, i, j = heapq.heappop(h)
-    out.append(val)
-    if j + 1 &lt; len(lists[i]):
-        heapq.heappush(h, (lists[i][j+1], i, j+1))</code></pre>
-<h2>How to work on it now</h2>
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Initialize a max-heap <code>h = []</code>.</li>
+<li>For each point <code>(x, y)</code>: calculate distance <code>d = x*x + y*y</code>.</li>
+<li>Push <code>(-d, x, y)</code> to <code>h</code>.</li>
+<li>If <code>len(h) &gt; k</code>, pop the root (which has the largest distance).</li>
+<li>Return <code>[[x, y] for _, x, y in h]</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — points = [[1,3],[-2,2]], k = 1</h2>
+<pre class="viz">[1, 3]  → dist = 1 + 9 = 10 → push (-10, 1, 3) → heap: [(-10, 1, 3)]
+[-2, 2] → dist = 4 + 4 = 8  → push (-8, -2, 2) → heap size 2 &gt; 1
+        → pop (-10, 1, 3) (largest distance discarded)
+        → heap: [(-8, -2, 2)]
+Result: [[-2, 2]] ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>import heapq
+
+def kClosest(points, k):
+    # Max-heap of size k: store negative distance so largest distance is popped first
+    heap = []
+    for x, y in points:
+        dist = x * x + y * y
+        heapq.heappush(heap, (-dist, x, y))
+        if len(heap) &gt; k:
+            heapq.heappop(heap)
+            
+    return [[x, y] for _, x, y in heap]</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n log k)</strong> — iterating through n points with heap of size at most k+1. <strong>Space O(k)</strong> — to store the k closest points.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li><code>k == len(points)</code>: returns all points.</li>
+<li>Ties in distance: any order is accepted.</li>
+<li>Coordinates with negative values: squaring removes negative signs.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Computing <code>math.sqrt()</code> for distance — floating point operations are slower and risk precision errors.</li>
+<li>Using a min-heap of size n (O(n log n) space and time) instead of a max-heap of size k.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Quickselect approach: find the kth closest point in O(n) average time.</li>
+<li>K Closest Elements (<a href="0207-lc658-find-k-closest-elements.html">#658</a>).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0208-lc703-kth-largest-element-in-a-stream.html"><span class="lbl">← Previous</span>#703 Kth Largest Element in a Stream</a><a href="../problems/0210-lc1046-last-stone-weight.html" style="text-align:right"><span class="lbl">Next →</span>#1046 Last Stone Weight</a></div>
 </div>

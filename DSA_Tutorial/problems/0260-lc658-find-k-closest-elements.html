@@ -23,37 +23,64 @@
  › Subpattern 8.4: Find First/Last Occurrence · Problem 260 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0207-lc658-find-k-closest-elements.html">Heap (Priority Queue)</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Return the k elements of a sorted array closest to x, in ascending order.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given a sorted integer array <code>arr</code>, two integers <code>k</code> and <code>x</code>, return the <code>k</code> closest integers to <code>x</code> in the array. An integer <code>a</code> is closer to <code>x</code> than <code>b</code> if <code>|a - x| < |b - x|</code>, or <code>|a - x| == |b - x|</code> and <code>a < b</code>.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Find First/Last Occurrence</strong> — Two-pass or single-pass lower/upper bound to find the first or last occurrence of a target.</p>
+<h2>🐢 Brute force first</h2>
+<p>Sort the entire array by distance <code>abs(num - x)</code> and take first <code>k</code>, then sort those <code>k</code> elements. Time: O(n log n). Space: O(k).</p>
 
-<h2>Why this pattern?</h2><ul><li>sorted (or rotated-sorted) array + find/insert position</li><li>"minimize the maximum" / "maximize the minimum"</li><li>a feasibility check that flips once as a parameter grows</li><li>O(log n) demanded explicitly</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Binary Search master template and adapt the marked parts to this problem:</p><pre><code># Lower-bound shape: smallest index where check(i) is True
-lo, hi = 0, n            # hi = n allows "no answer" result
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if check(mid):        # True region is on the right side's left edge
-        hi = mid          # mid might be the answer — keep it in range
-    else:
-        lo = mid + 1      # mid is definitely not — discard it
-return lo                 # first True (or n if none)
+<div class="insight">💡 <strong>Key insight:</strong> The result is always a <strong>contiguous subarray of length k</strong> because the input array is already sorted! We simply need to find the optimal <strong>starting index</strong> <code>left</code> in range <code>[0, len(arr) - k]</code>. For any candidate start <code>mid</code>, compare the distance of element <code>arr[mid]</code> vs element <code>arr[mid + k]</code>: if <code>x - arr[mid] > arr[mid + k] - x</code>, <code>arr[mid + k]</code> is closer to <code>x</code> than <code>arr[mid]</code>, so the window must shift right!</div>
 
-# Binary search on the ANSWER
-lo, hi = min_possible, max_possible
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if feasible(mid): hi = mid
-    else:             lo = mid + 1</code></pre>
-<h2>How to work on it now</h2>
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Set binary search range for starting index: <code>left = 0, right = len(arr) - k</code>.</li>
+<li>While <code>left &lt; right</code>:</li>
+<li><code>mid = left + (right - left) // 2</code>.</li>
+<li>Compare distance of boundary elements: if <code>x - arr[mid] > arr[mid + k] - x</code>, <code>arr[mid]</code> is farther from <code>x</code> than <code>arr[mid + k]</code>, so shift right: <code>left = mid + 1</code>.</li>
+<li>Else: <code>right = mid</code>.</li>
+<li>Return <code>arr[left : left + k]</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — arr = [1, 2, 3, 4, 5], k = 4, x = 3</h2>
+<pre class="viz">n = 5, k = 4. Search range for left bound: [0, 1]
+mid = 0: compare arr[0]=1 vs arr[0+4]=arr[4]=5
+dist to x(3): |3 - 1| = 2 vs |5 - 3| = 2
+Tie broken by smaller value (1 < 5) → arr[0] is preferred!
+right = mid = 0.
+left == right == 0.
+Subarray is arr[0:4] = [1, 2, 3, 4]. ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def findClosestElements(arr, k, x):
+    left, right = 0, len(arr) - k
+    
+    while left < right:
+        mid = left + (right - left) // 2
+        # If arr[mid] is further from x than arr[mid + k], shift window right
+        if x - arr[mid] > arr[mid + k] - x:
+            left = mid + 1
+        else:
+            right = mid
+            
+    return arr[left : left + k]</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(log(n - k) + k)</strong> — Binary search takes O(log(n - k)) to find start index; slicing takes O(k). <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li><code>x <= arr[0]</code>: returns first <code>k</code> elements.</li>
+<li><code>x >= arr[-1]</code>: returns last <code>k</code> elements.</li>
+<li><code>k == len(arr)</code>: returns entire array.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Find K-th Smallest Pair Distance (<a href="0249-lc719-find-k-th-smallest-pair-distance.html">#719</a>).</li>
+</ul>
+
 
 <div class="pager"><a href="../problems/0259-lc34-find-first-and-last-position-of-element-in-sorted-array.html"><span class="lbl">← Previous</span>#34 Find First and Last Position of Element in Sorted Array</a><a href="../problems/0261-lc4-median-of-two-sorted-arrays.html" style="text-align:right"><span class="lbl">Next →</span>#4 Median of Two Sorted Arrays</a></div>
 </div>

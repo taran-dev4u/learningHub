@@ -23,38 +23,76 @@
  › Subpattern 7.4: Scheduling / Minimum Cost with Priority Queue · Problem 231 of 699</p>
 
 <h2>📋 The problem</h2><p>Friends arrive/leave; each takes the smallest free chair — return the chair number the targetFriend gets (two heaps over events).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Friends arrive and leave at distinct times <code>[arrival, leaving]</code>. When a friend arrives, they sit in the <strong>smallest unoccupied chair</strong> (chairs numbered <code>0, 1, 2...</code>). Find which chair <code>targetFriend</code> sits on. We need to track available chairs (min-heap) and busy friends (min-heap by leaving time).</p>
 
-<h2>Where this fits</h2>
-<p><strong>Scheduling / Minimum Cost with Priority Queue</strong> — Heap selects the highest-cost/highest-priority task at each step — task scheduling, IPO, sticks.</p>
+<h2>🐢 Brute force first</h2>
+<p>Simulate each second, linear scan for empty chair → O(max_time * n).</p>
 
-<h2>Why this pattern?</h2><ul><li>"k largest / k closest / k most frequent / k-th …"</li><li>merge k sorted lists/streams</li><li>"median of a stream" / balance two halves → two heaps</li><li>scheduling: always take the earliest end / most frequent / cheapest next</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Heap (Priority Queue) master template and adapt the marked parts to this problem:</p><pre><code>import heapq
-# Top-k largest: min-heap of size k
-h = []
-for x in nums:
-    heapq.heappush(h, x)
-    if len(h) &gt; k:
-        heapq.heappop(h)                 # evict the smallest of the k+1
-# h holds the k largest; h[0] is the k-th largest
+<div class="insight">💡 <strong>Key insight:</strong> tag each friend with their index: <code>(arr, leave, i)</code> and sort by arrival time. Use <strong>two min-heaps</strong>: <code>free_chairs</code> (chair numbers <code>0..n-1</code>) and <code>busy</code> <code>(leaving_time, chair)</code>. When friend arrives, free all chairs of friends who left, and take the smallest available chair.</div>
 
-# k-way merge: heap of (value, which_list, index)
-h = [(lst[0], i, 0) for i, lst in enumerate(lists) if lst]
-heapq.heapify(h)
-while h:
-    val, i, j = heapq.heappop(h)
-    out.append(val)
-    if j + 1 &lt; len(lists[i]):
-        heapq.heappush(h, (lists[i][j+1], i, j+1))</code></pre>
-<h2>How to work on it now</h2>
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Tag friends with indices and sort by arrival: <code>events = sorted([(times[i][0], times[i][1], i) for i in range(len(times))])</code>.</li>
+<li>Initialize <code>free_chairs = list(range(len(times)))</code> and heapify.</li>
+<li>Initialize <code>busy = []</code> (min-heap of <code>(leaving_time, chair)</code>).</li>
+<li>For each <code>arr, leave, idx</code>:</li>
+<li>While <code>busy</code> and <code>busy[0][0] &lt;= arr</code>: pop <code>(_, chair)</code> and push <code>chair</code> to <code>free_chairs</code>.</li>
+<li>Pop smallest <code>chair = heappop(free_chairs)</code>.</li>
+<li>If <code>idx == targetFriend</code>: return <code>chair</code>.</li>
+<li>Push <code>(leave, chair)</code> to <code>busy</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — times = [[1,4],[2,3],[4,6]], targetFriend = 1</h2>
+<pre class="viz">Friends sorted by arrival: [1, 4] (idx 0), [2, 3] (idx 1), [4, 6] (idx 2)
+free_chairs: [0, 1, 2]
+Friend 0 arrives at 1: sits on chair 0 → busy=[(4, 0)]
+Friend 1 arrives at 2: sits on chair 1 → busy=[(3, 1), (4, 0)]
+Friend 1 is targetFriend! Return chair 1 ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>import heapq
+
+def smallestChair(times, targetFriend):
+    target_arrival = times[targetFriend][0]
+    # Sort friends by arrival time
+    events = sorted([(arr, leave, i) for i, (arr, leave) in enumerate(times)])
+    
+    free_chairs = list(range(len(times)))
+    heapq.heapify(free_chairs)
+    
+    busy = []   # (leaving_time, chair)
+    
+    for arr, leave, i in events:
+        # Free chairs of friends who have departed
+        while busy and busy[0][0] &lt;= arr:
+            _, chair = heapq.heappop(busy)
+            heapq.heappush(free_chairs, chair)
+            
+        chair = heapq.heappop(free_chairs)
+        if i == targetFriend:
+            return chair
+            
+        heapq.heappush(busy, (leave, chair))
+        
+    return -1</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n log n)</strong> — sorting events takes O(n log n); each friend performs O(log n) heap operations. <strong>Space O(n)</strong> for the heaps.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Target friend is the first to arrive: returns chair 0.</li>
+<li>Departure and arrival at the same time: departure happens first, so the chair is immediately available for the arriving friend.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Meeting Rooms II (<a href="0218-lc253-meeting-rooms-ii.html">#253</a>).</li>
+<li>Meeting Rooms III (<a href="0232-lc2402-meeting-rooms-iii.html">#2402</a>).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0230-lc1882-process-tasks-using-servers.html"><span class="lbl">← Previous</span>#1882 Process Tasks Using Servers</a><a href="../problems/0232-lc2402-meeting-rooms-iii.html" style="text-align:right"><span class="lbl">Next →</span>#2402 Meeting Rooms III</a></div>
 </div>

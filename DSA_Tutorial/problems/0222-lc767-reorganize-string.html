@@ -23,38 +23,78 @@
  › Subpattern 7.4: Scheduling / Minimum Cost with Priority Queue · Problem 222 of 699</p>
 
 <h2>📋 The problem</h2><p>Rearrange a string so no two adjacent characters are equal (or return empty if impossible).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Rearrange characters in string <code>s</code> so that <strong>no two adjacent characters are identical</strong>. Return "" if impossible. A character appearing more than <code>(len(s) + 1) // 2</code> times can never be separated. Greedily, always pick the character with the <strong>highest remaining frequency</strong> that differs from the previous character.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Scheduling / Minimum Cost with Priority Queue</strong> — Heap selects the highest-cost/highest-priority task at each step — task scheduling, IPO, sticks.</p>
+<h2>🐢 Brute force first</h2>
+<p>Backtracking through all permutations checking adjacency → O(n!).</p>
 
-<h2>Why this pattern?</h2><ul><li>"k largest / k closest / k most frequent / k-th …"</li><li>merge k sorted lists/streams</li><li>"median of a stream" / balance two halves → two heaps</li><li>scheduling: always take the earliest end / most frequent / cheapest next</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Heap (Priority Queue) master template and adapt the marked parts to this problem:</p><pre><code>import heapq
-# Top-k largest: min-heap of size k
-h = []
-for x in nums:
-    heapq.heappush(h, x)
-    if len(h) &gt; k:
-        heapq.heappop(h)                 # evict the smallest of the k+1
-# h holds the k largest; h[0] is the k-th largest
+<div class="insight">💡 <strong>Key insight:</strong> use a <strong>max-heap of character frequencies</strong>. Pop the most frequent character. If it matches the previously placed character, pop the second most frequent character instead, place it, and push both back with decremented counts.</div>
 
-# k-way merge: heap of (value, which_list, index)
-h = [(lst[0], i, 0) for i, lst in enumerate(lists) if lst]
-heapq.heapify(h)
-while h:
-    val, i, j = heapq.heappop(h)
-    out.append(val)
-    if j + 1 &lt; len(lists[i]):
-        heapq.heappush(h, (lists[i][j+1], i, j+1))</code></pre>
-<h2>How to work on it now</h2>
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Count frequencies. If any <code>count &gt; (len(s) + 1) // 2</code>, return <code>""</code>.</li>
+<li>Push <code>(-count, char)</code> into a max-heap.</li>
+<li>Initialize <code>res = []</code> and <code>prev = (0, '')</code>.</li>
+<li>While heap is not empty:</li>
+<li>Pop <code>(cnt, char)</code>. Append <code>char</code> to <code>res</code>.</li>
+<li>If <code>prev[0] &lt; 0</code> (still has remaining count), push <code>prev</code> back into the heap.</li>
+<li>Set <code>prev = (cnt + 1, char)</code> (decremented count).</li>
+<li>Return <code>"".join(res)</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — s = "aab"</h2>
+<pre class="viz">Counts: {'a': 2, 'b': 1}. len=3, max allowed = (3+1)//2 = 2. Valid!
+Heap: [(-2, 'a'), (-1, 'b')]
+1. Pop (-2, 'a') → res=['a'] → prev=(-1, 'a')
+2. Pop (-1, 'b') → res=['a', 'b'] → push prev (-1, 'a') → prev=(0, 'b')
+3. Pop (-1, 'a') → res=['a', 'b', 'a'] → prev=(0, 'a')
+Result: "aba" ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>import heapq
+from collections import Counter
+
+def reorganizeString(s):
+    count = Counter(s)
+    if max(count.values()) &gt; (len(s) + 1) // 2:
+        return ""
+        
+    heap = [(-cnt, char) for char, cnt in count.items()]
+    heapq.heapify(heap)
+    
+    res = []
+    prev_cnt, prev_char = 0, ''
+    
+    while heap:
+        cnt, char = heapq.heappop(heap)
+        res.append(char)
+        
+        # If the previous character still has remaining count, re-add it to the heap
+        if prev_cnt &lt; 0:
+            heapq.heappush(heap, (prev_cnt, prev_char))
+            
+        # Store current character as the waiting previous character
+        prev_cnt, prev_char = cnt + 1, char
+        
+    return "".join(res)</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n log A) = O(n)</strong> — where A is the alphabet size (at most 26), so heap ops are O(1). <strong>Space O(A) = O(1)</strong> for the heap.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Majority character count exceeds threshold: immediately returns <code>""</code>.</li>
+<li>Already alternating string (e.g. "abab"): preserved.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Task Scheduler (<a href="0221-lc621-task-scheduler.html">#621</a>).</li>
+<li>Rearrange String k Distance Apart (#358).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0221-lc621-task-scheduler.html"><span class="lbl">← Previous</span>#621 Task Scheduler</a><a href="../problems/0223-lc857-minimum-cost-to-hire-k-workers.html" style="text-align:right"><span class="lbl">Next →</span>#857 Minimum Cost to Hire K Workers</a></div>
 </div>

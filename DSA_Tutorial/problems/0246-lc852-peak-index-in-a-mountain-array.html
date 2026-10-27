@@ -23,37 +23,61 @@
  › Subpattern 8.2: Find Min/Max in Rotated Sorted Array · Problem 246 of 699</p>
 
 <h2>📋 The problem</h2><p>An array increases then decreases (a mountain); find the peak index in O(log n).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>An array <code>arr</code> is a mountain if it increases to a single peak and then decreases. Given a mountain array, return the index <code>i</code> such that <code>arr[0] &lt; arr[1] &lt; ... arr[i-1] &lt; arr[i] &gt; arr[i+1] &gt; ... &gt; arr[arr.length - 1]</code>. Must be <strong>O(log(arr.length))</strong>.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Find Min/Max in Rotated Sorted Array</strong> — Compare mid to lo/hi to identify which side is sorted; recurse into the sorted side or the other.</p>
+<h2>🐢 Brute force first</h2>
+<p>Scan linearly until <code>arr[i] > arr[i+1]</code>. Return <code>i</code>. Time O(n).</p>
 
-<h2>Why this pattern?</h2><ul><li>sorted (or rotated-sorted) array + find/insert position</li><li>"minimize the maximum" / "maximize the minimum"</li><li>a feasibility check that flips once as a parameter grows</li><li>O(log n) demanded explicitly</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Binary Search master template and adapt the marked parts to this problem:</p><pre><code># Lower-bound shape: smallest index where check(i) is True
-lo, hi = 0, n            # hi = n allows "no answer" result
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if check(mid):        # True region is on the right side's left edge
-        hi = mid          # mid might be the answer — keep it in range
-    else:
-        lo = mid + 1      # mid is definitely not — discard it
-return lo                 # first True (or n if none)
+<div class="insight">💡 <strong>Key insight:</strong> The mountain array has two distinct phases: ascending (<code>arr[i] < arr[i+1]</code>) and descending (<code>arr[i] > arr[i+1]</code>). The peak is the unique transition point. Binary search easily identifies which slope <code>mid</code> lies on.</div>
 
-# Binary search on the ANSWER
-lo, hi = min_possible, max_possible
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if feasible(mid): hi = mid
-    else:             lo = mid + 1</code></pre>
-<h2>How to work on it now</h2>
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Initialize <code>left = 0, right = len(arr) - 1</code>.</li>
+<li>While <code>left &lt; right</code>:</li>
+<li>Compute <code>mid = left + (right - left) // 2</code>.</li>
+<li>If <code>arr[mid] &lt; arr[mid + 1]</code>, we are ascending: <code>left = mid + 1</code>.</li>
+<li>Else, we are descending or at the peak: <code>right = mid</code>.</li>
+<li>Return <code>left</code> when <code>left == right</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — arr = [0, 10, 5, 2]</h2>
+<pre class="viz">Iter 1: left = 0, right = 3 → mid = 1
+        arr[1] = 10 > arr[2] = 5 → descending slope!
+        right = mid = 1
+Iter 2: left = 0, right = 1 → mid = 0
+        arr[0] = 0 < arr[1] = 10 → ascending slope!
+        left = mid + 1 = 1
+left == right == 1.
+Peak is at index 1 (val = 10). ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def peakIndexInMountainArray(arr):
+    left, right = 0, len(arr) - 1
+    
+    while left < right:
+        mid = left + (right - left) // 2
+        if arr[mid] < arr[mid + 1]:
+            left = mid + 1
+        else:
+            right = mid
+            
+    return left</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(log n)</strong>. <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Guaranteed to be a mountain array of length at least 3, so peak is never at index 0 or index n-1.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Find in Mountain Array (<a href="0247-lc1095-find-in-mountain-array.html">#1095</a>) — 3-phase binary search.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0245-lc162-find-peak-element.html"><span class="lbl">← Previous</span>#162 Find Peak Element</a><a href="../problems/0247-lc1095-find-in-mountain-array.html" style="text-align:right"><span class="lbl">Next →</span>#1095 Find in Mountain Array</a></div>
 </div>

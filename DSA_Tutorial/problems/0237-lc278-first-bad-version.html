@@ -23,37 +23,65 @@
  › Subpattern 8.1: On Sorted Array/List · Problem 237 of 699</p>
 
 <h2>📋 The problem</h2><p>Versions after the first bad one are all bad; using an isBadVersion API, find the first bad version with minimal calls.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Suppose you have <code>n</code> versions <code>[1, 2, ..., n]</code> and you want to find out the first bad one, which causes all following ones to be bad. You are given an API <code>isBadVersion(version)</code> which returns whether version is bad. Minimize calls to the API.</p>
 
-<h2>Where this fits</h2>
-<p><strong>On Sorted Array/List</strong> — Plain lower/upper bound on a sorted array — get the boilerplate right (lo&lt;hi vs lo&lt;=hi).</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Lower bound over the isBadVersion predicate — first True.</div>
-<h2>Why this pattern?</h2><ul><li>sorted (or rotated-sorted) array + find/insert position</li><li>"minimize the maximum" / "maximize the minimum"</li><li>a feasibility check that flips once as a parameter grows</li><li>O(log n) demanded explicitly</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Binary Search master template and adapt the marked parts to this problem:</p><pre><code># Lower-bound shape: smallest index where check(i) is True
-lo, hi = 0, n            # hi = n allows "no answer" result
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if check(mid):        # True region is on the right side's left edge
-        hi = mid          # mid might be the answer — keep it in range
-    else:
-        lo = mid + 1      # mid is definitely not — discard it
-return lo                 # first True (or n if none)
+<h2>🐢 Brute force first</h2>
+<p>Call <code>isBadVersion(i)</code> for <code>i = 1, 2, ... n</code>. First one returning <code>True</code> is the answer. Takes O(n) API calls.</p>
 
-# Binary search on the ANSWER
-lo, hi = min_possible, max_possible
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if feasible(mid): hi = mid
-    else:             lo = mid + 1</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> The versions form a monotonic predicate sequence: <code>[False, False, ..., False, True, True, ..., True]</code>. We need to find the boundary index where <code>isBadVersion</code> turns from <code>False</code> to <code>True</code>. This is a classic binary search on a condition function!</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Initialize <code>left = 1</code>, <code>right = n</code>.</li>
+<li>While <code>left &lt; right</code>:</li>
+<li>Compute <code>mid = left + (right - left) // 2</code>.</li>
+<li>If <code>isBadVersion(mid) == True</code>: <code>mid</code> could be the first bad version or a later bad version. The first bad version must be at <code>mid</code> or to its left: <code>right = mid</code>.</li>
+<li>Else (<code>False</code>): <code>mid</code> and all versions before it are good: <code>left = mid + 1</code>.</li>
+<li>When <code>left == right</code>, the search space has converged to the exact first bad version. Return <code>left</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — n = 5, bad = 4</h2>
+<pre class="viz">Versions: [1:F, 2:F, 3:F, 4:T, 5:T]
+Iter 1: left = 1, right = 5 → mid = 3 → isBad(3) = False → left = 4
+Iter 2: left = 4, right = 5 → mid = 4 → isBad(4) = True → right = 4
+left == right == 4. Loop terminates.
+Return 4. (Only 2 API calls instead of 4). ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def firstBadVersion(n):
+    """
+    Binary search for transition boundary: False -> True.
+    Note the loop condition left < right and right = mid.
+    """
+    left, right = 1, n
+    
+    while left < right:
+        mid = left + (right - left) // 2
+        if isBadVersion(mid):
+            right = mid      # mid could be first bad version
+        else:
+            left = mid + 1   # mid is definitely good
+            
+    return left</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(log n)</strong> — Halves the remaining versions each step. <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li><code>n = 1</code>: loop terminates immediately, returns 1 with 0 API calls.</li>
+<li>First version is bad (<code>bad = 1</code>): <code>right</code> collapses down to 1.</li>
+<li>Last version is bad (<code>bad = n</code>): <code>left</code> advances up to <code>n</code>.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Guess Number Higher or Lower (<a href="0238-lc374-guess-number-higher-or-lower.html">#374</a>).</li>
+<li>Find Peak Element (<a href="0245-lc162-find-peak-element.html">#162</a>).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0236-lc240-search-a-2d-matrix-ii.html"><span class="lbl">← Previous</span>#240 Search a 2D Matrix II</a><a href="../problems/0238-lc374-guess-number-higher-or-lower.html" style="text-align:right"><span class="lbl">Next →</span>#374 Guess Number Higher or Lower</a></div>
 </div>

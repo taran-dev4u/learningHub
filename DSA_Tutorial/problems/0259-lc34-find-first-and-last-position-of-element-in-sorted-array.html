@@ -23,37 +23,91 @@
  › Subpattern 8.4: Find First/Last Occurrence · Problem 259 of 699</p>
 
 <h2>📋 The problem</h2><p>In a sorted array with duplicates, find the first and last index of a target value in O(log n); return [-1,-1] if absent.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given an array of integers <code>nums</code> sorted in non-decreasing order, find the starting and ending position of a given <code>target</code> value. If <code>target</code> is not found in the array, return <code>[-1, -1]</code>. You must write an algorithm with <strong>O(log n)</strong> runtime complexity.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Find First/Last Occurrence</strong> — Two-pass or single-pass lower/upper bound to find the first or last occurrence of a target.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Two lower-bound searches: first index ≥ target, and first index ≥ target+1, minus one.</div>
-<h2>Why this pattern?</h2><ul><li>sorted (or rotated-sorted) array + find/insert position</li><li>"minimize the maximum" / "maximize the minimum"</li><li>a feasibility check that flips once as a parameter grows</li><li>O(log n) demanded explicitly</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Binary Search master template and adapt the marked parts to this problem:</p><pre><code># Lower-bound shape: smallest index where check(i) is True
-lo, hi = 0, n            # hi = n allows "no answer" result
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if check(mid):        # True region is on the right side's left edge
-        hi = mid          # mid might be the answer — keep it in range
-    else:
-        lo = mid + 1      # mid is definitely not — discard it
-return lo                 # first True (or n if none)
+<h2>🐢 Brute force first</h2>
+<p>Linear scan finding the first index where <code>nums[i] == target</code> and last index. O(n) runtime.</p>
 
-# Binary search on the ANSWER
-lo, hi = min_possible, max_possible
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if feasible(mid): hi = mid
-    else:             lo = mid + 1</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> Standard binary search stops at *any* match. Here we need two specialized binary searches:
+1. <strong>First Occurrence (Lower Bound):</strong> When <code>nums[mid] == target</code>, don't stop! Keep searching to the left: <code>right = mid - 1</code>.
+2. <strong>Last Occurrence (Upper Bound):</strong> When <code>nums[mid] == target</code>, keep searching to the right: <code>left = mid + 1</code>.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Helper <code>findBound(isFirst)</code>:
+  <ul>
+    <li><code>left = 0, right = len(nums) - 1, bound = -1</code>.</li>
+    <li>While <code>left &lt;= right</code>:</li>
+    <li><code>mid = left + (right - left) // 2</code>.</li>
+    <li>If <code>nums[mid] == target</code>: <code>bound = mid</code>. If <code>isFirst</code>: <code>right = mid - 1</code>; else: <code>left = mid + 1</code>.</li>
+    <li>Elif <code>nums[mid] &lt; target</code>: <code>left = mid + 1</code>.</li>
+    <li>Else: <code>right = mid - 1</code>.</li>
+  </ul>
+</li>
+<li>Return <code>[findBound(True), findBound(False)]</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — nums = [5, 7, 7, 8, 8, 10], target = 8</h2>
+<pre class="viz">1. Finding First (leftmost 8):
+   left = 0, right = 5 → mid = 2, nums[2]=7 < 8 → left = 3
+   left = 3, right = 5 → mid = 4, nums[4]=8 == 8 → bound = 4, right = 3
+   left = 3, right = 3 → mid = 3, nums[3]=8 == 8 → bound = 3, right = 2
+   left > right. First = 3.
+
+2. Finding Last (rightmost 8):
+   left = 0, right = 5 → mid = 2, nums[2]=7 < 8 → left = 3
+   left = 3, right = 5 → mid = 4, nums[4]=8 == 8 → bound = 4, left = 5
+   left = 5, right = 5 → mid = 5, nums[5]=10 > 8 → right = 4
+   left > right. Last = 4.
+
+Result: [3, 4] ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def searchRange(nums, target):
+    def findBound(is_first):
+        left, right = 0, len(nums) - 1
+        bound = -1
+        
+        while left <= right:
+            mid = left + (right - left) // 2
+            
+            if nums[mid] == target:
+                bound = mid
+                if is_first:
+                    right = mid - 1  # keep searching left
+                else:
+                    left = mid + 1   # keep searching right
+            elif nums[mid] < target:
+                left = mid + 1
+            else:
+                right = mid - 1
+                
+        return bound
+        
+    first = findBound(True)
+    if first == -1:
+        return [-1, -1]
+    last = findBound(False)
+    return [first, last]</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(log n)</strong> — Two binary searches of size n. <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Target not in array: returns <code>[-1, -1]</code>.</li>
+<li>Array empty: returns <code>[-1, -1]</code>.</li>
+<li>All elements equal target: returns <code>[0, n - 1]</code>.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Search Insert Position (<a href="0233-lc35-search-insert-position.html">#35</a>).</li>
+<li>Count Occurrences of a Number in Sorted Array.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0258-lc2226-maximum-candies-allocated-to-k-children.html"><span class="lbl">← Previous</span>#2226 Maximum Candies Allocated to K Children</a><a href="../problems/0260-lc658-find-k-closest-elements.html" style="text-align:right"><span class="lbl">Next →</span>#658 Find K Closest Elements</a></div>
 </div>

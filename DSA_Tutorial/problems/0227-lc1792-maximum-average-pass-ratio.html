@@ -23,38 +23,67 @@
  › Subpattern 7.4: Scheduling / Minimum Cost with Priority Queue · Problem 227 of 699</p>
 
 <h2>📋 The problem</h2><p>Add extra students to classes to maximize average pass ratio; each student goes where the ratio gains most (heap by marginal gain).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>You have classes with <code>[pass, total]</code> and <code>extraStudents</code> who always pass. Assign extra students to maximize the average pass ratio. Greedily, each extra student should be assigned to the class where they provide the <strong>greatest marginal increase</strong> in pass ratio: <code>gain = (pass + 1)/(total + 1) - pass/total</code>.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Scheduling / Minimum Cost with Priority Queue</strong> — Heap selects the highest-cost/highest-priority task at each step — task scheduling, IPO, sticks.</p>
+<h2>🐢 Brute force first</h2>
+<p>For each of the extra students, compute gains across all classes and pick maximum → O(extraStudents * n).</p>
 
-<h2>Why this pattern?</h2><ul><li>"k largest / k closest / k most frequent / k-th …"</li><li>merge k sorted lists/streams</li><li>"median of a stream" / balance two halves → two heaps</li><li>scheduling: always take the earliest end / most frequent / cheapest next</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Heap (Priority Queue) master template and adapt the marked parts to this problem:</p><pre><code>import heapq
-# Top-k largest: min-heap of size k
-h = []
-for x in nums:
-    heapq.heappush(h, x)
-    if len(h) &gt; k:
-        heapq.heappop(h)                 # evict the smallest of the k+1
-# h holds the k largest; h[0] is the k-th largest
+<div class="insight">💡 <strong>Key insight:</strong> use a <strong>max-heap</strong> storing <code>(-gain, pass, total)</code>. Each student is assigned to the class at the root. Pop the class, increment <code>pass</code> and <code>total</code>, recalculate its new gain, and push it back.</div>
 
-# k-way merge: heap of (value, which_list, index)
-h = [(lst[0], i, 0) for i, lst in enumerate(lists) if lst]
-heapq.heapify(h)
-while h:
-    val, i, j = heapq.heappop(h)
-    out.append(val)
-    if j + 1 &lt; len(lists[i]):
-        heapq.heappush(h, (lists[i][j+1], i, j+1))</code></pre>
-<h2>How to work on it now</h2>
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Define gain helper: <code>gain(p, t) = (p + 1) / (t + 1) - p / t</code>.</li>
+<li>Push <code>(-gain(p, t), p, t)</code> into heap for each class.</li>
+<li>Repeat <code>extraStudents</code> times:</li>
+<li>Pop <code>(-g, p, t)</code>.</li>
+<li>Push <code>(-gain(p + 1, t + 1), p + 1, t + 1)</code>.</li>
+<li>Return <code>sum(p / t for _, p, t in heap) / len(classes)</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — classes = [[1,2],[3,5],[2,2]], extra = 2</h2>
+<pre class="viz">Gains:
+[1, 2]: 2/3 - 1/2 = 0.1667
+[3, 5]: 4/6 - 3/5 = 0.0667
+[2, 2]: 3/3 - 2/2 = 0.0000
+1. Assign to [1, 2] → becomes [2, 3] (new gain: 3/4 - 2/3 = 0.0833)
+2. Highest gain is now [2, 3] (0.0833 &gt; 0.0667) → becomes [3, 4]
+Final ratios: 3/4 (0.75), 3/5 (0.6), 2/2 (1.0)
+Average = (0.75 + 0.6 + 1.0) / 3 = 0.78333 ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>import heapq
+
+def maxAverageRatio(classes, extraStudents):
+    def gain(p, t):
+        return (p + 1) / (t + 1) - p / t
+        
+    heap = [(-gain(p, t), p, t) for p, t in classes]
+    heapq.heapify(heap)
+    
+    for _ in range(extraStudents):
+        g, p, t = heapq.heappop(heap)
+        p, t = p + 1, t + 1
+        heapq.heappush(heap, (-gain(p, t), p, t))
+        
+    return sum(p / t for _, p, t in heap) / len(classes)</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n + k log n)</strong> — where n is number of classes and k is extraStudents. <strong>Space O(n)</strong> for the heap.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Classes with 100% pass ratio (e.g. <code>[5, 5]</code>): gain is 0, pushed to bottom of heap.</li>
+<li><code>extraStudents = 0</code>: returns current average.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Kth Largest Element in an Array (<a href="0203-lc215-kth-largest-element-in-an-array.html">#215</a>).</li>
+<li>Dijkstra's shortest path priority updates.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0226-lc1642-furthest-building-you-can-reach.html"><span class="lbl">← Previous</span>#1642 Furthest Building You Can Reach</a><a href="../problems/0228-lc1834-single-threaded-cpu.html" style="text-align:right"><span class="lbl">Next →</span>#1834 Single-Threaded CPU</a></div>
 </div>

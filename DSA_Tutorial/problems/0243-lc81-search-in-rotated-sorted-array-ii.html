@@ -23,37 +23,87 @@
  › Subpattern 8.2: Find Min/Max in Rotated Sorted Array · Problem 243 of 699</p>
 
 <h2>📋 The problem</h2><p>Search a target in a rotated sorted array that may contain duplicates; return whether it exists.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given the array <code>nums</code> after rotation, and an integer <code>target</code>, return <code>true</code> if target is in <code>nums</code>, or <code>false</code> if it is not. This problem differs from LC 33 because <strong><code>nums</code> may contain duplicate elements</strong>.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Find Min/Max in Rotated Sorted Array</strong> — Compare mid to lo/hi to identify which side is sorted; recurse into the sorted side or the other.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Like 33, but equal endpoints hide which half is sorted — shrink both ends by one when nums[lo]==nums[mid]==nums[hi].</div>
-<h2>Why this pattern?</h2><ul><li>sorted (or rotated-sorted) array + find/insert position</li><li>"minimize the maximum" / "maximize the minimum"</li><li>a feasibility check that flips once as a parameter grows</li><li>O(log n) demanded explicitly</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Binary Search master template and adapt the marked parts to this problem:</p><pre><code># Lower-bound shape: smallest index where check(i) is True
-lo, hi = 0, n            # hi = n allows "no answer" result
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if check(mid):        # True region is on the right side's left edge
-        hi = mid          # mid might be the answer — keep it in range
-    else:
-        lo = mid + 1      # mid is definitely not — discard it
-return lo                 # first True (or n if none)
+<h2>🐢 Brute force first</h2>
+<p>Linear scan O(n). Because duplicates can mask which half is sorted, the worst-case for binary search is actually O(n) too (e.g. <code>[1, 1, 1, 1, 2, 1, 1]</code>).</p>
 
-# Binary search on the ANSWER
-lo, hi = min_possible, max_possible
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if feasible(mid): hi = mid
-    else:             lo = mid + 1</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> When duplicates exist, <code>nums[left] == nums[mid] == nums[right]</code> can happen! When this occurs, we cannot determine whether the left or right half is sorted. The remedy is simple: <strong>shrink both boundaries</strong> <code>left += 1</code> and <code>right -= 1</code>, shedding the ambiguity safely without losing a target that equals <code>mid</code>!</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Set <code>left = 0, right = len(nums) - 1</code>.</li>
+<li>While <code>left &lt;= right</code>:</li>
+<li>Compute <code>mid = left + (right - left) // 2</code>.</li>
+<li>If <code>nums[mid] == target</code>, return <code>True</code>.</li>
+<li><strong>Handle ambiguous duplicates:</strong> If <code>nums[left] == nums[mid] == nums[right]</code>: <code>left += 1; right -= 1; continue</code>.</li>
+<li>If left half is sorted (<code>nums[left] &lt;= nums[mid]</code>):</li>
+<li>&nbsp;&nbsp;If <code>nums[left] &lt;= target &lt; nums[mid]</code>: <code>right = mid - 1</code>, else <code>left = mid + 1</code>.</li>
+<li>Else (right half is sorted):</li>
+<li>&nbsp;&nbsp;If <code>nums[mid] &lt; target &lt;= nums[right]</code>: <code>left = mid + 1</code>, else <code>right = mid - 1</code>.</li>
+<li>Return <code>False</code> if loop terminates.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — nums = [1, 0, 1, 1, 1], target = 0</h2>
+<pre class="viz">Iter 1: left = 0, right = 4 → mid = 2
+        nums[left]=1, nums[mid]=1, nums[right]=1
+        All equal! Cannot tell which half is sorted.
+        Shrink: left = 1, right = 3
+
+Iter 2: left = 1, right = 3 → mid = 2, nums[mid] = 1 != target(0)
+        nums[left]=0, nums[mid]=1 → left half sorted!
+        0 <= target(0) < 1 → target in left half!
+        right = mid - 1 = 1
+
+Iter 3: left = 1, right = 1 → mid = 1, nums[mid] = 0 == 0! Match! Return True. ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def search(nums, target):
+    left, right = 0, len(nums) - 1
+    
+    while left <= right:
+        mid = left + (right - left) // 2
+        
+        if nums[mid] == target:
+            return True
+            
+        # Ambiguous case: cannot determine sorted half
+        if nums[left] == nums[mid] == nums[right]:
+            left += 1
+            right -= 1
+            continue
+            
+        # Left half is sorted
+        if nums[left] <= nums[mid]:
+            if nums[left] <= target < nums[mid]:
+                right = mid - 1
+            else:
+                left = mid + 1
+        # Right half is sorted
+        else:
+            if nums[mid] < target <= nums[right]:
+                left = mid + 1
+            else:
+                right = mid - 1
+                
+    return False</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Average Time O(log n)</strong>; <strong>Worst-case Time O(n)</strong> when nearly all elements are identical. <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>All elements identical: e.g. <code>[2, 2, 2, 2]</code> searching for 3.</li>
+<li>Target is the duplicate value itself.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Find Minimum in Rotated Sorted Array II (#154).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0242-lc33-search-in-rotated-sorted-array.html"><span class="lbl">← Previous</span>#33 Search in Rotated Sorted Array</a><a href="../problems/0244-lc153-find-minimum-in-rotated-sorted-array.html" style="text-align:right"><span class="lbl">Next →</span>#153 Find Minimum in Rotated Sorted Array</a></div>
 </div>

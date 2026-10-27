@@ -23,38 +23,67 @@
  › Subpattern 7.4: Scheduling / Minimum Cost with Priority Queue · Problem 226 of 699</p>
 
 <h2>📋 The problem</h2><p>Climb buildings using b bricks and l ladders (ladders cover any jump, bricks the difference); go as far as possible (heap of jumps: ladders for the largest).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>You have buildings with heights, <code>bricks</code>, and <code>ladders</code>. Moving from building <code>i</code> to <code>i + 1</code>: if height decreases or stays same, 0 cost; if height increases by <code>diff</code>, use 1 ladder OR <code>diff</code> bricks. Ladders can cover ANY height difference, no matter how tall. Greedily, ladders should be reserved for the <strong>largest height climbs</strong>.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Scheduling / Minimum Cost with Priority Queue</strong> — Heap selects the highest-cost/highest-priority task at each step — task scheduling, IPO, sticks.</p>
+<h2>🐢 Brute force first</h2>
+<p>Backtracking DFS: at each climb, try either ladder or bricks → O(2^n).</p>
 
-<h2>Why this pattern?</h2><ul><li>"k largest / k closest / k most frequent / k-th …"</li><li>merge k sorted lists/streams</li><li>"median of a stream" / balance two halves → two heaps</li><li>scheduling: always take the earliest end / most frequent / cheapest next</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Heap (Priority Queue) master template and adapt the marked parts to this problem:</p><pre><code>import heapq
-# Top-k largest: min-heap of size k
-h = []
-for x in nums:
-    heapq.heappush(h, x)
-    if len(h) &gt; k:
-        heapq.heappop(h)                 # evict the smallest of the k+1
-# h holds the k largest; h[0] is the k-th largest
+<div class="insight">💡 <strong>Key insight:</strong> use a <strong>min-heap of size at most ladders</strong>. For every climb, assume we use a ladder and push <code>diff</code> to the heap. When climbs exceed available ladders, pop the smallest climb from the heap and pay for it with bricks. If bricks drop below 0, we can go no further.</div>
 
-# k-way merge: heap of (value, which_list, index)
-h = [(lst[0], i, 0) for i, lst in enumerate(lists) if lst]
-heapq.heapify(h)
-while h:
-    val, i, j = heapq.heappop(h)
-    out.append(val)
-    if j + 1 &lt; len(lists[i]):
-        heapq.heappush(h, (lists[i][j+1], i, j+1))</code></pre>
-<h2>How to work on it now</h2>
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Initialize min-heap <code>ladder_climbs = []</code>.</li>
+<li>For <code>i</code> from <code>0</code> to <code>len(heights) - 2</code>:</li>
+<li><code>diff = heights[i + 1] - heights[i]</code>.</li>
+<li>If <code>diff &gt; 0</code>: push <code>diff</code> to heap.</li>
+<li>If <code>len(ladder_climbs) &gt; ladders</code>: pop smallest climb and deduct from <code>bricks</code>.</li>
+<li>If <code>bricks &lt; 0</code>: return <code>i</code> (cannot make this climb).</li>
+<li>If loop completes, return <code>len(heights) - 1</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — heights=[4,2,7,6,9,14,12], bricks=5, ladders=1</h2>
+<pre class="viz">i=0: 4-&gt;2 (down)
+i=1: 2-&gt;7 (diff 5): heap=[5] (size 1 &lt;= 1 ladder)
+i=2: 7-&gt;6 (down)
+i=3: 6-&gt;9 (diff 3): push 3 → heap=[3, 5] &gt; 1 ladder → pop 3 → bricks = 5 - 3 = 2. heap=[5]
+i=4: 9-&gt;14 (diff 5): push 5 → heap=[5, 5] &gt; 1 ladder → pop 5 → bricks = 2 - 5 = -3 &lt; 0!
+Stop at building 4 ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>import heapq
+
+def furthestBuilding(heights, bricks, ladders):
+    ladder_allocations = []   # min-heap tracking climbs covered by ladders
+    
+    for i in range(len(heights) - 1):
+        diff = heights[i + 1] - heights[i]
+        if diff &gt; 0:
+            heapq.heappush(ladder_allocations, diff)
+            # If we used more ladders than available, convert the smallest climb to bricks
+            if len(ladder_allocations) &gt; ladders:
+                bricks -= heapq.heappop(ladder_allocations)
+            if bricks &lt; 0:
+                return i
+                
+    return len(heights) - 1</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n log L)</strong> — where n is number of buildings and L is number of ladders. <strong>Space O(L)</strong> for the heap.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Decreasing heights throughout: reaches the final building with 0 resource usage.</li>
+<li>0 ladders: all climbs paid with bricks.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Minimum Cost to Connect Sticks (<a href="0224-lc1167-minimum-cost-to-connect-sticks.html">#1167</a>).</li>
+<li>Binary Search on furthest reachable building.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0225-lc1383-maximum-performance-of-a-team.html"><span class="lbl">← Previous</span>#1383 Maximum Performance of a Team</a><a href="../problems/0227-lc1792-maximum-average-pass-ratio.html" style="text-align:right"><span class="lbl">Next →</span>#1792 Maximum Average Pass Ratio</a></div>
 </div>

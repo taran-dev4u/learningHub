@@ -23,37 +23,93 @@
  › Subpattern 8.3: On Answer / Condition Function · Problem 255 of 699</p>
 
 <h2>📋 The problem</h2><p>Place m balls in baskets at given positions maximizing the minimum distance between any two balls (binary search the distance).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>In the universe, there are <code>n</code> baskets at positions <code>position[i]</code>. We distribute <code>m</code> balls into the baskets such that the <strong>minimum magnetic force between any two balls is maximized</strong>. The magnetic force between two balls at <code>x</code> and <code>y</code> is <code>|x - y|</code>.</p>
 
-<h2>Where this fits</h2>
-<p><strong>On Answer / Condition Function</strong> — Binary-search the answer; write a monotonic check(x) function that returns True for x≥answer.</p>
+<h2>🐢 Brute force first</h2>
+<p>Generate all combinations of choosing <code>m</code> baskets from <code>n</code> baskets, find minimum distance for each, take the maximum. Combinatorial explosion O(C(n, m)).</p>
 
-<h2>Why this pattern?</h2><ul><li>sorted (or rotated-sorted) array + find/insert position</li><li>"minimize the maximum" / "maximize the minimum"</li><li>a feasibility check that flips once as a parameter grows</li><li>O(log n) demanded explicitly</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Binary Search master template and adapt the marked parts to this problem:</p><pre><code># Lower-bound shape: smallest index where check(i) is True
-lo, hi = 0, n            # hi = n allows "no answer" result
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if check(mid):        # True region is on the right side's left edge
-        hi = mid          # mid might be the answer — keep it in range
-    else:
-        lo = mid + 1      # mid is definitely not — discard it
-return lo                 # first True (or n if none)
+<div class="insight">💡 <strong>Key insight:</strong> Maximize the minimum! This is the signature pattern for <strong>Binary Search on Answer</strong>. If we can place <code>m</code> balls such that all pairwise distances are <code>>= D</code>, then we can also place them with any distance <code>< D</code>. Sort positions first, then greedily place the next ball at the first basket with distance <code>>= D</code>.</div>
 
-# Binary search on the ANSWER
-lo, hi = min_possible, max_possible
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if feasible(mid): hi = mid
-    else:             lo = mid + 1</code></pre>
-<h2>How to work on it now</h2>
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Sort <code>position</code> array.</li>
+<li>Range for answer: <code>left = 1</code> (minimum possible force), <code>right = position[-1] - position[0]</code> (maximum possible force).</li>
+<li>Helper <code>canPlace(force)</code>:
+  <ul>
+    <li>Place 1st ball at <code>position[0]</code>.</li>
+    <li>For subsequent baskets, if <code>position[i] - last_pos >= force</code>, place ball here, update <code>last_pos = position[i]</code>, count += 1.</li>
+    <li>Return <code>count >= m</code>.</li>
+  </ul>
+</li>
+<li>Binary search to find MAXIMUM feasible force:
+  <ul>
+    <li>If <code>canPlace(mid)</code>: <code>ans = mid, left = mid + 1</code> (try larger force!).</li>
+    <li>Else: <code>right = mid - 1</code>.</li>
+  </ul>
+</li>
+<li>Return <code>ans</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — position = [1, 2, 3, 4, 7], m = 3</h2>
+<pre class="viz">Sorted: [1, 2, 3, 4, 7]
+left = 1, right = 7 - 1 = 6
+Iter 1: mid = 3
+  Place ball 1 at 1. Next >= 1 + 3 = 4 (basket 4). Next >= 4 + 3 = 7 (basket 7).
+  Placed 3 balls! Feasible. ans = 3, left = 4
+Iter 2: left = 4, right = 6 → mid = 5
+  Place at 1. Next >= 1 + 5 = 6 (basket 7). Placed 2 balls < 3. Infeasible!
+  right = 4
+Iter 3: left = 4, right = 4 → mid = 4
+  Place at 1. Next >= 5 (basket 7). Placed 2 balls. Infeasible!
+  right = 3
+left (4) > right (3). Loop ends.
+Return ans = 3! ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def maxDistance(position, m):
+    position.sort()
+    
+    def canPlace(force):
+        count = 1
+        last_pos = position[0]
+        for p in position[1:]:
+            if p - last_pos >= force:
+                count += 1
+                last_pos = p
+                if count == m:
+                    return True
+        return False
+        
+    left, right = 1, position[-1] - position[0]
+    ans = 1
+    
+    while left <= right:
+        mid = left + (right - left) // 2
+        if canPlace(mid):
+            ans = mid
+            left = mid + 1   # Try for larger distance
+        else:
+            right = mid - 1
+            
+    return ans</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n log n + n * log(max_dist))</strong> — Sorting takes O(n log n); each greedy check takes O(n). <strong>Space O(1)</strong> (in-place sort).</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li><code>m = 2</code>: simply place at <code>position[0]</code> and <code>position[-1]</code>, answer is <code>position[-1] - position[0]</code>.</li>
+<li>Consecutive positions <code>[1, 2, 3, 4, 5]</code>: handled smoothly.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Aggressive Cows (SPOJ classic).</li>
+<li>Minimize Max Distance to Gas Station (<a href="0250-lc774-minimize-max-distance-to-gas-station.html">#774</a>).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0254-lc1482-minimum-number-of-days-to-make-m-bouquets.html"><span class="lbl">← Previous</span>#1482 Minimum Number of Days to Make m Bouquets</a><a href="../problems/0256-lc1760-minimum-limit-of-balls-in-a-bag.html" style="text-align:right"><span class="lbl">Next →</span>#1760 Minimum Limit of Balls in a Bag</a></div>
 </div>

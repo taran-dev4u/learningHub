@@ -23,38 +23,78 @@
  › Subpattern 7.2: Two Heaps for Median Finding · Problem 212 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0476-lc295-find-median-from-data-stream.html">Design</a>, <a href="0672-lc295-find-median-from-data-stream.html">Iterator &amp; Data-Stream Design</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Design a structure that accepts a stream of numbers and can return the median of everything seen so far at any time.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>The median splits sorted numbers into two equal halves. Numbers arrive dynamically. We need fast access to the <strong>largest of the smaller half</strong> and the <strong>smallest of the larger half</strong>. This naturally calls for <strong>two heaps</strong>:</p>
+<ul>
+<li>A <strong>max-heap</strong> <code>small</code> for the lower half.</li>
+<li>A <strong>min-heap</strong> <code>large</code> for the upper half.</li>
+</ul>
 
-<h2>Where this fits</h2>
-<p><strong>Two Heaps for Median Finding</strong> — Max-heap for the lower half, min-heap for the upper half — top of either gives the median.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Two heaps: max-heap lower half, min-heap upper half, rebalanced so sizes differ ≤ 1; median from the tops.</div>
-<h2>Why this pattern?</h2><ul><li>"k largest / k closest / k most frequent / k-th …"</li><li>merge k sorted lists/streams</li><li>"median of a stream" / balance two halves → two heaps</li><li>scheduling: always take the earliest end / most frequent / cheapest next</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Heap (Priority Queue) master template and adapt the marked parts to this problem:</p><pre><code>import heapq
-# Top-k largest: min-heap of size k
-h = []
-for x in nums:
-    heapq.heappush(h, x)
-    if len(h) &gt; k:
-        heapq.heappop(h)                 # evict the smallest of the k+1
-# h holds the k largest; h[0] is the k-th largest
+<h2>🐢 Brute force first</h2>
+<p>Insert each number into a sorted array via binary insertion (<code>bisect.insort</code>) in O(n) time per addition. Query median in O(1). Overall addition time is O(n^2) for n numbers.</p>
 
-# k-way merge: heap of (value, which_list, index)
-h = [(lst[0], i, 0) for i, lst in enumerate(lists) if lst]
-heapq.heapify(h)
-while h:
-    val, i, j = heapq.heappop(h)
-    out.append(val)
-    if j + 1 &lt; len(lists[i]):
-        heapq.heappush(h, (lists[i][j+1], i, j+1))</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> balance two heaps such that <code>len(small) == len(large)</code> or <code>len(small) == len(large) + 1</code>, and every element in <code>small &lt;=</code> every element in <code>large</code>. Median is either <code>small[0]</code> (odd total) or <code>(small[0] + large[0]) / 2</code> (even total).</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Maintain max-heap <code>small</code> (stores negated values) and min-heap <code>large</code>.</li>
+<li><code>addNum(num)</code>: push <code>num</code> to <code>small</code>, then pop maximum of <code>small</code> and push to <code>large</code> (ensures ordering).</li>
+<li>If <code>len(large) &gt; len(small)</code>, pop minimum of <code>large</code> and push back to <code>small</code> (ensures <code>small</code> has >= elements).</li>
+<li><code>findMedian()</code>: if total elements is odd, return <code>-small[0]</code>; if even, return <code>(-small[0] + large[0]) / 2.0</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — add(1), add(2), add(3)</h2>
+<pre class="viz">add(1): small=[1], large=[] → median = 1
+add(2): push 2 to small → move top to large → small=[1], large=[2] → median = (1+2)/2 = 1.5
+add(3): push 3 to small → move top to large → large=[2,3], small=[1]
+        balance: move 2 to small → small=[2,1], large=[3] → median = 2 ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>import heapq
+
+class MedianFinder:
+    def __init__(self):
+        # small is a max-heap (negated values) for the lower half
+        self.small = []
+        # large is a min-heap for the upper half
+        self.large = []
+
+    def addNum(self, num: int) -&gt; None:
+        # Step 1: Always route through small to maintain ordering
+        heapq.heappush(self.small, -num)
+        heapq.heappush(self.large, -heapq.heappop(self.small))
+        
+        # Step 2: Keep small holding equal or 1 more element than large
+        if len(self.large) &gt; len(self.small):
+            heapq.heappush(self.small, -heapq.heappop(self.large))
+
+    def findMedian(self) -&gt; float:
+        if len(self.small) &gt; len(self.large):
+            return float(-self.small[0])
+        return (-self.small[0] + self.large[0]) / 2.0</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(log n)</strong> for <code>addNum()</code>, <strong>O(1)</strong> for <code>findMedian()</code>. <strong>Space O(n)</strong> to store all stream elements.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Stream with duplicate values: heaps handle duplicates transparently.</li>
+<li>Single element: <code>findMedian()</code> returns that element directly.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Pushing directly to <code>small</code> or <code>large</code> based on length rather than comparing values, violating the invariant that <code>max(small) &lt;= min(large)</code>.</li>
+<li>Returning integer division instead of float division when length is even.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Sliding Window Median (#480): remove outgoing window elements from two heaps (requires lazy deletion).</li>
+<li>Finding MK Average (<a href="0213-lc1825-finding-mk-average.html">#1825</a>): maintaining three partitions (smallest k, middle, largest k).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0211-lc2558-take-gifts-from-the-richest-pile.html"><span class="lbl">← Previous</span>#2558 Take Gifts From the Richest Pile</a><a href="../problems/0213-lc1825-finding-mk-average.html" style="text-align:right"><span class="lbl">Next →</span>#1825 Finding MK Average</a></div>
 </div>

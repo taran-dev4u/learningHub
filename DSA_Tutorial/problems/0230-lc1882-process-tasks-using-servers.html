@@ -23,38 +23,82 @@
  › Subpattern 7.4: Scheduling / Minimum Cost with Priority Queue · Problem 230 of 699</p>
 
 <h2>📋 The problem</h2><p>Assign tasks to servers: free servers by (weight, index), busy ones by release time; simulate with two heaps.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>You have <code>n</code> servers with weights and <code>m</code> tasks with execution times. At second <code>j</code>, task <code>j</code> arrives. Available servers are chosen by <strong>smallest weight</strong> (tiebreaker: smallest index). If no server is free, tasks wait in queue until a server frees up. We need two heaps: <strong>free servers</strong> (ordered by weight, index) and <strong>busy servers</strong> (ordered by finish time).</p>
 
-<h2>Where this fits</h2>
-<p><strong>Scheduling / Minimum Cost with Priority Queue</strong> — Heap selects the highest-cost/highest-priority task at each step — task scheduling, IPO, sticks.</p>
+<h2>🐢 Brute force first</h2>
+<p>Scan all servers at each second to check availability and assign → O(total_time * n).</p>
 
-<h2>Why this pattern?</h2><ul><li>"k largest / k closest / k most frequent / k-th …"</li><li>merge k sorted lists/streams</li><li>"median of a stream" / balance two halves → two heaps</li><li>scheduling: always take the earliest end / most frequent / cheapest next</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Heap (Priority Queue) master template and adapt the marked parts to this problem:</p><pre><code>import heapq
-# Top-k largest: min-heap of size k
-h = []
-for x in nums:
-    heapq.heappush(h, x)
-    if len(h) &gt; k:
-        heapq.heappop(h)                 # evict the smallest of the k+1
-# h holds the k largest; h[0] is the k-th largest
+<div class="insight">💡 <strong>Key insight:</strong> use <strong>two min-heaps</strong>: <code>free_servers</code> <code>(weight, index)</code> and <code>busy_servers</code> <code>(finish_time, weight, index)</code>. Fast-forward current time to the earliest finish time when no servers are available.</div>
 
-# k-way merge: heap of (value, which_list, index)
-h = [(lst[0], i, 0) for i, lst in enumerate(lists) if lst]
-heapq.heapify(h)
-while h:
-    val, i, j = heapq.heappop(h)
-    out.append(val)
-    if j + 1 &lt; len(lists[i]):
-        heapq.heappush(h, (lists[i][j+1], i, j+1))</code></pre>
-<h2>How to work on it now</h2>
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Initialize <code>free = [(servers[i], i) for i in range(n)]</code> and heapify.</li>
+<li>Initialize <code>busy = []</code> (min-heap by finish time).</li>
+<li>For each task <code>j</code> arriving at time <code>j</code>:</li>
+<li>Time <code>cur_time = max(cur_time, j)</code>. If <code>free</code> is empty, fast-forward <code>cur_time = busy[0][0]</code>.</li>
+<li>Move all servers from <code>busy</code> with <code>finish_time &lt;= cur_time</code> back to <code>free</code>.</li>
+<li>Pop server <code>(w, i)</code> from <code>free</code>.</li>
+<li>Push <code>(cur_time + tasks[j], w, i)</code> to <code>busy</code>.</li>
+<li>Record <code>i</code> in result.</li>
+<li>Return result.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — servers = [3,3,2], tasks = [1,2,3,2,1,2]</h2>
+<pre class="viz">free: [(2, 2), (3, 0), (3, 1)], busy: []
+t=0, task 0 (dur 1): assign to (2, 2) → busy=[(1, 2, 2)]. res=[2]
+t=1, task 1 (dur 2): server 2 frees up! free=[(2, 2), (3, 0), (3, 1)].
+                     assign to (2, 2) → busy=[(3, 2, 2)]. res=[2, 2]
+t=2, task 2 (dur 3): assign to (3, 0) → busy=[(3, 2, 2), (5, 3, 0)]. res=[2, 2, 0] ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>import heapq
+
+def assignTasks(servers, tasks):
+    # free: (weight, index)
+    free = [(w, i) for i, w in enumerate(servers)]
+    heapq.heapify(free)
+    
+    # busy: (finish_time, weight, index)
+    busy = []
+    
+    res = []
+    cur_time = 0
+    
+    for j, duration in enumerate(tasks):
+        cur_time = max(cur_time, j)
+        
+        # If no servers are available, jump time forward to when the first server frees up
+        if not free:
+            cur_time = busy[0][0]
+            
+        # Free up all servers that have finished by cur_time
+        while busy and busy[0][0] &lt;= cur_time:
+            _, w, i = heapq.heappop(busy)
+            heapq.heappush(free, (w, i))
+            
+        w, i = heapq.heappop(free)
+        res.append(i)
+        heapq.heappush(busy, (cur_time + duration, w, i))
+        
+    return res</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O((n + m) log n)</strong> — each task pushes and pops from the heaps in O(log n). <strong>Space O(n + m)</strong> for the heaps and result array.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>More tasks than servers: time fast-forward ensures no idle CPU spinning.</li>
+<li>Equal weights: broken by original server index.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Single-Threaded CPU (<a href="0228-lc1834-single-threaded-cpu.html">#1834</a>).</li>
+<li>Meeting Rooms III (<a href="0232-lc2402-meeting-rooms-iii.html">#2402</a>).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0229-lc1845-seat-reservation-manager.html"><span class="lbl">← Previous</span>#1845 Seat Reservation Manager</a><a href="../problems/0231-lc1942-the-number-of-the-smallest-unoccupied-chair.html" style="text-align:right"><span class="lbl">Next →</span>#1942 The Number of the Smallest Unoccupied Chair</a></div>
 </div>

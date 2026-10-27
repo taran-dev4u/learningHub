@@ -23,37 +23,78 @@
  › Subpattern 8.1: On Sorted Array/List · Problem 241 of 699</p>
 
 <h2>📋 The problem</h2><p>Return the k-th positive integer missing from a sorted array (binary search on missing-count = arr[i] − i − 1).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given an array <code>arr</code> of positive integers sorted in strictly ascending order, and an integer <code>k</code>, return the <code>k-th</code> positive integer that is missing from this array.</p>
 
-<h2>Where this fits</h2>
-<p><strong>On Sorted Array/List</strong> — Plain lower/upper bound on a sorted array — get the boilerplate right (lo&lt;hi vs lo&lt;=hi).</p>
+<h2>🐢 Brute force first</h2>
+<p>Scan <code>num = 1, 2, 3...</code> using a pointer in <code>arr</code>. If <code>num == arr[i]</code>, advance <code>i</code>; otherwise decrement <code>k</code>. When <code>k == 0</code>, return <code>num</code>. Time: O(n + k), Space: O(1).</p>
 
-<h2>Why this pattern?</h2><ul><li>sorted (or rotated-sorted) array + find/insert position</li><li>"minimize the maximum" / "maximize the minimum"</li><li>a feasibility check that flips once as a parameter grows</li><li>O(log n) demanded explicitly</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Binary Search master template and adapt the marked parts to this problem:</p><pre><code># Lower-bound shape: smallest index where check(i) is True
-lo, hi = 0, n            # hi = n allows "no answer" result
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if check(mid):        # True region is on the right side's left edge
-        hi = mid          # mid might be the answer — keep it in range
-    else:
-        lo = mid + 1      # mid is definitely not — discard it
-return lo                 # first True (or n if none)
+<div class="insight">💡 <strong>Key insight:</strong> At index <code>i</code>, how many positive integers should precede it if none were missing? Exactly <code>arr[i] - (i + 1)</code>! Because the array is sorted, this missing count <code>arr[i] - (i + 1)</code> is <strong>monotonically non-decreasing</strong>! We can binary search for the largest index where missing count &lt; <code>k</code>.</div>
 
-# Binary search on the ANSWER
-lo, hi = min_possible, max_possible
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if feasible(mid): hi = mid
-    else:             lo = mid + 1</code></pre>
-<h2>How to work on it now</h2>
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Set <code>left = 0</code>, <code>right = len(arr) - 1</code>.</li>
+<li>While <code>left &lt;= right</code>:</li>
+<li>Compute <code>mid = left + (right - left) // 2</code>.</li>
+<li>Calculate missing before <code>mid</code>: <code>missing = arr[mid] - (mid + 1)</code>.</li>
+<li>If <code>missing &lt; k</code>, we need to search further right: <code>left = mid + 1</code>.</li>
+<li>Else, search left: <code>right = mid - 1</code>.</li>
+<li>When the loop terminates, <code>left</code> is the number of elements in <code>arr</code> that are smaller than the kth missing number. The answer is simply <code>left + k</code>!</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — arr = [2, 3, 4, 7, 11], k = 5</h2>
+<pre class="viz">Index i:       0   1   2   3   4
+arr[i]:        2   3   4   7  11
+Missing count: 1   1   1   3   6  (arr[i] - (i + 1))
+k = 5.
+
+Iter 1: left = 0, right = 4 → mid = 2
+        missing = 4 - 3 = 1 < 5 → left = mid + 1 = 3
+Iter 2: left = 3, right = 4 → mid = 3
+        missing = 7 - 4 = 3 < 5 → left = mid + 1 = 4
+Iter 3: left = 4, right = 4 → mid = 4
+        missing = 11 - 5 = 6 >= 5 → right = mid - 1 = 3
+Loop ends with left = 4.
+Answer = left + k = 4 + 5 = 9!
+Missing numbers: [1, 5, 6, 8, 9...] → 5th missing is 9. ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def findKthPositive(arr, k):
+    """
+    Binary search on the number of missing integers.
+    arr[i] - (i + 1) gives missing count up to index i.
+    """
+    left, right = 0, len(arr) - 1
+    
+    while left <= right:
+        mid = left + (right - left) // 2
+        missing = arr[mid] - (mid + 1)
+        
+        if missing < k:
+            left = mid + 1
+        else:
+            right = mid - 1
+            
+    # At termination, missing count before index 'right' is < k.
+    # The kth missing number = arr[right] + (k - missing_at_right)
+    # = arr[right] + k - (arr[right] - (right + 1)) = right + 1 + k = left + k
+    return left + k</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(log n)</strong> — Binary search over array length. <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>All missing numbers before <code>arr[0]</code> (e.g. <code>arr = [5, 6, 7], k = 2</code>): <code>left = 0</code>, returns <code>0 + 2 = 2</code>.</li>
+<li>All missing numbers after array (e.g. <code>arr = [1, 2, 3], k = 2</code>): <code>left = 3</code>, returns <code>3 + 2 = 5</code>.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Missing Element in Sorted Array (#1060).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0240-lc704-binary-search.html"><span class="lbl">← Previous</span>#704 Binary Search</a><a href="../problems/0242-lc33-search-in-rotated-sorted-array.html" style="text-align:right"><span class="lbl">Next →</span>#33 Search in Rotated Sorted Array</a></div>
 </div>

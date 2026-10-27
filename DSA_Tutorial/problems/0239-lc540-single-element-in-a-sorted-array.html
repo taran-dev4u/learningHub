@@ -23,37 +23,83 @@
  › Subpattern 8.1: On Sorted Array/List · Problem 239 of 699</p>
 
 <h2>📋 The problem</h2><p>Every element of a sorted array appears exactly twice except one; find it in O(log n).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>You are given a sorted array consisting of only integers where every element appears exactly twice, except for one element which appears exactly once. Find this single element that appears only once. Your solution must run in <strong>O(log n)</strong> time and <strong>O(1)</strong> space.</p>
 
-<h2>Where this fits</h2>
-<p><strong>On Sorted Array/List</strong> — Plain lower/upper bound on a sorted array — get the boilerplate right (lo&lt;hi vs lo&lt;=hi).</p>
+<h2>🐢 Brute force first</h2>
+<p>XOR all elements together: <code>x ^ x = 0</code> and <code>x ^ 0 = x</code>. Time: O(n), Space: O(1). Or linear scan checking adjacent pairs in O(n). To achieve O(log n), we must leverage the sorted structure with binary search.</p>
 
-<h2>Why this pattern?</h2><ul><li>sorted (or rotated-sorted) array + find/insert position</li><li>"minimize the maximum" / "maximize the minimum"</li><li>a feasibility check that flips once as a parameter grows</li><li>O(log n) demanded explicitly</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Binary Search master template and adapt the marked parts to this problem:</p><pre><code># Lower-bound shape: smallest index where check(i) is True
-lo, hi = 0, n            # hi = n allows "no answer" result
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if check(mid):        # True region is on the right side's left edge
-        hi = mid          # mid might be the answer — keep it in range
-    else:
-        lo = mid + 1      # mid is definitely not — discard it
-return lo                 # first True (or n if none)
+<div class="insight">💡 <strong>Key insight:</strong> Before the unique element, pairs always start at an <strong>even index</strong> and end at an <strong>odd index</strong>: <code>(0, 1), (2, 3), (4, 5)...</code>. After the unique element, every pair gets shifted right by 1, so pairs start at an <strong>odd index</strong> and end at an <strong>even index</strong>! Thus, if <code>mid</code>'s pair is correctly positioned, the unique element is to the right; otherwise it's at <code>mid</code> or to the left!</div>
 
-# Binary search on the ANSWER
-lo, hi = min_possible, max_possible
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if feasible(mid): hi = mid
-    else:             lo = mid + 1</code></pre>
-<h2>How to work on it now</h2>
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Set <code>left = 0</code>, <code>right = len(nums) - 1</code>.</li>
+<li>While <code>left &lt; right</code>:</li>
+<li>Compute <code>mid = left + (right - left) // 2</code>.</li>
+<li>If <code>mid % 2 == 1</code>, decrement <code>mid -= 1</code> so that <code>mid</code> is always the first element of an expected pair.</li>
+<li>If <code>nums[mid] == nums[mid + 1]</code>: The pair is properly aligned! The single element has not disrupted pairing yet, so it lies strictly to the right: <code>left = mid + 2</code>.</li>
+<li>Else: The alignment is broken! The single element is either at <code>mid</code> or to its left: <code>right = mid</code>.</li>
+<li>When <code>left == right</code>, return <code>nums[left]</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — nums = [1, 1, 2, 3, 3, 4, 4, 8, 8]</h2>
+<pre class="viz">Indices:  0  1  2  3  4  5  6  7  8
+Values:  [1, 1, 2, 3, 3, 4, 4, 8, 8]
+
+Iter 1: left = 0, right = 8 → mid = 4 (even)
+        nums[4] = 3, nums[5] = 4 → nums[4] != nums[5]!
+        Alignment broken → right = mid = 4
+
+Iter 2: left = 0, right = 4 → mid = 2 (even)
+        nums[2] = 2, nums[3] = 3 → nums[2] != nums[3]!
+        Alignment broken → right = mid = 2
+
+Iter 3: left = 0, right = 2 → mid = 1 (odd) → mid = 0 (even)
+        nums[0] = 1 == nums[1] → aligned!
+        left = mid + 2 = 2
+
+left == right == 2.
+Return nums[2] = 2! ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def singleNonDuplicate(nums):
+    """
+    Binary search on even indices to find the parity disruption.
+    """
+    left, right = 0, len(nums) - 1
+    
+    while left < right:
+        mid = left + (right - left) // 2
+        # Ensure mid is even
+        if mid % 2 == 1:
+            mid -= 1
+            
+        if nums[mid] == nums[mid + 1]:
+            # Pair is intact; anomaly is to the right
+            left = mid + 2
+        else:
+            # Pair broken; anomaly is at mid or left
+            right = mid
+            
+    return nums[left]</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(log n)</strong> — Standard binary search halving the search space each step. <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Single element array <code>[1]</code>: returns 1 immediately.</li>
+<li>Single element at index 0 (first element unique): <code>nums[0] != nums[1]</code> collapses <code>right</code> to 0.</li>
+<li>Single element at last index: <code>left</code> advances all the way to <code>len(nums) - 1</code>.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Find the Duplicate Number (<a href="0030-lc287-find-the-duplicate-number.html">#287</a>).</li>
+<li>Single Number I, II, III (<a href="0452-lc136-single-number.html">#136</a>, <a href="0453-lc137-single-number-ii.html">#137</a>, <a href="0454-lc260-single-number-iii.html">#260</a>).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0238-lc374-guess-number-higher-or-lower.html"><span class="lbl">← Previous</span>#374 Guess Number Higher or Lower</a><a href="../problems/0240-lc704-binary-search.html" style="text-align:right"><span class="lbl">Next →</span>#704 Binary Search</a></div>
 </div>

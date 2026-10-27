@@ -23,38 +23,61 @@
  › Subpattern 7.4: Scheduling / Minimum Cost with Priority Queue · Problem 221 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0343-lc621-task-scheduler.html">Greedy</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Schedule tasks (each identical letter needs a cooldown of n slots between repeats); return the minimum total intervals including idles.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>You have CPU tasks represented by characters, and an idle cooldown <code>n</code> between identical tasks. Find the minimum intervals to complete all tasks. Greedy intuition: always execute the task with the <strong>highest remaining frequency</strong> first, because tasks with high counts require the most cooldown slots.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Scheduling / Minimum Cost with Priority Queue</strong> — Heap selects the highest-cost/highest-priority task at each step — task scheduling, IPO, sticks.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Most frequent task dominates: slots = (max_count−1)×(n+1) + tasks_tying_max; answer = max(that, len(tasks)).</div>
-<h2>Why this pattern?</h2><ul><li>"k largest / k closest / k most frequent / k-th …"</li><li>merge k sorted lists/streams</li><li>"median of a stream" / balance two halves → two heaps</li><li>scheduling: always take the earliest end / most frequent / cheapest next</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Heap (Priority Queue) master template and adapt the marked parts to this problem:</p><pre><code>import heapq
-# Top-k largest: min-heap of size k
-h = []
-for x in nums:
-    heapq.heappush(h, x)
-    if len(h) &gt; k:
-        heapq.heappop(h)                 # evict the smallest of the k+1
-# h holds the k largest; h[0] is the k-th largest
+<h2>🐢 Brute force first</h2>
+<p>Simulate execution step by step with a queue tracking cooling tasks → O(total_intervals * log 26).</p>
 
-# k-way merge: heap of (value, which_list, index)
-h = [(lst[0], i, 0) for i, lst in enumerate(lists) if lst]
-heapq.heapify(h)
-while h:
-    val, i, j = heapq.heappop(h)
-    out.append(val)
-    if j + 1 &lt; len(lists[i]):
-        heapq.heappush(h, (lists[i][j+1], i, j+1))</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> math formula solution. The most frequent task with count <code>max_freq</code> creates <code>max_freq - 1</code> empty chunks of size <code>n</code>. Total slots = <code>(max_freq - 1) * (n + 1) + count_of_max_freq_tasks</code>. The answer is <code>max(len(tasks), formula_result)</code>.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Count frequencies of all tasks using <code>Counter(tasks)</code>.</li>
+<li>Find <code>max_freq = max(counts.values())</code>.</li>
+<li>Count how many tasks have frequency equal to <code>max_freq</code> (let this be <code>max_count</code>).</li>
+<li>Calculate minimum time needed: <code>(max_freq - 1) * (n + 1) + max_count</code>.</li>
+<li>Return <code>max(len(tasks), empty_slots_time)</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — tasks = ["A","A","A","B","B","B"], n = 2</h2>
+<pre class="viz">max_freq = 3 ('A' and 'B' both appear 3 times). max_count = 2 ('A' and 'B').
+Chunks:
+Chunk 1: A B _ (size 3 = n + 1)
+Chunk 2: A B _ (size 3 = n + 1)
+Last chunk: A B (size 2 = max_count)
+Total: (3 - 1) * (2 + 1) + 2 = 2 * 3 + 2 = 8 intervals: [A, B, idle, A, B, idle, A, B] ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>from collections import Counter
+
+def leastInterval(tasks, n):
+    count = Counter(tasks)
+    max_freq = max(count.values())
+    # Count how many tasks tie for the maximum frequency
+    max_count = sum(1 for v in count.values() if v == max_freq)
+    
+    # Calculate required intervals based on the bottleneck task
+    part_time = (max_freq - 1) * (n + 1) + max_count
+    # Cannot be less than the total number of tasks
+    return max(len(tasks), part_time)</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(N)</strong> — where N is the length of tasks, to count frequencies. <strong>Space O(1)</strong> — alphabet size is at most 26.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li><code>n = 0</code>: no cooldown needed, answer is simply <code>len(tasks)</code>.</li>
+<li>Enough other tasks to fill all idle slots: returns <code>len(tasks)</code>.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Reorganize String (<a href="0222-lc767-reorganize-string.html">#767</a>): n = 1 with distinct adjacent characters.</li>
+<li>Single-Threaded CPU (<a href="0228-lc1834-single-threaded-cpu.html">#1834</a>).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0220-lc502-ipo.html"><span class="lbl">← Previous</span>#502 IPO</a><a href="../problems/0222-lc767-reorganize-string.html" style="text-align:right"><span class="lbl">Next →</span>#767 Reorganize String</a></div>
 </div>

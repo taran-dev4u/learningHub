@@ -23,38 +23,63 @@
  › Subpattern 7.4: Scheduling / Minimum Cost with Priority Queue · Problem 224 of 699</p>
 
 <h2>📋 The problem</h2><p>Connect sticks by paying the sum of the two joined each time; return the minimum total cost (always join the two smallest — heap).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Connect sticks of lengths <code>sticks</code> into one. Cost to connect two sticks of lengths <code>x</code> and <code>y</code> is <code>x + y</code>. We want the <strong>minimum total cost</strong>. Notice that sticks connected earlier contribute repeatedly to future connection costs. Therefore, we should greedily connect the <strong>two smallest sticks</strong> first (classic Huffman Coding algorithm).</p>
 
-<h2>Where this fits</h2>
-<p><strong>Scheduling / Minimum Cost with Priority Queue</strong> — Heap selects the highest-cost/highest-priority task at each step — task scheduling, IPO, sticks.</p>
+<h2>🐢 Brute force first</h2>
+<p>Try all possible pairing orders → exponential.</p>
 
-<h2>Why this pattern?</h2><ul><li>"k largest / k closest / k most frequent / k-th …"</li><li>merge k sorted lists/streams</li><li>"median of a stream" / balance two halves → two heaps</li><li>scheduling: always take the earliest end / most frequent / cheapest next</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Heap (Priority Queue) master template and adapt the marked parts to this problem:</p><pre><code>import heapq
-# Top-k largest: min-heap of size k
-h = []
-for x in nums:
-    heapq.heappush(h, x)
-    if len(h) &gt; k:
-        heapq.heappop(h)                 # evict the smallest of the k+1
-# h holds the k largest; h[0] is the k-th largest
+<div class="insight">💡 <strong>Key insight:</strong> use a <strong>min-heap</strong>. Repeatedly pop the two smallest sticks <code>a</code> and <code>b</code>, add <code>a + b</code> to total cost, and push <code>a + b</code> back into the heap until one stick remains.</div>
 
-# k-way merge: heap of (value, which_list, index)
-h = [(lst[0], i, 0) for i, lst in enumerate(lists) if lst]
-heapq.heapify(h)
-while h:
-    val, i, j = heapq.heappop(h)
-    out.append(val)
-    if j + 1 &lt; len(lists[i]):
-        heapq.heappush(h, (lists[i][j+1], i, j+1))</code></pre>
-<h2>How to work on it now</h2>
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Heapify <code>sticks</code> in O(n).</li>
+<li>Initialize <code>total_cost = 0</code>.</li>
+<li>While <code>len(sticks) &gt; 1</code>:</li>
+<li><code>a = heappop(sticks)</code>, <code>b = heappop(sticks)</code>.</li>
+<li><code>cost = a + b</code>, <code>total_cost += cost</code>.</li>
+<li><code>heappush(sticks, cost)</code>.</li>
+<li>Return <code>total_cost</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — sticks = [2, 4, 3]</h2>
+<pre class="viz">Heap: [2, 4, 3]
+1. Pop 2 and 3 → cost = 5 → total_cost = 5 → push 5 → Heap: [4, 5]
+2. Pop 4 and 5 → cost = 9 → total_cost = 5 + 9 = 14 → push 9 → Heap: [9]
+One stick left. Result: 14 ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>import heapq
+
+def connectSticks(sticks):
+    heapq.heapify(sticks)
+    total_cost = 0
+    
+    while len(sticks) &gt; 1:
+        first = heapq.heappop(sticks)
+        second = heapq.heappop(sticks)
+        cost = first + second
+        total_cost += cost
+        heapq.heappush(sticks, cost)
+        
+    return total_cost</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n log n)</strong> — n - 1 connections, each performing O(log n) heap operations. <strong>Space O(1)</strong> auxiliary if heapified in-place.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Single stick: already connected, cost = 0.</li>
+<li>All sticks equal length: pairs merge symmetrically.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Last Stone Weight (<a href="0210-lc1046-last-stone-weight.html">#1046</a>).</li>
+<li>Huffman Coding algorithm.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0223-lc857-minimum-cost-to-hire-k-workers.html"><span class="lbl">← Previous</span>#857 Minimum Cost to Hire K Workers</a><a href="../problems/0225-lc1383-maximum-performance-of-a-team.html" style="text-align:right"><span class="lbl">Next →</span>#1383 Maximum Performance of a Team</a></div>
 </div>

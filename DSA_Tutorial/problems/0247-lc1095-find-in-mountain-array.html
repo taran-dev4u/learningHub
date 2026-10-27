@@ -23,37 +23,90 @@
  › Subpattern 8.2: Find Min/Max in Rotated Sorted Array · Problem 247 of 699</p>
 
 <h2>📋 The problem</h2><p>Find a target's index in a mountain array (increases then decreases) with a limited number of reads (three binary searches).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given a mountain array <code>mountainArr</code>, return the <strong>minimum index</strong> such that <code>mountainArr.get(index) == target</code>. If such an index does not exist, return <code>-1</code>. Access to the array is only through an interface <code>MountainArray.get(k)</code> and <code>MountainArray.length()</code>. Submissions making more than <strong>100 calls</strong> to <code>get</code> will be judged Wrong Answer.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Find Min/Max in Rotated Sorted Array</strong> — Compare mid to lo/hi to identify which side is sorted; recurse into the sorted side or the other.</p>
+<h2>🐢 Brute force first</h2>
+<p>Linear scan calling <code>get(i)</code> for all <code>i</code> will exceed 100 calls for arrays up to 10,000 elements.</p>
 
-<h2>Why this pattern?</h2><ul><li>sorted (or rotated-sorted) array + find/insert position</li><li>"minimize the maximum" / "maximize the minimum"</li><li>a feasibility check that flips once as a parameter grows</li><li>O(log n) demanded explicitly</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Binary Search master template and adapt the marked parts to this problem:</p><pre><code># Lower-bound shape: smallest index where check(i) is True
-lo, hi = 0, n            # hi = n allows "no answer" result
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if check(mid):        # True region is on the right side's left edge
-        hi = mid          # mid might be the answer — keep it in range
-    else:
-        lo = mid + 1      # mid is definitely not — discard it
-return lo                 # first True (or n if none)
+<div class="insight">💡 <strong>Key insight:</strong> A mountain array consists of two monotonic halves split by the peak: an ascending left half and a descending right half. Execute a <strong>3-phase binary search</strong>:
+1. Find peak index using binary search (at most ~14 calls).
+2. Binary search for target in the strictly increasing left half <code>[0, peak]</code> (~14 calls).
+3. If not found in left half, binary search in strictly decreasing right half <code>[peak + 1, n - 1]</code> (~14 calls).
+Total calls: ~42 &lt;&lt; 100 limit!</div>
 
-# Binary search on the ANSWER
-lo, hi = min_possible, max_possible
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if feasible(mid): hi = mid
-    else:             lo = mid + 1</code></pre>
-<h2>How to work on it now</h2>
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li><strong>Phase 1: Find Peak:</strong> <code>left = 0, right = n - 1</code>. While <code>left &lt; right</code>, if <code>get(mid) &lt; get(mid + 1)</code>: <code>left = mid + 1</code>, else <code>right = mid</code>. <code>peak = left</code>.</li>
+<li><strong>Phase 2: Search Left Half (Ascending):</strong> <code>left = 0, right = peak</code>. Standard ascending binary search. If found, return index immediately (satisfies minimum index requirement).</li>
+<li><strong>Phase 3: Search Right Half (Descending):</strong> <code>left = peak + 1, right = n - 1</code>. Note the comparison logic is inverted since values decrease as index increases.</li>
+<li>If neither finds target, return <code>-1</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — array = [1, 2, 3, 4, 5, 3, 1], target = 3</h2>
+<pre class="viz">1. Find peak: peak is index 4 (val = 5).
+2. Search left [0, 4] for target 3:
+   mid = 2, get(2) = 3 == 3 → Found at index 2!
+   Return 2 immediately without needing to search the right half. ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def findInMountainArray(target, mountain_arr):
+    n = mountain_arr.length()
+    
+    # Phase 1: Find peak index
+    left, right = 0, n - 1
+    while left < right:
+        mid = left + (right - left) // 2
+        if mountain_arr.get(mid) < mountain_arr.get(mid + 1):
+            left = mid + 1
+        else:
+            right = mid
+    peak = left
+    
+    # Phase 2: Binary search on ascending left slope [0, peak]
+    left, right = 0, peak
+    while left <= right:
+        mid = left + (right - left) // 2
+        val = mountain_arr.get(mid)
+        if val == target:
+            return mid
+        elif val < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+            
+    # Phase 3: Binary search on descending right slope [peak + 1, n - 1]
+    left, right = peak + 1, n - 1
+    while left <= right:
+        mid = left + (right - left) // 2
+        val = mountain_arr.get(mid)
+        if val == target:
+            return mid
+        elif val < target:
+            # Decreasing slope: smaller values are to the right
+            right = mid - 1
+        else:
+            left = mid + 1
+            
+    return -1</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(log n)</strong> — 3 binary searches each taking O(log n). Total API calls &lt;= 3 * log2(10000) ≈ 42 calls. <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Target exists on both slopes: algorithm returns left index first because left slope is searched first.</li>
+<li>Target is at the peak: found during left slope search.</li>
+<li>Target not in array: returns -1 after exhaustive search.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Search in Rotated Sorted Array (<a href="0242-lc33-search-in-rotated-sorted-array.html">#33</a>).</li>
+<li>Peak Index in a Mountain Array (<a href="0246-lc852-peak-index-in-a-mountain-array.html">#852</a>).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0246-lc852-peak-index-in-a-mountain-array.html"><span class="lbl">← Previous</span>#852 Peak Index in a Mountain Array</a><a href="../problems/0248-lc410-split-array-largest-sum.html" style="text-align:right"><span class="lbl">Next →</span>#410 Split Array Largest Sum</a></div>
 </div>

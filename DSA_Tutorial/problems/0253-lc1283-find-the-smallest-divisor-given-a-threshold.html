@@ -23,37 +23,63 @@
  › Subpattern 8.3: On Answer / Condition Function · Problem 253 of 699</p>
 
 <h2>📋 The problem</h2><p>Find the smallest divisor d so that the sum of ceil(x/d) over the array stays within a threshold (binary search on d).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given an array of integers <code>nums</code> and an integer <code>threshold</code>, we need to choose a positive integer <code>divisor</code>, divide all the array by it, and sum the division's result. Find the smallest <code>divisor</code> such that the result mentioned above is less than or equal to <code>threshold</code>. Each division result is rounded up to the nearest integer greater than or equal to that element (e.g. <code>7/3 = 3</code>).</p>
 
-<h2>Where this fits</h2>
-<p><strong>On Answer / Condition Function</strong> — Binary-search the answer; write a monotonic check(x) function that returns True for x≥answer.</p>
+<h2>🐢 Brute force first</h2>
+<p>Try divisors <code>d = 1, 2, ... max(nums)</code>. Stop at first <code>d</code> with sum &lt;= <code>threshold</code>. O(n * max(nums)) TLEs.</p>
 
-<h2>Why this pattern?</h2><ul><li>sorted (or rotated-sorted) array + find/insert position</li><li>"minimize the maximum" / "maximize the minimum"</li><li>a feasibility check that flips once as a parameter grows</li><li>O(log n) demanded explicitly</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Binary Search master template and adapt the marked parts to this problem:</p><pre><code># Lower-bound shape: smallest index where check(i) is True
-lo, hi = 0, n            # hi = n allows "no answer" result
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if check(mid):        # True region is on the right side's left edge
-        hi = mid          # mid might be the answer — keep it in range
-    else:
-        lo = mid + 1      # mid is definitely not — discard it
-return lo                 # first True (or n if none)
+<div class="insight">💡 <strong>Key insight:</strong> As <code>divisor</code> increases, <code>ceil(num / divisor)</code> monotonically decreases, so total sum monotonically decreases! Binary search in range <code>[1, max(nums)]</code>.</div>
 
-# Binary search on the ANSWER
-lo, hi = min_possible, max_possible
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if feasible(mid): hi = mid
-    else:             lo = mid + 1</code></pre>
-<h2>How to work on it now</h2>
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li><code>left = 1, right = max(nums)</code>.</li>
+<li>Helper <code>computeSum(d)</code>: returns <code>sum((x + d - 1) // d for x in nums)</code>.</li>
+<li>While <code>left &lt; right</code>:</li>
+<li><code>mid = left + (right - left) // 2</code>.</li>
+<li>If <code>computeSum(mid) &lt;= threshold</code>: <code>mid</code> works, search for smaller: <code>right = mid</code>.</li>
+<li>Else: <code>mid</code> produces too large a sum, divisor must be larger: <code>left = mid + 1</code>.</li>
+<li>Return <code>left</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — nums = [1, 2, 5, 9], threshold = 6</h2>
+<pre class="viz">Range: [1, 9]
+Iter 1: mid = 5 → ceil(1/5)+ceil(2/5)+ceil(5/5)+ceil(9/5) = 1+1+1+2 = 5 <= 6 → right = 5
+Iter 2: left = 1, right = 5 → mid = 3 → ceil: 1+1+2+3 = 7 > 6 → left = 4
+Iter 3: left = 4, right = 5 → mid = 4 → ceil: 1+1+2+3 = 7 > 6 → left = 5
+left == right == 5.
+Smallest divisor = 5. ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def smallestDivisor(nums, threshold):
+    left, right = 1, max(nums)
+    
+    while left < right:
+        mid = left + (right - left) // 2
+        total = sum((x + mid - 1) // mid for x in nums)
+        
+        if total <= threshold:
+            right = mid
+        else:
+            left = mid + 1
+            
+    return left</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n * log(max(nums)))</strong>. <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li><code>threshold == len(nums)</code>: divisor must be <code>max(nums)</code> since minimum contribution of each element is 1.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Koko Eating Bananas (<a href="0251-lc875-koko-eating-bananas.html">#875</a>).</li>
+<li>Minimized Maximum of Products Distributed to Any Store (<a href="0257-lc2064-minimized-maximum-of-products-distributed-to-any-store.html">#2064</a>).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0252-lc1011-capacity-to-ship-packages-within-d-days.html"><span class="lbl">← Previous</span>#1011 Capacity To Ship Packages Within D Days</a><a href="../problems/0254-lc1482-minimum-number-of-days-to-make-m-bouquets.html" style="text-align:right"><span class="lbl">Next →</span>#1482 Minimum Number of Days to Make m Bouquets</a></div>
 </div>

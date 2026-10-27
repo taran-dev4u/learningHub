@@ -23,38 +23,75 @@
  › Subpattern 7.1: Top K Elements / Selection / Frequency · Problem 205 of 699</p>
 
 <h2>📋 The problem</h2><p>Sort a string's characters by decreasing frequency.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Sort characters in a string by decreasing frequency. Similar to <a href="0204-lc347-top-k-frequent-elements.html">#347</a>, count each character's occurrences and sort or bucket-sort characters by frequency, then reconstruct the string multiplying each character by its frequency.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Top K Elements / Selection / Frequency</strong> — Min-heap of size k to find the k largest, or max-heap of size k for k smallest.</p>
+<h2>🐢 Brute force first</h2>
+<p>Count character frequencies with a dictionary, sort the unique characters by frequency descending, and build the string.</p>
+<pre><code>from collections import Counter
+def frequencySort(s):
+    count = Counter(s)
+    chars = sorted(count.keys(), key=lambda c: count[c], reverse=True)
+    return "".join(c * count[c] for c in chars)</code></pre>
+<p>Time O(n + k log k) where k is the number of distinct characters (at most 52 for ASCII letters, 128 for full ASCII). Space O(n).</p>
 
-<h2>Why this pattern?</h2><ul><li>"k largest / k closest / k most frequent / k-th …"</li><li>merge k sorted lists/streams</li><li>"median of a stream" / balance two halves → two heaps</li><li>scheduling: always take the earliest end / most frequent / cheapest next</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Heap (Priority Queue) master template and adapt the marked parts to this problem:</p><pre><code>import heapq
-# Top-k largest: min-heap of size k
-h = []
-for x in nums:
-    heapq.heappush(h, x)
-    if len(h) &gt; k:
-        heapq.heappop(h)                 # evict the smallest of the k+1
-# h holds the k largest; h[0] is the k-th largest
+<div class="insight">💡 <strong>Key insight:</strong> since maximum frequency is <code>n = len(s)</code>, bucket sort groups characters by frequency in O(n) time and O(n) space without any comparison sorting.</div>
 
-# k-way merge: heap of (value, which_list, index)
-h = [(lst[0], i, 0) for i, lst in enumerate(lists) if lst]
-heapq.heapify(h)
-while h:
-    val, i, j = heapq.heappop(h)
-    out.append(val)
-    if j + 1 &lt; len(lists[i]):
-        heapq.heappush(h, (lists[i][j+1], i, j+1))</code></pre>
-<h2>How to work on it now</h2>
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Count character frequencies using <code>Counter(s)</code>.</li>
+<li>Create bucket array of length <code>len(s) + 1</code>.</li>
+<li>For each character and count, append character to <code>buckets[count]</code>.</li>
+<li>Traverse buckets from <code>len(s)</code> down to 1, appending <code>c * count</code> to the result string.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — s = "tree"</h2>
+<pre class="viz">Counts: {'t': 1, 'r': 1, 'e': 2}
+Buckets:
+freq 2: ['e']
+freq 1: ['t', 'r']
+Scan from 4 down:
+freq 2: 'e'*2 = "ee"
+freq 1: 't'*1, 'r'*1 = "tr"
+Result: "eert" (or "eetr") ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>from collections import Counter
+
+def frequencySort(s):
+    count = Counter(s)
+    buckets = [[] for _ in range(len(s) + 1)]
+    for char, freq in count.items():
+        buckets[freq].append(char)
+        
+    res = []
+    for freq in range(len(s), 0, -1):
+        for char in buckets[freq]:
+            res.append(char * freq)
+    return "".join(res)</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n)</strong> — linear scan to count, bucket, and assemble. <strong>Space O(n)</strong> — for the buckets and reconstructed string.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>All characters unique (e.g. "abc"): any permutation is valid.</li>
+<li>All characters identical (e.g. "aaaa"): string returned unchanged.</li>
+<li>Case sensitivity: 'A' and 'a' are treated as distinct characters.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Concatenating strings inside a loop with <code>+=</code> (O(n^2) in some languages) instead of joining a list of string chunks.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Top K Frequent Elements (<a href="0204-lc347-top-k-frequent-elements.html">#347</a>).</li>
+<li>Reorganize String (<a href="0222-lc767-reorganize-string.html">#767</a>): rearrange characters so no two adjacent characters are identical.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0204-lc347-top-k-frequent-elements.html"><span class="lbl">← Previous</span>#347 Top K Frequent Elements</a><a href="../problems/0206-lc506-relative-ranks.html" style="text-align:right"><span class="lbl">Next →</span>#506 Relative Ranks</a></div>
 </div>

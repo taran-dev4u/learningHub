@@ -23,38 +23,62 @@
  › Subpattern 7.1: Top K Elements / Selection / Frequency · Problem 211 of 699</p>
 
 <h2>📋 The problem</h2><p>Each second take the richest pile and replace it with floor(sqrt) of itself, k times; return the remaining total (max-heap).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>You have gift piles. For <code>k</code> seconds: choose the pile with the <strong>maximum gifts</strong> and replace it with <code>floor(sqrt(gifts))</code>. Return the sum of remaining gifts. At every second, we need the maximum element, so maintain a <strong>max-heap</strong>.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Top K Elements / Selection / Frequency</strong> — Min-heap of size k to find the k largest, or max-heap of size k for k smallest.</p>
+<h2>🐢 Brute force first</h2>
+<p>Find the maximum element linearly k times, replace it with its square root → O(k * n). When n, k = 10^5, this results in TLE.</p>
 
-<h2>Why this pattern?</h2><ul><li>"k largest / k closest / k most frequent / k-th …"</li><li>merge k sorted lists/streams</li><li>"median of a stream" / balance two halves → two heaps</li><li>scheduling: always take the earliest end / most frequent / cheapest next</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Heap (Priority Queue) master template and adapt the marked parts to this problem:</p><pre><code>import heapq
-# Top-k largest: min-heap of size k
-h = []
-for x in nums:
-    heapq.heappush(h, x)
-    if len(h) &gt; k:
-        heapq.heappop(h)                 # evict the smallest of the k+1
-# h holds the k largest; h[0] is the k-th largest
+<div class="insight">💡 <strong>Key insight:</strong> negate all pile values and push to a <strong>max-heap</strong>. Each second, pop the maximum <code>m</code>, compute <code>floor(sqrt(m))</code>, and push it back in O(log n). Total time is O(n + k log n).</div>
 
-# k-way merge: heap of (value, which_list, index)
-h = [(lst[0], i, 0) for i, lst in enumerate(lists) if lst]
-heapq.heapify(h)
-while h:
-    val, i, j = heapq.heappop(h)
-    out.append(val)
-    if j + 1 &lt; len(lists[i]):
-        heapq.heappush(h, (lists[i][j+1], i, j+1))</code></pre>
-<h2>How to work on it now</h2>
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Negate elements in <code>gifts</code> and <code>heapify</code> in O(n).</li>
+<li>Loop <code>k</code> times:</li>
+<li>Pop largest pile <code>val = -heappop(heap)</code>.</li>
+<li>Compute <code>remaining = math.isqrt(val)</code>.</li>
+<li>Push <code>-remaining</code> into heap.</li>
+<li>Return <code>-sum(heap)</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — gifts = [25, 64, 9, 4, 100], k = 4</h2>
+<pre class="viz">1. Pop 100 → sqrt(100) = 10 → push 10
+2. Pop 64  → sqrt(64) = 8   → push 8
+3. Pop 25  → sqrt(25) = 5   → push 5
+4. Pop 10  → sqrt(10) = 3   → push 3
+Remaining: [3, 8, 5, 4, 9], sum = 29 ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>import heapq
+import math
+
+def pickGifts(gifts, k):
+    # Store negated values to simulate a max-heap in Python
+    heap = [-g for g in gifts]
+    heapq.heapify(heap)
+    
+    for _ in range(k):
+        max_gift = -heapq.heappop(heap)
+        heapq.heappush(heap, -math.isqrt(max_gift))
+        
+    return -sum(heap)</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n + k log n)</strong> — O(n) to heapify, k heap replacements taking O(log n) each. <strong>Space O(n)</strong> for the heap.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Pile value is 1: <code>isqrt(1) = 1</code>, pile remains 1.</li>
+<li><code>k &gt; sum(gifts)</code>: piles reduce to 1 and stay there.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Last Stone Weight (<a href="0210-lc1046-last-stone-weight.html">#1046</a>).</li>
+<li>Reduce Array Size to The Half (#1338).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0210-lc1046-last-stone-weight.html"><span class="lbl">← Previous</span>#1046 Last Stone Weight</a><a href="../problems/0212-lc295-find-median-from-data-stream.html" style="text-align:right"><span class="lbl">Next →</span>#295 Find Median from Data Stream</a></div>
 </div>

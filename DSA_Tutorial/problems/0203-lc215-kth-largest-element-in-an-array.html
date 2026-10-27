@@ -23,38 +23,72 @@
  › Subpattern 7.1: Top K Elements / Selection / Frequency · Problem 203 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0679-lc215-kth-largest-element-in-an-array.html">Sorting Algorithms &amp; Selection</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Return the k-th largest element in an unsorted array (not the k-th distinct).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>You need the <strong>kth largest</strong> element in an unsorted array. Sorting the entire array is O(n log n), which wastes work sorting the remaining n - k elements. Instead, think: <strong>what data structure can maintain the top k candidates dynamically?</strong> A min-heap of size k: the smallest of the top-k sits at the root. Any number bigger than the root replaces it.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Top K Elements / Selection / Frequency</strong> — Min-heap of size k to find the k largest, or max-heap of size k for k smallest.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Min-heap capped at size k (O(n log k)), or quickselect for O(n) average.</div>
-<h2>Why this pattern?</h2><ul><li>"k largest / k closest / k most frequent / k-th …"</li><li>merge k sorted lists/streams</li><li>"median of a stream" / balance two halves → two heaps</li><li>scheduling: always take the earliest end / most frequent / cheapest next</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Heap (Priority Queue) master template and adapt the marked parts to this problem:</p><pre><code>import heapq
-# Top-k largest: min-heap of size k
-h = []
-for x in nums:
-    heapq.heappush(h, x)
-    if len(h) &gt; k:
-        heapq.heappop(h)                 # evict the smallest of the k+1
-# h holds the k largest; h[0] is the k-th largest
+<h2>🐢 Brute force first</h2>
+<p>Sort the array in descending order and return the element at index <code>k - 1</code>.</p>
+<pre><code>def findKthLargest(nums, k):
+    nums.sort(reverse=True)
+    return nums[k - 1]</code></pre>
+<p>Time O(n log n), Space O(1) or O(n) depending on sort implementation.</p>
 
-# k-way merge: heap of (value, which_list, index)
-h = [(lst[0], i, 0) for i, lst in enumerate(lists) if lst]
-heapq.heapify(h)
-while h:
-    val, i, j = heapq.heappop(h)
-    out.append(val)
-    if j + 1 &lt; len(lists[i]):
-        heapq.heappush(h, (lists[i][j+1], i, j+1))</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> keep a <strong>min-heap of size k</strong>. As you scan, push each element; when the heap size exceeds k, pop the minimum. After processing all n elements, the heap contains the k largest elements, and the root is the kth largest. Alternatively, Quickselect achieves O(n) average time.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Initialize an empty min-heap <code>h = []</code>.</li>
+<li>Iterate through each number <code>x</code> in <code>nums</code>:</li>
+<li>Push <code>x</code> onto <code>h</code>. If <code>len(h) &gt; k</code>, pop the smallest element via <code>heappop(h)</code>.</li>
+<li>At the end, return <code>h[0]</code> (the root of the min-heap).</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — nums = [3, 2, 1, 5, 6, 4], k = 2</h2>
+<pre class="viz">x=3  → heap [3] (size 1 &lt;= 2)
+x=2  → heap [2, 3] (size 2 &lt;= 2)
+x=1  → push 1 → [1, 3, 2], size 3 &gt; 2 → pop 1 → heap [2, 3]
+x=5  → push 5 → [2, 3, 5], size 3 &gt; 2 → pop 2 → heap [3, 5]
+x=6  → push 6 → [3, 5, 6], size 3 &gt; 2 → pop 3 → heap [5, 6]
+x=4  → push 4 → [4, 6, 5], size 3 &gt; 2 → pop 4 → heap [5, 6]
+Result: h[0] = 5 ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>import heapq
+
+def findKthLargest(nums, k):
+    # Maintain a min-heap of the k largest elements seen so far
+    heap = []
+    for x in nums:
+        heapq.heappush(heap, x)
+        if len(heap) &gt; k:
+            heapq.heappop(heap)   # discard the smallest among the top k+1
+    return heap[0]                # the root is the kth largest element</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n log k)</strong> — processing n elements with heap operations of size at most k+1. <strong>Space O(k)</strong> — to store k elements in the heap.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li><code>k = 1</code>: returns the maximum element.</li>
+<li><code>k = len(nums)</code>: returns the minimum element.</li>
+<li>Duplicate elements: handled naturally since the heap allows duplicates.</li>
+<li>Negative numbers: heap comparison operates directly on integer values.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Using a max-heap of size n instead of a min-heap of size k, which uses O(n) space and O(n + k log n) time.</li>
+<li>Popping when <code>len(heap) == k</code> instead of after pushing the (k+1)th element.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Kth Smallest Element: maintain a max-heap of size k (or invert values in Python).</li>
+<li>Streaming Kth Largest (<a href="0208-lc703-kth-largest-element-in-a-stream.html">#703</a>): where numbers arrive one by one.</li>
+<li>Quickselect approach: partition around a pivot for O(n) average time complexity.</li>
+</ul>
 
 <div class="pager"><a href="../patterns/p07-heap.html"><span class="lbl">← Previous</span>Heap (Priority Queue)</a><a href="../problems/0204-lc347-top-k-frequent-elements.html" style="text-align:right"><span class="lbl">Next →</span>#347 Top K Frequent Elements</a></div>
 </div>

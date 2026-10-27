@@ -23,37 +23,71 @@
  › Subpattern 8.1: On Sorted Array/List · Problem 233 of 699</p>
 
 <h2>📋 The problem</h2><p>Given a sorted array and a target, return the index where the target is found or where it would be inserted to keep order.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order. The requirement is an algorithm with <strong>O(log n)</strong> runtime complexity.</p>
 
-<h2>Where this fits</h2>
-<p><strong>On Sorted Array/List</strong> — Plain lower/upper bound on a sorted array — get the boilerplate right (lo&lt;hi vs lo&lt;=hi).</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Textbook lower bound: smallest index where nums[i] ≥ target.</div>
-<h2>Why this pattern?</h2><ul><li>sorted (or rotated-sorted) array + find/insert position</li><li>"minimize the maximum" / "maximize the minimum"</li><li>a feasibility check that flips once as a parameter grows</li><li>O(log n) demanded explicitly</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Binary Search master template and adapt the marked parts to this problem:</p><pre><code># Lower-bound shape: smallest index where check(i) is True
-lo, hi = 0, n            # hi = n allows "no answer" result
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if check(mid):        # True region is on the right side's left edge
-        hi = mid          # mid might be the answer — keep it in range
-    else:
-        lo = mid + 1      # mid is definitely not — discard it
-return lo                 # first True (or n if none)
+<h2>🐢 Brute force first</h2>
+<p>Linear scan until finding an element <code>>= target</code>. Return that index, or <code>n</code> if target is greater than all elements. Time: O(n).</p>
 
-# Binary search on the ANSWER
-lo, hi = min_possible, max_possible
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if feasible(mid): hi = mid
-    else:             lo = mid + 1</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> This is finding the <strong>lower bound</strong> (first element <code>>= target</code>). When the standard binary search terminates with <code>left > right</code>, <code>left</code> is exactly the insertion point where the target belongs!</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Initialize <code>left = 0</code>, <code>right = len(nums) - 1</code>.</li>
+<li>While <code>left &lt;= right</code>:</li>
+<li>Compute <code>mid = left + (right - left) // 2</code>.</li>
+<li>If <code>nums[mid] == target</code>, target already exists, return <code>mid</code>.</li>
+<li>If <code>nums[mid] &lt; target</code>, target belongs to the right, so <code>left = mid + 1</code>.</li>
+<li>Else, target belongs to the left or at <code>mid</code>, so <code>right = mid - 1</code>.</li>
+<li>When the loop exits, <code>left</code> points precisely to the correct insertion position. Return <code>left</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — nums = [1, 3, 5, 6], target = 2</h2>
+<pre class="viz">Initial: left = 0, right = 3
+Iter 1: mid = 1, nums[1] = 3 > 2 → right = mid - 1 = 0
+Iter 2: left = 0, right = 0
+        mid = 0, nums[0] = 1 < 2 → left = mid + 1 = 1
+Loop ends because left (1) > right (0).
+Return left = 1.
+Insert 2 at index 1 → [1, 2, 3, 5, 6] (sorted!). ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def searchInsert(nums, target):
+    """
+    Binary search lower bound: finds first index with nums[i] >= target.
+    """
+    left, right = 0, len(nums) - 1
+    
+    while left <= right:
+        mid = left + (right - left) // 2
+        
+        if nums[mid] == target:
+            return mid
+        elif nums[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+            
+    # When loop ends, left points to insertion index
+    return left</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(log n)</strong> — Binary search divides search space by 2 each step. <strong>Space O(1)</strong> — In-place pointer manipulation.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Target smaller than <code>nums[0]</code>: <code>left</code> ends at 0.</li>
+<li>Target greater than <code>nums[-1]</code>: <code>left</code> ends at <code>len(nums)</code>.</li>
+<li>Single element array matching target or not matching.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>C++ <code>std::lower_bound</code> and Python <code>bisect.bisect_left</code>.</li>
+<li>Kth Missing Positive Number (<a href="0241-lc1539-kth-missing-positive-number.html">#1539</a>).</li>
+</ul>
 
 <div class="pager"><a href="../patterns/p08-binary-search.html"><span class="lbl">← Previous</span>Binary Search</a><a href="../problems/0234-lc69-sqrt-x.html" style="text-align:right"><span class="lbl">Next →</span>#69 Sqrt(x)</a></div>
 </div>

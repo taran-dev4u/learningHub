@@ -23,37 +23,62 @@
  › Subpattern 8.3: On Answer / Condition Function · Problem 250 of 699</p>
 
 <h2>📋 The problem</h2><p>Add k gas stations along existing ones to minimize the maximum distance between adjacent stations; return that minimized distance.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>You are given an integer array <code>stations</code> that represents the positions of gas stations on the x-axis in sorted order. You are also given an integer <code>k</code>. You should add <code>k</code> new gas stations such that the maximum distance between adjacent gas stations is minimized. Return the smallest possible value of <code>D</code> (answer within <code>10^-6</code> of actual value).</p>
 
-<h2>Where this fits</h2>
-<p><strong>On Answer / Condition Function</strong> — Binary-search the answer; write a monotonic check(x) function that returns True for x≥answer.</p>
+<h2>🐢 Brute force first</h2>
+<p>Greedily place one station at a time into the currently largest interval using a max heap: O(k log n). When <code>k = 10^6</code>, heap operations timeout. Continuous binary search handles any <code>k</code>!</p>
 
-<h2>Why this pattern?</h2><ul><li>sorted (or rotated-sorted) array + find/insert position</li><li>"minimize the maximum" / "maximize the minimum"</li><li>a feasibility check that flips once as a parameter grows</li><li>O(log n) demanded explicitly</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Binary Search master template and adapt the marked parts to this problem:</p><pre><code># Lower-bound shape: smallest index where check(i) is True
-lo, hi = 0, n            # hi = n allows "no answer" result
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if check(mid):        # True region is on the right side's left edge
-        hi = mid          # mid might be the answer — keep it in range
-    else:
-        lo = mid + 1      # mid is definitely not — discard it
-return lo                 # first True (or n if none)
+<div class="insight">💡 <strong>Key insight:</strong> Can we achieve adjacent distance at most <code>D</code>? For an interval of length <code>diff = stations[i+1] - stations[i]</code>, we need <code>floor(diff / D)</code> additional stations! If the sum of stations needed &lt;= <code>k</code>, then <code>D</code> is achievable! Use floating-point binary search.</div>
 
-# Binary search on the ANSWER
-lo, hi = min_possible, max_possible
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if feasible(mid): hi = mid
-    else:             lo = mid + 1</code></pre>
-<h2>How to work on it now</h2>
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Floating binary search: <code>left = 0.0, right = stations[-1] - stations[0]</code>.</li>
+<li>Loop while <code>right - left > 1e-6</code> (or fixed 60 iterations):</li>
+<li><code>mid = (left + right) / 2.0</code>.</li>
+<li>Count stations needed: <code>sum(int((stations[i+1] - stations[i]) / mid) for i in range(len(stations)-1))</code>.</li>
+<li>If <code>count <= k</code>: <code>right = mid</code> (can achieve this max distance, try smaller).</li>
+<li>Else: <code>left = mid</code>.</li>
+<li>Return <code>left</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — stations = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], k = 9</h2>
+<pre class="viz">Initial gaps: all 1.
+With 9 stations added across 9 intervals, each interval splits in half:
+Gap becomes 0.5!
+Binary search converges smoothly to 0.500000. ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def minmaxGasDist(stations, k):
+    left, right = 0.0, float(stations[-1] - stations[0])
+    
+    # 60 iterations gives precision (right - left) / 2^60 < 10^-10
+    for _ in range(60):
+        mid = (left + right) / 2.0
+        needed = sum(int((stations[i+1] - stations[i]) / mid) for i in range(len(stations) - 1))
+        
+        if needed <= k:
+            right = mid
+        else:
+            left = mid
+            
+    return left</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n * log((max_gap) / eps))</strong> ≈ 60 * O(n). <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Stations with uneven initial spacings.</li>
+<li>Floating-point termination: running a fixed 60 or 70 iterations completely avoids infinite loops from precision loss.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Koko Eating Bananas (<a href="0251-lc875-koko-eating-bananas.html">#875</a>).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0249-lc719-find-k-th-smallest-pair-distance.html"><span class="lbl">← Previous</span>#719 Find K-th Smallest Pair Distance</a><a href="../problems/0251-lc875-koko-eating-bananas.html" style="text-align:right"><span class="lbl">Next →</span>#875 Koko Eating Bananas</a></div>
 </div>

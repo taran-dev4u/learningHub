@@ -23,37 +23,75 @@
  › Subpattern 8.3: On Answer / Condition Function · Problem 248 of 699</p>
 
 <h2>📋 The problem</h2><p>Split an array into k contiguous parts minimizing the largest part-sum.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given an integer array <code>nums</code> and an integer <code>k</code>, split <code>nums</code> into <code>k</code> non-empty subarrays such that the <strong>largest sum of any subarray is minimized</strong>. Return the minimized largest sum of the split.</p>
 
-<h2>Where this fits</h2>
-<p><strong>On Answer / Condition Function</strong> — Binary-search the answer; write a monotonic check(x) function that returns True for x≥answer.</p>
+<h2>🐢 Brute force first</h2>
+<p>Dynamic programming: <code>dp[i][j]</code> = minimum largest sum splitting first <code>i</code> elements into <code>j</code> subarrays. Transitions take O(n^2 * k). Binary search reduces this to O(n log(sum)).</p>
 
-<h2>Why this pattern?</h2><ul><li>sorted (or rotated-sorted) array + find/insert position</li><li>"minimize the maximum" / "maximize the minimum"</li><li>a feasibility check that flips once as a parameter grows</li><li>O(log n) demanded explicitly</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Binary Search master template and adapt the marked parts to this problem:</p><pre><code># Lower-bound shape: smallest index where check(i) is True
-lo, hi = 0, n            # hi = n allows "no answer" result
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if check(mid):        # True region is on the right side's left edge
-        hi = mid          # mid might be the answer — keep it in range
-    else:
-        lo = mid + 1      # mid is definitely not — discard it
-return lo                 # first True (or n if none)
+<div class="insight">💡 <strong>Key insight:</strong> The answer must lie between <code>max(nums)</code> (each element in its own subarray) and <code>sum(nums)</code> (the whole array in 1 subarray). For any candidate max subarray sum <code>S</code>, we can greedily check if we can partition <code>nums</code> into &lt;= <code>k</code> subarrays where no subarray exceeds <code>S</code>!</div>
 
-# Binary search on the ANSWER
-lo, hi = min_possible, max_possible
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if feasible(mid): hi = mid
-    else:             lo = mid + 1</code></pre>
-<h2>How to work on it now</h2>
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li><code>left = max(nums), right = sum(nums)</code>.</li>
+<li>Helper <code>canSplit(targetSum)</code>:
+  <ul>
+    <li>Iterate through <code>nums</code>: add to <code>current_sum</code>.</li>
+    <li>If <code>current_sum + num > targetSum</code>: start new subarray, count += 1, <code>current_sum = num</code>.</li>
+    <li>Return <code>count <= k</code>.</li>
+  </ul>
+</li>
+<li>While <code>left < right</code>: if <code>canSplit(mid)</code>: <code>right = mid</code>; else <code>left = mid + 1</code>.</li>
+<li>Return <code>left</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — nums = [7, 2, 5, 10, 8], k = 2</h2>
+<pre class="viz">left = 10, right = 32
+Iter 1: mid = 21 → [7, 2, 5] (sum 14), [10, 8] (sum 18) → 2 subarrays <= 2 → right = 21
+Iter 2: left = 10, right = 21 → mid = 15 → [7, 2, 5] (14), [10] (10), [8] (8) → 3 subarrays > 2 → left = 16
+Iter 3: left = 16, right = 21 → mid = 18 → [7, 2, 5] (14), [10, 8] (18) → 2 subarrays <= 2 → right = 18
+Iter 4: left = 16, right = 18 → mid = 17 → [7, 2, 5] (14), [10] (10), [8] (8) → 3 subarrays > 2 → left = 18
+left == right == 18. Return 18! ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def splitArray(nums, k):
+    def canSplit(max_sum):
+        subarrays = 1
+        current_sum = 0
+        for num in nums:
+            if current_sum + num > max_sum:
+                subarrays += 1
+                current_sum = num
+            else:
+                current_sum += num
+        return subarrays <= k
+
+    left, right = max(nums), sum(nums)
+    while left < right:
+        mid = left + (right - left) // 2
+        if canSplit(mid):
+            right = mid
+        else:
+            left = mid + 1
+            
+    return left</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n * log(sum(nums) - max(nums)))</strong>. <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li><code>k == len(nums)</code>: returns <code>max(nums)</code>.</li>
+<li><code>k == 1</code>: returns <code>sum(nums)</code>.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Capacity To Ship Packages Within D Days (<a href="0252-lc1011-capacity-to-ship-packages-within-d-days.html">#1011</a>) — identical logic!</li>
+<li>Painter's Partition Problem.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0247-lc1095-find-in-mountain-array.html"><span class="lbl">← Previous</span>#1095 Find in Mountain Array</a><a href="../problems/0249-lc719-find-k-th-smallest-pair-distance.html" style="text-align:right"><span class="lbl">Next →</span>#719 Find K-th Smallest Pair Distance</a></div>
 </div>

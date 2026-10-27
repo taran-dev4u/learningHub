@@ -23,37 +23,89 @@
  › Subpattern 8.2: Find Min/Max in Rotated Sorted Array · Problem 242 of 699</p>
 
 <h2>📋 The problem</h2><p>A sorted array was rotated at an unknown pivot. Find the index of a target value in O(log n), or -1.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>There is an integer array <code>nums</code> sorted in ascending order (with distinct values) that has been rotated at an unknown pivot index. Given the rotated array and a target, return its index if found, or <code>-1</code> if not. Must be <strong>O(log n)</strong> time.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Find Min/Max in Rotated Sorted Array</strong> — Compare mid to lo/hi to identify which side is sorted; recurse into the sorted side or the other.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>One half of a rotated array is always sorted — check which, decide if target lies in it, discard the other.</div>
-<h2>Why this pattern?</h2><ul><li>sorted (or rotated-sorted) array + find/insert position</li><li>"minimize the maximum" / "maximize the minimum"</li><li>a feasibility check that flips once as a parameter grows</li><li>O(log n) demanded explicitly</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Binary Search master template and adapt the marked parts to this problem:</p><pre><code># Lower-bound shape: smallest index where check(i) is True
-lo, hi = 0, n            # hi = n allows "no answer" result
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if check(mid):        # True region is on the right side's left edge
-        hi = mid          # mid might be the answer — keep it in range
-    else:
-        lo = mid + 1      # mid is definitely not — discard it
-return lo                 # first True (or n if none)
+<h2>🐢 Brute force first</h2>
+<p>Linear scan over all elements takes O(n). To achieve O(log n), we must identify which half of the array is sorted at any given step.</p>
 
-# Binary search on the ANSWER
-lo, hi = min_possible, max_possible
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if feasible(mid): hi = mid
-    else:             lo = mid + 1</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> If you divide a rotated sorted array in half at <code>mid</code>, <strong>at least one half is always strictly sorted</strong>! Check if <code>nums[left] <= nums[mid]</code>. If yes, the left half is sorted; otherwise the right half is sorted. Once you know which half is sorted, you can check if <code>target</code> falls inside its range in O(1) and discard the other half!</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Set <code>left = 0, right = len(nums) - 1</code>.</li>
+<li>While <code>left &lt;= right</code>:</li>
+<li>Compute <code>mid = left + (right - left) // 2</code>.</li>
+<li>If <code>nums[mid] == target</code>, return <code>mid</code>.</li>
+<li><strong>Check if left half is sorted:</strong> <code>nums[left] &lt;= nums[mid]</code>:</li>
+<li>&nbsp;&nbsp;If <code>nums[left] &lt;= target &lt; nums[mid]</code>: target is in the left half, so <code>right = mid - 1</code>.</li>
+<li>&nbsp;&nbsp;Else: target must be in the right half, so <code>left = mid + 1</code>.</li>
+<li><strong>Else (right half is sorted):</strong></li>
+<li>&nbsp;&nbsp;If <code>nums[mid] &lt; target &lt;= nums[right]</code>: target is in the right half, so <code>left = mid + 1</code>.</li>
+<li>&nbsp;&nbsp;Else: target must be in the left half, so <code>right = mid - 1</code>.</li>
+<li>If not found, return <code>-1</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — nums = [4, 5, 6, 7, 0, 1, 2], target = 0</h2>
+<pre class="viz">Iter 1: left = 0, right = 6 → mid = 3, nums[mid] = 7
+        nums[left] = 4 <= 7 → Left half [4, 5, 6, 7] is sorted!
+        Is 4 <= target(0) < 7? No!
+        Target must be in right half → left = mid + 1 = 4
+
+Iter 2: left = 4, right = 6 → mid = 5, nums[mid] = 1
+        nums[left] = 0 <= 1 → Left half [0, 1] is sorted!
+        Is 0 <= target(0) < 1? Yes!
+        Target is in left half → right = mid - 1 = 4
+
+Iter 3: left = 4, right = 4 → mid = 4, nums[mid] = 0 == target!
+        Match! Return 4. ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def search(nums, target):
+    """
+    Binary search in rotated sorted array.
+    Determine sorted half and check if target is within bounds.
+    """
+    left, right = 0, len(nums) - 1
+    
+    while left <= right:
+        mid = left + (right - left) // 2
+        
+        if nums[mid] == target:
+            return mid
+            
+        # Left half is sorted
+        if nums[left] <= nums[mid]:
+            if nums[left] <= target < nums[mid]:
+                right = mid - 1
+            else:
+                left = mid + 1
+        # Right half is sorted
+        else:
+            if nums[mid] < target <= nums[right]:
+                left = mid + 1
+            else:
+                right = mid - 1
+                
+    return -1</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(log n)</strong> — Search space halved at each step. <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Array not rotated (standard sorted array): handled identically.</li>
+<li>Array of size 1 or 2.</li>
+<li>Target at rotation pivot boundary.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Search in Rotated Sorted Array II with duplicates (<a href="0243-lc81-search-in-rotated-sorted-array-ii.html">#81</a>).</li>
+<li>Find Minimum in Rotated Sorted Array (<a href="0244-lc153-find-minimum-in-rotated-sorted-array.html">#153</a>).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0241-lc1539-kth-missing-positive-number.html"><span class="lbl">← Previous</span>#1539 Kth Missing Positive Number</a><a href="../problems/0243-lc81-search-in-rotated-sorted-array-ii.html" style="text-align:right"><span class="lbl">Next →</span>#81 Search in Rotated Sorted Array II</a></div>
 </div>

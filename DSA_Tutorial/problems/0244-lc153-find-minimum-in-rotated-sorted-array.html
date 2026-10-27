@@ -23,37 +23,76 @@
  › Subpattern 8.2: Find Min/Max in Rotated Sorted Array · Problem 244 of 699</p>
 
 <h2>📋 The problem</h2><p>A sorted array of distinct values was rotated; find its minimum element in O(log n).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Suppose an array of length <code>n</code> sorted in ascending order is rotated between 1 and <code>n</code> times. Notice that all values are <strong>unique</strong>. Find the minimum element of this array in <strong>O(log n)</strong> time.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Find Min/Max in Rotated Sorted Array</strong> — Compare mid to lo/hi to identify which side is sorted; recurse into the sorted side or the other.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Compare mid with right end: mid > right means the minimum is right of mid; else it's mid or left.</div>
-<h2>Why this pattern?</h2><ul><li>sorted (or rotated-sorted) array + find/insert position</li><li>"minimize the maximum" / "maximize the minimum"</li><li>a feasibility check that flips once as a parameter grows</li><li>O(log n) demanded explicitly</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Binary Search master template and adapt the marked parts to this problem:</p><pre><code># Lower-bound shape: smallest index where check(i) is True
-lo, hi = 0, n            # hi = n allows "no answer" result
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if check(mid):        # True region is on the right side's left edge
-        hi = mid          # mid might be the answer — keep it in range
-    else:
-        lo = mid + 1      # mid is definitely not — discard it
-return lo                 # first True (or n if none)
+<h2>🐢 Brute force first</h2>
+<p>Scan array linearly to find <code>min(nums)</code> in O(n). To do O(log n), observe the inflection point.</p>
 
-# Binary search on the ANSWER
-lo, hi = min_possible, max_possible
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if feasible(mid): hi = mid
-    else:             lo = mid + 1</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> Compare <code>nums[mid]</code> directly with <code>nums[right]</code>! If <code>nums[mid] > nums[right]</code>, the minimum element MUST be strictly to the right of <code>mid</code> (in <code>[mid + 1, right]</code>), because the rotation point broke ascending order. If <code>nums[mid] < nums[right]</code>, the minimum element is at <code>mid</code> or to its left (in <code>[left, mid]</code>)!</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Initialize <code>left = 0, right = len(nums) - 1</code>.</li>
+<li>While <code>left &lt; right</code>:</li>
+<li>Compute <code>mid = left + (right - left) // 2</code>.</li>
+<li>If <code>nums[mid] &gt; nums[right]</code>: minimum must be to the right of <code>mid</code> → <code>left = mid + 1</code>.</li>
+<li>Else: <code>nums[mid] &lt;= nums[right]</code>: <code>mid</code> could be the minimum itself or min is to the left → <code>right = mid</code>.</li>
+<li>When <code>left == right</code>, the search window converges on the minimum element. Return <code>nums[left]</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — nums = [4, 5, 6, 7, 0, 1, 2]</h2>
+<pre class="viz">Iter 1: left = 0, right = 6 → mid = 3, nums[3] = 7
+        nums[3] (7) > nums[6] (2) → minimum is right of mid!
+        left = mid + 1 = 4
+
+Iter 2: left = 4, right = 6 → mid = 5, nums[5] = 1
+        nums[5] (1) < nums[6] (2) → minimum is at mid or left!
+        right = mid = 5
+
+Iter 3: left = 4, right = 5 → mid = 4, nums[4] = 0
+        nums[4] (0) < nums[5] (1) → right = mid = 4
+
+left == right == 4.
+Return nums[4] = 0! ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def findMin(nums):
+    """
+    Binary search comparing with right boundary.
+    Invariant: minimum element is always inside [left, right].
+    """
+    left, right = 0, len(nums) - 1
+    
+    while left < right:
+        mid = left + (right - left) // 2
+        
+        if nums[mid] > nums[right]:
+            # Min is in right portion
+            left = mid + 1
+        else:
+            # Min is mid or in left portion
+            right = mid
+            
+    return nums[left]</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(log n)</strong> — Binary search cuts interval in half each iteration. <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Array rotated 0 times (already fully sorted): <code>nums[mid] < nums[right]</code> immediately shrinks <code>right</code> to 0.</li>
+<li>Single element array: loop terminates immediately, returns <code>nums[0]</code>.</li>
+<li>Two element array: correctly chooses the smaller.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Find Minimum in Rotated Sorted Array II (#154) with duplicates.</li>
+<li>Search in Rotated Sorted Array (<a href="0242-lc33-search-in-rotated-sorted-array.html">#33</a>).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0243-lc81-search-in-rotated-sorted-array-ii.html"><span class="lbl">← Previous</span>#81 Search in Rotated Sorted Array II</a><a href="../problems/0245-lc162-find-peak-element.html" style="text-align:right"><span class="lbl">Next →</span>#162 Find Peak Element</a></div>
 </div>

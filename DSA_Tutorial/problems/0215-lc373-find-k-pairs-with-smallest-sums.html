@@ -23,38 +23,71 @@
  › Subpattern 7.3: K-way Merge · Problem 215 of 699</p>
 
 <h2>📋 The problem</h2><p>From two sorted arrays, return the k pairs (one element from each) with the smallest sums.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given two sorted arrays <code>nums1</code> and <code>nums2</code>, find the <code>k</code> pairs <code>(u, v)</code> with the smallest sums. Think of this as a matrix where cell <code>(i, j)</code> has sum <code>nums1[i] + nums2[j]</code>. Since both arrays are sorted, each row and column is sorted. This is identical to <a href="0214-lc23-merge-k-sorted-lists.html">#23</a> Merge k Sorted Lists.</p>
 
-<h2>Where this fits</h2>
-<p><strong>K-way Merge</strong> — Heap of (value, list_id) entries pulls the smallest across k sorted lists.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Heap seeded with (a[i]+b[0], i, 0); popping (i,j) pushes (i, j+1) — a k-way merge over rows.</div>
-<h2>Why this pattern?</h2><ul><li>"k largest / k closest / k most frequent / k-th …"</li><li>merge k sorted lists/streams</li><li>"median of a stream" / balance two halves → two heaps</li><li>scheduling: always take the earliest end / most frequent / cheapest next</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Heap (Priority Queue) master template and adapt the marked parts to this problem:</p><pre><code>import heapq
-# Top-k largest: min-heap of size k
-h = []
-for x in nums:
-    heapq.heappush(h, x)
-    if len(h) &gt; k:
-        heapq.heappop(h)                 # evict the smallest of the k+1
-# h holds the k largest; h[0] is the k-th largest
+<h2>🐢 Brute force first</h2>
+<p>Generate all pairs, sort by sum, return the first k → O(n1 * n2 log(n1 * n2)). Infeasible when n1, n2 = 10^5.</p>
 
-# k-way merge: heap of (value, which_list, index)
-h = [(lst[0], i, 0) for i, lst in enumerate(lists) if lst]
-heapq.heapify(h)
-while h:
-    val, i, j = heapq.heappop(h)
-    out.append(val)
-    if j + 1 &lt; len(lists[i]):
-        heapq.heappush(h, (lists[i][j+1], i, j+1))</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> start by pushing the first element of each row: <code>(nums1[i] + nums2[0], i, 0)</code> for <code>i &lt; min(k, len(nums1))</code> into a min-heap. When popping <code>(i, j)</code>, the next smallest candidate in that row is <code>(i, j + 1)</code>.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Initialize min-heap with <code>(nums1[i] + nums2[0], i, 0)</code> for <code>i</code> up to <code>min(k, len(nums1))</code>.</li>
+<li>While heap is not empty and <code>len(res) &lt; k</code>:</li>
+<li>Pop <code>(sum, i, j)</code>, append <code>[nums1[i], nums2[j]]</code> to result.</li>
+<li>If <code>j + 1 &lt; len(nums2)</code>, push <code>(nums1[i] + nums2[j+1], i, j + 1)</code>.</li>
+<li>Return <code>res</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — nums1=[1,7,11], nums2=[2,4,6], k=3</h2>
+<pre class="viz">Init heap with (nums1[i]+nums2[0], i, 0):
+Heap: [(3, 0, 0), (9, 1, 0), (13, 2, 0)]
+1. Pop (3, 0, 0) → pair [1, 2] → push (1+4=5, 0, 1)
+Heap: [(5, 0, 1), (9, 1, 0), (13, 2, 0)]
+2. Pop (5, 0, 1) → pair [1, 4] → push (1+6=7, 0, 2)
+Heap: [(7, 0, 2), (9, 1, 0), (13, 2, 0)]
+3. Pop (7, 0, 2) → pair [1, 6] (len == 3 == k, done!)
+Result: [[1, 2], [1, 4], [1, 6]] ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>import heapq
+
+def kSmallestPairs(nums1, nums2, k):
+    if not nums1 or not nums2 or k &lt;= 0:
+        return []
+        
+    heap = []
+    # Seed the heap with the first column (at most k rows)
+    for i in range(min(k, len(nums1))):
+        heapq.heappush(heap, (nums1[i] + nums2[0], i, 0))
+        
+    res = []
+    while heap and len(res) &lt; k:
+        _, i, j = heapq.heappop(heap)
+        res.append([nums1[i], nums2[j]])
+        # Push the next element in the same row
+        if j + 1 &lt; len(nums2):
+            heapq.heappush(heap, (nums1[i] + nums2[j + 1], i, j + 1))
+            
+    return res</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(k log(min(n1, k)))</strong> — at most k elements popped and pushed from a heap of size at most min(n1, k). <strong>Space O(min(n1, k))</strong> — for the heap.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li><code>k &gt; n1 * n2</code>: returns all possible pairs.</li>
+<li>Arrays with single elements.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Kth Smallest Element in a Sorted Matrix (<a href="0054-lc378-kth-smallest-element-in-a-sorted-matrix.html">#378</a>).</li>
+<li>Smallest Range Covering Elements from K Lists (<a href="0217-lc632-smallest-range-covering-elements-from-k-lists.html">#632</a>).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0214-lc23-merge-k-sorted-lists.html"><span class="lbl">← Previous</span>#23 Merge k Sorted Lists</a><a href="../problems/0216-lc378-kth-smallest-element-in-a-sorted-matrix.html" style="text-align:right"><span class="lbl">Next →</span>#378 Kth Smallest Element in a Sorted Matrix</a></div>
 </div>

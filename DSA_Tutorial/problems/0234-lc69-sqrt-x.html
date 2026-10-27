@@ -23,37 +23,81 @@
  › Subpattern 8.1: On Sorted Array/List · Problem 234 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0543-lc69-sqrt-x.html">Math, Number Theory &amp; Geometry</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Compute the integer square root of a non-negative integer (the floor of √x) without using built-in power functions.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given a non-negative integer <code>x</code>, compute and return the square root of <code>x</code> rounded down to the nearest integer. The returned integer should be non-negative as well. Do not use built-in exponent functions like <code>pow(x, 0.5)</code>.</p>
 
-<h2>Where this fits</h2>
-<p><strong>On Sorted Array/List</strong> — Plain lower/upper bound on a sorted array — get the boilerplate right (lo&lt;hi vs lo&lt;=hi).</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Binary search the largest x with x² ≤ n.</div>
-<h2>Why this pattern?</h2><ul><li>sorted (or rotated-sorted) array + find/insert position</li><li>"minimize the maximum" / "maximize the minimum"</li><li>a feasibility check that flips once as a parameter grows</li><li>O(log n) demanded explicitly</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Binary Search master template and adapt the marked parts to this problem:</p><pre><code># Lower-bound shape: smallest index where check(i) is True
-lo, hi = 0, n            # hi = n allows "no answer" result
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if check(mid):        # True region is on the right side's left edge
-        hi = mid          # mid might be the answer — keep it in range
-    else:
-        lo = mid + 1      # mid is definitely not — discard it
-return lo                 # first True (or n if none)
+<h2>🐢 Brute force first</h2>
+<p>Try every integer <code>i = 1, 2, 3...</code> and check if <code>i * i <= x</code>. Stop when <code>(i+1) * (i+1) > x</code>. Time: <strong>O(sqrt(x))</strong>. For <code>x = 2^31 - 1</code>, sqrt(x) ≈ 46,340 iterations.</p>
 
-# Binary search on the ANSWER
-lo, hi = min_possible, max_possible
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if feasible(mid): hi = mid
-    else:             lo = mid + 1</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> The function <code>f(m) = m * m</code> is monotonically increasing for <code>m >= 0</code>. This is a binary search on the range <code>[0, x]</code> (or <code>[1, x // 2]</code> for <code>x >= 4</code>). We seek the largest integer <code>m</code> such that <code>m * m <= x</code>.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>If <code>x &lt; 2</code>, return <code>x</code> (handles 0 and 1).</li>
+<li>Set <code>left = 1</code>, <code>right = x // 2</code>.</li>
+<li>While <code>left &lt;= right</code>:</li>
+<li>Compute <code>mid = left + (right - left) // 2</code>.</li>
+<li>Compute <code>sq = mid * mid</code>.</li>
+<li>If <code>sq == x</code>, return <code>mid</code>.</li>
+<li>If <code>sq &lt; x</code>, <code>mid</code> is a valid candidate for floor(sqrt(x)), but a larger one might exist: <code>ans = mid</code>, <code>left = mid + 1</code>.</li>
+<li>Else (<code>sq &gt; x</code>), <code>mid</code> is too large: <code>right = mid - 1</code>.</li>
+<li>Return <code>ans</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — x = 8</h2>
+<pre class="viz">Range: left = 1, right = 4 (8 // 2)
+Iter 1: mid = 2, sq = 4 <= 8 → ans = 2, left = 3
+Iter 2: left = 3, right = 4, mid = 3, sq = 9 > 8 → right = 2
+Loop ends because left (3) > right (2).
+Return ans = 2. (Since 2^2 = 4 <= 8 < 3^2 = 9) ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def mySqrt(x):
+    """
+    Approach 1: Binary search on answer range [0, x // 2]
+    """
+    if x < 2:
+        return x
+        
+    left, right = 1, x // 2
+    ans = 1
+    
+    while left <= right:
+        mid = left + (right - left) // 2
+        if mid * mid <= x:
+            ans = mid
+            left = mid + 1
+        else:
+            right = mid - 1
+            
+    return ans
+
+# Approach 2: Newton-Raphson method (super fast convergence)
+def mySqrt_newton(x):
+    if x < 2:
+        return x
+    r = x
+    while r * r > x:
+        r = (r + x // r) // 2
+    return r</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(log x)</strong> for binary search (or O(log(log x)) for Newton's method). <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li><code>x = 0</code>: returns 0.</li>
+<li><code>x = 1</code>: returns 1.</li>
+<li>Large integers up to <code>2^31 - 1</code>: avoid overflow in languages with fixed integer sizes by using <code>mid <= x // mid</code>.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Valid Perfect Square (#367).</li>
+<li>Pow(x, n) (<a href="0542-lc50-pow-x-n.html">#50</a>).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0233-lc35-search-insert-position.html"><span class="lbl">← Previous</span>#35 Search Insert Position</a><a href="../problems/0235-lc74-search-a-2d-matrix.html" style="text-align:right"><span class="lbl">Next →</span>#74 Search a 2D Matrix</a></div>
 </div>

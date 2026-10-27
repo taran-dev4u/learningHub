@@ -23,37 +23,63 @@
  › Subpattern 8.3: On Answer / Condition Function · Problem 256 of 699</p>
 
 <h2>📋 The problem</h2><p>Split balls in bags with limited operations to minimize the largest bag (binary search the answer).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>You are given an integer array <code>nums</code> where <code>nums[i]</code> represents the number of balls in the <code>i-th</code> bag. You are also given an integer <code>maxOperations</code>. In one operation, you can take any bag and divide its balls into two new bags of positive sizes. Your penalty is the maximum number of balls in a bag. Return the <strong>minimum possible penalty</strong> after at most <code>maxOperations</code>.</p>
 
-<h2>Where this fits</h2>
-<p><strong>On Answer / Condition Function</strong> — Binary-search the answer; write a monotonic check(x) function that returns True for x≥answer.</p>
+<h2>🐢 Brute force first</h2>
+<p>Always split the largest bag using a max-heap: greedy split into two equal halves doesn't always yield the optimal penalty for future splits. Binary search on penalty is exact!</p>
 
-<h2>Why this pattern?</h2><ul><li>sorted (or rotated-sorted) array + find/insert position</li><li>"minimize the maximum" / "maximize the minimum"</li><li>a feasibility check that flips once as a parameter grows</li><li>O(log n) demanded explicitly</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Binary Search master template and adapt the marked parts to this problem:</p><pre><code># Lower-bound shape: smallest index where check(i) is True
-lo, hi = 0, n            # hi = n allows "no answer" result
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if check(mid):        # True region is on the right side's left edge
-        hi = mid          # mid might be the answer — keep it in range
-    else:
-        lo = mid + 1      # mid is definitely not — discard it
-return lo                 # first True (or n if none)
+<div class="insight">💡 <strong>Key insight:</strong> Can we achieve a maximum bag size of <code>P</code> (penalty)? For a bag of size <code>x</code>, to ensure no piece exceeds <code>P</code>, we must divide it into <code>ceil(x / P)</code> pieces, requiring <code>ceil(x / P) - 1 = (x - 1) // P</code> operations! If the sum of operations across all bags is &lt;= <code>maxOperations</code>, penalty <code>P</code> is feasible.</div>
 
-# Binary search on the ANSWER
-lo, hi = min_possible, max_possible
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if feasible(mid): hi = mid
-    else:             lo = mid + 1</code></pre>
-<h2>How to work on it now</h2>
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li><code>left = 1</code> (minimum possible penalty), <code>right = max(nums)</code>.</li>
+<li>Helper <code>canAchieve(P)</code>: calculate operations: <code>sum((x - 1) // P for x in nums) &lt;= maxOperations</code>.</li>
+<li>While <code>left &lt; right</code>:</li>
+<li><code>mid = left + (right - left) // 2</code>.</li>
+<li>If <code>canAchieve(mid)</code>: <code>right = mid</code> (try smaller penalty).</li>
+<li>Else: <code>left = mid + 1</code>.</li>
+<li>Return <code>left</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — nums = [9], maxOperations = 2</h2>
+<pre class="viz">Range: [1, 9]
+Iter 1: mid = 5 → (9 - 1) // 5 = 1 operation <= 2 → right = 5 (bag split into [5, 4])
+Iter 2: left = 1, right = 5 → mid = 3 → (9 - 1) // 3 = 2 operations <= 2 → right = 3 (split into [3, 3, 3])
+Iter 3: left = 1, right = 3 → mid = 2 → (9 - 1) // 2 = 4 operations > 2 → left = 3
+left == right == 3. Penalty = 3! ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def minimumSize(nums, maxOperations):
+    left, right = 1, max(nums)
+    
+    while left < right:
+        mid = left + (right - left) // 2
+        ops = sum((x - 1) // mid for x in nums)
+        
+        if ops <= maxOperations:
+            right = mid
+        else:
+            left = mid + 1
+            
+    return left</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n * log(max(nums)))</strong>. <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li><code>maxOperations</code> very large: penalty can reach 1.</li>
+<li>All numbers already small.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Koko Eating Bananas (<a href="0251-lc875-koko-eating-bananas.html">#875</a>).</li>
+<li>Maximum Candies Allocated to K Children (<a href="0258-lc2226-maximum-candies-allocated-to-k-children.html">#2226</a>).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0255-lc1552-magnetic-force-between-two-balls.html"><span class="lbl">← Previous</span>#1552 Magnetic Force Between Two Balls</a><a href="../problems/0257-lc2064-minimized-maximum-of-products-distributed-to-any-store.html" style="text-align:right"><span class="lbl">Next →</span>#2064 Minimized Maximum of Products Distributed to Any Store</a></div>
 </div>

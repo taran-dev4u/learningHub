@@ -23,38 +23,66 @@
  › Subpattern 7.1: Top K Elements / Selection / Frequency · Problem 206 of 699</p>
 
 <h2>📋 The problem</h2><p>Given scores, assign ranks with Gold/Silver/Bronze medals for the top three and numbers below.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given athlete scores, assign ranks: 1st is 'Gold Medal', 2nd is 'Silver Medal', 3rd is 'Bronze Medal', and 4th onwards are placement numbers ('4', '5'...). We need athletes sorted by score descending while placing ranks at their original indices. A <strong>max-heap</strong> of <code>(-score, originalIndex)</code> gives the top athletes in order.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Top K Elements / Selection / Frequency</strong> — Min-heap of size k to find the k largest, or max-heap of size k for k smallest.</p>
+<h2>🐢 Brute force first</h2>
+<p>Sort a copy of the array descending, look up the rank of each score using <code>score_copy.index(score) + 1</code> → O(n^2).</p>
 
-<h2>Why this pattern?</h2><ul><li>"k largest / k closest / k most frequent / k-th …"</li><li>merge k sorted lists/streams</li><li>"median of a stream" / balance two halves → two heaps</li><li>scheduling: always take the earliest end / most frequent / cheapest next</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Heap (Priority Queue) master template and adapt the marked parts to this problem:</p><pre><code>import heapq
-# Top-k largest: min-heap of size k
-h = []
-for x in nums:
-    heapq.heappush(h, x)
-    if len(h) &gt; k:
-        heapq.heappop(h)                 # evict the smallest of the k+1
-# h holds the k largest; h[0] is the k-th largest
+<div class="insight">💡 <strong>Key insight:</strong> push <code>(-score[i], i)</code> to a max-heap (or sort pairs in O(n log n)). Pop one by one: the 1st gets 'Gold Medal', 2nd 'Silver Medal', 3rd 'Bronze Medal', and remaining get <code>str(rank)</code> placed directly at <code>result[i]</code>.</div>
 
-# k-way merge: heap of (value, which_list, index)
-h = [(lst[0], i, 0) for i, lst in enumerate(lists) if lst]
-heapq.heapify(h)
-while h:
-    val, i, j = heapq.heappop(h)
-    out.append(val)
-    if j + 1 &lt; len(lists[i]):
-        heapq.heappush(h, (lists[i][j+1], i, j+1))</code></pre>
-<h2>How to work on it now</h2>
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Create result array <code>res = [""] * len(score)</code>.</li>
+<li>Push <code>(-score[i], i)</code> into heap for each index.</li>
+<li>Pop in order: track <code>rank = 1, 2, ...</code>.</li>
+<li>Assign 'Gold Medal', 'Silver Medal', 'Bronze Medal', or <code>str(rank)</code> to <code>res[i]</code>.</li>
+<li>Return <code>res</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — score = [10, 3, 8, 9, 4]</h2>
+<pre class="viz">Heap: [(-10, 0), (-9, 3), (-8, 2), (-4, 4), (-3, 1)]
+Rank 1: score 10 (idx 0) → res[0] = "Gold Medal"
+Rank 2: score 9 (idx 3)  → res[3] = "Silver Medal"
+Rank 3: score 8 (idx 2)  → res[2] = "Bronze Medal"
+Rank 4: score 4 (idx 4)  → res[4] = "4"
+Rank 5: score 3 (idx 1)  → res[1] = "5"
+Result: ["Gold Medal", "5", "Bronze Medal", "Silver Medal", "4"] ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>import heapq
+
+def findRelativeRanks(score):
+    n = len(score)
+    res = [""] * n
+    heap = [(-s, i) for i, s in enumerate(score)]
+    heapq.heapify(heap)
+    
+    medals = {1: "Gold Medal", 2: "Silver Medal", 3: "Bronze Medal"}
+    rank = 1
+    
+    while heap:
+        _, idx = heapq.heappop(heap)
+        res[idx] = medals.get(rank, str(rank))
+        rank += 1
+        
+    return res</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n log n)</strong> to heapify and pop all n elements. <strong>Space O(n)</strong> for the heap and result list.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li><code>len(score) &lt; 3</code>: only available medals are assigned.</li>
+<li>Single athlete: returns <code>["Gold Medal"]</code>.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Kth Largest Element in an Array (<a href="0203-lc215-kth-largest-element-in-an-array.html">#215</a>).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0205-lc451-sort-characters-by-frequency.html"><span class="lbl">← Previous</span>#451 Sort Characters By Frequency</a><a href="../problems/0207-lc658-find-k-closest-elements.html" style="text-align:right"><span class="lbl">Next →</span>#658 Find K Closest Elements</a></div>
 </div>

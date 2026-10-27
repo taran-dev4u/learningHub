@@ -23,38 +23,84 @@
  › Subpattern 7.3: K-way Merge · Problem 214 of 699</p>
 
 <h2>📋 The problem</h2><p>Merge k sorted linked lists into one sorted linked list.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>You have <code>k</code> sorted linked lists and want to merge them into one sorted list. At any step, the next node in the merged list must be the <strong>smallest current head</strong> among the k lists. A min-heap containing the current head of each list gives us the minimum in O(log k) time.</p>
 
-<h2>Where this fits</h2>
-<p><strong>K-way Merge</strong> — Heap of (value, list_id) entries pulls the smallest across k sorted lists.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>A min-heap of each list's current head pops the global smallest in O(log k) per node.</div>
-<h2>Why this pattern?</h2><ul><li>"k largest / k closest / k most frequent / k-th …"</li><li>merge k sorted lists/streams</li><li>"median of a stream" / balance two halves → two heaps</li><li>scheduling: always take the earliest end / most frequent / cheapest next</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Heap (Priority Queue) master template and adapt the marked parts to this problem:</p><pre><code>import heapq
-# Top-k largest: min-heap of size k
-h = []
-for x in nums:
-    heapq.heappush(h, x)
-    if len(h) &gt; k:
-        heapq.heappop(h)                 # evict the smallest of the k+1
-# h holds the k largest; h[0] is the k-th largest
+<h2>🐢 Brute force first</h2>
+<p>Traverse all nodes into an array, sort the array, and reconstruct a linked list → O(N log N) where N is total nodes. Doesn't leverage that lists are already sorted.</p>
 
-# k-way merge: heap of (value, which_list, index)
-h = [(lst[0], i, 0) for i, lst in enumerate(lists) if lst]
-heapq.heapify(h)
-while h:
-    val, i, j = heapq.heappop(h)
-    out.append(val)
-    if j + 1 &lt; len(lists[i]):
-        heapq.heappush(h, (lists[i][j+1], i, j+1))</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> initialize a <strong>min-heap of size at most k</strong> with the head of each non-empty list. Repeatedly pop the smallest node, attach it to the result, and if that node has a <code>.next</code>, push <code>node.next</code> into the heap.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Create a dummy head <code>dummy = ListNode(0)</code> and <code>curr = dummy</code>.</li>
+<li>Push a tuple <code>(node.val, i, node)</code> for each non-empty list head into the min-heap. (The index <code>i</code> acts as a unique tie-breaker to prevent Python from comparing <code>ListNode</code> objects).</li>
+<li>While heap is non-empty:</li>
+<li>Pop <code>(val, i, node)</code>. Attach <code>curr.next = node</code>, advance <code>curr</code>.</li>
+<li>If <code>node.next</code> exists, push <code>(node.next.val, i, node.next)</code>.</li>
+<li>Return <code>dummy.next</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — lists: [1-&gt;4, 1-&gt;3, 2-&gt;6]</h2>
+<pre class="viz">Heap initialized: [(1, 0, n1), (1, 1, n1), (2, 2, n2)]
+Pop (1, 0, n1) → append 1 → push (4, 0, n4)
+Pop (1, 1, n1) → append 1 → push (3, 1, n3)
+Pop (2, 2, n2) → append 2 → push (6, 2, n6)
+Pop (3, 1, n3) → append 3
+Pop (4, 0, n4) → append 4
+Pop (6, 2, n6) → append 6
+Result: 1 -&gt; 1 -&gt; 2 -&gt; 3 -&gt; 4 -&gt; 6 ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>import heapq
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+def mergeKLists(lists):
+    heap = []
+    # Push (val, index, node) - index breaks ties when values are equal
+    for i, node in enumerate(lists):
+        if node:
+            heapq.heappush(heap, (node.val, i, node))
+            
+    dummy = ListNode(0)
+    curr = dummy
+    
+    while heap:
+        val, i, node = heapq.heappop(heap)
+        curr.next = node
+        curr = curr.next
+        if node.next:
+            heapq.heappush(heap, (node.next.val, i, node.next))
+            
+    return dummy.next</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(N log k)</strong> — where N is the total number of nodes across all k lists. Each of the N nodes is pushed and popped from a heap of size at most k. <strong>Space O(k)</strong> — for the heap of size k.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li><code>lists = []</code>: returns <code>None</code>.</li>
+<li><code>lists = [[]]</code>: list contains empty heads, returns <code>None</code>.</li>
+<li><code>k = 1</code>: returns the single list directly.</li>
+</ul>
+
+<h2>🐛 Common mistakes</h2>
+<ul>
+<li>Pushing <code>(node.val, node)</code> without a tiebreaker — Python throws <code>TypeError: '&lt;' not supported between instances of 'ListNode'</code> when two nodes have equal values.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Divide and Conquer approach: merge pairs of lists iteratively in O(N log k) time with O(1) extra space.</li>
+<li>Find K Pairs with Smallest Sums (<a href="0215-lc373-find-k-pairs-with-smallest-sums.html">#373</a>).</li>
+<li>Smallest Range Covering Elements from K Lists (<a href="0217-lc632-smallest-range-covering-elements-from-k-lists.html">#632</a>).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0213-lc1825-finding-mk-average.html"><span class="lbl">← Previous</span>#1825 Finding MK Average</a><a href="../problems/0215-lc373-find-k-pairs-with-smallest-sums.html" style="text-align:right"><span class="lbl">Next →</span>#373 Find K Pairs with Smallest Sums</a></div>
 </div>

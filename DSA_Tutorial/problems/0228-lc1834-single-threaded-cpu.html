@@ -23,38 +23,81 @@
  › Subpattern 7.4: Scheduling / Minimum Cost with Priority Queue · Problem 228 of 699</p>
 
 <h2>📋 The problem</h2><p>Simulate a single-threaded CPU choosing, among available tasks, the shortest processing time first; return execution order.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given tasks with <code>[enqueueTime, processingTime]</code>, a single-threaded CPU picks available tasks. When idle, it takes the earliest arriving task. Among available tasks, it picks the one with the <strong>shortest processing time</strong> (tie-breaker: smallest index). This is the Shortest Job First (SJF) scheduling algorithm.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Scheduling / Minimum Cost with Priority Queue</strong> — Heap selects the highest-cost/highest-priority task at each step — task scheduling, IPO, sticks.</p>
+<h2>🐢 Brute force first</h2>
+<p>Scan all tasks at each CPU tick to find available ones and pick the minimum → O(total_time * n), infeasible.</p>
 
-<h2>Why this pattern?</h2><ul><li>"k largest / k closest / k most frequent / k-th …"</li><li>merge k sorted lists/streams</li><li>"median of a stream" / balance two halves → two heaps</li><li>scheduling: always take the earliest end / most frequent / cheapest next</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Heap (Priority Queue) master template and adapt the marked parts to this problem:</p><pre><code>import heapq
-# Top-k largest: min-heap of size k
-h = []
-for x in nums:
-    heapq.heappush(h, x)
-    if len(h) &gt; k:
-        heapq.heappop(h)                 # evict the smallest of the k+1
-# h holds the k largest; h[0] is the k-th largest
+<div class="insight">💡 <strong>Key insight:</strong> sort tasks by <code>enqueueTime</code>. Maintain a <strong>min-heap of available tasks</strong> ordered by <code>(processingTime, originalIndex)</code>. Fast-forward current time <code>time</code> to the next task's enqueue time if the heap is empty.</div>
 
-# k-way merge: heap of (value, which_list, index)
-h = [(lst[0], i, 0) for i, lst in enumerate(lists) if lst]
-heapq.heapify(h)
-while h:
-    val, i, j = heapq.heappop(h)
-    out.append(val)
-    if j + 1 &lt; len(lists[i]):
-        heapq.heappush(h, (lists[i][j+1], i, j+1))</code></pre>
-<h2>How to work on it now</h2>
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Store tasks with original indices: <code>tasks = [(eq, proc, i) for i, (eq, proc) in enumerate(tasks)]</code>.</li>
+<li>Sort tasks by <code>eq</code> time.</li>
+<li>Initialize <code>heap = []</code>, <code>time = 0</code>, <code>i = 0</code>, <code>res = []</code>.</li>
+<li>While <code>i &lt; n</code> or <code>heap</code>:</li>
+<li>If heap is empty and <code>time &lt; tasks[i][0]</code>, jump <code>time = tasks[i][0]</code>.</li>
+<li>Push all tasks with <code>eq &lt;= time</code> into heap as <code>(proc, index)</code>.</li>
+<li>Pop <code>(proc, index)</code>, advance <code>time += proc</code>, append <code>index</code> to <code>res</code>.</li>
+<li>Return <code>res</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — tasks = [[1,2],[2,4],[3,2],[4,1]]</h2>
+<pre class="viz">Time=1: task 0 (proc 2) enqueues → heap: [(2, 0)]
+Pop task 0 → finishes at time = 1 + 2 = 3. res = [0]
+Time=3: tasks 1 (proc 4), 2 (proc 2) enqueued → heap: [(2, 2), (4, 1)]
+Pop task 2 (proc 2) → finishes at time = 3 + 2 = 5. res = [0, 2]
+Time=5: task 3 (proc 1) enqueued → heap: [(1, 3), (4, 1)]
+Pop task 3 (proc 1) → finishes at time = 5 + 1 = 6. res = [0, 2, 3]
+Pop task 1 (proc 4) → finishes at time = 6 + 4 = 10. res = [0, 2, 3, 1] ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>import heapq
+
+def getOrder(tasks):
+    # Decorate with original index and sort by enqueue time
+    indexed_tasks = sorted([(eq, proc, i) for i, (eq, proc) in enumerate(tasks)])
+    
+    res = []
+    heap = []   # stores (processing_time, original_index)
+    time = 0
+    i = 0
+    n = len(tasks)
+    
+    while i &lt; n or heap:
+        # If CPU is idle, advance time to next task arrival
+        if not heap and time &lt; indexed_tasks[i][0]:
+            time = indexed_tasks[i][0]
+            
+        # Enqueue all tasks that have arrived by current time
+        while i &lt; n and indexed_tasks[i][0] &lt;= time:
+            heapq.heappush(heap, (indexed_tasks[i][1], indexed_tasks[i][2]))
+            i += 1
+            
+        # Process task with shortest duration
+        proc, idx = heapq.heappop(heap)
+        time += proc
+        res.append(idx)
+        
+    return res</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n log n)</strong> — sorting tasks takes O(n log n), and each task is pushed/popped from the heap once in O(log n). <strong>Space O(n)</strong> — for indexed tasks and the heap.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Large gaps between task arrivals: time-jump logic prevents TLE.</li>
+<li>Multiple tasks with equal processing times: tie-breaking by original index handled by Python tuple comparison.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Process Tasks Using Servers (<a href="0230-lc1882-process-tasks-using-servers.html">#1882</a>).</li>
+<li>Meeting Rooms III (<a href="0232-lc2402-meeting-rooms-iii.html">#2402</a>).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0227-lc1792-maximum-average-pass-ratio.html"><span class="lbl">← Previous</span>#1792 Maximum Average Pass Ratio</a><a href="../problems/0229-lc1845-seat-reservation-manager.html" style="text-align:right"><span class="lbl">Next →</span>#1845 Seat Reservation Manager</a></div>
 </div>

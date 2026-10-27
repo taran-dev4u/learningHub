@@ -23,38 +23,71 @@
  › Subpattern 7.3: K-way Merge · Problem 216 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0054-lc378-kth-smallest-element-in-a-sorted-matrix.html">Array/Matrix Manipulation</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Return the k-th smallest element of a matrix whose rows and columns are sorted ascending.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
-
-<h2>Where this fits</h2>
-<p><strong>K-way Merge</strong> — Heap of (value, list_id) entries pulls the smallest across k sorted lists.</p>
-
-<h2>Why this pattern?</h2><ul><li>"k largest / k closest / k most frequent / k-th …"</li><li>merge k sorted lists/streams</li><li>"median of a stream" / balance two halves → two heaps</li><li>scheduling: always take the earliest end / most frequent / cheapest next</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Heap (Priority Queue) master template and adapt the marked parts to this problem:</p><pre><code>import heapq
-# Top-k largest: min-heap of size k
-h = []
-for x in nums:
-    heapq.heappush(h, x)
-    if len(h) &gt; k:
-        heapq.heappop(h)                 # evict the smallest of the k+1
-# h holds the k largest; h[0] is the k-th largest
-
-# k-way merge: heap of (value, which_list, index)
-h = [(lst[0], i, 0) for i, lst in enumerate(lists) if lst]
-heapq.heapify(h)
-while h:
-    val, i, j = heapq.heappop(h)
-    out.append(val)
-    if j + 1 &lt; len(lists[i]):
-        heapq.heappush(h, (lists[i][j+1], i, j+1))</code></pre>
-<h2>How to work on it now</h2>
+<h2>🧭 How to think about it</h2>
+<p>Given an <code>n x n</code> matrix where each row and column is sorted in ascending order, find the kth smallest element. Two optimal ways:</p>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li><strong>Min-Heap</strong>: treat each row as a sorted list, k-way merge until k elements popped (O(k log n)).</li>
+<li><strong>Binary Search on Value Range</strong>: search between <code>matrix[0][0]</code> and <code>matrix[n-1][n-1]</code>, counting elements &lt;= mid in O(n) time (O(n log(max - min))).</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🐢 Brute force first</h2>
+<p>Flatten the matrix into a 1D array, sort it, and return index <code>k - 1</code> → O(n^2 log(n^2)).</p>
+
+<div class="insight">💡 <strong>Key insight (Heap):</strong> push the first element of each row <code>(matrix[r][0], r, 0)</code> into a min-heap. Pop the minimum k-1 times, pushing the next element from that row. The kth popped element is the answer.</div>
+
+<h2>🪜 The approach, step by step</h2>
+<ol>
+<li>Push <code>(matrix[r][0], r, 0)</code> for <code>r</code> in <code>0..min(n, k) - 1</code>.</li>
+<li>Loop <code>k - 1</code> times: pop <code>(val, r, c)</code>. If <code>c + 1 &lt; n</code>, push <code>(matrix[r][c + 1], r, c + 1)</code>.</li>
+<li>The next popped element's value is the kth smallest.</li>
+</ol>
+
+<h2>🎞️ Visual dry run — matrix=[[1,5,9],[10,11,13],[12,13,15]], k=8</h2>
+<pre class="viz">Heap init: [(1, 0, 0), (10, 1, 0), (12, 2, 0)]
+Pop 1 → push 5 (0, 1)
+Pop 5 → push 9 (0, 2)
+Pop 9
+Pop 10 → push 11 (1, 1)
+Pop 11 → push 13 (1, 2)
+Pop 12 → push 13 (2, 1)
+Pop 13 (from row 1)
+8th pop: 13 (from row 2) → result = 13 ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>import heapq
+
+def kthSmallest(matrix, k):
+    n = len(matrix)
+    # Min-heap of size at most min(n, k)
+    heap = []
+    for r in range(min(n, k)):
+        heapq.heappush(heap, (matrix[r][0], r, 0))
+        
+    val = 0
+    for _ in range(k):
+        val, r, c = heapq.heappop(heap)
+        if c + 1 &lt; n:
+            heapq.heappush(heap, (matrix[r][c + 1], r, c + 1))
+            
+    return val</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(k log n)</strong> using Min-Heap (or O(n log(max - min)) using Binary Search). <strong>Space O(n)</strong> for the heap.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li><code>k = 1</code>: returns <code>matrix[0][0]</code>.</li>
+<li><code>k = n * n</code>: returns <code>matrix[n-1][n-1]</code>.</li>
+<li>1x1 matrix.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Find K Pairs with Smallest Sums (<a href="0215-lc373-find-k-pairs-with-smallest-sums.html">#373</a>).</li>
+<li>Kth Smallest Number in Multiplication Table (#668).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0215-lc373-find-k-pairs-with-smallest-sums.html"><span class="lbl">← Previous</span>#373 Find K Pairs with Smallest Sums</a><a href="../problems/0217-lc632-smallest-range-covering-elements-from-k-lists.html" style="text-align:right"><span class="lbl">Next →</span>#632 Smallest Range Covering Elements from K Lists</a></div>
 </div>

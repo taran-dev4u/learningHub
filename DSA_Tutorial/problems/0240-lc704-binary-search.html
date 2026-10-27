@@ -23,37 +23,70 @@
  › Subpattern 8.1: On Sorted Array/List · Problem 240 of 699</p>
 
 <h2>📋 The problem</h2><p>Classic binary search: find a target's index in a sorted array, or -1, in O(log n).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given an array of integers <code>nums</code> sorted in ascending order and a target value, find whether the target exists. If it exists, return its index; otherwise return <code>-1</code>. Because the array is sorted, comparing the middle element with the target immediately eliminates half the remaining search space.</p>
 
-<h2>Where this fits</h2>
-<p><strong>On Sorted Array/List</strong> — Plain lower/upper bound on a sorted array — get the boilerplate right (lo&lt;hi vs lo&lt;=hi).</p>
-<div class="insight"><strong>💡 Key idea</strong><br>The canonical binary search — practice the lo < hi lower-bound shape until automatic.</div>
-<h2>Why this pattern?</h2><ul><li>sorted (or rotated-sorted) array + find/insert position</li><li>"minimize the maximum" / "maximize the minimum"</li><li>a feasibility check that flips once as a parameter grows</li><li>O(log n) demanded explicitly</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Binary Search master template and adapt the marked parts to this problem:</p><pre><code># Lower-bound shape: smallest index where check(i) is True
-lo, hi = 0, n            # hi = n allows "no answer" result
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if check(mid):        # True region is on the right side's left edge
-        hi = mid          # mid might be the answer — keep it in range
-    else:
-        lo = mid + 1      # mid is definitely not — discard it
-return lo                 # first True (or n if none)
+<h2>🐢 Brute force first</h2>
+<p>Scan linearly from index <code>0</code> to <code>n-1</code> with a simple loop. Time: <strong>O(n)</strong>, Space: <strong>O(1)</strong>. Suboptimal because it ignores the sorted order property entirely.</p>
 
-# Binary search on the ANSWER
-lo, hi = min_possible, max_possible
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if feasible(mid): hi = mid
-    else:             lo = mid + 1</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> Maintain a search window <code>[left, right]</code>. Compute mid <code>mid = left + (right - left) // 2</code>. If <code>nums[mid] == target</code>, we're done. If <code>nums[mid] < target</code>, target must lie in the right half, so <code>left = mid + 1</code>. If <code>nums[mid] > target</code>, target must lie in the left half, so <code>right = mid - 1</code>. Loop terminates when <code>left > right</code>.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Initialize <code>left = 0</code> and <code>right = len(nums) - 1</code>.</li>
+<li>While <code>left &lt;= right</code>:</li>
+<li>Compute safe midpoint: <code>mid = left + (right - left) // 2</code> (avoids 32-bit integer overflow in languages like C++/Java).</li>
+<li>If <code>nums[mid] == target</code>, return <code>mid</code>.</li>
+<li>If <code>nums[mid] &lt; target</code>, eliminate left half: <code>left = mid + 1</code>.</li>
+<li>Else, eliminate right half: <code>right = mid - 1</code>.</li>
+<li>If the loop terminates without finding target, return <code>-1</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — nums = [-1, 0, 3, 5, 9, 12], target = 9</h2>
+<pre class="viz">Step 1: left = 0, right = 5
+        mid = 0 + (5 - 0) // 2 = 2 → nums[2] = 3
+        3 < 9 → search right → left = mid + 1 = 3
+
+Step 2: left = 3, right = 5
+        mid = 3 + (5 - 3) // 2 = 4 → nums[4] = 9
+        nums[4] == target (9) → MATCH! Return 4. ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def search(nums, target):
+    """
+    Classic iterative binary search with closed interval [left, right].
+    """
+    left, right = 0, len(nums) - 1
+    
+    while left <= right:
+        mid = left + (right - left) // 2
+        
+        if nums[mid] == target:
+            return mid
+        elif nums[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+            
+    return -1</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(log n)</strong> — The search space is halved every iteration. <strong>Space O(1)</strong> — Iterative implementation uses only two boundary pointers.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Array of size 1: target present or absent.</li>
+<li>Target smaller than all elements or larger than all elements.</li>
+<li>Negative values and zeros handled naturally without type casting.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Search Insert Position (<a href="0233-lc35-search-insert-position.html">#35</a>).</li>
+<li>Find First and Last Position of Element in Sorted Array (<a href="0259-lc34-find-first-and-last-position-of-element-in-sorted-array.html">#34</a>).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0239-lc540-single-element-in-a-sorted-array.html"><span class="lbl">← Previous</span>#540 Single Element in a Sorted Array</a><a href="../problems/0241-lc1539-kth-missing-positive-number.html" style="text-align:right"><span class="lbl">Next →</span>#1539 Kth Missing Positive Number</a></div>
 </div>

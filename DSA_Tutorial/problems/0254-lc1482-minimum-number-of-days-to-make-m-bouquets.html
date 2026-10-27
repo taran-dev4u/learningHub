@@ -23,37 +23,83 @@
  › Subpattern 8.3: On Answer / Condition Function · Problem 254 of 699</p>
 
 <h2>📋 The problem</h2><p>Make m bouquets needing k adjacent bloomed flowers each; find the earliest day possible (binary search over days).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>You are given an integer array <code>bloomDay</code>, an integer <code>m</code> and an integer <code>k</code>. You want to make <code>m</code> bouquets. To make a bouquet, you need to use <code>k</code> <strong>adjacent</strong> flowers from the garden. The garden consists of <code>n</code> flowers, the <code>i-th</code> flower will bloom in the <code>bloomDay[i]</code>. Return the minimum number of days you need to wait to be able to make <code>m</code> bouquets from the garden. If it is impossible, return <code>-1</code>.</p>
 
-<h2>Where this fits</h2>
-<p><strong>On Answer / Condition Function</strong> — Binary-search the answer; write a monotonic check(x) function that returns True for x≥answer.</p>
+<h2>🐢 Brute force first</h2>
+<p>If <code>m * k > len(bloomDay)</code>, impossible, return -1. Otherwise try day 1, 2... up to <code>max(bloomDay)</code>. For each day, simulate flower availability and greedily count adjacent groups of size <code>k</code>. O(max(bloomDay) * n) TLE.</p>
 
-<h2>Why this pattern?</h2><ul><li>sorted (or rotated-sorted) array + find/insert position</li><li>"minimize the maximum" / "maximize the minimum"</li><li>a feasibility check that flips once as a parameter grows</li><li>O(log n) demanded explicitly</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Binary Search master template and adapt the marked parts to this problem:</p><pre><code># Lower-bound shape: smallest index where check(i) is True
-lo, hi = 0, n            # hi = n allows "no answer" result
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if check(mid):        # True region is on the right side's left edge
-        hi = mid          # mid might be the answer — keep it in range
-    else:
-        lo = mid + 1      # mid is definitely not — discard it
-return lo                 # first True (or n if none)
+<div class="insight">💡 <strong>Key insight:</strong> The number of bloomed flowers increases over time. More flowers can only make it easier to form bouquets. Monotonic predicate <code>canMake(day) -> bool</code> enables binary search on <code>[min(bloomDay), max(bloomDay)]</code>!</div>
 
-# Binary search on the ANSWER
-lo, hi = min_possible, max_possible
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if feasible(mid): hi = mid
-    else:             lo = mid + 1</code></pre>
-<h2>How to work on it now</h2>
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>If <code>m * k &gt; len(bloomDay)</code>, return <code>-1</code>.</li>
+<li><code>left = min(bloomDay), right = max(bloomDay)</code>.</li>
+<li>Helper <code>canMake(day)</code>:
+  <ul>
+    <li>Iterate through <code>bloomDay</code>: if <code>b &lt;= day</code>, increment consecutive count. If consecutive == <code>k</code>, bouquet count += 1, reset consecutive = 0.</li>
+    <li>If <code>b &gt; day</code>, reset consecutive = 0.</li>
+    <li>Return <code>bouquets &gt;= m</code>.</li>
+  </ul>
+</li>
+<li>While <code>left &lt; right</code>: if <code>canMake(mid)</code>: <code>right = mid</code>; else <code>left = mid + 1</code>.</li>
+<li>Return <code>left</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — bloomDay = [1, 10, 3, 10, 2], m = 3, k = 1</h2>
+<pre class="viz">m * k = 3 <= 5.
+Range: [1, 10]
+Iter 1: mid = 5 → bloomed: [1(T), 10(F), 3(T), 10(F), 2(T)] → 3 flowers >= 3 bouquets!
+        right = mid = 5
+Iter 2: left = 1, right = 5 → mid = 3 → bloomed: [T, F, T, F, T] → 3 bouquets!
+        right = mid = 3
+Iter 3: left = 1, right = 3 → mid = 2 → bloomed: [T, F, F, F, T] → 2 bouquets < 3!
+        left = mid + 1 = 3
+left == right == 3. Return 3 days! ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def minDays(bloomDay, m, k):
+    if m * k > len(bloomDay):
+        return -1
+        
+    def canMake(days):
+        bouquets = 0
+        flowers = 0
+        for b in bloomDay:
+            if b <= days:
+                flowers += 1
+                if flowers == k:
+                    bouquets += 1
+                    flowers = 0
+            else:
+                flowers = 0
+        return bouquets >= m
+        
+    left, right = min(bloomDay), max(bloomDay)
+    while left < right:
+        mid = left + (right - left) // 2
+        if canMake(mid):
+            right = mid
+        else:
+            left = mid + 1
+            
+    return left</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n * log(max(bloomDay) - min(bloomDay)))</strong>. <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li><code>m * k > n</code>: impossible, return -1.</li>
+<li><code>k = 1</code>: any bloomed flower forms a bouquet independently.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Magnetic Force Between Two Balls (<a href="0255-lc1552-magnetic-force-between-two-balls.html">#1552</a>).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0253-lc1283-find-the-smallest-divisor-given-a-threshold.html"><span class="lbl">← Previous</span>#1283 Find the Smallest Divisor Given a Threshold</a><a href="../problems/0255-lc1552-magnetic-force-between-two-balls.html" style="text-align:right"><span class="lbl">Next →</span>#1552 Magnetic Force Between Two Balls</a></div>
 </div>

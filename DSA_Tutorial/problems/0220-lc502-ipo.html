@@ -23,38 +23,78 @@
  › Subpattern 7.4: Scheduling / Minimum Cost with Priority Queue · Problem 220 of 699</p>
 
 <h2>📋 The problem</h2><p>Choose at most k projects, each needing capital and yielding profit, reinvesting profits, to maximize final capital.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>You have initial capital <code>w</code> and can complete at most <code>k</code> distinct projects. Each project <code>i</code> has pure profit <code>profits[i]</code> and requires minimum capital <code>capital[i]</code>. Greedily, among all projects we can afford (<code>capital &lt;= w</code>), we should always pick the one that gives the <strong>maximum profit</strong>.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Scheduling / Minimum Cost with Priority Queue</strong> — Heap selects the highest-cost/highest-priority task at each step — task scheduling, IPO, sticks.</p>
+<h2>🐢 Brute force first</h2>
+<p>In each of the k rounds, scan all projects to find affordable ones and pick the maximum profit → O(k * n).</p>
 
-<h2>Why this pattern?</h2><ul><li>"k largest / k closest / k most frequent / k-th …"</li><li>merge k sorted lists/streams</li><li>"median of a stream" / balance two halves → two heaps</li><li>scheduling: always take the earliest end / most frequent / cheapest next</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Heap (Priority Queue) master template and adapt the marked parts to this problem:</p><pre><code>import heapq
-# Top-k largest: min-heap of size k
-h = []
-for x in nums:
-    heapq.heappush(h, x)
-    if len(h) &gt; k:
-        heapq.heappop(h)                 # evict the smallest of the k+1
-# h holds the k largest; h[0] is the k-th largest
+<div class="insight">💡 <strong>Key insight:</strong> sort projects by <code>capital</code> ascending. Maintain a <strong>max-heap of profits</strong> for all currently affordable projects. Each round, push all newly affordable projects into the heap, pop the maximum profit, and add it to capital <code>w</code>. Repeat k times.</div>
 
-# k-way merge: heap of (value, which_list, index)
-h = [(lst[0], i, 0) for i, lst in enumerate(lists) if lst]
-heapq.heapify(h)
-while h:
-    val, i, j = heapq.heappop(h)
-    out.append(val)
-    if j + 1 &lt; len(lists[i]):
-        heapq.heappush(h, (lists[i][j+1], i, j+1))</code></pre>
-<h2>How to work on it now</h2>
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Sort projects by capital: <code>projects = sorted(zip(capital, profits))</code>.</li>
+<li>Initialize max-heap <code>available_profits = []</code>.</li>
+<li>Track index <code>i = 0</code> in sorted projects.</li>
+<li>For <code>_ in range(k)</code>:</li>
+<li>While <code>i &lt; n</code> and <code>projects[i][0] &lt;= w</code>: push <code>-projects[i][1]</code> to heap, advance <code>i</code>.</li>
+<li>If heap is empty (no affordable projects), break.</li>
+<li><code>w += -heappop(available_profits)</code>.</li>
+<li>Return <code>w</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — k = 2, w = 0, profits = [1,2,3], capital = [0,1,1]</h2>
+<pre class="viz">Sorted projects (cap, profit): [(0, 1), (1, 2), (1, 3)]
+Round 1 (w = 0):
+- Cap 0 &lt;= 0: push profit 1 → heap: [-1]
+- Pop 1 → w = 0 + 1 = 1
+Round 2 (w = 1):
+- Cap 1 &lt;= 1: push profit 2 → heap: [-2]
+- Cap 1 &lt;= 1: push profit 3 → heap: [-3, -2]
+- Pop 3 → w = 1 + 3 = 4
+Result: w = 4 ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>import heapq
+
+def findMaximizedCapital(k, w, profits, capital):
+    n = len(profits)
+    # Sort projects by required capital ascending
+    projects = sorted(zip(capital, profits))
+    
+    available = []   # max-heap of profits for affordable projects
+    i = 0
+    
+    for _ in range(k):
+        # Add all newly affordable projects into the max-heap
+        while i &lt; n and projects[i][0] &lt;= w:
+            heapq.heappush(available, -projects[i][1])
+            i += 1
+            
+        if not available:
+            break    # cannot afford any more projects
+            
+        # Greedily choose the project with the highest profit
+        w += -heapq.heappop(available)
+        
+    return w</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n log n + k log n)</strong> — sorting takes O(n log n); each project is pushed and popped at most once in O(log n). <strong>Space O(n)</strong> for the projects list and heap.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Capital never enough to start any project: returns initial <code>w</code>.</li>
+<li><code>k &gt;= n</code>: all projects that can be afforded will be completed.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Maximum Performance of a Team (<a href="0225-lc1383-maximum-performance-of-a-team.html">#1383</a>).</li>
+<li>Course Schedule III (#630).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0219-lc436-find-right-interval.html"><span class="lbl">← Previous</span>#436 Find Right Interval</a><a href="../problems/0221-lc621-task-scheduler.html" style="text-align:right"><span class="lbl">Next →</span>#621 Task Scheduler</a></div>
 </div>

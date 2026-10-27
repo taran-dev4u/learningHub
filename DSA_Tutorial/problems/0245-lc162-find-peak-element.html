@@ -23,37 +23,76 @@
  › Subpattern 8.2: Find Min/Max in Rotated Sorted Array · Problem 245 of 699</p>
 
 <h2>📋 The problem</h2><p>Find any peak element (strictly greater than both neighbors) in an array in O(log n).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>A peak element is an element that is strictly greater than its neighbors. Given a 0-indexed integer array <code>nums</code>, find a peak element, and return its index. If the array contains multiple peaks, return the index to <strong>any of the peaks</strong>. Imagine <code>nums[-1] = nums[n] = -inf</code>. Must run in <strong>O(log n)</strong> time.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Find Min/Max in Rotated Sorted Array</strong> — Compare mid to lo/hi to identify which side is sorted; recurse into the sorted side or the other.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>If nums[mid] < nums[mid+1] a peak lies right; else left — slope-following always finds one.</div>
-<h2>Why this pattern?</h2><ul><li>sorted (or rotated-sorted) array + find/insert position</li><li>"minimize the maximum" / "maximize the minimum"</li><li>a feasibility check that flips once as a parameter grows</li><li>O(log n) demanded explicitly</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Binary Search master template and adapt the marked parts to this problem:</p><pre><code># Lower-bound shape: smallest index where check(i) is True
-lo, hi = 0, n            # hi = n allows "no answer" result
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if check(mid):        # True region is on the right side's left edge
-        hi = mid          # mid might be the answer — keep it in range
-    else:
-        lo = mid + 1      # mid is definitely not — discard it
-return lo                 # first True (or n if none)
+<h2>🐢 Brute force first</h2>
+<p>Linear scan comparing <code>nums[i] > nums[i+1]</code>. First element that decreases is a peak. Time: O(n).</p>
 
-# Binary search on the ANSWER
-lo, hi = min_possible, max_possible
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if feasible(mid): hi = mid
-    else:             lo = mid + 1</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> Even though the array is NOT sorted, binary search still works! Compare <code>nums[mid]</code> with <code>nums[mid + 1]</code>: if <code>nums[mid] < nums[mid + 1]</code>, we are on an <strong>upward slope</strong>, which guarantees at least one peak must exist to the right! If <code>nums[mid] > nums[mid + 1]</code>, we are on a <strong>downward slope</strong>, so a peak exists at <code>mid</code> or to the left.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Initialize <code>left = 0, right = len(nums) - 1</code>.</li>
+<li>While <code>left &lt; right</code>:</li>
+<li>Compute <code>mid = left + (right - left) // 2</code>.</li>
+<li>If <code>nums[mid] &lt; nums[mid + 1]</code>: climb up to the right → <code>left = mid + 1</code>.</li>
+<li>Else: <code>nums[mid] &gt; nums[mid + 1]</code>: peak must be at <code>mid</code> or to the left → <code>right = mid</code>.</li>
+<li>When <code>left == right</code>, return <code>left</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — nums = [1, 2, 1, 3, 5, 6, 4]</h2>
+<pre class="viz">Iter 1: left = 0, right = 6 → mid = 3
+        nums[3] = 3 < nums[4] = 5 → Upward slope! Search right.
+        left = mid + 1 = 4
+
+Iter 2: left = 4, right = 6 → mid = 5
+        nums[5] = 6 > nums[6] = 4 → Downward slope! Search left / mid.
+        right = mid = 5
+
+Iter 3: left = 4, right = 5 → mid = 4
+        nums[4] = 5 < nums[5] = 6 → Upward slope!
+        left = mid + 1 = 5
+
+left == right == 5.
+nums[5] = 6 > 5 and 6 > 4. Peak found at index 5! ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def findPeakElement(nums):
+    """
+    Binary search following the upward slope.
+    """
+    left, right = 0, len(nums) - 1
+    
+    while left < right:
+        mid = left + (right - left) // 2
+        
+        if nums[mid] < nums[mid + 1]:
+            # Peak must be to the right
+            left = mid + 1
+        else:
+            # Peak is at mid or to the left
+            right = mid
+            
+    return left</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(log n)</strong> — Halves search window each step. <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Strictly increasing array: peak is at last index.</li>
+<li>Strictly decreasing array: peak is at index 0.</li>
+<li>Single element array: returns 0 immediately.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Peak Index in a Mountain Array (<a href="0246-lc852-peak-index-in-a-mountain-array.html">#852</a>).</li>
+<li>Find in Mountain Array (<a href="0247-lc1095-find-in-mountain-array.html">#1095</a>).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0244-lc153-find-minimum-in-rotated-sorted-array.html"><span class="lbl">← Previous</span>#153 Find Minimum in Rotated Sorted Array</a><a href="../problems/0246-lc852-peak-index-in-a-mountain-array.html" style="text-align:right"><span class="lbl">Next →</span>#852 Peak Index in a Mountain Array</a></div>
 </div>

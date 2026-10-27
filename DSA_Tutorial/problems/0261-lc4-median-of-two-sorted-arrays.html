@@ -23,37 +23,110 @@
  › Subpattern 8.5: Median of Two Sorted Arrays · Problem 261 of 699</p>
 
 <h2>📋 The problem</h2><p>Given two sorted arrays, return the median of all their elements combined, in O(log(m+n)) time.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given two sorted arrays <code>nums1</code> and <code>nums2</code> of size <code>m</code> and <code>n</code> respectively, return the <strong>median</strong> of the two sorted arrays. The overall run time complexity should be <strong>O(log(m + n))</strong>.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Median of Two Sorted Arrays</strong> — Partition-based binary search across two arrays to find the kth-smallest in O(log min(m,n)).</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Partition both arrays so left halves' sizes sum to half; binary search the cut in the shorter array.</div>
-<h2>Why this pattern?</h2><ul><li>sorted (or rotated-sorted) array + find/insert position</li><li>"minimize the maximum" / "maximize the minimum"</li><li>a feasibility check that flips once as a parameter grows</li><li>O(log n) demanded explicitly</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Binary Search master template and adapt the marked parts to this problem:</p><pre><code># Lower-bound shape: smallest index where check(i) is True
-lo, hi = 0, n            # hi = n allows "no answer" result
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if check(mid):        # True region is on the right side's left edge
-        hi = mid          # mid might be the answer — keep it in range
-    else:
-        lo = mid + 1      # mid is definitely not — discard it
-return lo                 # first True (or n if none)
+<h2>🐢 Brute force first</h2>
+<p>Merge both arrays using two pointers into an array of size <code>m + n</code>, then pick the middle element. Time: O(m + n), Space: O(m + n). Violates the logarithmic constraint.</p>
 
-# Binary search on the ANSWER
-lo, hi = min_possible, max_possible
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if feasible(mid): hi = mid
-    else:             lo = mid + 1</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> Partition both arrays simultaneously! A median partitions a combined set of <code>m + n</code> elements into two equal halves (left half and right half) where <strong>every element in the left half <= every element in the right half</strong>! If we take <code>i</code> elements from <code>nums1</code>, we must take <code>j = (m + n + 1) // 2 - i</code> elements from <code>nums2</code>. Binary search <code>i</code> on the <strong>shorter array</strong>!</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Ensure <code>nums1</code> is the shorter array (if not, swap <code>nums1, nums2</code>). This guarantees <code>O(log(min(m, n)))</code>.</li>
+<li>Set <code>left = 0, right = m</code> (number of elements to take from <code>nums1</code> into left partition).</li>
+<li>While <code>left &lt;= right</code>:</li>
+<li><code>i = left + (right - left) // 2</code>.</li>
+<li><code>j = (m + n + 1) // 2 - i</code>.</li>
+<li>Border values:
+  <ul>
+    <li><code>maxLeft1 = nums1[i-1]</code> if <code>i > 0</code> else <code>-inf</code></li>
+    <li><code>minRight1 = nums1[i]</code> if <code>i < m</code> else <code>+inf</code></li>
+    <li><code>maxLeft2 = nums2[j-1]</code> if <code>j > 0</code> else <code>-inf</code></li>
+    <li><code>minRight2 = nums2[j]</code> if <code>j < n</code> else <code>+inf</code></li>
+  </ul>
+</li>
+<li>Check partition validity:
+  <ul>
+    <li>If <code>maxLeft1 <= minRight2</code> and <code>maxLeft2 <= minRight1</code>: Perfect partition!
+      <ul>
+        <li>If <code>(m + n) % 2 == 1</code>: return <code>max(maxLeft1, maxLeft2)</code>.</li>
+        <li>Else: return <code>(max(maxLeft1, maxLeft2) + min(minRight1, minRight2)) / 2.0</code>.</li>
+      </ul>
+    </li>
+    <li>If <code>maxLeft1 > minRight2</code>: too many elements from <code>nums1</code>, shift left: <code>right = i - 1</code>.</li>
+    <li>Else: too few elements from <code>nums1</code>, shift right: <code>left = i + 1</code>.</li>
+  </ul>
+</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — nums1 = [1, 3], nums2 = [2]</h2>
+<pre class="viz">m = 2, n = 1. Swap so nums1 = [2] (len 1), nums2 = [1, 3] (len 2).
+Half size = (1 + 2 + 1) // 2 = 2.
+left = 0, right = 1.
+Iter 1: i = 0 → j = 2 - 0 = 2
+  nums1 left: [], right: [2] → maxLeft1 = -inf, minRight1 = 2
+  nums2 left: [1, 3], right: [] → maxLeft2 = 3, minRight2 = +inf
+  Check: maxLeft2 (3) <= minRight1 (2)? NO! (3 > 2)
+  nums1 took too few elements → left = i + 1 = 1
+
+Iter 2: i = 1 → j = 2 - 1 = 1
+  nums1 left: [2], right: [] → maxLeft1 = 2, minRight1 = +inf
+  nums2 left: [1], right: [3] → maxLeft2 = 1, minRight2 = 3
+  Check: maxLeft1 (2) <= minRight2 (3) AND maxLeft2 (1) <= minRight1 (+inf) → VALID!
+  Total len = 3 (odd).
+  Median = max(maxLeft1, maxLeft2) = max(2, 1) = 2.0. ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def findMedianSortedArrays(nums1, nums2):
+    # Ensure nums1 is shorter to guarantee log(min(m, n))
+    if len(nums1) > len(nums2):
+        nums1, nums2 = nums2, nums1
+        
+    m, n = len(nums1), len(nums2)
+    left, right = 0, m
+    total_left = (m + n + 1) // 2
+    
+    while left <= right:
+        i = left + (right - left) // 2
+        j = total_left - i
+        
+        max_left1 = float('-inf') if i == 0 else nums1[i - 1]
+        min_right1 = float('inf') if i == m else nums1[i]
+        
+        max_left2 = float('-inf') if j == 0 else nums2[j - 1]
+        min_right2 = float('inf') if j == n else nums2[j]
+        
+        if max_left1 <= min_right2 and max_left2 <= min_right1:
+            # Correct partition found
+            if (m + n) % 2 == 1:
+                return float(max(max_left1, max_left2))
+            else:
+                return (max(max_left1, max_left2) + min(min_right1, min_right2)) / 2.0
+        elif max_left1 > min_right2:
+            right = i - 1
+        else:
+            left = i + 1
+            
+    return 0.0</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(log(min(m, n)))</strong> — Binary search on the shorter array. <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>One array is empty: handled smoothly by <code>-inf</code> and <code>+inf</code> sentinels.</li>
+<li>Arrays of different lengths (e.g. m=1, n=1000).</li>
+<li>Combined length odd vs even.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Kth Element of Two Sorted Arrays.</li>
+<li>Find K-th Smallest Pair Distance (<a href="0249-lc719-find-k-th-smallest-pair-distance.html">#719</a>).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0260-lc658-find-k-closest-elements.html"><span class="lbl">← Previous</span>#658 Find K Closest Elements</a><a href="../patterns/p09-graph-traversal.html" style="text-align:right"><span class="lbl">Next →</span>Graph Traversal (DFS &amp; BFS)</a></div>
 </div>

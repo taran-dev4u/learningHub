@@ -23,38 +23,63 @@
  › Subpattern 7.1: Top K Elements / Selection / Frequency · Problem 207 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0260-lc658-find-k-closest-elements.html">Binary Search</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Return the k elements of a sorted array closest to x, in ascending order.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given a sorted integer array <code>arr</code>, find the <code>k</code> closest integers to <code>x</code>. Closeness is determined by <code>|a - x| &lt; |b - x|</code> (tiebreaker: smaller value). Since <code>arr</code> is sorted, the k closest elements form a <strong>contiguous subarray</strong>. We can use a max-heap of size k, or binary search for the left boundary of the window.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Top K Elements / Selection / Frequency</strong> — Min-heap of size k to find the k largest, or max-heap of size k for k smallest.</p>
+<h2>🐢 Brute force first</h2>
+<p>Compute <code>|num - x|</code> for all numbers, sort by distance, slice first k, sort again → O(n log n).</p>
 
-<h2>Why this pattern?</h2><ul><li>"k largest / k closest / k most frequent / k-th …"</li><li>merge k sorted lists/streams</li><li>"median of a stream" / balance two halves → two heaps</li><li>scheduling: always take the earliest end / most frequent / cheapest next</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Heap (Priority Queue) master template and adapt the marked parts to this problem:</p><pre><code>import heapq
-# Top-k largest: min-heap of size k
-h = []
-for x in nums:
-    heapq.heappush(h, x)
-    if len(h) &gt; k:
-        heapq.heappop(h)                 # evict the smallest of the k+1
-# h holds the k largest; h[0] is the k-th largest
+<div class="insight">💡 <strong>Key insight:</strong> the k closest elements in a sorted array must be a contiguous subarray <code>arr[left:left+k]</code>. Binary search for the starting index <code>left</code> between <code>0</code> and <code>len(arr) - k</code> by comparing distances at <code>x - arr[mid]</code> and <code>arr[mid + k] - x</code>.</div>
 
-# k-way merge: heap of (value, which_list, index)
-h = [(lst[0], i, 0) for i, lst in enumerate(lists) if lst]
-heapq.heapify(h)
-while h:
-    val, i, j = heapq.heappop(h)
-    out.append(val)
-    if j + 1 &lt; len(lists[i]):
-        heapq.heappush(h, (lists[i][j+1], i, j+1))</code></pre>
-<h2>How to work on it now</h2>
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Binary search range: <code>low = 0, high = len(arr) - k</code>.</li>
+<li>While <code>low &lt; high</code>:</li>
+<li><code>mid = (low + high) // 2</code>.</li>
+<li>If <code>x - arr[mid] &gt; arr[mid + k] - x</code>, <code>arr[mid + k]</code> is closer than <code>arr[mid]</code>, so search right: <code>low = mid + 1</code>.</li>
+<li>Else, <code>arr[mid]</code> is closer or tied, so search left: <code>high = mid</code>.</li>
+<li>Return <code>arr[low:low + k]</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — arr = [1, 2, 3, 4, 5], k = 4, x = 3</h2>
+<pre class="viz">Search range: low = 0, high = 5 - 4 = 1
+mid = 0: compare x - arr[0] (3 - 1 = 2) vs arr[0 + 4] - x (5 - 3 = 2)
+Distances equal (2 == 2) → tiebreaker prefers smaller value (left side) → high = 0
+Exit loop: low = 0
+Slice arr[0:4] = [1, 2, 3, 4] ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def findClosestElements(arr, k, x):
+    # Binary search for the left boundary of the k-length window
+    low, high = 0, len(arr) - k
+    
+    while low &lt; high:
+        mid = (low + high) // 2
+        # Compare distance of candidate left element vs candidate element right after the window
+        if x - arr[mid] &gt; arr[mid + k] - x:
+            low = mid + 1    # right side is strictly closer
+        else:
+            high = mid       # left side is closer or tied
+            
+    return arr[low:low + k]</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(log(n - k) + k)</strong> — binary search takes O(log(n - k)) and slicing takes O(k). <strong>Space O(1)</strong> extra space.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li><code>x &lt;= arr[0]</code>: returns the first k elements.</li>
+<li><code>x &gt;= arr[-1]</code>: returns the last k elements.</li>
+<li><code>k == len(arr)</code>: returns the entire array.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>K Closest Points to Origin (<a href="0209-lc973-k-closest-points-to-origin.html">#973</a>).</li>
+<li>Two-pointer shrink approach from both ends.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0206-lc506-relative-ranks.html"><span class="lbl">← Previous</span>#506 Relative Ranks</a><a href="../problems/0208-lc703-kth-largest-element-in-a-stream.html" style="text-align:right"><span class="lbl">Next →</span>#703 Kth Largest Element in a Stream</a></div>
 </div>

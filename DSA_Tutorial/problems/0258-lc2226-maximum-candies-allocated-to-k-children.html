@@ -23,37 +23,65 @@
  › Subpattern 8.3: On Answer / Condition Function · Problem 258 of 699</p>
 
 <h2>📋 The problem</h2><p>Split candy piles into sub-piles (no merging) so k children get equal amounts; maximize that amount (binary search).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>You are given an integer array <code>candies</code> where each element is the number of candies in a pile. You are also given an integer <code>k</code>. You can divide each pile into any number of sub-piles, but you <strong>cannot merge two piles together</strong>. You want to allocate candies to <code>k</code> children such that each child gets the same number of candies. Find the <strong>maximum number of candies</strong> each child can get.</p>
 
-<h2>Where this fits</h2>
-<p><strong>On Answer / Condition Function</strong> — Binary-search the answer; write a monotonic check(x) function that returns True for x≥answer.</p>
+<h2>🐢 Brute force first</h2>
+<p>Total sum of candies must be &gt;= <code>k</code>, otherwise answer is 0. Try candy amounts <code>c = 1, 2, ... max(candies)</code>. For each <code>c</code>, count children satisfied: <code>sum(candy // c)</code>. Stop when count &lt; <code>k</code>.</p>
 
-<h2>Why this pattern?</h2><ul><li>sorted (or rotated-sorted) array + find/insert position</li><li>"minimize the maximum" / "maximize the minimum"</li><li>a feasibility check that flips once as a parameter grows</li><li>O(log n) demanded explicitly</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Binary Search master template and adapt the marked parts to this problem:</p><pre><code># Lower-bound shape: smallest index where check(i) is True
-lo, hi = 0, n            # hi = n allows "no answer" result
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if check(mid):        # True region is on the right side's left edge
-        hi = mid          # mid might be the answer — keep it in range
-    else:
-        lo = mid + 1      # mid is definitely not — discard it
-return lo                 # first True (or n if none)
+<div class="insight">💡 <strong>Key insight:</strong> Maximize candies per child! Monotonic feasibility: if each child can get <code>c</code> candies, they can also get any amount <code>< c</code>. Binary search in range <code>[1, max(candies)]</code>. Notice we want the MAXIMUM feasible value!</div>
 
-# Binary search on the ANSWER
-lo, hi = min_possible, max_possible
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if feasible(mid): hi = mid
-    else:             lo = mid + 1</code></pre>
-<h2>How to work on it now</h2>
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>If <code>sum(candies) &lt; k</code>, return <code>0</code>.</li>
+<li><code>left = 1, right = max(candies)</code>. <code>ans = 0</code>.</li>
+<li>While <code>left &lt;= right</code>:</li>
+<li><code>mid = left + (right - left) // 2</code>.</li>
+<li>Children served: <code>sum(c // mid for c in candies)</code>.</li>
+<li>If <code>served &gt;= k</code>: this amount is possible! Record <code>ans = mid</code>, search for larger: <code>left = mid + 1</code>.</li>
+<li>Else: <code>right = mid - 1</code>.</li>
+<li>Return <code>ans</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — candies = [5, 8, 6], k = 3</h2>
+<pre class="viz">Total sum = 19 >= 3. Range [1, 8]
+Iter 1: mid = 4 → served = 5//4 + 8//4 + 6//4 = 1 + 2 + 1 = 4 >= 3 → ans = 4, left = 5
+Iter 2: left = 5, right = 8 → mid = 6 → served = 5//6 + 8//6 + 6//6 = 0 + 1 + 1 = 2 < 3 → right = 5
+Iter 3: left = 5, right = 5 → mid = 5 → served = 1 + 1 + 1 = 3 >= 3 → ans = 5, left = 6
+left > right. Return ans = 5! ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def maximumCandies(candies, k):
+    left, right = 1, max(candies)
+    ans = 0
+    
+    while left <= right:
+        mid = left + (right - left) // 2
+        children = sum(c // mid for c in candies)
+        
+        if children >= k:
+            ans = mid
+            left = mid + 1   # Try for even more candies
+        else:
+            right = mid - 1
+            
+    return ans</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n * log(max(candies)))</strong>. <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li><code>sum(candies) < k</code>: returns 0.</li>
+<li><code>k = 1</code>: returns <code>max(candies)</code>.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Magnetic Force Between Two Balls (<a href="0255-lc1552-magnetic-force-between-two-balls.html">#1552</a>).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0257-lc2064-minimized-maximum-of-products-distributed-to-any-store.html"><span class="lbl">← Previous</span>#2064 Minimized Maximum of Products Distributed to Any Store</a><a href="../problems/0259-lc34-find-first-and-last-position-of-element-in-sorted-array.html" style="text-align:right"><span class="lbl">Next →</span>#34 Find First and Last Position of Element in Sorted Array</a></div>
 </div>

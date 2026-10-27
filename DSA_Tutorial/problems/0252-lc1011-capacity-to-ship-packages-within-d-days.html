@@ -23,37 +23,77 @@
  › Subpattern 8.3: On Answer / Condition Function · Problem 252 of 699</p>
 
 <h2>📋 The problem</h2><p>Ship packages in order within d days; find the minimum ship capacity that makes the deadline (binary search on capacity).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>A conveyor belt has packages that must be shipped within <code>days</code> days. The <code>i-th</code> package has weight <code>weights[i]</code>. Each day, we load the conveyor belt with packages in the order given by <code>weights</code>, without exceeding the ship's maximum weight capacity. Return the least weight capacity of the ship that will result in all packages being shipped within <code>days</code> days.</p>
 
-<h2>Where this fits</h2>
-<p><strong>On Answer / Condition Function</strong> — Binary-search the answer; write a monotonic check(x) function that returns True for x≥answer.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Binary search the ship capacity between max(weights) and sum(weights); feasibility = days needed ≤ D.</div>
-<h2>Why this pattern?</h2><ul><li>sorted (or rotated-sorted) array + find/insert position</li><li>"minimize the maximum" / "maximize the minimum"</li><li>a feasibility check that flips once as a parameter grows</li><li>O(log n) demanded explicitly</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Binary Search master template and adapt the marked parts to this problem:</p><pre><code># Lower-bound shape: smallest index where check(i) is True
-lo, hi = 0, n            # hi = n allows "no answer" result
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if check(mid):        # True region is on the right side's left edge
-        hi = mid          # mid might be the answer — keep it in range
-    else:
-        lo = mid + 1      # mid is definitely not — discard it
-return lo                 # first True (or n if none)
+<h2>🐢 Brute force first</h2>
+<p>Start capacity at <code>max(weights)</code> (since the ship must hold the heaviest single package). Increment capacity one by one until simulation finishes in <code><= days</code>. Time: O(sum(weights) * n) — unacceptable.</p>
 
-# Binary search on the ANSWER
-lo, hi = min_possible, max_possible
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if feasible(mid): hi = mid
-    else:             lo = mid + 1</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> Feasibility is monotonic! If capacity <code>C</code> can ship all packages within <code>days</code>, any capacity <code>> C</code> can as well. Lower bound is <code>max(weights)</code> (cannot leave behind any single package), upper bound is <code>sum(weights)</code> (shipping everything in 1 day). Binary search the interval <code>[max(weights), sum(weights)]</code>!</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Lower bound: <code>left = max(weights)</code>. Upper bound: <code>right = sum(weights)</code>.</li>
+<li>Condition function <code>feasible(cap)</code>: simulate greedy packing in linear order:
+  <ul>
+    <li>Accumulate current daily load.</li>
+    <li>If adding <code>w</code> exceeds <code>cap</code>, increment day count and start new day with <code>w</code>.</li>
+    <li>Return <code>True</code> if total days &lt;= <code>days</code>.</li>
+  </ul>
+</li>
+<li>Binary search: if <code>feasible(mid)</code>, try smaller capacity: <code>right = mid</code>. Else: <code>left = mid + 1</code>.</li>
+<li>Return <code>left</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — weights = [1,2,3,4,5,6,7,8,9,10], days = 5</h2>
+<pre class="viz">left = max = 10, right = sum = 55
+Iter 1: mid = 32 → days needed = 2 <= 5 → feasible! right = 32
+Iter 2: mid = 21 → days needed = 3 <= 5 → feasible! right = 21
+Iter 3: mid = 15 → days: [1..5]=15, [6,7]=13, [8]=8, [9]=9, [10]=10 → 5 days! feasible! right = 15
+Iter 4: mid = 12 → days needed = 6 > 5 → not feasible! left = 13
+Iter 5: mid = 14 → days needed = 5 <= 5 → feasible! right = 14
+Iter 6: mid = 13 → days needed = 6 > 5 → not feasible! left = 14
+left == right == 15. Capacity = 15! ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def shipWithinDays(weights, days):
+    def feasible(capacity):
+        day_count = 1
+        current_load = 0
+        for w in weights:
+            if current_load + w > capacity:
+                day_count += 1
+                current_load = w
+            else:
+                current_load += w
+        return day_count <= days
+
+    left, right = max(weights), sum(weights)
+    
+    while left < right:
+        mid = left + (right - left) // 2
+        if feasible(mid):
+            right = mid
+        else:
+            left = mid + 1
+            
+    return left</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n * log(sum(weights) - max(weights)))</strong> — Each feasibility check takes O(n). <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li><code>days == 1</code>: capacity must be <code>sum(weights)</code>.</li>
+<li><code>days >= len(weights)</code>: capacity only needs to be <code>max(weights)</code>.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Split Array Largest Sum (<a href="0248-lc410-split-array-largest-sum.html">#410</a>) — mathematically identical problem disguised as array partitioning!</li>
+</ul>
 
 <div class="pager"><a href="../problems/0251-lc875-koko-eating-bananas.html"><span class="lbl">← Previous</span>#875 Koko Eating Bananas</a><a href="../problems/0253-lc1283-find-the-smallest-divisor-given-a-threshold.html" style="text-align:right"><span class="lbl">Next →</span>#1283 Find the Smallest Divisor Given a Threshold</a></div>
 </div>

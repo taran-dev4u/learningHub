@@ -23,37 +23,86 @@
  › Subpattern 8.3: On Answer / Condition Function · Problem 251 of 699</p>
 
 <h2>📋 The problem</h2><p>Koko eats bananas at speed k per hour, one pile per hour; find the slowest k that finishes all piles within h hours.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Koko loves to eat bananas. There are <code>n</code> piles of bananas, where the <code>i-th</code> pile has <code>piles[i]</code> bananas. The guards will return in <code>h</code> hours. Koko can decide her eating speed <code>k</code> (bananas-per-hour). Each hour, she chooses a pile and eats <code>k</code> bananas from it. If the pile has less than <code>k</code> bananas, she eats all of them and will not eat any more bananas during this hour. Return the minimum integer <code>k</code> such that she can eat all bananas within <code>h</code> hours.</p>
 
-<h2>Where this fits</h2>
-<p><strong>On Answer / Condition Function</strong> — Binary-search the answer; write a monotonic check(x) function that returns True for x≥answer.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Binary search the eating speed: feasible(k) is monotone — hours(k) = Σ ceil(pile/k) ≤ h.</div>
-<h2>Why this pattern?</h2><ul><li>sorted (or rotated-sorted) array + find/insert position</li><li>"minimize the maximum" / "maximize the minimum"</li><li>a feasibility check that flips once as a parameter grows</li><li>O(log n) demanded explicitly</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Binary Search master template and adapt the marked parts to this problem:</p><pre><code># Lower-bound shape: smallest index where check(i) is True
-lo, hi = 0, n            # hi = n allows "no answer" result
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if check(mid):        # True region is on the right side's left edge
-        hi = mid          # mid might be the answer — keep it in range
-    else:
-        lo = mid + 1      # mid is definitely not — discard it
-return lo                 # first True (or n if none)
+<h2>🐢 Brute force first</h2>
+<p>Test speeds <code>k = 1, 2, 3... max(piles)</code>. For each speed, calculate total hours needed: <code>sum(math.ceil(pile / k))</code>. The first speed where total hours &lt;= <code>h</code> is the answer. Time: O(max(piles) * n). When <code>max(piles) = 10^9</code>, this TLEs immediately.</p>
 
-# Binary search on the ANSWER
-lo, hi = min_possible, max_possible
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if feasible(mid): hi = mid
-    else:             lo = mid + 1</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> Notice the <strong>monotonicity</strong>! If Koko can finish all bananas at speed <code>k</code>, she can certainly finish them at any speed <code>> k</code>. If she cannot finish at speed <code>k</code>, she cannot finish at any speed <code>< k</code>. This monotonic feasibility predicate <code>canFinish(k) -> bool</code> enables <strong>Binary Search on Answer</strong> in range <code>[1, max(piles)]</code>!</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Set search range: <code>left = 1</code> (minimum possible eating speed) and <code>right = max(piles)</code> (maximum needed eating speed).</li>
+<li>Define helper <code>canFinish(k)</code>: calculates total hours spent across all piles: <code>sum((pile + k - 1) // k)</code> (integer ceil). Returns <code>True</code> if total hours &lt;= <code>h</code>.</li>
+<li>While <code>left &lt; right</code>:</li>
+<li>Compute <code>mid = left + (right - left) // 2</code>.</li>
+<li>If <code>canFinish(mid)</code> is <code>True</code>: <code>mid</code> might be the minimum speed or a smaller speed might work → <code>right = mid</code>.</li>
+<li>Else: <code>mid</code> is too slow → <code>left = mid + 1</code>.</li>
+<li>When <code>left == right</code>, return <code>left</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — piles = [3, 6, 7, 11], h = 8</h2>
+<pre class="viz">Range: [left = 1, right = 11]
+Iter 1: mid = 6
+  piles: 3(1h) + 6(1h) + 7(2h) + 11(2h) = 6 hours <= 8 → Possible!
+  right = mid = 6
+
+Iter 2: left = 1, right = 6 → mid = 3
+  piles: 3(1h) + 6(2h) + 7(3h) + 11(4h) = 10 hours > 8 → Too slow!
+  left = mid + 1 = 4
+
+Iter 3: left = 4, right = 6 → mid = 5
+  piles: 3(1h) + 6(2h) + 7(2h) + 11(3h) = 8 hours <= 8 → Possible!
+  right = mid = 5
+
+Iter 4: left = 4, right = 5 → mid = 4
+  piles: 3(1h) + 6(2h) + 7(2h) + 11(3h) = 8 hours <= 8 → Possible!
+  right = mid = 4
+
+left == right == 4.
+Return 4 bananas/hour! ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>import math
+
+def minEatingSpeed(piles, h):
+    """
+    Binary search on answer range [1, max(piles)].
+    """
+    def canFinish(k):
+        # (pile + k - 1) // k is fast integer ceiling for pile / k
+        return sum((p + k - 1) // k for p in piles) <= h
+        
+    left, right = 1, max(piles)
+    
+    while left < right:
+        mid = left + (right - left) // 2
+        if canFinish(mid):
+            right = mid
+        else:
+            left = mid + 1
+            
+    return left</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n * log(max(piles)))</strong> — Each binary search step takes O(n) to sum hours across all piles, and the search range shrinks by 2 each step. <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li><code>len(piles) == h</code>: Koko must eat each pile in 1 hour, so answer is <code>max(piles)</code>.</li>
+<li><code>h</code> very large: answer will be 1.</li>
+<li>Very large pile sizes up to <code>10^9</code>: binary search completes in ~30 iterations.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Capacity To Ship Packages Within D Days (<a href="0252-lc1011-capacity-to-ship-packages-within-d-days.html">#1011</a>).</li>
+<li>Find the Smallest Divisor Given a Threshold (<a href="0253-lc1283-find-the-smallest-divisor-given-a-threshold.html">#1283</a>).</li>
+<li>Minimum Number of Days to Make m Bouquets (<a href="0254-lc1482-minimum-number-of-days-to-make-m-bouquets.html">#1482</a>).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0250-lc774-minimize-max-distance-to-gas-station.html"><span class="lbl">← Previous</span>#774 Minimize Max Distance to Gas Station</a><a href="../problems/0252-lc1011-capacity-to-ship-packages-within-d-days.html" style="text-align:right"><span class="lbl">Next →</span>#1011 Capacity To Ship Packages Within D Days</a></div>
 </div>

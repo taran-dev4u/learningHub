@@ -23,38 +23,87 @@
  › Subpattern 7.4: Scheduling / Minimum Cost with Priority Queue · Problem 232 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0586-lc2402-meeting-rooms-iii.html">Intervals &amp; Line Sweep</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Meetings queue for n rooms, taking the lowest free room (or waiting for the earliest); return the room that hosts the most meetings (two heaps).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>You have <code>n</code> rooms numbered <code>0</code> to <code>n - 1</code>. Meetings arrive with <code>[start, end]</code>. Each meeting gets the <strong>lowest-numbered unused room</strong>. If all rooms are busy, it waits for the earliest room to finish (preserving duration). Return the room that held the <strong>most meetings</strong>.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Scheduling / Minimum Cost with Priority Queue</strong> — Heap selects the highest-cost/highest-priority task at each step — task scheduling, IPO, sticks.</p>
+<h2>🐢 Brute force first</h2>
+<p>For each meeting, scan all n rooms to check availability; if none, find the room with minimal end time and delay → O(m * n).</p>
 
-<h2>Why this pattern?</h2><ul><li>"k largest / k closest / k most frequent / k-th …"</li><li>merge k sorted lists/streams</li><li>"median of a stream" / balance two halves → two heaps</li><li>scheduling: always take the earliest end / most frequent / cheapest next</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Heap (Priority Queue) master template and adapt the marked parts to this problem:</p><pre><code>import heapq
-# Top-k largest: min-heap of size k
-h = []
-for x in nums:
-    heapq.heappush(h, x)
-    if len(h) &gt; k:
-        heapq.heappop(h)                 # evict the smallest of the k+1
-# h holds the k largest; h[0] is the k-th largest
+<div class="insight">💡 <strong>Key insight:</strong> use <strong>two min-heaps</strong>:</p>
+<ul>
+<li><code>unused</code>: contains available room numbers <code>0..n-1</code> (min-heap by room index).</li>
+<li><code>busy</code>: contains <code>(endTime, roomNumber)</code> (min-heap by end time).</li>
+</ul>
+<p>For each meeting: free up all rooms whose <code>endTime &lt;= start</code> by popping from <code>busy</code> and pushing to <code>unused</code>. If <code>unused</code> is empty, take the earliest from <code>busy</code> and advance its end time by the meeting's duration.</div>
 
-# k-way merge: heap of (value, which_list, index)
-h = [(lst[0], i, 0) for i, lst in enumerate(lists) if lst]
-heapq.heapify(h)
-while h:
-    val, i, j = heapq.heappop(h)
-    out.append(val)
-    if j + 1 &lt; len(lists[i]):
-        heapq.heappush(h, (lists[i][j+1], i, j+1))</code></pre>
-<h2>How to work on it now</h2>
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Sort meetings by <code>start</code> time.</li>
+<li>Initialize <code>unused = list(range(n))</code> (heapified) and <code>busy = []</code>. Track <code>counts = [0] * n</code>.</li>
+<li>For each <code>start, end</code> in <code>meetings</code>:</li>
+<li>While <code>busy</code> and <code>busy[0][0] &lt;= start</code>: pop <code>(_, room)</code> and push <code>room</code> to <code>unused</code>.</li>
+<li>If <code>unused</code>: pop smallest room, push <code>(end, room)</code> to <code>busy</code>, increment <code>counts[room]</code>.</li>
+<li>Else: pop earliest <code>(earliest_end, room)</code> from <code>busy</code>, push <code>(earliest_end + (end - start), room)</code>, increment <code>counts[room]</code>.</li>
+<li>Return the room index with maximum count (tiebreaker: smallest index).</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — n=2, meetings=[[0,10],[1,5],[2,7],[3,4]]</h2>
+<pre class="viz">unused=[0, 1], busy=[]
+[0, 10] → room 0 gets it → busy=[(10, 0)], unused=[1]
+[1, 5]  → room 1 gets it → busy=[(5, 1), (10, 0)], unused=[]
+[2, 7]  → no unused room. Earliest busy finishes at 5 (room 1).
+        → delayed to [5, 5+(7-2)=10] → busy=[(10, 0), (10, 1)]
+[3, 4]  → no unused room. Earliest finishes at 10 (room 0 wins tiebreaker).
+        → delayed to [10, 10+(4-3)=11] → busy=[(10, 1), (11, 0)]
+Counts: room 0: 2 meetings, room 1: 2 meetings → tiebreaker room 0 ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>import heapq
+
+def mostBooked(n, meetings):
+    meetings.sort()
+    
+    unused = list(range(n))
+    heapq.heapify(unused)
+    
+    busy = []   # (end_time, room_index)
+    count = [0] * n
+    
+    for start, end in meetings:
+        # Free rooms that finished before or at current start time
+        while busy and busy[0][0] &lt;= start:
+            _, room = heapq.heappop(busy)
+            heapq.heappush(unused, room)
+            
+        duration = end - start
+        if unused:
+            room = heapq.heappop(unused)
+            heapq.heappush(busy, (end, room))
+        else:
+            # Wait for the earliest room to become free
+            earliest_end, room = heapq.heappop(busy)
+            heapq.heappush(busy, (earliest_end + duration, room))
+            
+        count[room] += 1
+        
+    return count.index(max(count))</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(m log m + m log n)</strong> — where m is number of meetings. Sorting takes O(m log m); each meeting performs O(log n) heap operations. <strong>Space O(n)</strong> — for the two heaps.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Duration overflow if meeting delayed across large time spans: Python handles arbitrarily large integers.</li>
+<li>Tiebreaker when multiple rooms have the exact same maximum count: <code>count.index(max(count))</code> naturally returns the smallest index.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Meeting Rooms II (<a href="0218-lc253-meeting-rooms-ii.html">#253</a>).</li>
+<li>The Number of the Smallest Unoccupied Chair (<a href="0231-lc1942-the-number-of-the-smallest-unoccupied-chair.html">#1942</a>).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0231-lc1942-the-number-of-the-smallest-unoccupied-chair.html"><span class="lbl">← Previous</span>#1942 The Number of the Smallest Unoccupied Chair</a><a href="../patterns/p08-binary-search.html" style="text-align:right"><span class="lbl">Next →</span>Binary Search</a></div>
 </div>

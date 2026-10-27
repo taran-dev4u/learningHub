@@ -23,38 +23,75 @@
  › Subpattern 7.4: Scheduling / Minimum Cost with Priority Queue · Problem 223 of 699</p>
 
 <h2>📋 The problem</h2><p>Hire exactly k workers, paying everyone the same wage-to-quality ratio and at least their minimum wage; minimize total cost.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Hire <code>k</code> workers paid in proportion to their quality, satisfying each worker's minimum wage. If we pick a group of workers, the wage is set by the worker with the <strong>highest wage-to-quality ratio</strong> <code>R = max(wage[i] / quality[i])</code>. Total cost is <code>R * sum(qualities)</code>. To minimize cost, for a fixed ratio <code>R</code>, we want the <code>k</code> workers with the <strong>smallest qualities</strong>.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Scheduling / Minimum Cost with Priority Queue</strong> — Heap selects the highest-cost/highest-priority task at each step — task scheduling, IPO, sticks.</p>
+<h2>🐢 Brute force first</h2>
+<p>Try every combination of k workers, find max ratio, compute cost → exponential.</p>
 
-<h2>Why this pattern?</h2><ul><li>"k largest / k closest / k most frequent / k-th …"</li><li>merge k sorted lists/streams</li><li>"median of a stream" / balance two halves → two heaps</li><li>scheduling: always take the earliest end / most frequent / cheapest next</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Heap (Priority Queue) master template and adapt the marked parts to this problem:</p><pre><code>import heapq
-# Top-k largest: min-heap of size k
-h = []
-for x in nums:
-    heapq.heappush(h, x)
-    if len(h) &gt; k:
-        heapq.heappop(h)                 # evict the smallest of the k+1
-# h holds the k largest; h[0] is the k-th largest
+<div class="insight">💡 <strong>Key insight:</strong> sort workers by <code>wage / quality</code> ratio ascending. Iterate through workers: maintain a <strong>max-heap of qualities of size k</strong>. When heap size reaches k, compute <code>cost = ratio * quality_sum</code> and keep the minimum. If heap exceeds k, pop the largest quality.</div>
 
-# k-way merge: heap of (value, which_list, index)
-h = [(lst[0], i, 0) for i, lst in enumerate(lists) if lst]
-heapq.heapify(h)
-while h:
-    val, i, j = heapq.heappop(h)
-    out.append(val)
-    if j + 1 &lt; len(lists[i]):
-        heapq.heappush(h, (lists[i][j+1], i, j+1))</code></pre>
-<h2>How to work on it now</h2>
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Calculate ratios and sort: <code>workers = sorted([(w / q, q) for w, q in zip(wage, quality)])</code>.</li>
+<li>Initialize max-heap <code>qual_heap = []</code>, <code>qual_sum = 0</code>, <code>min_cost = inf</code>.</li>
+<li>For each <code>ratio, q</code> in <code>workers</code>:</li>
+<li>Push <code>-q</code> to heap, add <code>q</code> to <code>qual_sum</code>.</li>
+<li>If <code>len(qual_heap) &gt; k</code>: <code>qual_sum += heappop(qual_heap)</code> (removes largest quality).</li>
+<li>If <code>len(qual_heap) == k</code>: <code>min_cost = min(min_cost, ratio * qual_sum)</code>.</li>
+<li>Return <code>min_cost</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — quality = [10, 20, 5], wage = [70, 50, 30], k = 2</h2>
+<pre class="viz">Ratios: worker 0: 70/10 = 7.0, worker 1: 50/20 = 2.5, worker 2: 30/5 = 6.0
+Sorted by ratio:
+1. (2.5, 20): qual_sum = 20, heap = [20]
+2. (6.0, 5):  qual_sum = 25, heap = [20, 5] (size == 2)
+   cost = 6.0 * 25 = 150.0. min_cost = 150.0
+3. (7.0, 10): push 10 → qual_sum = 35 → pop largest (20) → qual_sum = 15
+   heap = [10, 5] (size == 2)
+   cost = 7.0 * 15 = 105.0. min_cost = min(150, 105) = 105.0 ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>import heapq
+
+def mincostToHireWorkers(quality, wage, k):
+    # Sort workers by wage/quality ratio ascending
+    workers = sorted([(w / q, q) for w, q in zip(wage, quality)])
+    
+    max_heap = []   # stores negative qualities to easily evict the largest
+    qual_sum = 0
+    min_cost = float('inf')
+    
+    for ratio, q in workers:
+        heapq.heappush(max_heap, -q)
+        qual_sum += q
+        
+        # Keep only k workers with the smallest qualities
+        if len(max_heap) &gt; k:
+            qual_sum += heapq.heappop(max_heap)   # heappop returns negative q
+            
+        if len(max_heap) == k:
+            min_cost = min(min_cost, ratio * qual_sum)
+            
+    return min_cost</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(n log n)</strong> — O(n log n) to sort workers, plus n heap operations of size k (O(n log k)). <strong>Space O(n)</strong> for sorted workers and heap.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li><code>k = 1</code>: simply pick the worker with minimal wage.</li>
+<li><code>k = n</code>: all workers hired, cost is <code>max(ratios) * sum(qualities)</code>.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Maximum Performance of a Team (<a href="0225-lc1383-maximum-performance-of-a-team.html">#1383</a>).</li>
+<li>IPO (<a href="0220-lc502-ipo.html">#502</a>).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0222-lc767-reorganize-string.html"><span class="lbl">← Previous</span>#767 Reorganize String</a><a href="../problems/0224-lc1167-minimum-cost-to-connect-sticks.html" style="text-align:right"><span class="lbl">Next →</span>#1167 Minimum Cost to Connect Sticks</a></div>
 </div>

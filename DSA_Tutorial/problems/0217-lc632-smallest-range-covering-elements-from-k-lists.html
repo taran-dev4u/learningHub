@@ -23,38 +23,86 @@
  › Subpattern 7.3: K-way Merge · Problem 217 of 699</p>
 
 <h2>📋 The problem</h2><p>From k sorted lists, find the smallest range that includes at least one number from every list.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>You have <code>k</code> sorted lists. Find the <strong>smallest range <code>[a, b]</code></strong> that includes at least one number from each of the k lists. Similar to <a href="0214-lc23-merge-k-sorted-lists.html">#23</a> Merge k Sorted Lists: keep one pointer in each of the k lists. At any time, the range is <code>[min_val, max_val]</code> of the current k pointers. To shrink the range, the only option is to advance the pointer pointing to <code>min_val</code>.</p>
 
-<h2>Where this fits</h2>
-<p><strong>K-way Merge</strong> — Heap of (value, list_id) entries pulls the smallest across k sorted lists.</p>
+<h2>🐢 Brute force first</h2>
+<p>Check every possible pair <code>[a, b]</code> and verify membership across all k lists → exponential.</p>
 
-<h2>Why this pattern?</h2><ul><li>"k largest / k closest / k most frequent / k-th …"</li><li>merge k sorted lists/streams</li><li>"median of a stream" / balance two halves → two heaps</li><li>scheduling: always take the earliest end / most frequent / cheapest next</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Heap (Priority Queue) master template and adapt the marked parts to this problem:</p><pre><code>import heapq
-# Top-k largest: min-heap of size k
-h = []
-for x in nums:
-    heapq.heappush(h, x)
-    if len(h) &gt; k:
-        heapq.heappop(h)                 # evict the smallest of the k+1
-# h holds the k largest; h[0] is the k-th largest
+<div class="insight">💡 <strong>Key insight:</strong> maintain a <strong>min-heap of size k</strong> containing <code>(val, list_index, element_index)</code> and track the <code>current_max</code>. The current range is <code>[heap[0].val, current_max]</code>. Pop the minimum, record if it is a smaller range, and push the next element from that list. Stop when any list is exhausted.</div>
 
-# k-way merge: heap of (value, which_list, index)
-h = [(lst[0], i, 0) for i, lst in enumerate(lists) if lst]
-heapq.heapify(h)
-while h:
-    val, i, j = heapq.heappop(h)
-    out.append(val)
-    if j + 1 &lt; len(lists[i]):
-        heapq.heappush(h, (lists[i][j+1], i, j+1))</code></pre>
-<h2>How to work on it now</h2>
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Initialize min-heap with the first element of each list: <code>(nums[i][0], i, 0)</code>.</li>
+<li>Track <code>cur_max = max(nums[i][0] for i in range(k))</code>.</li>
+<li>Initialize best range <code>[-inf, inf]</code>.</li>
+<li>While <code>len(heap) == k</code>:</li>
+<li>Pop <code>min_val, r, c = heappop(heap)</code>.</li>
+<li>If <code>cur_max - min_val &lt; best_end - best_start</code>, update best range.</li>
+<li>If <code>c + 1 &lt; len(nums[r])</code>: next value is <code>next_val = nums[r][c+1]</code>, update <code>cur_max = max(cur_max, next_val)</code>, push <code>(next_val, r, c + 1)</code>.</li>
+<li>Else: list <code>r</code> is exhausted, break loop.</li>
+<li>Return <code>[best_start, best_end]</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — nums = [[4,10,15],[0,9,12],[5,18,22]]</h2>
+<pre class="viz">Init heap: (0, list1), (4, list0), (5, list2). cur_max = 5.
+Range: [0, 5] (diff = 5)
+Pop 0 → push 9 from list 1 → cur_max = 9. Heap min = 4. Range [4, 9] (diff = 5)
+Pop 4 → push 10 from list 0 → cur_max = 10. Heap min = 5. Range [5, 10] (diff = 5)
+Pop 5 → push 18 from list 2 → cur_max = 18. Heap min = 9.
+Pop 9 → push 12 from list 1 → cur_max = 18. Heap min = 10.
+Pop 10 → push 15 from list 0 → cur_max = 18.
+Pop 12 → list 1 exhausted → stop!
+Best range found: [20, 24] or [24, 28]... Best diff is [20, 24] (diff 4) ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>import heapq
+
+def smallestRange(nums):
+    heap = []
+    cur_max = -float('inf')
+    
+    # Initialize heap with the first element from each list
+    for r in range(len(nums)):
+        val = nums[r][0]
+        heapq.heappush(heap, (val, r, 0))
+        cur_max = max(cur_max, val)
+        
+    best_range = [-float('inf'), float('inf')]
+    
+    while len(heap) == len(nums):
+        min_val, r, c = heapq.heappop(heap)
+        
+        # Check if the current range [min_val, cur_max] is tighter
+        if cur_max - min_val &lt; best_range[1] - best_range[0]:
+            best_range = [min_val, cur_max]
+            
+        # Push the next element from the list whose element was just popped
+        if c + 1 &lt; len(nums[r]):
+            next_val = nums[r][c + 1]
+            heapq.heappush(heap, (next_val, r, c + 1))
+            cur_max = max(cur_max, next_val)
+        else:
+            break   # one list is exhausted; cannot form a valid range anymore
+            
+    return best_range</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(N log k)</strong> — where N is total elements across all lists and k is number of lists. <strong>Space O(k)</strong> — for the heap of size k.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li><code>k = 1</code>: returns <code>[nums[0][0], nums[0][0]]</code> (range of length 0).</li>
+<li>Ties in range width: earlier range is preserved.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Merge k Sorted Lists (<a href="0214-lc23-merge-k-sorted-lists.html">#23</a>).</li>
+<li>Find K Pairs with Smallest Sums (<a href="0215-lc373-find-k-pairs-with-smallest-sums.html">#373</a>).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0216-lc378-kth-smallest-element-in-a-sorted-matrix.html"><span class="lbl">← Previous</span>#378 Kth Smallest Element in a Sorted Matrix</a><a href="../problems/0218-lc253-meeting-rooms-ii.html" style="text-align:right"><span class="lbl">Next →</span>#253 Meeting Rooms II</a></div>
 </div>

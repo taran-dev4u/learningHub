@@ -23,37 +23,76 @@
  › Subpattern 8.1: On Sorted Array/List · Problem 236 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0053-lc240-search-a-2d-matrix-ii.html">Array/Matrix Manipulation</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Search a target in a matrix where each row and each column is sorted ascending.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Write an efficient algorithm that searches for a value in an <code>m x n</code> matrix where integers in each row are sorted in ascending from left to right, and integers in each column are sorted in ascending from top to bottom. Unlike LC 74, the first element of row <code>i+1</code> is NOT necessarily greater than the last element of row <code>i</code>.</p>
 
-<h2>Where this fits</h2>
-<p><strong>On Sorted Array/List</strong> — Plain lower/upper bound on a sorted array — get the boilerplate right (lo&lt;hi vs lo&lt;=hi).</p>
+<h2>🐢 Brute force first</h2>
+<p>Linear scan of all cells takes O(m * n). Running binary search on each row takes O(m log n). Can we do O(m + n)?</p>
 
-<h2>Why this pattern?</h2><ul><li>sorted (or rotated-sorted) array + find/insert position</li><li>"minimize the maximum" / "maximize the minimum"</li><li>a feasibility check that flips once as a parameter grows</li><li>O(log n) demanded explicitly</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Binary Search master template and adapt the marked parts to this problem:</p><pre><code># Lower-bound shape: smallest index where check(i) is True
-lo, hi = 0, n            # hi = n allows "no answer" result
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if check(mid):        # True region is on the right side's left edge
-        hi = mid          # mid might be the answer — keep it in range
-    else:
-        lo = mid + 1      # mid is definitely not — discard it
-return lo                 # first True (or n if none)
+<div class="insight">💡 <strong>Key insight:</strong> Start at the <strong>top-right corner</strong> (or bottom-left). At position <code>(row, col) = (0, n-1)</code>: all elements in the same row to the left are smaller; all elements in the same column downward are larger! This creates a <strong>Binary Search Tree (BST)</strong> property rooted at the top-right corner. If <code>val > target</code>, decrement col; if <code>val < target</code>, increment row.</div>
 
-# Binary search on the ANSWER
-lo, hi = min_possible, max_possible
-while lo &lt; hi:
-    mid = (lo + hi) // 2
-    if feasible(mid): hi = mid
-    else:             lo = mid + 1</code></pre>
-<h2>How to work on it now</h2>
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Start at <code>row = 0, col = n - 1</code> (top-right corner).</li>
+<li>While <code>row &lt; m</code> and <code>col &gt;= 0</code>:</li>
+<li>Let <code>val = matrix[row][col]</code>.</li>
+<li>If <code>val == target</code>, return <code>True</code>.</li>
+<li>If <code>val &gt; target</code>, target cannot be in column <code>col</code> (all elements below are even larger), so eliminate this column: <code>col -= 1</code>.</li>
+<li>If <code>val &lt; target</code>, target cannot be in row <code>row</code> (all elements to the left are even smaller), so eliminate this row: <code>row += 1</code>.</li>
+<li>If boundaries are crossed without finding target, return <code>False</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — target = 5</h2>
+<pre class="viz">Matrix:
+[ 1,  4,  7, 11, 15]
+[ 2,  5,  8, 12, 19]
+[ 3,  6,  9, 16, 22]
+
+Start at (0, 4) = 15 > 5 → col--
+Now at   (0, 3) = 11 > 5 → col--
+Now at   (0, 2) =  7 > 5 → col--
+Now at   (0, 1) =  4 < 5 → row++
+Now at   (1, 1) =  5 == 5 → Found! Return True. ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code>def searchMatrix(matrix, target):
+    """
+    Z-search / Top-right corner traversal leveraging BST property.
+    """
+    if not matrix or not matrix[0]:
+        return False
+        
+    m, n = len(matrix), len(matrix[0])
+    row, col = 0, n - 1
+    
+    while row < m and col >= 0:
+        val = matrix[row][col]
+        if val == target:
+            return True
+        elif val > target:
+            col -= 1  # eliminate column
+        else:
+            row += 1  # eliminate row
+            
+    return False</code></pre>
+</details>
+
+<h2>⏱️ Complexity</h2>
+<p><strong>Time O(m + n)</strong> — Each step either decrements <code>col</code> or increments <code>row</code>. At most <code>m + n</code> steps. <strong>Space O(1)</strong>.</p>
+
+<h2>⚠️ Edge cases</h2>
+<ul>
+<li>Empty matrix or row with 0 length.</li>
+<li>Target smaller than top-left or larger than bottom-right.</li>
+<li>Matrix of 1x1.</li>
+</ul>
+
+<h2>🔁 Variations &amp; follow-ups</h2>
+<ul>
+<li>Search a 2D Matrix I (<a href="0052-lc74-search-a-2d-matrix.html">#74</a>).</li>
+<li>Kth Smallest Element in a Sorted Matrix (<a href="0054-lc378-kth-smallest-element-in-a-sorted-matrix.html">#378</a>).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0235-lc74-search-a-2d-matrix.html"><span class="lbl">← Previous</span>#74 Search a 2D Matrix</a><a href="../problems/0237-lc278-first-bad-version.html" style="text-align:right"><span class="lbl">Next →</span>#278 First Bad Version</a></div>
 </div>
