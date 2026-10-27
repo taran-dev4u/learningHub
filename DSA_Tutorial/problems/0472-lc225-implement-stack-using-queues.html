@@ -23,42 +23,49 @@
  › Subpattern 15.1: General / Specific Data Structure Design · Problem 472 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0675-lc225-implement-stack-using-queues.html">Iterator &amp; Data-Stream Design</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Implement a LIFO stack using only queue operations.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Implement a last-in-first-out (LIFO) stack using only standard FIFO queues (only <code>push to back</code>, <code>peek/pop from front</code>, <code>size</code>, and <code>is empty</code> operations).</p>
 
-<h2>Where this fits</h2>
-<p><strong>General / Specific Data Structure Design</strong> — Compose hashmap + secondary structure (linked list, heap, set) to give each operation the right complexity.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Simulate a stack with one queue by rotating after each push.</div>
-<h2>Why this pattern?</h2><ul><li>"Design/implement a class with operations X, Y, Z"</li><li>explicit per-op complexity targets ("all in O(1)")</li><li>eviction rules (LRU/LFU), recency, frequency</li><li>"getRandom", "getMin", snapshots, iterators</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Design master template and adapt the marked parts to this problem:</p><pre><code># The composition method:
-# 1. Ops:      get(k), put(k,v), evict_least_recent
-# 2. Targets:  O(1),   O(1),     O(1)
-# 3. Pick:     dict  → O(1) get/put by key
-#              DLL   → O(1) move-to-front / evict-tail
-#              glue: dict maps key → its DLL node
+<p><strong>The Single-Queue Rotation Trick:</strong>
+When pushing element $x$ to the queue:
+1. Append $x$ to the back of the queue.
+2. For all previous $size - 1$ elements in the queue, dequeue from front and enqueue back to rear!
+This inverts the order so that the newly added element $x$ is now sitting at the <strong>front</strong> of the queue, ready to be popped in $O(1)$!</p>
 
-# In Python interviews, OrderedDict is the accepted shortcut:
-from collections import OrderedDict
-class LRUCache:
-    def __init__(self, cap):
-        self.d, self.cap = OrderedDict(), cap
-    def get(self, k):
-        if k not in self.d: return -1
-        self.d.move_to_end(k)            # mark most-recent
-        return self.d[k]
-    def put(self, k, v):
-        if k in self.d: self.d.move_to_end(k)
-        self.d[k] = v
-        if len(self.d) &gt; self.cap:
-            self.d.popitem(last=False)   # evict least-recent</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h2>🐢 Brute force vs optimal</h2>
+<p>By spending $O(n)$ time during <code>push</code>, all reads (<code>pop</code> and <code>top</code>) execute in instant $O(1)$ time using only 1 queue!</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> After enqueuing $x$, rotate the queue by size - 1: <code>q.append(q.popleft())</code>. The newest element is now at the front!</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">from collections import deque
+
+class MyStack:
+    def __init__(self):
+        self.q = deque()
+
+    def push(self, x: int) -> None:
+        self.q.append(x)
+        # Rotate all previous elements behind the newly added x
+        for _ in range(len(self.q) - 1):
+            self.q.append(self.q.popleft())
+
+    def pop(self) -> int:
+        return self.q.popleft()
+
+    def top(self) -> int:
+        return self.q[0]
+
+    def empty(self) -> bool:
+        return len(self.q) == 0
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> <code>push</code>: $O(n)$ rotation. <code>pop</code>, <code>top</code>, <code>empty</code>: $O(1)$.<br>
+<strong>Space:</strong> $O(n)$ — Single queue buffer.</p>
+
 
 <div class="pager"><a href="../problems/0471-lc211-design-add-and-search-words-data-structure.html"><span class="lbl">← Previous</span>#211 Design Add and Search Words Data Structure</a><a href="../problems/0473-lc232-implement-queue-using-stacks.html" style="text-align:right"><span class="lbl">Next →</span>#232 Implement Queue using Stacks</a></div>
 </div>

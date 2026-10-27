@@ -23,42 +23,61 @@
  › Subpattern 15.1: General / Specific Data Structure Design · Problem 479 of 699</p>
 
 <h2>📋 The problem</h2><p>Design tic-tac-toe on an n×n board where move(row, col, player) reports a winner in O(1) per move.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Assume an $n \times n$ Tic-Tac-Toe board. Design a game class where players take turns placing marks. A player wins if they place $n$ marks in any row, column, or diagonal. The <code>move(row, col, player)</code> must return the winner if this move won the game, or 0 otherwise.</p>
 
-<h2>Where this fits</h2>
-<p><strong>General / Specific Data Structure Design</strong> — Compose hashmap + secondary structure (linked list, heap, set) to give each operation the right complexity.</p>
+<p><strong>The $O(1)$ Line Counters Trick:</strong>
+Instead of maintaining an $n \times n$ board and scanning the row/column after every move ($O(n)$):
+Assign player 1 a score of <code>+1</code> and player 2 a score of <code>-1</code>!
+Maintain:
+- <code>rows[n]</code>: running sum for each row.
+- <code>cols[n]</code>: running sum for each column.
+- <code>diag</code>: running sum for the main diagonal ($row == col$).
+- <code>anti_diag</code>: running sum for the anti-diagonal ($row + col == n - 1$).</p>
+<p>When player makes a move:
+Add score ($+1$ or $-1$) to the corresponding row, column, and diagonals.
+If the absolute value of any updated counter reaches $n$, that player has won!</p>
 
-<h2>Why this pattern?</h2><ul><li>"Design/implement a class with operations X, Y, Z"</li><li>explicit per-op complexity targets ("all in O(1)")</li><li>eviction rules (LRU/LFU), recency, frequency</li><li>"getRandom", "getMin", snapshots, iterators</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Design master template and adapt the marked parts to this problem:</p><pre><code># The composition method:
-# 1. Ops:      get(k), put(k,v), evict_least_recent
-# 2. Targets:  O(1),   O(1),     O(1)
-# 3. Pick:     dict  → O(1) get/put by key
-#              DLL   → O(1) move-to-front / evict-tail
-#              glue: dict maps key → its DLL node
+<h2>🐢 Brute force vs optimal</h2>
+<p>Scanning board takes $O(n)$ per move. Counter updates execute in strictly $O(1)$ time and $O(n)$ space.</p>
 
-# In Python interviews, OrderedDict is the accepted shortcut:
-from collections import OrderedDict
-class LRUCache:
-    def __init__(self, cap):
-        self.d, self.cap = OrderedDict(), cap
-    def get(self, k):
-        if k not in self.d: return -1
-        self.d.move_to_end(k)            # mark most-recent
-        return self.d[k]
-    def put(self, k, v):
-        if k in self.d: self.d.move_to_end(k)
-        self.d[k] = v
-        if len(self.d) &gt; self.cap:
-            self.d.popitem(last=False)   # evict least-recent</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<div class="insight">💡 <strong>Key insight:</strong> Track line sums (+1 for P1, -1 for P2). If <code>abs(rows[r]) == n</code> or <code>abs(cols[c]) == n</code> or <code>abs(diag) == n</code>, the player won in $O(1)$ time!</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">class TicTacToe:
+    def __init__(self, n: int):
+        self.n = n
+        self.rows = [0] * n
+        self.cols = [0] * n
+        self.diag = 0
+        self.anti_diag = 0
+
+    def move(self, row: int, col: int, player: int) -> int:
+        score = 1 if player == 1 else -1
+        n = self.n
+        
+        self.rows[row] += score
+        self.cols[col] += score
+        if row == col:
+            self.diag += score
+        if row + col == n - 1:
+            self.anti_diag += score
+            
+        if (abs(self.rows[row]) == n or
+            abs(self.cols[col]) == n or
+            abs(self.diag) == n or
+            abs(self.anti_diag) == n):
+            return player
+            
+        return 0
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(1)$ per move.<br>
+<strong>Space:</strong> $O(n)$ — Arrays for row and column sums.</p>
+
 
 <div class="pager"><a href="../problems/0478-lc346-moving-average-from-data-stream.html"><span class="lbl">← Previous</span>#346 Moving Average from Data Stream</a><a href="../problems/0480-lc353-design-snake-game.html" style="text-align:right"><span class="lbl">Next →</span>#353 Design Snake Game</a></div>
 </div>

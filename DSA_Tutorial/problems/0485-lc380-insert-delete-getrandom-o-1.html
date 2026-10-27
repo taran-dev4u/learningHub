@@ -23,42 +23,69 @@
  › Subpattern 15.1: General / Specific Data Structure Design · Problem 485 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0540-lc380-insert-delete-getrandom-o-1.html">Hash Map &amp; Cache Design</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Design a set supporting insert, delete, and getRandom (uniform over current elements), each in O(1) average.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Implement the <code>RandomizedSet</code> class such that <code>insert</code>, <code>remove</code>, and <code>getRandom</code> all execute in strict $O(1)$ average time complexity.</p>
 
-<h2>Where this fits</h2>
-<p><strong>General / Specific Data Structure Design</strong> — Compose hashmap + secondary structure (linked list, heap, set) to give each operation the right complexity.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>List + dict of value→index; delete = swap victim with last, pop — O(1) everything.</div>
-<h2>Why this pattern?</h2><ul><li>"Design/implement a class with operations X, Y, Z"</li><li>explicit per-op complexity targets ("all in O(1)")</li><li>eviction rules (LRU/LFU), recency, frequency</li><li>"getRandom", "getMin", snapshots, iterators</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Design master template and adapt the marked parts to this problem:</p><pre><code># The composition method:
-# 1. Ops:      get(k), put(k,v), evict_least_recent
-# 2. Targets:  O(1),   O(1),     O(1)
-# 3. Pick:     dict  → O(1) get/put by key
-#              DLL   → O(1) move-to-front / evict-tail
-#              glue: dict maps key → its DLL node
+<p>Why can't we just use a Hash Set?
+A Hash Set provides $O(1)$ <code>insert</code> and $O(1)$ <code>remove</code>, but cannot provide true uniform $O(1)$ <code>getRandom</code> because elements are distributed sparsely across buckets!
+Why can't we just use an Array?
+An Array provides $O(1)$ random indexing (<code>nums[random.randint(0, len-1)]</code>), but <code>remove(val)</code> takes $O(n)$ time to search and shift elements!</p>
 
-# In Python interviews, OrderedDict is the accepted shortcut:
-from collections import OrderedDict
-class LRUCache:
-    def __init__(self, cap):
-        self.d, self.cap = OrderedDict(), cap
-    def get(self, k):
-        if k not in self.d: return -1
-        self.d.move_to_end(k)            # mark most-recent
-        return self.d[k]
-    def put(self, k, v):
-        if k in self.d: self.d.move_to_end(k)
-        self.d[k] = v
-        if len(self.d) &gt; self.cap:
-            self.d.popitem(last=False)   # evict least-recent</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<p><strong>The Swap-with-Last Deletion Trick:</strong>
+Combine an <strong>Array</strong> and a <strong>Hash Map</strong>:
+- <code>nums</code> (Array): stores values contiguously.
+- <code>val_to_idx</code> (Map): maps <code>val -> index in nums</code>.</p>
+<p>To <code>remove(val)</code> in $O(1)$:
+1. Find index of <code>val</code>: <code>idx = val_to_idx[val]</code>.
+2. Overwrite <code>nums[idx]</code> with the <strong>last element</strong> in <code>nums</code>: <code>last = nums[-1]; nums[idx] = last</code>.
+3. Update map: <code>val_to_idx[last] = idx</code>.
+4. Pop the last element in $O(1)$ without any shifting: <code>nums.pop()</code> and <code>del val_to_idx[val]</code>!</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Swapping with the last element eliminates all array shifting, achieving strict $O(1)$ for insert, delete, and random sampling.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> To delete from an array in $O(1)$: swap the target element with the last element, update the index in the hash map, and <code>pop()</code> the tail!</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">import random
+
+class RandomizedSet:
+    def __init__(self):
+        self.nums = []
+        self.val_to_idx = {}
+
+    def insert(self, val: int) -> bool:
+        if val in self.val_to_idx:
+            return False
+        self.val_to_idx[val] = len(self.nums)
+        self.nums.append(val)
+        return True
+
+    def remove(self, val: int) -> bool:
+        if val not in self.val_to_idx:
+            return False
+        # Swap with last element
+        idx = self.val_to_idx[val]
+        last_val = self.nums[-1]
+        
+        self.nums[idx] = last_val
+        self.val_to_idx[last_val] = idx
+        
+        # Pop tail in O(1)
+        self.nums.pop()
+        del self.val_to_idx[val]
+        return True
+
+    def getRandom(self) -> int:
+        return random.choice(self.nums)
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(1)$ average for <code>insert</code>, <code>remove</code>, and <code>getRandom</code>.<br>
+<strong>Space:</strong> $O(n)$ — Dynamic array and hash map holding $n$ values.</p>
+
 
 <div class="pager"><a href="../problems/0484-lc379-design-phone-directory.html"><span class="lbl">← Previous</span>#379 Design Phone Directory</a><a href="../problems/0486-lc432-all-o-one-data-structure.html" style="text-align:right"><span class="lbl">Next →</span>#432 All O`one Data Structure</a></div>
 </div>

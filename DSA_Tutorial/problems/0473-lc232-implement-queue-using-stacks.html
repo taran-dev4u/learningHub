@@ -23,42 +23,55 @@
  › Subpattern 15.1: General / Specific Data Structure Design · Problem 473 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0676-lc232-implement-queue-using-stacks.html">Iterator &amp; Data-Stream Design</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Implement a FIFO queue using only stack operations, with amortized O(1) per operation.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Implement a first-in-first-out (FIFO) queue using only two standard LIFO stacks.</p>
 
-<h2>Where this fits</h2>
-<p><strong>General / Specific Data Structure Design</strong> — Compose hashmap + secondary structure (linked list, heap, set) to give each operation the right complexity.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Two stacks: amortized O(1) — dump the in-stack into the out-stack only when the out-stack is empty.</div>
-<h2>Why this pattern?</h2><ul><li>"Design/implement a class with operations X, Y, Z"</li><li>explicit per-op complexity targets ("all in O(1)")</li><li>eviction rules (LRU/LFU), recency, frequency</li><li>"getRandom", "getMin", snapshots, iterators</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Design master template and adapt the marked parts to this problem:</p><pre><code># The composition method:
-# 1. Ops:      get(k), put(k,v), evict_least_recent
-# 2. Targets:  O(1),   O(1),     O(1)
-# 3. Pick:     dict  → O(1) get/put by key
-#              DLL   → O(1) move-to-front / evict-tail
-#              glue: dict maps key → its DLL node
+<p>Maintain two stacks:
+- <code>in_stack</code>: Receives all incoming elements on <code>push(x)</code>.
+- <code>out_stack</code>: Delivers elements for <code>pop()</code> and <code>peek()</code>.</p>
+<p><strong>Amortized Transfer:</strong>
+When an element is needed from <code>out_stack</code> and <code>out_stack</code> is empty:
+Pop all elements from <code>in_stack</code> and push them onto <code>out_stack</code>!
+This reverses their order, so the oldest element is now at the top of <code>out_stack</code>!
+Each element is moved between stacks <strong>at most once</strong>, giving strict $O(1)$ <strong>amortized</strong> time complexity!</p>
 
-# In Python interviews, OrderedDict is the accepted shortcut:
-from collections import OrderedDict
-class LRUCache:
-    def __init__(self, cap):
-        self.d, self.cap = OrderedDict(), cap
-    def get(self, k):
-        if k not in self.d: return -1
-        self.d.move_to_end(k)            # mark most-recent
-        return self.d[k]
-    def put(self, k, v):
-        if k in self.d: self.d.move_to_end(k)
-        self.d[k] = v
-        if len(self.d) &gt; self.cap:
-            self.d.popitem(last=False)   # evict least-recent</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h2>🐢 Brute force vs optimal</h2>
+<p>Transferring elements on every operation takes $O(n)$. Lazy transfer (only when <code>out_stack</code> is empty) achieves $O(1)$ amortized cost.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Two stacks: push to <code>in_stack</code>. On pop/peek, if <code>out_stack</code> is empty, dump all of <code>in_stack</code> into <code>out_stack</code>. $O(1)$ amortized!</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">class MyQueue:
+    def __init__(self):
+        self.in_stack = []
+        self.out_stack = []
+
+    def push(self, x: int) -> None:
+        self.in_stack.append(x)
+
+    def _transfer(self):
+        if not self.out_stack:
+            while self.in_stack:
+                self.out_stack.append(self.in_stack.pop())
+
+    def pop(self) -> int:
+        self._transfer()
+        return self.out_stack.pop()
+
+    def peek(self) -> int:
+        self._transfer()
+        return self.out_stack[-1]
+
+    def empty(self) -> bool:
+        return not self.in_stack and not self.out_stack
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(1)$ amortized for all operations ($O(1)$ worst case for push, $O(n)$ single transfer).<br>
+<strong>Space:</strong> $O(n)$ — Two stacks storing $n$ elements total.</p>
+
 
 <div class="pager"><a href="../problems/0472-lc225-implement-stack-using-queues.html"><span class="lbl">← Previous</span>#225 Implement Stack using Queues</a><a href="../problems/0474-lc251-flatten-2d-vector.html" style="text-align:right"><span class="lbl">Next →</span>#251 Flatten 2D Vector</a></div>
 </div>

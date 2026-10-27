@@ -23,42 +23,48 @@
  › Subpattern 15.1: General / Specific Data Structure Design · Problem 478 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0138-lc346-moving-average-from-data-stream.html">Sliding Window</a>, <a href="0673-lc346-moving-average-from-data-stream.html">Iterator &amp; Data-Stream Design</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Design a class that returns the moving average of the last k values of a stream.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given a stream of integers and a window size, calculate the moving average of all integers in the sliding window.</p>
 
-<h2>Where this fits</h2>
-<p><strong>General / Specific Data Structure Design</strong> — Compose hashmap + secondary structure (linked list, heap, set) to give each operation the right complexity.</p>
+<p>Maintain:
+- A FIFO circular queue or <code>deque</code> of maximum capacity $size$.
+- A running scalar <code>total_sum</code>.</p>
+<p>When a new number $val$ arrives:
+1. If the queue is at capacity, subtract the oldest element from <code>total_sum</code> and dequeue it:
+   <code>total_sum -= q.popleft()</code>.
+2. Add $val$ to <code>total_sum</code> and append to queue:
+   <code>total_sum += val; q.append(val)</code>.
+3. Return <code>total_sum / len(q)</code> in $O(1)$!</p>
 
-<h2>Why this pattern?</h2><ul><li>"Design/implement a class with operations X, Y, Z"</li><li>explicit per-op complexity targets ("all in O(1)")</li><li>eviction rules (LRU/LFU), recency, frequency</li><li>"getRandom", "getMin", snapshots, iterators</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Design master template and adapt the marked parts to this problem:</p><pre><code># The composition method:
-# 1. Ops:      get(k), put(k,v), evict_least_recent
-# 2. Targets:  O(1),   O(1),     O(1)
-# 3. Pick:     dict  → O(1) get/put by key
-#              DLL   → O(1) move-to-front / evict-tail
-#              glue: dict maps key → its DLL node
+<h2>🐢 Brute force vs optimal</h2>
+<p>Summing the window from scratch takes $O(k)$ time. Running accumulator updates in $O(1)$ time and $O(k)$ memory.</p>
 
-# In Python interviews, OrderedDict is the accepted shortcut:
-from collections import OrderedDict
-class LRUCache:
-    def __init__(self, cap):
-        self.d, self.cap = OrderedDict(), cap
-    def get(self, k):
-        if k not in self.d: return -1
-        self.d.move_to_end(k)            # mark most-recent
-        return self.d[k]
-    def put(self, k, v):
-        if k in self.d: self.d.move_to_end(k)
-        self.d[k] = v
-        if len(self.d) &gt; self.cap:
-            self.d.popitem(last=False)   # evict least-recent</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<div class="insight">💡 <strong>Key insight:</strong> Sliding window accumulator: <code>window_sum += val - (q.popleft() if full else 0)</code>. Average computes in $O(1)$ time.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">from collections import deque
+
+class MovingAverage:
+    def __init__(self, size: int):
+        self.size = size
+        self.queue = deque()
+        self.window_sum = 0
+
+    def next(self, val: int) -> float:
+        if len(self.queue) == self.size:
+            self.window_sum -= self.queue.popleft()
+            
+        self.queue.append(val)
+        self.window_sum += val
+        return self.window_sum / len(self.queue)
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(1)$ for each <code>next()</code> invocation.<br>
+<strong>Space:</strong> $O(k)$ where $k$ is the window size.</p>
+
 
 <div class="pager"><a href="../problems/0477-lc341-flatten-nested-list-iterator.html"><span class="lbl">← Previous</span>#341 Flatten Nested List Iterator</a><a href="../problems/0479-lc348-design-tic-tac-toe.html" style="text-align:right"><span class="lbl">Next →</span>#348 Design Tic-Tac-Toe</a></div>
 </div>
