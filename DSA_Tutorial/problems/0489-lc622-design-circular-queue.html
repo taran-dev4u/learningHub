@@ -23,42 +23,68 @@
  › Subpattern 15.1: General / Specific Data Structure Design · Problem 489 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0677-lc622-design-circular-queue.html">Iterator &amp; Data-Stream Design</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Design a circular queue with fixed capacity: enqueue, dequeue, front, rear, empty/full checks.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Design your implementation of the circular queue. A circular queue is a linear data structure in which the operations are performed based on FIFO principle and the last position is connected back to the first position to make a circle.</p>
 
-<h2>Where this fits</h2>
-<p><strong>General / Specific Data Structure Design</strong> — Compose hashmap + secondary structure (linked list, heap, set) to give each operation the right complexity.</p>
+<p>Maintain:
+- <code>q = [0] * k</code>: fixed-size array of capacity $k$.
+- <code>head</code>: index of the front element.
+- <code>count</code>: current number of elements in the queue.</p>
+<p>Formulas:
+- Rear index: <code>(head + count - 1) % k</code>
+- New element inserted at: <code>(head + count) % k</code>
+- Dequeue advances head: <code>head = (head + 1) % k; count -= 1</code></p>
 
-<h2>Why this pattern?</h2><ul><li>"Design/implement a class with operations X, Y, Z"</li><li>explicit per-op complexity targets ("all in O(1)")</li><li>eviction rules (LRU/LFU), recency, frequency</li><li>"getRandom", "getMin", snapshots, iterators</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Design master template and adapt the marked parts to this problem:</p><pre><code># The composition method:
-# 1. Ops:      get(k), put(k,v), evict_least_recent
-# 2. Targets:  O(1),   O(1),     O(1)
-# 3. Pick:     dict  → O(1) get/put by key
-#              DLL   → O(1) move-to-front / evict-tail
-#              glue: dict maps key → its DLL node
+<h2>🐢 Brute force vs optimal</h2>
+<p>Using <code>count</code> eliminates the ambiguity between an empty queue and a full queue in classic pointer math without wasting an array slot.</p>
 
-# In Python interviews, OrderedDict is the accepted shortcut:
-from collections import OrderedDict
-class LRUCache:
-    def __init__(self, cap):
-        self.d, self.cap = OrderedDict(), cap
-    def get(self, k):
-        if k not in self.d: return -1
-        self.d.move_to_end(k)            # mark most-recent
-        return self.d[k]
-    def put(self, k, v):
-        if k in self.d: self.d.move_to_end(k)
-        self.d[k] = v
-        if len(self.d) &gt; self.cap:
-            self.d.popitem(last=False)   # evict least-recent</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<div class="insight">💡 <strong>Key insight:</strong> Use <code>head</code> and <code>count</code>: rear is <code>(head + count - 1) % k</code>. Adding increments count; removing increments head modulo $k$.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">class MyCircularQueue:
+    def __init__(self, k: int):
+        self.k = k
+        self.q = [0] * k
+        self.head = 0
+        self.count = 0
+
+    def enQueue(self, value: int) -> bool:
+        if self.isFull():
+            return False
+        tail = (self.head + self.count) % self.k
+        self.q[tail] = value
+        self.count += 1
+        return True
+
+    def deQueue(self) -> bool:
+        if self.isEmpty():
+            return False
+        self.head = (self.head + 1) % self.k
+        self.count -= 1
+        return True
+
+    def Front(self) -> int:
+        return -1 if self.isEmpty() else self.q[self.head]
+
+    def Rear(self) -> int:
+        if self.isEmpty():
+            return -1
+        tail = (self.head + self.count - 1) % self.k
+        return self.q[tail]
+
+    def isEmpty(self) -> bool:
+        return self.count == 0
+
+    def isFull(self) -> bool:
+        return self.count == self.k
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(1)$ for all operations.<br>
+<strong>Space:</strong> $O(k)$ — Fixed circular buffer of size $k$.</p>
+
 
 <div class="pager"><a href="../problems/0488-lc604-design-compressed-string-iterator.html"><span class="lbl">← Previous</span>#604 Design Compressed String Iterator</a><a href="../problems/0490-lc641-design-circular-deque.html" style="text-align:right"><span class="lbl">Next →</span>#641 Design Circular Deque</a></div>
 </div>

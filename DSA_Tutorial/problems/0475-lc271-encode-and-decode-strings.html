@@ -23,42 +23,48 @@
  › Subpattern 15.1: General / Specific Data Structure Design · Problem 475 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0446-lc271-encode-and-decode-strings.html">String Manipulation</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Design encode/decode so any list of strings becomes one string and back, safely handling any characters.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Design an algorithm to encode a list of strings to a string. The encoded string is then sent over the network and decoded back to the original list of strings.</p>
 
-<h2>Where this fits</h2>
-<p><strong>General / Specific Data Structure Design</strong> — Compose hashmap + secondary structure (linked list, heap, set) to give each operation the right complexity.</p>
+<p><strong>Length-Prefixed Framing:</strong>
+Any special delimiter character (like <code>,</code>, <code>:</code>, or <code>#</code>) can legitimately appear inside the strings themselves.
+Instead of fragile character escaping, encode each string as:
+<code>f"{len(s)}#{s}"</code>
+During decoding:
+1. Scan for the delimiter <code>#</code> to parse the integer length $L$.
+2. Slice exactly the next $L$ characters as the payload.
+3. Advance the index by $L$ and repeat!</p>
 
-<h2>Why this pattern?</h2><ul><li>"Design/implement a class with operations X, Y, Z"</li><li>explicit per-op complexity targets ("all in O(1)")</li><li>eviction rules (LRU/LFU), recency, frequency</li><li>"getRandom", "getMin", snapshots, iterators</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Design master template and adapt the marked parts to this problem:</p><pre><code># The composition method:
-# 1. Ops:      get(k), put(k,v), evict_least_recent
-# 2. Targets:  O(1),   O(1),     O(1)
-# 3. Pick:     dict  → O(1) get/put by key
-#              DLL   → O(1) move-to-front / evict-tail
-#              glue: dict maps key → its DLL node
+<h2>🐢 Brute force vs optimal</h2>
+<p>Escaping delimiters requires complex string replacement. Length-prefix chunking is stateless, robust, and executes in $O(N)$ linear time.</p>
 
-# In Python interviews, OrderedDict is the accepted shortcut:
-from collections import OrderedDict
-class LRUCache:
-    def __init__(self, cap):
-        self.d, self.cap = OrderedDict(), cap
-    def get(self, k):
-        if k not in self.d: return -1
-        self.d.move_to_end(k)            # mark most-recent
-        return self.d[k]
-    def put(self, k, v):
-        if k in self.d: self.d.move_to_end(k)
-        self.d[k] = v
-        if len(self.d) &gt; self.cap:
-            self.d.popitem(last=False)   # evict least-recent</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<div class="insight">💡 <strong>Key insight:</strong> Chunk format: <code>length + '#' + string</code>. Reading $L$ bytes directly bypasses any delimiters nested inside the string payload.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">class Codec:
+    def encode(self, strs: list[str]) -> str:
+        """Encodes a list of strings to a single wire string."""
+        return "".join(f"{len(s)}#{s}" for s in strs)
+
+    def decode(self, s: str) -> list[str]:
+        """Decodes a single wire string to a list of strings."""
+        res = []
+        i = 0
+        while i < len(s):
+            sep = s.find('#', i)
+            length = int(s[i:sep])
+            word = s[sep + 1 : sep + 1 + length]
+            res.append(word)
+            i = sep + 1 + length
+        return res
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(N)$ where $N$ is the total number of characters across all strings.<br>
+<strong>Space:</strong> $O(N)$ — Single wire string buffer.</p>
+
 
 <div class="pager"><a href="../problems/0474-lc251-flatten-2d-vector.html"><span class="lbl">← Previous</span>#251 Flatten 2D Vector</a><a href="../problems/0476-lc295-find-median-from-data-stream.html" style="text-align:right"><span class="lbl">Next →</span>#295 Find Median from Data Stream</a></div>
 </div>

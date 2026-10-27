@@ -23,42 +23,51 @@
  › Subpattern 15.1: General / Specific Data Structure Design · Problem 474 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0670-lc251-flatten-2d-vector.html">Iterator &amp; Data-Stream Design</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Implement an iterator that flattens a 2-D vector, exposing next() and hasNext().</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Design an iterator to flatten a 2D vector. It should support <code>next()</code> and <code>hasNext()</code> operations.</p>
 
-<h2>Where this fits</h2>
-<p><strong>General / Specific Data Structure Design</strong> — Compose hashmap + secondary structure (linked list, heap, set) to give each operation the right complexity.</p>
+<p>Do NOT flatten the entire 2D vector into a 1D array upfront in the constructor ($O(N)$ extra space)!
+Instead, maintain two lightweight coordinate pointers:
+- <code>row</code>: current row index in the outer list.
+- <code>col</code>: current column index in the current inner list.</p>
 
-<h2>Why this pattern?</h2><ul><li>"Design/implement a class with operations X, Y, Z"</li><li>explicit per-op complexity targets ("all in O(1)")</li><li>eviction rules (LRU/LFU), recency, frequency</li><li>"getRandom", "getMin", snapshots, iterators</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Design master template and adapt the marked parts to this problem:</p><pre><code># The composition method:
-# 1. Ops:      get(k), put(k,v), evict_least_recent
-# 2. Targets:  O(1),   O(1),     O(1)
-# 3. Pick:     dict  → O(1) get/put by key
-#              DLL   → O(1) move-to-front / evict-tail
-#              glue: dict maps key → its DLL node
+<p><strong>The Lazy Advance Helper <code>_advance_to_valid()</code>:</strong>
+Because rows can be completely empty (e.g. <code>[[], [1, 2], [], [3]]</code>), we must advance <code>row</code> forward whenever <code>col == len(vec[row])</code> until we either land on a non-empty row or reach the end of the outer list!</p>
 
-# In Python interviews, OrderedDict is the accepted shortcut:
-from collections import OrderedDict
-class LRUCache:
-    def __init__(self, cap):
-        self.d, self.cap = OrderedDict(), cap
-    def get(self, k):
-        if k not in self.d: return -1
-        self.d.move_to_end(k)            # mark most-recent
-        return self.d[k]
-    def put(self, k, v):
-        if k in self.d: self.d.move_to_end(k)
-        self.d[k] = v
-        if len(self.d) &gt; self.cap:
-            self.d.popitem(last=False)   # evict least-recent</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h2>🐢 Brute force vs optimal</h2>
+<p>Copying into a 1D list takes $O(N)$ auxiliary space. Two-pointer pointer navigation takes $O(1)$ auxiliary space and $O(1)$ amortized time per operation.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Advance pointers lazily: <code>while row < len(vec) and col == len(vec[row]): row += 1; col = 0</code>. Consumes $O(1)$ auxiliary space!</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">class Vector2D:
+    def __init__(self, vec: list[list[int]]):
+        self.vec = vec
+        self.row = 0
+        self.col = 0
+
+    def _advance_to_valid(self):
+        while self.row < len(self.vec) and self.col == len(self.vec[self.row]):
+            self.row += 1
+            self.col = 0
+
+    def next(self) -> int:
+        self._advance_to_valid()
+        val = self.vec[self.row][self.col]
+        self.col += 1
+        return val
+
+    def hasNext(self) -> bool:
+        self._advance_to_valid()
+        return self.row < len(self.vec)
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(1)$ amortized for both <code>next()</code> and <code>hasNext()</code>.<br>
+<strong>Space:</strong> $O(1)$ auxiliary space (no array copying).</p>
+
 
 <div class="pager"><a href="../problems/0473-lc232-implement-queue-using-stacks.html"><span class="lbl">← Previous</span>#232 Implement Queue using Stacks</a><a href="../problems/0475-lc271-encode-and-decode-strings.html" style="text-align:right"><span class="lbl">Next →</span>#271 Encode and Decode Strings</a></div>
 </div>

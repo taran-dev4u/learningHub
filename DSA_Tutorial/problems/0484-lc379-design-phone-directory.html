@@ -23,42 +23,53 @@
  › Subpattern 15.1: General / Specific Data Structure Design · Problem 484 of 699</p>
 
 <h2>📋 The problem</h2><p>Design a phone directory that hands out unused numbers, checks availability, and recycles released numbers.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Design a Phone Directory which allocates and releases telephone numbers from $0$ to $	ext{maxNumbers} - 1$.</p>
 
-<h2>Where this fits</h2>
-<p><strong>General / Specific Data Structure Design</strong> — Compose hashmap + secondary structure (linked list, heap, set) to give each operation the right complexity.</p>
+<p>Requirements:
+- <code>get()</code>: Provide an unassigned number, or -1 if none available.
+- <code>check(number)</code>: Return whether the number is currently available.
+- <code>release(number)</code>: Free up an assigned number.</p>
 
-<h2>Why this pattern?</h2><ul><li>"Design/implement a class with operations X, Y, Z"</li><li>explicit per-op complexity targets ("all in O(1)")</li><li>eviction rules (LRU/LFU), recency, frequency</li><li>"getRandom", "getMin", snapshots, iterators</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Design master template and adapt the marked parts to this problem:</p><pre><code># The composition method:
-# 1. Ops:      get(k), put(k,v), evict_least_recent
-# 2. Targets:  O(1),   O(1),     O(1)
-# 3. Pick:     dict  → O(1) get/put by key
-#              DLL   → O(1) move-to-front / evict-tail
-#              glue: dict maps key → its DLL node
+<p><strong>Queue + Hash Set (or Boolean Array):</strong>
+- <code>available_queue</code>: FIFO queue holding available numbers.
+- <code>used_set</code>: Hash set tracking numbers currently in use for $O(1)$ check and release deduplication.</p>
 
-# In Python interviews, OrderedDict is the accepted shortcut:
-from collections import OrderedDict
-class LRUCache:
-    def __init__(self, cap):
-        self.d, self.cap = OrderedDict(), cap
-    def get(self, k):
-        if k not in self.d: return -1
-        self.d.move_to_end(k)            # mark most-recent
-        return self.d[k]
-    def put(self, k, v):
-        if k in self.d: self.d.move_to_end(k)
-        self.d[k] = v
-        if len(self.d) &gt; self.cap:
-            self.d.popitem(last=False)   # evict least-recent</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h2>🐢 Brute force vs optimal</h2>
+<p>Scanning an array for an available number takes $O(n)$. A queue of available numbers gives strict $O(1)$ for <code>get</code>, <code>check</code>, and <code>release</code>.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Maintain a FIFO queue of unused numbers and a set of used numbers. <code>get</code> pops from queue, <code>release</code> adds back to queue in $O(1)$!</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">from collections import deque
+
+class PhoneDirectory:
+    def __init__(self, maxNumbers: int):
+        self.available = deque(range(maxNumbers))
+        self.used = set()
+
+    def get(self) -> int:
+        if not self.available:
+            return -1
+        num = self.available.popleft()
+        self.used.add(num)
+        return num
+
+    def check(self, number: int) -> bool:
+        return number not in self.used
+
+    def release(self, number: int) -> None:
+        if number in self.used:
+            self.used.remove(number)
+            self.available.append(number)
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(1)$ for <code>get</code>, <code>check</code>, and <code>release</code>.<br>
+<strong>Space:</strong> $O(N)$ where $N$ is <code>maxNumbers</code>.</p>
+
 
 <div class="pager"><a href="../problems/0483-lc362-design-hit-counter.html"><span class="lbl">← Previous</span>#362 Design Hit Counter</a><a href="../problems/0485-lc380-insert-delete-getrandom-o-1.html" style="text-align:right"><span class="lbl">Next →</span>#380 Insert Delete GetRandom O(1)</a></div>
 </div>

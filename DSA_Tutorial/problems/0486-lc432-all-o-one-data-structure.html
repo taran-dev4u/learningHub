@@ -23,42 +23,112 @@
  › Subpattern 15.1: General / Specific Data Structure Design · Problem 486 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0537-lc432-all-o-one-data-structure.html">Hash Map &amp; Cache Design</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Design a structure with inc(key), dec(key), getMaxKey(), getMinKey() — all O(1).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Design a data structure to store the strings' count with the ability to return the strings with minimum and maximum counts in <strong>$O(1)$ time complexity</strong> for all operations: <code>inc</code>, <code>dec</code>, <code>getMaxKey</code>, and <code>getMinKey</code>!</p>
 
-<h2>Where this fits</h2>
-<p><strong>General / Specific Data Structure Design</strong> — Compose hashmap + secondary structure (linked list, heap, set) to give each operation the right complexity.</p>
+<p><strong>Doubly Linked List of Buckets + Hash Maps:</strong>
+1. Each <code>BucketNode</code> represents a distinct count value (e.g. count = 1, 2, 5...) and holds:
+   - <code>count</code>: integer value.
+   - <code>keys</code>: a hash set of strings that currently have this exact count.
+   - <code>prev</code> and <code>next</code>: pointers linking to the adjacent count bucket.
+2. <code>key_to_node</code> (Hash Map): maps each string <code>key -> BucketNode</code>.
+3. Sentinel <code>head</code> and <code>tail</code> nodes keep track of minimum count (first bucket after head) and maximum count (last bucket before tail)!</p>
 
-<h2>Why this pattern?</h2><ul><li>"Design/implement a class with operations X, Y, Z"</li><li>explicit per-op complexity targets ("all in O(1)")</li><li>eviction rules (LRU/LFU), recency, frequency</li><li>"getRandom", "getMin", snapshots, iterators</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Design master template and adapt the marked parts to this problem:</p><pre><code># The composition method:
-# 1. Ops:      get(k), put(k,v), evict_least_recent
-# 2. Targets:  O(1),   O(1),     O(1)
-# 3. Pick:     dict  → O(1) get/put by key
-#              DLL   → O(1) move-to-front / evict-tail
-#              glue: dict maps key → its DLL node
+<p><strong>Transitions:</strong>
+- <code>inc(key)</code>: Move key from bucket $C$ to bucket $C + 1$ (create bucket $C + 1$ if it doesn't exist). Remove key from bucket $C$; delete bucket $C$ if empty!
+- <code>dec(key)</code>: Move key from bucket $C$ to bucket $C - 1$ (or delete key if $C == 1$). Delete bucket $C$ if empty!
+- <code>getMaxKey()</code>: Return any key from <code>tail.prev.keys</code> in $O(1)$!
+- <code>getMinKey()</code>: Return any key from <code>head.next.keys</code> in $O(1)$!</p>
 
-# In Python interviews, OrderedDict is the accepted shortcut:
-from collections import OrderedDict
-class LRUCache:
-    def __init__(self, cap):
-        self.d, self.cap = OrderedDict(), cap
-    def get(self, k):
-        if k not in self.d: return -1
-        self.d.move_to_end(k)            # mark most-recent
-        return self.d[k]
-    def put(self, k, v):
-        if k in self.d: self.d.move_to_end(k)
-        self.d[k] = v
-        if len(self.d) &gt; self.cap:
-            self.d.popitem(last=False)   # evict least-recent</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h2>🐢 Brute force vs optimal</h2>
+<p>Heap or balanced tree requires $O(\log n)$ per update. Doubly linked list of frequency buckets achieves strict $O(1)$ for all operations.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Doubly linked list where each node is a bucket holding a set of keys with identical counts. Head neighbor is min; tail neighbor is max. Strict $O(1)$!</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">class Bucket:
+    def __init__(self, count=0):
+        self.count = count
+        self.keys = set()
+        self.prev = None
+        self.next = None
+
+class AllOne:
+    def __init__(self):
+        self.head = Bucket(0) # Dummy head
+        self.tail = Bucket(0) # Dummy tail
+        self.head.next = self.tail
+        self.tail.prev = self.head
+        self.key_to_bucket = {} # key -> Bucket
+
+    def _insert_after(self, target: Bucket, new_bucket: Bucket):
+        new_bucket.next = target.next
+        new_bucket.prev = target
+        target.next.prev = new_bucket
+        target.next = new_bucket
+
+    def _remove_bucket(self, bucket: Bucket):
+        bucket.prev.next = bucket.next
+        bucket.next.prev = bucket.prev
+
+    def inc(self, key: str) -> None:
+        if key not in self.key_to_bucket:
+            # Target count is 1
+            if self.head.next.count == 1:
+                b = self.head.next
+            else:
+                b = Bucket(1)
+                self._insert_after(self.head, b)
+            b.keys.add(key)
+            self.key_to_bucket[key] = b
+        else:
+            curr_b = self.key_to_bucket[key]
+            next_count = curr_b.count + 1
+            if curr_b.next.count == next_count:
+                next_b = curr_b.next
+            else:
+                next_b = Bucket(next_count)
+                self._insert_after(curr_b, next_b)
+            next_b.keys.add(key)
+            self.key_to_bucket[key] = next_b
+            curr_b.keys.remove(key)
+            if not curr_b.keys:
+                self._remove_bucket(curr_b)
+
+    def dec(self, key: str) -> None:
+        curr_b = self.key_to_bucket[key]
+        curr_b.keys.remove(key)
+        if curr_b.count == 1:
+            del self.key_to_bucket[key]
+        else:
+            prev_count = curr_b.count - 1
+            if curr_b.prev.count == prev_count:
+                prev_b = curr_b.prev
+            else:
+                prev_b = Bucket(prev_count)
+                self._insert_after(curr_b.prev, prev_b)
+            prev_b.keys.add(key)
+            self.key_to_bucket[key] = prev_b
+        if not curr_b.keys:
+            self._remove_bucket(curr_b)
+
+    def getMaxKey(self) -> str:
+        if self.tail.prev == self.head:
+            return ""
+        return next(iter(self.tail.prev.keys))
+
+    def getMinKey(self) -> str:
+        if self.head.next == self.tail:
+            return ""
+        return next(iter(self.head.next.keys))
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(1)$ for <code>inc</code>, <code>dec</code>, <code>getMaxKey</code>, and <code>getMinKey</code>.<br>
+<strong>Space:</strong> $O(K)$ where $K$ is the number of distinct keys stored.</p>
+
 
 <div class="pager"><a href="../problems/0485-lc380-insert-delete-getrandom-o-1.html"><span class="lbl">← Previous</span>#380 Insert Delete GetRandom O(1)</a><a href="../problems/0487-lc460-lfu-cache.html" style="text-align:right"><span class="lbl">Next →</span>#460 LFU Cache</a></div>
 </div>

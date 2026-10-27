@@ -23,42 +23,61 @@
  › Subpattern 15.1: General / Specific Data Structure Design · Problem 494 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0512-lc715-range-module.html">Segment Tree &amp; Fenwick Tree</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Design a structure that adds, removes, and queries coverage of number ranges (interval set with add/remove/query).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>A Range Module is a module that tracks ranges of numbers. Design a data structure to add, query, and remove intervals in half-open intervals $[left, right)$.</p>
 
-<h2>Where this fits</h2>
-<p><strong>General / Specific Data Structure Design</strong> — Compose hashmap + secondary structure (linked list, heap, set) to give each operation the right complexity.</p>
+<p><strong>Disjoint Sorted Intervals:</strong>
+Maintain intervals in sorted, non-overlapping order: <code>[[l1, r1], [l2, r2], ...]</code>.
+- <code>addRange(left, right)</code>: Merge all intervals that overlap or touch $[left, right)$ into one expanded interval.
+- <code>queryRange(left, right)</code>: Binary search for the interval covering $left$. If that interval also satisfies $interval.right \ge right$, return <code>True</code>!
+- <code>removeRange(left, right)</code>: Split and trim any intervals that intersect with $[left, right)$.</p>
 
-<h2>Why this pattern?</h2><ul><li>"Design/implement a class with operations X, Y, Z"</li><li>explicit per-op complexity targets ("all in O(1)")</li><li>eviction rules (LRU/LFU), recency, frequency</li><li>"getRandom", "getMin", snapshots, iterators</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Design master template and adapt the marked parts to this problem:</p><pre><code># The composition method:
-# 1. Ops:      get(k), put(k,v), evict_least_recent
-# 2. Targets:  O(1),   O(1),     O(1)
-# 3. Pick:     dict  → O(1) get/put by key
-#              DLL   → O(1) move-to-front / evict-tail
-#              glue: dict maps key → its DLL node
+<h2>🐢 Brute force vs optimal</h2>
+<p>Using a sorted list with binary search (<code>bisect</code>) allows $O(\log N)$ search and $O(N)$ interval slicing.</p>
 
-# In Python interviews, OrderedDict is the accepted shortcut:
-from collections import OrderedDict
-class LRUCache:
-    def __init__(self, cap):
-        self.d, self.cap = OrderedDict(), cap
-    def get(self, k):
-        if k not in self.d: return -1
-        self.d.move_to_end(k)            # mark most-recent
-        return self.d[k]
-    def put(self, k, v):
-        if k in self.d: self.d.move_to_end(k)
-        self.d[k] = v
-        if len(self.d) &gt; self.cap:
-            self.d.popitem(last=False)   # evict least-recent</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<div class="insight">💡 <strong>Key insight:</strong> Disjoint intervals array: binary search finds overlapping candidates in $O(\log N)$. Merge overlapping blocks on <code>addRange</code>; punch holes on <code>removeRange</code>.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">import bisect
+
+class RangeModule:
+    def __init__(self):
+        # Flat list of alternating boundary points: [l0, r0, l1, r1, ...]
+        # Represents disjoint intervals [l0, r0), [l1, r1)...
+        self.track = []
+
+    def addRange(self, left: int, right: int) -> None:
+        l = bisect.bisect_left(self.track, left)
+        r = bisect.bisect_right(self.track, right)
+        sub = []
+        if l % 2 == 0:
+            sub.append(left)
+        if r % 2 == 0:
+            sub.append(right)
+        self.track[l:r] = sub
+
+    def queryRange(self, left: int, right: int) -> bool:
+        l = bisect.bisect_right(self.track, left)
+        r = bisect.bisect_left(self.track, right)
+        return l % 2 == 1 and l == r
+
+    def removeRange(self, left: int, right: int) -> None:
+        l = bisect.bisect_left(self.track, left)
+        r = bisect.bisect_right(self.track, right)
+        sub = []
+        if l % 2 == 1:
+            sub.append(left)
+        if r % 2 == 1:
+            sub.append(right)
+        self.track[l:r] = sub
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> <code>queryRange</code>: $O(\log N)$ binary search. <code>addRange</code>, <code>removeRange</code>: $O(N)$ array slice.<br>
+<strong>Space:</strong> $O(N)$ — Disjoint interval boundaries.</p>
+
 
 <div class="pager"><a href="../problems/0493-lc706-design-hashmap.html"><span class="lbl">← Previous</span>#706 Design HashMap</a><a href="../problems/0495-lc900-rle-iterator.html" style="text-align:right"><span class="lbl">Next →</span>#900 RLE Iterator</a></div>
 </div>

@@ -800,4 +800,766 @@ class LFUCache:
 <p><strong>Time:</strong> $O(1)$ for both <code>get</code> and <code>put</code>.<br>
 <strong>Space:</strong> $O(\text{capacity})$ — Hash map and nodes partitioned across frequency lists.</p>
 ''',
+
+251: '''<h2>🧭 How to think about it</h2>
+<p>Design an iterator to flatten a 2D vector. It should support <code>next()</code> and <code>hasNext()</code> operations.</p>
+
+<p>Do NOT flatten the entire 2D vector into a 1D array upfront in the constructor ($O(N)$ extra space)!
+Instead, maintain two lightweight coordinate pointers:
+- <code>row</code>: current row index in the outer list.
+- <code>col</code>: current column index in the current inner list.</p>
+
+<p><strong>The Lazy Advance Helper <code>_advance_to_valid()</code>:</strong>
+Because rows can be completely empty (e.g. <code>[[], [1, 2], [], [3]]</code>), we must advance <code>row</code> forward whenever <code>col == len(vec[row])</code> until we either land on a non-empty row or reach the end of the outer list!</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Copying into a 1D list takes $O(N)$ auxiliary space. Two-pointer pointer navigation takes $O(1)$ auxiliary space and $O(1)$ amortized time per operation.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Advance pointers lazily: <code>while row < len(vec) and col == len(vec[row]): row += 1; col = 0</code>. Consumes $O(1)$ auxiliary space!</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">class Vector2D:
+    def __init__(self, vec: list[list[int]]):
+        self.vec = vec
+        self.row = 0
+        self.col = 0
+
+    def _advance_to_valid(self):
+        while self.row < len(self.vec) and self.col == len(self.vec[self.row]):
+            self.row += 1
+            self.col = 0
+
+    def next(self) -> int:
+        self._advance_to_valid()
+        val = self.vec[self.row][self.col]
+        self.col += 1
+        return val
+
+    def hasNext(self) -> bool:
+        self._advance_to_valid()
+        return self.row < len(self.vec)
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(1)$ amortized for both <code>next()</code> and <code>hasNext()</code>.<br>
+<strong>Space:</strong> $O(1)$ auxiliary space (no array copying).</p>
+''',
+271: '''<h2>🧭 How to think about it</h2>
+<p>Design an algorithm to encode a list of strings to a string. The encoded string is then sent over the network and decoded back to the original list of strings.</p>
+
+<p><strong>Length-Prefixed Framing:</strong>
+Any special delimiter character (like <code>,</code>, <code>:</code>, or <code>#</code>) can legitimately appear inside the strings themselves.
+Instead of fragile character escaping, encode each string as:
+<code>f"{len(s)}#{s}"</code>
+During decoding:
+1. Scan for the delimiter <code>#</code> to parse the integer length $L$.
+2. Slice exactly the next $L$ characters as the payload.
+3. Advance the index by $L$ and repeat!</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Escaping delimiters requires complex string replacement. Length-prefix chunking is stateless, robust, and executes in $O(N)$ linear time.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Chunk format: <code>length + '#' + string</code>. Reading $L$ bytes directly bypasses any delimiters nested inside the string payload.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">class Codec:
+    def encode(self, strs: list[str]) -> str:
+        """Encodes a list of strings to a single wire string."""
+        return "".join(f"{len(s)}#{s}" for s in strs)
+
+    def decode(self, s: str) -> list[str]:
+        """Decodes a single wire string to a list of strings."""
+        res = []
+        i = 0
+        while i < len(s):
+            sep = s.find('#', i)
+            length = int(s[i:sep])
+            word = s[sep + 1 : sep + 1 + length]
+            res.append(word)
+            i = sep + 1 + length
+        return res
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(N)$ where $N$ is the total number of characters across all strings.<br>
+<strong>Space:</strong> $O(N)$ — Single wire string buffer.</p>
+''',
+341: '''<h2>🧭 How to think about it</h2>
+<p>You are given a nested list of integers <code>nestedList</code>. Each element is either an integer, or a list whose elements may also be integers or other lists. Implement an iterator to flatten it.</p>
+
+<p><strong>The Stack of Reverse Generators:</strong>
+To achieve true lazy evaluation without flattening everything in the constructor ($O(1)$ memory consumption for deep trees):
+Maintain a stack storing elements in <strong>reverse order</strong>!
+- In <code>hasNext()</code>:
+  While stack is not empty and the top element is a list:
+  Pop the list, and push its sub-elements onto the stack in <strong>reverse order</strong>!
+- When the top element is an integer, return <code>True</code>!
+- If the stack becomes empty, return <code>False</code>.</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Flattening in constructor takes $O(N)$ upfront time and space. The stack approach flattens on-demand in $O(D)$ space where $D$ is the maximum nesting depth.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Stack holds nested elements in reverse order. In <code>hasNext()</code>, unpack top lists in reverse until top is a plain integer.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">class NestedIterator:
+    def __init__(self, nestedList: list):
+        # Push elements in reverse so top of stack is the first element
+        self.stack = list(reversed(nestedList))
+
+    def next(self) -> int:
+        return self.stack.pop().getInteger()
+
+    def hasNext(self) -> bool:
+        while self.stack:
+            top = self.stack[-1]
+            if top.isInteger():
+                return True
+            # Pop list and push its items in reverse order
+            self.stack.pop()
+            for item in reversed(top.getList()):
+                self.stack.append(item)
+        return False
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(1)$ amortized per <code>next()</code> and <code>hasNext()</code>.<br>
+<strong>Space:</strong> $O(D)$ where $D$ is the maximum nesting depth.</p>
+''',
+353: '''<h2>🧭 How to think about it</h2>
+<p>Design a Snake game that is played on a device with screen size $height \\times width$. The snake starts at position $(0, 0)$ with length 1. You are given a list of food positions. When the snake eats food, its length and score increase by 1. If it hits a wall or bites its own body, the game ends (returns -1).</p>
+
+<p><strong>Data Structures:</strong>
+1. <code>body</code> (Double-ended Queue / <code>deque</code>): stores coordinates of snake body segments from head to tail.
+2. <code>body_set</code> (Hash Set): stores body coordinates for $O(1)$ self-collision checks!
+3. <code>food_idx</code>: pointer to the current food item.</p>
+
+<p><strong>The Tail Movement Nuance:</strong>
+When moving to a new cell:
+- If food is eaten: tail does <strong>not</strong> move (snake grows).
+- If no food is eaten: tail <strong>must move forward</strong> (pop tail from <code>body</code> and remove from <code>body_set</code>) <em>before</em> checking if the new head collides with the body! (Moving into the tail's old spot is valid!).</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Scanning the entire body list for collisions takes $O(L)$ per move. The hash set allows $O(1)$ collision detection.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Pop tail first if not eating food, then check wall boundaries and body collision in $O(1)$ using <code>body_set</code>, then append new head.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">from collections import deque
+
+class SnakeGame:
+    def __init__(self, width: int, height: int, food: list[list[int]]):
+        self.w = width
+        self.h = height
+        self.food = food
+        self.food_idx = 0
+        self.score = 0
+        
+        # Snake starts at (0, 0)
+        self.body = deque([(0, 0)])
+        self.body_set = {(0, 0)}
+        self.dirs = {'U': (-1, 0), 'D': (1, 0), 'L': (0, -1), 'R': (0, 1)}
+
+    def move(self, direction: str) -> int:
+        dr, dc = self.dirs[direction]
+        head_r, head_c = self.body[0]
+        new_r, new_c = head_r + dr, head_c + dc
+        
+        # 1. Wall collision
+        if not (0 <= new_r < self.h and 0 <= new_c < self.w):
+            return -1
+            
+        # 2. Check food
+        is_food = (self.food_idx < len(self.food) and 
+                   [new_r, new_c] == self.food[self.food_idx])
+                   
+        if is_food:
+            self.food_idx += 1
+            self.score += 1
+        else:
+            # Pop tail to free its cell
+            tail = self.body.pop()
+            self.body_set.remove(tail)
+            
+        # 3. Body collision (after tail is freed)
+        if (new_r, new_c) in self.body_set:
+            return -1
+            
+        # 4. Add new head
+        self.body.appendleft((new_r, new_c))
+        self.body_set.add((new_r, new_c))
+        
+        return self.score
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(1)$ per <code>move()</code>.<br>
+<strong>Space:</strong> $O(N)$ where $N$ is the number of food items eaten (max snake length).</p>
+''',
+379: '''<h2>🧭 How to think about it</h2>
+<p>Design a Phone Directory which allocates and releases telephone numbers from $0$ to $\text{maxNumbers} - 1$.</p>
+
+<p>Requirements:
+- <code>get()</code>: Provide an unassigned number, or -1 if none available.
+- <code>check(number)</code>: Return whether the number is currently available.
+- <code>release(number)</code>: Free up an assigned number.</p>
+
+<p><strong>Queue + Hash Set (or Boolean Array):</strong>
+- <code>available_queue</code>: FIFO queue holding available numbers.
+- <code>used_set</code>: Hash set tracking numbers currently in use for $O(1)$ check and release deduplication.</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Scanning an array for an available number takes $O(n)$. A queue of available numbers gives strict $O(1)$ for <code>get</code>, <code>check</code>, and <code>release</code>.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Maintain a FIFO queue of unused numbers and a set of used numbers. <code>get</code> pops from queue, <code>release</code> adds back to queue in $O(1)$!</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">from collections import deque
+
+class PhoneDirectory:
+    def __init__(self, maxNumbers: int):
+        self.available = deque(range(maxNumbers))
+        self.used = set()
+
+    def get(self) -> int:
+        if not self.available:
+            return -1
+        num = self.available.popleft()
+        self.used.add(num)
+        return num
+
+    def check(self, number: int) -> bool:
+        return number not in self.used
+
+    def release(self, number: int) -> None:
+        if number in self.used:
+            self.used.remove(number)
+            self.available.append(number)
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(1)$ for <code>get</code>, <code>check</code>, and <code>release</code>.<br>
+<strong>Space:</strong> $O(N)$ where $N$ is <code>maxNumbers</code>.</p>
+''',
+432: '''<h2>🧭 How to think about it</h2>
+<p>Design a data structure to store the strings' count with the ability to return the strings with minimum and maximum counts in <strong>$O(1)$ time complexity</strong> for all operations: <code>inc</code>, <code>dec</code>, <code>getMaxKey</code>, and <code>getMinKey</code>!</p>
+
+<p><strong>Doubly Linked List of Buckets + Hash Maps:</strong>
+1. Each <code>BucketNode</code> represents a distinct count value (e.g. count = 1, 2, 5...) and holds:
+   - <code>count</code>: integer value.
+   - <code>keys</code>: a hash set of strings that currently have this exact count.
+   - <code>prev</code> and <code>next</code>: pointers linking to the adjacent count bucket.
+2. <code>key_to_node</code> (Hash Map): maps each string <code>key -> BucketNode</code>.
+3. Sentinel <code>head</code> and <code>tail</code> nodes keep track of minimum count (first bucket after head) and maximum count (last bucket before tail)!</p>
+
+<p><strong>Transitions:</strong>
+- <code>inc(key)</code>: Move key from bucket $C$ to bucket $C + 1$ (create bucket $C + 1$ if it doesn't exist). Remove key from bucket $C$; delete bucket $C$ if empty!
+- <code>dec(key)</code>: Move key from bucket $C$ to bucket $C - 1$ (or delete key if $C == 1$). Delete bucket $C$ if empty!
+- <code>getMaxKey()</code>: Return any key from <code>tail.prev.keys</code> in $O(1)$!
+- <code>getMinKey()</code>: Return any key from <code>head.next.keys</code> in $O(1)$!</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Heap or balanced tree requires $O(\\log n)$ per update. Doubly linked list of frequency buckets achieves strict $O(1)$ for all operations.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Doubly linked list where each node is a bucket holding a set of keys with identical counts. Head neighbor is min; tail neighbor is max. Strict $O(1)$!</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">class Bucket:
+    def __init__(self, count=0):
+        self.count = count
+        self.keys = set()
+        self.prev = None
+        self.next = None
+
+class AllOne:
+    def __init__(self):
+        self.head = Bucket(0) # Dummy head
+        self.tail = Bucket(0) # Dummy tail
+        self.head.next = self.tail
+        self.tail.prev = self.head
+        self.key_to_bucket = {} # key -> Bucket
+
+    def _insert_after(self, target: Bucket, new_bucket: Bucket):
+        new_bucket.next = target.next
+        new_bucket.prev = target
+        target.next.prev = new_bucket
+        target.next = new_bucket
+
+    def _remove_bucket(self, bucket: Bucket):
+        bucket.prev.next = bucket.next
+        bucket.next.prev = bucket.prev
+
+    def inc(self, key: str) -> None:
+        if key not in self.key_to_bucket:
+            # Target count is 1
+            if self.head.next.count == 1:
+                b = self.head.next
+            else:
+                b = Bucket(1)
+                self._insert_after(self.head, b)
+            b.keys.add(key)
+            self.key_to_bucket[key] = b
+        else:
+            curr_b = self.key_to_bucket[key]
+            next_count = curr_b.count + 1
+            if curr_b.next.count == next_count:
+                next_b = curr_b.next
+            else:
+                next_b = Bucket(next_count)
+                self._insert_after(curr_b, next_b)
+            next_b.keys.add(key)
+            self.key_to_bucket[key] = next_b
+            curr_b.keys.remove(key)
+            if not curr_b.keys:
+                self._remove_bucket(curr_b)
+
+    def dec(self, key: str) -> None:
+        curr_b = self.key_to_bucket[key]
+        curr_b.keys.remove(key)
+        if curr_b.count == 1:
+            del self.key_to_bucket[key]
+        else:
+            prev_count = curr_b.count - 1
+            if curr_b.prev.count == prev_count:
+                prev_b = curr_b.prev
+            else:
+                prev_b = Bucket(prev_count)
+                self._insert_after(curr_b.prev, prev_b)
+            prev_b.keys.add(key)
+            self.key_to_bucket[key] = prev_b
+        if not curr_b.keys:
+            self._remove_bucket(curr_b)
+
+    def getMaxKey(self) -> str:
+        if self.tail.prev == self.head:
+            return ""
+        return next(iter(self.tail.prev.keys))
+
+    def getMinKey(self) -> str:
+        if self.head.next == self.tail:
+            return ""
+        return next(iter(self.head.next.keys))
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(1)$ for <code>inc</code>, <code>dec</code>, <code>getMaxKey</code>, and <code>getMinKey</code>.<br>
+<strong>Space:</strong> $O(K)$ where $K$ is the number of distinct keys stored.</p>
+''',
+604: '''<h2>🧭 How to think about it</h2>
+<p>Design and implement a data structure for a compressed string iterator. The given compressed string represents the original uncompressed string of characters followed by their frequencies (e.g. <code>"L1e2t1c1o1d1e1"</code> representing <code>"Leetcode"</code>).</p>
+
+<p>Maintain:
+- <code>s</code>: compressed string.
+- <code>ptr</code>: cursor index in <code>s</code>.
+- <code>curr_char</code>: active character being emitted.
+- <code>curr_count</code>: remaining repeat count of <code>curr_char</code>.</p>
+<p>During <code>next()</code>:
+If <code>curr_count == 0</code>, read the next character and parse the entire multidigit number following it! Decrement <code>curr_count -= 1</code> and return <code>curr_char</code>.</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Expanding the entire string in memory takes $O(\text{Total Length})$ which can explode if count is $10^9$. Reading on the fly takes $O(1)$ extra space.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Parse on the fly: when <code>curr_count == 0</code>, extract next character and read multidigit integer. Avoids unpacking giant strings.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">class StringIterator:
+    def __init__(self, compressedString: str):
+        self.s = compressedString
+        self.ptr = 0
+        self.curr_char = ' '
+        self.curr_count = 0
+
+    def next(self) -> str:
+        if not self.hasNext():
+            return ' '
+        if self.curr_count == 0:
+            self.curr_char = self.s[self.ptr]
+            self.ptr += 1
+            # Parse multi-digit number
+            num = 0
+            while self.ptr < len(self.s) and self.s[self.ptr].isdigit():
+                num = num * 10 + int(self.s[self.ptr])
+                self.ptr += 1
+            self.curr_count = num
+            
+        self.curr_count -= 1
+        return self.curr_char
+
+    def hasNext(self) -> bool:
+        return self.curr_count > 0 or self.ptr < len(self.s)
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(1)$ amortized per <code>next()</code> call.<br>
+<strong>Space:</strong> $O(1)$ auxiliary space.</p>
+''',
+622: '''<h2>🧭 How to think about it</h2>
+<p>Design your implementation of the circular queue. A circular queue is a linear data structure in which the operations are performed based on FIFO principle and the last position is connected back to the first position to make a circle.</p>
+
+<p>Maintain:
+- <code>q = [0] * k</code>: fixed-size array of capacity $k$.
+- <code>head</code>: index of the front element.
+- <code>count</code>: current number of elements in the queue.</p>
+<p>Formulas:
+- Rear index: <code>(head + count - 1) % k</code>
+- New element inserted at: <code>(head + count) % k</code>
+- Dequeue advances head: <code>head = (head + 1) % k; count -= 1</code></p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Using <code>count</code> eliminates the ambiguity between an empty queue and a full queue in classic pointer math without wasting an array slot.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Use <code>head</code> and <code>count</code>: rear is <code>(head + count - 1) % k</code>. Adding increments count; removing increments head modulo $k$.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">class MyCircularQueue:
+    def __init__(self, k: int):
+        self.k = k
+        self.q = [0] * k
+        self.head = 0
+        self.count = 0
+
+    def enQueue(self, value: int) -> bool:
+        if self.isFull():
+            return False
+        tail = (self.head + self.count) % self.k
+        self.q[tail] = value
+        self.count += 1
+        return True
+
+    def deQueue(self) -> bool:
+        if self.isEmpty():
+            return False
+        self.head = (self.head + 1) % self.k
+        self.count -= 1
+        return True
+
+    def Front(self) -> int:
+        return -1 if self.isEmpty() else self.q[self.head]
+
+    def Rear(self) -> int:
+        if self.isEmpty():
+            return -1
+        tail = (self.head + self.count - 1) % self.k
+        return self.q[tail]
+
+    def isEmpty(self) -> bool:
+        return self.count == 0
+
+    def isFull(self) -> bool:
+        return self.count == self.k
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(1)$ for all operations.<br>
+<strong>Space:</strong> $O(k)$ — Fixed circular buffer of size $k$.</p>
+''',
+641: '''<h2>🧭 How to think about it</h2>
+<p>Design your implementation of the circular double-ended queue (deque) supporting insertions and deletions at both front and rear ends.</p>
+
+<p>Similar to Circular Queue (LC 622), maintain:
+- <code>head</code>: points to front element.
+- <code>count</code>: number of items currently in deque.
+- <code>insertFront(val)</code>: decrements head: <code>head = (head - 1 + k) % k; q[head] = val; count += 1</code>.
+- <code>insertLast(val)</code>: inserts at tail: <code>tail = (head + count) % k; q[tail] = val; count += 1</code>.
+- <code>deleteFront()</code>: <code>head = (head + 1) % k; count -= 1</code>.
+- <code>deleteLast()</code>: <code>count -= 1</code>.</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>All operations execute in $O(1)$ time with modulo arithmetic on a fixed pre-allocated array.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Front insertion wraps left: <code>head = (head - 1 + k) % k</code>. Rear insertion wraps right: <code>(head + count) % k</code>.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">class MyCircularDeque:
+    def __init__(self, k: int):
+        self.k = k
+        self.q = [0] * k
+        self.head = 0
+        self.count = 0
+
+    def insertFront(self, value: int) -> bool:
+        if self.isFull():
+            return False
+        self.head = (self.head - 1 + self.k) % self.k
+        self.q[self.head] = value
+        self.count += 1
+        return True
+
+    def insertLast(self, value: int) -> bool:
+        if self.isFull():
+            return False
+        tail = (self.head + self.count) % self.k
+        self.q[tail] = value
+        self.count += 1
+        return True
+
+    def deleteFront(self) -> bool:
+        if self.isEmpty():
+            return False
+        self.head = (self.head + 1) % self.k
+        self.count -= 1
+        return True
+
+    def deleteLast(self) -> bool:
+        if self.isEmpty():
+            return False
+        self.count -= 1
+        return True
+
+    def getFront(self) -> int:
+        return -1 if self.isEmpty() else self.q[self.head]
+
+    def getRear(self) -> int:
+        if self.isEmpty():
+            return -1
+        tail = (self.head + self.count - 1) % self.k
+        return self.q[tail]
+
+    def isEmpty(self) -> bool:
+        return self.count == 0
+
+    def isFull(self) -> bool:
+        return self.count == self.k
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(1)$ for all 8 operations.<br>
+<strong>Space:</strong> $O(k)$ — Fixed circular array.</p>
+''',
+642: '''<h2>🧭 How to think about it</h2>
+<p>Design a search autocomplete system for a search engine. Users may input a sentence character by character. For each character typed (except <code>'#'</code> which terminates the sentence), return the top 3 historical hot sentences that have the same prefix as the sentence typed so far.</p>
+
+<p><strong>Trie with Pre-sorted Top Suggestions:</strong>
+Each <code>TrieNode</code> maintains:
+- <code>children</code>: map of character to child node.
+- <code>hotness</code>: a dictionary or list mapping <code>sentence -> total_frequency</code> across all sentences passing through this node.</p>
+<p>When typing character <code>c</code>:
+1. Advance cursor <code>curr = curr.children[c]</code>.
+2. Sort candidate sentences in <code>curr.hotness</code> by <code>(-count, sentence)</code> and return top 3!
+3. If <code>c == '#'</code>: record the full completed sentence into the Trie, increment count, and reset cursor to root!</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Scanning all historical sentences on every keystroke takes $O(N \\log N)$. Storing sentence frequencies directly on Trie nodes provides rapid prefix retrieval.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Trie node caches sentence frequencies: <code>node.counts[sentence] += 1</code>. Top 3 suggestions are sorted by <code>(-frequency, ascii_sentence)</code>.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">class TrieNode:
+    def __init__(self):
+        self.children = {}
+        self.counts = {} # sentence -> frequency
+
+class AutocompleteSystem:
+    def __init__(self, sentences: list[str], times: list[int]):
+        self.root = TrieNode()
+        self.curr_node = self.root
+        self.curr_str = []
+        
+        for s, t in zip(sentences, times):
+            self._insert(s, t)
+
+    def _insert(self, sentence: str, count: int):
+        curr = self.root
+        for ch in sentence:
+            if ch not in curr.children:
+                curr.children[ch] = TrieNode()
+            curr = curr.children[ch]
+            curr.counts[sentence] = curr.counts.get(sentence, 0) + count
+
+    def input(self, c: str) -> list[str]:
+        if c == '#':
+            sentence = "".join(self.curr_str)
+            self._insert(sentence, 1)
+            self.curr_str = []
+            self.curr_node = self.root
+            return []
+            
+        self.curr_str.append(c)
+        if self.curr_node:
+            self.curr_node = self.curr_node.children.get(c, None)
+            
+        if not self.curr_node:
+            return []
+            
+        # Sort by: 1) frequency descending (-count), 2) ASCII ascending (s)
+        candidates = sorted(self.curr_node.counts.items(), key=lambda x: (-x[1], x[0]))
+        return [s for s, _ in candidates[:3]]
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> Typing a character: $O(K \\log K)$ where $K$ is number of candidate matches with this prefix. Adding sentence: $O(L)$ where $L$ is sentence length.<br>
+<strong>Space:</strong> $O(N \\times L)$ — Trie nodes with sentence references.</p>
+''',
+705: '''<h2>🧭 How to think about it</h2>
+<p>Design a HashSet without using any built-in hash table libraries.</p>
+
+<p><strong>Separate Chaining with Prime Modulo:</strong>
+Pick a large prime number for bucket count to minimize collision clustering (e.g. $B = 769$ or $B = 2069$).
+Each bucket is a linked list or dynamic array.
+- <code>hash(key) = key % B</code>
+- <code>add(key)</code>: check if key exists in bucket; if not, append.
+- <code>remove(key)</code>: remove key from bucket if present.
+- <code>contains(key)</code>: linear scan inside bucket $key \\% B$.</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Separate chaining with prime modulo ensures $O(1)$ average time per operation.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Array of buckets with prime length <code>769</code>: <code>bucket = buckets[key % 769]</code>. Append on add, remove on delete. Average $O(1)$!</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">class MyHashSet:
+    def __init__(self):
+        self.buckets = 769
+        self.table = [[] for _ in range(self.buckets)]
+
+    def _hash(self, key: int) -> int:
+        return key % self.buckets
+
+    def add(self, key: int) -> None:
+        idx = self._hash(key)
+        if key not in self.table[idx]:
+            self.table[idx].append(key)
+
+    def remove(self, key: int) -> None:
+        idx = self._hash(key)
+        if key in self.table[idx]:
+            self.table[idx].remove(key)
+
+    def contains(self, key: int) -> bool:
+        idx = self._hash(key)
+        return key in self.table[idx]
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(1)$ average, $O(N / B)$ worst case with heavy collisions.<br>
+<strong>Space:</strong> $O(K + B)$ where $K$ is total distinct keys and $B = 769$.</p>
+''',
+706: '''<h2>🧭 How to think about it</h2>
+<p>Design a HashMap without using any built-in hash table libraries.</p>
+
+<p>Similar to <code>MyHashSet</code> (LC 705), maintain $B = 769$ bucket lists storing <code>(key, value)</code> pairs.
+- <code>put(key, value)</code>: hash to bucket. If key already exists in bucket, overwrite value. Otherwise, append <code>[key, value]</code>.
+- <code>get(key)</code>: search bucket for key. Return value if found, else -1.
+- <code>remove(key)</code>: remove <code>[key, value]</code> pair from bucket if present.</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Separate chaining gives $O(1)$ amortized operations.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Bucket array storing <code>[key, val]</code> pairs: <code>idx = key % 769</code>. Overwrite on duplicate key, append on new key.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">class MyHashMap:
+    def __init__(self):
+        self.size = 769
+        self.buckets = [[] for _ in range(self.size)]
+
+    def _hash(self, key: int) -> int:
+        return key % self.size
+
+    def put(self, key: int, value: int) -> None:
+        bucket = self.buckets[self._hash(key)]
+        for i, (k, v) in enumerate(bucket):
+            if k == key:
+                bucket[i] = (key, value)
+                return
+        bucket.append((key, value))
+
+    def get(self, key: int) -> int:
+        bucket = self.buckets[self._hash(key)]
+        for k, v in bucket:
+            if k == key:
+                return v
+        return -1
+
+    def remove(self, key: int) -> None:
+        bucket = self.buckets[self._hash(key)]
+        for i, (k, v) in enumerate(bucket):
+            if k == key:
+                del bucket[i]
+                return
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(1)$ average for <code>put</code>, <code>get</code>, and <code>remove</code>.<br>
+<strong>Space:</strong> $O(N + B)$ where $N$ is total pairs and $B = 769$.</p>
+''',
+715: '''<h2>🧭 How to think about it</h2>
+<p>A Range Module is a module that tracks ranges of numbers. Design a data structure to add, query, and remove intervals in half-open intervals $[left, right)$.</p>
+
+<p><strong>Disjoint Sorted Intervals:</strong>
+Maintain intervals in sorted, non-overlapping order: <code>[[l1, r1], [l2, r2], ...]</code>.
+- <code>addRange(left, right)</code>: Merge all intervals that overlap or touch $[left, right)$ into one expanded interval.
+- <code>queryRange(left, right)</code>: Binary search for the interval covering $left$. If that interval also satisfies $interval.right \\ge right$, return <code>True</code>!
+- <code>removeRange(left, right)</code>: Split and trim any intervals that intersect with $[left, right)$.</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Using a sorted list with binary search (<code>bisect</code>) allows $O(\\log N)$ search and $O(N)$ interval slicing.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Disjoint intervals array: binary search finds overlapping candidates in $O(\\log N)$. Merge overlapping blocks on <code>addRange</code>; punch holes on <code>removeRange</code>.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">import bisect
+
+class RangeModule:
+    def __init__(self):
+        # Flat list of alternating boundary points: [l0, r0, l1, r1, ...]
+        # Represents disjoint intervals [l0, r0), [l1, r1)...
+        self.track = []
+
+    def addRange(self, left: int, right: int) -> None:
+        l = bisect.bisect_left(self.track, left)
+        r = bisect.bisect_right(self.track, right)
+        sub = []
+        if l % 2 == 0:
+            sub.append(left)
+        if r % 2 == 0:
+            sub.append(right)
+        self.track[l:r] = sub
+
+    def queryRange(self, left: int, right: int) -> bool:
+        l = bisect.bisect_right(self.track, left)
+        r = bisect.bisect_left(self.track, right)
+        return l % 2 == 1 and l == r
+
+    def removeRange(self, left: int, right: int) -> None:
+        l = bisect.bisect_left(self.track, left)
+        r = bisect.bisect_right(self.track, right)
+        sub = []
+        if l % 2 == 1:
+            sub.append(left)
+        if r % 2 == 1:
+            sub.append(right)
+        self.track[l:r] = sub
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> <code>queryRange</code>: $O(\\log N)$ binary search. <code>addRange</code>, <code>removeRange</code>: $O(N)$ array slice.<br>
+<strong>Space:</strong> $O(N)$ — Disjoint interval boundaries.</p>
+''',
 }

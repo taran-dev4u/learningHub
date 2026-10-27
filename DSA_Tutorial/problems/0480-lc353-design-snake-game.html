@@ -23,42 +23,78 @@
  › Subpattern 15.1: General / Specific Data Structure Design · Problem 480 of 699</p>
 
 <h2>📋 The problem</h2><p>Design the classic Snake game: the snake moves, grows on food, and dies on hitting a wall or itself.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Design a Snake game that is played on a device with screen size $height \times width$. The snake starts at position $(0, 0)$ with length 1. You are given a list of food positions. When the snake eats food, its length and score increase by 1. If it hits a wall or bites its own body, the game ends (returns -1).</p>
 
-<h2>Where this fits</h2>
-<p><strong>General / Specific Data Structure Design</strong> — Compose hashmap + secondary structure (linked list, heap, set) to give each operation the right complexity.</p>
+<p><strong>Data Structures:</strong>
+1. <code>body</code> (Double-ended Queue / <code>deque</code>): stores coordinates of snake body segments from head to tail.
+2. <code>body_set</code> (Hash Set): stores body coordinates for $O(1)$ self-collision checks!
+3. <code>food_idx</code>: pointer to the current food item.</p>
 
-<h2>Why this pattern?</h2><ul><li>"Design/implement a class with operations X, Y, Z"</li><li>explicit per-op complexity targets ("all in O(1)")</li><li>eviction rules (LRU/LFU), recency, frequency</li><li>"getRandom", "getMin", snapshots, iterators</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Design master template and adapt the marked parts to this problem:</p><pre><code># The composition method:
-# 1. Ops:      get(k), put(k,v), evict_least_recent
-# 2. Targets:  O(1),   O(1),     O(1)
-# 3. Pick:     dict  → O(1) get/put by key
-#              DLL   → O(1) move-to-front / evict-tail
-#              glue: dict maps key → its DLL node
+<p><strong>The Tail Movement Nuance:</strong>
+When moving to a new cell:
+- If food is eaten: tail does <strong>not</strong> move (snake grows).
+- If no food is eaten: tail <strong>must move forward</strong> (pop tail from <code>body</code> and remove from <code>body_set</code>) <em>before</em> checking if the new head collides with the body! (Moving into the tail's old spot is valid!).</p>
 
-# In Python interviews, OrderedDict is the accepted shortcut:
-from collections import OrderedDict
-class LRUCache:
-    def __init__(self, cap):
-        self.d, self.cap = OrderedDict(), cap
-    def get(self, k):
-        if k not in self.d: return -1
-        self.d.move_to_end(k)            # mark most-recent
-        return self.d[k]
-    def put(self, k, v):
-        if k in self.d: self.d.move_to_end(k)
-        self.d[k] = v
-        if len(self.d) &gt; self.cap:
-            self.d.popitem(last=False)   # evict least-recent</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h2>🐢 Brute force vs optimal</h2>
+<p>Scanning the entire body list for collisions takes $O(L)$ per move. The hash set allows $O(1)$ collision detection.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Pop tail first if not eating food, then check wall boundaries and body collision in $O(1)$ using <code>body_set</code>, then append new head.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">from collections import deque
+
+class SnakeGame:
+    def __init__(self, width: int, height: int, food: list[list[int]]):
+        self.w = width
+        self.h = height
+        self.food = food
+        self.food_idx = 0
+        self.score = 0
+        
+        # Snake starts at (0, 0)
+        self.body = deque([(0, 0)])
+        self.body_set = {(0, 0)}
+        self.dirs = {'U': (-1, 0), 'D': (1, 0), 'L': (0, -1), 'R': (0, 1)}
+
+    def move(self, direction: str) -> int:
+        dr, dc = self.dirs[direction]
+        head_r, head_c = self.body[0]
+        new_r, new_c = head_r + dr, head_c + dc
+        
+        # 1. Wall collision
+        if not (0 <= new_r < self.h and 0 <= new_c < self.w):
+            return -1
+            
+        # 2. Check food
+        is_food = (self.food_idx < len(self.food) and 
+                   [new_r, new_c] == self.food[self.food_idx])
+                   
+        if is_food:
+            self.food_idx += 1
+            self.score += 1
+        else:
+            # Pop tail to free its cell
+            tail = self.body.pop()
+            self.body_set.remove(tail)
+            
+        # 3. Body collision (after tail is freed)
+        if (new_r, new_c) in self.body_set:
+            return -1
+            
+        # 4. Add new head
+        self.body.appendleft((new_r, new_c))
+        self.body_set.add((new_r, new_c))
+        
+        return self.score
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(1)$ per <code>move()</code>.<br>
+<strong>Space:</strong> $O(N)$ where $N$ is the number of food items eaten (max snake length).</p>
+
 
 <div class="pager"><a href="../problems/0479-lc348-design-tic-tac-toe.html"><span class="lbl">← Previous</span>#348 Design Tic-Tac-Toe</a><a href="../problems/0481-lc355-design-twitter.html" style="text-align:right"><span class="lbl">Next →</span>#355 Design Twitter</a></div>
 </div>
