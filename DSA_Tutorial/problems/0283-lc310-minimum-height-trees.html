@@ -23,44 +23,102 @@
  › Subpattern 9.4: Graph BFS - Topological Sort (Kahn's Algorithm) · Problem 283 of 699</p>
 
 <h2>📋 The problem</h2><p>For a tree given as an edge list, return the root(s) that minimize the tree's height (there are at most two).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>A tree is an undirected graph in which any two vertices are connected by exactly one path. The <strong>height</strong> of a rooted tree is the number of edges on the longest downward path between the root and a leaf. Given <code>n</code> nodes labeled <code>0</code> to <code>n - 1</code> and a tree of <code>n - 1</code> edges, find all nodes that, when chosen as root, produce a tree with <strong>minimum height</strong>. Return a list of all such roots (Minimum Height Trees, or MHTs).</p>
 
-<h2>Where this fits</h2>
-<p><strong>Graph BFS - Topological Sort (Kahn's Algorithm)</strong> — Maintain in-degrees; repeatedly take a zero-in-degree node and decrement neighbors — Kahn's algorithm.</p>
+<h2>🐢 Brute force vs optimal</h2>
+<p>Running BFS from every single node to compute its height takes <code>O(N &times; (V + E)) = O(N^2)</code>, which TLEs on <code>n = 20,000</code>.</p>
 
-<h2>Why this pattern?</h2><ul><li>"islands", "connected", "regions", "provinces" → component DFS/BFS</li><li>"minimum steps / moves / days to reach" → BFS</li><li>"prerequisites", "build order", "course schedule" → topological sort</li><li>states-and-moves puzzles (word ladder, locks) → BFS over implicit graph</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Graph Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>from collections import deque, defaultdict
-# BFS shortest steps
-q, seen = deque([(start, 0)]), {start}
-while q:
-    node, d = q.popleft()
-    if node == goal: return d
-    for nb in neighbors(node):
-        if nb not in seen:
-            seen.add(nb)                 # mark on ENQUEUE
-            q.append((nb, d + 1))
+<div class="insight">💡 <strong>Key insight:</strong> The roots that minimize tree height are the <strong>centroids</strong> of the tree! In graph theory, any tree has either <strong>1 or 2 centroids</strong>.
+<br><br>
+Think of this like <strong>peeling an onion</strong> from the outside in: repeatedly trim all current leaf nodes (nodes with <code>degree == 1</code>) layer by layer. The last remaining 1 or 2 nodes in the core are guaranteed to be the centroids!</div>
 
-# Topological sort (Kahn's)
-indeg = defaultdict(int)
-for u in graph:
-    for v in graph[u]: indeg[v] += 1
-q = deque([u for u in graph if indeg[u] == 0])
-order = []
-while q:
-    u = q.popleft(); order.append(u)
-    for v in graph[u]:
-        indeg[v] -= 1
-        if indeg[v] == 0: q.append(v)
-# len(order) &lt; number of nodes  ⇒  cycle exists</code></pre>
-<h2>How to work on it now</h2>
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Base cases: if <code>n &le; 2</code>, all nodes are already MHT roots; return <code>list(range(n))</code>.</li>
+<li>Build adjacency sets: <code>adj = defaultdict(set)</code>.</li>
+<li>Find all initial leaves: <code>leaves = [i for i in range(n) if len(adj[i]) == 1]</code>.</li>
+<li>Maintain remaining node count: <code>remaining_nodes = n</code>.</li>
+<li>While <code>remaining_nodes > 2</code>:
+  <ul>
+    <li>Subtract current leaves: <code>remaining_nodes -= len(leaves)</code>.</li>
+    <li>New leaves list <code>new_leaves = []</code>.</li>
+    <li>For each leaf in <code>leaves</code>:
+      <ul>
+        <li>Find its only neighbor: <code>neighbor = adj[leaf].pop()</code>.</li>
+        <li>Remove leaf from neighbor: <code>adj[neighbor].remove(leaf)</code>.</li>
+        <li>If neighbor now has <code>len(adj[neighbor]) == 1</code>: append neighbor to <code>new_leaves</code>.</li>
+      </ul>
+    </li>
+    <li><code>leaves = new_leaves</code>.</li>
+  </ul>
+</li>
+<li>Return <code>leaves</code> (contains either 1 or 2 nodes).</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — n=6, edges=[(3,0),(3,1),(3,2),(3,4),(5,4)]:</h2>
+<pre class="viz">Tree structure:
+0 1 -- 3 -- 4 -- 5
+2 /
+
+1. Initial leaves (degree 1): [0, 1, 2, 5]. remaining = 6.
+2. Trim leaves [0, 1, 2, 5]:
+   - Removing 0, 1, 2 leaves node 3 with only neighbor 4 (degree 1).
+   - Removing 5 leaves node 4 with only neighbor 3 (degree 1).
+   remaining = 6 - 4 = 2 nodes left.
+3. remaining <= 2 -> Stop!
+Remaining centroids: [3, 4]
+Output: [3, 4] ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Python 3 — Leaf Trimming (Topological Onion Peeling)</summary>
+<pre><code class="language-python">from collections import defaultdict
+
+def findMinHeightTrees(n: int, edges: list[list[int]]) -> list[int]:
+    """
+    Finds centroids of tree by iteratively trimming leaf nodes layer by layer.
+    """
+    if n <= 2:
+        return list(range(n))
+        
+    # 1. Build adjacency list using sets for O(1) edge removal
+    adj = defaultdict(set)
+    for u, v in edges:
+        adj[u].add(v)
+        adj[v].add(u)
+        
+    # 2. Collect initial leaves
+    leaves = [i for i in range(n) if len(adj[i]) == 1]
+    
+    # 3. Trim leaves until 1 or 2 centroids remain
+    remaining_nodes = n
+    while remaining_nodes > 2:
+        remaining_nodes -= len(leaves)
+        new_leaves = []
+        for leaf in leaves:
+            # The only neighbor of this leaf
+            neighbor = adj[leaf].pop()
+            adj[neighbor].remove(leaf)
+            if len(adj[neighbor]) == 1:
+                new_leaves.append(neighbor)
+        leaves = new_leaves
+        
+    return leaves
+</code></pre>
+</details>
+
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O(N)</code>. Each node and edge is examined and removed at most once during the leaf-trimming process.</li>
+<li><strong>Space Complexity:</strong> <code>O(N)</code> to store the adjacency sets and leaf lists.</li>
+</ul>
+
+<h2>🚨 Edge cases to watch out for</h2>
+<ul>
+<li><code>n = 1</code>: Returns <code>[0]</code> immediately.</li>
+<li><code>n = 2</code>: Returns <code>[0, 1]</code>.</li>
+<li><strong>Linear line graph:</strong> Centroids are the exact middle node (if odd length) or middle two nodes (if even length).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0282-lc269-alien-dictionary.html"><span class="lbl">← Previous</span>#269 Alien Dictionary</a><a href="../problems/0284-lc444-sequence-reconstruction.html" style="text-align:right"><span class="lbl">Next →</span>#444 Sequence Reconstruction</a></div>
 </div>

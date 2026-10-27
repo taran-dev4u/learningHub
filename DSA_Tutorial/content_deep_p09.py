@@ -1279,4 +1279,1175 @@ Graph deep cloned successfully! ✓</pre>
 <li>Clone Binary Tree with Random Pointer ([[1485]]).</li>
 </ul>''',
 
+# ============================================================ LC 743
+743: '''<h2>🧭 How to think about it</h2>
+<p>You have a network of <code>n</code> nodes labeled <code>1</code> to <code>n</code>, and a list of directed edges <code>times[i] = (u, v, w)</code> where <code>w</code> is the signal travel time from <code>u</code> to <code>v</code>. A signal is sent from source node <code>k</code>. Return the minimum time for all nodes to receive the signal. If it is impossible for all nodes to receive it, return <code>-1</code>.</p>
+
+<p>Because all edge weights are non-negative (<code>w &ge; 0</code>), this is the classic <strong>Single-Source Shortest Path (SSSP)</strong> problem, solved optimally by <strong>Dijkstra's Algorithm</strong>. Once we find the shortest travel time from <code>k</code> to every node, the network delay is simply the maximum time among all reached nodes (since signals propagate concurrently).</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Bellman-Ford relaxes all edges <code>V - 1</code> times, taking <code>O(V &times; E)</code>. Floyd-Warshall computes all-pairs in <code>O(V<sup>3</sup>)</code>. Dijkstra with a min-priority queue computes the optimal distances in <code>O((V + E) log V)</code>, which is standard for interview graphs.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Dijkstra greedily processes nodes in increasing order of their accumulated distance from source <code>k</code>. Because all weights are non-negative, once a node is popped from the min-heap, its shortest distance is finalized and will never be improved. When the min-heap empties, if we have visited all <code>n</code> nodes, the answer is <code>max(distances.values())</code>; otherwise some node was unreachable, so return <code>-1</code>.</div>
+
+<h2>🪜 The approach, step by step</h2>
+<ol>
+<li><strong>Build graph adjacency list:</strong> <code>graph = defaultdict(list)</code> mapping <code>u &rarr; (v, w)</code>.</li>
+<li><strong>Initialize Dijkstra state:</strong>
+  <ul>
+    <li>Min-heap <code>pq = [(0, k)]</code> storing pairs of <code>(distance_so_far, node)</code>.</li>
+    <li>Visited/shortest distance hash map <code>dist = {}</code>.</li>
+  </ul>
+</li>
+<li><strong>Extract-min loop:</strong>
+  <ul>
+    <li>Pop <code>(d, u)</code> from <code>pq</code>.</li>
+    <li>If <code>u</code> is already in <code>dist</code>, skip it (a stale, longer path was pushed earlier).</li>
+    <li>Record <code>dist[u] = d</code>.</li>
+    <li>If <code>len(dist) == n</code>, we can stop early—all nodes have their shortest paths!</li>
+    <li>For each outgoing neighbor <code>(v, weight)</code> of <code>u</code>: if <code>v</code> not in <code>dist</code>, push <code>(d + weight, v)</code> into <code>pq</code>.</li>
+  </ul>
+</li>
+<li><strong>Evaluate result:</strong> If <code>len(dist) == n</code>, return <code>max(dist.values())</code>; otherwise return <code>-1</code>.</li>
+</ol>
+
+<h2>🎞️ Visual dry run — nodes=4, k=2, edges=[(2,1,1), (2,3,1), (3,4,1)]:</h2>
+<pre class="viz">Graph topology:
+   (1) &larr;[1]&mdash; (2) &mdash;[1]&rarr; (3) &mdash;[1]&rarr; (4)
+              ^source
+
+1. pq = [(0, 2)], dist = {}
+2. Pop (0, 2): dist[2] = 0. Neighbors: push (1, 1), push (1, 3).
+   pq = [(1, 1), (1, 3)]
+3. Pop (1, 1): dist[1] = 1. No outgoing edges.
+   pq = [(1, 3)]
+4. Pop (1, 3): dist[3] = 1. Neighbor: push (1+1, 4) = (2, 4).
+   pq = [(2, 4)]
+5. Pop (2, 4): dist[4] = 2.
+   dist = {2: 0, 1: 1, 3: 1, 4: 2}. len(dist) == 4 == n.
+6. Max time = max(0, 1, 1, 2) = 2. Output: 2 ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Python 3 — Clean Dijkstra with Min-Heap</summary>
+<pre><code class="language-python">import heapq
+from collections import defaultdict
+
+def networkDelayTime(times: list[list[int]], n: int, k: int) -> int:
+    """
+    Finds maximum time for signal to reach all n nodes from source k using Dijkstra's Algorithm.
+    """
+    # 1. Build adjacency list: u -> list of (v, weight)
+    graph = defaultdict(list)
+    for u, v, w in times:
+        graph[u].append((v, w))
+        
+    # 2. Priority queue: stores (distance, node). Start at k with dist 0.
+    pq = [(0, k)]
+    dist = {}
+    
+    # 3. Dijkstra relaxation loop
+    while pq:
+        d, u = heapq.heappop(pq)
+        
+        # If node u already finalized, ignore duplicate queue entry
+        if u in dist:
+            continue
+            
+        dist[u] = d
+        if len(dist) == n:
+            break
+            
+        for v, weight in graph[u]:
+            if v not in dist:
+                heapq.heappush(pq, (d + weight, v))
+                
+    # 4. Check if all n nodes received the signal
+    return max(dist.values()) if len(dist) == n else -1
+</code></pre>
+</details>
+
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O(E log V)</code>. In the worst case, every directed edge is pushed into the priority queue once. Inserting into and extracting from a binary heap of size up to <code>E</code> takes <code>O(log E) = O(log V)</code> time.</li>
+<li><strong>Space Complexity:</strong> <code>O(V + E)</code> to store the adjacency list graph and up to <code>O(E)</code> elements in the priority queue.</li>
+</ul>
+
+<h2>🚨 Edge cases to watch out for</h2>
+<ul>
+<li><strong>Unreachable nodes / Disconnected graph:</strong> If a component has no incoming edges from <code>k</code>, <code>len(dist) < n</code>; must return <code>-1</code>.</li>
+<li><strong>Graph with cycles:</strong> The <code>if u in dist: continue</code> check prevents infinite loops in cyclic graphs.</li>
+<li><strong>Single node graph (n=1):</strong> Loop pops source, <code>len(dist) == 1 == n</code>, returns <code>0</code> immediately.</li>
+</ul>
+
+<h2>🧗 Follow-ups &amp; variations</h2>
+<ul>
+<li><strong>Path with Maximum Probability ([[1514]]):</strong> Negate probabilities or use max-heap with multiplicative weights.</li>
+<li><strong>Cheapest Flights Within K Stops ([[787]]):</strong> Constrained shortest paths where edge count is bounded; use Bellman-Ford or BFS with step tracking.</li>
+</ul>''',
+
+# ============================================================ LC 1631
+1631: '''<h2>🧭 How to think about it</h2>
+<p>You are given a 2D grid <code>heights</code> of size <code>rows x cols</code>. A path's <strong>effort</strong> is the <em>maximum absolute difference</em> in heights between two consecutive cells of the route. You need to find the minimum effort required to travel from <code>(0, 0)</code> to <code>(rows - 1, cols - 1)</code>.</p>
+
+<p>Notice the bottleneck property: we want to find a route whose peak edge difference is minimized. This can be viewed through two lens:</p>
+<ol>
+  <li><strong>Modified Dijkstra's Algorithm:</strong> Treat each cell as a graph vertex. The distance to a cell is the maximum effort seen along the path to it. A min-heap always expands the path with the smallest peak effort.</li>
+  <li><strong>Binary Search on Answer + BFS:</strong> Since effort is bounded in <code>[0, 10^6]</code>, binary search the effort threshold and run a simple BFS/DFS checking if <code>(rows-1, cols-1)</code> is reachable using only step differences &le; mid.</li>
+</ol>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Exploring all simple paths with DFS/backtracking takes <code>O(4^(m &times; n))</code> exponential time. Modified Dijkstra operates in <code>O((m &times; n) log(m &times; n))</code>, which runs comfortably within 100ms.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> In standard Dijkstra, new path cost is <code>dist + edge_weight</code>. In Minimum Effort, new path cost is <code>max(effort_so_far, abs(heights[r][c] - heights[nr][nc]))</code>. The min-heap guarantees that the first time we pop destination <code>(rows - 1, cols - 1)</code>, its recorded effort is globally minimal!</div>
+
+<h2>🪜 The approach, step by step</h2>
+<ol>
+<li>Let <code>m = len(heights)</code> and <code>n = len(heights[0])</code>.</li>
+<li>Initialize distance table <code>dist = [[float('inf')] * n for _ in range(m)]</code>. Set <code>dist[0][0] = 0</code>.</li>
+<li>Min-heap <code>pq = [(0, 0, 0)]</code> containing tuples <code>(effort, r, c)</code>.</li>
+<li>While <code>pq</code> is not empty:
+  <ul>
+    <li>Pop <code>(effort, r, c)</code>.</li>
+    <li>If <code>(r, c) == (m - 1, n - 1)</code>, return <code>effort</code> immediately!</li>
+    <li>If <code>effort > dist[r][c]</code>, continue (stale entry).</li>
+    <li>For each of the 4 cardinal neighbors <code>(nr, nc)</code>:
+      <ul>
+        <li>Calculate step effort: <code>next_effort = max(effort, abs(heights[r][c] - heights[nr][nc]))</code>.</li>
+        <li>If <code>next_effort < dist[nr][nc]</code>: update <code>dist[nr][nc] = next_effort</code> and push <code>(next_effort, nr, nc)</code> into <code>pq</code>.</li>
+      </ul>
+    </li>
+  </ul>
+</li>
+</ol>
+
+<h2>🎞️ Visual dry run:</h2>
+<pre class="viz">Grid:
+[1, 2, 2]
+[3, 8, 2]
+[5, 3, 5]
+
+Path 1: (0,0)->(0,1)->(0,2)->(1,2)->(2,2)
+  Heights: 1 -> 2 -> 2 -> 2 -> 5
+  Diffs:   |1-2|=1, |2-2|=0, |2-2|=0, |2-5|=3 -> Max effort = 3
+
+Path 2: (0,0)->(1,0)->(2,0)->(2,1)->(2,2)
+  Heights: 1 -> 3 -> 5 -> 3 -> 5
+  Diffs:   |1-3|=2, |3-5|=2, |5-3|=2, |3-5|=2 -> Max effort = 2!
+
+Dijkstra pops (2, 2) with effort 2 before ever popping effort 3.
+Output: 2 ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Python 3 — Modified Dijkstra (Min-Heap)</summary>
+<pre><code class="language-python">import heapq
+
+def minimumEffortPath(heights: list[list[int]]) -> int:
+    """
+    Finds path from (0,0) to bottom-right cell with minimum peak consecutive elevation difference.
+    """
+    m, n = len(heights), len(heights[0])
+    # dist[r][c] stores minimum effort to reach cell (r, c)
+    dist = [[float('inf')] * n for _ in range(m)]
+    dist[0][0] = 0
+    
+    # Priority queue stores (effort, row, col)
+    pq = [(0, 0, 0)]
+    dirs = [(1, 0), (-1, 0), (0, 1), (0, -1)]
+    
+    while pq:
+        effort, r, c = heapq.heappop(pq)
+        
+        # Reached destination: first pop is guaranteed minimum
+        if r == m - 1 and c == n - 1:
+            return effort
+            
+        if effort > dist[r][c]:
+            continue
+            
+        for dr, dc in dirs:
+            nr, nc = r + dr, c + dc
+            if 0 <= nr < m and 0 <= nc < n:
+                step_effort = abs(heights[r][c] - heights[nr][nc])
+                new_effort = max(effort, step_effort)
+                
+                if new_effort < dist[nr][nc]:
+                    dist[nr][nc] = new_effort
+                    heapq.heappush(pq, (new_effort, nr, nc))
+                    
+    return 0
+</code></pre>
+</details>
+
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O((m &times; n) log(m &times; n))</code>. There are <code>V = m &times; n</code> cells and at most <code>E = 4 &times; m &times; n</code> edges. Heap operations take <code>O(log(m &times; n))</code>.</li>
+<li><strong>Space Complexity:</strong> <code>O(m &times; n)</code> to store the <code>dist</code> matrix and priority queue.</li>
+</ul>
+
+<h2>🚨 Edge cases to watch out for</h2>
+<ul>
+<li><strong>1&times;1 grid:</strong> Start cell is the destination; while loop immediately hits <code>r == 0 and c == 0</code> and returns <code>0</code> effort.</li>
+<li><strong>Flat grid (all heights equal):</strong> Effort is <code>0</code> across all transitions.</li>
+</ul>
+
+<h2>🧗 Follow-ups &amp; variations</h2>
+<ul>
+<li><strong>Swim in Rising Water ([[778]]):</strong> Identical concept where cost is <code>max(current_time, grid[nr][nc])</code>.</li>
+<li><strong>Minimum Obstacle Removal to Reach Corner ([[2290]]):</strong> 0-1 BFS / Dijkstra on binary obstacle grid.</li>
+</ul>''',
+
+# ============================================================ LC 778
+778: '''<h2>🧭 How to think about it</h2>
+<p>You are given an <code>n x n</code> integer matrix <code>grid</code> where each value represents the elevation at <code>(i, j)</code>. At time <code>t</code>, water level everywhere is <code>t</code>. You can swim from cell to adjacent cell if the elevation of both cells is at most <code>t</code>. Return the minimum time <code>t</code> until you can reach <code>(n - 1, n - 1)</code> starting from <code>(0, 0)</code>.</p>
+
+<p>This is a shortest path problem on a grid where the cost to enter any cell <code>(r, c)</code> along a path is <code>max(time_so_far, grid[r][c])</code>. We want to find a path that minimizes the peak elevation encountered.</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Backtracking is exponential. Binary searching the answer <code>t &isin; [0, n^2 - 1]</code> with BFS reachability takes <code>O(n^2 log n)</code>. Modified Dijkstra with a min-heap directly finds the optimal path in <code>O(n^2 log n)</code> with less code.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Min-priority queue stores <code>(current_time, r, c)</code>. At each step, pop the cell with the smallest water level needed to reach it. When we pop <code>(n-1, n-1)</code>, that water level is guaranteed to be the minimum time required!</div>
+
+<h2>🪜 The approach, step by step</h2>
+<ol>
+<li>Initialize min-heap <code>pq = [(grid[0][0], 0, 0)]</code> and a 2D boolean <code>visited</code> array.</li>
+<li>Mark <code>visited[0][0] = True</code>.</li>
+<li>While <code>pq</code> is not empty:
+  <ul>
+    <li>Pop <code>(t, r, c)</code>.</li>
+    <li>If <code>r == n - 1 and c == n - 1</code>, return <code>t</code>!</li>
+    <li>For each of the 4 neighbors <code>(nr, nc)</code>:
+      <ul>
+        <li>If inside grid and not visited:</li>
+        <li>Mark <code>visited[nr][nc] = True</code>.</li>
+        <li>Push <code>(max(t, grid[nr][nc]), nr, nc)</code> into <code>pq</code>.</li>
+      </ul>
+    </li>
+  </ul>
+</li>
+</ol>
+
+<h2>🎞️ Visual dry run:</h2>
+<pre class="viz">Grid:
+[ 0,  2]
+[ 1,  3]
+
+1. Push (grid[0][0], 0, 0) = (0, 0, 0). visited = {(0,0)}
+2. Pop (0, 0, 0).
+   Neighbors:
+   - (0, 1): elevation 2 -> push (max(0, 2), 0, 1) = (2, 0, 1)
+   - (1, 0): elevation 1 -> push (max(0, 1), 1, 0) = (1, 1, 0)
+   pq = [(1, 1, 0), (2, 0, 1)]
+3. Pop (1, 1, 0).
+   Neighbor (1, 1): elevation 3 -> push (max(1, 3), 1, 1) = (3, 1, 1)
+   pq = [(2, 0, 1), (3, 1, 1)]
+4. Pop (2, 0, 1).
+   Neighbor (1, 1) already visited.
+5. Pop (3, 1, 1): Destination reached! Return 3 ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Python 3 — Dijkstra via Min-Heap</summary>
+<pre><code class="language-python">import heapq
+
+def swimInWater(grid: list[list[int]]) -> int:
+    """
+    Returns minimum time to swim from (0,0) to (n-1, n-1) using modified Dijkstra.
+    """
+    n = len(grid)
+    visited = [[False] * n for _ in range(n)]
+    visited[0][0] = True
+    
+    # Priority queue stores (time_required, row, col)
+    pq = [(grid[0][0], 0, 0)]
+    dirs = [(1, 0), (-1, 0), (0, 1), (0, -1)]
+    
+    while pq:
+        t, r, c = heapq.heappop(pq)
+        
+        if r == n - 1 and c == n - 1:
+            return t
+            
+        for dr, dc in dirs:
+            nr, nc = r + dr, c + dc
+            if 0 <= nr < n and 0 <= nc < n and not visited[nr][nc]:
+                visited[nr][nc] = True
+                heapq.heappush(pq, (max(t, grid[nr][nc]), nr, nc))
+                
+    return 0
+</code></pre>
+</details>
+
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O(n<sup>2</sup> log n)</code>. Each cell is pushed and popped from the priority queue at most once. Priority queue contains at most <code>n^2</code> elements, making heap operations <code>O(log n^2) = O(log n)</code>.</li>
+<li><strong>Space Complexity:</strong> <code>O(n<sup>2</sup>)</code> for the visited matrix and priority queue.</li>
+</ul>
+
+<h2>🚨 Edge cases to watch out for</h2>
+<ul>
+<li><strong>1&times;1 grid:</strong> Returns <code>grid[0][0]</code> directly on first pop.</li>
+<li><strong>Start cell elevation high:</strong> If <code>grid[0][0]</code> is large, time must be at least <code>grid[0][0]</code> because you must wait for water to cover the start cell before you can even begin swimming!</li>
+</ul>''',
+
+# ============================================================ LC 261
+261: '''<h2>🧭 How to think about it</h2>
+<p>You have a graph of <code>n</code> nodes labeled from <code>0</code> to <code>n - 1</code> and a list of undirected edges. Determine if these edges form a <strong>valid tree</strong>.</p>
+
+<p>By mathematical definition, an undirected graph of <code>n</code> nodes is a tree if and only if:</p>
+<ol>
+  <li>It contains <strong>no cycles</strong>.</li>
+  <li>It is <strong>fully connected</strong> (all nodes belong to a single connected component).</li>
+  <li>It has exactly <code>n - 1</code> edges.</li>
+</ol>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>If <code>len(edges) != n - 1</code>, it cannot possibly be a tree!
+<ul>
+  <li>If <code>len(edges) < n - 1</code>, the graph is disconnected.</li>
+  <li>If <code>len(edges) > n - 1</code>, by the Pigeonhole Principle the graph must contain at least one cycle.</li>
+</ul>
+Thus, we can instantly return <code>False</code> if <code>len(edges) != n - 1</code>. Then, we only need to verify either connectivity or cycle freedom using <strong>Disjoint Set Union (DSU)</strong> or <strong>BFS/DFS</strong>.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Using Disjoint Set Union (Union-Find) with path compression: Start with <code>n</code> disjoint components. For each edge <code>(u, v)</code>: find the representatives of <code>u</code> and <code>v</code>. If <code>find(u) == find(v)</code>, they are already connected, so adding this edge creates a cycle &rarr; return <code>False</code>! Otherwise union them and decrement component count. At the end, must have exactly 1 component!</div>
+
+<h2>🪜 The approach, step by step (DSU)</h2>
+<ol>
+<li>Check base condition: if <code>len(edges) != n - 1</code>, return <code>False</code> immediately.</li>
+<li>Initialize <code>parent = list(range(n))</code> and <code>rank = [1] * n</code>.</li>
+<li>Define <code>find(i)</code> with recursive path compression: <code>parent[i] = find(parent[i])</code>.</li>
+<li>Define <code>union(u, v)</code>:
+  <ul>
+    <li>Find roots <code>root_u = find(u)</code> and <code>root_v = find(v)</code>.</li>
+    <li>If <code>root_u == root_v</code>, return <code>False</code> (cycle detected!).</li>
+    <li>Attach smaller rank tree under larger rank tree. Return <code>True</code>.</li>
+  </ul>
+</li>
+<li>Iterate through every edge: if <code>not union(u, v)</code>, return <code>False</code>.</li>
+<li>Return <code>True</code> (since <code>len(edges) == n - 1</code> and no cycles were found, it must be connected).</li>
+</ol>
+
+<h2>🎞️ Visual dry run — n=5, edges=[(0,1), (0,2), (0,3), (1,4)]:</h2>
+<pre class="viz">1. len(edges) = 4 == n - 1 (5 - 1). Check passed!
+2. union(0, 1): merged. components = 4
+3. union(0, 2): merged. components = 3
+4. union(0, 3): merged. components = 2
+5. union(1, 4): merged. components = 1
+All 4 edges processed with zero cycles.
+Result: True (Valid tree) ✓
+
+Counterexample: n=5, edges=[(0,1),(1,2),(2,3),(1,3),(1,4)]
+len(edges) = 5 != 4 -> Immediately False! ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Python 3 — Union-Find with Path Compression &amp; Rank</summary>
+<pre><code class="language-python">def validTree(n: int, edges: list[list[int]]) -> bool:
+    """
+    Checks if n nodes and undirected edges form a single acyclic connected tree.
+    """
+    # A valid tree with n nodes must have exactly n - 1 edges
+    if len(edges) != n - 1:
+        return False
+        
+    parent = list(range(n))
+    rank = [1] * n
+    
+    def find(x):
+        if parent[x] != x:
+            parent[x] = find(parent[x])  # Path compression
+        return parent[x]
+        
+    def union(x, y):
+        rx, ry = find(x), find(y)
+        if rx == ry:
+            return False  # Cycle detected: x and y already in same component!
+            
+        # Union by rank
+        if rank[rx] < rank[ry]:
+            parent[rx] = ry
+        elif rank[rx] > rank[ry]:
+            parent[ry] = rx
+        else:
+            parent[ry] = rx
+            rank[rx] += 1
+        return True
+        
+    for u, v in edges:
+        if not union(u, v):
+            return False
+            
+    return True
+</code></pre>
+</details>
+
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O(N &times; &alpha;(N)) &approx; O(N)</code>, where <code>&alpha;</code> is the Inverse Ackermann function (less than 5 for all practical input sizes). Checking edge count is <code>O(1)</code>, and processing <code>n - 1</code> edges with path compression runs in near-linear time.</li>
+<li><strong>Space Complexity:</strong> <code>O(N)</code> for the parent and rank arrays.</li>
+</ul>
+
+<h2>🚨 Edge cases to watch out for</h2>
+<ul>
+<li><code>n = 1, edges = []</code>: <code>len(edges) == 0 == n - 1</code>, returns <code>True</code>. A single isolated node is a valid tree.</li>
+<li><strong>Disconnected components with cycle:</strong> e.g. a triangle of 3 nodes and 2 isolated nodes with 4 edges total. Handled because DSU catches the triangle cycle.</li>
+</ul>
+
+<h2>🧗 Follow-ups &amp; variations</h2>
+<ul>
+<li><strong>Number of Connected Components ([[323]]):</strong> Count distinct tree roots.</li>
+<li><strong>Redundant Connection ([[684]]):</strong> Return the exact edge that closes the cycle.</li>
+</ul>''',
+
+# ============================================================ LC 323
+323: '''<h2>🧭 How to think about it</h2>
+<p>Given <code>n</code> nodes labeled <code>0</code> to <code>n - 1</code> and a list of undirected edges, return the total number of connected components in the graph.</p>
+
+<p>Every node starts as its own independent component (total <code>n</code> components). Every time an edge connects two previously disconnected components, the total component count decreases by 1.</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Standard DFS or BFS explores each component in <code>O(V + E)</code> time. Disjoint Set Union (DSU) solves this interactively in <code>O(E &times; &alpha;(V))</code> time with clean, concise code.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Initialize <code>count = n</code>. For each edge <code>(u, v)</code>, attempt <code>union(u, v)</code>. If <code>u</code> and <code>v</code> were in different sets, decrement <code>count -= 1</code>. When all edges are processed, <code>count</code> is the exact number of connected components!</div>
+
+<h2>🪜 The approach, step by step</h2>
+<ol>
+<li>Initialize <code>count = n</code>.</li>
+<li>Initialize <code>parent = list(range(n))</code>.</li>
+<li>Implement <code>find(x)</code> with path compression.</li>
+<li>Implement <code>union(u, v)</code>:
+  <ul>
+    <li>If <code>find(u) != find(v)</code>: set <code>parent[find(u)] = find(v)</code> and decrement <code>count -= 1</code>.</li>
+  </ul>
+</li>
+<li>Process all edges, return final <code>count</code>.</li>
+</ol>
+
+<h2>🎞️ Visual dry run — n=5, edges=[(0,1), (1,2), (3,4)]:</h2>
+<pre class="viz">Initial components: {0}, {1}, {2}, {3}, {4} -> count = 5
+
+1. Edge (0, 1): union(0, 1) -> {0, 1}, {2}, {3}, {4} -> count = 4
+2. Edge (1, 2): union(1, 2) -> {0, 1, 2}, {3}, {4} -> count = 3
+3. Edge (3, 4): union(3, 4) -> {0, 1, 2}, {3, 4} -> count = 2
+Finished edges! Return count = 2 ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Python 3 — Union-Find</summary>
+<pre><code class="language-python">def countComponents(n: int, edges: list[list[int]]) -> int:
+    """
+    Returns the number of connected components in an undirected graph using DSU.
+    """
+    parent = list(range(n))
+    count = n
+    
+    def find(x):
+        if parent[x] != x:
+            parent[x] = find(parent[x])
+        return parent[x]
+        
+    for u, v in edges:
+        ru, rv = find(u), find(v)
+        if ru != rv:
+            parent[ru] = rv
+            count -= 1
+            
+    return count
+</code></pre>
+</details>
+
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O(V + E &times; &alpha;(V)) &approx; O(V + E)</code>.</li>
+<li><strong>Space Complexity:</strong> <code>O(V)</code> for the parent array.</li>
+</ul>
+
+<h2>🚨 Edge cases to watch out for</h2>
+<ul>
+<li><code>edges = []</code>: Returns <code>n</code> (every node is an isolated component).</li>
+<li><strong>Multiple edges connecting same components:</strong> Duplicate edges have <code>ru == rv</code>, which safely leaves <code>count</code> unchanged.</li>
+</ul>''',
+
+# ============================================================ LC 684
+684: '''<h2>🧭 How to think about it</h2>
+<p>A tree is an undirected graph that is connected and has no cycles. You are given a graph that started as a tree with <code>n</code> nodes labeled <code>1</code> to <code>n</code>, but one extra edge was added. Find the edge that can be removed so that the resulting graph is a tree. If there are multiple answers, return the one that occurs last in the input.</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>For each edge, temporarily remove it and check if remaining graph is a tree via DFS: <code>O(E &times; (V + E)) = O(N^2)</code>. With Union-Find, we can find the cycle in a single pass in <code>O(N &times; &alpha;(N)) &approx; O(N)</code>!</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Iterate through <code>edges</code> in order. For each edge <code>(u, v)</code>: check if <code>find(u) == find(v)</code>. If they already share the same root, they are already connected through some path in the tree. Therefore, adding <code>(u, v)</code> directly creates a cycle! Since we iterate in order, the first edge that connects two already-connected nodes is our answer!</div>
+
+<h2>🪜 The approach, step by step</h2>
+<ol>
+<li>Initialize <code>parent = list(range(n + 1))</code> (1-indexed).</li>
+<li>Define <code>find(x)</code> with path compression.</li>
+<li>For each <code>u, v</code> in <code>edges</code>:
+  <ul>
+    <li><code>ru = find(u), rv = find(v)</code>.</li>
+    <li>If <code>ru == rv</code>: return <code>[u, v]</code> immediately!</li>
+    <li>Otherwise, union them: <code>parent[ru] = rv</code>.</li>
+  </ul>
+</li>
+</ol>
+
+<h2>🎞️ Visual dry run — edges=[(1,2), (1,3), (2,3)]:</h2>
+<pre class="viz">1. Edge (1, 2): find(1)=1, find(2)=2. Union -> parent[1]=2.
+2. Edge (1, 3): find(1)=2, find(3)=3. Union -> parent[2]=3.
+   Now 1, 2, 3 all belong to component 3.
+3. Edge (2, 3): find(2)=3, find(3)=3.
+   find(2) == find(3)! Cycle detected!
+   Return [2, 3] ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Python 3 — DSU</summary>
+<pre><code class="language-python">def findRedundantConnection(edges: list[list[int]]) -> list[int]:
+    """
+    Finds the redundant edge that creates a cycle in an undirected graph.
+    """
+    n = len(edges)
+    parent = list(range(n + 1))
+    
+    def find(x):
+        if parent[x] != x:
+            parent[x] = find(parent[x])
+        return parent[x]
+        
+    for u, v in edges:
+        ru, rv = find(u), find(v)
+        if ru == rv:
+            return [u, v]
+        parent[ru] = rv
+        
+    return []
+</code></pre>
+</details>
+
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O(N &times; &alpha;(N)) &approx; O(N)</code>.</li>
+<li><strong>Space Complexity:</strong> <code>O(N)</code> for parent array.</li>
+</ul>
+
+<h2>🧗 Follow-ups &amp; variations</h2>
+<ul>
+<li><strong>Redundant Connection II ([[685]]):</strong> Directed graph variant where nodes can have indegree 2 or cycles.</li>
+</ul>''',
+
+# ============================================================ LC 721
+721: '''<h2>🧭 How to think about it</h2>
+<p>Given a list of accounts where each element <code>accounts[i]</code> is a list of strings: the first element is a name, and the remaining elements are emails. If two accounts share a common email, both accounts belong to the same person. Merge the accounts and return the list of merged accounts where emails are sorted lexicographically.</p>
+
+<p>This is a <strong>connected components</strong> problem on a graph. The nodes of the graph are individual emails! If an account contains emails <code>[e1, e2, e3]</code>, there are edges between <code>e1 &mdash; e2</code> and <code>e1 &mdash; e3</code>. All emails in the same connected component belong to the same person.</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Iteratively checking pairs of accounts for email intersections takes <code>O(A<sup>2</sup> &times; E)</code>, which is too slow. Using <strong>Disjoint Set Union (DSU)</strong> or <strong>DFS</strong> on an email adjacency graph merges all accounts in <code>O(N &times; E log(N &times; E))</code>, dominated only by the final sorting of emails.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Map each email to its owner's name. Within each account <code>[name, e1, e2, ...]</code>, union the first email <code>e1</code> with every other email <code>e_i</code>. After processing all accounts, group all emails by their DSU root representative: <code>components[find(email)].append(email)</code>. Finally, format each component as <code>[email_to_name[root]] + sorted(emails)</code>.</div>
+
+<h2>🪜 The approach, step by step</h2>
+<ol>
+<li><strong>Union-Find Data Structure:</strong> Initialize <code>parent = {}</code>. If an email is seen for the first time, set <code>parent[email] = email</code>.</li>
+<li><strong>Record Name &amp; Union Emails:</strong>
+  <ul>
+    <li>Maintain <code>email_to_name = {}</code>.</li>
+    <li>For each account <code>name, *emails</code>:</li>
+    <li>First email <code>first_email = emails[0]</code>.</li>
+    <li>For every email in <code>emails</code>:
+      <ul>
+        <li>Record <code>email_to_name[email] = name</code>.</li>
+        <li><code>union(first_email, email)</code>.</li>
+      </ul>
+    </li>
+  </ul>
+</li>
+<li><strong>Group by Root:</strong>
+  <ul>
+    <li>Create <code>groups = defaultdict(list)</code>.</li>
+    <li>For every email: <code>groups[find(email)].append(email)</code>.</li>
+  </ul>
+</li>
+<li><strong>Sort &amp; Assemble:</strong>
+  <ul>
+    <li>For each group: <code>result.append([email_to_name[root]] + sorted(emails))</code>.</li>
+    <li>Return <code>result</code>.</li>
+  </ul>
+</li>
+</ol>
+
+<h2>🎞️ Visual dry run:</h2>
+<pre class="viz">Account 1: ["John", "johnsmith@mail.com", "john00@mail.com"]
+Account 2: ["John", "johnnybravo@mail.com"]
+Account 3: ["John", "johnsmith@mail.com", "john_newyork@mail.com"]
+
+1. Account 1: union("johnsmith", "john00")
+2. Account 2: "johnnybravo" is isolated component.
+3. Account 3: union("johnsmith", "john_newyork")
+   "johnsmith" links Account 1 and Account 3!
+
+Groups after find():
+- Root "john00": ["johnsmith@mail.com", "john00@mail.com", "john_newyork@mail.com"]
+- Root "johnnybravo": ["johnnybravo@mail.com"]
+
+Output:
+[["John", "john00@mail.com", "john_newyork@mail.com", "johnsmith@mail.com"],
+ ["John", "johnnybravo@mail.com"]] ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Python 3 — DSU by Email Strings</summary>
+<pre><code class="language-python">from collections import defaultdict
+
+def accountsMerge(accounts: list[list[str]]) -> list[list[str]]:
+    """
+    Merges accounts belonging to the same person using Disjoint Set Union on emails.
+    """
+    parent = {}
+    email_to_name = {}
+    
+    def find(x):
+        if parent[x] != x:
+            parent[x] = find(parent[x])
+        return parent[x]
+        
+    def union(x, y):
+        rx, ry = find(x), find(y)
+        if rx != ry:
+            parent[rx] = ry
+
+    # 1. Initialize parents and union emails within each account
+    for account in accounts:
+        name = account[0]
+        first_email = account[1]
+        
+        for email in account[1:]:
+            if email not in parent:
+                parent[email] = email
+            email_to_name[email] = name
+            union(first_email, email)
+            
+    # 2. Group emails by their root representative
+    groups = defaultdict(list)
+    for email in parent:
+        root = find(email)
+        groups[root].append(email)
+        
+    # 3. Format result: [name] + sorted(emails)
+    res = []
+    for root, emails in groups.items():
+        res.append([email_to_name[root]] + sorted(emails))
+        
+    return res
+</code></pre>
+</details>
+
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O(N &times; K log(N &times; K))</code> where <code>N</code> is the number of accounts and <code>K</code> is the maximum number of emails per account. Union-Find operations take <code>O(N &times; K &times; &alpha;(N &times; K))</code>, and sorting the merged email lists takes <code>O(total_emails log(total_emails))</code>.</li>
+<li><strong>Space Complexity:</strong> <code>O(N &times; K)</code> to store parents, names, and groups.</li>
+</ul>
+
+<h2>🚨 Edge cases to watch out for</h2>
+<ul>
+<li><strong>Same person name, different people:</strong> Two different people named "John" with completely different emails must NOT be merged. Since we only union by email connectivity, they naturally stay in separate components.</li>
+<li><strong>Duplicate emails inside a single account:</strong> Handled seamlessly by the hash map representation.</li>
+</ul>''',
+
+# ============================================================ LC 269
+269: '''<h2>🧭 How to think about it</h2>
+<p>There is a new alien language that uses the English alphabet. However, the order of the letters is unknown to you. You are given a list of strings <code>words</code> from the alien language dictionary, where the words are claimed to be sorted lexicographically by the rules of this language. Derive the order of letters in this language. If the order is invalid, return <code>""</code>. If there are multiple valid orders, return any of them.</p>
+
+<p>This is the definitive interview problem for <strong>Topological Sort</strong> on a Directed Acyclic Graph (DAG) using <strong>Kahn's Algorithm</strong>.</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Each pair of adjacent words provides a relative ordering constraint between two characters. Comparing every word with every other word takes <code>O(W^2)</code>, but because the dictionary is already sorted, we only need to compare adjacent words <code>words[i]</code> and <code>words[i+1]</code> in <code>O(W &times; L)</code> where <code>L</code> is maximum word length.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong>
+<ol>
+  <li><strong>Edge Extraction:</strong> For adjacent words <code>w1</code> and <code>w2</code>: find the first index <code>j</code> where <code>w1[j] != w2[j]</code>. This tells us <code>w1[j]</code> must come before <code>w2[j]</code> &rarr; directed edge <code>w1[j] &rarr; w2[j]</code>, and increment <code>in_degree[w2[j]] += 1</code>.</li>
+  <li><strong>Prefix Invalidity Trap:</strong> If <code>len(w1) > len(w2)</code> and <code>w1.startswith(w2)</code> (e.g. <code>["apple", "app"]</code>), the dictionary is invalid! In any valid lexicographical order, a prefix must come before its longer version. Return <code>""</code> immediately!</li>
+  <li><strong>Topological BFS:</strong> Push all characters with <code>in_degree == 0</code> into a queue. Pop and append to result string, decrementing neighbors' in-degrees. If the final string length equals the number of unique characters, return it; otherwise a cycle exists (e.g. <code>a &rarr; b &rarr; a</code>), so return <code>""</code>.</li>
+</ol></div>
+
+<h2>🪜 The approach, step by step</h2>
+<ol>
+<li>Initialize <code>adj = {c: set() for word in words for c in word}</code> and <code>in_degree = {c: 0 for c in adj}</code>.</li>
+<li>For <code>i</code> from <code>0</code> to <code>len(words) - 2</code>:
+  <ul>
+    <li><code>w1, w2 = words[i], words[i+1]</code>.</li>
+    <li>If <code>len(w1) > len(w2) and w1.startswith(w2)</code>: return <code>""</code>.</li>
+    <li>Find first differing index <code>j</code>:
+      <ul>
+        <li>If <code>w2[j] not in adj[w1[j]]</code>: add <code>w2[j]</code> to <code>adj[w1[j]]</code> and increment <code>in_degree[w2[j]] += 1</code>.</li>
+        <li>Break (subsequent characters give no ordering information).</li>
+      </ul>
+    </li>
+  </ul>
+</li>
+<li>Queue <code>q = deque([c for c, deg in in_degree.items() if deg == 0])</code>.</li>
+<li>While <code>q</code>:
+  <ul>
+    <li>Pop <code>c</code>, append to <code>order</code>.</li>
+    <li>For neighbor <code>nxt in adj[c]</code>:
+      <ul>
+        <li><code>in_degree[nxt] -= 1</code>.</li>
+        <li>If <code>in_degree[nxt] == 0</code>: push <code>nxt</code> to <code>q</code>.</li>
+      </ul>
+    </li>
+  </ul>
+</li>
+<li>Return <code>"".join(order)</code> if <code>len(order) == len(in_degree)</code> else <code>""</code>.</li>
+</ol>
+
+<h2>🎞️ Visual dry run — words = ["wrt","wrf","er","ett","rftt"]:</h2>
+<pre class="viz">Compare adjacent words:
+1. "wrt" vs "wrf": 't' != 'f' -> Edge: t -> f
+2. "wrf" vs "er":  'w' != 'e' -> Edge: w -> e
+3. "er"  vs "ett": 'r' != 't' -> Edge: r -> t
+4. "ett" vs "rftt":'e' != 'r' -> Edge: e -> r
+
+Graph:
+w -> e -> r -> t -> f
+In-degrees: {w:0, e:1, r:1, t:1, f:1}
+
+Kahn's BFS:
+1. Pop 'w' (deg 0): order = ['w'], e's deg becomes 0
+2. Pop 'e' (deg 0): order = ['w', 'e'], r's deg becomes 0
+3. Pop 'r' (deg 0): order = ['w', 'e', 'r'], t's deg becomes 0
+4. Pop 't' (deg 0): order = ['w', 'e', 'r', 't'], f's deg becomes 0
+5. Pop 'f' (deg 0): order = ['w', 'e', 'r', 't', 'f']
+
+Length matches 5 unique chars!
+Output: "wertf" ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Python 3 — Kahn's Algorithm (Topological Sort)</summary>
+<pre><code class="language-python">from collections import deque
+
+def alienOrder(words: list[str]) -> str:
+    """
+    Derives alien alphabet ordering using Kahn's topological sort algorithm.
+    """
+    # 1. Initialize graph and in-degree maps for all unique characters
+    adj = {c: set() for word in words for c in word}
+    in_degree = {c: 0 for c in adj}
+    
+    # 2. Build graph from adjacent word comparisons
+    for i in range(len(words) - 1):
+        w1, w2 = words[i], words[i + 1]
+        min_len = min(len(w1), len(w2))
+        
+        # Check invalid prefix case: e.g. ["apple", "app"]
+        if len(w1) > len(w2) and w1[:min_len] == w2[:min_len]:
+            return ""
+            
+        for j in range(min_len):
+            if w1[j] != w2[j]:
+                if w2[j] not in adj[w1[j]]:
+                    adj[w1[j]].add(w2[j])
+                    in_degree[w2[j]] += 1
+                break  # Only first differing character determines order
+                
+    # 3. BFS with queue of characters with in-degree == 0
+    q = deque([c for c, deg in in_degree.items() if deg == 0])
+    order = []
+    
+    while q:
+        c = q.popleft()
+        order.append(c)
+        for neighbor in adj[c]:
+            in_degree[neighbor] -= 1
+            if in_degree[neighbor] == 0:
+                q.append(neighbor)
+                
+    # 4. If order length equals unique characters, valid DAG; else cycle exists
+    return "".join(order) if len(order) == len(in_degree) else ""
+</code></pre>
+</details>
+
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O(C)</code> where <code>C</code> is the total length of all words in the input. Extracting edges examines each character at most once. Topological sort visits at most 26 vertices and edges.</li>
+<li><strong>Space Complexity:</strong> <code>O(1)</code> or <code>O(U + min(U^2, N))</code> where <code>U &le; 26</code> is the alphabet size. Storage is bounded by at most 26 nodes.</li>
+</ul>
+
+<h2>🚨 Edge cases to watch out for</h2>
+<ul>
+<li><strong>Prefix anomaly:</strong> <code>["abc", "ab"]</code> &rarr; must return <code>""</code>.</li>
+<li><strong>Cycles:</strong> <code>["z", "x", "z"]</code> &rarr; <code>z &rarr; x</code> and <code>x &rarr; z</code> &rarr; cycle detected, returns <code>""</code>.</li>
+<li><strong>Single character or single word:</strong> Returns the character(s) in any valid order.</li>
+</ul>''',
+
+# ============================================================ LC 310
+310: '''<h2>🧭 How to think about it</h2>
+<p>A tree is an undirected graph in which any two vertices are connected by exactly one path. The <strong>height</strong> of a rooted tree is the number of edges on the longest downward path between the root and a leaf. Given <code>n</code> nodes labeled <code>0</code> to <code>n - 1</code> and a tree of <code>n - 1</code> edges, find all nodes that, when chosen as root, produce a tree with <strong>minimum height</strong>. Return a list of all such roots (Minimum Height Trees, or MHTs).</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Running BFS from every single node to compute its height takes <code>O(N &times; (V + E)) = O(N^2)</code>, which TLEs on <code>n = 20,000</code>.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> The roots that minimize tree height are the <strong>centroids</strong> of the tree! In graph theory, any tree has either <strong>1 or 2 centroids</strong>.
+<br><br>
+Think of this like <strong>peeling an onion</strong> from the outside in: repeatedly trim all current leaf nodes (nodes with <code>degree == 1</code>) layer by layer. The last remaining 1 or 2 nodes in the core are guaranteed to be the centroids!</div>
+
+<h2>🪜 The approach, step by step</h2>
+<ol>
+<li>Base cases: if <code>n &le; 2</code>, all nodes are already MHT roots; return <code>list(range(n))</code>.</li>
+<li>Build adjacency sets: <code>adj = defaultdict(set)</code>.</li>
+<li>Find all initial leaves: <code>leaves = [i for i in range(n) if len(adj[i]) == 1]</code>.</li>
+<li>Maintain remaining node count: <code>remaining_nodes = n</code>.</li>
+<li>While <code>remaining_nodes > 2</code>:
+  <ul>
+    <li>Subtract current leaves: <code>remaining_nodes -= len(leaves)</code>.</li>
+    <li>New leaves list <code>new_leaves = []</code>.</li>
+    <li>For each leaf in <code>leaves</code>:
+      <ul>
+        <li>Find its only neighbor: <code>neighbor = adj[leaf].pop()</code>.</li>
+        <li>Remove leaf from neighbor: <code>adj[neighbor].remove(leaf)</code>.</li>
+        <li>If neighbor now has <code>len(adj[neighbor]) == 1</code>: append neighbor to <code>new_leaves</code>.</li>
+      </ul>
+    </li>
+    <li><code>leaves = new_leaves</code>.</li>
+  </ul>
+</li>
+<li>Return <code>leaves</code> (contains either 1 or 2 nodes).</li>
+</ol>
+
+<h2>🎞️ Visual dry run — n=6, edges=[(3,0),(3,1),(3,2),(3,4),(5,4)]:</h2>
+<pre class="viz">Tree structure:
+0 1 -- 3 -- 4 -- 5
+2 /
+
+1. Initial leaves (degree 1): [0, 1, 2, 5]. remaining = 6.
+2. Trim leaves [0, 1, 2, 5]:
+   - Removing 0, 1, 2 leaves node 3 with only neighbor 4 (degree 1).
+   - Removing 5 leaves node 4 with only neighbor 3 (degree 1).
+   remaining = 6 - 4 = 2 nodes left.
+3. remaining <= 2 -> Stop!
+Remaining centroids: [3, 4]
+Output: [3, 4] ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Python 3 — Leaf Trimming (Topological Onion Peeling)</summary>
+<pre><code class="language-python">from collections import defaultdict
+
+def findMinHeightTrees(n: int, edges: list[list[int]]) -> list[int]:
+    """
+    Finds centroids of tree by iteratively trimming leaf nodes layer by layer.
+    """
+    if n <= 2:
+        return list(range(n))
+        
+    # 1. Build adjacency list using sets for O(1) edge removal
+    adj = defaultdict(set)
+    for u, v in edges:
+        adj[u].add(v)
+        adj[v].add(u)
+        
+    # 2. Collect initial leaves
+    leaves = [i for i in range(n) if len(adj[i]) == 1]
+    
+    # 3. Trim leaves until 1 or 2 centroids remain
+    remaining_nodes = n
+    while remaining_nodes > 2:
+        remaining_nodes -= len(leaves)
+        new_leaves = []
+        for leaf in leaves:
+            # The only neighbor of this leaf
+            neighbor = adj[leaf].pop()
+            adj[neighbor].remove(leaf)
+            if len(adj[neighbor]) == 1:
+                new_leaves.append(neighbor)
+        leaves = new_leaves
+        
+    return leaves
+</code></pre>
+</details>
+
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O(N)</code>. Each node and edge is examined and removed at most once during the leaf-trimming process.</li>
+<li><strong>Space Complexity:</strong> <code>O(N)</code> to store the adjacency sets and leaf lists.</li>
+</ul>
+
+<h2>🚨 Edge cases to watch out for</h2>
+<ul>
+<li><code>n = 1</code>: Returns <code>[0]</code> immediately.</li>
+<li><code>n = 2</code>: Returns <code>[0, 1]</code>.</li>
+<li><strong>Linear line graph:</strong> Centroids are the exact middle node (if odd length) or middle two nodes (if even length).</li>
+</ul>''',
+
+# ============================================================ LC 785
+785: '''<h2>🧭 How to think about it</h2>
+<p>An undirected graph is <strong>bipartite</strong> if we can split its set of nodes into two independent subsets <code>A</code> and <code>B</code> such that every edge in the graph connects a node in <code>A</code> and a node in <code>B</code>.</p>
+
+<p>In graph theory, this is identical to <strong>2-Coloring</strong>: can we color every vertex with one of two colors (e.g. Red and Blue, or <code>1</code> and <code>-1</code>) such that no two adjacent vertices have the same color?</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Trying all 2^n coloring combinations is exponential. BFS or DFS 2-coloring checks the graph in <code>O(V + E)</code> time.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> An undirected graph is bipartite <strong>if and only if it contains NO odd-length cycles</strong>.
+<br><br>
+Iterate through all nodes <code>0</code> to <code>n - 1</code>. If a node is uncolored, start a BFS/DFS from it with color <code>1</code>. For every neighbor:
+<ul>
+  <li>If uncolored: assign it <code>-color</code> and recurse.</li>
+  <li>If already colored: it MUST have color <code>-color</code>. If it has the SAME color, a conflict (odd cycle) is detected &rarr; return <code>False</code>!</li>
+</ul></div>
+
+<h2>🪜 The approach, step by step</h2>
+<ol>
+<li>Initialize <code>color = {}</code>.</li>
+<li>For each node <code>i</code> from <code>0</code> to <code>n - 1</code>:
+  <ul>
+    <li>If <code>i</code> not in <code>color</code>:
+      <ul>
+        <li>Launch <code>bfs(i)</code>: queue <code>q = deque([i])</code>, set <code>color[i] = 1</code>.</li>
+        <li>While <code>q</code>:
+          <ul>
+            <li>Pop <code>u</code>.</li>
+            <li>For neighbor <code>v in graph[u]</code>:
+              <ul>
+                <li>If <code>v not in color</code>: set <code>color[v] = -color[u]</code>, push <code>v</code>.</li>
+                <li>Else if <code>color[v] == color[u]</code>: return <code>False</code>!</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</li>
+<li>Return <code>True</code>.</li>
+</ol>
+
+<h2>🎞️ Visual dry run:</h2>
+<pre class="viz">Graph: 0 -- 1
+       |    |
+       3 -- 2
+
+1. color[0] = 1 (Blue)
+2. Neighbors of 0: 1 and 3 -> color[1] = -1 (Red), color[3] = -1 (Red)
+3. Neighbor of 1: 2 -> color[2] = 1 (Blue)
+4. Check 3's neighbor 2: color[3]=-1 != color[2]=1. Valid!
+Result: True (Bipartite) ✓
+
+Odd cycle counterexample: Triangle 0-1-2
+0 (Blue) -> 1 (Red) -> 2 (Blue)
+Edge 2-0 connects Blue to Blue! Conflict! Output: False ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Python 3 — BFS 2-Coloring</summary>
+<pre><code class="language-python">from collections import deque
+
+def isBipartite(graph: list[list[int]]) -> bool:
+    """
+    Determines if graph is 2-colorable using BFS traversal across all components.
+    """
+    n = len(graph)
+    color = {}  # node -> 1 or -1
+    
+    for i in range(n):
+        if i not in color:
+            color[i] = 1
+            q = deque([i])
+            
+            while q:
+                u = q.popleft()
+                for v in graph[u]:
+                    if v not in color:
+                        color[v] = -color[u]
+                        q.append(v)
+                    elif color[v] == color[u]:
+                        return False  # Odd cycle found
+                        
+    return True
+</code></pre>
+</details>
+
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O(V + E)</code>. Each node is colored once and each edge is inspected twice.</li>
+<li><strong>Space Complexity:</strong> <code>O(V)</code> for the color dictionary and BFS queue.</li>
+</ul>
+
+<h2>🧗 Follow-ups &amp; variations</h2>
+<ul>
+<li><strong>Possible Bipartition ([[886]]):</strong> Split people into two groups based on dislikes; same 2-coloring problem.</li>
+</ul>''',
+
+# ============================================================ LC 787
+787: '''<h2>🧭 How to think about it</h2>
+<p>There are <code>n</code> cities connected by flights with prices. Given <code>src</code>, <code>dst</code>, and an integer <code>k</code>, return the cheapest price from <code>src</code> to <code>dst</code> with <strong>at most <code>k</code> stops</strong> (i.e. at most <code>k + 1</code> flight legs). If no such route exists, return <code>-1</code>.</p>
+
+<p>Because the number of edges is explicitly bounded by <code>k + 1</code>, standard Dijkstra's algorithm fails if it greedily explores a cheap path that consumes too many stops. Instead, this problem is custom-built for <strong>Bellman-Ford Algorithm</strong> run for exactly <code>k + 1</code> rounds, or <strong>BFS level-by-level</strong>.</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>DFS backtracking is exponential. Bellman-Ford runs in <code>O((K + 1) &times; E)</code> time and takes <code>O(V)</code> auxiliary space.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong>
+In Bellman-Ford, iteration <code>i</code> calculates the shortest distance to all vertices using <strong>at most <code>i</code> edges</strong>!
+<br><br>
+CRITICAL TRICK: At the start of each iteration, copy <code>prices</code> to <code>temp_prices</code>. Relax edges using values from the <em>previous</em> iteration: <code>temp_prices[v] = min(temp_prices[v], prices[u] + weight)</code>. This ensures an iteration uses at most ONE additional flight and prevents a single iteration from cascading through multiple flights!</div>
+
+<h2>🪜 The approach, step by step</h2>
+<ol>
+<li>Initialize <code>prices = [float('inf')] * n</code>. Set <code>prices[src] = 0</code>.</li>
+<li>Loop <code>k + 1</code> times (allowing at most <code>k + 1</code> flights):
+  <ul>
+    <li>Create a copy: <code>temp = list(prices)</code>.</li>
+    <li>For each flight <code>(u, v, cost)</code> in <code>flights</code>:
+      <ul>
+        <li>If <code>prices[u] != float('inf')</code> and <code>prices[u] + cost < temp[v]</code>:
+          <code>temp[v] = prices[u] + cost</code>.</li>
+      </ul>
+    </li>
+    <li>Update <code>prices = temp</code>.</li>
+  </ul>
+</li>
+<li>Return <code>prices[dst]</code> if <code>prices[dst] != float('inf')</code> else <code>-1</code>.</li>
+</ol>
+
+<h2>🎞️ Visual dry run — n=3, flights=[(0,1,100),(1,2,100),(0,2,500)], src=0, dst=2, k=1:</h2>
+<pre class="viz">Initial prices: [0, inf, inf]
+
+Round 1 (1 flight / 0 stops):
+  Edge 0->1 (100): temp[1] = min(inf, 0 + 100) = 100
+  Edge 0->2 (500): temp[2] = min(inf, 0 + 500) = 500
+  prices after round 1: [0, 100, 500]
+
+Round 2 (2 flights / 1 stop):
+  Edge 1->2 (100): temp[2] = min(500, prices[1] + 100) = min(500, 100 + 100) = 200!
+  prices after round 2: [0, 100, 200]
+
+Stop count k=1 reached. Output = 200 ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Python 3 — Bellman-Ford with Copy Array</summary>
+<pre><code class="language-python">def findCheapestPrice(n: int, flights: list[list[int]], src: int, dst: int, k: int) -> int:
+    """
+    Computes cheapest flight price from src to dst with at most k stops using Bellman-Ford.
+    """
+    prices = [float('inf')] * n
+    prices[src] = 0
+    
+    # Run Bellman-Ford for at most k + 1 flights
+    for _ in range(k + 1):
+        temp = list(prices)
+        for u, v, cost in flights:
+            if prices[u] != float('inf') and prices[u] + cost < temp[v]:
+                temp[v] = prices[u] + cost
+        prices = temp
+        
+    return prices[dst] if prices[dst] != float('inf') else -1
+</code></pre>
+</details>
+
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O((K + 1) &times; E)</code>. There are <code>k + 1</code> rounds, and each round scans all <code>E</code> flights.</li>
+<li><strong>Space Complexity:</strong> <code>O(V)</code> to store the prices and temp arrays.</li>
+</ul>
+
+<h2>🚨 Edge cases to watch out for</h2>
+<ul>
+<li><code>src == dst</code>: Cost is 0.</li>
+<li><strong>Destination unreachable within k stops:</strong> Returns <code>-1</code> correctly.</li>
+<li><strong>Direct flight exists but is more expensive:</strong> The algorithm correctly considers the multi-hop cheaper route if within <code>k</code> stops.</li>
+</ul>''',
+
+# ============================================================ LC 752
+752: '''<h2>🧭 How to think about it</h2>
+<p>You have a 4-wheel lock starting at <code>"0000"</code>. Each wheel has digits <code>'0'</code> through <code>'9'</code> and can rotate forward (<code>9 &rarr; 0</code>) or backward (<code>0 &rarr; 9</code>). You are given a list of <code>deadends</code>: if the lock displays any deadend combination, the wheels lock and you cannot turn them anymore. Return the minimum number of total turns required to reach <code>target</code>, or <code>-1</code> if impossible.</p>
+
+<p>Every combination is a vertex in an unweighted graph. Each combination has <strong>8 neighbors</strong> (4 wheels &times; 2 rotation directions). Since each move has unit cost 1, the shortest path from <code>"0000"</code> to <code>target</code> is solved using <strong>Breadth-First Search (BFS)</strong>.</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Standard BFS explores level by level. To make it blaze fast, <strong>Bidirectional BFS</strong> searches from both <code>"0000"</code> and <code>target</code> simultaneously, meeting in the middle!</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Bidirectional BFS reduces branching volume. If search tree has branching factor <code>b = 8</code> and depth <code>d</code>, single-ended BFS explores <code>O(b<sup>d</sup>)</code> states, whereas bidirectional BFS explores <code>2 &times; O(b<sup>d/2</sup>)</code> states—a massive speedup! Always expand the smaller frontier set at each step.</div>
+
+<h2>🪜 The approach, step by step</h2>
+<ol>
+<li>Deadend check: if <code>"0000" in deadends</code> or <code>target in deadends</code>, return <code>-1</code> immediately.</li>
+<li>Initialize two frontier sets: <code>begin_set = {"0000"}</code> and <code>end_set = {target}</code>.</li>
+<li>Initialize <code>visited = set(deadends)</code> and <code>turns = 0</code>.</li>
+<li>While <code>begin_set</code> and <code>end_set</code>:
+  <ul>
+    <li>Always expand the smaller set: if <code>len(begin_set) > len(end_set)</code>, swap them.</li>
+    <li>Create <code>next_level = set()</code>.</li>
+    <li>For each code in <code>begin_set</code>:
+      <ul>
+        <li>For each digit position <code>i &isin; [0, 3]</code>:
+          <ul>
+            <li>Try turning forward (<code>(d + 1) % 10</code>) and backward (<code>(d - 1) % 10</code>).</li>
+            <li>If neighbor in <code>end_set</code>: return <code>turns + 1</code> (the two frontiers met!).</li>
+            <li>If neighbor not in <code>visited</code>: add to <code>visited</code> and <code>next_level</code>.</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><code>begin_set = next_level</code>, <code>turns += 1</code>.</li>
+  </ul>
+</li>
+<li>Return <code>-1</code>.</li>
+</ol>
+
+<h2>🎞️ Visual dry run — start="0000", target="0009":</h2>
+<pre class="viz">1. begin = {"0000"}, end = {"0009"}, turns = 0
+2. Expand "0000" -> neighbors include:
+   wheel 3 backward: (0 - 1) % 10 = 9 -> "0009"!
+   "0009" is directly in end_set!
+3. Frontiers met! Return turns + 1 = 1 ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Python 3 — Bidirectional BFS</summary>
+<pre><code class="language-python">def openLock(deadends: list[str], target: str) -> int:
+    """
+    Finds minimum turns to open lock avoiding deadends using Bidirectional BFS.
+    """
+    dead_set = set(deadends)
+    if "0000" in dead_set or target in dead_set:
+        return -1
+    if target == "0000":
+        return 0
+        
+    begin_set = {"0000"}
+    end_set = {target}
+    visited = set(deadends)
+    visited.add("0000")
+    visited.add(target)
+    turns = 0
+    
+    while begin_set and end_set:
+        # Always expand the smaller frontier set
+        if len(begin_set) > len(end_set):
+            begin_set, end_set = end_set, begin_set
+            
+        next_level = set()
+        for code in begin_set:
+            for i in range(4):
+                digit = int(code[i])
+                # Generate 2 turns: +1 and -1
+                for diff in (-1, 1):
+                    new_digit = (digit + diff) % 10
+                    neighbor = code[:i] + str(new_digit) + code[i+1:]
+                    
+                    if neighbor in end_set:
+                        return turns + 1
+                    if neighbor not in visited:
+                        visited.add(neighbor)
+                        next_level.add(neighbor)
+                        
+        turns += 1
+        begin_set = next_level
+        
+    return -1
+</code></pre>
+</details>
+
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O(8 &times; 10<sup>4</sup>) = O(1)</code>. The state space is bounded by 10,000 combinations (0000 to 9999), and each state has 8 transitions.</li>
+<li><strong>Space Complexity:</strong> <code>O(10<sup>4</sup>) = O(1)</code> for sets and visited storage.</li>
+</ul>
+
+<h2>🚨 Edge cases to watch out for</h2>
+<ul>
+<li><code>"0000"</code> is in <code>deadends</code>: Returns <code>-1</code>.</li>
+<li><code>target == "0000"</code>: Returns <code>0</code> immediately.</li>
+</ul>''',
+
 }

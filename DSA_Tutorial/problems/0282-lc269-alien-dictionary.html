@@ -23,44 +23,129 @@
  › Subpattern 9.4: Graph BFS - Topological Sort (Kahn's Algorithm) · Problem 282 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0653-lc269-alien-dictionary.html">Advanced Graph Algorithm</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Given a list of words sorted by an unknown alphabet, recover a valid letter ordering of that alphabet (or report contradiction).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>There is a new alien language that uses the English alphabet. However, the order of the letters is unknown to you. You are given a list of strings <code>words</code> from the alien language dictionary, where the words are claimed to be sorted lexicographically by the rules of this language. Derive the order of letters in this language. If the order is invalid, return <code>""</code>. If there are multiple valid orders, return any of them.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Graph BFS - Topological Sort (Kahn's Algorithm)</strong> — Maintain in-degrees; repeatedly take a zero-in-degree node and decrement neighbors — Kahn's algorithm.</p>
+<p>This is the definitive interview problem for <strong>Topological Sort</strong> on a Directed Acyclic Graph (DAG) using <strong>Kahn's Algorithm</strong>.</p>
 
-<h2>Why this pattern?</h2><ul><li>"islands", "connected", "regions", "provinces" → component DFS/BFS</li><li>"minimum steps / moves / days to reach" → BFS</li><li>"prerequisites", "build order", "course schedule" → topological sort</li><li>states-and-moves puzzles (word ladder, locks) → BFS over implicit graph</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Graph Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>from collections import deque, defaultdict
-# BFS shortest steps
-q, seen = deque([(start, 0)]), {start}
-while q:
-    node, d = q.popleft()
-    if node == goal: return d
-    for nb in neighbors(node):
-        if nb not in seen:
-            seen.add(nb)                 # mark on ENQUEUE
-            q.append((nb, d + 1))
+<h2>🐢 Brute force vs optimal</h2>
+<p>Each pair of adjacent words provides a relative ordering constraint between two characters. Comparing every word with every other word takes <code>O(W^2)</code>, but because the dictionary is already sorted, we only need to compare adjacent words <code>words[i]</code> and <code>words[i+1]</code> in <code>O(W &times; L)</code> where <code>L</code> is maximum word length.</p>
 
-# Topological sort (Kahn's)
-indeg = defaultdict(int)
-for u in graph:
-    for v in graph[u]: indeg[v] += 1
-q = deque([u for u in graph if indeg[u] == 0])
-order = []
-while q:
-    u = q.popleft(); order.append(u)
-    for v in graph[u]:
-        indeg[v] -= 1
-        if indeg[v] == 0: q.append(v)
-# len(order) &lt; number of nodes  ⇒  cycle exists</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+  <li><strong>Edge Extraction:</strong> For adjacent words <code>w1</code> and <code>w2</code>: find the first index <code>j</code> where <code>w1[j] != w2[j]</code>. This tells us <code>w1[j]</code> must come before <code>w2[j]</code> &rarr; directed edge <code>w1[j] &rarr; w2[j]</code>, and increment <code>in_degree[w2[j]] += 1</code>.</li>
+  <li><strong>Prefix Invalidity Trap:</strong> If <code>len(w1) > len(w2)</code> and <code>w1.startswith(w2)</code> (e.g. <code>["apple", "app"]</code>), the dictionary is invalid! In any valid lexicographical order, a prefix must come before its longer version. Return <code>""</code> immediately!</li>
+  <li><strong>Topological BFS:</strong> Push all characters with <code>in_degree == 0</code> into a queue. Pop and append to result string, decrementing neighbors' in-degrees. If the final string length equals the number of unique characters, return it; otherwise a cycle exists (e.g. <code>a &rarr; b &rarr; a</code>), so return <code>""</code>.</li>
+</ol></div>
+
+<h2>🪜 The approach, step by step</h2>
+<ol>
+<li>Initialize <code>adj = {c: set() for word in words for c in word}</code> and <code>in_degree = {c: 0 for c in adj}</code>.</li>
+<li>For <code>i</code> from <code>0</code> to <code>len(words) - 2</code>:
+  <ul>
+    <li><code>w1, w2 = words[i], words[i+1]</code>.</li>
+    <li>If <code>len(w1) > len(w2) and w1.startswith(w2)</code>: return <code>""</code>.</li>
+    <li>Find first differing index <code>j</code>:
+      <ul>
+        <li>If <code>w2[j] not in adj[w1[j]]</code>: add <code>w2[j]</code> to <code>adj[w1[j]]</code> and increment <code>in_degree[w2[j]] += 1</code>.</li>
+        <li>Break (subsequent characters give no ordering information).</li>
+      </ul>
+    </li>
+  </ul>
+</li>
+<li>Queue <code>q = deque([c for c, deg in in_degree.items() if deg == 0])</code>.</li>
+<li>While <code>q</code>:
+  <ul>
+    <li>Pop <code>c</code>, append to <code>order</code>.</li>
+    <li>For neighbor <code>nxt in adj[c]</code>:
+      <ul>
+        <li><code>in_degree[nxt] -= 1</code>.</li>
+        <li>If <code>in_degree[nxt] == 0</code>: push <code>nxt</code> to <code>q</code>.</li>
+      </ul>
+    </li>
+  </ul>
+</li>
+<li>Return <code>"".join(order)</code> if <code>len(order) == len(in_degree)</code> else <code>""</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — words = ["wrt","wrf","er","ett","rftt"]:</h2>
+<pre class="viz">Compare adjacent words:
+1. "wrt" vs "wrf": 't' != 'f' -> Edge: t -> f
+2. "wrf" vs "er":  'w' != 'e' -> Edge: w -> e
+3. "er"  vs "ett": 'r' != 't' -> Edge: r -> t
+4. "ett" vs "rftt":'e' != 'r' -> Edge: e -> r
+
+Graph:
+w -> e -> r -> t -> f
+In-degrees: {w:0, e:1, r:1, t:1, f:1}
+
+Kahn's BFS:
+1. Pop 'w' (deg 0): order = ['w'], e's deg becomes 0
+2. Pop 'e' (deg 0): order = ['w', 'e'], r's deg becomes 0
+3. Pop 'r' (deg 0): order = ['w', 'e', 'r'], t's deg becomes 0
+4. Pop 't' (deg 0): order = ['w', 'e', 'r', 't'], f's deg becomes 0
+5. Pop 'f' (deg 0): order = ['w', 'e', 'r', 't', 'f']
+
+Length matches 5 unique chars!
+Output: "wertf" ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Python 3 — Kahn's Algorithm (Topological Sort)</summary>
+<pre><code class="language-python">from collections import deque
+
+def alienOrder(words: list[str]) -> str:
+    """
+    Derives alien alphabet ordering using Kahn's topological sort algorithm.
+    """
+    # 1. Initialize graph and in-degree maps for all unique characters
+    adj = {c: set() for word in words for c in word}
+    in_degree = {c: 0 for c in adj}
+    
+    # 2. Build graph from adjacent word comparisons
+    for i in range(len(words) - 1):
+        w1, w2 = words[i], words[i + 1]
+        min_len = min(len(w1), len(w2))
+        
+        # Check invalid prefix case: e.g. ["apple", "app"]
+        if len(w1) > len(w2) and w1[:min_len] == w2[:min_len]:
+            return ""
+            
+        for j in range(min_len):
+            if w1[j] != w2[j]:
+                if w2[j] not in adj[w1[j]]:
+                    adj[w1[j]].add(w2[j])
+                    in_degree[w2[j]] += 1
+                break  # Only first differing character determines order
+                
+    # 3. BFS with queue of characters with in-degree == 0
+    q = deque([c for c, deg in in_degree.items() if deg == 0])
+    order = []
+    
+    while q:
+        c = q.popleft()
+        order.append(c)
+        for neighbor in adj[c]:
+            in_degree[neighbor] -= 1
+            if in_degree[neighbor] == 0:
+                q.append(neighbor)
+                
+    # 4. If order length equals unique characters, valid DAG; else cycle exists
+    return "".join(order) if len(order) == len(in_degree) else ""
+</code></pre>
+</details>
+
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O(C)</code> where <code>C</code> is the total length of all words in the input. Extracting edges examines each character at most once. Topological sort visits at most 26 vertices and edges.</li>
+<li><strong>Space Complexity:</strong> <code>O(1)</code> or <code>O(U + min(U^2, N))</code> where <code>U &le; 26</code> is the alphabet size. Storage is bounded by at most 26 nodes.</li>
+</ul>
+
+<h2>🚨 Edge cases to watch out for</h2>
+<ul>
+<li><strong>Prefix anomaly:</strong> <code>["abc", "ab"]</code> &rarr; must return <code>""</code>.</li>
+<li><strong>Cycles:</strong> <code>["z", "x", "z"]</code> &rarr; <code>z &rarr; x</code> and <code>x &rarr; z</code> &rarr; cycle detected, returns <code>""</code>.</li>
+<li><strong>Single character or single word:</strong> Returns the character(s) in any valid order.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0281-lc1059-all-paths-from-source-lead-to-destination.html"><span class="lbl">← Previous</span>#1059 All Paths from Source Lead to Destination</a><a href="../problems/0283-lc310-minimum-height-trees.html" style="text-align:right"><span class="lbl">Next →</span>#310 Minimum Height Trees</a></div>
 </div>

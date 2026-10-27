@@ -23,44 +23,72 @@
  › Subpattern 9.8: Graph - Union-Find / Disjoint Set Union (DSU) · Problem 304 of 699</p>
 
 <h2>📋 The problem</h2><p>Given n nodes and undirected edges, count the connected components.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given <code>n</code> nodes labeled <code>0</code> to <code>n - 1</code> and a list of undirected edges, return the total number of connected components in the graph.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Graph - Union-Find / Disjoint Set Union (DSU)</strong> — DSU with path compression and union by rank — near-O(1) amortized.</p>
+<p>Every node starts as its own independent component (total <code>n</code> components). Every time an edge connects two previously disconnected components, the total component count decreases by 1.</p>
 
-<h2>Why this pattern?</h2><ul><li>"islands", "connected", "regions", "provinces" → component DFS/BFS</li><li>"minimum steps / moves / days to reach" → BFS</li><li>"prerequisites", "build order", "course schedule" → topological sort</li><li>states-and-moves puzzles (word ladder, locks) → BFS over implicit graph</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Graph Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>from collections import deque, defaultdict
-# BFS shortest steps
-q, seen = deque([(start, 0)]), {start}
-while q:
-    node, d = q.popleft()
-    if node == goal: return d
-    for nb in neighbors(node):
-        if nb not in seen:
-            seen.add(nb)                 # mark on ENQUEUE
-            q.append((nb, d + 1))
+<h2>🐢 Brute force vs optimal</h2>
+<p>Standard DFS or BFS explores each component in <code>O(V + E)</code> time. Disjoint Set Union (DSU) solves this interactively in <code>O(E &times; &alpha;(V))</code> time with clean, concise code.</p>
 
-# Topological sort (Kahn's)
-indeg = defaultdict(int)
-for u in graph:
-    for v in graph[u]: indeg[v] += 1
-q = deque([u for u in graph if indeg[u] == 0])
-order = []
-while q:
-    u = q.popleft(); order.append(u)
-    for v in graph[u]:
-        indeg[v] -= 1
-        if indeg[v] == 0: q.append(v)
-# len(order) &lt; number of nodes  ⇒  cycle exists</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> Initialize <code>count = n</code>. For each edge <code>(u, v)</code>, attempt <code>union(u, v)</code>. If <code>u</code> and <code>v</code> were in different sets, decrement <code>count -= 1</code>. When all edges are processed, <code>count</code> is the exact number of connected components!</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Initialize <code>count = n</code>.</li>
+<li>Initialize <code>parent = list(range(n))</code>.</li>
+<li>Implement <code>find(x)</code> with path compression.</li>
+<li>Implement <code>union(u, v)</code>:
+  <ul>
+    <li>If <code>find(u) != find(v)</code>: set <code>parent[find(u)] = find(v)</code> and decrement <code>count -= 1</code>.</li>
+  </ul>
+</li>
+<li>Process all edges, return final <code>count</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — n=5, edges=[(0,1), (1,2), (3,4)]:</h2>
+<pre class="viz">Initial components: {0}, {1}, {2}, {3}, {4} -> count = 5
+
+1. Edge (0, 1): union(0, 1) -> {0, 1}, {2}, {3}, {4} -> count = 4
+2. Edge (1, 2): union(1, 2) -> {0, 1, 2}, {3}, {4} -> count = 3
+3. Edge (3, 4): union(3, 4) -> {0, 1, 2}, {3, 4} -> count = 2
+Finished edges! Return count = 2 ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Python 3 — Union-Find</summary>
+<pre><code class="language-python">def countComponents(n: int, edges: list[list[int]]) -> int:
+    """
+    Returns the number of connected components in an undirected graph using DSU.
+    """
+    parent = list(range(n))
+    count = n
+    
+    def find(x):
+        if parent[x] != x:
+            parent[x] = find(parent[x])
+        return parent[x]
+        
+    for u, v in edges:
+        ru, rv = find(u), find(v)
+        if ru != rv:
+            parent[ru] = rv
+            count -= 1
+            
+    return count
+</code></pre>
+</details>
+
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O(V + E &times; &alpha;(V)) &approx; O(V + E)</code>.</li>
+<li><strong>Space Complexity:</strong> <code>O(V)</code> for the parent array.</li>
+</ul>
+
+<h2>🚨 Edge cases to watch out for</h2>
+<ul>
+<li><code>edges = []</code>: Returns <code>n</code> (every node is an isolated component).</li>
+<li><strong>Multiple edges connecting same components:</strong> Duplicate edges have <code>ru == rv</code>, which safely leaves <code>count</code> unchanged.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0303-lc305-number-of-islands-ii.html"><span class="lbl">← Previous</span>#305 Number of Islands II</a><a href="../problems/0305-lc399-evaluate-division.html" style="text-align:right"><span class="lbl">Next →</span>#399 Evaluate Division</a></div>
 </div>

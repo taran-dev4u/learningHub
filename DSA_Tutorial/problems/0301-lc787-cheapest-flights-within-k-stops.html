@@ -23,44 +23,84 @@
  › Subpattern 9.7: Graph - Shortest Path (Bellman-Ford / BFS + K) · Problem 301 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0638-lc787-cheapest-flights-within-k-stops.html">Advanced Graph Algorithm</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Return the cheapest flight price from src to dst using at most k intermediate stops (-1 if impossible).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>There are <code>n</code> cities connected by flights with prices. Given <code>src</code>, <code>dst</code>, and an integer <code>k</code>, return the cheapest price from <code>src</code> to <code>dst</code> with <strong>at most <code>k</code> stops</strong> (i.e. at most <code>k + 1</code> flight legs). If no such route exists, return <code>-1</code>.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Graph - Shortest Path (Bellman-Ford / BFS + K)</strong> — Bellman-Ford handles negative weights / detects negative cycles; BFS+K bounds path length.</p>
+<p>Because the number of edges is explicitly bounded by <code>k + 1</code>, standard Dijkstra's algorithm fails if it greedily explores a cheap path that consumes too many stops. Instead, this problem is custom-built for <strong>Bellman-Ford Algorithm</strong> run for exactly <code>k + 1</code> rounds, or <strong>BFS level-by-level</strong>.</p>
 
-<h2>Why this pattern?</h2><ul><li>"islands", "connected", "regions", "provinces" → component DFS/BFS</li><li>"minimum steps / moves / days to reach" → BFS</li><li>"prerequisites", "build order", "course schedule" → topological sort</li><li>states-and-moves puzzles (word ladder, locks) → BFS over implicit graph</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Graph Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>from collections import deque, defaultdict
-# BFS shortest steps
-q, seen = deque([(start, 0)]), {start}
-while q:
-    node, d = q.popleft()
-    if node == goal: return d
-    for nb in neighbors(node):
-        if nb not in seen:
-            seen.add(nb)                 # mark on ENQUEUE
-            q.append((nb, d + 1))
+<h2>🐢 Brute force vs optimal</h2>
+<p>DFS backtracking is exponential. Bellman-Ford runs in <code>O((K + 1) &times; E)</code> time and takes <code>O(V)</code> auxiliary space.</p>
 
-# Topological sort (Kahn's)
-indeg = defaultdict(int)
-for u in graph:
-    for v in graph[u]: indeg[v] += 1
-q = deque([u for u in graph if indeg[u] == 0])
-order = []
-while q:
-    u = q.popleft(); order.append(u)
-    for v in graph[u]:
-        indeg[v] -= 1
-        if indeg[v] == 0: q.append(v)
-# len(order) &lt; number of nodes  ⇒  cycle exists</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong>
+In Bellman-Ford, iteration <code>i</code> calculates the shortest distance to all vertices using <strong>at most <code>i</code> edges</strong>!
+<br><br>
+CRITICAL TRICK: At the start of each iteration, copy <code>prices</code> to <code>temp_prices</code>. Relax edges using values from the <em>previous</em> iteration: <code>temp_prices[v] = min(temp_prices[v], prices[u] + weight)</code>. This ensures an iteration uses at most ONE additional flight and prevents a single iteration from cascading through multiple flights!</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Initialize <code>prices = [float('inf')] * n</code>. Set <code>prices[src] = 0</code>.</li>
+<li>Loop <code>k + 1</code> times (allowing at most <code>k + 1</code> flights):
+  <ul>
+    <li>Create a copy: <code>temp = list(prices)</code>.</li>
+    <li>For each flight <code>(u, v, cost)</code> in <code>flights</code>:
+      <ul>
+        <li>If <code>prices[u] != float('inf')</code> and <code>prices[u] + cost < temp[v]</code>:
+          <code>temp[v] = prices[u] + cost</code>.</li>
+      </ul>
+    </li>
+    <li>Update <code>prices = temp</code>.</li>
+  </ul>
+</li>
+<li>Return <code>prices[dst]</code> if <code>prices[dst] != float('inf')</code> else <code>-1</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — n=3, flights=[(0,1,100),(1,2,100),(0,2,500)], src=0, dst=2, k=1:</h2>
+<pre class="viz">Initial prices: [0, inf, inf]
+
+Round 1 (1 flight / 0 stops):
+  Edge 0->1 (100): temp[1] = min(inf, 0 + 100) = 100
+  Edge 0->2 (500): temp[2] = min(inf, 0 + 500) = 500
+  prices after round 1: [0, 100, 500]
+
+Round 2 (2 flights / 1 stop):
+  Edge 1->2 (100): temp[2] = min(500, prices[1] + 100) = min(500, 100 + 100) = 200!
+  prices after round 2: [0, 100, 200]
+
+Stop count k=1 reached. Output = 200 ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Python 3 — Bellman-Ford with Copy Array</summary>
+<pre><code class="language-python">def findCheapestPrice(n: int, flights: list[list[int]], src: int, dst: int, k: int) -> int:
+    """
+    Computes cheapest flight price from src to dst with at most k stops using Bellman-Ford.
+    """
+    prices = [float('inf')] * n
+    prices[src] = 0
+    
+    # Run Bellman-Ford for at most k + 1 flights
+    for _ in range(k + 1):
+        temp = list(prices)
+        for u, v, cost in flights:
+            if prices[u] != float('inf') and prices[u] + cost < temp[v]:
+                temp[v] = prices[u] + cost
+        prices = temp
+        
+    return prices[dst] if prices[dst] != float('inf') else -1
+</code></pre>
+</details>
+
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O((K + 1) &times; E)</code>. There are <code>k + 1</code> rounds, and each round scans all <code>E</code> flights.</li>
+<li><strong>Space Complexity:</strong> <code>O(V)</code> to store the prices and temp arrays.</li>
+</ul>
+
+<h2>🚨 Edge cases to watch out for</h2>
+<ul>
+<li><code>src == dst</code>: Cost is 0.</li>
+<li><strong>Destination unreachable within k stops:</strong> Returns <code>-1</code> correctly.</li>
+<li><strong>Direct flight exists but is more expensive:</strong> The algorithm correctly considers the multi-hop cheaper route if within <code>k</code> stops.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0300-lc2812-find-the-safest-path-in-a-grid.html"><span class="lbl">← Previous</span>#2812 Find the Safest Path in a Grid</a><a href="../problems/0302-lc261-graph-valid-tree.html" style="text-align:right"><span class="lbl">Next →</span>#261 Graph Valid Tree</a></div>
 </div>

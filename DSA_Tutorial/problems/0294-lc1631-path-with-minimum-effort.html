@@ -23,44 +23,115 @@
  › Subpattern 9.6: Graph - Shortest Path (Dijkstra's Algorithm) · Problem 294 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0643-lc1631-path-with-minimum-effort.html">Advanced Graph Algorithm</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Find a path from corner to corner minimizing the maximum height difference along it (binary search + BFS, or Dijkstra on effort).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>You are given a 2D grid <code>heights</code> of size <code>rows x cols</code>. A path's <strong>effort</strong> is the <em>maximum absolute difference</em> in heights between two consecutive cells of the route. You need to find the minimum effort required to travel from <code>(0, 0)</code> to <code>(rows - 1, cols - 1)</code>.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Graph - Shortest Path (Dijkstra's Algorithm)</strong> — Priority-queue based shortest path on non-negative weighted graphs.</p>
-
-<h2>Why this pattern?</h2><ul><li>"islands", "connected", "regions", "provinces" → component DFS/BFS</li><li>"minimum steps / moves / days to reach" → BFS</li><li>"prerequisites", "build order", "course schedule" → topological sort</li><li>states-and-moves puzzles (word ladder, locks) → BFS over implicit graph</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Graph Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>from collections import deque, defaultdict
-# BFS shortest steps
-q, seen = deque([(start, 0)]), {start}
-while q:
-    node, d = q.popleft()
-    if node == goal: return d
-    for nb in neighbors(node):
-        if nb not in seen:
-            seen.add(nb)                 # mark on ENQUEUE
-            q.append((nb, d + 1))
-
-# Topological sort (Kahn's)
-indeg = defaultdict(int)
-for u in graph:
-    for v in graph[u]: indeg[v] += 1
-q = deque([u for u in graph if indeg[u] == 0])
-order = []
-while q:
-    u = q.popleft(); order.append(u)
-    for v in graph[u]:
-        indeg[v] -= 1
-        if indeg[v] == 0: q.append(v)
-# len(order) &lt; number of nodes  ⇒  cycle exists</code></pre>
-<h2>How to work on it now</h2>
+<p>Notice the bottleneck property: we want to find a route whose peak edge difference is minimized. This can be viewed through two lens:</p>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+  <li><strong>Modified Dijkstra's Algorithm:</strong> Treat each cell as a graph vertex. The distance to a cell is the maximum effort seen along the path to it. A min-heap always expands the path with the smallest peak effort.</li>
+  <li><strong>Binary Search on Answer + BFS:</strong> Since effort is bounded in <code>[0, 10^6]</code>, binary search the effort threshold and run a simple BFS/DFS checking if <code>(rows-1, cols-1)</code> is reachable using only step differences &le; mid.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Exploring all simple paths with DFS/backtracking takes <code>O(4^(m &times; n))</code> exponential time. Modified Dijkstra operates in <code>O((m &times; n) log(m &times; n))</code>, which runs comfortably within 100ms.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> In standard Dijkstra, new path cost is <code>dist + edge_weight</code>. In Minimum Effort, new path cost is <code>max(effort_so_far, abs(heights[r][c] - heights[nr][nc]))</code>. The min-heap guarantees that the first time we pop destination <code>(rows - 1, cols - 1)</code>, its recorded effort is globally minimal!</div>
+
+<h2>🪜 The approach, step by step</h2>
+<ol>
+<li>Let <code>m = len(heights)</code> and <code>n = len(heights[0])</code>.</li>
+<li>Initialize distance table <code>dist = [[float('inf')] * n for _ in range(m)]</code>. Set <code>dist[0][0] = 0</code>.</li>
+<li>Min-heap <code>pq = [(0, 0, 0)]</code> containing tuples <code>(effort, r, c)</code>.</li>
+<li>While <code>pq</code> is not empty:
+  <ul>
+    <li>Pop <code>(effort, r, c)</code>.</li>
+    <li>If <code>(r, c) == (m - 1, n - 1)</code>, return <code>effort</code> immediately!</li>
+    <li>If <code>effort > dist[r][c]</code>, continue (stale entry).</li>
+    <li>For each of the 4 cardinal neighbors <code>(nr, nc)</code>:
+      <ul>
+        <li>Calculate step effort: <code>next_effort = max(effort, abs(heights[r][c] - heights[nr][nc]))</code>.</li>
+        <li>If <code>next_effort < dist[nr][nc]</code>: update <code>dist[nr][nc] = next_effort</code> and push <code>(next_effort, nr, nc)</code> into <code>pq</code>.</li>
+      </ul>
+    </li>
+  </ul>
+</li>
+</ol>
+
+<h2>🎞️ Visual dry run:</h2>
+<pre class="viz">Grid:
+[1, 2, 2]
+[3, 8, 2]
+[5, 3, 5]
+
+Path 1: (0,0)->(0,1)->(0,2)->(1,2)->(2,2)
+  Heights: 1 -> 2 -> 2 -> 2 -> 5
+  Diffs:   |1-2|=1, |2-2|=0, |2-2|=0, |2-5|=3 -> Max effort = 3
+
+Path 2: (0,0)->(1,0)->(2,0)->(2,1)->(2,2)
+  Heights: 1 -> 3 -> 5 -> 3 -> 5
+  Diffs:   |1-3|=2, |3-5|=2, |5-3|=2, |3-5|=2 -> Max effort = 2!
+
+Dijkstra pops (2, 2) with effort 2 before ever popping effort 3.
+Output: 2 ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Python 3 — Modified Dijkstra (Min-Heap)</summary>
+<pre><code class="language-python">import heapq
+
+def minimumEffortPath(heights: list[list[int]]) -> int:
+    """
+    Finds path from (0,0) to bottom-right cell with minimum peak consecutive elevation difference.
+    """
+    m, n = len(heights), len(heights[0])
+    # dist[r][c] stores minimum effort to reach cell (r, c)
+    dist = [[float('inf')] * n for _ in range(m)]
+    dist[0][0] = 0
+    
+    # Priority queue stores (effort, row, col)
+    pq = [(0, 0, 0)]
+    dirs = [(1, 0), (-1, 0), (0, 1), (0, -1)]
+    
+    while pq:
+        effort, r, c = heapq.heappop(pq)
+        
+        # Reached destination: first pop is guaranteed minimum
+        if r == m - 1 and c == n - 1:
+            return effort
+            
+        if effort > dist[r][c]:
+            continue
+            
+        for dr, dc in dirs:
+            nr, nc = r + dr, c + dc
+            if 0 <= nr < m and 0 <= nc < n:
+                step_effort = abs(heights[r][c] - heights[nr][nc])
+                new_effort = max(effort, step_effort)
+                
+                if new_effort < dist[nr][nc]:
+                    dist[nr][nc] = new_effort
+                    heapq.heappush(pq, (new_effort, nr, nc))
+                    
+    return 0
+</code></pre>
+</details>
+
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O((m &times; n) log(m &times; n))</code>. There are <code>V = m &times; n</code> cells and at most <code>E = 4 &times; m &times; n</code> edges. Heap operations take <code>O(log(m &times; n))</code>.</li>
+<li><strong>Space Complexity:</strong> <code>O(m &times; n)</code> to store the <code>dist</code> matrix and priority queue.</li>
+</ul>
+
+<h2>🚨 Edge cases to watch out for</h2>
+<ul>
+<li><strong>1&times;1 grid:</strong> Start cell is the destination; while loop immediately hits <code>r == 0 and c == 0</code> and returns <code>0</code> effort.</li>
+<li><strong>Flat grid (all heights equal):</strong> Effort is <code>0</code> across all transitions.</li>
+</ul>
+
+<h2>🧗 Follow-ups &amp; variations</h2>
+<ul>
+<li><strong>Swim in Rising Water (<a href="0292-lc778-swim-in-rising-water.html">#778</a>):</strong> Identical concept where cost is <code>max(current_time, grid[nr][nc])</code>.</li>
+<li><strong>Minimum Obstacle Removal to Reach Corner (<a href="0298-lc2290-minimum-obstacle-removal-to-reach-corner.html">#2290</a>):</strong> 0-1 BFS / Dijkstra on binary obstacle grid.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0293-lc1514-path-with-maximum-probability.html"><span class="lbl">← Previous</span>#1514 Path with Maximum Probability</a><a href="../problems/0295-lc1976-number-of-ways-to-arrive-at-destination.html" style="text-align:right"><span class="lbl">Next →</span>#1976 Number of Ways to Arrive at Destination</a></div>
 </div>

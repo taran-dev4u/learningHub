@@ -23,44 +23,112 @@
  › Subpattern 9.8: Graph - Union-Find / Disjoint Set Union (DSU) · Problem 302 of 699</p>
 
 <h2>📋 The problem</h2><p>Given n nodes and an edge list, decide whether they form a valid tree (connected and acyclic).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>You have a graph of <code>n</code> nodes labeled from <code>0</code> to <code>n - 1</code> and a list of undirected edges. Determine if these edges form a <strong>valid tree</strong>.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Graph - Union-Find / Disjoint Set Union (DSU)</strong> — DSU with path compression and union by rank — near-O(1) amortized.</p>
-
-<h2>Why this pattern?</h2><ul><li>"islands", "connected", "regions", "provinces" → component DFS/BFS</li><li>"minimum steps / moves / days to reach" → BFS</li><li>"prerequisites", "build order", "course schedule" → topological sort</li><li>states-and-moves puzzles (word ladder, locks) → BFS over implicit graph</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Graph Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>from collections import deque, defaultdict
-# BFS shortest steps
-q, seen = deque([(start, 0)]), {start}
-while q:
-    node, d = q.popleft()
-    if node == goal: return d
-    for nb in neighbors(node):
-        if nb not in seen:
-            seen.add(nb)                 # mark on ENQUEUE
-            q.append((nb, d + 1))
-
-# Topological sort (Kahn's)
-indeg = defaultdict(int)
-for u in graph:
-    for v in graph[u]: indeg[v] += 1
-q = deque([u for u in graph if indeg[u] == 0])
-order = []
-while q:
-    u = q.popleft(); order.append(u)
-    for v in graph[u]:
-        indeg[v] -= 1
-        if indeg[v] == 0: q.append(v)
-# len(order) &lt; number of nodes  ⇒  cycle exists</code></pre>
-<h2>How to work on it now</h2>
+<p>By mathematical definition, an undirected graph of <code>n</code> nodes is a tree if and only if:</p>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+  <li>It contains <strong>no cycles</strong>.</li>
+  <li>It is <strong>fully connected</strong> (all nodes belong to a single connected component).</li>
+  <li>It has exactly <code>n - 1</code> edges.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>If <code>len(edges) != n - 1</code>, it cannot possibly be a tree!
+<ul>
+  <li>If <code>len(edges) < n - 1</code>, the graph is disconnected.</li>
+  <li>If <code>len(edges) > n - 1</code>, by the Pigeonhole Principle the graph must contain at least one cycle.</li>
+</ul>
+Thus, we can instantly return <code>False</code> if <code>len(edges) != n - 1</code>. Then, we only need to verify either connectivity or cycle freedom using <strong>Disjoint Set Union (DSU)</strong> or <strong>BFS/DFS</strong>.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Using Disjoint Set Union (Union-Find) with path compression: Start with <code>n</code> disjoint components. For each edge <code>(u, v)</code>: find the representatives of <code>u</code> and <code>v</code>. If <code>find(u) == find(v)</code>, they are already connected, so adding this edge creates a cycle &rarr; return <code>False</code>! Otherwise union them and decrement component count. At the end, must have exactly 1 component!</div>
+
+<h2>🪜 The approach, step by step (DSU)</h2>
+<ol>
+<li>Check base condition: if <code>len(edges) != n - 1</code>, return <code>False</code> immediately.</li>
+<li>Initialize <code>parent = list(range(n))</code> and <code>rank = [1] * n</code>.</li>
+<li>Define <code>find(i)</code> with recursive path compression: <code>parent[i] = find(parent[i])</code>.</li>
+<li>Define <code>union(u, v)</code>:
+  <ul>
+    <li>Find roots <code>root_u = find(u)</code> and <code>root_v = find(v)</code>.</li>
+    <li>If <code>root_u == root_v</code>, return <code>False</code> (cycle detected!).</li>
+    <li>Attach smaller rank tree under larger rank tree. Return <code>True</code>.</li>
+  </ul>
+</li>
+<li>Iterate through every edge: if <code>not union(u, v)</code>, return <code>False</code>.</li>
+<li>Return <code>True</code> (since <code>len(edges) == n - 1</code> and no cycles were found, it must be connected).</li>
+</ol>
+
+<h2>🎞️ Visual dry run — n=5, edges=[(0,1), (0,2), (0,3), (1,4)]:</h2>
+<pre class="viz">1. len(edges) = 4 == n - 1 (5 - 1). Check passed!
+2. union(0, 1): merged. components = 4
+3. union(0, 2): merged. components = 3
+4. union(0, 3): merged. components = 2
+5. union(1, 4): merged. components = 1
+All 4 edges processed with zero cycles.
+Result: True (Valid tree) ✓
+
+Counterexample: n=5, edges=[(0,1),(1,2),(2,3),(1,3),(1,4)]
+len(edges) = 5 != 4 -> Immediately False! ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Python 3 — Union-Find with Path Compression &amp; Rank</summary>
+<pre><code class="language-python">def validTree(n: int, edges: list[list[int]]) -> bool:
+    """
+    Checks if n nodes and undirected edges form a single acyclic connected tree.
+    """
+    # A valid tree with n nodes must have exactly n - 1 edges
+    if len(edges) != n - 1:
+        return False
+        
+    parent = list(range(n))
+    rank = [1] * n
+    
+    def find(x):
+        if parent[x] != x:
+            parent[x] = find(parent[x])  # Path compression
+        return parent[x]
+        
+    def union(x, y):
+        rx, ry = find(x), find(y)
+        if rx == ry:
+            return False  # Cycle detected: x and y already in same component!
+            
+        # Union by rank
+        if rank[rx] < rank[ry]:
+            parent[rx] = ry
+        elif rank[rx] > rank[ry]:
+            parent[ry] = rx
+        else:
+            parent[ry] = rx
+            rank[rx] += 1
+        return True
+        
+    for u, v in edges:
+        if not union(u, v):
+            return False
+            
+    return True
+</code></pre>
+</details>
+
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O(N &times; &alpha;(N)) &approx; O(N)</code>, where <code>&alpha;</code> is the Inverse Ackermann function (less than 5 for all practical input sizes). Checking edge count is <code>O(1)</code>, and processing <code>n - 1</code> edges with path compression runs in near-linear time.</li>
+<li><strong>Space Complexity:</strong> <code>O(N)</code> for the parent and rank arrays.</li>
+</ul>
+
+<h2>🚨 Edge cases to watch out for</h2>
+<ul>
+<li><code>n = 1, edges = []</code>: <code>len(edges) == 0 == n - 1</code>, returns <code>True</code>. A single isolated node is a valid tree.</li>
+<li><strong>Disconnected components with cycle:</strong> e.g. a triangle of 3 nodes and 2 isolated nodes with 4 edges total. Handled because DSU catches the triangle cycle.</li>
+</ul>
+
+<h2>🧗 Follow-ups &amp; variations</h2>
+<ul>
+<li><strong>Number of Connected Components (<a href="0304-lc323-number-of-connected-components-in-an-undirected-graph.html">#323</a>):</strong> Count distinct tree roots.</li>
+<li><strong>Redundant Connection (<a href="0306-lc684-redundant-connection.html">#684</a>):</strong> Return the exact edge that closes the cycle.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0301-lc787-cheapest-flights-within-k-stops.html"><span class="lbl">← Previous</span>#787 Cheapest Flights Within K Stops</a><a href="../problems/0303-lc305-number-of-islands-ii.html" style="text-align:right"><span class="lbl">Next →</span>#305 Number of Islands II</a></div>
 </div>

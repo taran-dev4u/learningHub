@@ -23,44 +23,122 @@
  › Subpattern 9.8: Graph - Union-Find / Disjoint Set Union (DSU) · Problem 308 of 699</p>
 
 <h2>📋 The problem</h2><p>Merge accounts that share any email; output each person's emails sorted under their name.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given a list of accounts where each element <code>accounts[i]</code> is a list of strings: the first element is a name, and the remaining elements are emails. If two accounts share a common email, both accounts belong to the same person. Merge the accounts and return the list of merged accounts where emails are sorted lexicographically.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Graph - Union-Find / Disjoint Set Union (DSU)</strong> — DSU with path compression and union by rank — near-O(1) amortized.</p>
+<p>This is a <strong>connected components</strong> problem on a graph. The nodes of the graph are individual emails! If an account contains emails <code>[e1, e2, e3]</code>, there are edges between <code>e1 &mdash; e2</code> and <code>e1 &mdash; e3</code>. All emails in the same connected component belong to the same person.</p>
 
-<h2>Why this pattern?</h2><ul><li>"islands", "connected", "regions", "provinces" → component DFS/BFS</li><li>"minimum steps / moves / days to reach" → BFS</li><li>"prerequisites", "build order", "course schedule" → topological sort</li><li>states-and-moves puzzles (word ladder, locks) → BFS over implicit graph</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Graph Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>from collections import deque, defaultdict
-# BFS shortest steps
-q, seen = deque([(start, 0)]), {start}
-while q:
-    node, d = q.popleft()
-    if node == goal: return d
-    for nb in neighbors(node):
-        if nb not in seen:
-            seen.add(nb)                 # mark on ENQUEUE
-            q.append((nb, d + 1))
+<h2>🐢 Brute force vs optimal</h2>
+<p>Iteratively checking pairs of accounts for email intersections takes <code>O(A<sup>2</sup> &times; E)</code>, which is too slow. Using <strong>Disjoint Set Union (DSU)</strong> or <strong>DFS</strong> on an email adjacency graph merges all accounts in <code>O(N &times; E log(N &times; E))</code>, dominated only by the final sorting of emails.</p>
 
-# Topological sort (Kahn's)
-indeg = defaultdict(int)
-for u in graph:
-    for v in graph[u]: indeg[v] += 1
-q = deque([u for u in graph if indeg[u] == 0])
-order = []
-while q:
-    u = q.popleft(); order.append(u)
-    for v in graph[u]:
-        indeg[v] -= 1
-        if indeg[v] == 0: q.append(v)
-# len(order) &lt; number of nodes  ⇒  cycle exists</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> Map each email to its owner's name. Within each account <code>[name, e1, e2, ...]</code>, union the first email <code>e1</code> with every other email <code>e_i</code>. After processing all accounts, group all emails by their DSU root representative: <code>components[find(email)].append(email)</code>. Finally, format each component as <code>[email_to_name[root]] + sorted(emails)</code>.</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li><strong>Union-Find Data Structure:</strong> Initialize <code>parent = {}</code>. If an email is seen for the first time, set <code>parent[email] = email</code>.</li>
+<li><strong>Record Name &amp; Union Emails:</strong>
+  <ul>
+    <li>Maintain <code>email_to_name = {}</code>.</li>
+    <li>For each account <code>name, *emails</code>:</li>
+    <li>First email <code>first_email = emails[0]</code>.</li>
+    <li>For every email in <code>emails</code>:
+      <ul>
+        <li>Record <code>email_to_name[email] = name</code>.</li>
+        <li><code>union(first_email, email)</code>.</li>
+      </ul>
+    </li>
+  </ul>
+</li>
+<li><strong>Group by Root:</strong>
+  <ul>
+    <li>Create <code>groups = defaultdict(list)</code>.</li>
+    <li>For every email: <code>groups[find(email)].append(email)</code>.</li>
+  </ul>
+</li>
+<li><strong>Sort &amp; Assemble:</strong>
+  <ul>
+    <li>For each group: <code>result.append([email_to_name[root]] + sorted(emails))</code>.</li>
+    <li>Return <code>result</code>.</li>
+  </ul>
+</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run:</h2>
+<pre class="viz">Account 1: ["John", "johnsmith@mail.com", "john00@mail.com"]
+Account 2: ["John", "johnnybravo@mail.com"]
+Account 3: ["John", "johnsmith@mail.com", "john_newyork@mail.com"]
+
+1. Account 1: union("johnsmith", "john00")
+2. Account 2: "johnnybravo" is isolated component.
+3. Account 3: union("johnsmith", "john_newyork")
+   "johnsmith" links Account 1 and Account 3!
+
+Groups after find():
+- Root "john00": ["johnsmith@mail.com", "john00@mail.com", "john_newyork@mail.com"]
+- Root "johnnybravo": ["johnnybravo@mail.com"]
+
+Output:
+[["John", "john00@mail.com", "john_newyork@mail.com", "johnsmith@mail.com"],
+ ["John", "johnnybravo@mail.com"]] ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Python 3 — DSU by Email Strings</summary>
+<pre><code class="language-python">from collections import defaultdict
+
+def accountsMerge(accounts: list[list[str]]) -> list[list[str]]:
+    """
+    Merges accounts belonging to the same person using Disjoint Set Union on emails.
+    """
+    parent = {}
+    email_to_name = {}
+    
+    def find(x):
+        if parent[x] != x:
+            parent[x] = find(parent[x])
+        return parent[x]
+        
+    def union(x, y):
+        rx, ry = find(x), find(y)
+        if rx != ry:
+            parent[rx] = ry
+
+    # 1. Initialize parents and union emails within each account
+    for account in accounts:
+        name = account[0]
+        first_email = account[1]
+        
+        for email in account[1:]:
+            if email not in parent:
+                parent[email] = email
+            email_to_name[email] = name
+            union(first_email, email)
+            
+    # 2. Group emails by their root representative
+    groups = defaultdict(list)
+    for email in parent:
+        root = find(email)
+        groups[root].append(email)
+        
+    # 3. Format result: [name] + sorted(emails)
+    res = []
+    for root, emails in groups.items():
+        res.append([email_to_name[root]] + sorted(emails))
+        
+    return res
+</code></pre>
+</details>
+
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O(N &times; K log(N &times; K))</code> where <code>N</code> is the number of accounts and <code>K</code> is the maximum number of emails per account. Union-Find operations take <code>O(N &times; K &times; &alpha;(N &times; K))</code>, and sorting the merged email lists takes <code>O(total_emails log(total_emails))</code>.</li>
+<li><strong>Space Complexity:</strong> <code>O(N &times; K)</code> to store parents, names, and groups.</li>
+</ul>
+
+<h2>🚨 Edge cases to watch out for</h2>
+<ul>
+<li><strong>Same person name, different people:</strong> Two different people named "John" with completely different emails must NOT be merged. Since we only union by email connectivity, they naturally stay in separate components.</li>
+<li><strong>Duplicate emails inside a single account:</strong> Handled seamlessly by the hash map representation.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0307-lc685-redundant-connection-ii.html"><span class="lbl">← Previous</span>#685 Redundant Connection II</a><a href="../problems/0309-lc737-sentence-similarity-ii.html" style="text-align:right"><span class="lbl">Next →</span>#737 Sentence Similarity II</a></div>
 </div>

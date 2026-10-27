@@ -23,44 +23,102 @@
  › Subpattern 9.9: Graph - Bipartite Coloring · Problem 319 of 699</p>
 
 <h2>📋 The problem</h2><p>Decide whether a graph is bipartite: its nodes can be 2-colored so every edge joins different colors.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>An undirected graph is <strong>bipartite</strong> if we can split its set of nodes into two independent subsets <code>A</code> and <code>B</code> such that every edge in the graph connects a node in <code>A</code> and a node in <code>B</code>.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Graph - Bipartite Coloring</strong> — BFS/DFS coloring with two colors — fails if any edge connects same-color nodes.</p>
+<p>In graph theory, this is identical to <strong>2-Coloring</strong>: can we color every vertex with one of two colors (e.g. Red and Blue, or <code>1</code> and <code>-1</code>) such that no two adjacent vertices have the same color?</p>
 
-<h2>Why this pattern?</h2><ul><li>"islands", "connected", "regions", "provinces" → component DFS/BFS</li><li>"minimum steps / moves / days to reach" → BFS</li><li>"prerequisites", "build order", "course schedule" → topological sort</li><li>states-and-moves puzzles (word ladder, locks) → BFS over implicit graph</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Graph Traversal (DFS &amp; BFS) master template and adapt the marked parts to this problem:</p><pre><code>from collections import deque, defaultdict
-# BFS shortest steps
-q, seen = deque([(start, 0)]), {start}
-while q:
-    node, d = q.popleft()
-    if node == goal: return d
-    for nb in neighbors(node):
-        if nb not in seen:
-            seen.add(nb)                 # mark on ENQUEUE
-            q.append((nb, d + 1))
+<h2>🐢 Brute force vs optimal</h2>
+<p>Trying all 2^n coloring combinations is exponential. BFS or DFS 2-coloring checks the graph in <code>O(V + E)</code> time.</p>
 
-# Topological sort (Kahn's)
-indeg = defaultdict(int)
-for u in graph:
-    for v in graph[u]: indeg[v] += 1
-q = deque([u for u in graph if indeg[u] == 0])
-order = []
-while q:
-    u = q.popleft(); order.append(u)
-    for v in graph[u]:
-        indeg[v] -= 1
-        if indeg[v] == 0: q.append(v)
-# len(order) &lt; number of nodes  ⇒  cycle exists</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> An undirected graph is bipartite <strong>if and only if it contains NO odd-length cycles</strong>.
+<br><br>
+Iterate through all nodes <code>0</code> to <code>n - 1</code>. If a node is uncolored, start a BFS/DFS from it with color <code>1</code>. For every neighbor:
+<ul>
+  <li>If uncolored: assign it <code>-color</code> and recurse.</li>
+  <li>If already colored: it MUST have color <code>-color</code>. If it has the SAME color, a conflict (odd cycle) is detected &rarr; return <code>False</code>!</li>
+</ul></div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Initialize <code>color = {}</code>.</li>
+<li>For each node <code>i</code> from <code>0</code> to <code>n - 1</code>:
+  <ul>
+    <li>If <code>i</code> not in <code>color</code>:
+      <ul>
+        <li>Launch <code>bfs(i)</code>: queue <code>q = deque([i])</code>, set <code>color[i] = 1</code>.</li>
+        <li>While <code>q</code>:
+          <ul>
+            <li>Pop <code>u</code>.</li>
+            <li>For neighbor <code>v in graph[u]</code>:
+              <ul>
+                <li>If <code>v not in color</code>: set <code>color[v] = -color[u]</code>, push <code>v</code>.</li>
+                <li>Else if <code>color[v] == color[u]</code>: return <code>False</code>!</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</li>
+<li>Return <code>True</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run:</h2>
+<pre class="viz">Graph: 0 -- 1
+       |    |
+       3 -- 2
+
+1. color[0] = 1 (Blue)
+2. Neighbors of 0: 1 and 3 -> color[1] = -1 (Red), color[3] = -1 (Red)
+3. Neighbor of 1: 2 -> color[2] = 1 (Blue)
+4. Check 3's neighbor 2: color[3]=-1 != color[2]=1. Valid!
+Result: True (Bipartite) ✓
+
+Odd cycle counterexample: Triangle 0-1-2
+0 (Blue) -> 1 (Red) -> 2 (Blue)
+Edge 2-0 connects Blue to Blue! Conflict! Output: False ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Python 3 — BFS 2-Coloring</summary>
+<pre><code class="language-python">from collections import deque
+
+def isBipartite(graph: list[list[int]]) -> bool:
+    """
+    Determines if graph is 2-colorable using BFS traversal across all components.
+    """
+    n = len(graph)
+    color = {}  # node -> 1 or -1
+    
+    for i in range(n):
+        if i not in color:
+            color[i] = 1
+            q = deque([i])
+            
+            while q:
+                u = q.popleft()
+                for v in graph[u]:
+                    if v not in color:
+                        color[v] = -color[u]
+                        q.append(v)
+                    elif color[v] == color[u]:
+                        return False  # Odd cycle found
+                        
+    return True
+</code></pre>
+</details>
+
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O(V + E)</code>. Each node is colored once and each edge is inspected twice.</li>
+<li><strong>Space Complexity:</strong> <code>O(V)</code> for the color dictionary and BFS queue.</li>
+</ul>
+
+<h2>🧗 Follow-ups &amp; variations</h2>
+<ul>
+<li><strong>Possible Bipartition (<a href="0320-lc886-possible-bipartition.html">#886</a>):</strong> Split people into two groups based on dislikes; same 2-coloring problem.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0318-lc1466-reorder-routes-to-make-all-paths-lead-to-the-city-zero.html"><span class="lbl">← Previous</span>#1466 Reorder Routes to Make All Paths Lead to the City Zero</a><a href="../problems/0320-lc886-possible-bipartition.html" style="text-align:right"><span class="lbl">Next →</span>#886 Possible Bipartition</a></div>
 </div>
