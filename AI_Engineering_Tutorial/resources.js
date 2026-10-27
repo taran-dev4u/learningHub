@@ -14,6 +14,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/00-setup-and-tooling/01-dev-environment/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/00-setup-and-tooling/01-dev-environment/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -29,6 +35,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/00-setup-and-tooling/02-git-and-collaboration/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/00-setup-and-tooling/02-git-and-collaboration/",
           "GitHub",
           true
         ]
@@ -48,6 +60,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/00-setup-and-tooling/03-gpu-setup-and-cloud/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/00-setup-and-tooling/03-gpu-setup-and-cloud/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -63,6 +81,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/00-setup-and-tooling/04-apis-and-keys/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/00-setup-and-tooling/04-apis-and-keys/",
           "GitHub",
           true
         ]
@@ -82,6 +106,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/00-setup-and-tooling/05-jupyter-notebooks/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/00-setup-and-tooling/05-jupyter-notebooks/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -97,6 +127,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/00-setup-and-tooling/06-python-environments/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/00-setup-and-tooling/06-python-environments/",
           "GitHub",
           true
         ]
@@ -116,6 +152,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/00-setup-and-tooling/07-docker-for-ai/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/00-setup-and-tooling/07-docker-for-ai/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -131,6 +173,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/00-setup-and-tooling/08-editor-setup/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/00-setup-and-tooling/08-editor-setup/",
           "GitHub",
           true
         ]
@@ -150,6 +198,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/00-setup-and-tooling/09-data-management/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/00-setup-and-tooling/09-data-management/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -165,6 +219,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/00-setup-and-tooling/10-terminal-and-shell/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/00-setup-and-tooling/10-terminal-and-shell/",
           "GitHub",
           true
         ]
@@ -184,6 +244,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/00-setup-and-tooling/11-linux-for-ai/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/00-setup-and-tooling/11-linux-for-ai/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -199,6 +265,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/00-setup-and-tooling/12-debugging-and-profiling/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/00-setup-and-tooling/12-debugging-and-profiling/",
           "GitHub",
           true
         ]
@@ -218,6 +290,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/00-setup-and-tooling/13-python-for-ai-engineering/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/00-setup-and-tooling/13-python-for-ai-engineering/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -233,6 +311,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/01-math-foundations/01-linear-algebra-intuition/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/01-math-foundations/01-linear-algebra-intuition/",
           "GitHub",
           true
         ]
@@ -252,6 +336,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/01-math-foundations/02-vectors-matrices-operations/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/01-math-foundations/02-vectors-matrices-operations/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -267,6 +357,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/01-math-foundations/03-matrix-transformations/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/01-math-foundations/03-matrix-transformations/",
           "GitHub",
           true
         ]
@@ -286,6 +382,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/01-math-foundations/04-calculus-for-ml/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/01-math-foundations/04-calculus-for-ml/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -301,6 +403,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/01-math-foundations/05-chain-rule-and-autodiff/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/01-math-foundations/05-chain-rule-and-autodiff/",
           "GitHub",
           true
         ]
@@ -320,6 +428,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/01-math-foundations/06-probability-and-distributions/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/01-math-foundations/06-probability-and-distributions/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -335,6 +449,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/01-math-foundations/07-bayes-theorem/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/01-math-foundations/07-bayes-theorem/",
           "GitHub",
           true
         ]
@@ -354,6 +474,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/01-math-foundations/08-optimization/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/01-math-foundations/08-optimization/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -369,6 +495,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/01-math-foundations/09-information-theory/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/01-math-foundations/09-information-theory/",
           "GitHub",
           true
         ]
@@ -388,6 +520,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/01-math-foundations/10-dimensionality-reduction/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/01-math-foundations/10-dimensionality-reduction/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -403,6 +541,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/01-math-foundations/11-singular-value-decomposition/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/01-math-foundations/11-singular-value-decomposition/",
           "GitHub",
           true
         ]
@@ -422,6 +566,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/01-math-foundations/12-tensor-operations/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/01-math-foundations/12-tensor-operations/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -437,6 +587,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/01-math-foundations/13-numerical-stability/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/01-math-foundations/13-numerical-stability/",
           "GitHub",
           true
         ]
@@ -456,6 +612,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/01-math-foundations/14-norms-and-distances/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/01-math-foundations/14-norms-and-distances/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -471,6 +633,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/01-math-foundations/15-statistics-for-ml/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/01-math-foundations/15-statistics-for-ml/",
           "GitHub",
           true
         ]
@@ -490,6 +658,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/01-math-foundations/16-sampling-methods/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/01-math-foundations/16-sampling-methods/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -505,6 +679,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/01-math-foundations/17-linear-systems/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/01-math-foundations/17-linear-systems/",
           "GitHub",
           true
         ]
@@ -524,6 +704,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/01-math-foundations/18-convex-optimization/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/01-math-foundations/18-convex-optimization/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -539,6 +725,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/01-math-foundations/19-complex-numbers/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/01-math-foundations/19-complex-numbers/",
           "GitHub",
           true
         ]
@@ -558,6 +750,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/01-math-foundations/20-fourier-transform/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/01-math-foundations/20-fourier-transform/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -573,6 +771,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/01-math-foundations/21-graph-theory/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/01-math-foundations/21-graph-theory/",
           "GitHub",
           true
         ]
@@ -592,6 +796,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/01-math-foundations/22-stochastic-processes/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/01-math-foundations/22-stochastic-processes/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -607,6 +817,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/02-ml-fundamentals/01-what-is-machine-learning/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/02-ml-fundamentals/01-what-is-machine-learning/",
           "GitHub",
           true
         ]
@@ -626,6 +842,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/02-ml-fundamentals/02-linear-regression/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/02-ml-fundamentals/02-linear-regression/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -641,6 +863,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/02-ml-fundamentals/03-logistic-regression/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/02-ml-fundamentals/03-logistic-regression/",
           "GitHub",
           true
         ]
@@ -660,6 +888,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/02-ml-fundamentals/04-decision-trees/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/02-ml-fundamentals/04-decision-trees/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -675,6 +909,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/02-ml-fundamentals/05-support-vector-machines/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/02-ml-fundamentals/05-support-vector-machines/",
           "GitHub",
           true
         ]
@@ -694,6 +934,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/02-ml-fundamentals/06-knn-and-distances/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/02-ml-fundamentals/06-knn-and-distances/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -709,6 +955,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/02-ml-fundamentals/07-unsupervised-learning/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/02-ml-fundamentals/07-unsupervised-learning/",
           "GitHub",
           true
         ]
@@ -728,6 +980,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/02-ml-fundamentals/08-feature-engineering/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/02-ml-fundamentals/08-feature-engineering/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -743,6 +1001,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/02-ml-fundamentals/09-model-evaluation/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/02-ml-fundamentals/09-model-evaluation/",
           "GitHub",
           true
         ]
@@ -762,6 +1026,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/02-ml-fundamentals/10-bias-variance/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/02-ml-fundamentals/10-bias-variance/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -777,6 +1047,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/02-ml-fundamentals/11-ensemble-methods/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/02-ml-fundamentals/11-ensemble-methods/",
           "GitHub",
           true
         ]
@@ -796,6 +1072,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/02-ml-fundamentals/12-hyperparameter-tuning/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/02-ml-fundamentals/12-hyperparameter-tuning/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -811,6 +1093,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/02-ml-fundamentals/13-ml-pipelines/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/02-ml-fundamentals/13-ml-pipelines/",
           "GitHub",
           true
         ]
@@ -830,6 +1118,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/02-ml-fundamentals/14-naive-bayes/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/02-ml-fundamentals/14-naive-bayes/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -845,6 +1139,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/02-ml-fundamentals/15-time-series/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/02-ml-fundamentals/15-time-series/",
           "GitHub",
           true
         ]
@@ -864,6 +1164,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/02-ml-fundamentals/16-anomaly-detection/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/02-ml-fundamentals/16-anomaly-detection/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -879,6 +1185,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/02-ml-fundamentals/17-imbalanced-data/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/02-ml-fundamentals/17-imbalanced-data/",
           "GitHub",
           true
         ]
@@ -898,6 +1210,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/02-ml-fundamentals/18-feature-selection/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/02-ml-fundamentals/18-feature-selection/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -913,6 +1231,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/02-ml-fundamentals/19-ml-system-design/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/02-ml-fundamentals/19-ml-system-design/",
           "GitHub",
           true
         ]
@@ -932,6 +1256,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/02-ml-fundamentals/20-model-monitoring-and-drift/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/02-ml-fundamentals/20-model-monitoring-and-drift/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -947,6 +1277,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/02-ml-fundamentals/21-feature-stores-and-training-serving-skew/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/02-ml-fundamentals/21-feature-stores-and-training-serving-skew/",
           "GitHub",
           true
         ]
@@ -966,6 +1302,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/03-deep-learning-core/01-the-perceptron/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/03-deep-learning-core/01-the-perceptron/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -981,6 +1323,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/03-deep-learning-core/02-multi-layer-networks/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/03-deep-learning-core/02-multi-layer-networks/",
           "GitHub",
           true
         ]
@@ -1000,6 +1348,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/03-deep-learning-core/03-backpropagation/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/03-deep-learning-core/03-backpropagation/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -1015,6 +1369,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/03-deep-learning-core/04-activation-functions/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/03-deep-learning-core/04-activation-functions/",
           "GitHub",
           true
         ]
@@ -1034,6 +1394,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/03-deep-learning-core/05-loss-functions/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/03-deep-learning-core/05-loss-functions/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -1049,6 +1415,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/03-deep-learning-core/06-optimizers/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/03-deep-learning-core/06-optimizers/",
           "GitHub",
           true
         ]
@@ -1068,6 +1440,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/03-deep-learning-core/07-regularization/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/03-deep-learning-core/07-regularization/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -1083,6 +1461,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/03-deep-learning-core/08-weight-initialization/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/03-deep-learning-core/08-weight-initialization/",
           "GitHub",
           true
         ]
@@ -1102,6 +1486,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/03-deep-learning-core/09-learning-rate-schedules/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/03-deep-learning-core/09-learning-rate-schedules/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -1117,6 +1507,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/03-deep-learning-core/10-mini-framework/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/03-deep-learning-core/10-mini-framework/",
           "GitHub",
           true
         ]
@@ -1136,6 +1532,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/03-deep-learning-core/11-intro-to-pytorch/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/03-deep-learning-core/11-intro-to-pytorch/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -1151,6 +1553,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/03-deep-learning-core/12-intro-to-jax/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/03-deep-learning-core/12-intro-to-jax/",
           "GitHub",
           true
         ]
@@ -1170,6 +1578,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/03-deep-learning-core/13-debugging-neural-networks/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/03-deep-learning-core/13-debugging-neural-networks/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -1185,6 +1599,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/01-image-fundamentals/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/04-computer-vision/01-image-fundamentals/",
           "GitHub",
           true
         ]
@@ -1204,6 +1624,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/02-convolutions-from-scratch/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/04-computer-vision/02-convolutions-from-scratch/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -1219,6 +1645,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/03-cnns-lenet-to-resnet/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/04-computer-vision/03-cnns-lenet-to-resnet/",
           "GitHub",
           true
         ]
@@ -1238,6 +1670,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/04-image-classification/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/04-computer-vision/04-image-classification/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -1253,6 +1691,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/05-transfer-learning/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/04-computer-vision/05-transfer-learning/",
           "GitHub",
           true
         ]
@@ -1272,6 +1716,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/06-object-detection-yolo/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/04-computer-vision/06-object-detection-yolo/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -1287,6 +1737,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/07-semantic-segmentation-unet/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/04-computer-vision/07-semantic-segmentation-unet/",
           "GitHub",
           true
         ]
@@ -1306,6 +1762,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/08-instance-segmentation-mask-rcnn/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/04-computer-vision/08-instance-segmentation-mask-rcnn/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -1321,6 +1783,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/09-image-generation-gans/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/04-computer-vision/09-image-generation-gans/",
           "GitHub",
           true
         ]
@@ -1340,6 +1808,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/10-image-generation-diffusion/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/04-computer-vision/10-image-generation-diffusion/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -1355,6 +1829,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/11-stable-diffusion/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/04-computer-vision/11-stable-diffusion/",
           "GitHub",
           true
         ]
@@ -1374,6 +1854,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/12-video-understanding/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/04-computer-vision/12-video-understanding/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -1389,6 +1875,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/13-3d-vision-nerf/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/04-computer-vision/13-3d-vision-nerf/",
           "GitHub",
           true
         ]
@@ -1408,6 +1900,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/14-vision-transformers/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/04-computer-vision/14-vision-transformers/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -1423,6 +1921,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/15-real-time-edge/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/04-computer-vision/15-real-time-edge/",
           "GitHub",
           true
         ]
@@ -1442,6 +1946,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/16-vision-pipeline-capstone/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/04-computer-vision/16-vision-pipeline-capstone/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -1457,6 +1967,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/17-self-supervised-vision/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/04-computer-vision/17-self-supervised-vision/",
           "GitHub",
           true
         ]
@@ -1476,6 +1992,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/18-open-vocab-clip/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/04-computer-vision/18-open-vocab-clip/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -1491,6 +2013,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/19-ocr-document-understanding/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/04-computer-vision/19-ocr-document-understanding/",
           "GitHub",
           true
         ]
@@ -1510,6 +2038,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/20-image-retrieval-metric/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/04-computer-vision/20-image-retrieval-metric/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -1525,6 +2059,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/21-keypoint-pose/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/04-computer-vision/21-keypoint-pose/",
           "GitHub",
           true
         ]
@@ -1544,6 +2084,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/22-3d-gaussian-splatting/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/04-computer-vision/22-3d-gaussian-splatting/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -1559,6 +2105,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/23-diffusion-transformers-rectified-flow/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/04-computer-vision/23-diffusion-transformers-rectified-flow/",
           "GitHub",
           true
         ]
@@ -1578,6 +2130,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/24-sam3-open-vocab-segmentation/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/04-computer-vision/24-sam3-open-vocab-segmentation/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -1593,6 +2151,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/25-vision-language-models/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/04-computer-vision/25-vision-language-models/",
           "GitHub",
           true
         ]
@@ -1612,6 +2176,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/26-monocular-depth/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/04-computer-vision/26-monocular-depth/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -1627,6 +2197,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/27-multi-object-tracking/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/04-computer-vision/27-multi-object-tracking/",
           "GitHub",
           true
         ]
@@ -1646,6 +2222,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/28-world-models-video-diffusion/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/04-computer-vision/28-world-models-video-diffusion/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -1661,6 +2243,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/01-text-processing/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/05-nlp-foundations-to-advanced/01-text-processing/",
           "GitHub",
           true
         ]
@@ -1680,6 +2268,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/02-bag-of-words-tfidf/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/05-nlp-foundations-to-advanced/02-bag-of-words-tfidf/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -1695,6 +2289,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/03-word-embeddings-word2vec/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/05-nlp-foundations-to-advanced/03-word-embeddings-word2vec/",
           "GitHub",
           true
         ]
@@ -1714,6 +2314,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/04-glove-fasttext-subword/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/05-nlp-foundations-to-advanced/04-glove-fasttext-subword/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -1729,6 +2335,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/05-sentiment-analysis/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/05-nlp-foundations-to-advanced/05-sentiment-analysis/",
           "GitHub",
           true
         ]
@@ -1748,6 +2360,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/06-named-entity-recognition/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/05-nlp-foundations-to-advanced/06-named-entity-recognition/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -1763,6 +2381,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/07-pos-tagging-parsing/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/05-nlp-foundations-to-advanced/07-pos-tagging-parsing/",
           "GitHub",
           true
         ]
@@ -1782,6 +2406,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/08-cnns-rnns-for-text/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/05-nlp-foundations-to-advanced/08-cnns-rnns-for-text/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -1797,6 +2427,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/09-sequence-to-sequence/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/05-nlp-foundations-to-advanced/09-sequence-to-sequence/",
           "GitHub",
           true
         ]
@@ -1816,6 +2452,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/10-attention-mechanism/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/05-nlp-foundations-to-advanced/10-attention-mechanism/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -1831,6 +2473,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/11-machine-translation/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/05-nlp-foundations-to-advanced/11-machine-translation/",
           "GitHub",
           true
         ]
@@ -1850,6 +2498,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/12-text-summarization/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/05-nlp-foundations-to-advanced/12-text-summarization/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -1865,6 +2519,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/13-question-answering/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/05-nlp-foundations-to-advanced/13-question-answering/",
           "GitHub",
           true
         ]
@@ -1884,6 +2544,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/14-information-retrieval-search/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/05-nlp-foundations-to-advanced/14-information-retrieval-search/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -1899,6 +2565,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/15-topic-modeling/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/05-nlp-foundations-to-advanced/15-topic-modeling/",
           "GitHub",
           true
         ]
@@ -1918,6 +2590,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/16-text-generation-pre-transformer/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/05-nlp-foundations-to-advanced/16-text-generation-pre-transformer/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -1933,6 +2611,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/17-chatbots-rule-to-neural/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/05-nlp-foundations-to-advanced/17-chatbots-rule-to-neural/",
           "GitHub",
           true
         ]
@@ -1952,6 +2636,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/18-multilingual-nlp/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/05-nlp-foundations-to-advanced/18-multilingual-nlp/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -1967,6 +2657,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/19-subword-tokenization/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/05-nlp-foundations-to-advanced/19-subword-tokenization/",
           "GitHub",
           true
         ]
@@ -1986,6 +2682,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/20-structured-outputs-constrained-decoding/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/05-nlp-foundations-to-advanced/20-structured-outputs-constrained-decoding/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -2001,6 +2703,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/21-nli-textual-entailment/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/05-nlp-foundations-to-advanced/21-nli-textual-entailment/",
           "GitHub",
           true
         ]
@@ -2020,6 +2728,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/22-embedding-models-deep-dive/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/05-nlp-foundations-to-advanced/22-embedding-models-deep-dive/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -2035,6 +2749,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/23-chunking-strategies-rag/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/05-nlp-foundations-to-advanced/23-chunking-strategies-rag/",
           "GitHub",
           true
         ]
@@ -2054,6 +2774,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/24-coreference-resolution/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/05-nlp-foundations-to-advanced/24-coreference-resolution/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -2069,6 +2795,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/25-entity-linking/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/05-nlp-foundations-to-advanced/25-entity-linking/",
           "GitHub",
           true
         ]
@@ -2088,6 +2820,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/26-relation-extraction-kg/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/05-nlp-foundations-to-advanced/26-relation-extraction-kg/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -2103,6 +2841,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/27-llm-evaluation-frameworks/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/05-nlp-foundations-to-advanced/27-llm-evaluation-frameworks/",
           "GitHub",
           true
         ]
@@ -2122,6 +2866,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/28-long-context-evaluation/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/05-nlp-foundations-to-advanced/28-long-context-evaluation/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -2137,6 +2887,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/29-dialogue-state-tracking/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/05-nlp-foundations-to-advanced/29-dialogue-state-tracking/",
           "GitHub",
           true
         ]
@@ -2156,6 +2912,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/06-speech-and-audio/01-audio-fundamentals/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/06-speech-and-audio/01-audio-fundamentals",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -2171,6 +2933,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/06-speech-and-audio/02-spectrograms-mel-features/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/06-speech-and-audio/02-spectrograms-mel-features",
           "GitHub",
           true
         ]
@@ -2190,6 +2958,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/06-speech-and-audio/03-audio-classification/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/06-speech-and-audio/03-audio-classification",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -2205,6 +2979,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/06-speech-and-audio/04-speech-recognition-asr/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/06-speech-and-audio/04-speech-recognition-asr",
           "GitHub",
           true
         ]
@@ -2224,6 +3004,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/06-speech-and-audio/05-whisper-architecture-finetuning/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/06-speech-and-audio/05-whisper-architecture-finetuning",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -2239,6 +3025,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/06-speech-and-audio/06-speaker-recognition-verification/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/06-speech-and-audio/06-speaker-recognition-verification",
           "GitHub",
           true
         ]
@@ -2258,6 +3050,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/06-speech-and-audio/07-text-to-speech/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/06-speech-and-audio/07-text-to-speech",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -2273,6 +3071,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/06-speech-and-audio/08-voice-cloning-conversion/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/06-speech-and-audio/08-voice-cloning-conversion",
           "GitHub",
           true
         ]
@@ -2292,6 +3096,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/06-speech-and-audio/09-music-generation/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/06-speech-and-audio/09-music-generation",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -2307,6 +3117,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/06-speech-and-audio/10-audio-language-models/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/06-speech-and-audio/10-audio-language-models",
           "GitHub",
           true
         ]
@@ -2326,6 +3142,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/06-speech-and-audio/11-real-time-audio-processing/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/06-speech-and-audio/11-real-time-audio-processing",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -2341,6 +3163,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/06-speech-and-audio/12-voice-assistant-pipeline/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/06-speech-and-audio/12-voice-assistant-pipeline",
           "GitHub",
           true
         ]
@@ -2360,6 +3188,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/06-speech-and-audio/13-neural-audio-codecs/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/06-speech-and-audio/13-neural-audio-codecs",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -2375,6 +3209,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/06-speech-and-audio/14-voice-activity-detection-turn-taking/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/06-speech-and-audio/14-voice-activity-detection-turn-taking",
           "GitHub",
           true
         ]
@@ -2394,6 +3234,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/06-speech-and-audio/15-streaming-speech-to-speech-moshi-hibiki/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/06-speech-and-audio/15-streaming-speech-to-speech-moshi-hibiki",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -2409,6 +3255,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/06-speech-and-audio/16-anti-spoofing-audio-watermarking/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/06-speech-and-audio/16-anti-spoofing-audio-watermarking",
           "GitHub",
           true
         ]
@@ -2428,6 +3280,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/06-speech-and-audio/17-audio-evaluation-metrics/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/06-speech-and-audio/17-audio-evaluation-metrics",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -2443,6 +3301,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/07-transformers-deep-dive/01-why-transformers/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/07-transformers-deep-dive/01-why-transformers/",
           "GitHub",
           true
         ]
@@ -2462,6 +3326,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/07-transformers-deep-dive/02-self-attention-from-scratch/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/07-transformers-deep-dive/02-self-attention-from-scratch/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -2477,6 +3347,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/07-transformers-deep-dive/03-multi-head-attention/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/07-transformers-deep-dive/03-multi-head-attention/",
           "GitHub",
           true
         ]
@@ -2496,6 +3372,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/07-transformers-deep-dive/04-positional-encoding/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/07-transformers-deep-dive/04-positional-encoding/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -2511,6 +3393,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/07-transformers-deep-dive/05-full-transformer/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/07-transformers-deep-dive/05-full-transformer/",
           "GitHub",
           true
         ]
@@ -2530,6 +3418,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/07-transformers-deep-dive/06-bert-masked-language-modeling/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/07-transformers-deep-dive/06-bert-masked-language-modeling/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -2545,6 +3439,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/07-transformers-deep-dive/07-gpt-causal-language-modeling/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/07-transformers-deep-dive/07-gpt-causal-language-modeling/",
           "GitHub",
           true
         ]
@@ -2564,6 +3464,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/07-transformers-deep-dive/08-t5-bart-encoder-decoder/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/07-transformers-deep-dive/08-t5-bart-encoder-decoder/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -2579,6 +3485,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/07-transformers-deep-dive/09-vision-transformers/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/07-transformers-deep-dive/09-vision-transformers/",
           "GitHub",
           true
         ]
@@ -2598,6 +3510,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/07-transformers-deep-dive/10-audio-transformers-whisper/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/07-transformers-deep-dive/10-audio-transformers-whisper/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -2613,6 +3531,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/07-transformers-deep-dive/11-mixture-of-experts/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/07-transformers-deep-dive/11-mixture-of-experts/",
           "GitHub",
           true
         ]
@@ -2632,6 +3556,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/07-transformers-deep-dive/12-kv-cache-flash-attention/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/07-transformers-deep-dive/12-kv-cache-flash-attention/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -2647,6 +3577,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/07-transformers-deep-dive/13-scaling-laws/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/07-transformers-deep-dive/13-scaling-laws/",
           "GitHub",
           true
         ]
@@ -2666,6 +3602,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/07-transformers-deep-dive/14-build-a-transformer-capstone/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/07-transformers-deep-dive/14-build-a-transformer-capstone/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -2681,6 +3623,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/07-transformers-deep-dive/15-attention-variants/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/07-transformers-deep-dive/15-attention-variants/",
           "GitHub",
           true
         ]
@@ -2700,6 +3648,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/07-transformers-deep-dive/16-speculative-decoding/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/07-transformers-deep-dive/16-speculative-decoding/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -2715,6 +3669,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/08-generative-ai/01-generative-models-taxonomy-history/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/08-generative-ai/01-generative-models-taxonomy-history/",
           "GitHub",
           true
         ]
@@ -2734,6 +3694,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/08-generative-ai/02-autoencoders-vae/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/08-generative-ai/02-autoencoders-vae/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -2749,6 +3715,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/08-generative-ai/03-gans-generator-discriminator/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/08-generative-ai/03-gans-generator-discriminator/",
           "GitHub",
           true
         ]
@@ -2768,6 +3740,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/08-generative-ai/04-conditional-gans-pix2pix/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/08-generative-ai/04-conditional-gans-pix2pix/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -2783,6 +3761,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/08-generative-ai/05-stylegan/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/08-generative-ai/05-stylegan/",
           "GitHub",
           true
         ]
@@ -2802,6 +3786,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/08-generative-ai/06-diffusion-ddpm-from-scratch/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/08-generative-ai/06-diffusion-ddpm-from-scratch/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -2817,6 +3807,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/08-generative-ai/07-latent-diffusion-stable-diffusion/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/08-generative-ai/07-latent-diffusion-stable-diffusion/",
           "GitHub",
           true
         ]
@@ -2836,6 +3832,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/08-generative-ai/08-controlnet-lora-conditioning/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/08-generative-ai/08-controlnet-lora-conditioning/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -2851,6 +3853,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/08-generative-ai/09-inpainting-outpainting-editing/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/08-generative-ai/09-inpainting-outpainting-editing/",
           "GitHub",
           true
         ]
@@ -2870,6 +3878,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/08-generative-ai/10-video-generation/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/08-generative-ai/10-video-generation/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -2885,6 +3899,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/08-generative-ai/11-audio-generation/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/08-generative-ai/11-audio-generation/",
           "GitHub",
           true
         ]
@@ -2904,6 +3924,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/08-generative-ai/12-3d-generation/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/08-generative-ai/12-3d-generation/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -2919,6 +3945,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/08-generative-ai/13-flow-matching-rectified-flows/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/08-generative-ai/13-flow-matching-rectified-flows/",
           "GitHub",
           true
         ]
@@ -2938,6 +3970,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/08-generative-ai/14-evaluation-fid-clip-score/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/08-generative-ai/14-evaluation-fid-clip-score/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -2953,6 +3991,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/08-generative-ai/19-visual-autoregressive-var/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/08-generative-ai/19-visual-autoregressive-var/",
           "GitHub",
           true
         ]
@@ -2972,6 +4016,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/09-reinforcement-learning/01-mdps-states-actions-rewards/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/09-reinforcement-learning/01-mdps-states-actions-rewards/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -2987,6 +4037,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/09-reinforcement-learning/02-dynamic-programming/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/09-reinforcement-learning/02-dynamic-programming/",
           "GitHub",
           true
         ]
@@ -3006,6 +4062,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/09-reinforcement-learning/03-monte-carlo-methods/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/09-reinforcement-learning/03-monte-carlo-methods/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -3021,6 +4083,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/09-reinforcement-learning/04-q-learning-sarsa/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/09-reinforcement-learning/04-q-learning-sarsa/",
           "GitHub",
           true
         ]
@@ -3040,6 +4108,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/09-reinforcement-learning/05-dqn/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/09-reinforcement-learning/05-dqn/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -3055,6 +4129,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/09-reinforcement-learning/06-policy-gradients-reinforce/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/09-reinforcement-learning/06-policy-gradients-reinforce/",
           "GitHub",
           true
         ]
@@ -3074,6 +4154,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/09-reinforcement-learning/07-actor-critic-a2c-a3c/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/09-reinforcement-learning/07-actor-critic-a2c-a3c/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -3089,6 +4175,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/09-reinforcement-learning/08-ppo/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/09-reinforcement-learning/08-ppo/",
           "GitHub",
           true
         ]
@@ -3108,6 +4200,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/09-reinforcement-learning/09-reward-modeling-rlhf/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/09-reinforcement-learning/09-reward-modeling-rlhf/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -3123,6 +4221,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/09-reinforcement-learning/10-multi-agent-rl/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/09-reinforcement-learning/10-multi-agent-rl/",
           "GitHub",
           true
         ]
@@ -3142,6 +4246,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/09-reinforcement-learning/11-sim-to-real-transfer/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/09-reinforcement-learning/11-sim-to-real-transfer/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -3157,6 +4267,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/09-reinforcement-learning/12-rl-for-games/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/09-reinforcement-learning/12-rl-for-games/",
           "GitHub",
           true
         ]
@@ -3176,6 +4292,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/01-tokenizers/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/10-llms-from-scratch/01-tokenizers/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -3191,6 +4313,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/02-building-a-tokenizer/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/10-llms-from-scratch/02-building-a-tokenizer/",
           "GitHub",
           true
         ]
@@ -3210,6 +4338,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/03-data-pipelines/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/10-llms-from-scratch/03-data-pipelines/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -3225,6 +4359,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/04-pre-training-mini-gpt/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/10-llms-from-scratch/04-pre-training-mini-gpt/",
           "GitHub",
           true
         ]
@@ -3244,6 +4384,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/05-scaling-distributed/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/10-llms-from-scratch/05-scaling-distributed/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -3259,6 +4405,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/06-instruction-tuning-sft/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/10-llms-from-scratch/06-instruction-tuning-sft/",
           "GitHub",
           true
         ]
@@ -3278,6 +4430,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/07-rlhf/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/10-llms-from-scratch/07-rlhf/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -3293,6 +4451,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/08-dpo/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/10-llms-from-scratch/08-dpo/",
           "GitHub",
           true
         ]
@@ -3312,6 +4476,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/09-constitutional-ai-self-improvement/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/10-llms-from-scratch/09-constitutional-ai-self-improvement/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -3327,6 +4497,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/10-evaluation/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/10-llms-from-scratch/10-evaluation/",
           "GitHub",
           true
         ]
@@ -3346,6 +4522,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/11-quantization/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/10-llms-from-scratch/11-quantization/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -3361,6 +4543,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/12-inference-optimization/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/10-llms-from-scratch/12-inference-optimization/",
           "GitHub",
           true
         ]
@@ -3380,6 +4568,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/13-building-complete-llm-pipeline/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/10-llms-from-scratch/13-building-complete-llm-pipeline/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -3395,6 +4589,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/14-open-models-architecture-walkthroughs/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/10-llms-from-scratch/14-open-models-architecture-walkthroughs/",
           "GitHub",
           true
         ]
@@ -3414,6 +4614,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/15-speculative-decoding-eagle3/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/10-llms-from-scratch/15-speculative-decoding-eagle3/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -3429,6 +4635,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/16-differential-attention-v2/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/10-llms-from-scratch/16-differential-attention-v2/",
           "GitHub",
           true
         ]
@@ -3448,6 +4660,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/17-native-sparse-attention/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/10-llms-from-scratch/17-native-sparse-attention/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -3463,6 +4681,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/18-multi-token-prediction/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/10-llms-from-scratch/18-multi-token-prediction/",
           "GitHub",
           true
         ]
@@ -3482,6 +4706,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/19-dualpipe-parallelism/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/10-llms-from-scratch/19-dualpipe-parallelism/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -3497,6 +4727,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/20-deepseek-v3-walkthrough/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/10-llms-from-scratch/20-deepseek-v3-walkthrough/",
           "GitHub",
           true
         ]
@@ -3516,6 +4752,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/21-jamba-hybrid-ssm-transformer/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/10-llms-from-scratch/21-jamba-hybrid-ssm-transformer/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -3531,6 +4773,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/22-async-hogwild-inference/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/10-llms-from-scratch/22-async-hogwild-inference/",
           "GitHub",
           true
         ]
@@ -3550,6 +4798,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/25-speculative-decoding/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/10-llms-from-scratch/25-speculative-decoding/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -3565,6 +4819,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/34-gradient-checkpointing/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/10-llms-from-scratch/34-gradient-checkpointing/",
           "GitHub",
           true
         ]
@@ -3584,6 +4844,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/11-llm-engineering/01-prompt-engineering/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/11-llm-engineering/01-prompt-engineering/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -3599,6 +4865,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/11-llm-engineering/02-few-shot-cot/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/11-llm-engineering/02-few-shot-cot/",
           "GitHub",
           true
         ]
@@ -3618,6 +4890,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/11-llm-engineering/03-structured-outputs/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/11-llm-engineering/03-structured-outputs/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -3633,6 +4911,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/11-llm-engineering/04-embeddings/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/11-llm-engineering/04-embeddings/",
           "GitHub",
           true
         ]
@@ -3652,6 +4936,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/11-llm-engineering/05-context-engineering/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/11-llm-engineering/05-context-engineering/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -3667,6 +4957,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/11-llm-engineering/06-rag/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/11-llm-engineering/06-rag/",
           "GitHub",
           true
         ]
@@ -3686,6 +4982,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/11-llm-engineering/07-advanced-rag/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/11-llm-engineering/07-advanced-rag/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -3701,6 +5003,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/11-llm-engineering/08-fine-tuning-lora/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/11-llm-engineering/08-fine-tuning-lora/",
           "GitHub",
           true
         ]
@@ -3720,6 +5028,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/11-llm-engineering/09-function-calling/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/11-llm-engineering/09-function-calling/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -3735,6 +5049,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/11-llm-engineering/10-evaluation/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/11-llm-engineering/10-evaluation/",
           "GitHub",
           true
         ]
@@ -3754,6 +5074,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/11-llm-engineering/11-caching-cost/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/11-llm-engineering/11-caching-cost/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -3769,6 +5095,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/11-llm-engineering/12-guardrails/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/11-llm-engineering/12-guardrails/",
           "GitHub",
           true
         ]
@@ -3788,6 +5120,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/11-llm-engineering/13-production-app/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/11-llm-engineering/13-production-app/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -3803,6 +5141,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/11-llm-engineering/14-model-context-protocol/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/11-llm-engineering/14-model-context-protocol/",
           "GitHub",
           true
         ]
@@ -3822,6 +5166,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/11-llm-engineering/15-prompt-caching/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/11-llm-engineering/15-prompt-caching/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -3837,6 +5187,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/11-llm-engineering/16-langgraph-state-machines/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/11-llm-engineering/16-langgraph-state-machines/",
           "GitHub",
           true
         ]
@@ -3856,6 +5212,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/11-llm-engineering/17-agent-framework-tradeoffs/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/11-llm-engineering/17-agent-framework-tradeoffs/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -3871,6 +5233,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/01-vision-transformer-patch-tokens/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/12-multimodal-ai/01-vision-transformer-patch-tokens/",
           "GitHub",
           true
         ]
@@ -3890,6 +5258,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/02-clip-contrastive-pretraining/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/12-multimodal-ai/02-clip-contrastive-pretraining/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -3905,6 +5279,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/03-blip2-qformer-bridge/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/12-multimodal-ai/03-blip2-qformer-bridge/",
           "GitHub",
           true
         ]
@@ -3924,6 +5304,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/04-flamingo-gated-cross-attention/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/12-multimodal-ai/04-flamingo-gated-cross-attention/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -3939,6 +5325,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/05-llava-visual-instruction-tuning/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/12-multimodal-ai/05-llava-visual-instruction-tuning/",
           "GitHub",
           true
         ]
@@ -3958,6 +5350,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/06-any-resolution-patch-n-pack/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/12-multimodal-ai/06-any-resolution-patch-n-pack/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -3973,6 +5371,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/07-open-weight-vlm-recipes/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/12-multimodal-ai/07-open-weight-vlm-recipes/",
           "GitHub",
           true
         ]
@@ -3992,6 +5396,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/08-llava-onevision-single-multi-video/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/12-multimodal-ai/08-llava-onevision-single-multi-video/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -4007,6 +5417,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/09-qwen-vl-family-dynamic-fps/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/12-multimodal-ai/09-qwen-vl-family-dynamic-fps/",
           "GitHub",
           true
         ]
@@ -4026,6 +5442,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/10-internvl3-native-multimodal/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/12-multimodal-ai/10-internvl3-native-multimodal/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -4041,6 +5463,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/11-chameleon-early-fusion-tokens/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/12-multimodal-ai/11-chameleon-early-fusion-tokens/",
           "GitHub",
           true
         ]
@@ -4060,6 +5488,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/12-emu3-next-token-for-generation/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/12-multimodal-ai/12-emu3-next-token-for-generation/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -4075,6 +5509,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/13-transfusion-autoregressive-diffusion/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/12-multimodal-ai/13-transfusion-autoregressive-diffusion/",
           "GitHub",
           true
         ]
@@ -4094,6 +5534,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/14-show-o-discrete-diffusion-unified/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/12-multimodal-ai/14-show-o-discrete-diffusion-unified/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -4109,6 +5555,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/15-janus-pro-decoupled-encoders/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/12-multimodal-ai/15-janus-pro-decoupled-encoders/",
           "GitHub",
           true
         ]
@@ -4128,6 +5580,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/16-mio-any-to-any-streaming/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/12-multimodal-ai/16-mio-any-to-any-streaming/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -4143,6 +5601,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/17-video-language-temporal-grounding/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/12-multimodal-ai/17-video-language-temporal-grounding/",
           "GitHub",
           true
         ]
@@ -4162,6 +5626,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/18-long-video-million-token/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/12-multimodal-ai/18-long-video-million-token/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -4177,6 +5647,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/19-audio-language-whisper-to-af3/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/12-multimodal-ai/19-audio-language-whisper-to-af3/",
           "GitHub",
           true
         ]
@@ -4196,6 +5672,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/20-omni-models-thinker-talker/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/12-multimodal-ai/20-omni-models-thinker-talker/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -4211,6 +5693,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/21-embodied-vlas-openvla-pi0-groot/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/12-multimodal-ai/21-embodied-vlas-openvla-pi0-groot/",
           "GitHub",
           true
         ]
@@ -4230,6 +5718,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/22-document-diagram-understanding/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/12-multimodal-ai/22-document-diagram-understanding/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -4245,6 +5739,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/23-colpali-vision-native-rag/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/12-multimodal-ai/23-colpali-vision-native-rag/",
           "GitHub",
           true
         ]
@@ -4264,6 +5764,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/24-multimodal-rag-cross-modal/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/12-multimodal-ai/24-multimodal-rag-cross-modal/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -4279,6 +5785,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/25-multimodal-agents-computer-use/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/12-multimodal-ai/25-multimodal-agents-computer-use/",
           "GitHub",
           true
         ]
@@ -4298,6 +5810,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/01-the-tool-interface/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/01-the-tool-interface/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -4313,6 +5831,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/02-function-calling-deep-dive/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/02-function-calling-deep-dive/",
           "GitHub",
           true
         ]
@@ -4332,6 +5856,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/03-parallel-and-streaming-tool-calls/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/03-parallel-and-streaming-tool-calls/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -4347,6 +5877,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/04-structured-output/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/04-structured-output/",
           "GitHub",
           true
         ]
@@ -4366,6 +5902,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/05-tool-schema-design/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/05-tool-schema-design/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -4381,6 +5923,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/06-mcp-fundamentals/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/06-mcp-fundamentals/",
           "GitHub",
           true
         ]
@@ -4400,6 +5948,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/07-building-an-mcp-server/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/07-building-an-mcp-server/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -4415,6 +5969,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/08-building-an-mcp-client/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/08-building-an-mcp-client/",
           "GitHub",
           true
         ]
@@ -4434,6 +5994,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/09-mcp-transports/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/09-mcp-transports/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -4449,6 +6015,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/10-mcp-resources-and-prompts/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/10-mcp-resources-and-prompts/",
           "GitHub",
           true
         ]
@@ -4468,6 +6040,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/11-mcp-sampling/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/11-mcp-sampling/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -4483,6 +6061,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/12-mcp-roots-and-elicitation/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/12-mcp-roots-and-elicitation/",
           "GitHub",
           true
         ]
@@ -4502,6 +6086,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/13-mcp-async-tasks/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/13-mcp-async-tasks/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -4517,6 +6107,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/14-mcp-apps/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/14-mcp-apps/",
           "GitHub",
           true
         ]
@@ -4536,6 +6132,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/15-mcp-security-tool-poisoning/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/15-mcp-security-tool-poisoning/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -4551,6 +6153,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/16-mcp-security-oauth-2-1/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/16-mcp-security-oauth-2-1/",
           "GitHub",
           true
         ]
@@ -4570,6 +6178,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/17-mcp-gateways-and-registries/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/17-mcp-gateways-and-registries/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -4585,6 +6199,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/18-mcp-auth-production/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/18-mcp-auth-production/",
           "GitHub",
           true
         ]
@@ -4604,6 +6224,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/19-a2a-protocol/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/19-a2a-protocol/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -4619,6 +6245,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/20-opentelemetry-genai/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/20-opentelemetry-genai/",
           "GitHub",
           true
         ]
@@ -4638,6 +6270,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/21-llm-routing-layer/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/21-llm-routing-layer/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -4653,6 +6291,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/22-skills-and-agent-sdks/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/22-skills-and-agent-sdks/",
           "GitHub",
           true
         ]
@@ -4672,6 +6316,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/23-capstone-tool-ecosystem/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/23-capstone-tool-ecosystem/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -4687,6 +6337,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/24-skill-discovery-and-progressive-disclosure/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/24-skill-discovery-and-progressive-disclosure/",
           "GitHub",
           true
         ]
@@ -4706,6 +6362,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/25-skill-invocation-and-routing/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/25-skill-invocation-and-routing/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -4721,6 +6383,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/26-skill-permissions-sandboxes-and-trust/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/26-skill-permissions-sandboxes-and-trust/",
           "GitHub",
           true
         ]
@@ -4740,6 +6408,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/27-skill-evals-packaging-and-portability/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/27-skill-evals-packaging-and-portability/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -4755,6 +6429,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/28-mcp-tool-contracts-and-content/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/28-mcp-tool-contracts-and-content/",
           "GitHub",
           true
         ]
@@ -4774,6 +6454,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/29-mcp-reliability-cancellation-and-flow-control/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/29-mcp-reliability-cancellation-and-flow-control/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -4789,6 +6475,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/30-mcp-registry-supply-chain-and-drift/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/30-mcp-registry-supply-chain-and-drift/",
           "GitHub",
           true
         ]
@@ -4808,6 +6500,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/31-mcp-conformance-versioning-and-operations/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/31-mcp-conformance-versioning-and-operations/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -4823,6 +6521,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/32-program-anatomy-elf-from-scratch/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/32-program-anatomy-elf-from-scratch/",
           "GitHub",
           true
         ]
@@ -4842,6 +6546,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/33-disassembly-and-control-flow/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/33-disassembly-and-control-flow/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -4857,6 +6567,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/34-lifting-to-pseudocode/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/34-lifting-to-pseudocode/",
           "GitHub",
           true
         ]
@@ -4876,6 +6592,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/35-evidence-confidence-and-unknowns/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/35-evidence-confidence-and-unknowns/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -4891,6 +6613,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/36-rebuild-and-prove-equal/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/36-rebuild-and-prove-equal/",
           "GitHub",
           true
         ]
@@ -4910,6 +6638,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/37-the-reverse-engineering-landscape/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/37-the-reverse-engineering-landscape/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -4925,6 +6659,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/38-calling-conventions-and-stack-frames/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/38-calling-conventions-and-stack-frames/",
           "GitHub",
           true
         ]
@@ -4944,6 +6684,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/39-compiler-idioms-and-optimization/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/39-compiler-idioms-and-optimization/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -4959,6 +6705,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/40-linking-loading-and-stripped-binaries/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/40-linking-loading-and-stripped-binaries/",
           "GitHub",
           true
         ]
@@ -4978,6 +6730,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/41-recovering-data-and-types/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/41-recovering-data-and-types/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -4993,6 +6751,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/42-dynamic-analysis-of-your-own-program/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/42-dynamic-analysis-of-your-own-program/",
           "GitHub",
           true
         ]
@@ -5012,6 +6776,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/43-bytecode-and-managed-formats/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/43-bytecode-and-managed-formats/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -5027,6 +6797,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/44-binary-diffing-and-symbolic-execution/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/44-binary-diffing-and-symbolic-execution/",
           "GitHub",
           true
         ]
@@ -5046,6 +6822,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/45-ai-assisted-reverse-engineering/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/45-ai-assisted-reverse-engineering/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -5061,6 +6843,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/01-the-agent-loop/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/01-the-agent-loop/",
           "GitHub",
           true
         ]
@@ -5080,6 +6868,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/02-rewoo-plan-and-execute/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/02-rewoo-plan-and-execute/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -5095,6 +6889,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/03-reflexion-verbal-rl/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/03-reflexion-verbal-rl/",
           "GitHub",
           true
         ]
@@ -5114,6 +6914,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/04-tree-of-thoughts-lats/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/04-tree-of-thoughts-lats/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -5129,6 +6935,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/05-self-refine-and-critic/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/05-self-refine-and-critic/",
           "GitHub",
           true
         ]
@@ -5148,6 +6960,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/06-tool-use-and-function-calling/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/06-tool-use-and-function-calling/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -5163,6 +6981,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/07-memory-virtual-context-memgpt/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/07-memory-virtual-context-memgpt/",
           "GitHub",
           true
         ]
@@ -5182,6 +7006,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/08-memory-blocks-sleep-time-compute/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/08-memory-blocks-sleep-time-compute/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -5197,6 +7027,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/09-hybrid-memory-mem0/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/09-hybrid-memory-mem0/",
           "GitHub",
           true
         ]
@@ -5216,6 +7052,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/10-skill-libraries-voyager/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/10-skill-libraries-voyager/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -5231,6 +7073,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/11-planning-htn-and-evolutionary/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/11-planning-htn-and-evolutionary/",
           "GitHub",
           true
         ]
@@ -5250,6 +7098,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/12-anthropic-workflow-patterns/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/12-anthropic-workflow-patterns/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -5265,6 +7119,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/13-langgraph-stateful-graphs/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/13-langgraph-stateful-graphs/",
           "GitHub",
           true
         ]
@@ -5284,6 +7144,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/14-autogen-actor-model/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/14-autogen-actor-model/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -5299,6 +7165,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/15-crewai-role-based-crews/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/15-crewai-role-based-crews/",
           "GitHub",
           true
         ]
@@ -5318,6 +7190,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/16-openai-agents-sdk/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/16-openai-agents-sdk/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -5333,6 +7211,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/17-claude-agent-sdk/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/17-claude-agent-sdk/",
           "GitHub",
           true
         ]
@@ -5352,6 +7236,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/18-agno-and-mastra-runtimes/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/18-agno-and-mastra-runtimes/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -5367,6 +7257,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/19-benchmarks-swebench-gaia/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/19-benchmarks-swebench-gaia/",
           "GitHub",
           true
         ]
@@ -5386,6 +7282,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/20-benchmarks-webarena-osworld/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/20-benchmarks-webarena-osworld/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -5401,6 +7303,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/21-computer-use-agents/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/21-computer-use-agents/",
           "GitHub",
           true
         ]
@@ -5420,6 +7328,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/22-voice-agents-pipecat-livekit/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/22-voice-agents-pipecat-livekit/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -5435,6 +7349,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/23-otel-genai-conventions/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/23-otel-genai-conventions/",
           "GitHub",
           true
         ]
@@ -5454,6 +7374,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/24-agent-observability-platforms/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/24-agent-observability-platforms/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -5469,6 +7395,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/25-multi-agent-debate/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/25-multi-agent-debate/",
           "GitHub",
           true
         ]
@@ -5488,6 +7420,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/26-failure-modes-agentic/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/26-failure-modes-agentic/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -5503,6 +7441,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/27-prompt-injection-defense/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/27-prompt-injection-defense/",
           "GitHub",
           true
         ]
@@ -5522,6 +7466,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/28-orchestration-patterns/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/28-orchestration-patterns/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -5537,6 +7487,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/29-production-runtimes/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/29-production-runtimes/",
           "GitHub",
           true
         ]
@@ -5556,6 +7512,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/30-eval-driven-agent-development/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/30-eval-driven-agent-development/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -5571,6 +7533,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/31-agent-workbench-why-models-fail/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/31-agent-workbench-why-models-fail/",
           "GitHub",
           true
         ]
@@ -5590,6 +7558,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/32-minimal-agent-workbench/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/32-minimal-agent-workbench/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -5605,6 +7579,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/33-instructions-as-executable-constraints/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/33-instructions-as-executable-constraints/",
           "GitHub",
           true
         ]
@@ -5624,6 +7604,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/34-repo-memory-and-state/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/34-repo-memory-and-state/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -5639,6 +7625,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/35-initialization-scripts/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/35-initialization-scripts/",
           "GitHub",
           true
         ]
@@ -5658,6 +7650,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/36-scope-contracts/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/36-scope-contracts/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -5673,6 +7671,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/37-runtime-feedback-loops/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/37-runtime-feedback-loops/",
           "GitHub",
           true
         ]
@@ -5692,6 +7696,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/38-verification-gates/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/38-verification-gates/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -5707,6 +7717,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/39-reviewer-agent/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/39-reviewer-agent/",
           "GitHub",
           true
         ]
@@ -5726,6 +7742,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/40-multi-session-handoff/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/40-multi-session-handoff/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -5741,6 +7763,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/41-workbench-for-real-repos/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/41-workbench-for-real-repos/",
           "GitHub",
           true
         ]
@@ -5760,6 +7788,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/42-agent-workbench-capstone/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/42-agent-workbench-capstone/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -5775,6 +7809,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/43-frame-the-task-before-code/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/43-frame-the-task-before-code/",
           "GitHub",
           true
         ]
@@ -5794,6 +7834,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/44-plan-from-evidence/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/44-plan-from-evidence/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -5809,6 +7855,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/45-delegate-with-isolation/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/45-delegate-with-isolation/",
           "GitHub",
           true
         ]
@@ -5828,6 +7880,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/46-turn-feedback-into-system/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/46-turn-feedback-into-system/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -5843,6 +7901,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/47-outcomes-before-output/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/47-outcomes-before-output/",
           "GitHub",
           true
         ]
@@ -5862,6 +7926,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/48-discover-the-real-workflow/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/48-discover-the-real-workflow/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -5877,6 +7947,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/49-map-assumptions-and-risk/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/49-map-assumptions-and-risk/",
           "GitHub",
           true
         ]
@@ -5896,6 +7972,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/50-choose-the-smallest-testable-slice/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/50-choose-the-smallest-testable-slice/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -5911,6 +7993,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/51-write-specifications-that-preserve-judgment/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/51-write-specifications-that-preserve-judgment/",
           "GitHub",
           true
         ]
@@ -5930,6 +8018,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/52-design-success-metrics/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/52-design-success-metrics/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -5945,6 +8039,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/53-prototype-pilot-or-production/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/53-prototype-pilot-or-production/",
           "GitHub",
           true
         ]
@@ -5964,6 +8064,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/54-build-the-feedback-ratchet/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/54-build-the-feedback-ratchet/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -5979,6 +8085,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/15-autonomous-systems/01-long-horizon-agents/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/15-autonomous-systems/01-long-horizon-agents/",
           "GitHub",
           true
         ]
@@ -5998,6 +8110,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/15-autonomous-systems/02-star-family-reasoning/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/15-autonomous-systems/02-star-family-reasoning/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -6013,6 +8131,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/15-autonomous-systems/03-alphaevolve-evolutionary-coding/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/15-autonomous-systems/03-alphaevolve-evolutionary-coding/",
           "GitHub",
           true
         ]
@@ -6032,6 +8156,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/15-autonomous-systems/04-darwin-godel-machine/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/15-autonomous-systems/04-darwin-godel-machine/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -6047,6 +8177,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/15-autonomous-systems/05-ai-scientist-v2/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/15-autonomous-systems/05-ai-scientist-v2/",
           "GitHub",
           true
         ]
@@ -6066,6 +8202,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/15-autonomous-systems/06-automated-alignment-research/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/15-autonomous-systems/06-automated-alignment-research/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -6081,6 +8223,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/15-autonomous-systems/07-recursive-self-improvement/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/15-autonomous-systems/07-recursive-self-improvement/",
           "GitHub",
           true
         ]
@@ -6100,6 +8248,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/15-autonomous-systems/08-bounded-self-improvement/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/15-autonomous-systems/08-bounded-self-improvement/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -6115,6 +8269,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/15-autonomous-systems/09-coding-agent-landscape/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/15-autonomous-systems/09-coding-agent-landscape/",
           "GitHub",
           true
         ]
@@ -6134,6 +8294,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/15-autonomous-systems/10-claude-code-permission-modes/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/15-autonomous-systems/10-claude-code-permission-modes/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -6149,6 +8315,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/15-autonomous-systems/11-browser-agents/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/15-autonomous-systems/11-browser-agents/",
           "GitHub",
           true
         ]
@@ -6168,6 +8340,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/15-autonomous-systems/12-durable-execution/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/15-autonomous-systems/12-durable-execution/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -6183,6 +8361,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/15-autonomous-systems/13-cost-governors/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/15-autonomous-systems/13-cost-governors/",
           "GitHub",
           true
         ]
@@ -6202,6 +8386,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/15-autonomous-systems/14-kill-switches-canaries/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/15-autonomous-systems/14-kill-switches-canaries/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -6217,6 +8407,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/15-autonomous-systems/15-propose-then-commit/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/15-autonomous-systems/15-propose-then-commit/",
           "GitHub",
           true
         ]
@@ -6236,6 +8432,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/15-autonomous-systems/16-checkpoints-rollback/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/15-autonomous-systems/16-checkpoints-rollback/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -6251,6 +8453,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/15-autonomous-systems/17-constitutional-ai/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/15-autonomous-systems/17-constitutional-ai/",
           "GitHub",
           true
         ]
@@ -6270,6 +8478,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/15-autonomous-systems/18-llama-guard/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/15-autonomous-systems/18-llama-guard/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -6285,6 +8499,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/15-autonomous-systems/19-anthropic-rsp/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/15-autonomous-systems/19-anthropic-rsp/",
           "GitHub",
           true
         ]
@@ -6304,6 +8524,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/15-autonomous-systems/20-openai-preparedness-deepmind-fsf/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/15-autonomous-systems/20-openai-preparedness-deepmind-fsf/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -6319,6 +8545,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/15-autonomous-systems/21-metr-external-evaluation/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/15-autonomous-systems/21-metr-external-evaluation/",
           "GitHub",
           true
         ]
@@ -6338,6 +8570,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/15-autonomous-systems/22-cais-caisi-societal-risk/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/15-autonomous-systems/22-cais-caisi-societal-risk/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -6353,6 +8591,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/01-why-multi-agent/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/16-multi-agent-and-swarms/01-why-multi-agent/",
           "GitHub",
           true
         ]
@@ -6372,6 +8616,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/02-fipa-acl-heritage/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/16-multi-agent-and-swarms/02-fipa-acl-heritage/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -6387,6 +8637,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/03-communication-protocols/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/16-multi-agent-and-swarms/03-communication-protocols/",
           "GitHub",
           true
         ]
@@ -6406,6 +8662,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/04-primitive-model/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/16-multi-agent-and-swarms/04-primitive-model/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -6421,6 +8683,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/05-supervisor-orchestrator-pattern/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/16-multi-agent-and-swarms/05-supervisor-orchestrator-pattern/",
           "GitHub",
           true
         ]
@@ -6440,6 +8708,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/06-hierarchical-architecture/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/16-multi-agent-and-swarms/06-hierarchical-architecture/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -6455,6 +8729,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/07-society-of-mind-debate/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/16-multi-agent-and-swarms/07-society-of-mind-debate/",
           "GitHub",
           true
         ]
@@ -6474,6 +8754,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/08-role-specialization/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/16-multi-agent-and-swarms/08-role-specialization/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -6489,6 +8775,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/09-parallel-swarm-networks/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/16-multi-agent-and-swarms/09-parallel-swarm-networks/",
           "GitHub",
           true
         ]
@@ -6508,6 +8800,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/10-group-chat-speaker-selection/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/16-multi-agent-and-swarms/10-group-chat-speaker-selection/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -6523,6 +8821,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/11-handoffs-and-routines/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/16-multi-agent-and-swarms/11-handoffs-and-routines/",
           "GitHub",
           true
         ]
@@ -6542,6 +8846,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/12-a2a-protocol/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/16-multi-agent-and-swarms/12-a2a-protocol/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -6557,6 +8867,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/13-shared-memory-blackboard/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/16-multi-agent-and-swarms/13-shared-memory-blackboard/",
           "GitHub",
           true
         ]
@@ -6576,6 +8892,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/14-consensus-and-bft/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/16-multi-agent-and-swarms/14-consensus-and-bft/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -6591,6 +8913,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/15-voting-debate-topology/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/16-multi-agent-and-swarms/15-voting-debate-topology/",
           "GitHub",
           true
         ]
@@ -6610,6 +8938,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/16-negotiation-bargaining/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/16-multi-agent-and-swarms/16-negotiation-bargaining/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -6625,6 +8959,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/17-generative-agents-simulation/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/16-multi-agent-and-swarms/17-generative-agents-simulation/",
           "GitHub",
           true
         ]
@@ -6644,6 +8984,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/18-theory-of-mind-coordination/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/16-multi-agent-and-swarms/18-theory-of-mind-coordination/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -6659,6 +9005,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/19-swarm-optimization-pso-aco/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/16-multi-agent-and-swarms/19-swarm-optimization-pso-aco/",
           "GitHub",
           true
         ]
@@ -6678,6 +9030,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/20-marl-maddpg-qmix-mappo/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/16-multi-agent-and-swarms/20-marl-maddpg-qmix-mappo/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -6693,6 +9051,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/21-agent-economies/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/16-multi-agent-and-swarms/21-agent-economies/",
           "GitHub",
           true
         ]
@@ -6712,6 +9076,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/22-production-scaling-queues-checkpoints/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/16-multi-agent-and-swarms/22-production-scaling-queues-checkpoints/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -6727,6 +9097,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/23-failure-modes-mast-groupthink/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/16-multi-agent-and-swarms/23-failure-modes-mast-groupthink/",
           "GitHub",
           true
         ]
@@ -6746,6 +9122,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/24-evaluation-coordination-benchmarks/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/16-multi-agent-and-swarms/24-evaluation-coordination-benchmarks/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -6761,6 +9143,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/25-case-studies-2026-sota/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/16-multi-agent-and-swarms/25-case-studies-2026-sota/",
           "GitHub",
           true
         ]
@@ -6780,6 +9168,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/01-managed-llm-platforms/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/01-managed-llm-platforms/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -6795,6 +9189,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/02-inference-platform-economics/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/02-inference-platform-economics/",
           "GitHub",
           true
         ]
@@ -6814,6 +9214,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/03-gpu-autoscaling-kubernetes/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/03-gpu-autoscaling-kubernetes/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -6829,6 +9235,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/04-vllm-serving-internals/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/04-vllm-serving-internals/",
           "GitHub",
           true
         ]
@@ -6848,6 +9260,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/05-eagle3-speculative-decoding/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/05-eagle3-speculative-decoding/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -6863,6 +9281,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/06-sglang-radixattention/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/06-sglang-radixattention/",
           "GitHub",
           true
         ]
@@ -6882,6 +9306,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/07-tensorrt-llm-blackwell/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/07-tensorrt-llm-blackwell/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -6897,6 +9327,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/08-inference-metrics-goodput/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/08-inference-metrics-goodput/",
           "GitHub",
           true
         ]
@@ -6916,6 +9352,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/09-production-quantization/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/09-production-quantization/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -6931,6 +9373,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/10-cold-start-mitigation/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/10-cold-start-mitigation/",
           "GitHub",
           true
         ]
@@ -6950,6 +9398,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/11-multi-region-kv-locality/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/11-multi-region-kv-locality/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -6965,6 +9419,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/12-edge-inference/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/12-edge-inference/",
           "GitHub",
           true
         ]
@@ -6984,6 +9444,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/13-llm-observability/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/13-llm-observability/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -6999,6 +9465,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/14-prompt-semantic-caching/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/14-prompt-semantic-caching/",
           "GitHub",
           true
         ]
@@ -7018,6 +9490,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/15-batch-apis/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/15-batch-apis/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -7033,6 +9511,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/16-model-routing/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/16-model-routing/",
           "GitHub",
           true
         ]
@@ -7052,6 +9536,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/17-disaggregated-prefill-decode/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/17-disaggregated-prefill-decode/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -7067,6 +9557,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/18-vllm-production-stack-lmcache/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/18-vllm-production-stack-lmcache/",
           "GitHub",
           true
         ]
@@ -7086,6 +9582,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/19-ai-gateways/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/19-ai-gateways/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -7101,6 +9603,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/20-shadow-canary-progressive/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/20-shadow-canary-progressive/",
           "GitHub",
           true
         ]
@@ -7120,6 +9628,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/21-ab-testing-llm-features/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/21-ab-testing-llm-features/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -7135,6 +9649,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/22-load-testing-llm-apis/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/22-load-testing-llm-apis/",
           "GitHub",
           true
         ]
@@ -7154,6 +9674,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/23-sre-for-ai/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/23-sre-for-ai/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -7169,6 +9695,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/24-chaos-engineering-llm/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/24-chaos-engineering-llm/",
           "GitHub",
           true
         ]
@@ -7188,6 +9720,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/25-security-secrets-audit/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/25-security-secrets-audit/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -7203,6 +9741,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/26-compliance-frameworks/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/26-compliance-frameworks/",
           "GitHub",
           true
         ]
@@ -7222,6 +9766,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/27-finops-llms/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/27-finops-llms/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -7237,6 +9787,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/28-self-hosted-serving-selection/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/28-self-hosted-serving-selection/",
           "GitHub",
           true
         ]
@@ -7256,6 +9812,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/29-model-demo-interfaces/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/29-model-demo-interfaces/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -7271,6 +9833,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/01-instruction-following-alignment-signal/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/18-ethics-safety-alignment/01-instruction-following-alignment-signal/",
           "GitHub",
           true
         ]
@@ -7290,6 +9858,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/02-reward-hacking-goodhart/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/18-ethics-safety-alignment/02-reward-hacking-goodhart/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -7305,6 +9879,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/03-direct-preference-optimization-family/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/18-ethics-safety-alignment/03-direct-preference-optimization-family/",
           "GitHub",
           true
         ]
@@ -7324,6 +9904,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/04-sycophancy-rlhf-amplification/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/18-ethics-safety-alignment/04-sycophancy-rlhf-amplification/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -7339,6 +9925,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/05-constitutional-ai-rlaif/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/18-ethics-safety-alignment/05-constitutional-ai-rlaif/",
           "GitHub",
           true
         ]
@@ -7358,6 +9950,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/06-mesa-optimization-deceptive-alignment/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/18-ethics-safety-alignment/06-mesa-optimization-deceptive-alignment/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -7373,6 +9971,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/07-sleeper-agents-persistent-deception/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/18-ethics-safety-alignment/07-sleeper-agents-persistent-deception/",
           "GitHub",
           true
         ]
@@ -7392,6 +9996,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/08-in-context-scheming-frontier-models/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/18-ethics-safety-alignment/08-in-context-scheming-frontier-models/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -7407,6 +10017,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/09-alignment-faking/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/18-ethics-safety-alignment/09-alignment-faking/",
           "GitHub",
           true
         ]
@@ -7426,6 +10042,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/10-ai-control-subversion/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/18-ethics-safety-alignment/10-ai-control-subversion/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -7441,6 +10063,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/11-scalable-oversight-weak-to-strong/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/18-ethics-safety-alignment/11-scalable-oversight-weak-to-strong/",
           "GitHub",
           true
         ]
@@ -7460,6 +10088,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/12-red-teaming-pair-automated-attacks/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/18-ethics-safety-alignment/12-red-teaming-pair-automated-attacks/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -7475,6 +10109,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/13-many-shot-jailbreaking/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/18-ethics-safety-alignment/13-many-shot-jailbreaking/",
           "GitHub",
           true
         ]
@@ -7494,6 +10134,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/14-ascii-art-visual-jailbreaks/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/18-ethics-safety-alignment/14-ascii-art-visual-jailbreaks/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -7509,6 +10155,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/15-indirect-prompt-injection/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/18-ethics-safety-alignment/15-indirect-prompt-injection/",
           "GitHub",
           true
         ]
@@ -7528,6 +10180,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/16-red-team-tooling-garak-llamaguard-pyrit/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/18-ethics-safety-alignment/16-red-team-tooling-garak-llamaguard-pyrit/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -7543,6 +10201,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/17-wmdp-dual-use-evaluation/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/18-ethics-safety-alignment/17-wmdp-dual-use-evaluation/",
           "GitHub",
           true
         ]
@@ -7562,6 +10226,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/18-frontier-safety-frameworks-rsp-pf-fsf/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/18-ethics-safety-alignment/18-frontier-safety-frameworks-rsp-pf-fsf/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -7577,6 +10247,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/19-model-welfare-research/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/18-ethics-safety-alignment/19-model-welfare-research/",
           "GitHub",
           true
         ]
@@ -7596,6 +10272,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/20-bias-representational-harm/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/18-ethics-safety-alignment/20-bias-representational-harm/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -7611,6 +10293,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/21-fairness-criteria-group-individual-counterfactual/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/18-ethics-safety-alignment/21-fairness-criteria-group-individual-counterfactual/",
           "GitHub",
           true
         ]
@@ -7630,6 +10318,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/22-differential-privacy-for-llms/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/18-ethics-safety-alignment/22-differential-privacy-for-llms/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -7645,6 +10339,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/23-watermarking-synthid-stable-signature-c2pa/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/18-ethics-safety-alignment/23-watermarking-synthid-stable-signature-c2pa/",
           "GitHub",
           true
         ]
@@ -7664,6 +10364,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/24-regulatory-frameworks-eu-us-uk-korea/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/18-ethics-safety-alignment/24-regulatory-frameworks-eu-us-uk-korea/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -7679,6 +10385,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/25-echoleak-cves-for-ai/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/18-ethics-safety-alignment/25-echoleak-cves-for-ai/",
           "GitHub",
           true
         ]
@@ -7698,6 +10410,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/26-model-system-dataset-cards/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/18-ethics-safety-alignment/26-model-system-dataset-cards/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -7713,6 +10431,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/27-data-provenance-training-governance/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/18-ethics-safety-alignment/27-data-provenance-training-governance/",
           "GitHub",
           true
         ]
@@ -7732,6 +10456,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/28-alignment-research-ecosystem/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/18-ethics-safety-alignment/28-alignment-research-ecosystem/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -7747,6 +10477,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/29-moderation-systems-openai-perspective-llamaguard/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/18-ethics-safety-alignment/29-moderation-systems-openai-perspective-llamaguard/",
           "GitHub",
           true
         ]
@@ -7766,6 +10502,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/30-dual-use-risk-cyber-bio-chem-nuclear/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/18-ethics-safety-alignment/30-dual-use-risk-cyber-bio-chem-nuclear/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -7781,6 +10523,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/01-terminal-native-coding-agent/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/01-terminal-native-coding-agent/",
           "GitHub",
           true
         ]
@@ -7800,6 +10548,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/02-rag-over-codebase/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/02-rag-over-codebase/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -7815,6 +10569,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/03-realtime-voice-assistant/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/03-realtime-voice-assistant/",
           "GitHub",
           true
         ]
@@ -7834,6 +10594,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/04-multimodal-document-qa/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/04-multimodal-document-qa/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -7849,6 +10615,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/05-autonomous-research-agent/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/05-autonomous-research-agent/",
           "GitHub",
           true
         ]
@@ -7868,6 +10640,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/06-devops-troubleshooting-agent/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/06-devops-troubleshooting-agent/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -7883,6 +10661,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/07-end-to-end-fine-tuning-pipeline/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/07-end-to-end-fine-tuning-pipeline/",
           "GitHub",
           true
         ]
@@ -7902,6 +10686,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/08-production-rag-chatbot/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/08-production-rag-chatbot/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -7917,6 +10707,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/09-code-migration-agent/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/09-code-migration-agent/",
           "GitHub",
           true
         ]
@@ -7936,6 +10732,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/10-multi-agent-software-team/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/10-multi-agent-software-team/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -7951,6 +10753,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/11-llm-observability-dashboard/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/11-llm-observability-dashboard/",
           "GitHub",
           true
         ]
@@ -7970,6 +10778,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/12-video-understanding-pipeline/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/12-video-understanding-pipeline/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -7985,6 +10799,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/13-mcp-server-with-registry/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/13-mcp-server-with-registry/",
           "GitHub",
           true
         ]
@@ -8004,6 +10824,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/14-speculative-decoding-server/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/14-speculative-decoding-server/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -8019,6 +10845,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/15-constitutional-safety-harness/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/15-constitutional-safety-harness/",
           "GitHub",
           true
         ]
@@ -8038,6 +10870,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/16-github-issue-to-pr-agent/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/16-github-issue-to-pr-agent/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -8053,6 +10891,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/17-personal-ai-tutor/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/17-personal-ai-tutor/",
           "GitHub",
           true
         ]
@@ -8072,6 +10916,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/20-agent-harness-loop-contract/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/20-agent-harness-loop-contract/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -8087,6 +10937,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/21-tool-registry-schema-validation/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/21-tool-registry-schema-validation/",
           "GitHub",
           true
         ]
@@ -8106,6 +10962,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/22-jsonrpc-stdio-transport/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/22-jsonrpc-stdio-transport/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -8121,6 +10983,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/23-function-call-dispatcher/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/23-function-call-dispatcher/",
           "GitHub",
           true
         ]
@@ -8140,6 +11008,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/24-plan-execute-control-flow/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/24-plan-execute-control-flow/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -8155,6 +11029,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/25-verification-gates-observation-budget/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/25-verification-gates-observation-budget/",
           "GitHub",
           true
         ]
@@ -8174,6 +11054,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/26-sandbox-runner-denylist/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/26-sandbox-runner-denylist/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -8189,6 +11075,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/27-eval-harness-fixture-tasks/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/27-eval-harness-fixture-tasks/",
           "GitHub",
           true
         ]
@@ -8208,6 +11100,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/28-observability-otel-traces/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/28-observability-otel-traces/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -8223,6 +11121,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/29-end-to-end-coding-task-demo/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/29-end-to-end-coding-task-demo/",
           "GitHub",
           true
         ]
@@ -8242,6 +11146,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/30-bpe-tokenizer-from-scratch/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/30-bpe-tokenizer-from-scratch/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -8257,6 +11167,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/31-tokenized-dataset-sliding-window/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/31-tokenized-dataset-sliding-window/",
           "GitHub",
           true
         ]
@@ -8276,6 +11192,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/32-token-positional-embeddings/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/32-token-positional-embeddings/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -8291,6 +11213,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/33-multihead-self-attention/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/33-multihead-self-attention/",
           "GitHub",
           true
         ]
@@ -8310,6 +11238,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/34-transformer-block/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/34-transformer-block/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -8325,6 +11259,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/35-gpt-model-assembly/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/35-gpt-model-assembly/",
           "GitHub",
           true
         ]
@@ -8344,6 +11284,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/36-training-loop-eval/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/36-training-loop-eval/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -8359,6 +11305,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/37-loading-pretrained-weights/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/37-loading-pretrained-weights/",
           "GitHub",
           true
         ]
@@ -8378,6 +11330,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/38-classifier-finetuning/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/38-classifier-finetuning/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -8393,6 +11351,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/39-instruction-tuning-sft/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/39-instruction-tuning-sft/",
           "GitHub",
           true
         ]
@@ -8412,6 +11376,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/40-dpo-from-scratch/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/40-dpo-from-scratch/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -8427,6 +11397,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/41-eval-pipeline/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/41-eval-pipeline/",
           "GitHub",
           true
         ]
@@ -8446,6 +11422,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/42-large-corpus-downloader/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/42-large-corpus-downloader/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -8461,6 +11443,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/43-hdf5-tokenized-corpus/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/43-hdf5-tokenized-corpus/",
           "GitHub",
           true
         ]
@@ -8480,6 +11468,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/44-cosine-lr-warmup/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/44-cosine-lr-warmup/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -8495,6 +11489,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/45-gradient-clipping-amp/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/45-gradient-clipping-amp/",
           "GitHub",
           true
         ]
@@ -8514,6 +11514,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/46-gradient-accumulation/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/46-gradient-accumulation/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -8529,6 +11535,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/47-checkpoint-save-resume/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/47-checkpoint-save-resume/",
           "GitHub",
           true
         ]
@@ -8548,6 +11560,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/48-distributed-fsdp-ddp/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/48-distributed-fsdp-ddp/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -8563,6 +11581,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/49-lm-eval-harness/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/49-lm-eval-harness/",
           "GitHub",
           true
         ]
@@ -8582,6 +11606,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/50-hypothesis-generator/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/50-hypothesis-generator/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -8597,6 +11627,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/51-literature-retrieval/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/51-literature-retrieval/",
           "GitHub",
           true
         ]
@@ -8616,6 +11652,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/52-experiment-runner/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/52-experiment-runner/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -8631,6 +11673,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/53-result-evaluator/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/53-result-evaluator/",
           "GitHub",
           true
         ]
@@ -8650,6 +11698,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/54-paper-writer/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/54-paper-writer/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -8665,6 +11719,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/55-critic-loop/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/55-critic-loop/",
           "GitHub",
           true
         ]
@@ -8684,6 +11744,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/56-iteration-scheduler/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/56-iteration-scheduler/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -8699,6 +11765,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/57-end-to-end-research-demo/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/57-end-to-end-research-demo/",
           "GitHub",
           true
         ]
@@ -8718,6 +11790,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/58-vision-encoder-patches/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/58-vision-encoder-patches/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -8733,6 +11811,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/59-vit-transformer/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/59-vit-transformer/",
           "GitHub",
           true
         ]
@@ -8752,6 +11836,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/60-projection-layer-modality-align/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/60-projection-layer-modality-align/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -8767,6 +11857,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/61-cross-attention-fusion/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/61-cross-attention-fusion/",
           "GitHub",
           true
         ]
@@ -8786,6 +11882,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/62-vision-language-pretraining/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/62-vision-language-pretraining/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -8801,6 +11903,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/63-multimodal-eval/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/63-multimodal-eval/",
           "GitHub",
           true
         ]
@@ -8820,6 +11928,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/64-chunking-strategies-advanced/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/64-chunking-strategies-advanced/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -8835,6 +11949,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/65-hybrid-retrieval-bm25-dense/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/65-hybrid-retrieval-bm25-dense/",
           "GitHub",
           true
         ]
@@ -8854,6 +11974,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/66-reranker-cross-encoder/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/66-reranker-cross-encoder/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -8869,6 +11995,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/67-query-rewriting-hyde/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/67-query-rewriting-hyde/",
           "GitHub",
           true
         ]
@@ -8888,6 +12020,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/68-rag-eval-precision-recall/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/68-rag-eval-precision-recall/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -8903,6 +12041,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/69-end-to-end-rag-system/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/69-end-to-end-rag-system/",
           "GitHub",
           true
         ]
@@ -8922,6 +12066,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/70-task-spec-format/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/70-task-spec-format/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -8937,6 +12087,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/71-classical-metrics/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/71-classical-metrics/",
           "GitHub",
           true
         ]
@@ -8956,6 +12112,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/72-code-exec-metric/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/72-code-exec-metric/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -8971,6 +12133,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/73-perplexity-calibration/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/73-perplexity-calibration/",
           "GitHub",
           true
         ]
@@ -8990,6 +12158,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/74-leaderboard-aggregation/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/74-leaderboard-aggregation/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -9005,6 +12179,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/75-end-to-end-eval-runner/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/75-end-to-end-eval-runner/",
           "GitHub",
           true
         ]
@@ -9024,6 +12204,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/76-collective-ops-from-scratch/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/76-collective-ops-from-scratch/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -9039,6 +12225,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/77-data-parallel-ddp/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/77-data-parallel-ddp/",
           "GitHub",
           true
         ]
@@ -9058,6 +12250,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/78-zero-parameter-sharding/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/78-zero-parameter-sharding/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -9073,6 +12271,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/79-pipeline-parallel/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/79-pipeline-parallel/",
           "GitHub",
           true
         ]
@@ -9092,6 +12296,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/80-checkpoint-sharded-resume/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/80-checkpoint-sharded-resume/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -9107,6 +12317,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/81-end-to-end-distributed-train/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/81-end-to-end-distributed-train/",
           "GitHub",
           true
         ]
@@ -9126,6 +12342,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/82-jailbreak-taxonomy/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/82-jailbreak-taxonomy/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -9141,6 +12363,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/83-prompt-injection-detector/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/83-prompt-injection-detector/",
           "GitHub",
           true
         ]
@@ -9160,6 +12388,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/84-refusal-evaluation/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/84-refusal-evaluation/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -9175,6 +12409,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/85-content-classifier-integration/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/85-content-classifier-integration/",
           "GitHub",
           true
         ]
@@ -9194,6 +12434,12 @@ window.aiResources = {
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/86-constitutional-rules-engine/docs/en.md",
           "GitHub",
           true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/86-constitutional-rules-engine/",
+          "GitHub",
+          true
         ]
       ]
     },
@@ -9209,6 +12455,12 @@ window.aiResources = {
         [
           "Raw Implementation & Guide (Markdown)",
           "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/87-end-to-end-safety-gate/docs/en.md",
+          "GitHub",
+          true
+        ],
+        [
+          "GitHub Source Code Repository",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/87-end-to-end-safety-gate/",
           "GitHub",
           true
         ]
@@ -12422,6 +15674,3704 @@ window.aiResources = {
           "Practice Task: Read an SGLang sweep on an L4",
           "https://aiengineeringfromscratch.com/practice/lab-sglang-l4-serving",
           "Lab",
+          true
+        ]
+      ]
+    },
+    "glossary-math-training/activation-checkpointing": {
+      "videos": [],
+      "docs": [
+        [
+          "Training Deep Nets with Sublinear Memory Cost",
+          "https://arxiv.org/abs/1604.06174",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Activation Checkpointing",
+          "https://aiengineeringfromscratch.com/glossary/activation-checkpointing",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-math-training/activation-function": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Activation Function",
+          "https://aiengineeringfromscratch.com/glossary/activation-function",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-math-training/adam-optimizer": {
+      "videos": [],
+      "docs": [
+        [
+          "Adam paper",
+          "https://arxiv.org/abs/1412.6980",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Adam (Optimizer)",
+          "https://aiengineeringfromscratch.com/glossary/adam-optimizer",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-math-training/adamw": {
+      "videos": [],
+      "docs": [
+        [
+          "Decoupled Weight Decay Regularization",
+          "https://arxiv.org/abs/1711.05101",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: AdamW",
+          "https://aiengineeringfromscratch.com/glossary/adamw",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-math-training/autograd": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Autograd",
+          "https://aiengineeringfromscratch.com/glossary/autograd",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-math-training/backpropagation": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Backpropagation",
+          "https://aiengineeringfromscratch.com/glossary/backpropagation",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-math-training/batch-size": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Batch Size",
+          "https://aiengineeringfromscratch.com/glossary/batch-size",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-math-training/contrastive-learning": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Contrastive Learning",
+          "https://aiengineeringfromscratch.com/glossary/contrastive-learning",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-math-training/cross-entropy": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Cross-Entropy",
+          "https://aiengineeringfromscratch.com/glossary/cross-entropy",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-math-training/data-augmentation": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Data Augmentation",
+          "https://aiengineeringfromscratch.com/glossary/data-augmentation",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-math-training/dpo-direct-preference-optimization": {
+      "videos": [],
+      "docs": [
+        [
+          "Direct Preference Optimization paper",
+          "https://arxiv.org/abs/2305.18290",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: DPO (Direct Preference Optimization)",
+          "https://aiengineeringfromscratch.com/glossary/dpo-direct-preference-optimization",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-math-training/dropout": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Dropout",
+          "https://aiengineeringfromscratch.com/glossary/dropout",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-math-training/eigenvalue": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Eigenvalue",
+          "https://aiengineeringfromscratch.com/glossary/eigenvalue",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-math-training/epoch": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Epoch",
+          "https://aiengineeringfromscratch.com/glossary/epoch",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-math-training/fine-tuning": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Fine-tuning",
+          "https://aiengineeringfromscratch.com/glossary/fine-tuning",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-math-training/gradient": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Gradient",
+          "https://aiengineeringfromscratch.com/glossary/gradient",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-math-training/gradient-accumulation": {
+      "videos": [],
+      "docs": [
+        [
+          "PyTorch AMP examples: Gradient accumulation",
+          "https://docs.pytorch.org/docs/stable/notes/amp_examples.html#gradient-accumulation",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Gradient Accumulation",
+          "https://aiengineeringfromscratch.com/glossary/gradient-accumulation",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-math-training/gradient-clipping": {
+      "videos": [],
+      "docs": [
+        [
+          "On the difficulty of training recurrent neural networks",
+          "https://arxiv.org/abs/1211.5063",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Gradient Clipping",
+          "https://aiengineeringfromscratch.com/glossary/gradient-clipping",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-math-training/gradient-descent": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Gradient Descent",
+          "https://aiengineeringfromscratch.com/glossary/gradient-descent",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-math-training/hyperparameter": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Hyperparameter",
+          "https://aiengineeringfromscratch.com/glossary/hyperparameter",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-math-training/jax": {
+      "videos": [],
+      "docs": [
+        [
+          "JAX documentation",
+          "https://docs.jax.dev/en/latest/",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: JAX",
+          "https://aiengineeringfromscratch.com/glossary/jax",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-math-training/knowledge-distillation": {
+      "videos": [],
+      "docs": [
+        [
+          "Distilling the Knowledge in a Neural Network",
+          "https://arxiv.org/abs/1503.02531",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Knowledge Distillation",
+          "https://aiengineeringfromscratch.com/glossary/knowledge-distillation",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-math-training/learning-rate": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Learning Rate",
+          "https://aiengineeringfromscratch.com/glossary/learning-rate",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-math-training/learning-rate-schedule": {
+      "videos": [],
+      "docs": [
+        [
+          "SGDR",
+          "https://arxiv.org/abs/1608.03983",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Attention Is All You Need",
+          "https://arxiv.org/abs/1706.03762",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Learning Rate Schedule",
+          "https://aiengineeringfromscratch.com/glossary/learning-rate-schedule",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-math-training/lora-low-rank-adaptation": {
+      "videos": [],
+      "docs": [
+        [
+          "LoRA paper",
+          "https://arxiv.org/abs/2106.09685",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: LoRA (Low-Rank Adaptation)",
+          "https://aiengineeringfromscratch.com/glossary/lora-low-rank-adaptation",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-math-training/loss-function": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Loss Function",
+          "https://aiengineeringfromscratch.com/glossary/loss-function",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-math-training/mixed-precision": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Mixed Precision",
+          "https://aiengineeringfromscratch.com/glossary/mixed-precision",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-math-training/nan-not-a-number": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: NaN (Not a Number)",
+          "https://aiengineeringfromscratch.com/glossary/nan-not-a-number",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-math-training/normalization": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Normalization",
+          "https://aiengineeringfromscratch.com/glossary/normalization",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-math-training/optimizer": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Optimizer",
+          "https://aiengineeringfromscratch.com/glossary/optimizer",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-math-training/overfitting": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Overfitting",
+          "https://aiengineeringfromscratch.com/glossary/overfitting",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-math-training/qlora": {
+      "videos": [],
+      "docs": [
+        [
+          "QLoRA paper",
+          "https://arxiv.org/abs/2305.14314",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: QLoRA",
+          "https://aiengineeringfromscratch.com/glossary/qlora",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-math-training/relu": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: ReLU",
+          "https://aiengineeringfromscratch.com/glossary/relu",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-math-training/rlhf-reinforcement-learning-from-human-feedback": {
+      "videos": [],
+      "docs": [
+        [
+          "InstructGPT paper",
+          "https://arxiv.org/abs/2203.02155",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: RLHF (Reinforcement Learning from Human Feedback)",
+          "https://aiengineeringfromscratch.com/glossary/rlhf-reinforcement-learning-from-human-feedback",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-math-training/sft-supervised-fine-tuning": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: SFT (Supervised Fine-Tuning)",
+          "https://aiengineeringfromscratch.com/glossary/sft-supervised-fine-tuning",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-math-training/softmax": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Softmax",
+          "https://aiengineeringfromscratch.com/glossary/softmax",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-math-training/stochastic-gradient-descent-sgd": {
+      "videos": [],
+      "docs": [
+        [
+          "Optimization Methods for Large-Scale Machine Learning",
+          "https://arxiv.org/abs/1606.04838",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Accurate, Large Minibatch SGD",
+          "https://arxiv.org/abs/1706.02677",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Stochastic Gradient Descent (SGD)",
+          "https://aiengineeringfromscratch.com/glossary/stochastic-gradient-descent-sgd",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-math-training/transfer-learning": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Transfer Learning",
+          "https://aiengineeringfromscratch.com/glossary/transfer-learning",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-math-training/underfitting": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Underfitting",
+          "https://aiengineeringfromscratch.com/glossary/underfitting",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-math-training/warmup": {
+      "videos": [],
+      "docs": [
+        [
+          "Accurate, Large Minibatch SGD",
+          "https://arxiv.org/abs/1706.02677",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Warmup",
+          "https://aiengineeringfromscratch.com/glossary/warmup",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-math-training/weight": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Weight",
+          "https://aiengineeringfromscratch.com/glossary/weight",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-math-training/weight-decay": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Weight Decay",
+          "https://aiengineeringfromscratch.com/glossary/weight-decay",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-models-inference/attention": {
+      "videos": [],
+      "docs": [
+        [
+          "Attention Is All You Need",
+          "https://arxiv.org/abs/1706.03762",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Attention",
+          "https://aiengineeringfromscratch.com/glossary/attention",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-models-inference/autoregressive": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Autoregressive",
+          "https://aiengineeringfromscratch.com/glossary/autoregressive",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-models-inference/cnn-convolutional-neural-network": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: CNN (Convolutional Neural Network)",
+          "https://aiengineeringfromscratch.com/glossary/cnn-convolutional-neural-network",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-models-inference/cuda": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: CUDA",
+          "https://aiengineeringfromscratch.com/glossary/cuda",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-models-inference/decoder": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Decoder",
+          "https://aiengineeringfromscratch.com/glossary/decoder",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-models-inference/decoding-strategy": {
+      "videos": [],
+      "docs": [
+        [
+          "The Curious Case of Neural Text Degeneration",
+          "https://arxiv.org/abs/1904.09751",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Decoding Strategy",
+          "https://aiengineeringfromscratch.com/glossary/decoding-strategy",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-models-inference/diffusion-model": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Diffusion Model",
+          "https://aiengineeringfromscratch.com/glossary/diffusion-model",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-models-inference/encoder": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Encoder",
+          "https://aiengineeringfromscratch.com/glossary/encoder",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-models-inference/gan-generative-adversarial-network": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: GAN (Generative Adversarial Network)",
+          "https://aiengineeringfromscratch.com/glossary/gan-generative-adversarial-network",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-models-inference/gpt": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: GPT",
+          "https://aiengineeringfromscratch.com/glossary/gpt",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-models-inference/inductive-bias": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Inductive Bias",
+          "https://aiengineeringfromscratch.com/glossary/inductive-bias",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-models-inference/inference": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Inference",
+          "https://aiengineeringfromscratch.com/glossary/inference",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-models-inference/kv-cache": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: KV Cache",
+          "https://aiengineeringfromscratch.com/glossary/kv-cache",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-models-inference/llm-large-language-model": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: LLM (Large Language Model)",
+          "https://aiengineeringfromscratch.com/glossary/llm-large-language-model",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-models-inference/logits": {
+      "videos": [],
+      "docs": [
+        [
+          "Attention Is All You Need",
+          "https://arxiv.org/abs/1706.03762",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Logits",
+          "https://aiengineeringfromscratch.com/glossary/logits",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-models-inference/moe-mixture-of-experts": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: MoE (Mixture of Experts)",
+          "https://aiengineeringfromscratch.com/glossary/moe-mixture-of-experts",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-models-inference/nucleus-sampling-top-p": {
+      "videos": [],
+      "docs": [
+        [
+          "The Curious Case of Neural Text Degeneration",
+          "https://arxiv.org/abs/1904.09751",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Nucleus Sampling (Top-p)",
+          "https://aiengineeringfromscratch.com/glossary/nucleus-sampling-top-p",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-models-inference/parameter": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Parameter",
+          "https://aiengineeringfromscratch.com/glossary/parameter",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-models-inference/perplexity": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Perplexity",
+          "https://aiengineeringfromscratch.com/glossary/perplexity",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-models-inference/quantization": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Quantization",
+          "https://aiengineeringfromscratch.com/glossary/quantization",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-models-inference/self-attention": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Self-Attention",
+          "https://aiengineeringfromscratch.com/glossary/self-attention",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-models-inference/speculative-decoding": {
+      "videos": [],
+      "docs": [
+        [
+          "Fast Inference from Transformers via Speculative Decoding",
+          "https://proceedings.mlr.press/v202/leviathan23a.html",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Speculative Decoding",
+          "https://aiengineeringfromscratch.com/glossary/speculative-decoding",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-models-inference/stop-sequence": {
+      "videos": [],
+      "docs": [
+        [
+          "Transformers text-generation documentation",
+          "https://huggingface.co/docs/transformers/main/en/main_classes/text_generation",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Stop Sequence",
+          "https://aiengineeringfromscratch.com/glossary/stop-sequence",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-models-inference/streaming": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Streaming",
+          "https://aiengineeringfromscratch.com/glossary/streaming",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-models-inference/temperature": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Temperature",
+          "https://aiengineeringfromscratch.com/glossary/temperature",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-models-inference/time-to-first-token-ttft": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Time to First Token (TTFT)",
+          "https://aiengineeringfromscratch.com/glossary/time-to-first-token-ttft",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-models-inference/top-k-sampling": {
+      "videos": [],
+      "docs": [
+        [
+          "The Curious Case of Neural Text Degeneration",
+          "https://arxiv.org/abs/1904.09751",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Top-k Sampling",
+          "https://aiengineeringfromscratch.com/glossary/top-k-sampling",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-models-inference/transformer": {
+      "videos": [],
+      "docs": [
+        [
+          "Attention Is All You Need",
+          "https://arxiv.org/abs/1706.03762",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Transformer",
+          "https://aiengineeringfromscratch.com/glossary/transformer",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-models-inference/vae-variational-autoencoder": {
+      "videos": [],
+      "docs": [
+        [
+          "Auto-Encoding Variational Bayes",
+          "https://arxiv.org/abs/1312.6114",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: VAE (Variational Autoencoder)",
+          "https://aiengineeringfromscratch.com/glossary/vae-variational-autoencoder",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-data-representations/byte-pair-encoding-bpe": {
+      "videos": [],
+      "docs": [
+        [
+          "Neural Machine Translation of Rare Words with Subword Units",
+          "https://arxiv.org/abs/1508.07909",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Byte Pair Encoding (BPE)",
+          "https://aiengineeringfromscratch.com/glossary/byte-pair-encoding-bpe",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-data-representations/cosine-similarity": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Cosine Similarity",
+          "https://aiengineeringfromscratch.com/glossary/cosine-similarity",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-data-representations/data-deduplication": {
+      "videos": [],
+      "docs": [
+        [
+          "Deduplicating Training Data Makes Language Models Better",
+          "https://arxiv.org/abs/2107.06499",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Data Deduplication",
+          "https://aiengineeringfromscratch.com/glossary/data-deduplication",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-data-representations/data-leakage": {
+      "videos": [],
+      "docs": [
+        [
+          "scikit-learn: Data leakage",
+          "https://scikit-learn.org/stable/common_pitfalls.html#data-leakage",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Data Leakage",
+          "https://aiengineeringfromscratch.com/glossary/data-leakage",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-data-representations/data-provenance": {
+      "videos": [],
+      "docs": [
+        [
+          "W3C PROV Overview",
+          "https://www.w3.org/TR/prov-overview/",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Data Provenance",
+          "https://aiengineeringfromscratch.com/glossary/data-provenance",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-data-representations/dataset-split": {
+      "videos": [],
+      "docs": [
+        [
+          "Datasheets for Datasets",
+          "https://cacm.acm.org/research/datasheets-for-datasets/",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Dataset Split",
+          "https://aiengineeringfromscratch.com/glossary/dataset-split",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-data-representations/embedding": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Embedding",
+          "https://aiengineeringfromscratch.com/glossary/embedding",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-data-representations/feature": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Feature",
+          "https://aiengineeringfromscratch.com/glossary/feature",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-data-representations/latent-space": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Latent Space",
+          "https://aiengineeringfromscratch.com/glossary/latent-space",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-data-representations/tensor": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Tensor",
+          "https://aiengineeringfromscratch.com/glossary/tensor",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-data-representations/token": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Token",
+          "https://aiengineeringfromscratch.com/glossary/token",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-data-representations/tokenization": {
+      "videos": [],
+      "docs": [
+        [
+          "Neural Machine Translation of Rare Words with Subword Units",
+          "https://arxiv.org/abs/1508.07909",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Tokenization",
+          "https://aiengineeringfromscratch.com/glossary/tokenization",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-data-representations/vocabulary": {
+      "videos": [],
+      "docs": [
+        [
+          "Neural Machine Translation of Rare Words with Subword Units",
+          "https://arxiv.org/abs/1508.07909",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Vocabulary",
+          "https://aiengineeringfromscratch.com/glossary/vocabulary",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-retrieval-generation/approximate-nearest-neighbor-ann": {
+      "videos": [],
+      "docs": [
+        [
+          "Efficient and Robust Approximate Nearest Neighbor Search Using HNSW",
+          "https://dl.acm.org/doi/10.1109/TPAMI.2018.2889473",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Approximate Nearest Neighbor (ANN)",
+          "https://aiengineeringfromscratch.com/glossary/approximate-nearest-neighbor-ann",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-retrieval-generation/bm25": {
+      "videos": [],
+      "docs": [
+        [
+          "The Probabilistic Relevance Framework: BM25 and Beyond",
+          "https://doi.org/10.1561/1500000019",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: BM25",
+          "https://aiengineeringfromscratch.com/glossary/bm25",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-retrieval-generation/chunking": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Chunking",
+          "https://aiengineeringfromscratch.com/glossary/chunking",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-retrieval-generation/dense-retrieval": {
+      "videos": [],
+      "docs": [
+        [
+          "Dense Passage Retrieval",
+          "https://aclanthology.org/2020.emnlp-main.550/",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Dense Retrieval",
+          "https://aiengineeringfromscratch.com/glossary/dense-retrieval",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-retrieval-generation/grounding": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Grounding",
+          "https://aiengineeringfromscratch.com/glossary/grounding",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-retrieval-generation/hnsw": {
+      "videos": [],
+      "docs": [
+        [
+          "Efficient and Robust Approximate Nearest Neighbor Search Using HNSW",
+          "https://dl.acm.org/doi/10.1109/TPAMI.2018.2889473",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: HNSW",
+          "https://aiengineeringfromscratch.com/glossary/hnsw",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-retrieval-generation/hybrid-retrieval": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Hybrid Retrieval",
+          "https://aiengineeringfromscratch.com/glossary/hybrid-retrieval",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-retrieval-generation/maximum-marginal-relevance-mmr": {
+      "videos": [],
+      "docs": [
+        [
+          "The Use of MMR, Diversity-Based Reranking for Reordering Documents and Producing Summaries",
+          "https://www.cs.cmu.edu/~jgc/publication/MMR_DiversityBased_Reranking_SIGIR_1998.pdf",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Maximum Marginal Relevance (MMR)",
+          "https://aiengineeringfromscratch.com/glossary/maximum-marginal-relevance-mmr",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-retrieval-generation/rag-retrieval-augmented-generation": {
+      "videos": [],
+      "docs": [
+        [
+          "Retrieval-Augmented Generation paper",
+          "https://arxiv.org/abs/2005.11401",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: RAG (Retrieval-Augmented Generation)",
+          "https://aiengineeringfromscratch.com/glossary/rag-retrieval-augmented-generation",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-retrieval-generation/recall-k": {
+      "videos": [],
+      "docs": [
+        [
+          "BEIR",
+          "https://openreview.net/forum?id=wCu6T5xFjeJ",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Recall@K",
+          "https://aiengineeringfromscratch.com/glossary/recall-k",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-retrieval-generation/reciprocal-rank-fusion-rrf": {
+      "videos": [],
+      "docs": [
+        [
+          "Reciprocal Rank Fusion Outperforms Condorcet and Individual Rank Learning Methods",
+          "https://dl.acm.org/doi/10.1145/1571941.1572114",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Reciprocal Rank Fusion (RRF)",
+          "https://aiengineeringfromscratch.com/glossary/reciprocal-rank-fusion-rrf",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-retrieval-generation/reranker": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Reranker",
+          "https://aiengineeringfromscratch.com/glossary/reranker",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-retrieval-generation/semantic-search": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Semantic Search",
+          "https://aiengineeringfromscratch.com/glossary/semantic-search",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-retrieval-generation/vector-database": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Vector Database",
+          "https://aiengineeringfromscratch.com/glossary/vector-database",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-prompting-context/chain-of-thought-cot": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Chain of Thought (CoT)",
+          "https://aiengineeringfromscratch.com/glossary/chain-of-thought-cot",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-prompting-context/context-compression": {
+      "videos": [],
+      "docs": [
+        [
+          "LLMLingua",
+          "https://arxiv.org/abs/2310.05736",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Context Compression",
+          "https://aiengineeringfromscratch.com/glossary/context-compression",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-prompting-context/context-engineering": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Context Engineering",
+          "https://aiengineeringfromscratch.com/glossary/context-engineering",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-prompting-context/context-window": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Context Window",
+          "https://aiengineeringfromscratch.com/glossary/context-window",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-prompting-context/few-shot": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Few-Shot",
+          "https://aiengineeringfromscratch.com/glossary/few-shot",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-prompting-context/in-context-learning": {
+      "videos": [],
+      "docs": [
+        [
+          "Language Models are Few-Shot Learners",
+          "https://arxiv.org/abs/2005.14165",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: In-Context Learning",
+          "https://aiengineeringfromscratch.com/glossary/in-context-learning",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-prompting-context/instruction-following": {
+      "videos": [],
+      "docs": [
+        [
+          "Finetuned Language Models Are Zero-Shot Learners",
+          "https://arxiv.org/abs/2109.01652",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Instruction Following",
+          "https://aiengineeringfromscratch.com/glossary/instruction-following",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-prompting-context/instruction-hierarchy": {
+      "videos": [],
+      "docs": [
+        [
+          "The Instruction Hierarchy",
+          "https://arxiv.org/abs/2404.13208",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Instruction Hierarchy",
+          "https://aiengineeringfromscratch.com/glossary/instruction-hierarchy",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-prompting-context/lost-in-the-middle": {
+      "videos": [],
+      "docs": [
+        [
+          "Lost in the Middle",
+          "https://aclanthology.org/2024.tacl-1.9/",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Lost in the Middle",
+          "https://aiengineeringfromscratch.com/glossary/lost-in-the-middle",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-prompting-context/prompt-cache": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Prompt Cache",
+          "https://aiengineeringfromscratch.com/glossary/prompt-cache",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-prompting-context/prompt-engineering": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Prompt Engineering",
+          "https://aiengineeringfromscratch.com/glossary/prompt-engineering",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-prompting-context/prompt-sensitivity": {
+      "videos": [],
+      "docs": [
+        [
+          "ProSA",
+          "https://aclanthology.org/2024.findings-emnlp.108/",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Prompt Sensitivity",
+          "https://aiengineeringfromscratch.com/glossary/prompt-sensitivity",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-prompting-context/system-prompt": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: System Prompt",
+          "https://aiengineeringfromscratch.com/glossary/system-prompt",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-prompting-context/token-budget": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Token Budget",
+          "https://aiengineeringfromscratch.com/glossary/token-budget",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-prompting-context/zero-shot": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Zero-Shot",
+          "https://aiengineeringfromscratch.com/glossary/zero-shot",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-agents-tools/agent": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Agent",
+          "https://aiengineeringfromscratch.com/glossary/agent",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-agents-tools/agent-harness": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Agent Harness",
+          "https://aiengineeringfromscratch.com/glossary/agent-harness",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-agents-tools/agent-memory": {
+      "videos": [],
+      "docs": [
+        [
+          "Generative Agents",
+          "https://arxiv.org/abs/2304.03442",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Agent Memory",
+          "https://aiengineeringfromscratch.com/glossary/agent-memory",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-agents-tools/agent-state": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Agent State",
+          "https://aiengineeringfromscratch.com/glossary/agent-state",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-agents-tools/agent-skill": {
+      "videos": [],
+      "docs": [
+        [
+          "Agent Skills specification",
+          "https://agentskills.io/specification",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Agent Skill",
+          "https://aiengineeringfromscratch.com/glossary/agent-skill",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-agents-tools/approval-gate": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Approval Gate",
+          "https://aiengineeringfromscratch.com/glossary/approval-gate",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-agents-tools/checkpoint": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Checkpoint",
+          "https://aiengineeringfromscratch.com/glossary/checkpoint",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-agents-tools/compensating-action": {
+      "videos": [],
+      "docs": [
+        [
+          "Sagas",
+          "https://dl.acm.org/doi/10.1145/38713.38742",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Compensating Action",
+          "https://aiengineeringfromscratch.com/glossary/compensating-action",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-agents-tools/delegation": {
+      "videos": [],
+      "docs": [
+        [
+          "Building Effective Agents",
+          "https://www.anthropic.com/research/building-effective-agents",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Delegation",
+          "https://aiengineeringfromscratch.com/glossary/delegation",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-agents-tools/durable-execution": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Durable Execution",
+          "https://aiengineeringfromscratch.com/glossary/durable-execution",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-agents-tools/function-calling": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Function Calling",
+          "https://aiengineeringfromscratch.com/glossary/function-calling",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-agents-tools/human-in-the-loop-hitl": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Human-in-the-Loop (HITL)",
+          "https://aiengineeringfromscratch.com/glossary/human-in-the-loop-hitl",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-agents-tools/mcp-model-context-protocol": {
+      "videos": [],
+      "docs": [
+        [
+          "MCP 2026-07-28 key changes",
+          "https://modelcontextprotocol.io/specification/2026-07-28/changelog",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: MCP (Model Context Protocol)",
+          "https://aiengineeringfromscratch.com/glossary/mcp-model-context-protocol",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-agents-tools/multi-round-trip-request-mrtr": {
+      "videos": [],
+      "docs": [
+        [
+          "MCP Multi Round-Trip Requests",
+          "https://modelcontextprotocol.io/specification/2026-07-28/basic/patterns/mrtr",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Multi Round-Trip Request (MRTR)",
+          "https://aiengineeringfromscratch.com/glossary/multi-round-trip-request-mrtr",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-agents-tools/orchestration": {
+      "videos": [],
+      "docs": [
+        [
+          "Building Effective Agents",
+          "https://www.anthropic.com/research/building-effective-agents",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Orchestration",
+          "https://aiengineeringfromscratch.com/glossary/orchestration",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-agents-tools/planning": {
+      "videos": [],
+      "docs": [
+        [
+          "LLM+P",
+          "https://arxiv.org/abs/2304.11477",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Planning",
+          "https://aiengineeringfromscratch.com/glossary/planning",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-agents-tools/react": {
+      "videos": [],
+      "docs": [
+        [
+          "ReAct",
+          "https://arxiv.org/abs/2210.03629",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: ReAct",
+          "https://aiengineeringfromscratch.com/glossary/react",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-agents-tools/sandbox": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Sandbox",
+          "https://aiengineeringfromscratch.com/glossary/sandbox",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-agents-tools/skill-bundle": {
+      "videos": [],
+      "docs": [
+        [
+          "Agent Skills specification",
+          "https://agentskills.io/specification",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Skill Bundle",
+          "https://aiengineeringfromscratch.com/glossary/skill-bundle",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-agents-tools/skill-catalog": {
+      "videos": [],
+      "docs": [
+        [
+          "Agent Skills specification",
+          "https://agentskills.io/specification",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Skill Catalog",
+          "https://aiengineeringfromscratch.com/glossary/skill-catalog",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-agents-tools/skill-discovery": {
+      "videos": [],
+      "docs": [
+        [
+          "Agent Skills client implementation guide",
+          "https://agentskills.io/client-implementation/adding-skills-support",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Skill Discovery",
+          "https://aiengineeringfromscratch.com/glossary/skill-discovery",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-agents-tools/skill-invocation": {
+      "videos": [],
+      "docs": [
+        [
+          "Evaluating Agent Skills",
+          "https://agentskills.io/skill-creation/evaluating-skills",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Skill Invocation",
+          "https://aiengineeringfromscratch.com/glossary/skill-invocation",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-agents-tools/stateless-mcp": {
+      "videos": [],
+      "docs": [
+        [
+          "MCP 2026-07-28 key changes",
+          "https://modelcontextprotocol.io/specification/2026-07-28/changelog",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "MCP Streamable HTTP",
+          "https://modelcontextprotocol.io/specification/2026-07-28/basic/transports/streamable-http",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Stateless MCP",
+          "https://aiengineeringfromscratch.com/glossary/stateless-mcp",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-agents-tools/structured-output": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Structured Output",
+          "https://aiengineeringfromscratch.com/glossary/structured-output",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-agents-tools/swarm": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Swarm",
+          "https://aiengineeringfromscratch.com/glossary/swarm",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-agents-tools/termination-condition": {
+      "videos": [],
+      "docs": [
+        [
+          "AutoGen",
+          "https://arxiv.org/abs/2308.08155",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Termination Condition",
+          "https://aiengineeringfromscratch.com/glossary/termination-condition",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-agents-tools/tool-contract": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Tool Contract",
+          "https://aiengineeringfromscratch.com/glossary/tool-contract",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-evaluation-safety/alignment": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Alignment",
+          "https://aiengineeringfromscratch.com/glossary/alignment",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-evaluation-safety/benchmark-contamination": {
+      "videos": [],
+      "docs": [
+        [
+          "Investigating Data Contamination in Modern Benchmarks for Large Language Models",
+          "https://arxiv.org/abs/2311.09783",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Benchmark Contamination",
+          "https://aiengineeringfromscratch.com/glossary/benchmark-contamination",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-evaluation-safety/calibration": {
+      "videos": [],
+      "docs": [
+        [
+          "On Calibration of Modern Neural Networks",
+          "https://proceedings.mlr.press/v70/guo17a.html",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Calibration",
+          "https://aiengineeringfromscratch.com/glossary/calibration",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-evaluation-safety/distribution-shift": {
+      "videos": [],
+      "docs": [
+        [
+          "WILDS",
+          "https://proceedings.mlr.press/v139/koh21a.html",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Distribution Shift",
+          "https://aiengineeringfromscratch.com/glossary/distribution-shift",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-evaluation-safety/eval-set": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Eval Set",
+          "https://aiengineeringfromscratch.com/glossary/eval-set",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-evaluation-safety/evaluation-eval": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Evaluation (Eval)",
+          "https://aiengineeringfromscratch.com/glossary/evaluation-eval",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-evaluation-safety/exact-match-em": {
+      "videos": [],
+      "docs": [
+        [
+          "SQuAD",
+          "https://aclanthology.org/D16-1264/",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Exact Match (EM)",
+          "https://aiengineeringfromscratch.com/glossary/exact-match-em",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-evaluation-safety/guardrails": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Guardrails",
+          "https://aiengineeringfromscratch.com/glossary/guardrails",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-evaluation-safety/hallucination": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Hallucination",
+          "https://aiengineeringfromscratch.com/glossary/hallucination",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-evaluation-safety/least-privilege": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Least Privilege",
+          "https://aiengineeringfromscratch.com/glossary/least-privilege",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-evaluation-safety/llm-as-a-judge": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: LLM-as-a-Judge",
+          "https://aiengineeringfromscratch.com/glossary/llm-as-a-judge",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-evaluation-safety/model-card": {
+      "videos": [],
+      "docs": [
+        [
+          "Model Cards for Model Reporting",
+          "https://dl.acm.org/doi/10.1145/3287560.3287596",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Model Card",
+          "https://aiengineeringfromscratch.com/glossary/model-card",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-evaluation-safety/pass-k": {
+      "videos": [],
+      "docs": [
+        [
+          "Evaluating Large Language Models Trained on Code",
+          "https://arxiv.org/abs/2107.03374",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Pass@k",
+          "https://aiengineeringfromscratch.com/glossary/pass-k",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-evaluation-safety/precision-recall": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Precision & Recall",
+          "https://aiengineeringfromscratch.com/glossary/precision-recall",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-evaluation-safety/prompt-injection": {
+      "videos": [],
+      "docs": [
+        [
+          "OWASP prompt injection guidance",
+          "https://genai.owasp.org/llmrisk/llm01-prompt-injection/",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Prompt Injection",
+          "https://aiengineeringfromscratch.com/glossary/prompt-injection",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-evaluation-safety/rouge": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: ROUGE",
+          "https://aiengineeringfromscratch.com/glossary/rouge",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-evaluation-safety/verification-gate": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Verification Gate",
+          "https://aiengineeringfromscratch.com/glossary/verification-gate",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-ai-native-development/backpressure": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Backpressure",
+          "https://aiengineeringfromscratch.com/glossary/backpressure",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-ai-native-development/circuit-breaker": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Circuit Breaker",
+          "https://aiengineeringfromscratch.com/glossary/circuit-breaker",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-ai-native-development/coding-agent": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Coding Agent",
+          "https://aiengineeringfromscratch.com/glossary/coding-agent",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-ai-native-development/cost-per-successful-task": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Cost per Successful Task",
+          "https://aiengineeringfromscratch.com/glossary/cost-per-successful-task",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-ai-native-development/flaky-test": {
+      "videos": [],
+      "docs": [
+        [
+          "De-Flake Your Tests",
+          "https://conferences.computer.org/icsme/pdfs/ICSME2020-1oOutvkGTwF4GyVvNtr3Mm/561900a736/561900a736.pdf",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Flaky Test",
+          "https://aiengineeringfromscratch.com/glossary/flaky-test",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-ai-native-development/handoff": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Handoff",
+          "https://aiengineeringfromscratch.com/glossary/handoff",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-ai-native-development/idempotency": {
+      "videos": [],
+      "docs": [
+        [
+          "HTTP Semantics: idempotent methods",
+          "https://www.rfc-editor.org/rfc/rfc9110.html#name-idempotent-methods",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Idempotency",
+          "https://aiengineeringfromscratch.com/glossary/idempotency",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-ai-native-development/model-router": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Model Router",
+          "https://aiengineeringfromscratch.com/glossary/model-router",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-ai-native-development/observability": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Observability",
+          "https://aiengineeringfromscratch.com/glossary/observability",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-ai-native-development/patch": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Patch",
+          "https://aiengineeringfromscratch.com/glossary/patch",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-ai-native-development/progressive-disclosure": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Progressive Disclosure",
+          "https://aiengineeringfromscratch.com/glossary/progressive-disclosure",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-ai-native-development/rate-limit": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Rate Limit",
+          "https://aiengineeringfromscratch.com/glossary/rate-limit",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-ai-native-development/regression-test": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Regression Test",
+          "https://aiengineeringfromscratch.com/glossary/regression-test",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-ai-native-development/repository-instructions": {
+      "videos": [],
+      "docs": [
+        [
+          "AGENTS.md specification",
+          "https://agents.md/",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Repository Instructions",
+          "https://aiengineeringfromscratch.com/glossary/repository-instructions",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-ai-native-development/repository-map": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Repository Map",
+          "https://aiengineeringfromscratch.com/glossary/repository-map",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-ai-native-development/reproducible-build": {
+      "videos": [],
+      "docs": [
+        [
+          "Reproducible Builds definition",
+          "https://reproducible-builds.org/docs/definition/",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Reproducible Build",
+          "https://aiengineeringfromscratch.com/glossary/reproducible-build",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-ai-native-development/retry-with-backoff": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Retry with Backoff",
+          "https://aiengineeringfromscratch.com/glossary/retry-with-backoff",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-ai-native-development/reviewer-agent": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Reviewer Agent",
+          "https://aiengineeringfromscratch.com/glossary/reviewer-agent",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-ai-native-development/scope-contract": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Scope Contract",
+          "https://aiengineeringfromscratch.com/glossary/scope-contract",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-ai-native-development/semantic-cache": {
+      "videos": [],
+      "docs": [
+        [
+          "Term Glossary Page: Semantic Cache",
+          "https://aiengineeringfromscratch.com/glossary/semantic-cache",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-ai-native-development/test-oracle": {
+      "videos": [],
+      "docs": [
+        [
+          "The Oracle Problem in Software Testing",
+          "https://www.computer.org/csdl/journal/ts/2015/05/06963470/13rRUx0geBw",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Test Oracle",
+          "https://aiengineeringfromscratch.com/glossary/test-oracle",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-ai-native-development/trace": {
+      "videos": [],
+      "docs": [
+        [
+          "OpenTelemetry traces",
+          "https://opentelemetry.io/docs/concepts/signals/traces/",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Trace",
+          "https://aiengineeringfromscratch.com/glossary/trace",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-ai-native-development/worktree": {
+      "videos": [],
+      "docs": [
+        [
+          "git-worktree documentation",
+          "https://git-scm.com/docs/git-worktree",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Worktree",
+          "https://aiengineeringfromscratch.com/glossary/worktree",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-infrastructure-serving/autoscaling": {
+      "videos": [],
+      "docs": [
+        [
+          "Kubernetes Horizontal Pod Autoscaling",
+          "https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Autoscaling",
+          "https://aiengineeringfromscratch.com/glossary/autoscaling",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-infrastructure-serving/chunked-prefill": {
+      "videos": [],
+      "docs": [
+        [
+          "Sarathi-Serve",
+          "https://arxiv.org/abs/2403.02310",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Chunked Prefill",
+          "https://aiengineeringfromscratch.com/glossary/chunked-prefill",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-infrastructure-serving/continuous-batching": {
+      "videos": [],
+      "docs": [
+        [
+          "Orca",
+          "https://www.usenix.org/conference/osdi22/presentation/yu",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Continuous Batching",
+          "https://aiengineeringfromscratch.com/glossary/continuous-batching",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-infrastructure-serving/decode-phase": {
+      "videos": [],
+      "docs": [
+        [
+          "DistServe",
+          "https://arxiv.org/abs/2401.09670",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Decode Phase",
+          "https://aiengineeringfromscratch.com/glossary/decode-phase",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-infrastructure-serving/disaggregated-serving": {
+      "videos": [],
+      "docs": [
+        [
+          "DistServe",
+          "https://arxiv.org/abs/2401.09670",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Disaggregated Serving",
+          "https://aiengineeringfromscratch.com/glossary/disaggregated-serving",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-infrastructure-serving/dynamic-batching": {
+      "videos": [],
+      "docs": [
+        [
+          "NVIDIA Triton: Models and Schedulers",
+          "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#scheduling-and-batching",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Dynamic Batching",
+          "https://aiengineeringfromscratch.com/glossary/dynamic-batching",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-infrastructure-serving/expert-parallelism": {
+      "videos": [],
+      "docs": [
+        [
+          "GShard",
+          "https://arxiv.org/abs/2006.16668",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Expert Parallelism",
+          "https://aiengineeringfromscratch.com/glossary/expert-parallelism",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-infrastructure-serving/flashattention": {
+      "videos": [],
+      "docs": [
+        [
+          "FlashAttention",
+          "https://arxiv.org/abs/2205.14135",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: FlashAttention",
+          "https://aiengineeringfromscratch.com/glossary/flashattention",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-infrastructure-serving/goodput": {
+      "videos": [],
+      "docs": [
+        [
+          "DistServe",
+          "https://arxiv.org/abs/2401.09670",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Goodput",
+          "https://aiengineeringfromscratch.com/glossary/goodput",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-infrastructure-serving/inter-token-latency-itl": {
+      "videos": [],
+      "docs": [
+        [
+          "DistServe",
+          "https://arxiv.org/abs/2401.09670",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Inter-Token Latency (ITL)",
+          "https://aiengineeringfromscratch.com/glossary/inter-token-latency-itl",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-infrastructure-serving/model-serving": {
+      "videos": [],
+      "docs": [
+        [
+          "Clipper",
+          "https://arxiv.org/abs/1612.03079",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Model Serving",
+          "https://aiengineeringfromscratch.com/glossary/model-serving",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-infrastructure-serving/paged-kv-cache": {
+      "videos": [],
+      "docs": [
+        [
+          "Efficient Memory Management for Large Language Model Serving with PagedAttention",
+          "https://arxiv.org/abs/2309.06180",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Paged KV Cache",
+          "https://aiengineeringfromscratch.com/glossary/paged-kv-cache",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-infrastructure-serving/pipeline-parallelism": {
+      "videos": [],
+      "docs": [
+        [
+          "GPipe",
+          "https://arxiv.org/abs/1811.06965",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Pipeline Parallelism",
+          "https://aiengineeringfromscratch.com/glossary/pipeline-parallelism",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-infrastructure-serving/prefill": {
+      "videos": [],
+      "docs": [
+        [
+          "Sarathi-Serve",
+          "https://www.usenix.org/system/files/osdi24-agrawal.pdf",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "DistServe",
+          "https://arxiv.org/abs/2401.09670",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Prefill",
+          "https://aiengineeringfromscratch.com/glossary/prefill",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-infrastructure-serving/prefix-caching": {
+      "videos": [],
+      "docs": [
+        [
+          "SGLang",
+          "https://arxiv.org/abs/2312.07104",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Prefix Caching",
+          "https://aiengineeringfromscratch.com/glossary/prefix-caching",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-infrastructure-serving/tensor-parallelism": {
+      "videos": [],
+      "docs": [
+        [
+          "Megatron-LM",
+          "https://arxiv.org/abs/1909.08053",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Tensor Parallelism",
+          "https://aiengineeringfromscratch.com/glossary/tensor-parallelism",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-infrastructure-serving/time-per-output-token-tpot": {
+      "videos": [],
+      "docs": [
+        [
+          "DistServe",
+          "https://arxiv.org/abs/2401.09670",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Time per Output Token (TPOT)",
+          "https://aiengineeringfromscratch.com/glossary/time-per-output-token-tpot",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-infrastructure-serving/tokens-per-second-tps": {
+      "videos": [],
+      "docs": [
+        [
+          "Sarathi-Serve",
+          "https://www.usenix.org/system/files/osdi24-agrawal.pdf",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Tokens per Second (TPS)",
+          "https://aiengineeringfromscratch.com/glossary/tokens-per-second-tps",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-reliability-operations/admission-control": {
+      "videos": [],
+      "docs": [
+        [
+          "Google SRE: Handling Overload",
+          "https://sre.google/sre-book/handling-overload/",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Admission Control",
+          "https://aiengineeringfromscratch.com/glossary/admission-control",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-reliability-operations/availability": {
+      "videos": [],
+      "docs": [
+        [
+          "Google SRE: Service Level Objectives",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Availability",
+          "https://aiengineeringfromscratch.com/glossary/availability",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-reliability-operations/canary-release": {
+      "videos": [],
+      "docs": [
+        [
+          "Kubernetes Deployments: Canary Deployment",
+          "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#canary-deployment",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Canary Release",
+          "https://aiengineeringfromscratch.com/glossary/canary-release",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-reliability-operations/deadline-propagation": {
+      "videos": [],
+      "docs": [
+        [
+          "gRPC Deadlines",
+          "https://grpc.io/docs/guides/deadlines/",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Deadline Propagation",
+          "https://aiengineeringfromscratch.com/glossary/deadline-propagation",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-reliability-operations/error-budget": {
+      "videos": [],
+      "docs": [
+        [
+          "Google SRE Workbook: Error Budget Policy",
+          "https://sre.google/workbook/error-budget-policy/",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Error Budget",
+          "https://aiengineeringfromscratch.com/glossary/error-budget",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-reliability-operations/graceful-degradation": {
+      "videos": [],
+      "docs": [
+        [
+          "Google SRE: Addressing Cascading Failures",
+          "https://sre.google/sre-book/addressing-cascading-failures/",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Graceful Degradation",
+          "https://aiengineeringfromscratch.com/glossary/graceful-degradation",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-reliability-operations/incident-response": {
+      "videos": [],
+      "docs": [
+        [
+          "Google SRE: Managing Incidents",
+          "https://sre.google/sre-book/managing-incidents/",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "NIST SP 800-61 Rev. 3",
+          "https://csrc.nist.gov/pubs/sp/800/61/r3/final",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Incident Response",
+          "https://aiengineeringfromscratch.com/glossary/incident-response",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-reliability-operations/load-shedding": {
+      "videos": [],
+      "docs": [
+        [
+          "Google SRE: Handling Overload",
+          "https://sre.google/sre-book/handling-overload/",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Load Shedding",
+          "https://aiengineeringfromscratch.com/glossary/load-shedding",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-reliability-operations/postmortem": {
+      "videos": [],
+      "docs": [
+        [
+          "Google SRE: Postmortem Culture",
+          "https://sre.google/sre-book/postmortem-culture/",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Postmortem",
+          "https://aiengineeringfromscratch.com/glossary/postmortem",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-reliability-operations/readiness-probe": {
+      "videos": [],
+      "docs": [
+        [
+          "Kubernetes Liveness, Readiness, and Startup Probes",
+          "https://kubernetes.io/docs/concepts/configuration/liveness-readiness-startup-probes/",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Readiness Probe",
+          "https://aiengineeringfromscratch.com/glossary/readiness-probe",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-reliability-operations/retry-budget": {
+      "videos": [],
+      "docs": [
+        [
+          "Google SRE: Addressing Cascading Failures",
+          "https://sre.google/sre-book/addressing-cascading-failures/",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Retry Budget",
+          "https://aiengineeringfromscratch.com/glossary/retry-budget",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-reliability-operations/rollback": {
+      "videos": [],
+      "docs": [
+        [
+          "Kubernetes Deployments: Rolling Back",
+          "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#rolling-back-a-deployment",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Rollback",
+          "https://aiengineeringfromscratch.com/glossary/rollback",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-reliability-operations/saturation": {
+      "videos": [],
+      "docs": [
+        [
+          "Google SRE: Monitoring Distributed Systems",
+          "https://sre.google/sre-book/monitoring-distributed-systems/",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Saturation",
+          "https://aiengineeringfromscratch.com/glossary/saturation",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-reliability-operations/service-level-indicator-sli": {
+      "videos": [],
+      "docs": [
+        [
+          "Google SRE: Service Level Objectives",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Service Level Indicator (SLI)",
+          "https://aiengineeringfromscratch.com/glossary/service-level-indicator-sli",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-reliability-operations/service-level-objective-slo": {
+      "videos": [],
+      "docs": [
+        [
+          "Google SRE: Service Level Objectives",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Service Level Objective (SLO)",
+          "https://aiengineeringfromscratch.com/glossary/service-level-objective-slo",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-reliability-operations/shadow-traffic": {
+      "videos": [],
+      "docs": [
+        [
+          "Istio Traffic Mirroring",
+          "https://istio.io/latest/docs/tasks/traffic-management/mirroring/",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Shadow Traffic",
+          "https://aiengineeringfromscratch.com/glossary/shadow-traffic",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-reliability-operations/tail-latency": {
+      "videos": [],
+      "docs": [
+        [
+          "The Tail at Scale",
+          "https://research.google/pubs/the-tail-at-scale/",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Tail Latency",
+          "https://aiengineeringfromscratch.com/glossary/tail-latency",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-security-governance/ai-risk-assessment": {
+      "videos": [],
+      "docs": [
+        [
+          "NIST AI Risk Management Framework",
+          "https://www.nist.gov/itl/ai-risk-management-framework",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: AI Risk Assessment",
+          "https://aiengineeringfromscratch.com/glossary/ai-risk-assessment",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-security-governance/audit-log": {
+      "videos": [],
+      "docs": [
+        [
+          "NIST SP 800-92",
+          "https://csrc.nist.gov/pubs/sp/800/92/final",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Audit Log",
+          "https://aiengineeringfromscratch.com/glossary/audit-log",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-security-governance/content-provenance": {
+      "videos": [],
+      "docs": [
+        [
+          "C2PA Technical Specification",
+          "https://c2pa.org/specifications/specifications/2.2/specs/C2PA_Specification.html",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Content Provenance",
+          "https://aiengineeringfromscratch.com/glossary/content-provenance",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-security-governance/data-classification": {
+      "videos": [],
+      "docs": [
+        [
+          "NIST SP 1800-39 Initial Public Draft: Data Classification Practices",
+          "https://www.nccoe.nist.gov/sites/default/files/2026-02/nist-sp-1800-39-ipd.pdf",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "NIST FIPS 199: Federal Information and Information System Categorization",
+          "https://csrc.nist.gov/pubs/fips/199/final",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Data Classification",
+          "https://aiengineeringfromscratch.com/glossary/data-classification",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-security-governance/data-exfiltration": {
+      "videos": [],
+      "docs": [
+        [
+          "NIST SP 800-53 Rev. 5: AC-4 Information Flow Enforcement",
+          "https://csrc.nist.gov/files/pubs/sp/800/53/r5/upd1/final/docs/sp800-53r5-controls.xlsx",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Data Exfiltration",
+          "https://aiengineeringfromscratch.com/glossary/data-exfiltration",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-security-governance/data-lineage": {
+      "videos": [],
+      "docs": [
+        [
+          "W3C PROV-O",
+          "https://www.w3.org/TR/prov-o/",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Data Lineage",
+          "https://aiengineeringfromscratch.com/glossary/data-lineage",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-security-governance/data-minimization": {
+      "videos": [],
+      "docs": [
+        [
+          "General Data Protection Regulation, Article 5(1)(c)",
+          "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Data Minimization",
+          "https://aiengineeringfromscratch.com/glossary/data-minimization",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-security-governance/datasheet-for-datasets": {
+      "videos": [],
+      "docs": [
+        [
+          "Datasheets for Datasets",
+          "https://arxiv.org/abs/1803.09010",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Datasheet for Datasets",
+          "https://aiengineeringfromscratch.com/glossary/datasheet-for-datasets",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-security-governance/defense-in-depth": {
+      "videos": [],
+      "docs": [
+        [
+          "NIST Glossary: Defense in Depth",
+          "https://csrc.nist.gov/glossary/term/defense_in_depth",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Defense in Depth",
+          "https://aiengineeringfromscratch.com/glossary/defense-in-depth",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-security-governance/indirect-prompt-injection": {
+      "videos": [],
+      "docs": [
+        [
+          "Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection",
+          "https://arxiv.org/abs/2302.12173",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Indirect Prompt Injection",
+          "https://aiengineeringfromscratch.com/glossary/indirect-prompt-injection",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-security-governance/jailbreak": {
+      "videos": [],
+      "docs": [
+        [
+          "Universal and Transferable Adversarial Attacks on Aligned Language Models",
+          "https://arxiv.org/abs/2307.15043",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Jailbreak",
+          "https://aiengineeringfromscratch.com/glossary/jailbreak",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-security-governance/membership-inference": {
+      "videos": [],
+      "docs": [
+        [
+          "Membership Inference Attacks Against Machine Learning Models",
+          "https://doi.org/10.1109/SP.2017.41",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Membership Inference",
+          "https://aiengineeringfromscratch.com/glossary/membership-inference",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-security-governance/provenance-attestation": {
+      "videos": [],
+      "docs": [
+        [
+          "SLSA Software Attestations",
+          "https://slsa.dev/spec/v1.2/attestation-model",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Provenance Attestation",
+          "https://aiengineeringfromscratch.com/glossary/provenance-attestation",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-security-governance/purpose-limitation": {
+      "videos": [],
+      "docs": [
+        [
+          "General Data Protection Regulation, Article 5(1)(b)",
+          "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Purpose Limitation",
+          "https://aiengineeringfromscratch.com/glossary/purpose-limitation",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-security-governance/red-teaming": {
+      "videos": [],
+      "docs": [
+        [
+          "Red Teaming Language Models with Language Models",
+          "https://arxiv.org/abs/2202.03286",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Red Teaming",
+          "https://aiengineeringfromscratch.com/glossary/red-teaming",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-security-governance/separation-of-duties": {
+      "videos": [],
+      "docs": [
+        [
+          "NIST SP 800-53 Rev. 5",
+          "https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Separation of Duties",
+          "https://aiengineeringfromscratch.com/glossary/separation-of-duties",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-security-governance/software-bill-of-materials-sbom": {
+      "videos": [],
+      "docs": [
+        [
+          "SPDX 3.0.1 specification",
+          "https://spdx.github.io/spdx-spec/v3.0/",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Software Bill of Materials (SBOM)",
+          "https://aiengineeringfromscratch.com/glossary/software-bill-of-materials-sbom",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-security-governance/threat-model": {
+      "videos": [],
+      "docs": [
+        [
+          "NIST SP 800-154",
+          "https://csrc.nist.gov/pubs/sp/800/154/ipd",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "NIST Generative AI Profile",
+          "https://nvlpubs.nist.gov/nistpubs/ai/nist.ai.600-1.pdf",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Threat Model",
+          "https://aiengineeringfromscratch.com/glossary/threat-model",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-security-governance/trust-boundary": {
+      "videos": [],
+      "docs": [
+        [
+          "Microsoft Learn: Trust Boundary, the Trust Zone Change Element",
+          "https://learn.microsoft.com/en-us/training/modules/tm-create-a-threat-model-using-foundational-data-flow-diagram-elements/6-trust-boundary-the-trust-zone-change-element",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "OWASP Threat Modeling",
+          "https://owasp.org/www-community/Threat_Modeling",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Trust Boundary",
+          "https://aiengineeringfromscratch.com/glossary/trust-boundary",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-security-governance/zero-trust": {
+      "videos": [],
+      "docs": [
+        [
+          "NIST SP 800-207",
+          "https://csrc.nist.gov/pubs/sp/800/207/final",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Zero Trust",
+          "https://aiengineeringfromscratch.com/glossary/zero-trust",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-multimodal-systems/audio-token": {
+      "videos": [],
+      "docs": [
+        [
+          "SoundStream",
+          "https://arxiv.org/abs/2107.03312",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Audio Token",
+          "https://aiengineeringfromscratch.com/glossary/audio-token",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-multimodal-systems/automatic-speech-recognition-asr": {
+      "videos": [],
+      "docs": [
+        [
+          "Connectionist Temporal Classification",
+          "https://www.cs.toronto.edu/~graves/icml_2006.pdf",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Automatic Speech Recognition (ASR)",
+          "https://aiengineeringfromscratch.com/glossary/automatic-speech-recognition-asr",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-multimodal-systems/cross-attention": {
+      "videos": [],
+      "docs": [
+        [
+          "Attention Is All You Need",
+          "https://arxiv.org/abs/1706.03762",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Cross-Attention",
+          "https://aiengineeringfromscratch.com/glossary/cross-attention",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-multimodal-systems/early-fusion": {
+      "videos": [],
+      "docs": [
+        [
+          "Chameleon: Mixed-Modal Early-Fusion Foundation Models",
+          "https://arxiv.org/abs/2405.09818",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Multimodal Machine Learning: A Survey and Taxonomy",
+          "https://arxiv.org/abs/1705.09406",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Early Fusion",
+          "https://aiengineeringfromscratch.com/glossary/early-fusion",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-multimodal-systems/image-token": {
+      "videos": [],
+      "docs": [
+        [
+          "Vision Transformer",
+          "https://arxiv.org/abs/2010.11929",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "VQ-VAE",
+          "https://arxiv.org/abs/1711.00937",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Image Token",
+          "https://aiengineeringfromscratch.com/glossary/image-token",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-multimodal-systems/late-fusion": {
+      "videos": [],
+      "docs": [
+        [
+          "Multimodal Deep Learning",
+          "https://ai.stanford.edu/~ang/papers/icml11-MultimodalDeepLearning.pdf",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Multimodal Machine Learning: A Survey and Taxonomy",
+          "https://arxiv.org/abs/1705.09406",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Late Fusion",
+          "https://aiengineeringfromscratch.com/glossary/late-fusion",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-multimodal-systems/modality": {
+      "videos": [],
+      "docs": [
+        [
+          "ImageBind: One Embedding Space To Bind Them All",
+          "https://arxiv.org/abs/2305.05665",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Multimodal Machine Learning: A Survey and Taxonomy",
+          "https://arxiv.org/abs/1705.09406",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Modality",
+          "https://aiengineeringfromscratch.com/glossary/modality",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-multimodal-systems/modality-alignment": {
+      "videos": [],
+      "docs": [
+        [
+          "Learning Transferable Visual Models From Natural Language Supervision",
+          "https://proceedings.mlr.press/v139/radford21a.html",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Modality Alignment",
+          "https://aiengineeringfromscratch.com/glossary/modality-alignment",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-multimodal-systems/multimodal-fusion": {
+      "videos": [],
+      "docs": [
+        [
+          "Multimodal Deep Learning",
+          "https://ai.stanford.edu/~ang/papers/icml11-MultimodalDeepLearning.pdf",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Multimodal Machine Learning: A Survey and Taxonomy",
+          "https://arxiv.org/abs/1705.09406",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Multimodal Fusion",
+          "https://aiengineeringfromscratch.com/glossary/multimodal-fusion",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-multimodal-systems/multimodal-model": {
+      "videos": [],
+      "docs": [
+        [
+          "Flamingo: a Visual Language Model for Few-Shot Learning",
+          "https://arxiv.org/abs/2204.14198",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Multimodal Machine Learning: A Survey and Taxonomy",
+          "https://arxiv.org/abs/1705.09406",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Multimodal Model",
+          "https://aiengineeringfromscratch.com/glossary/multimodal-model",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-multimodal-systems/patch-embedding": {
+      "videos": [],
+      "docs": [
+        [
+          "An Image is Worth 16x16 Words",
+          "https://arxiv.org/abs/2010.11929",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Patch Embedding",
+          "https://aiengineeringfromscratch.com/glossary/patch-embedding",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-multimodal-systems/shared-embedding-space": {
+      "videos": [],
+      "docs": [
+        [
+          "Learning Transferable Visual Models From Natural Language Supervision",
+          "https://proceedings.mlr.press/v139/radford21a.html",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Shared Embedding Space",
+          "https://aiengineeringfromscratch.com/glossary/shared-embedding-space",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-multimodal-systems/vision-language-model-vlm": {
+      "videos": [],
+      "docs": [
+        [
+          "CLIP",
+          "https://arxiv.org/abs/2103.00020",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Flamingo",
+          "https://arxiv.org/abs/2204.14198",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Vision-Language Model (VLM)",
+          "https://aiengineeringfromscratch.com/glossary/vision-language-model-vlm",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-multimodal-systems/vision-transformer-vit": {
+      "videos": [],
+      "docs": [
+        [
+          "An Image is Worth 16x16 Words",
+          "https://arxiv.org/abs/2010.11929",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Vision Transformer (ViT)",
+          "https://aiengineeringfromscratch.com/glossary/vision-transformer-vit",
+          "Site",
+          true
+        ]
+      ]
+    },
+    "glossary-multimodal-systems/visual-grounding": {
+      "videos": [],
+      "docs": [
+        [
+          "MDETR",
+          "https://arxiv.org/abs/2104.12763",
+          "arXiv/Paper",
+          true
+        ],
+        [
+          "Term Glossary Page: Visual Grounding",
+          "https://aiengineeringfromscratch.com/glossary/visual-grounding",
+          "Site",
           true
         ]
       ]

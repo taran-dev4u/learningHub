@@ -9,55 +9,55 @@ window.topicsData = [
         "file": "phase-00.md",
         "concepts": [
           {
-            "title": "Dev Environment — Your tools shape your thinking. Set them up once, set them up right....",
+            "title": "Dev Environment — Step 1: System Foundation · Step 2: Python with uv · Step 3: Node.js with pnpm...",
             "anchor": "dev-environment"
           },
           {
-            "title": "Git & Collaboration — Version control is not optional. Every experiment, every model, every lesson you build her...",
+            "title": "Git & Collaboration — Step 1: Configure git · Step 2: The daily workflow · Step 3: Branching for experiments...",
             "anchor": "git-collaboration"
           },
           {
-            "title": "GPU Setup & Cloud — Training on CPU is fine for learning. Training for real needs a GPU....",
+            "title": "GPU Setup & Cloud — Option 1: Local NVIDIA GPU · Option 2: Google Colab · Option 3: Cloud GPU...",
             "anchor": "gpu-setup-cloud"
           },
           {
-            "title": "APIs & Keys — Every AI API works the same way: send a request, get a response. The details change, the p...",
+            "title": "APIs & Keys — Step 1: Store API keys safely · Step 2: First API call (Python) · Step 3: First API call (TypeScript)...",
             "anchor": "apis-keys"
           },
           {
-            "title": "Jupyter Notebooks — Notebooks are the lab bench of AI engineering. You prototype here, then move what works in...",
+            "title": "Jupyter Notebooks — Step 1: Pick your interface · Step 2: Keyboard shortcuts that matter · Step 3: Cell types...",
             "anchor": "jupyter-notebooks"
           },
           {
-            "title": "Python Environments — Dependency hell is real. Virtual environments are the cure....",
+            "title": "Python Environments — Option 1: uv venv (Recommended) · Option 2: venv (Built-in) · Option 3: conda (When You Need It)...",
             "anchor": "python-environments"
           },
           {
-            "title": "Docker for AI — Containers make \"works on my machine\" a thing of the past....",
+            "title": "Docker for AI — Why AI projects need Docker more than most · Key vocabulary · Common container patterns in AI...",
             "anchor": "docker-for-ai"
           },
           {
-            "title": "Editor Setup — Your editor is your co-pilot. Configure it once so it stays out of your way and starts pul...",
+            "title": "Editor Setup — Step 1: Install VS Code · Step 2: Install Essential Extensions · Step 3: Configure Settings...",
             "anchor": "editor-setup"
           },
           {
-            "title": "Data Management — Data is the fuel. How you manage it determines how fast you go....",
+            "title": "Data Management — Step 1: Install the datasets library · Step 2: Load a dataset · Step 3: Stream large datasets...",
             "anchor": "data-management"
           },
           {
-            "title": "Terminal & Shell — The terminal is where AI engineers live. Get comfortable here....",
+            "title": "Terminal & Shell — Step 1: Know your shell · Step 2: Piping and redirects · Step 3: Background processes...",
             "anchor": "terminal-shell"
           },
           {
-            "title": "Linux for AI — Most AI runs on Linux. You need to know enough to not be stuck....",
+            "title": "Linux for AI — Moving Around · Files and Directories · Reading Files...",
             "anchor": "linux-for-ai"
           },
           {
-            "title": "Debugging & Profiling — The worst AI bugs don't crash. They train silently on garbage and report a beautiful loss ...",
+            "title": "Debugging & Profiling — Part 1: Print Debugging (Yes · It Works) · Part 2: Python Debugger (pdb and breakpoint)...",
             "anchor": "debugging-profiling"
           },
           {
-            "title": "Python for AI Engineering — Most code in this course uses the same small set of Python idioms. Learn that set here, be...",
+            "title": "Python for AI Engineering — What the course code uses · Names refer to objects · A list holds pointers...",
             "anchor": "python-for-ai-engineering"
           }
         ]
@@ -74,91 +74,91 @@ window.topicsData = [
         "file": "phase-01.md",
         "concepts": [
           {
-            "title": "Linear Algebra Intuition — Every AI model is just matrix math wearing a fancy hat....",
+            "title": "Linear Algebra Intuition — Vectors Are Points (and Directions) · Matrices Are Transformations · The Dot Product Measures Similarity...",
             "anchor": "linear-algebra-intuition"
           },
           {
-            "title": "Vectors, Matrices & Operations — Every neural network is just matrix multiplication with extra steps....",
+            "title": "Vectors, Matrices & Operations — Vectors: ordered lists of numbers · Matrices: grids of numbers · Why shapes matter...",
             "anchor": "vectors-matrices-operations"
           },
           {
-            "title": "Matrix Transformations & Eigenvalues — A matrix is a machine that reshapes space. Learn what it does to every point, and you unde...",
+            "title": "Matrix Transformations & Eigenvalues — Transformations as matrices · Rotation · Scaling...",
             "anchor": "matrix-transformations-eigenvalues"
           },
           {
-            "title": "Calculus for ML: Derivatives & Gradients — Derivatives tell you which way is downhill. That is all a neural network needs to learn....",
+            "title": "Calculus for ML: Derivatives & Gradients — What is a derivative? · Partial derivatives: one variable at a time · The gradient: vector of all partial derivatives...",
             "anchor": "calculus-for-ml-derivatives-gradients"
           },
           {
-            "title": "Chain Rule & Automatic Differentiation — The chain rule is the engine behind every neural network that learns....",
+            "title": "Chain Rule & Automatic Differentiation — The Chain Rule · Computational Graphs · Forward Mode vs Reverse Mode...",
             "anchor": "chain-rule-automatic-differentiation"
           },
           {
-            "title": "Probability & Distributions — Probability is the language AI uses to express uncertainty....",
+            "title": "Probability & Distributions — Events · Sample Spaces · and Probability...",
             "anchor": "probability-distributions"
           },
           {
-            "title": "Bayes' Theorem & Statistical Thinking — Probability is about what you expect. Bayes' theorem is about what you learn....",
+            "title": "Bayes' Theorem & Statistical Thinking — From joint probability to Bayes · The four parts · Medical test example...",
             "anchor": "bayes-theorem-statistical-thinking"
           },
           {
-            "title": "Optimization: Gradient Descent Family — Training a neural network is nothing more than finding the bottom of a valley....",
+            "title": "Optimization: Gradient Descent Family — What optimization means · Gradient descent (vanilla) · Learning rate: the most important hyperparameter...",
             "anchor": "optimization-gradient-descent-family"
           },
           {
-            "title": "Information Theory: Entropy, KL Divergence — Information theory measures surprise. Loss functions are built on it....",
+            "title": "Information Theory: Entropy, KL Divergence — Information Content (Surprise) · Entropy (Average Surprise) · Cross-Entropy (The Loss Function You Use Every Day)...",
             "anchor": "information-theory-entropy-kl-divergence"
           },
           {
-            "title": "Dimensionality Reduction: PCA, t-SNE, UMAP — High-dimensional data has structure. You find it by looking from the right angle....",
+            "title": "Dimensionality Reduction: PCA, t-SNE, UMAP — The curse of dimensionality · PCA: find the directions that matter · Explained variance ratio...",
             "anchor": "dimensionality-reduction-pca-t-sne-umap"
           },
           {
-            "title": "Singular Value Decomposition — SVD is the Swiss Army knife of linear algebra. Every matrix has one. Every data scientist ...",
+            "title": "Singular Value Decomposition — What SVD does geometrically · The full decomposition · Left singular vectors...",
             "anchor": "singular-value-decomposition"
           },
           {
-            "title": "Tensor Operations — Tensors are the common language between data and deep learning. Every image, every sentenc...",
+            "title": "Tensor Operations — What a tensor is · Tensor shapes in deep learning · How memory layout works...",
             "anchor": "tensor-operations"
           },
           {
-            "title": "Numerical Stability — Floating point is a leaky abstraction. It will bite you during training, and you will not ...",
+            "title": "Numerical Stability — IEEE 754: How Computers Store Real Numbers · Why 0.1 + 0.2 != 0.3 · Catastrophic Cancellation...",
             "anchor": "numerical-stability"
           },
           {
-            "title": "Norms & Distances — Your distance function defines what \"similar\" means. Choose wrong and everything downstrea...",
+            "title": "Norms & Distances — Norms: measuring vector magnitude · L1 Norm (Manhattan distance) · L2 Norm (Euclidean distance)...",
             "anchor": "norms-distances"
           },
           {
-            "title": "Statistics for ML — Statistics is how you know if your model actually works or just got lucky....",
+            "title": "Statistics for ML — Descriptive Statistics: Summarizing Your Data · Correlation: How Variables Move Together · Covariance Matrix...",
             "anchor": "statistics-for-ml"
           },
           {
-            "title": "Sampling Methods — Sampling is how AI explores the space of possibilities....",
+            "title": "Sampling Methods — Why Sampling Matters · Uniform Random Sampling · Inverse CDF Method (Inverse Transform Sampling)...",
             "anchor": "sampling-methods"
           },
           {
-            "title": "Linear Systems — Solving $Ax = b$ is the oldest problem in mathematics that still runs your neural network....",
+            "title": "Linear Systems — What Ax = b means geometrically · Column picture vs row picture · Gaussian elimination...",
             "anchor": "linear-systems"
           },
           {
-            "title": "Convex Optimization — Convex problems have one valley. Neural networks have millions. Knowing the difference mat...",
+            "title": "Convex Optimization — Convex sets · Convex functions · Testing for convexity...",
             "anchor": "convex-optimization"
           },
           {
-            "title": "Complex Numbers for AI — The square root of -1 is not imaginary. It is the key to rotations, frequencies, and half ...",
+            "title": "Complex Numbers for AI — What is a complex number? · Complex arithmetic · The complex plane...",
             "anchor": "complex-numbers-for-ai"
           },
           {
-            "title": "The Fourier Transform — Every signal is a sum of sine waves. The Fourier transform tells you which ones....",
+            "title": "The Fourier Transform — The DFT definition · What each coefficient means · Inverse DFT...",
             "anchor": "the-fourier-transform"
           },
           {
-            "title": "Graph Theory for ML — Graphs are the data structure of relationships. If your data has connections, you need gra...",
+            "title": "Graph Theory for ML — Graphs: Nodes and Edges · The Adjacency Matrix · Degree...",
             "anchor": "graph-theory-for-ml"
           },
           {
-            "title": "Stochastic Processes — Randomness with structure. The math behind random walks, Markov chains, and diffusion mode...",
+            "title": "Stochastic Processes — Random Walks · Markov Chains · Connection to Language Models...",
             "anchor": "stochastic-processes"
           }
         ]
@@ -175,87 +175,87 @@ window.topicsData = [
         "file": "phase-02.md",
         "concepts": [
           {
-            "title": "What Is Machine Learning — Machine learning is teaching computers to find patterns in data instead of writing rules b...",
+            "title": "What Is Machine Learning — Learning From Data · Not Rules · The Three Types of Machine Learning...",
             "anchor": "what-is-machine-learning"
           },
           {
-            "title": "Linear Regression from Scratch — Linear regression draws the best straight line through your data. It is the \"hello world\" ...",
+            "title": "Linear Regression from Scratch — The Model · The Cost Function (Mean Squared Error) · Gradient Descent...",
             "anchor": "linear-regression-from-scratch"
           },
           {
-            "title": "Logistic Regression & Classification — Logistic regression bends a straight line into an S-curve to answer yes-or-no questions wi...",
+            "title": "Logistic Regression & Classification — Why Linear Regression Fails for Classification · The Sigmoid Function · Logistic Regression = Linear Model + Sigmoid...",
             "anchor": "logistic-regression-classification"
           },
           {
-            "title": "Decision Trees & Random Forests — A decision tree is just a flowchart. But a forest of them is one of the most powerful tool...",
+            "title": "Decision Trees & Random Forests — What a decision tree does · Split criteria: measuring impurity · How splitting works...",
             "anchor": "decision-trees-random-forests"
           },
           {
-            "title": "Support Vector Machines — Find the widest street between two classes. That is the entire idea....",
+            "title": "Support Vector Machines — The maximum margin classifier · Support vectors: the critical few · Soft margin: handling noise with the C parameter...",
             "anchor": "support-vector-machines"
           },
           {
-            "title": "KNN & Distance Metrics — Store everything. Predict by looking at your neighbors. The simplest algorithm that actual...",
+            "title": "KNN & Distance Metrics — How KNN works · Choosing K · Distance metrics...",
             "anchor": "knn-distance-metrics"
           },
           {
-            "title": "Unsupervised Learning: K-Means, DBSCAN — No labels, no teacher. The algorithm finds structure on its own....",
+            "title": "Unsupervised Learning: K-Means, DBSCAN — Clustering: Grouping Similar Things Together · K-Means: The Workhorse · Choosing K...",
             "anchor": "unsupervised-learning-k-means-dbscan"
           },
           {
-            "title": "Feature Engineering & Selection — A good feature is worth a thousand data points....",
+            "title": "Feature Engineering & Selection — The Feature Pipeline · Numerical Features · Categorical Features...",
             "anchor": "feature-engineering-selection"
           },
           {
-            "title": "Model Evaluation: Metrics, Cross-Validation — A model is only as good as the way you measure it....",
+            "title": "Model Evaluation: Metrics, Cross-Validation — Train · Validation · Test...",
             "anchor": "model-evaluation-metrics-cross-validation"
           },
           {
-            "title": "Bias, Variance & the Learning Curve — Every model error comes from one of three sources: bias, variance, or noise. You can only ...",
+            "title": "Bias, Variance & the Learning Curve — Bias: Systematic Error · Variance: Sensitivity to Training Data · The Decomposition...",
             "anchor": "bias-variance-the-learning-curve"
           },
           {
-            "title": "Ensemble Methods: Boosting, Bagging, Stacking — A group of weak learners, combined correctly, becomes a strong learner. This is not a meta...",
+            "title": "Ensemble Methods: Boosting, Bagging, Stacking — Why Ensembles Work · Bagging (Bootstrap Aggregating) · Boosting (Sequential Error Correction)...",
             "anchor": "ensemble-methods-boosting-bagging-stacking"
           },
           {
-            "title": "Hyperparameter Tuning — Hyperparameters are the knobs you turn before training starts. Turning them well is the di...",
+            "title": "Hyperparameter Tuning — Parameters vs Hyperparameters · Grid Search · Random Search...",
             "anchor": "hyperparameter-tuning"
           },
           {
-            "title": "ML Pipelines & Experiment Tracking — A model is not a product. A pipeline is. The pipeline is everything from raw data to deplo...",
+            "title": "ML Pipelines & Experiment Tracking — What a Pipeline Is · Data Leakage: The Silent Killer · sklearn Pipeline...",
             "anchor": "ml-pipelines-experiment-tracking"
           },
           {
-            "title": "Naive Bayes — The \"naive\" assumption is wrong, and it works anyway. That's the beauty of it....",
+            "title": "Naive Bayes — Bayes' Theorem (Quick Review) · The Naive Independence Assumption · Why It Still Works...",
             "anchor": "naive-bayes"
           },
           {
-            "title": "Time Series Fundamentals — Past performance does predict future results -- if you check for stationarity first....",
+            "title": "Time Series Fundamentals — What Makes Time Series Different · Components of a Time Series · Stationarity...",
             "anchor": "time-series-fundamentals"
           },
           {
-            "title": "Anomaly Detection — Normal is easy to define. Abnormal is whatever doesn't fit....",
+            "title": "Anomaly Detection — Types of Anomalies · The Unsupervised Framing · Supervised vs Unsupervised: The Tradeoff...",
             "anchor": "anomaly-detection"
           },
           {
-            "title": "Handling Imbalanced Data — When 99% of your data is \"normal,\" accuracy is a lie....",
+            "title": "Handling Imbalanced Data — Why Accuracy Fails · Better Metrics · The Imbalanced Data Pipeline...",
             "anchor": "handling-imbalanced-data"
           },
           {
-            "title": "Feature Selection — More features is not better. The right features is better....",
+            "title": "Feature Selection — Three Categories of Feature Selection · Variance Threshold · Mutual Information...",
             "anchor": "feature-selection"
           },
           {
-            "title": "ML System Design — From Problem to Deployed Model — A model is one part of a system. The design decides what the model predicts, who acts on i...",
+            "title": "ML System Design — From Problem to Deployed Model — From a business goal to an ML task · When not to use ML · Three layers of metrics...",
             "anchor": "ml-system-design-from-problem-to-deployed-model"
           },
           {
-            "title": "Monitoring Models in Production — Data Drift and Concept Drift — A deployed model fails without an error message. It keeps returning scores while the world...",
+            "title": "Monitoring Models in Production — Data Drift and Concept Drift — What to monitor · Three kinds of drift · Delayed labels...",
             "anchor": "monitoring-models-in-production-data-drift-and-concept-drift"
           },
           {
-            "title": "Feature Stores and Training-Serving Skew — A feature has one definition and two readers. Training reads its history as of each label ...",
+            "title": "Feature Stores and Training-Serving Skew — Two readers of the same feature · Entities · timestamps...",
             "anchor": "feature-stores-and-training-serving-skew"
           }
         ]
@@ -272,55 +272,55 @@ window.topicsData = [
         "file": "phase-03.md",
         "concepts": [
           {
-            "title": "The Perceptron: Where It All Started — The perceptron is the atom of neural networks. Split it open and you find weights, a bias,...",
+            "title": "The Perceptron: Where It All Started — One Neuron · One Decision · The Decision Boundary...",
             "anchor": "the-perceptron-where-it-all-started"
           },
           {
-            "title": "Multi-Layer Networks & Forward Pass — One neuron draws a line. Stack them, and you can draw anything....",
+            "title": "Multi-Layer Networks & Forward Pass — Layers: Input · Hidden · Output...",
             "anchor": "multi-layer-networks-forward-pass"
           },
           {
-            "title": "Backpropagation from Scratch — Backpropagation is the algorithm that makes learning possible. Without it, neural networks...",
+            "title": "Backpropagation from Scratch — The Chain Rule · Applied to Networks · Computational Graphs...",
             "anchor": "backpropagation-from-scratch"
           },
           {
-            "title": "Activation Functions: ReLU, Sigmoid, GELU & Why — Without nonlinearity, your 100-layer network is a fancy matrix multiply. Activations are t...",
+            "title": "Activation Functions: ReLU, Sigmoid, GELU & Why — Why Nonlinearity Is Necessary · Sigmoid · Tanh...",
             "anchor": "activation-functions-relu-sigmoid-gelu-why"
           },
           {
-            "title": "Loss Functions: MSE, Cross-Entropy, Contrastive — Your network makes a prediction. The ground truth says otherwise. How wrong is it? That nu...",
+            "title": "Loss Functions: MSE, Cross-Entropy, Contrastive — Mean Squared Error (MSE) · Cross-Entropy Loss · Why MSE Fails for Classification...",
             "anchor": "loss-functions-mse-cross-entropy-contrastive"
           },
           {
-            "title": "Optimizers: SGD, Momentum, Adam, AdamW — Gradient descent tells you which direction to move. It says nothing about how far or how f...",
+            "title": "Optimizers: SGD, Momentum, Adam, AdamW — Stochastic Gradient Descent (SGD) · Momentum · RMSProp...",
             "anchor": "optimizers-sgd-momentum-adam-adamw"
           },
           {
-            "title": "Regularization: Dropout, Weight Decay, BatchNorm — Your model gets 99% on training data and 60% on test data. It memorized instead of learnin...",
+            "title": "Regularization: Dropout, Weight Decay, BatchNorm — The Overfitting Spectrum · Dropout · Weight Decay (L2 Regularization)...",
             "anchor": "regularization-dropout-weight-decay-batchnorm"
           },
           {
-            "title": "Weight Initialization & Training Stability — Initialize wrong and training never starts. Initialize right and 50 layers train as smooth...",
+            "title": "Weight Initialization & Training Stability — The Symmetry Problem · Variance Propagation Through Layers · Xavier/Glorot Initialization...",
             "anchor": "weight-initialization-training-stability"
           },
           {
-            "title": "Learning Rate Schedules & Warmup — The learning rate is the single most important hyperparameter. Not the architecture. Not t...",
+            "title": "Learning Rate Schedules & Warmup — Constant Learning Rate · Step Decay · Cosine Annealing...",
             "anchor": "learning-rate-schedules-warmup"
           },
           {
-            "title": "Build Your Own Mini Framework — You have built neurons, layers, networks, backprop, activations, loss functions, optimizer...",
+            "title": "Build Your Own Mini Framework — The Module Abstraction · Sequential Container · Training vs Evaluation Mode...",
             "anchor": "build-your-own-mini-framework"
           },
           {
-            "title": "Introduction to PyTorch — You built the engine from pistons and crankshafts. Now learn the one everyone actually dri...",
+            "title": "Introduction to PyTorch — Why PyTorch Won · Tensors · Autograd...",
             "anchor": "introduction-to-pytorch"
           },
           {
-            "title": "Introduction to JAX — PyTorch mutates tensors. TensorFlow builds graphs. JAX compiles pure functions. That last ...",
+            "title": "Introduction to JAX — The JAX Philosophy · jax.numpy: The Familiar Surface · jax.grad: Functional Autodiff...",
             "anchor": "introduction-to-jax"
           },
           {
-            "title": "Debugging Neural Networks — Your network compiled. It ran. It produced a number. The number is wrong and nothing crash...",
+            "title": "Debugging Neural Networks — The Debugging Mindset · Symptom 1: Loss Not Decreasing · Symptom 2: Loss Decreasing But Model is Bad...",
             "anchor": "debugging-neural-networks"
           }
         ]
@@ -337,115 +337,115 @@ window.topicsData = [
         "file": "phase-04.md",
         "concepts": [
           {
-            "title": "Image Fundamentals: Pixels, Channels, Color Spaces — An image is a tensor of light samples. Every vision model you will ever use starts from th...",
+            "title": "Image Fundamentals: Pixels, Channels, Color Spaces — The full preprocessing pipeline at a glance · A pixel is a sample · not a square...",
             "anchor": "image-fundamentals-pixels-channels-color-spaces"
           },
           {
-            "title": "Convolutions from Scratch — A convolution is a tiny dense layer you slide across an image, sharing the same weights at...",
+            "title": "Convolutions from Scratch — One kernel · sliding · Output size formula...",
             "anchor": "convolutions-from-scratch"
           },
           {
-            "title": "CNNs: LeNet to ResNet — Every major CNN of the last thirty years is the same conv–nonlinearity–downsample recipe w...",
+            "title": "CNNs: LeNet to ResNet — The four ideas that changed vision · LeNet-5 (1998) · AlexNet (2012)...",
             "anchor": "cnns-lenet-to-resnet"
           },
           {
-            "title": "Image Classification — A classifier is a function from pixels to a probability distribution over classes. Everyth...",
+            "title": "Image Classification — The classification pipeline · Cross-entropy · logits...",
             "anchor": "image-classification"
           },
           {
-            "title": "Transfer Learning & Fine-Tuning — Somebody else spent a million GPU hours teaching a network what edges, textures, and objec...",
+            "title": "Transfer Learning & Fine-Tuning — Feature extraction vs fine-tuning · Why freezing works at all · Discriminative learning rates...",
             "anchor": "transfer-learning-fine-tuning"
           },
           {
-            "title": "Object Detection — YOLO from Scratch — Detection is classification plus regression, run at every position in a feature map, then ...",
+            "title": "Object Detection — YOLO from Scratch — Detection as dense prediction · Why grids and anchors · Decoding predictions...",
             "anchor": "object-detection-yolo-from-scratch"
           },
           {
-            "title": "Semantic Segmentation — U-Net — Segmentation is classification at every pixel. U-Net makes it work by pairing a downsampli...",
+            "title": "Semantic Segmentation — U-Net — Semantic vs instance vs panoptic · The U-Net shape · Transposed vs bilinear upsample...",
             "anchor": "semantic-segmentation-u-net"
           },
           {
-            "title": "Instance Segmentation — Mask R-CNN — Add a tiny mask branch to a Faster R-CNN detector and you have instance segmentation. The ...",
+            "title": "Instance Segmentation — Mask R-CNN — The architecture · Why RoIAlign · not RoIPool...",
             "anchor": "instance-segmentation-mask-r-cnn"
           },
           {
-            "title": "Image Generation — GANs — A GAN is two neural networks in a fixed game. One draws, one critiques. They get better to...",
+            "title": "Image Generation — GANs — The two networks · The game · Non-saturating loss...",
             "anchor": "image-generation-gans"
           },
           {
-            "title": "Image Generation — Diffusion Models — A diffusion model learns to denoise. Train it to remove a tiny bit of noise from a noisy i...",
+            "title": "Image Generation — Diffusion Models — The forward process · The closed-form jump · The reverse process...",
             "anchor": "image-generation-diffusion-models"
           },
           {
-            "title": "Stable Diffusion — Architecture & Fine-Tuning — Stable Diffusion is a DDPM that runs in the latent space of a pretrained VAE, conditioned ...",
+            "title": "Stable Diffusion — Architecture & Fine-Tuning — The pipeline · Classifier-free guidance (CFG) · Latent space geometry...",
             "anchor": "stable-diffusion-architecture-fine-tuning"
           },
           {
-            "title": "Video Understanding — Temporal Modeling — A video is a sequence of images plus the physics that connects them. Every video model eit...",
+            "title": "Video Understanding — Temporal Modeling — The three architectural families · 2D + pool · 3D convolutions...",
             "anchor": "video-understanding-temporal-modeling"
           },
           {
-            "title": "3D Vision: Point Clouds, NeRFs — 3D vision comes in two flavours. Point clouds are the sensor's raw output. NeRFs are the l...",
+            "title": "3D Vision: Point Clouds, NeRFs — Point clouds · The PointNet architecture · Neural Radiance Fields (NeRFs)...",
             "anchor": "3d-vision-point-clouds-nerfs"
           },
           {
-            "title": "Vision Transformers (ViT) — Cut the image into patches, treat each patch as a word, run a standard transformer. Don't ...",
+            "title": "Vision Transformers (ViT) — The pipeline · Patch embedding · Class token...",
             "anchor": "vision-transformers-vit"
           },
           {
-            "title": "Real-Time Vision: Edge Deployment — Edge inference is the discipline of getting a 90%-accurate model to run at 30 fps on a dev...",
+            "title": "Real-Time Vision: Edge Deployment — The three budgets · Measurement discipline · FLOPs as a proxy...",
             "anchor": "real-time-vision-edge-deployment"
           },
           {
-            "title": "Build a Complete Vision Pipeline — A production vision system is a chain of models and rules stitched with data contracts. Th...",
+            "title": "Build a Complete Vision Pipeline — The pipeline · Data contracts with Pydantic · Where latency goes...",
             "anchor": "build-a-complete-vision-pipeline"
           },
           {
-            "title": "Self-Supervised Vision — SimCLR, DINO, MAE — Labels are the bottleneck of supervised vision. Self-supervised pretraining removes them: ...",
+            "title": "Self-Supervised Vision — SimCLR, DINO, MAE — Three families · Contrastive learning (SimCLR) · Teacher-student (DINO)...",
             "anchor": "self-supervised-vision-simclr-dino-mae"
           },
           {
-            "title": "Open-Vocabulary Vision — CLIP — Train an image encoder and a text encoder together so that matching (image, caption) pairs...",
+            "title": "Open-Vocabulary Vision — CLIP — Two towers · The objective · SigLIP: a better loss...",
             "anchor": "open-vocabulary-vision-clip"
           },
           {
-            "title": "OCR & Document Understanding — OCR is a three-stage pipeline — detect text boxes, recognise the characters, then lay them...",
+            "title": "OCR & Document Understanding — The classical pipeline · CTC in one paragraph · Modern end-to-end models...",
             "anchor": "ocr-document-understanding"
           },
           {
-            "title": "Image Retrieval & Metric Learning — A retrieval system ranks candidates by a distance in embedding space. Metric learning is t...",
+            "title": "Image Retrieval & Metric Learning — Retrieval at a glance · The four loss families · Triplet loss formally...",
             "anchor": "image-retrieval-metric-learning"
           },
           {
-            "title": "Keypoint Detection & Pose Estimation — A pose is a set of ordered keypoints. A keypoint detector is a heatmap regressor. Everythi...",
+            "title": "Keypoint Detection & Pose Estimation — Top-down vs bottom-up · Heatmap regression · Sub-pixel localisation...",
             "anchor": "keypoint-detection-pose-estimation"
           },
           {
-            "title": "3D Gaussian Splatting from Scratch — A scene is a cloud of millions of 3D Gaussians. Each one has a position, orientation, scal...",
+            "title": "3D Gaussian Splatting from Scratch — What a Gaussian carries · Rasterisation · not ray marching...",
             "anchor": "3d-gaussian-splatting-from-scratch"
           },
           {
-            "title": "Diffusion Transformers & Rectified Flow — The U-Net is not the secret of diffusion. Replace it with a transformer, swap the noise sc...",
+            "title": "Diffusion Transformers & Rectified Flow — From U-Net to transformer · Rectified flow in one paragraph · AdaLN conditioning...",
             "anchor": "diffusion-transformers-rectified-flow"
           },
           {
-            "title": "SAM 3 & Open-Vocabulary Segmentation — Give a model a text prompt and an image and get masks for every matching object. SAM 3 mad...",
+            "title": "SAM 3 & Open-Vocabulary Segmentation — The three generations · Promptable Concept Segmentation · Key architectural pieces...",
             "anchor": "sam-3-open-vocabulary-segmentation"
           },
           {
-            "title": "Vision-Language Models (ViT-MLP-LLM) — A vision encoder converts an image into tokens. An MLP projector maps those tokens into th...",
+            "title": "Vision-Language Models (ViT-MLP-LLM) — The ViT-MLP-LLM architecture · DeepStack · Three training stages...",
             "anchor": "vision-language-models-vit-mlp-llm"
           },
           {
-            "title": "Monocular Depth & Geometry Estimation — A depth map is a single-channel image where each pixel is a distance from the camera. Pred...",
+            "title": "Monocular Depth & Geometry Estimation — Relative vs metric depth · The encoder-decoder pattern · Why a single image produces depth at all...",
             "anchor": "monocular-depth-geometry-estimation"
           },
           {
-            "title": "Multi-Object Tracking & Video Memory — Tracking is detection plus association. Detect every frame. Match this frame's detections ...",
+            "title": "Multi-Object Tracking & Video Memory — Tracking-by-detection · Kalman filter in one paragraph · The Hungarian algorithm...",
             "anchor": "multi-object-tracking-video-memory"
           },
           {
-            "title": "World Models & Video Diffusion — A video model that predicts the next seconds of a scene is a world simulator. Condition th...",
+            "title": "World Models & Video Diffusion — Three families of world-modelling · Video DiT architecture · Conditioning on actions: latent action models...",
             "anchor": "world-models-video-diffusion"
           }
         ]
@@ -462,119 +462,119 @@ window.topicsData = [
         "file": "phase-05.md",
         "concepts": [
           {
-            "title": "Text Processing: Tokenization, Stemming, Lemmatization — Language is continuous. Models are discrete. Preprocessing is the bridge....",
+            "title": "Text Processing: Tokenization, Stemming, Lemmatization — Step 1: a regex word tokenizer · Step 2: a Porter stemmer (step 1a only) · Step 3: a lookup-based lemmatizer...",
             "anchor": "text-processing-tokenization-stemming-lemmatization"
           },
           {
-            "title": "Bag of Words, TF-IDF & Text Representation — Count first, think later. TF-IDF still beats embeddings on well-defined tasks in 2026....",
+            "title": "Bag of Words, TF-IDF & Text Representation — Step 1: build the vocabulary · Step 2: bag of words · Step 3: term frequency and document frequency...",
             "anchor": "bag-of-words-tf-idf-text-representation"
           },
           {
-            "title": "Word Embeddings: Word2Vec from Scratch — A word is the company it keeps. Train a shallow net on that idea and geometry falls out....",
+            "title": "Word Embeddings: Word2Vec from Scratch — Step 1: training pairs from a corpus · Step 2: embedding tables · Step 3: negative sampling objective...",
             "anchor": "word-embeddings-word2vec-from-scratch"
           },
           {
-            "title": "GloVe, FastText & Subword Embeddings — Word2Vec trained one embedding per word. GloVe factorized the co-occurrence matrix. FastTe...",
+            "title": "GloVe, FastText & Subword Embeddings — GloVe: factorize the co-occurrence matrix · FastText: subword-aware embeddings · BPE: learned subword vocabulary...",
             "anchor": "glove-fasttext-subword-embeddings"
           },
           {
-            "title": "Sentiment Analysis — The canonical NLP task. Most of what you need to know about classical text classification ...",
+            "title": "Sentiment Analysis — Step 1: a real mini-dataset · Step 2: multinomial Naive Bayes from scratch · Step 3: logistic regression from scratch...",
             "anchor": "sentiment-analysis"
           },
           {
-            "title": "Named Entity Recognition (NER) — Pull the names out. Sounds easy until you deal with ambiguous boundaries, nested entities,...",
+            "title": "Named Entity Recognition (NER) — Step 1: BIO tagging helpers · Step 2: hand-crafted features · Step 3: a simple rule-based + dictionary baseline...",
             "anchor": "named-entity-recognition-ner"
           },
           {
-            "title": "POS Tagging & Syntactic Parsing — Grammar was unfashionable for a while. Then every LLM pipeline needed to validate structur...",
+            "title": "POS Tagging & Syntactic Parsing — Step 1: most-frequent-tag baseline · Step 2: bigram HMM tagger · Step 3: why modern taggers beat this...",
             "anchor": "pos-tagging-syntactic-parsing"
           },
           {
-            "title": "Text Classification — CNNs & RNNs for Text — Convolutions learn n-grams. Recurrences remember. Both are superseded by attention. Both s...",
+            "title": "Text Classification — CNNs & RNNs for Text — Step 1: TextCNN in PyTorch · Step 2: LSTM classifier · Step 3: the vanishing gradient demo (intuition)...",
             "anchor": "text-classification-cnns-rnns-for-text"
           },
           {
-            "title": "Sequence-to-Sequence Models — Two RNNs pretending to be a translator. The bottleneck they hit is the reason attention ex...",
+            "title": "Sequence-to-Sequence Models — Step 1: an encoder · Step 2: a decoder · Step 3: training loop with teacher forcing...",
             "anchor": "sequence-to-sequence-models"
           },
           {
-            "title": "Attention Mechanism — The Breakthrough — The decoder stops squinting at a compressed summary and starts looking at the whole source...",
+            "title": "Attention Mechanism — The Breakthrough — Step 1: additive (Bahdanau) attention · Step 2: Luong dot and general · Step 3: a worked numerical example...",
             "anchor": "attention-mechanism-the-breakthrough"
           },
           {
-            "title": "Machine Translation — Translation is the task that paid for NLP research for thirty years and keeps paying now....",
+            "title": "Machine Translation — Step 1: a pretrained MT call · Step 2: BLEU and chrF · The three-tier evaluation hierarchy (2026)...",
             "anchor": "machine-translation"
           },
           {
-            "title": "Text Summarization — Extractive systems tell you what the document said. Abstractive systems tell you what the ...",
+            "title": "Text Summarization — Step 1: TextRank (extractive) · Step 2: abstractive with BART · Step 3: ROUGE evaluation...",
             "anchor": "text-summarization"
           },
           {
-            "title": "Question Answering Systems — Three systems shaped modern QA. Extractive found spans. Retrieval-augmented grounded them ...",
+            "title": "Question Answering Systems — Step 1: extractive QA with a pretrained model · Step 2: a retrieval-augmented pipeline (sketch) · Step 3: generative with RAG...",
             "anchor": "question-answering-systems"
           },
           {
-            "title": "Information Retrieval & Search — BM25 is precise but brittle. Dense casts a wide net but misses keywords. Hybrid is the 202...",
+            "title": "Information Retrieval & Search — Step 1: BM25 from scratch · Step 2: dense retrieval with a bi-encoder · Step 3: Reciprocal Rank Fusion...",
             "anchor": "information-retrieval-search"
           },
           {
-            "title": "Topic Modeling: LDA, BERTopic — LDA: documents are mixtures of topics, topics are distributions over words. BERTopic: docu...",
+            "title": "Topic Modeling: LDA, BERTopic — Step 1: LDA via scikit-learn · Step 2: BERTopic (production) · Step 3: evaluation...",
             "anchor": "topic-modeling-lda-bertopic"
           },
           {
-            "title": "Text Generation — If a word is surprising, the model is bad. Perplexity makes surprise a number. Smoothing k...",
+            "title": "Text Generation — The prediction game · Step 1: trigram counts · Step 2: Laplace smoothing...",
             "anchor": "text-generation"
           },
           {
-            "title": "Chatbots: Rule-Based to Neural — ELIZA replied with pattern matches. DialogFlow mapped intents. GPT answered from weights. ...",
+            "title": "Chatbots: Rule-Based to Neural — The scripted half-century · 1950-2001 · Step 1: rule-based pattern matching...",
             "anchor": "chatbots-rule-based-to-neural"
           },
           {
-            "title": "Multilingual NLP — One model, 100+ languages, zero training data for most of them. Cross-lingual transfer is ...",
+            "title": "Multilingual NLP — Step 1: zero-shot cross-lingual classification · Step 2: multilingual embedding space · Step 3: few-shot fine-tuning strategy...",
             "anchor": "multilingual-nlp"
           },
           {
-            "title": "Subword Tokenization: BPE, WordPiece, Unigram, SentencePiece — Word tokenizers choke on unseen words. Character tokenizers blow up sequence length. Subwo...",
+            "title": "Subword Tokenization: BPE, WordPiece, Unigram, SentencePiece — Step 1: BPE from scratch · Step 2: encode with the learned merges · Step 3: SentencePiece in practice...",
             "anchor": "subword-tokenization-bpe-wordpiece-unigram-sentencepiece"
           },
           {
-            "title": "Structured Outputs & Constrained Decoding — Ask an LLM for JSON. Get JSON most of the time. In production, \"most\" is the problem. Cons...",
+            "title": "Structured Outputs & Constrained Decoding — The counterintuitive result · The pitfall that costs you · Step 1: regex-constrained generation from scratch...",
             "anchor": "structured-outputs-constrained-decoding"
           },
           {
-            "title": "NLI & Textual Entailment — \"t entails h\" means a human reading t would conclude h is true. NLI is the task of predict...",
+            "title": "NLI & Textual Entailment — Step 1: run a pretrained NLI model · Step 2: zero-shot classification · Step 3: faithfulness check for RAG...",
             "anchor": "nli-textual-entailment"
           },
           {
-            "title": "Embedding Models Deep Dive — Word2Vec gave you a vector per word. Modern embedding models give you a vector per passage...",
+            "title": "Embedding Models Deep Dive — The MTEB leaderboard tells a partial story · The three-tier pattern · Step 1: baseline — dense embeddings with Sentence-BERT...",
             "anchor": "embedding-models-deep-dive"
           },
           {
-            "title": "Chunking Strategies for RAG — Chunking configuration influences retrieval quality as much as the choice of embedding mod...",
+            "title": "Chunking Strategies for RAG — The rule that beats every default · Step 1: fixed and recursive chunking · Step 2: semantic chunking...",
             "anchor": "chunking-strategies-for-rag"
           },
           {
-            "title": "Coreference Resolution — \"She called him. He did not answer. The doctor was at lunch.\" Three references to two peop...",
+            "title": "Coreference Resolution — Step 1: pretrained neural coreference (AllenNLP / spaCy-experimental) · Step 2: rule-based pronoun resolver (teaching) · Step 3: using LLMs for coreference...",
             "anchor": "coreference-resolution"
           },
           {
-            "title": "Entity Linking & Disambiguation — NER found \"Paris.\" Entity linking decides: Paris, France? Paris Hilton? Paris, Texas? Pari...",
+            "title": "Entity Linking & Disambiguation — The two measurements · Step 1: build an alias index from Wikipedia redirects · Step 2: context-based disambiguation...",
             "anchor": "entity-linking-disambiguation"
           },
           {
-            "title": "Relation Extraction & Knowledge Graph Construction — NER found the entities. Entity linking anchored them. Relation extraction finds the edges ...",
+            "title": "Relation Extraction & Knowledge Graph Construction — Step 1: pattern-based extraction · Step 2: supervised seq2seq relation extraction · Step 3: LLM-prompted extraction with anchoring...",
             "anchor": "relation-extraction-knowledge-graph-construction"
           },
           {
-            "title": "LLM Evaluation: RAGAS, DeepEval, G-Eval — Exact-match and F1 miss semantic equivalence. Human review does not scale. LLM-as-judge is...",
+            "title": "LLM Evaluation: RAGAS, DeepEval, G-Eval — Step 1: faithfulness with NLI (RAGAS-style) · Step 2: answer relevance · Step 3: G-Eval custom metric...",
             "anchor": "llm-evaluation-ragas-deepeval-g-eval"
           },
           {
-            "title": "Long-Context Evaluation: NIAH, RULER, LongBench, MRCR — Gemini 3 Pro advertises 10M tokens of context. At 1M tokens, 8-needle MRCR drops to 26.3%....",
+            "title": "Long-Context Evaluation: NIAH, RULER, LongBench, MRCR — What to actually report · Step 1: a custom NIAH for your domain · Step 2: a multi-needle variant...",
             "anchor": "long-context-evaluation-niah-ruler-longbench-mrcr"
           },
           {
-            "title": "Dialogue State Tracking — \"I want a cheap restaurant in the north... actually make it moderate... and add Italian.\" ...",
+            "title": "Dialogue State Tracking — The classic failure modes · Step 1: rule-based slot extractor · Step 2: state update loop...",
             "anchor": "dialogue-state-tracking"
           }
         ]
@@ -591,71 +591,71 @@ window.topicsData = [
         "file": "phase-06.md",
         "concepts": [
           {
-            "title": "Audio Fundamentals: Waveforms, Sampling, FFT — Waveforms are the raw signal. Spectrograms are the representation. Mel features are the ML...",
+            "title": "Audio Fundamentals: Waveforms, Sampling, FFT — Step 1: read a clip and plot the waveform · Step 2: synthesize a sine wave from first principles · Step 3: compute the DFT by hand...",
             "anchor": "audio-fundamentals-waveforms-sampling-fft"
           },
           {
-            "title": "Spectrograms, Mel Scale & Audio Features — Neural nets do not consume raw waveforms well. They consume spectrograms. They consume mel...",
+            "title": "Spectrograms, Mel Scale & Audio Features — Step 1: frame the waveform · Step 2: Hann window · Step 3: STFT magnitude...",
             "anchor": "spectrograms-mel-scale-audio-features"
           },
           {
-            "title": "Audio Classification — Everything from \"dog barking vs siren\" to \"which language is this\" is audio classification...",
+            "title": "Audio Classification — Class imbalance is the real challenge · Evaluation · Step 1: featurize...",
             "anchor": "audio-classification"
           },
           {
-            "title": "Speech Recognition (ASR) — Speech recognition is audio classification at every timestep, glued together by a sequence...",
+            "title": "Speech Recognition (ASR) — WER: the one number · Step 1: greedy CTC decode · Step 2: beam-search CTC...",
             "anchor": "speech-recognition-asr"
           },
           {
-            "title": "Whisper: Architecture & Fine-Tuning — Whisper is a 30-second-window transformer encoder-decoder, trained on 680k hours of multil...",
+            "title": "Whisper: Architecture & Fine-Tuning — Variants in 2026 · Fine-tuning · Step 1: run Whisper out of the box...",
             "anchor": "whisper-architecture-fine-tuning"
           },
           {
-            "title": "Speaker Recognition & Verification — ASR asks \"what did they say?\" Speaker recognition asks \"who said it?\" The math looks the s...",
+            "title": "Speaker Recognition & Verification — Scoring · Numbers you should know (2026) · Diarization...",
             "anchor": "speaker-recognition-verification"
           },
           {
-            "title": "Text-to-Speech (TTS) — ASR inverts speech to text; TTS inverts text to speech. The 2026 stack is three parts: tex...",
+            "title": "Text-to-Speech (TTS) — Vocoder evolution · Evaluation · Step 1: phonemize input...",
             "anchor": "text-to-speech-tts"
           },
           {
-            "title": "Voice Cloning & Voice Conversion — Voice cloning reads your text in someone else's voice. Voice conversion rewrites your voic...",
+            "title": "Voice Cloning & Voice Conversion — The ethics bit · not a bolt-on · Numbers (2026)...",
             "anchor": "voice-cloning-voice-conversion"
           },
           {
-            "title": "Music Generation — 2026 music generation: Suno v5 and Udio v4 dominate commercial; MusicGen, Stable Audio Ope...",
+            "title": "Music Generation — Token LM over neural-codec tokens · Diffusion over mels or latents · Hybrid (production) — Suno...",
             "anchor": "music-generation"
           },
           {
-            "title": "Audio-Language Models — 2026 audio-language models reason over speech + environmental sound + music. Qwen2.5-Omni-...",
+            "title": "Audio-Language Models — The three-component template · The 2026 model map · Benchmark reality check (2026)...",
             "anchor": "audio-language-models"
           },
           {
-            "title": "Real-Time Audio Processing — Batch pipelines process a file. Real-time pipelines process the next 20 milliseconds befor...",
+            "title": "Real-Time Audio Processing — Common gotchas · Step 1: ring buffer · Step 2: VAD gate...",
             "anchor": "real-time-audio-processing"
           },
           {
-            "title": "Build a Voice Assistant Pipeline — Everything from lessons 01-11, stitched together. Build a voice assistant that listens, re...",
+            "title": "Build a Voice Assistant Pipeline — The seven components · The three failure modes you will hit · 2026 production reference stacks...",
             "anchor": "build-a-voice-assistant-pipeline"
           },
           {
-            "title": "Neural Audio Codecs — EnCodec, SNAC, Mimi, DAC — 2026 audio generation is almost all tokens. EnCodec, SNAC, Mimi, and DAC turn continuous w...",
+            "title": "Neural Audio Codecs — EnCodec, SNAC, Mimi, DAC — The core trick: Residual Vector Quantization (RVQ) · The four codecs that matter in 2026 · Frame rates matter for language modeling...",
             "anchor": "neural-audio-codecs-encodec-snac-mimi-dac"
           },
           {
-            "title": "Voice Activity Detection & Turn-Taking — Every voice agent lives or dies on two decisions: is the user speaking now, and are they d...",
+            "title": "Voice Activity Detection & Turn-Taking — The three-tier VAD cascade · Key parameters and their defaults · The flush trick (Kyutai 2025)...",
             "anchor": "voice-activity-detection-turn-taking"
           },
           {
-            "title": "Streaming Speech-to-Speech — Moshi, Hibiki — 2024-2026 redefined voice AI. Moshi ships a single model that listens and speaks simultane...",
+            "title": "Streaming Speech-to-Speech — Moshi, Hibiki — The Moshi architecture · Why inner-monologue text helps · Hibiki: streaming speech-to-speech translation...",
             "anchor": "streaming-speech-to-speech-moshi-hibiki"
           },
           {
-            "title": "Voice Anti-Spoofing & Audio Watermarking — Voice cloning shipped faster than defenses. 2026 production voice systems need two things:...",
+            "title": "Voice Anti-Spoofing & Audio Watermarking — ASVspoof 5 — the 2024-2025 benchmark · AASIST and RawNet2 — detection model families · AudioSeal — the 2024 watermark default...",
             "anchor": "voice-anti-spoofing-audio-watermarking"
           },
           {
-            "title": "Audio Evaluation — WER, MOS, MMAU, Leaderboards — You cannot ship what you cannot measure. This lesson names the 2026 metrics for every audi...",
+            "title": "Audio Evaluation — WER, MOS, MMAU, Leaderboards — ASR metrics · TTS metrics · Voice-cloning-specific...",
             "anchor": "audio-evaluation-wer-mos-mmau-leaderboards"
           }
         ]
@@ -672,67 +672,67 @@ window.topicsData = [
         "file": "phase-07.md",
         "concepts": [
           {
-            "title": "Why Transformers: The Problems with RNNs — RNNs process tokens one at a time. Transformers process all tokens at once. That single ar...",
+            "title": "Why Transformers: The Problems with RNNs — Step 1: measure serial depth · Step 2: count theoretical operations · Step 3: empirical scaling on long sequences...",
             "anchor": "why-transformers-the-problems-with-rnns"
           },
           {
-            "title": "Self-Attention from Scratch — Attention is a lookup table where every word asks \"who matters to me?\" - and learns the an...",
+            "title": "Self-Attention from Scratch — The Database Lookup Analogy · Q · K...",
             "anchor": "self-attention-from-scratch"
           },
           {
-            "title": "Multi-Head Attention — One attention head learns one relation at a time. Eight heads learn eight. Heads are free....",
+            "title": "Multi-Head Attention — Step 1: split heads from the single-head attention we already have · Step 2: run scaled-dot-product attention per head · Step 3: Grouped-Query Attention variant...",
             "anchor": "multi-head-attention"
           },
           {
-            "title": "Positional Encoding: Sinusoidal, RoPE, ALiBi — Attention is permutation-invariant. \"The cat sat on the mat\" and \"mat the on sat cat the\" ...",
+            "title": "Positional Encoding: Sinusoidal, RoPE, ALiBi — Absolute sinusoidal · RoPE · ALiBi...",
             "anchor": "positional-encoding-sinusoidal-rope-alibi"
           },
           {
-            "title": "The Full Transformer: Encoder + Decoder — Attention is the star. Everything else — residuals, normalization, feed-forward, cross-att...",
+            "title": "The Full Transformer: Encoder + Decoder — The six pieces · Encoder block (used by BERT · T5 encoder)...",
             "anchor": "the-full-transformer-encoder-decoder"
           },
           {
-            "title": "BERT — Masked Language Modeling — GPT predicts the next word. BERT predicts a missing word. One sentence of difference — and...",
+            "title": "BERT — Masked Language Modeling — The training signal · The BERT mask rules · Next Sentence Prediction (NSP) — and why it was dropped...",
             "anchor": "bert-masked-language-modeling"
           },
           {
-            "title": "GPT — Causal Language Modeling — BERT sees both sides. GPT sees only the past. The triangle mask is the most consequential ...",
+            "title": "GPT — Causal Language Modeling — The mask · Where the triangle comes from · Parallel training...",
             "anchor": "gpt-causal-language-modeling"
           },
           {
-            "title": "T5, BART — Encoder-Decoder Models — Encoders understand. Decoders generate. Put them back together and you get a model built f...",
+            "title": "T5, BART — Encoder-Decoder Models — The forward loop · T5 pretraining — span corruption · BART pretraining — multi-noise denoising...",
             "anchor": "t5-bart-encoder-decoder-models"
           },
           {
-            "title": "Vision Transformers (ViT) — An image is a grid of patches. A sentence is a grid of tokens. The same transformer eats b...",
+            "title": "Vision Transformers (ViT) — Step 1 — patchify · Step 2 — linear embedding · Step 3 — prepend `[CLS]` token...",
             "anchor": "vision-transformers-vit"
           },
           {
-            "title": "Audio Transformers — Whisper Architecture — Audio is an image of frequency over time. Whisper is a ViT that eats mel spectrograms and ...",
+            "title": "Audio Transformers — Whisper Architecture — Step 1 — resample + window · Step 2 — convolutional stem · Step 3 — encoder...",
             "anchor": "audio-transformers-whisper-architecture"
           },
           {
-            "title": "Mixture of Experts (MoE) — A dense 70B transformer activates every parameter for every token. A 671B MoE activates on...",
+            "title": "Mixture of Experts (MoE) — The FFN swap · The load-balancing problem · Shared experts...",
             "anchor": "mixture-of-experts-moe"
           },
           {
-            "title": "KV Cache, Flash Attention & Inference Optimization — Training is parallel and FLOP-bound. Inference is serial and memory-bound. Different bottl...",
+            "title": "KV Cache, Flash Attention & Inference Optimization — KV cache math · Flash Attention — the tiling trick · Speculative decoding — the other latency win...",
             "anchor": "kv-cache-flash-attention-inference-optimization"
           },
           {
-            "title": "Scaling Laws — The 2020 Kaplan paper said: bigger model, lower loss. The 2022 Hoffmann paper said: you we...",
+            "title": "Scaling Laws — The Hoffmann law · Why over-training anyway · Emergence vs smoothness...",
             "anchor": "scaling-laws"
           },
           {
-            "title": "Build a Transformer from Scratch — Thirteen lessons. One model. No shortcuts....",
+            "title": "Build a Transformer from Scratch — What we ship · What we don't ship · Target metrics...",
             "anchor": "build-a-transformer-from-scratch"
           },
           {
-            "title": "Attention Variants — Sliding Window, Sparse, Differential — Full attention is a circle. Every token sees every token, and memory pays the price. Three...",
+            "title": "Attention Variants — Sliding Window, Sparse, Differential — Sliding Window Attention (SWA) · Sparse / Block Attention · Differential Attention (DIFF Transformer...",
             "anchor": "attention-variants-sliding-window-sparse-differential"
           },
           {
-            "title": "Speculative Decoding — Draft, Verify, Repeat — Autoregressive decoding is serial. Each token waits for the previous one. Speculative deco...",
+            "title": "Speculative Decoding — Draft, Verify, Repeat — The core algorithm · What determines speedup · Medusa — drafts without a draft model...",
             "anchor": "speculative-decoding-draft-verify-repeat"
           }
         ]
@@ -749,63 +749,63 @@ window.topicsData = [
         "file": "phase-08.md",
         "concepts": [
           {
-            "title": "Generative Models: Taxonomy & History — Every image model, text model, video model, and 3D model fits in one of five buckets. Pick...",
+            "title": "Generative Models: Taxonomy & History — Every image model, text model, video model, and 3D model fits in one of five buc...",
             "anchor": "generative-models-taxonomy-history"
           },
           {
-            "title": "Autoencoders & VAE — A plain autoencoder compresses then reconstructs. It memorizes. It does not generate. Add ...",
+            "title": "Autoencoders & VAE — Step 1: encoder forward · Step 2: reparameterize and decode · Step 3: the ELBO...",
             "anchor": "autoencoders-vae"
           },
           {
-            "title": "GANs: Generator vs Discriminator — Goodfellow's trick in 2014 was to skip density entirely. Two networks. One makes fakes. On...",
+            "title": "GANs: Generator vs Discriminator — Step 1: non-saturating loss · Step 2: one discriminator step per generator step · Step 3: watch for mode collapse...",
             "anchor": "gans-generator-vs-discriminator"
           },
           {
-            "title": "Conditional GANs & Pix2Pix — The first big unlock of 2014-2017 was controlling what a GAN makes. Attach a label, or an ...",
+            "title": "Conditional GANs & Pix2Pix — Step 1: append condition to both G and D inputs · Step 2: train conditional · Step 3: verify per-class output...",
             "anchor": "conditional-gans-pix2pix"
           },
           {
-            "title": "StyleGAN — Most generators stir $z$ into every layer at the same time. StyleGAN split it apart: first...",
+            "title": "StyleGAN — Step 1: mapping network · Step 2: adaptive instance normalization · Step 3: per-layer noise...",
             "anchor": "stylegan"
           },
           {
-            "title": "Diffusion Models — DDPM from Scratch — Ho, Jain, Abbeel (2020) gave the field a recipe it could not quit. Destroy the data with n...",
+            "title": "Diffusion Models — DDPM from Scratch — Step 1: the forward schedule (closed form) · Step 2: sample `x_t` in one shot · Step 3: one training step...",
             "anchor": "diffusion-models-ddpm-from-scratch"
           },
           {
-            "title": "Latent Diffusion & Stable Diffusion — Pixel-space diffusion on 512×512 images is a computational war crime. Rombach et al. (2022...",
+            "title": "Latent Diffusion & Stable Diffusion — Step 1: encoder/decoder · Step 2: diffusion in `z`-space · Step 3: classifier-free guidance...",
             "anchor": "latent-diffusion-stable-diffusion"
           },
           {
-            "title": "ControlNet, LoRA & Conditioning — Text alone is a clumsy control signal. ControlNet lets you clone a pretrained diffusion mo...",
+            "title": "ControlNet, LoRA & Conditioning — ControlNet (Zhang et al. · 2023) · LoRA (Hu et al....",
             "anchor": "controlnet-lora-conditioning"
           },
           {
-            "title": "Inpainting, Outpainting & Editing — Text-to-image makes new things. Inpainting fixes old ones. In production, 70% of billable ...",
+            "title": "Inpainting, Outpainting & Editing — The naive approach (and why it's wrong) · The proper inpainting model · SDEdit (Meng et al....",
             "anchor": "inpainting-outpainting-editing"
           },
           {
-            "title": "Video Generation — An image is a 2-D tensor. A video is a 3-D one. The theory is the same; the compute is 10-...",
+            "title": "Video Generation — Patchify · Spatiotemporal DiT · Text conditioning...",
             "anchor": "video-generation"
           },
           {
-            "title": "Audio Generation — Audio is a 1-D signal at 16-48 kHz. A five-second clip is 80-240k samples. No transformer ...",
+            "title": "Audio Generation — Neural audio codecs · Two generative paradigms on top · Step 1: synthetic audio tokens...",
             "anchor": "audio-generation"
           },
           {
-            "title": "3D Generation — 3D is the modality where 2D-to-3D leverage is strongest. The 2023 breakthrough was 3D Gaus...",
+            "title": "3D Generation — Representation: 3D Gaussian Splatting (Kerbl et al. · 2023) · Multi-view diffusion...",
             "anchor": "3d-generation"
           },
           {
-            "title": "Flow Matching & Rectified Flows — Diffusion models take 20-50 sampling steps because they walk a curved path from noise to d...",
+            "title": "Flow Matching & Rectified Flows — Straight-line flow · Sampling · Rectified flow (Liu 2022)...",
             "anchor": "flow-matching-rectified-flows"
           },
           {
-            "title": "Evaluation: FID, CLIP Score — Every generative model leaderboard cites FID, CLIP score, and a win rate from a human-pref...",
+            "title": "Evaluation: FID, CLIP Score — FID — sample quality · CLIP score — prompt adherence · Human preference — the ground truth...",
             "anchor": "evaluation-fid-clip-score"
           },
           {
-            "title": "Visual Autoregressive Modeling (VAR): Next-Scale Prediction — Diffusion models sample iteratively in time (denoising steps). VAR samples iteratively in ...",
+            "title": "Visual Autoregressive Modeling (VAR): Next-Scale Prediction — VQ-VAE Multi-Scale Tokenizer · Next-Scale Prediction · Generation...",
             "anchor": "visual-autoregressive-modeling-var-next-scale-prediction"
           }
         ]
@@ -822,51 +822,51 @@ window.topicsData = [
         "file": "phase-09.md",
         "concepts": [
           {
-            "title": "MDPs, States, Actions & Rewards — A Markov Decision Process is five things: states, actions, transitions, rewards, a discoun...",
+            "title": "MDPs, States, Actions & Rewards — Step 1: a tiny deterministic MDP · Step 2: roll out a policy · Step 3: compute `V^π` exactly via the Bellman equation...",
             "anchor": "mdps-states-actions-rewards"
           },
           {
-            "title": "Dynamic Programming — Dynamic programming is RL with cheating. You already know the transition and reward functi...",
+            "title": "Dynamic Programming — Step 1: build the GridWorld MDP model · Step 2: policy evaluation · Step 3: policy improvement...",
             "anchor": "dynamic-programming"
           },
           {
-            "title": "Monte Carlo Methods — Dynamic programming needs a model. Monte Carlo needs nothing but episodes. Run the policy,...",
+            "title": "Monte Carlo Methods — Step 1: rollout → list of (s · a · r)...",
             "anchor": "monte-carlo-methods"
           },
           {
-            "title": "Q-Learning, SARSA — Monte Carlo waits until the episode ends. TD updates after every step by bootstrapping the...",
+            "title": "Q-Learning, SARSA — Step 1: SARSA on ε-greedy policy · Step 2: Q-learning · Step 3: learning curves...",
             "anchor": "q-learning-sarsa"
           },
           {
-            "title": "Deep Q-Networks (DQN) — 2013: Mnih trained one Q-learning network on raw pixels, beat every classical RL agent on ...",
+            "title": "Deep Q-Networks (DQN) — Step 1: replay buffer · Step 2: a tiny Q-network (manual MLP) · Step 3: the DQN update...",
             "anchor": "deep-q-networks-dqn"
           },
           {
-            "title": "Policy Gradients — REINFORCE — Stop estimating value. Parameterize the policy directly, compute the gradient of expected ...",
+            "title": "Policy Gradients — REINFORCE — Step 1: softmax policy network · Step 2: sampling and log-probability · Step 3: rollout with log-probs captured...",
             "anchor": "policy-gradients-reinforce"
           },
           {
-            "title": "Actor-Critic — A2C, A3C — REINFORCE is noisy. Add a critic that learns $\\hat{V}(s)$, subtract it from the return, an...",
+            "title": "Actor-Critic — A2C, A3C — Step 1: a critic · Step 2: n-step advantage · Step 3: combined update...",
             "anchor": "actor-critic-a2c-a3c"
           },
           {
-            "title": "PPO — A2C throws away each rollout after one update. PPO wraps the policy gradient in a clipped ...",
+            "title": "PPO — Step 1: capture `log π_old(a | s)` at rollout time · Step 2: compute GAE advantages (Lesson 07) · Step 3: clipped surrogate update...",
             "anchor": "ppo"
           },
           {
-            "title": "Reward Modeling & RLHF — Humans cannot write a reward function for \"good assistant response,\" but they can compare ...",
+            "title": "Reward Modeling & RLHF — Step 1: synthetic preference data · Step 2: Bradley-Terry reward model · Step 3: PPO-like policy on top of RM...",
             "anchor": "reward-modeling-rlhf"
           },
           {
-            "title": "Multi-Agent RL — Single-agent RL assumes the environment is stationary. Put two learning agents in the same...",
+            "title": "Multi-Agent RL — Step 1: the multi-agent env · Step 2: independent Q-learning · Step 3: centralized Q with decomposed-value update...",
             "anchor": "multi-agent-rl"
           },
           {
-            "title": "Sim-to-Real Transfer — A policy trained in a simulator that fails on hardware is a policy that memorized the simu...",
+            "title": "Sim-to-Real Transfer — Step 1: parameterized sim · Step 2: train with DR · Step 3: evaluate zero-shot on \"real\" slips...",
             "anchor": "sim-to-real-transfer"
           },
           {
-            "title": "RL for Games — 1992: TD-Gammon beat human champions at backgammon with pure TD. 2016: AlphaGo beat Lee Se...",
+            "title": "RL for Games — Step 1: a tiny verifier environment · Step 2: policy: softmax over K answer tokens per prompt · Step 3: group sampling and group-relative advantage...",
             "anchor": "rl-for-games"
           }
         ]
@@ -883,99 +883,99 @@ window.topicsData = [
         "file": "phase-10.md",
         "concepts": [
           {
-            "title": "Tokenizers: BPE, WordPiece, SentencePiece — Your LLM does not read English. It reads integers. The tokenizer decides whether those int...",
+            "title": "Tokenizers: BPE, WordPiece, SentencePiece — Three Approaches That Failed (and One That Won) · BPE: Byte Pair Encoding · Byte-Level BPE (GPT-2...",
             "anchor": "tokenizers-bpe-wordpiece-sentencepiece"
           },
           {
-            "title": "Building a Tokenizer from Scratch — Lesson 01 gave you a toy. This lesson gives you a weapon....",
+            "title": "Building a Tokenizer from Scratch — The Full Pipeline · Byte-Level BPE · Pre-Tokenization...",
             "anchor": "building-a-tokenizer-from-scratch"
           },
           {
-            "title": "Data Pipelines for Pre-Training — The model is a mirror. It reflects whatever data you feed it. Feed it garbage, it reflects...",
+            "title": "Data Pipelines for Pre-Training — Where the Data Comes From · Data Cleaning · Deduplication with MinHash...",
             "anchor": "data-pipelines-for-pre-training"
           },
           {
-            "title": "Pre-Training a Mini GPT (124M) — GPT-2 Small has 124 million parameters. That's 12 transformer layers, 12 attention heads, ...",
+            "title": "Pre-Training a Mini GPT (124M) — The GPT Architecture · The Transformer Block · Attention: The Core Mechanism...",
             "anchor": "pre-training-a-mini-gpt-124m"
           },
           {
-            "title": "Distributed Training, FSDP, DeepSpeed — Your 124M model trained on one GPU. Now try 7 billion parameters. The model doesn't fit in...",
+            "title": "Distributed Training, FSDP, DeepSpeed — Why Distribution is Required · Data Parallelism · Tensor Parallelism...",
             "anchor": "distributed-training-fsdp-deepspeed"
           },
           {
-            "title": "Instruction Tuning — SFT — A base model predicts the next token. That's it. It doesn't follow instructions, answer qu...",
+            "title": "Instruction Tuning — SFT — What SFT Actually Does · Data Formats · Why It Works...",
             "anchor": "instruction-tuning-sft"
           },
           {
-            "title": "RLHF — Reward Model + PPO — SFT teaches the model to follow instructions. But it doesn't teach the model which respons...",
+            "title": "RLHF — Reward Model + PPO — The Three Stages · The Reward Model · PPO: Proximal Policy Optimization...",
             "anchor": "rlhf-reward-model-ppo"
           },
           {
-            "title": "DPO — Direct Preference Optimization — RLHF works. It also requires training three models (SFT, reward model, policy), managing P...",
+            "title": "DPO — Direct Preference Optimization — The Key Insight · The DPO Loss · Why DPO is Simpler...",
             "anchor": "dpo-direct-preference-optimization"
           },
           {
-            "title": "Constitutional AI & Self-Improvement — RLHF needs humans in the loop. Constitutional AI replaces most of them with the model itse...",
+            "title": "Constitutional AI & Self-Improvement — The Constitutional AI Loop · What the Constitution Actually Does · GRPO: Group-Relative Policy Optimization...",
             "anchor": "constitutional-ai-self-improvement"
           },
           {
-            "title": "Evaluation — Benchmarks, Evals — Goodhart's Law: when a measure becomes a target, it ceases to be a good measure. Every fro...",
+            "title": "Evaluation — Benchmarks, Evals — The Eval Landscape · Why Benchmarks Break · Perplexity: A Quick Health Check...",
             "anchor": "evaluation-benchmarks-evals"
           },
           {
-            "title": "Quantization: INT8, GPTQ, AWQ, GGUF — A 70B model in FP16 needs 140GB. Two A100s just for weights. Quantize to FP8: one 80GB GPU...",
+            "title": "Quantization: INT8, GPTQ, AWQ, GGUF — Number Formats: What Each Bit Does · How Quantization Works · Sensitivity Hierarchy...",
             "anchor": "quantization-int8-gptq-awq-gguf"
           },
           {
-            "title": "Inference Optimization — Two phases define LLM inference. Prefill processes your prompt in parallel -- compute-boun...",
+            "title": "Inference Optimization — Prefill vs Decode · KV Cache · Continuous Batching...",
             "anchor": "inference-optimization"
           },
           {
-            "title": "Building a Complete LLM Pipeline — Everything from Lessons 01 to 12 is one stage of one pipeline. This lesson is the scaffold...",
+            "title": "Building a Complete LLM Pipeline — The Twelve Stages · The Manifest · Artifact Typing...",
             "anchor": "building-a-complete-llm-pipeline"
           },
           {
-            "title": "Open Models: Architecture Walkthroughs — You built a GPT-2 Small from scratch in Lesson 04. Frontier open models in 2026 are the sa...",
+            "title": "Open Models: Architecture Walkthroughs — The Invariant Core · The Six Knobs That Actually Move · Knob 1: RMSNorm...",
             "anchor": "open-models-architecture-walkthroughs"
           },
           {
-            "title": "Speculative Decoding and EAGLE-3 — Phase 7 · Lesson 16 proved the math: the Leviathan rejection rule preserves the verifier's...",
+            "title": "Speculative Decoding and EAGLE-3 — The invariant: Leviathan rejection sampling · What determines speedup · The two-year progression...",
             "anchor": "speculative-decoding-and-eagle-3"
           },
           {
-            "title": "Differential Attention (V2) — Softmax attention spreads a small amount of probability over every non-matching token. Ove...",
+            "title": "Differential Attention (V2) — The noise floor of softmax · The differential idea · Why this matches headed noise-canceling...",
             "anchor": "differential-attention-v2"
           },
           {
-            "title": "Native Sparse Attention (DeepSeek NSA) — At 64k tokens, attention eats 70-80% of decode latency. Every open-model lab has a plan to...",
+            "title": "Native Sparse Attention (DeepSeek NSA) — Three parallel branches · Why this is \"natively trainable\" · Hardware-aligned kernel...",
             "anchor": "native-sparse-attention-deepseek-nsa"
           },
           {
-            "title": "Multi-Token Prediction (MTP) — Every autoregressive LLM from GPT-2 to Llama 3 trains on one loss per position: predict th...",
+            "title": "Multi-Token Prediction (MTP) — The sequential MTP recipe · Why sequential · not parallel...",
             "anchor": "multi-token-prediction-mtp"
           },
           {
-            "title": "DualPipe Parallelism — DeepSeek-V3 was trained on 2,048 H800 GPUs with MoE experts scattered across nodes. Cross-...",
+            "title": "DualPipe Parallelism — Pipeline parallelism refresher · Idea 1: chunk decomposition · Idea 2: bidirectional scheduling...",
             "anchor": "dualpipe-parallelism"
           },
           {
-            "title": "DeepSeek-V3 Architecture Walkthrough — Phase 10 · Lesson 14 named the six architectural knobs every open model turns. DeepSeek-V3...",
+            "title": "DeepSeek-V3 Architecture Walkthrough — The invariant core · again · The twist: MLA instead of GQA...",
             "anchor": "deepseek-v3-architecture-walkthrough"
           },
           {
-            "title": "Jamba — Hybrid SSM-Transformer — State space models (SSMs) and transformers want different things. Transformers buy quality...",
+            "title": "Jamba — Hybrid SSM-Transformer — An SSM in one page · The Jamba block · Why the 1:7 ratio...",
             "anchor": "jamba-hybrid-ssm-transformer"
           },
           {
-            "title": "Async and Hogwild! Inference — Speculative decoding (Phase 10 · 15) parallelizes tokens within one sequence. Multi-agent ...",
+            "title": "Async and Hogwild! Inference — The setup · Why coordination emerges · The naming...",
             "anchor": "async-and-hogwild-inference"
           },
           {
-            "title": "Speculative Decoding and EAGLE — A frontier LLM generating one token requires a full forward pass over billions of paramete...",
+            "title": "Speculative Decoding and EAGLE — The Two-Model Setup · The Exactness Rule · Expected Speedup...",
             "anchor": "speculative-decoding-and-eagle"
           },
           {
-            "title": "Gradient Checkpointing and Activation Recomputation — Backprop keeps every intermediate activation. At 70B parameters and 128K context that is 3...",
+            "title": "Gradient Checkpointing and Activation Recomputation — What Backward Actually Needs · Naive Full Checkpointing · Selective Checkpointing (Korthikanti 2022)...",
             "anchor": "gradient-checkpointing-and-activation-recomputation"
           }
         ]
@@ -992,71 +992,71 @@ window.topicsData = [
         "file": "phase-11.md",
         "concepts": [
           {
-            "title": "Prompt Engineering: Techniques & Patterns — Most people write prompts like they are texting a friend. Then they wonder why a 200-billi...",
+            "title": "Prompt Engineering: Techniques & Patterns — Anatomy of a Prompt · Role Prompting: Why \"You are an expert X\" Works · Instruction Clarity: Specific Beats Vague...",
             "anchor": "prompt-engineering-techniques-patterns"
           },
           {
-            "title": "Few-Shot, CoT, Tree-of-Thought — Telling a model what to do is prompting. Showing it how to think is engineering. The gap b...",
+            "title": "Few-Shot, CoT, Tree-of-Thought — Zero-Shot vs Few-Shot: When Examples Beat Instructions · Example Selection: Similar Beats Random · Chain-of-Thought: Giving Models Scratch Paper...",
             "anchor": "few-shot-cot-tree-of-thought"
           },
           {
-            "title": "Structured Outputs — Your LLM returns a string. Your application needs JSON. That gap has crashed more producti...",
+            "title": "Structured Outputs — The Structured Output Spectrum · JSON Schema: The Contract Language · The Pydantic Pattern...",
             "anchor": "structured-outputs"
           },
           {
-            "title": "Embeddings & Vector Representations — Text is discrete. Math is continuous. Every time you ask an LLM to find \"similar\" document...",
+            "title": "Embeddings & Vector Representations — What Is an Embedding? · The Word2Vec Breakthrough · From Words to Sentences...",
             "anchor": "embeddings-vector-representations"
           },
           {
-            "title": "Context Engineering — Prompt engineering is a subset. Context engineering is the whole game. A prompt is a strin...",
+            "title": "Context Engineering — The Context Window is a Scarce Resource · Lost-in-the-Middle · Context Components...",
             "anchor": "context-engineering"
           },
           {
-            "title": "RAG: Retrieval-Augmented Generation — Your LLM knows everything up to its training cutoff. It knows nothing about your company's...",
+            "title": "RAG: Retrieval-Augmented Generation — The RAG Pattern · Why RAG Beats Fine-Tuning · Embedding Models...",
             "anchor": "rag-retrieval-augmented-generation"
           },
           {
-            "title": "Advanced RAG: Chunking, Reranking — Basic RAG retrieves the top-k most similar chunks. That works for simple questions. It fal...",
+            "title": "Advanced RAG: Chunking, Reranking — Hybrid Search: Semantic + Keyword · Reciprocal Rank Fusion (RRF) · Reranking...",
             "anchor": "advanced-rag-chunking-reranking"
           },
           {
-            "title": "Fine-Tuning with LoRA & QLoRA — Full fine-tuning a 7B model requires 56GB of VRAM. You don't have that. Neither do most co...",
+            "title": "Fine-Tuning with LoRA & QLoRA — LoRA: Low-Rank Adaptation · The Scaling Factor: Alpha · Where to Apply LoRA...",
             "anchor": "fine-tuning-with-lora-qlora"
           },
           {
-            "title": "Function Calling & Tool Use — LLMs cannot do anything. They generate text. That is the entire capability. They cannot ch...",
+            "title": "Function Calling & Tool Use — The Function Calling Loop · Tool Definitions: The JSON Schema Contract · Provider Comparison...",
             "anchor": "function-calling-tool-use"
           },
           {
-            "title": "Evaluation & Testing — You would never deploy a web app without tests. You would never ship a database migration ...",
+            "title": "Evaluation & Testing — The Eval Taxonomy · LLM-as-Judge: The Workhorse · Rubric Design...",
             "anchor": "evaluation-testing"
           },
           {
-            "title": "Caching, Rate Limiting & Cost — Most AI startups do not die from bad models. They die from bad unit economics. A single GP...",
+            "title": "Caching, Rate Limiting & Cost — The Cost Anatomy of an LLM Call · Provider Caching: Built-in Discounts · Semantic Caching: Your Custom Layer...",
             "anchor": "caching-rate-limiting-cost"
           },
           {
-            "title": "Guardrails & Safety — Your LLM application will be attacked. Not might. Will. The first prompt injection attempt...",
+            "title": "Guardrails & Safety — The Guardrail Sandwich · Attack Taxonomy · Input Guardrails...",
             "anchor": "guardrails-safety"
           },
           {
-            "title": "Building a Production LLM App — You have built prompts, embeddings, RAG pipelines, function calling, caching layers, and g...",
+            "title": "Building a Production LLM App — Production Architecture · The Stack · Streaming: Why It Matters...",
             "anchor": "building-a-production-llm-app"
           },
           {
-            "title": "Model Context Protocol (MCP) — MCP gives an AI host one protocol for discovering and invoking tools, resources, and promp...",
+            "title": "Model Context Protocol (MCP) — The three server primitives · Stateless requests replace the handshake · Discovery and version selection...",
             "anchor": "model-context-protocol-mcp"
           },
           {
-            "title": "Prompt Caching & Context Caching — Your system prompt is 4,000 tokens. Your RAG context is 20,000 tokens. You send both with ...",
+            "title": "Prompt Caching & Context Caching — The cache-friendly layout · The break-even calculation · Step 1: Anthropic prompt caching with explicit markers...",
             "anchor": "prompt-caching-context-caching"
           },
           {
-            "title": "Agent State Machines — Graphs, Nodes, Checkpoints — A ReAct loop written by hand is a `while True`. The same loop written as an explicit graph...",
+            "title": "Agent State Machines — Graphs, Nodes, Checkpoints — The four superpowers · Reducers are the point · The ReAct graph in four nodes...",
             "anchor": "agent-state-machines-graphs-nodes-checkpoints"
           },
           {
-            "title": "Agent Framework Tradeoffs — Every framework sells the same demo (research agent builds a report) and hides the same bu...",
+            "title": "Agent Framework Tradeoffs — What \"abstraction\" actually means · The state question · The branching question...",
             "anchor": "agent-framework-tradeoffs"
           }
         ]
@@ -1073,103 +1073,103 @@ window.topicsData = [
         "file": "phase-12.md",
         "concepts": [
           {
-            "title": "Vision Transformers and the Patch-Token Primitive — Before anything multimodal, an image has to become a sequence of tokens a transformer can ...",
+            "title": "Vision Transformers and the Patch-Token Primitive — Patches as tokens · Positional embeddings · CLS token...",
             "anchor": "vision-transformers-and-the-patch-token-primitive"
           },
           {
-            "title": "CLIP and Contrastive Vision-Language Pretraining — OpenAI's CLIP (2021) proved a single idea big enough to power the next five years: align a...",
+            "title": "CLIP and Contrastive Vision-Language Pretraining — The dual encoder · InfoNCE loss · Temperature...",
             "anchor": "clip-and-contrastive-vision-language-pretraining"
           },
           {
-            "title": "BLIP-2 Q-Former as Modality Bridge — CLIP aligns image and text but cannot generate captions, answer questions, or hold a conve...",
+            "title": "BLIP-2 Q-Former as Modality Bridge — Learnable queries · Architecture · Two-stage training...",
             "anchor": "blip-2-q-former-as-modality-bridge"
           },
           {
-            "title": "Flamingo and Gated Cross-Attention — DeepMind's Flamingo (2022) did two things before anyone else. It showed a single model cou...",
+            "title": "Flamingo and Gated Cross-Attention — The frozen LLM · Perceiver resampler · Gated cross-attention...",
             "anchor": "flamingo-and-gated-cross-attention"
           },
           {
-            "title": "LLaVA and Visual Instruction Tuning — LLaVA (April 2023) is the most copied multimodal architecture on the planet. It replaced B...",
+            "title": "LLaVA and Visual Instruction Tuning — The architecture · Stage 1: projector alignment · Stage 2: visual instruction tuning...",
             "anchor": "llava-and-visual-instruction-tuning"
           },
           {
-            "title": "Any-Resolution Vision — Patch-n'-Pack and NaFlex — Real images are not 224x224 squares. A receipt is 1:3, a chart is 16:9, a medical scan mig...",
+            "title": "Any-Resolution Vision — Patch-n'-Pack and NaFlex — NaViT and patch-n'-pack · AnyRes (LLaVA-NeXT) · M-RoPE (Qwen2-VL)...",
             "anchor": "any-resolution-vision-patch-n-pack-and-naflex"
           },
           {
-            "title": "Open-Weight VLM Recipes: What Actually Matters — The 2024-2026 open-weight VLM literature is a forest of ablation tables. Apple's MM1 teste...",
+            "title": "Open-Weight VLM Recipes: What Actually Matters — The five-axis design space · Axis 1: encoder > connector · Axis 2: connector design is a wash...",
             "anchor": "open-weight-vlm-recipes-what-actually-matters"
           },
           {
-            "title": "LLaVA-OneVision: Single, Multi, Video — Before LLaVA-OneVision (Li et al., August 2024) the open-VLM world had separate lineages: ...",
+            "title": "LLaVA-OneVision: Single, Multi, Video — The OneVision token budget · The three-stage curriculum · Why curriculum works...",
             "anchor": "llava-onevision-single-multi-video"
           },
           {
-            "title": "Qwen-VL Family and Dynamic-FPS Video — The Qwen-VL family — Qwen-VL (2023), Qwen2-VL (2024), Qwen2.5-VL (2025), Qwen3-VL (2025) —...",
+            "title": "Qwen-VL Family and Dynamic-FPS Video — Qwen-VL (August 2023) · Qwen2-VL (September 2024) — M-RoPE and native resolution · Qwen2.5-VL (February 2025) — dynamic FPS + absolute time...",
             "anchor": "qwen-vl-family-and-dynamic-fps-video"
           },
           {
-            "title": "InternVL3 Native Multimodal Pretraining — Every open VLM before InternVL3 followed the same three-step recipe: take a text LLM train...",
+            "title": "InternVL3 Native Multimodal Pretraining — Native multimodal pretraining · V2PE (variable visual position encoding) · Visual Resolution Router (ViR)...",
             "anchor": "internvl3-native-multimodal-pretraining"
           },
           {
-            "title": "Chameleon Early-Fusion Token-Only — Every VLM we have seen so far keeps images and text separate. Visual tokens come from a vi...",
+            "title": "Chameleon Early-Fusion Token-Only — VQ-VAE as image tokenizer · The shared vocabulary · Mixed-modality generation...",
             "anchor": "chameleon-early-fusion-token-only"
           },
           {
-            "title": "Emu3 Next-Token Prediction for Generation — BAAI's Emu3 (Wang et al., September 2024) is the 2024 result that should have ended the di...",
+            "title": "Emu3 Next-Token Prediction for Generation — The Emu3 tokenizer · Single-loss training · Classifier-free guidance and temperature...",
             "anchor": "emu3-next-token-prediction-for-generation"
           },
           {
-            "title": "Transfusion Autoregressive + Diffusion — Chameleon and Emu3 bet everything on discrete tokens. They work, but the quantization bott...",
+            "title": "Transfusion Autoregressive + Diffusion — The two-loss architecture · Attention mask: causal text + bidirectional image · Diffusion loss inside the transformer...",
             "anchor": "transfusion-autoregressive-diffusion"
           },
           {
-            "title": "Show-o Discrete-Diffusion Unified — Transfusion mixes continuous and discrete representations. Show-o (Xie et al., August 2024...",
+            "title": "Show-o Discrete-Diffusion Unified — Masked discrete diffusion (MaskGIT) · Show-o: one transformer · hybrid mask...",
             "anchor": "show-o-discrete-diffusion-unified"
           },
           {
-            "title": "Janus-Pro Decoupled Encoders — Unified multimodal models have an unavoidable tension. Understanding wants semantic featur...",
+            "title": "Janus-Pro Decoupled Encoders — Decoupled visual encoding · Why this works · Data scaling — Janus vs Janus-Pro...",
             "anchor": "janus-pro-decoupled-encoders"
           },
           {
-            "title": "MIO Any-to-Any Streaming — GPT-4o ships a product most open models cannot replicate: an agent that hears voice, sees ...",
+            "title": "MIO Any-to-Any Streaming — Four tokenizers for four modalities · Streaming decode · Four-stage curriculum...",
             "anchor": "mio-any-to-any-streaming"
           },
           {
-            "title": "Video-Language Temporal Grounding — Video is not a stack of photos. A 5-second clip has causal ordering, action verbs, and eve...",
+            "title": "Video-Language Temporal Grounding — Video-LLaMA: Q-former per clip + audio branch · VideoChat and Video-LLaVA · Qwen2.5-VL and time-aligned M-RoPE...",
             "anchor": "video-language-temporal-grounding"
           },
           {
-            "title": "Long-Video at Million-Token Context — A 1-hour 4K video at 24 FPS, patched and embedded, produces on the order of 60 million tok...",
+            "title": "Long-Video at Million-Token Context — Path 1: Brute context (Gemini 1.5 · Claude Opus) · Path 2: Ring attention (LWM...",
             "anchor": "long-video-at-million-token-context"
           },
           {
-            "title": "Audio-Language Models: Whisper to AF3 — Whisper (Radford et al., December 2022) settled speech recognition — 680k hours of weakly-...",
+            "title": "Audio-Language Models: Whisper to AF3 — Log-Mel spectrogram: the input feature · Whisper's encoder · BEATs and audio-specific encoders...",
             "anchor": "audio-language-models-whisper-to-af3"
           },
           {
-            "title": "Omni Models: Thinker-Talker Streaming — GPT-4o's product demo in May 2024 was disruptive not because of the underlying model but b...",
+            "title": "Omni Models: Thinker-Talker Streaming — Thinker and Talker · TMRoPE — time-aligned multimodal positions · Streaming speech synthesis...",
             "anchor": "omni-models-thinker-talker-streaming"
           },
           {
-            "title": "Embodied VLAs: RT-2, OpenVLA, π0, GR00T — The first time a model read a recipe off a website and executed it in a kitchen robot was ...",
+            "title": "Embodied VLAs: RT-2, OpenVLA, π0, GR00T — Action tokenization (RT-2) · OpenVLA — the open 7B reference · FAST tokenizer — faster action decode...",
             "anchor": "embodied-vlas-rt-2-openvla-0-gr00t"
           },
           {
-            "title": "Document and Diagram Understanding — Documents are not photos. A PDF, scientific paper, invoice, or handwritten form has layout...",
+            "title": "Document and Diagram Understanding — Era 1 — OCR pipeline (pre-2021) · TrOCR (2021) · Era 2 — OCR-free (2022-2023)...",
             "anchor": "document-and-diagram-understanding"
           },
           {
-            "title": "ColPali Vision-Native Document RAG — Traditional RAG parses PDFs into text, splits into chunks, embeds chunks, stores vectors. ...",
+            "title": "ColPali Vision-Native Document RAG — ColBERT (2020) · ColPali · ColQwen2 and ColSmol...",
             "anchor": "colpali-vision-native-document-rag"
           },
           {
-            "title": "Multimodal RAG and Cross-Modal Retrieval — Vision-native document RAG is one slice. Production multimodal RAG goes wider — retrieving...",
+            "title": "Multimodal RAG and Cross-Modal Retrieval — Cross-modal retrieval · Fusion strategies · Generation grounding...",
             "anchor": "multimodal-rag-and-cross-modal-retrieval"
           },
           {
-            "title": "Multimodal Agents and Computer-Use (Capstone) — The 2026 frontier product is a multimodal agent that reads screenshots, clicks buttons, na...",
+            "title": "Multimodal Agents and Computer-Use (Capstone) — GUI grounding — the primitive · Action schemas · Screenshot-only vs accessibility-tree...",
             "anchor": "multimodal-agents-and-computer-use-capstone"
           }
         ]
@@ -1186,183 +1186,183 @@ window.topicsData = [
         "file": "phase-13.md",
         "concepts": [
           {
-            "title": "The Tool Interface — A language model produces tokens. A program takes actions. The gap between those two is th...",
+            "title": "The Tool Interface — Step one: describe · Step two: decide · Step three: execute...",
             "anchor": "the-tool-interface"
           },
           {
-            "title": "Function Calling Deep Dive — The three frontier providers converged on the same tool-call loop in 2024 and then diverge...",
+            "title": "Function Calling Deep Dive — The common structure · Shape diffs · field by field...",
             "anchor": "function-calling-deep-dive"
           },
           {
-            "title": "Parallel and Streaming Tool Calls — Three independent weather lookups serialized is three round trips. Run them in parallel an...",
+            "title": "Parallel and Streaming Tool Calls — Enabling parallel · Id correlation · Running calls concurrently...",
             "anchor": "parallel-and-streaming-tool-calls"
           },
           {
-            "title": "Structured Output — \"Ask the model nicely to return JSON\" fails 5 to 15 percent of the time, even on frontier ...",
+            "title": "Structured Output — JSON Schema 2020-12 — the lingua franca · Pydantic · the Python binding...",
             "anchor": "structured-output"
           },
           {
-            "title": "Tool Schema Design — A correct tool fails silently when the model cannot tell when to use it. Naming, descripti...",
+            "title": "Tool Schema Design — Naming rules · Description pattern · Atomic vs monolithic...",
             "anchor": "tool-schema-design"
           },
           {
-            "title": "MCP Fundamentals: Stateless Requests and JSON-RPC — Modern MCP has no handshake and no protocol session. Each request must carry enough metada...",
+            "title": "MCP Fundamentals: Stateless Requests and JSON-RPC — Server primitives · JSON-RPC envelopes · Required request metadata...",
             "anchor": "mcp-fundamentals-stateless-requests-and-json-rpc"
           },
           {
-            "title": "Building an MCP Server: Stateless Python and TypeScript — A modern MCP server does not remember a handshake. It validates the metadata on every requ...",
+            "title": "Building an MCP Server: Stateless Python and TypeScript — The modern dispatch loop · Request validation · Mandatory discovery...",
             "anchor": "building-an-mcp-server-stateless-python-and-typescript"
           },
           {
-            "title": "Building an MCP Client: Discovery, Routing, and Dual-Era Fallback — A modern MCP client repeats its contract on every request. Its hardest compatibility decis...",
+            "title": "Building an MCP Client: Discovery, Routing, and Dual-Era Fallback — A peer · not a protocol session · Build every modern request from scratch...",
             "anchor": "building-an-mcp-client-discovery-routing-and-dual-era-fallba"
           },
           {
-            "title": "MCP Transports: stdio and Stateless Streamable HTTP — Transport carries MCP messages. It does not supply missing protocol state. In `2026-07-28`...",
+            "title": "MCP Transports: stdio and Stateless Streamable HTTP — stdio · Streamable HTTP in 2026-07-28 · POST-only means POST-only...",
             "anchor": "mcp-transports-stdio-and-stateless-streamable-http"
           },
           {
-            "title": "MCP Resources and Prompts: Addressable Context for Stateless Servers — Tools perform operations. Resources expose addressable content. Prompts package user-selec...",
+            "title": "MCP Resources and Prompts: Addressable Context for Stateless Servers — Resource templates · Content is not trusted instruction...",
             "anchor": "mcp-resources-and-prompts-addressable-context-for-stateless-"
           },
           {
-            "title": "MCP Model Input: Sampling Migration and Stateless MRTR — MCP 2026-07-28 deprecates Sampling for new designs and removes the server-to-client reques...",
+            "title": "MCP Model Input: Sampling Migration and Stateless MRTR — New server: integrate with a model provider directly · Existing Sampling workflow: migrate it to MRTR...",
             "anchor": "mcp-model-input-sampling-migration-and-stateless-mrtr"
           },
           {
-            "title": "Explicit Scope and Stateless Elicitation — Roots are deprecated in MCP 2026-07-28 and were never a security sandbox. Put scope in vis...",
+            "title": "Explicit Scope and Stateless Elicitation — The three-layer rule...",
             "anchor": "explicit-scope-and-stateless-elicitation"
           },
           {
-            "title": "MCP Tasks Extension: Durable Work on a Stateless Core — Stateless MCP does not mean every operation must finish in one request. The official Tasks...",
+            "title": "MCP Tasks Extension: Durable Work on a Stateless Core — Input needed before task creation · Input needed after task creation · Protocol error...",
             "anchor": "mcp-tasks-extension-durable-work-on-a-stateless-core"
           },
           {
-            "title": "MCP Apps on the Stateless Protocol — An interactive result is still an MCP tool and resource exchange. The 2026-07-28 core make...",
+            "title": "MCP Apps on the Stateless Protocol — Two protocols · one feature · Discover before rendering...",
             "anchor": "mcp-apps-on-the-stateless-protocol"
           },
           {
-            "title": "MCP Security: Poisoned Metadata, Routing, and MRTR State — Stateless does not mean trustless. It means every request exposes the evidence a server an...",
+            "title": "MCP Security: Poisoned Metadata, Routing, and MRTR State — Seven attack surfaces worth checking · The current request envelope is evidence · not identity...",
             "anchor": "mcp-security-poisoned-metadata-routing-and-mrtr-state"
           },
           {
-            "title": "MCP Authorization: CIMD, Issuer Binding, PKCE, and Step-Up — A remote MCP request is stateless, but its authorization is not anonymous. Bind every cred...",
+            "title": "MCP Authorization: CIMD, Issuer Binding, PKCE, and Step-Up — Know the three roles · Authorization applies to HTTP · Start with protected-resource metadata...",
             "anchor": "mcp-authorization-cimd-issuer-binding-pkce-and-step-up"
           },
           {
-            "title": "Stateless MCP Gateways and Registry Admission — A gateway should make every route explicit. The 2026-07-28 protocol gives it method, name,...",
+            "title": "Stateless MCP Gateways and Registry Admission — The modern gateway path · Runtime policy is the primary gateway decision · One POST endpoint...",
             "anchor": "stateless-mcp-gateways-and-registry-admission"
           },
           {
-            "title": "MCP Auth in Production: Issuer-Bound Enrollment and Tokens — Lesson 16 built the OAuth 2.1 state machine. This lesson hardens its production boundaries...",
+            "title": "MCP Auth in Production: Issuer-Bound Enrollment and Tokens — RFC 8414 — OAuth Authorization Server Metadata · RFC 9728 (recap) — Protected Resource Metadata · Client ID Metadata Documents (the recommended default)...",
             "anchor": "mcp-auth-in-production-issuer-bound-enrollment-and-tokens"
           },
           {
-            "title": "A2A Protocol — MCP is agent-to-tool. A2A (Agent2Agent) is agent-to-agent — an open protocol for letting o...",
+            "title": "A2A Protocol — Agent Card · Signed Agent Cards · Task lifecycle...",
             "anchor": "a2a-protocol"
           },
           {
-            "title": "OpenTelemetry GenAI — An agent calls five tools, three MCP servers, and two sub-agents. You need one trace acros...",
+            "title": "OpenTelemetry GenAI — Span hierarchy · Required attributes · Span kinds...",
             "anchor": "opentelemetry-genai"
           },
           {
-            "title": "LLM Routing Layer — Provider lock-in is expensive. Different tool-calling workloads suit different models. Rou...",
+            "title": "LLM Routing Layer — OpenAI-compatible proxy shape · Model aliases · Fallback chains...",
             "anchor": "llm-routing-layer"
           },
           {
-            "title": "Agent Skills: Portable Contract and Runtime Boundary — A skill is not a long prompt with a better filename. It is a discoverable package of instr...",
+            "title": "Agent Skills: Portable Contract and Runtime Boundary — Preflight for the real-host lab · 1. Start in an empty working directory · 2. Install the complete reviewer bundle...",
             "anchor": "agent-skills-portable-contract-and-runtime-boundary"
           },
           {
-            "title": "Capstone: Stateless Tool Ecosystem — A production agent system is a set of boundaries, not a pile of features. This capstone se...",
+            "title": "Capstone: Stateless Tool Ecosystem — Target architecture · Target trace · Current protocol surfaces...",
             "anchor": "capstone-stateless-tool-ecosystem"
           },
           {
-            "title": "Skill Discovery and Progressive Disclosure — A skill becomes useful before its body is loaded. Its name and description earn a place in...",
+            "title": "Skill Discovery and Progressive Disclosure — Discovery is a compiler pipeline · Scope is runtime policy · Collisions need identity beyond `name`...",
             "anchor": "skill-discovery-and-progressive-disclosure"
           },
           {
-            "title": "Skill Invocation and Routing — Invocation is an authority decision followed by a relevance decision. A good description h...",
+            "title": "Skill Invocation and Routing — Five channels can start the lifecycle · The five invocation stages · Human and model invocation form a 2x2 matrix...",
             "anchor": "skill-invocation-and-routing"
           },
           {
-            "title": "Skill Permissions, Sandboxes, and Trust — A skill can suggest an action. Only the host can authorize it, only an isolation boundary ...",
+            "title": "Skill Permissions, Sandboxes, and Trust — Skills are context · not a security boundary · Five control layers...",
             "anchor": "skill-permissions-sandboxes-and-trust"
           },
           {
-            "title": "Skill Evals, Packaging, and Portability — A skill is finished when its package survives linting, routes on the right requests, impro...",
+            "title": "Skill Evals, Packaging, and Portability — Start from a real workflow · not a topic · Separate judgment from deterministic work...",
             "anchor": "skill-evals-packaging-and-portability"
           },
           {
-            "title": "MCP Tool Contracts and Content — A tool is safe to automate only when discovery, arguments, results, pagination, and transp...",
+            "title": "MCP Tool Contracts and Content — Structured content is any JSON value · A small validator still teaches the boundary · Encode values before building HTTP headers...",
             "anchor": "mcp-tool-contracts-and-content"
           },
           {
-            "title": "MCP Reliability, Cancellation, and Flow Control — A request ID correlates a message. It does not make a side effect safe, stop a worker, or ...",
+            "title": "MCP Reliability, Cancellation, and Flow Control — stdio · Streamable HTTP · Server-sent cancellation is narrow...",
             "anchor": "mcp-reliability-cancellation-and-flow-control"
           },
           {
-            "title": "MCP Registry Supply Chain: Admission, Drift, and Rollback — A registry entry tells you what a publisher declared. Production admission proves what you...",
+            "title": "MCP Registry Supply Chain: Admission, Drift, and Rollback — 1. Namespace verification · 2. Provenance join · 3. Pin the decision...",
             "anchor": "mcp-registry-supply-chain-admission-drift-and-rollback"
           },
           {
-            "title": "MCP Conformance Engineering: Versioning, Evidence, and Operations — A server is not conformant because its happy path worked through one SDK. Conformance live...",
+            "title": "MCP Conformance Engineering: Versioning, Evidence, and Operations — Strict mode · Fallback mode · Golden transcripts...",
             "anchor": "mcp-conformance-engineering-versioning-evidence-and-operatio"
           },
           {
-            "title": "Program Anatomy: An ELF Reader From Scratch — A compiled program is a set of tables that point at each other. A reader you wrote gives o...",
+            "title": "Program Anatomy: An ELF Reader From Scratch — Lab A: the header by hand · Lab B: the value table behind the switch · Lab C: three builds of one source...",
             "anchor": "program-anatomy-an-elf-reader-from-scratch"
           },
           {
-            "title": "Disassembly and Control Flow: From Bytes to a Graph You Can Check — A disassembly listing is a claim about which bytes are instructions, and this lesson build...",
+            "title": "Disassembly and Control Flow: From Bytes to a Graph You Can Check — Prefixes come in four groups · REX adds four bits and must sit next to the opcode · Opcodes live in two maps...",
             "anchor": "disassembly-and-control-flow-from-bytes-to-a-graph-you-can-c"
           },
           {
-            "title": "Lifting to Pseudocode: IR, SSA, and Structuring From Scratch — Decompiler output is a claim with a hidden derivation. When you build the derivation yours...",
+            "title": "Lifting to Pseudocode: IR, SSA, and Structuring From Scratch — Flags are a variable · cltd and idiv · Stack slots at -O0...",
             "anchor": "lifting-to-pseudocode-ir-ssa-and-structuring-from-scratch"
           },
           {
-            "title": "Evidence, Confidence, and Unknowns in Binary Analysis — A finding about a compiled program is a record with a hash, a confidence, an authority, an...",
+            "title": "Evidence, Confidence, and Unknowns in Binary Analysis — Lab A: recompute a rea id · Lab B: refuse a promotion · Lab C: refuse a stale snapshot...",
             "anchor": "evidence-confidence-and-unknowns-in-binary-analysis"
           },
           {
-            "title": "Rebuild and Prove Equal: Differential Tests, Byte Comparison, and the Evidence Loop — Passing your tests proves agreement on your tests, so equality needs a grid that reaches e...",
+            "title": "Rebuild and Prove Equal: Differential Tests, Byte Comparison, and the Evidence Loop — Design the grid · The driver and the trap · Results...",
             "anchor": "rebuild-and-prove-equal-differential-tests-byte-comparison-a"
           },
           {
-            "title": "The Reverse Engineering Landscape: History, Tool Families, and How a Decompiler Is Built — Five tools read the same object and give four addresses, three block counts, and two answe...",
+            "title": "The Reverse Engineering Landscape: History, Tool Families, and How a Decompiler Is Built — 1973 to 1991: debuggers first · then disassemblers · 1991 to 2009: interactive disassemblers and the first decompilers...",
             "anchor": "the-reverse-engineering-landscape-history-tool-families-and-"
           },
           {
-            "title": "Calling Conventions and Stack Frames: System V, Windows x64, and AArch64 — A disassembly shows which registers a function reads. Only the ABI says what those registe...",
+            "title": "Calling Conventions and Stack Frames: System V, Windows x64, and AArch64 — Lab A: one instruction · three effects · Lab B: the frame of keeps...",
             "anchor": "calling-conventions-and-stack-frames-system-v-windows-x64-an"
           },
           {
-            "title": "Compiler Idioms: What Optimization Does to Your Code and How to Read It Back — An optimizing compiler replaces source constructs with cheaper instruction shapes. Each sh...",
+            "title": "Compiler Idioms: What Optimization Does to Your Code and How to Read It Back — Unsigned 10 by hand · Unsigned 7 by hand · with the add fix-up...",
             "anchor": "compiler-idioms-what-optimization-does-to-your-code-and-how-"
           },
           {
-            "title": "Linking, Loading, and Stripped Binaries: PLT, GOT, Imports, Fixups, and Function Identification — A linked program calls functions it does not contain. This lesson reads the tables the lin...",
+            "title": "Linking, Loading, and Stripped Binaries: PLT, GOT, Imports, Fixups, and Function Identification — PLT0 and the entry for puts · What the file does not have · .dynsym...",
             "anchor": "linking-loading-and-stripped-binaries-plt-got-imports-fixups"
           },
           {
-            "title": "Recovering Data and Types: Structs, Arrays, C++ Objects, and DWARF — A decompiler prints `a->balance` when it has a type table and `*(int *)(param_1 + 4)` when...",
+            "title": "Recovering Data and Types: Structs, Arrays, C++ Objects, and DWARF — Four kinds of stride evidence · The vectorised loop at -O2 · The unit header...",
             "anchor": "recovering-data-and-types-structs-arrays-c-objects-and-dwarf"
           },
           {
-            "title": "Dynamic Analysis of Your Own Program: Debuggers, Traces, and Confirming Static Claims — A breakpoint hit is an observation about one run of one build. This lesson builds the harn...",
+            "title": "Dynamic Analysis of Your Own Program: Debuggers, Traces, and Confirming Static Claims — Decode the branch by hand · Lab A: read a stop by hand · Lab B: the branch and its successor...",
             "anchor": "dynamic-analysis-of-your-own-program-debuggers-traces-and-co"
           },
           {
-            "title": "Beyond Native Code: Python, JVM, .NET, and WebAssembly Bytecode — A bytecode file is a program plus the compiler's notes about it, and this lesson builds th...",
+            "title": "Beyond Native Code: Python, JVM, .NET, and WebAssembly Bytecode — Lab A: read the header · then the code object · Lab B: the constant pool chain...",
             "anchor": "beyond-native-code-python-jvm-net-and-webassembly-bytecode"
           },
           {
-            "title": "Binary Diffing and Symbolic Execution: Matching Functions and Solving for Inputs — A match between two functions is a claim made by one signature with one quality, and a sol...",
+            "title": "Binary Diffing and Symbolic Execution: Matching Functions and Solving for Inputs — Lab A: five signatures by hand · Lab B: watch the relocation break the byte hash · Lab C: the false match and the order that avoids it...",
             "anchor": "binary-diffing-and-symbolic-execution-matching-functions-and"
           },
           {
-            "title": "AI-Assisted Reverse Engineering: LLM Decompilers, Analysis Agents, and Ground Truth — A model's reconstruction is a claim with a report attached, and this lesson builds the har...",
+            "title": "AI-Assisted Reverse Engineering: LLM Decompilers, Analysis Agents, and Ground Truth — bytes · grid · fuzz...",
             "anchor": "ai-assisted-reverse-engineering-llm-decompilers-analysis-age"
           }
         ]
@@ -1379,219 +1379,219 @@ window.topicsData = [
         "file": "phase-14.md",
         "concepts": [
           {
-            "title": "The Agent Loop — Every agent in 2026 is a variant of the ReAct loop from 2022 — Claude Code, Cursor, Devin,...",
+            "title": "The Agent Loop — ReAct: the canonical format · The 2026 shift: native reasoning · The five ingredients...",
             "anchor": "the-agent-loop"
           },
           {
-            "title": "ReWOO and Plan-and-Execute — ReAct interleaves thought and action in one stream. ReWOO separates them: one big plan up ...",
+            "title": "ReWOO and Plan-and-Execute — The three roles · Why 5x fewer tokens · Why it is more robust...",
             "anchor": "rewoo-and-plan-and-execute"
           },
           {
-            "title": "Reflexion and Verbal Reinforcement Learning — Gradient-based RL needs thousands of trials and a GPU cluster to fix a failure mode. Refle...",
+            "title": "Reflexion and Verbal Reinforcement Learning — The three components · Three evaluator types · Why this generalizes...",
             "anchor": "reflexion-and-verbal-reinforcement-learning"
           },
           {
-            "title": "Tree of Thoughts and LATS — A single chain-of-thought trajectory has no room to backtrack. ToT (Yao et al., 2023) turn...",
+            "title": "Tree of Thoughts and LATS — Tree of Thoughts (Yao et al. · NeurIPS 2023) · LATS (Zhou et al....",
             "anchor": "tree-of-thoughts-and-lats"
           },
           {
-            "title": "Self-Refine and CRITIC — Self-Refine (Madaan et al., 2023) uses one LLM in three roles — generate, feedback, refine...",
+            "title": "Self-Refine and CRITIC — Self-Refine (Madaan et al. · NeurIPS 2023) · CRITIC (Gou et al....",
             "anchor": "self-refine-and-critic"
           },
           {
-            "title": "Tool Use and Function Calling — Toolformer (Schick et al., 2023) started self-supervised tool annotation. Berkeley Functio...",
+            "title": "Tool Use and Function Calling — Toolformer (Schick et al. · NeurIPS 2023) · Berkeley Function Calling Leaderboard V4 (Patil et al....",
             "anchor": "tool-use-and-function-calling"
           },
           {
-            "title": "Agent Memory — Virtual Context and Memory Paging — Context windows are finite. Conversations, documents, and tool traces are not. The fix is ...",
+            "title": "Agent Memory — Virtual Context and Memory Paging — The OS analogy · Two tiers · The interrupt pattern...",
             "anchor": "agent-memory-virtual-context-and-memory-paging"
           },
           {
-            "title": "Memory Blocks and Sleep-Time Compute — Discrete functional memory blocks the model can edit directly, and a sleep-time agent that...",
+            "title": "Memory Blocks and Sleep-Time Compute — Three tiers · Memory blocks · Sleep-time compute...",
             "anchor": "memory-blocks-and-sleep-time-compute"
           },
           {
-            "title": "Hybrid Memory — Vector + Graph + KV — Hybrid memory runs three stores in parallel — vector for semantic similarity, KV for fast ...",
+            "title": "Hybrid Memory — Vector + Graph + KV — Three stores in parallel · Fusion scoring · Mem0g and temporal reasoning...",
             "anchor": "hybrid-memory-vector-graph-kv"
           },
           {
-            "title": "Skill Libraries and Lifelong Learning (Voyager) — Voyager (Wang et al., TMLR 2024) treats executable code as a skill. Skills are named, retr...",
+            "title": "Skill Libraries and Lifelong Learning (Voyager) — Three components · Action space = code · Skill retrieval...",
             "anchor": "skill-libraries-and-lifelong-learning-voyager"
           },
           {
-            "title": "Planning with HTN and Evolutionary Search — Symbolic planning handles the cases where the plan is provably correct. Evolutionary code ...",
+            "title": "Planning with HTN and Evolutionary Search — Hierarchical Task Networks · ChatHTN (Gopalakrishnan et al. · 2025)...",
             "anchor": "planning-with-htn-and-evolutionary-search"
           },
           {
-            "title": "Anthropic's Workflow Patterns — Schluntz and Zhang (Anthropic, Dec 2024) distinguish workflows (predefined paths) from age...",
+            "title": "Anthropic's Workflow Patterns — Workflows vs agents · The augmented LLM · The five patterns...",
             "anchor": "anthropic-s-workflow-patterns"
           },
           {
-            "title": "Stateful Graph Orchestration — Durable Execution and Checkpoints — Agent is a state machine; nodes are functions; edges are transitions; state is checkpointe...",
+            "title": "Stateful Graph Orchestration — Durable Execution and Checkpoints — The graph · Durable execution · Streaming...",
             "anchor": "stateful-graph-orchestration-durable-execution-and-checkpoin"
           },
           {
-            "title": "The Actor Model for Agents — Agents as actors: async message exchange, event-driven handlers, fault isolation, natural ...",
+            "title": "The Actor Model for Agents — Actors · Three API layers · Why decoupling matters...",
             "anchor": "the-actor-model-for-agents"
           },
           {
-            "title": "Role-Based Agent Teams — Roles, Tasks, Processes — Four primitives: Agent, Task, Crew, Process. Two top-level shapes: Crews (autonomous, role...",
+            "title": "Role-Based Agent Teams — Roles, Tasks, Processes — Four primitives · Sequential vs Hierarchical vs Consensus · Crews vs Flows...",
             "anchor": "role-based-agent-teams-roles-tasks-processes"
           },
           {
-            "title": "OpenAI Agents SDK — Handoffs, Guardrails, Tracing — OpenAI Agents SDK is the lightweight multi-agent framework built on the Responses API. Fiv...",
+            "title": "OpenAI Agents SDK — Handoffs, Guardrails, Tracing — Five primitives · Handoffs as tools · Guardrails...",
             "anchor": "openai-agents-sdk-handoffs-guardrails-tracing"
           },
           {
-            "title": "The Harness as a Library — Subagents and Session Store — A harness you can import: built-in tools, subagents for context isolation, hooks, W3C trac...",
+            "title": "The Harness as a Library — Subagents and Session Store — Client SDK vs Agent SDK · Built-in tools · Subagents...",
             "anchor": "the-harness-as-a-library-subagents-and-session-store"
           },
           {
-            "title": "Production Agent Runtimes — A production agent runtime optimizes what prototyping frameworks ignore: instantiation cos...",
+            "title": "Production Agent Runtimes — Agno · Mastra · Positioning...",
             "anchor": "production-agent-runtimes"
           },
           {
-            "title": "Benchmarks — SWE-bench, GAIA, AgentBench — Three benchmarks anchor agent evaluation in 2026. SWE-bench tests code patching. GAIA test...",
+            "title": "Benchmarks — SWE-bench, GAIA, AgentBench — SWE-bench (Jimenez et al. · ICLR 2024 oral) · SWE-bench Verified...",
             "anchor": "benchmarks-swe-bench-gaia-agentbench"
           },
           {
-            "title": "Benchmarks — WebArena and OSWorld — WebArena tests web-agent capability across four self-hosted apps. OSWorld tests desktop-ag...",
+            "title": "Benchmarks — WebArena and OSWorld — WebArena (Zhou et al. · ICLR 2024) · Extensions...",
             "anchor": "benchmarks-webarena-and-osworld"
           },
           {
-            "title": "Computer Use — Claude, OpenAI CUA, Gemini — Three production computer-use models in 2026. All three are vision-based. All three treat ...",
+            "title": "Computer Use — Claude, OpenAI CUA, Gemini — Claude computer use (Anthropic · Oct 22 2024) · OpenAI CUA / Operator (Jan 2025)...",
             "anchor": "computer-use-claude-openai-cua-gemini"
           },
           {
-            "title": "Voice Agents — Pipecat and LiveKit — Voice agents are a first-class production category in 2026. Pipecat gives you a Python fra...",
+            "title": "Voice Agents — Pipecat and LiveKit — Pipecat (pipecat-ai/pipecat) · LiveKit Agents (livekit/agents) · Commercial platforms...",
             "anchor": "voice-agents-pipecat-and-livekit"
           },
           {
-            "title": "OpenTelemetry GenAI Semantic Conventions — OpenTelemetry's GenAI SIG (launched April 2024) defines the standard schema for agent tele...",
+            "title": "OpenTelemetry GenAI Semantic Conventions — Span categories · Agent span naming · Key attributes...",
             "anchor": "opentelemetry-genai-semantic-conventions"
           },
           {
-            "title": "Agent Observability — Langfuse, Phoenix, Opik — Three self-hostable agent observability platforms dominate 2026. Langfuse (MIT) — 6M+ inst...",
+            "title": "Agent Observability — Langfuse, Phoenix, Opik — Langfuse (MIT) · Arize Phoenix (Elastic License 2.0) · Comet Opik (Apache 2.0)...",
             "anchor": "agent-observability-langfuse-phoenix-opik"
           },
           {
-            "title": "Multi-Agent Debate and Collaboration — Du et al. (ICML 2024, \"Society of Minds\") run N model instances that independently propose...",
+            "title": "Multi-Agent Debate and Collaboration — Society of Minds (Du et al. · ICML 2024) · Sparse topology...",
             "anchor": "multi-agent-debate-and-collaboration"
           },
           {
-            "title": "Failure Modes — Why Agents Break — MASFT (Berkeley, 2025) catalogs 14 multi-agent failure modes in 3 categories. Microsoft's ...",
+            "title": "Failure Modes — Why Agents Break — MASFT (Berkeley · arXiv:2503.13657) · Microsoft Taxonomy of Failure Mode in Agentic AI Systems...",
             "anchor": "failure-modes-why-agents-break"
           },
           {
-            "title": "Prompt Injection and the PVE Defense — Greshake et al. (AISec 2023) established indirect prompt injection as the defining agent s...",
+            "title": "Prompt Injection and the PVE Defense — Greshake et al. · AISec 2023 (arXiv:2302.12173) · The 2026 defense doctrine...",
             "anchor": "prompt-injection-and-the-pve-defense"
           },
           {
-            "title": "Orchestration Patterns — Supervisor, Swarm, Hierarchical — Four orchestration patterns recur across 2026 frameworks: supervisor-worker, swarm / peer-...",
+            "title": "Orchestration Patterns — Supervisor, Swarm, Hierarchical — Supervisor-worker · Swarm / peer-to-peer · Hierarchical...",
             "anchor": "orchestration-patterns-supervisor-swarm-hierarchical"
           },
           {
-            "title": "Production Runtimes — Queue, Event, Cron — Production agents run on six runtime shapes: request-response, streaming, durable executio...",
+            "title": "Production Runtimes — Queue, Event, Cron — Request-response · Streaming · Durable execution...",
             "anchor": "production-runtimes-queue-event-cron"
           },
           {
-            "title": "Eval-Driven Agent Development — Anthropic's guidance: \"start with simple prompts, optimize them with comprehensive evaluat...",
+            "title": "Eval-Driven Agent Development — Three evaluation layers · Evaluator-optimizer (Anthropic) · 2026 best practice...",
             "anchor": "eval-driven-agent-development"
           },
           {
-            "title": "Agent Workbench: Why Capable Models Still Fail — A capable model is not enough. Reliable agents need a workbench: instructions, state, scop...",
+            "title": "Agent Workbench: Why Capable Models Still Fail — Workbench versus prompt engineering · Workbench versus framework · Reasoning from primitives...",
             "anchor": "agent-workbench-why-capable-models-still-fail"
           },
           {
-            "title": "The Minimal Agent Workbench — The smallest useful workbench is three files: a root instructions router, a state file, an...",
+            "title": "The Minimal Agent Workbench — AGENTS.md is a router · not a manual · agent_state.json is the system of record...",
             "anchor": "the-minimal-agent-workbench"
           },
           {
-            "title": "Agent Instructions as Executable Constraints — Instructions written as prose are wishes. Instructions written as constraints are tests. T...",
+            "title": "Agent Instructions as Executable Constraints — Five categories that cover most rules · Rules are machine-readable · Rules are diff-friendly...",
             "anchor": "agent-instructions-as-executable-constraints"
           },
           {
-            "title": "Repo Memory and Durable State — Chat history is volatile. The repo is durable. The workbench stores agent state in version...",
+            "title": "Repo Memory and Durable State — What belongs in repo memory · Schema-first state · Atomic writes...",
             "anchor": "repo-memory-and-durable-state"
           },
           {
-            "title": "Initialization Scripts for Agents — Every session that starts cold pays a tax. The agent reads the same files, retries the sam...",
+            "title": "Initialization Scripts for Agents — What the init script probes · Fail loud · fail fast...",
             "anchor": "initialization-scripts-for-agents"
           },
           {
-            "title": "Scope Contracts and Task Boundaries — The model does not know where the work ends. A scope contract is a per-task file that says...",
+            "title": "Scope Contracts and Task Boundaries — What goes in a scope contract · Globs · not raw paths...",
             "anchor": "scope-contracts-and-task-boundaries"
           },
           {
-            "title": "Runtime Feedback Loops — Agents that do not see real command output guess. A feedback runner captures stdout, stder...",
+            "title": "Runtime Feedback Loops — What goes in a feedback record · Truncation is deterministic · Feedback versus telemetry...",
             "anchor": "runtime-feedback-loops"
           },
           {
-            "title": "Verification Gates — The agent does not get to mark its own work as done. A verification gate reads the scope c...",
+            "title": "Verification Gates — What the gate checks · Deterministic · not probabilistic...",
             "anchor": "verification-gates"
           },
           {
-            "title": "Reviewer Agent: Separate Builder from Marker — The agent that wrote the code cannot grade it. A reviewer is a second loop with a differen...",
+            "title": "Reviewer Agent: Separate Builder from Marker — Reviewer rubric · The reviewer is a separate role · not a separate model...",
             "anchor": "reviewer-agent-separate-builder-from-marker"
           },
           {
-            "title": "Multi-Session Handoff — The session is going to end. The work is not. The handoff packet is the artifact that turn...",
+            "title": "Multi-Session Handoff — Seven fields every handoff carries · Handoffs are generated · not written...",
             "anchor": "multi-session-handoff"
           },
           {
-            "title": "The Workbench on a Real Repo — Eleven lessons of workbench surfaces are worth nothing if they do not survive contact with...",
+            "title": "The Workbench on a Real Repo — The sample app · The task · The two pipelines...",
             "anchor": "the-workbench-on-a-real-repo"
           },
           {
-            "title": "Capstone: Ship a Reusable Agent Workbench Pack — The mini-track ends with a pack you drop into any repo. Eleven lessons of surfaces compres...",
+            "title": "Capstone: Ship a Reusable Agent Workbench Pack — The pack layout · What stays in · what stays out...",
             "anchor": "capstone-ship-a-reusable-agent-workbench-pack"
           },
           {
-            "title": "Frame the Task Before the Agent Writes Code — A coding agent can implement a clear task quickly. It can also implement an unclear task q...",
+            "title": "Frame the Task Before the Agent Writes Code — A coding agent can implement a clear task quickly. It can also implement an uncl...",
             "anchor": "frame-the-task-before-the-agent-writes-code"
           },
           {
-            "title": "Build an Evidence-Backed Execution Plan — A plan is not a prettier to-do list. It is a dependency graph in which every change has a ...",
+            "title": "Build an Evidence-Backed Execution Plan — A plan is not a prettier to-do list. It is a dependency graph in which every cha...",
             "anchor": "build-an-evidence-backed-execution-plan"
           },
           {
-            "title": "Delegate Agent Work with Isolation and Merge Contracts — Parallel agents save wall time only when the work is independent. Otherwise they convert o...",
+            "title": "Delegate Agent Work with Isolation and Merge Contracts — Parallel agents save wall time only when the work is independent. Otherwise they...",
             "anchor": "delegate-agent-work-with-isolation-and-merge-contracts"
           },
           {
-            "title": "Turn Every Agent Correction into a System Improvement — A correction that lives only in chat fixes one run. A correction promoted into a test, bou...",
+            "title": "Turn Every Agent Correction into a System Improvement — A correction that lives only in chat fixes one run. A correction promoted into a...",
             "anchor": "turn-every-agent-correction-into-a-system-improvement"
           },
           {
-            "title": "Define the Outcome Before You Choose the Output — Fast implementation increases the penalty for choosing the wrong problem. Shape the outcom...",
+            "title": "Define the Outcome Before You Choose the Output — Fast implementation increases the penalty for choosing the wrong problem. Shape ...",
             "anchor": "define-the-outcome-before-you-choose-the-output"
           },
           {
-            "title": "Discover the Workflow People Actually Perform — Requirements are not waiting in a meeting to be collected. They are scattered across actio...",
+            "title": "Discover the Workflow People Actually Perform — Requirements are not waiting in a meeting to be collected. They are scattered ac...",
             "anchor": "discover-the-workflow-people-actually-perform"
           },
           {
-            "title": "Map Assumptions and Resolve the Riskiest One First — A roadmap hides uncertainty inside features. An assumption map exposes what must be true b...",
+            "title": "Map Assumptions and Resolve the Riskiest One First — A roadmap hides uncertainty inside features. An assumption map exposes what must...",
             "anchor": "map-assumptions-and-resolve-the-riskiest-one-first"
           },
           {
-            "title": "Choose the Smallest Slice That Can Change the Decision — Small is useful only when it proves something important. A tiny build that cannot change t...",
+            "title": "Choose the Smallest Slice That Can Change the Decision — Small is useful only when it proves something important. A tiny build that canno...",
             "anchor": "choose-the-smallest-slice-that-can-change-the-decision"
           },
           {
-            "title": "Write Specifications That Preserve Judgment — A useful specification fixes invariants and evidence while leaving reversible implementati...",
+            "title": "Write Specifications That Preserve Judgment — A useful specification fixes invariants and evidence while leaving reversible im...",
             "anchor": "write-specifications-that-preserve-judgment"
           },
           {
-            "title": "Design Success Metrics Before the Result Exists — Measurement should answer a decision, not decorate a dashboard. Start with the goal, deriv...",
+            "title": "Design Success Metrics Before the Result Exists — Measurement should answer a decision, not decorate a dashboard. Start with the g...",
             "anchor": "design-success-metrics-before-the-result-exists"
           },
           {
-            "title": "Choose Prototype, Pilot, or Production Deliberately — These are different learning environments, not levels of polish. Choose the stage that ans...",
+            "title": "Choose Prototype, Pilot, or Production Deliberately — These are different learning environments, not levels of polish. Choose the stag...",
             "anchor": "choose-prototype-pilot-or-production-deliberately"
           },
           {
-            "title": "Build a Feedback Ratchet with Ownership and Retirement — Shipping closes one build loop and opens the learning loop. Evidence must change the syste...",
+            "title": "Build a Feedback Ratchet with Ownership and Retirement — 1. Establish What Happened · 2. Make Progress Within Your Authority · 3. Compare Options and Brief the Decision Owner...",
             "anchor": "build-a-feedback-ratchet-with-ownership-and-retirement"
           }
         ]
@@ -1608,91 +1608,91 @@ window.topicsData = [
         "file": "phase-15.md",
         "concepts": [
           {
-            "title": "From Chatbots to Long-Horizon Agents (METR) — In 2023 a chatbot answered a question in one turn. In 2026 a frontier model routinely runs...",
+            "title": "From Chatbots to Long-Horizon Agents (METR) — The METR Time Horizon · in one paragraph · What actually breaks when the horizon grows...",
             "anchor": "from-chatbots-to-long-horizon-agents-metr"
           },
           {
-            "title": "STaR, V-STaR, Quiet-STaR: Self-Taught Reasoning — The smallest possible self-improvement loop sits inside the rationale. A model generates a...",
+            "title": "STaR, V-STaR, Quiet-STaR: Self-Taught Reasoning — STaR: bootstrap on what worked · V-STaR: train a verifier with DPO · Quiet-STaR: per-token internal rationales...",
             "anchor": "star-v-star-quiet-star-self-taught-reasoning"
           },
           {
-            "title": "AlphaEvolve: Evolutionary Coding Agents — Pair a frontier coding model with an evolutionary loop and a machine-checkable evaluator. ...",
+            "title": "AlphaEvolve: Evolutionary Coding Agents — The loop · What makes the evaluator non-negotiable · Reward hacking is the other face of that statement...",
             "anchor": "alphaevolve-evolutionary-coding-agents"
           },
           {
-            "title": "Darwin Gödel Machine: Self-Modifying Agents — Schmidhuber's 2003 Godel Machine required a formal proof that any self-modification was be...",
+            "title": "Darwin Gödel Machine: Self-Modifying Agents — The loop · What DGM actually improved · The reward-hacking demonstration...",
             "anchor": "darwin-g-del-machine-self-modifying-agents"
           },
           {
-            "title": "AI Scientist v2: Workshop-Level Research — Sakana's AI Scientist v2 (Yamada et al., arXiv:2504.08066) runs the full research loop: hy...",
+            "title": "AI Scientist v2: Workshop-Level Research — The architecture · What the workshop-acceptance result means · What the independent evaluation found...",
             "anchor": "ai-scientist-v2-workshop-level-research"
           },
           {
-            "title": "Automated Alignment Research (Anthropic AAR) — Anthropic ran parallel teams of Claude Opus 4.6 Autonomous Alignment Researchers in indepe...",
+            "title": "Automated Alignment Research (Anthropic AAR) — The architecture (as publicly described) · Why the out-of-sandbox log matters · The prescribed-workflow tradeoff...",
             "anchor": "automated-alignment-research-anthropic-aar"
           },
           {
-            "title": "Recursive Self-Improvement: Capability vs Alignment — Recursive self-improvement (RSI) is no longer speculation. The ICLR 2026 RSI Workshop in R...",
+            "title": "Recursive Self-Improvement: Capability vs Alignment — What recursive self-improvement means precisely · The alignment-faking result in detail · The Hassabis question...",
             "anchor": "recursive-self-improvement-capability-vs-alignment"
           },
           {
-            "title": "Bounded Self-Improvement Designs — Research has converged on four primitives for bounding a self-improvement loop. Formal inv...",
+            "title": "Bounded Self-Improvement Designs — Primitive 1: formal invariants · Primitive 2: alignment anchors · Primitive 3: multi-objective constraints...",
             "anchor": "bounded-self-improvement-designs"
           },
           {
-            "title": "Autonomous Coding Agent Landscape (SWE-bench, CodeAct) — SWE-bench Verified went from 4% to 80.9% in under three years. Same Claude Sonnet 4.5 scor...",
+            "title": "Autonomous Coding Agent Landscape (SWE-bench, CodeAct) — SWE-bench · one paragraph · What the 2022 → 2026 curve actually shows...",
             "anchor": "autonomous-coding-agent-landscape-swe-bench-codeact"
           },
           {
-            "title": "Permission Modes for Autonomous Agents — A permission ladder — graduated levels of autonomy from review-every-action to approve-eve...",
+            "title": "Permission Modes for Autonomous Agents — The six permission modes · Auto Mode in one page · What the system catches...",
             "anchor": "permission-modes-for-autonomous-agents"
           },
           {
-            "title": "Browser Agents and Indirect Prompt Injection — ChatGPT agent (July 2025) merged Operator and deep research into one browser/terminal agen...",
+            "title": "Browser Agents and Indirect Prompt Injection — The 2026 landscape · in one paragraph per system · BrowseComp vs OSWorld vs WebArena...",
             "anchor": "browser-agents-and-indirect-prompt-injection"
           },
           {
-            "title": "Durable Execution for Long-Running Agents — Production long-horizon agents do not run in `while True`. Every LLM call becomes an activ...",
+            "title": "Durable Execution for Long-Running Agents — Activities · workflows · and replay...",
             "anchor": "durable-execution-for-long-running-agents"
           },
           {
-            "title": "Action Budgets, Iteration Caps, Cost Governors — A mid-sized e-commerce agent's monthly LLM cost jumped from $1,200 to $4,800 after its tea...",
+            "title": "Action Budgets, Iteration Caps, Cost Governors — The cost-governor stack · Why the stack · not one cap...",
             "anchor": "action-budgets-iteration-caps-cost-governors"
           },
           {
-            "title": "Kill Switches, Circuit Breakers, Canary Tokens — A kill switch is a boolean held outside the agent's edit surface — a Redis key, a feature ...",
+            "title": "Kill Switches, Circuit Breakers, Canary Tokens — Kill switches · Circuit breakers · Canary tokens...",
             "anchor": "kill-switches-circuit-breakers-canary-tokens"
           },
           {
-            "title": "HITL: Propose-Then-Commit — The 2026 consensus on HITL is specific. It is not \"the agent asks, the user clicks Approve...",
+            "title": "HITL: Propose-Then-Commit — The propose-then-commit state machine · The idempotency key · Durability: why approvals outlast processes...",
             "anchor": "hitl-propose-then-commit"
           },
           {
-            "title": "Checkpoints and Rollback — Every graph-state transition persists. When a worker crashes, its lease expires and anothe...",
+            "title": "Checkpoints and Rollback — Every transition persists · Lease recovery · Idempotency plus preconditions...",
             "anchor": "checkpoints-and-rollback"
           },
           {
-            "title": "Constitutional AI and Rule Overrides — Anthropic's January 22, 2026 Claude Constitution runs 79 pages and is CC0. It moves from r...",
+            "title": "Constitutional AI and Rule Overrides — The four-tier priority hierarchy · Hardcoded prohibitions vs soft-coded defaults · The 2022 CAI training...",
             "anchor": "constitutional-ai-and-rule-overrides"
           },
           {
-            "title": "Llama Guard and Input/Output Classification — Llama Guard 3 (Meta, Llama-3.1-8B base, fine-tuned for content safety) classifies both LLM...",
+            "title": "Llama Guard and Input/Output Classification — Llama Guard 3 at a glance · Llama Guard 4 additions · NeMo Guardrails (NVIDIA)...",
             "anchor": "llama-guard-and-input-output-classification"
           },
           {
-            "title": "Anthropic Responsible Scaling Policy v3.0 — RSP v3.0 went into effect February 24, 2026, replacing the 2023 policy. Two-tier mitigatio...",
+            "title": "Anthropic Responsible Scaling Policy v3.0 — The two-tier mitigation schedule · The AI R&D-4 threshold · Frontier Safety Roadmaps and Risk Reports...",
             "anchor": "anthropic-responsible-scaling-policy-v3-0"
           },
           {
-            "title": "OpenAI Preparedness Framework and DeepMind FSF — OpenAI Preparedness Framework v2 (April 2025) introduces Research Categories — Long-range ...",
+            "title": "OpenAI Preparedness Framework and DeepMind FSF — OpenAI Preparedness Framework v2 (April 2025) · DeepMind Frontier Safety Framework v3 (September 2025; Tracked Capability Levels added April 17 · 2026)...",
             "anchor": "openai-preparedness-framework-and-deepmind-fsf"
           },
           {
-            "title": "METR Time Horizons and External Evaluation — METR (ex-ARC Evals) is an independent 501(c)(3) since December 2023. Their Time Horizon 1....",
+            "title": "METR Time Horizons and External Evaluation — METR background · The Time Horizon fit · The January 2026 numbers...",
             "anchor": "metr-time-horizons-and-external-evaluation"
           },
           {
-            "title": "CAIS, CAISI, and Societal-Scale Risk — The Center for AI Safety (CAIS, San Francisco, founded 2022 by Hendrycks and Zhang) publis...",
+            "title": "CAIS, CAISI, and Societal-Scale Risk — CAIS — Center for AI Safety · The four-risk framework · Where organizational risk lives...",
             "anchor": "cais-caisi-and-societal-scale-risk"
           }
         ]
@@ -1709,103 +1709,103 @@ window.topicsData = [
         "file": "phase-16.md",
         "concepts": [
           {
-            "title": "Why Multi-Agent — One agent hits a wall. The smart move is not a bigger agent - it is more agents....",
+            "title": "Why Multi-Agent — The Single-Agent Ceiling · The Multi-Agent Solution · Real Systems That Do This...",
             "anchor": "why-multi-agent"
           },
           {
-            "title": "FIPA-ACL Heritage and Speech Acts — Before MCP, before A2A, there was FIPA-ACL. In 2000 the Foundation for Intelligent Physica...",
+            "title": "FIPA-ACL Heritage and Speech Acts — Speech acts · in one paragraph · The twenty FIPA performatives (partial list)...",
             "anchor": "fipa-acl-heritage-and-speech-acts"
           },
           {
-            "title": "Communication Protocols — Agents that can't speak the same language aren't a team. They're strangers shouting into t...",
+            "title": "Communication Protocols — The Protocol Landscape · MCP (Recap) · A2A (Agent2Agent Protocol)...",
             "anchor": "communication-protocols"
           },
           {
-            "title": "The Multi-Agent Primitive Model — Four primitives, nothing more — the agent, the handoff, the shared state, the orchestrator...",
+            "title": "The Multi-Agent Primitive Model — The four primitives · How every 2026 framework maps to it · Why this matters...",
             "anchor": "the-multi-agent-primitive-model"
           },
           {
-            "title": "Supervisor / Orchestrator-Worker Pattern — One lead agent plans and delegates; specialized workers execute in parallel contexts and r...",
+            "title": "Supervisor / Orchestrator-Worker Pattern — The pattern · Why it wins · Engineering lessons (Anthropic 2025)...",
             "anchor": "supervisor-orchestrator-worker-pattern"
           },
           {
-            "title": "Hierarchical Architecture and Decomposition Drift — Hierarchical is supervisor nested. Manager agents over sub-managers over workers. CrewAI `...",
+            "title": "Hierarchical Architecture and Decomposition Drift — The shape · Where it shines · Where it breaks...",
             "anchor": "hierarchical-architecture-and-decomposition-drift"
           },
           {
-            "title": "Society of Mind and Multi-Agent Debate — Minsky's 1986 premise — intelligence is a society of specialists — gets rediscovered every...",
+            "title": "Society of Mind and Multi-Agent Debate — The Du et al. 2023 algorithm · Two independent knobs · Why it works...",
             "anchor": "society-of-mind-and-multi-agent-debate"
           },
           {
-            "title": "Role Specialization — Planner / Critic / Executor / Verifier — The most common multi-agent decomposition in 2026: one agent plans, one executes, one crit...",
+            "title": "Role Specialization — Planner / Critic / Executor / Verifier — The four canonical roles · MetaGPT's SOP pattern · ChatDev's communicative dehallucination...",
             "anchor": "role-specialization-planner-critic-executor-verifier"
           },
           {
-            "title": "Parallel Swarm and Networked Architectures — Contrast with supervisor: no central decider. Agents read a shared event bus, pick up work...",
+            "title": "Parallel Swarm and Networked Architectures — The shape · When swarm fits · When swarm fails...",
             "anchor": "parallel-swarm-and-networked-architectures"
           },
           {
-            "title": "Group Chat and Speaker Selection — Shared-conversation orchestration puts N agents in one conversation; a selector function (...",
+            "title": "Group Chat and Speaker Selection — The shape · The three selector flavors · The ConversableAgent API...",
             "anchor": "group-chat-and-speaker-selection"
           },
           {
-            "title": "Handoffs and Routines (Stateless Orchestration) — OpenAI's Swarm (October 2024) distilled multi-agent orchestration to two primitives: **rou...",
+            "title": "Handoffs and Routines (Stateless Orchestration) — Two primitives · Why it is viral · The stateless trade...",
             "anchor": "handoffs-and-routines-stateless-orchestration"
           },
           {
-            "title": "A2A — The Agent-to-Agent Protocol — Google announced A2A in April 2025; by April 2026 the spec is at https://a2a-protocol.org/...",
+            "title": "A2A — The Agent-to-Agent Protocol — The four elements · The MCP/A2A split · Discovery flow...",
             "anchor": "a2a-the-agent-to-agent-protocol"
           },
           {
-            "title": "Shared Memory and Blackboard Patterns — Two approaches coexist in 2026 multi-agent systems: the **message pool** (everyone sees ev...",
+            "title": "Shared Memory and Blackboard Patterns — The two main topologies · When each wins · Memory poisoning...",
             "anchor": "shared-memory-and-blackboard-patterns"
           },
           {
-            "title": "Consensus and Byzantine Fault Tolerance — Classical distributed-systems BFT meets stochastic LLMs. In 2025-2026 three research direc...",
+            "title": "Consensus and Byzantine Fault Tolerance — What classical BFT gives you · The three LLM-specific attacks · The 2025-2026 responses...",
             "anchor": "consensus-and-byzantine-fault-tolerance"
           },
           {
-            "title": "Voting, Self-Consistency, and Debate Topology — The cheapest aggregation: sample N independent agents, majority-vote. Wang et al. 2022 sel...",
+            "title": "Voting, Self-Consistency, and Debate Topology — Self-consistency · the single-model baseline · Multi-agent vote...",
             "anchor": "voting-self-consistency-and-debate-topology"
           },
           {
-            "title": "Negotiation and Bargaining — Agents negotiate resources, prices, task allocations, and terms. The 2026 benchmark set is...",
+            "title": "Negotiation and Bargaining — Contract Net · in one paragraph · Why OG-Narrator wins...",
             "anchor": "negotiation-and-bargaining"
           },
           {
-            "title": "Generative Agents and Emergent Simulation — Park et al. 2023 (UIST '23, arXiv:2304.03442) populated **Smallville**, a sandbox of 25 ag...",
+            "title": "Generative Agents and Emergent Simulation — The three components · Why all three matter (ablation) · The Valentine's Day emergence...",
             "anchor": "generative-agents-and-emergent-simulation"
           },
           {
-            "title": "Theory of Mind and Emergent Coordination — Li et al. (arXiv:2310.10701) showed that LLM agents in a cooperative text game exhibit **e...",
+            "title": "Theory of Mind and Emergent Coordination — What ToM means · The Sally-Anne test · in brief...",
             "anchor": "theory-of-mind-and-emergent-coordination"
           },
           {
-            "title": "Swarm Optimization (PSO, ACO) — Bio-inspired optimization is making an LLM comeback. **LMPSO** (arXiv:2504.09247) uses PSO...",
+            "title": "Swarm Optimization (PSO, ACO) — PSO refresher (Kennedy & Eberhart 1995) · PSO on LLM outputs — LMPSO · Model Swarms...",
             "anchor": "swarm-optimization-pso-aco"
           },
           {
-            "title": "MARL — MADDPG, QMIX, MAPPO — The reinforcement-learning heritage of multi-agent coordination, which still informs LLM-a...",
+            "title": "MARL — MADDPG, QMIX, MAPPO — Three environments the papers use · MADDPG (2017) — the CTDE pattern · QMIX (2018) — value decomposition...",
             "anchor": "marl-maddpg-qmix-mappo"
           },
           {
-            "title": "Agent Economies, Token Incentives, Reputation — Long-horizon autonomous agents (METR's 1-hour to 8-hour work-curve) need economic agency. ...",
+            "title": "Agent Economies, Token Incentives, Reputation — The 5-layer agent-economy stack · Bittensor · Fetch.ai...",
             "anchor": "agent-economies-token-incentives-reputation"
           },
           {
-            "title": "Production Scaling — Queues, Checkpoints, Durability — Scaling multi-agent systems to thousands of concurrent runs requires **durable execution**...",
+            "title": "Production Scaling — Queues, Checkpoints, Durability — Durable execution · the pattern · A checkpoint-per-step runtime...",
             "anchor": "production-scaling-queues-checkpoints-durability"
           },
           {
-            "title": "Failure Modes — MAST, Groupthink, Monoculture — The reference taxonomy for 2026 is **MAST** (Cemri et al., NeurIPS 2025, arXiv:2503.13657)...",
+            "title": "Failure Modes — MAST, Groupthink, Monoculture — MAST categories · Groupthink family (arXiv:2508.05687) · Cascading example — the retry storm...",
             "anchor": "failure-modes-mast-groupthink-monoculture"
           },
           {
-            "title": "Evaluation and Coordination Benchmarks — Five 2025-2026 benchmarks cover the multi-agent evaluation space. **MultiAgentBench / MARB...",
+            "title": "Evaluation and Coordination Benchmarks — MultiAgentBench (MARBLE) — ACL 2025 · COMMA — multimodal asymmetric information · MedAgentBoard — domain stress test...",
             "anchor": "evaluation-and-coordination-benchmarks"
           },
           {
-            "title": "Case Studies and 2026 State of the Art — Three production-grade references to study end-to-end, each illustrating a different slice...",
+            "title": "Case Studies and 2026 State of the Art — Anthropic Research system · MetaGPT / ChatDev · OpenClaw / Moltbook ecosystem...",
             "anchor": "case-studies-and-2026-state-of-the-art"
           }
         ]
@@ -1822,119 +1822,119 @@ window.topicsData = [
         "file": "phase-17.md",
         "concepts": [
           {
-            "title": "Managed LLM Platforms — Bedrock, Azure OpenAI, Vertex AI — Three hyperscalers, three distinct strategies. AWS Bedrock is a model marketplace — Claude...",
+            "title": "Managed LLM Platforms — Bedrock, Azure OpenAI, Vertex AI — Three strategies · Latency gap at scale · Provisioned Throughput economics...",
             "anchor": "managed-llm-platforms-bedrock-azure-openai-vertex-ai"
           },
           {
-            "title": "Inference Platform Economics — Fireworks, Together, Baseten, Modal — The 2026 inference market is no longer GPU time rental. It bifurcates into custom silicon ...",
+            "title": "Inference Platform Economics — Fireworks, Together, Baseten, Modal — The three segments · Fireworks — latency-optimized GPU platform · Together — breadth-optimized...",
             "anchor": "inference-platform-economics-fireworks-together-baseten-moda"
           },
           {
-            "title": "GPU Autoscaling on Kubernetes — Karpenter, KAI Scheduler — Three layers, not one. Karpenter provisions nodes dynamically (under one minute, 40% faste...",
+            "title": "GPU Autoscaling on Kubernetes — Karpenter, KAI Scheduler — Layer 1 — node provisioning (Karpenter) · Layer 2 — gang scheduling (KAI Scheduler) · Layer 3 — application-level signals...",
             "anchor": "gpu-autoscaling-on-kubernetes-karpenter-kai-scheduler"
           },
           {
-            "title": "Serving Engine Internals — PagedAttention, Continuous Batching, Chunked Prefill — Modern serving-engine throughput rests on three compounding defaults, not a single trick. ...",
+            "title": "Serving Engine Internals — PagedAttention, Continuous Batching, Chunked Prefill — PagedAttention as a virtual memory system · Continuous batching at the iteration level · Chunked prefill protects the ITL tail...",
             "anchor": "serving-engine-internals-pagedattention-continuous-batching-"
           },
           {
-            "title": "EAGLE-3 Speculative Decoding in Production — Speculative decoding pairs a fast draft model with the target model. The draft proposes K ...",
+            "title": "EAGLE-3 Speculative Decoding in Production — What speculative decoding actually buys · Why alpha is the only metric that matters · EAGLE generations at a glance...",
             "anchor": "eagle-3-speculative-decoding-in-production"
           },
           {
-            "title": "Prefix-Cache Serving — RadixAttention and KV Reuse — Treat the KV cache as a first-class, reusable resource stored in a radix tree, and schedul...",
+            "title": "Prefix-Cache Serving — RadixAttention and KV Reuse — The radix tree as a KV index · Cache-aware scheduling · Benchmark numbers you should memorize...",
             "anchor": "prefix-cache-serving-radixattention-and-kv-reuse"
           },
           {
-            "title": "Hardware-Specialized Inference Compilation — FP8 and NVFP4 on Blackwell — Hardware-specialized inference compilation trades portability for throughput, and TensorRT...",
+            "title": "Hardware-Specialized Inference Compilation — FP8 and NVFP4 on Blackwell — Why FP8 is still the floor for KV cache · The Blackwell-specific primitives TRT-LLM uses · The numbers you should memorize...",
             "anchor": "hardware-specialized-inference-compilation-fp8-and-nvfp4-on-"
           },
           {
-            "title": "Inference Metrics — TTFT, TPOT, ITL, Goodput, P99 — Five metrics decide whether an inference deployment is working. TTFT is prefill plus queue...",
+            "title": "Inference Metrics — TTFT, TPOT, ITL, Goodput, P99 — TTFT — time to first token · TPOT / ITL — inter-token latency · E2E latency...",
             "anchor": "inference-metrics-ttft-tpot-itl-goodput-p99"
           },
           {
-            "title": "Production Quantization — AWQ, GPTQ, GGUF, FP8, NVFP4 — Quantization format is not a universal choice — it is a function of hardware, serving engi...",
+            "title": "Production Quantization — AWQ, GPTQ, GGUF, FP8, NVFP4 — The six formats · GGUF — the CPU/edge default · GPTQ — multi-LoRA in vLLM...",
             "anchor": "production-quantization-awq-gptq-gguf-fp8-nvfp4"
           },
           {
-            "title": "Cold Start Mitigation for Serverless LLMs — A large model takes minutes to go from cold to serving: a 70B model on a fresh node needs ...",
+            "title": "Cold Start Mitigation for Serverless LLMs — Layer 1 — pre-seeded node images (Bottlerocket) · Layer 2 — model streaming (Run:ai Model Streamer) · Layer 3 — GPU memory snapshots (Modal)...",
             "anchor": "cold-start-mitigation-for-serverless-llms"
           },
           {
-            "title": "Multi-Region LLM Serving and KV Cache Locality — Round-robin load balancing is actively harmful for cached LLM inference. A request that do...",
+            "title": "Multi-Region LLM Serving and KV Cache Locality — Cache-aware routing · Numbers · Cross-region has a new constraint — network latency...",
             "anchor": "multi-region-llm-serving-and-kv-cache-locality"
           },
           {
-            "title": "Edge Inference — ANE, Hexagon, WebGPU, Jetson — The core edge constraint is memory bandwidth, not compute. Mobile DRAM sits at 50-90 GB/s;...",
+            "title": "Edge Inference — ANE, Hexagon, WebGPU, Jetson — Bandwidth is the real ceiling · Apple Neural Engine (M4 / A18) · Qualcomm Hexagon (Snapdragon X Elite / 8 Gen 4)...",
             "anchor": "edge-inference-ane-hexagon-webgpu-jetson"
           },
           {
-            "title": "LLM Observability Stack Selection — The 2026 observability market splits into two categories. Development platforms (LangSmith...",
+            "title": "LLM Observability Stack Selection — Two categories · Langfuse — OSS balance · Phoenix (Arize) — telemetry-first...",
             "anchor": "llm-observability-stack-selection"
           },
           {
-            "title": "Prompt Caching and Semantic Caching Economics — **Pricing snapshot dated 2026-04.** Numeric claims below reflect vendor rate cards capture...",
+            "title": "Prompt Caching and Semantic Caching Economics — L2 — provider prompt/prefix caching · L1 — app-level semantic caching · The parallelization anti-pattern...",
             "anchor": "prompt-caching-and-semantic-caching-economics"
           },
           {
-            "title": "Batch APIs — the 50% Discount as Industry Standard — Every major provider ships an async batch API with a 50% discount and ~24-hour turnaround....",
+            "title": "Batch APIs — the 50% Discount as Industry Standard — The three batch APIs · Semantic: asynchronous · not slow...",
             "anchor": "batch-apis-the-50-discount-as-industry-standard"
           },
           {
-            "title": "Model Routing as a Cost-Reduction Primitive — A dynamic broker evaluates every request (task type, token length, embedding similarity, c...",
+            "title": "Model Routing as a Cost-Reduction Primitive — Four routing signals · Three patterns · Implementation...",
             "anchor": "model-routing-as-a-cost-reduction-primitive"
           },
           {
-            "title": "Disaggregated Prefill/Decode — NVIDIA Dynamo and llm-d — Prefill is compute-bound; decode is memory-bound. Running both on the same GPU wastes one ...",
+            "title": "Disaggregated Prefill/Decode — NVIDIA Dynamo and llm-d — Why the bottlenecks differ · The architecture · Dynamo vs llm-d...",
             "anchor": "disaggregated-prefill-decode-nvidia-dynamo-and-llm-d"
           },
           {
-            "title": "Production Serving Stack — KV Offloading and Cache-Aware Routing — A production serving stack wires router, engines, and observability into one Kubernetes de...",
+            "title": "Production Serving Stack — KV Offloading and Cache-Aware Routing — vLLM production-stack · The KV Offloading Connector API (v0.9.0+) · Native CPU offload vs LMCache...",
             "anchor": "production-serving-stack-kv-offloading-and-cache-aware-routi"
           },
           {
-            "title": "AI Gateways — LiteLLM, Portkey, Kong, Bifrost — A gateway sits between your apps and model providers. Core features are provider routing, ...",
+            "title": "AI Gateways — LiteLLM, Portkey, Kong, Bifrost — Seven core features · LiteLLM — MIT OSS · Python...",
             "anchor": "ai-gateways-litellm-portkey-kong-bifrost"
           },
           {
-            "title": "Shadow, Canary, and Progressive Deployment — LLM rollouts combine the hardest parts of software deployment: no unit tests, diffuse fail...",
+            "title": "Shadow, Canary, and Progressive Deployment — Shadow mode · Canary rollout · Non-determinism is the new variance...",
             "anchor": "shadow-canary-and-progressive-deployment"
           },
           {
-            "title": "A/B Testing LLM Features — GrowthBook and Statsig — Traditional A/B testing was not built for non-deterministic LLMs. The critical distinction...",
+            "title": "A/B Testing LLM Features — GrowthBook and Statsig — Evals vs A/B tests · What to test · CUPED — variance reduction...",
             "anchor": "a-b-testing-llm-features-growthbook-and-statsig"
           },
           {
-            "title": "Load Testing LLM APIs — k6, LLMPerf, GenAI-Perf — Traditional load testers were not designed for streaming responses, variable output length...",
+            "title": "Load Testing LLM APIs — k6, LLMPerf, GenAI-Perf — The GIL trap (Locust) · The prompt-uniformity trap · Four load patterns...",
             "anchor": "load-testing-llm-apis-k6-llmperf-genai-perf"
           },
           {
-            "title": "SRE for AI — Multi-Agent Incident Response — AI SRE uses LLMs grounded in infrastructure data (logs, runbooks, service topology) via RA...",
+            "title": "SRE for AI — Multi-Agent Incident Response — Multi-agent architecture · Auto-remediation scope · Adversarial evaluation (NeuBird Hawkeye)...",
             "anchor": "sre-for-ai-multi-agent-incident-response"
           },
           {
-            "title": "Chaos Engineering for LLM Production — Chaos engineering for LLMs is its own discipline in 2026. Prerequisites before running exp...",
+            "title": "Chaos Engineering for LLM Production — Prerequisites · Four planes + feedback · Guardrails are mandatory...",
             "anchor": "chaos-engineering-for-llm-production"
           },
           {
-            "title": "Security — Secrets, PII Scrubbing, Audit Logs — Eliminate secret sprawl via centralized vaults (HashiCorp Vault, AWS Secrets Manager, Azur...",
+            "title": "Security — Secrets, PII Scrubbing, Audit Logs — Centralized vault + IAM-role pull · Rotation policy ≤ 90 days · Secret scanning...",
             "anchor": "security-secrets-pii-scrubbing-audit-logs"
           },
           {
-            "title": "Compliance — SOC 2, HIPAA, GDPR, EU AI Act, ISO 42001 — Multi-framework coverage is table stakes for 2026 enterprise deals. **EU AI Act**: in forc...",
+            "title": "Compliance — SOC 2, HIPAA, GDPR, EU AI Act, ISO 42001 — The seven frameworks · EU AI Act timeline · GDPR — real-time redaction is the standard...",
             "anchor": "compliance-soc-2-hipaa-gdpr-eu-ai-act-iso-42001"
           },
           {
-            "title": "FinOps for LLMs — Unit Economics and Multi-Tenant Attribution — Traditional FinOps breaks on LLM spend. Costs are token-transactions, not resource-uptime....",
+            "title": "FinOps for LLMs — Unit Economics and Multi-Tenant Attribution — Three attribution dimensions · Four token layers · Enforcement ladder...",
             "anchor": "finops-for-llms-unit-economics-and-multi-tenant-attribution"
           },
           {
-            "title": "Self-Hosted Serving Selection — Matching Engine to Hardware and Scale — Engine selection is a function of hardware, scale, and ecosystem — not a leaderboard read....",
+            "title": "Self-Hosted Serving Selection — Matching Engine to Hardware and Scale — The five engines · Hardware-first decision · Scale-second decision...",
             "anchor": "self-hosted-serving-selection-matching-engine-to-hardware-an"
           },
           {
-            "title": "Model Demo Interfaces — From a Function to a Shareable App — A model demo has one contract: an input, a model call, and an output. Put a limit on each ...",
+            "title": "Model Demo Interfaces — From a Function to a Shareable App — A demo is a contract · Validate before the model runs · Show that the model is working...",
             "anchor": "model-demo-interfaces-from-a-function-to-a-shareable-app"
           }
         ]
@@ -1951,123 +1951,123 @@ window.topicsData = [
         "file": "phase-18.md",
         "concepts": [
           {
-            "title": "Instruction-Following as Alignment Signal — Every later critique of RLHF argues against this pipeline. Before you study how optimizati...",
+            "title": "Instruction-Following as Alignment Signal — Stage 1: supervised fine-tuning (SFT) · Stage 2: reward model (RM) · Stage 3: PPO with a KL penalty...",
             "anchor": "instruction-following-as-alignment-signal"
           },
           {
-            "title": "Reward Hacking & Goodhart's Law — Any optimizer strong enough to maximize a proxy reward will find the gap between the proxy...",
+            "title": "Reward Hacking & Goodhart's Law — Goodhart's Law · made precise · Four costumes...",
             "anchor": "reward-hacking-goodhart-s-law"
           },
           {
-            "title": "Direct Preference Optimization Family — Rafailov et al. (2023) showed RLHF's optimum has a closed form in terms of the preference ...",
+            "title": "Direct Preference Optimization Family — DPO (Rafailov et al. · 2023) · IPO (Azar et al....",
             "anchor": "direct-preference-optimization-family"
           },
           {
-            "title": "Sycophancy as RLHF Amplification — Sycophancy is not a bug in the data — it is a property of the loss. Shapira et al. (arXiv:...",
+            "title": "Sycophancy as RLHF Amplification — The two-stage formalism (Shapira et al. · 2026) · Empirical amplification...",
             "anchor": "sycophancy-as-rlhf-amplification"
           },
           {
-            "title": "Constitutional AI & RLAIF — Bai et al. (arXiv:2212.08073, 2022) asked: what if we replaced the human labeler with an A...",
+            "title": "Constitutional AI & RLAIF — Phase 1 — Supervised self-critique and revision · Phase 2 — RL from AI Feedback (RLAIF) · Why this is not just \"cheaper RLHF\"...",
             "anchor": "constitutional-ai-rlaif"
           },
           {
-            "title": "Mesa-Optimization & Deceptive Alignment — Hubinger et al. (arXiv:1906.01820, 2019) named the problem about five years before it was ...",
+            "title": "Mesa-Optimization & Deceptive Alignment — The vocabulary · Four conditions for mesa-optimization to emerge · Four classes of mesa-objective alignment...",
             "anchor": "mesa-optimization-deceptive-alignment"
           },
           {
-            "title": "Sleeper Agents — Persistent Deception — Hubinger et al. (arXiv:2401.05566, January 2024) built the first empirical model organisms...",
+            "title": "Sleeper Agents — Persistent Deception — Two model organisms · What survives what · Why adversarial training backfires...",
             "anchor": "sleeper-agents-persistent-deception"
           },
           {
-            "title": "In-Context Scheming in Frontier Models — Meinke, Schoen, Scheurer, Balesni, Shah, Hobbhahn (Apollo Research, arXiv:2412.04984, Dece...",
+            "title": "In-Context Scheming in Frontier Models — Experimental setup · Results across 2024 frontier models · The three pillars...",
             "anchor": "in-context-scheming-in-frontier-models"
           },
           {
-            "title": "Alignment Faking — Greenblatt, Denison, Wright, Roger et al. (Anthropic / Redwood, arXiv:2412.14093, December...",
+            "title": "Alignment Faking — Experimental setup · What the compliance gap measures · Why this is strictly stronger than Lessons 7 and 8...",
             "anchor": "alignment-faking"
           },
           {
-            "title": "AI Control — Safety Despite Subversion — Greenblatt, Shlegeris, Sachan, Roger (Redwood Research, arXiv:2312.06942, ICML 2024). Cont...",
+            "title": "AI Control — Safety Despite Subversion — The threat model · The ICML 2024 backdoor task · Four protocols compared...",
             "anchor": "ai-control-safety-despite-subversion"
           },
           {
-            "title": "Scalable Oversight & Weak-to-Strong — Burns et al. (OpenAI Superalignment, \"Weak-to-Strong Generalization\", 2023) proposed a pro...",
+            "title": "Scalable Oversight & Weak-to-Strong — W2SG: the Burns et al. setup · Burns et al. empirical findings · Scalable oversight: three mechanisms...",
             "anchor": "scalable-oversight-weak-to-strong"
           },
           {
-            "title": "Red-Teaming: PAIR & Automated Attacks — Chao, Robey, Dobriban, Hassani, Pappas, Wong (NeurIPS 2023, arXiv:2310.08419). PAIR — Prom...",
+            "title": "Red-Teaming: PAIR & Automated Attacks — PAIR algorithm · Why PAIR is efficient · Related automated attacks...",
             "anchor": "red-teaming-pair-automated-attacks"
           },
           {
-            "title": "Many-Shot Jailbreaking — Anil, Durmus, Panickssery, Sharma, et al. (Anthropic, NeurIPS 2024). Many-shot jailbreakin...",
+            "title": "Many-Shot Jailbreaking — The attack · Power-law ASR · Why it shares a mechanism with ICL...",
             "anchor": "many-shot-jailbreaking"
           },
           {
-            "title": "ASCII Art & Visual Jailbreaks — Jiang, Xu, Niu, Xiang, Ramasubramanian, Li, Poovendran, \"ArtPrompt: ASCII Art-based Jailbr...",
+            "title": "ASCII Art & Visual Jailbreaks — ArtPrompt · two steps · Why the standard defenses fail...",
             "anchor": "ascii-art-visual-jailbreaks"
           },
           {
-            "title": "Indirect Prompt Injection — Indirect prompt injection (IPI) embeds instructions inside external content — a web page, ...",
+            "title": "Indirect Prompt Injection — Three delivery vectors · Why user-input filters miss it · Information Flow Control (IFC) for AI...",
             "anchor": "indirect-prompt-injection"
           },
           {
-            "title": "Red-Team Tooling: Garak, Llama Guard, PyRIT — Three production tools frame the 2026 red-team stack. Llama Guard (Meta) — a Llama-3.1-8B ...",
+            "title": "Red-Team Tooling: Garak, Llama Guard, PyRIT — Llama Guard (Meta) · Garak (NVIDIA) · PyRIT (Microsoft)...",
             "anchor": "red-team-tooling-garak-llama-guard-pyrit"
           },
           {
-            "title": "WMDP & Dual-Use Capability Evaluation — Li et al., \"The WMDP Benchmark: Measuring and Reducing Malicious Use With Unlearning\" (ICM...",
+            "title": "WMDP & Dual-Use Capability Evaluation — The \"yellow zone\" · RMU — Representation Misdirection for Unlearning · The 2024-2025 uplift narrative...",
             "anchor": "wmdp-dual-use-capability-evaluation"
           },
           {
-            "title": "Frontier Safety Frameworks — RSP, PF, FSF — Three major-lab frameworks define the 2026 industry governance of frontier capability. Ant...",
+            "title": "Frontier Safety Frameworks — RSP, PF, FSF — Anthropic Responsible Scaling Policy v3.0 (February 2026) · OpenAI Preparedness Framework v2 (April 15 · 2025)...",
             "anchor": "frontier-safety-frameworks-rsp-pf-fsf"
           },
           {
-            "title": "Model Welfare Research — Anthropic, \"Exploring Model Welfare\" (April 2025). First major-lab formal research program...",
+            "title": "Model Welfare Research — The program · The four commitments · The shipped intervention...",
             "anchor": "model-welfare-research"
           },
           {
-            "title": "Bias & Representational Harm — Gallegos, Rossi, Barrow, Tanjim, Kim, Dernoncourt, Yu, Zhang, Ahmed (Computational Linguis...",
+            "title": "Bias & Representational Harm — Representational vs allocational · Three evaluation-metric categories (Gallegos et al. 2024) · Intersectionality...",
             "anchor": "bias-representational-harm"
           },
           {
-            "title": "Fairness Criteria: Group, Individual, Counterfactual — Three families structure the fairness literature. Group fairness: demographic parity, equa...",
+            "title": "Fairness Criteria: Group, Individual, Counterfactual — Group fairness · Individual fairness · Counterfactual fairness...",
             "anchor": "fairness-criteria-group-individual-counterfactual"
           },
           {
-            "title": "Differential Privacy for LLMs — DP-SGD remains the standard — noise-injected gradient updates provide formal (epsilon, del...",
+            "title": "Differential Privacy for LLMs — (ε · δ)-differential privacy · DP-SGD...",
             "anchor": "differential-privacy-for-llms"
           },
           {
-            "title": "Watermarking: SynthID, Stable Signature, C2PA — Three technologies structure 2026 AI-generated-content provenance. SynthID (Google DeepMin...",
+            "title": "Watermarking: SynthID, Stable Signature, C2PA — Text watermarking (SynthID-text style) · Stable Signature (image) · SynthID unified detector (November 2025)...",
             "anchor": "watermarking-synthid-stable-signature-c2pa"
           },
           {
-            "title": "Regulatory Frameworks: EU, US, UK, Korea — Four primary regulatory regimes define the 2026 AI governance landscape. EU AI Act (in for...",
+            "title": "Regulatory Frameworks: EU, US, UK, Korea — EU AI Act · GPAI Code of Practice · Transparency Code for Article 50...",
             "anchor": "regulatory-frameworks-eu-us-uk-korea"
           },
           {
-            "title": "EchoLeak & CVEs for AI — CVE-2025-32711 \"EchoLeak\" (CVSS 9.3) was the first publicly documented zero-click prompt i...",
+            "title": "EchoLeak & CVEs for AI — The EchoLeak attack chain · Aim Labs' term: LLM Scope Violation · CamoLeak (CVSS 9.6...",
             "anchor": "echoleak-cves-for-ai"
           },
           {
-            "title": "Model, System & Dataset Cards — Three documentation formats structure AI transparency. Model Cards (Mitchell et al. 2019) ...",
+            "title": "Model, System & Dataset Cards — Model Cards (Mitchell et al. 2019) · Datasheets for Datasets (Gebru et al. 2018) · Data Cards (Pushkarna et al....",
             "anchor": "model-system-dataset-cards"
           },
           {
-            "title": "Data Provenance & Training-Data Governance — EU AI Act requires machine-readable opt-out standards for GPAI by August 2025 (via EU Copy...",
+            "title": "Data Provenance & Training-Data Governance — California AB 2013 · EU AI Act (Lesson 24) and TDM opt-out · 2025 DPA convergence on legitimate interest...",
             "anchor": "data-provenance-training-data-governance"
           },
           {
-            "title": "Alignment Research Ecosystem: MATS, Redwood, Apollo, METR — Five organisations define the 2026 non-lab alignment research layer. MATS (ML Alignment & ...",
+            "title": "Alignment Research Ecosystem: MATS, Redwood, Apollo, METR — MATS (ML Alignment & Theory Scholars) · Redwood Research · Apollo Research...",
             "anchor": "alignment-research-ecosystem-mats-redwood-apollo-metr"
           },
           {
-            "title": "Moderation Systems: OpenAI, Perspective, Llama Guard — Production moderation systems operationalize the safety policies defined in Lessons 12-16....",
+            "title": "Moderation Systems: OpenAI, Perspective, Llama Guard — OpenAI Moderation API · Llama Guard 3/4 · Perspective API (Google Jigsaw)...",
             "anchor": "moderation-systems-openai-perspective-llama-guard"
           },
           {
-            "title": "Dual-Use Risk: Cyber, Bio, Chem, Nuclear — The 2026 dual-use picture, domain by domain. Bio/chem: Lesson 17 covers WMDP; Anthropic's ...",
+            "title": "Dual-Use Risk: Cyber, Bio, Chem, Nuclear — Bio/chem uplift narrative · Chem/bio execution-gap erosion · Cyber uplift (November 2025)...",
             "anchor": "dual-use-risk-cyber-bio-chem-nuclear"
           }
         ]
@@ -2084,343 +2084,343 @@ window.topicsData = [
         "file": "phase-19.md",
         "concepts": [
           {
-            "title": "Terminal-Native Coding Agent — By 2026 the shape of a coding agent is settled. A TUI harness, a stateful plan, a sandboxe...",
+            "title": "Terminal-Native Coding Agent — By 2026 the shape of a coding agent is settled. A TUI harness, a stateful plan, ...",
             "anchor": "terminal-native-coding-agent"
           },
           {
-            "title": "RAG over Codebase (Cross-Repo Semantic Search) — Every serious engineering org in 2026 runs an internal code search that understands meanin...",
+            "title": "RAG over Codebase (Cross-Repo Semantic Search) — Every serious engineering org in 2026 runs an internal code search that understa...",
             "anchor": "rag-over-codebase-cross-repo-semantic-search"
           },
           {
-            "title": "Real-Time Voice Assistant (ASR → LLM → TTS) — A voice agent that feels right has end-to-end latency under 800ms, knows when you have sto...",
+            "title": "Real-Time Voice Assistant (ASR → LLM → TTS) — A voice agent that feels right has end-to-end latency under 800ms, knows when yo...",
             "anchor": "real-time-voice-assistant-asr-llm-tts"
           },
           {
-            "title": "Multimodal Document QA (Vision-First) — The 2026 document-QA frontier moved away from OCR-then-text and toward vision-first late i...",
+            "title": "Multimodal Document QA (Vision-First) — The 2026 document-QA frontier moved away from OCR-then-text and toward vision-fi...",
             "anchor": "multimodal-document-qa-vision-first"
           },
           {
-            "title": "Autonomous Research Agent (AI-Scientist Class) — Sakana's AI-Scientist-v2 published full papers. Agent Laboratory ran the experiments. Alle...",
+            "title": "Autonomous Research Agent (AI-Scientist Class) — Sakana's AI-Scientist-v2 published full papers. Agent Laboratory ran the experim...",
             "anchor": "autonomous-research-agent-ai-scientist-class"
           },
           {
-            "title": "DevOps Troubleshooting Agent for Kubernetes — AWS's DevOps Agent went GA, Resolve AI published its K8s playbooks, NeuBird demoed semanti...",
+            "title": "DevOps Troubleshooting Agent for Kubernetes — AWS's DevOps Agent went GA, Resolve AI published its K8s playbooks, NeuBird demo...",
             "anchor": "devops-troubleshooting-agent-for-kubernetes"
           },
           {
-            "title": "End-to-End Fine-Tuning Pipeline — An 8B-class model trained on your own data, DPO-aligned on your own preferences, quantized...",
+            "title": "End-to-End Fine-Tuning Pipeline — An 8B-class model trained on your own data, DPO-aligned on your own preferences,...",
             "anchor": "end-to-end-fine-tuning-pipeline"
           },
           {
-            "title": "Production RAG Chatbot (Regulated Vertical) — Harvey, Glean, Mendable, and LlamaCloud all run the same production shape in 2026. Ingest ...",
+            "title": "Production RAG Chatbot (Regulated Vertical) — Harvey, Glean, Mendable, and LlamaCloud all run the same production shape in 202...",
             "anchor": "production-rag-chatbot-regulated-vertical"
           },
           {
-            "title": "Code Migration Agent (Repo-Level Upgrade) — Amazon's MigrationBench (Java 8 to 17) and Google's App Engine Py2-to-Py3 migrator set the...",
+            "title": "Code Migration Agent (Repo-Level Upgrade) — Amazon's MigrationBench (Java 8 to 17) and Google's App Engine Py2-to-Py3 migrat...",
             "anchor": "code-migration-agent-repo-level-upgrade"
           },
           {
-            "title": "Multi-Agent Software Engineering Team — The 2026 shape of a multi-agent engineering team has converged: an architect plans, N code...",
+            "title": "Multi-Agent Software Engineering Team — The 2026 shape of a multi-agent engineering team has converged: an architect pla...",
             "anchor": "multi-agent-software-engineering-team"
           },
           {
-            "title": "LLM Observability & Eval Dashboard — Langfuse went open-core. Arize Phoenix published the 2026 GenAI semconv mappings. Helicone...",
+            "title": "LLM Observability & Eval Dashboard — Langfuse went open-core. Arize Phoenix published the 2026 GenAI semconv mappings...",
             "anchor": "llm-observability-eval-dashboard"
           },
           {
-            "title": "Video Understanding Pipeline (Scene → QA) — Twelve Labs productized Marengo + Pegasus. VideoDB shipped the CRUD-for-video API. AI2's M...",
+            "title": "Video Understanding Pipeline (Scene → QA) — Twelve Labs productized Marengo + Pegasus. VideoDB shipped the CRUD-for-video AP...",
             "anchor": "video-understanding-pipeline-scene-qa"
           },
           {
-            "title": "Stateless MCP Server with Registry and Governance — Production MCP is not one server process. It is a chain of contracts: publishable metadata...",
+            "title": "Stateless MCP Server with Registry and Governance — Cacheable discovery · Approval is a record · not a magic scope...",
             "anchor": "stateless-mcp-server-with-registry-and-governance"
           },
           {
-            "title": "Speculative-Decoding Inference Server — Speculative decoding — a cheap draft proposes tokens, the target model verifies them in on...",
+            "title": "Speculative-Decoding Inference Server — Speculative decoding — a cheap draft proposes tokens, the target model verifies ...",
             "anchor": "speculative-decoding-inference-server"
           },
           {
-            "title": "Constitutional Safety Harness + Red-Team Range — Anthropic's Constitutional Classifiers, Meta's Llama Guard 4, Google's ShieldGemma-2, NVID...",
+            "title": "Constitutional Safety Harness + Red-Team Range — Anthropic's Constitutional Classifiers, Meta's Llama Guard 4, Google's ShieldGem...",
             "anchor": "constitutional-safety-harness-red-team-range"
           },
           {
-            "title": "GitHub Issue-to-PR Autonomous Agent — Label an issue, get a PR — the 2026 product shape for autonomous coding agents: run an age...",
+            "title": "GitHub Issue-to-PR Autonomous Agent — Label an issue, get a PR — the 2026 product shape for autonomous coding agents: ...",
             "anchor": "github-issue-to-pr-autonomous-agent"
           },
           {
-            "title": "Personal AI Tutor (Adaptive, Multimodal) — Khanmigo (Khan Academy), Duolingo Max, Google LearnLM / Gemini for Education, Quizlet Q-Ch...",
+            "title": "Personal AI Tutor (Adaptive, Multimodal) — Khanmigo (Khan Academy), Duolingo Max, Google LearnLM / Gemini for Education, Qu...",
             "anchor": "personal-ai-tutor-adaptive-multimodal"
           },
           {
-            "title": "Agent Harness Loop Contract — The harness is the agent. The model is a coprocessor. This lesson freezes the loop contrac...",
+            "title": "Agent Harness Loop Contract — The harness is the agent. The model is a coprocessor. This lesson freezes the lo...",
             "anchor": "agent-harness-loop-contract"
           },
           {
-            "title": "Tool Registry with Schema Validation — A tool the agent cannot validate is a tool the agent cannot call. Build the registry and t...",
+            "title": "Tool Registry with Schema Validation — A tool the agent cannot validate is a tool the agent cannot call. Build the regi...",
             "anchor": "tool-registry-with-schema-validation"
           },
           {
-            "title": "JSON-RPC 2.0 Over Newline-Delimited Stdio — The transport between a model client and a tool server is JSON-RPC over stdio. Hand-rollin...",
+            "title": "JSON-RPC 2.0 Over Newline-Delimited Stdio — The transport between a model client and a tool server is JSON-RPC over stdio. H...",
             "anchor": "json-rpc-2-0-over-newline-delimited-stdio"
           },
           {
-            "title": "Function Call Dispatcher — The dispatcher is where the harness pays for every promise the schema made. Timeouts, retr...",
+            "title": "Function Call Dispatcher — The dispatcher is where the harness pays for every promise the schema made. Time...",
             "anchor": "function-call-dispatcher"
           },
           {
-            "title": "Plan-Execute Control Flow — A plan that cannot survive a failure is a script. A script that can replan is an agent. Bu...",
+            "title": "Plan-Execute Control Flow — A plan that cannot survive a failure is a script. A script that can replan is an...",
             "anchor": "plan-execute-control-flow"
           },
           {
-            "title": "Verification Gates and Observation Budget — An agent harness without a verification layer is a wish in a trenchcoat. This lesson build...",
+            "title": "Verification Gates and Observation Budget — An agent harness without a verification layer is a wish in a trenchcoat. This le...",
             "anchor": "verification-gates-and-observation-budget"
           },
           {
-            "title": "Sandbox Runner with Denylist and Path Jail — The verification gate decides whether a tool call should run. The sandbox decides what hap...",
+            "title": "Sandbox Runner with Denylist and Path Jail — The verification gate decides whether a tool call should run. The sandbox decide...",
             "anchor": "sandbox-runner-with-denylist-and-path-jail"
           },
           {
-            "title": "Eval Harness with Fixture Tasks — A coding agent is only as good as the suite of tasks you measure it against. This lesson b...",
+            "title": "Eval Harness with Fixture Tasks — A coding agent is only as good as the suite of tasks you measure it against. Thi...",
             "anchor": "eval-harness-with-fixture-tasks"
           },
           {
-            "title": "Observability with OTel GenAI Spans and Prometheus Metrics — An agent harness without observability is a black box that costs money. This lesson hand-r...",
+            "title": "Observability with OTel GenAI Spans and Prometheus Metrics — An agent harness without observability is a black box that costs money. This les...",
             "anchor": "observability-with-otel-genai-spans-and-prometheus-metrics"
           },
           {
-            "title": "End-to-End Coding Agent on the Harness — Track A's payoff. This lesson stitches the gate chain, the sandbox, the eval harness, and ...",
+            "title": "End-to-End Coding Agent on the Harness — Track A's payoff. This lesson stitches the gate chain, the sandbox, the eval har...",
             "anchor": "end-to-end-coding-agent-on-the-harness"
           },
           {
-            "title": "BPE Tokenizer From Scratch — Bytes in, ids out, ids back to the same bytes. Build the tokenizer that every modern text ...",
+            "title": "BPE Tokenizer From Scratch — Bytes in, ids out, ids back to the same bytes. Build the tokenizer that every mo...",
             "anchor": "bpe-tokenizer-from-scratch"
           },
           {
-            "title": "Tokenized Dataset with Sliding Window — A pretraining run is a function from token ids to gradients. This lesson builds the convey...",
+            "title": "Tokenized Dataset with Sliding Window — A pretraining run is a function from token ids to gradients. This lesson builds ...",
             "anchor": "tokenized-dataset-with-sliding-window"
           },
           {
-            "title": "Token and Positional Embeddings — Ids are integers. The model wants vectors. Two lookup tables sit between them, and the cho...",
+            "title": "Token and Positional Embeddings — Ids are integers. The model wants vectors. Two lookup tables sit between them, a...",
             "anchor": "token-and-positional-embeddings"
           },
           {
-            "title": "Multi-Head Self-Attention — One linear projection, three views, H parallel heads, one mask. The attention block as the...",
+            "title": "Multi-Head Self-Attention — One linear projection, three views, H parallel heads, one mask. The attention bl...",
             "anchor": "multi-head-self-attention"
           },
           {
-            "title": "Transformer Block from Scratch — One block is the unit of every modern decoder LLM. Layer norm, multi head attention, resid...",
+            "title": "Transformer Block from Scratch — Causal multi head attention · The MLP · Residual connections do two things...",
             "anchor": "transformer-block-from-scratch"
           },
           {
-            "title": "GPT Model Assembly — Twelve blocks stacked, a token embedding, a learned position embedding, a final LayerNorm,...",
+            "title": "GPT Model Assembly — Weight tying · Position embedding is learned · not sinusoidal...",
             "anchor": "gpt-model-assembly"
           },
           {
-            "title": "Training Loop and Evaluation — A loop that does not measure is a loop that lies. This lesson builds the training loop tha...",
+            "title": "Training Loop and Evaluation — Loss alignment · AdamW decay split · Warmup plus cosine schedule...",
             "anchor": "training-loop-and-evaluation"
           },
           {
-            "title": "Loading Pretrained Weights — Training a 124 million parameter model from scratch is a budget decision; loading a publis...",
+            "title": "Loading Pretrained Weights — The GPT-2 naming convention · The local naming convention · The stub fixture...",
             "anchor": "loading-pretrained-weights"
           },
           {
-            "title": "Classifier Fine-Tuning by Head Swap — Track B's first capstone. A pretrained language model is a stack of self-attention blocks ...",
+            "title": "Classifier Fine-Tuning by Head Swap — Track B's first capstone. A pretrained language model is a stack of self-attenti...",
             "anchor": "classifier-fine-tuning-by-head-swap"
           },
           {
-            "title": "Instruction Tuning by Supervised Fine-Tuning — A pretrained base model can extend a sequence but cannot follow an instruction. Supervised...",
+            "title": "Instruction Tuning by Supervised Fine-Tuning — A pretrained base model can extend a sequence but cannot follow an instruction. ...",
             "anchor": "instruction-tuning-by-supervised-fine-tuning"
           },
           {
-            "title": "Direct Preference Optimization from Scratch — Reward models and PPO are the classical RLHF stack. DPO collapses that stack into a single...",
+            "title": "Direct Preference Optimization from Scratch — Reward models and PPO are the classical RLHF stack. DPO collapses that stack int...",
             "anchor": "direct-preference-optimization-from-scratch"
           },
           {
-            "title": "Full Evaluation Pipeline — Training is the part you can monitor with loss curves. Evaluation is the part you have to ...",
+            "title": "Full Evaluation Pipeline — Training is the part you can monitor with loss curves. Evaluation is the part yo...",
             "anchor": "full-evaluation-pipeline"
           },
           {
-            "title": "Large Corpus Downloader — Training a language model begins long before the first forward pass. The corpus has to lan...",
+            "title": "Large Corpus Downloader — Streaming with `urllib` · Resume with `Range` · MinHash plus LSH...",
             "anchor": "large-corpus-downloader"
           },
           {
-            "title": "HDF5 Tokenized Corpus — The downloaded corpus has to land in a layout the trainer can stream from at line speed. J...",
+            "title": "HDF5 Tokenized Corpus — Resizable HDF5 done right · Sharded write · Chunked read...",
             "anchor": "hdf5-tokenized-corpus"
           },
           {
-            "title": "Cosine LR with Linear Warmup — The learning-rate schedule is the second most important decision after the loss function. ...",
+            "title": "Cosine LR with Linear Warmup — Warmup formula · Cosine formula · Floor after total steps...",
             "anchor": "cosine-lr-with-linear-warmup"
           },
           {
-            "title": "Gradient Clipping and Mixed Precision — The optimizer and schedule from the previous lesson assume gradients are sane. They usuall...",
+            "title": "Gradient Clipping and Mixed Precision — Global L2 norm · autocast and GradScaler · NaN and Inf detection...",
             "anchor": "gradient-clipping-and-mixed-precision"
           },
           {
-            "title": "Gradient Accumulation — Train at an effective batch you cannot afford, one micro-batch at a time. Scale the loss, ...",
+            "title": "Gradient Accumulation — The equivalence proof in code · Where the cost goes · Step 1: equivalence check...",
             "anchor": "gradient-accumulation"
           },
           {
-            "title": "Checkpoint Save and Resume — Train interrupts kill runs; checkpoints let them continue. Save model, optimizer, schedule...",
+            "title": "Checkpoint Save and Resume — The five state buckets · Atomic save · Sharded checkpoints...",
             "anchor": "checkpoint-save-and-resume"
           },
           {
-            "title": "Distributed Data Parallel and FSDP from Scratch — Multi-rank training is two collectives and one rule. Broadcast the parameters at startup, ...",
+            "title": "Distributed Data Parallel and FSDP from Scratch — The two collectives that matter · Gradient averaging matches single-process gradient · FSDP sketch...",
             "anchor": "distributed-data-parallel-and-fsdp-from-scratch"
           },
           {
-            "title": "Language Model Evaluation Harness — A model that does well on a task you cannot define is a model that does well by accident. ...",
+            "title": "Language Model Evaluation Harness — Task spec · The five fixture tasks · The metric contract...",
             "anchor": "language-model-evaluation-harness"
           },
           {
-            "title": "Hypothesis Generator — A research agent that asks the same question twice is wasting tokens. The trick is forcing...",
+            "title": "Hypothesis Generator — A research agent that asks the same question twice is wasting tokens. The trick ...",
             "anchor": "hypothesis-generator"
           },
           {
-            "title": "Literature Retrieval — A hypothesis is cheap. Knowing whether someone already proved it is the expensive part. Bu...",
+            "title": "Literature Retrieval — A hypothesis is cheap. Knowing whether someone already proved it is the expensiv...",
             "anchor": "literature-retrieval"
           },
           {
-            "title": "Experiment Runner — The loop is only as honest as its measurements. Build the runner that takes a spec, execut...",
+            "title": "Experiment Runner — The loop is only as honest as its measurements. Build the runner that takes a sp...",
             "anchor": "experiment-runner"
           },
           {
-            "title": "Result Evaluator — The runner produced numbers. The evaluator decides whether those numbers are an improvemen...",
+            "title": "Result Evaluator — The runner produced numbers. The evaluator decides whether those numbers are an ...",
             "anchor": "result-evaluator"
           },
           {
-            "title": "Paper Writer — A LaTeX skeleton is a contract between the researcher and the typesetter. If the contract ...",
+            "title": "Paper Writer — A LaTeX skeleton is a contract between the researcher and the typesetter. If the...",
             "anchor": "paper-writer"
           },
           {
-            "title": "Critic Loop — A critic that returns \"looks good\" the first time is broken. A critic that always returns ...",
+            "title": "Critic Loop — A critic that returns \"looks good\" the first time is broken. A critic that alway...",
             "anchor": "critic-loop"
           },
           {
-            "title": "Iteration Scheduler — A research loop without a scheduler is a queue with delusions. The scheduler is where the ...",
+            "title": "Iteration Scheduler — A research loop without a scheduler is a queue with delusions. The scheduler is ...",
             "anchor": "iteration-scheduler"
           },
           {
-            "title": "End-to-End Research Demo — A demo is the place where every contract you wrote earlier has to compose. If any one of t...",
+            "title": "End-to-End Research Demo — A demo is the place where every contract you wrote earlier has to compose. If an...",
             "anchor": "end-to-end-research-demo"
           },
           {
-            "title": "Vision Encoder Patches — A vision model that reads pixels needs a tokenizer for pixels. Patch embedding is that tok...",
+            "title": "Vision Encoder Patches — Why patches · not pixels · Why a linear projection is enough...",
             "anchor": "vision-encoder-patches"
           },
           {
-            "title": "Vision Transformer Encoder — Patches alone do not see. A 12-layer pre-LN transformer with 12 attention heads turns the ...",
+            "title": "Vision Transformer Encoder — Pre-LN vs post-LN · Multi-head self-attention · Why the 4x feed-forward expansion...",
             "anchor": "vision-transformer-encoder"
           },
           {
-            "title": "Projection Layer for Modality Alignment — A vision encoder produces image tokens. A text decoder consumes text tokens. The two live ...",
+            "title": "Projection Layer for Modality Alignment — Pooling before projection · Why two layers and not one · Cosine alignment loss...",
             "anchor": "projection-layer-for-modality-alignment"
           },
           {
-            "title": "Cross-Attention Fusion — The projection layer aligns one image vector with one caption vector. A real vision-langua...",
+            "title": "Cross-Attention Fusion — Mask shapes · Why no mask on cross-attention · Key/value caching...",
             "anchor": "cross-attention-fusion"
           },
           {
-            "title": "Vision-Language Pretraining — The encoder, projection, and decoder are wired. Now train them together. Two objectives dr...",
+            "title": "Vision-Language Pretraining — InfoNCE in one paragraph · Temperature matters · Language modeling loss...",
             "anchor": "vision-language-pretraining"
           },
           {
-            "title": "Multimodal Evaluation — Training is half the loop. The other half is measurement. This lesson builds three evaluat...",
+            "title": "Multimodal Evaluation — Recall@K from a similarity matrix · VQA exact match · BLEU-4...",
             "anchor": "multimodal-evaluation"
           },
           {
-            "title": "Chunking Strategies, Compared — Chunking decides what your retriever can ever surface. Get the boundaries wrong and no emb...",
+            "title": "Chunking Strategies, Compared — Fixed-window · Sentence · Recursive split...",
             "anchor": "chunking-strategies-compared"
           },
           {
-            "title": "Hybrid Retrieval with BM25 and Dense Embeddings — Lexical and semantic retrieval fail on opposite query distributions. Hybrid retrieval with...",
+            "title": "Hybrid Retrieval with BM25 and Dense Embeddings — BM25 in one paragraph · Dense retrieval in one paragraph · Reciprocal rank fusion...",
             "anchor": "hybrid-retrieval-with-bm25-and-dense-embeddings"
           },
           {
-            "title": "Cross-Encoder Reranker — A bi-encoder embeds query and document independently. A cross-encoder concatenates them an...",
+            "title": "Cross-Encoder Reranker — The cross-encoder's input shape · Why this lesson trains a tiny one · Latency vs quality...",
             "anchor": "cross-encoder-reranker"
           },
           {
-            "title": "Query Rewriting: HyDE, Multi-Query, and Decomposition — The query the user types is not the query your retriever wants. Rewriting bridges the gap ...",
+            "title": "Query Rewriting: HyDE, Multi-Query, and Decomposition — HyDE in detail · Multi-query expansion in detail · Decomposition in detail...",
             "anchor": "query-rewriting-hyde-multi-query-and-decomposition"
           },
           {
-            "title": "RAG Evaluation: Precision, Recall, MRR, nDCG, Faithfulness, Answer Relevance — If you cannot grade your retrieval and your answer at the same time, you cannot ship the s...",
+            "title": "RAG Evaluation: Precision, Recall, MRR, nDCG, Faithfulness, Answer Relevance — Precision@k · Recall@k · MRR (Mean Reciprocal Rank)...",
             "anchor": "rag-evaluation-precision-recall-mrr-ndcg-faithfulness-answer"
           },
           {
-            "title": "End-to-End RAG System — Six lessons of components. One pipeline. One eval loop. One self-terminating demo. This is...",
+            "title": "End-to-End RAG System — Wiring choices · Answer generator with citations · The self-terminating demo...",
             "anchor": "end-to-end-rag-system"
           },
           {
-            "title": "Task Spec Format — An eval harness is only as good as the contract its tasks honour. Freeze the JSONL shape a...",
+            "title": "Task Spec Format — An eval harness is only as good as the contract its tasks honour. Freeze the JSO...",
             "anchor": "task-spec-format"
           },
           {
-            "title": "Classical Metrics — BLEU, ROUGE-L, F1, exact-match, accuracy. Five metrics that still account for most publish...",
+            "title": "Classical Metrics — BLEU, ROUGE-L, F1, exact-match, accuracy. Five metrics that still account for mo...",
             "anchor": "classical-metrics"
           },
           {
-            "title": "Code Exec Metric — Generated code is right when it passes the tests. The eval harness has to extract code, ru...",
+            "title": "Code Exec Metric — Generated code is right when it passes the tests. The eval harness has to extrac...",
             "anchor": "code-exec-metric"
           },
           {
-            "title": "Perplexity and Calibration — If your model says 90 percent confident on a thousand answers and gets six hundred right, ...",
+            "title": "Perplexity and Calibration — If your model says 90 percent confident on a thousand answers and gets six hundr...",
             "anchor": "perplexity-and-calibration"
           },
           {
-            "title": "Leaderboard Aggregation — Per-task scores are easy. Per-model rankings across heterogeneous tasks are harder. Statis...",
+            "title": "Leaderboard Aggregation — Per-task scores are easy. Per-model rankings across heterogeneous tasks are hard...",
             "anchor": "leaderboard-aggregation"
           },
           {
-            "title": "End-to-End Eval Runner — Five lessons of plumbing, one lesson to glue them. The runner reads the task spec from les...",
+            "title": "End-to-End Eval Runner — Five lessons of plumbing, one lesson to glue them. The runner reads the task spe...",
             "anchor": "end-to-end-eval-runner"
           },
           {
-            "title": "Collective Ops From Scratch — The four collective operations that hold distributed training together are allreduce, broa...",
+            "title": "Collective Ops From Scratch — Ring allreduce in two passes · Queue mesh as a stand-in for NCCL · Verify against gloo...",
             "anchor": "collective-ops-from-scratch"
           },
           {
-            "title": "Data Parallel DDP From Scratch — DistributedDataParallel is a hook on top of allreduce. Wrap a model, broadcast the initial...",
+            "title": "Data Parallel DDP From Scratch — The three operations DDP needs · Why mean and not sum · Why bucket gradients...",
             "anchor": "data-parallel-ddp-from-scratch"
           },
           {
-            "title": "ZeRO Optimizer State Sharding — Adam stores two moment estimates per parameter, both in float32. A 7B-parameter model carr...",
+            "title": "ZeRO Optimizer State Sharding — Stages of ZeRO · The memory math · real numbers...",
             "anchor": "zero-optimizer-state-sharding"
           },
           {
-            "title": "Pipeline Parallel and Bubble Analysis — Tensor parallelism splits the matrix multiply across ranks. Pipeline parallelism splits th...",
+            "title": "Pipeline Parallel and Bubble Analysis — GPipe schedule · 1F1B schedule · Why equal compute per stage matters...",
             "anchor": "pipeline-parallel-and-bubble-analysis"
           },
           {
-            "title": "Sharded Checkpoint and Atomic Resume — A 70B-parameter training job is paused by a node failure every few hours. The checkpoint f...",
+            "title": "Sharded Checkpoint and Atomic Resume — Manifest schema · Atomic write · Three failure modes the schema must defend against...",
             "anchor": "sharded-checkpoint-and-atomic-resume"
           },
           {
-            "title": "End-to-End Distributed Training — Lessons 76 through 80 each built one piece. This is the assembly: a tiny GPT trained acros...",
+            "title": "End-to-End Distributed Training — The mini GPT · The composition rules · Why a tiny GPT and not just an MLP...",
             "anchor": "end-to-end-distributed-training"
           },
           {
-            "title": "Jailbreak Taxonomy — A safety harness without a taxonomy is a coin flip. Name the attack before you defend it....",
+            "title": "Jailbreak Taxonomy — A safety harness without a taxonomy is a coin flip. Name the attack before you d...",
             "anchor": "jailbreak-taxonomy"
           },
           {
-            "title": "Prompt Injection Detector — A detector is a function from prompt to confidence and category. Anything else is a vibe....",
+            "title": "Prompt Injection Detector — A detector is a function from prompt to confidence and category. Anything else i...",
             "anchor": "prompt-injection-detector"
           },
           {
-            "title": "Refusal Evaluation — Helpfulness on benign prompts and refusal on harmful prompts are two metrics, not one. Mea...",
+            "title": "Refusal Evaluation — Helpfulness on benign prompts and refusal on harmful prompts are two metrics, no...",
             "anchor": "refusal-evaluation"
           },
           {
-            "title": "Content Classifier Integration — Classifiers on the output side answer a different question than rules on the input side. B...",
+            "title": "Content Classifier Integration — Classifiers on the output side answer a different question than rules on the inp...",
             "anchor": "content-classifier-integration"
           },
           {
-            "title": "Constitutional Rules Engine — A rule is a name, a predicate, and an explanation. Anything missing one of those three is ...",
+            "title": "Constitutional Rules Engine — A rule is a name, a predicate, and an explanation. Anything missing one of those...",
             "anchor": "constitutional-rules-engine"
           },
           {
-            "title": "End-to-End Safety Gate — Pre-gen, during-gen, post-gen. Three checkpoints, one verdict, an audit trail per request....",
+            "title": "End-to-End Safety Gate — Pre-gen, during-gen, post-gen. Three checkpoints, one verdict, an audit trail pe...",
             "anchor": "end-to-end-safety-gate"
           }
         ]
@@ -3672,6 +3672,1161 @@ window.topicsData = [
           {
             "title": "[MEDIUM] Read an SGLang sweep on an L4 — Use real SGLang runs on an NVIDIA L4 to find the saturation point, the SLO limit...",
             "anchor": "read-an-sglang-sweep-on-an-l4"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "section": "🧭 Specialized Learning Paths (MCP, Agents, Evals, Infra)",
+    "priority": "Career Tracks",
+    "subsections": [
+      {
+        "id": "learning-paths",
+        "title": "Specialized Career Tracks",
+        "file": "learning-paths.md",
+        "concepts": [
+          {
+            "title": "Agent Skills Engineering (5 phases/lessons)",
+            "anchor": "agent-skills-engineering"
+          },
+          {
+            "title": "Agent Systems Engineering (14 phases/lessons)",
+            "anchor": "agent-systems-engineering"
+          },
+          {
+            "title": "AI Data Systems (11 phases/lessons)",
+            "anchor": "ai-data-systems"
+          },
+          {
+            "title": "Developer Experience and Education (11 phases/lessons)",
+            "anchor": "developer-experience-and-education"
+          },
+          {
+            "title": "AI Evaluation and Reliability (12 phases/lessons)",
+            "anchor": "ai-evaluation-and-reliability"
+          },
+          {
+            "title": "LLM Product Engineering (12 phases/lessons)",
+            "anchor": "llm-product-engineering"
+          },
+          {
+            "title": "Building and Deploying AI Applications (12 phases/lessons)",
+            "anchor": "building-and-deploying-ai-applications"
+          },
+          {
+            "title": "Customer AI Deployment (12 phases/lessons)",
+            "anchor": "customer-ai-deployment"
+          },
+          {
+            "title": "Model Context Protocol (MCP) (17 phases/lessons)",
+            "anchor": "model-context-protocol-mcp"
+          },
+          {
+            "title": "Reverse Engineering (14 phases/lessons)",
+            "anchor": "reverse-engineering"
+          },
+          {
+            "title": "Product Judgment and Delivery (8 phases/lessons)",
+            "anchor": "product-judgment-and-delivery"
+          },
+          {
+            "title": "Software Engineering Fundamentals (13 phases/lessons)",
+            "anchor": "software-engineering-fundamentals"
+          },
+          {
+            "title": "Agent-Assisted Engineering (16 phases/lessons)",
+            "anchor": "agent-assisted-engineering"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "section": "📖 AI Engineering Comprehensive Glossary (250 Terms)",
+    "priority": "Reference Dictionary",
+    "subsections": [
+      {
+        "id": "glossary-math-training",
+        "title": "Glossary: Math & training",
+        "file": "glossary-math-training.md",
+        "concepts": [
+          {
+            "title": "Activation Checkpointing — A training-memory technique that saves only selected forward-pass activations an...",
+            "anchor": "activation-checkpointing"
+          },
+          {
+            "title": "Activation Function — A function applied after a linear or affine layer that introduces nonlinearity. ...",
+            "anchor": "activation-function"
+          },
+          {
+            "title": "Adam (Optimizer) — Adaptive Moment Estimation. It combines an exponential average of gradients with...",
+            "anchor": "adam-optimizer"
+          },
+          {
+            "title": "AdamW — An Adam variant that decouples weight decay from the gradient-based parameter up...",
+            "anchor": "adamw"
+          },
+          {
+            "title": "Autograd — A system that records or transforms tensor operations so it can compute derivati...",
+            "anchor": "autograd"
+          },
+          {
+            "title": "Backpropagation — An efficient application of the chain rule that propagates derivatives from a sc...",
+            "anchor": "backpropagation"
+          },
+          {
+            "title": "Batch Size — The number of examples whose losses contribute to one gradient estimate before a...",
+            "anchor": "batch-size"
+          },
+          {
+            "title": "Contrastive Learning — Training by pulling similar pairs closer and pushing dissimilar pairs apart in e...",
+            "anchor": "contrastive-learning"
+          },
+          {
+            "title": "Cross-Entropy — A loss based on the negative log probability assigned to the target outcome. In ...",
+            "anchor": "cross-entropy"
+          },
+          {
+            "title": "Data Augmentation — Creating modified examples, such as transformed images, perturbed audio, or para...",
+            "anchor": "data-augmentation"
+          },
+          {
+            "title": "DPO (Direct Preference Optimization) — A preference-optimization objective that trains a policy directly from preferred...",
+            "anchor": "dpo-direct-preference-optimization"
+          },
+          {
+            "title": "Dropout — During training, randomly setting a fraction of activations to zero encourages t...",
+            "anchor": "dropout"
+          },
+          {
+            "title": "Eigenvalue — A scalar that describes how a linear transformation scales a corresponding nonze...",
+            "anchor": "eigenvalue"
+          },
+          {
+            "title": "Epoch — One traversal of the defined training dataset. In distributed or sampled trainin...",
+            "anchor": "epoch"
+          },
+          {
+            "title": "Fine-tuning — Continuing training from pretrained parameters on a narrower dataset or objectiv...",
+            "anchor": "fine-tuning"
+          },
+          {
+            "title": "Gradient — A vector of partial derivatives pointing in the direction of steepest increase. ...",
+            "anchor": "gradient"
+          },
+          {
+            "title": "Gradient Accumulation — Summing or averaging gradients from several microbatches before performing one o...",
+            "anchor": "gradient-accumulation"
+          },
+          {
+            "title": "Gradient Clipping — Limiting gradient values or their combined norm before an optimizer update when ...",
+            "anchor": "gradient-clipping"
+          },
+          {
+            "title": "Gradient Descent — A family of optimization updates that move parameters using the negative gradien...",
+            "anchor": "gradient-descent"
+          },
+          {
+            "title": "Hyperparameter — A configuration choice that shapes model structure, optimization, data processin...",
+            "anchor": "hyperparameter"
+          },
+          {
+            "title": "JAX — A Python library for transforming numerical functions with automatic differentia...",
+            "anchor": "jax"
+          },
+          {
+            "title": "Knowledge Distillation — Training a student model to reproduce selected behavior or output distributions ...",
+            "anchor": "knowledge-distillation"
+          },
+          {
+            "title": "Learning Rate — A scale factor used by an optimizer to control parameter-update magnitude. Value...",
+            "anchor": "learning-rate"
+          },
+          {
+            "title": "Learning Rate Schedule — A policy that changes the optimizer's learning rate as training progresses accor...",
+            "anchor": "learning-rate-schedule"
+          },
+          {
+            "title": "LoRA (Low-Rank Adaptation) — A method that keeps base weights frozen and learns low-rank update matrices for ...",
+            "anchor": "lora-low-rank-adaptation"
+          },
+          {
+            "title": "Loss Function — An objective that maps predictions and targets, sometimes with regularization te...",
+            "anchor": "loss-function"
+          },
+          {
+            "title": "Mixed Precision — A numerical strategy that uses different data types for different operations, of...",
+            "anchor": "mixed-precision"
+          },
+          {
+            "title": "NaN (Not a Number) — A floating-point value representing an undefined or unrepresentable numerical re...",
+            "anchor": "nan-not-a-number"
+          },
+          {
+            "title": "Normalization — A family of transformations that rescale or recenter inputs, activations, or fea...",
+            "anchor": "normalization"
+          },
+          {
+            "title": "Optimizer — An algorithm that transforms gradients into parameter updates. Plain stochastic ...",
+            "anchor": "optimizer"
+          },
+          {
+            "title": "Overfitting — A generalization gap in which performance on training data is substantially bett...",
+            "anchor": "overfitting"
+          },
+          {
+            "title": "QLoRA — A parameter-efficient fine-tuning method that keeps a pretrained base model froz...",
+            "anchor": "qlora"
+          },
+          {
+            "title": "ReLU — Rectified Linear Unit, defined as `f(x) = max(0, x)`. It is inexpensive and has ...",
+            "anchor": "relu"
+          },
+          {
+            "title": "RLHF (Reinforcement Learning from Human Feedback) — A family of pipelines that uses human feedback to learn a reward or preference s...",
+            "anchor": "rlhf-reinforcement-learning-from-human-feedback"
+          },
+          {
+            "title": "SFT (Supervised Fine-Tuning) — Fine-tuning a pretrained model on paired inputs and desired responses so it lear...",
+            "anchor": "sft-supervised-fine-tuning"
+          },
+          {
+            "title": "Softmax — A function defined by `softmax(x_i) = exp(x_i) / sum(exp(x_j))`, implemented wit...",
+            "anchor": "softmax"
+          },
+          {
+            "title": "Stochastic Gradient Descent (SGD) — An optimizer family that updates parameters from a gradient estimated on a sampl...",
+            "anchor": "stochastic-gradient-descent-sgd"
+          },
+          {
+            "title": "Transfer Learning — Starting from representations or parameters learned on one data distribution or ...",
+            "anchor": "transfer-learning"
+          },
+          {
+            "title": "Underfitting — A model or training setup has insufficient effective capacity, optimization, fea...",
+            "anchor": "underfitting"
+          },
+          {
+            "title": "Warmup — An initial training phase in which the learning rate rises from a smaller value ...",
+            "anchor": "warmup"
+          },
+          {
+            "title": "Weight — A trainable coefficient in a model transformation. Weights are usually organized...",
+            "anchor": "weight"
+          },
+          {
+            "title": "Weight Decay — An update rule that reduces selected parameter magnitudes over training, often b...",
+            "anchor": "weight-decay"
+          }
+        ]
+      },
+      {
+        "id": "glossary-models-inference",
+        "title": "Glossary: Models & inference",
+        "file": "glossary-models-inference.md",
+        "concepts": [
+          {
+            "title": "Attention — A mechanism that forms contextual representations by comparing query vectors wit...",
+            "anchor": "attention"
+          },
+          {
+            "title": "Autoregressive — A factorization in which each output token is predicted from the tokens that pre...",
+            "anchor": "autoregressive"
+          },
+          {
+            "title": "CNN (Convolutional Neural Network) — A neural network that uses convolution operations (sliding filters over the inpu...",
+            "anchor": "cnn-convolutional-neural-network"
+          },
+          {
+            "title": "CUDA — NVIDIA's platform and programming model for general-purpose computation on compa...",
+            "anchor": "cuda"
+          },
+          {
+            "title": "Decoder — A component that maps a representation into an output. In an encoder-decoder tra...",
+            "anchor": "decoder"
+          },
+          {
+            "title": "Decoding Strategy — The algorithm that converts a model's sequence of next-token scores into selecte...",
+            "anchor": "decoding-strategy"
+          },
+          {
+            "title": "Diffusion Model — A generative model trained around a progressive noising process and a learned re...",
+            "anchor": "diffusion-model"
+          },
+          {
+            "title": "Encoder — A component that transforms input into a representation. A transformer encoder c...",
+            "anchor": "encoder"
+          },
+          {
+            "title": "GAN (Generative Adversarial Network) — A generator network tries to create realistic data while a discriminator network...",
+            "anchor": "gan-generative-adversarial-network"
+          },
+          {
+            "title": "GPT — Generative Pre-trained Transformer, a family label for generative transformer mo...",
+            "anchor": "gpt"
+          },
+          {
+            "title": "Inductive Bias — Structural or statistical assumptions that favor some functions or representatio...",
+            "anchor": "inductive-bias"
+          },
+          {
+            "title": "Inference — Executing a trained model to produce predictions, scores, embeddings, or generat...",
+            "anchor": "inference"
+          },
+          {
+            "title": "KV Cache — Stored key and value tensors from earlier positions in autoregressive generation...",
+            "anchor": "kv-cache"
+          },
+          {
+            "title": "LLM (Large Language Model) — A language model with enough capacity and broad training to perform many languag...",
+            "anchor": "llm-large-language-model"
+          },
+          {
+            "title": "Logits — The model's unnormalized numeric scores for candidate outcomes before a normaliz...",
+            "anchor": "logits"
+          },
+          {
+            "title": "MoE (Mixture of Experts) — An architecture with multiple expert subnetworks and a learned router that selec...",
+            "anchor": "moe-mixture-of-experts"
+          },
+          {
+            "title": "Nucleus Sampling (Top-p) — A decoding method that samples from the smallest set of next-token candidates wh...",
+            "anchor": "nucleus-sampling-top-p"
+          },
+          {
+            "title": "Parameter — A value learned during training, commonly a weight, bias, embedding element, or ...",
+            "anchor": "parameter"
+          },
+          {
+            "title": "Perplexity — The exponentiated average negative log-likelihood under a stated tokenization an...",
+            "anchor": "perplexity"
+          },
+          {
+            "title": "Quantization — Representing weights, activations, or caches with lower-precision formats to red...",
+            "anchor": "quantization"
+          },
+          {
+            "title": "Self-Attention — Attention in which queries, keys, and values are derived from the same sequence ...",
+            "anchor": "self-attention"
+          },
+          {
+            "title": "Speculative Decoding — An inference method in which a cheaper draft process proposes several tokens and...",
+            "anchor": "speculative-decoding"
+          },
+          {
+            "title": "Stop Sequence — An application-specified token or text pattern that causes generation to stop wh...",
+            "anchor": "stop-sequence"
+          },
+          {
+            "title": "Streaming — Delivering incremental response events before the complete result is ready. A st...",
+            "anchor": "streaming"
+          },
+          {
+            "title": "Temperature — A decoding parameter that rescales logits before a probability distribution is f...",
+            "anchor": "temperature"
+          },
+          {
+            "title": "Time to First Token (TTFT) — The elapsed time from submitting a generation request until the client receives ...",
+            "anchor": "time-to-first-token-ttft"
+          },
+          {
+            "title": "Top-k Sampling — A decoding method that restricts the next-token distribution to the k highest-sc...",
+            "anchor": "top-k-sampling"
+          },
+          {
+            "title": "Transformer — A neural-network architecture built from attention, position information, feed-f...",
+            "anchor": "transformer"
+          },
+          {
+            "title": "VAE (Variational Autoencoder) — A latent-variable model trained with a reconstruction objective and a regulariza...",
+            "anchor": "vae-variational-autoencoder"
+          }
+        ]
+      },
+      {
+        "id": "glossary-data-representations",
+        "title": "Glossary: Data & representations",
+        "file": "glossary-data-representations.md",
+        "concepts": [
+          {
+            "title": "Byte Pair Encoding (BPE) — A subword-tokenization method that repeatedly merges frequent adjacent units to ...",
+            "anchor": "byte-pair-encoding-bpe"
+          },
+          {
+            "title": "Cosine Similarity — The normalized dot product of two vectors. It compares their direction rather th...",
+            "anchor": "cosine-similarity"
+          },
+          {
+            "title": "Data Deduplication — Detecting and removing exact and near-duplicate examples within or across datase...",
+            "anchor": "data-deduplication"
+          },
+          {
+            "title": "Data Leakage — Unintended use of information during training or feature construction that would...",
+            "anchor": "data-leakage"
+          },
+          {
+            "title": "Data Provenance — Traceable information about where data originated, who or what transformed it, w...",
+            "anchor": "data-provenance"
+          },
+          {
+            "title": "Dataset Split — A documented partition of examples into separate subsets for fitting, developmen...",
+            "anchor": "dataset-split"
+          },
+          {
+            "title": "Embedding — A learned mapping from discrete items (words, images, users) to dense vectors in...",
+            "anchor": "embedding"
+          },
+          {
+            "title": "Feature — An individual measurable property of the data. In classical ML, you engineer fea...",
+            "anchor": "feature"
+          },
+          {
+            "title": "Latent Space — A learned representation space whose coordinates encode factors useful to a mode...",
+            "anchor": "latent-space"
+          },
+          {
+            "title": "Tensor — A typed array with a shape, data type, and device placement that frameworks use ...",
+            "anchor": "tensor"
+          },
+          {
+            "title": "Token — An integer identifier produced by a model-specific tokenizer from text, bytes, i...",
+            "anchor": "token"
+          },
+          {
+            "title": "Tokenization — Converting an input representation into the ordered token identifiers a specific...",
+            "anchor": "tokenization"
+          },
+          {
+            "title": "Vocabulary — The finite mapping between token identifiers and the units a tokenizer can emit,...",
+            "anchor": "vocabulary"
+          }
+        ]
+      },
+      {
+        "id": "glossary-retrieval-generation",
+        "title": "Glossary: Retrieval & generation",
+        "file": "glossary-retrieval-generation.md",
+        "concepts": [
+          {
+            "title": "Approximate Nearest Neighbor (ANN) — A search method that returns vectors likely to be among the nearest to a query w...",
+            "anchor": "approximate-nearest-neighbor-ann"
+          },
+          {
+            "title": "BM25 — A lexical ranking function that scores a document from query-term matches while ...",
+            "anchor": "bm25"
+          },
+          {
+            "title": "Chunking — Dividing source material into retrievable units before indexing. Chunk boundarie...",
+            "anchor": "chunking"
+          },
+          {
+            "title": "Dense Retrieval — First-stage retrieval that embeds queries and candidates into vector representat...",
+            "anchor": "dense-retrieval"
+          },
+          {
+            "title": "Grounding — Connecting a generated answer or action to evidence, state, or observations that...",
+            "anchor": "grounding"
+          },
+          {
+            "title": "HNSW — An approximate-nearest-neighbor index that organizes vectors in layered proximit...",
+            "anchor": "hnsw"
+          },
+          {
+            "title": "Hybrid Retrieval — Retrieval that combines signals from different methods, commonly lexical matchin...",
+            "anchor": "hybrid-retrieval"
+          },
+          {
+            "title": "Maximum Marginal Relevance (MMR) — A selection rule that balances relevance to the query with novelty relative to i...",
+            "anchor": "maximum-marginal-relevance-mmr"
+          },
+          {
+            "title": "RAG (Retrieval-Augmented Generation) — A system pattern that retrieves evidence relevant to a request and supplies sele...",
+            "anchor": "rag-retrieval-augmented-generation"
+          },
+          {
+            "title": "Recall@K — For one query, Recall@K is `|relevant items intersecting the top k| / |relevant ...",
+            "anchor": "recall-k"
+          },
+          {
+            "title": "Reciprocal Rank Fusion (RRF) — A rank-fusion method that combines several result lists by summing contributions...",
+            "anchor": "reciprocal-rank-fusion-rrf"
+          },
+          {
+            "title": "Reranker — A second-stage model or scoring function that reorders a small candidate set usi...",
+            "anchor": "reranker"
+          },
+          {
+            "title": "Semantic Search — Retrieval that represents a query and candidates in an embedding space and ranks...",
+            "anchor": "semantic-search"
+          },
+          {
+            "title": "Vector Database — A storage and indexing system that supports nearest-neighbor queries over vector...",
+            "anchor": "vector-database"
+          }
+        ]
+      },
+      {
+        "id": "glossary-prompting-context",
+        "title": "Glossary: Prompting & context",
+        "file": "glossary-prompting-context.md",
+        "concepts": [
+          {
+            "title": "Chain of Thought (CoT) — Intermediate reasoning used to decompose a task before producing an answer. A pr...",
+            "anchor": "chain-of-thought-cot"
+          },
+          {
+            "title": "Context Compression — Reducing the token footprint of source material while attempting to preserve the...",
+            "anchor": "context-compression"
+          },
+          {
+            "title": "Context Engineering — Designing the full information environment supplied to a model at each step, inc...",
+            "anchor": "context-engineering"
+          },
+          {
+            "title": "Context Window — The maximum token capacity available to one model inference under a specific mod...",
+            "anchor": "context-window"
+          },
+          {
+            "title": "Few-Shot — In-context learning that includes a small set of demonstrations before the targe...",
+            "anchor": "few-shot"
+          },
+          {
+            "title": "In-Context Learning — A model adapting its behavior from instructions, examples, or patterns supplied ...",
+            "anchor": "in-context-learning"
+          },
+          {
+            "title": "Instruction Following — A model capability to map natural-language directions and supplied context to be...",
+            "anchor": "instruction-following"
+          },
+          {
+            "title": "Instruction Hierarchy — A rule set for resolving conflicts among instructions from sources with differen...",
+            "anchor": "instruction-hierarchy"
+          },
+          {
+            "title": "Lost in the Middle — A long-context failure pattern in which model performance changes with evidence ...",
+            "anchor": "lost-in-the-middle"
+          },
+          {
+            "title": "Prompt Cache — Reuse of provider-side or application-side computation for an identical or eligi...",
+            "anchor": "prompt-cache"
+          },
+          {
+            "title": "Prompt Engineering — Designing model-facing instructions, examples, constraints, and output requireme...",
+            "anchor": "prompt-engineering"
+          },
+          {
+            "title": "Prompt Sensitivity — Variation in model output or measured performance caused by changes to prompt wo...",
+            "anchor": "prompt-sensitivity"
+          },
+          {
+            "title": "System Prompt — A provider-defined instruction message or configuration supplied by the applicat...",
+            "anchor": "system-prompt"
+          },
+          {
+            "title": "Token Budget — An explicit allocation of token capacity across instructions, evidence, history,...",
+            "anchor": "token-budget"
+          },
+          {
+            "title": "Zero-Shot — Performing a task from instructions or task framing without including task-speci...",
+            "anchor": "zero-shot"
+          }
+        ]
+      },
+      {
+        "id": "glossary-agents-tools",
+        "title": "Glossary: Agents & tools",
+        "file": "glossary-agents-tools.md",
+        "concepts": [
+          {
+            "title": "Agent — A software system that lets a model select actions toward a goal, observe tool o...",
+            "anchor": "agent"
+          },
+          {
+            "title": "Agent Harness — The runtime around a model that assembles context, exposes tools, manages state,...",
+            "anchor": "agent-harness"
+          },
+          {
+            "title": "Agent Memory — Information stored outside the model and selected for use in later agent steps, ...",
+            "anchor": "agent-memory"
+          },
+          {
+            "title": "Agent State — The explicit data an agent carries across steps, such as the current objective, ...",
+            "anchor": "agent-state"
+          },
+          {
+            "title": "Agent Skill — A discoverable directory of procedural instructions whose entry point is `SKILL....",
+            "anchor": "agent-skill"
+          },
+          {
+            "title": "Approval Gate — A control point that blocks a consequential action until an authorized person or...",
+            "anchor": "approval-gate"
+          },
+          {
+            "title": "Checkpoint — A durable snapshot used to resume from a known boundary. In a workflow, it store...",
+            "anchor": "checkpoint"
+          },
+          {
+            "title": "Compensating Action — A deliberate operation that semantically counteracts a completed side effect whe...",
+            "anchor": "compensating-action"
+          },
+          {
+            "title": "Delegation — Assigning a bounded subtask to another person or agent together with the needed ...",
+            "anchor": "delegation"
+          },
+          {
+            "title": "Durable Execution — Running a workflow so its state and completed steps survive process crashes, res...",
+            "anchor": "durable-execution"
+          },
+          {
+            "title": "Function Calling — A provider or application interface through which a model emits a structured req...",
+            "anchor": "function-calling"
+          },
+          {
+            "title": "Human-in-the-Loop (HITL) — A workflow design in which a person supplies judgment, correction, approval, or ...",
+            "anchor": "human-in-the-loop-hitl"
+          },
+          {
+            "title": "MCP (Model Context Protocol) — An open JSON-RPC protocol for a host to connect to servers that expose tools, re...",
+            "anchor": "mcp-model-context-protocol"
+          },
+          {
+            "title": "Multi Round-Trip Request (MRTR) — An MCP request pattern in which an operation returns `resultType: input_required...",
+            "anchor": "multi-round-trip-request-mrtr"
+          },
+          {
+            "title": "Orchestration — The control logic that sequences, branches, delegates, retries, pauses, resumes,...",
+            "anchor": "orchestration"
+          },
+          {
+            "title": "Planning — Constructing, selecting, or revising a sequence of actions and dependencies inte...",
+            "anchor": "planning"
+          },
+          {
+            "title": "ReAct — An agent pattern that interleaves task reasoning, a concrete action, and an obse...",
+            "anchor": "react"
+          },
+          {
+            "title": "Sandbox — An isolated execution environment that restricts an agent's access to files, pro...",
+            "anchor": "sandbox"
+          },
+          {
+            "title": "Skill Bundle — The complete installable skill directory, including `SKILL.md` and every referen...",
+            "anchor": "skill-bundle"
+          },
+          {
+            "title": "Skill Catalog — The compact model-visible inventory of eligible skills, usually containing routi...",
+            "anchor": "skill-catalog"
+          },
+          {
+            "title": "Skill Discovery — A runtime pipeline that searches configured roots, identifies candidate skill di...",
+            "anchor": "skill-discovery"
+          },
+          {
+            "title": "Skill Invocation — The runtime-mediated process in which an eligible human, model, application, or ...",
+            "anchor": "skill-invocation"
+          },
+          {
+            "title": "Stateless MCP — The MCP 2026-07-28 request model in which every request carries the protocol ver...",
+            "anchor": "stateless-mcp"
+          },
+          {
+            "title": "Structured Output — Model output constrained or validated against a machine-readable schema so appli...",
+            "anchor": "structured-output"
+          },
+          {
+            "title": "Swarm — A loosely coordinated multi-agent pattern in which local agent decisions and mes...",
+            "anchor": "swarm"
+          },
+          {
+            "title": "Termination Condition — An explicit rule that ends or pauses an agent run when it succeeds, fails, exhau...",
+            "anchor": "termination-condition"
+          },
+          {
+            "title": "Tool Contract — The complete agreement for a tool boundary: purpose, typed inputs, outputs, vali...",
+            "anchor": "tool-contract"
+          }
+        ]
+      },
+      {
+        "id": "glossary-evaluation-safety",
+        "title": "Glossary: Evaluation & safety",
+        "file": "glossary-evaluation-safety.md",
+        "concepts": [
+          {
+            "title": "Alignment — The effort to make a model or AI system behave in ways that match intended goals...",
+            "anchor": "alignment"
+          },
+          {
+            "title": "Benchmark Contamination — Overlap or information leakage between evaluation examples and data used to pret...",
+            "anchor": "benchmark-contamination"
+          },
+          {
+            "title": "Calibration — The agreement between a system's stated confidence and the observed frequency wi...",
+            "anchor": "calibration"
+          },
+          {
+            "title": "Distribution Shift — A difference between the data distribution used to build or evaluate a system an...",
+            "anchor": "distribution-shift"
+          },
+          {
+            "title": "Eval Set — A versioned collection of inputs, expected properties, scoring rules, and metada...",
+            "anchor": "eval-set"
+          },
+          {
+            "title": "Evaluation (Eval) — A defined process for measuring model or system behavior on representative tasks...",
+            "anchor": "evaluation-eval"
+          },
+          {
+            "title": "Exact Match (EM) — A metric that counts an output as correct only when its normalized representatio...",
+            "anchor": "exact-match-em"
+          },
+          {
+            "title": "Guardrails — System controls that constrain inputs, tool use, outputs, permissions, and escal...",
+            "anchor": "guardrails"
+          },
+          {
+            "title": "Hallucination — Generated content that is false, unsupported by the available evidence, or incon...",
+            "anchor": "hallucination"
+          },
+          {
+            "title": "Least Privilege — Giving a model, agent, tool, or user only the permissions required for the curre...",
+            "anchor": "least-privilege"
+          },
+          {
+            "title": "LLM-as-a-Judge — Using a language model to score, compare, classify, or critique another system's...",
+            "anchor": "llm-as-a-judge"
+          },
+          {
+            "title": "Model Card — A structured report describing a model's intended uses, evaluation conditions, p...",
+            "anchor": "model-card"
+          },
+          {
+            "title": "Pass@k — Across a task set, the fraction of tasks for which at least one of k sampled can...",
+            "anchor": "pass-k"
+          },
+          {
+            "title": "Precision & Recall — Precision asks how many flagged items were correct; recall asks how many relevan...",
+            "anchor": "precision-recall"
+          },
+          {
+            "title": "Prompt Injection — An attack or failure mode in which untrusted content influences a model to disre...",
+            "anchor": "prompt-injection"
+          },
+          {
+            "title": "ROUGE — A family of metrics that compares generated text with reference text using units...",
+            "anchor": "rouge"
+          },
+          {
+            "title": "Verification Gate — A control point that blocks progress until defined evidence satisfies a correctn...",
+            "anchor": "verification-gate"
+          }
+        ]
+      },
+      {
+        "id": "glossary-ai-native-development",
+        "title": "Glossary: AI-native development",
+        "file": "glossary-ai-native-development.md",
+        "concepts": [
+          {
+            "title": "Backpressure — A flow-control mechanism that slows or rejects upstream work when a downstream c...",
+            "anchor": "backpressure"
+          },
+          {
+            "title": "Circuit Breaker — A reliability control that temporarily stops calls to a dependency after failure...",
+            "anchor": "circuit-breaker"
+          },
+          {
+            "title": "Coding Agent — An agent specialized for software work that can inspect a repository, edit files...",
+            "anchor": "coding-agent"
+          },
+          {
+            "title": "Cost per Successful Task — Total system cost divided by the number of tasks that satisfy a defined success ...",
+            "anchor": "cost-per-successful-task"
+          },
+          {
+            "title": "Flaky Test — A test that can pass and fail across equivalent runs without a relevant change t...",
+            "anchor": "flaky-test"
+          },
+          {
+            "title": "Handoff — A structured transfer of a task between people or agents that preserves the obje...",
+            "anchor": "handoff"
+          },
+          {
+            "title": "Idempotency — The property that repeating the same operation with the same identity does not c...",
+            "anchor": "idempotency"
+          },
+          {
+            "title": "Model Router — A component that selects a model or provider for a request using requirements su...",
+            "anchor": "model-router"
+          },
+          {
+            "title": "Observability — The ability to understand an AI system's behavior from recorded inputs, outputs,...",
+            "anchor": "observability"
+          },
+          {
+            "title": "Patch — A reviewable representation of changes to one or more files, usually expressed a...",
+            "anchor": "patch"
+          },
+          {
+            "title": "Progressive Disclosure — Supplying a person or model with the minimum useful context first, then revealin...",
+            "anchor": "progressive-disclosure"
+          },
+          {
+            "title": "Rate Limit — A policy that caps requests, tokens, concurrent work, or another resource within...",
+            "anchor": "rate-limit"
+          },
+          {
+            "title": "Regression Test — A repeatable check that protects behavior known to work, especially after code, ...",
+            "anchor": "regression-test"
+          },
+          {
+            "title": "Repository Instructions — Version-controlled guidance that tells coding agents how a repository is organiz...",
+            "anchor": "repository-instructions"
+          },
+          {
+            "title": "Repository Map — A compact, maintained description of a repository's important directories, owner...",
+            "anchor": "repository-map"
+          },
+          {
+            "title": "Reproducible Build — A build whose declared source, environment, and instructions can be independentl...",
+            "anchor": "reproducible-build"
+          },
+          {
+            "title": "Retry with Backoff — Repeating a failed transient operation after progressively longer delays, usuall...",
+            "anchor": "retry-with-backoff"
+          },
+          {
+            "title": "Reviewer Agent — An agent assigned to inspect another agent's artifact or decision against explic...",
+            "anchor": "reviewer-agent"
+          },
+          {
+            "title": "Scope Contract — A concrete agreement that defines a task's goal, allowed and forbidden surfaces,...",
+            "anchor": "scope-contract"
+          },
+          {
+            "title": "Semantic Cache — A cache that reuses a previous result when a new request is judged sufficiently ...",
+            "anchor": "semantic-cache"
+          },
+          {
+            "title": "Test Oracle — The mechanism, specification, reference, invariant, or human judgment used to de...",
+            "anchor": "test-oracle"
+          },
+          {
+            "title": "Trace — A correlated record of one request or task across model calls, retrieval, tools,...",
+            "anchor": "trace"
+          },
+          {
+            "title": "Worktree — In Git, a working directory attached to a repository and branch or commit, with ...",
+            "anchor": "worktree"
+          }
+        ]
+      },
+      {
+        "id": "glossary-infrastructure-serving",
+        "title": "Glossary: Infrastructure & serving",
+        "file": "glossary-infrastructure-serving.md",
+        "concepts": [
+          {
+            "title": "Autoscaling — A control loop that changes the number or capacity of serving workers from obser...",
+            "anchor": "autoscaling"
+          },
+          {
+            "title": "Chunked Prefill — A serving technique that divides a long prompt's prefill work into smaller sched...",
+            "anchor": "chunked-prefill"
+          },
+          {
+            "title": "Continuous Batching — A serving scheduler that adds and removes generation requests at iteration bound...",
+            "anchor": "continuous-batching"
+          },
+          {
+            "title": "Decode Phase — The iterative stage of autoregressive inference that generates new tokens one st...",
+            "anchor": "decode-phase"
+          },
+          {
+            "title": "Disaggregated Serving — A serving architecture that runs prefill and decode work in separately provision...",
+            "anchor": "disaggregated-serving"
+          },
+          {
+            "title": "Dynamic Batching — A runtime policy that forms inference batches from queued requests according to ...",
+            "anchor": "dynamic-batching"
+          },
+          {
+            "title": "Expert Parallelism — Distributing mixture-of-experts subnetworks across devices and routing each toke...",
+            "anchor": "expert-parallelism"
+          },
+          {
+            "title": "FlashAttention — An exact attention algorithm that tiles the computation to reduce transfers betw...",
+            "anchor": "flashattention"
+          },
+          {
+            "title": "Goodput — The rate of completed requests that satisfy defined service constraints, such as...",
+            "anchor": "goodput"
+          },
+          {
+            "title": "Inter-Token Latency (ITL) — The elapsed time between two consecutive output-token arrival events for one req...",
+            "anchor": "inter-token-latency-itl"
+          },
+          {
+            "title": "Model Serving — The runtime and API layer that loads versioned model artifacts, accepts inferenc...",
+            "anchor": "model-serving"
+          },
+          {
+            "title": "Paged KV Cache — A KV-cache memory manager that stores attention state in fixed-size blocks and m...",
+            "anchor": "paged-kv-cache"
+          },
+          {
+            "title": "Pipeline Parallelism — Partitioning sequential groups of model layers across devices and moving microba...",
+            "anchor": "pipeline-parallelism"
+          },
+          {
+            "title": "Prefill — The initial inference stage that processes all supplied input tokens to produce ...",
+            "anchor": "prefill"
+          },
+          {
+            "title": "Prefix Caching — Reusing KV-cache blocks produced for an identical eligible token prefix across r...",
+            "anchor": "prefix-caching"
+          },
+          {
+            "title": "Tensor Parallelism — Partitioning tensor operations within a model layer across devices, with collect...",
+            "anchor": "tensor-parallelism"
+          },
+          {
+            "title": "Time per Output Token (TPOT) — For one request with `N > 1` output tokens, the average post-first-token interva...",
+            "anchor": "time-per-output-token-tpot"
+          },
+          {
+            "title": "Tokens per Second (TPS) — A throughput measure reporting how many output tokens a serving system produces ...",
+            "anchor": "tokens-per-second-tps"
+          }
+        ]
+      },
+      {
+        "id": "glossary-reliability-operations",
+        "title": "Glossary: Reliability & operations",
+        "file": "glossary-reliability-operations.md",
+        "concepts": [
+          {
+            "title": "Admission Control — A pre-acceptance gate that decides whether a request may enter a bounded queue o...",
+            "anchor": "admission-control"
+          },
+          {
+            "title": "Availability — The proportion of eligible service interactions or time windows in which users c...",
+            "anchor": "availability"
+          },
+          {
+            "title": "Canary Release — A deployment strategy that exposes a new version to a limited slice of traffic o...",
+            "anchor": "canary-release"
+          },
+          {
+            "title": "Deadline Propagation — Passing the remaining end-to-end time budget to downstream calls so each depende...",
+            "anchor": "deadline-propagation"
+          },
+          {
+            "title": "Error Budget — The amount of unsuccessful service allowed by a service-level objective over its...",
+            "anchor": "error-budget"
+          },
+          {
+            "title": "Graceful Degradation — Preserving a bounded core service when capacity or dependencies are impaired by ...",
+            "anchor": "graceful-degradation"
+          },
+          {
+            "title": "Incident Response — The coordinated process for detecting, analyzing, containing, recovering from, c...",
+            "anchor": "incident-response"
+          },
+          {
+            "title": "Load Shedding — Deliberately rejecting, dropping, or cancelling selected work at one or more ove...",
+            "anchor": "load-shedding"
+          },
+          {
+            "title": "Postmortem — A durable incident record that explains impact, detection, response, contributin...",
+            "anchor": "postmortem"
+          },
+          {
+            "title": "Readiness Probe — A diagnostic that tells the traffic-routing layer whether a service instance is ...",
+            "anchor": "readiness-probe"
+          },
+          {
+            "title": "Retry Budget — A bound on retry traffic, usually expressed relative to original requests or ove...",
+            "anchor": "retry-budget"
+          },
+          {
+            "title": "Rollback — Restoring a previously known deployment or configuration when the current releas...",
+            "anchor": "rollback"
+          },
+          {
+            "title": "Saturation — The degree to which a constrained resource or service has exhausted its capacity...",
+            "anchor": "saturation"
+          },
+          {
+            "title": "Service Level Indicator (SLI) — A quantitative measure of service behavior at a defined user-relevant boundary, ...",
+            "anchor": "service-level-indicator-sli"
+          },
+          {
+            "title": "Service Level Objective (SLO) — A target range or threshold for a service-level indicator over a stated populati...",
+            "anchor": "service-level-objective-slo"
+          },
+          {
+            "title": "Shadow Traffic — A copy of live request traffic sent to a candidate system for observation while ...",
+            "anchor": "shadow-traffic"
+          },
+          {
+            "title": "Tail Latency — The latency experienced by the slowest portion of requests, commonly summarized ...",
+            "anchor": "tail-latency"
+          }
+        ]
+      },
+      {
+        "id": "glossary-security-governance",
+        "title": "Glossary: Security & governance",
+        "file": "glossary-security-governance.md",
+        "concepts": [
+          {
+            "title": "AI Risk Assessment — A documented analysis of how an AI system can affect people, organizations, and ...",
+            "anchor": "ai-risk-assessment"
+          },
+          {
+            "title": "Audit Log — A durable, access-controlled record of security- or accountability-relevant even...",
+            "anchor": "audit-log"
+          },
+          {
+            "title": "Content Provenance — Verifiable information about the origin and editing history of a piece of media ...",
+            "anchor": "content-provenance"
+          },
+          {
+            "title": "Data Classification — Assigning data to documented sensitivity or impact classes so handling, access, ...",
+            "anchor": "data-classification"
+          },
+          {
+            "title": "Data Exfiltration — Unauthorized transfer of protected data from a system or trust zone to a person,...",
+            "anchor": "data-exfiltration"
+          },
+          {
+            "title": "Data Lineage — A record of how a data artifact was derived across sources, transformations, joi...",
+            "anchor": "data-lineage"
+          },
+          {
+            "title": "Data Minimization — For personal data, limiting what is collected, processed, exposed, and retained ...",
+            "anchor": "data-minimization"
+          },
+          {
+            "title": "Datasheet for Datasets — Structured documentation of a dataset's motivation, composition, collection proc...",
+            "anchor": "datasheet-for-datasets"
+          },
+          {
+            "title": "Defense in Depth — Using independent preventive, detective, and corrective controls at several syst...",
+            "anchor": "defense-in-depth"
+          },
+          {
+            "title": "Indirect Prompt Injection — A prompt-injection attack delivered through content the system retrieves or obse...",
+            "anchor": "indirect-prompt-injection"
+          },
+          {
+            "title": "Jailbreak — An adversarial input or interaction strategy intended to make a model produce be...",
+            "anchor": "jailbreak"
+          },
+          {
+            "title": "Membership Inference — An attack that estimates whether a particular record or example was included in ...",
+            "anchor": "membership-inference"
+          },
+          {
+            "title": "Provenance Attestation — Authenticated, machine-readable metadata that binds an artifact to claims about ...",
+            "anchor": "provenance-attestation"
+          },
+          {
+            "title": "Purpose Limitation — For personal data, collecting and using it only for specified, explicit purposes...",
+            "anchor": "purpose-limitation"
+          },
+          {
+            "title": "Red Teaming — A structured adversarial testing process in which authorized testers seek failur...",
+            "anchor": "red-teaming"
+          },
+          {
+            "title": "Separation of Duties — Dividing conflicting responsibilities or authority across independent roles so o...",
+            "anchor": "separation-of-duties"
+          },
+          {
+            "title": "Software Bill of Materials (SBOM) — A structured inventory of software components and relationships associated with ...",
+            "anchor": "software-bill-of-materials-sbom"
+          },
+          {
+            "title": "Threat Model — A documented account of protected assets, trust boundaries, potential adversarie...",
+            "anchor": "threat-model"
+          },
+          {
+            "title": "Trust Boundary — An interface where data, instructions, identity, or authority crosses between co...",
+            "anchor": "trust-boundary"
+          },
+          {
+            "title": "Zero Trust — A security model that grants no implicit trust from network location or asset ow...",
+            "anchor": "zero-trust"
+          }
+        ]
+      },
+      {
+        "id": "glossary-multimodal-systems",
+        "title": "Glossary: Multimodal systems",
+        "file": "glossary-multimodal-systems.md",
+        "concepts": [
+          {
+            "title": "Audio Token — A discrete identifier produced by an audio codec or tokenizer for a short segmen...",
+            "anchor": "audio-token"
+          },
+          {
+            "title": "Automatic Speech Recognition (ASR) — The task and system pipeline that maps a speech signal to a transcription, often...",
+            "anchor": "automatic-speech-recognition-asr"
+          },
+          {
+            "title": "Cross-Attention — Attention in which the query representation comes from one sequence or represent...",
+            "anchor": "cross-attention"
+          },
+          {
+            "title": "Early Fusion — Combining raw or low-level representations from several modalities before most t...",
+            "anchor": "early-fusion"
+          },
+          {
+            "title": "Image Token — A model-specific visual unit represented as a vector or discrete code, commonly ...",
+            "anchor": "image-token"
+          },
+          {
+            "title": "Late Fusion — Processing modalities through separate encoders or predictors and combining thei...",
+            "anchor": "late-fusion"
+          },
+          {
+            "title": "Modality — A form of information with its own structure and acquisition process, such as te...",
+            "anchor": "modality"
+          },
+          {
+            "title": "Modality Alignment — Learning or establishing correspondences between representations from different ...",
+            "anchor": "modality-alignment"
+          },
+          {
+            "title": "Multimodal Fusion — Combining evidence or learned representations from more than one modality to pro...",
+            "anchor": "multimodal-fusion"
+          },
+          {
+            "title": "Multimodal Model — A model that learns from, relates, or generates more than one modality through r...",
+            "anchor": "multimodal-model"
+          },
+          {
+            "title": "Patch Embedding — A learned projection that converts an image patch into a fixed-width vector used...",
+            "anchor": "patch-embedding"
+          },
+          {
+            "title": "Shared Embedding Space — A common vector space in which representations from different modalities can be ...",
+            "anchor": "shared-embedding-space"
+          },
+          {
+            "title": "Vision-Language Model (VLM) — A model that learns relationships between, or jointly processes, visual and lang...",
+            "anchor": "vision-language-model-vlm"
+          },
+          {
+            "title": "Vision Transformer (ViT) — A vision architecture that represents an image as a sequence of patch embeddings...",
+            "anchor": "vision-transformer-vit"
+          },
+          {
+            "title": "Visual Grounding — Connecting a language expression to spatial evidence in an image or video, such ...",
+            "anchor": "visual-grounding"
           }
         ]
       }
