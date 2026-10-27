@@ -1678,7 +1678,7 @@ function conceptPageRuntimeScript(slug) {
       if (filters.status === 'undone' && done.has(li.dataset.cid)) show = false;
       if (filters.status === 'bookmarked' && !bookmarks.has(li.dataset.cid)) show = false;
       if (filters.search) {
-        const hay = (li.dataset.name || '').toLowerCase();
+        const hay = ((li.dataset.name || '') + ' ' + (li.textContent || '')).toLowerCase();
         if (!hay.includes(filters.search)) show = false;
       }
       li.classList.toggle('hidden', !show);
@@ -1832,8 +1832,8 @@ function interviewPrepHtml() {
           const arch = desc.architecture ? `<p class="qa-block qa-arch"><span class="qa-k">Core Mechanism:</span> <span class="qa-v">${escHtml(desc.architecture)}</span></p>` : "";
           const trade = desc.tradeoffs ? `<p class="qa-block qa-trade"><span class="qa-k">Trade-offs &amp; Failure Modes:</span> <span class="qa-v">${escHtml(desc.tradeoffs)}</span></p>` : "";
           const metric = desc.metrics ? `<p class="qa-block qa-metric"><span class="qa-k">Production Impact:</span> <span class="qa-v">${escHtml(desc.metrics)}</span></p>` : "";
-          bodyHtml = `<div><div class="cname">${tagBadge}<span class="qa-qtitle">${escHtml(name)}</span></div><div class="qa-details" style="font-size:11.5px;color:var(--text-faint);margin-top:2px">${tldr}${arch}${trade}${metric}</div></div>`;
-          dataName = `${desc.tag || ""} ${name} ${desc.tldr || ""}`;
+          bodyHtml = `<div><div class="cname">${tagBadge} <span class="qa-qtitle">${escHtml(name)}</span></div><div class="qa-details" style="font-size:11.5px;color:var(--text-faint);margin-top:2px">${tldr}${arch}${trade}${metric}</div></div>`;
+          dataName = name;
         } else {
           bodyHtml = `<div><div class="cname">${escHtml(name)}</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">${escHtml(desc)}</div></div>`;
         }
@@ -2945,6 +2945,7 @@ function queryEncode(value) {
 
 function normalizeSearchTopic(value = "") {
   let text = stripLeadingDecor(value)
+    .replace(/^\[[^\]]+\]\s*/, "")
     .replace(/&#x27;/g, "'")
     .replace(/&amp;/g, "and")
     .replace(/[“”]/g, '"')
@@ -2960,10 +2961,16 @@ function normalizeSearchTopic(value = "") {
     .replace(/[^\w\s+#./-]/g, " ")
     .replace(/\s+/g, " ")
     .trim();
+  text = text
+    .replace(/^(how (do you|does|to|can)|what are the|what is the)\s+/i, "")
+    .trim();
   const words = text.split(" ");
   const deduped = [];
   for (const word of words) {
     if (word.toLowerCase() !== deduped[deduped.length - 1]?.toLowerCase()) deduped.push(word);
+  }
+  if (deduped.length > 10) {
+    return deduped.slice(0, 10).join(" ").trim();
   }
   return deduped.join(" ").trim();
 }

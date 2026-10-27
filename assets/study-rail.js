@@ -242,6 +242,7 @@
      dash, plus the roadmap's subject, so Google and YouTube find the topic. */
   function shortTitle(value) {
     var s = clean(value);
+    s = s.replace(/^\[[^\]]+\]\s*/, "");
     var m = s.match(/^(.*?)\s+[—–]\s+/) || s.match(/^([^:]{3,60}):\s+/);
     var out = m ? clean(m[1]) : s;
     return out && out.length <= 72 ? out : s;
@@ -254,7 +255,13 @@
     return "";
   }
 
-  function topicQuery(title, extra) { return clean(title + " " + (extra || "")); }
+  function topicQuery(title, extra) {
+    var s = clean(title);
+    s = s.replace(/^\[[^\]]+\]\s*/, "")
+         .replace(/\?+$/, "")
+         .replace(/^(how (do you|does|to|can)|what are the|what is the)\s+/i, "");
+    return clean(s + " " + (extra || ""));
+  }
 
   var SURFACES = [
     {
@@ -339,8 +346,10 @@
       name: "concepts",
       rows: function () { return document.querySelectorAll("li[data-cid]"); },
       read: function (li) {
-        var name = li.querySelector(".cname");
-        var title = clean(name ? name.textContent : li.getAttribute("data-name"));
+        var qTitle = li.querySelector(".qa-qtitle");
+        var name = qTitle || li.querySelector(".cname");
+        var raw = name ? name.textContent : li.getAttribute("data-name");
+        var title = clean(raw).replace(/^\[[^\]]+\]\s*/, "");
         var sub = li.closest(".subsection");
         var section = li.closest("section.section, section, .pattern") || sub;
         var found = harvest(li);

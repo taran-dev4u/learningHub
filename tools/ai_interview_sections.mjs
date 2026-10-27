@@ -29,7 +29,7 @@ export const aiInterviewPrepSections = [
         "Memory management, KV cache optimization, batching strategies, quantization, and GPU execution kernels.",
         [
           [
-            "How do you calculate and eliminate KV cache memory fragmentation in LLM inference serving?",
+            "How do you calculate and eliminate KV cache memory fragmentation in LLM inference serving (PagedAttention & vLLM)?",
             {
               "tag": "[GenAI Systems]",
               "tldr": "KV cache size scales linearly with sequence length, batch size, layers, and hidden dimensions, consuming up to 60-80% of GPU VRAM during serving. Virtual memory paging algorithms like PagedAttention eliminate internal and external fragmentation by allocating KV blocks non-contiguously in memory.",
@@ -413,7 +413,7 @@ export const aiInterviewPrepSections = [
             }
           ],
           [
-            "How do you synchronize real-time enterprise databases with vector indexes using Change Data Capture (CDC) and Kafka?",
+            "How do you synchronize real-time enterprise databases with vector indexes using Change Data Capture (CDC / Debezium) and Kafka?",
             {
               "tag": "[FDE Enterprise]",
               "tldr": "Stream row-level database mutations via Debezium and Kafka, buffer updates in micro-batches to throttle embedding API calls, and handle deletes via tombstone vector pruning.",
