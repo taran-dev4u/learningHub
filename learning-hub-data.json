@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-27T03:48:13.943Z",
+  "generatedAt": "2026-10-27T10:19:01.656Z",
   "stats": {
     "domains": 7,
     "sections": 108,
@@ -3465,6 +3465,12 @@
         "bookmark": "hub_bm_ai"
       },
       "summary": "LLM fundamentals, RAG, agents, evals, fine-tuning, ML, deep learning, and MLOps.",
+      "relatedLinks": [
+        [
+          "Open AI Engineering Tutorial",
+          "AI_Engineering_Tutorial/index.html"
+        ]
+      ],
       "sections": [
         {
           "id": "section-1",
@@ -3876,6 +3882,14 @@
           "Cost and latency optimization"
         ],
         "resources": [
+          [
+            "Local AI Engineering Tutorial Hub (542 Lessons)",
+            "AI_Engineering_Tutorial/index.html"
+          ],
+          [
+            "AI Engineering from Scratch",
+            "https://aiengineeringfromscratch.com/"
+          ],
           [
             "roadmap.sh AI Engineer",
             "https://roadmap.sh/ai-engineer"
@@ -67483,6 +67497,14 @@
         "Cost and latency optimization"
       ],
       "resources": [
+        [
+          "Local AI Engineering Tutorial Hub (542 Lessons)",
+          "AI_Engineering_Tutorial/index.html"
+        ],
+        [
+          "AI Engineering from Scratch",
+          "https://aiengineeringfromscratch.com/"
+        ],
         [
           "roadmap.sh AI Engineer",
           "https://roadmap.sh/ai-engineer"

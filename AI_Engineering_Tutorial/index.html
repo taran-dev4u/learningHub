@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Engineering Tutorial Hub</title>
+    <meta name="description" content="AI engineering curriculum from first principles: 20 phases, 542 lessons, 6 production engineering manuals, and 51 hands-on practice labs.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css">
+    <link rel="stylesheet" href="../assets/learning-hub-shared.css">
+    <script src="../assets/learning-hub-shared.js"></script>
+    <link rel="stylesheet" href="../assets/algomaster-theme.css?v=1">
+</head>
+<body class="am">
+    <h1 style="position:absolute;left:-9999px">AI Engineering Tutorial Hub</h1>
+
+    <header class="am-topbar">
+        <a class="am-brand" href="index.html" style="text-decoration:none;color:inherit">
+            <span class="am-logo">🤖</span>
+            <span><b>AI Engineering</b><br><span>From Scratch · 542 Lessons</span></span>
+        </a>
+        <nav class="am-top-links">
+            <a class="current" href="#">Curriculum</a>
+            <a href="../ai_engineering.html">Concept Guide ↗</a>
+        </nav>
+    </header>
+
+    <main class="am-wrap" id="am-root"></main>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.5/purify.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.8.0/dist/mermaid.min.js"></script>
+    <script>if (typeof mermaid !== 'undefined') mermaid.initialize({ startOnLoad: false, theme: 'base' });</script>
+    <script>
+      window.TUTORIAL_CONFIG = {
+        title: 'Learn AI Engineering from Scratch',
+        subtitle: 'Build AI systems from first principles across 20 phases and 542 lessons: math, models, tokenizers, transformers, agents, evaluations, and production.',
+        storageKey: 'hub_done_ai_tut',
+        progressDomain: 'ai',
+        companionLink: {
+          tag: 'Quick Reference & Progress Matrix',
+          title: 'AI Engineering Concept Guide & Matrix (177 Concepts)',
+          desc: 'Switch to the 11-domain comprehensive concept matrix with mechanisms, complexity, and curated resources.',
+          label: 'Switch to AI Engineering Guide (177 Concepts) \u2192',
+          href: '../ai_engineering.html'
+        }
+      };
+    </script>
+    <script src="contentBundle.js?v=1"></script>
+    <script src="topics.js?v=1"></script>
+    <script src="resources.js?v=1"></script>
+    <script src="../assets/tutorial-app.js?v=1"></script>
+</body>
+</html>

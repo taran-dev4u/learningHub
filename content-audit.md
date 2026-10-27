@@ -1,6 +1,6 @@
 # Taran's Learning Hub Content Audit
 
-Generated: 2026-10-27T03:48:13.943Z
+Generated: 2026-10-27T10:19:01.656Z
 
 ## Research References
 
@@ -374,7 +374,7 @@ Sections:
 - Weak/generic subsection names to review: none found by heuristic.
 - Coverage source: roadmap.sh AI Engineer + OpenAI Cookbook + production LLM practice.
 - Missing/priority candidates: Structured outputs, Function/tool calling, RAG evaluation, Agent reliability, Prompt/version management, LLM observability, Safety and guardrails, Cost and latency optimization.
-- Recommended next resources: roadmap.sh AI Engineer, OpenAI Cookbook, Hugging Face NLP Course.
+- Recommended next resources: Local AI Engineering Tutorial Hub (542 Lessons), AI Engineering from Scratch, roadmap.sh AI Engineer, OpenAI Cookbook, Hugging Face NLP Course.
 - Foundations extract added to page: Data Science & ML curriculum as an AI/ML foundations bridge.
 - Data Science extracted topics: Business Analytics and Metrics, Data Manipulation and Preprocessing, Deep Learning Fundamentals, Exploratory Data Analysis, Feature Selection and Dimensionality Reduction, Full Pattern Problem Practice, Model Selection and Validation, Natural Language Processing, Statistics and Probability Fundamentals, Supervised Learning - Classification, Supervised Learning - Regression, Time Series Analysis, Unsupervised Learning.
 - Data Science direct resources:

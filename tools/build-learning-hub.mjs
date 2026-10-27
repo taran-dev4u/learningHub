@@ -59,6 +59,7 @@ const sourceDefs = [
     color: "#7b61d8",
     storage: { done: "hub_done_ai", bookmark: "hub_bm_ai" },
     summary: "LLM fundamentals, RAG, agents, evals, fine-tuning, ML, deep learning, and MLOps.",
+    relatedLinks: [["Open AI Engineering Tutorial", "AI_Engineering_Tutorial/index.html"]],
   },
   {
     key: "cloud",
@@ -297,6 +298,8 @@ const coverageBySource = {
       "Cost and latency optimization",
     ],
     resources: [
+      ["Local AI Engineering Tutorial Hub (542 Lessons)", "AI_Engineering_Tutorial/index.html"],
+      ["AI Engineering from Scratch", "https://aiengineeringfromscratch.com/"],
       ["roadmap.sh AI Engineer", "https://roadmap.sh/ai-engineer"],
       ["OpenAI Cookbook", "https://cookbook.openai.com/"],
       ["Hugging Face NLP Course", "https://huggingface.co/learn/nlp-course"],

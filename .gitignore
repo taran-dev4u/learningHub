@@ -9,3 +9,4 @@ sd_extracted.json
 tools/.dsa-cache/
 tools/linkcheck/links.json
 tools/linkcheck/cache.json.local
+scratch/

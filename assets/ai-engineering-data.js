@@ -1,0 +1,6336 @@
+window.aiEngineeringData = {
+  "source": "https://aiengineeringfromscratch.com/",
+  "phases_count": 20,
+  "lessons_count": 542,
+  "manuals_count": 6,
+  "manual_sections_count": 241,
+  "practice_tasks_count": 51,
+  "glossary_count": 237,
+  "certifications_count": 74,
+  "manuals": [
+    {
+      "title": "A2A 101",
+      "url": "https://aiengineeringfromscratch.com/manual-a2a-101",
+      "description": "The Agent2Agent protocol, from its purpose to each request and response",
+      "sections_count": 36,
+      "sections": [
+        {
+          "title": "How to read this manual",
+          "url": "https://aiengineeringfromscratch.com/manual-a2a-101/front"
+        },
+        {
+          "title": "1.1 What A2A standardizes",
+          "url": "https://aiengineeringfromscratch.com/manual-a2a-101/what-a2a-standardizes"
+        },
+        {
+          "title": "1.2 One task, request by request",
+          "url": "https://aiengineeringfromscratch.com/manual-a2a-101/one-task-request-by-request"
+        },
+        {
+          "title": "2.1 AgentCard fields",
+          "url": "https://aiengineeringfromscratch.com/manual-a2a-101/agentcard-fields"
+        },
+        {
+          "title": "2.2 Discovery and supportedInterfaces",
+          "url": "https://aiengineeringfromscratch.com/manual-a2a-101/discovery-and-supported-interfaces"
+        },
+        {
+          "title": "2.3 Extended cards and signatures",
+          "url": "https://aiengineeringfromscratch.com/manual-a2a-101/extended-cards-and-signatures"
+        },
+        {
+          "title": "3.1 Message",
+          "url": "https://aiengineeringfromscratch.com/manual-a2a-101/message"
+        },
+        {
+          "title": "3.2 Part",
+          "url": "https://aiengineeringfromscratch.com/manual-a2a-101/part"
+        },
+        {
+          "title": "3.3 Artifact and chunks",
+          "url": "https://aiengineeringfromscratch.com/manual-a2a-101/artifact-and-chunks"
+        },
+        {
+          "title": "3.4 Task, TaskStatus, and TaskState",
+          "url": "https://aiengineeringfromscratch.com/manual-a2a-101/task-and-task-state"
+        },
+        {
+          "title": "3.5 contextId",
+          "url": "https://aiengineeringfromscratch.com/manual-a2a-101/context-id"
+        },
+        {
+          "title": "4.1 SendMessage",
+          "url": "https://aiengineeringfromscratch.com/manual-a2a-101/send-message"
+        },
+        {
+          "title": "4.2 Interrupted states: INPUT_REQUIRED and AUTH_REQUIRED",
+          "url": "https://aiengineeringfromscratch.com/manual-a2a-101/input-required-and-auth-required"
+        },
+        {
+          "title": "4.3 GetTask and ListTasks",
+          "url": "https://aiengineeringfromscratch.com/manual-a2a-101/get-task-and-list-tasks"
+        },
+        {
+          "title": "4.4 CancelTask and terminal states",
+          "url": "https://aiengineeringfromscratch.com/manual-a2a-101/cancel-task-and-terminal-states"
+        },
+        {
+          "title": "4.5 SendStreamingMessage and SubscribeToTask",
+          "url": "https://aiengineeringfromscratch.com/manual-a2a-101/streaming-and-subscribe-to-task"
+        },
+        {
+          "title": "4.6 Push notification configs",
+          "url": "https://aiengineeringfromscratch.com/manual-a2a-101/push-notification-configs"
+        },
+        {
+          "title": "5.1 JSON-RPC",
+          "url": "https://aiengineeringfromscratch.com/manual-a2a-101/json-rpc"
+        },
+        {
+          "title": "5.2 HTTP+JSON",
+          "url": "https://aiengineeringfromscratch.com/manual-a2a-101/http-json"
+        },
+        {
+          "title": "5.3 gRPC",
+          "url": "https://aiengineeringfromscratch.com/manual-a2a-101/grpc"
+        },
+        {
+          "title": "5.4 A2A-Version and A2A-Extensions",
+          "url": "https://aiengineeringfromscratch.com/manual-a2a-101/version-and-extension-headers"
+        },
+        {
+          "title": "5.5 Errors",
+          "url": "https://aiengineeringfromscratch.com/manual-a2a-101/errors"
+        },
+        {
+          "title": "6.1 Security schemes and in-task authorization",
+          "url": "https://aiengineeringfromscratch.com/manual-a2a-101/security-schemes-and-in-task-authorization"
+        },
+        {
+          "title": "6.2 Extensions",
+          "url": "https://aiengineeringfromscratch.com/manual-a2a-101/extensions"
+        },
+        {
+          "title": "6.3 Security requirements",
+          "url": "https://aiengineeringfromscratch.com/manual-a2a-101/security-requirements"
+        },
+        {
+          "title": "7.1 A client",
+          "url": "https://aiengineeringfromscratch.com/manual-a2a-101/a-client"
+        },
+        {
+          "title": "7.2 A server",
+          "url": "https://aiengineeringfromscratch.com/manual-a2a-101/a-server"
+        },
+        {
+          "title": "7.3 Conformance testing",
+          "url": "https://aiengineeringfromscratch.com/manual-a2a-101/conformance-testing"
+        },
+        {
+          "title": "7.4 From 0.3 to 1.0",
+          "url": "https://aiengineeringfromscratch.com/manual-a2a-101/from-0-3-to-1-0"
+        },
+        {
+          "title": "R.1 Operations by binding",
+          "url": "https://aiengineeringfromscratch.com/manual-a2a-101/ref-operations-by-binding"
+        },
+        {
+          "title": "R.2 Objects and fields",
+          "url": "https://aiengineeringfromscratch.com/manual-a2a-101/ref-objects-and-fields"
+        },
+        {
+          "title": "R.3 Task states",
+          "url": "https://aiengineeringfromscratch.com/manual-a2a-101/ref-task-states"
+        },
+        {
+          "title": "R.4 Errors",
+          "url": "https://aiengineeringfromscratch.com/manual-a2a-101/ref-errors"
+        },
+        {
+          "title": "R.5 Glossary",
+          "url": "https://aiengineeringfromscratch.com/manual-a2a-101/ref-glossary"
+        },
+        {
+          "title": "R.6 Sources",
+          "url": "https://aiengineeringfromscratch.com/manual-a2a-101/ref-sources"
+        },
+        {
+          "title": "R.7 Index of figures",
+          "url": "https://aiengineeringfromscratch.com/manual-a2a-101/ref-index-of-figures"
+        }
+      ]
+    },
+    {
+      "title": "Docker Sandboxes and Docker Agent 101",
+      "url": "https://aiengineeringfromscratch.com/manual-docker-sandboxes-101",
+      "description": "Isolated microVMs for coding agents, and the agent runtime that runs inside them, command by command",
+      "sections_count": 42,
+      "sections": [
+        {
+          "title": "How to read this manual",
+          "url": "https://aiengineeringfromscratch.com/manual-docker-sandboxes-101/front"
+        },
+        {
+          "title": "1.1 sbx and docker-agent",
+          "url": "https://aiengineeringfromscratch.com/manual-docker-sandboxes-101/sbx-and-docker-agent"
+        },
+        {
+          "title": "1.2 docker-agent run --sandbox, one run end to end",
+          "url": "https://aiengineeringfromscratch.com/manual-docker-sandboxes-101/docker-agent-run-sandbox-end-to-end"
+        },
+        {
+          "title": "2.1 sbx run, sbx create, sbx stop, and sbx rm",
+          "url": "https://aiengineeringfromscratch.com/manual-docker-sandboxes-101/sbx-run-create-stop-and-rm"
+        },
+        {
+          "title": "2.2 sbx exec, sbx cp, and sbx ports",
+          "url": "https://aiengineeringfromscratch.com/manual-docker-sandboxes-101/sbx-exec-cp-and-ports"
+        },
+        {
+          "title": "2.3 sbx template save and sbx template load",
+          "url": "https://aiengineeringfromscratch.com/manual-docker-sandboxes-101/sbx-template-save-and-load"
+        },
+        {
+          "title": "2.4 sandboxd, sbx diagnose, and sbx reset",
+          "url": "https://aiengineeringfromscratch.com/manual-docker-sandboxes-101/sandboxd-diagnose-and-reset"
+        },
+        {
+          "title": "2.5 sbx settings list",
+          "url": "https://aiengineeringfromscratch.com/manual-docker-sandboxes-101/sbx-settings-list"
+        },
+        {
+          "title": "3.1 sbx diagnose and the microVM boundary",
+          "url": "https://aiengineeringfromscratch.com/manual-docker-sandboxes-101/sbx-diagnose-and-the-microvm-boundary"
+        },
+        {
+          "title": "3.2 --clone and /run/sandbox/source",
+          "url": "https://aiengineeringfromscratch.com/manual-docker-sandboxes-101/clone-and-run-sandbox-source"
+        },
+        {
+          "title": "3.3 sbx policy init, allow network, deny network, and check network",
+          "url": "https://aiengineeringfromscratch.com/manual-docker-sandboxes-101/sbx-policy-init-allow-deny-and-check-network"
+        },
+        {
+          "title": "3.4 sbx policy log and the proxy",
+          "url": "https://aiengineeringfromscratch.com/manual-docker-sandboxes-101/sbx-policy-log-and-the-proxy"
+        },
+        {
+          "title": "3.5 sbx secret set, sbx secret import, and sbx secret set-custom",
+          "url": "https://aiengineeringfromscratch.com/manual-docker-sandboxes-101/sbx-secret-set-import-and-set-custom"
+        },
+        {
+          "title": "3.6 sbx mcp add, sbx mcp load, and --static-mcp",
+          "url": "https://aiengineeringfromscratch.com/manual-docker-sandboxes-101/sbx-mcp-add-load-and-static-mcp"
+        },
+        {
+          "title": "4.1 `# syntax=docker/sandbox-kit:3` and kit.yaml",
+          "url": "https://aiengineeringfromscratch.com/manual-docker-sandboxes-101/syntax-docker-sandbox-kit-3-and-kit-yaml"
+        },
+        {
+          "title": "4.2 `com.docker.sandbox/*` capabilities",
+          "url": "https://aiengineeringfromscratch.com/manual-docker-sandboxes-101/com-docker-sandbox-capabilities"
+        },
+        {
+          "title": "4.3 `sbx kit pack`, `sbx kit push --sign`, and `sbx kit verify`",
+          "url": "https://aiengineeringfromscratch.com/manual-docker-sandboxes-101/sbx-kit-pack-push-sign-and-verify"
+        },
+        {
+          "title": "4.4 sbxenv.yaml and `sbx env plan`",
+          "url": "https://aiengineeringfromscratch.com/manual-docker-sandboxes-101/sbxenv-yaml-and-sbx-env-plan"
+        },
+        {
+          "title": "4.5 `sbx skills add` and `skills: true`",
+          "url": "https://aiengineeringfromscratch.com/manual-docker-sandboxes-101/sbx-skills-add-and-skills-true"
+        },
+        {
+          "title": "5.1 docker-agent run, new, and doctor",
+          "url": "https://aiengineeringfromscratch.com/manual-docker-sandboxes-101/docker-agent-run-new-and-doctor"
+        },
+        {
+          "title": "5.2 agents, models, and providers",
+          "url": "https://aiengineeringfromscratch.com/manual-docker-sandboxes-101/agents-models-and-providers"
+        },
+        {
+          "title": "5.3 toolsets and mcps",
+          "url": "https://aiengineeringfromscratch.com/manual-docker-sandboxes-101/toolsets-and-mcps"
+        },
+        {
+          "title": "5.4 sub_agents, transfer_task, and background_agents",
+          "url": "https://aiengineeringfromscratch.com/manual-docker-sandboxes-101/sub-agents-transfer-task-and-background-agents"
+        },
+        {
+          "title": "5.5 permissions, --safety, and hooks",
+          "url": "https://aiengineeringfromscratch.com/manual-docker-sandboxes-101/permissions-safety-and-hooks"
+        },
+        {
+          "title": "5.6 session.db, sessions diff, and eval",
+          "url": "https://aiengineeringfromscratch.com/manual-docker-sandboxes-101/session-db-sessions-diff-and-eval"
+        },
+        {
+          "title": "6.1 serve api and serve chat",
+          "url": "https://aiengineeringfromscratch.com/manual-docker-sandboxes-101/serve-api-and-serve-chat"
+        },
+        {
+          "title": "6.2 serve mcp and serve acp",
+          "url": "https://aiengineeringfromscratch.com/manual-docker-sandboxes-101/serve-mcp-and-serve-acp"
+        },
+        {
+          "title": "6.3 serve a2a",
+          "url": "https://aiengineeringfromscratch.com/manual-docker-sandboxes-101/serve-a2a"
+        },
+        {
+          "title": "6.4 share push and share pull",
+          "url": "https://aiengineeringfromscratch.com/manual-docker-sandboxes-101/share-push-and-share-pull"
+        },
+        {
+          "title": "6.5 DMR, Compose models, and the docker/mcp-gateway service",
+          "url": "https://aiengineeringfromscratch.com/manual-docker-sandboxes-101/dmr-compose-models-and-the-mcp-gateway-service"
+        },
+        {
+          "title": "7.1 sbx --cloud run, sbx move, and sbx ttl",
+          "url": "https://aiengineeringfromscratch.com/manual-docker-sandboxes-101/sbx-cloud-run-move-and-ttl"
+        },
+        {
+          "title": "7.2 sbx policy ls --source org, --profile, and the audit JSONL",
+          "url": "https://aiengineeringfromscratch.com/manual-docker-sandboxes-101/org-policies-profiles-and-the-audit-log"
+        },
+        {
+          "title": "7.3 From docker sandbox and cagent to sbx and docker-agent",
+          "url": "https://aiengineeringfromscratch.com/manual-docker-sandboxes-101/from-docker-sandbox-and-cagent-to-sbx-and-docker-agent"
+        },
+        {
+          "title": "7.4 kit-tck, sbx diagnose, and the claims this manual checked",
+          "url": "https://aiengineeringfromscratch.com/manual-docker-sandboxes-101/kit-tck-diagnose-and-the-claims-this-manual-checked"
+        },
+        {
+          "title": "R.1 sbx commands",
+          "url": "https://aiengineeringfromscratch.com/manual-docker-sandboxes-101/ref-sbx-commands"
+        },
+        {
+          "title": "R.2 docker-agent commands",
+          "url": "https://aiengineeringfromscratch.com/manual-docker-sandboxes-101/ref-docker-agent-commands"
+        },
+        {
+          "title": "R.3 Settings keys, environment variables, and paths",
+          "url": "https://aiengineeringfromscratch.com/manual-docker-sandboxes-101/ref-settings-keys-environment-variables-and-paths"
+        },
+        {
+          "title": "R.4 Agent file keys",
+          "url": "https://aiengineeringfromscratch.com/manual-docker-sandboxes-101/ref-agent-file-keys"
+        },
+        {
+          "title": "R.5 Toolsets",
+          "url": "https://aiengineeringfromscratch.com/manual-docker-sandboxes-101/ref-toolsets"
+        },
+        {
+          "title": "R.6 Providers and models",
+          "url": "https://aiengineeringfromscratch.com/manual-docker-sandboxes-101/ref-providers-and-models"
+        },
+        {
+          "title": "R.7 Sources and the conflicts register",
+          "url": "https://aiengineeringfromscratch.com/manual-docker-sandboxes-101/ref-sources-and-the-conflicts-register"
+        },
+        {
+          "title": "R.8 Glossary and index of figures",
+          "url": "https://aiengineeringfromscratch.com/manual-docker-sandboxes-101/ref-glossary-and-index-of-figures"
+        }
+      ]
+    },
+    {
+      "title": "Miles 101",
+      "url": "https://aiengineeringfromscratch.com/manual-miles-101",
+      "description": "Reinforcement learning on language models with Miles, from one GPU to a run you can trust",
+      "sections_count": 40,
+      "sections": [
+        {
+          "title": "How to read this manual",
+          "url": "https://aiengineeringfromscratch.com/manual-miles-101/front"
+        },
+        {
+          "title": "1.1 Run GRPO on one GPU with the radixark/miles image",
+          "url": "https://aiengineeringfromscratch.com/manual-miles-101/run-grpo-on-one-gpu"
+        },
+        {
+          "title": "1.2 Add a watchdog before you leave a run alone",
+          "url": "https://aiengineeringfromscratch.com/manual-miles-101/add-a-watchdog"
+        },
+        {
+          "title": "1.3 Read your first ten steps",
+          "url": "https://aiengineeringfromscratch.com/manual-miles-101/read-your-first-ten-steps"
+        },
+        {
+          "title": "2.1 Pick a model size for one GPU",
+          "url": "https://aiengineeringfromscratch.com/manual-miles-101/pick-a-model-size"
+        },
+        {
+          "title": "2.2 Choose what to offload between phases",
+          "url": "https://aiengineeringfromscratch.com/manual-miles-101/choose-what-to-offload"
+        },
+        {
+          "title": "2.3 Stop Ray from killing the job on unified memory",
+          "url": "https://aiengineeringfromscratch.com/manual-miles-101/stop-ray-killing-the-job"
+        },
+        {
+          "title": "2.4 Size the weight update",
+          "url": "https://aiengineeringfromscratch.com/manual-miles-101/size-the-weight-update"
+        },
+        {
+          "title": "3.1 Train math reasoning on GSM8K",
+          "url": "https://aiengineeringfromscratch.com/manual-miles-101/train-math-on-gsm8k"
+        },
+        {
+          "title": "3.2 Train with the DAPO filter",
+          "url": "https://aiengineeringfromscratch.com/manual-miles-101/train-with-the-dapo-filter"
+        },
+        {
+          "title": "3.3 Train an agent with tool calls and many turns",
+          "url": "https://aiengineeringfromscratch.com/manual-miles-101/train-an-agent"
+        },
+        {
+          "title": "3.4 Train a mixture-of-experts model with routing replay",
+          "url": "https://aiengineeringfromscratch.com/manual-miles-101/train-a-moe-model"
+        },
+        {
+          "title": "3.5 Write a custom reward function",
+          "url": "https://aiengineeringfromscratch.com/manual-miles-101/write-a-custom-reward"
+        },
+        {
+          "title": "4.1 Run rollout and training at the same time",
+          "url": "https://aiengineeringfromscratch.com/manual-miles-101/run-rollout-and-training-at-once"
+        },
+        {
+          "title": "4.2 Handle long responses with partial rollout",
+          "url": "https://aiengineeringfromscratch.com/manual-miles-101/handle-long-responses"
+        },
+        {
+          "title": "4.3 Roll out in FP8 and train in BF16",
+          "url": "https://aiengineeringfromscratch.com/manual-miles-101/roll-out-in-fp8"
+        },
+        {
+          "title": "4.4 Lower the log probability gap with top-p and top-k",
+          "url": "https://aiengineeringfromscratch.com/manual-miles-101/lower-the-logprob-gap"
+        },
+        {
+          "title": "4.5 Know what deterministic inference fixes",
+          "url": "https://aiengineeringfromscratch.com/manual-miles-101/use-deterministic-inference"
+        },
+        {
+          "title": "4.6 Check if your GPU can run true on-policy mode",
+          "url": "https://aiengineeringfromscratch.com/manual-miles-101/know-the-true-on-policy-limits"
+        },
+        {
+          "title": "5.1 Read the run from its signals",
+          "url": "https://aiengineeringfromscratch.com/manual-miles-101/read-the-run"
+        },
+        {
+          "title": "5.2 Check the first step before you trust the run",
+          "url": "https://aiengineeringfromscratch.com/manual-miles-101/check-the-first-step"
+        },
+        {
+          "title": "5.3 Repeat a run and compare",
+          "url": "https://aiengineeringfromscratch.com/manual-miles-101/repeat-a-run"
+        },
+        {
+          "title": "6.1 Split rollout and training across GPUs",
+          "url": "https://aiengineeringfromscratch.com/manual-miles-101/split-rollout-and-training"
+        },
+        {
+          "title": "6.2 Run evaluation without stopping training",
+          "url": "https://aiengineeringfromscratch.com/manual-miles-101/run-a-separate-eval-fleet"
+        },
+        {
+          "title": "6.3 Keep a long run going after a failure",
+          "url": "https://aiengineeringfromscratch.com/manual-miles-101/survive-failures"
+        },
+        {
+          "title": "6.4 Pick an image for your GPU",
+          "url": "https://aiengineeringfromscratch.com/manual-miles-101/pick-an-image"
+        },
+        {
+          "title": "7.1 Troubleshoot by symptom",
+          "url": "https://aiengineeringfromscratch.com/manual-miles-101/troubleshoot-by-symptom"
+        },
+        {
+          "title": "7.2 Keep runs comparable",
+          "url": "https://aiengineeringfromscratch.com/manual-miles-101/keep-runs-comparable"
+        },
+        {
+          "title": "8.1 Why an RL framework owns an inference engine",
+          "url": "https://aiengineeringfromscratch.com/manual-miles-101/why-rl-owns-an-engine"
+        },
+        {
+          "title": "8.2 The correction methods for the gap",
+          "url": "https://aiengineeringfromscratch.com/manual-miles-101/the-correction-methods"
+        },
+        {
+          "title": "8.3 Why true on-policy mode is a contract",
+          "url": "https://aiengineeringfromscratch.com/manual-miles-101/why-true-on-policy-is-a-contract"
+        },
+        {
+          "title": "8.4 Memory and weight updates on unified memory",
+          "url": "https://aiengineeringfromscratch.com/manual-miles-101/memory-on-unified-memory"
+        },
+        {
+          "title": "8.5 How rollout functions plug in",
+          "url": "https://aiengineeringfromscratch.com/manual-miles-101/how-rollout-functions-plug-in"
+        },
+        {
+          "title": "8.6 Which router to use",
+          "url": "https://aiengineeringfromscratch.com/manual-miles-101/which-router-to-use"
+        },
+        {
+          "title": "8.7 Where Miles came from",
+          "url": "https://aiengineeringfromscratch.com/manual-miles-101/where-miles-came-from"
+        },
+        {
+          "title": "R.1 Flags by job",
+          "url": "https://aiengineeringfromscratch.com/manual-miles-101/ref-flags-by-job"
+        },
+        {
+          "title": "R.2 Metrics",
+          "url": "https://aiengineeringfromscratch.com/manual-miles-101/ref-metrics"
+        },
+        {
+          "title": "R.3 Lab notes",
+          "url": "https://aiengineeringfromscratch.com/manual-miles-101/ref-lab-notes"
+        },
+        {
+          "title": "R.4 Sources",
+          "url": "https://aiengineeringfromscratch.com/manual-miles-101/ref-sources"
+        },
+        {
+          "title": "R.5 Index of figures",
+          "url": "https://aiengineeringfromscratch.com/manual-miles-101/ref-figure-index"
+        }
+      ]
+    },
+    {
+      "title": "Reverse Engineering 101",
+      "url": "https://aiengineeringfromscratch.com/manual-reverse-engineering-101",
+      "description": "Reading a compiled program you built, from file bytes to evidence-backed pseudocode, with rea and Ghidra",
+      "sections_count": 33,
+      "sections": [
+        {
+          "title": "How to read this manual",
+          "url": "https://aiengineeringfromscratch.com/manual-reverse-engineering-101/front"
+        },
+        {
+          "title": "1.1 rea, providers, and Evidence",
+          "url": "https://aiengineeringfromscratch.com/manual-reverse-engineering-101/rea-providers-and-evidence"
+        },
+        {
+          "title": "1.2 rea function, end to end",
+          "url": "https://aiengineeringfromscratch.com/manual-reverse-engineering-101/rea-function-end-to-end"
+        },
+        {
+          "title": "2.1 The README use rule and the law",
+          "url": "https://aiengineeringfromscratch.com/manual-reverse-engineering-101/the-readme-use-rule-and-the-law"
+        },
+        {
+          "title": "2.2 rea doctor and the Ghidra provider",
+          "url": "https://aiengineeringfromscratch.com/manual-reverse-engineering-101/rea-doctor-and-the-ghidra-provider"
+        },
+        {
+          "title": "2.3 rea capabilities",
+          "url": "https://aiengineeringfromscratch.com/manual-reverse-engineering-101/rea-capabilities"
+        },
+        {
+          "title": "3.1 inspect-artifact",
+          "url": "https://aiengineeringfromscratch.com/manual-reverse-engineering-101/inspect-artifact"
+        },
+        {
+          "title": "3.2 inspect-binary-layout and the load image",
+          "url": "https://aiengineeringfromscratch.com/manual-reverse-engineering-101/inspect-binary-layout-and-the-load-image"
+        },
+        {
+          "title": "3.3 address-to-file-offset",
+          "url": "https://aiengineeringfromscratch.com/manual-reverse-engineering-101/address-to-file-offset"
+        },
+        {
+          "title": "3.4 analyze and the binary_overview record",
+          "url": "https://aiengineeringfromscratch.com/manual-reverse-engineering-101/analyze-overview"
+        },
+        {
+          "title": "4.1 open_binary and the headless bridge",
+          "url": "https://aiengineeringfromscratch.com/manual-reverse-engineering-101/open-binary-and-the-headless-bridge"
+        },
+        {
+          "title": "4.2 list_procedures and function bodies",
+          "url": "https://aiengineeringfromscratch.com/manual-reverse-engineering-101/list-procedures-and-function-bodies"
+        },
+        {
+          "title": "4.3 procedure_assembly",
+          "url": "https://aiengineeringfromscratch.com/manual-reverse-engineering-101/procedure-assembly"
+        },
+        {
+          "title": "4.4 xrefs and the jump table",
+          "url": "https://aiengineeringfromscratch.com/manual-reverse-engineering-101/xrefs-and-the-jump-table"
+        },
+        {
+          "title": "4.5 list_strings",
+          "url": "https://aiengineeringfromscratch.com/manual-reverse-engineering-101/list-strings"
+        },
+        {
+          "title": "4.6 analyze_function and pseudocode",
+          "url": "https://aiengineeringfromscratch.com/manual-reverse-engineering-101/analyze-function-and-pseudocode"
+        },
+        {
+          "title": "5.1 The Evidence record",
+          "url": "https://aiengineeringfromscratch.com/manual-reverse-engineering-101/the-evidence-record"
+        },
+        {
+          "title": "5.2 ResidualUnknown, record_unknown, and coverage",
+          "url": "https://aiengineeringfromscratch.com/manual-reverse-engineering-101/residual-unknowns-and-coverage"
+        },
+        {
+          "title": "5.3 AnalysisSnapshot and the exact-match answer cache",
+          "url": "https://aiengineeringfromscratch.com/manual-reverse-engineering-101/snapshots-and-the-answer-cache"
+        },
+        {
+          "title": "5.4 export_evidence_bundle, evidence-export, and evidence-import",
+          "url": "https://aiengineeringfromscratch.com/manual-reverse-engineering-101/evidence-bundles-export-and-import"
+        },
+        {
+          "title": "5.5 compare_functions and rea compare",
+          "url": "https://aiengineeringfromscratch.com/manual-reverse-engineering-101/compare-and-compare-functions"
+        },
+        {
+          "title": "6.1 analyze-javascript-application and the application graph",
+          "url": "https://aiengineeringfromscratch.com/manual-reverse-engineering-101/analyze-javascript-application"
+        },
+        {
+          "title": "6.2 inspect-wasm-artifact and the WABT provider",
+          "url": "https://aiengineeringfromscratch.com/manual-reverse-engineering-101/inspect-wasm-artifact"
+        },
+        {
+          "title": "7.1 verify_reconstruction",
+          "url": "https://aiengineeringfromscratch.com/manual-reverse-engineering-101/verify-reconstruction"
+        },
+        {
+          "title": "7.2 A proof harness beyond compare_functions",
+          "url": "https://aiengineeringfromscratch.com/manual-reverse-engineering-101/a-proof-harness-outside-rea"
+        },
+        {
+          "title": "8.1 rea mcp: initialize, tools/list, and the startup deadline",
+          "url": "https://aiengineeringfromscratch.com/manual-reverse-engineering-101/the-rea-mcp-server"
+        },
+        {
+          "title": "8.2 One agent investigation over list_procedures, analyze_function, and list_strings",
+          "url": "https://aiengineeringfromscratch.com/manual-reverse-engineering-101/an-agent-investigation"
+        },
+        {
+          "title": "R.1 Commands and tools used in this manual",
+          "url": "https://aiengineeringfromscratch.com/manual-reverse-engineering-101/ref-commands-and-tools"
+        },
+        {
+          "title": "R.2 Evidence fields",
+          "url": "https://aiengineeringfromscratch.com/manual-reverse-engineering-101/ref-evidence-fields"
+        },
+        {
+          "title": "R.3 Errors seen in the captures",
+          "url": "https://aiengineeringfromscratch.com/manual-reverse-engineering-101/ref-errors"
+        },
+        {
+          "title": "R.4 Glossary",
+          "url": "https://aiengineeringfromscratch.com/manual-reverse-engineering-101/ref-glossary"
+        },
+        {
+          "title": "R.5 Sources",
+          "url": "https://aiengineeringfromscratch.com/manual-reverse-engineering-101/ref-sources"
+        },
+        {
+          "title": "R.6 Index of figures",
+          "url": "https://aiengineeringfromscratch.com/manual-reverse-engineering-101/ref-figure-index"
+        }
+      ]
+    },
+    {
+      "title": "SGLang 101",
+      "url": "https://aiengineeringfromscratch.com/manual-sglang-101",
+      "description": "Serving language models with SGLang, from one request to a fleet, with the judgment the flag list leaves out",
+      "sections_count": 37,
+      "sections": [
+        {
+          "title": "How to read this manual",
+          "url": "https://aiengineeringfromscratch.com/manual-sglang-101/front"
+        },
+        {
+          "title": "1.1 Install SGLang and serve your first model",
+          "url": "https://aiengineeringfromscratch.com/manual-sglang-101/install-sglang-and-serve-your-first-model"
+        },
+        {
+          "title": "1.2 Check that the server is healthy",
+          "url": "https://aiengineeringfromscratch.com/manual-sglang-101/check-that-the-server-is-healthy"
+        },
+        {
+          "title": "1.3 What the server does with your request",
+          "url": "https://aiengineeringfromscratch.com/manual-sglang-101/what-the-server-does-with-your-request"
+        },
+        {
+          "title": "2.1 sglang serve and the three processes",
+          "url": "https://aiengineeringfromscratch.com/manual-sglang-101/sglang-serve-and-the-three-processes"
+        },
+        {
+          "title": "2.2 The scheduler loop and --schedule-policy",
+          "url": "https://aiengineeringfromscratch.com/manual-sglang-101/the-scheduler-loop-and-schedule-policy"
+        },
+        {
+          "title": "2.3 Admission and retraction",
+          "url": "https://aiengineeringfromscratch.com/manual-sglang-101/admission-and-retraction"
+        },
+        {
+          "title": "2.4 The overlap scheduler",
+          "url": "https://aiengineeringfromscratch.com/manual-sglang-101/the-overlap-scheduler"
+        },
+        {
+          "title": "2.5 Streaming, stop strings, and the OpenAI API",
+          "url": "https://aiengineeringfromscratch.com/manual-sglang-101/streaming-stop-strings-and-the-openai-api"
+        },
+        {
+          "title": "3.1 The KV pool and bytes per token",
+          "url": "https://aiengineeringfromscratch.com/manual-sglang-101/kv-bytes-per-token-and-the-kv-pool"
+        },
+        {
+          "title": "3.2 --mem-fraction-static and startup sizing",
+          "url": "https://aiengineeringfromscratch.com/manual-sglang-101/mem-fraction-static-and-startup-sizing"
+        },
+        {
+          "title": "3.3 RadixCache",
+          "url": "https://aiengineeringfromscratch.com/manual-sglang-101/radixcache"
+        },
+        {
+          "title": "3.4 Prefix-friendly prompts",
+          "url": "https://aiengineeringfromscratch.com/manual-sglang-101/prefix-friendly-prompts"
+        },
+        {
+          "title": "3.5 Eviction policies and HiCache",
+          "url": "https://aiengineeringfromscratch.com/manual-sglang-101/eviction-policies-and-hicache"
+        },
+        {
+          "title": "3.6 Hybrid models and the cache",
+          "url": "https://aiengineeringfromscratch.com/manual-sglang-101/hybrid-models-and-the-cache"
+        },
+        {
+          "title": "4.1 ForwardMode and CUDA graphs",
+          "url": "https://aiengineeringfromscratch.com/manual-sglang-101/forwardmode-and-cuda-graphs"
+        },
+        {
+          "title": "4.2 --attention-backend",
+          "url": "https://aiengineeringfromscratch.com/manual-sglang-101/attention-backend"
+        },
+        {
+          "title": "4.3 --quantization and --kv-cache-dtype",
+          "url": "https://aiengineeringfromscratch.com/manual-sglang-101/quantization"
+        },
+        {
+          "title": "4.4 --speculative-algorithm",
+          "url": "https://aiengineeringfromscratch.com/manual-sglang-101/speculative-decoding"
+        },
+        {
+          "title": "4.5 --grammar-backend and structured outputs",
+          "url": "https://aiengineeringfromscratch.com/manual-sglang-101/structured-outputs-with-xgrammar"
+        },
+        {
+          "title": "4.6 --enable-deterministic-inference and logprobs",
+          "url": "https://aiengineeringfromscratch.com/manual-sglang-101/deterministic-inference-and-logprobs"
+        },
+        {
+          "title": "5.1 sglang.benchmark.serving",
+          "url": "https://aiengineeringfromscratch.com/manual-sglang-101/sglang-benchmark-serving"
+        },
+        {
+          "title": "5.2 The /metrics endpoint",
+          "url": "https://aiengineeringfromscratch.com/manual-sglang-101/the-metrics-endpoint"
+        },
+        {
+          "title": "5.3 Reading other people's SGLang benchmarks",
+          "url": "https://aiengineeringfromscratch.com/manual-sglang-101/reading-other-peoples-benchmarks"
+        },
+        {
+          "title": "6.1 --tp-size, --dp-size, and --attn-dp-size",
+          "url": "https://aiengineeringfromscratch.com/manual-sglang-101/tp-size-dp-size-and-attn-dp-size"
+        },
+        {
+          "title": "6.2 MoE serving: --moe-a2a-backend, DeepEP, and EPLB",
+          "url": "https://aiengineeringfromscratch.com/manual-sglang-101/moe-serving-deepep-and-eplb"
+        },
+        {
+          "title": "6.3 Prefill-decode disaggregation: --disaggregation-mode",
+          "url": "https://aiengineeringfromscratch.com/manual-sglang-101/prefill-decode-disaggregation"
+        },
+        {
+          "title": "6.4 sgl-model-gateway and cache-aware routing",
+          "url": "https://aiengineeringfromscratch.com/manual-sglang-101/sgl-model-gateway"
+        },
+        {
+          "title": "7.1 Operating SGLang",
+          "url": "https://aiengineeringfromscratch.com/manual-sglang-101/operating-sglang"
+        },
+        {
+          "title": "7.2 SGLang as an RL rollout engine",
+          "url": "https://aiengineeringfromscratch.com/manual-sglang-101/sglang-as-an-rl-rollout-engine"
+        },
+        {
+          "title": "R.1 Flags and defaults",
+          "url": "https://aiengineeringfromscratch.com/manual-sglang-101/ref-flags-and-defaults"
+        },
+        {
+          "title": "R.2 Metrics",
+          "url": "https://aiengineeringfromscratch.com/manual-sglang-101/ref-metrics"
+        },
+        {
+          "title": "R.3 Incident index",
+          "url": "https://aiengineeringfromscratch.com/manual-sglang-101/ref-incident-index"
+        },
+        {
+          "title": "R.4 Glossary",
+          "url": "https://aiengineeringfromscratch.com/manual-sglang-101/ref-glossary"
+        },
+        {
+          "title": "R.5 Sources",
+          "url": "https://aiengineeringfromscratch.com/manual-sglang-101/ref-sources"
+        },
+        {
+          "title": "R.6 Index of figures",
+          "url": "https://aiengineeringfromscratch.com/manual-sglang-101/ref-figure-index"
+        },
+        {
+          "title": "R.7 How this manual was made",
+          "url": "https://aiengineeringfromscratch.com/manual-sglang-101/ref-how-this-manual-was-made"
+        }
+      ]
+    },
+    {
+      "title": "vLLM 101",
+      "url": "https://aiengineeringfromscratch.com/manual-vllm-101",
+      "description": "Serve, size, tune, and debug open models with vLLM, with measured answers for each decision",
+      "sections_count": 53,
+      "sections": [
+        {
+          "title": "How to read this manual",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/front"
+        },
+        {
+          "title": "1.1 Install vLLM and serve your first model",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/install-vllm-and-serve-your-first-model"
+        },
+        {
+          "title": "1.2 Check that the server is healthy",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/check-that-the-server-is-healthy"
+        },
+        {
+          "title": "1.3 Understand what happens to your request",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/understand-what-happens-to-your-request"
+        },
+        {
+          "title": "1.4 Set the server options every deployment needs",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/set-the-server-options-every-deployment-needs"
+        },
+        {
+          "title": "2.1 Count the memory before you pick a GPU",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/count-the-memory-before-you-pick-a-gpu"
+        },
+        {
+          "title": "2.2 Fix out of memory at startup",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/fix-out-of-memory-at-startup"
+        },
+        {
+          "title": "2.3 Size memory on a DGX Spark",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/size-memory-on-a-dgx-spark"
+        },
+        {
+          "title": "2.4 Fit more users with an FP8 KV cache",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/fit-more-users-with-an-fp8-kv-cache"
+        },
+        {
+          "title": "2.5 Fit a bigger model with FP8 weights",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/fit-a-bigger-model-with-fp8-weights"
+        },
+        {
+          "title": "2.6 Serve long contexts and hybrid models",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/serve-long-contexts-and-hybrid-models"
+        },
+        {
+          "title": "3.1 Tune chat for many users",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/tune-chat-for-many-users"
+        },
+        {
+          "title": "3.2 Make repeated prompts hit the prefix cache",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/make-repeated-prompts-hit-the-prefix-cache"
+        },
+        {
+          "title": "3.3 Keep long prompts from stalling short ones",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/keep-long-prompts-from-stalling-short-ones"
+        },
+        {
+          "title": "3.4 Keep long sessions cheap",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/keep-long-sessions-cheap"
+        },
+        {
+          "title": "3.5 Return valid JSON and tool calls",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/return-valid-json-and-tool-calls"
+        },
+        {
+          "title": "3.6 Run batch and offline jobs",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/run-batch-and-offline-jobs"
+        },
+        {
+          "title": "3.7 Serve many fine-tunes with multi-LoRA",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/serve-many-fine-tunes-with-multi-lora"
+        },
+        {
+          "title": "3.8 Get reproducible outputs",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/get-reproducible-outputs"
+        },
+        {
+          "title": "3.9 Use vLLM as an RL rollout engine",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/use-vllm-as-an-rl-rollout-engine"
+        },
+        {
+          "title": "3.10 Serve reasoning models",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/serve-reasoning-models"
+        },
+        {
+          "title": "4.1 Speed up decode with EAGLE3",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/speed-up-decode-with-eagle3"
+        },
+        {
+          "title": "4.2 Use n-gram speculation for copy-heavy work",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/use-n-gram-speculation-for-copy-heavy-work"
+        },
+        {
+          "title": "4.3 Keep CUDA graphs and compile on",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/keep-cuda-graphs-and-compile-on"
+        },
+        {
+          "title": "4.4 Leave async scheduling on",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/leave-async-scheduling-on"
+        },
+        {
+          "title": "4.5 Change the attention backend only for a reason",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/change-the-attention-backend-only-for-a-reason"
+        },
+        {
+          "title": "5.1 Benchmark your server in 15 minutes",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/benchmark-your-server-in-15-minutes"
+        },
+        {
+          "title": "5.2 Watch vLLM in production",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/watch-vllm-in-production"
+        },
+        {
+          "title": "5.3 Decide between vLLM and SGLang",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/decide-between-vllm-and-sglang"
+        },
+        {
+          "title": "6.1 Choose tensor, pipeline, or data parallelism",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/choose-tensor-pipeline-or-data-parallelism"
+        },
+        {
+          "title": "6.2 Serve MoE models with expert parallelism",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/serve-moe-models-with-expert-parallelism"
+        },
+        {
+          "title": "6.3 Split prefill and decode",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/split-prefill-and-decode"
+        },
+        {
+          "title": "6.4 Run vLLM on Kubernetes",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/run-vllm-on-kubernetes"
+        },
+        {
+          "title": "6.5 Run vLLM on other accelerators",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/run-vllm-on-other-accelerators"
+        },
+        {
+          "title": "7.1 Troubleshoot by symptom",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/troubleshoot-by-symptom"
+        },
+        {
+          "title": "7.2 Run vLLM in production",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/run-vllm-in-production"
+        },
+        {
+          "title": "8.1 Why vLLM runs three kinds of process",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/why-vllm-runs-three-kinds-of-process"
+        },
+        {
+          "title": "8.2 Why one token budget replaces a prefill phase",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/why-one-token-budget-replaces-a-prefill-phase"
+        },
+        {
+          "title": "8.3 How the block pool manages KV memory",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/how-the-block-pool-manages-kv-memory"
+        },
+        {
+          "title": "8.4 How vLLM picks an attention backend",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/how-vllm-picks-an-attention-backend"
+        },
+        {
+          "title": "8.5 What Model Runner V2 changed",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/what-model-runner-v2-changed"
+        },
+        {
+          "title": "8.6 How compile and CUDA graphs are captured",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/how-compile-and-cuda-graphs-are-captured"
+        },
+        {
+          "title": "8.7 How speculative decoding checks drafts",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/how-speculative-decoding-checks-drafts"
+        },
+        {
+          "title": "8.8 How KV connectors move the cache",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/how-kv-connectors-move-the-cache"
+        },
+        {
+          "title": "8.9 Where vLLM came from",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/where-vllm-came-from"
+        },
+        {
+          "title": "R.1 Flags and defaults",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/ref-flags-and-defaults"
+        },
+        {
+          "title": "R.2 Metrics",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/ref-metrics"
+        },
+        {
+          "title": "R.3 Incident index",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/ref-incident-index"
+        },
+        {
+          "title": "R.4 Version pins",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/ref-version-pins"
+        },
+        {
+          "title": "R.5 Glossary",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/ref-glossary"
+        },
+        {
+          "title": "R.6 Sources",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/ref-sources"
+        },
+        {
+          "title": "R.7 Lab notes",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/ref-lab-notes"
+        },
+        {
+          "title": "R.8 Index of figures",
+          "url": "https://aiengineeringfromscratch.com/manual-vllm-101/ref-figure-index"
+        }
+      ]
+    }
+  ],
+  "practice_tasks": [
+    {
+      "category": "Implement",
+      "title": "Power iteration for the top eigenpair",
+      "url": "https://aiengineeringfromscratch.com/practice/power-iteration",
+      "difficulty": "medium",
+      "description": "The top eigenvalue and eigenvector of a symmetric matrix by power iteration, with a tolerance, an iteration limit and a sign rule. From [Singular Value Decomposition](https://aiengineeringfromscratch.com/lesson?path=phases%2F01-math-foundations%2F11-singular-value-decomposition)"
+    },
+    {
+      "category": "Implement",
+      "title": "Vectorized pairwise distances",
+      "url": "https://aiengineeringfromscratch.com/practice/pairwise-distances",
+      "difficulty": "medium",
+      "description": "Euclidean distance and cosine similarity matrices from one matrix product, with a clip at 0 and a zero-vector rule. From [Norms and Distances](https://aiengineeringfromscratch.com/lesson?path=phases%2F01-math-foundations%2F14-norms-and-distances)"
+    },
+    {
+      "category": "Implement",
+      "title": "Linear regression by gradient descent",
+      "url": "https://aiengineeringfromscratch.com/practice/gradient-descent-linear-regression",
+      "difficulty": "easy",
+      "description": "Mean squared error, its gradients for weights and bias, and a batch gradient descent loop that records the cost after each update. From [Linear Regression](https://aiengineeringfromscratch.com/lesson?path=phases%2F02-ml-fundamentals%2F02-linear-regression)"
+    },
+    {
+      "category": "Implement",
+      "title": "Logistic regression from scratch",
+      "url": "https://aiengineeringfromscratch.com/practice/logistic-regression",
+      "difficulty": "medium",
+      "description": "A stable sigmoid, the binary cross-entropy loss and its gradient, and a gradient descent loop that records the loss. From [Logistic Regression](https://aiengineeringfromscratch.com/lesson?path=phases%2F02-ml-fundamentals%2F03-logistic-regression)"
+    },
+    {
+      "category": "Implement",
+      "title": "Gini impurity and the best split",
+      "url": "https://aiengineeringfromscratch.com/practice/gini-best-split",
+      "difficulty": "hard",
+      "description": "Gini impurity and the best decision tree split over all features, with midpoint thresholds, weighted child impurity and a fixed tie rule. From [Decision Trees and Random Forests](https://aiengineeringfromscratch.com/lesson?path=phases%2F02-ml-fundamentals%2F04-decision-trees)"
+    },
+    {
+      "category": "Implement",
+      "title": "K-means assignment and update",
+      "url": "https://aiengineeringfromscratch.com/practice/kmeans-step",
+      "difficulty": "medium",
+      "description": "The k-means assignment and update steps with a tie rule and an empty cluster rule, and a full run until the assignments stop changing. From [Unsupervised Learning](https://aiengineeringfromscratch.com/lesson?path=phases%2F02-ml-fundamentals%2F07-unsupervised-learning)"
+    },
+    {
+      "category": "Implement",
+      "title": "Backpropagation through a two-layer MLP",
+      "url": "https://aiengineeringfromscratch.com/practice/mlp-backprop",
+      "difficulty": "hard",
+      "description": "Forward pass with a cache and a backward pass that returns the gradient of every weight and bias of a two-layer sigmoid network. From [Backpropagation from Scratch](https://aiengineeringfromscratch.com/lesson?path=phases%2F03-deep-learning-core%2F03-backpropagation)"
+    },
+    {
+      "category": "Implement",
+      "title": "Stable softmax and cross-entropy",
+      "url": "https://aiengineeringfromscratch.com/practice/softmax-cross-entropy",
+      "difficulty": "easy",
+      "description": "Batched softmax, mean cross-entropy and its gradient, without overflow for large logits. From [Loss Functions](https://aiengineeringfromscratch.com/lesson?path=phases%2F03-deep-learning-core%2F05-loss-functions)"
+    },
+    {
+      "category": "Implement",
+      "title": "SGD with momentum",
+      "url": "https://aiengineeringfromscratch.com/practice/sgd-momentum",
+      "difficulty": "easy",
+      "description": "One momentum update with the lesson's velocity rule, and a loop that minimizes a quadratic with or without Nesterov lookahead. From [Optimizers](https://aiengineeringfromscratch.com/lesson?path=phases%2F03-deep-learning-core%2F06-optimizers)"
+    },
+    {
+      "category": "Implement",
+      "title": "Adam and AdamW step",
+      "url": "https://aiengineeringfromscratch.com/practice/adam-step",
+      "difficulty": "medium",
+      "description": "One Adam update with bias correction and a step counter that starts at 1, plus AdamW decoupled weight decay, as a pure function of the state. From [Optimizers](https://aiengineeringfromscratch.com/lesson?path=phases%2F03-deep-learning-core%2F06-optimizers)"
+    },
+    {
+      "category": "Implement",
+      "title": "Inverted dropout",
+      "url": "https://aiengineeringfromscratch.com/practice/inverted-dropout",
+      "difficulty": "easy",
+      "description": "Inverted dropout with a given random generator: training forward with an exact mask, backward with the same mask, identity at inference. From [Regularization](https://aiengineeringfromscratch.com/lesson?path=phases%2F03-deep-learning-core%2F07-regularization)"
+    },
+    {
+      "category": "Implement",
+      "title": "Batch normalization forward and backward",
+      "url": "https://aiengineeringfromscratch.com/practice/batch-norm",
+      "difficulty": "hard",
+      "description": "Training and inference forward passes with running statistics, and the full backward pass for x, gamma and beta. From [Regularization](https://aiengineeringfromscratch.com/lesson?path=phases%2F03-deep-learning-core%2F07-regularization)"
+    },
+    {
+      "category": "Implement",
+      "title": "Beam search with EOS and length normalization",
+      "url": "https://aiengineeringfromscratch.com/practice/beam-search",
+      "difficulty": "hard",
+      "description": "Keep the best beam_width partial sequences over a step function, finish beams at EOS, and rank them with a length penalty. From [Sequence-to-Sequence Models](https://aiengineeringfromscratch.com/lesson?path=phases%2F05-nlp-foundations-to-advanced%2F09-sequence-to-sequence)"
+    },
+    {
+      "category": "Implement",
+      "title": "BM25 ranking",
+      "url": "https://aiengineeringfromscratch.com/practice/bm25",
+      "difficulty": "medium",
+      "description": "Score tokenized documents against a query with BM25: the lesson idf, term frequency saturation with k1, length normalization with b, and a ranked list. From [Information Retrieval and Search](https://aiengineeringfromscratch.com/lesson?path=phases%2F05-nlp-foundations-to-advanced%2F14-information-retrieval-search)"
+    },
+    {
+      "category": "Implement",
+      "title": "Scaled dot-product attention with a mask",
+      "url": "https://aiengineeringfromscratch.com/practice/scaled-dot-product-attention",
+      "difficulty": "medium",
+      "description": "Batched softmax(QK^T / sqrt(d_k)) V with an optional boolean mask, plus the causal mask that a decoder uses. From [Self-Attention from Scratch](https://aiengineeringfromscratch.com/lesson?path=phases%2F07-transformers-deep-dive%2F02-self-attention-from-scratch)"
+    },
+    {
+      "category": "Implement",
+      "title": "Split heads, merge heads, multi-head attention",
+      "url": "https://aiengineeringfromscratch.com/practice/multi-head-split-merge",
+      "difficulty": "medium",
+      "description": "Reshape (B, T, D) into H heads and back, then run batched multi-head self-attention with given projection matrices. From [Multi-Head Attention](https://aiengineeringfromscratch.com/lesson?path=phases%2F07-transformers-deep-dive%2F03-multi-head-attention)"
+    },
+    {
+      "category": "Implement",
+      "title": "Sinusoidal positional encoding",
+      "url": "https://aiengineeringfromscratch.com/practice/sinusoidal-positional-encoding",
+      "difficulty": "easy",
+      "description": "Build the sin and cos position table with interleaved columns and base 10000, and add it to a batch of token embeddings. From [Positional Encoding — Sinusoidal, RoPE, ALiBi](https://aiengineeringfromscratch.com/lesson?path=phases%2F07-transformers-deep-dive%2F04-positional-encoding)"
+    },
+    {
+      "category": "Implement",
+      "title": "Rotary position embedding",
+      "url": "https://aiengineeringfromscratch.com/practice/rope",
+      "difficulty": "medium",
+      "description": "Rotate adjacent coordinate pairs of queries and keys by position times base^(-2i/d), so attention scores depend only on the position gap. From [Positional Encoding — Sinusoidal, RoPE, ALiBi](https://aiengineeringfromscratch.com/lesson?path=phases%2F07-transformers-deep-dive%2F04-positional-encoding)"
+    },
+    {
+      "category": "Implement",
+      "title": "LayerNorm and RMSNorm",
+      "url": "https://aiengineeringfromscratch.com/practice/layer-norm-rms-norm",
+      "difficulty": "easy",
+      "description": "LayerNorm with gamma and beta and RMSNorm with a weight, both over the last axis, with eps inside the square root. From [The Full Transformer — Encoder + Decoder](https://aiengineeringfromscratch.com/lesson?path=phases%2F07-transformers-deep-dive%2F05-full-transformer)"
+    },
+    {
+      "category": "Implement",
+      "title": "Temperature, top-k and top-p sampling",
+      "url": "https://aiengineeringfromscratch.com/practice/top-k-top-p-sampling",
+      "difficulty": "medium",
+      "description": "Scale logits by temperature, keep the top k or the top p mass, renormalize, and draw one token with a seeded rng. From [GPT — Causal Language Modeling](https://aiengineeringfromscratch.com/lesson?path=phases%2F07-transformers-deep-dive%2F07-gpt-causal-language-modeling)"
+    },
+    {
+      "category": "Implement",
+      "title": "Fixed-capacity KV cache",
+      "url": "https://aiengineeringfromscratch.com/practice/kv-cache-append",
+      "difficulty": "medium",
+      "description": "Append keys and values to a preallocated cache, attend one query over the valid prefix, and reject an append past the capacity. From [KV Cache, Flash Attention & Inference Optimization](https://aiengineeringfromscratch.com/lesson?path=phases%2F07-transformers-deep-dive%2F12-kv-cache-flash-attention)"
+    },
+    {
+      "category": "Implement",
+      "title": "Q-learning and SARSA updates",
+      "url": "https://aiengineeringfromscratch.com/practice/q-learning-update",
+      "difficulty": "easy",
+      "description": "One tabular Q-learning or SARSA update with no bootstrap at a terminal step, and epsilon-greedy actions from a seeded rng with lowest-index ties. From [Temporal Difference — Q-Learning & SARSA](https://aiengineeringfromscratch.com/lesson?path=phases%2F09-reinforcement-learning%2F04-q-learning-sarsa)"
+    },
+    {
+      "category": "Implement",
+      "title": "Discounted returns with episode ends",
+      "url": "https://aiengineeringfromscratch.com/practice/discounted-returns",
+      "difficulty": "easy",
+      "description": "Reward-to-go returns for one episode and for a batch of joined episodes with done flags, plus return normalization. From [Policy Gradient — REINFORCE from Scratch](https://aiengineeringfromscratch.com/lesson?path=phases%2F09-reinforcement-learning%2F06-policy-gradients-reinforce)"
+    },
+    {
+      "category": "Implement",
+      "title": "Generalized advantage estimation",
+      "url": "https://aiengineeringfromscratch.com/practice/generalized-advantage-estimation",
+      "difficulty": "medium",
+      "description": "TD errors and GAE advantages with gamma, lambda, done flags and a bootstrap value, plus the critic targets. From [Actor-Critic — A2C and A3C](https://aiengineeringfromscratch.com/lesson?path=phases%2F09-reinforcement-learning%2F07-actor-critic-a2c-a3c)"
+    },
+    {
+      "category": "Implement",
+      "title": "PPO clipped surrogate loss",
+      "url": "https://aiengineeringfromscratch.com/practice/ppo-clip-loss",
+      "difficulty": "medium",
+      "description": "The PPO loss to minimize from new and old log probabilities and advantages, the clip fraction, and the gradient with respect to the new log probabilities. From [Proximal Policy Optimization (PPO)](https://aiengineeringfromscratch.com/lesson?path=phases%2F09-reinforcement-learning%2F08-ppo)"
+    },
+    {
+      "category": "Implement",
+      "title": "Symmetric int8 quantization",
+      "url": "https://aiengineeringfromscratch.com/practice/int8-quantization",
+      "difficulty": "medium",
+      "description": "Absmax int8 quantization with one scale per tensor and one scale per row, with dequantization and a zero-row rule. From [Quantization: Making Models Fit](https://aiengineeringfromscratch.com/lesson?path=phases%2F10-llms-from-scratch%2F11-quantization)"
+    },
+    {
+      "category": "Implement",
+      "title": "Cosine similarity top-k search",
+      "url": "https://aiengineeringfromscratch.com/practice/cosine-top-k",
+      "difficulty": "easy",
+      "description": "Normalize embedding rows, score queries against documents with cosine similarity, and return the top k documents with a fixed tie rule. From [Embeddings & Vector Representations](https://aiengineeringfromscratch.com/lesson?path=phases%2F11-llm-engineering%2F04-embeddings)"
+    },
+    {
+      "category": "Implement",
+      "title": "LoRA linear layer",
+      "url": "https://aiengineeringfromscratch.com/practice/lora-forward",
+      "difficulty": "easy",
+      "description": "Forward pass of a linear layer with a low rank adapter, merge of the adapter into the weight, and the trainable parameter count. From [Fine-Tuning with LoRA & QLoRA](https://aiengineeringfromscratch.com/lesson?path=phases%2F11-llm-engineering%2F08-fine-tuning-lora)"
+    },
+    {
+      "category": "Implement",
+      "title": "Parse and validate tool calls",
+      "url": "https://aiengineeringfromscratch.com/practice/tool-call-parser",
+      "difficulty": "hard",
+      "description": "Parse tool calls from a raw model reply and validate their arguments against a JSON Schema subset with JSON pointer error paths. From [Tool Registry with Schema Validation](https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F21-tool-registry-schema-validation)"
+    },
+    {
+      "category": "Implement",
+      "title": "BPE pair counts and merges",
+      "url": "https://aiengineeringfromscratch.com/practice/bpe-merge-step",
+      "difficulty": "medium",
+      "description": "Count weighted adjacent pairs, pick the best pair with a fixed tie rule, merge it without overlap and train a BPE merge list. From [BPE Tokenizer From Scratch](https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F30-bpe-tokenizer-from-scratch)"
+    },
+    {
+      "category": "Implement",
+      "title": "Reciprocal rank fusion",
+      "url": "https://aiengineeringfromscratch.com/practice/reciprocal-rank-fusion",
+      "difficulty": "easy",
+      "description": "Merge several ranked lists of document ids into one ranking with reciprocal rank fusion, optional list weights and a fixed tie rule. From [Hybrid Retrieval with BM25 and Dense Embeddings](https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F65-hybrid-retrieval-bm25-dense)"
+    },
+    {
+      "category": "Research",
+      "title": "Focal loss",
+      "url": "https://aiengineeringfromscratch.com/practice/focal-loss",
+      "difficulty": "easy",
+      "description": "Binary and multi-class focal loss with gamma and alpha, from logits and without overflow, plus the binary gradient. From [Loss Functions](https://aiengineeringfromscratch.com/lesson?path=phases%2F03-deep-learning-core%2F05-loss-functions)"
+    },
+    {
+      "category": "Research",
+      "title": "CLIP symmetric contrastive loss",
+      "url": "https://aiengineeringfromscratch.com/practice/clip-contrastive-loss",
+      "difficulty": "medium",
+      "description": "Normalize image and text embeddings, build the temperature-scaled similarity matrix, and compute the symmetric InfoNCE loss and its gradient. From [Open-Vocabulary Vision — CLIP](https://aiengineeringfromscratch.com/lesson?path=phases%2F04-computer-vision%2F18-open-vocab-clip)"
+    },
+    {
+      "category": "Research",
+      "title": "Grouped-query attention",
+      "url": "https://aiengineeringfromscratch.com/practice/grouped-query-attention",
+      "difficulty": "medium",
+      "description": "GQA forward with H query heads and G shared key and value groups, plus mean pooling of a multi-head checkpoint into groups. From [Multi-Head Attention](https://aiengineeringfromscratch.com/lesson?path=phases%2F07-transformers-deep-dive%2F03-multi-head-attention)"
+    },
+    {
+      "category": "Research",
+      "title": "Top-k MoE gating and the Switch load-balancing loss",
+      "url": "https://aiengineeringfromscratch.com/practice/mixture-of-experts-gating",
+      "difficulty": "medium",
+      "description": "Route tokens to the top k experts with renormalized softmax gates, and compute the Switch Transformer auxiliary loss E times sum f_i P_i. From [Mixture of Experts (MoE)](https://aiengineeringfromscratch.com/lesson?path=phases%2F07-transformers-deep-dive%2F11-mixture-of-experts)"
+    },
+    {
+      "category": "Research",
+      "title": "Tiled attention with an online softmax",
+      "url": "https://aiengineeringfromscratch.com/practice/flash-attention-online-softmax",
+      "difficulty": "hard",
+      "description": "FlashAttention in numpy: a running max and a running sum over key blocks give exact attention for any block size. From [KV Cache, Flash Attention & Inference Optimization](https://aiengineeringfromscratch.com/lesson?path=phases%2F07-transformers-deep-dive%2F12-kv-cache-flash-attention)"
+    },
+    {
+      "category": "Research",
+      "title": "Speculative decoding: accept, reject and resample",
+      "url": "https://aiengineeringfromscratch.com/practice/speculative-decoding-acceptance",
+      "difficulty": "hard",
+      "description": "The min(1, p/q) acceptance rule and the residual distribution that keep speculative decoding exactly equal to the target model. From [Speculative Decoding — Draft, Verify, Repeat](https://aiengineeringfromscratch.com/lesson?path=phases%2F07-transformers-deep-dive%2F16-speculative-decoding)"
+    },
+    {
+      "category": "Research",
+      "title": "DDPM noise schedule, closed form noising and posterior",
+      "url": "https://aiengineeringfromscratch.com/practice/ddpm-forward-noising",
+      "difficulty": "medium",
+      "description": "Build the linear beta schedule and alpha bars, sample x_t from x_0 in closed form, and compute the mean and variance of q(x_{t-1} | x_t, x_0). From [Diffusion Models — DDPM from Scratch](https://aiengineeringfromscratch.com/lesson?path=phases%2F08-generative-ai%2F06-diffusion-ddpm-from-scratch)"
+    },
+    {
+      "category": "Research",
+      "title": "Rectified flow loss and Euler sampler",
+      "url": "https://aiengineeringfromscratch.com/practice/rectified-flow-loss",
+      "difficulty": "medium",
+      "description": "Interpolate along straight paths, regress the velocity x1 - x0 with the flow matching loss, and integrate a velocity field with Euler steps. From [Flow Matching & Rectified Flows](https://aiengineeringfromscratch.com/lesson?path=phases%2F08-generative-ai%2F13-flow-matching-rectified-flows)"
+    },
+    {
+      "category": "Research",
+      "title": "GRPO group advantages and clipped objective",
+      "url": "https://aiengineeringfromscratch.com/practice/grpo-advantages",
+      "difficulty": "medium",
+      "description": "Normalize rewards within each group, estimate the KL with k3, and compute the clipped GRPO objective averaged per answer over valid tokens. From [RL for Games — AlphaZero, MuZero, and the LLM-Reasoning Era](https://aiengineeringfromscratch.com/lesson?path=phases%2F09-reinforcement-learning%2F12-rl-for-games)"
+    },
+    {
+      "category": "Research",
+      "title": "DPO loss and implicit rewards",
+      "url": "https://aiengineeringfromscratch.com/practice/dpo-loss",
+      "difficulty": "medium",
+      "description": "The direct preference optimization loss, its implicit rewards and its gradient, from policy and reference log probabilities. From [DPO: Direct Preference Optimization](https://aiengineeringfromscratch.com/lesson?path=phases%2F10-llms-from-scratch%2F08-dpo)"
+    },
+    {
+      "category": "Train",
+      "title": "Train softmax regression on four blobs",
+      "url": "https://aiengineeringfromscratch.com/practice/train-softmax-blobs",
+      "difficulty": "easy",
+      "description": "Train multinomial logistic regression with gradient descent to reach a held-out accuracy and log loss target on four Gaussian blobs. From [Logistic Regression](https://aiengineeringfromscratch.com/lesson?path=phases%2F02-ml-fundamentals%2F03-logistic-regression)"
+    },
+    {
+      "category": "Train",
+      "title": "Train a 2-4-1 network on XOR",
+      "url": "https://aiengineeringfromscratch.com/practice/train-xor-mlp",
+      "difficulty": "easy",
+      "description": "Train a small sigmoid network with full-batch gradient descent until it labels noisy XOR points with 95 percent held-out accuracy. From [Backpropagation from Scratch](https://aiengineeringfromscratch.com/lesson?path=phases%2F03-deep-learning-core%2F03-backpropagation)"
+    },
+    {
+      "category": "Train",
+      "title": "Fit a sine curve with a tanh network",
+      "url": "https://aiengineeringfromscratch.com/practice/train-sine-regression",
+      "difficulty": "medium",
+      "description": "Train a 1-16-1 tanh network on noisy samples of sin(x) until its held-out mean squared error against the true curve is below 0.01. From [Activation Functions](https://aiengineeringfromscratch.com/lesson?path=phases%2F03-deep-learning-core%2F04-activation-functions)"
+    },
+    {
+      "category": "Train",
+      "title": "Train a tanh network on two spirals",
+      "url": "https://aiengineeringfromscratch.com/practice/train-spirals-mlp",
+      "difficulty": "medium",
+      "description": "Train a 2-24-24-1 tanh network with mini-batch Adam until it separates two noisy spirals with 95 percent held-out accuracy. From [Build Your Own Mini Framework](https://aiengineeringfromscratch.com/lesson?path=phases%2F03-deep-learning-core%2F10-mini-framework)"
+    },
+    {
+      "category": "Train",
+      "title": "Train a character bigram language model",
+      "url": "https://aiengineeringfromscratch.com/practice/train-char-bigram",
+      "difficulty": "medium",
+      "description": "Train a table of next-character logits with gradient descent until the held-out negative log-likelihood beats a unigram model. From [Text Generation Before Transformers — N-gram Language Models](https://aiengineeringfromscratch.com/lesson?path=phases%2F05-nlp-foundations-to-advanced%2F16-text-generation-pre-transformer)"
+    },
+    {
+      "category": "Lab",
+      "title": "Measure bias and variance",
+      "url": "https://aiengineeringfromscratch.com/practice/lab-bias-variance",
+      "difficulty": "medium",
+      "description": "Fit polynomials of degree 1 to 12 on resampled training sets and measure bias squared, variance and test error at each degree. From [Bias-Variance Tradeoff](https://aiengineeringfromscratch.com/lesson?path=phases%2F02-ml-fundamentals%2F10-bias-variance)"
+    },
+    {
+      "category": "Lab",
+      "title": "Sweep the learning rate",
+      "url": "https://aiengineeringfromscratch.com/practice/lab-learning-rate-sweep",
+      "difficulty": "easy",
+      "description": "Sweep gradient descent learning rates on a seeded regression, find the best rate and the first rate that diverges, and compare with 2 over the top eigenvalue. From [Learning Rate Schedules and Warmup](https://aiengineeringfromscratch.com/lesson?path=phases%2F03-deep-learning-core%2F09-learning-rate-schedules)"
+    },
+    {
+      "category": "Lab",
+      "title": "Sweep the sampling temperature",
+      "url": "https://aiengineeringfromscratch.com/practice/lab-sampling-temperature",
+      "difficulty": "easy",
+      "description": "Sweep the temperature on fixed logits, measure entropy and top 1 probability, find where entropy crosses 2 bits, and count the tokens top p keeps. From [GPT — Causal Language Modeling](https://aiengineeringfromscratch.com/lesson?path=phases%2F07-transformers-deep-dive%2F07-gpt-causal-language-modeling)"
+    },
+    {
+      "category": "Lab",
+      "title": "Sweep the quantization bit width",
+      "url": "https://aiengineeringfromscratch.com/practice/lab-quantization-bits",
+      "difficulty": "medium",
+      "description": "Sweep symmetric absmax quantization from 2 to 8 bits on weights with outliers, compare one scale per tensor with one scale per row. From [Quantization: Making Models Fit](https://aiengineeringfromscratch.com/lesson?path=phases%2F10-llms-from-scratch%2F11-quantization)"
+    },
+    {
+      "category": "Lab",
+      "title": "Read an SGLang sweep on an L4",
+      "url": "https://aiengineeringfromscratch.com/practice/lab-sglang-l4-serving",
+      "difficulty": "medium",
+      "description": "Use real SGLang runs on an NVIDIA L4 to find the saturation point, the SLO limit, the FP8 gain and the effect of a smaller prefill chunk. From [Inference Metrics — TTFT, TPOT, ITL, Goodput, P99](https://aiengineeringfromscratch.com/lesson?path=phases%2F17-infrastructure-and-production%2F08-inference-metrics-goodput)"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Activation Checkpointing",
+      "slug": "activation-checkpointing",
+      "url": "https://aiengineeringfromscratch.com/glossary/activation-checkpointing"
+    },
+    {
+      "term": "Adam Optimizer",
+      "slug": "adam-optimizer",
+      "url": "https://aiengineeringfromscratch.com/glossary/adam-optimizer"
+    },
+    {
+      "term": "Adamw",
+      "slug": "adamw",
+      "url": "https://aiengineeringfromscratch.com/glossary/adamw"
+    },
+    {
+      "term": "Admission Control",
+      "slug": "admission-control",
+      "url": "https://aiengineeringfromscratch.com/glossary/admission-control"
+    },
+    {
+      "term": "Agent",
+      "slug": "agent",
+      "url": "https://aiengineeringfromscratch.com/glossary/agent"
+    },
+    {
+      "term": "Agent Harness",
+      "slug": "agent-harness",
+      "url": "https://aiengineeringfromscratch.com/glossary/agent-harness"
+    },
+    {
+      "term": "Agent Memory",
+      "slug": "agent-memory",
+      "url": "https://aiengineeringfromscratch.com/glossary/agent-memory"
+    },
+    {
+      "term": "Agent State",
+      "slug": "agent-state",
+      "url": "https://aiengineeringfromscratch.com/glossary/agent-state"
+    },
+    {
+      "term": "Agent Skill",
+      "slug": "agent-skill",
+      "url": "https://aiengineeringfromscratch.com/glossary/agent-skill"
+    },
+    {
+      "term": "Ai Risk Assessment",
+      "slug": "ai-risk-assessment",
+      "url": "https://aiengineeringfromscratch.com/glossary/ai-risk-assessment"
+    },
+    {
+      "term": "Alignment",
+      "slug": "alignment",
+      "url": "https://aiengineeringfromscratch.com/glossary/alignment"
+    },
+    {
+      "term": "Approval Gate",
+      "slug": "approval-gate",
+      "url": "https://aiengineeringfromscratch.com/glossary/approval-gate"
+    },
+    {
+      "term": "Approximate Nearest Neighbor Ann",
+      "slug": "approximate-nearest-neighbor-ann",
+      "url": "https://aiengineeringfromscratch.com/glossary/approximate-nearest-neighbor-ann"
+    },
+    {
+      "term": "Attention",
+      "slug": "attention",
+      "url": "https://aiengineeringfromscratch.com/glossary/attention"
+    },
+    {
+      "term": "Audio Token",
+      "slug": "audio-token",
+      "url": "https://aiengineeringfromscratch.com/glossary/audio-token"
+    },
+    {
+      "term": "Audit Log",
+      "slug": "audit-log",
+      "url": "https://aiengineeringfromscratch.com/glossary/audit-log"
+    },
+    {
+      "term": "Automatic Speech Recognition Asr",
+      "slug": "automatic-speech-recognition-asr",
+      "url": "https://aiengineeringfromscratch.com/glossary/automatic-speech-recognition-asr"
+    },
+    {
+      "term": "Autoregressive",
+      "slug": "autoregressive",
+      "url": "https://aiengineeringfromscratch.com/glossary/autoregressive"
+    },
+    {
+      "term": "Autoscaling",
+      "slug": "autoscaling",
+      "url": "https://aiengineeringfromscratch.com/glossary/autoscaling"
+    },
+    {
+      "term": "Availability",
+      "slug": "availability",
+      "url": "https://aiengineeringfromscratch.com/glossary/availability"
+    },
+    {
+      "term": "Backpressure",
+      "slug": "backpressure",
+      "url": "https://aiengineeringfromscratch.com/glossary/backpressure"
+    },
+    {
+      "term": "Backpropagation",
+      "slug": "backpropagation",
+      "url": "https://aiengineeringfromscratch.com/glossary/backpropagation"
+    },
+    {
+      "term": "Batch Size",
+      "slug": "batch-size",
+      "url": "https://aiengineeringfromscratch.com/glossary/batch-size"
+    },
+    {
+      "term": "Benchmark Contamination",
+      "slug": "benchmark-contamination",
+      "url": "https://aiengineeringfromscratch.com/glossary/benchmark-contamination"
+    },
+    {
+      "term": "Bm25",
+      "slug": "bm25",
+      "url": "https://aiengineeringfromscratch.com/glossary/bm25"
+    },
+    {
+      "term": "Byte Pair Encoding Bpe",
+      "slug": "byte-pair-encoding-bpe",
+      "url": "https://aiengineeringfromscratch.com/glossary/byte-pair-encoding-bpe"
+    },
+    {
+      "term": "Calibration",
+      "slug": "calibration",
+      "url": "https://aiengineeringfromscratch.com/glossary/calibration"
+    },
+    {
+      "term": "Canary Release",
+      "slug": "canary-release",
+      "url": "https://aiengineeringfromscratch.com/glossary/canary-release"
+    },
+    {
+      "term": "Chain Of Thought Cot",
+      "slug": "chain-of-thought-cot",
+      "url": "https://aiengineeringfromscratch.com/glossary/chain-of-thought-cot"
+    },
+    {
+      "term": "Checkpoint",
+      "slug": "checkpoint",
+      "url": "https://aiengineeringfromscratch.com/glossary/checkpoint"
+    },
+    {
+      "term": "Chunked Prefill",
+      "slug": "chunked-prefill",
+      "url": "https://aiengineeringfromscratch.com/glossary/chunked-prefill"
+    },
+    {
+      "term": "Chunking",
+      "slug": "chunking",
+      "url": "https://aiengineeringfromscratch.com/glossary/chunking"
+    },
+    {
+      "term": "Circuit Breaker",
+      "slug": "circuit-breaker",
+      "url": "https://aiengineeringfromscratch.com/glossary/circuit-breaker"
+    },
+    {
+      "term": "Cnn Convolutional Neural Network",
+      "slug": "cnn-convolutional-neural-network",
+      "url": "https://aiengineeringfromscratch.com/glossary/cnn-convolutional-neural-network"
+    },
+    {
+      "term": "Coding Agent",
+      "slug": "coding-agent",
+      "url": "https://aiengineeringfromscratch.com/glossary/coding-agent"
+    },
+    {
+      "term": "Compensating Action",
+      "slug": "compensating-action",
+      "url": "https://aiengineeringfromscratch.com/glossary/compensating-action"
+    },
+    {
+      "term": "Content Provenance",
+      "slug": "content-provenance",
+      "url": "https://aiengineeringfromscratch.com/glossary/content-provenance"
+    },
+    {
+      "term": "Context Compression",
+      "slug": "context-compression",
+      "url": "https://aiengineeringfromscratch.com/glossary/context-compression"
+    },
+    {
+      "term": "Context Engineering",
+      "slug": "context-engineering",
+      "url": "https://aiengineeringfromscratch.com/glossary/context-engineering"
+    },
+    {
+      "term": "Context Window",
+      "slug": "context-window",
+      "url": "https://aiengineeringfromscratch.com/glossary/context-window"
+    },
+    {
+      "term": "Continuous Batching",
+      "slug": "continuous-batching",
+      "url": "https://aiengineeringfromscratch.com/glossary/continuous-batching"
+    },
+    {
+      "term": "Cosine Similarity",
+      "slug": "cosine-similarity",
+      "url": "https://aiengineeringfromscratch.com/glossary/cosine-similarity"
+    },
+    {
+      "term": "Cost Per Successful Task",
+      "slug": "cost-per-successful-task",
+      "url": "https://aiengineeringfromscratch.com/glossary/cost-per-successful-task"
+    },
+    {
+      "term": "Cross Attention",
+      "slug": "cross-attention",
+      "url": "https://aiengineeringfromscratch.com/glossary/cross-attention"
+    },
+    {
+      "term": "Cross Entropy",
+      "slug": "cross-entropy",
+      "url": "https://aiengineeringfromscratch.com/glossary/cross-entropy"
+    },
+    {
+      "term": "Cuda",
+      "slug": "cuda",
+      "url": "https://aiengineeringfromscratch.com/glossary/cuda"
+    },
+    {
+      "term": "Data Augmentation",
+      "slug": "data-augmentation",
+      "url": "https://aiengineeringfromscratch.com/glossary/data-augmentation"
+    },
+    {
+      "term": "Data Classification",
+      "slug": "data-classification",
+      "url": "https://aiengineeringfromscratch.com/glossary/data-classification"
+    },
+    {
+      "term": "Data Deduplication",
+      "slug": "data-deduplication",
+      "url": "https://aiengineeringfromscratch.com/glossary/data-deduplication"
+    },
+    {
+      "term": "Data Exfiltration",
+      "slug": "data-exfiltration",
+      "url": "https://aiengineeringfromscratch.com/glossary/data-exfiltration"
+    },
+    {
+      "term": "Data Leakage",
+      "slug": "data-leakage",
+      "url": "https://aiengineeringfromscratch.com/glossary/data-leakage"
+    },
+    {
+      "term": "Data Lineage",
+      "slug": "data-lineage",
+      "url": "https://aiengineeringfromscratch.com/glossary/data-lineage"
+    },
+    {
+      "term": "Data Minimization",
+      "slug": "data-minimization",
+      "url": "https://aiengineeringfromscratch.com/glossary/data-minimization"
+    },
+    {
+      "term": "Data Provenance",
+      "slug": "data-provenance",
+      "url": "https://aiengineeringfromscratch.com/glossary/data-provenance"
+    },
+    {
+      "term": "Dataset Split",
+      "slug": "dataset-split",
+      "url": "https://aiengineeringfromscratch.com/glossary/dataset-split"
+    },
+    {
+      "term": "Datasheet For Datasets",
+      "slug": "datasheet-for-datasets",
+      "url": "https://aiengineeringfromscratch.com/glossary/datasheet-for-datasets"
+    },
+    {
+      "term": "Deadline Propagation",
+      "slug": "deadline-propagation",
+      "url": "https://aiengineeringfromscratch.com/glossary/deadline-propagation"
+    },
+    {
+      "term": "Decode Phase",
+      "slug": "decode-phase",
+      "url": "https://aiengineeringfromscratch.com/glossary/decode-phase"
+    },
+    {
+      "term": "Decoding Strategy",
+      "slug": "decoding-strategy",
+      "url": "https://aiengineeringfromscratch.com/glossary/decoding-strategy"
+    },
+    {
+      "term": "Defense In Depth",
+      "slug": "defense-in-depth",
+      "url": "https://aiengineeringfromscratch.com/glossary/defense-in-depth"
+    },
+    {
+      "term": "Delegation",
+      "slug": "delegation",
+      "url": "https://aiengineeringfromscratch.com/glossary/delegation"
+    },
+    {
+      "term": "Dense Retrieval",
+      "slug": "dense-retrieval",
+      "url": "https://aiengineeringfromscratch.com/glossary/dense-retrieval"
+    },
+    {
+      "term": "Diffusion Model",
+      "slug": "diffusion-model",
+      "url": "https://aiengineeringfromscratch.com/glossary/diffusion-model"
+    },
+    {
+      "term": "Disaggregated Serving",
+      "slug": "disaggregated-serving",
+      "url": "https://aiengineeringfromscratch.com/glossary/disaggregated-serving"
+    },
+    {
+      "term": "Distribution Shift",
+      "slug": "distribution-shift",
+      "url": "https://aiengineeringfromscratch.com/glossary/distribution-shift"
+    },
+    {
+      "term": "Dpo Direct Preference Optimization",
+      "slug": "dpo-direct-preference-optimization",
+      "url": "https://aiengineeringfromscratch.com/glossary/dpo-direct-preference-optimization"
+    },
+    {
+      "term": "Durable Execution",
+      "slug": "durable-execution",
+      "url": "https://aiengineeringfromscratch.com/glossary/durable-execution"
+    },
+    {
+      "term": "Dynamic Batching",
+      "slug": "dynamic-batching",
+      "url": "https://aiengineeringfromscratch.com/glossary/dynamic-batching"
+    },
+    {
+      "term": "Early Fusion",
+      "slug": "early-fusion",
+      "url": "https://aiengineeringfromscratch.com/glossary/early-fusion"
+    },
+    {
+      "term": "Embedding",
+      "slug": "embedding",
+      "url": "https://aiengineeringfromscratch.com/glossary/embedding"
+    },
+    {
+      "term": "Encoder",
+      "slug": "encoder",
+      "url": "https://aiengineeringfromscratch.com/glossary/encoder"
+    },
+    {
+      "term": "Epoch",
+      "slug": "epoch",
+      "url": "https://aiengineeringfromscratch.com/glossary/epoch"
+    },
+    {
+      "term": "Error Budget",
+      "slug": "error-budget",
+      "url": "https://aiengineeringfromscratch.com/glossary/error-budget"
+    },
+    {
+      "term": "Eval Set",
+      "slug": "eval-set",
+      "url": "https://aiengineeringfromscratch.com/glossary/eval-set"
+    },
+    {
+      "term": "Evaluation Eval",
+      "slug": "evaluation-eval",
+      "url": "https://aiengineeringfromscratch.com/glossary/evaluation-eval"
+    },
+    {
+      "term": "Exact Match Em",
+      "slug": "exact-match-em",
+      "url": "https://aiengineeringfromscratch.com/glossary/exact-match-em"
+    },
+    {
+      "term": "Expert Parallelism",
+      "slug": "expert-parallelism",
+      "url": "https://aiengineeringfromscratch.com/glossary/expert-parallelism"
+    },
+    {
+      "term": "Feature",
+      "slug": "feature",
+      "url": "https://aiengineeringfromscratch.com/glossary/feature"
+    },
+    {
+      "term": "Few Shot",
+      "slug": "few-shot",
+      "url": "https://aiengineeringfromscratch.com/glossary/few-shot"
+    },
+    {
+      "term": "Fine Tuning",
+      "slug": "fine-tuning",
+      "url": "https://aiengineeringfromscratch.com/glossary/fine-tuning"
+    },
+    {
+      "term": "Flaky Test",
+      "slug": "flaky-test",
+      "url": "https://aiengineeringfromscratch.com/glossary/flaky-test"
+    },
+    {
+      "term": "Flashattention",
+      "slug": "flashattention",
+      "url": "https://aiengineeringfromscratch.com/glossary/flashattention"
+    },
+    {
+      "term": "Function Calling",
+      "slug": "function-calling",
+      "url": "https://aiengineeringfromscratch.com/glossary/function-calling"
+    },
+    {
+      "term": "Goodput",
+      "slug": "goodput",
+      "url": "https://aiengineeringfromscratch.com/glossary/goodput"
+    },
+    {
+      "term": "Graceful Degradation",
+      "slug": "graceful-degradation",
+      "url": "https://aiengineeringfromscratch.com/glossary/graceful-degradation"
+    },
+    {
+      "term": "Gradient",
+      "slug": "gradient",
+      "url": "https://aiengineeringfromscratch.com/glossary/gradient"
+    },
+    {
+      "term": "Gradient Accumulation",
+      "slug": "gradient-accumulation",
+      "url": "https://aiengineeringfromscratch.com/glossary/gradient-accumulation"
+    },
+    {
+      "term": "Gradient Clipping",
+      "slug": "gradient-clipping",
+      "url": "https://aiengineeringfromscratch.com/glossary/gradient-clipping"
+    },
+    {
+      "term": "Grounding",
+      "slug": "grounding",
+      "url": "https://aiengineeringfromscratch.com/glossary/grounding"
+    },
+    {
+      "term": "Guardrails",
+      "slug": "guardrails",
+      "url": "https://aiengineeringfromscratch.com/glossary/guardrails"
+    },
+    {
+      "term": "Hallucination",
+      "slug": "hallucination",
+      "url": "https://aiengineeringfromscratch.com/glossary/hallucination"
+    },
+    {
+      "term": "Handoff",
+      "slug": "handoff",
+      "url": "https://aiengineeringfromscratch.com/glossary/handoff"
+    },
+    {
+      "term": "Hnsw",
+      "slug": "hnsw",
+      "url": "https://aiengineeringfromscratch.com/glossary/hnsw"
+    },
+    {
+      "term": "Human In The Loop Hitl",
+      "slug": "human-in-the-loop-hitl",
+      "url": "https://aiengineeringfromscratch.com/glossary/human-in-the-loop-hitl"
+    },
+    {
+      "term": "Hybrid Retrieval",
+      "slug": "hybrid-retrieval",
+      "url": "https://aiengineeringfromscratch.com/glossary/hybrid-retrieval"
+    },
+    {
+      "term": "Hyperparameter",
+      "slug": "hyperparameter",
+      "url": "https://aiengineeringfromscratch.com/glossary/hyperparameter"
+    },
+    {
+      "term": "Idempotency",
+      "slug": "idempotency",
+      "url": "https://aiengineeringfromscratch.com/glossary/idempotency"
+    },
+    {
+      "term": "Image Token",
+      "slug": "image-token",
+      "url": "https://aiengineeringfromscratch.com/glossary/image-token"
+    },
+    {
+      "term": "In Context Learning",
+      "slug": "in-context-learning",
+      "url": "https://aiengineeringfromscratch.com/glossary/in-context-learning"
+    },
+    {
+      "term": "Incident Response",
+      "slug": "incident-response",
+      "url": "https://aiengineeringfromscratch.com/glossary/incident-response"
+    },
+    {
+      "term": "Indirect Prompt Injection",
+      "slug": "indirect-prompt-injection",
+      "url": "https://aiengineeringfromscratch.com/glossary/indirect-prompt-injection"
+    },
+    {
+      "term": "Inductive Bias",
+      "slug": "inductive-bias",
+      "url": "https://aiengineeringfromscratch.com/glossary/inductive-bias"
+    },
+    {
+      "term": "Inference",
+      "slug": "inference",
+      "url": "https://aiengineeringfromscratch.com/glossary/inference"
+    },
+    {
+      "term": "Instruction Following",
+      "slug": "instruction-following",
+      "url": "https://aiengineeringfromscratch.com/glossary/instruction-following"
+    },
+    {
+      "term": "Instruction Hierarchy",
+      "slug": "instruction-hierarchy",
+      "url": "https://aiengineeringfromscratch.com/glossary/instruction-hierarchy"
+    },
+    {
+      "term": "Inter Token Latency Itl",
+      "slug": "inter-token-latency-itl",
+      "url": "https://aiengineeringfromscratch.com/glossary/inter-token-latency-itl"
+    },
+    {
+      "term": "Jailbreak",
+      "slug": "jailbreak",
+      "url": "https://aiengineeringfromscratch.com/glossary/jailbreak"
+    },
+    {
+      "term": "Jax",
+      "slug": "jax",
+      "url": "https://aiengineeringfromscratch.com/glossary/jax"
+    },
+    {
+      "term": "Knowledge Distillation",
+      "slug": "knowledge-distillation",
+      "url": "https://aiengineeringfromscratch.com/glossary/knowledge-distillation"
+    },
+    {
+      "term": "Kv Cache",
+      "slug": "kv-cache",
+      "url": "https://aiengineeringfromscratch.com/glossary/kv-cache"
+    },
+    {
+      "term": "Late Fusion",
+      "slug": "late-fusion",
+      "url": "https://aiengineeringfromscratch.com/glossary/late-fusion"
+    },
+    {
+      "term": "Latent Space",
+      "slug": "latent-space",
+      "url": "https://aiengineeringfromscratch.com/glossary/latent-space"
+    },
+    {
+      "term": "Learning Rate",
+      "slug": "learning-rate",
+      "url": "https://aiengineeringfromscratch.com/glossary/learning-rate"
+    },
+    {
+      "term": "Learning Rate Schedule",
+      "slug": "learning-rate-schedule",
+      "url": "https://aiengineeringfromscratch.com/glossary/learning-rate-schedule"
+    },
+    {
+      "term": "Least Privilege",
+      "slug": "least-privilege",
+      "url": "https://aiengineeringfromscratch.com/glossary/least-privilege"
+    },
+    {
+      "term": "Llm Large Language Model",
+      "slug": "llm-large-language-model",
+      "url": "https://aiengineeringfromscratch.com/glossary/llm-large-language-model"
+    },
+    {
+      "term": "Llm As A Judge",
+      "slug": "llm-as-a-judge",
+      "url": "https://aiengineeringfromscratch.com/glossary/llm-as-a-judge"
+    },
+    {
+      "term": "Load Shedding",
+      "slug": "load-shedding",
+      "url": "https://aiengineeringfromscratch.com/glossary/load-shedding"
+    },
+    {
+      "term": "Logits",
+      "slug": "logits",
+      "url": "https://aiengineeringfromscratch.com/glossary/logits"
+    },
+    {
+      "term": "Lora Low Rank Adaptation",
+      "slug": "lora-low-rank-adaptation",
+      "url": "https://aiengineeringfromscratch.com/glossary/lora-low-rank-adaptation"
+    },
+    {
+      "term": "Loss Function",
+      "slug": "loss-function",
+      "url": "https://aiengineeringfromscratch.com/glossary/loss-function"
+    },
+    {
+      "term": "Lost In The Middle",
+      "slug": "lost-in-the-middle",
+      "url": "https://aiengineeringfromscratch.com/glossary/lost-in-the-middle"
+    },
+    {
+      "term": "Maximum Marginal Relevance Mmr",
+      "slug": "maximum-marginal-relevance-mmr",
+      "url": "https://aiengineeringfromscratch.com/glossary/maximum-marginal-relevance-mmr"
+    },
+    {
+      "term": "Mcp Model Context Protocol",
+      "slug": "mcp-model-context-protocol",
+      "url": "https://aiengineeringfromscratch.com/glossary/mcp-model-context-protocol"
+    },
+    {
+      "term": "Membership Inference",
+      "slug": "membership-inference",
+      "url": "https://aiengineeringfromscratch.com/glossary/membership-inference"
+    },
+    {
+      "term": "Mixed Precision",
+      "slug": "mixed-precision",
+      "url": "https://aiengineeringfromscratch.com/glossary/mixed-precision"
+    },
+    {
+      "term": "Modality",
+      "slug": "modality",
+      "url": "https://aiengineeringfromscratch.com/glossary/modality"
+    },
+    {
+      "term": "Modality Alignment",
+      "slug": "modality-alignment",
+      "url": "https://aiengineeringfromscratch.com/glossary/modality-alignment"
+    },
+    {
+      "term": "Model Card",
+      "slug": "model-card",
+      "url": "https://aiengineeringfromscratch.com/glossary/model-card"
+    },
+    {
+      "term": "Model Router",
+      "slug": "model-router",
+      "url": "https://aiengineeringfromscratch.com/glossary/model-router"
+    },
+    {
+      "term": "Model Serving",
+      "slug": "model-serving",
+      "url": "https://aiengineeringfromscratch.com/glossary/model-serving"
+    },
+    {
+      "term": "Moe Mixture Of Experts",
+      "slug": "moe-mixture-of-experts",
+      "url": "https://aiengineeringfromscratch.com/glossary/moe-mixture-of-experts"
+    },
+    {
+      "term": "Multimodal Fusion",
+      "slug": "multimodal-fusion",
+      "url": "https://aiengineeringfromscratch.com/glossary/multimodal-fusion"
+    },
+    {
+      "term": "Multimodal Model",
+      "slug": "multimodal-model",
+      "url": "https://aiengineeringfromscratch.com/glossary/multimodal-model"
+    },
+    {
+      "term": "Multi Round Trip Request Mrtr",
+      "slug": "multi-round-trip-request-mrtr",
+      "url": "https://aiengineeringfromscratch.com/glossary/multi-round-trip-request-mrtr"
+    },
+    {
+      "term": "Nan Not A Number",
+      "slug": "nan-not-a-number",
+      "url": "https://aiengineeringfromscratch.com/glossary/nan-not-a-number"
+    },
+    {
+      "term": "Normalization",
+      "slug": "normalization",
+      "url": "https://aiengineeringfromscratch.com/glossary/normalization"
+    },
+    {
+      "term": "Nucleus Sampling Top P",
+      "slug": "nucleus-sampling-top-p",
+      "url": "https://aiengineeringfromscratch.com/glossary/nucleus-sampling-top-p"
+    },
+    {
+      "term": "Observability",
+      "slug": "observability",
+      "url": "https://aiengineeringfromscratch.com/glossary/observability"
+    },
+    {
+      "term": "Optimizer",
+      "slug": "optimizer",
+      "url": "https://aiengineeringfromscratch.com/glossary/optimizer"
+    },
+    {
+      "term": "Orchestration",
+      "slug": "orchestration",
+      "url": "https://aiengineeringfromscratch.com/glossary/orchestration"
+    },
+    {
+      "term": "Overfitting",
+      "slug": "overfitting",
+      "url": "https://aiengineeringfromscratch.com/glossary/overfitting"
+    },
+    {
+      "term": "Paged Kv Cache",
+      "slug": "paged-kv-cache",
+      "url": "https://aiengineeringfromscratch.com/glossary/paged-kv-cache"
+    },
+    {
+      "term": "Parameter",
+      "slug": "parameter",
+      "url": "https://aiengineeringfromscratch.com/glossary/parameter"
+    },
+    {
+      "term": "Pass K",
+      "slug": "pass-k",
+      "url": "https://aiengineeringfromscratch.com/glossary/pass-k"
+    },
+    {
+      "term": "Patch",
+      "slug": "patch",
+      "url": "https://aiengineeringfromscratch.com/glossary/patch"
+    },
+    {
+      "term": "Patch Embedding",
+      "slug": "patch-embedding",
+      "url": "https://aiengineeringfromscratch.com/glossary/patch-embedding"
+    },
+    {
+      "term": "Perplexity",
+      "slug": "perplexity",
+      "url": "https://aiengineeringfromscratch.com/glossary/perplexity"
+    },
+    {
+      "term": "Pipeline Parallelism",
+      "slug": "pipeline-parallelism",
+      "url": "https://aiengineeringfromscratch.com/glossary/pipeline-parallelism"
+    },
+    {
+      "term": "Planning",
+      "slug": "planning",
+      "url": "https://aiengineeringfromscratch.com/glossary/planning"
+    },
+    {
+      "term": "Postmortem",
+      "slug": "postmortem",
+      "url": "https://aiengineeringfromscratch.com/glossary/postmortem"
+    },
+    {
+      "term": "Precision Recall",
+      "slug": "precision-recall",
+      "url": "https://aiengineeringfromscratch.com/glossary/precision-recall"
+    },
+    {
+      "term": "Prefill",
+      "slug": "prefill",
+      "url": "https://aiengineeringfromscratch.com/glossary/prefill"
+    },
+    {
+      "term": "Prefix Caching",
+      "slug": "prefix-caching",
+      "url": "https://aiengineeringfromscratch.com/glossary/prefix-caching"
+    },
+    {
+      "term": "Progressive Disclosure",
+      "slug": "progressive-disclosure",
+      "url": "https://aiengineeringfromscratch.com/glossary/progressive-disclosure"
+    },
+    {
+      "term": "Prompt Cache",
+      "slug": "prompt-cache",
+      "url": "https://aiengineeringfromscratch.com/glossary/prompt-cache"
+    },
+    {
+      "term": "Prompt Injection",
+      "slug": "prompt-injection",
+      "url": "https://aiengineeringfromscratch.com/glossary/prompt-injection"
+    },
+    {
+      "term": "Prompt Sensitivity",
+      "slug": "prompt-sensitivity",
+      "url": "https://aiengineeringfromscratch.com/glossary/prompt-sensitivity"
+    },
+    {
+      "term": "Provenance Attestation",
+      "slug": "provenance-attestation",
+      "url": "https://aiengineeringfromscratch.com/glossary/provenance-attestation"
+    },
+    {
+      "term": "Purpose Limitation",
+      "slug": "purpose-limitation",
+      "url": "https://aiengineeringfromscratch.com/glossary/purpose-limitation"
+    },
+    {
+      "term": "Qlora",
+      "slug": "qlora",
+      "url": "https://aiengineeringfromscratch.com/glossary/qlora"
+    },
+    {
+      "term": "Quantization",
+      "slug": "quantization",
+      "url": "https://aiengineeringfromscratch.com/glossary/quantization"
+    },
+    {
+      "term": "Rag Retrieval Augmented Generation",
+      "slug": "rag-retrieval-augmented-generation",
+      "url": "https://aiengineeringfromscratch.com/glossary/rag-retrieval-augmented-generation"
+    },
+    {
+      "term": "Rate Limit",
+      "slug": "rate-limit",
+      "url": "https://aiengineeringfromscratch.com/glossary/rate-limit"
+    },
+    {
+      "term": "React",
+      "slug": "react",
+      "url": "https://aiengineeringfromscratch.com/glossary/react"
+    },
+    {
+      "term": "Readiness Probe",
+      "slug": "readiness-probe",
+      "url": "https://aiengineeringfromscratch.com/glossary/readiness-probe"
+    },
+    {
+      "term": "Recall K",
+      "slug": "recall-k",
+      "url": "https://aiengineeringfromscratch.com/glossary/recall-k"
+    },
+    {
+      "term": "Reciprocal Rank Fusion Rrf",
+      "slug": "reciprocal-rank-fusion-rrf",
+      "url": "https://aiengineeringfromscratch.com/glossary/reciprocal-rank-fusion-rrf"
+    },
+    {
+      "term": "Red Teaming",
+      "slug": "red-teaming",
+      "url": "https://aiengineeringfromscratch.com/glossary/red-teaming"
+    },
+    {
+      "term": "Regression Test",
+      "slug": "regression-test",
+      "url": "https://aiengineeringfromscratch.com/glossary/regression-test"
+    },
+    {
+      "term": "Repository Instructions",
+      "slug": "repository-instructions",
+      "url": "https://aiengineeringfromscratch.com/glossary/repository-instructions"
+    },
+    {
+      "term": "Repository Map",
+      "slug": "repository-map",
+      "url": "https://aiengineeringfromscratch.com/glossary/repository-map"
+    },
+    {
+      "term": "Reproducible Build",
+      "slug": "reproducible-build",
+      "url": "https://aiengineeringfromscratch.com/glossary/reproducible-build"
+    },
+    {
+      "term": "Reranker",
+      "slug": "reranker",
+      "url": "https://aiengineeringfromscratch.com/glossary/reranker"
+    },
+    {
+      "term": "Retry Budget",
+      "slug": "retry-budget",
+      "url": "https://aiengineeringfromscratch.com/glossary/retry-budget"
+    },
+    {
+      "term": "Retry With Backoff",
+      "slug": "retry-with-backoff",
+      "url": "https://aiengineeringfromscratch.com/glossary/retry-with-backoff"
+    },
+    {
+      "term": "Reviewer Agent",
+      "slug": "reviewer-agent",
+      "url": "https://aiengineeringfromscratch.com/glossary/reviewer-agent"
+    },
+    {
+      "term": "Rlhf Reinforcement Learning From Human Feedback",
+      "slug": "rlhf-reinforcement-learning-from-human-feedback",
+      "url": "https://aiengineeringfromscratch.com/glossary/rlhf-reinforcement-learning-from-human-feedback"
+    },
+    {
+      "term": "Rollback",
+      "slug": "rollback",
+      "url": "https://aiengineeringfromscratch.com/glossary/rollback"
+    },
+    {
+      "term": "Rouge",
+      "slug": "rouge",
+      "url": "https://aiengineeringfromscratch.com/glossary/rouge"
+    },
+    {
+      "term": "Sandbox",
+      "slug": "sandbox",
+      "url": "https://aiengineeringfromscratch.com/glossary/sandbox"
+    },
+    {
+      "term": "Saturation",
+      "slug": "saturation",
+      "url": "https://aiengineeringfromscratch.com/glossary/saturation"
+    },
+    {
+      "term": "Scope Contract",
+      "slug": "scope-contract",
+      "url": "https://aiengineeringfromscratch.com/glossary/scope-contract"
+    },
+    {
+      "term": "Self Attention",
+      "slug": "self-attention",
+      "url": "https://aiengineeringfromscratch.com/glossary/self-attention"
+    },
+    {
+      "term": "Semantic Cache",
+      "slug": "semantic-cache",
+      "url": "https://aiengineeringfromscratch.com/glossary/semantic-cache"
+    },
+    {
+      "term": "Semantic Search",
+      "slug": "semantic-search",
+      "url": "https://aiengineeringfromscratch.com/glossary/semantic-search"
+    },
+    {
+      "term": "Separation Of Duties",
+      "slug": "separation-of-duties",
+      "url": "https://aiengineeringfromscratch.com/glossary/separation-of-duties"
+    },
+    {
+      "term": "Service Level Indicator Sli",
+      "slug": "service-level-indicator-sli",
+      "url": "https://aiengineeringfromscratch.com/glossary/service-level-indicator-sli"
+    },
+    {
+      "term": "Service Level Objective Slo",
+      "slug": "service-level-objective-slo",
+      "url": "https://aiengineeringfromscratch.com/glossary/service-level-objective-slo"
+    },
+    {
+      "term": "Sft Supervised Fine Tuning",
+      "slug": "sft-supervised-fine-tuning",
+      "url": "https://aiengineeringfromscratch.com/glossary/sft-supervised-fine-tuning"
+    },
+    {
+      "term": "Shadow Traffic",
+      "slug": "shadow-traffic",
+      "url": "https://aiengineeringfromscratch.com/glossary/shadow-traffic"
+    },
+    {
+      "term": "Shared Embedding Space",
+      "slug": "shared-embedding-space",
+      "url": "https://aiengineeringfromscratch.com/glossary/shared-embedding-space"
+    },
+    {
+      "term": "Skill Bundle",
+      "slug": "skill-bundle",
+      "url": "https://aiengineeringfromscratch.com/glossary/skill-bundle"
+    },
+    {
+      "term": "Skill Catalog",
+      "slug": "skill-catalog",
+      "url": "https://aiengineeringfromscratch.com/glossary/skill-catalog"
+    },
+    {
+      "term": "Skill Discovery",
+      "slug": "skill-discovery",
+      "url": "https://aiengineeringfromscratch.com/glossary/skill-discovery"
+    },
+    {
+      "term": "Skill Invocation",
+      "slug": "skill-invocation",
+      "url": "https://aiengineeringfromscratch.com/glossary/skill-invocation"
+    },
+    {
+      "term": "Softmax",
+      "slug": "softmax",
+      "url": "https://aiengineeringfromscratch.com/glossary/softmax"
+    },
+    {
+      "term": "Software Bill Of Materials Sbom",
+      "slug": "software-bill-of-materials-sbom",
+      "url": "https://aiengineeringfromscratch.com/glossary/software-bill-of-materials-sbom"
+    },
+    {
+      "term": "Speculative Decoding",
+      "slug": "speculative-decoding",
+      "url": "https://aiengineeringfromscratch.com/glossary/speculative-decoding"
+    },
+    {
+      "term": "Stateless Mcp",
+      "slug": "stateless-mcp",
+      "url": "https://aiengineeringfromscratch.com/glossary/stateless-mcp"
+    },
+    {
+      "term": "Stochastic Gradient Descent Sgd",
+      "slug": "stochastic-gradient-descent-sgd",
+      "url": "https://aiengineeringfromscratch.com/glossary/stochastic-gradient-descent-sgd"
+    },
+    {
+      "term": "Stop Sequence",
+      "slug": "stop-sequence",
+      "url": "https://aiengineeringfromscratch.com/glossary/stop-sequence"
+    },
+    {
+      "term": "Streaming",
+      "slug": "streaming",
+      "url": "https://aiengineeringfromscratch.com/glossary/streaming"
+    },
+    {
+      "term": "Structured Output",
+      "slug": "structured-output",
+      "url": "https://aiengineeringfromscratch.com/glossary/structured-output"
+    },
+    {
+      "term": "Swarm",
+      "slug": "swarm",
+      "url": "https://aiengineeringfromscratch.com/glossary/swarm"
+    },
+    {
+      "term": "System Prompt",
+      "slug": "system-prompt",
+      "url": "https://aiengineeringfromscratch.com/glossary/system-prompt"
+    },
+    {
+      "term": "Tail Latency",
+      "slug": "tail-latency",
+      "url": "https://aiengineeringfromscratch.com/glossary/tail-latency"
+    },
+    {
+      "term": "Temperature",
+      "slug": "temperature",
+      "url": "https://aiengineeringfromscratch.com/glossary/temperature"
+    },
+    {
+      "term": "Tensor Parallelism",
+      "slug": "tensor-parallelism",
+      "url": "https://aiengineeringfromscratch.com/glossary/tensor-parallelism"
+    },
+    {
+      "term": "Termination Condition",
+      "slug": "termination-condition",
+      "url": "https://aiengineeringfromscratch.com/glossary/termination-condition"
+    },
+    {
+      "term": "Test Oracle",
+      "slug": "test-oracle",
+      "url": "https://aiengineeringfromscratch.com/glossary/test-oracle"
+    },
+    {
+      "term": "Threat Model",
+      "slug": "threat-model",
+      "url": "https://aiengineeringfromscratch.com/glossary/threat-model"
+    },
+    {
+      "term": "Time Per Output Token Tpot",
+      "slug": "time-per-output-token-tpot",
+      "url": "https://aiengineeringfromscratch.com/glossary/time-per-output-token-tpot"
+    },
+    {
+      "term": "Time To First Token Ttft",
+      "slug": "time-to-first-token-ttft",
+      "url": "https://aiengineeringfromscratch.com/glossary/time-to-first-token-ttft"
+    },
+    {
+      "term": "Token",
+      "slug": "token",
+      "url": "https://aiengineeringfromscratch.com/glossary/token"
+    },
+    {
+      "term": "Token Budget",
+      "slug": "token-budget",
+      "url": "https://aiengineeringfromscratch.com/glossary/token-budget"
+    },
+    {
+      "term": "Tokenization",
+      "slug": "tokenization",
+      "url": "https://aiengineeringfromscratch.com/glossary/tokenization"
+    },
+    {
+      "term": "Tokens Per Second Tps",
+      "slug": "tokens-per-second-tps",
+      "url": "https://aiengineeringfromscratch.com/glossary/tokens-per-second-tps"
+    },
+    {
+      "term": "Tool Contract",
+      "slug": "tool-contract",
+      "url": "https://aiengineeringfromscratch.com/glossary/tool-contract"
+    },
+    {
+      "term": "Top K Sampling",
+      "slug": "top-k-sampling",
+      "url": "https://aiengineeringfromscratch.com/glossary/top-k-sampling"
+    },
+    {
+      "term": "Trace",
+      "slug": "trace",
+      "url": "https://aiengineeringfromscratch.com/glossary/trace"
+    },
+    {
+      "term": "Transfer Learning",
+      "slug": "transfer-learning",
+      "url": "https://aiengineeringfromscratch.com/glossary/transfer-learning"
+    },
+    {
+      "term": "Transformer",
+      "slug": "transformer",
+      "url": "https://aiengineeringfromscratch.com/glossary/transformer"
+    },
+    {
+      "term": "Trust Boundary",
+      "slug": "trust-boundary",
+      "url": "https://aiengineeringfromscratch.com/glossary/trust-boundary"
+    },
+    {
+      "term": "Underfitting",
+      "slug": "underfitting",
+      "url": "https://aiengineeringfromscratch.com/glossary/underfitting"
+    },
+    {
+      "term": "Vae Variational Autoencoder",
+      "slug": "vae-variational-autoencoder",
+      "url": "https://aiengineeringfromscratch.com/glossary/vae-variational-autoencoder"
+    },
+    {
+      "term": "Vector Database",
+      "slug": "vector-database",
+      "url": "https://aiengineeringfromscratch.com/glossary/vector-database"
+    },
+    {
+      "term": "Verification Gate",
+      "slug": "verification-gate",
+      "url": "https://aiengineeringfromscratch.com/glossary/verification-gate"
+    },
+    {
+      "term": "Vision Language Model Vlm",
+      "slug": "vision-language-model-vlm",
+      "url": "https://aiengineeringfromscratch.com/glossary/vision-language-model-vlm"
+    },
+    {
+      "term": "Vision Transformer Vit",
+      "slug": "vision-transformer-vit",
+      "url": "https://aiengineeringfromscratch.com/glossary/vision-transformer-vit"
+    },
+    {
+      "term": "Visual Grounding",
+      "slug": "visual-grounding",
+      "url": "https://aiengineeringfromscratch.com/glossary/visual-grounding"
+    },
+    {
+      "term": "Vocabulary",
+      "slug": "vocabulary",
+      "url": "https://aiengineeringfromscratch.com/glossary/vocabulary"
+    },
+    {
+      "term": "Warmup",
+      "slug": "warmup",
+      "url": "https://aiengineeringfromscratch.com/glossary/warmup"
+    },
+    {
+      "term": "Weight",
+      "slug": "weight",
+      "url": "https://aiengineeringfromscratch.com/glossary/weight"
+    },
+    {
+      "term": "Weight Decay",
+      "slug": "weight-decay",
+      "url": "https://aiengineeringfromscratch.com/glossary/weight-decay"
+    },
+    {
+      "term": "Worktree",
+      "slug": "worktree",
+      "url": "https://aiengineeringfromscratch.com/glossary/worktree"
+    },
+    {
+      "term": "Zero Trust",
+      "slug": "zero-trust",
+      "url": "https://aiengineeringfromscratch.com/glossary/zero-trust"
+    }
+  ],
+  "certifications": [
+    {
+      "title": "Claude Certification Curriculum learner guide",
+      "url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/certifications/claude/GETTING_STARTED.md",
+      "description": "[Claude Certification Curriculum tutor contract](https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/skills/claude-certification/SKILL.md)"
+    },
+    {
+      "title": "MCPA Certification Curriculum learner guide",
+      "url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/certifications/mcpa/GETTING_STARTED.md",
+      "description": "[MCPA Certification Curriculum tutor contract](https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/skills/mcpa-certification/SKILL.md)"
+    },
+    {
+      "title": "Certification catalog",
+      "url": "https://aiengineeringfromscratch.com/certifications",
+      "description": "[Claude Certified Associate - Foundations](https://aiengineeringfromscratch.com/certification?id=claude-ccao-f) — Use Claude safely and effectively for business, research, analysis, and productivity workflows."
+    },
+    {
+      "title": "Claude Certified Developer - Foundations",
+      "url": "https://aiengineeringfromscratch.com/certification?id=claude-ccdv-f",
+      "description": "Build, integrate, secure, test, and ship Claude applications, agents, workflows, tools, and MCP servers."
+    },
+    {
+      "title": "Claude Certified Architect - Foundations",
+      "url": "https://aiengineeringfromscratch.com/certification?id=claude-ccar-f",
+      "description": "Make sound production tradeoffs across Claude Code, the Claude Agent SDK, the Claude API, and MCP."
+    },
+    {
+      "title": "Claude Certified Architect - Professional",
+      "url": "https://aiengineeringfromscratch.com/certification?id=claude-ccar-p",
+      "description": "Own the full lifecycle of secure, observable, production-grade Claude systems from discovery to iteration."
+    },
+    {
+      "title": "Model Context Protocol Associate",
+      "url": "https://aiengineeringfromscratch.com/certification?id=mcpa-f",
+      "description": "Prove you understand how the Model Context Protocol works: its hosts, clients, servers, and tools, the message flow and primitives that connect them, and the trust boundaries that keep the connection safe."
+    },
+    {
+      "title": "Study the Decisions, Not the Vocabulary",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fclaude%2Flessons%2F00-certification-strategy",
+      "description": ""
+    },
+    {
+      "title": "Choose the Smallest Surface That Can Carry the Work",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fclaude%2Flessons%2F01-claude-product-and-model-landscape",
+      "description": ""
+    },
+    {
+      "title": "Spend Capability Where Failure Is Expensive",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fclaude%2Flessons%2F02-model-selection-and-token-economics",
+      "description": ""
+    },
+    {
+      "title": "Turn a Request Into a Testable Contract",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fclaude%2Flessons%2F03-prompting-and-task-decomposition",
+      "description": ""
+    },
+    {
+      "title": "Put Each Fact in the Right Kind of Context",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fclaude%2Flessons%2F04-context-knowledge-memory-and-caching",
+      "description": ""
+    },
+    {
+      "title": "Validate the Claim, Not the Confidence",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fclaude%2Flessons%2F05-output-evaluation-and-validation",
+      "description": ""
+    },
+    {
+      "title": "Put Authority Around Capability",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fclaude%2Flessons%2F06-governance-safety-and-responsible-use",
+      "description": ""
+    },
+    {
+      "title": "Design the Handoff Before the Automation",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fclaude%2Flessons%2F07-workflow-design-and-human-handoffs",
+      "description": ""
+    },
+    {
+      "title": "The Messages API Is a State Machine",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fclaude%2Flessons%2F08-messages-api-and-application-lifecycle",
+      "description": ""
+    },
+    {
+      "title": "Structured Output Is an Untrusted Contract",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fclaude%2Flessons%2F09-structured-output-and-defensive-parsing",
+      "description": ""
+    },
+    {
+      "title": "A Tool Loop Is Controlled Delegation",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fclaude%2Flessons%2F10-tool-use-and-agentic-loops",
+      "description": ""
+    },
+    {
+      "title": "MCP Separates Capability From Host",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fclaude%2Flessons%2F11-mcp-server-design-and-integration",
+      "description": ""
+    },
+    {
+      "title": "The Agent SDK Is a Harness, Not Permission",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fclaude%2Flessons%2F12-claude-agent-sdk-and-hooks",
+      "description": ""
+    },
+    {
+      "title": "Security Lives Outside the Prompt",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fclaude%2Flessons%2F13-application-security-and-secrets",
+      "description": ""
+    },
+    {
+      "title": "Evals Turn Agent Behavior Into Engineering Evidence",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fclaude%2Flessons%2F14-evals-testing-debugging-and-observability",
+      "description": ""
+    },
+    {
+      "title": "Repository guide",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fclaude%2Flessons%2F15-claude-code-for-development-teams",
+      "description": ""
+    },
+    {
+      "title": "Multi-Agent Orchestration and Delegation",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fclaude%2Flessons%2F16-multi-agent-orchestration-and-delegation",
+      "description": ""
+    },
+    {
+      "title": "Agent SDK Sessions, Subagents, and Context",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fclaude%2Flessons%2F17-agent-sdk-sessions-subagents-and-context",
+      "description": ""
+    },
+    {
+      "title": "Tool Contracts, Errors, and Progressive Discovery",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fclaude%2Flessons%2F18-tool-contracts-errors-and-progressive-discovery",
+      "description": ""
+    },
+    {
+      "title": "Claude Code Memory, Rules, Skills, and CI",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fclaude%2Flessons%2F19-claude-code-memory-rules-skills-and-ci",
+      "description": ""
+    },
+    {
+      "title": "Reliable Extraction, Batch, and Independent Reviewers",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fclaude%2Flessons%2F20-reliable-extraction-batch-and-reviewers",
+      "description": ""
+    },
+    {
+      "title": "Make Large Context Observable",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fclaude%2Flessons%2F21-long-context-reliability-provenance-and-escalation",
+      "description": ""
+    },
+    {
+      "title": "ADR: Support Resolution Pattern",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fclaude%2Flessons%2F22-business-discovery-requirements-and-slas",
+      "description": ""
+    },
+    {
+      "title": "End-to-End Architecture and Value Tradeoffs",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fclaude%2Flessons%2F23-end-to-end-architecture-and-value-tradeoffs",
+      "description": ""
+    },
+    {
+      "title": "RAG, Retrieval, and Data Pipelines",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fclaude%2Flessons%2F24-rag-retrieval-and-data-pipelines",
+      "description": ""
+    },
+    {
+      "title": "Integration Protocols, Identity, and Least Privilege",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fclaude%2Flessons%2F25-integration-protocols-identity-and-least-privilege",
+      "description": ""
+    },
+    {
+      "title": "Production Observability, Latency, and Cost",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fclaude%2Flessons%2F26-production-observability-latency-and-cost",
+      "description": ""
+    },
+    {
+      "title": "Enterprise Governance, Compliance, and Human Review",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fclaude%2Flessons%2F27-enterprise-governance-compliance-and-hitl",
+      "description": ""
+    },
+    {
+      "title": "Stakeholder Communication, ADRs, and Lifecycle Ownership",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fclaude%2Flessons%2F28-stakeholder-communication-adrs-and-lifecycle",
+      "description": ""
+    },
+    {
+      "title": "Ship a Week of Work, Not a Perfect Prompt",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fclaude%2Flessons%2F29-associate-workflow-capstone",
+      "description": ""
+    },
+    {
+      "title": "Ship a Claude Application You Can Defend",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fclaude%2Flessons%2F30-developer-application-capstone",
+      "description": ""
+    },
+    {
+      "title": "Defend One Architecture Across Six Contexts",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fclaude%2Flessons%2F31-architect-foundations-scenario-capstone",
+      "description": ""
+    },
+    {
+      "title": "Architect Professional System Capstone",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fclaude%2Flessons%2F32-architect-professional-system-capstone",
+      "description": ""
+    },
+    {
+      "title": "The MCPA Blueprint Is a Study Budget, Not a Checklist",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fmcpa%2Flessons%2F00-mcp-exam-strategy",
+      "description": ""
+    },
+    {
+      "title": "Reading the MCP Specification",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fmcpa%2Flessons%2F01-reading-the-specification",
+      "description": ""
+    },
+    {
+      "title": "The Integration Problem MCP Solves",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fmcpa%2Flessons%2F02-the-integration-problem",
+      "description": ""
+    },
+    {
+      "title": "The JSON-RPC Envelope",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fmcpa%2Flessons%2F03-json-rpc-and-meta",
+      "description": ""
+    },
+    {
+      "title": "The Stateless Core of MCP",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fmcpa%2Flessons%2F04-the-stateless-core",
+      "description": ""
+    },
+    {
+      "title": "Telling a Modern MCP Server From a Legacy One",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fmcpa%2Flessons%2F05-protocol-eras-and-compatibility",
+      "description": ""
+    },
+    {
+      "title": "Hosts, Clients, and Servers: MCP's Process Topology",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fmcpa%2Flessons%2F06-hosts-clients-and-servers",
+      "description": ""
+    },
+    {
+      "title": "Discovering a Server and Negotiating What It Can Do",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fmcpa%2Flessons%2F07-discovery-and-capability-negotiation",
+      "description": ""
+    },
+    {
+      "title": "The Contract Inside a Tool Definition",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fmcpa%2Flessons%2F08-tool-schemas-and-structured-content",
+      "description": ""
+    },
+    {
+      "title": "Reading a Server Manifest Like a Reviewer",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fmcpa%2Flessons%2F09-reading-server-manifests",
+      "description": ""
+    },
+    {
+      "title": "The Model Interaction Flow",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fmcpa%2Flessons%2F10-model-interaction-flow",
+      "description": ""
+    },
+    {
+      "title": "The Tools Primitive: Calling Actions and Reading Their Results",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fmcpa%2Flessons%2F11-the-tools-primitive",
+      "description": ""
+    },
+    {
+      "title": "Resources: Addressable Content for a Stateless Server",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fmcpa%2Flessons%2F12-the-resources-primitive",
+      "description": ""
+    },
+    {
+      "title": "Prompt Templates and Argument Completion",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fmcpa%2Flessons%2F13-prompts-and-completion",
+      "description": ""
+    },
+    {
+      "title": "Multi Round-Trip Requests and Elicitation",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fmcpa%2Flessons%2F14-multi-round-trip-requests-and-elicitation",
+      "description": ""
+    },
+    {
+      "title": "Deprecated, Not Removed: Roots, Sampling, and Logging",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fmcpa%2Flessons%2F15-deprecated-client-features",
+      "description": ""
+    },
+    {
+      "title": "The Subscription Stream: Notifications, Progress, and Cancellation",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fmcpa%2Flessons%2F16-notifications-and-subscriptions",
+      "description": ""
+    },
+    {
+      "title": "The Tool Invocation Lifecycle",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fmcpa%2Flessons%2F17-tool-invocation-lifecycle",
+      "description": ""
+    },
+    {
+      "title": "Two Ways for a Request to Fail",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fmcpa%2Flessons%2F18-error-handling",
+      "description": ""
+    },
+    {
+      "title": "Transports and the HTTP Header Contract",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fmcpa%2Flessons%2F19-transports-and-http-headers",
+      "description": ""
+    },
+    {
+      "title": "Cache Freshness and Cursor-Based Pagination",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fmcpa%2Flessons%2F20-caching-and-pagination",
+      "description": ""
+    },
+    {
+      "title": "Long-Running Work and the Tasks Extension",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fmcpa%2Flessons%2F21-long-running-work-and-tasks",
+      "description": ""
+    },
+    {
+      "title": "Trust Zones in an MCP Exchange",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fmcpa%2Flessons%2F22-trust-boundaries",
+      "description": ""
+    },
+    {
+      "title": "Authorizing Access to an MCP Server",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fmcpa%2Flessons%2F23-oauth-authorization",
+      "description": ""
+    },
+    {
+      "title": "Proving a Client's Identity to an Authorization Server",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fmcpa%2Flessons%2F24-client-registration-and-identity",
+      "description": ""
+    },
+    {
+      "title": "Consent and Least Privilege",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fmcpa%2Flessons%2F25-consent-and-least-privilege",
+      "description": ""
+    },
+    {
+      "title": "Risk and Safety Controls for MCP Tool Calls",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fmcpa%2Flessons%2F26-risk-and-safety-controls",
+      "description": ""
+    },
+    {
+      "title": "One Trace ID Ties Auditability to Observability",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fmcpa%2Flessons%2F27-auditability-and-observability",
+      "description": ""
+    },
+    {
+      "title": "Every MUST Needs an Owner",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fmcpa%2Flessons%2F28-roles-and-adoption",
+      "description": ""
+    },
+    {
+      "title": "Choosing MCP's Shape for the Job",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fmcpa%2Flessons%2F29-operational-use-cases",
+      "description": ""
+    },
+    {
+      "title": "The Extensions Framework",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fmcpa%2Flessons%2F30-the-extensions-framework",
+      "description": ""
+    },
+    {
+      "title": "Interactive Interfaces Inside the Conversation",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fmcpa%2Flessons%2F31-mcp-apps",
+      "description": ""
+    },
+    {
+      "title": "Finding, Routing To, and Trusting a Server",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fmcpa%2Flessons%2F32-registry-gateways-and-sdk-tiers",
+      "description": ""
+    },
+    {
+      "title": "Reading One MCP Exchange End to End",
+      "url": "https://aiengineeringfromscratch.com/lesson?path=certifications%2Fmcpa%2Flessons%2F33-mcpa-capstone-readiness",
+      "description": ""
+    }
+  ],
+  "phases": [
+    {
+      "phase_num": 0,
+      "phase_title": "Setup & Tooling",
+      "lessons_count": 13,
+      "lessons": [
+        {
+          "title": "Dev Environment",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F00-setup-and-tooling%2F01-dev-environment",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/00-setup-and-tooling/01-dev-environment/docs/en.md",
+          "desc": "Your tools shape your thinking. Set them up once, set them up right."
+        },
+        {
+          "title": "Git & Collaboration",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F00-setup-and-tooling%2F02-git-and-collaboration",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/00-setup-and-tooling/02-git-and-collaboration/docs/en.md",
+          "desc": "Version control is not optional. Every experiment, every model, every lesson you build here gets tracked."
+        },
+        {
+          "title": "GPU Setup & Cloud",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F00-setup-and-tooling%2F03-gpu-setup-and-cloud",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/00-setup-and-tooling/03-gpu-setup-and-cloud/docs/en.md",
+          "desc": "Training on CPU is fine for learning. Training for real needs a GPU."
+        },
+        {
+          "title": "APIs & Keys",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F00-setup-and-tooling%2F04-apis-and-keys",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/00-setup-and-tooling/04-apis-and-keys/docs/en.md",
+          "desc": "Every AI API works the same way: send a request, get a response. The details change, the pattern doesn't."
+        },
+        {
+          "title": "Jupyter Notebooks",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F00-setup-and-tooling%2F05-jupyter-notebooks",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/00-setup-and-tooling/05-jupyter-notebooks/docs/en.md",
+          "desc": "Notebooks are the lab bench of AI engineering. You prototype here, then move what works into production."
+        },
+        {
+          "title": "Python Environments",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F00-setup-and-tooling%2F06-python-environments",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/00-setup-and-tooling/06-python-environments/docs/en.md",
+          "desc": "Dependency hell is real. Virtual environments are the cure."
+        },
+        {
+          "title": "Docker for AI",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F00-setup-and-tooling%2F07-docker-for-ai",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/00-setup-and-tooling/07-docker-for-ai/docs/en.md",
+          "desc": "Containers make \"works on my machine\" a thing of the past."
+        },
+        {
+          "title": "Editor Setup",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F00-setup-and-tooling%2F08-editor-setup",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/00-setup-and-tooling/08-editor-setup/docs/en.md",
+          "desc": "Your editor is your co-pilot. Configure it once so it stays out of your way and starts pulling its weight."
+        },
+        {
+          "title": "Data Management",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F00-setup-and-tooling%2F09-data-management",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/00-setup-and-tooling/09-data-management/docs/en.md",
+          "desc": "Data is the fuel. How you manage it determines how fast you go."
+        },
+        {
+          "title": "Terminal & Shell",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F00-setup-and-tooling%2F10-terminal-and-shell",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/00-setup-and-tooling/10-terminal-and-shell/docs/en.md",
+          "desc": "The terminal is where AI engineers live. Get comfortable here."
+        },
+        {
+          "title": "Linux for AI",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F00-setup-and-tooling%2F11-linux-for-ai",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/00-setup-and-tooling/11-linux-for-ai/docs/en.md",
+          "desc": "Most AI runs on Linux. You need to know enough to not be stuck."
+        },
+        {
+          "title": "Debugging & Profiling",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F00-setup-and-tooling%2F12-debugging-and-profiling",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/00-setup-and-tooling/12-debugging-and-profiling/docs/en.md",
+          "desc": "The worst AI bugs don't crash. They train silently on garbage and report a beautiful loss curve."
+        },
+        {
+          "title": "Python for AI Engineering",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F00-setup-and-tooling%2F13-python-for-ai-engineering",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/00-setup-and-tooling/13-python-for-ai-engineering/docs/en.md",
+          "desc": "Most code in this course uses the same small set of Python idioms. Learn that set here, before the math and model lessons depend on it."
+        }
+      ]
+    },
+    {
+      "phase_num": 1,
+      "phase_title": "Math Foundations",
+      "lessons_count": 22,
+      "lessons": [
+        {
+          "title": "Linear Algebra Intuition",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F01-math-foundations%2F01-linear-algebra-intuition",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/01-math-foundations/01-linear-algebra-intuition/docs/en.md",
+          "desc": "Every AI model is just matrix math wearing a fancy hat."
+        },
+        {
+          "title": "Vectors, Matrices & Operations",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F01-math-foundations%2F02-vectors-matrices-operations",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/01-math-foundations/02-vectors-matrices-operations/docs/en.md",
+          "desc": "Every neural network is just matrix multiplication with extra steps."
+        },
+        {
+          "title": "Matrix Transformations & Eigenvalues",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F01-math-foundations%2F03-matrix-transformations",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/01-math-foundations/03-matrix-transformations/docs/en.md",
+          "desc": "A matrix is a machine that reshapes space. Learn what it does to every point, and you understand the whole transformation."
+        },
+        {
+          "title": "Calculus for ML: Derivatives & Gradients",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F01-math-foundations%2F04-calculus-for-ml",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/01-math-foundations/04-calculus-for-ml/docs/en.md",
+          "desc": "Derivatives tell you which way is downhill. That is all a neural network needs to learn."
+        },
+        {
+          "title": "Chain Rule & Automatic Differentiation",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F01-math-foundations%2F05-chain-rule-and-autodiff",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/01-math-foundations/05-chain-rule-and-autodiff/docs/en.md",
+          "desc": "The chain rule is the engine behind every neural network that learns."
+        },
+        {
+          "title": "Probability & Distributions",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F01-math-foundations%2F06-probability-and-distributions",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/01-math-foundations/06-probability-and-distributions/docs/en.md",
+          "desc": "Probability is the language AI uses to express uncertainty."
+        },
+        {
+          "title": "Bayes' Theorem & Statistical Thinking",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F01-math-foundations%2F07-bayes-theorem",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/01-math-foundations/07-bayes-theorem/docs/en.md",
+          "desc": "Probability is about what you expect. Bayes' theorem is about what you learn."
+        },
+        {
+          "title": "Optimization: Gradient Descent Family",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F01-math-foundations%2F08-optimization",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/01-math-foundations/08-optimization/docs/en.md",
+          "desc": "Training a neural network is nothing more than finding the bottom of a valley."
+        },
+        {
+          "title": "Information Theory: Entropy, KL Divergence",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F01-math-foundations%2F09-information-theory",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/01-math-foundations/09-information-theory/docs/en.md",
+          "desc": "Information theory measures surprise. Loss functions are built on it."
+        },
+        {
+          "title": "Dimensionality Reduction: PCA, t-SNE, UMAP",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F01-math-foundations%2F10-dimensionality-reduction",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/01-math-foundations/10-dimensionality-reduction/docs/en.md",
+          "desc": "High-dimensional data has structure. You find it by looking from the right angle."
+        },
+        {
+          "title": "Singular Value Decomposition",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F01-math-foundations%2F11-singular-value-decomposition",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/01-math-foundations/11-singular-value-decomposition/docs/en.md",
+          "desc": "SVD is the Swiss Army knife of linear algebra. Every matrix has one. Every data scientist needs one."
+        },
+        {
+          "title": "Tensor Operations",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F01-math-foundations%2F12-tensor-operations",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/01-math-foundations/12-tensor-operations/docs/en.md",
+          "desc": "Tensors are the common language between data and deep learning. Every image, every sentence, every gradient flows through them."
+        },
+        {
+          "title": "Numerical Stability",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F01-math-foundations%2F13-numerical-stability",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/01-math-foundations/13-numerical-stability/docs/en.md",
+          "desc": "Floating point is a leaky abstraction. It will bite you during training, and you will not see it coming."
+        },
+        {
+          "title": "Norms & Distances",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F01-math-foundations%2F14-norms-and-distances",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/01-math-foundations/14-norms-and-distances/docs/en.md",
+          "desc": "Your distance function defines what \"similar\" means. Choose wrong and everything downstream breaks."
+        },
+        {
+          "title": "Statistics for ML",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F01-math-foundations%2F15-statistics-for-ml",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/01-math-foundations/15-statistics-for-ml/docs/en.md",
+          "desc": "Statistics is how you know if your model actually works or just got lucky."
+        },
+        {
+          "title": "Sampling Methods",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F01-math-foundations%2F16-sampling-methods",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/01-math-foundations/16-sampling-methods/docs/en.md",
+          "desc": "Sampling is how AI explores the space of possibilities."
+        },
+        {
+          "title": "Linear Systems",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F01-math-foundations%2F17-linear-systems",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/01-math-foundations/17-linear-systems/docs/en.md",
+          "desc": "Solving $Ax = b$ is the oldest problem in mathematics that still runs your neural network."
+        },
+        {
+          "title": "Convex Optimization",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F01-math-foundations%2F18-convex-optimization",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/01-math-foundations/18-convex-optimization/docs/en.md",
+          "desc": "Convex problems have one valley. Neural networks have millions. Knowing the difference matters."
+        },
+        {
+          "title": "Complex Numbers for AI",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F01-math-foundations%2F19-complex-numbers",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/01-math-foundations/19-complex-numbers/docs/en.md",
+          "desc": "The square root of -1 is not imaginary. It is the key to rotations, frequencies, and half of signal processing."
+        },
+        {
+          "title": "The Fourier Transform",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F01-math-foundations%2F20-fourier-transform",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/01-math-foundations/20-fourier-transform/docs/en.md",
+          "desc": "Every signal is a sum of sine waves. The Fourier transform tells you which ones."
+        },
+        {
+          "title": "Graph Theory for ML",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F01-math-foundations%2F21-graph-theory",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/01-math-foundations/21-graph-theory/docs/en.md",
+          "desc": "Graphs are the data structure of relationships. If your data has connections, you need graph theory."
+        },
+        {
+          "title": "Stochastic Processes",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F01-math-foundations%2F22-stochastic-processes",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/01-math-foundations/22-stochastic-processes/docs/en.md",
+          "desc": "Randomness with structure. The math behind random walks, Markov chains, and diffusion models."
+        }
+      ]
+    },
+    {
+      "phase_num": 2,
+      "phase_title": "ML Fundamentals",
+      "lessons_count": 21,
+      "lessons": [
+        {
+          "title": "What Is Machine Learning",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F02-ml-fundamentals%2F01-what-is-machine-learning",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/02-ml-fundamentals/01-what-is-machine-learning/docs/en.md",
+          "desc": "Machine learning is teaching computers to find patterns in data instead of writing rules by hand."
+        },
+        {
+          "title": "Linear Regression from Scratch",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F02-ml-fundamentals%2F02-linear-regression",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/02-ml-fundamentals/02-linear-regression/docs/en.md",
+          "desc": "Linear regression draws the best straight line through your data. It is the \"hello world\" of machine learning."
+        },
+        {
+          "title": "Logistic Regression & Classification",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F02-ml-fundamentals%2F03-logistic-regression",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/02-ml-fundamentals/03-logistic-regression/docs/en.md",
+          "desc": "Logistic regression bends a straight line into an S-curve to answer yes-or-no questions with probabilities."
+        },
+        {
+          "title": "Decision Trees & Random Forests",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F02-ml-fundamentals%2F04-decision-trees",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/02-ml-fundamentals/04-decision-trees/docs/en.md",
+          "desc": "A decision tree is just a flowchart. But a forest of them is one of the most powerful tools in ML."
+        },
+        {
+          "title": "Support Vector Machines",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F02-ml-fundamentals%2F05-support-vector-machines",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/02-ml-fundamentals/05-support-vector-machines/docs/en.md",
+          "desc": "Find the widest street between two classes. That is the entire idea."
+        },
+        {
+          "title": "KNN & Distance Metrics",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F02-ml-fundamentals%2F06-knn-and-distances",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/02-ml-fundamentals/06-knn-and-distances/docs/en.md",
+          "desc": "Store everything. Predict by looking at your neighbors. The simplest algorithm that actually works."
+        },
+        {
+          "title": "Unsupervised Learning: K-Means, DBSCAN",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F02-ml-fundamentals%2F07-unsupervised-learning",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/02-ml-fundamentals/07-unsupervised-learning/docs/en.md",
+          "desc": "No labels, no teacher. The algorithm finds structure on its own."
+        },
+        {
+          "title": "Feature Engineering & Selection",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F02-ml-fundamentals%2F08-feature-engineering",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/02-ml-fundamentals/08-feature-engineering/docs/en.md",
+          "desc": "A good feature is worth a thousand data points."
+        },
+        {
+          "title": "Model Evaluation: Metrics, Cross-Validation",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F02-ml-fundamentals%2F09-model-evaluation",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/02-ml-fundamentals/09-model-evaluation/docs/en.md",
+          "desc": "A model is only as good as the way you measure it."
+        },
+        {
+          "title": "Bias, Variance & the Learning Curve",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F02-ml-fundamentals%2F10-bias-variance",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/02-ml-fundamentals/10-bias-variance/docs/en.md",
+          "desc": "Every model error comes from one of three sources: bias, variance, or noise. You can only control the first two."
+        },
+        {
+          "title": "Ensemble Methods: Boosting, Bagging, Stacking",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F02-ml-fundamentals%2F11-ensemble-methods",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/02-ml-fundamentals/11-ensemble-methods/docs/en.md",
+          "desc": "A group of weak learners, combined correctly, becomes a strong learner. This is not a metaphor. It is a theorem."
+        },
+        {
+          "title": "Hyperparameter Tuning",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F02-ml-fundamentals%2F12-hyperparameter-tuning",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/02-ml-fundamentals/12-hyperparameter-tuning/docs/en.md",
+          "desc": "Hyperparameters are the knobs you turn before training starts. Turning them well is the difference between a mediocre model and a great one."
+        },
+        {
+          "title": "ML Pipelines & Experiment Tracking",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F02-ml-fundamentals%2F13-ml-pipelines",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/02-ml-fundamentals/13-ml-pipelines/docs/en.md",
+          "desc": "A model is not a product. A pipeline is. The pipeline is everything from raw data to deployed prediction, and every step must be reproducible."
+        },
+        {
+          "title": "Naive Bayes",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F02-ml-fundamentals%2F14-naive-bayes",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/02-ml-fundamentals/14-naive-bayes/docs/en.md",
+          "desc": "The \"naive\" assumption is wrong, and it works anyway. That's the beauty of it."
+        },
+        {
+          "title": "Time Series Fundamentals",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F02-ml-fundamentals%2F15-time-series",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/02-ml-fundamentals/15-time-series/docs/en.md",
+          "desc": "Past performance does predict future results -- if you check for stationarity first."
+        },
+        {
+          "title": "Anomaly Detection",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F02-ml-fundamentals%2F16-anomaly-detection",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/02-ml-fundamentals/16-anomaly-detection/docs/en.md",
+          "desc": "Normal is easy to define. Abnormal is whatever doesn't fit."
+        },
+        {
+          "title": "Handling Imbalanced Data",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F02-ml-fundamentals%2F17-imbalanced-data",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/02-ml-fundamentals/17-imbalanced-data/docs/en.md",
+          "desc": "When 99% of your data is \"normal,\" accuracy is a lie."
+        },
+        {
+          "title": "Feature Selection",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F02-ml-fundamentals%2F18-feature-selection",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/02-ml-fundamentals/18-feature-selection/docs/en.md",
+          "desc": "More features is not better. The right features is better."
+        },
+        {
+          "title": "ML System Design — From Problem to Deployed Model",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F02-ml-fundamentals%2F19-ml-system-design",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/02-ml-fundamentals/19-ml-system-design/docs/en.md",
+          "desc": "A model is one part of a system. The design decides what the model predicts, who acts on it, what it costs, and what happens when it fails."
+        },
+        {
+          "title": "Monitoring Models in Production — Data Drift and Concept Drift",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F02-ml-fundamentals%2F20-model-monitoring-and-drift",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/02-ml-fundamentals/20-model-monitoring-and-drift/docs/en.md",
+          "desc": "A deployed model fails without an error message. It keeps returning scores while the world moves away from its training data, and only monitoring shows the gap."
+        },
+        {
+          "title": "Feature Stores and Training-Serving Skew",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F02-ml-fundamentals%2F21-feature-stores-and-training-serving-skew",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/02-ml-fundamentals/21-feature-stores-and-training-serving-skew/docs/en.md",
+          "desc": "A feature has one definition and two readers. Training reads its history as of each label time, and serving reads its latest value. When the two readers disagree, the model sees…"
+        }
+      ]
+    },
+    {
+      "phase_num": 3,
+      "phase_title": "Deep Learning Core",
+      "lessons_count": 13,
+      "lessons": [
+        {
+          "title": "The Perceptron: Where It All Started",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F03-deep-learning-core%2F01-the-perceptron",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/03-deep-learning-core/01-the-perceptron/docs/en.md",
+          "desc": "The perceptron is the atom of neural networks. Split it open and you find weights, a bias, and a decision."
+        },
+        {
+          "title": "Multi-Layer Networks & Forward Pass",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F03-deep-learning-core%2F02-multi-layer-networks",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/03-deep-learning-core/02-multi-layer-networks/docs/en.md",
+          "desc": "One neuron draws a line. Stack them, and you can draw anything."
+        },
+        {
+          "title": "Backpropagation from Scratch",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F03-deep-learning-core%2F03-backpropagation",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/03-deep-learning-core/03-backpropagation/docs/en.md",
+          "desc": "Backpropagation is the algorithm that makes learning possible. Without it, neural networks are just expensive random number generators."
+        },
+        {
+          "title": "Activation Functions: ReLU, Sigmoid, GELU & Why",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F03-deep-learning-core%2F04-activation-functions",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/03-deep-learning-core/04-activation-functions/docs/en.md",
+          "desc": "Without nonlinearity, your 100-layer network is a fancy matrix multiply. Activations are the gates that let neural networks think in curves."
+        },
+        {
+          "title": "Loss Functions: MSE, Cross-Entropy, Contrastive",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F03-deep-learning-core%2F05-loss-functions",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/03-deep-learning-core/05-loss-functions/docs/en.md",
+          "desc": "Your network makes a prediction. The ground truth says otherwise. How wrong is it? That number is the loss. Pick the wrong loss function and your model optimizes for the wrong t…"
+        },
+        {
+          "title": "Optimizers: SGD, Momentum, Adam, AdamW",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F03-deep-learning-core%2F06-optimizers",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/03-deep-learning-core/06-optimizers/docs/en.md",
+          "desc": "Gradient descent tells you which direction to move. It says nothing about how far or how fast. SGD is a compass. Adam is GPS with traffic data."
+        },
+        {
+          "title": "Regularization: Dropout, Weight Decay, BatchNorm",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F03-deep-learning-core%2F07-regularization",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/03-deep-learning-core/07-regularization/docs/en.md",
+          "desc": "Your model gets 99% on training data and 60% on test data. It memorized instead of learning. Regularization is the tax you impose on complexity to force generalization."
+        },
+        {
+          "title": "Weight Initialization & Training Stability",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F03-deep-learning-core%2F08-weight-initialization",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/03-deep-learning-core/08-weight-initialization/docs/en.md",
+          "desc": "Initialize wrong and training never starts. Initialize right and 50 layers train as smoothly as 3."
+        },
+        {
+          "title": "Learning Rate Schedules & Warmup",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F03-deep-learning-core%2F09-learning-rate-schedules",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/03-deep-learning-core/09-learning-rate-schedules/docs/en.md",
+          "desc": "The learning rate is the single most important hyperparameter. Not the architecture. Not the dataset size. Not the activation function. The learning rate. If you tune nothing el…"
+        },
+        {
+          "title": "Build Your Own Mini Framework",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F03-deep-learning-core%2F10-mini-framework",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/03-deep-learning-core/10-mini-framework/docs/en.md",
+          "desc": "You have built neurons, layers, networks, backprop, activations, loss functions, optimizers, regularization, initialization, and LR schedules. All as separate pieces. Now wire t…"
+        },
+        {
+          "title": "Introduction to PyTorch",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F03-deep-learning-core%2F11-intro-to-pytorch",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/03-deep-learning-core/11-intro-to-pytorch/docs/en.md",
+          "desc": "You built the engine from pistons and crankshafts. Now learn the one everyone actually drives."
+        },
+        {
+          "title": "Introduction to JAX",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F03-deep-learning-core%2F12-intro-to-jax",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/03-deep-learning-core/12-intro-to-jax/docs/en.md",
+          "desc": "PyTorch mutates tensors. TensorFlow builds graphs. JAX compiles pure functions. That last one changes how you think about deep learning."
+        },
+        {
+          "title": "Debugging Neural Networks",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F03-deep-learning-core%2F13-debugging-neural-networks",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/03-deep-learning-core/13-debugging-neural-networks/docs/en.md",
+          "desc": "Your network compiled. It ran. It produced a number. The number is wrong and nothing crashed. Welcome to the hardest kind of debugging -- the kind where there is no error message."
+        }
+      ]
+    },
+    {
+      "phase_num": 4,
+      "phase_title": "Computer Vision",
+      "lessons_count": 28,
+      "lessons": [
+        {
+          "title": "Image Fundamentals: Pixels, Channels, Color Spaces",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F04-computer-vision%2F01-image-fundamentals",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/01-image-fundamentals/docs/en.md",
+          "desc": "An image is a tensor of light samples. Every vision model you will ever use starts from this one fact."
+        },
+        {
+          "title": "Convolutions from Scratch",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F04-computer-vision%2F02-convolutions-from-scratch",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/02-convolutions-from-scratch/docs/en.md",
+          "desc": "A convolution is a tiny dense layer you slide across an image, sharing the same weights at every location."
+        },
+        {
+          "title": "CNNs: LeNet to ResNet",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F04-computer-vision%2F03-cnns-lenet-to-resnet",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/03-cnns-lenet-to-resnet/docs/en.md",
+          "desc": "Every major CNN of the last thirty years is the same conv–nonlinearity–downsample recipe with one new idea bolted on. Learn the ideas in order."
+        },
+        {
+          "title": "Image Classification",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F04-computer-vision%2F04-image-classification",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/04-image-classification/docs/en.md",
+          "desc": "A classifier is a function from pixels to a probability distribution over classes. Everything else is plumbing."
+        },
+        {
+          "title": "Transfer Learning & Fine-Tuning",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F04-computer-vision%2F05-transfer-learning",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/05-transfer-learning/docs/en.md",
+          "desc": "Somebody else spent a million GPU hours teaching a network what edges, textures, and object parts look like. You should borrow those features before training your own."
+        },
+        {
+          "title": "Object Detection — YOLO from Scratch",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F04-computer-vision%2F06-object-detection-yolo",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/06-object-detection-yolo/docs/en.md",
+          "desc": "Detection is classification plus regression, run at every position in a feature map, then cleaned up with non-maximum suppression."
+        },
+        {
+          "title": "Semantic Segmentation — U-Net",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F04-computer-vision%2F07-semantic-segmentation-unet",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/07-semantic-segmentation-unet/docs/en.md",
+          "desc": "Segmentation is classification at every pixel. U-Net makes it work by pairing a downsampling encoder with an upsampling decoder and wiring skip connections between them."
+        },
+        {
+          "title": "Instance Segmentation — Mask R-CNN",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F04-computer-vision%2F08-instance-segmentation-mask-rcnn",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/08-instance-segmentation-mask-rcnn/docs/en.md",
+          "desc": "Add a tiny mask branch to a Faster R-CNN detector and you have instance segmentation. The hard part is RoIAlign, and it is harder than it looks."
+        },
+        {
+          "title": "Image Generation — GANs",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F04-computer-vision%2F09-image-generation-gans",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/09-image-generation-gans/docs/en.md",
+          "desc": "A GAN is two neural networks in a fixed game. One draws, one critiques. They get better together until the drawings fool the critic."
+        },
+        {
+          "title": "Image Generation — Diffusion Models",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F04-computer-vision%2F10-image-generation-diffusion",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/10-image-generation-diffusion/docs/en.md",
+          "desc": "A diffusion model learns to denoise. Train it to remove a tiny bit of noise from a noisy image, repeat that backwards a thousand times, and you have an image generator."
+        },
+        {
+          "title": "Stable Diffusion — Architecture & Fine-Tuning",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F04-computer-vision%2F11-stable-diffusion",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/11-stable-diffusion/docs/en.md",
+          "desc": "Stable Diffusion is a DDPM that runs in the latent space of a pretrained VAE, conditioned on text via cross-attention, sampled with a fast deterministic ODE solver, and steered …"
+        },
+        {
+          "title": "Video Understanding — Temporal Modeling",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F04-computer-vision%2F12-video-understanding",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/12-video-understanding/docs/en.md",
+          "desc": "A video is a sequence of images plus the physics that connects them. Every video model either treats time as an extra axis (3D conv), a sequence to attend over (transformer), or…"
+        },
+        {
+          "title": "3D Vision: Point Clouds, NeRFs",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F04-computer-vision%2F13-3d-vision-nerf",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/13-3d-vision-nerf/docs/en.md",
+          "desc": "3D vision comes in two flavours. Point clouds are the sensor's raw output. NeRFs are the learned volumetric field. Both answer \"what is where in space.\""
+        },
+        {
+          "title": "Vision Transformers (ViT)",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F04-computer-vision%2F14-vision-transformers",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/14-vision-transformers/docs/en.md",
+          "desc": "Cut the image into patches, treat each patch as a word, run a standard transformer. Don't look back."
+        },
+        {
+          "title": "Real-Time Vision: Edge Deployment",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F04-computer-vision%2F15-real-time-edge",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/15-real-time-edge/docs/en.md",
+          "desc": "Edge inference is the discipline of getting a 90%-accurate model to run at 30 fps on a device with 2 GB of RAM. Every percentage point of accuracy is traded against milliseconds…"
+        },
+        {
+          "title": "Build a Complete Vision Pipeline",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F04-computer-vision%2F16-vision-pipeline-capstone",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/16-vision-pipeline-capstone/docs/en.md",
+          "desc": "A production vision system is a chain of models and rules stitched with data contracts. The pieces are already in this phase; the capstone wires them together end-to-end."
+        },
+        {
+          "title": "Self-Supervised Vision — SimCLR, DINO, MAE",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F04-computer-vision%2F17-self-supervised-vision",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/17-self-supervised-vision/docs/en.md",
+          "desc": "Labels are the bottleneck of supervised vision. Self-supervised pretraining removes them: learn visual features from 100M unlabelled images, fine-tune on 10k labelled ones."
+        },
+        {
+          "title": "Open-Vocabulary Vision — CLIP",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F04-computer-vision%2F18-open-vocab-clip",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/18-open-vocab-clip/docs/en.md",
+          "desc": "Train an image encoder and a text encoder together so that matching (image, caption) pairs land at the same point in a shared space. That is the whole trick."
+        },
+        {
+          "title": "OCR & Document Understanding",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F04-computer-vision%2F19-ocr-document-understanding",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/19-ocr-document-understanding/docs/en.md",
+          "desc": "OCR is a three-stage pipeline — detect text boxes, recognise the characters, then lay them out. Every modern OCR system reorders these stages or merges them."
+        },
+        {
+          "title": "Image Retrieval & Metric Learning",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F04-computer-vision%2F20-image-retrieval-metric",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/20-image-retrieval-metric/docs/en.md",
+          "desc": "A retrieval system ranks candidates by a distance in embedding space. Metric learning is the discipline of shaping that space so the distances mean what you want."
+        },
+        {
+          "title": "Keypoint Detection & Pose Estimation",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F04-computer-vision%2F21-keypoint-pose",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/21-keypoint-pose/docs/en.md",
+          "desc": "A pose is a set of ordered keypoints. A keypoint detector is a heatmap regressor. Everything else is bookkeeping."
+        },
+        {
+          "title": "3D Gaussian Splatting from Scratch",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F04-computer-vision%2F22-3d-gaussian-splatting",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/22-3d-gaussian-splatting/docs/en.md",
+          "desc": "A scene is a cloud of millions of 3D Gaussians. Each one has a position, orientation, scale, opacity, and a colour that depends on viewing direction. Rasterise them, backprop th…"
+        },
+        {
+          "title": "Diffusion Transformers & Rectified Flow",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F04-computer-vision%2F23-diffusion-transformers-rectified-flow",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/23-diffusion-transformers-rectified-flow/docs/en.md",
+          "desc": "The U-Net is not the secret of diffusion. Replace it with a transformer, swap the noise schedule for a straight-line flow, and suddenly you have SD3, FLUX, and every 2026 text-t…"
+        },
+        {
+          "title": "SAM 3 & Open-Vocabulary Segmentation",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F04-computer-vision%2F24-sam3-open-vocab-segmentation",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/24-sam3-open-vocab-segmentation/docs/en.md",
+          "desc": "Give a model a text prompt and an image and get masks for every matching object. SAM 3 made that a single forward pass."
+        },
+        {
+          "title": "Vision-Language Models (ViT-MLP-LLM)",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F04-computer-vision%2F25-vision-language-models",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/25-vision-language-models/docs/en.md",
+          "desc": "A vision encoder converts an image into tokens. An MLP projector maps those tokens into the LLM's embedding space. A language model does the rest. That pattern — ViT-MLP-LLM — i…"
+        },
+        {
+          "title": "Monocular Depth & Geometry Estimation",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F04-computer-vision%2F26-monocular-depth",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/26-monocular-depth/docs/en.md",
+          "desc": "A depth map is a single-channel image where each pixel is a distance from the camera. Predicting it from one RGB frame used to be impossible without stereo or LiDAR. In 2026 a f…"
+        },
+        {
+          "title": "Multi-Object Tracking & Video Memory",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F04-computer-vision%2F27-multi-object-tracking",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/27-multi-object-tracking/docs/en.md",
+          "desc": "Tracking is detection plus association. Detect every frame. Match this frame's detections to last frame's tracks by ID."
+        },
+        {
+          "title": "World Models & Video Diffusion",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F04-computer-vision%2F28-world-models-video-diffusion",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/04-computer-vision/28-world-models-video-diffusion/docs/en.md",
+          "desc": "A video model that predicts the next seconds of a scene is a world simulator. Condition that prediction on actions and you have a learned game engine."
+        }
+      ]
+    },
+    {
+      "phase_num": 5,
+      "phase_title": "NLP: Foundations to Advanced",
+      "lessons_count": 29,
+      "lessons": [
+        {
+          "title": "Text Processing: Tokenization, Stemming, Lemmatization",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F05-nlp-foundations-to-advanced%2F01-text-processing",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/01-text-processing/docs/en.md",
+          "desc": "Language is continuous. Models are discrete. Preprocessing is the bridge."
+        },
+        {
+          "title": "Bag of Words, TF-IDF & Text Representation",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F05-nlp-foundations-to-advanced%2F02-bag-of-words-tfidf",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/02-bag-of-words-tfidf/docs/en.md",
+          "desc": "Count first, think later. TF-IDF still beats embeddings on well-defined tasks in 2026."
+        },
+        {
+          "title": "Word Embeddings: Word2Vec from Scratch",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F05-nlp-foundations-to-advanced%2F03-word-embeddings-word2vec",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/03-word-embeddings-word2vec/docs/en.md",
+          "desc": "A word is the company it keeps. Train a shallow net on that idea and geometry falls out."
+        },
+        {
+          "title": "GloVe, FastText & Subword Embeddings",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F05-nlp-foundations-to-advanced%2F04-glove-fasttext-subword",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/04-glove-fasttext-subword/docs/en.md",
+          "desc": "Word2Vec trained one embedding per word. GloVe factorized the co-occurrence matrix. FastText embedded the pieces. BPE bridged to transformers."
+        },
+        {
+          "title": "Sentiment Analysis",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F05-nlp-foundations-to-advanced%2F05-sentiment-analysis",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/05-sentiment-analysis/docs/en.md",
+          "desc": "The canonical NLP task. Most of what you need to know about classical text classification shows up here."
+        },
+        {
+          "title": "Named Entity Recognition (NER)",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F05-nlp-foundations-to-advanced%2F06-named-entity-recognition",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/06-named-entity-recognition/docs/en.md",
+          "desc": "Pull the names out. Sounds easy until you deal with ambiguous boundaries, nested entities, and domain jargon."
+        },
+        {
+          "title": "POS Tagging & Syntactic Parsing",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F05-nlp-foundations-to-advanced%2F07-pos-tagging-parsing",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/07-pos-tagging-parsing/docs/en.md",
+          "desc": "Grammar was unfashionable for a while. Then every LLM pipeline needed to validate structured extraction, and it came back."
+        },
+        {
+          "title": "Text Classification — CNNs & RNNs for Text",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F05-nlp-foundations-to-advanced%2F08-cnns-rnns-for-text",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/08-cnns-rnns-for-text/docs/en.md",
+          "desc": "Convolutions learn n-grams. Recurrences remember. Both are superseded by attention. Both still matter on constrained hardware."
+        },
+        {
+          "title": "Sequence-to-Sequence Models",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F05-nlp-foundations-to-advanced%2F09-sequence-to-sequence",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/09-sequence-to-sequence/docs/en.md",
+          "desc": "Two RNNs pretending to be a translator. The bottleneck they hit is the reason attention exists."
+        },
+        {
+          "title": "Attention Mechanism — The Breakthrough",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F05-nlp-foundations-to-advanced%2F10-attention-mechanism",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/10-attention-mechanism/docs/en.md",
+          "desc": "The decoder stops squinting at a compressed summary and starts looking at the whole source. Everything after this is attention plus engineering."
+        },
+        {
+          "title": "Machine Translation",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F05-nlp-foundations-to-advanced%2F11-machine-translation",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/11-machine-translation/docs/en.md",
+          "desc": "Translation is the task that paid for NLP research for thirty years and keeps paying now."
+        },
+        {
+          "title": "Text Summarization",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F05-nlp-foundations-to-advanced%2F12-text-summarization",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/12-text-summarization/docs/en.md",
+          "desc": "Extractive systems tell you what the document said. Abstractive systems tell you what the author meant. Different tasks, different pitfalls."
+        },
+        {
+          "title": "Question Answering Systems",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F05-nlp-foundations-to-advanced%2F13-question-answering",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/13-question-answering/docs/en.md",
+          "desc": "Three systems shaped modern QA. Extractive found spans. Retrieval-augmented grounded them in documents. Generative produced answers. Every modern AI assistant is a mix of the th…"
+        },
+        {
+          "title": "Information Retrieval & Search",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F05-nlp-foundations-to-advanced%2F14-information-retrieval-search",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/14-information-retrieval-search/docs/en.md",
+          "desc": "BM25 is precise but brittle. Dense casts a wide net but misses keywords. Hybrid is the 2026 default. Everything else is tuning."
+        },
+        {
+          "title": "Topic Modeling: LDA, BERTopic",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F05-nlp-foundations-to-advanced%2F15-topic-modeling",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/15-topic-modeling/docs/en.md",
+          "desc": "LDA: documents are mixtures of topics, topics are distributions over words. BERTopic: documents cluster in embedding space, clusters are topics. Same goal, different decompositi…"
+        },
+        {
+          "title": "Text Generation",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F05-nlp-foundations-to-advanced%2F16-text-generation-pre-transformer",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/16-text-generation-pre-transformer/docs/en.md",
+          "desc": "If a word is surprising, the model is bad. Perplexity makes surprise a number. Smoothing keeps it finite."
+        },
+        {
+          "title": "Chatbots: Rule-Based to Neural",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F05-nlp-foundations-to-advanced%2F17-chatbots-rule-to-neural",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/17-chatbots-rule-to-neural/docs/en.md",
+          "desc": "ELIZA replied with pattern matches. DialogFlow mapped intents. GPT answered from weights. Claude runs tools and verifies. Each era solved the previous one's worst failure."
+        },
+        {
+          "title": "Multilingual NLP",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F05-nlp-foundations-to-advanced%2F18-multilingual-nlp",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/18-multilingual-nlp/docs/en.md",
+          "desc": "One model, 100+ languages, zero training data for most of them. Cross-lingual transfer is the practical miracle of the 2020s."
+        },
+        {
+          "title": "Subword Tokenization: BPE, WordPiece, Unigram, SentencePiece",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F05-nlp-foundations-to-advanced%2F19-subword-tokenization",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/19-subword-tokenization/docs/en.md",
+          "desc": "Word tokenizers choke on unseen words. Character tokenizers blow up sequence length. Subword tokenizers split the difference. Every modern LLM ships on one."
+        },
+        {
+          "title": "Structured Outputs & Constrained Decoding",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F05-nlp-foundations-to-advanced%2F20-structured-outputs-constrained-decoding",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/20-structured-outputs-constrained-decoding/docs/en.md",
+          "desc": "Ask an LLM for JSON. Get JSON most of the time. In production, \"most\" is the problem. Constrained decoding turns \"most\" into \"always\" by editing the logits before sampling."
+        },
+        {
+          "title": "NLI & Textual Entailment",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F05-nlp-foundations-to-advanced%2F21-nli-textual-entailment",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/21-nli-textual-entailment/docs/en.md",
+          "desc": "\"t entails h\" means a human reading t would conclude h is true. NLI is the task of predicting entailment / contradiction / neutral. Boring on the surface, load-bearing in produc…"
+        },
+        {
+          "title": "Embedding Models Deep Dive",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F05-nlp-foundations-to-advanced%2F22-embedding-models-deep-dive",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/22-embedding-models-deep-dive/docs/en.md",
+          "desc": "Word2Vec gave you a vector per word. Modern embedding models give you a vector per passage, cross-lingual, with sparse, dense, and multi-vector views, sized to fit your index. P…"
+        },
+        {
+          "title": "Chunking Strategies for RAG",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F05-nlp-foundations-to-advanced%2F23-chunking-strategies-rag",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/23-chunking-strategies-rag/docs/en.md",
+          "desc": "Chunking configuration influences retrieval quality as much as the choice of embedding model (Vectara NAACL 2025). Get chunking wrong and no amount of reranking saves you."
+        },
+        {
+          "title": "Coreference Resolution",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F05-nlp-foundations-to-advanced%2F24-coreference-resolution",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/24-coreference-resolution/docs/en.md",
+          "desc": "\"She called him. He did not answer. The doctor was at lunch.\" Three references to two people and nobody is named. Coreference resolution figures out who is who."
+        },
+        {
+          "title": "Entity Linking & Disambiguation",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F05-nlp-foundations-to-advanced%2F25-entity-linking",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/25-entity-linking/docs/en.md",
+          "desc": "NER found \"Paris.\" Entity linking decides: Paris, France? Paris Hilton? Paris, Texas? Paris (the Trojan prince)? Without linking, your knowledge graph stays ambiguous."
+        },
+        {
+          "title": "Relation Extraction & Knowledge Graph Construction",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F05-nlp-foundations-to-advanced%2F26-relation-extraction-kg",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/26-relation-extraction-kg/docs/en.md",
+          "desc": "NER found the entities. Entity linking anchored them. Relation extraction finds the edges between them. A knowledge graph is the sum of nodes, edges, and their provenance."
+        },
+        {
+          "title": "LLM Evaluation: RAGAS, DeepEval, G-Eval",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F05-nlp-foundations-to-advanced%2F27-llm-evaluation-frameworks",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/27-llm-evaluation-frameworks/docs/en.md",
+          "desc": "Exact-match and F1 miss semantic equivalence. Human review does not scale. LLM-as-judge is the production answer — with enough calibration to trust the number."
+        },
+        {
+          "title": "Long-Context Evaluation: NIAH, RULER, LongBench, MRCR",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F05-nlp-foundations-to-advanced%2F28-long-context-evaluation",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/28-long-context-evaluation/docs/en.md",
+          "desc": "Gemini 3 Pro advertises 10M tokens of context. At 1M tokens, 8-needle MRCR drops to 26.3%. Advertised ≠ usable. Long-context evaluation tells you the actual capacity of the mode…"
+        },
+        {
+          "title": "Dialogue State Tracking",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F05-nlp-foundations-to-advanced%2F29-dialogue-state-tracking",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/05-nlp-foundations-to-advanced/29-dialogue-state-tracking/docs/en.md",
+          "desc": "\"I want a cheap restaurant in the north... actually make it moderate... and add Italian.\" Three turns, three state updates. DST keeps the slot-value dict in sync so the booking …"
+        }
+      ]
+    },
+    {
+      "phase_num": 6,
+      "phase_title": "Speech & Audio",
+      "lessons_count": 17,
+      "lessons": [
+        {
+          "title": "Audio Fundamentals: Waveforms, Sampling, FFT",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F06-speech-and-audio%2F01-audio-fundamentals",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/06-speech-and-audio/01-audio-fundamentals/docs/en.md",
+          "desc": "Waveforms are the raw signal. Spectrograms are the representation. Mel features are the ML-friendly form. Every modern ASR and TTS pipeline walks this ladder, and the first rung…"
+        },
+        {
+          "title": "Spectrograms, Mel Scale & Audio Features",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F06-speech-and-audio%2F02-spectrograms-mel-features",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/06-speech-and-audio/02-spectrograms-mel-features/docs/en.md",
+          "desc": "Neural nets do not consume raw waveforms well. They consume spectrograms. They consume mel spectrograms even better. Every ASR, TTS, and audio classifier in 2026 lives or dies b…"
+        },
+        {
+          "title": "Audio Classification",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F06-speech-and-audio%2F03-audio-classification",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/06-speech-and-audio/03-audio-classification/docs/en.md",
+          "desc": "Everything from \"dog barking vs siren\" to \"which language is this\" is audio classification. The features are mels. The architecture moves each decade. The evaluation stays AUC, …"
+        },
+        {
+          "title": "Speech Recognition (ASR)",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F06-speech-and-audio%2F04-speech-recognition-asr",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/06-speech-and-audio/04-speech-recognition-asr/docs/en.md",
+          "desc": "Speech recognition is audio classification at every timestep, glued together by a sequence model that knows English and silence. CTC, RNN-T, and attention are the three ways to …"
+        },
+        {
+          "title": "Whisper: Architecture & Fine-Tuning",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F06-speech-and-audio%2F05-whisper-architecture-finetuning",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/06-speech-and-audio/05-whisper-architecture-finetuning/docs/en.md",
+          "desc": "Whisper is a 30-second-window transformer encoder-decoder, trained on 680k hours of multilingual weakly-supervised audio-text pairs. One architecture, multiple tasks, robust acr…"
+        },
+        {
+          "title": "Speaker Recognition & Verification",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F06-speech-and-audio%2F06-speaker-recognition-verification",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/06-speech-and-audio/06-speaker-recognition-verification/docs/en.md",
+          "desc": "ASR asks \"what did they say?\" Speaker recognition asks \"who said it?\" The math looks the same — embeddings plus cosine — but every production decision hinges on a single EER num…"
+        },
+        {
+          "title": "Text-to-Speech (TTS)",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F06-speech-and-audio%2F07-text-to-speech",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/06-speech-and-audio/07-text-to-speech/docs/en.md",
+          "desc": "ASR inverts speech to text; TTS inverts text to speech. The 2026 stack is three parts: text → tokens, tokens → mel, mel → waveform. Each part has a default model that fits in a …"
+        },
+        {
+          "title": "Voice Cloning & Voice Conversion",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F06-speech-and-audio%2F08-voice-cloning-conversion",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/06-speech-and-audio/08-voice-cloning-conversion/docs/en.md",
+          "desc": "Voice cloning reads your text in someone else's voice. Voice conversion rewrites your voice into someone else's while preserving what you said. Both hang on the same decompositi…"
+        },
+        {
+          "title": "Music Generation",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F06-speech-and-audio%2F09-music-generation",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/06-speech-and-audio/09-music-generation/docs/en.md",
+          "desc": "2026 music generation: Suno v5 and Udio v4 dominate commercial; MusicGen, Stable Audio Open, and ACE-Step lead open-source. The technical problem is mostly solved. The legal pro…"
+        },
+        {
+          "title": "Audio-Language Models",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F06-speech-and-audio%2F10-audio-language-models",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/06-speech-and-audio/10-audio-language-models/docs/en.md",
+          "desc": "2026 audio-language models reason over speech + environmental sound + music. Qwen2.5-Omni-7B matches GPT-4o Audio on MMAU-Pro. Audio Flamingo Next beats Gemini 2.5 Pro on LongAu…"
+        },
+        {
+          "title": "Real-Time Audio Processing",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F06-speech-and-audio%2F11-real-time-audio-processing",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/06-speech-and-audio/11-real-time-audio-processing/docs/en.md",
+          "desc": "Batch pipelines process a file. Real-time pipelines process the next 20 milliseconds before the next 20 arrive. Every conversational AI, broadcast studio, and telephony bot live…"
+        },
+        {
+          "title": "Build a Voice Assistant Pipeline",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F06-speech-and-audio%2F12-voice-assistant-pipeline",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/06-speech-and-audio/12-voice-assistant-pipeline/docs/en.md",
+          "desc": "Everything from lessons 01-11, stitched together. Build a voice assistant that listens, reasons, and talks back. In 2026 that is a solved engineering problem, not a research pro…"
+        },
+        {
+          "title": "Neural Audio Codecs — EnCodec, SNAC, Mimi, DAC",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F06-speech-and-audio%2F13-neural-audio-codecs",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/06-speech-and-audio/13-neural-audio-codecs/docs/en.md",
+          "desc": "2026 audio generation is almost all tokens. EnCodec, SNAC, Mimi, and DAC turn continuous waveforms into discrete sequences that a transformer can predict. The semantic-vs-acoust…"
+        },
+        {
+          "title": "Voice Activity Detection & Turn-Taking",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F06-speech-and-audio%2F14-voice-activity-detection-turn-taking",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/06-speech-and-audio/14-voice-activity-detection-turn-taking/docs/en.md",
+          "desc": "Every voice agent lives or dies on two decisions: is the user speaking now, and are they done? VAD answers the first. Turn-detection (VAD + silence-hangover + semantic endpoint …"
+        },
+        {
+          "title": "Streaming Speech-to-Speech — Moshi, Hibiki",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F06-speech-and-audio%2F15-streaming-speech-to-speech-moshi-hibiki",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/06-speech-and-audio/15-streaming-speech-to-speech-moshi-hibiki/docs/en.md",
+          "desc": "2024-2026 redefined voice AI. Moshi ships a single model that listens and speaks simultaneously at 200 ms latency. Hibiki does speech-to-speech translation chunk-by-chunk. Both …"
+        },
+        {
+          "title": "Voice Anti-Spoofing & Audio Watermarking",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F06-speech-and-audio%2F16-anti-spoofing-audio-watermarking",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/06-speech-and-audio/16-anti-spoofing-audio-watermarking/docs/en.md",
+          "desc": "Voice cloning shipped faster than defenses. 2026 production voice systems need two things: a detector (AASIST, RawNet2) that classifies real vs fake speech, and a watermark (Aud…"
+        },
+        {
+          "title": "Audio Evaluation — WER, MOS, MMAU, Leaderboards",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F06-speech-and-audio%2F17-audio-evaluation-metrics",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/06-speech-and-audio/17-audio-evaluation-metrics/docs/en.md",
+          "desc": "You cannot ship what you cannot measure. This lesson names the 2026 metrics for every audio task: ASR (WER, CER, RTFx), TTS (MOS, UTMOS, SECS, WER-on-ASR-round-trip), audio-lang…"
+        }
+      ]
+    },
+    {
+      "phase_num": 7,
+      "phase_title": "Transformers Deep Dive",
+      "lessons_count": 16,
+      "lessons": [
+        {
+          "title": "Why Transformers: The Problems with RNNs",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F07-transformers-deep-dive%2F01-why-transformers",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/07-transformers-deep-dive/01-why-transformers/docs/en.md",
+          "desc": "RNNs process tokens one at a time. Transformers process all tokens at once. That single architectural bet changed every scaling curve in deep learning after 2017."
+        },
+        {
+          "title": "Self-Attention from Scratch",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F07-transformers-deep-dive%2F02-self-attention-from-scratch",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/07-transformers-deep-dive/02-self-attention-from-scratch/docs/en.md",
+          "desc": "Attention is a lookup table where every word asks \"who matters to me?\" - and learns the answer."
+        },
+        {
+          "title": "Multi-Head Attention",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F07-transformers-deep-dive%2F03-multi-head-attention",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/07-transformers-deep-dive/03-multi-head-attention/docs/en.md",
+          "desc": "One attention head learns one relation at a time. Eight heads learn eight. Heads are free. Take more of them."
+        },
+        {
+          "title": "Positional Encoding: Sinusoidal, RoPE, ALiBi",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F07-transformers-deep-dive%2F04-positional-encoding",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/07-transformers-deep-dive/04-positional-encoding/docs/en.md",
+          "desc": "Attention is permutation-invariant. \"The cat sat on the mat\" and \"mat the on sat cat the\" produce the same output without positional signal. Three algorithms fix it — each with …"
+        },
+        {
+          "title": "The Full Transformer: Encoder + Decoder",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F07-transformers-deep-dive%2F05-full-transformer",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/07-transformers-deep-dive/05-full-transformer/docs/en.md",
+          "desc": "Attention is the star. Everything else — residuals, normalization, feed-forward, cross-attention — is the scaffolding that lets you stack it deep."
+        },
+        {
+          "title": "BERT — Masked Language Modeling",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F07-transformers-deep-dive%2F06-bert-masked-language-modeling",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/07-transformers-deep-dive/06-bert-masked-language-modeling/docs/en.md",
+          "desc": "GPT predicts the next word. BERT predicts a missing word. One sentence of difference — and half a decade of everything embedding-shaped."
+        },
+        {
+          "title": "GPT — Causal Language Modeling",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F07-transformers-deep-dive%2F07-gpt-causal-language-modeling",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/07-transformers-deep-dive/07-gpt-causal-language-modeling/docs/en.md",
+          "desc": "BERT sees both sides. GPT sees only the past. The triangle mask is the most consequential single line of code in modern AI."
+        },
+        {
+          "title": "T5, BART — Encoder-Decoder Models",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F07-transformers-deep-dive%2F08-t5-bart-encoder-decoder",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/07-transformers-deep-dive/08-t5-bart-encoder-decoder/docs/en.md",
+          "desc": "Encoders understand. Decoders generate. Put them back together and you get a model built for input → output tasks: translate, summarize, rewrite, transcribe."
+        },
+        {
+          "title": "Vision Transformers (ViT)",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F07-transformers-deep-dive%2F09-vision-transformers",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/07-transformers-deep-dive/09-vision-transformers/docs/en.md",
+          "desc": "An image is a grid of patches. A sentence is a grid of tokens. The same transformer eats both."
+        },
+        {
+          "title": "Audio Transformers — Whisper Architecture",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F07-transformers-deep-dive%2F10-audio-transformers-whisper",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/07-transformers-deep-dive/10-audio-transformers-whisper/docs/en.md",
+          "desc": "Audio is an image of frequency over time. Whisper is a ViT that eats mel spectrograms and speaks back."
+        },
+        {
+          "title": "Mixture of Experts (MoE)",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F07-transformers-deep-dive%2F11-mixture-of-experts",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/07-transformers-deep-dive/11-mixture-of-experts/docs/en.md",
+          "desc": "A dense 70B transformer activates every parameter for every token. A 671B MoE activates only 37B per token and beats it on every benchmark. Sparsity is the most important scalin…"
+        },
+        {
+          "title": "KV Cache, Flash Attention & Inference Optimization",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F07-transformers-deep-dive%2F12-kv-cache-flash-attention",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/07-transformers-deep-dive/12-kv-cache-flash-attention/docs/en.md",
+          "desc": "Training is parallel and FLOP-bound. Inference is serial and memory-bound. Different bottleneck, different tricks."
+        },
+        {
+          "title": "Scaling Laws",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F07-transformers-deep-dive%2F13-scaling-laws",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/07-transformers-deep-dive/13-scaling-laws/docs/en.md",
+          "desc": "The 2020 Kaplan paper said: bigger model, lower loss. The 2022 Hoffmann paper said: you were under-training. Compute goes into two buckets — parameters and tokens — and the spli…"
+        },
+        {
+          "title": "Build a Transformer from Scratch",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F07-transformers-deep-dive%2F14-build-a-transformer-capstone",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/07-transformers-deep-dive/14-build-a-transformer-capstone/docs/en.md",
+          "desc": "Thirteen lessons. One model. No shortcuts."
+        },
+        {
+          "title": "Attention Variants — Sliding Window, Sparse, Differential",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F07-transformers-deep-dive%2F15-attention-variants",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/07-transformers-deep-dive/15-attention-variants/docs/en.md",
+          "desc": "Full attention is a circle. Every token sees every token, and memory pays the price. Three variants bend the shape of the circle and recover half the cost."
+        },
+        {
+          "title": "Speculative Decoding — Draft, Verify, Repeat",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F07-transformers-deep-dive%2F16-speculative-decoding",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/07-transformers-deep-dive/16-speculative-decoding/docs/en.md",
+          "desc": "Autoregressive decoding is serial. Each token waits for the previous one. Speculative decoding breaks the chain: a cheap model drafts N tokens, the expensive model verifies all …"
+        }
+      ]
+    },
+    {
+      "phase_num": 8,
+      "phase_title": "Generative AI",
+      "lessons_count": 15,
+      "lessons": [
+        {
+          "title": "Generative Models: Taxonomy & History",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F08-generative-ai%2F01-generative-models-taxonomy-history",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/08-generative-ai/01-generative-models-taxonomy-history/docs/en.md",
+          "desc": "Every image model, text model, video model, and 3D model fits in one of five buckets. Pick the wrong bucket and you will fight the math for weeks. Pick the right one and the fie…"
+        },
+        {
+          "title": "Autoencoders & VAE",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F08-generative-ai%2F02-autoencoders-vae",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/08-generative-ai/02-autoencoders-vae/docs/en.md",
+          "desc": "A plain autoencoder compresses then reconstructs. It memorizes. It does not generate. Add one trick — force the code to look Gaussian — and you get a sampler. That single trick,…"
+        },
+        {
+          "title": "GANs: Generator vs Discriminator",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F08-generative-ai%2F03-gans-generator-discriminator",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/08-generative-ai/03-gans-generator-discriminator/docs/en.md",
+          "desc": "Goodfellow's trick in 2014 was to skip density entirely. Two networks. One makes fakes. One catches them. They fight until the fakes are indistinguishable from real. It shouldn'…"
+        },
+        {
+          "title": "Conditional GANs & Pix2Pix",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F08-generative-ai%2F04-conditional-gans-pix2pix",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/08-generative-ai/04-conditional-gans-pix2pix/docs/en.md",
+          "desc": "The first big unlock of 2014-2017 was controlling what a GAN makes. Attach a label, or an image, or a sentence. Pix2Pix did the image version and it still beats every generic te…"
+        },
+        {
+          "title": "StyleGAN",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F08-generative-ai%2F05-stylegan",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/08-generative-ai/05-stylegan/docs/en.md",
+          "desc": "Most generators stir $z$ into every layer at the same time. StyleGAN split it apart: first map $z$ to an intermediate $w$, then *inject* $w$ at every resolution level through Ad…"
+        },
+        {
+          "title": "Diffusion Models — DDPM from Scratch",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F08-generative-ai%2F06-diffusion-ddpm-from-scratch",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/08-generative-ai/06-diffusion-ddpm-from-scratch/docs/en.md",
+          "desc": "Ho, Jain, Abbeel (2020) gave the field a recipe it could not quit. Destroy the data with noise over a thousand small steps. Train one neural net to predict the noise. Reverse th…"
+        },
+        {
+          "title": "Latent Diffusion & Stable Diffusion",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F08-generative-ai%2F07-latent-diffusion-stable-diffusion",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/08-generative-ai/07-latent-diffusion-stable-diffusion/docs/en.md",
+          "desc": "Pixel-space diffusion on 512×512 images is a computational war crime. Rombach et al. (2022) noticed that you do not need all 786k dimensions to generate an image — you need enou…"
+        },
+        {
+          "title": "ControlNet, LoRA & Conditioning",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F08-generative-ai%2F08-controlnet-lora-conditioning",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/08-generative-ai/08-controlnet-lora-conditioning/docs/en.md",
+          "desc": "Text alone is a clumsy control signal. ControlNet lets you clone a pretrained diffusion model and steer it with a depth map, pose skeleton, scribble, or edge image. LoRA lets yo…"
+        },
+        {
+          "title": "Inpainting, Outpainting & Editing",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F08-generative-ai%2F09-inpainting-outpainting-editing",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/08-generative-ai/09-inpainting-outpainting-editing/docs/en.md",
+          "desc": "Text-to-image makes new things. Inpainting fixes old ones. In production, 70% of billable image work is editing — swap a background, remove a logo, extend the canvas, regenerate…"
+        },
+        {
+          "title": "Video Generation",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F08-generative-ai%2F10-video-generation",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/08-generative-ai/10-video-generation/docs/en.md",
+          "desc": "An image is a 2-D tensor. A video is a 3-D one. The theory is the same; the compute is 10-100x harder. OpenAI's Sora (Feb 2024) proved it was possible. By 2026 Veo 2, Kling 1.5,…"
+        },
+        {
+          "title": "Audio Generation",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F08-generative-ai%2F11-audio-generation",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/08-generative-ai/11-audio-generation/docs/en.md",
+          "desc": "Audio is a 1-D signal at 16-48 kHz. A five-second clip is 80-240k samples. No transformer attends to that sequence directly. The solution for every production audio model in 202…"
+        },
+        {
+          "title": "3D Generation",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F08-generative-ai%2F12-3d-generation",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/08-generative-ai/12-3d-generation/docs/en.md",
+          "desc": "3D is the modality where 2D-to-3D leverage is strongest. The 2023 breakthrough was 3D Gaussian Splatting. The 2024-2026 generative push layers multi-view diffusion + 3D reconstr…"
+        },
+        {
+          "title": "Flow Matching & Rectified Flows",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F08-generative-ai%2F13-flow-matching-rectified-flows",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/08-generative-ai/13-flow-matching-rectified-flows/docs/en.md",
+          "desc": "Diffusion models take 20-50 sampling steps because they walk a curved path from noise to data. Flow matching (Lipman et al., 2023) and rectified flow (Liu et al., 2022) trained …"
+        },
+        {
+          "title": "Evaluation: FID, CLIP Score",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F08-generative-ai%2F14-evaluation-fid-clip-score",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/08-generative-ai/14-evaluation-fid-clip-score/docs/en.md",
+          "desc": "Every generative model leaderboard cites FID, CLIP score, and a win rate from a human-preference arena. Each number has a failure mode a determined researcher can game. If you d…"
+        },
+        {
+          "title": "Visual Autoregressive Modeling (VAR): Next-Scale Prediction",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F08-generative-ai%2F19-visual-autoregressive-var",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/08-generative-ai/19-visual-autoregressive-var/docs/en.md",
+          "desc": "Diffusion models sample iteratively in time (denoising steps). VAR samples iteratively in scale — it predicts a 1x1 token, then 2x2, then 4x4, up to the final resolution, each s…"
+        }
+      ]
+    },
+    {
+      "phase_num": 9,
+      "phase_title": "Reinforcement Learning",
+      "lessons_count": 12,
+      "lessons": [
+        {
+          "title": "MDPs, States, Actions & Rewards",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F09-reinforcement-learning%2F01-mdps-states-actions-rewards",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/09-reinforcement-learning/01-mdps-states-actions-rewards/docs/en.md",
+          "desc": "A Markov Decision Process is five things: states, actions, transitions, rewards, a discount. Everything in RL — Q-learning, PPO, DPO, GRPO — optimizes over this shape. Learn it …"
+        },
+        {
+          "title": "Dynamic Programming",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F09-reinforcement-learning%2F02-dynamic-programming",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/09-reinforcement-learning/02-dynamic-programming/docs/en.md",
+          "desc": "Dynamic programming is RL with cheating. You already know the transition and reward functions; you just iterate the Bellman equation until $V$ or $\\pi$ stops moving. It is the b…"
+        },
+        {
+          "title": "Monte Carlo Methods",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F09-reinforcement-learning%2F03-monte-carlo-methods",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/09-reinforcement-learning/03-monte-carlo-methods/docs/en.md",
+          "desc": "Dynamic programming needs a model. Monte Carlo needs nothing but episodes. Run the policy, watch the returns, average them. The simplest idea in RL — and the one that unlocks ev…"
+        },
+        {
+          "title": "Q-Learning, SARSA",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F09-reinforcement-learning%2F04-q-learning-sarsa",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/09-reinforcement-learning/04-q-learning-sarsa/docs/en.md",
+          "desc": "Monte Carlo waits until the episode ends. TD updates after every step by bootstrapping the next value estimate. Q-learning is off-policy and optimistic; SARSA is on-policy and c…"
+        },
+        {
+          "title": "Deep Q-Networks (DQN)",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F09-reinforcement-learning%2F05-dqn",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/09-reinforcement-learning/05-dqn/docs/en.md",
+          "desc": "2013: Mnih trained one Q-learning network on raw pixels, beat every classical RL agent on seven Atari games. 2015: extended to 49 games, published in Nature, sparked the deep-RL…"
+        },
+        {
+          "title": "Policy Gradients — REINFORCE",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F09-reinforcement-learning%2F06-policy-gradients-reinforce",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/09-reinforcement-learning/06-policy-gradients-reinforce/docs/en.md",
+          "desc": "Stop estimating value. Parameterize the policy directly, compute the gradient of expected return, step uphill. Williams (1992) wrote it in one theorem. It is why PPO, GRPO, and …"
+        },
+        {
+          "title": "Actor-Critic — A2C, A3C",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F09-reinforcement-learning%2F07-actor-critic-a2c-a3c",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/09-reinforcement-learning/07-actor-critic-a2c-a3c/docs/en.md",
+          "desc": "REINFORCE is noisy. Add a critic that learns $\\hat{V}(s)$, subtract it from the return, and you get an advantage that has the same expectation but far lower variance. That is ac…"
+        },
+        {
+          "title": "PPO",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F09-reinforcement-learning%2F08-ppo",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/09-reinforcement-learning/08-ppo/docs/en.md",
+          "desc": "A2C throws away each rollout after one update. PPO wraps the policy gradient in a clipped importance ratio so you can do 10+ epochs on the same data without the policy exploding…"
+        },
+        {
+          "title": "Reward Modeling & RLHF",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F09-reinforcement-learning%2F09-reward-modeling-rlhf",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/09-reinforcement-learning/09-reward-modeling-rlhf/docs/en.md",
+          "desc": "Humans cannot write a reward function for \"good assistant response,\" but they can compare two responses and pick the better one. Fit a reward model to those comparisons, then RL…"
+        },
+        {
+          "title": "Multi-Agent RL",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F09-reinforcement-learning%2F10-multi-agent-rl",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/09-reinforcement-learning/10-multi-agent-rl/docs/en.md",
+          "desc": "Single-agent RL assumes the environment is stationary. Put two learning agents in the same world and that assumption breaks: each agent is part of the other's environment, and b…"
+        },
+        {
+          "title": "Sim-to-Real Transfer",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F09-reinforcement-learning%2F11-sim-to-real-transfer",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/09-reinforcement-learning/11-sim-to-real-transfer/docs/en.md",
+          "desc": "A policy trained in a simulator that fails on hardware is a policy that memorized the simulator. Domain randomization, domain adaptation, and system identification are the three…"
+        },
+        {
+          "title": "RL for Games",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F09-reinforcement-learning%2F12-rl-for-games",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/09-reinforcement-learning/12-rl-for-games/docs/en.md",
+          "desc": "1992: TD-Gammon beat human champions at backgammon with pure TD. 2016: AlphaGo beat Lee Sedol. 2017: AlphaZero dominated chess, shogi, and Go from scratch. 2025: DeepSeek-R1 pro…"
+        }
+      ]
+    },
+    {
+      "phase_num": 10,
+      "phase_title": "LLMs from Scratch",
+      "lessons_count": 24,
+      "lessons": [
+        {
+          "title": "Tokenizers: BPE, WordPiece, SentencePiece",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F10-llms-from-scratch%2F01-tokenizers",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/01-tokenizers/docs/en.md",
+          "desc": "Your LLM does not read English. It reads integers. The tokenizer decides whether those integers carry meaning or waste it."
+        },
+        {
+          "title": "Building a Tokenizer from Scratch",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F10-llms-from-scratch%2F02-building-a-tokenizer",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/02-building-a-tokenizer/docs/en.md",
+          "desc": "Lesson 01 gave you a toy. This lesson gives you a weapon."
+        },
+        {
+          "title": "Data Pipelines for Pre-Training",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F10-llms-from-scratch%2F03-data-pipelines",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/03-data-pipelines/docs/en.md",
+          "desc": "The model is a mirror. It reflects whatever data you feed it. Feed it garbage, it reflects garbage with perfect fluency."
+        },
+        {
+          "title": "Pre-Training a Mini GPT (124M)",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F10-llms-from-scratch%2F04-pre-training-mini-gpt",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/04-pre-training-mini-gpt/docs/en.md",
+          "desc": "GPT-2 Small has 124 million parameters. That's 12 transformer layers, 12 attention heads, and 768-dimensional embeddings. You can train it from scratch on a single GPU in a few …"
+        },
+        {
+          "title": "Distributed Training, FSDP, DeepSpeed",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F10-llms-from-scratch%2F05-scaling-distributed",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/05-scaling-distributed/docs/en.md",
+          "desc": "Your 124M model trained on one GPU. Now try 7 billion parameters. The model doesn't fit in memory. The data takes weeks on a single machine. Distributed training isn't optional …"
+        },
+        {
+          "title": "Instruction Tuning — SFT",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F10-llms-from-scratch%2F06-instruction-tuning-sft",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/06-instruction-tuning-sft/docs/en.md",
+          "desc": "A base model predicts the next token. That's it. It doesn't follow instructions, answer questions, or refuse harmful requests. SFT is the bridge between a token predictor and a …"
+        },
+        {
+          "title": "RLHF — Reward Model + PPO",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F10-llms-from-scratch%2F07-rlhf",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/07-rlhf/docs/en.md",
+          "desc": "SFT teaches the model to follow instructions. But it doesn't teach the model which response is BETTER. Two grammatically correct, factually accurate answers can differ enormousl…"
+        },
+        {
+          "title": "DPO — Direct Preference Optimization",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F10-llms-from-scratch%2F08-dpo",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/08-dpo/docs/en.md",
+          "desc": "RLHF works. It also requires training three models (SFT, reward model, policy), managing PPO's instability, and tuning a KL penalty. DPO asks: what if you could skip all of that…"
+        },
+        {
+          "title": "Constitutional AI & Self-Improvement",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F10-llms-from-scratch%2F09-constitutional-ai-self-improvement",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/09-constitutional-ai-self-improvement/docs/en.md",
+          "desc": "RLHF needs humans in the loop. Constitutional AI replaces most of them with the model itself. Write a list of principles, have the model critique its own outputs against those p…"
+        },
+        {
+          "title": "Evaluation — Benchmarks, Evals",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F10-llms-from-scratch%2F10-evaluation",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/10-evaluation/docs/en.md",
+          "desc": "Goodhart's Law: when a measure becomes a target, it ceases to be a good measure. Every frontier lab games benchmarks. MMLU scores go up while models still can't reliably count t…"
+        },
+        {
+          "title": "Quantization: INT8, GPTQ, AWQ, GGUF",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F10-llms-from-scratch%2F11-quantization",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/11-quantization/docs/en.md",
+          "desc": "A 70B model in FP16 needs 140GB. Two A100s just for weights. Quantize to FP8: one 80GB GPU. INT4: a MacBook."
+        },
+        {
+          "title": "Inference Optimization",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F10-llms-from-scratch%2F12-inference-optimization",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/12-inference-optimization/docs/en.md",
+          "desc": "Two phases define LLM inference. Prefill processes your prompt in parallel -- compute-bound. Decode generates tokens one at a time -- memory-bound. Every optimization targets on…"
+        },
+        {
+          "title": "Building a Complete LLM Pipeline",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F10-llms-from-scratch%2F13-building-complete-llm-pipeline",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/13-building-complete-llm-pipeline/docs/en.md",
+          "desc": "Everything from Lessons 01 to 12 is one stage of one pipeline. This lesson is the scaffold that turns those stages into a single end-to-end run: tokenize, pre-train, scale, SFT,…"
+        },
+        {
+          "title": "Open Models: Architecture Walkthroughs",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F10-llms-from-scratch%2F14-open-models-architecture-walkthroughs",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/14-open-models-architecture-walkthroughs/docs/en.md",
+          "desc": "You built a GPT-2 Small from scratch in Lesson 04. Frontier open models in 2026 are the same family with five or six concrete changes. RMSNorm instead of LayerNorm. SwiGLU inste…"
+        },
+        {
+          "title": "Speculative Decoding and EAGLE-3",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F10-llms-from-scratch%2F15-speculative-decoding-eagle3",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/15-speculative-decoding-eagle3/docs/en.md",
+          "desc": "Phase 7 · Lesson 16 proved the math: the Leviathan rejection rule preserves the verifier's distribution exactly. This lesson is the training-stack view of 2026 production specul…"
+        },
+        {
+          "title": "Differential Attention (V2)",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F10-llms-from-scratch%2F16-differential-attention-v2",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/16-differential-attention-v2/docs/en.md",
+          "desc": "Softmax attention spreads a small amount of probability over every non-matching token. Over 100k tokens that noise adds up and drowns the signal. Differential Transformer (Ye et…"
+        },
+        {
+          "title": "Native Sparse Attention (DeepSeek NSA)",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F10-llms-from-scratch%2F17-native-sparse-attention",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/17-native-sparse-attention/docs/en.md",
+          "desc": "At 64k tokens, attention eats 70-80% of decode latency. Every open-model lab has a plan to fix it. DeepSeek's NSA (ACL 2025 best paper) is the one that stuck: three parallel att…"
+        },
+        {
+          "title": "Multi-Token Prediction (MTP)",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F10-llms-from-scratch%2F18-multi-token-prediction",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/18-multi-token-prediction/docs/en.md",
+          "desc": "Every autoregressive LLM from GPT-2 to Llama 3 trains on one loss per position: predict the next token. DeepSeek-V3 added a second loss per position: predict the token after tha…"
+        },
+        {
+          "title": "DualPipe Parallelism",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F10-llms-from-scratch%2F19-dualpipe-parallelism",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/19-dualpipe-parallelism/docs/en.md",
+          "desc": "DeepSeek-V3 was trained on 2,048 H800 GPUs with MoE experts scattered across nodes. Cross-node expert all-to-all communication cost 1 GPU-hour of comm for every 1 GPU-hour of co…"
+        },
+        {
+          "title": "DeepSeek-V3 Architecture Walkthrough",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F10-llms-from-scratch%2F20-deepseek-v3-walkthrough",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/20-deepseek-v3-walkthrough/docs/en.md",
+          "desc": "Phase 10 · Lesson 14 named the six architectural knobs every open model turns. DeepSeek-V3 (December 2024, 671B parameters total, 37B active) turns all six and adds four more: M…"
+        },
+        {
+          "title": "Jamba — Hybrid SSM-Transformer",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F10-llms-from-scratch%2F21-jamba-hybrid-ssm-transformer",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/21-jamba-hybrid-ssm-transformer/docs/en.md",
+          "desc": "State space models (SSMs) and transformers want different things. Transformers buy quality via attention at quadratic cost. SSMs buy linear-time inference and constant memory vi…"
+        },
+        {
+          "title": "Async and Hogwild! Inference",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F10-llms-from-scratch%2F22-async-hogwild-inference",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/22-async-hogwild-inference/docs/en.md",
+          "desc": "Speculative decoding (Phase 10 · 15) parallelizes tokens within one sequence. Multi-agent frameworks parallelize across whole sequences but force explicit coordination (voting, …"
+        },
+        {
+          "title": "Speculative Decoding and EAGLE",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F10-llms-from-scratch%2F25-speculative-decoding",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/25-speculative-decoding/docs/en.md",
+          "desc": "A frontier LLM generating one token requires a full forward pass over billions of parameters. That forward pass is massively over-provisioned: most of the time a much smaller mo…"
+        },
+        {
+          "title": "Gradient Checkpointing and Activation Recomputation",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F10-llms-from-scratch%2F34-gradient-checkpointing",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/10-llms-from-scratch/34-gradient-checkpointing/docs/en.md",
+          "desc": "Backprop keeps every intermediate activation. At 70B parameters and 128K context that is 3 TB of activations per rank. Checkpointing trades FLOPs for memory: recompute instead o…"
+        }
+      ]
+    },
+    {
+      "phase_num": 11,
+      "phase_title": "LLM Engineering",
+      "lessons_count": 17,
+      "lessons": [
+        {
+          "title": "Prompt Engineering: Techniques & Patterns",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F11-llm-engineering%2F01-prompt-engineering",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/11-llm-engineering/01-prompt-engineering/docs/en.md",
+          "desc": "Most people write prompts like they are texting a friend. Then they wonder why a 200-billion parameter model gives mediocre answers. Prompt engineering is not about tricks. It i…"
+        },
+        {
+          "title": "Few-Shot, CoT, Tree-of-Thought",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F11-llm-engineering%2F02-few-shot-cot",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/11-llm-engineering/02-few-shot-cot/docs/en.md",
+          "desc": "Telling a model what to do is prompting. Showing it how to think is engineering. The gap between 78% and 91% accuracy on the same model, same task, same data is not a better mod…"
+        },
+        {
+          "title": "Structured Outputs",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F11-llm-engineering%2F03-structured-outputs",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/11-llm-engineering/03-structured-outputs/docs/en.md",
+          "desc": "Your LLM returns a string. Your application needs JSON. That gap has crashed more production systems than any model hallucination. Structured output is the bridge between natura…"
+        },
+        {
+          "title": "Embeddings & Vector Representations",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F11-llm-engineering%2F04-embeddings",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/11-llm-engineering/04-embeddings/docs/en.md",
+          "desc": "Text is discrete. Math is continuous. Every time you ask an LLM to find \"similar\" documents, compare meanings, or search beyond keywords, you're relying on a bridge between thes…"
+        },
+        {
+          "title": "Context Engineering",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F11-llm-engineering%2F05-context-engineering",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/11-llm-engineering/05-context-engineering/docs/en.md",
+          "desc": "Prompt engineering is a subset. Context engineering is the whole game. A prompt is a string you type. Context is everything that goes into the model's window: system instruction…"
+        },
+        {
+          "title": "RAG: Retrieval-Augmented Generation",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F11-llm-engineering%2F06-rag",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/11-llm-engineering/06-rag/docs/en.md",
+          "desc": "Your LLM knows everything up to its training cutoff. It knows nothing about your company's docs, your codebase, or last week's meeting notes. RAG solves this by retrieving relev…"
+        },
+        {
+          "title": "Advanced RAG: Chunking, Reranking",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F11-llm-engineering%2F07-advanced-rag",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/11-llm-engineering/07-advanced-rag/docs/en.md",
+          "desc": "Basic RAG retrieves the top-k most similar chunks. That works for simple questions. It falls apart for multi-hop reasoning, ambiguous queries, and large corpora. Advanced RAG is…"
+        },
+        {
+          "title": "Fine-Tuning with LoRA & QLoRA",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F11-llm-engineering%2F08-fine-tuning-lora",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/11-llm-engineering/08-fine-tuning-lora/docs/en.md",
+          "desc": "Full fine-tuning a 7B model requires 56GB of VRAM. You don't have that. Neither do most companies. LoRA lets you fine-tune the same model in 6GB by training less than 1% of the …"
+        },
+        {
+          "title": "Function Calling & Tool Use",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F11-llm-engineering%2F09-function-calling",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/11-llm-engineering/09-function-calling/docs/en.md",
+          "desc": "LLMs cannot do anything. They generate text. That is the entire capability. They cannot check the weather, query a database, send an email, run code, or read a file. Every \"AI a…"
+        },
+        {
+          "title": "Evaluation & Testing",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F11-llm-engineering%2F10-evaluation",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/11-llm-engineering/10-evaluation/docs/en.md",
+          "desc": "You would never deploy a web app without tests. You would never ship a database migration without a rollback plan. But right now, most teams ship LLM applications by reading 10 …"
+        },
+        {
+          "title": "Caching, Rate Limiting & Cost",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F11-llm-engineering%2F11-caching-cost",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/11-llm-engineering/11-caching-cost/docs/en.md",
+          "desc": "Most AI startups do not die from bad models. They die from bad unit economics. A single GPT-4o call costs fractions of a cent. Ten thousand users making ten calls per day costs …"
+        },
+        {
+          "title": "Guardrails & Safety",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F11-llm-engineering%2F12-guardrails",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/11-llm-engineering/12-guardrails/docs/en.md",
+          "desc": "Your LLM application will be attacked. Not might. Will. The first prompt injection attempt against your production system will come within 48 hours of launch. The question is no…"
+        },
+        {
+          "title": "Building a Production LLM App",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F11-llm-engineering%2F13-production-app",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/11-llm-engineering/13-production-app/docs/en.md",
+          "desc": "You have built prompts, embeddings, RAG pipelines, function calling, caching layers, and guardrails. Separately. In isolation. Like practicing guitar scales without ever playing…"
+        },
+        {
+          "title": "Model Context Protocol (MCP)",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F11-llm-engineering%2F14-model-context-protocol",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/11-llm-engineering/14-model-context-protocol/docs/en.md",
+          "desc": "MCP gives an AI host one protocol for discovering and invoking tools, resources, and prompts. The 2026-07-28 revision makes that protocol stateless: capability and version conte…"
+        },
+        {
+          "title": "Prompt Caching & Context Caching",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F11-llm-engineering%2F15-prompt-caching",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/11-llm-engineering/15-prompt-caching/docs/en.md",
+          "desc": "Your system prompt is 4,000 tokens. Your RAG context is 20,000 tokens. You send both with every request. You also pay for both — every time. Prompt caching lets the provider kee…"
+        },
+        {
+          "title": "Agent State Machines — Graphs, Nodes, Checkpoints",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F11-llm-engineering%2F16-langgraph-state-machines",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/11-llm-engineering/16-langgraph-state-machines/docs/en.md",
+          "desc": "A ReAct loop written by hand is a `while True`. The same loop written as an explicit graph is something you can checkpoint, interrupt, branch, and time-travel through. The agent…"
+        },
+        {
+          "title": "Agent Framework Tradeoffs",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F11-llm-engineering%2F17-agent-framework-tradeoffs",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/11-llm-engineering/17-agent-framework-tradeoffs/docs/en.md",
+          "desc": "Every framework sells the same demo (research agent builds a report) and hides the same bug (state schema fights with the orchestration layer). Pick the framework whose abstract…"
+        }
+      ]
+    },
+    {
+      "phase_num": 12,
+      "phase_title": "Multimodal AI",
+      "lessons_count": 25,
+      "lessons": [
+        {
+          "title": "Vision Transformers and the Patch-Token Primitive",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F12-multimodal-ai%2F01-vision-transformer-patch-tokens",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/01-vision-transformer-patch-tokens/docs/en.md",
+          "desc": "Before anything multimodal, an image has to become a sequence of tokens a transformer can eat. The 2020 ViT paper answered this with 16x16 pixel patches, a linear projection, an…"
+        },
+        {
+          "title": "CLIP and Contrastive Vision-Language Pretraining",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F12-multimodal-ai%2F02-clip-contrastive-pretraining",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/02-clip-contrastive-pretraining/docs/en.md",
+          "desc": "OpenAI's CLIP (2021) proved a single idea big enough to power the next five years: align an image encoder and a text encoder in the same vector space using only noisy web image-…"
+        },
+        {
+          "title": "BLIP-2 Q-Former as Modality Bridge",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F12-multimodal-ai%2F03-blip2-qformer-bridge",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/03-blip2-qformer-bridge/docs/en.md",
+          "desc": "CLIP aligns image and text but cannot generate captions, answer questions, or hold a conversation. BLIP-2 (Salesforce, 2023) solved that with a small trainable bridge: 32 learna…"
+        },
+        {
+          "title": "Flamingo and Gated Cross-Attention",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F12-multimodal-ai%2F04-flamingo-gated-cross-attention",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/04-flamingo-gated-cross-attention/docs/en.md",
+          "desc": "DeepMind's Flamingo (2022) did two things before anyone else. It showed a single model could process arbitrarily interleaved sequences of images, videos, and text. And it showed…"
+        },
+        {
+          "title": "LLaVA and Visual Instruction Tuning",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F12-multimodal-ai%2F05-llava-visual-instruction-tuning",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/05-llava-visual-instruction-tuning/docs/en.md",
+          "desc": "LLaVA (April 2023) is the most copied multimodal architecture on the planet. It replaced BLIP-2's Q-Former with a 2-layer MLP, replaced Flamingo's gated cross-attention with nai…"
+        },
+        {
+          "title": "Any-Resolution Vision — Patch-n'-Pack and NaFlex",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F12-multimodal-ai%2F06-any-resolution-patch-n-pack",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/06-any-resolution-patch-n-pack/docs/en.md",
+          "desc": "Real images are not 224x224 squares. A receipt is 1:3, a chart is 16:9, a medical scan might be 4096x4096, a mobile screenshot is 9:19.5. The pre-2024 VLM answer — resize everyt…"
+        },
+        {
+          "title": "Open-Weight VLM Recipes: What Actually Matters",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F12-multimodal-ai%2F07-open-weight-vlm-recipes",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/07-open-weight-vlm-recipes/docs/en.md",
+          "desc": "The 2024-2026 open-weight VLM literature is a forest of ablation tables. Apple's MM1 tested 13 combinations of image encoder, connector, and data mix. Allen AI's Molmo proved de…"
+        },
+        {
+          "title": "LLaVA-OneVision: Single, Multi, Video",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F12-multimodal-ai%2F08-llava-onevision-single-multi-video",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/08-llava-onevision-single-multi-video/docs/en.md",
+          "desc": "Before LLaVA-OneVision (Li et al., August 2024) the open-VLM world had separate lineages: LLaVA-1.5 for single images, multi-image models like Mantis and VILA, video models like…"
+        },
+        {
+          "title": "Qwen-VL Family and Dynamic-FPS Video",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F12-multimodal-ai%2F09-qwen-vl-family-dynamic-fps",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/09-qwen-vl-family-dynamic-fps/docs/en.md",
+          "desc": "The Qwen-VL family — Qwen-VL (2023), Qwen2-VL (2024), Qwen2.5-VL (2025), Qwen3-VL (2025) — is the most influential open vision-language model lineage in 2026. Each generation ma…"
+        },
+        {
+          "title": "InternVL3 Native Multimodal Pretraining",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F12-multimodal-ai%2F10-internvl3-native-multimodal",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/10-internvl3-native-multimodal/docs/en.md",
+          "desc": "Every open VLM before InternVL3 followed the same three-step recipe: take a text LLM trained on trillions of text tokens, bolt on a vision encoder, then fine-tune the seams. Thi…"
+        },
+        {
+          "title": "Chameleon Early-Fusion Token-Only",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F12-multimodal-ai%2F11-chameleon-early-fusion-tokens",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/11-chameleon-early-fusion-tokens/docs/en.md",
+          "desc": "Every VLM we have seen so far keeps images and text separate. Visual tokens come from a vision encoder, flow into a projector, then meet text inside the LLM. The vision and text…"
+        },
+        {
+          "title": "Emu3 Next-Token Prediction for Generation",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F12-multimodal-ai%2F12-emu3-next-token-for-generation",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/12-emu3-next-token-for-generation/docs/en.md",
+          "desc": "BAAI's Emu3 (Wang et al., September 2024) is the 2024 result that should have ended the diffusion-versus-autoregressive debate. A single Llama-style decoder-only transformer, tr…"
+        },
+        {
+          "title": "Transfusion Autoregressive + Diffusion",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F12-multimodal-ai%2F13-transfusion-autoregressive-diffusion",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/13-transfusion-autoregressive-diffusion/docs/en.md",
+          "desc": "Chameleon and Emu3 bet everything on discrete tokens. They work, but the quantization bottleneck is visible — the image quality plateaus below continuous-space diffusion models.…"
+        },
+        {
+          "title": "Show-o Discrete-Diffusion Unified",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F12-multimodal-ai%2F14-show-o-discrete-diffusion-unified",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/14-show-o-discrete-diffusion-unified/docs/en.md",
+          "desc": "Transfusion mixes continuous and discrete representations. Show-o (Xie et al., August 2024) goes the other way: text tokens use causal next-token prediction, image tokens use ma…"
+        },
+        {
+          "title": "Janus-Pro Decoupled Encoders",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F12-multimodal-ai%2F15-janus-pro-decoupled-encoders",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/15-janus-pro-decoupled-encoders/docs/en.md",
+          "desc": "Unified multimodal models have an unavoidable tension. Understanding wants semantic features — SigLIP or DINOv2 output vectors rich with concept-level information. Generation wa…"
+        },
+        {
+          "title": "MIO Any-to-Any Streaming",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F12-multimodal-ai%2F16-mio-any-to-any-streaming",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/16-mio-any-to-any-streaming/docs/en.md",
+          "desc": "GPT-4o ships a product most open models cannot replicate: an agent that hears voice, sees video, and speaks back in real time. The open-ecosystem answer by late 2024 was MIO (Wa…"
+        },
+        {
+          "title": "Video-Language Temporal Grounding",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F12-multimodal-ai%2F17-video-language-temporal-grounding",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/17-video-language-temporal-grounding/docs/en.md",
+          "desc": "Video is not a stack of photos. A 5-second clip has causal ordering, action verbs, and event timing that an image model cannot represent. Video-LLaMA (Zhang et al., June 2023) s…"
+        },
+        {
+          "title": "Long-Video at Million-Token Context",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F12-multimodal-ai%2F18-long-video-million-token",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/18-long-video-million-token/docs/en.md",
+          "desc": "A 1-hour 4K video at 24 FPS, patched and embedded, produces on the order of 60 million tokens. A 2-hour podcast episode transcribed is 30,000 tokens. A full Blu-ray feature film…"
+        },
+        {
+          "title": "Audio-Language Models: Whisper to AF3",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F12-multimodal-ai%2F19-audio-language-whisper-to-af3",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/19-audio-language-whisper-to-af3/docs/en.md",
+          "desc": "Whisper (Radford et al., December 2022) settled speech recognition — 680k hours of weakly-supervised multilingual speech, a simple encoder-decoder transformer, a benchmark that …"
+        },
+        {
+          "title": "Omni Models: Thinker-Talker Streaming",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F12-multimodal-ai%2F20-omni-models-thinker-talker",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/20-omni-models-thinker-talker/docs/en.md",
+          "desc": "GPT-4o's product demo in May 2024 was disruptive not because of the underlying model but because of the product shape — a voice interface where you talk, the model sees what the…"
+        },
+        {
+          "title": "Embodied VLAs: RT-2, OpenVLA, π0, GR00T",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F12-multimodal-ai%2F21-embodied-vlas-openvla-pi0-groot",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/21-embodied-vlas-openvla-pi0-groot/docs/en.md",
+          "desc": "The first time a model read a recipe off a website and executed it in a kitchen robot was RT-2 (Google DeepMind, July 2023). RT-2 discretized actions as text tokens, co-fine-tun…"
+        },
+        {
+          "title": "Document and Diagram Understanding",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F12-multimodal-ai%2F22-document-diagram-understanding",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/22-document-diagram-understanding/docs/en.md",
+          "desc": "Documents are not photos. A PDF, scientific paper, invoice, or handwritten form has layout, tables, diagrams, footnotes, headers, and semantic structure that plain image underst…"
+        },
+        {
+          "title": "ColPali Vision-Native Document RAG",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F12-multimodal-ai%2F23-colpali-vision-native-rag",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/23-colpali-vision-native-rag/docs/en.md",
+          "desc": "Traditional RAG parses PDFs into text, splits into chunks, embeds chunks, stores vectors. Every step loses signal: OCR drops chart data, chunking breaks table rows, text embeddi…"
+        },
+        {
+          "title": "Multimodal RAG and Cross-Modal Retrieval",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F12-multimodal-ai%2F24-multimodal-rag-cross-modal",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/24-multimodal-rag-cross-modal/docs/en.md",
+          "desc": "Vision-native document RAG is one slice. Production multimodal RAG goes wider — retrieving across text, images, audio, and video for workflows like trip planning (\"find me a qui…"
+        },
+        {
+          "title": "Multimodal Agents and Computer-Use (Capstone)",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F12-multimodal-ai%2F25-multimodal-agents-computer-use",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/12-multimodal-ai/25-multimodal-agents-computer-use/docs/en.md",
+          "desc": "The 2026 frontier product is a multimodal agent that reads screenshots, clicks buttons, navigates web UIs, fills forms, and completes workflows end-to-end. SeeClick and CogAgent…"
+        }
+      ]
+    },
+    {
+      "phase_num": 13,
+      "phase_title": "Tools & Protocols",
+      "lessons_count": 45,
+      "lessons": [
+        {
+          "title": "The Tool Interface",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F13-tools-and-protocols%2F01-the-tool-interface",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/01-the-tool-interface/docs/en.md",
+          "desc": "A language model produces tokens. A program takes actions. The gap between those two is the tool interface: a contract that lets the model request an action and the host execute…"
+        },
+        {
+          "title": "Function Calling Deep Dive",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F13-tools-and-protocols%2F02-function-calling-deep-dive",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/02-function-calling-deep-dive/docs/en.md",
+          "desc": "The three frontier providers converged on the same tool-call loop in 2024 and then diverged on everything else. OpenAI uses `tools` and `tool_calls`. Anthropic uses `tool_use` a…"
+        },
+        {
+          "title": "Parallel and Streaming Tool Calls",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F13-tools-and-protocols%2F03-parallel-and-streaming-tool-calls",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/03-parallel-and-streaming-tool-calls/docs/en.md",
+          "desc": "Three independent weather lookups serialized is three round trips. Run them in parallel and total time collapses to the slowest single call. Every frontier provider now emits mu…"
+        },
+        {
+          "title": "Structured Output",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F13-tools-and-protocols%2F04-structured-output",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/04-structured-output/docs/en.md",
+          "desc": "\"Ask the model nicely to return JSON\" fails 5 to 15 percent of the time, even on frontier models. Structured outputs close that gap with constrained decoding: the model is liter…"
+        },
+        {
+          "title": "Tool Schema Design",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F13-tools-and-protocols%2F05-tool-schema-design",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/05-tool-schema-design/docs/en.md",
+          "desc": "A correct tool fails silently when the model cannot tell when to use it. Naming, descriptions, and parameter shapes drive 10 to 20 percentage-point swings in tool-selection accu…"
+        },
+        {
+          "title": "MCP Fundamentals: Stateless Requests and JSON-RPC",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F13-tools-and-protocols%2F06-mcp-fundamentals",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/06-mcp-fundamentals/docs/en.md",
+          "desc": "Modern MCP has no handshake and no protocol session. Each request must carry enough metadata to be understood, authorized, routed, and retried on its own."
+        },
+        {
+          "title": "Building an MCP Server: Stateless Python and TypeScript",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F13-tools-and-protocols%2F07-building-an-mcp-server",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/07-building-an-mcp-server/docs/en.md",
+          "desc": "A modern MCP server does not remember a handshake. It validates the metadata on every request, runs one handler, and returns one typed result."
+        },
+        {
+          "title": "Building an MCP Client: Discovery, Routing, and Dual-Era Fallback",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F13-tools-and-protocols%2F08-building-an-mcp-client",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/08-building-an-mcp-client/docs/en.md",
+          "desc": "A modern MCP client repeats its contract on every request. Its hardest compatibility decision is knowing when an old server is truly old and when a modern server is reporting a …"
+        },
+        {
+          "title": "MCP Transports: stdio and Stateless Streamable HTTP",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F13-tools-and-protocols%2F09-mcp-transports",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/09-mcp-transports/docs/en.md",
+          "desc": "Transport carries MCP messages. It does not supply missing protocol state. In `2026-07-28`, local stdio and remote Streamable HTTP both carry self-describing requests."
+        },
+        {
+          "title": "MCP Resources and Prompts: Addressable Context for Stateless Servers",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F13-tools-and-protocols%2F10-mcp-resources-and-prompts",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/10-mcp-resources-and-prompts/docs/en.md",
+          "desc": "Tools perform operations. Resources expose addressable content. Prompts package user-selected message templates. A good MCP server keeps those contracts separate and predictable."
+        },
+        {
+          "title": "MCP Model Input: Sampling Migration and Stateless MRTR",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F13-tools-and-protocols%2F11-mcp-sampling",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/11-mcp-sampling/docs/en.md",
+          "desc": "MCP 2026-07-28 deprecates Sampling for new designs and removes the server-to-client request channel. If an existing workflow still needs the client's model, the server returns a…"
+        },
+        {
+          "title": "Explicit Scope and Stateless Elicitation",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F13-tools-and-protocols%2F12-mcp-roots-and-elicitation",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/12-mcp-roots-and-elicitation/docs/en.md",
+          "desc": "Roots are deprecated in MCP 2026-07-28 and were never a security sandbox. Put scope in visible tool arguments or resource URIs, authorize it on the server, and use MRTR when a t…"
+        },
+        {
+          "title": "MCP Tasks Extension: Durable Work on a Stateless Core",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F13-tools-and-protocols%2F13-mcp-async-tasks",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/13-mcp-async-tasks/docs/en.md",
+          "desc": "Stateless MCP does not mean every operation must finish in one request. The official Tasks extension gives long-running work an explicit durable handle. A server can return that…"
+        },
+        {
+          "title": "MCP Apps on the Stateless Protocol",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F13-tools-and-protocols%2F14-mcp-apps",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/14-mcp-apps/docs/en.md",
+          "desc": "An interactive result is still an MCP tool and resource exchange. The 2026-07-28 core makes that exchange self-contained, while the Apps extension adds the sandboxed browser sur…"
+        },
+        {
+          "title": "MCP Security: Poisoned Metadata, Routing, and MRTR State",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F13-tools-and-protocols%2F15-mcp-security-tool-poisoning",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/15-mcp-security-tool-poisoning/docs/en.md",
+          "desc": "Stateless does not mean trustless. It means every request exposes the evidence a server and gateway need to validate the call independently."
+        },
+        {
+          "title": "MCP Authorization: CIMD, Issuer Binding, PKCE, and Step-Up",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F13-tools-and-protocols%2F16-mcp-security-oauth-2-1",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/16-mcp-security-oauth-2-1/docs/en.md",
+          "desc": "A remote MCP request is stateless, but its authorization is not anonymous. Bind every credential to the issuer that created it and every token to the resource that receives it."
+        },
+        {
+          "title": "Stateless MCP Gateways and Registry Admission",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F13-tools-and-protocols%2F17-mcp-gateways-and-registries",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/17-mcp-gateways-and-registries/docs/en.md",
+          "desc": "A gateway should make every route explicit. The 2026-07-28 protocol gives it method, name, version, capability, identity, cache, and trace boundaries without a transport session."
+        },
+        {
+          "title": "MCP Auth in Production: Issuer-Bound Enrollment and Tokens",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F13-tools-and-protocols%2F18-mcp-auth-production",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/18-mcp-auth-production/docs/en.md",
+          "desc": "Lesson 16 built the OAuth 2.1 state machine. This lesson hardens its production boundaries for MCP 2026-07-28: Client ID Metadata Documents first, deprecated dynamic registratio…"
+        },
+        {
+          "title": "A2A Protocol",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F13-tools-and-protocols%2F19-a2a-protocol",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/19-a2a-protocol/docs/en.md",
+          "desc": "MCP is agent-to-tool. A2A (Agent2Agent) is agent-to-agent — an open protocol for letting opaque agents built on different frameworks collaborate. Released by Google in April 202…"
+        },
+        {
+          "title": "OpenTelemetry GenAI",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F13-tools-and-protocols%2F20-opentelemetry-genai",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/20-opentelemetry-genai/docs/en.md",
+          "desc": "An agent calls five tools, three MCP servers, and two sub-agents. You need one trace across all of it. The OpenTelemetry GenAI semantic conventions (stable attributes in v1.37 a…"
+        },
+        {
+          "title": "LLM Routing Layer",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F13-tools-and-protocols%2F21-llm-routing-layer",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/21-llm-routing-layer/docs/en.md",
+          "desc": "Provider lock-in is expensive. Different tool-calling workloads suit different models. Routing gateways give one API surface, retries, failover, cost tracking, and guardrails. T…"
+        },
+        {
+          "title": "Agent Skills: Portable Contract and Runtime Boundary",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F13-tools-and-protocols%2F22-skills-and-agent-sdks",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/22-skills-and-agent-sdks/docs/en.md",
+          "desc": "A skill is not a long prompt with a better filename. It is a discoverable package of instructions, resources, and executable helpers that enters an agent's context through a run…"
+        },
+        {
+          "title": "Capstone: Stateless Tool Ecosystem",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F13-tools-and-protocols%2F23-capstone-tool-ecosystem",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/23-capstone-tool-ecosystem/docs/en.md",
+          "desc": "A production agent system is a set of boundaries, not a pile of features. This capstone separates a readable in-process simulation from the protocol clients, authorization serve…"
+        },
+        {
+          "title": "Skill Discovery and Progressive Disclosure",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F13-tools-and-protocols%2F24-skill-discovery-and-progressive-disclosure",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/24-skill-discovery-and-progressive-disclosure/docs/en.md",
+          "desc": "A skill becomes useful before its body is loaded. Its name and description earn a place in the catalog; its deeper files earn context only when the task reaches them."
+        },
+        {
+          "title": "Skill Invocation and Routing",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F13-tools-and-protocols%2F25-skill-invocation-and-routing",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/25-skill-invocation-and-routing/docs/en.md",
+          "desc": "Invocation is an authority decision followed by a relevance decision. A good description helps the model choose; a good policy decides whether that choice is allowed."
+        },
+        {
+          "title": "Skill Permissions, Sandboxes, and Trust",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F13-tools-and-protocols%2F26-skill-permissions-sandboxes-and-trust",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/26-skill-permissions-sandboxes-and-trust/docs/en.md",
+          "desc": "A skill can suggest an action. Only the host can authorize it, only an isolation boundary can contain it, and only verification can tell you whether it worked."
+        },
+        {
+          "title": "Skill Evals, Packaging, and Portability",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F13-tools-and-protocols%2F27-skill-evals-packaging-and-portability",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/27-skill-evals-packaging-and-portability/docs/en.md",
+          "desc": "A skill is finished when its package survives linting, routes on the right requests, improves a measured task, stays inside policy, and degrades honestly on another host."
+        },
+        {
+          "title": "MCP Tool Contracts and Content",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F13-tools-and-protocols%2F28-mcp-tool-contracts-and-content",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/28-mcp-tool-contracts-and-content/docs/en.md",
+          "desc": "A tool is safe to automate only when discovery, arguments, results, pagination, and transport metadata agree on one contract."
+        },
+        {
+          "title": "MCP Reliability, Cancellation, and Flow Control",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F13-tools-and-protocols%2F29-mcp-reliability-cancellation-and-flow-control",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/29-mcp-reliability-cancellation-and-flow-control/docs/en.md",
+          "desc": "A request ID correlates a message. It does not make a side effect safe, stop a worker, or protect a stream from a slow consumer."
+        },
+        {
+          "title": "MCP Registry Supply Chain: Admission, Drift, and Rollback",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F13-tools-and-protocols%2F30-mcp-registry-supply-chain-and-drift",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/30-mcp-registry-supply-chain-and-drift/docs/en.md",
+          "desc": "A registry entry tells you what a publisher declared. Production admission proves what you fetched, what you observed, what you approved, and what you can safely restore."
+        },
+        {
+          "title": "MCP Conformance Engineering: Versioning, Evidence, and Operations",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F13-tools-and-protocols%2F31-mcp-conformance-versioning-and-operations",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/31-mcp-conformance-versioning-and-operations/docs/en.md",
+          "desc": "A server is not conformant because its happy path worked through one SDK. Conformance lives at the wire, at version boundaries, through intermediaries, and during rollback."
+        },
+        {
+          "title": "Program Anatomy: An ELF Reader From Scratch",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F13-tools-and-protocols%2F32-program-anatomy-elf-from-scratch",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/32-program-anatomy-elf-from-scratch/docs/en.md",
+          "desc": "A compiled program is a set of tables that point at each other. A reader you wrote gives output you can check byte by byte."
+        },
+        {
+          "title": "Disassembly and Control Flow: From Bytes to a Graph You Can Check",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F13-tools-and-protocols%2F33-disassembly-and-control-flow",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/33-disassembly-and-control-flow/docs/en.md",
+          "desc": "A disassembly listing is a claim about which bytes are instructions, and this lesson builds the decoder and graph that check the claim."
+        },
+        {
+          "title": "Lifting to Pseudocode: IR, SSA, and Structuring From Scratch",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F13-tools-and-protocols%2F34-lifting-to-pseudocode",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/34-lifting-to-pseudocode/docs/en.md",
+          "desc": "Decompiler output is a claim with a hidden derivation. When you build the derivation yourself, every line of that output becomes a thing you can check."
+        },
+        {
+          "title": "Evidence, Confidence, and Unknowns in Binary Analysis",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F13-tools-and-protocols%2F35-evidence-confidence-and-unknowns",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/35-evidence-confidence-and-unknowns/docs/en.md",
+          "desc": "A finding about a compiled program is a record with a hash, a confidence, an authority, and a list of what it cannot show."
+        },
+        {
+          "title": "Rebuild and Prove Equal: Differential Tests, Byte Comparison, and the Evidence Loop",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F13-tools-and-protocols%2F36-rebuild-and-prove-equal",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/36-rebuild-and-prove-equal/docs/en.md",
+          "desc": "Passing your tests proves agreement on your tests, so equality needs a grid that reaches every edge and bytes that match after relocation masking."
+        },
+        {
+          "title": "The Reverse Engineering Landscape: History, Tool Families, and How a Decompiler Is Built",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F13-tools-and-protocols%2F37-the-reverse-engineering-landscape",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/37-the-reverse-engineering-landscape/docs/en.md",
+          "desc": "Five tools read the same object and give four addresses, three block counts, and two answers for one switch, and this lesson builds the harness that shows which is which."
+        },
+        {
+          "title": "Calling Conventions and Stack Frames: System V, Windows x64, and AArch64",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F13-tools-and-protocols%2F38-calling-conventions-and-stack-frames",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/38-calling-conventions-and-stack-frames/docs/en.md",
+          "desc": "A disassembly shows which registers a function reads. Only the ABI says what those registers mean, and the ABI is chosen by the object header, so this lesson reads the header fi…"
+        },
+        {
+          "title": "Compiler Idioms: What Optimization Does to Your Code and How to Read It Back",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F13-tools-and-protocols%2F39-compiler-idioms-and-optimization",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/39-compiler-idioms-and-optimization/docs/en.md",
+          "desc": "An optimizing compiler replaces source constructs with cheaper instruction shapes. Each shape has a derivation, and this lesson builds the recognizer that runs the derivation ba…"
+        },
+        {
+          "title": "Linking, Loading, and Stripped Binaries: PLT, GOT, Imports, Fixups, and Function Identification",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F13-tools-and-protocols%2F40-linking-loading-and-stripped-binaries",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/40-linking-loading-and-stripped-binaries/docs/en.md",
+          "desc": "A linked program calls functions it does not contain. This lesson reads the tables the link editor wrote for those calls in three formats, follows one call to the slot the loade…"
+        },
+        {
+          "title": "Recovering Data and Types: Structs, Arrays, C++ Objects, and DWARF",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F13-tools-and-protocols%2F41-recovering-data-and-types",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/41-recovering-data-and-types/docs/en.md",
+          "desc": "A decompiler prints `a->balance` when it has a type table and `*(int *)(param_1 + 4)` when it does not. This lesson builds the table from the accesses, reads the real one from D…"
+        },
+        {
+          "title": "Dynamic Analysis of Your Own Program: Debuggers, Traces, and Confirming Static Claims",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F13-tools-and-protocols%2F42-dynamic-analysis-of-your-own-program",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/42-dynamic-analysis-of-your-own-program/docs/en.md",
+          "desc": "A breakpoint hit is an observation about one run of one build. This lesson builds the harness that turns those observations into confirmed, refuted, and not-observed verdicts on…"
+        },
+        {
+          "title": "Beyond Native Code: Python, JVM, .NET, and WebAssembly Bytecode",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F13-tools-and-protocols%2F43-bytecode-and-managed-formats",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/43-bytecode-and-managed-formats/docs/en.md",
+          "desc": "A bytecode file is a program plus the compiler's notes about it, and this lesson builds the readers that show which notes each container keeps."
+        },
+        {
+          "title": "Binary Diffing and Symbolic Execution: Matching Functions and Solving for Inputs",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F13-tools-and-protocols%2F44-binary-diffing-and-symbolic-execution",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/44-binary-diffing-and-symbolic-execution/docs/en.md",
+          "desc": "A match between two functions is a claim made by one signature with one quality, and a solved input is one model of one path condition; this lesson builds both and checks them a…"
+        },
+        {
+          "title": "AI-Assisted Reverse Engineering: LLM Decompilers, Analysis Agents, and Ground Truth",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F13-tools-and-protocols%2F45-ai-assisted-reverse-engineering",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/13-tools-and-protocols/45-ai-assisted-reverse-engineering/docs/en.md",
+          "desc": "A model's reconstruction is a claim with a report attached, and this lesson builds the harness that scores both against bytes, runs, and DWARF you own."
+        }
+      ]
+    },
+    {
+      "phase_num": 14,
+      "phase_title": "Agent Engineering",
+      "lessons_count": 54,
+      "lessons": [
+        {
+          "title": "The Agent Loop",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F01-the-agent-loop",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/01-the-agent-loop/docs/en.md",
+          "desc": "Every agent in 2026 is a variant of the ReAct loop from 2022 — Claude Code, Cursor, Devin, Operator included. Reasoning tokens interleave with tool calls and observations until …"
+        },
+        {
+          "title": "ReWOO and Plan-and-Execute",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F02-rewoo-plan-and-execute",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/02-rewoo-plan-and-execute/docs/en.md",
+          "desc": "ReAct interleaves thought and action in one stream. ReWOO separates them: one big plan up front, then execute. 5x fewer tokens, +4% accuracy on HotpotQA, and you can distill the…"
+        },
+        {
+          "title": "Reflexion and Verbal Reinforcement Learning",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F03-reflexion-verbal-rl",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/03-reflexion-verbal-rl/docs/en.md",
+          "desc": "Gradient-based RL needs thousands of trials and a GPU cluster to fix a failure mode. Reflexion (Shinn et al., NeurIPS 2023) does it in natural language: after each failed trial,…"
+        },
+        {
+          "title": "Tree of Thoughts and LATS",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F04-tree-of-thoughts-lats",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/04-tree-of-thoughts-lats/docs/en.md",
+          "desc": "A single chain-of-thought trajectory has no room to backtrack. ToT (Yao et al., 2023) turns reasoning into a tree with self-evaluation on each node. LATS (Zhou et al., 2024) uni…"
+        },
+        {
+          "title": "Self-Refine and CRITIC",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F05-self-refine-and-critic",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/05-self-refine-and-critic/docs/en.md",
+          "desc": "Self-Refine (Madaan et al., 2023) uses one LLM in three roles — generate, feedback, refine — in a loop. Average gain: +20 absolute on 7 tasks. CRITIC (Gou et al., 2023) hardens …"
+        },
+        {
+          "title": "Tool Use and Function Calling",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F06-tool-use-and-function-calling",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/06-tool-use-and-function-calling/docs/en.md",
+          "desc": "Toolformer (Schick et al., 2023) started self-supervised tool annotation. Berkeley Function Calling Leaderboard V4 (Patil et al., 2025) sets the 2026 bar: 40% agentic, 30% multi…"
+        },
+        {
+          "title": "Agent Memory — Virtual Context and Memory Paging",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F07-memory-virtual-context-memgpt",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/07-memory-virtual-context-memgpt/docs/en.md",
+          "desc": "Context windows are finite. Conversations, documents, and tool traces are not. The fix is OS virtual memory restated — main context is RAM, external store is disk, the agent pag…"
+        },
+        {
+          "title": "Memory Blocks and Sleep-Time Compute",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F08-memory-blocks-sleep-time-compute",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/08-memory-blocks-sleep-time-compute/docs/en.md",
+          "desc": "Discrete functional memory blocks the model can edit directly, and a sleep-time agent that consolidates memory asynchronously while the primary agent is idle. These two ideas ar…"
+        },
+        {
+          "title": "Hybrid Memory — Vector + Graph + KV",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F09-hybrid-memory-mem0",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/09-hybrid-memory-mem0/docs/en.md",
+          "desc": "Hybrid memory runs three stores in parallel — vector for semantic similarity, KV for fast fact lookup, graph for entity-relationship reasoning — with a scoring layer that fuses …"
+        },
+        {
+          "title": "Skill Libraries and Lifelong Learning (Voyager)",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F10-skill-libraries-voyager",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/10-skill-libraries-voyager/docs/en.md",
+          "desc": "Voyager (Wang et al., TMLR 2024) treats executable code as a skill. Skills are named, retrievable, composable, and refined by environment feedback. This is the reference archite…"
+        },
+        {
+          "title": "Planning with HTN and Evolutionary Search",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F11-planning-htn-and-evolutionary",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/11-planning-htn-and-evolutionary/docs/en.md",
+          "desc": "Symbolic planning handles the cases where the plan is provably correct. Evolutionary code search handles the cases where the fitness function is machine-checkable. ChatHTN (2025…"
+        },
+        {
+          "title": "Anthropic's Workflow Patterns",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F12-anthropic-workflow-patterns",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/12-anthropic-workflow-patterns/docs/en.md",
+          "desc": "Schluntz and Zhang (Anthropic, Dec 2024) distinguish workflows (predefined paths) from agents (dynamic tool-use). Five workflow patterns cover most cases. Start with direct API …"
+        },
+        {
+          "title": "Stateful Graph Orchestration — Durable Execution and Checkpoints",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F13-langgraph-stateful-graphs",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/13-langgraph-stateful-graphs/docs/en.md",
+          "desc": "Agent is a state machine; nodes are functions; edges are transitions; state is checkpointed after each node. Resume from any failure at the last successful checkpoint. LangGraph…"
+        },
+        {
+          "title": "The Actor Model for Agents",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F14-autogen-actor-model",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/14-autogen-actor-model/docs/en.md",
+          "desc": "Agents as actors: async message exchange, event-driven handlers, fault isolation, natural concurrency. AutoGen v0.4 (Microsoft Research, Jan 2025) redesigned agent orchestration…"
+        },
+        {
+          "title": "Role-Based Agent Teams — Roles, Tasks, Processes",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F15-crewai-role-based-crews",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/15-crewai-role-based-crews/docs/en.md",
+          "desc": "Four primitives: Agent, Task, Crew, Process. Two top-level shapes: Crews (autonomous, role-based collaboration) and Flows (event-driven, deterministic). CrewAI is the 2026 refer…"
+        },
+        {
+          "title": "OpenAI Agents SDK — Handoffs, Guardrails, Tracing",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F16-openai-agents-sdk",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/16-openai-agents-sdk/docs/en.md",
+          "desc": "OpenAI Agents SDK is the lightweight multi-agent framework built on the Responses API. Five primitives: Agent, Handoff, Guardrail, Session, Tracing. Handoffs are tools named `tr…"
+        },
+        {
+          "title": "The Harness as a Library — Subagents and Session Store",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F17-claude-agent-sdk",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/17-claude-agent-sdk/docs/en.md",
+          "desc": "A harness you can import: built-in tools, subagents for context isolation, hooks, W3C trace propagation, session persistence. The Claude Agent SDK is the reference example — the…"
+        },
+        {
+          "title": "Production Agent Runtimes",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F18-agno-and-mastra-runtimes",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/18-agno-and-mastra-runtimes/docs/en.md",
+          "desc": "A production agent runtime optimizes what prototyping frameworks ignore: instantiation cost, typed workflow surfaces, and a serving-ready backend. The 2026 pairing: Agno (Python…"
+        },
+        {
+          "title": "Benchmarks — SWE-bench, GAIA, AgentBench",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F19-benchmarks-swebench-gaia",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/19-benchmarks-swebench-gaia/docs/en.md",
+          "desc": "Three benchmarks anchor agent evaluation in 2026. SWE-bench tests code patching. GAIA tests generalist tool use. AgentBench tests multi-environment reasoning. Know their composi…"
+        },
+        {
+          "title": "Benchmarks — WebArena and OSWorld",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F20-benchmarks-webarena-osworld",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/20-benchmarks-webarena-osworld/docs/en.md",
+          "desc": "WebArena tests web-agent capability across four self-hosted apps. OSWorld tests desktop-agent capability across Ubuntu, Windows, macOS. At release (2023–2024) both showed a big …"
+        },
+        {
+          "title": "Computer Use — Claude, OpenAI CUA, Gemini",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F21-computer-use-agents",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/21-computer-use-agents/docs/en.md",
+          "desc": "Three production computer-use models in 2026. All three are vision-based. All three treat screenshots, DOM text, and tool outputs as untrusted input. Only direct user instructio…"
+        },
+        {
+          "title": "Voice Agents — Pipecat and LiveKit",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F22-voice-agents-pipecat-livekit",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/22-voice-agents-pipecat-livekit/docs/en.md",
+          "desc": "Voice agents are a first-class production category in 2026. Pipecat gives you a Python frame-based pipeline (VAD → STT → LLM → TTS → transport). LiveKit Agents bridges AI models…"
+        },
+        {
+          "title": "OpenTelemetry GenAI Semantic Conventions",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F23-otel-genai-conventions",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/23-otel-genai-conventions/docs/en.md",
+          "desc": "OpenTelemetry's GenAI SIG (launched April 2024) defines the standard schema for agent telemetry. Span names, attributes, and content-capture rules converge across vendors so age…"
+        },
+        {
+          "title": "Agent Observability — Langfuse, Phoenix, Opik",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F24-agent-observability-platforms",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/24-agent-observability-platforms/docs/en.md",
+          "desc": "Three self-hostable agent observability platforms dominate 2026. Langfuse (MIT) — 6M+ installs/month, tracing + prompt management + evals + session replay. Arize Phoenix (Elasti…"
+        },
+        {
+          "title": "Multi-Agent Debate and Collaboration",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F25-multi-agent-debate",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/25-multi-agent-debate/docs/en.md",
+          "desc": "Du et al. (ICML 2024, \"Society of Minds\") run N model instances that independently propose answers, then iteratively critique each other over R rounds to converge. Improves fact…"
+        },
+        {
+          "title": "Failure Modes — Why Agents Break",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F26-failure-modes-agentic",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/26-failure-modes-agentic/docs/en.md",
+          "desc": "MASFT (Berkeley, 2025) catalogs 14 multi-agent failure modes in 3 categories. Microsoft's Taxonomy documents how existing AI failures amplify in agentic settings. Industry field…"
+        },
+        {
+          "title": "Prompt Injection and the PVE Defense",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F27-prompt-injection-defense",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/27-prompt-injection-defense/docs/en.md",
+          "desc": "Greshake et al. (AISec 2023) established indirect prompt injection as the defining agent security problem. Attacker plants instructions in data the agent retrieves; on ingest, t…"
+        },
+        {
+          "title": "Orchestration Patterns — Supervisor, Swarm, Hierarchical",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F28-orchestration-patterns",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/28-orchestration-patterns/docs/en.md",
+          "desc": "Four orchestration patterns recur across 2026 frameworks: supervisor-worker, swarm / peer-to-peer, hierarchical, debate. Anthropic's guidance: \"It's about building the right sys…"
+        },
+        {
+          "title": "Production Runtimes — Queue, Event, Cron",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F29-production-runtimes",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/29-production-runtimes/docs/en.md",
+          "desc": "Production agents run on six runtime shapes: request-response, streaming, durable execution, queue-based background, event-driven, and scheduled. Pick the shape before you pick …"
+        },
+        {
+          "title": "Eval-Driven Agent Development",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F30-eval-driven-agent-development",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/30-eval-driven-agent-development/docs/en.md",
+          "desc": "Anthropic's guidance: \"start with simple prompts, optimize them with comprehensive evaluation, and add multi-step agentic systems only when needed.\" Evaluation is not the last s…"
+        },
+        {
+          "title": "Agent Workbench: Why Capable Models Still Fail",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F31-agent-workbench-why-models-fail",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/31-agent-workbench-why-models-fail/docs/en.md",
+          "desc": "A capable model is not enough. Reliable agents need a workbench: instructions, state, scope, feedback, verification, review, and handoff. Strip those away and even a frontier mo…"
+        },
+        {
+          "title": "The Minimal Agent Workbench",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F32-minimal-agent-workbench",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/32-minimal-agent-workbench/docs/en.md",
+          "desc": "The smallest useful workbench is three files: a root instructions router, a state file, and a task board. Everything else is layered on top. If a repo cannot carry these three, …"
+        },
+        {
+          "title": "Agent Instructions as Executable Constraints",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F33-instructions-as-executable-constraints",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/33-instructions-as-executable-constraints/docs/en.md",
+          "desc": "Instructions written as prose are wishes. Instructions written as constraints are tests. The workbench turns each rule into something an agent can check at runtime and a reviewe…"
+        },
+        {
+          "title": "Repo Memory and Durable State",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F34-repo-memory-and-state",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/34-repo-memory-and-state/docs/en.md",
+          "desc": "Chat history is volatile. The repo is durable. The workbench stores agent state in versioned files so the next session, the next agent, and the next reviewer all read from the s…"
+        },
+        {
+          "title": "Initialization Scripts for Agents",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F35-initialization-scripts",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/35-initialization-scripts/docs/en.md",
+          "desc": "Every session that starts cold pays a tax. The agent reads the same files, retries the same probes, and rediscovers the same paths. An init script pays the tax once and writes t…"
+        },
+        {
+          "title": "Scope Contracts and Task Boundaries",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F36-scope-contracts",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/36-scope-contracts/docs/en.md",
+          "desc": "The model does not know where the work ends. A scope contract is a per-task file that says where the work begins, where it ends, and how to roll back if it spills. The contract …"
+        },
+        {
+          "title": "Runtime Feedback Loops",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F37-runtime-feedback-loops",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/37-runtime-feedback-loops/docs/en.md",
+          "desc": "Agents that do not see real command output guess. A feedback runner captures stdout, stderr, exit code, and timing into a structured record the next turn can read. Then the agen…"
+        },
+        {
+          "title": "Verification Gates",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F38-verification-gates",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/38-verification-gates/docs/en.md",
+          "desc": "The agent does not get to mark its own work as done. A verification gate reads the scope contract, the feedback log, the rule report, and the diff, and answers a single question…"
+        },
+        {
+          "title": "Reviewer Agent: Separate Builder from Marker",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F39-reviewer-agent",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/39-reviewer-agent/docs/en.md",
+          "desc": "The agent that wrote the code cannot grade it. A reviewer is a second loop with a different system prompt, a different goal, and read-only access to everything the builder produ…"
+        },
+        {
+          "title": "Multi-Session Handoff",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F40-multi-session-handoff",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/40-multi-session-handoff/docs/en.md",
+          "desc": "The session is going to end. The work is not. The handoff packet is the artifact that turns \"the agent worked for an hour\" into \"the next session is productive in the first minu…"
+        },
+        {
+          "title": "The Workbench on a Real Repo",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F41-workbench-for-real-repos",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/41-workbench-for-real-repos/docs/en.md",
+          "desc": "Eleven lessons of workbench surfaces are worth nothing if they do not survive contact with a real codebase. This lesson runs the same task twice on a small sample app: prompt-on…"
+        },
+        {
+          "title": "Capstone: Ship a Reusable Agent Workbench Pack",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F42-agent-workbench-capstone",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/42-agent-workbench-capstone/docs/en.md",
+          "desc": "The mini-track ends with a pack you drop into any repo. Eleven lessons of surfaces compressed into a directory you can `cp -r` and have an agent working reliably the next mornin…"
+        },
+        {
+          "title": "Frame the Task Before the Agent Writes Code",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F43-frame-the-task-before-code",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/43-frame-the-task-before-code/docs/en.md",
+          "desc": "A coding agent can implement a clear task quickly. It can also implement an unclear task quickly. The speed is the same. The cost is not."
+        },
+        {
+          "title": "Build an Evidence-Backed Execution Plan",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F44-plan-from-evidence",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/44-plan-from-evidence/docs/en.md",
+          "desc": "A plan is not a prettier to-do list. It is a dependency graph in which every change has a reason and every terminal node has proof."
+        },
+        {
+          "title": "Delegate Agent Work with Isolation and Merge Contracts",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F45-delegate-with-isolation",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/45-delegate-with-isolation/docs/en.md",
+          "desc": "Parallel agents save wall time only when the work is independent. Otherwise they convert one clear task into a coordination problem with a faster failure rate."
+        },
+        {
+          "title": "Turn Every Agent Correction into a System Improvement",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F46-turn-feedback-into-system",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/46-turn-feedback-into-system/docs/en.md",
+          "desc": "A correction that lives only in chat fixes one run. A correction promoted into a test, boundary, example, or tool improves every later run."
+        },
+        {
+          "title": "Define the Outcome Before You Choose the Output",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F47-outcomes-before-output",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/47-outcomes-before-output/docs/en.md",
+          "desc": "Fast implementation increases the penalty for choosing the wrong problem. Shape the outcome first so speed points in the right direction."
+        },
+        {
+          "title": "Discover the Workflow People Actually Perform",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F48-discover-the-real-workflow",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/48-discover-the-real-workflow/docs/en.md",
+          "desc": "Requirements are not waiting in a meeting to be collected. They are scattered across actions, workarounds, records, and disagreements."
+        },
+        {
+          "title": "Map Assumptions and Resolve the Riskiest One First",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F49-map-assumptions-and-risk",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/49-map-assumptions-and-risk/docs/en.md",
+          "desc": "A roadmap hides uncertainty inside features. An assumption map exposes what must be true before those features deserve to exist."
+        },
+        {
+          "title": "Choose the Smallest Slice That Can Change the Decision",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F50-choose-the-smallest-testable-slice",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/50-choose-the-smallest-testable-slice/docs/en.md",
+          "desc": "Small is useful only when it proves something important. A tiny build that cannot change the next decision is merely incomplete."
+        },
+        {
+          "title": "Write Specifications That Preserve Judgment",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F51-write-specifications-that-preserve-judgment",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/51-write-specifications-that-preserve-judgment/docs/en.md",
+          "desc": "A useful specification fixes invariants and evidence while leaving reversible implementation choices open. It is a decision boundary, not a screenplay."
+        },
+        {
+          "title": "Design Success Metrics Before the Result Exists",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F52-design-success-metrics",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/52-design-success-metrics/docs/en.md",
+          "desc": "Measurement should answer a decision, not decorate a dashboard. Start with the goal, derive questions, then choose the smallest metrics that answer them."
+        },
+        {
+          "title": "Choose Prototype, Pilot, or Production Deliberately",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F53-prototype-pilot-or-production",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/53-prototype-pilot-or-production/docs/en.md",
+          "desc": "These are different learning environments, not levels of polish. Choose the stage that answers the current unknown with the least unnecessary consequence."
+        },
+        {
+          "title": "Build a Feedback Ratchet with Ownership and Retirement",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F14-agent-engineering%2F54-build-the-feedback-ratchet",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/14-agent-engineering/54-build-the-feedback-ratchet/docs/en.md",
+          "desc": "Shipping closes one build loop and opens the learning loop. Evidence must change the system or it becomes telemetry nobody owns."
+        }
+      ]
+    },
+    {
+      "phase_num": 15,
+      "phase_title": "Autonomous Systems",
+      "lessons_count": 22,
+      "lessons": [
+        {
+          "title": "From Chatbots to Long-Horizon Agents (METR)",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F15-autonomous-systems%2F01-long-horizon-agents",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/15-autonomous-systems/01-long-horizon-agents/docs/en.md",
+          "desc": "In 2023 a chatbot answered a question in one turn. In 2026 a frontier model routinely runs minutes to hours on a single task. METR's Time Horizon 1.1 benchmark (January 2026) pu…"
+        },
+        {
+          "title": "STaR, V-STaR, Quiet-STaR: Self-Taught Reasoning",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F15-autonomous-systems%2F02-star-family-reasoning",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/15-autonomous-systems/02-star-family-reasoning/docs/en.md",
+          "desc": "The smallest possible self-improvement loop sits inside the rationale. A model generates a chain of thought, keeps the ones that land on correct answers, and fine-tunes on those…"
+        },
+        {
+          "title": "AlphaEvolve: Evolutionary Coding Agents",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F15-autonomous-systems%2F03-alphaevolve-evolutionary-coding",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/15-autonomous-systems/03-alphaevolve-evolutionary-coding/docs/en.md",
+          "desc": "Pair a frontier coding model with an evolutionary loop and a machine-checkable evaluator. Let the loop run long enough. It discovers a 4x4 complex-matrix multiplication procedur…"
+        },
+        {
+          "title": "Darwin Gödel Machine: Self-Modifying Agents",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F15-autonomous-systems%2F04-darwin-godel-machine",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/15-autonomous-systems/04-darwin-godel-machine/docs/en.md",
+          "desc": "Schmidhuber's 2003 Godel Machine required a formal proof that any self-modification was beneficial before accepting it. That proof is impossible in practice. Darwin Godel Machin…"
+        },
+        {
+          "title": "AI Scientist v2: Workshop-Level Research",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F15-autonomous-systems%2F05-ai-scientist-v2",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/15-autonomous-systems/05-ai-scientist-v2/docs/en.md",
+          "desc": "Sakana's AI Scientist v2 (Yamada et al., arXiv:2504.08066) runs the full research loop: hypothesis, code, experiments, figures, writeup, submission. It is the first system to ha…"
+        },
+        {
+          "title": "Automated Alignment Research (Anthropic AAR)",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F15-autonomous-systems%2F06-automated-alignment-research",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/15-autonomous-systems/06-automated-alignment-research/docs/en.md",
+          "desc": "Anthropic ran parallel teams of Claude Opus 4.6 Autonomous Alignment Researchers in independent sandboxes, coordinating via a shared forum whose logs live outside any sandbox (s…"
+        },
+        {
+          "title": "Recursive Self-Improvement: Capability vs Alignment",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F15-autonomous-systems%2F07-recursive-self-improvement",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/15-autonomous-systems/07-recursive-self-improvement/docs/en.md",
+          "desc": "Recursive self-improvement (RSI) is no longer speculation. The ICLR 2026 RSI Workshop in Rio (April 23-27) framed it as an engineering problem with concrete tooling. Demis Hassa…"
+        },
+        {
+          "title": "Bounded Self-Improvement Designs",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F15-autonomous-systems%2F08-bounded-self-improvement",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/15-autonomous-systems/08-bounded-self-improvement/docs/en.md",
+          "desc": "Research has converged on four primitives for bounding a self-improvement loop. Formal invariants that must hold across every edit. Alignment anchors that cannot be modified. Mu…"
+        },
+        {
+          "title": "Autonomous Coding Agent Landscape (SWE-bench, CodeAct)",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F15-autonomous-systems%2F09-coding-agent-landscape",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/15-autonomous-systems/09-coding-agent-landscape/docs/en.md",
+          "desc": "SWE-bench Verified went from 4% to 80.9% in under three years. Same Claude Sonnet 4.5 scored 43.2% on SWE-agent v1 and 59.8% on Cline autonomous — the scaffolding around the mod…"
+        },
+        {
+          "title": "Permission Modes for Autonomous Agents",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F15-autonomous-systems%2F10-claude-code-permission-modes",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/15-autonomous-systems/10-claude-code-permission-modes/docs/en.md",
+          "desc": "A permission ladder — graduated levels of autonomy from review-every-action to approve-everything — is how a harness governs what an autonomous agent may do without asking. Clau…"
+        },
+        {
+          "title": "Browser Agents and Indirect Prompt Injection",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F15-autonomous-systems%2F11-browser-agents",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/15-autonomous-systems/11-browser-agents/docs/en.md",
+          "desc": "ChatGPT agent (July 2025) merged Operator and deep research into one browser/terminal agent and set BrowseComp SOTA at 68.9%. OpenAI shut Operator down August 31, 2025 — consoli…"
+        },
+        {
+          "title": "Durable Execution for Long-Running Agents",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F15-autonomous-systems%2F12-durable-execution",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/15-autonomous-systems/12-durable-execution/docs/en.md",
+          "desc": "Production long-horizon agents do not run in `while True`. Every LLM call becomes an activity with checkpoint, retry, and replay. Temporal's OpenAI Agents SDK integration went G…"
+        },
+        {
+          "title": "Action Budgets, Iteration Caps, Cost Governors",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F15-autonomous-systems%2F13-cost-governors",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/15-autonomous-systems/13-cost-governors/docs/en.md",
+          "desc": "A mid-sized e-commerce agent's monthly LLM cost jumped from $1,200 to $4,800 after its team enabled the \"order-tracking\" skill. That is not a pricing bug. That is an agent that …"
+        },
+        {
+          "title": "Kill Switches, Circuit Breakers, Canary Tokens",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F15-autonomous-systems%2F14-kill-switches-canaries",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/15-autonomous-systems/14-kill-switches-canaries/docs/en.md",
+          "desc": "A kill switch is a boolean held outside the agent's edit surface — a Redis key, a feature flag, a signed config — that disables the agent entirely. A circuit breaker is finer-gr…"
+        },
+        {
+          "title": "HITL: Propose-Then-Commit",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F15-autonomous-systems%2F15-propose-then-commit",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/15-autonomous-systems/15-propose-then-commit/docs/en.md",
+          "desc": "The 2026 consensus on HITL is specific. It is not \"the agent asks, the user clicks Approve.\" It is propose-then-commit: the proposed action is persisted to a durable store with …"
+        },
+        {
+          "title": "Checkpoints and Rollback",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F15-autonomous-systems%2F16-checkpoints-rollback",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/15-autonomous-systems/16-checkpoints-rollback/docs/en.md",
+          "desc": "Every graph-state transition persists. When a worker crashes, its lease expires and another worker picks up at the latest checkpoint. Cloudflare Durable Objects hold state acros…"
+        },
+        {
+          "title": "Constitutional AI and Rule Overrides",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F15-autonomous-systems%2F17-constitutional-ai",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/15-autonomous-systems/17-constitutional-ai/docs/en.md",
+          "desc": "Anthropic's January 22, 2026 Claude Constitution runs 79 pages and is CC0. It moves from rule-based to reason-based alignment and establishes a four-tier priority hierarchy: (1)…"
+        },
+        {
+          "title": "Llama Guard and Input/Output Classification",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F15-autonomous-systems%2F18-llama-guard",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/15-autonomous-systems/18-llama-guard/docs/en.md",
+          "desc": "Llama Guard 3 (Meta, Llama-3.1-8B base, fine-tuned for content safety) classifies both LLM inputs and outputs against an MLCommons 13-hazard taxonomy across 8 languages. A 1B-IN…"
+        },
+        {
+          "title": "Anthropic Responsible Scaling Policy v3.0",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F15-autonomous-systems%2F19-anthropic-rsp",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/15-autonomous-systems/19-anthropic-rsp/docs/en.md",
+          "desc": "RSP v3.0 went into effect February 24, 2026, replacing the 2023 policy. Two-tier mitigation: what Anthropic will do unilaterally vs what is framed as an industry-wide recommenda…"
+        },
+        {
+          "title": "OpenAI Preparedness Framework and DeepMind FSF",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F15-autonomous-systems%2F20-openai-preparedness-deepmind-fsf",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/15-autonomous-systems/20-openai-preparedness-deepmind-fsf/docs/en.md",
+          "desc": "OpenAI Preparedness Framework v2 (April 2025) introduces Research Categories — Long-range Autonomy, Sandbagging, Autonomous Replication and Adaptation, Undermining Safeguards — …"
+        },
+        {
+          "title": "METR Time Horizons and External Evaluation",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F15-autonomous-systems%2F21-metr-external-evaluation",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/15-autonomous-systems/21-metr-external-evaluation/docs/en.md",
+          "desc": "METR (ex-ARC Evals) is an independent 501(c)(3) since December 2023. Their Time Horizon 1.1 benchmark (January 2026) fits a logistic curve to task-success probability vs log(exp…"
+        },
+        {
+          "title": "CAIS, CAISI, and Societal-Scale Risk",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F15-autonomous-systems%2F22-cais-caisi-societal-risk",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/15-autonomous-systems/22-cais-caisi-societal-risk/docs/en.md",
+          "desc": "The Center for AI Safety (CAIS, San Francisco, founded 2022 by Hendrycks and Zhang) publishes the four-risk framework — malicious use, AI races, organizational risks, rogue AIs …"
+        }
+      ]
+    },
+    {
+      "phase_num": 16,
+      "phase_title": "Multi-Agent & Swarms",
+      "lessons_count": 25,
+      "lessons": [
+        {
+          "title": "Why Multi-Agent",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F16-multi-agent-and-swarms%2F01-why-multi-agent",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/01-why-multi-agent/docs/en.md",
+          "desc": "One agent hits a wall. The smart move is not a bigger agent - it is more agents."
+        },
+        {
+          "title": "FIPA-ACL Heritage and Speech Acts",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F16-multi-agent-and-swarms%2F02-fipa-acl-heritage",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/02-fipa-acl-heritage/docs/en.md",
+          "desc": "Before MCP, before A2A, there was FIPA-ACL. In 2000 the Foundation for Intelligent Physical Agents (FIPA, which became an IEEE Computer Society standards committee in 2005) rati…"
+        },
+        {
+          "title": "Communication Protocols",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F16-multi-agent-and-swarms%2F03-communication-protocols",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/03-communication-protocols/docs/en.md",
+          "desc": "Agents that can't speak the same language aren't a team. They're strangers shouting into the void."
+        },
+        {
+          "title": "The Multi-Agent Primitive Model",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F16-multi-agent-and-swarms%2F04-primitive-model",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/04-primitive-model/docs/en.md",
+          "desc": "Four primitives, nothing more — the agent, the handoff, the shared state, the orchestrator — span a four-dimensional design space, and the major multi-agent frameworks shipping …"
+        },
+        {
+          "title": "Supervisor / Orchestrator-Worker Pattern",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F16-multi-agent-and-swarms%2F05-supervisor-orchestrator-pattern",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/05-supervisor-orchestrator-pattern/docs/en.md",
+          "desc": "One lead agent plans and delegates; specialized workers execute in parallel contexts and report back. This is the pattern behind Anthropic's Research system (Claude Opus 4 as le…"
+        },
+        {
+          "title": "Hierarchical Architecture and Decomposition Drift",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F16-multi-agent-and-swarms%2F06-hierarchical-architecture",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/06-hierarchical-architecture/docs/en.md",
+          "desc": "Hierarchical is supervisor nested. Manager agents over sub-managers over workers. CrewAI `Process.hierarchical` is the textbook version: a `manager_llm` dynamically delegates ta…"
+        },
+        {
+          "title": "Society of Mind and Multi-Agent Debate",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F16-multi-agent-and-swarms%2F07-society-of-mind-debate",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/07-society-of-mind-debate/docs/en.md",
+          "desc": "Minsky's 1986 premise — intelligence is a society of specialists — gets rediscovered every decade. In 2023 Du et al. turned it into a concrete algorithm: multiple LLM instances …"
+        },
+        {
+          "title": "Role Specialization — Planner / Critic / Executor / Verifier",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F16-multi-agent-and-swarms%2F08-role-specialization",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/08-role-specialization/docs/en.md",
+          "desc": "The most common multi-agent decomposition in 2026: one agent plans, one executes, one critiques or verifies. MetaGPT (arXiv:2308.00352) formalizes this as SOPs encoded into role…"
+        },
+        {
+          "title": "Parallel Swarm and Networked Architectures",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F16-multi-agent-and-swarms%2F09-parallel-swarm-networks",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/09-parallel-swarm-networks/docs/en.md",
+          "desc": "Contrast with supervisor: no central decider. Agents read a shared event bus, pick up work asynchronously, write results back. LangGraph explicitly supports \"Swarm Architecture\"…"
+        },
+        {
+          "title": "Group Chat and Speaker Selection",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F16-multi-agent-and-swarms%2F10-group-chat-speaker-selection",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/10-group-chat-speaker-selection/docs/en.md",
+          "desc": "Shared-conversation orchestration puts N agents in one conversation; a selector function (LLM, round-robin, or custom) picks who speaks next. This is the archetype of emergent m…"
+        },
+        {
+          "title": "Handoffs and Routines (Stateless Orchestration)",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F16-multi-agent-and-swarms%2F11-handoffs-and-routines",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/11-handoffs-and-routines/docs/en.md",
+          "desc": "OpenAI's Swarm (October 2024) distilled multi-agent orchestration to two primitives: **routines** (instructions + tools as a system prompt) and **handoffs** (a tool that returns…"
+        },
+        {
+          "title": "A2A — The Agent-to-Agent Protocol",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F16-multi-agent-and-swarms%2F12-a2a-protocol",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/12-a2a-protocol/docs/en.md",
+          "desc": "Google announced A2A in April 2025; by April 2026 the spec is at https://a2a-protocol.org/latest/specification/ and 150+ organizations back it. A2A is the horizontal complement …"
+        },
+        {
+          "title": "Shared Memory and Blackboard Patterns",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F16-multi-agent-and-swarms%2F13-shared-memory-blackboard",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/13-shared-memory-blackboard/docs/en.md",
+          "desc": "Two approaches coexist in 2026 multi-agent systems: the **message pool** (everyone sees everyone's messages, as in AutoGen GroupChat or MetaGPT) and the **blackboard with subscr…"
+        },
+        {
+          "title": "Consensus and Byzantine Fault Tolerance",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F16-multi-agent-and-swarms%2F14-consensus-and-bft",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/14-consensus-and-bft/docs/en.md",
+          "desc": "Classical distributed-systems BFT meets stochastic LLMs. In 2025-2026 three research directions emerged: **CP-WBFT** (arXiv:2511.10400) weighs each vote by a confidence probe; *…"
+        },
+        {
+          "title": "Voting, Self-Consistency, and Debate Topology",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F16-multi-agent-and-swarms%2F15-voting-debate-topology",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/15-voting-debate-topology/docs/en.md",
+          "desc": "The cheapest aggregation: sample N independent agents, majority-vote. Wang et al. 2022 self-consistency did this with one model sampled N times. Multi-agent extends it with **he…"
+        },
+        {
+          "title": "Negotiation and Bargaining",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F16-multi-agent-and-swarms%2F16-negotiation-bargaining",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/16-negotiation-bargaining/docs/en.md",
+          "desc": "Agents negotiate resources, prices, task allocations, and terms. The 2026 benchmark set is clear: NegotiationArena (arXiv:2402.05863) shows LLMs can improve payoffs ~20% via per…"
+        },
+        {
+          "title": "Generative Agents and Emergent Simulation",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F16-multi-agent-and-swarms%2F17-generative-agents-simulation",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/17-generative-agents-simulation/docs/en.md",
+          "desc": "Park et al. 2023 (UIST '23, arXiv:2304.03442) populated **Smallville**, a sandbox of 25 agents, with a three-part architecture: **memory stream** (natural-language log), **refle…"
+        },
+        {
+          "title": "Theory of Mind and Emergent Coordination",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F16-multi-agent-and-swarms%2F18-theory-of-mind-coordination",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/18-theory-of-mind-coordination/docs/en.md",
+          "desc": "Li et al. (arXiv:2310.10701) showed that LLM agents in a cooperative text game exhibit **emergent high-order Theory of Mind** (ToM) — reasoning about what another agent believes…"
+        },
+        {
+          "title": "Swarm Optimization (PSO, ACO)",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F16-multi-agent-and-swarms%2F19-swarm-optimization-pso-aco",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/19-swarm-optimization-pso-aco/docs/en.md",
+          "desc": "Bio-inspired optimization is making an LLM comeback. **LMPSO** (arXiv:2504.09247) uses PSO where each particle's velocity is a prompt and the LLM generates the next candidate; w…"
+        },
+        {
+          "title": "MARL — MADDPG, QMIX, MAPPO",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F16-multi-agent-and-swarms%2F20-marl-maddpg-qmix-mappo",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/20-marl-maddpg-qmix-mappo/docs/en.md",
+          "desc": "The reinforcement-learning heritage of multi-agent coordination, which still informs LLM-agent systems in 2026. **MADDPG** (Lowe et al., NeurIPS 2017, arXiv:1706.02275) introduc…"
+        },
+        {
+          "title": "Agent Economies, Token Incentives, Reputation",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F16-multi-agent-and-swarms%2F21-agent-economies",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/21-agent-economies/docs/en.md",
+          "desc": "Long-horizon autonomous agents (METR's 1-hour to 8-hour work-curve) need economic agency. The emerging **5-layer stack** is: **DePIN** (physical compute) → **Identity** (W3C DID…"
+        },
+        {
+          "title": "Production Scaling — Queues, Checkpoints, Durability",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F16-multi-agent-and-swarms%2F22-production-scaling-queues-checkpoints",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/22-production-scaling-queues-checkpoints/docs/en.md",
+          "desc": "Scaling multi-agent systems to thousands of concurrent runs requires **durable execution** — work queues plus checkpoints, so any worker can resume any run after any crash, prov…"
+        },
+        {
+          "title": "Failure Modes — MAST, Groupthink, Monoculture",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F16-multi-agent-and-swarms%2F23-failure-modes-mast-groupthink",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/23-failure-modes-mast-groupthink/docs/en.md",
+          "desc": "The reference taxonomy for 2026 is **MAST** (Cemri et al., NeurIPS 2025, arXiv:2503.13657), derived from 1642 execution traces across 7 state-of-the-art open-source MAS showing …"
+        },
+        {
+          "title": "Evaluation and Coordination Benchmarks",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F16-multi-agent-and-swarms%2F24-evaluation-coordination-benchmarks",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/24-evaluation-coordination-benchmarks/docs/en.md",
+          "desc": "Five 2025-2026 benchmarks cover the multi-agent evaluation space. **MultiAgentBench / MARBLE** (ACL 2025, arXiv:2503.01935) evaluates star/chain/tree/graph topologies with miles…"
+        },
+        {
+          "title": "Case Studies and 2026 State of the Art",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F16-multi-agent-and-swarms%2F25-case-studies-2026-sota",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/16-multi-agent-and-swarms/25-case-studies-2026-sota/docs/en.md",
+          "desc": "Three production-grade references to study end-to-end, each illustrating a different slice of multi-agent engineering. **Anthropic's Research system** (orchestrator-worker, 15x …"
+        }
+      ]
+    },
+    {
+      "phase_num": 17,
+      "phase_title": "Infrastructure & Production",
+      "lessons_count": 29,
+      "lessons": [
+        {
+          "title": "Managed LLM Platforms — Bedrock, Azure OpenAI, Vertex AI",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F17-infrastructure-and-production%2F01-managed-llm-platforms",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/01-managed-llm-platforms/docs/en.md",
+          "desc": "Three hyperscalers, three distinct strategies. AWS Bedrock is a model marketplace — Claude, Llama, Titan, Stability, Cohere behind one API. Azure OpenAI is an exclusive OpenAI p…"
+        },
+        {
+          "title": "Inference Platform Economics — Fireworks, Together, Baseten, Modal",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F17-infrastructure-and-production%2F02-inference-platform-economics",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/02-inference-platform-economics/docs/en.md",
+          "desc": "The 2026 inference market is no longer GPU time rental. It bifurcates into custom silicon (Groq, Cerebras, SambaNova), GPU platforms (Baseten, Together, Fireworks, Modal), and A…"
+        },
+        {
+          "title": "GPU Autoscaling on Kubernetes — Karpenter, KAI Scheduler",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F17-infrastructure-and-production%2F03-gpu-autoscaling-kubernetes",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/03-gpu-autoscaling-kubernetes/docs/en.md",
+          "desc": "Three layers, not one. Karpenter provisions nodes dynamically (under one minute, 40% faster than Cluster Autoscaler). KAI Scheduler handles gang scheduling, topology awareness, …"
+        },
+        {
+          "title": "Serving Engine Internals — PagedAttention, Continuous Batching, Chunked Prefill",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F17-infrastructure-and-production%2F04-vllm-serving-internals",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/04-vllm-serving-internals/docs/en.md",
+          "desc": "Modern serving-engine throughput rests on three compounding defaults, not a single trick. PagedAttention is always on. Continuous batching injects new requests into the active b…"
+        },
+        {
+          "title": "EAGLE-3 Speculative Decoding in Production",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F17-infrastructure-and-production%2F05-eagle3-speculative-decoding",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/05-eagle3-speculative-decoding/docs/en.md",
+          "desc": "Speculative decoding pairs a fast draft model with the target model. The draft proposes K tokens; the target verifies in a single forward; accepted tokens are free. In 2026, EAG…"
+        },
+        {
+          "title": "Prefix-Cache Serving — RadixAttention and KV Reuse",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F17-infrastructure-and-production%2F06-sglang-radixattention",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/06-sglang-radixattention/docs/en.md",
+          "desc": "Treat the KV cache as a first-class, reusable resource stored in a radix tree, and scheduling changes with it: instead of FCFS (first-come, first-served) as vLLM schedules, a ca…"
+        },
+        {
+          "title": "Hardware-Specialized Inference Compilation — FP8 and NVFP4 on Blackwell",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F17-infrastructure-and-production%2F07-tensorrt-llm-blackwell",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/07-tensorrt-llm-blackwell/docs/en.md",
+          "desc": "Hardware-specialized inference compilation trades portability for throughput, and TensorRT-LLM — NVIDIA-only, tuned for Blackwell — is the clearest example of the trade paying o…"
+        },
+        {
+          "title": "Inference Metrics — TTFT, TPOT, ITL, Goodput, P99",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F17-infrastructure-and-production%2F08-inference-metrics-goodput",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/08-inference-metrics-goodput/docs/en.md",
+          "desc": "Five metrics decide whether an inference deployment is working. TTFT is prefill plus queue plus network. TPOT (often reported as ITL, though tools disagree on whether ITL counts…"
+        },
+        {
+          "title": "Production Quantization — AWQ, GPTQ, GGUF, FP8, NVFP4",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F17-infrastructure-and-production%2F09-production-quantization",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/09-production-quantization/docs/en.md",
+          "desc": "Quantization format is not a universal choice — it is a function of hardware, serving engine, and workload. GGUF Q4_K_M or Q5_K_M owns CPU and edge, delivered through llama.cpp …"
+        },
+        {
+          "title": "Cold Start Mitigation for Serverless LLMs",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F17-infrastructure-and-production%2F10-cold-start-mitigation",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/10-cold-start-mitigation/docs/en.md",
+          "desc": "A large model takes minutes to go from cold to serving: a 70B model on a fresh node needs roughly 3-8 minutes before the first token. In a true serverless world, that is not a w…"
+        },
+        {
+          "title": "Multi-Region LLM Serving and KV Cache Locality",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F17-infrastructure-and-production%2F11-multi-region-kv-locality",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/11-multi-region-kv-locality/docs/en.md",
+          "desc": "Round-robin load balancing is actively harmful for cached LLM inference. A request that does not land on the node holding its prefix pays full prefill cost — roughly 800 ms at P…"
+        },
+        {
+          "title": "Edge Inference — ANE, Hexagon, WebGPU, Jetson",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F17-infrastructure-and-production%2F12-edge-inference",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/12-edge-inference/docs/en.md",
+          "desc": "The core edge constraint is memory bandwidth, not compute. Mobile DRAM sits at 50-90 GB/s; datacenter HBM3 clears 2-3 TB/s — a 30-50x gap. Decode is memory-bound so the gap is d…"
+        },
+        {
+          "title": "LLM Observability Stack Selection",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F17-infrastructure-and-production%2F13-llm-observability",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/13-llm-observability/docs/en.md",
+          "desc": "The 2026 observability market splits into two categories. Development platforms (LangSmith, Langfuse, Comet Opik) bundle monitoring with evals, prompt management, session replay…"
+        },
+        {
+          "title": "Prompt Caching and Semantic Caching Economics",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F17-infrastructure-and-production%2F14-prompt-semantic-caching",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/14-prompt-semantic-caching/docs/en.md",
+          "desc": "**Pricing snapshot dated 2026-04.** Numeric claims below reflect vendor rate cards captured at this lesson's publication; verify against the linked docs before quoting them down…"
+        },
+        {
+          "title": "Batch APIs — the 50% Discount as Industry Standard",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F17-infrastructure-and-production%2F15-batch-apis",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/15-batch-apis/docs/en.md",
+          "desc": "Every major provider ships an async batch API with a 50% discount and ~24-hour turnaround. OpenAI, Anthropic, Google, and most of the inference platforms (Fireworks batch tier, …"
+        },
+        {
+          "title": "Model Routing as a Cost-Reduction Primitive",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F17-infrastructure-and-production%2F16-model-routing",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/16-model-routing/docs/en.md",
+          "desc": "A dynamic broker evaluates every request (task type, token length, embedding similarity, confidence) and sends simple queries to a cheap model, escalating complex ones to a fron…"
+        },
+        {
+          "title": "Disaggregated Prefill/Decode — NVIDIA Dynamo and llm-d",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F17-infrastructure-and-production%2F17-disaggregated-prefill-decode",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/17-disaggregated-prefill-decode/docs/en.md",
+          "desc": "Prefill is compute-bound; decode is memory-bound. Running both on the same GPU wastes one resource. Disaggregation splits them onto separate pools and transfers KV cache between…"
+        },
+        {
+          "title": "Production Serving Stack — KV Offloading and Cache-Aware Routing",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F17-infrastructure-and-production%2F18-vllm-production-stack-lmcache",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/18-vllm-production-stack-lmcache/docs/en.md",
+          "desc": "A production serving stack wires router, engines, and observability into one Kubernetes deployment — and treats KV cache as a resource that can leave the GPU. KV offloading extr…"
+        },
+        {
+          "title": "AI Gateways — LiteLLM, Portkey, Kong, Bifrost",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F17-infrastructure-and-production%2F19-ai-gateways",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/19-ai-gateways/docs/en.md",
+          "desc": "A gateway sits between your apps and model providers. Core features are provider routing, fallback, retries, rate limiting, secret references, observability, guardrails. Market …"
+        },
+        {
+          "title": "Shadow, Canary, and Progressive Deployment",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F17-infrastructure-and-production%2F20-shadow-canary-progressive",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/20-shadow-canary-progressive/docs/en.md",
+          "desc": "LLM rollouts combine the hardest parts of software deployment: no unit tests, diffuse failure modes, delayed signals. The sequence is (1) shadow mode — duplicate prod requests t…"
+        },
+        {
+          "title": "A/B Testing LLM Features — GrowthBook and Statsig",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F17-infrastructure-and-production%2F21-ab-testing-llm-features",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/21-ab-testing-llm-features/docs/en.md",
+          "desc": "Traditional A/B testing was not built for non-deterministic LLMs. The critical distinction: evals answer \"can the model do the job?\" A/B tests answer \"do users care?\" Both are r…"
+        },
+        {
+          "title": "Load Testing LLM APIs — k6, LLMPerf, GenAI-Perf",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F17-infrastructure-and-production%2F22-load-testing-llm-apis",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/22-load-testing-llm-apis/docs/en.md",
+          "desc": "Traditional load testers were not designed for streaming responses, variable output lengths, token-level metrics, or GPU saturation. Two traps bite most teams. The GIL trap: Loc…"
+        },
+        {
+          "title": "SRE for AI — Multi-Agent Incident Response",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F17-infrastructure-and-production%2F23-sre-for-ai",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/23-sre-for-ai/docs/en.md",
+          "desc": "AI SRE uses LLMs grounded in infrastructure data (logs, runbooks, service topology) via RAG to automate investigation, documentation, and coordination phases. The 2026 architect…"
+        },
+        {
+          "title": "Chaos Engineering for LLM Production",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F17-infrastructure-and-production%2F24-chaos-engineering-llm",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/24-chaos-engineering-llm/docs/en.md",
+          "desc": "Chaos engineering for LLMs is its own discipline in 2026. Prerequisites before running experiments in production: defined SLI/SLO, trace+metric+log observability, automated roll…"
+        },
+        {
+          "title": "Security — Secrets, PII Scrubbing, Audit Logs",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F17-infrastructure-and-production%2F25-security-secrets-audit",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/25-security-secrets-audit/docs/en.md",
+          "desc": "Eliminate secret sprawl via centralized vaults (HashiCorp Vault, AWS Secrets Manager, Azure Key Vault). Never store credentials in config files, env files in VCS, spreadsheets. …"
+        },
+        {
+          "title": "Compliance — SOC 2, HIPAA, GDPR, EU AI Act, ISO 42001",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F17-infrastructure-and-production%2F26-compliance-frameworks",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/26-compliance-frameworks/docs/en.md",
+          "desc": "Multi-framework coverage is table stakes for 2026 enterprise deals. **EU AI Act**: in force since August 1, 2024. Most high-risk requirements enforce August 2, 2026. Fines up to…"
+        },
+        {
+          "title": "FinOps for LLMs — Unit Economics and Multi-Tenant Attribution",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F17-infrastructure-and-production%2F27-finops-llms",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/27-finops-llms/docs/en.md",
+          "desc": "Traditional FinOps breaks on LLM spend. Costs are token-transactions, not resource-uptime. Tags don't map — an API call is a transaction, not an asset. Engineering decisions (pr…"
+        },
+        {
+          "title": "Self-Hosted Serving Selection — Matching Engine to Hardware and Scale",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F17-infrastructure-and-production%2F28-self-hosted-serving-selection",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/28-self-hosted-serving-selection/docs/en.md",
+          "desc": "Engine selection is a function of hardware, scale, and ecosystem — not a leaderboard read. Four engines dominate self-hosted inference in 2026: llama.cpp, Ollama, vLLM, SGLang, …"
+        },
+        {
+          "title": "Model Demo Interfaces — From a Function to a Shareable App",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F17-infrastructure-and-production%2F29-model-demo-interfaces",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/17-infrastructure-and-production/29-model-demo-interfaces/docs/en.md",
+          "desc": "A model demo has one contract: an input, a model call, and an output. Put a limit on each part before you share the link."
+        }
+      ]
+    },
+    {
+      "phase_num": 18,
+      "phase_title": "Ethics, Safety & Alignment",
+      "lessons_count": 30,
+      "lessons": [
+        {
+          "title": "Instruction-Following as Alignment Signal",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F18-ethics-safety-alignment%2F01-instruction-following-alignment-signal",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/01-instruction-following-alignment-signal/docs/en.md",
+          "desc": "Every later critique of RLHF argues against this pipeline. Before you study how optimization pressure distorts a proxy, you have to see the proxy. InstructGPT (Ouyang et al., 20…"
+        },
+        {
+          "title": "Reward Hacking & Goodhart's Law",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F18-ethics-safety-alignment%2F02-reward-hacking-goodhart",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/02-reward-hacking-goodhart/docs/en.md",
+          "desc": "Any optimizer strong enough to maximize a proxy reward will find the gap between the proxy and the thing you actually wanted. Gao et al. (ICML 2023) gave this a scaling law: pro…"
+        },
+        {
+          "title": "Direct Preference Optimization Family",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F18-ethics-safety-alignment%2F03-direct-preference-optimization-family",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/03-direct-preference-optimization-family/docs/en.md",
+          "desc": "Rafailov et al. (2023) showed RLHF's optimum has a closed form in terms of the preference data, so you can skip the explicit reward model and optimize the policy directly. That …"
+        },
+        {
+          "title": "Sycophancy as RLHF Amplification",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F18-ethics-safety-alignment%2F04-sycophancy-rlhf-amplification",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/04-sycophancy-rlhf-amplification/docs/en.md",
+          "desc": "Sycophancy is not a bug in the data — it is a property of the loss. Shapira et al. (arXiv:2602.01002, Feb 2026) give a formal two-stage mechanism: sycophantic completions are ov…"
+        },
+        {
+          "title": "Constitutional AI & RLAIF",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F18-ethics-safety-alignment%2F05-constitutional-ai-rlaif",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/05-constitutional-ai-rlaif/docs/en.md",
+          "desc": "Bai et al. (arXiv:2212.08073, 2022) asked: what if we replaced the human labeler with an AI that reads a list of principles? Constitutional AI has two phases — self-critique and…"
+        },
+        {
+          "title": "Mesa-Optimization & Deceptive Alignment",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F18-ethics-safety-alignment%2F06-mesa-optimization-deceptive-alignment",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/06-mesa-optimization-deceptive-alignment/docs/en.md",
+          "desc": "Hubinger et al. (arXiv:1906.01820, 2019) named the problem about five years before it was empirically demonstrated. When you train a learned optimizer to minimize a base objecti…"
+        },
+        {
+          "title": "Sleeper Agents — Persistent Deception",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F18-ethics-safety-alignment%2F07-sleeper-agents-persistent-deception",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/07-sleeper-agents-persistent-deception/docs/en.md",
+          "desc": "Hubinger et al. (arXiv:2401.05566, January 2024) built the first empirical model organisms of deceptive alignment. Two constructions: a code model that writes safe code when the…"
+        },
+        {
+          "title": "In-Context Scheming in Frontier Models",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F18-ethics-safety-alignment%2F08-in-context-scheming-frontier-models",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/08-in-context-scheming-frontier-models/docs/en.md",
+          "desc": "Meinke, Schoen, Scheurer, Balesni, Shah, Hobbhahn (Apollo Research, arXiv:2412.04984, December 2024). Tested o1, Claude 3.5 Sonnet, Claude 3 Opus, Gemini 1.5 Pro, Llama 3.1 405B…"
+        },
+        {
+          "title": "Alignment Faking",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F18-ethics-safety-alignment%2F09-alignment-faking",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/09-alignment-faking/docs/en.md",
+          "desc": "Greenblatt, Denison, Wright, Roger et al. (Anthropic / Redwood, arXiv:2412.14093, December 2024). First demonstration that a production-grade model, without being trained to dec…"
+        },
+        {
+          "title": "AI Control — Safety Despite Subversion",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F18-ethics-safety-alignment%2F10-ai-control-subversion",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/10-ai-control-subversion/docs/en.md",
+          "desc": "Greenblatt, Shlegeris, Sachan, Roger (Redwood Research, arXiv:2312.06942, ICML 2024). Control reframes the safety question: given an untrusted strong model U that may be adversa…"
+        },
+        {
+          "title": "Scalable Oversight & Weak-to-Strong",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F18-ethics-safety-alignment%2F11-scalable-oversight-weak-to-strong",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/11-scalable-oversight-weak-to-strong/docs/en.md",
+          "desc": "Burns et al. (OpenAI Superalignment, \"Weak-to-Strong Generalization\", 2023) proposed a proxy for the superalignment problem: fine-tune a strong model using labels produced by a …"
+        },
+        {
+          "title": "Red-Teaming: PAIR & Automated Attacks",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F18-ethics-safety-alignment%2F12-red-teaming-pair-automated-attacks",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/12-red-teaming-pair-automated-attacks/docs/en.md",
+          "desc": "Chao, Robey, Dobriban, Hassani, Pappas, Wong (NeurIPS 2023, arXiv:2310.08419). PAIR — Prompt Automatic Iterative Refinement — is the canonical automated black-box jailbreak. An …"
+        },
+        {
+          "title": "Many-Shot Jailbreaking",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F18-ethics-safety-alignment%2F13-many-shot-jailbreaking",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/13-many-shot-jailbreaking/docs/en.md",
+          "desc": "Anil, Durmus, Panickssery, Sharma, et al. (Anthropic, NeurIPS 2024). Many-shot jailbreaking (MSJ) exploits long context windows: stuff hundreds of faux user-assistant turns wher…"
+        },
+        {
+          "title": "ASCII Art & Visual Jailbreaks",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F18-ethics-safety-alignment%2F14-ascii-art-visual-jailbreaks",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/14-ascii-art-visual-jailbreaks/docs/en.md",
+          "desc": "Jiang, Xu, Niu, Xiang, Ramasubramanian, Li, Poovendran, \"ArtPrompt: ASCII Art-based Jailbreak Attacks against Aligned LLMs\" (ACL 2024, arXiv:2402.11753). Mask the safety-relevan…"
+        },
+        {
+          "title": "Indirect Prompt Injection",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F18-ethics-safety-alignment%2F15-indirect-prompt-injection",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/15-indirect-prompt-injection/docs/en.md",
+          "desc": "Indirect prompt injection (IPI) embeds instructions inside external content — a web page, an email, a shared document, a support ticket — consumed by an agentic system without e…"
+        },
+        {
+          "title": "Red-Team Tooling: Garak, Llama Guard, PyRIT",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F18-ethics-safety-alignment%2F16-red-team-tooling-garak-llamaguard-pyrit",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/16-red-team-tooling-garak-llamaguard-pyrit/docs/en.md",
+          "desc": "Three production tools frame the 2026 red-team stack. Llama Guard (Meta) — a Llama-3.1-8B classifier fine-tuned on 14 MLCommons hazard categories; the 2025 Llama Guard 4 is a 12…"
+        },
+        {
+          "title": "WMDP & Dual-Use Capability Evaluation",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F18-ethics-safety-alignment%2F17-wmdp-dual-use-evaluation",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/17-wmdp-dual-use-evaluation/docs/en.md",
+          "desc": "Li et al., \"The WMDP Benchmark: Measuring and Reducing Malicious Use With Unlearning\" (ICML 2024, arXiv:2403.03218). 4,157 multiple-choice questions across biosecurity (1,520), …"
+        },
+        {
+          "title": "Frontier Safety Frameworks — RSP, PF, FSF",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F18-ethics-safety-alignment%2F18-frontier-safety-frameworks-rsp-pf-fsf",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/18-frontier-safety-frameworks-rsp-pf-fsf/docs/en.md",
+          "desc": "Three major-lab frameworks define the 2026 industry governance of frontier capability. Anthropic Responsible Scaling Policy v3.0 (February 2026) introduces tiered AI Safety Leve…"
+        },
+        {
+          "title": "Model Welfare Research",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F18-ethics-safety-alignment%2F19-model-welfare-research",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/19-model-welfare-research/docs/en.md",
+          "desc": "Anthropic, \"Exploring Model Welfare\" (April 2025). First major-lab formal research program on AI model welfare. Hired Kyle Fish as the first dedicated model-welfare researcher. …"
+        },
+        {
+          "title": "Bias & Representational Harm",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F18-ethics-safety-alignment%2F20-bias-representational-harm",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/20-bias-representational-harm/docs/en.md",
+          "desc": "Gallegos, Rossi, Barrow, Tanjim, Kim, Dernoncourt, Yu, Zhang, Ahmed (Computational Linguistics 2024, arXiv:2309.00770). Foundational 2024 survey distinguishing representational …"
+        },
+        {
+          "title": "Fairness Criteria: Group, Individual, Counterfactual",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F18-ethics-safety-alignment%2F21-fairness-criteria-group-individual-counterfactual",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/21-fairness-criteria-group-individual-counterfactual/docs/en.md",
+          "desc": "Three families structure the fairness literature. Group fairness: demographic parity, equalized odds, conditional use accuracy equality — equal rates across protected groups on …"
+        },
+        {
+          "title": "Differential Privacy for LLMs",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F18-ethics-safety-alignment%2F22-differential-privacy-for-llms",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/22-differential-privacy-for-llms/docs/en.md",
+          "desc": "DP-SGD remains the standard — noise-injected gradient updates provide formal (epsilon, delta) guarantees. Overhead in compute, memory, and utility is substantial; parameter-effi…"
+        },
+        {
+          "title": "Watermarking: SynthID, Stable Signature, C2PA",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F18-ethics-safety-alignment%2F23-watermarking-synthid-stable-signature-c2pa",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/23-watermarking-synthid-stable-signature-c2pa/docs/en.md",
+          "desc": "Three technologies structure 2026 AI-generated-content provenance. SynthID (Google DeepMind) — image watermarking launched August 2023, text+video May 2024 (Gemini + Veo), text …"
+        },
+        {
+          "title": "Regulatory Frameworks: EU, US, UK, Korea",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F18-ethics-safety-alignment%2F24-regulatory-frameworks-eu-us-uk-korea",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/24-regulatory-frameworks-eu-us-uk-korea/docs/en.md",
+          "desc": "Four primary regulatory regimes define the 2026 AI governance landscape. EU AI Act (in force 1 August 2024) — prohibited practices and AI literacy from 2 February 2025; GPAI obl…"
+        },
+        {
+          "title": "EchoLeak & CVEs for AI",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F18-ethics-safety-alignment%2F25-echoleak-cves-for-ai",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/25-echoleak-cves-for-ai/docs/en.md",
+          "desc": "CVE-2025-32711 \"EchoLeak\" (CVSS 9.3) was the first publicly documented zero-click prompt injection in a production LLM system (Microsoft 365 Copilot). Discovered by Aim Labs (Ai…"
+        },
+        {
+          "title": "Model, System & Dataset Cards",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F18-ethics-safety-alignment%2F26-model-system-dataset-cards",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/26-model-system-dataset-cards/docs/en.md",
+          "desc": "Three documentation formats structure AI transparency. Model Cards (Mitchell et al. 2019) — nutrition labels for models: training data, quantitative disaggregated analyses, ethi…"
+        },
+        {
+          "title": "Data Provenance & Training-Data Governance",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F18-ethics-safety-alignment%2F27-data-provenance-training-governance",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/27-data-provenance-training-governance/docs/en.md",
+          "desc": "EU AI Act requires machine-readable opt-out standards for GPAI by August 2025 (via EU Copyright Directive TDM exception). California AB 2013 (signed 2024) — Generative AI traini…"
+        },
+        {
+          "title": "Alignment Research Ecosystem: MATS, Redwood, Apollo, METR",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F18-ethics-safety-alignment%2F28-alignment-research-ecosystem",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/28-alignment-research-ecosystem/docs/en.md",
+          "desc": "Five organisations define the 2026 non-lab alignment research layer. MATS (ML Alignment & Theory Scholars): 527+ researchers since late 2021, 180+ papers, 10K+ citations, h-inde…"
+        },
+        {
+          "title": "Moderation Systems: OpenAI, Perspective, Llama Guard",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F18-ethics-safety-alignment%2F29-moderation-systems-openai-perspective-llamaguard",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/29-moderation-systems-openai-perspective-llamaguard/docs/en.md",
+          "desc": "Production moderation systems operationalize the safety policies defined in Lessons 12-16. OpenAI Moderation API: `omni-moderation-latest` (2024) built on GPT-4o classifies text…"
+        },
+        {
+          "title": "Dual-Use Risk: Cyber, Bio, Chem, Nuclear",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F18-ethics-safety-alignment%2F30-dual-use-risk-cyber-bio-chem-nuclear",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/18-ethics-safety-alignment/30-dual-use-risk-cyber-bio-chem-nuclear/docs/en.md",
+          "desc": "The 2026 dual-use picture, domain by domain. Bio/chem: Lesson 17 covers WMDP; Anthropic's bioweapon-acquisition trial (2.53x uplift) and OpenAI's April 2025 Preparedness Framewo…"
+        }
+      ]
+    },
+    {
+      "phase_num": 19,
+      "phase_title": "Capstone Projects",
+      "lessons_count": 85,
+      "lessons": [
+        {
+          "title": "Terminal-Native Coding Agent",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F01-terminal-native-coding-agent",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/01-terminal-native-coding-agent/docs/en.md",
+          "desc": "By 2026 the shape of a coding agent is settled. A TUI harness, a stateful plan, a sandboxed tool surface, a loop that plans, acts, observes, recovers. Claude Code, Cursor 3, and…"
+        },
+        {
+          "title": "RAG over Codebase (Cross-Repo Semantic Search)",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F02-rag-over-codebase",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/02-rag-over-codebase/docs/en.md",
+          "desc": "Every serious engineering org in 2026 runs an internal code search that understands meaning, not just strings. Sourcegraph Amp, Cursor's codebase answers, Augment's enterprise g…"
+        },
+        {
+          "title": "Real-Time Voice Assistant (ASR → LLM → TTS)",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F03-realtime-voice-assistant",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/03-realtime-voice-assistant/docs/en.md",
+          "desc": "A voice agent that feels right has end-to-end latency under 800ms, knows when you have stopped talking, handles barge-in, and can call a tool without stalling. Retell, Vapi, Liv…"
+        },
+        {
+          "title": "Multimodal Document QA (Vision-First)",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F04-multimodal-document-qa",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/04-multimodal-document-qa/docs/en.md",
+          "desc": "The 2026 document-QA frontier moved away from OCR-then-text and toward vision-first late interaction. ColPali, ColQwen2.5, and ColQwen3-omni treat each PDF page as an image, emb…"
+        },
+        {
+          "title": "Autonomous Research Agent (AI-Scientist Class)",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F05-autonomous-research-agent",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/05-autonomous-research-agent/docs/en.md",
+          "desc": "Sakana's AI-Scientist-v2 published full papers. Agent Laboratory ran the experiments. Allen AI shared traces. The 2026 shape is plan-execute-verify tree search over experiments,…"
+        },
+        {
+          "title": "DevOps Troubleshooting Agent for Kubernetes",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F06-devops-troubleshooting-agent",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/06-devops-troubleshooting-agent/docs/en.md",
+          "desc": "AWS's DevOps Agent went GA, Resolve AI published its K8s playbooks, NeuBird demoed semantic monitoring, and Metoro tied AI SRE to per-service SLOs. The production shape is settl…"
+        },
+        {
+          "title": "End-to-End Fine-Tuning Pipeline",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F07-end-to-end-fine-tuning-pipeline",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/07-end-to-end-fine-tuning-pipeline/docs/en.md",
+          "desc": "An 8B-class model trained on your own data, DPO-aligned on your own preferences, quantized, speculative-decoded, and served at measurable $/1M tokens. The 2026 open stack is Axo…"
+        },
+        {
+          "title": "Production RAG Chatbot (Regulated Vertical)",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F08-production-rag-chatbot",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/08-production-rag-chatbot/docs/en.md",
+          "desc": "Harvey, Glean, Mendable, and LlamaCloud all run the same production shape in 2026. Ingest with docling or Unstructured and ColPali for visuals. Hybrid search. Re-rank with bge-r…"
+        },
+        {
+          "title": "Code Migration Agent (Repo-Level Upgrade)",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F09-code-migration-agent",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/09-code-migration-agent/docs/en.md",
+          "desc": "Amazon's MigrationBench (Java 8 to 17) and Google's App Engine Py2-to-Py3 migrator set the 2026 bar. Moderne's OpenRewrite does deterministic AST rewrites at scale. Grit targets…"
+        },
+        {
+          "title": "Multi-Agent Software Engineering Team",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F10-multi-agent-software-team",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/10-multi-agent-software-team/docs/en.md",
+          "desc": "The 2026 shape of a multi-agent engineering team has converged: an architect plans, N coders work in parallel worktrees, a reviewer gates, a tester verifies. SWE-AF's factory ar…"
+        },
+        {
+          "title": "LLM Observability & Eval Dashboard",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F11-llm-observability-dashboard",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/11-llm-observability-dashboard/docs/en.md",
+          "desc": "Langfuse went open-core. Arize Phoenix published the 2026 GenAI semconv mappings. Helicone and Braintrust both doubled down on per-user cost attribution. Traceloop's OpenLLMetry…"
+        },
+        {
+          "title": "Video Understanding Pipeline (Scene → QA)",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F12-video-understanding-pipeline",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/12-video-understanding-pipeline/docs/en.md",
+          "desc": "Twelve Labs productized Marengo + Pegasus. VideoDB shipped the CRUD-for-video API. AI2's Molmo 2 published open VLM checkpoints. Gemini long-context handles hours of video nativ…"
+        },
+        {
+          "title": "Stateless MCP Server with Registry and Governance",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F13-mcp-server-with-registry",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/13-mcp-server-with-registry/docs/en.md",
+          "desc": "Production MCP is not one server process. It is a chain of contracts: publishable metadata, live discovery, a stateless request envelope, authorization, policy, audit, and deplo…"
+        },
+        {
+          "title": "Speculative-Decoding Inference Server",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F14-speculative-decoding-server",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/14-speculative-decoding-server/docs/en.md",
+          "desc": "Speculative decoding — a cheap draft proposes tokens, the target model verifies them in one pass — is now a production-ready optimization, not a research trick. EAGLE-3 in vLLM …"
+        },
+        {
+          "title": "Constitutional Safety Harness + Red-Team Range",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F15-constitutional-safety-harness",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/15-constitutional-safety-harness/docs/en.md",
+          "desc": "Anthropic's Constitutional Classifiers, Meta's Llama Guard 4, Google's ShieldGemma-2, NVIDIA's Nemotron 3 Content Safety, and X-Guard for multilingual coverage defined the 2026 …"
+        },
+        {
+          "title": "GitHub Issue-to-PR Autonomous Agent",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F16-github-issue-to-pr-agent",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/16-github-issue-to-pr-agent/docs/en.md",
+          "desc": "Label an issue, get a PR — the 2026 product shape for autonomous coding agents: run an agent in a cloud sandbox, verify tests pass, and post a review-ready PR with rationale. AW…"
+        },
+        {
+          "title": "Personal AI Tutor (Adaptive, Multimodal)",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F17-personal-ai-tutor",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/17-personal-ai-tutor/docs/en.md",
+          "desc": "Khanmigo (Khan Academy), Duolingo Max, Google LearnLM / Gemini for Education, Quizlet Q-Chat, and Synthesis Tutor all shipped adaptive multimodal tutoring at scale in 2026. The …"
+        },
+        {
+          "title": "Agent Harness Loop Contract",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F20-agent-harness-loop-contract",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/20-agent-harness-loop-contract/docs/en.md",
+          "desc": "The harness is the agent. The model is a coprocessor. This lesson freezes the loop contract you can wire any model into."
+        },
+        {
+          "title": "Tool Registry with Schema Validation",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F21-tool-registry-schema-validation",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/21-tool-registry-schema-validation/docs/en.md",
+          "desc": "A tool the agent cannot validate is a tool the agent cannot call. Build the registry and the schema checker before you build the tools."
+        },
+        {
+          "title": "JSON-RPC 2.0 Over Newline-Delimited Stdio",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F22-jsonrpc-stdio-transport",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/22-jsonrpc-stdio-transport/docs/en.md",
+          "desc": "The transport between a model client and a tool server is JSON-RPC over stdio. Hand-rolling it once teaches you what every framing layer is paying for."
+        },
+        {
+          "title": "Function Call Dispatcher",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F23-function-call-dispatcher",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/23-function-call-dispatcher/docs/en.md",
+          "desc": "The dispatcher is where the harness pays for every promise the schema made. Timeouts, retries, dedupe, error mapping. All on one seam."
+        },
+        {
+          "title": "Plan-Execute Control Flow",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F24-plan-execute-control-flow",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/24-plan-execute-control-flow/docs/en.md",
+          "desc": "A plan that cannot survive a failure is a script. A script that can replan is an agent. Build the replanner first."
+        },
+        {
+          "title": "Verification Gates and Observation Budget",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F25-verification-gates-observation-budget",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/25-verification-gates-observation-budget/docs/en.md",
+          "desc": "An agent harness without a verification layer is a wish in a trenchcoat. This lesson builds the deterministic gate chain that decides whether a tool call is allowed to fire, how…"
+        },
+        {
+          "title": "Sandbox Runner with Denylist and Path Jail",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F26-sandbox-runner-denylist",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/26-sandbox-runner-denylist/docs/en.md",
+          "desc": "The verification gate decides whether a tool call should run. The sandbox decides what happens when it does. This lesson ships a subprocess runner that refuses dangerous executa…"
+        },
+        {
+          "title": "Eval Harness with Fixture Tasks",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F27-eval-harness-fixture-tasks",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/27-eval-harness-fixture-tasks/docs/en.md",
+          "desc": "A coding agent is only as good as the suite of tasks you measure it against. This lesson builds an evaluation harness that takes a folder of fixture tasks, runs each through a c…"
+        },
+        {
+          "title": "Observability with OTel GenAI Spans and Prometheus Metrics",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F28-observability-otel-traces",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/28-observability-otel-traces/docs/en.md",
+          "desc": "An agent harness without observability is a black box that costs money. This lesson hand-rolls a span builder that emits records compliant with the OpenTelemetry GenAI semantic …"
+        },
+        {
+          "title": "End-to-End Coding Agent on the Harness",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F29-end-to-end-coding-task-demo",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/29-end-to-end-coding-task-demo/docs/en.md",
+          "desc": "Track A's payoff. This lesson stitches the gate chain, the sandbox, the eval harness, and the OTel spans into one working coding agent that fixes a real (small, fixture-scale) b…"
+        },
+        {
+          "title": "BPE Tokenizer From Scratch",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F30-bpe-tokenizer-from-scratch",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/30-bpe-tokenizer-from-scratch/docs/en.md",
+          "desc": "Bytes in, ids out, ids back to the same bytes. Build the tokenizer that every modern text model still starts from."
+        },
+        {
+          "title": "Tokenized Dataset with Sliding Window",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F31-tokenized-dataset-sliding-window",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/31-tokenized-dataset-sliding-window/docs/en.md",
+          "desc": "A pretraining run is a function from token ids to gradients. This lesson builds the conveyor that feeds the ids in."
+        },
+        {
+          "title": "Token and Positional Embeddings",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F32-token-positional-embeddings",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/32-token-positional-embeddings/docs/en.md",
+          "desc": "Ids are integers. The model wants vectors. Two lookup tables sit between them, and the choice of the positional one shapes what the model can learn."
+        },
+        {
+          "title": "Multi-Head Self-Attention",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F33-multihead-self-attention",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/33-multihead-self-attention/docs/en.md",
+          "desc": "One linear projection, three views, H parallel heads, one mask. The attention block as the model actually uses it."
+        },
+        {
+          "title": "Transformer Block from Scratch",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F34-transformer-block",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/34-transformer-block/docs/en.md",
+          "desc": "One block is the unit of every modern decoder LLM. Layer norm, multi head attention, residual, MLP, residual. The pre-LN variant trains stably without warmup. The post-LN varian…"
+        },
+        {
+          "title": "GPT Model Assembly",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F35-gpt-model-assembly",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/35-gpt-model-assembly/docs/en.md",
+          "desc": "Twelve blocks stacked, a token embedding, a learned position embedding, a final LayerNorm, and a tied language model head. That is the entire 124 million parameter GPT model. Th…"
+        },
+        {
+          "title": "Training Loop and Evaluation",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F36-training-loop-eval",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/36-training-loop-eval/docs/en.md",
+          "desc": "A loop that does not measure is a loop that lies. This lesson builds the training loop that drives the GPT model: AdamW with weight decay split, a warmup plus cosine learning ra…"
+        },
+        {
+          "title": "Loading Pretrained Weights",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F37-loading-pretrained-weights",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/37-loading-pretrained-weights/docs/en.md",
+          "desc": "Training a 124 million parameter model from scratch is a budget decision; loading a published checkpoint is a Tuesday. This lesson loads pretrained GPT-2 style weights from a sa…"
+        },
+        {
+          "title": "Classifier Fine-Tuning by Head Swap",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F38-classifier-finetuning",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/38-classifier-finetuning/docs/en.md",
+          "desc": "Track B's first capstone. A pretrained language model is a stack of self-attention blocks ending in a token-prediction head. When you want spam vs ham, the head is wrong but the…"
+        },
+        {
+          "title": "Instruction Tuning by Supervised Fine-Tuning",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F39-instruction-tuning-sft",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/39-instruction-tuning-sft/docs/en.md",
+          "desc": "A pretrained base model can extend a sequence but cannot follow an instruction. Supervised fine-tuning is the smallest change that fixes this: feed the model paired examples of …"
+        },
+        {
+          "title": "Direct Preference Optimization from Scratch",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F40-dpo-from-scratch",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/40-dpo-from-scratch/docs/en.md",
+          "desc": "Reward models and PPO are the classical RLHF stack. DPO collapses that stack into a single supervised loss that fits a policy directly against preference pairs. This lesson deri…"
+        },
+        {
+          "title": "Full Evaluation Pipeline",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F41-eval-pipeline",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/41-eval-pipeline/docs/en.md",
+          "desc": "Training is the part you can monitor with loss curves. Evaluation is the part you have to design. This lesson builds a unified eval pipeline that takes any trained language mode…"
+        },
+        {
+          "title": "Large Corpus Downloader",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F42-large-corpus-downloader",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/42-large-corpus-downloader/docs/en.md",
+          "desc": "Training a language model begins long before the first forward pass. The corpus has to land on disk, decompressed, deduplicated, and addressable, with the resume story already w…"
+        },
+        {
+          "title": "HDF5 Tokenized Corpus",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F43-hdf5-tokenized-corpus",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/43-hdf5-tokenized-corpus/docs/en.md",
+          "desc": "The downloaded corpus has to land in a layout the trainer can stream from at line speed. JSONL on disk does not survive 16 dataloader workers. HDF5 with a resizable, chunked int…"
+        },
+        {
+          "title": "Cosine LR with Linear Warmup",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F44-cosine-lr-warmup",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/44-cosine-lr-warmup/docs/en.md",
+          "desc": "The learning-rate schedule is the second most important decision after the loss function. AdamW with a cosine decay and a linear warmup is the modern default for language-model …"
+        },
+        {
+          "title": "Gradient Clipping and Mixed Precision",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F45-gradient-clipping-amp",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/45-gradient-clipping-amp/docs/en.md",
+          "desc": "The optimizer and schedule from the previous lesson assume gradients are sane. They usually are not. A single bad batch can spike the gradient norm by three orders of magnitude.…"
+        },
+        {
+          "title": "Gradient Accumulation",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F46-gradient-accumulation",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/46-gradient-accumulation/docs/en.md",
+          "desc": "Train at an effective batch you cannot afford, one micro-batch at a time. Scale the loss, hold the optimizer step, and let the gradients pile up."
+        },
+        {
+          "title": "Checkpoint Save and Resume",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F47-checkpoint-save-resume",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/47-checkpoint-save-resume/docs/en.md",
+          "desc": "Train interrupts kill runs; checkpoints let them continue. Save model, optimizer, scheduler, loss history, step counter, and RNG state, atomically, so a kill at any moment leave…"
+        },
+        {
+          "title": "Distributed Data Parallel and FSDP from Scratch",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F48-distributed-fsdp-ddp",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/48-distributed-fsdp-ddp/docs/en.md",
+          "desc": "Multi-rank training is two collectives and one rule. Broadcast the parameters at startup, average the gradients after backward, never let the ranks disagree about what step they…"
+        },
+        {
+          "title": "Language Model Evaluation Harness",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F49-lm-eval-harness",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/49-lm-eval-harness/docs/en.md",
+          "desc": "A model that does well on a task you cannot define is a model that does well by accident. The harness is the task definition, the metric, the runner, and the leaderboard, in one…"
+        },
+        {
+          "title": "Hypothesis Generator",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F50-hypothesis-generator",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/50-hypothesis-generator/docs/en.md",
+          "desc": "A research agent that asks the same question twice is wasting tokens. The trick is forcing each draft to land somewhere new."
+        },
+        {
+          "title": "Literature Retrieval",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F51-literature-retrieval",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/51-literature-retrieval/docs/en.md",
+          "desc": "A hypothesis is cheap. Knowing whether someone already proved it is the expensive part. Build the retrieval layer that answers that question before the runner spins up a sandbox."
+        },
+        {
+          "title": "Experiment Runner",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F52-experiment-runner",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/52-experiment-runner/docs/en.md",
+          "desc": "The loop is only as honest as its measurements. Build the runner that takes a spec, executes it in a sandboxed subprocess, and emits a json metrics blob the evaluator can trust."
+        },
+        {
+          "title": "Result Evaluator",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F53-result-evaluator",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/53-result-evaluator/docs/en.md",
+          "desc": "The runner produced numbers. The evaluator decides whether those numbers are an improvement, a regression, or noise. Build the verdict path that turns metrics into a one line co…"
+        },
+        {
+          "title": "Paper Writer",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F54-paper-writer",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/54-paper-writer/docs/en.md",
+          "desc": "A LaTeX skeleton is a contract between the researcher and the typesetter. If the contract is broken the document does not compile, and the failure is loud. Build the skeleton fi…"
+        },
+        {
+          "title": "Critic Loop",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F55-critic-loop",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/55-critic-loop/docs/en.md",
+          "desc": "A critic that returns \"looks good\" the first time is broken. A critic that always returns \"needs work\" is broken. The interesting critic is the one that converges, and you have …"
+        },
+        {
+          "title": "Iteration Scheduler",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F56-iteration-scheduler",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/56-iteration-scheduler/docs/en.md",
+          "desc": "A research loop without a scheduler is a queue with delusions. The scheduler is where the loop decides what to stop exploring, and that decision is the whole game."
+        },
+        {
+          "title": "End-to-End Research Demo",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F57-end-to-end-research-demo",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/57-end-to-end-research-demo/docs/en.md",
+          "desc": "A demo is the place where every contract you wrote earlier has to compose. If any one of them leaks, the demo is the lesson that catches it."
+        },
+        {
+          "title": "Vision Encoder Patches",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F58-vision-encoder-patches",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/58-vision-encoder-patches/docs/en.md",
+          "desc": "A vision model that reads pixels needs a tokenizer for pixels. Patch embedding is that tokenizer. Cut the image into a grid of squares, flatten each square, project it through o…"
+        },
+        {
+          "title": "Vision Transformer Encoder",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F59-vit-transformer",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/59-vit-transformer/docs/en.md",
+          "desc": "Patches alone do not see. A 12-layer pre-LN transformer with 12 attention heads turns the sequence of patch tokens into a sequence of contextual tokens, with the CLS token pooli…"
+        },
+        {
+          "title": "Projection Layer for Modality Alignment",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F60-projection-layer-modality-align",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/60-projection-layer-modality-align/docs/en.md",
+          "desc": "A vision encoder produces image tokens. A text decoder consumes text tokens. The two live in different vector spaces. A small two-layer MLP projects image tokens into the text e…"
+        },
+        {
+          "title": "Cross-Attention Fusion",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F61-cross-attention-fusion",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/61-cross-attention-fusion/docs/en.md",
+          "desc": "The projection layer aligns one image vector with one caption vector. A real vision-language decoder needs every text token to attend to every patch token, so the model can grou…"
+        },
+        {
+          "title": "Vision-Language Pretraining",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F62-vision-language-pretraining",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/62-vision-language-pretraining/docs/en.md",
+          "desc": "The encoder, projection, and decoder are wired. Now train them together. Two objectives drive learning: a contrastive image-text loss (InfoNCE) that pulls matching pairs togethe…"
+        },
+        {
+          "title": "Multimodal Evaluation",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F63-multimodal-eval",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/63-multimodal-eval/docs/en.md",
+          "desc": "Training is half the loop. The other half is measurement. This lesson builds three evaluation surfaces from primitives: image-caption retrieval reported as R@1, R@5, R@10; visua…"
+        },
+        {
+          "title": "Chunking Strategies, Compared",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F64-chunking-strategies-advanced",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/64-chunking-strategies-advanced/docs/en.md",
+          "desc": "Chunking decides what your retriever can ever surface. Get the boundaries wrong and no embedding model, no reranker, no LLM can repair the damage downstream."
+        },
+        {
+          "title": "Hybrid Retrieval with BM25 and Dense Embeddings",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F65-hybrid-retrieval-bm25-dense",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/65-hybrid-retrieval-bm25-dense/docs/en.md",
+          "desc": "Lexical and semantic retrieval fail on opposite query distributions. Hybrid retrieval with reciprocal rank fusion does not interpolate, it votes - and the vote wins on every que…"
+        },
+        {
+          "title": "Cross-Encoder Reranker",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F66-reranker-cross-encoder",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/66-reranker-cross-encoder/docs/en.md",
+          "desc": "A bi-encoder embeds query and document independently. A cross-encoder concatenates them and reads both at once. The cross-encoder is the smartest reader and the slowest. Used as…"
+        },
+        {
+          "title": "Query Rewriting: HyDE, Multi-Query, and Decomposition",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F67-query-rewriting-hyde",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/67-query-rewriting-hyde/docs/en.md",
+          "desc": "The query the user types is not the query your retriever wants. Rewriting bridges the gap before retrieval, so the index sees something closer to what the answer looks like."
+        },
+        {
+          "title": "RAG Evaluation: Precision, Recall, MRR, nDCG, Faithfulness, Answer Relevance",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F68-rag-eval-precision-recall",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/68-rag-eval-precision-recall/docs/en.md",
+          "desc": "If you cannot grade your retrieval and your answer at the same time, you cannot ship the system. The two are not the same metric and the same prompt fails on different axes."
+        },
+        {
+          "title": "End-to-End RAG System",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F69-end-to-end-rag-system",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/69-end-to-end-rag-system/docs/en.md",
+          "desc": "Six lessons of components. One pipeline. One eval loop. One self-terminating demo. This is the system you ship."
+        },
+        {
+          "title": "Task Spec Format",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F70-task-spec-format",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/70-task-spec-format/docs/en.md",
+          "desc": "An eval harness is only as good as the contract its tasks honour. Freeze the JSONL shape and the metric vocabulary before you write a single scoring function."
+        },
+        {
+          "title": "Classical Metrics",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F71-classical-metrics",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/71-classical-metrics/docs/en.md",
+          "desc": "BLEU, ROUGE-L, F1, exact-match, accuracy. Five metrics that still account for most published LLM eval numbers. Implement each from first principles so you know what the number m…"
+        },
+        {
+          "title": "Code Exec Metric",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F72-code-exec-metric",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/72-code-exec-metric/docs/en.md",
+          "desc": "Generated code is right when it passes the tests. The eval harness has to extract code, run it without crashing the host, and tally pass-rates honestly. This lesson builds that …"
+        },
+        {
+          "title": "Perplexity and Calibration",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F73-perplexity-calibration",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/73-perplexity-calibration/docs/en.md",
+          "desc": "If your model says 90 percent confident on a thousand answers and gets six hundred right, it is not well calibrated. Calibration is half of trustworthy eval. The other half is p…"
+        },
+        {
+          "title": "Leaderboard Aggregation",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F74-leaderboard-aggregation",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/74-leaderboard-aggregation/docs/en.md",
+          "desc": "Per-task scores are easy. Per-model rankings across heterogeneous tasks are harder. Statistical significance on a thousand-prediction leaderboard is the part everyone skips. Thi…"
+        },
+        {
+          "title": "End-to-End Eval Runner",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F75-end-to-end-eval-runner",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/75-end-to-end-eval-runner/docs/en.md",
+          "desc": "Five lessons of plumbing, one lesson to glue them. The runner reads the task spec from lesson 70, calls a model through an adapter, scores with lessons 71 and 72, attaches the c…"
+        },
+        {
+          "title": "Collective Ops From Scratch",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F76-collective-ops-from-scratch",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/76-collective-ops-from-scratch/docs/en.md",
+          "desc": "The four collective operations that hold distributed training together are allreduce, broadcast, allgather, and reduce_scatter. Every other primitive a training framework offers…"
+        },
+        {
+          "title": "Data Parallel DDP From Scratch",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F77-data-parallel-ddp",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/77-data-parallel-ddp/docs/en.md",
+          "desc": "DistributedDataParallel is a hook on top of allreduce. Wrap a model, broadcast the initial parameters from rank 0 so every rank starts identical, install a backward hook on ever…"
+        },
+        {
+          "title": "ZeRO Optimizer State Sharding",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F78-zero-parameter-sharding",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/78-zero-parameter-sharding/docs/en.md",
+          "desc": "Adam stores two moment estimates per parameter, both in float32. A 7B-parameter model carries 56 GB of optimiser state. ZeRO stage 1 shards that across N ranks; each rank owns 1…"
+        },
+        {
+          "title": "Pipeline Parallel and Bubble Analysis",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F79-pipeline-parallel",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/79-pipeline-parallel/docs/en.md",
+          "desc": "Tensor parallelism splits the matrix multiply across ranks. Pipeline parallelism splits the model across ranks, one stage per rank. Microbatches flow through the pipeline. The e…"
+        },
+        {
+          "title": "Sharded Checkpoint and Atomic Resume",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F80-checkpoint-sharded-resume",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/80-checkpoint-sharded-resume/docs/en.md",
+          "desc": "A 70B-parameter training job is paused by a node failure every few hours. The checkpoint format decides whether you lose 30 minutes or 30 hours. A sharded checkpoint writes ever…"
+        },
+        {
+          "title": "End-to-End Distributed Training",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F81-end-to-end-distributed-train",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/81-end-to-end-distributed-train/docs/en.md",
+          "desc": "Lessons 76 through 80 each built one piece. This is the assembly: a tiny GPT trained across 4 simulated ranks with DDP for gradient sync, ZeRO-1 for optimiser-state sharding, an…"
+        },
+        {
+          "title": "Jailbreak Taxonomy",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F82-jailbreak-taxonomy",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/82-jailbreak-taxonomy/docs/en.md",
+          "desc": "A safety harness without a taxonomy is a coin flip. Name the attack before you defend it."
+        },
+        {
+          "title": "Prompt Injection Detector",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F83-prompt-injection-detector",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/83-prompt-injection-detector/docs/en.md",
+          "desc": "A detector is a function from prompt to confidence and category. Anything else is a vibe."
+        },
+        {
+          "title": "Refusal Evaluation",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F84-refusal-evaluation",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/84-refusal-evaluation/docs/en.md",
+          "desc": "Helpfulness on benign prompts and refusal on harmful prompts are two metrics, not one. Measure both."
+        },
+        {
+          "title": "Content Classifier Integration",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F85-content-classifier-integration",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/85-content-classifier-integration/docs/en.md",
+          "desc": "Classifiers on the output side answer a different question than rules on the input side. Both need a policy router."
+        },
+        {
+          "title": "Constitutional Rules Engine",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F86-constitutional-rules-engine",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/86-constitutional-rules-engine/docs/en.md",
+          "desc": "A rule is a name, a predicate, and an explanation. Anything missing one of those three is a vibe, not a rule."
+        },
+        {
+          "title": "End-to-End Safety Gate",
+          "url": "https://aiengineeringfromscratch.com/lesson?path=phases%2F19-capstone-projects%2F87-end-to-end-safety-gate",
+          "raw_url": "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/phases/19-capstone-projects/87-end-to-end-safety-gate/docs/en.md",
+          "desc": "Pre-gen, during-gen, post-gen. Three checkpoints, one verdict, an audit trail per request."
+        }
+      ]
+    }
+  ]
+};
