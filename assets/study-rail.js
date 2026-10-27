@@ -50,6 +50,26 @@
   }
 
   /* ---------- harvest links out of a DOM scope ---------- */
+  function ytTime(href) {
+    if (!href) return 0;
+    try {
+      var u = new URL(href, location.href);
+      var t = u.searchParams.get("t") || u.searchParams.get("start");
+      if (!t) return 0;
+      if (/^\d+s?$/.test(t)) return parseInt(t, 10);
+      var m = t.match(/(?:(\d+)h)?(?:(\d+)m)?(?:(\d+)s)?/);
+      if (m && (m[1] || m[2] || m[3])) {
+        return (parseInt(m[1] || 0, 10) * 3600) + (parseInt(m[2] || 0, 10) * 60) + parseInt(m[3] || 0, 10);
+      }
+      if (t.indexOf(":") >= 0) {
+        var parts = t.split(":").map(function (x) { return parseInt(x, 10) || 0; });
+        if (parts.length === 2) return parts[0] * 60 + parts[1];
+        if (parts.length === 3) return parts[0] * 3600 + parts[1] * 60 + parts[2];
+      }
+    } catch (e) {}
+    return 0;
+  }
+
   function harvest(scope, out) {
     out = out || { videos: [], docs: [] };
     if (!scope) return out;
@@ -60,8 +80,10 @@
       if (a.closest(".hub-actions")) continue;
       var id = ytId(href);
       if (id) {
-        if (out.videos.length < MAX && !out.videos.some(function (v) { return v[0] === id; })) {
-          out.videos.push([id, clean(a.getAttribute("data-vtitle") || a.textContent) || "Video", clean(a.getAttribute("data-vchannel")), clean(a.getAttribute("data-vdur"))]);
+        var start = ytTime(href) || parseInt(a.getAttribute("data-start") || a.getAttribute("data-t") || "0", 10) || 0;
+        var dur = clean(a.getAttribute("data-vdur") || "");
+        if (out.videos.length < MAX && !out.videos.some(function (v) { return v[0] === id && (v[4] || 0) === start; })) {
+          out.videos.push([id, clean(a.getAttribute("data-vtitle") || a.textContent) || "Video", clean(a.getAttribute("data-vchannel")), dur, start]);
         }
         continue;
       }

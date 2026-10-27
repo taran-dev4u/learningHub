@@ -441,6 +441,53 @@
     play(tab === 'videos' ? Math.min(state.idx, vids.length - 1) : 0);
   }
 
+  function parseVideoStart(v) {
+    if (!v) return 0;
+    if (v[4] != null && v[4] !== '') {
+      var s = Number(v[4]);
+      if (!isNaN(s) && s > 0) return Math.floor(s);
+    }
+    if (v.start != null) {
+      var s2 = Number(v.start);
+      if (!isNaN(s2) && s2 > 0) return Math.floor(s2);
+    }
+    var rawId = String(v[0] || '');
+    var m = rawId.match(/[?&](?:t|start)=([^&#]+)/);
+    if (m) return parseTimeToSeconds(m[1]);
+    var dur = String(v[3] || '');
+    if (dur.indexOf(':') >= 0 || /^\d+[smh]$/.test(dur)) {
+      return parseTimeToSeconds(dur);
+    }
+    return 0;
+  }
+
+  function parseTimeToSeconds(str) {
+    if (!str) return 0;
+    str = String(str).trim();
+    if (/^\d+s?$/.test(str)) return parseInt(str, 10);
+    var m = str.match(/(?:(\d+)h)?(?:(\d+)m)?(?:(\d+)s)?/);
+    if (m && (m[1] || m[2] || m[3])) {
+      return (parseInt(m[1] || 0, 10) * 3600) + (parseInt(m[2] || 0, 10) * 60) + parseInt(m[3] || 0, 10);
+    }
+    if (str.indexOf(':') >= 0) {
+      var p = str.split(':').map(function (x) { return parseInt(x, 10) || 0; });
+      if (p.length === 2) return p[0] * 60 + p[1];
+      if (p.length === 3) return p[0] * 3600 + p[1] * 60 + p[2];
+    }
+    return 0;
+  }
+
+  function formatTime(sec) {
+    sec = Math.floor(sec || 0);
+    var h = Math.floor(sec / 3600);
+    var m = Math.floor((sec % 3600) / 60);
+    var s = sec % 60;
+    if (h > 0) {
+      return h + ':' + (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+    }
+    return m + ':' + (s < 10 ? '0' : '') + s;
+  }
+
   function renderChannelBar() {
     if (!channelBar) return;
     var vids = curVideos();
@@ -452,17 +499,22 @@
     channelBar.style.display = '';
     channelBar.innerHTML = vids.map(function (v, i) {
       var ch = v[2] || ('Instructor ' + (i + 1));
-      return '<button type="button" class="vp-chan-btn' + (i === state.idx ? ' active' : '') + '" data-vp-i="' + i + '">' + esc(ch) + '</button>';
+      var start = parseVideoStart(v);
+      var label = esc(ch) + (start > 0 ? ' (' + formatTime(start) + ')' : '');
+      return '<button type="button" class="vp-chan-btn' + (i === state.idx ? ' active' : '') + '" data-vp-i="' + i + '">' + label + '</button>';
     }).join('');
   }
 
   function renderList() {
     list.innerHTML = curVideos().map(function (v, i) {
+      var start = parseVideoStart(v);
+      var cleanId = (v[0] || '').split('?')[0].split('&')[0];
+      var timeLabel = start > 0 ? ('▶ ' + formatTime(start)) : (v[3] ? esc(v[3]) : '');
       return '<button type="button" class="vp-item" data-vp-i="' + i + '">' +
-        '<span class="vp-thumb"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/' + esc(v[0]) + '/mqdefault.jpg">' +
-        (v[3] ? '<span class="vp-dur">' + esc(v[3]) + '</span>' : '') + '</span>' +
+        '<span class="vp-thumb"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/' + esc(cleanId) + '/mqdefault.jpg">' +
+        (timeLabel ? '<span class="vp-dur">' + esc(timeLabel) + '</span>' : '') + '</span>' +
         '<span class="vp-meta"><span class="vp-vt">' + esc(v[1] || 'Video') + '</span>' +
-        '<span class="vp-ch">' + esc(v[2] || '') + '</span></span></button>';
+        '<span class="vp-ch">' + esc(v[2] || '') + (start > 0 ? ' · ⏱️ Starts at ' + formatTime(start) : '') + '</span></span></button>';
     }).join('');
   }
 
@@ -472,9 +524,15 @@
     if (state.tab === 'videos') state.idx = i;
     var origin = ytOrigin();
     frame.onload = function () { setTimeout(postSpeed, 600); };
-    frame.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(v[0]) + '?autoplay=1&rel=0&modestbranding=1&playsinline=1&enablejsapi=1' + (origin ? '&origin=' + encodeURIComponent(origin) : '');
-    openLink.href = 'https://www.youtube.com/watch?v=' + encodeURIComponent(v[0]);
-    openLink.title = 'Open this video on YouTube';
+    var start = parseVideoStart(v);
+    var cleanId = (v[0] || '').split('?')[0].split('&')[0];
+    var embedUrl = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(cleanId) +
+      '?autoplay=1&rel=0&modestbranding=1&playsinline=1&enablejsapi=1' +
+      (start > 0 ? '&start=' + start : '') +
+      (origin ? '&origin=' + encodeURIComponent(origin) : '');
+    frame.src = embedUrl;
+    openLink.href = 'https://www.youtube.com/watch?v=' + encodeURIComponent(cleanId) + (start > 0 ? '&t=' + start + 's' : '');
+    openLink.title = 'Open this video on YouTube' + (start > 0 ? ' (starts at ' + formatTime(start) + ')' : '');
     list.querySelectorAll('.vp-item').forEach(function (b, k) { b.classList.toggle('active', k === i); });
     if (channelBar) {
       channelBar.querySelectorAll('button').forEach(function (b, k) { b.classList.toggle('active', k === i); });

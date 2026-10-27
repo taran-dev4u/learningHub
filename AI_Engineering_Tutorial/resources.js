@@ -654,8 +654,10 @@ window.aiResources = {
       "videos": [
         [
           "zjkBMFhNj_g",
-          "[1hr Talk] Intro to Large Language Models",
-          "Andrej Karpathy"
+          "Intro to Large Language Models: System Architecture",
+          "Andrej Karpathy",
+          "00:20",
+          20
         ]
       ],
       "docs": [
@@ -683,8 +685,10 @@ window.aiResources = {
       "videos": [
         [
           "zjkBMFhNj_g",
-          "[1hr Talk] Intro to Large Language Models",
-          "Andrej Karpathy"
+          "Intro to Large Language Models: Training Pipelines",
+          "Andrej Karpathy",
+          "04:17",
+          257
         ]
       ],
       "docs": [
@@ -712,8 +716,10 @@ window.aiResources = {
       "videos": [
         [
           "zjkBMFhNj_g",
-          "[1hr Talk] Intro to Large Language Models",
-          "Andrej Karpathy"
+          "Intro to Large Language Models: Training Infrastructure",
+          "Andrej Karpathy",
+          "08:58",
+          538
         ]
       ],
       "docs": [
@@ -742,7 +748,9 @@ window.aiResources = {
         [
           "zjkBMFhNj_g",
           "[1hr Talk] Intro to Large Language Models",
-          "Andrej Karpathy"
+          "Andrej Karpathy",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -771,7 +779,9 @@ window.aiResources = {
         [
           "zjkBMFhNj_g",
           "[1hr Talk] Intro to Large Language Models",
-          "Andrej Karpathy"
+          "Andrej Karpathy",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -799,8 +809,10 @@ window.aiResources = {
       "videos": [
         [
           "zjkBMFhNj_g",
-          "[1hr Talk] Intro to Large Language Models",
-          "Andrej Karpathy"
+          "Intro to Large Language Models: Runtime Environment",
+          "Andrej Karpathy",
+          "11:22",
+          682
         ]
       ],
       "docs": [
@@ -827,9 +839,11 @@ window.aiResources = {
     "phase-00/docker-for-ai": {
       "videos": [
         [
-          "zjkBMFhNj_g",
-          "[1hr Talk] Intro to Large Language Models",
-          "Andrej Karpathy"
+          "CI3kL5uNV5A",
+          "Docker for AI Sandboxes",
+          "Engineering Community",
+          "00:00",
+          0
         ]
       ],
       "docs": [
@@ -858,7 +872,9 @@ window.aiResources = {
         [
           "zjkBMFhNj_g",
           "[1hr Talk] Intro to Large Language Models",
-          "Andrej Karpathy"
+          "Andrej Karpathy",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -887,7 +903,9 @@ window.aiResources = {
         [
           "zjkBMFhNj_g",
           "[1hr Talk] Intro to Large Language Models",
-          "Andrej Karpathy"
+          "Andrej Karpathy",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -916,7 +934,9 @@ window.aiResources = {
         [
           "zjkBMFhNj_g",
           "[1hr Talk] Intro to Large Language Models",
-          "Andrej Karpathy"
+          "Andrej Karpathy",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -945,7 +965,9 @@ window.aiResources = {
         [
           "zjkBMFhNj_g",
           "[1hr Talk] Intro to Large Language Models",
-          "Andrej Karpathy"
+          "Andrej Karpathy",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -974,7 +996,9 @@ window.aiResources = {
         [
           "zjkBMFhNj_g",
           "[1hr Talk] Intro to Large Language Models",
-          "Andrej Karpathy"
+          "Andrej Karpathy",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -1003,7 +1027,9 @@ window.aiResources = {
         [
           "zjkBMFhNj_g",
           "[1hr Talk] Intro to Large Language Models",
-          "Andrej Karpathy"
+          "Andrej Karpathy",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -1031,8 +1057,10 @@ window.aiResources = {
       "videos": [
         [
           "fNk_zzaMoSs",
-          "Vectors | Chapter 1, Essence of linear algebra",
-          "3Blue1Brown"
+          "Vectors | Essence of linear algebra, chapter 1",
+          "3Blue1Brown",
+          "00:00",
+          0
         ]
       ],
       "docs": [
@@ -1059,9 +1087,11 @@ window.aiResources = {
     "phase-01/vectors-matrices-operations": {
       "videos": [
         [
-          "fNk_zzaMoSs",
-          "Vectors | Chapter 1, Essence of linear algebra",
-          "3Blue1Brown"
+          "kYB8IZa5AuE",
+          "Linear transformations and matrices | Essence of linear algebra",
+          "3Blue1Brown",
+          "00:00",
+          0
         ]
       ],
       "docs": [
@@ -1088,9 +1118,11 @@ window.aiResources = {
     "phase-01/matrix-transformations-eigenvalues": {
       "videos": [
         [
-          "fNk_zzaMoSs",
-          "Vectors | Chapter 1, Essence of linear algebra",
-          "3Blue1Brown"
+          "PFDu9oVAE-g",
+          "Eigenvectors and eigenvalues | Essence of linear algebra",
+          "3Blue1Brown",
+          "00:00",
+          0
         ]
       ],
       "docs": [
@@ -1117,9 +1149,11 @@ window.aiResources = {
     "phase-01/calculus-for-ml-derivatives-gradients": {
       "videos": [
         [
-          "fNk_zzaMoSs",
-          "Vectors | Chapter 1, Essence of linear algebra",
-          "3Blue1Brown"
+          "tIeHLnjs5U8",
+          "Backpropagation calculus | Deep learning, chapter 4",
+          "3Blue1Brown",
+          "00:00",
+          0
         ]
       ],
       "docs": [
@@ -1148,7 +1182,9 @@ window.aiResources = {
         [
           "fNk_zzaMoSs",
           "Vectors | Chapter 1, Essence of linear algebra",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -1177,7 +1213,9 @@ window.aiResources = {
         [
           "fNk_zzaMoSs",
           "Vectors | Chapter 1, Essence of linear algebra",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -1206,7 +1244,9 @@ window.aiResources = {
         [
           "fNk_zzaMoSs",
           "Vectors | Chapter 1, Essence of linear algebra",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -1233,9 +1273,11 @@ window.aiResources = {
     "phase-01/optimization-gradient-descent-family": {
       "videos": [
         [
-          "fNk_zzaMoSs",
-          "Vectors | Chapter 1, Essence of linear algebra",
-          "3Blue1Brown"
+          "sDv4f4s2SB8",
+          "Gradient Descent, Step-by-Step",
+          "StatQuest with Josh Starmer",
+          "00:00",
+          0
         ]
       ],
       "docs": [
@@ -1262,9 +1304,11 @@ window.aiResources = {
     "phase-01/information-theory-entropy-kl-divergence": {
       "videos": [
         [
-          "fNk_zzaMoSs",
-          "Vectors | Chapter 1, Essence of linear algebra",
-          "3Blue1Brown"
+          "IN2XmBhILt4",
+          "Neural Networks: Cross Entropy",
+          "StatQuest with Josh Starmer",
+          "00:00",
+          0
         ]
       ],
       "docs": [
@@ -1293,7 +1337,9 @@ window.aiResources = {
         [
           "fNk_zzaMoSs",
           "Vectors | Chapter 1, Essence of linear algebra",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -1322,7 +1368,9 @@ window.aiResources = {
         [
           "fNk_zzaMoSs",
           "Vectors | Chapter 1, Essence of linear algebra",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -1351,7 +1399,9 @@ window.aiResources = {
         [
           "fNk_zzaMoSs",
           "Vectors | Chapter 1, Essence of linear algebra",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -1380,7 +1430,9 @@ window.aiResources = {
         [
           "fNk_zzaMoSs",
           "Vectors | Chapter 1, Essence of linear algebra",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -1409,7 +1461,9 @@ window.aiResources = {
         [
           "fNk_zzaMoSs",
           "Vectors | Chapter 1, Essence of linear algebra",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -1438,7 +1492,9 @@ window.aiResources = {
         [
           "fNk_zzaMoSs",
           "Vectors | Chapter 1, Essence of linear algebra",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -1467,7 +1523,9 @@ window.aiResources = {
         [
           "fNk_zzaMoSs",
           "Vectors | Chapter 1, Essence of linear algebra",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -1496,7 +1554,9 @@ window.aiResources = {
         [
           "fNk_zzaMoSs",
           "Vectors | Chapter 1, Essence of linear algebra",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -1525,7 +1585,9 @@ window.aiResources = {
         [
           "fNk_zzaMoSs",
           "Vectors | Chapter 1, Essence of linear algebra",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -1554,7 +1616,9 @@ window.aiResources = {
         [
           "fNk_zzaMoSs",
           "Vectors | Chapter 1, Essence of linear algebra",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -1583,7 +1647,9 @@ window.aiResources = {
         [
           "fNk_zzaMoSs",
           "Vectors | Chapter 1, Essence of linear algebra",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -1612,7 +1678,9 @@ window.aiResources = {
         [
           "fNk_zzaMoSs",
           "Vectors | Chapter 1, Essence of linear algebra",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -1641,7 +1709,9 @@ window.aiResources = {
         [
           "fNk_zzaMoSs",
           "Vectors | Chapter 1, Essence of linear algebra",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -1670,7 +1740,9 @@ window.aiResources = {
         [
           "sDv4f4s2SB8",
           "Gradient Descent, Step-by-Step",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -1699,7 +1771,9 @@ window.aiResources = {
         [
           "sDv4f4s2SB8",
           "Gradient Descent, Step-by-Step",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -1728,7 +1802,9 @@ window.aiResources = {
         [
           "sDv4f4s2SB8",
           "Gradient Descent, Step-by-Step",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -1757,7 +1833,9 @@ window.aiResources = {
         [
           "_L39rN6gz7Y",
           "Decision and Classification Trees, Clearly Explained!!!",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -1785,8 +1863,10 @@ window.aiResources = {
       "videos": [
         [
           "efR1C6CvhmE",
-          "Support Vector Machines Part 1 (of 3): Main Ideas!!!",
-          "StatQuest with Josh Starmer"
+          "Support Vector Machines Part 1",
+          "StatQuest with Josh Starmer",
+          "00:00",
+          0
         ]
       ],
       "docs": [
@@ -1815,7 +1895,9 @@ window.aiResources = {
         [
           "sDv4f4s2SB8",
           "Gradient Descent, Step-by-Step",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -1844,7 +1926,9 @@ window.aiResources = {
         [
           "RDZUdRSDOok",
           "Clustering with DBSCAN, Clearly Explained!!!",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -1873,7 +1957,9 @@ window.aiResources = {
         [
           "sDv4f4s2SB8",
           "Gradient Descent, Step-by-Step",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -1902,7 +1988,9 @@ window.aiResources = {
         [
           "sDv4f4s2SB8",
           "Gradient Descent, Step-by-Step",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -1931,7 +2019,9 @@ window.aiResources = {
         [
           "sDv4f4s2SB8",
           "Gradient Descent, Step-by-Step",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -1960,7 +2050,9 @@ window.aiResources = {
         [
           "sDv4f4s2SB8",
           "Gradient Descent, Step-by-Step",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -1989,7 +2081,9 @@ window.aiResources = {
         [
           "sDv4f4s2SB8",
           "Gradient Descent, Step-by-Step",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -2018,7 +2112,9 @@ window.aiResources = {
         [
           "sDv4f4s2SB8",
           "Gradient Descent, Step-by-Step",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -2047,7 +2143,9 @@ window.aiResources = {
         [
           "O2L2Uv9pdDA",
           "Naive Bayes, Clearly Explained!!!",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -2076,7 +2174,9 @@ window.aiResources = {
         [
           "sDv4f4s2SB8",
           "Gradient Descent, Step-by-Step",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -2105,7 +2205,9 @@ window.aiResources = {
         [
           "sDv4f4s2SB8",
           "Gradient Descent, Step-by-Step",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -2134,7 +2236,9 @@ window.aiResources = {
         [
           "sDv4f4s2SB8",
           "Gradient Descent, Step-by-Step",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -2163,7 +2267,9 @@ window.aiResources = {
         [
           "dsqwxls1h8o",
           "What is Feature Selection in Machine Learning Explained For Beginners (With Examples)",
-          "Learn with Whiteboard"
+          "Learn with Whiteboard",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -2192,7 +2298,9 @@ window.aiResources = {
         [
           "sDv4f4s2SB8",
           "Gradient Descent, Step-by-Step",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -2221,7 +2329,9 @@ window.aiResources = {
         [
           "QJTRNxUxmuc",
           "Machine Learning Model Drift - Concept Drift & Data Drift in ML - Explanation",
-          "1littlecoder"
+          "1littlecoder",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -2250,7 +2360,9 @@ window.aiResources = {
         [
           "sDv4f4s2SB8",
           "Gradient Descent, Step-by-Step",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -2279,7 +2391,9 @@ window.aiResources = {
         [
           "aircAruvnKk",
           "But what is a neural network? | Deep learning, chapter 1",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -2308,7 +2422,9 @@ window.aiResources = {
         [
           "aircAruvnKk",
           "But what is a neural network? | Deep learning, chapter 1",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -2337,7 +2453,9 @@ window.aiResources = {
         [
           "aircAruvnKk",
           "But what is a neural network? | Deep learning, chapter 1",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -2366,7 +2484,9 @@ window.aiResources = {
         [
           "aircAruvnKk",
           "But what is a neural network? | Deep learning, chapter 1",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -2395,7 +2515,9 @@ window.aiResources = {
         [
           "v_ueBW_5dLg",
           "What is a Loss Function? Understanding How AI Models Learn",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -2424,7 +2546,9 @@ window.aiResources = {
         [
           "aircAruvnKk",
           "But what is a neural network? | Deep learning, chapter 1",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -2453,7 +2577,9 @@ window.aiResources = {
         [
           "aircAruvnKk",
           "But what is a neural network? | Deep learning, chapter 1",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -2482,7 +2608,9 @@ window.aiResources = {
         [
           "aircAruvnKk",
           "But what is a neural network? | Deep learning, chapter 1",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -2511,7 +2639,9 @@ window.aiResources = {
         [
           "aircAruvnKk",
           "But what is a neural network? | Deep learning, chapter 1",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -2540,7 +2670,9 @@ window.aiResources = {
         [
           "aircAruvnKk",
           "But what is a neural network? | Deep learning, chapter 1",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -2569,7 +2701,9 @@ window.aiResources = {
         [
           "aircAruvnKk",
           "But what is a neural network? | Deep learning, chapter 1",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -2598,7 +2732,9 @@ window.aiResources = {
         [
           "aircAruvnKk",
           "But what is a neural network? | Deep learning, chapter 1",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -2627,7 +2763,9 @@ window.aiResources = {
         [
           "aircAruvnKk",
           "But what is a neural network? | Deep learning, chapter 1",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -2656,7 +2794,9 @@ window.aiResources = {
         [
           "KuXjwB4LzSA",
           "But what is a convolution?",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -2685,7 +2825,9 @@ window.aiResources = {
         [
           "KuXjwB4LzSA",
           "But what is a convolution?",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -2714,7 +2856,9 @@ window.aiResources = {
         [
           "KuXjwB4LzSA",
           "But what is a convolution?",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -2743,7 +2887,9 @@ window.aiResources = {
         [
           "KuXjwB4LzSA",
           "But what is a convolution?",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -2772,7 +2918,9 @@ window.aiResources = {
         [
           "KuXjwB4LzSA",
           "But what is a convolution?",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -2801,7 +2949,9 @@ window.aiResources = {
         [
           "KuXjwB4LzSA",
           "But what is a convolution?",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -2830,7 +2980,9 @@ window.aiResources = {
         [
           "KuXjwB4LzSA",
           "But what is a convolution?",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -2859,7 +3011,9 @@ window.aiResources = {
         [
           "KuXjwB4LzSA",
           "But what is a convolution?",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -2888,7 +3042,9 @@ window.aiResources = {
         [
           "KuXjwB4LzSA",
           "But what is a convolution?",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -2917,7 +3073,9 @@ window.aiResources = {
         [
           "KuXjwB4LzSA",
           "But what is a convolution?",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -2946,7 +3104,9 @@ window.aiResources = {
         [
           "KuXjwB4LzSA",
           "But what is a convolution?",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -2975,7 +3135,9 @@ window.aiResources = {
         [
           "KuXjwB4LzSA",
           "But what is a convolution?",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -3004,7 +3166,9 @@ window.aiResources = {
         [
           "KuXjwB4LzSA",
           "But what is a convolution?",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -3033,7 +3197,9 @@ window.aiResources = {
         [
           "KuXjwB4LzSA",
           "But what is a convolution?",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -3062,7 +3228,9 @@ window.aiResources = {
         [
           "KuXjwB4LzSA",
           "But what is a convolution?",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -3091,7 +3259,9 @@ window.aiResources = {
         [
           "KuXjwB4LzSA",
           "But what is a convolution?",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -3120,7 +3290,9 @@ window.aiResources = {
         [
           "KuXjwB4LzSA",
           "But what is a convolution?",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -3149,7 +3321,9 @@ window.aiResources = {
         [
           "KuXjwB4LzSA",
           "But what is a convolution?",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -3178,7 +3352,9 @@ window.aiResources = {
         [
           "KuXjwB4LzSA",
           "But what is a convolution?",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -3207,7 +3383,9 @@ window.aiResources = {
         [
           "KuXjwB4LzSA",
           "But what is a convolution?",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -3236,7 +3414,9 @@ window.aiResources = {
         [
           "KuXjwB4LzSA",
           "But what is a convolution?",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -3265,7 +3445,9 @@ window.aiResources = {
         [
           "KuXjwB4LzSA",
           "But what is a convolution?",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -3294,7 +3476,9 @@ window.aiResources = {
         [
           "KuXjwB4LzSA",
           "But what is a convolution?",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -3323,7 +3507,9 @@ window.aiResources = {
         [
           "KuXjwB4LzSA",
           "But what is a convolution?",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -3352,7 +3538,9 @@ window.aiResources = {
         [
           "KuXjwB4LzSA",
           "But what is a convolution?",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -3381,7 +3569,9 @@ window.aiResources = {
         [
           "KuXjwB4LzSA",
           "But what is a convolution?",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -3410,7 +3600,9 @@ window.aiResources = {
         [
           "KuXjwB4LzSA",
           "But what is a convolution?",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -3439,7 +3631,9 @@ window.aiResources = {
         [
           "KuXjwB4LzSA",
           "But what is a convolution?",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -3468,7 +3662,9 @@ window.aiResources = {
         [
           "viZrOnJclY0",
           "Word2Vec, Clearly Explained!!!",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -3497,7 +3693,9 @@ window.aiResources = {
         [
           "viZrOnJclY0",
           "Word2Vec, Clearly Explained!!!",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -3526,7 +3724,9 @@ window.aiResources = {
         [
           "viZrOnJclY0",
           "Word2Vec, Clearly Explained!!!",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -3555,7 +3755,9 @@ window.aiResources = {
         [
           "viZrOnJclY0",
           "Word2Vec, Clearly Explained!!!",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -3584,7 +3786,9 @@ window.aiResources = {
         [
           "viZrOnJclY0",
           "Word2Vec, Clearly Explained!!!",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -3613,7 +3817,9 @@ window.aiResources = {
         [
           "viZrOnJclY0",
           "Word2Vec, Clearly Explained!!!",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -3642,7 +3848,9 @@ window.aiResources = {
         [
           "viZrOnJclY0",
           "Word2Vec, Clearly Explained!!!",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -3671,7 +3879,9 @@ window.aiResources = {
         [
           "viZrOnJclY0",
           "Word2Vec, Clearly Explained!!!",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -3700,7 +3910,9 @@ window.aiResources = {
         [
           "viZrOnJclY0",
           "Word2Vec, Clearly Explained!!!",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -3729,7 +3941,9 @@ window.aiResources = {
         [
           "viZrOnJclY0",
           "Word2Vec, Clearly Explained!!!",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -3758,7 +3972,9 @@ window.aiResources = {
         [
           "viZrOnJclY0",
           "Word2Vec, Clearly Explained!!!",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -3787,7 +4003,9 @@ window.aiResources = {
         [
           "viZrOnJclY0",
           "Word2Vec, Clearly Explained!!!",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -3816,7 +4034,9 @@ window.aiResources = {
         [
           "viZrOnJclY0",
           "Word2Vec, Clearly Explained!!!",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -3845,7 +4065,9 @@ window.aiResources = {
         [
           "viZrOnJclY0",
           "Word2Vec, Clearly Explained!!!",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -3874,7 +4096,9 @@ window.aiResources = {
         [
           "viZrOnJclY0",
           "Word2Vec, Clearly Explained!!!",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -3903,7 +4127,9 @@ window.aiResources = {
         [
           "viZrOnJclY0",
           "Word2Vec, Clearly Explained!!!",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -3932,7 +4158,9 @@ window.aiResources = {
         [
           "viZrOnJclY0",
           "Word2Vec, Clearly Explained!!!",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -3961,7 +4189,9 @@ window.aiResources = {
         [
           "viZrOnJclY0",
           "Word2Vec, Clearly Explained!!!",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -3990,7 +4220,9 @@ window.aiResources = {
         [
           "viZrOnJclY0",
           "Word2Vec, Clearly Explained!!!",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -4019,7 +4251,9 @@ window.aiResources = {
         [
           "viZrOnJclY0",
           "Word2Vec, Clearly Explained!!!",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -4048,7 +4282,9 @@ window.aiResources = {
         [
           "viZrOnJclY0",
           "Word2Vec, Clearly Explained!!!",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -4077,7 +4313,9 @@ window.aiResources = {
         [
           "viZrOnJclY0",
           "Word2Vec, Clearly Explained!!!",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -4106,7 +4344,9 @@ window.aiResources = {
         [
           "8OJC21T2SL4",
           "5 Levels Of Text Splitting For Retrieval",
-          "Greg Kamradt"
+          "Greg Kamradt",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -4135,7 +4375,9 @@ window.aiResources = {
         [
           "viZrOnJclY0",
           "Word2Vec, Clearly Explained!!!",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -4164,7 +4406,9 @@ window.aiResources = {
         [
           "viZrOnJclY0",
           "Word2Vec, Clearly Explained!!!",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -4193,7 +4437,9 @@ window.aiResources = {
         [
           "viZrOnJclY0",
           "Word2Vec, Clearly Explained!!!",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -4222,7 +4468,9 @@ window.aiResources = {
         [
           "viZrOnJclY0",
           "Word2Vec, Clearly Explained!!!",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -4251,7 +4499,9 @@ window.aiResources = {
         [
           "viZrOnJclY0",
           "Word2Vec, Clearly Explained!!!",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -4280,7 +4530,9 @@ window.aiResources = {
         [
           "viZrOnJclY0",
           "Word2Vec, Clearly Explained!!!",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -4309,7 +4561,9 @@ window.aiResources = {
         [
           "t3YJ5hKiMQ0",
           "Building makemore Part 5: Building a WaveNet",
-          "Andrej Karpathy"
+          "Andrej Karpathy",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -4338,7 +4592,9 @@ window.aiResources = {
         [
           "t3YJ5hKiMQ0",
           "Building makemore Part 5: Building a WaveNet",
-          "Andrej Karpathy"
+          "Andrej Karpathy",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -4367,7 +4623,9 @@ window.aiResources = {
         [
           "t3YJ5hKiMQ0",
           "Building makemore Part 5: Building a WaveNet",
-          "Andrej Karpathy"
+          "Andrej Karpathy",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -4396,7 +4654,9 @@ window.aiResources = {
         [
           "t3YJ5hKiMQ0",
           "Building makemore Part 5: Building a WaveNet",
-          "Andrej Karpathy"
+          "Andrej Karpathy",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -4425,7 +4685,9 @@ window.aiResources = {
         [
           "t3YJ5hKiMQ0",
           "Building makemore Part 5: Building a WaveNet",
-          "Andrej Karpathy"
+          "Andrej Karpathy",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -4454,7 +4716,9 @@ window.aiResources = {
         [
           "t3YJ5hKiMQ0",
           "Building makemore Part 5: Building a WaveNet",
-          "Andrej Karpathy"
+          "Andrej Karpathy",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -4483,7 +4747,9 @@ window.aiResources = {
         [
           "t3YJ5hKiMQ0",
           "Building makemore Part 5: Building a WaveNet",
-          "Andrej Karpathy"
+          "Andrej Karpathy",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -4512,7 +4778,9 @@ window.aiResources = {
         [
           "t3YJ5hKiMQ0",
           "Building makemore Part 5: Building a WaveNet",
-          "Andrej Karpathy"
+          "Andrej Karpathy",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -4541,7 +4809,9 @@ window.aiResources = {
         [
           "t3YJ5hKiMQ0",
           "Building makemore Part 5: Building a WaveNet",
-          "Andrej Karpathy"
+          "Andrej Karpathy",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -4570,7 +4840,9 @@ window.aiResources = {
         [
           "t3YJ5hKiMQ0",
           "Building makemore Part 5: Building a WaveNet",
-          "Andrej Karpathy"
+          "Andrej Karpathy",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -4599,7 +4871,9 @@ window.aiResources = {
         [
           "t3YJ5hKiMQ0",
           "Building makemore Part 5: Building a WaveNet",
-          "Andrej Karpathy"
+          "Andrej Karpathy",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -4628,7 +4902,9 @@ window.aiResources = {
         [
           "t3YJ5hKiMQ0",
           "Building makemore Part 5: Building a WaveNet",
-          "Andrej Karpathy"
+          "Andrej Karpathy",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -4657,7 +4933,9 @@ window.aiResources = {
         [
           "t3YJ5hKiMQ0",
           "Building makemore Part 5: Building a WaveNet",
-          "Andrej Karpathy"
+          "Andrej Karpathy",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -4686,7 +4964,9 @@ window.aiResources = {
         [
           "t3YJ5hKiMQ0",
           "Building makemore Part 5: Building a WaveNet",
-          "Andrej Karpathy"
+          "Andrej Karpathy",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -4715,7 +4995,9 @@ window.aiResources = {
         [
           "t3YJ5hKiMQ0",
           "Building makemore Part 5: Building a WaveNet",
-          "Andrej Karpathy"
+          "Andrej Karpathy",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -4744,7 +5026,9 @@ window.aiResources = {
         [
           "t3YJ5hKiMQ0",
           "Building makemore Part 5: Building a WaveNet",
-          "Andrej Karpathy"
+          "Andrej Karpathy",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -4773,7 +5057,9 @@ window.aiResources = {
         [
           "t3YJ5hKiMQ0",
           "Building makemore Part 5: Building a WaveNet",
-          "Andrej Karpathy"
+          "Andrej Karpathy",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -4800,9 +5086,11 @@ window.aiResources = {
     "phase-07/why-transformers-the-problems-with-rnns": {
       "videos": [
         [
-          "eMlx5fFNoYc",
-          "Attention in transformers, step-by-step | Deep Learning Chapter 6",
-          "3Blue1Brown"
+          "bCz4OMemCcA",
+          "Attention Is All You Need: RNN Limitations",
+          "Umar Jamil",
+          "01:10",
+          70
         ]
       ],
       "docs": [
@@ -4829,9 +5117,11 @@ window.aiResources = {
     "phase-07/self-attention-from-scratch": {
       "videos": [
         [
-          "eMlx5fFNoYc",
-          "Attention in transformers, step-by-step | Deep Learning Chapter 6",
-          "3Blue1Brown"
+          "kCc8FmEb1nY",
+          "Let's build GPT: Self-Attention Mechanism",
+          "Andrej Karpathy",
+          "1:02:00",
+          3720
         ]
       ],
       "docs": [
@@ -4858,9 +5148,11 @@ window.aiResources = {
     "phase-07/multi-head-attention": {
       "videos": [
         [
-          "eMlx5fFNoYc",
-          "Attention in transformers, step-by-step | Deep Learning Chapter 6",
-          "3Blue1Brown"
+          "kCc8FmEb1nY",
+          "Let's build GPT: Multi-Headed Self-Attention",
+          "Andrej Karpathy",
+          "1:21:59",
+          4919
         ]
       ],
       "docs": [
@@ -4887,9 +5179,11 @@ window.aiResources = {
     "phase-07/positional-encoding-sinusoidal-rope-alibi": {
       "videos": [
         [
-          "eMlx5fFNoYc",
-          "Attention in transformers, step-by-step | Deep Learning Chapter 6",
-          "3Blue1Brown"
+          "kCc8FmEb1nY",
+          "Let's build GPT: Positional Encoding",
+          "Andrej Karpathy",
+          "1:00:18",
+          3618
         ]
       ],
       "docs": [
@@ -4916,9 +5210,11 @@ window.aiResources = {
     "phase-07/the-full-transformer-encoder-decoder": {
       "videos": [
         [
-          "eMlx5fFNoYc",
-          "Attention in transformers, step-by-step | Deep Learning Chapter 6",
-          "3Blue1Brown"
+          "kCc8FmEb1nY",
+          "Let's build GPT: Encoder vs Decoder",
+          "Andrej Karpathy",
+          "1:42:39",
+          6159
         ]
       ],
       "docs": [
@@ -4947,7 +5243,9 @@ window.aiResources = {
         [
           "eMlx5fFNoYc",
           "Attention in transformers, step-by-step | Deep Learning Chapter 6",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -4974,9 +5272,11 @@ window.aiResources = {
     "phase-07/gpt-causal-language-modeling": {
       "videos": [
         [
-          "eMlx5fFNoYc",
-          "Attention in transformers, step-by-step | Deep Learning Chapter 6",
-          "3Blue1Brown"
+          "kCc8FmEb1nY",
+          "Let's build GPT: Causal Masking & Language Model",
+          "Andrej Karpathy",
+          "22:11",
+          1331
         ]
       ],
       "docs": [
@@ -5005,7 +5305,9 @@ window.aiResources = {
         [
           "eMlx5fFNoYc",
           "Attention in transformers, step-by-step | Deep Learning Chapter 6",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -5034,7 +5336,9 @@ window.aiResources = {
         [
           "eMlx5fFNoYc",
           "Attention in transformers, step-by-step | Deep Learning Chapter 6",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -5063,7 +5367,9 @@ window.aiResources = {
         [
           "eMlx5fFNoYc",
           "Attention in transformers, step-by-step | Deep Learning Chapter 6",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -5092,7 +5398,9 @@ window.aiResources = {
         [
           "eMlx5fFNoYc",
           "Attention in transformers, step-by-step | Deep Learning Chapter 6",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -5119,9 +5427,11 @@ window.aiResources = {
     "phase-07/kv-cache-flash-attention-inference-optimization": {
       "videos": [
         [
-          "eMlx5fFNoYc",
-          "Attention in transformers, step-by-step | Deep Learning Chapter 6",
-          "3Blue1Brown"
+          "oM4VmoabDAI",
+          "LoRA Explained: KV Cache in Self-Attention",
+          "Umar Jamil",
+          "1:16:50",
+          4610
         ]
       ],
       "docs": [
@@ -5148,9 +5458,11 @@ window.aiResources = {
     "phase-07/scaling-laws": {
       "videos": [
         [
-          "eMlx5fFNoYc",
-          "Attention in transformers, step-by-step | Deep Learning Chapter 6",
-          "3Blue1Brown"
+          "zjkBMFhNj_g",
+          "Intro to Large Language Models: Scaling Laws",
+          "Andrej Karpathy",
+          "32:00",
+          1920
         ]
       ],
       "docs": [
@@ -5177,9 +5489,11 @@ window.aiResources = {
     "phase-07/build-a-transformer-from-scratch": {
       "videos": [
         [
-          "eMlx5fFNoYc",
-          "Attention in transformers, step-by-step | Deep Learning Chapter 6",
-          "3Blue1Brown"
+          "kCc8FmEb1nY",
+          "Let's build GPT: Complete Transformer Code",
+          "Andrej Karpathy",
+          "1:46:22",
+          6382
         ]
       ],
       "docs": [
@@ -5208,7 +5522,9 @@ window.aiResources = {
         [
           "eMlx5fFNoYc",
           "Attention in transformers, step-by-step | Deep Learning Chapter 6",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -5237,7 +5553,9 @@ window.aiResources = {
         [
           "VkWlLSTdHs8",
           "Faster LLMs: Accelerate Inference with Speculative Decoding",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -5266,7 +5584,9 @@ window.aiResources = {
         [
           "1CIpzeNxIhU",
           "Diffusion Models Explained - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -5295,7 +5615,9 @@ window.aiResources = {
         [
           "1CIpzeNxIhU",
           "Diffusion Models Explained - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -5324,7 +5646,9 @@ window.aiResources = {
         [
           "1CIpzeNxIhU",
           "Diffusion Models Explained - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -5353,7 +5677,9 @@ window.aiResources = {
         [
           "1CIpzeNxIhU",
           "Diffusion Models Explained - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -5382,7 +5708,9 @@ window.aiResources = {
         [
           "1CIpzeNxIhU",
           "Diffusion Models Explained - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -5411,7 +5739,9 @@ window.aiResources = {
         [
           "1CIpzeNxIhU",
           "Diffusion Models Explained - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -5440,7 +5770,9 @@ window.aiResources = {
         [
           "1CIpzeNxIhU",
           "Diffusion Models Explained - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -5469,7 +5801,9 @@ window.aiResources = {
         [
           "1CIpzeNxIhU",
           "Diffusion Models Explained - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -5498,7 +5832,9 @@ window.aiResources = {
         [
           "1CIpzeNxIhU",
           "Diffusion Models Explained - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -5527,7 +5863,9 @@ window.aiResources = {
         [
           "1CIpzeNxIhU",
           "Diffusion Models Explained - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -5556,7 +5894,9 @@ window.aiResources = {
         [
           "1CIpzeNxIhU",
           "Diffusion Models Explained - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -5585,7 +5925,9 @@ window.aiResources = {
         [
           "1CIpzeNxIhU",
           "Diffusion Models Explained - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -5614,7 +5956,9 @@ window.aiResources = {
         [
           "1CIpzeNxIhU",
           "Diffusion Models Explained - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -5643,7 +5987,9 @@ window.aiResources = {
         [
           "1CIpzeNxIhU",
           "Diffusion Models Explained - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -5672,7 +6018,9 @@ window.aiResources = {
         [
           "1CIpzeNxIhU",
           "Diffusion Models Explained - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -5701,7 +6049,9 @@ window.aiResources = {
         [
           "2pWv7GOvuf0",
           "RL Course by David Silver - Lecture 1: Introduction to Reinforcement Learning",
-          "DeepMind"
+          "DeepMind",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -5730,7 +6080,9 @@ window.aiResources = {
         [
           "2pWv7GOvuf0",
           "RL Course by David Silver - Lecture 1: Introduction to Reinforcement Learning",
-          "DeepMind"
+          "DeepMind",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -5759,7 +6111,9 @@ window.aiResources = {
         [
           "2pWv7GOvuf0",
           "RL Course by David Silver - Lecture 1: Introduction to Reinforcement Learning",
-          "DeepMind"
+          "DeepMind",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -5788,7 +6142,9 @@ window.aiResources = {
         [
           "2pWv7GOvuf0",
           "RL Course by David Silver - Lecture 1: Introduction to Reinforcement Learning",
-          "DeepMind"
+          "DeepMind",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -5817,7 +6173,9 @@ window.aiResources = {
         [
           "2pWv7GOvuf0",
           "RL Course by David Silver - Lecture 1: Introduction to Reinforcement Learning",
-          "DeepMind"
+          "DeepMind",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -5846,7 +6204,9 @@ window.aiResources = {
         [
           "2pWv7GOvuf0",
           "RL Course by David Silver - Lecture 1: Introduction to Reinforcement Learning",
-          "DeepMind"
+          "DeepMind",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -5875,7 +6235,9 @@ window.aiResources = {
         [
           "2pWv7GOvuf0",
           "RL Course by David Silver - Lecture 1: Introduction to Reinforcement Learning",
-          "DeepMind"
+          "DeepMind",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -5904,7 +6266,9 @@ window.aiResources = {
         [
           "efR1C6CvhmE",
           "Support Vector Machines Part 1 (of 3): Main Ideas!!!",
-          "StatQuest with Josh Starmer"
+          "StatQuest with Josh Starmer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -5933,7 +6297,9 @@ window.aiResources = {
         [
           "2pWv7GOvuf0",
           "RL Course by David Silver - Lecture 1: Introduction to Reinforcement Learning",
-          "DeepMind"
+          "DeepMind",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -5962,7 +6328,9 @@ window.aiResources = {
         [
           "2pWv7GOvuf0",
           "RL Course by David Silver - Lecture 1: Introduction to Reinforcement Learning",
-          "DeepMind"
+          "DeepMind",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -5991,7 +6359,9 @@ window.aiResources = {
         [
           "2pWv7GOvuf0",
           "RL Course by David Silver - Lecture 1: Introduction to Reinforcement Learning",
-          "DeepMind"
+          "DeepMind",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -6020,7 +6390,9 @@ window.aiResources = {
         [
           "2pWv7GOvuf0",
           "RL Course by David Silver - Lecture 1: Introduction to Reinforcement Learning",
-          "DeepMind"
+          "DeepMind",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -6048,8 +6420,10 @@ window.aiResources = {
       "videos": [
         [
           "kCc8FmEb1nY",
-          "Let's build GPT: from scratch, in code, spelled out.",
-          "Andrej Karpathy"
+          "Let's build GPT: Tokenization Walkthrough",
+          "Andrej Karpathy",
+          "09:28",
+          568
         ]
       ],
       "docs": [
@@ -6076,9 +6450,11 @@ window.aiResources = {
     "phase-10/building-a-tokenizer-from-scratch": {
       "videos": [
         [
-          "kCc8FmEb1nY",
-          "Let's build GPT: from scratch, in code, spelled out.",
-          "Andrej Karpathy"
+          "zduSFxRajkE",
+          "State of GPT: Byte Pair Encoding (BPE)",
+          "Microsoft Developer",
+          "23:50",
+          1430
         ]
       ],
       "docs": [
@@ -6106,8 +6482,10 @@ window.aiResources = {
       "videos": [
         [
           "kCc8FmEb1nY",
-          "Let's build GPT: from scratch, in code, spelled out.",
-          "Andrej Karpathy"
+          "Let's build GPT: Batch Data Loader",
+          "Andrej Karpathy",
+          "14:27",
+          867
         ]
       ],
       "docs": [
@@ -6134,9 +6512,11 @@ window.aiResources = {
     "phase-10/pre-training-a-mini-gpt-124m": {
       "videos": [
         [
-          "kCc8FmEb1nY",
-          "Let's build GPT: from scratch, in code, spelled out.",
-          "Andrej Karpathy"
+          "l8pRSuU81PU",
+          "Let's reproduce GPT-2: Model Implementation",
+          "Andrej Karpathy",
+          "13:47",
+          827
         ]
       ],
       "docs": [
@@ -6165,7 +6545,9 @@ window.aiResources = {
         [
           "kCc8FmEb1nY",
           "Let's build GPT: from scratch, in code, spelled out.",
-          "Andrej Karpathy"
+          "Andrej Karpathy",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -6192,9 +6574,11 @@ window.aiResources = {
     "phase-10/instruction-tuning-sft": {
       "videos": [
         [
-          "kCc8FmEb1nY",
-          "Let's build GPT: from scratch, in code, spelled out.",
-          "Andrej Karpathy"
+          "zjkBMFhNj_g",
+          "Intro to LLMs: Supervised Fine-Tuning (SFT)",
+          "Andrej Karpathy",
+          "14:14",
+          854
         ]
       ],
       "docs": [
@@ -6221,9 +6605,11 @@ window.aiResources = {
     "phase-10/rlhf-reward-model-ppo": {
       "videos": [
         [
-          "kCc8FmEb1nY",
-          "Let's build GPT: from scratch, in code, spelled out.",
-          "Andrej Karpathy"
+          "zjkBMFhNj_g",
+          "Intro to LLMs: RLHF with PPO",
+          "Andrej Karpathy",
+          "21:05",
+          1265
         ]
       ],
       "docs": [
@@ -6250,9 +6636,11 @@ window.aiResources = {
     "phase-10/dpo-direct-preference-optimization": {
       "videos": [
         [
-          "kCc8FmEb1nY",
-          "Let's build GPT: from scratch, in code, spelled out.",
-          "Andrej Karpathy"
+          "XZLc09hkMwA",
+          "Direct Preference Optimization (DPO)",
+          "AI Coffee Break with Letitia",
+          "00:30",
+          30
         ]
       ],
       "docs": [
@@ -6281,7 +6669,9 @@ window.aiResources = {
         [
           "kCc8FmEb1nY",
           "Let's build GPT: from scratch, in code, spelled out.",
-          "Andrej Karpathy"
+          "Andrej Karpathy",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -6310,7 +6700,9 @@ window.aiResources = {
         [
           "kCc8FmEb1nY",
           "Let's build GPT: from scratch, in code, spelled out.",
-          "Andrej Karpathy"
+          "Andrej Karpathy",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -6339,7 +6731,9 @@ window.aiResources = {
         [
           "kCc8FmEb1nY",
           "Let's build GPT: from scratch, in code, spelled out.",
-          "Andrej Karpathy"
+          "Andrej Karpathy",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -6368,7 +6762,9 @@ window.aiResources = {
         [
           "kCc8FmEb1nY",
           "Let's build GPT: from scratch, in code, spelled out.",
-          "Andrej Karpathy"
+          "Andrej Karpathy",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -6397,7 +6793,9 @@ window.aiResources = {
         [
           "kCc8FmEb1nY",
           "Let's build GPT: from scratch, in code, spelled out.",
-          "Andrej Karpathy"
+          "Andrej Karpathy",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -6426,7 +6824,9 @@ window.aiResources = {
         [
           "kCc8FmEb1nY",
           "Let's build GPT: from scratch, in code, spelled out.",
-          "Andrej Karpathy"
+          "Andrej Karpathy",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -6455,7 +6855,9 @@ window.aiResources = {
         [
           "VkWlLSTdHs8",
           "Faster LLMs: Accelerate Inference with Speculative Decoding",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -6484,7 +6886,9 @@ window.aiResources = {
         [
           "kCc8FmEb1nY",
           "Let's build GPT: from scratch, in code, spelled out.",
-          "Andrej Karpathy"
+          "Andrej Karpathy",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -6513,7 +6917,9 @@ window.aiResources = {
         [
           "kCc8FmEb1nY",
           "Let's build GPT: from scratch, in code, spelled out.",
-          "Andrej Karpathy"
+          "Andrej Karpathy",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -6542,7 +6948,9 @@ window.aiResources = {
         [
           "kCc8FmEb1nY",
           "Let's build GPT: from scratch, in code, spelled out.",
-          "Andrej Karpathy"
+          "Andrej Karpathy",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -6571,7 +6979,9 @@ window.aiResources = {
         [
           "kCc8FmEb1nY",
           "Let's build GPT: from scratch, in code, spelled out.",
-          "Andrej Karpathy"
+          "Andrej Karpathy",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -6600,7 +7010,9 @@ window.aiResources = {
         [
           "kCc8FmEb1nY",
           "Let's build GPT: from scratch, in code, spelled out.",
-          "Andrej Karpathy"
+          "Andrej Karpathy",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -6629,7 +7041,9 @@ window.aiResources = {
         [
           "kCc8FmEb1nY",
           "Let's build GPT: from scratch, in code, spelled out.",
-          "Andrej Karpathy"
+          "Andrej Karpathy",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -6658,7 +7072,9 @@ window.aiResources = {
         [
           "kCc8FmEb1nY",
           "Let's build GPT: from scratch, in code, spelled out.",
-          "Andrej Karpathy"
+          "Andrej Karpathy",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -6687,7 +7103,9 @@ window.aiResources = {
         [
           "VkWlLSTdHs8",
           "Faster LLMs: Accelerate Inference with Speculative Decoding",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -6716,7 +7134,9 @@ window.aiResources = {
         [
           "kCc8FmEb1nY",
           "Let's build GPT: from scratch, in code, spelled out.",
-          "Andrej Karpathy"
+          "Andrej Karpathy",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -6743,9 +7163,11 @@ window.aiResources = {
     "phase-11/prompt-engineering-techniques-patterns": {
       "videos": [
         [
-          "8OJC21T2SL4",
-          "5 Levels Of Text Splitting For Retrieval",
-          "Greg Kamradt"
+          "zduSFxRajkE",
+          "State of GPT: Prompt Engineering Patterns",
+          "Microsoft Developer",
+          "28:00",
+          1680
         ]
       ],
       "docs": [
@@ -6772,9 +7194,11 @@ window.aiResources = {
     "phase-11/few-shot-cot-tree-of-thought": {
       "videos": [
         [
-          "8OJC21T2SL4",
-          "5 Levels Of Text Splitting For Retrieval",
-          "Greg Kamradt"
+          "zduSFxRajkE",
+          "State of GPT: Chain of Thought & Reasoning",
+          "Microsoft Developer",
+          "32:00",
+          1920
         ]
       ],
       "docs": [
@@ -6803,7 +7227,9 @@ window.aiResources = {
         [
           "8OJC21T2SL4",
           "5 Levels Of Text Splitting For Retrieval",
-          "Greg Kamradt"
+          "Greg Kamradt",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -6832,7 +7258,9 @@ window.aiResources = {
         [
           "8OJC21T2SL4",
           "5 Levels Of Text Splitting For Retrieval",
-          "Greg Kamradt"
+          "Greg Kamradt",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -6861,7 +7289,9 @@ window.aiResources = {
         [
           "8OJC21T2SL4",
           "5 Levels Of Text Splitting For Retrieval",
-          "Greg Kamradt"
+          "Greg Kamradt",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -6890,7 +7320,9 @@ window.aiResources = {
         [
           "8OJC21T2SL4",
           "5 Levels Of Text Splitting For Retrieval",
-          "Greg Kamradt"
+          "Greg Kamradt",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -6918,8 +7350,10 @@ window.aiResources = {
       "videos": [
         [
           "8OJC21T2SL4",
-          "5 Levels Of Text Splitting For Retrieval",
-          "Greg Kamradt"
+          "5 Levels Of Text Splitting: Recursive Chunking",
+          "Greg Kamradt",
+          "16:04",
+          964
         ]
       ],
       "docs": [
@@ -6946,9 +7380,11 @@ window.aiResources = {
     "phase-11/fine-tuning-with-lora-qlora": {
       "videos": [
         [
-          "8OJC21T2SL4",
-          "5 Levels Of Text Splitting For Retrieval",
-          "Greg Kamradt"
+          "oM4VmoabDAI",
+          "LoRA: Low-Rank Adaptation of LLMs",
+          "Umar Jamil",
+          "1:21:00",
+          4860
         ]
       ],
       "docs": [
@@ -6975,9 +7411,11 @@ window.aiResources = {
     "phase-11/function-calling-tool-use": {
       "videos": [
         [
-          "8OJC21T2SL4",
-          "5 Levels Of Text Splitting For Retrieval",
-          "Greg Kamradt"
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic",
+          "00:00",
+          0
         ]
       ],
       "docs": [
@@ -7006,7 +7444,9 @@ window.aiResources = {
         [
           "8OJC21T2SL4",
           "5 Levels Of Text Splitting For Retrieval",
-          "Greg Kamradt"
+          "Greg Kamradt",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -7035,7 +7475,9 @@ window.aiResources = {
         [
           "8OJC21T2SL4",
           "5 Levels Of Text Splitting For Retrieval",
-          "Greg Kamradt"
+          "Greg Kamradt",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -7064,7 +7506,9 @@ window.aiResources = {
         [
           "8OJC21T2SL4",
           "5 Levels Of Text Splitting For Retrieval",
-          "Greg Kamradt"
+          "Greg Kamradt",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -7093,7 +7537,9 @@ window.aiResources = {
         [
           "8OJC21T2SL4",
           "5 Levels Of Text Splitting For Retrieval",
-          "Greg Kamradt"
+          "Greg Kamradt",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -7120,9 +7566,11 @@ window.aiResources = {
     "phase-11/model-context-protocol-mcp": {
       "videos": [
         [
-          "8OJC21T2SL4",
-          "5 Levels Of Text Splitting For Retrieval",
-          "Greg Kamradt"
+          "CQywdSdi5iA",
+          "The Model Context Protocol (MCP)",
+          "Anthropic",
+          "00:00",
+          0
         ]
       ],
       "docs": [
@@ -7149,9 +7597,11 @@ window.aiResources = {
     "phase-11/prompt-caching-context-caching": {
       "videos": [
         [
-          "8OJC21T2SL4",
-          "5 Levels Of Text Splitting For Retrieval",
-          "Greg Kamradt"
+          "u57EnkQaUTY",
+          "What is Prompt Caching? Optimize LLM Latency",
+          "IBM Technology",
+          "00:45",
+          45
         ]
       ],
       "docs": [
@@ -7180,7 +7630,9 @@ window.aiResources = {
         [
           "8OJC21T2SL4",
           "5 Levels Of Text Splitting For Retrieval",
-          "Greg Kamradt"
+          "Greg Kamradt",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -7209,7 +7661,9 @@ window.aiResources = {
         [
           "8OJC21T2SL4",
           "5 Levels Of Text Splitting For Retrieval",
-          "Greg Kamradt"
+          "Greg Kamradt",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -7238,7 +7692,9 @@ window.aiResources = {
         [
           "wjZofJX0v4M",
           "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -7267,7 +7723,9 @@ window.aiResources = {
         [
           "wjZofJX0v4M",
           "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -7296,7 +7754,9 @@ window.aiResources = {
         [
           "wjZofJX0v4M",
           "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -7325,7 +7785,9 @@ window.aiResources = {
         [
           "wjZofJX0v4M",
           "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -7354,7 +7816,9 @@ window.aiResources = {
         [
           "wjZofJX0v4M",
           "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -7383,7 +7847,9 @@ window.aiResources = {
         [
           "wjZofJX0v4M",
           "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -7412,7 +7878,9 @@ window.aiResources = {
         [
           "wjZofJX0v4M",
           "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -7441,7 +7909,9 @@ window.aiResources = {
         [
           "wjZofJX0v4M",
           "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -7470,7 +7940,9 @@ window.aiResources = {
         [
           "wjZofJX0v4M",
           "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -7499,7 +7971,9 @@ window.aiResources = {
         [
           "wjZofJX0v4M",
           "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -7528,7 +8002,9 @@ window.aiResources = {
         [
           "wjZofJX0v4M",
           "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -7557,7 +8033,9 @@ window.aiResources = {
         [
           "wjZofJX0v4M",
           "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -7586,7 +8064,9 @@ window.aiResources = {
         [
           "wjZofJX0v4M",
           "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -7615,7 +8095,9 @@ window.aiResources = {
         [
           "wjZofJX0v4M",
           "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -7644,7 +8126,9 @@ window.aiResources = {
         [
           "wjZofJX0v4M",
           "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -7673,7 +8157,9 @@ window.aiResources = {
         [
           "wjZofJX0v4M",
           "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -7702,7 +8188,9 @@ window.aiResources = {
         [
           "wjZofJX0v4M",
           "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -7731,7 +8219,9 @@ window.aiResources = {
         [
           "wjZofJX0v4M",
           "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -7760,7 +8250,9 @@ window.aiResources = {
         [
           "wjZofJX0v4M",
           "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -7789,7 +8281,9 @@ window.aiResources = {
         [
           "wjZofJX0v4M",
           "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -7818,7 +8312,9 @@ window.aiResources = {
         [
           "wjZofJX0v4M",
           "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -7847,7 +8343,9 @@ window.aiResources = {
         [
           "wjZofJX0v4M",
           "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -7876,7 +8374,9 @@ window.aiResources = {
         [
           "wjZofJX0v4M",
           "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -7905,7 +8405,9 @@ window.aiResources = {
         [
           "wjZofJX0v4M",
           "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -7934,7 +8436,9 @@ window.aiResources = {
         [
           "wjZofJX0v4M",
           "But what is a GPT? Visual intro to Transformers | Deep learning, chapter 5",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -7963,7 +8467,9 @@ window.aiResources = {
         [
           "CQywdSdi5iA",
           "The Model Context Protocol (MCP)",
-          "Anthropic"
+          "Anthropic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -7992,7 +8498,9 @@ window.aiResources = {
         [
           "CQywdSdi5iA",
           "The Model Context Protocol (MCP)",
-          "Anthropic"
+          "Anthropic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -8021,7 +8529,9 @@ window.aiResources = {
         [
           "CQywdSdi5iA",
           "The Model Context Protocol (MCP)",
-          "Anthropic"
+          "Anthropic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -8050,7 +8560,9 @@ window.aiResources = {
         [
           "CQywdSdi5iA",
           "The Model Context Protocol (MCP)",
-          "Anthropic"
+          "Anthropic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -8079,7 +8591,9 @@ window.aiResources = {
         [
           "CQywdSdi5iA",
           "The Model Context Protocol (MCP)",
-          "Anthropic"
+          "Anthropic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -8108,7 +8622,9 @@ window.aiResources = {
         [
           "CQywdSdi5iA",
           "The Model Context Protocol (MCP)",
-          "Anthropic"
+          "Anthropic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -8137,7 +8653,9 @@ window.aiResources = {
         [
           "CQywdSdi5iA",
           "The Model Context Protocol (MCP)",
-          "Anthropic"
+          "Anthropic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -8166,7 +8684,9 @@ window.aiResources = {
         [
           "CQywdSdi5iA",
           "The Model Context Protocol (MCP)",
-          "Anthropic"
+          "Anthropic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -8195,7 +8715,9 @@ window.aiResources = {
         [
           "CQywdSdi5iA",
           "The Model Context Protocol (MCP)",
-          "Anthropic"
+          "Anthropic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -8224,7 +8746,9 @@ window.aiResources = {
         [
           "CQywdSdi5iA",
           "The Model Context Protocol (MCP)",
-          "Anthropic"
+          "Anthropic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -8253,7 +8777,9 @@ window.aiResources = {
         [
           "CQywdSdi5iA",
           "The Model Context Protocol (MCP)",
-          "Anthropic"
+          "Anthropic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -8282,7 +8808,9 @@ window.aiResources = {
         [
           "CQywdSdi5iA",
           "The Model Context Protocol (MCP)",
-          "Anthropic"
+          "Anthropic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -8311,7 +8839,9 @@ window.aiResources = {
         [
           "CQywdSdi5iA",
           "The Model Context Protocol (MCP)",
-          "Anthropic"
+          "Anthropic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -8340,7 +8870,9 @@ window.aiResources = {
         [
           "CQywdSdi5iA",
           "The Model Context Protocol (MCP)",
-          "Anthropic"
+          "Anthropic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -8369,7 +8901,9 @@ window.aiResources = {
         [
           "CQywdSdi5iA",
           "The Model Context Protocol (MCP)",
-          "Anthropic"
+          "Anthropic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -8398,7 +8932,9 @@ window.aiResources = {
         [
           "CQywdSdi5iA",
           "The Model Context Protocol (MCP)",
-          "Anthropic"
+          "Anthropic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -8427,7 +8963,9 @@ window.aiResources = {
         [
           "CQywdSdi5iA",
           "The Model Context Protocol (MCP)",
-          "Anthropic"
+          "Anthropic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -8456,7 +8994,9 @@ window.aiResources = {
         [
           "CQywdSdi5iA",
           "The Model Context Protocol (MCP)",
-          "Anthropic"
+          "Anthropic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -8485,7 +9025,9 @@ window.aiResources = {
         [
           "CQywdSdi5iA",
           "The Model Context Protocol (MCP)",
-          "Anthropic"
+          "Anthropic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -8514,7 +9056,9 @@ window.aiResources = {
         [
           "CQywdSdi5iA",
           "The Model Context Protocol (MCP)",
-          "Anthropic"
+          "Anthropic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -8543,7 +9087,9 @@ window.aiResources = {
         [
           "CQywdSdi5iA",
           "The Model Context Protocol (MCP)",
-          "Anthropic"
+          "Anthropic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -8572,7 +9118,9 @@ window.aiResources = {
         [
           "CQywdSdi5iA",
           "The Model Context Protocol (MCP)",
-          "Anthropic"
+          "Anthropic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -8601,7 +9149,9 @@ window.aiResources = {
         [
           "CQywdSdi5iA",
           "The Model Context Protocol (MCP)",
-          "Anthropic"
+          "Anthropic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -8630,7 +9180,9 @@ window.aiResources = {
         [
           "CQywdSdi5iA",
           "The Model Context Protocol (MCP)",
-          "Anthropic"
+          "Anthropic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -8659,7 +9211,9 @@ window.aiResources = {
         [
           "CQywdSdi5iA",
           "The Model Context Protocol (MCP)",
-          "Anthropic"
+          "Anthropic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -8688,7 +9242,9 @@ window.aiResources = {
         [
           "CQywdSdi5iA",
           "The Model Context Protocol (MCP)",
-          "Anthropic"
+          "Anthropic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -8717,7 +9273,9 @@ window.aiResources = {
         [
           "CQywdSdi5iA",
           "The Model Context Protocol (MCP)",
-          "Anthropic"
+          "Anthropic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -8746,7 +9304,9 @@ window.aiResources = {
         [
           "CQywdSdi5iA",
           "The Model Context Protocol (MCP)",
-          "Anthropic"
+          "Anthropic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -8775,7 +9335,9 @@ window.aiResources = {
         [
           "CQywdSdi5iA",
           "The Model Context Protocol (MCP)",
-          "Anthropic"
+          "Anthropic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -8804,7 +9366,9 @@ window.aiResources = {
         [
           "CQywdSdi5iA",
           "The Model Context Protocol (MCP)",
-          "Anthropic"
+          "Anthropic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -8833,7 +9397,9 @@ window.aiResources = {
         [
           "CQywdSdi5iA",
           "The Model Context Protocol (MCP)",
-          "Anthropic"
+          "Anthropic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -8862,7 +9428,9 @@ window.aiResources = {
         [
           "CQywdSdi5iA",
           "The Model Context Protocol (MCP)",
-          "Anthropic"
+          "Anthropic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -8891,7 +9459,9 @@ window.aiResources = {
         [
           "CQywdSdi5iA",
           "The Model Context Protocol (MCP)",
-          "Anthropic"
+          "Anthropic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -8920,7 +9490,9 @@ window.aiResources = {
         [
           "CQywdSdi5iA",
           "The Model Context Protocol (MCP)",
-          "Anthropic"
+          "Anthropic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -8949,7 +9521,9 @@ window.aiResources = {
         [
           "CQywdSdi5iA",
           "The Model Context Protocol (MCP)",
-          "Anthropic"
+          "Anthropic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -8978,7 +9552,9 @@ window.aiResources = {
         [
           "CQywdSdi5iA",
           "The Model Context Protocol (MCP)",
-          "Anthropic"
+          "Anthropic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -9007,7 +9583,9 @@ window.aiResources = {
         [
           "CQywdSdi5iA",
           "The Model Context Protocol (MCP)",
-          "Anthropic"
+          "Anthropic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -9036,7 +9614,9 @@ window.aiResources = {
         [
           "CQywdSdi5iA",
           "The Model Context Protocol (MCP)",
-          "Anthropic"
+          "Anthropic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -9065,7 +9645,9 @@ window.aiResources = {
         [
           "CQywdSdi5iA",
           "The Model Context Protocol (MCP)",
-          "Anthropic"
+          "Anthropic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -9094,7 +9676,9 @@ window.aiResources = {
         [
           "CQywdSdi5iA",
           "The Model Context Protocol (MCP)",
-          "Anthropic"
+          "Anthropic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -9123,7 +9707,9 @@ window.aiResources = {
         [
           "CQywdSdi5iA",
           "The Model Context Protocol (MCP)",
-          "Anthropic"
+          "Anthropic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -9152,7 +9738,9 @@ window.aiResources = {
         [
           "CQywdSdi5iA",
           "The Model Context Protocol (MCP)",
-          "Anthropic"
+          "Anthropic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -9181,7 +9769,9 @@ window.aiResources = {
         [
           "CQywdSdi5iA",
           "The Model Context Protocol (MCP)",
-          "Anthropic"
+          "Anthropic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -9210,7 +9800,9 @@ window.aiResources = {
         [
           "CQywdSdi5iA",
           "The Model Context Protocol (MCP)",
-          "Anthropic"
+          "Anthropic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -9239,7 +9831,9 @@ window.aiResources = {
         [
           "CQywdSdi5iA",
           "The Model Context Protocol (MCP)",
-          "Anthropic"
+          "Anthropic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -9268,7 +9862,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -9297,7 +9893,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -9326,7 +9924,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -9355,7 +9955,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -9384,7 +9986,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -9413,7 +10017,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -9442,7 +10048,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -9471,7 +10079,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -9500,7 +10110,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -9529,7 +10141,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -9558,7 +10172,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -9587,7 +10203,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -9616,7 +10234,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -9645,7 +10265,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -9674,7 +10296,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -9703,7 +10327,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -9732,7 +10358,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -9761,7 +10389,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -9790,7 +10420,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -9819,7 +10451,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -9848,7 +10482,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -9877,7 +10513,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -9906,7 +10544,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -9935,7 +10575,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -9964,7 +10606,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -9993,7 +10637,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -10022,7 +10668,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -10051,7 +10699,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -10080,7 +10730,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -10109,7 +10761,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -10138,7 +10792,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -10167,7 +10823,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -10196,7 +10854,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -10225,7 +10885,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -10254,7 +10916,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -10283,7 +10947,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -10312,7 +10978,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -10341,7 +11009,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -10370,7 +11040,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -10399,7 +11071,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -10428,7 +11102,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -10457,7 +11133,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -10486,7 +11164,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -10515,7 +11195,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -10544,7 +11226,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -10573,7 +11257,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -10602,7 +11288,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -10631,7 +11319,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -10660,7 +11350,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -10689,7 +11381,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -10718,7 +11412,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -10747,7 +11443,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -10776,7 +11474,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -10805,7 +11505,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -10834,7 +11536,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -10863,7 +11567,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -10892,7 +11598,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -10921,7 +11629,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -10950,7 +11660,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -10979,7 +11691,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -11008,7 +11722,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -11037,7 +11753,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -11066,7 +11784,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -11095,7 +11815,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -11124,7 +11846,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -11153,7 +11877,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -11182,7 +11908,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -11211,7 +11939,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -11240,7 +11970,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -11269,7 +12001,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -11298,7 +12032,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -11327,7 +12063,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -11356,7 +12094,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -11385,7 +12125,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -11414,7 +12156,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -11443,7 +12187,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -11472,7 +12218,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -11501,7 +12249,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -11530,7 +12280,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -11559,7 +12311,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -11588,7 +12342,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -11617,7 +12373,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -11646,7 +12404,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -11675,7 +12435,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -11704,7 +12466,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -11733,7 +12497,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -11762,7 +12528,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -11791,7 +12559,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -11820,7 +12590,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -11849,7 +12621,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -11878,7 +12652,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -11907,7 +12683,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -11936,7 +12714,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -11965,7 +12745,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -11994,7 +12776,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -12023,7 +12807,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -12052,7 +12838,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -12081,7 +12869,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -12110,7 +12900,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -12139,7 +12931,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -12168,7 +12962,9 @@ window.aiResources = {
         [
           "sal78ACtGTc",
           "What's next for AI agentic workflows ft. Andrew Ng",
-          "The AI Grid"
+          "The AI Grid",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -12197,7 +12993,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -12226,7 +13024,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -12255,7 +13055,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -12284,7 +13086,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -12313,7 +13117,9 @@ window.aiResources = {
         [
           "VkWlLSTdHs8",
           "Faster LLMs: Accelerate Inference with Speculative Decoding",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -12342,7 +13148,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -12371,7 +13179,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -12400,7 +13210,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -12429,7 +13241,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -12458,7 +13272,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -12487,7 +13303,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -12516,7 +13334,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -12545,7 +13365,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -12574,7 +13396,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -12603,7 +13427,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -12632,7 +13458,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -12661,7 +13489,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -12690,7 +13520,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -12719,7 +13551,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -12748,7 +13582,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -12777,7 +13613,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -12806,7 +13644,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -12835,7 +13675,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -12864,7 +13706,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -12893,7 +13737,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -12922,7 +13768,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -12951,7 +13799,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -12980,7 +13830,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -13009,7 +13861,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -13038,7 +13892,9 @@ window.aiResources = {
         [
           "2MBJOuVq380",
           "Training AI with Human Feedback (RLHF) - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -13067,7 +13923,9 @@ window.aiResources = {
         [
           "2MBJOuVq380",
           "Training AI with Human Feedback (RLHF) - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -13096,7 +13954,9 @@ window.aiResources = {
         [
           "2MBJOuVq380",
           "Training AI with Human Feedback (RLHF) - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -13125,7 +13985,9 @@ window.aiResources = {
         [
           "2MBJOuVq380",
           "Training AI with Human Feedback (RLHF) - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -13154,7 +14016,9 @@ window.aiResources = {
         [
           "2MBJOuVq380",
           "Training AI with Human Feedback (RLHF) - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -13183,7 +14047,9 @@ window.aiResources = {
         [
           "2MBJOuVq380",
           "Training AI with Human Feedback (RLHF) - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -13212,7 +14078,9 @@ window.aiResources = {
         [
           "2MBJOuVq380",
           "Training AI with Human Feedback (RLHF) - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -13241,7 +14109,9 @@ window.aiResources = {
         [
           "2MBJOuVq380",
           "Training AI with Human Feedback (RLHF) - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -13270,7 +14140,9 @@ window.aiResources = {
         [
           "2MBJOuVq380",
           "Training AI with Human Feedback (RLHF) - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -13299,7 +14171,9 @@ window.aiResources = {
         [
           "2MBJOuVq380",
           "Training AI with Human Feedback (RLHF) - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -13328,7 +14202,9 @@ window.aiResources = {
         [
           "2MBJOuVq380",
           "Training AI with Human Feedback (RLHF) - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -13357,7 +14233,9 @@ window.aiResources = {
         [
           "2MBJOuVq380",
           "Training AI with Human Feedback (RLHF) - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -13386,7 +14264,9 @@ window.aiResources = {
         [
           "2MBJOuVq380",
           "Training AI with Human Feedback (RLHF) - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -13415,7 +14295,9 @@ window.aiResources = {
         [
           "2MBJOuVq380",
           "Training AI with Human Feedback (RLHF) - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -13444,7 +14326,9 @@ window.aiResources = {
         [
           "2MBJOuVq380",
           "Training AI with Human Feedback (RLHF) - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -13473,7 +14357,9 @@ window.aiResources = {
         [
           "2MBJOuVq380",
           "Training AI with Human Feedback (RLHF) - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -13502,7 +14388,9 @@ window.aiResources = {
         [
           "2MBJOuVq380",
           "Training AI with Human Feedback (RLHF) - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -13531,7 +14419,9 @@ window.aiResources = {
         [
           "2MBJOuVq380",
           "Training AI with Human Feedback (RLHF) - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -13560,7 +14450,9 @@ window.aiResources = {
         [
           "2MBJOuVq380",
           "Training AI with Human Feedback (RLHF) - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -13589,7 +14481,9 @@ window.aiResources = {
         [
           "2MBJOuVq380",
           "Training AI with Human Feedback (RLHF) - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -13618,7 +14512,9 @@ window.aiResources = {
         [
           "2MBJOuVq380",
           "Training AI with Human Feedback (RLHF) - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -13647,7 +14543,9 @@ window.aiResources = {
         [
           "2MBJOuVq380",
           "Training AI with Human Feedback (RLHF) - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -13676,7 +14574,9 @@ window.aiResources = {
         [
           "2MBJOuVq380",
           "Training AI with Human Feedback (RLHF) - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -13705,7 +14605,9 @@ window.aiResources = {
         [
           "2MBJOuVq380",
           "Training AI with Human Feedback (RLHF) - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -13734,7 +14636,9 @@ window.aiResources = {
         [
           "2MBJOuVq380",
           "Training AI with Human Feedback (RLHF) - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -13763,7 +14667,9 @@ window.aiResources = {
         [
           "2MBJOuVq380",
           "Training AI with Human Feedback (RLHF) - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -13792,7 +14698,9 @@ window.aiResources = {
         [
           "2MBJOuVq380",
           "Training AI with Human Feedback (RLHF) - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -13821,7 +14729,9 @@ window.aiResources = {
         [
           "2MBJOuVq380",
           "Training AI with Human Feedback (RLHF) - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -13850,7 +14760,9 @@ window.aiResources = {
         [
           "2MBJOuVq380",
           "Training AI with Human Feedback (RLHF) - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -13879,7 +14791,9 @@ window.aiResources = {
         [
           "2MBJOuVq380",
           "Training AI with Human Feedback (RLHF) - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -13908,7 +14822,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -13937,7 +14853,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -13966,7 +14884,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -13995,7 +14915,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -14024,7 +14946,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -14053,7 +14977,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -14082,7 +15008,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -14111,7 +15039,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -14140,7 +15070,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -14169,7 +15101,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -14198,7 +15132,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -14227,7 +15163,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -14256,7 +15194,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -14285,7 +15225,9 @@ window.aiResources = {
         [
           "VkWlLSTdHs8",
           "Faster LLMs: Accelerate Inference with Speculative Decoding",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -14314,7 +15256,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -14343,7 +15287,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -14372,7 +15318,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -14401,7 +15349,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -14430,7 +15380,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -14459,7 +15411,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -14488,7 +15442,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -14517,7 +15473,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -14546,7 +15504,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -14575,7 +15535,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -14604,7 +15566,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -14633,7 +15597,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -14662,7 +15628,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -14691,7 +15659,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -14720,7 +15690,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -14749,7 +15721,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -14778,7 +15752,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -14807,7 +15783,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -14836,7 +15814,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -14865,7 +15845,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -14894,7 +15876,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -14923,7 +15907,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -14952,7 +15938,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -14981,7 +15969,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -15010,7 +16000,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -15039,7 +16031,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -15068,7 +16062,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -15097,7 +16093,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -15126,7 +16124,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -15155,7 +16155,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -15184,7 +16186,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -15213,7 +16217,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -15242,7 +16248,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -15271,7 +16279,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -15300,7 +16310,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -15329,7 +16341,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -15358,7 +16372,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -15387,7 +16403,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -15416,7 +16434,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -15445,7 +16465,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -15474,7 +16496,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -15503,7 +16527,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -15532,7 +16558,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -15561,7 +16589,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -15590,7 +16620,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -15619,7 +16651,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -15648,7 +16682,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -15677,7 +16713,9 @@ window.aiResources = {
         [
           "8OJC21T2SL4",
           "5 Levels Of Text Splitting For Retrieval",
-          "Greg Kamradt"
+          "Greg Kamradt",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -15706,7 +16744,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -15735,7 +16775,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -15764,7 +16806,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -15793,7 +16837,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -15822,7 +16868,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -15851,7 +16899,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -15880,7 +16930,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -15909,7 +16961,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -15938,7 +16992,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -15967,7 +17023,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -15996,7 +17054,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16025,7 +17085,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16054,7 +17116,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16083,7 +17147,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16112,7 +17178,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16141,7 +17209,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16170,7 +17240,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16199,7 +17271,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16228,7 +17302,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16257,7 +17333,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16286,7 +17364,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16315,7 +17395,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16344,7 +17426,9 @@ window.aiResources = {
         [
           "zduSFxRajkE",
           "State of GPT | BRK216HFS",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16373,7 +17457,9 @@ window.aiResources = {
         [
           "Tud9HLTk8hg",
           "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16390,7 +17476,9 @@ window.aiResources = {
         [
           "Tud9HLTk8hg",
           "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16407,7 +17495,9 @@ window.aiResources = {
         [
           "Tud9HLTk8hg",
           "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16424,7 +17514,9 @@ window.aiResources = {
         [
           "Tud9HLTk8hg",
           "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16441,7 +17533,9 @@ window.aiResources = {
         [
           "Tud9HLTk8hg",
           "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16458,7 +17552,9 @@ window.aiResources = {
         [
           "Tud9HLTk8hg",
           "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16475,7 +17571,9 @@ window.aiResources = {
         [
           "Tud9HLTk8hg",
           "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16492,7 +17590,9 @@ window.aiResources = {
         [
           "Tud9HLTk8hg",
           "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16509,7 +17609,9 @@ window.aiResources = {
         [
           "Tud9HLTk8hg",
           "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16526,7 +17628,9 @@ window.aiResources = {
         [
           "Tud9HLTk8hg",
           "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16543,7 +17647,9 @@ window.aiResources = {
         [
           "Tud9HLTk8hg",
           "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16560,7 +17666,9 @@ window.aiResources = {
         [
           "Tud9HLTk8hg",
           "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16577,7 +17685,9 @@ window.aiResources = {
         [
           "Tud9HLTk8hg",
           "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16594,7 +17704,9 @@ window.aiResources = {
         [
           "Tud9HLTk8hg",
           "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16611,7 +17723,9 @@ window.aiResources = {
         [
           "Tud9HLTk8hg",
           "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16628,7 +17742,9 @@ window.aiResources = {
         [
           "Tud9HLTk8hg",
           "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16645,7 +17761,9 @@ window.aiResources = {
         [
           "Tud9HLTk8hg",
           "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16662,7 +17780,9 @@ window.aiResources = {
         [
           "Tud9HLTk8hg",
           "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16679,7 +17799,9 @@ window.aiResources = {
         [
           "Tud9HLTk8hg",
           "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16696,7 +17818,9 @@ window.aiResources = {
         [
           "Tud9HLTk8hg",
           "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16713,7 +17837,9 @@ window.aiResources = {
         [
           "Tud9HLTk8hg",
           "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16730,7 +17856,9 @@ window.aiResources = {
         [
           "Tud9HLTk8hg",
           "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16747,7 +17875,9 @@ window.aiResources = {
         [
           "Tud9HLTk8hg",
           "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16764,7 +17894,9 @@ window.aiResources = {
         [
           "Tud9HLTk8hg",
           "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16781,7 +17913,9 @@ window.aiResources = {
         [
           "Tud9HLTk8hg",
           "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16798,7 +17932,9 @@ window.aiResources = {
         [
           "Tud9HLTk8hg",
           "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16815,7 +17951,9 @@ window.aiResources = {
         [
           "Tud9HLTk8hg",
           "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16832,7 +17970,9 @@ window.aiResources = {
         [
           "Tud9HLTk8hg",
           "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16849,7 +17989,9 @@ window.aiResources = {
         [
           "Tud9HLTk8hg",
           "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16866,7 +18008,9 @@ window.aiResources = {
         [
           "Tud9HLTk8hg",
           "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16883,7 +18027,9 @@ window.aiResources = {
         [
           "Tud9HLTk8hg",
           "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16900,7 +18046,9 @@ window.aiResources = {
         [
           "Tud9HLTk8hg",
           "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16917,7 +18065,9 @@ window.aiResources = {
         [
           "Tud9HLTk8hg",
           "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16934,7 +18084,9 @@ window.aiResources = {
         [
           "Tud9HLTk8hg",
           "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16951,7 +18103,9 @@ window.aiResources = {
         [
           "Tud9HLTk8hg",
           "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16968,7 +18122,9 @@ window.aiResources = {
         [
           "Tud9HLTk8hg",
           "A2A Protocol (Agent2Agent) Explained: How AI Agents Collaborate",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -16985,7 +18141,9 @@ window.aiResources = {
         [
           "CI3kL5uNV5A",
           "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
-          "Engineering Community"
+          "Engineering Community",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17002,7 +18160,9 @@ window.aiResources = {
         [
           "CI3kL5uNV5A",
           "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
-          "Engineering Community"
+          "Engineering Community",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17019,7 +18179,9 @@ window.aiResources = {
         [
           "CI3kL5uNV5A",
           "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
-          "Engineering Community"
+          "Engineering Community",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17036,7 +18198,9 @@ window.aiResources = {
         [
           "CI3kL5uNV5A",
           "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
-          "Engineering Community"
+          "Engineering Community",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17053,7 +18217,9 @@ window.aiResources = {
         [
           "CI3kL5uNV5A",
           "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
-          "Engineering Community"
+          "Engineering Community",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17070,7 +18236,9 @@ window.aiResources = {
         [
           "CI3kL5uNV5A",
           "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
-          "Engineering Community"
+          "Engineering Community",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17087,7 +18255,9 @@ window.aiResources = {
         [
           "CI3kL5uNV5A",
           "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
-          "Engineering Community"
+          "Engineering Community",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17104,7 +18274,9 @@ window.aiResources = {
         [
           "CI3kL5uNV5A",
           "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
-          "Engineering Community"
+          "Engineering Community",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17121,7 +18293,9 @@ window.aiResources = {
         [
           "CI3kL5uNV5A",
           "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
-          "Engineering Community"
+          "Engineering Community",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17138,7 +18312,9 @@ window.aiResources = {
         [
           "CI3kL5uNV5A",
           "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
-          "Engineering Community"
+          "Engineering Community",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17155,7 +18331,9 @@ window.aiResources = {
         [
           "CI3kL5uNV5A",
           "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
-          "Engineering Community"
+          "Engineering Community",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17172,7 +18350,9 @@ window.aiResources = {
         [
           "CI3kL5uNV5A",
           "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
-          "Engineering Community"
+          "Engineering Community",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17189,7 +18369,9 @@ window.aiResources = {
         [
           "CI3kL5uNV5A",
           "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
-          "Engineering Community"
+          "Engineering Community",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17206,7 +18388,9 @@ window.aiResources = {
         [
           "CI3kL5uNV5A",
           "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
-          "Engineering Community"
+          "Engineering Community",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17223,7 +18407,9 @@ window.aiResources = {
         [
           "CI3kL5uNV5A",
           "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
-          "Engineering Community"
+          "Engineering Community",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17240,7 +18426,9 @@ window.aiResources = {
         [
           "CI3kL5uNV5A",
           "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
-          "Engineering Community"
+          "Engineering Community",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17257,7 +18445,9 @@ window.aiResources = {
         [
           "CI3kL5uNV5A",
           "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
-          "Engineering Community"
+          "Engineering Community",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17274,7 +18464,9 @@ window.aiResources = {
         [
           "CI3kL5uNV5A",
           "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
-          "Engineering Community"
+          "Engineering Community",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17291,7 +18483,9 @@ window.aiResources = {
         [
           "CI3kL5uNV5A",
           "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
-          "Engineering Community"
+          "Engineering Community",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17308,7 +18502,9 @@ window.aiResources = {
         [
           "CI3kL5uNV5A",
           "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
-          "Engineering Community"
+          "Engineering Community",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17325,7 +18521,9 @@ window.aiResources = {
         [
           "CI3kL5uNV5A",
           "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
-          "Engineering Community"
+          "Engineering Community",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17342,7 +18540,9 @@ window.aiResources = {
         [
           "CI3kL5uNV5A",
           "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
-          "Engineering Community"
+          "Engineering Community",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17359,7 +18559,9 @@ window.aiResources = {
         [
           "CI3kL5uNV5A",
           "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
-          "Engineering Community"
+          "Engineering Community",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17376,7 +18578,9 @@ window.aiResources = {
         [
           "CI3kL5uNV5A",
           "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
-          "Engineering Community"
+          "Engineering Community",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17393,7 +18597,9 @@ window.aiResources = {
         [
           "CI3kL5uNV5A",
           "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
-          "Engineering Community"
+          "Engineering Community",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17410,7 +18616,9 @@ window.aiResources = {
         [
           "CI3kL5uNV5A",
           "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
-          "Engineering Community"
+          "Engineering Community",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17427,7 +18635,9 @@ window.aiResources = {
         [
           "CI3kL5uNV5A",
           "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
-          "Engineering Community"
+          "Engineering Community",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17444,7 +18654,9 @@ window.aiResources = {
         [
           "CI3kL5uNV5A",
           "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
-          "Engineering Community"
+          "Engineering Community",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17461,7 +18673,9 @@ window.aiResources = {
         [
           "CI3kL5uNV5A",
           "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
-          "Engineering Community"
+          "Engineering Community",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17478,7 +18692,9 @@ window.aiResources = {
         [
           "CI3kL5uNV5A",
           "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
-          "Engineering Community"
+          "Engineering Community",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17495,7 +18711,9 @@ window.aiResources = {
         [
           "CI3kL5uNV5A",
           "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
-          "Engineering Community"
+          "Engineering Community",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17512,7 +18730,9 @@ window.aiResources = {
         [
           "CI3kL5uNV5A",
           "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
-          "Engineering Community"
+          "Engineering Community",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17529,7 +18749,9 @@ window.aiResources = {
         [
           "CI3kL5uNV5A",
           "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
-          "Engineering Community"
+          "Engineering Community",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17546,7 +18768,9 @@ window.aiResources = {
         [
           "CI3kL5uNV5A",
           "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
-          "Engineering Community"
+          "Engineering Community",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17563,7 +18787,9 @@ window.aiResources = {
         [
           "CI3kL5uNV5A",
           "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
-          "Engineering Community"
+          "Engineering Community",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17580,7 +18806,9 @@ window.aiResources = {
         [
           "CI3kL5uNV5A",
           "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
-          "Engineering Community"
+          "Engineering Community",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17597,7 +18825,9 @@ window.aiResources = {
         [
           "CI3kL5uNV5A",
           "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
-          "Engineering Community"
+          "Engineering Community",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17614,7 +18844,9 @@ window.aiResources = {
         [
           "CI3kL5uNV5A",
           "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
-          "Engineering Community"
+          "Engineering Community",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17631,7 +18863,9 @@ window.aiResources = {
         [
           "CI3kL5uNV5A",
           "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
-          "Engineering Community"
+          "Engineering Community",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17648,7 +18882,9 @@ window.aiResources = {
         [
           "CI3kL5uNV5A",
           "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
-          "Engineering Community"
+          "Engineering Community",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17665,7 +18901,9 @@ window.aiResources = {
         [
           "CI3kL5uNV5A",
           "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
-          "Engineering Community"
+          "Engineering Community",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17682,7 +18920,9 @@ window.aiResources = {
         [
           "CI3kL5uNV5A",
           "Docker Sandboxes - Isolated environments for AI agents by Ihor Aleksandrov",
-          "Engineering Community"
+          "Engineering Community",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17699,7 +18939,9 @@ window.aiResources = {
         [
           "5E-RdE6elMo",
           "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
-          "Saurav Prateek"
+          "Saurav Prateek",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17716,7 +18958,9 @@ window.aiResources = {
         [
           "5E-RdE6elMo",
           "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
-          "Saurav Prateek"
+          "Saurav Prateek",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17733,7 +18977,9 @@ window.aiResources = {
         [
           "5E-RdE6elMo",
           "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
-          "Saurav Prateek"
+          "Saurav Prateek",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17750,7 +18996,9 @@ window.aiResources = {
         [
           "5E-RdE6elMo",
           "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
-          "Saurav Prateek"
+          "Saurav Prateek",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17767,7 +19015,9 @@ window.aiResources = {
         [
           "5E-RdE6elMo",
           "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
-          "Saurav Prateek"
+          "Saurav Prateek",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17784,7 +19034,9 @@ window.aiResources = {
         [
           "5E-RdE6elMo",
           "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
-          "Saurav Prateek"
+          "Saurav Prateek",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17801,7 +19053,9 @@ window.aiResources = {
         [
           "5E-RdE6elMo",
           "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
-          "Saurav Prateek"
+          "Saurav Prateek",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17818,7 +19072,9 @@ window.aiResources = {
         [
           "5E-RdE6elMo",
           "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
-          "Saurav Prateek"
+          "Saurav Prateek",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17835,7 +19091,9 @@ window.aiResources = {
         [
           "5E-RdE6elMo",
           "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
-          "Saurav Prateek"
+          "Saurav Prateek",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17852,7 +19110,9 @@ window.aiResources = {
         [
           "5E-RdE6elMo",
           "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
-          "Saurav Prateek"
+          "Saurav Prateek",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17869,7 +19129,9 @@ window.aiResources = {
         [
           "5E-RdE6elMo",
           "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
-          "Saurav Prateek"
+          "Saurav Prateek",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17886,7 +19148,9 @@ window.aiResources = {
         [
           "5E-RdE6elMo",
           "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
-          "Saurav Prateek"
+          "Saurav Prateek",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17903,7 +19167,9 @@ window.aiResources = {
         [
           "5E-RdE6elMo",
           "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
-          "Saurav Prateek"
+          "Saurav Prateek",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17920,7 +19186,9 @@ window.aiResources = {
         [
           "5E-RdE6elMo",
           "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
-          "Saurav Prateek"
+          "Saurav Prateek",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17937,7 +19205,9 @@ window.aiResources = {
         [
           "5E-RdE6elMo",
           "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
-          "Saurav Prateek"
+          "Saurav Prateek",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17954,7 +19224,9 @@ window.aiResources = {
         [
           "5E-RdE6elMo",
           "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
-          "Saurav Prateek"
+          "Saurav Prateek",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17971,7 +19243,9 @@ window.aiResources = {
         [
           "5E-RdE6elMo",
           "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
-          "Saurav Prateek"
+          "Saurav Prateek",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -17988,7 +19262,9 @@ window.aiResources = {
         [
           "5E-RdE6elMo",
           "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
-          "Saurav Prateek"
+          "Saurav Prateek",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18005,7 +19281,9 @@ window.aiResources = {
         [
           "5E-RdE6elMo",
           "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
-          "Saurav Prateek"
+          "Saurav Prateek",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18022,7 +19300,9 @@ window.aiResources = {
         [
           "5E-RdE6elMo",
           "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
-          "Saurav Prateek"
+          "Saurav Prateek",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18039,7 +19319,9 @@ window.aiResources = {
         [
           "5E-RdE6elMo",
           "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
-          "Saurav Prateek"
+          "Saurav Prateek",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18056,7 +19338,9 @@ window.aiResources = {
         [
           "5E-RdE6elMo",
           "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
-          "Saurav Prateek"
+          "Saurav Prateek",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18073,7 +19357,9 @@ window.aiResources = {
         [
           "5E-RdE6elMo",
           "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
-          "Saurav Prateek"
+          "Saurav Prateek",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18090,7 +19376,9 @@ window.aiResources = {
         [
           "5E-RdE6elMo",
           "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
-          "Saurav Prateek"
+          "Saurav Prateek",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18107,7 +19395,9 @@ window.aiResources = {
         [
           "5E-RdE6elMo",
           "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
-          "Saurav Prateek"
+          "Saurav Prateek",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18124,7 +19414,9 @@ window.aiResources = {
         [
           "5E-RdE6elMo",
           "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
-          "Saurav Prateek"
+          "Saurav Prateek",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18141,7 +19433,9 @@ window.aiResources = {
         [
           "5E-RdE6elMo",
           "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
-          "Saurav Prateek"
+          "Saurav Prateek",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18158,7 +19452,9 @@ window.aiResources = {
         [
           "5E-RdE6elMo",
           "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
-          "Saurav Prateek"
+          "Saurav Prateek",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18175,7 +19471,9 @@ window.aiResources = {
         [
           "5E-RdE6elMo",
           "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
-          "Saurav Prateek"
+          "Saurav Prateek",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18192,7 +19490,9 @@ window.aiResources = {
         [
           "5E-RdE6elMo",
           "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
-          "Saurav Prateek"
+          "Saurav Prateek",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18209,7 +19509,9 @@ window.aiResources = {
         [
           "5E-RdE6elMo",
           "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
-          "Saurav Prateek"
+          "Saurav Prateek",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18226,7 +19528,9 @@ window.aiResources = {
         [
           "5E-RdE6elMo",
           "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
-          "Saurav Prateek"
+          "Saurav Prateek",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18243,7 +19547,9 @@ window.aiResources = {
         [
           "5E-RdE6elMo",
           "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
-          "Saurav Prateek"
+          "Saurav Prateek",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18260,7 +19566,9 @@ window.aiResources = {
         [
           "5E-RdE6elMo",
           "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
-          "Saurav Prateek"
+          "Saurav Prateek",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18277,7 +19585,9 @@ window.aiResources = {
         [
           "5E-RdE6elMo",
           "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
-          "Saurav Prateek"
+          "Saurav Prateek",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18294,7 +19604,9 @@ window.aiResources = {
         [
           "5E-RdE6elMo",
           "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
-          "Saurav Prateek"
+          "Saurav Prateek",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18311,7 +19623,9 @@ window.aiResources = {
         [
           "5E-RdE6elMo",
           "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
-          "Saurav Prateek"
+          "Saurav Prateek",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18328,7 +19642,9 @@ window.aiResources = {
         [
           "5E-RdE6elMo",
           "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
-          "Saurav Prateek"
+          "Saurav Prateek",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18345,7 +19661,9 @@ window.aiResources = {
         [
           "5E-RdE6elMo",
           "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
-          "Saurav Prateek"
+          "Saurav Prateek",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18362,7 +19680,9 @@ window.aiResources = {
         [
           "5E-RdE6elMo",
           "Mixture of Experts (MoE) spelled out | Implement from scratch | Pytorch | Python",
-          "Saurav Prateek"
+          "Saurav Prateek",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18379,7 +19699,9 @@ window.aiResources = {
         [
           "I4ERWLNinic",
           "AI Automations 101: Reverse Engineer Any API",
-          "Hichem's Journey"
+          "Hichem's Journey",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18396,7 +19718,9 @@ window.aiResources = {
         [
           "I4ERWLNinic",
           "AI Automations 101: Reverse Engineer Any API",
-          "Hichem's Journey"
+          "Hichem's Journey",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18413,7 +19737,9 @@ window.aiResources = {
         [
           "I4ERWLNinic",
           "AI Automations 101: Reverse Engineer Any API",
-          "Hichem's Journey"
+          "Hichem's Journey",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18430,7 +19756,9 @@ window.aiResources = {
         [
           "I4ERWLNinic",
           "AI Automations 101: Reverse Engineer Any API",
-          "Hichem's Journey"
+          "Hichem's Journey",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18447,7 +19775,9 @@ window.aiResources = {
         [
           "I4ERWLNinic",
           "AI Automations 101: Reverse Engineer Any API",
-          "Hichem's Journey"
+          "Hichem's Journey",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18464,7 +19794,9 @@ window.aiResources = {
         [
           "I4ERWLNinic",
           "AI Automations 101: Reverse Engineer Any API",
-          "Hichem's Journey"
+          "Hichem's Journey",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18481,7 +19813,9 @@ window.aiResources = {
         [
           "I4ERWLNinic",
           "AI Automations 101: Reverse Engineer Any API",
-          "Hichem's Journey"
+          "Hichem's Journey",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18498,7 +19832,9 @@ window.aiResources = {
         [
           "I4ERWLNinic",
           "AI Automations 101: Reverse Engineer Any API",
-          "Hichem's Journey"
+          "Hichem's Journey",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18515,7 +19851,9 @@ window.aiResources = {
         [
           "I4ERWLNinic",
           "AI Automations 101: Reverse Engineer Any API",
-          "Hichem's Journey"
+          "Hichem's Journey",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18532,7 +19870,9 @@ window.aiResources = {
         [
           "I4ERWLNinic",
           "AI Automations 101: Reverse Engineer Any API",
-          "Hichem's Journey"
+          "Hichem's Journey",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18549,7 +19889,9 @@ window.aiResources = {
         [
           "I4ERWLNinic",
           "AI Automations 101: Reverse Engineer Any API",
-          "Hichem's Journey"
+          "Hichem's Journey",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18566,7 +19908,9 @@ window.aiResources = {
         [
           "I4ERWLNinic",
           "AI Automations 101: Reverse Engineer Any API",
-          "Hichem's Journey"
+          "Hichem's Journey",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18583,7 +19927,9 @@ window.aiResources = {
         [
           "I4ERWLNinic",
           "AI Automations 101: Reverse Engineer Any API",
-          "Hichem's Journey"
+          "Hichem's Journey",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18600,7 +19946,9 @@ window.aiResources = {
         [
           "I4ERWLNinic",
           "AI Automations 101: Reverse Engineer Any API",
-          "Hichem's Journey"
+          "Hichem's Journey",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18617,7 +19965,9 @@ window.aiResources = {
         [
           "I4ERWLNinic",
           "AI Automations 101: Reverse Engineer Any API",
-          "Hichem's Journey"
+          "Hichem's Journey",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18634,7 +19984,9 @@ window.aiResources = {
         [
           "I4ERWLNinic",
           "AI Automations 101: Reverse Engineer Any API",
-          "Hichem's Journey"
+          "Hichem's Journey",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18651,7 +20003,9 @@ window.aiResources = {
         [
           "I4ERWLNinic",
           "AI Automations 101: Reverse Engineer Any API",
-          "Hichem's Journey"
+          "Hichem's Journey",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18668,7 +20022,9 @@ window.aiResources = {
         [
           "I4ERWLNinic",
           "AI Automations 101: Reverse Engineer Any API",
-          "Hichem's Journey"
+          "Hichem's Journey",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18685,7 +20041,9 @@ window.aiResources = {
         [
           "I4ERWLNinic",
           "AI Automations 101: Reverse Engineer Any API",
-          "Hichem's Journey"
+          "Hichem's Journey",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18702,7 +20060,9 @@ window.aiResources = {
         [
           "I4ERWLNinic",
           "AI Automations 101: Reverse Engineer Any API",
-          "Hichem's Journey"
+          "Hichem's Journey",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18719,7 +20079,9 @@ window.aiResources = {
         [
           "I4ERWLNinic",
           "AI Automations 101: Reverse Engineer Any API",
-          "Hichem's Journey"
+          "Hichem's Journey",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18736,7 +20098,9 @@ window.aiResources = {
         [
           "I4ERWLNinic",
           "AI Automations 101: Reverse Engineer Any API",
-          "Hichem's Journey"
+          "Hichem's Journey",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18753,7 +20117,9 @@ window.aiResources = {
         [
           "I4ERWLNinic",
           "AI Automations 101: Reverse Engineer Any API",
-          "Hichem's Journey"
+          "Hichem's Journey",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18770,7 +20136,9 @@ window.aiResources = {
         [
           "I4ERWLNinic",
           "AI Automations 101: Reverse Engineer Any API",
-          "Hichem's Journey"
+          "Hichem's Journey",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18787,7 +20155,9 @@ window.aiResources = {
         [
           "I4ERWLNinic",
           "AI Automations 101: Reverse Engineer Any API",
-          "Hichem's Journey"
+          "Hichem's Journey",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18804,7 +20174,9 @@ window.aiResources = {
         [
           "I4ERWLNinic",
           "AI Automations 101: Reverse Engineer Any API",
-          "Hichem's Journey"
+          "Hichem's Journey",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18821,7 +20193,9 @@ window.aiResources = {
         [
           "I4ERWLNinic",
           "AI Automations 101: Reverse Engineer Any API",
-          "Hichem's Journey"
+          "Hichem's Journey",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18838,7 +20212,9 @@ window.aiResources = {
         [
           "I4ERWLNinic",
           "AI Automations 101: Reverse Engineer Any API",
-          "Hichem's Journey"
+          "Hichem's Journey",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18855,7 +20231,9 @@ window.aiResources = {
         [
           "I4ERWLNinic",
           "AI Automations 101: Reverse Engineer Any API",
-          "Hichem's Journey"
+          "Hichem's Journey",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18872,7 +20250,9 @@ window.aiResources = {
         [
           "I4ERWLNinic",
           "AI Automations 101: Reverse Engineer Any API",
-          "Hichem's Journey"
+          "Hichem's Journey",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18889,7 +20269,9 @@ window.aiResources = {
         [
           "I4ERWLNinic",
           "AI Automations 101: Reverse Engineer Any API",
-          "Hichem's Journey"
+          "Hichem's Journey",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18906,7 +20288,9 @@ window.aiResources = {
         [
           "I4ERWLNinic",
           "AI Automations 101: Reverse Engineer Any API",
-          "Hichem's Journey"
+          "Hichem's Journey",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18923,7 +20307,9 @@ window.aiResources = {
         [
           "I4ERWLNinic",
           "AI Automations 101: Reverse Engineer Any API",
-          "Hichem's Journey"
+          "Hichem's Journey",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18940,7 +20326,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18957,7 +20345,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18974,7 +20364,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -18991,7 +20383,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19008,7 +20402,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19025,7 +20421,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19042,7 +20440,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19059,7 +20459,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19076,7 +20478,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19093,7 +20497,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19110,7 +20516,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19127,7 +20535,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19144,7 +20554,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19161,7 +20573,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19178,7 +20592,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19195,7 +20611,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19212,7 +20630,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19229,7 +20649,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19246,7 +20668,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19263,7 +20687,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19280,7 +20706,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19297,7 +20725,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19314,7 +20744,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19331,7 +20763,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19348,7 +20782,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19365,7 +20801,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19382,7 +20820,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19399,7 +20839,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19416,7 +20858,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19433,7 +20877,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19450,7 +20896,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19467,7 +20915,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19484,7 +20934,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19501,7 +20953,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19518,7 +20972,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19535,7 +20991,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19552,7 +21010,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19569,7 +21029,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19586,7 +21048,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19603,7 +21067,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19620,7 +21086,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19637,7 +21105,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19654,7 +21124,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19671,7 +21143,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19688,7 +21162,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19705,7 +21181,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19722,7 +21200,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19739,7 +21219,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19756,7 +21238,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19773,7 +21257,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19790,7 +21276,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19807,7 +21295,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19824,7 +21314,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19841,7 +21333,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19858,7 +21352,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19875,7 +21371,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19892,7 +21390,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19909,7 +21409,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19926,7 +21428,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19943,7 +21447,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19960,7 +21466,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19977,7 +21485,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -19994,7 +21504,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20011,7 +21523,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20028,7 +21542,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20045,7 +21561,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20062,7 +21580,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20079,7 +21599,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20096,7 +21618,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20113,7 +21637,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20130,7 +21656,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20147,7 +21675,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20164,7 +21694,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20181,7 +21713,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20198,7 +21732,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20215,7 +21751,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20232,7 +21770,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20249,7 +21789,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20266,7 +21808,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20283,7 +21827,9 @@ window.aiResources = {
         [
           "VkWlLSTdHs8",
           "Faster LLMs: Accelerate Inference with Speculative Decoding",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20300,7 +21846,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20317,7 +21865,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20334,7 +21884,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20351,7 +21903,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20368,7 +21922,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20385,7 +21941,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20402,7 +21960,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20419,7 +21979,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20436,7 +21998,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20453,7 +22017,9 @@ window.aiResources = {
         [
           "6uPnLkCiy5g",
           "PagedAttention: Behind vLLM's Insane Speed",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20470,7 +22036,9 @@ window.aiResources = {
         [
           "8ib4Qnh2HFE",
           "Full AI Prompting Course with Andrew Ng",
-          "DeepLearningAI"
+          "DeepLearningAI",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20487,7 +22055,9 @@ window.aiResources = {
         [
           "8ib4Qnh2HFE",
           "Full AI Prompting Course with Andrew Ng",
-          "DeepLearningAI"
+          "DeepLearningAI",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20504,7 +22074,9 @@ window.aiResources = {
         [
           "8ib4Qnh2HFE",
           "Full AI Prompting Course with Andrew Ng",
-          "DeepLearningAI"
+          "DeepLearningAI",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20521,7 +22093,9 @@ window.aiResources = {
         [
           "8ib4Qnh2HFE",
           "Full AI Prompting Course with Andrew Ng",
-          "DeepLearningAI"
+          "DeepLearningAI",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20538,7 +22112,9 @@ window.aiResources = {
         [
           "8ib4Qnh2HFE",
           "Full AI Prompting Course with Andrew Ng",
-          "DeepLearningAI"
+          "DeepLearningAI",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20555,7 +22131,9 @@ window.aiResources = {
         [
           "8ib4Qnh2HFE",
           "Full AI Prompting Course with Andrew Ng",
-          "DeepLearningAI"
+          "DeepLearningAI",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20572,7 +22150,9 @@ window.aiResources = {
         [
           "8ib4Qnh2HFE",
           "Full AI Prompting Course with Andrew Ng",
-          "DeepLearningAI"
+          "DeepLearningAI",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20589,7 +22169,9 @@ window.aiResources = {
         [
           "8ib4Qnh2HFE",
           "Full AI Prompting Course with Andrew Ng",
-          "DeepLearningAI"
+          "DeepLearningAI",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20606,7 +22188,9 @@ window.aiResources = {
         [
           "8ib4Qnh2HFE",
           "Full AI Prompting Course with Andrew Ng",
-          "DeepLearningAI"
+          "DeepLearningAI",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20623,7 +22207,9 @@ window.aiResources = {
         [
           "8ib4Qnh2HFE",
           "Full AI Prompting Course with Andrew Ng",
-          "DeepLearningAI"
+          "DeepLearningAI",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20640,7 +22226,9 @@ window.aiResources = {
         [
           "8ib4Qnh2HFE",
           "Full AI Prompting Course with Andrew Ng",
-          "DeepLearningAI"
+          "DeepLearningAI",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20657,7 +22245,9 @@ window.aiResources = {
         [
           "Oh2t8XXiFgU",
           "How Batch Normalization works to solve Internal Covariate Shift",
-          "Developers Hutt"
+          "Developers Hutt",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20674,7 +22264,9 @@ window.aiResources = {
         [
           "8ib4Qnh2HFE",
           "Full AI Prompting Course with Andrew Ng",
-          "DeepLearningAI"
+          "DeepLearningAI",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20691,7 +22283,9 @@ window.aiResources = {
         [
           "8ib4Qnh2HFE",
           "Full AI Prompting Course with Andrew Ng",
-          "DeepLearningAI"
+          "DeepLearningAI",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20708,7 +22302,9 @@ window.aiResources = {
         [
           "8ib4Qnh2HFE",
           "Full AI Prompting Course with Andrew Ng",
-          "DeepLearningAI"
+          "DeepLearningAI",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20725,7 +22321,9 @@ window.aiResources = {
         [
           "8ib4Qnh2HFE",
           "Full AI Prompting Course with Andrew Ng",
-          "DeepLearningAI"
+          "DeepLearningAI",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20742,7 +22340,9 @@ window.aiResources = {
         [
           "8ib4Qnh2HFE",
           "Full AI Prompting Course with Andrew Ng",
-          "DeepLearningAI"
+          "DeepLearningAI",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20759,7 +22359,9 @@ window.aiResources = {
         [
           "8ib4Qnh2HFE",
           "Full AI Prompting Course with Andrew Ng",
-          "DeepLearningAI"
+          "DeepLearningAI",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20776,7 +22378,9 @@ window.aiResources = {
         [
           "8ib4Qnh2HFE",
           "Full AI Prompting Course with Andrew Ng",
-          "DeepLearningAI"
+          "DeepLearningAI",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20793,7 +22397,9 @@ window.aiResources = {
         [
           "8ib4Qnh2HFE",
           "Full AI Prompting Course with Andrew Ng",
-          "DeepLearningAI"
+          "DeepLearningAI",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20810,7 +22416,9 @@ window.aiResources = {
         [
           "8ib4Qnh2HFE",
           "Full AI Prompting Course with Andrew Ng",
-          "DeepLearningAI"
+          "DeepLearningAI",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20827,7 +22435,9 @@ window.aiResources = {
         [
           "8ib4Qnh2HFE",
           "Full AI Prompting Course with Andrew Ng",
-          "DeepLearningAI"
+          "DeepLearningAI",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20844,7 +22454,9 @@ window.aiResources = {
         [
           "8ib4Qnh2HFE",
           "Full AI Prompting Course with Andrew Ng",
-          "DeepLearningAI"
+          "DeepLearningAI",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20861,7 +22473,9 @@ window.aiResources = {
         [
           "8ib4Qnh2HFE",
           "Full AI Prompting Course with Andrew Ng",
-          "DeepLearningAI"
+          "DeepLearningAI",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20878,7 +22492,9 @@ window.aiResources = {
         [
           "8ib4Qnh2HFE",
           "Full AI Prompting Course with Andrew Ng",
-          "DeepLearningAI"
+          "DeepLearningAI",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20895,7 +22511,9 @@ window.aiResources = {
         [
           "8ib4Qnh2HFE",
           "Full AI Prompting Course with Andrew Ng",
-          "DeepLearningAI"
+          "DeepLearningAI",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20912,7 +22530,9 @@ window.aiResources = {
         [
           "8ib4Qnh2HFE",
           "Full AI Prompting Course with Andrew Ng",
-          "DeepLearningAI"
+          "DeepLearningAI",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20929,7 +22549,9 @@ window.aiResources = {
         [
           "8ib4Qnh2HFE",
           "Full AI Prompting Course with Andrew Ng",
-          "DeepLearningAI"
+          "DeepLearningAI",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20946,7 +22568,9 @@ window.aiResources = {
         [
           "8ib4Qnh2HFE",
           "Full AI Prompting Course with Andrew Ng",
-          "DeepLearningAI"
+          "DeepLearningAI",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20963,7 +22587,9 @@ window.aiResources = {
         [
           "8ib4Qnh2HFE",
           "Full AI Prompting Course with Andrew Ng",
-          "DeepLearningAI"
+          "DeepLearningAI",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20980,7 +22606,9 @@ window.aiResources = {
         [
           "8ib4Qnh2HFE",
           "Full AI Prompting Course with Andrew Ng",
-          "DeepLearningAI"
+          "DeepLearningAI",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -20997,7 +22625,9 @@ window.aiResources = {
         [
           "sVcwVQRHIc8",
           "Learn RAG From Scratch \u2013 Python AI Tutorial from a LangChain Engineer",
-          "freeCodeCamp.org"
+          "freeCodeCamp.org",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21014,7 +22644,9 @@ window.aiResources = {
         [
           "sVcwVQRHIc8",
           "Learn RAG From Scratch \u2013 Python AI Tutorial from a LangChain Engineer",
-          "freeCodeCamp.org"
+          "freeCodeCamp.org",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21031,7 +22663,9 @@ window.aiResources = {
         [
           "sVcwVQRHIc8",
           "Learn RAG From Scratch \u2013 Python AI Tutorial from a LangChain Engineer",
-          "freeCodeCamp.org"
+          "freeCodeCamp.org",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21048,7 +22682,9 @@ window.aiResources = {
         [
           "sVcwVQRHIc8",
           "Learn RAG From Scratch \u2013 Python AI Tutorial from a LangChain Engineer",
-          "freeCodeCamp.org"
+          "freeCodeCamp.org",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21065,7 +22701,9 @@ window.aiResources = {
         [
           "sVcwVQRHIc8",
           "Learn RAG From Scratch \u2013 Python AI Tutorial from a LangChain Engineer",
-          "freeCodeCamp.org"
+          "freeCodeCamp.org",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21082,7 +22720,9 @@ window.aiResources = {
         [
           "VkWlLSTdHs8",
           "Faster LLMs: Accelerate Inference with Speculative Decoding",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21099,7 +22739,9 @@ window.aiResources = {
         [
           "sVcwVQRHIc8",
           "Learn RAG From Scratch \u2013 Python AI Tutorial from a LangChain Engineer",
-          "freeCodeCamp.org"
+          "freeCodeCamp.org",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21116,7 +22758,9 @@ window.aiResources = {
         [
           "sVcwVQRHIc8",
           "Learn RAG From Scratch \u2013 Python AI Tutorial from a LangChain Engineer",
-          "freeCodeCamp.org"
+          "freeCodeCamp.org",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21133,7 +22777,9 @@ window.aiResources = {
         [
           "sVcwVQRHIc8",
           "Learn RAG From Scratch \u2013 Python AI Tutorial from a LangChain Engineer",
-          "freeCodeCamp.org"
+          "freeCodeCamp.org",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21150,7 +22796,9 @@ window.aiResources = {
         [
           "sVcwVQRHIc8",
           "Learn RAG From Scratch \u2013 Python AI Tutorial from a LangChain Engineer",
-          "freeCodeCamp.org"
+          "freeCodeCamp.org",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21167,7 +22815,9 @@ window.aiResources = {
         [
           "rtvZFF0xpkU",
           "1   Building an AI tool in 5 minutes",
-          " Ibrahim Hussain"
+          " Ibrahim Hussain",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21184,7 +22834,9 @@ window.aiResources = {
         [
           "rtvZFF0xpkU",
           "1   Building an AI tool in 5 minutes",
-          " Ibrahim Hussain"
+          " Ibrahim Hussain",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21201,7 +22853,9 @@ window.aiResources = {
         [
           "rtvZFF0xpkU",
           "1   Building an AI tool in 5 minutes",
-          " Ibrahim Hussain"
+          " Ibrahim Hussain",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21218,7 +22872,9 @@ window.aiResources = {
         [
           "rtvZFF0xpkU",
           "1   Building an AI tool in 5 minutes",
-          " Ibrahim Hussain"
+          " Ibrahim Hussain",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21235,7 +22891,9 @@ window.aiResources = {
         [
           "rtvZFF0xpkU",
           "1   Building an AI tool in 5 minutes",
-          " Ibrahim Hussain"
+          " Ibrahim Hussain",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21252,7 +22910,9 @@ window.aiResources = {
         [
           "oHu_xWe0agI",
           "A Practical Guide To Becoming An AI Engineer (2026)",
-          "CodeHead"
+          "CodeHead",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21269,7 +22929,9 @@ window.aiResources = {
         [
           "oHu_xWe0agI",
           "A Practical Guide To Becoming An AI Engineer (2026)",
-          "CodeHead"
+          "CodeHead",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21286,7 +22948,9 @@ window.aiResources = {
         [
           "oHu_xWe0agI",
           "A Practical Guide To Becoming An AI Engineer (2026)",
-          "CodeHead"
+          "CodeHead",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21303,7 +22967,9 @@ window.aiResources = {
         [
           "oHu_xWe0agI",
           "A Practical Guide To Becoming An AI Engineer (2026)",
-          "CodeHead"
+          "CodeHead",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21320,7 +22986,9 @@ window.aiResources = {
         [
           "oHu_xWe0agI",
           "A Practical Guide To Becoming An AI Engineer (2026)",
-          "CodeHead"
+          "CodeHead",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21337,7 +23005,9 @@ window.aiResources = {
         [
           "0z6AhrOSrRs",
           "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
-          "My Lesson"
+          "My Lesson",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21360,7 +23030,9 @@ window.aiResources = {
         [
           "-jRDvP2NdMA",
           "Activation Functions in Neural Networks \u2013 Part 2 | Leaky ReLU, PReLU, ELU, Swish, GELU & More",
-          "Bellic Robotics"
+          "Bellic Robotics",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21377,7 +23049,9 @@ window.aiResources = {
         [
           "0z6AhrOSrRs",
           "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
-          "My Lesson"
+          "My Lesson",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21400,7 +23074,9 @@ window.aiResources = {
         [
           "sn0Eex-3F_c",
           "AdamW Optimizer Explained #datascience #machinelearning #deeplearning #optimization",
-          "DataMListic"
+          "DataMListic",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21423,7 +23099,9 @@ window.aiResources = {
         [
           "0z6AhrOSrRs",
           "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
-          "My Lesson"
+          "My Lesson",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21440,7 +23118,9 @@ window.aiResources = {
         [
           "tIeHLnjs5U8",
           "Backpropagation calculus | Deep learning, chapter 4",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21457,7 +23137,9 @@ window.aiResources = {
         [
           "vGYcWvYnXiI",
           "AI Basics: Accuracy, Epochs, Learning Rate, Batch Size and Loss",
-          "Prof. Ryan Ahmed"
+          "Prof. Ryan Ahmed",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21474,7 +23156,9 @@ window.aiResources = {
         [
           "0z6AhrOSrRs",
           "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
-          "My Lesson"
+          "My Lesson",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21491,7 +23175,9 @@ window.aiResources = {
         [
           "0z6AhrOSrRs",
           "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
-          "My Lesson"
+          "My Lesson",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21508,7 +23194,9 @@ window.aiResources = {
         [
           "0z6AhrOSrRs",
           "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
-          "My Lesson"
+          "My Lesson",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21525,7 +23213,9 @@ window.aiResources = {
         [
           "0z6AhrOSrRs",
           "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
-          "My Lesson"
+          "My Lesson",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21548,7 +23238,9 @@ window.aiResources = {
         [
           "_SlPBbxuqas",
           "NN - 16 - L2 Regularization / Weight Decay (Theory + @PyTorch code)",
-          "Meerkat Statistics"
+          "Meerkat Statistics",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21565,7 +23257,9 @@ window.aiResources = {
         [
           "0z6AhrOSrRs",
           "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
-          "My Lesson"
+          "My Lesson",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21582,7 +23276,9 @@ window.aiResources = {
         [
           "vGYcWvYnXiI",
           "AI Basics: Accuracy, Epochs, Learning Rate, Batch Size and Loss",
-          "Prof. Ryan Ahmed"
+          "Prof. Ryan Ahmed",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21599,7 +23295,9 @@ window.aiResources = {
         [
           "0z6AhrOSrRs",
           "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
-          "My Lesson"
+          "My Lesson",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21616,7 +23314,9 @@ window.aiResources = {
         [
           "zUDxEL3jwQ0",
           "Gradient Boosting vs AdaBoost vs XGBoost vs LightGBM vs CatBoost | Boosting Explained \ud83d\udd25",
-          "Analytics Vidhya"
+          "Analytics Vidhya",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21633,7 +23333,9 @@ window.aiResources = {
         [
           "0z6AhrOSrRs",
           "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
-          "My Lesson"
+          "My Lesson",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21656,7 +23358,9 @@ window.aiResources = {
         [
           "0z6AhrOSrRs",
           "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
-          "My Lesson"
+          "My Lesson",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21679,7 +23383,9 @@ window.aiResources = {
         [
           "tIeHLnjs5U8",
           "Backpropagation calculus | Deep learning, chapter 4",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21696,7 +23402,9 @@ window.aiResources = {
         [
           "vGYcWvYnXiI",
           "AI Basics: Accuracy, Epochs, Learning Rate, Batch Size and Loss",
-          "Prof. Ryan Ahmed"
+          "Prof. Ryan Ahmed",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21713,7 +23421,9 @@ window.aiResources = {
         [
           "0z6AhrOSrRs",
           "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
-          "My Lesson"
+          "My Lesson",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21736,7 +23446,9 @@ window.aiResources = {
         [
           "0z6AhrOSrRs",
           "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
-          "My Lesson"
+          "My Lesson",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21759,7 +23471,9 @@ window.aiResources = {
         [
           "0z6AhrOSrRs",
           "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
-          "My Lesson"
+          "My Lesson",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21776,7 +23490,9 @@ window.aiResources = {
         [
           "0z6AhrOSrRs",
           "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
-          "My Lesson"
+          "My Lesson",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21805,7 +23521,9 @@ window.aiResources = {
         [
           "0z6AhrOSrRs",
           "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
-          "My Lesson"
+          "My Lesson",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21828,7 +23546,9 @@ window.aiResources = {
         [
           "v_ueBW_5dLg",
           "What is a Loss Function? Understanding How AI Models Learn",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21845,7 +23565,9 @@ window.aiResources = {
         [
           "0z6AhrOSrRs",
           "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
-          "My Lesson"
+          "My Lesson",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21862,7 +23584,9 @@ window.aiResources = {
         [
           "0z6AhrOSrRs",
           "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
-          "My Lesson"
+          "My Lesson",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21879,7 +23603,9 @@ window.aiResources = {
         [
           "P6sfmUTpUmc",
           "Building makemore Part 3: Activations & Gradients, BatchNorm",
-          "Andrej Karpathy"
+          "Andrej Karpathy",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21896,7 +23622,9 @@ window.aiResources = {
         [
           "SknYgMpC-VI",
           "Evaluator - Optimizer Design Pattern | Agentic Workflow | Human in the Loop, LangChain, Python",
-          "Saurav Prateek"
+          "Saurav Prateek",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21913,7 +23641,9 @@ window.aiResources = {
         [
           "0z6AhrOSrRs",
           "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
-          "My Lesson"
+          "My Lesson",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21930,7 +23660,9 @@ window.aiResources = {
         [
           "oM4VmoabDAI",
           "LoRA: Low-Rank Adaptation of Large Language Models - Explained with Code",
-          "Umar Jamil"
+          "Umar Jamil",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21953,7 +23685,9 @@ window.aiResources = {
         [
           "-jRDvP2NdMA",
           "Activation Functions in Neural Networks \u2013 Part 2 | Leaky ReLU, PReLU, ELU, Swish, GELU & More",
-          "Bellic Robotics"
+          "Bellic Robotics",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21970,7 +23704,9 @@ window.aiResources = {
         [
           "0z6AhrOSrRs",
           "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
-          "My Lesson"
+          "My Lesson",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -21993,7 +23729,9 @@ window.aiResources = {
         [
           "0z6AhrOSrRs",
           "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
-          "My Lesson"
+          "My Lesson",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22010,7 +23748,9 @@ window.aiResources = {
         [
           "0z6AhrOSrRs",
           "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
-          "My Lesson"
+          "My Lesson",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22027,7 +23767,9 @@ window.aiResources = {
         [
           "0z6AhrOSrRs",
           "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
-          "My Lesson"
+          "My Lesson",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22056,7 +23798,9 @@ window.aiResources = {
         [
           "0z6AhrOSrRs",
           "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
-          "My Lesson"
+          "My Lesson",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22073,7 +23817,9 @@ window.aiResources = {
         [
           "0z6AhrOSrRs",
           "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
-          "My Lesson"
+          "My Lesson",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22090,7 +23836,9 @@ window.aiResources = {
         [
           "0z6AhrOSrRs",
           "Mathematics for Machine Learning Tutorial (3 Complete Courses in 1 video)",
-          "My Lesson"
+          "My Lesson",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22113,7 +23861,9 @@ window.aiResources = {
         [
           "WelZ-lfuO5E",
           "How LLMs generate Text",
-          "Chroma"
+          "Chroma",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22130,7 +23880,9 @@ window.aiResources = {
         [
           "_SlPBbxuqas",
           "NN - 16 - L2 Regularization / Weight Decay (Theory + @PyTorch code)",
-          "Meerkat Statistics"
+          "Meerkat Statistics",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22147,7 +23899,9 @@ window.aiResources = {
         [
           "eMlx5fFNoYc",
           "Attention in transformers, step-by-step | Deep Learning Chapter 6",
-          "3Blue1Brown"
+          "3Blue1Brown",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22170,7 +23924,9 @@ window.aiResources = {
         [
           "XtT5i0ZeHHE",
           "AI Inference: The Secret to AI's Superpowers",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22187,7 +23943,9 @@ window.aiResources = {
         [
           "XtT5i0ZeHHE",
           "AI Inference: The Secret to AI's Superpowers",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22204,7 +23962,9 @@ window.aiResources = {
         [
           "XtT5i0ZeHHE",
           "AI Inference: The Secret to AI's Superpowers",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22221,7 +23981,9 @@ window.aiResources = {
         [
           "hRHnEXyU-YY",
           "Encoder vs Decoder vs Encoder-Decoder Models Explained",
-          "AIChalkboord"
+          "AIChalkboord",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22238,7 +24000,9 @@ window.aiResources = {
         [
           "XtT5i0ZeHHE",
           "AI Inference: The Secret to AI's Superpowers",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22261,7 +24025,9 @@ window.aiResources = {
         [
           "1CIpzeNxIhU",
           "Diffusion Models Explained - Computerphile",
-          "Computerphile"
+          "Computerphile",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22278,7 +24044,9 @@ window.aiResources = {
         [
           "hRHnEXyU-YY",
           "Encoder vs Decoder vs Encoder-Decoder Models Explained",
-          "AIChalkboord"
+          "AIChalkboord",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22295,7 +24063,9 @@ window.aiResources = {
         [
           "XtT5i0ZeHHE",
           "AI Inference: The Secret to AI's Superpowers",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22312,7 +24082,9 @@ window.aiResources = {
         [
           "WmvZwR4rKJg",
           "LLM Quantization Explained: GPTQ, AWQ, QLoRA, GGUF and More",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22329,7 +24101,9 @@ window.aiResources = {
         [
           "XtT5i0ZeHHE",
           "AI Inference: The Secret to AI's Superpowers",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22346,7 +24120,9 @@ window.aiResources = {
         [
           "VlmDWthjEzc",
           "Temperature vs Top-P vs Top-K | Day -10 : AI Concepts You Can't Ignore",
-          "AI Foundry Hub"
+          "AI Foundry Hub",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22363,7 +24139,9 @@ window.aiResources = {
         [
           "XtT5i0ZeHHE",
           "AI Inference: The Secret to AI's Superpowers",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22380,7 +24158,9 @@ window.aiResources = {
         [
           "XtT5i0ZeHHE",
           "AI Inference: The Secret to AI's Superpowers",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22397,7 +24177,9 @@ window.aiResources = {
         [
           "XtT5i0ZeHHE",
           "AI Inference: The Secret to AI's Superpowers",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22420,7 +24202,9 @@ window.aiResources = {
         [
           "XtT5i0ZeHHE",
           "AI Inference: The Secret to AI's Superpowers",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22437,7 +24221,9 @@ window.aiResources = {
         [
           "XtT5i0ZeHHE",
           "AI Inference: The Secret to AI's Superpowers",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22460,7 +24246,9 @@ window.aiResources = {
         [
           "vGYcWvYnXiI",
           "AI Basics: Accuracy, Epochs, Learning Rate, Batch Size and Loss",
-          "Prof. Ryan Ahmed"
+          "Prof. Ryan Ahmed",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22477,7 +24265,9 @@ window.aiResources = {
         [
           "T64FfSf7TQw",
           "Perplexity Deep Research Tutorial: Full Reports in Minutes (Free)",
-          "AI Unboxed"
+          "AI Unboxed",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22494,7 +24284,9 @@ window.aiResources = {
         [
           "WmvZwR4rKJg",
           "LLM Quantization Explained: GPTQ, AWQ, QLoRA, GGUF and More",
-          "Tales Of Tensors"
+          "Tales Of Tensors",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22511,7 +24303,9 @@ window.aiResources = {
         [
           "XtT5i0ZeHHE",
           "AI Inference: The Secret to AI's Superpowers",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22528,7 +24322,9 @@ window.aiResources = {
         [
           "VkWlLSTdHs8",
           "Faster LLMs: Accelerate Inference with Speculative Decoding",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22551,7 +24347,9 @@ window.aiResources = {
         [
           "XtT5i0ZeHHE",
           "AI Inference: The Secret to AI's Superpowers",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22574,7 +24372,9 @@ window.aiResources = {
         [
           "kWLhv9ds9tc",
           "Answering AI Engineer Interview Question 2 \u2014 Streaming Tokens over SSE",
-          "tMain"
+          "tMain",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22591,7 +24391,9 @@ window.aiResources = {
         [
           "VlmDWthjEzc",
           "Temperature vs Top-P vs Top-K | Day -10 : AI Concepts You Can't Ignore",
-          "AI Foundry Hub"
+          "AI Foundry Hub",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22608,7 +24410,9 @@ window.aiResources = {
         [
           "XtT5i0ZeHHE",
           "AI Inference: The Secret to AI's Superpowers",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22625,7 +24429,9 @@ window.aiResources = {
         [
           "XtT5i0ZeHHE",
           "AI Inference: The Secret to AI's Superpowers",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22648,7 +24454,9 @@ window.aiResources = {
         [
           "LUqKUTI9YBQ",
           "Embeddings in AI Explained in 60 Seconds!",
-          "Analytics Vidhya"
+          "Analytics Vidhya",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22671,7 +24479,9 @@ window.aiResources = {
         [
           "XtT5i0ZeHHE",
           "AI Inference: The Secret to AI's Superpowers",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22694,7 +24504,9 @@ window.aiResources = {
         [
           "VSFuqMh4hus",
           "7 AI Terms You Need to Know: Agents, RAG, ASI & More",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22717,7 +24529,9 @@ window.aiResources = {
         [
           "VSFuqMh4hus",
           "7 AI Terms You Need to Know: Agents, RAG, ASI & More",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22734,7 +24548,9 @@ window.aiResources = {
         [
           "VSFuqMh4hus",
           "7 AI Terms You Need to Know: Agents, RAG, ASI & More",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22757,7 +24573,9 @@ window.aiResources = {
         [
           "j9X8m5KSQAc",
           "What is data leakage in machine learning #ml #datascience",
-          "Karina Data Scientist"
+          "Karina Data Scientist",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22780,7 +24598,9 @@ window.aiResources = {
         [
           "VSFuqMh4hus",
           "7 AI Terms You Need to Know: Agents, RAG, ASI & More",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22803,7 +24623,9 @@ window.aiResources = {
         [
           "VSFuqMh4hus",
           "7 AI Terms You Need to Know: Agents, RAG, ASI & More",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22826,7 +24648,9 @@ window.aiResources = {
         [
           "LUqKUTI9YBQ",
           "Embeddings in AI Explained in 60 Seconds!",
-          "Analytics Vidhya"
+          "Analytics Vidhya",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22843,7 +24667,9 @@ window.aiResources = {
         [
           "qizyCPjk8x4",
           "AI Cost Engineering Explained | 5 Areas to Optimize AI Costs",
-          "Mohamed Naji Aboo"
+          "Mohamed Naji Aboo",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22860,7 +24686,9 @@ window.aiResources = {
         [
           "VSFuqMh4hus",
           "7 AI Terms You Need to Know: Agents, RAG, ASI & More",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22877,7 +24705,9 @@ window.aiResources = {
         [
           "VSFuqMh4hus",
           "7 AI Terms You Need to Know: Agents, RAG, ASI & More",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22894,7 +24724,9 @@ window.aiResources = {
         [
           "VEZXyhSxMCk",
           "Tokenization explained: how an LLM turns text into numbers (BPE, token IDs, cost)",
-          "The AI Foundry"
+          "The AI Foundry",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22911,7 +24743,9 @@ window.aiResources = {
         [
           "VSFuqMh4hus",
           "7 AI Terms You Need to Know: Agents, RAG, ASI & More",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22934,7 +24768,9 @@ window.aiResources = {
         [
           "VSFuqMh4hus",
           "7 AI Terms You Need to Know: Agents, RAG, ASI & More",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22957,7 +24793,9 @@ window.aiResources = {
         [
           "T-D1OfcDW1M",
           "What is Retrieval-Augmented Generation (RAG)?",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -22980,7 +24818,9 @@ window.aiResources = {
         [
           "T-D1OfcDW1M",
           "What is Retrieval-Augmented Generation (RAG)?",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23003,7 +24843,9 @@ window.aiResources = {
         [
           "8OJC21T2SL4",
           "5 Levels Of Text Splitting For Retrieval",
-          "Greg Kamradt"
+          "Greg Kamradt",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23020,7 +24862,9 @@ window.aiResources = {
         [
           "T-D1OfcDW1M",
           "What is Retrieval-Augmented Generation (RAG)?",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23043,7 +24887,9 @@ window.aiResources = {
         [
           "T-D1OfcDW1M",
           "What is Retrieval-Augmented Generation (RAG)?",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23060,7 +24906,9 @@ window.aiResources = {
         [
           "T-D1OfcDW1M",
           "What is Retrieval-Augmented Generation (RAG)?",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23083,7 +24931,9 @@ window.aiResources = {
         [
           "T-D1OfcDW1M",
           "What is Retrieval-Augmented Generation (RAG)?",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23100,7 +24950,9 @@ window.aiResources = {
         [
           "T-D1OfcDW1M",
           "What is Retrieval-Augmented Generation (RAG)?",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23123,7 +24975,9 @@ window.aiResources = {
         [
           "T-D1OfcDW1M",
           "What is Retrieval-Augmented Generation (RAG)?",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23146,7 +25000,9 @@ window.aiResources = {
         [
           "T-D1OfcDW1M",
           "What is Retrieval-Augmented Generation (RAG)?",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23169,7 +25025,9 @@ window.aiResources = {
         [
           "T-D1OfcDW1M",
           "What is Retrieval-Augmented Generation (RAG)?",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23192,7 +25050,9 @@ window.aiResources = {
         [
           "T-D1OfcDW1M",
           "What is Retrieval-Augmented Generation (RAG)?",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23209,7 +25069,9 @@ window.aiResources = {
         [
           "T-D1OfcDW1M",
           "What is Retrieval-Augmented Generation (RAG)?",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23226,7 +25088,9 @@ window.aiResources = {
         [
           "T-D1OfcDW1M",
           "What is Retrieval-Augmented Generation (RAG)?",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23243,7 +25107,9 @@ window.aiResources = {
         [
           "vD0E3EUb8-8",
           "Context Engineering vs. Prompt Engineering: Smarter AI with RAG & Agents",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23260,7 +25126,9 @@ window.aiResources = {
         [
           "vD0E3EUb8-8",
           "Context Engineering vs. Prompt Engineering: Smarter AI with RAG & Agents",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23283,7 +25151,9 @@ window.aiResources = {
         [
           "vD0E3EUb8-8",
           "Context Engineering vs. Prompt Engineering: Smarter AI with RAG & Agents",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23300,7 +25170,9 @@ window.aiResources = {
         [
           "-QVoIxEpFkM",
           "What is a Context Window? Unlocking LLM Secrets",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23317,7 +25189,9 @@ window.aiResources = {
         [
           "vD0E3EUb8-8",
           "Context Engineering vs. Prompt Engineering: Smarter AI with RAG & Agents",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23334,7 +25208,9 @@ window.aiResources = {
         [
           "vD0E3EUb8-8",
           "Context Engineering vs. Prompt Engineering: Smarter AI with RAG & Agents",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23357,7 +25233,9 @@ window.aiResources = {
         [
           "vD0E3EUb8-8",
           "Context Engineering vs. Prompt Engineering: Smarter AI with RAG & Agents",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23380,7 +25258,9 @@ window.aiResources = {
         [
           "vD0E3EUb8-8",
           "Context Engineering vs. Prompt Engineering: Smarter AI with RAG & Agents",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23403,7 +25283,9 @@ window.aiResources = {
         [
           "vD0E3EUb8-8",
           "Context Engineering vs. Prompt Engineering: Smarter AI with RAG & Agents",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23426,7 +25308,9 @@ window.aiResources = {
         [
           "vD0E3EUb8-8",
           "Context Engineering vs. Prompt Engineering: Smarter AI with RAG & Agents",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23443,7 +25327,9 @@ window.aiResources = {
         [
           "vD0E3EUb8-8",
           "Context Engineering vs. Prompt Engineering: Smarter AI with RAG & Agents",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23460,7 +25346,9 @@ window.aiResources = {
         [
           "vD0E3EUb8-8",
           "Context Engineering vs. Prompt Engineering: Smarter AI with RAG & Agents",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23483,7 +25371,9 @@ window.aiResources = {
         [
           "WiG9z4tqB5U",
           "System prompt vs user prompt: what's the difference? #chatgpt  #promptengineering  #ai  #llm",
-          "AI Literacy Lab"
+          "AI Literacy Lab",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23500,7 +25390,9 @@ window.aiResources = {
         [
           "vD0E3EUb8-8",
           "Context Engineering vs. Prompt Engineering: Smarter AI with RAG & Agents",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23517,7 +25409,9 @@ window.aiResources = {
         [
           "vD0E3EUb8-8",
           "Context Engineering vs. Prompt Engineering: Smarter AI with RAG & Agents",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23534,7 +25428,9 @@ window.aiResources = {
         [
           "8HqeY5v0ohM",
           "AutoGen vs CrewAI vs LangGraph \u2013 Best AI Agent Framework In 2025!",
-          "Digibase Media"
+          "Digibase Media",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23551,7 +25447,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23568,7 +25466,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23591,7 +25491,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23608,7 +25510,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23631,7 +25535,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23648,7 +25554,9 @@ window.aiResources = {
         [
           "9iS-YYLIXiw",
           "What is Human In The Loop with AI? How HITL Shapes AI Systems",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23665,7 +25573,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23688,7 +25598,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23711,7 +25623,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23728,7 +25642,9 @@ window.aiResources = {
         [
           "TEKLOiCZMOo",
           "What Is Function Calling in AI? \ud83e\udd16 Explained with a Simple Example #Shorts",
-          "#NaghmasTechWorld"
+          "#NaghmasTechWorld",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23745,7 +25661,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23762,7 +25680,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23785,7 +25705,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23808,7 +25730,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23831,7 +25755,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23854,7 +25780,9 @@ window.aiResources = {
         [
           "K0Bl2ecW5s8",
           "How AI Agents Actually Think | ReAct (Reason + Act) Explained Simply",
-          "SomethingTalk1 -  AI Meets Engineering Thinking"
+          "SomethingTalk1 -  AI Meets Engineering Thinking",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23877,7 +25805,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23894,7 +25824,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23917,7 +25849,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23940,7 +25874,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23963,7 +25899,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -23986,7 +25924,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24015,7 +25955,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24032,7 +25974,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24049,7 +25993,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24072,7 +26018,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24089,7 +26037,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24106,7 +26056,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24129,7 +26081,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24152,7 +26106,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24175,7 +26131,9 @@ window.aiResources = {
         [
           "Mk8mUXh20r8",
           "Context Engineering and How to Run a Successful Eval | Applied AI Technology Conference",
-          "Business Analysis Community"
+          "Business Analysis Community",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24192,7 +26150,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24209,7 +26169,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24232,7 +26194,9 @@ window.aiResources = {
         [
           "c9O72YmuUuc",
           "Part 7 | AI Output Can Be Dangerous \u2014 Output Guardrails Explained | AI Security",
-          "Pentest Diaries"
+          "Pentest Diaries",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24249,7 +26213,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24266,7 +26232,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24283,7 +26251,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24300,7 +26270,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24323,7 +26295,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24346,7 +26320,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24363,7 +26339,9 @@ window.aiResources = {
         [
           "jrHRe9lSqqA",
           "What Is a Prompt Injection Attack?",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24386,7 +26364,9 @@ window.aiResources = {
         [
           "M05L1DhFqcw",
           "What is the BLEU metric?",
-          "Hugging Face"
+          "Hugging Face",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24403,7 +26383,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24420,7 +26402,9 @@ window.aiResources = {
         [
           "9u6xvcNJaxc",
           "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
-          "AI Engineer"
+          "AI Engineer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24437,7 +26421,9 @@ window.aiResources = {
         [
           "9u6xvcNJaxc",
           "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
-          "AI Engineer"
+          "AI Engineer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24454,7 +26440,9 @@ window.aiResources = {
         [
           "9u6xvcNJaxc",
           "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
-          "AI Engineer"
+          "AI Engineer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24471,7 +26459,9 @@ window.aiResources = {
         [
           "9u6xvcNJaxc",
           "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
-          "AI Engineer"
+          "AI Engineer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24488,7 +26478,9 @@ window.aiResources = {
         [
           "9u6xvcNJaxc",
           "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
-          "AI Engineer"
+          "AI Engineer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24511,7 +26503,9 @@ window.aiResources = {
         [
           "9u6xvcNJaxc",
           "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
-          "AI Engineer"
+          "AI Engineer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24528,7 +26522,9 @@ window.aiResources = {
         [
           "9u6xvcNJaxc",
           "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
-          "AI Engineer"
+          "AI Engineer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24551,7 +26547,9 @@ window.aiResources = {
         [
           "9u6xvcNJaxc",
           "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
-          "AI Engineer"
+          "AI Engineer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24568,7 +26566,9 @@ window.aiResources = {
         [
           "9u6xvcNJaxc",
           "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
-          "AI Engineer"
+          "AI Engineer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24585,7 +26585,9 @@ window.aiResources = {
         [
           "9u6xvcNJaxc",
           "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
-          "AI Engineer"
+          "AI Engineer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24602,7 +26604,9 @@ window.aiResources = {
         [
           "9u6xvcNJaxc",
           "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
-          "AI Engineer"
+          "AI Engineer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24619,7 +26623,9 @@ window.aiResources = {
         [
           "9u6xvcNJaxc",
           "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
-          "AI Engineer"
+          "AI Engineer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24636,7 +26642,9 @@ window.aiResources = {
         [
           "A3PVpmvyNDg",
           "AI Regression Testing: Same Idea, New Approach!",
-          "Latitude"
+          "Latitude",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24653,7 +26661,9 @@ window.aiResources = {
         [
           "9u6xvcNJaxc",
           "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
-          "AI Engineer"
+          "AI Engineer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24676,7 +26686,9 @@ window.aiResources = {
         [
           "9u6xvcNJaxc",
           "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
-          "AI Engineer"
+          "AI Engineer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24693,7 +26705,9 @@ window.aiResources = {
         [
           "9u6xvcNJaxc",
           "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
-          "AI Engineer"
+          "AI Engineer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24716,7 +26730,9 @@ window.aiResources = {
         [
           "9u6xvcNJaxc",
           "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
-          "AI Engineer"
+          "AI Engineer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24733,7 +26749,9 @@ window.aiResources = {
         [
           "9u6xvcNJaxc",
           "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
-          "AI Engineer"
+          "AI Engineer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24750,7 +26768,9 @@ window.aiResources = {
         [
           "9u6xvcNJaxc",
           "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
-          "AI Engineer"
+          "AI Engineer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24767,7 +26787,9 @@ window.aiResources = {
         [
           "9u6xvcNJaxc",
           "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
-          "AI Engineer"
+          "AI Engineer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24784,7 +26806,9 @@ window.aiResources = {
         [
           "9u6xvcNJaxc",
           "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
-          "AI Engineer"
+          "AI Engineer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24807,7 +26831,9 @@ window.aiResources = {
         [
           "9u6xvcNJaxc",
           "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
-          "AI Engineer"
+          "AI Engineer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24830,7 +26856,9 @@ window.aiResources = {
         [
           "9u6xvcNJaxc",
           "The 4 Patterns of AI Native Development \u2014\u00a0Patrick Debois",
-          "AI Engineer"
+          "AI Engineer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24853,7 +26881,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24876,7 +26906,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24899,7 +26931,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24922,7 +26956,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24945,7 +26981,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24968,7 +27006,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -24991,7 +27031,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -25014,7 +27056,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -25037,7 +27081,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -25060,7 +27106,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -25083,7 +27131,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -25106,7 +27156,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -25129,7 +27181,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -25152,7 +27206,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -25181,7 +27237,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -25204,7 +27262,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -25227,7 +27287,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -25250,7 +27312,9 @@ window.aiResources = {
         [
           "SIZsFGvtClM",
           "Agentic Engineering: 5 Terms Every AI Developer Should Know",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -25273,7 +27337,9 @@ window.aiResources = {
         [
           "kASZ4Y7lrcU",
           "Concepts behind the AI Glossary",
-          "Technology Debunk"
+          "Technology Debunk",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -25296,7 +27362,9 @@ window.aiResources = {
         [
           "kASZ4Y7lrcU",
           "Concepts behind the AI Glossary",
-          "Technology Debunk"
+          "Technology Debunk",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -25319,7 +27387,9 @@ window.aiResources = {
         [
           "kASZ4Y7lrcU",
           "Concepts behind the AI Glossary",
-          "Technology Debunk"
+          "Technology Debunk",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -25342,7 +27412,9 @@ window.aiResources = {
         [
           "kASZ4Y7lrcU",
           "Concepts behind the AI Glossary",
-          "Technology Debunk"
+          "Technology Debunk",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -25365,7 +27437,9 @@ window.aiResources = {
         [
           "kASZ4Y7lrcU",
           "Concepts behind the AI Glossary",
-          "Technology Debunk"
+          "Technology Debunk",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -25388,7 +27462,9 @@ window.aiResources = {
         [
           "kASZ4Y7lrcU",
           "Concepts behind the AI Glossary",
-          "Technology Debunk"
+          "Technology Debunk",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -25411,7 +27487,9 @@ window.aiResources = {
         [
           "kASZ4Y7lrcU",
           "Concepts behind the AI Glossary",
-          "Technology Debunk"
+          "Technology Debunk",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -25440,7 +27518,9 @@ window.aiResources = {
         [
           "kASZ4Y7lrcU",
           "Concepts behind the AI Glossary",
-          "Technology Debunk"
+          "Technology Debunk",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -25463,7 +27543,9 @@ window.aiResources = {
         [
           "kASZ4Y7lrcU",
           "Concepts behind the AI Glossary",
-          "Technology Debunk"
+          "Technology Debunk",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -25486,7 +27568,9 @@ window.aiResources = {
         [
           "kASZ4Y7lrcU",
           "Concepts behind the AI Glossary",
-          "Technology Debunk"
+          "Technology Debunk",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -25509,7 +27593,9 @@ window.aiResources = {
         [
           "kASZ4Y7lrcU",
           "Concepts behind the AI Glossary",
-          "Technology Debunk"
+          "Technology Debunk",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -25532,7 +27618,9 @@ window.aiResources = {
         [
           "kASZ4Y7lrcU",
           "Concepts behind the AI Glossary",
-          "Technology Debunk"
+          "Technology Debunk",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -25555,7 +27643,9 @@ window.aiResources = {
         [
           "kASZ4Y7lrcU",
           "Concepts behind the AI Glossary",
-          "Technology Debunk"
+          "Technology Debunk",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -25578,7 +27668,9 @@ window.aiResources = {
         [
           "kASZ4Y7lrcU",
           "Concepts behind the AI Glossary",
-          "Technology Debunk"
+          "Technology Debunk",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -25601,7 +27693,9 @@ window.aiResources = {
         [
           "kASZ4Y7lrcU",
           "Concepts behind the AI Glossary",
-          "Technology Debunk"
+          "Technology Debunk",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -25624,7 +27718,9 @@ window.aiResources = {
         [
           "kASZ4Y7lrcU",
           "Concepts behind the AI Glossary",
-          "Technology Debunk"
+          "Technology Debunk",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -25647,7 +27743,9 @@ window.aiResources = {
         [
           "kASZ4Y7lrcU",
           "Concepts behind the AI Glossary",
-          "Technology Debunk"
+          "Technology Debunk",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -25670,7 +27768,9 @@ window.aiResources = {
         [
           "4QXtObc61Lw",
           "Security & AI Governance: Reducing Risks in AI Systems",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -25693,7 +27793,9 @@ window.aiResources = {
         [
           "4QXtObc61Lw",
           "Security & AI Governance: Reducing Risks in AI Systems",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -25716,7 +27818,9 @@ window.aiResources = {
         [
           "4QXtObc61Lw",
           "Security & AI Governance: Reducing Risks in AI Systems",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -25739,7 +27843,9 @@ window.aiResources = {
         [
           "4QXtObc61Lw",
           "Security & AI Governance: Reducing Risks in AI Systems",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -25768,7 +27874,9 @@ window.aiResources = {
         [
           "4QXtObc61Lw",
           "Security & AI Governance: Reducing Risks in AI Systems",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -25791,7 +27899,9 @@ window.aiResources = {
         [
           "4QXtObc61Lw",
           "Security & AI Governance: Reducing Risks in AI Systems",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -25814,7 +27924,9 @@ window.aiResources = {
         [
           "4QXtObc61Lw",
           "Security & AI Governance: Reducing Risks in AI Systems",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -25837,7 +27949,9 @@ window.aiResources = {
         [
           "4QXtObc61Lw",
           "Security & AI Governance: Reducing Risks in AI Systems",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -25860,7 +27974,9 @@ window.aiResources = {
         [
           "4QXtObc61Lw",
           "Security & AI Governance: Reducing Risks in AI Systems",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -25883,7 +27999,9 @@ window.aiResources = {
         [
           "4QXtObc61Lw",
           "Security & AI Governance: Reducing Risks in AI Systems",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -25906,7 +28024,9 @@ window.aiResources = {
         [
           "DabrWAKNQZc",
           "Episode 1: What is AI Red Teaming? | AI Red Teaming 101 with Amanda and Gary",
-          "Microsoft Developer"
+          "Microsoft Developer",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -25929,7 +28049,9 @@ window.aiResources = {
         [
           "4QXtObc61Lw",
           "Security & AI Governance: Reducing Risks in AI Systems",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -25952,7 +28074,9 @@ window.aiResources = {
         [
           "4QXtObc61Lw",
           "Security & AI Governance: Reducing Risks in AI Systems",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -25975,7 +28099,9 @@ window.aiResources = {
         [
           "4QXtObc61Lw",
           "Security & AI Governance: Reducing Risks in AI Systems",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -25998,7 +28124,9 @@ window.aiResources = {
         [
           "4QXtObc61Lw",
           "Security & AI Governance: Reducing Risks in AI Systems",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -26021,7 +28149,9 @@ window.aiResources = {
         [
           "4QXtObc61Lw",
           "Security & AI Governance: Reducing Risks in AI Systems",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -26044,7 +28174,9 @@ window.aiResources = {
         [
           "4QXtObc61Lw",
           "Security & AI Governance: Reducing Risks in AI Systems",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -26067,7 +28199,9 @@ window.aiResources = {
         [
           "4QXtObc61Lw",
           "Security & AI Governance: Reducing Risks in AI Systems",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -26096,7 +28230,9 @@ window.aiResources = {
         [
           "4QXtObc61Lw",
           "Security & AI Governance: Reducing Risks in AI Systems",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -26125,7 +28261,9 @@ window.aiResources = {
         [
           "4QXtObc61Lw",
           "Security & AI Governance: Reducing Risks in AI Systems",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -26148,7 +28286,9 @@ window.aiResources = {
         [
           "J51oZYcNvP8",
           "What is Multimodal AI? How LLMs Process Text, Images, and More",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -26171,7 +28311,9 @@ window.aiResources = {
         [
           "J51oZYcNvP8",
           "What is Multimodal AI? How LLMs Process Text, Images, and More",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -26194,7 +28336,9 @@ window.aiResources = {
         [
           "J51oZYcNvP8",
           "What is Multimodal AI? How LLMs Process Text, Images, and More",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -26217,7 +28361,9 @@ window.aiResources = {
         [
           "J51oZYcNvP8",
           "What is Multimodal AI? How LLMs Process Text, Images, and More",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -26246,7 +28392,9 @@ window.aiResources = {
         [
           "J51oZYcNvP8",
           "What is Multimodal AI? How LLMs Process Text, Images, and More",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -26275,7 +28423,9 @@ window.aiResources = {
         [
           "J51oZYcNvP8",
           "What is Multimodal AI? How LLMs Process Text, Images, and More",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -26304,7 +28454,9 @@ window.aiResources = {
         [
           "J51oZYcNvP8",
           "What is Multimodal AI? How LLMs Process Text, Images, and More",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -26333,7 +28485,9 @@ window.aiResources = {
         [
           "J51oZYcNvP8",
           "What is Multimodal AI? How LLMs Process Text, Images, and More",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -26356,7 +28510,9 @@ window.aiResources = {
         [
           "J51oZYcNvP8",
           "What is Multimodal AI? How LLMs Process Text, Images, and More",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -26385,7 +28541,9 @@ window.aiResources = {
         [
           "J51oZYcNvP8",
           "What is Multimodal AI? How LLMs Process Text, Images, and More",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -26414,7 +28572,9 @@ window.aiResources = {
         [
           "J51oZYcNvP8",
           "What is Multimodal AI? How LLMs Process Text, Images, and More",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -26437,7 +28597,9 @@ window.aiResources = {
         [
           "J51oZYcNvP8",
           "What is Multimodal AI? How LLMs Process Text, Images, and More",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -26460,7 +28622,9 @@ window.aiResources = {
         [
           "J51oZYcNvP8",
           "What is Multimodal AI? How LLMs Process Text, Images, and More",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -26489,7 +28653,9 @@ window.aiResources = {
         [
           "J51oZYcNvP8",
           "What is Multimodal AI? How LLMs Process Text, Images, and More",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
@@ -26512,7 +28678,9 @@ window.aiResources = {
         [
           "J51oZYcNvP8",
           "What is Multimodal AI? How LLMs Process Text, Images, and More",
-          "IBM Technology"
+          "IBM Technology",
+          "",
+          0
         ]
       ],
       "docs": [
