@@ -23,37 +23,45 @@
  › Subpattern 17.1: Subarray Sum with Hashmap · Problem 520 of 699</p>
 
 <h2>📋 The problem</h2><p>Decide whether the array has a subarray of length ≥ 2 whose sum is a multiple of k.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given an integer array <code>nums</code> and an integer <code>k</code>, return <code>true</code> if <code>nums</code> has a continuous subarray of size at least two whose elements sum up to a multiple of <code>k</code>.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Subarray Sum with Hashmap</strong> — Hashmap of running prefix sums → count subarrays whose sum equals k, even with negatives.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Prefix sums mod k in a dict: equal remainders ⇒ the gap between them is divisible by k (watch index distance ≥ 2).</div>
-<h2>Why this pattern?</h2><ul><li>many range-sum queries, immutable array</li><li>"number of subarrays summing to k / divisible by k"</li><li>many range UPDATES, values read once at the end → difference array</li><li>2-D block sums → 2-D prefix (inclusion-exclusion)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Prefix Sum &amp; Difference Array master template and adapt the marked parts to this problem:</p><pre><code># Prefix sums + hash map: count subarrays summing to k
-from collections import defaultdict
-count, cur = 0, 0
-seen = defaultdict(int)
-seen[0] = 1                      # empty prefix — subarrays starting at 0
-for x in nums:
-    cur += x
-    count += seen[cur - k]       # each earlier prefix = one subarray ending here
-    seen[cur] += 1
+<p><strong>Modulo Arithmetic on Prefix Sums:</strong>
+If two prefix sums have the same remainder modulo $k$:
+$$prefix[i] \equiv prefix[j] \pmod k \implies (prefix[i] - prefix[j]) \equiv 0 \pmod k$$
+which means the subarray sum between $j$ and $i$ is divisible by $k$!
+Maintain <code>first_seen[remainder] -> index</code>:
+- Base case: <code>first_seen[0] = -1</code>.
+- If <code>curr_sum % k</code> has been seen before at index $j$ and $i - j \ge 2$, return <code>True</code>!</p>
 
-# Difference array: m range updates in O(1) each
-diff = [0] * (n + 1)
-for l, r, val in updates:
-    diff[l] += val
-    diff[r + 1] -= val           # effect ends after r
-# final values = prefix sums of diff</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h2>🐢 Brute force vs optimal</h2>
+<p>Checking all subarrays takes $O(n^2)$. Modulo prefix map detects matching remainders in $O(n)$ time and $O(\min(n, k))$ space.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Subarray sum is divisible by $k$ if two prefix sums share the same remainder: <code>rem = curr_sum % k</code>. Check if seen previously with index distance $\ge 2$.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def checkSubarraySum(nums: list[int], k: int) -> bool:
+    first_seen = {0: -1}
+    curr_sum = 0
+    
+    for i, x in enumerate(nums):
+        curr_sum += x
+        rem = curr_sum % k
+        if rem in first_seen:
+            if i - first_seen[rem] >= 2:
+                return True
+        else:
+            first_seen[rem] = i
+            
+    return False
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n)$ — Single pass.<br>
+<strong>Space:</strong> $O(\min(n, k))$ — Hash map storing remainders.</p>
+
 
 <div class="pager"><a href="../problems/0519-lc325-maximum-size-subarray-sum-equals-k.html"><span class="lbl">← Previous</span>#325 Maximum Size Subarray Sum Equals k</a><a href="../problems/0521-lc525-contiguous-array.html" style="text-align:right"><span class="lbl">Next →</span>#525 Contiguous Array</a></div>
 </div>

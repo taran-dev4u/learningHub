@@ -23,35 +23,75 @@
  › Subpattern 18.1: Grouping / Frequency · Problem 533 of 699</p>
 
 <h2>📋 The problem</h2><p>Given an unsorted array, return the length of the longest run of consecutive integer values, in O(n).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h3>Problem Overview</h3>
+<p>Given an unsorted array of integers <code>nums</code>, return the length of the longest consecutive elements sequence. The algorithm must run in $O(n)$ time.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Grouping / Frequency</strong> — Hashmap groups elements by a canonical key (sorted string, character signature, etc.).</p>
+<h3>Key Insights</h3>
+<p>A sorting solution takes $O(n \log n)$, which violates the linear time requirement. To achieve $O(n)$, we use a <strong>Hash Set</strong> for $O(1)$ average lookups.</p>
+<p>Crucial realization: A number $x$ can only be the <em>start</em> of a consecutive streak if $x - 1$ is <strong>not</strong> in the set! If $x - 1$ is present, $x$ cannot be the beginning of a maximal streak, so we skip it immediately. This ensures each number is visited at most twice (once in the outer loop, and once during sequence extension).</p>
 
-<h2>Why this pattern?</h2><ul><li>"O(1) average for every operation"</li><li>eviction by recency/frequency, capacity limits</li><li>time-versioned lookups (get value at timestamp)</li><li>two-way mappings, consistent grouping</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Hash Map &amp; Cache Design master template and adapt the marked parts to this problem:</p><pre><code># Frequency buckets (LFU core idea, also "O(1) inc/dec"):
-# key → count, and count → set of keys with that count
-counts = {}                       # key → its frequency
-buckets = defaultdict(set)        # frequency → keys at that frequency
-min_freq = tracked separately     # evict from buckets[min_freq]
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr><th>Approach</th><th>Time Complexity</th><th>Space Complexity</th><th>Notes</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Brute Force / Sorting</td><td>$O(n \log n)$</td><td>$O(1)$ or $O(n)$</td><td>Sort and scan consecutive deltas.</td></tr>
+    <tr><td>HashSet Streak Search (Optimal)</td><td>$O(n)$</td><td>$O(n)$</td><td>Only expand streaks from genuine sequence roots ($x - 1 
+otin set$).</td></tr>
+  </tbody>
+</table>
+</div>
 
-# Timestamped values: dict of key → sorted list of (time, value)
-import bisect
-store = defaultdict(list)
-def set_val(k, v, t): store[k].append((t, v))       # times arrive increasing
-def get_val(k, t):
-    arr = store[k]
-    i = bisect.bisect_right(arr, (t, chr(0x10FFFF)))  # last entry ≤ t
-    return arr[i-1][1] if i else ""</code></pre>
-<h2>How to work on it now</h2>
+<h3>Step-by-Step Algorithm</h3>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+  <li>Convert <code>nums</code> to a set <code>num_set = set(nums)</code>. This handles duplicates and provides $O(1)$ lookups.</li>
+  <li>Initialize <code>max_streak = 0</code>.</li>
+  <li>Iterate through each number $x$ in <code>num_set</code>:
+    <ul>
+      <li>Check if $x - 1 
+otin num_set$. If false, continue to the next number (not a sequence start).</li>
+      <li>If true, $x$ starts a streak: set <code>current_num = x</code> and <code>current_streak = 1</code>.</li>
+      <li>While <code>current_num + 1 \in num_set</code>, increment <code>current_num += 1</code> and <code>current_streak += 1</code>.</li>
+      <li>Update <code>max_streak = max(max_streak, current_streak)</code>.</li>
+    </ul>
+  </li>
+  <li>Return <code>max_streak</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<details>
+<summary><strong>Python 3 Solution (Click to Expand)</strong></summary>
+<div class="code-block">
+<pre><code class="language-python">from typing import List
+
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        num_set = set(nums)
+        longest = 0
+        
+        for num in num_set:
+            # Only start counting if num is the beginning of a sequence
+            if num - 1 not in num_set:
+                curr = num
+                streak = 1
+                
+                while curr + 1 in num_set:
+                    curr += 1
+                    streak += 1
+                    
+                longest = max(longest, streak)
+                
+        return longest
+</code></pre>
+</div>
+</details>
+
+<h3>Complexity & Edge Cases</h3>
+<ul>
+  <li><strong>Time Complexity:</strong> $O(n)$. Each number is checked as a start element in $O(1)$. The inner <code>while</code> loop only runs when $x$ is the head of a sequence, traversing each consecutive chain once across the entire algorithm.</li>
+  <li><strong>Space Complexity:</strong> $O(n)$ to store unique elements in the HashSet.</li>
+  <li><strong>Edge Cases:</strong> Empty array (returns 0), duplicate elements (e.g. <code>[0, 1, 1, 2]</code>), negative numbers.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0532-lc49-group-anagrams.html"><span class="lbl">← Previous</span>#49 Group Anagrams</a><a href="../problems/0534-lc249-group-shifted-strings.html" style="text-align:right"><span class="lbl">Next →</span>#249 Group Shifted Strings</a></div>
 </div>

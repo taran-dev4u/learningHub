@@ -23,39 +23,55 @@
  › Subpattern 19.4: Geometry &amp; Points · Problem 557 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0504-lc2013-detect-squares.html">Design</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Design a structure that adds points and counts axis-aligned squares completable with a query point (dict of point counts, iterate diagonal partners).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h3>Problem Overview</h3>
+<p>Implement the <code>DetectSquares</code> class to add 2D points from a stream and count the number of ways to choose three existing points that, together with a query point, form an axis-aligned square with positive area.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Geometry &amp; Points</strong> — Cross product, dot product, distance², bounding rectangles, lattice/grid geometry.</p>
+<h3>Key Insights</h3>
+<p>An axis-aligned square has four vertices: query point <code>{2, 3, 5}</code>(qx, qy)<code>{2, 3, 5}</code>, diagonal point <code>{2, 3, 5}</code>(x, y)<code>{2, 3, 5}</code>, and two anti-diagonal points <code>{2, 3, 5}</code>(qx, y)<code>{2, 3, 5}</code> and <code>{2, 3, 5}</code>(x, qy)<code>{2, 3, 5}</code>.
+A point <code>{2, 3, 5}</code>(x, y)<code>{2, 3, 5}</code> can form a square with <code>{2, 3, 5}</code>(qx, qy)<code>{2, 3, 5}</code> if and only if:
+<code>{2, 3, 5}</code><code>{2, 3, 5}</code>|x - qx| == |y - qy| > 0<code>{2, 3, 5}</code><code>{2, 3, 5}</code>
+Once a valid diagonal point <code>{2, 3, 5}</code>(x, y)<code>{2, 3, 5}</code> is found, the number of valid squares formed is:
+<code>{2, 3, 5}</code><code>{2, 3, 5}</code>	ext{count}(x, y) 	imes 	ext{count}(qx, y) 	imes 	ext{count}(x, qy)<code>{2, 3, 5}</code><code>{2, 3, 5}</code>
+We store point frequencies in a hash map <code>point_counts[(x, y)]</code> and iterate over distinct points.</p>
 
-<h2>Why this pattern?</h2><ul><li>divisibility, remainders, "answer modulo 10⁹+7"</li><li>counting primes/factors/trailing zeros</li><li>digit games: reverse, palindrome number, happy number</li><li>geometry: overlaps of rectangles, points on a line, areas</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Math, Number Theory &amp; Geometry master template and adapt the marked parts to this problem:</p><pre><code>import math
-math.gcd(a, b)                      # Euclid, O(log min(a,b))
-pow(a, b, MOD)                      # fast modular exponentiation, O(log b)
+<details>
+<summary><strong>Python 3 Solution (Click to Expand)</strong></summary>
+<div class="code-block">
+<pre><code class="language-python">from typing import List
+from collections import defaultdict
 
-def sieve(n):                       # all primes ≤ n
-    is_p = [True] * (n + 1)
-    is_p[0] = is_p[1] = False
-    for i in range(2, int(n**0.5) + 1):
-        if is_p[i]:
-            for j in range(i*i, n + 1, i):   # start at i² — smaller done
-                is_p[j] = False
-    return is_p
+class DetectSquares:
+    def __init__(self):
+        self.pts = defaultdict(int)
 
-# Digits without strings
-while n: n, d = divmod(n, 10)       # d = last digit
+    def add(self, point: List[int]) -> None:
+        self.pts[tuple(point)] += 1
 
-# Cross product: orientation of C vs line AB (0 = collinear)
-cross = (bx-ax)*(cy-ay) - (by-ay)*(cx-ax)</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+    def count(self, point: List[int]) -> int:
+        qx, qy = point
+        total = 0
+        
+        # Iterate over all registered points as candidate diagonal points
+        for (x, y), count_diag in self.pts.items():
+            dx = abs(x - qx)
+            dy = abs(y - qy)
+            if dx > 0 and dx == dy:
+                # Valid square diagonal candidate
+                c1 = self.pts.get((qx, y), 0)
+                c2 = self.pts.get((x, qy), 0)
+                total += count_diag * c1 * c2
+                
+        return total
+</code></pre>
+</div>
+</details>
+
+<h3>Complexity & Edge Cases</h3>
+<ul>
+  <li><strong>Time Complexity:</strong> <code>add</code> is <code>{2, 3, 5}</code>O(1)<code>{2, 3, 5}</code>; <code>count</code> is <code>{2, 3, 5}</code>O(P)<code>{2, 3, 5}</code> where <code>{2, 3, 5}</code>P<code>{2, 3, 5}</code> is the number of distinct points added.</li>
+  <li><strong>Space Complexity:</strong> <code>{2, 3, 5}</code>O(P)<code>{2, 3, 5}</code> hash map entries.</li>
+  <li><strong>Edge Cases:</strong> Duplicate points at same coordinate (handled by multiplicative counting), points with same coordinate as query point (<code>{2, 3, 5}</code>dx = 0<code>{2, 3, 5}</code>, ignored).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0556-lc973-k-closest-points-to-origin.html"><span class="lbl">← Previous</span>#973 K Closest Points to Origin</a><a href="../problems/0558-lc62-unique-paths.html" style="text-align:right"><span class="lbl">Next →</span>#62 Unique Paths</a></div>
 </div>

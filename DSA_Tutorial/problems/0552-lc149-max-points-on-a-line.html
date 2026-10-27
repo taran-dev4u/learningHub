@@ -23,39 +23,57 @@
  › Subpattern 19.4: Geometry &amp; Points · Problem 552 of 699</p>
 
 <h2>📋 The problem</h2><p>Given points on a plane, return the maximum number of points that lie on one straight line.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h3>Problem Overview</h3>
+<p>Given an array of <code>points</code> where <code>points[i] = [xi, yi]</code> represents a point on the X-Y plane, return the maximum number of points that lie on the same straight line.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Geometry &amp; Points</strong> — Cross product, dot product, distance², bounding rectangles, lattice/grid geometry.</p>
+<h3>Key Insights</h3>
+<p>Two points <code>{2, 3, 5}</code>A<code>{2, 3, 5}</code> and <code>{2, 3, 5}</code>B<code>{2, 3, 5}</code> define a unique line slope: <code>{2, 3, 5}</code>	ext{slope} = \frac{y_2 - y_1}{x_2 - x_1}<code>{2, 3, 5}</code>.
+Floating-point division suffers from precision errors. To maintain exactness, represent each slope as a reduced coprime pair <code>{2, 3, 5}</code>\left(\frac{\Delta y}{\gcd(\Delta x, \Delta y)}, \frac{\Delta x}{\gcd(\Delta x, \Delta y)}ight)<code>{2, 3, 5}</code>.
+For each point <code>{2, 3, 5}</code>i<code>{2, 3, 5}</code>, calculate the slope to every other point <code>{2, 3, 5}</code>j > i<code>{2, 3, 5}</code> and find the maximum frequency in a hash map.</p>
 
-<h2>Why this pattern?</h2><ul><li>divisibility, remainders, "answer modulo 10⁹+7"</li><li>counting primes/factors/trailing zeros</li><li>digit games: reverse, palindrome number, happy number</li><li>geometry: overlaps of rectangles, points on a line, areas</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Math, Number Theory &amp; Geometry master template and adapt the marked parts to this problem:</p><pre><code>import math
-math.gcd(a, b)                      # Euclid, O(log min(a,b))
-pow(a, b, MOD)                      # fast modular exponentiation, O(log b)
+<details>
+<summary><strong>Python 3 Solution (Exact Coprime Slope Hashing)</strong></summary>
+<div class="code-block">
+<pre><code class="language-python">from typing import List
+from collections import defaultdict
+import math
 
-def sieve(n):                       # all primes ≤ n
-    is_p = [True] * (n + 1)
-    is_p[0] = is_p[1] = False
-    for i in range(2, int(n**0.5) + 1):
-        if is_p[i]:
-            for j in range(i*i, n + 1, i):   # start at i² — smaller done
-                is_p[j] = False
-    return is_p
+class Solution:
+    def maxPoints(self, points: List[List[int]]) -> int:
+        n = len(points)
+        if n <= 2:
+            return n
+            
+        max_pts = 1
+        for i in range(n):
+            slopes = defaultdict(int)
+            x1, y1 = points[i]
+            for j in range(i + 1, n):
+                x2, y2 = points[j]
+                dx = x2 - x1
+                dy = y2 - y1
+                g = math.gcd(dx, dy)
+                dx //= g
+                dy //= g
+                # Ensure canonical orientation
+                if dx < 0 or (dx == 0 and dy < 0):
+                    dx, dy = -dx, -dy
+                slopes[(dx, dy)] += 1
+                
+            if slopes:
+                max_pts = max(max_pts, max(slopes.values()) + 1)
+                
+        return max_pts
+</code></pre>
+</div>
+</details>
 
-# Digits without strings
-while n: n, d = divmod(n, 10)       # d = last digit
-
-# Cross product: orientation of C vs line AB (0 = collinear)
-cross = (bx-ax)*(cy-ay) - (by-ay)*(cx-ax)</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h3>Complexity & Edge Cases</h3>
+<ul>
+  <li><strong>Time Complexity:</strong> <code>{2, 3, 5}</code>O(n^2)<code>{2, 3, 5}</code> pairs evaluated with <code>{2, 3, 5}</code>O(\log(\min(\Delta x, \Delta y)))<code>{2, 3, 5}</code> GCD calculations.</li>
+  <li><strong>Space Complexity:</strong> <code>{2, 3, 5}</code>O(n)<code>{2, 3, 5}</code> hash map per outer point.</li>
+  <li><strong>Edge Cases:</strong> Vertical lines (<code>{2, 3, 5}</code>dx = 0<code>{2, 3, 5}</code>), horizontal lines (<code>{2, 3, 5}</code>dy = 0<code>{2, 3, 5}</code>).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0551-lc279-perfect-squares.html"><span class="lbl">← Previous</span>#279 Perfect Squares</a><a href="../problems/0553-lc223-rectangle-area.html" style="text-align:right"><span class="lbl">Next →</span>#223 Rectangle Area</a></div>
 </div>

@@ -23,35 +23,104 @@
  › Subpattern 18.3: LFU Cache Design · Problem 538 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0487-lc460-lfu-cache.html">Design</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Design an LFU cache: evict the least frequently used key (ties: least recently used), all operations O(1).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h3>Problem Overview</h3>
+<p>Design and implement an <strong>LFU (Least Frequently Used) cache</strong> with $O(1)$ runtime for <code>get</code> and <code>put</code>. When the cache reaches its capacity, it should invalidate and evict the least frequently used key. If there is a tie in frequency, the least recently used key among them should be evicted.</p>
 
-<h2>Where this fits</h2>
-<p><strong>LFU Cache Design</strong> — Two hashmaps: one for value, one for the frequency-bucket list head; promote on access.</p>
-
-<h2>Why this pattern?</h2><ul><li>"O(1) average for every operation"</li><li>eviction by recency/frequency, capacity limits</li><li>time-versioned lookups (get value at timestamp)</li><li>two-way mappings, consistent grouping</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Hash Map &amp; Cache Design master template and adapt the marked parts to this problem:</p><pre><code># Frequency buckets (LFU core idea, also "O(1) inc/dec"):
-# key → count, and count → set of keys with that count
-counts = {}                       # key → its frequency
-buckets = defaultdict(set)        # frequency → keys at that frequency
-min_freq = tracked separately     # evict from buckets[min_freq]
-
-# Timestamped values: dict of key → sorted list of (time, value)
-import bisect
-store = defaultdict(list)
-def set_val(k, v, t): store[k].append((t, v))       # times arrive increasing
-def get_val(k, t):
-    arr = store[k]
-    i = bisect.bisect_right(arr, (t, chr(0x10FFFF)))  # last entry ≤ t
-    return arr[i-1][1] if i else ""</code></pre>
-<h2>How to work on it now</h2>
+<h3>Core Data Structures</h3>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+  <li><code>key_to_node</code>: maps <code>key -> Node(key, val, freq)</code>.</li>
+  <li><code>freq_to_dll</code>: maps <code>freq -> DoublyLinkedList</code>. Each DLL maintains LRU order for all items with that frequency.</li>
+  <li><code>min_freq</code>: an integer tracking the lowest frequency currently present in the cache. When evicting, we pop from <code>freq_to_dll[min_freq].pop_lru()</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<details>
+<summary><strong>Python 3 Solution (Click to Expand)</strong></summary>
+<div class="code-block">
+<pre><code class="language-python">from collections import defaultdict
+
+class Node:
+    __slots__ = ('key', 'val', 'freq', 'prev', 'next')
+    def __init__(self, key: int = 0, val: int = 0, freq: int = 1):
+        self.key = key
+        self.val = val
+        self.freq = freq
+        self.prev = None
+        self.next = None
+
+class DLinkedList:
+    def __init__(self):
+        self.head = Node()
+        self.tail = Node()
+        self.head.next = self.tail
+        self.tail.prev = self.head
+        self.size = 0
+
+    def add_node(self, node: Node) -> None:
+        node.next = self.head.next
+        node.prev = self.head
+        self.head.next.prev = node
+        self.head.next = node
+        self.size += 1
+
+    def remove_node(self, node: Node) -> None:
+        p, n = node.prev, node.next
+        p.next = n
+        n.prev = p
+        self.size -= 1
+
+    def pop_tail(self) -> Node:
+        if self.size == 0:
+            return None
+        lru = self.tail.prev
+        self.remove_node(lru)
+        return lru
+
+class LFUCache:
+    def __init__(self, capacity: int):
+        self.capacity = capacity
+        self.key_to_node = {}
+        self.freq_to_dll = defaultdict(DLinkedList)
+        self.min_freq = 0
+
+    def _update_freq(self, node: Node) -> None:
+        freq = node.freq
+        self.freq_to_dll[freq].remove_node(node)
+        if freq == self.min_freq and self.freq_to_dll[freq].size == 0:
+            self.min_freq += 1
+        node.freq += 1
+        self.freq_to_dll[node.freq].add_node(node)
+
+    def get(self, key: int) -> int:
+        if key not in self.key_to_node:
+            return -1
+        node = self.key_to_node[key]
+        self._update_freq(node)
+        return node.val
+
+    def put(self, key: int, value: int) -> None:
+        if self.capacity <= 0:
+            return
+        if key in self.key_to_node:
+            node = self.key_to_node[key]
+            node.val = value
+            self._update_freq(node)
+        else:
+            if len(self.key_to_node) >= self.capacity:
+                lru = self.freq_to_dll[self.min_freq].pop_tail()
+                del self.key_to_node[lru.key]
+            new_node = Node(key, value, 1)
+            self.key_to_node[key] = new_node
+            self.freq_to_dll[1].add_node(new_node)
+            self.min_freq = 1
+</code></pre>
+</div>
+</details>
+
+<h3>Complexity & Invariants</h3>
+<ul>
+  <li><strong>Time Complexity:</strong> $O(1)$ for both <code>get</code> and <code>put</code>.</li>
+  <li><strong>Space Complexity:</strong> $O(	ext{capacity})$ to store elements and frequency lists.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0537-lc432-all-o-one-data-structure.html"><span class="lbl">← Previous</span>#432 All O`one Data Structure</a><a href="../problems/0539-lc981-time-based-key-value-store.html" style="text-align:right"><span class="lbl">Next →</span>#981 Time Based Key-Value Store</a></div>
 </div>

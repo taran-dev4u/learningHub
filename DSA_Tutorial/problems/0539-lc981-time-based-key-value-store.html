@@ -23,35 +23,54 @@
  › Subpattern 18.4: Time-Based / Snapshot Storage · Problem 539 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0496-lc981-time-based-key-value-store.html">Design</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Design a key-value store where set stamps a timestamp and get(key, t) returns the value set at the latest time ≤ t.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h3>Problem Overview</h3>
+<p>Design a time-based key-value data structure that can store multiple values for the same key at different time stamps and retrieve the key's value at a certain timestamp.</p>
+<ul>
+  <li><code>set(key, value, timestamp)</code>: Stores the key and value along with the given timestamp. Timestamps are strictly increasing.</li>
+  <li><code>get(key, timestamp)</code>: Returns a value such that <code>set</code> was called previously with <code>timestamp_prev &lt;= timestamp</code>. If multiple, return the largest timestamp; if none, return <code>""</code>.</li>
+</ul>
 
-<h2>Where this fits</h2>
-<p><strong>Time-Based / Snapshot Storage</strong> — Hashmap of stacks (or arrays) keyed by snapshot id / version / timestamp for time-travel queries.</p>
+<h3>Key Insights</h3>
+<p>Because timestamps for each key are added in strictly increasing order, the list of <code>(timestamp, value)</code> pairs for any key is already sorted! We can use <strong>Binary Search (bisect_right)</strong> to find the rightmost timestamp $\le$ the requested query timestamp in $O(\log N)$ time.</p>
 
-<h2>Why this pattern?</h2><ul><li>"O(1) average for every operation"</li><li>eviction by recency/frequency, capacity limits</li><li>time-versioned lookups (get value at timestamp)</li><li>two-way mappings, consistent grouping</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Hash Map &amp; Cache Design master template and adapt the marked parts to this problem:</p><pre><code># Frequency buckets (LFU core idea, also "O(1) inc/dec"):
-# key → count, and count → set of keys with that count
-counts = {}                       # key → its frequency
-buckets = defaultdict(set)        # frequency → keys at that frequency
-min_freq = tracked separately     # evict from buckets[min_freq]
-
-# Timestamped values: dict of key → sorted list of (time, value)
+<details>
+<summary><strong>Python 3 Solution (Click to Expand)</strong></summary>
+<div class="code-block">
+<pre><code class="language-python">from collections import defaultdict
 import bisect
-store = defaultdict(list)
-def set_val(k, v, t): store[k].append((t, v))       # times arrive increasing
-def get_val(k, t):
-    arr = store[k]
-    i = bisect.bisect_right(arr, (t, chr(0x10FFFF)))  # last entry ≤ t
-    return arr[i-1][1] if i else ""</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+class TimeMap:
+    def __init__(self):
+        # key -> list of (timestamp, value)
+        self.store = defaultdict(list)
+
+    def set(self, key: str, value: str, timestamp: int) -> None:
+        self.store[key].append((timestamp, value))
+
+    def get(self, key: str, timestamp: int) -> str:
+        if key not in self.store:
+            return ""
+        entries = self.store[key]
+        # Binary search for rightmost entry with entry[0] <= timestamp
+        idx = bisect.bisect_right(entries, (timestamp, chr(127)))
+        if idx == 0:
+            return ""
+        return entries[idx - 1][1]
+</code></pre>
+</div>
+</details>
+
+<h3>Complexity & Edge Cases</h3>
+<ul>
+  <li><strong>Time Complexity:</strong>
+    <ul>
+      <li><code>set</code>: $O(1)$ append.</li>
+      <li><code>get</code>: $O(\log M)$ where $M$ is the number of timestamps for the given key.</li>
+    </ul>
+  </li>
+  <li><strong>Space Complexity:</strong> $O(N)$ total elements stored across all keys.</li>
+  <li><strong>Edge Cases:</strong> Query timestamp smaller than any stored timestamp for the key (returns <code>""</code>).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0538-lc460-lfu-cache.html"><span class="lbl">← Previous</span>#460 LFU Cache</a><a href="../problems/0540-lc380-insert-delete-getrandom-o-1.html" style="text-align:right"><span class="lbl">Next →</span>#380 Insert Delete GetRandom O(1)</a></div>
 </div>

@@ -23,37 +23,34 @@
  › Subpattern 17.4: Prefix XOR / Prefix Product · Problem 531 of 699</p>
 
 <h2>📋 The problem</h2><p>Answer XOR-of-range queries on an array using prefix XORs.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>You are given an array <code>arr</code> of positive integers and an array <code>queries</code> where <code>queries[i] = [left_i, right_i]</code>. Return an array containing the XOR sum of all elements between $left_i$ and $right_i$ for each query.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Prefix XOR / Prefix Product</strong> — Prefix XOR or prefix product to answer range-XOR / range-product queries.</p>
+<p><strong>Prefix XOR Array:</strong>
+Because XOR is its own inverse ($x \oplus x = 0$):
+$$	ext{XOR}(arr[l \dots r]) = 	ext{prefix_xor}[r + 1] \oplus 	ext{prefix_xor}[l]$$
+Everything from index $0$ to $l - 1$ cancels itself out to 0, leaving strictly the XOR sum of $arr[l \dots r]$ in $O(1)$ time!</p>
 
-<h2>Why this pattern?</h2><ul><li>many range-sum queries, immutable array</li><li>"number of subarrays summing to k / divisible by k"</li><li>many range UPDATES, values read once at the end → difference array</li><li>2-D block sums → 2-D prefix (inclusion-exclusion)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Prefix Sum &amp; Difference Array master template and adapt the marked parts to this problem:</p><pre><code># Prefix sums + hash map: count subarrays summing to k
-from collections import defaultdict
-count, cur = 0, 0
-seen = defaultdict(int)
-seen[0] = 1                      # empty prefix — subarrays starting at 0
-for x in nums:
-    cur += x
-    count += seen[cur - k]       # each earlier prefix = one subarray ending here
-    seen[cur] += 1
+<h2>🐢 Brute force vs optimal</h2>
+<p>XORing each query interval takes $O(Q 	imes n)$. Prefix XOR array answers each query in instant $O(1)$ time.</p>
 
-# Difference array: m range updates in O(1) each
-diff = [0] * (n + 1)
-for l, r, val in updates:
-    diff[l] += val
-    diff[r + 1] -= val           # effect ends after r
-# final values = prefix sums of diff</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<div class="insight">💡 <strong>Key insight:</strong> Prefix XOR: <code>pref[i] = pref[i-1] ^ arr[i-1]</code>. Range XOR $[l, r]$ is <code>pref[r + 1] ^ pref[l]</code> in strict $O(1)$!</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def xorQueries(arr: list[int], queries: list[list[int]]) -> list[int]:
+    prefix = [0]
+    for x in arr:
+        prefix.append(prefix[-1] ^ x)
+        
+    return [prefix[r + 1] ^ prefix[l] for l, r in queries]
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n + Q)$ — $O(n)$ prefix build, $O(1)$ per query.<br>
+<strong>Space:</strong> $O(n)$ — Prefix XOR array.</p>
+
 
 <div class="pager"><a href="../problems/0530-lc1109-corporate-flight-bookings.html"><span class="lbl">← Previous</span>#1109 Corporate Flight Bookings</a><a href="../patterns/p18-hash-map.html" style="text-align:right"><span class="lbl">Next →</span>Hash Map &amp; Cache Design</a></div>
 </div>

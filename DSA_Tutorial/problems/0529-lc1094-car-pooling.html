@@ -23,37 +23,45 @@
  › Subpattern 17.3: Difference Array / Range Update · Problem 529 of 699</p>
 
 <h2>📋 The problem</h2><p>A shuttle with fixed capacity drives one way; given trips (passengers, from, to), decide whether it ever overflows (difference array).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>There is a car with <code>capacity</code> empty seats. The vehicle only drives east. Given integer <code>capacity</code> and array <code>trips = [numPassengers, from, to]</code>, return <code>true</code> if you can pick up and drop off all passengers without exceeding capacity.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Difference Array / Range Update</strong> — diff[l] += v, diff[r+1] -= v on range updates; prefix-sum the diff array at the end.</p>
+<p>This is range addition: passengers occupy the vehicle on half-open interval $[from, to)$!
+Use a <strong>Difference Array</strong> over kilometers $0 \dots 1000$:
+- At departure $from$: passengers board $	o$ <code>diff[from] += passengers</code>.
+- At arrival $to$: passengers get off $	o$ <code>diff[to] -= passengers</code>.</p>
+<p>Sweep from kilometer 0 to 1000 tracking running passenger count:
+If running passengers exceeds <code>capacity</code> at any kilometer, return <code>False</code>!</p>
 
-<h2>Why this pattern?</h2><ul><li>many range-sum queries, immutable array</li><li>"number of subarrays summing to k / divisible by k"</li><li>many range UPDATES, values read once at the end → difference array</li><li>2-D block sums → 2-D prefix (inclusion-exclusion)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Prefix Sum &amp; Difference Array master template and adapt the marked parts to this problem:</p><pre><code># Prefix sums + hash map: count subarrays summing to k
-from collections import defaultdict
-count, cur = 0, 0
-seen = defaultdict(int)
-seen[0] = 1                      # empty prefix — subarrays starting at 0
-for x in nums:
-    cur += x
-    count += seen[cur - k]       # each earlier prefix = one subarray ending here
-    seen[cur] += 1
+<h2>🐢 Brute force vs optimal</h2>
+<p>Difference array sweeps in $O(N + D)$ time where $D = 1001$ is the distance bound.</p>
 
-# Difference array: m range updates in O(1) each
-diff = [0] * (n + 1)
-for l, r, val in updates:
-    diff[l] += val
-    diff[r + 1] -= val           # effect ends after r
-# final values = prefix sums of diff</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<div class="insight">💡 <strong>Key insight:</strong> Difference array: <code>delta[from] += count; delta[to] -= count</code>. Running prefix sum tracks passengers aboard; reject if passenger count $> capacity$.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def carPooling(trips: list[list[int]], capacity: int) -> bool:
+    # Max location is 1000
+    timeline = [0] * 1001
+    
+    for passengers, start, end in trips:
+        timeline[start] += passengers
+        timeline[end] -= passengers
+        
+    curr_passengers = 0
+    for count in timeline:
+        curr_passengers += count
+        if curr_passengers > capacity:
+            return False
+            
+    return True
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(N + 1000)$ where $N$ is number of trips.<br>
+<strong>Space:</strong> $O(1)$ — Fixed array of 1001 integers.</p>
+
 
 <div class="pager"><a href="../problems/0528-lc370-range-addition.html"><span class="lbl">← Previous</span>#370 Range Addition</a><a href="../problems/0530-lc1109-corporate-flight-bookings.html" style="text-align:right"><span class="lbl">Next →</span>#1109 Corporate Flight Bookings</a></div>
 </div>

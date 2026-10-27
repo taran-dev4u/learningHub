@@ -23,37 +23,48 @@
  › Subpattern 17.2: Range Sum Query (Static) · Problem 527 of 699</p>
 
 <h2>📋 The problem</h2><p>Precompute over an immutable matrix so any rectangle-sum query answers in O(1).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given a 2D matrix <code>matrix</code>, handle multiple queries of calculating the sum of elements inside the rectangle defined by top-left $(row1, col1)$ and bottom-right $(row2, col2)$.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Range Sum Query (Static)</strong> — Precompute prefix array once; answer range sums in O(1) (1D and 2D variants).</p>
-<div class="insight"><strong>💡 Key idea</strong><br>2-D prefix with inclusion–exclusion: sum = P[r2+1][c2+1] − P[r1][c2+1] − P[r2+1][c1] + P[r1][c1].</div>
-<h2>Why this pattern?</h2><ul><li>many range-sum queries, immutable array</li><li>"number of subarrays summing to k / divisible by k"</li><li>many range UPDATES, values read once at the end → difference array</li><li>2-D block sums → 2-D prefix (inclusion-exclusion)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Prefix Sum &amp; Difference Array master template and adapt the marked parts to this problem:</p><pre><code># Prefix sums + hash map: count subarrays summing to k
-from collections import defaultdict
-count, cur = 0, 0
-seen = defaultdict(int)
-seen[0] = 1                      # empty prefix — subarrays starting at 0
-for x in nums:
-    cur += x
-    count += seen[cur - k]       # each earlier prefix = one subarray ending here
-    seen[cur] += 1
+<p><strong>2D Prefix Sum Formula (Inclusion-Exclusion):</strong>
+Let $dp[r+1][c+1]$ be the sum of the submatrix from $(0, 0)$ to $(r, c)$:
+$$dp[r+1][c+1] = matrix[r][c] + dp[r][c+1] + dp[r+1][c] - dp[r][c]$$
+To query rectangle from $(r_1, c_1)$ to $(r_2, c_2)$:
+$$	ext{Sum} = dp[r_2+1][c_2+1] - dp[r_1][c_2+1] - dp[r_2+1][c_1] + dp[r_1][c_1]$$</p>
 
-# Difference array: m range updates in O(1) each
-diff = [0] * (n + 1)
-for l, r, val in updates:
-    diff[l] += val
-    diff[r + 1] -= val           # effect ends after r
-# final values = prefix sums of diff</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h2>🐢 Brute force vs optimal</h2>
+<p>Traversing rectangle cells takes $O(m 	imes n)$ per query. 2D prefix sum answers queries in strictly $O(1)$ time!</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> 2D inclusion-exclusion: subtract top and left submatrices, add back the double-subtracted top-left overlap. Answers any rectangle in $O(1)$!</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">class NumMatrix:
+    def __init__(self, matrix: list[list[int]]):
+        if not matrix or not matrix[0]:
+            return
+        m, n = len(matrix), len(matrix[0])
+        self.dp = [[0] * (n + 1) for _ in range(m + 1)]
+        
+        for r in range(m):
+            for c in range(n):
+                self.dp[r + 1][c + 1] = (matrix[r][c] 
+                                       + self.dp[r][c + 1] 
+                                       + self.dp[r + 1][c] 
+                                       - self.dp[r][c])
+
+    def sumRegion(self, r1: int, c1: int, r2: int, c2: int) -> int:
+        return (self.dp[r2 + 1][c2 + 1] 
+              - self.dp[r1][c2 + 1] 
+              - self.dp[r2 + 1][c1] 
+              + self.dp[r1][c1])
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> Constructor: $O(m 	imes n)$. <code>sumRegion</code>: $O(1)$ arithmetic.<br>
+<strong>Space:</strong> $O(m 	imes n)$ — 2D prefix table.</p>
+
 
 <div class="pager"><a href="../problems/0526-lc303-range-sum-query-immutable.html"><span class="lbl">← Previous</span>#303 Range Sum Query - Immutable</a><a href="../problems/0528-lc370-range-addition.html" style="text-align:right"><span class="lbl">Next →</span>#370 Range Addition</a></div>
 </div>

@@ -23,37 +23,47 @@
  › Subpattern 17.1: Subarray Sum with Hashmap · Problem 522 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0056-lc560-subarray-sum-equals-k.html">Array/Matrix Manipulation</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Count the contiguous subarrays whose elements sum exactly to k.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given an array of integers <code>nums</code> and an integer <code>k</code>, return the total number of subarrays whose sum equals to <code>k</code>.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Subarray Sum with Hashmap</strong> — Hashmap of running prefix sums → count subarrays whose sum equals k, even with negatives.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>seen[0]=1; each step count += seen[cur−k], then record cur.</div>
-<h2>Why this pattern?</h2><ul><li>many range-sum queries, immutable array</li><li>"number of subarrays summing to k / divisible by k"</li><li>many range UPDATES, values read once at the end → difference array</li><li>2-D block sums → 2-D prefix (inclusion-exclusion)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Prefix Sum &amp; Difference Array master template and adapt the marked parts to this problem:</p><pre><code># Prefix sums + hash map: count subarrays summing to k
-from collections import defaultdict
-count, cur = 0, 0
-seen = defaultdict(int)
-seen[0] = 1                      # empty prefix — subarrays starting at 0
-for x in nums:
-    cur += x
-    count += seen[cur - k]       # each earlier prefix = one subarray ending here
-    seen[cur] += 1
+<p>A subarray sum from $j$ to $i$ equals $k$ if:
+$$prefix[i] - prefix[j - 1] = k \iff prefix[j - 1] = prefix[i] - k$$
+Maintain a frequency map <code>prefix_counts</code> tracking how many times each prefix sum has occurred so far.
+At each index $i$:
+1. Add the number of times <code>prefix[i] - k</code> was seen to the answer:
+   <code>total += prefix_counts.get(curr_sum - k, 0)</code>.
+2. Increment frequency of the current prefix sum:
+   <code>prefix_counts[curr_sum] = prefix_counts.get(curr_sum, 0) + 1</code>.
+Base case: <code>prefix_counts[0] = 1</code> (a prefix itself equalling $k$).</p>
 
-# Difference array: m range updates in O(1) each
-diff = [0] * (n + 1)
-for l, r, val in updates:
-    diff[l] += val
-    diff[r + 1] -= val           # effect ends after r
-# final values = prefix sums of diff</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h2>🐢 Brute force vs optimal</h2>
+<p>Evaluating all subarrays takes $O(n^2)$. Hash map frequency accumulation counts all valid subarrays in $O(n)$ time and $O(n)$ space.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Frequency map of prefix sums: <code>count += seen[curr_sum - k]</code>. Base case <code>seen[0] = 1</code>. Solves in $O(n)$ time!</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">from collections import defaultdict
+
+def subarraySum(nums: list[int], k: int) -> int:
+    counts = defaultdict(int)
+    counts[0] = 1
+    curr_sum = 0
+    total = 0
+    
+    for x in nums:
+        curr_sum += x
+        total += counts[curr_sum - k]
+        counts[curr_sum] += 1
+        
+    return total
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n)$ — Single pass over <code>nums</code>.<br>
+<strong>Space:</strong> $O(n)$ — Hash map of prefix sums.</p>
+
 
 <div class="pager"><a href="../problems/0521-lc525-contiguous-array.html"><span class="lbl">← Previous</span>#525 Contiguous Array</a><a href="../problems/0523-lc930-binary-subarrays-with-sum.html" style="text-align:right"><span class="lbl">Next →</span>#930 Binary Subarrays With Sum</a></div>
 </div>

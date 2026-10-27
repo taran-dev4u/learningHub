@@ -23,39 +23,53 @@
  › Subpattern 19.4: Geometry &amp; Points · Problem 554 of 699</p>
 
 <h2>📋 The problem</h2><p>A path moves counterclockwise with given segment lengths; decide whether it ever crosses itself.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h3>Problem Overview</h3>
+<p>Given an array of integers <code>distance</code>, where you start at <code>{2, 3, 5}</code>(0,0)<code>{2, 3, 5}</code> and move North, West, South, and East cyclically. Return <code>true</code> if your path crosses itself, and <code>false</code> otherwise.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Geometry &amp; Points</strong> — Cross product, dot product, distance², bounding rectangles, lattice/grid geometry.</p>
-
-<h2>Why this pattern?</h2><ul><li>divisibility, remainders, "answer modulo 10⁹+7"</li><li>counting primes/factors/trailing zeros</li><li>digit games: reverse, palindrome number, happy number</li><li>geometry: overlaps of rectangles, points on a line, areas</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Math, Number Theory &amp; Geometry master template and adapt the marked parts to this problem:</p><pre><code>import math
-math.gcd(a, b)                      # Euclid, O(log min(a,b))
-pow(a, b, MOD)                      # fast modular exponentiation, O(log b)
-
-def sieve(n):                       # all primes ≤ n
-    is_p = [True] * (n + 1)
-    is_p[0] = is_p[1] = False
-    for i in range(2, int(n**0.5) + 1):
-        if is_p[i]:
-            for j in range(i*i, n + 1, i):   # start at i² — smaller done
-                is_p[j] = False
-    return is_p
-
-# Digits without strings
-while n: n, d = divmod(n, 10)       # d = last digit
-
-# Cross product: orientation of C vs line AB (0 = collinear)
-cross = (bx-ax)*(cy-ay) - (by-ay)*(cx-ax)</code></pre>
-<h2>How to work on it now</h2>
+<h3>Key Insights</h3>
+<p>There are only 3 fundamental geometric self-crossing configurations in this 4-directional spiral:
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+  <li><strong>Crossing 4th line (Self-intersection with 3 steps ago):</strong>
+      <code>{2, 3, 5}</code><code>{2, 3, 5}</code>d[i] \ge d[i-2] \quad 	ext{and} \quad d[i-1] \le d[i-3]<code>{2, 3, 5}</code><code>{2, 3, 5}</code></li>
+  <li><strong>Overlapping 5th line (Self-intersection with 4 steps ago):</strong>
+      <code>{2, 3, 5}</code><code>{2, 3, 5}</code>d[i-1] == d[i-3] \quad 	ext{and} \quad d[i] + d[i-4] \ge d[i-2]<code>{2, 3, 5}</code><code>{2, 3, 5}</code></li>
+  <li><strong>Crossing 6th line (Self-intersection with 5 steps ago):</strong>
+      <code>{2, 3, 5}</code><code>{2, 3, 5}</code>d[i-2] \ge d[i-4], \quad d[i] + d[i-4] \ge d[i-2], \quad d[i-1] \le d[i-3], \quad d[i-1] + d[i-5] \ge d[i-3]<code>{2, 3, 5}</code><code>{2, 3, 5}</code></li>
+</ol></p>
+
+<details>
+<summary><strong>Python 3 Solution (Click to Expand)</strong></summary>
+<div class="code-block">
+<pre><code class="language-python">from typing import List
+
+class Solution:
+    def isSelfCrossing(self, distance: List[int]) -> bool:
+        d = distance
+        n = len(d)
+        if n < 4:
+            return False
+            
+        for i in range(3, n):
+            # Case 1: crosses line i - 3
+            if d[i] >= d[i - 2] and d[i - 1] <= d[i - 3]:
+                return True
+            # Case 2: overlaps line i - 4
+            if i >= 4 and d[i - 1] == d[i - 3] and d[i] + d[i - 4] >= d[i - 2]:
+                return True
+            # Case 3: crosses line i - 5
+            if i >= 5 and d[i - 2] >= d[i - 4] and d[i] + d[i - 4] >= d[i - 2] and d[i - 1] <= d[i - 3] and d[i - 1] + d[i - 5] >= d[i - 3]:
+                return True
+                
+        return False
+</code></pre>
+</div>
+</details>
+
+<h3>Complexity & Edge Cases</h3>
+<ul>
+  <li><strong>Time Complexity:</strong> <code>{2, 3, 5}</code>O(N)<code>{2, 3, 5}</code> single linear scan.</li>
+  <li><strong>Space Complexity:</strong> <code>{2, 3, 5}</code>O(1)<code>{2, 3, 5}</code>.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0553-lc223-rectangle-area.html"><span class="lbl">← Previous</span>#223 Rectangle Area</a><a href="../problems/0555-lc836-rectangle-overlap.html" style="text-align:right"><span class="lbl">Next →</span>#836 Rectangle Overlap</a></div>
 </div>

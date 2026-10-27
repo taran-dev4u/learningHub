@@ -23,37 +23,43 @@
  › Subpattern 17.3: Difference Array / Range Update · Problem 530 of 699</p>
 
 <h2>📋 The problem</h2><p>Apply flight bookings (first, last, seats) as range additions and return seats per flight (difference array).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>There are <code>n</code> flights that are labeled from <code>1</code> to <code>n</code>. You are given an array of flight bookings <code>bookings = [first, last, seats]</code>. Return an array <code>answer</code> of length <code>n</code> where <code>answer[i]</code> is the total number of seats reserved for flight <code>i</code>.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Difference Array / Range Update</strong> — diff[l] += v, diff[r+1] -= v on range updates; prefix-sum the diff array at the end.</p>
+<p>Standard <strong>Difference Array</strong> on 1-based indices $1 \dots n$:
+For each booking $[first, last, seats]$:
+- <code>diff[first - 1] += seats</code>
+- If $last < n$: <code>diff[last] -= seats</code>.</p>
+<p>Running prefix sum of <code>diff</code> reconstructs total seats per flight in $O(n)$ time!</p>
 
-<h2>Why this pattern?</h2><ul><li>many range-sum queries, immutable array</li><li>"number of subarrays summing to k / divisible by k"</li><li>many range UPDATES, values read once at the end → difference array</li><li>2-D block sums → 2-D prefix (inclusion-exclusion)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Prefix Sum &amp; Difference Array master template and adapt the marked parts to this problem:</p><pre><code># Prefix sums + hash map: count subarrays summing to k
-from collections import defaultdict
-count, cur = 0, 0
-seen = defaultdict(int)
-seen[0] = 1                      # empty prefix — subarrays starting at 0
-for x in nums:
-    cur += x
-    count += seen[cur - k]       # each earlier prefix = one subarray ending here
-    seen[cur] += 1
+<h2>🐢 Brute force vs optimal</h2>
+<p>Adding seats to each flight range directly takes $O(B 	imes n)$ time. Difference array takes $O(B + n)$ linear time.</p>
 
-# Difference array: m range updates in O(1) each
-diff = [0] * (n + 1)
-for l, r, val in updates:
-    diff[l] += val
-    diff[r + 1] -= val           # effect ends after r
-# final values = prefix sums of diff</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<div class="insight">💡 <strong>Key insight:</strong> Difference array: <code>diff[first - 1] += seats; diff[last] -= seats</code>. Cumulative sum produces flight reservations in $O(B + n)$ time!</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def corpFlightBookings(bookings: list[list[int]], n: int) -> list[int]:
+    diff = [0] * (n + 1)
+    
+    for first, last, seats in bookings:
+        diff[first - 1] += seats
+        diff[last] -= seats
+        
+    res = [0] * n
+    curr = 0
+    for i in range(n):
+        curr += diff[i]
+        res[i] = curr
+        
+    return res
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(B + n)$ where $B$ is number of bookings.<br>
+<strong>Space:</strong> $O(n)$ — Difference array of size $n+1$.</p>
+
 
 <div class="pager"><a href="../problems/0529-lc1094-car-pooling.html"><span class="lbl">← Previous</span>#1094 Car Pooling</a><a href="../problems/0531-lc1310-xor-queries-of-a-subarray.html" style="text-align:right"><span class="lbl">Next →</span>#1310 XOR Queries of a Subarray</a></div>
 </div>

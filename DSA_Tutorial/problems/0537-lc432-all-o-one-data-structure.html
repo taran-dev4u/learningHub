@@ -23,35 +23,107 @@
  › Subpattern 18.3: LFU Cache Design · Problem 537 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0486-lc432-all-o-one-data-structure.html">Design</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Design a structure with inc(key), dec(key), getMaxKey(), getMinKey() — all O(1).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h3>Problem Overview</h3>
+<p>Design a data structure to store the strings' count with the ability to return the strings with minimum and maximum counts in $O(1)$ time complexity for all operations: <code>inc(key)</code>, <code>dec(key)</code>, <code>getMaxKey()</code>, and <code>getMinKey()</code>.</p>
 
-<h2>Where this fits</h2>
-<p><strong>LFU Cache Design</strong> — Two hashmaps: one for value, one for the frequency-bucket list head; promote on access.</p>
+<h3>Key Insights</h3>
+<p>Multiple strings can have the same frequency. If we maintain individual nodes per string, finding min/max in $O(1)$ is difficult. Instead, maintain a <strong>Doubly Linked List of Frequency Buckets</strong>, where each bucket holds a frequency count and a <code>set()</code> of all strings having that exact frequency!</p>
+<ul>
+  <li><code>head</code> sentinel points to the lowest frequency bucket; <code>tail</code> sentinel points to the highest.</li>
+  <li><code>key_to_bucket</code> hash map maps each <code>key</code> to its containing <code>BucketNode</code>.</li>
+  <li><code>inc(key)</code>: Move key from bucket $f$ to bucket $f+1$. If bucket $f+1$ doesn't exist, insert it immediately after bucket $f$. If bucket $f$ becomes empty, remove it.</li>
+  <li><code>dec(key)</code>: Move key from bucket $f$ to bucket $f-1$. If $f-1 == 0$, delete key entirely.</li>
+  <li><code>getMaxKey()</code>: Return any key from <code>tail.prev.keys</code> (or <code>""</code> if empty).</li>
+  <li><code>getMinKey()</code>: Return any key from <code>head.next.keys</code> (or <code>""</code> if empty).</li>
+</ul>
 
-<h2>Why this pattern?</h2><ul><li>"O(1) average for every operation"</li><li>eviction by recency/frequency, capacity limits</li><li>time-versioned lookups (get value at timestamp)</li><li>two-way mappings, consistent grouping</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Hash Map &amp; Cache Design master template and adapt the marked parts to this problem:</p><pre><code># Frequency buckets (LFU core idea, also "O(1) inc/dec"):
-# key → count, and count → set of keys with that count
-counts = {}                       # key → its frequency
-buckets = defaultdict(set)        # frequency → keys at that frequency
-min_freq = tracked separately     # evict from buckets[min_freq]
+<details>
+<summary><strong>Python 3 Solution (Click to Expand)</strong></summary>
+<div class="code-block">
+<pre><code class="language-python">class Bucket:
+    def __init__(self, freq: int):
+        self.freq = freq
+        self.keys = set()
+        self.prev = None
+        self.next = None
 
-# Timestamped values: dict of key → sorted list of (time, value)
-import bisect
-store = defaultdict(list)
-def set_val(k, v, t): store[k].append((t, v))       # times arrive increasing
-def get_val(k, t):
-    arr = store[k]
-    i = bisect.bisect_right(arr, (t, chr(0x10FFFF)))  # last entry ≤ t
-    return arr[i-1][1] if i else ""</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+class AllOne:
+    def __init__(self):
+        self.head = Bucket(0)  # Min sentinel
+        self.tail = Bucket(0)  # Max sentinel
+        self.head.next = self.tail
+        self.tail.prev = self.head
+        self.key_bucket = {}   # key -> Bucket
+
+    def _insert_after(self, prev_bucket: Bucket, new_bucket: Bucket) -> None:
+        new_bucket.next = prev_bucket.next
+        new_bucket.prev = prev_bucket
+        prev_bucket.next.prev = new_bucket
+        prev_bucket.next = new_bucket
+
+    def _remove_bucket(self, bucket: Bucket) -> None:
+        bucket.prev.next = bucket.next
+        bucket.next.prev = bucket.prev
+
+    def inc(self, key: str) -> None:
+        if key not in self.key_bucket:
+            # Insert key into freq 1 bucket
+            if self.head.next.freq == 1:
+                target = self.head.next
+            else:
+                target = Bucket(1)
+                self._insert_after(self.head, target)
+            target.keys.add(key)
+            self.key_bucket[key] = target
+        else:
+            curr = self.key_bucket[key]
+            curr.keys.remove(key)
+            if curr.next.freq == curr.freq + 1:
+                target = curr.next
+            else:
+                target = Bucket(curr.freq + 1)
+                self._insert_after(curr, target)
+            target.keys.add(key)
+            self.key_bucket[key] = target
+            if not curr.keys:
+                self._remove_bucket(curr)
+
+    def dec(self, key: str) -> None:
+        if key not in self.key_bucket:
+            return
+        curr = self.key_bucket[key]
+        curr.keys.remove(key)
+        if curr.freq == 1:
+            del self.key_bucket[key]
+        else:
+            if curr.prev.freq == curr.freq - 1:
+                target = curr.prev
+            else:
+                target = Bucket(curr.freq - 1)
+                self._insert_after(curr.prev, target)
+            target.keys.add(key)
+            self.key_bucket[key] = target
+        if not curr.keys:
+            self._remove_bucket(curr)
+
+    def getMaxKey(self) -> str:
+        if self.tail.prev == self.head:
+            return ""
+        return next(iter(self.tail.prev.keys))
+
+    def getMinKey(self) -> str:
+        if self.head.next == self.tail:
+            return ""
+        return next(iter(self.head.next.keys))
+</code></pre>
+</div>
+</details>
+
+<h3>Complexity & Invariants</h3>
+<ul>
+  <li><strong>Time Complexity:</strong> Strictly $O(1)$ for all operations (<code>inc</code>, <code>dec</code>, <code>getMaxKey</code>, <code>getMinKey</code>).</li>
+  <li><strong>Space Complexity:</strong> $O(N)$ where $N$ is the number of distinct string keys.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0536-lc146-lru-cache.html"><span class="lbl">← Previous</span>#146 LRU Cache</a><a href="../problems/0538-lc460-lfu-cache.html" style="text-align:right"><span class="lbl">Next →</span>#460 LFU Cache</a></div>
 </div>

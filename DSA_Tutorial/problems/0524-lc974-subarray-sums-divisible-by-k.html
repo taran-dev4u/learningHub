@@ -23,37 +23,43 @@
  › Subpattern 17.1: Subarray Sum with Hashmap · Problem 524 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0059-lc974-subarray-sums-divisible-by-k.html">Array/Matrix Manipulation</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Count the subarrays whose sum is divisible by k.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given an integer array <code>nums</code> and an integer <code>k</code>, return the number of non-empty subarrays that have a sum divisible by <code>k</code>.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Subarray Sum with Hashmap</strong> — Hashmap of running prefix sums → count subarrays whose sum equals k, even with negatives.</p>
+<p>Two prefix sums $prefix[i]$ and $prefix[j]$ produce a subarray divisible by $k$ if:
+$$prefix[i] \equiv prefix[j] \pmod k$$
+Count the frequency of each remainder $r = curr_sum % k$.
+If a remainder $r$ has appeared $C$ times previously, the current prefix sum forms $C$ new valid subarrays!
+Increment answer by $C$, then increment remainder frequency $C += 1$.
+Base case: <code>remainder_counts[0] = 1</code>.</p>
 
-<h2>Why this pattern?</h2><ul><li>many range-sum queries, immutable array</li><li>"number of subarrays summing to k / divisible by k"</li><li>many range UPDATES, values read once at the end → difference array</li><li>2-D block sums → 2-D prefix (inclusion-exclusion)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Prefix Sum &amp; Difference Array master template and adapt the marked parts to this problem:</p><pre><code># Prefix sums + hash map: count subarrays summing to k
-from collections import defaultdict
-count, cur = 0, 0
-seen = defaultdict(int)
-seen[0] = 1                      # empty prefix — subarrays starting at 0
-for x in nums:
-    cur += x
-    count += seen[cur - k]       # each earlier prefix = one subarray ending here
-    seen[cur] += 1
+<h2>🐢 Brute force vs optimal</h2>
+<p>Modulo remainder hash table/array of size $k$ counts all matching pairs in $O(n)$ time and $O(k)$ space.</p>
 
-# Difference array: m range updates in O(1) each
-diff = [0] * (n + 1)
-for l, r, val in updates:
-    diff[l] += val
-    diff[r + 1] -= val           # effect ends after r
-# final values = prefix sums of diff</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<div class="insight">💡 <strong>Key insight:</strong> Frequency array of size $k$: <code>rem = curr_sum % k</code>. Add <code>counts[rem]</code> to answer, then increment <code>counts[rem] += 1</code>. Base case <code>counts[0] = 1</code>.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def subarraysDivByK(nums: list[int], k: int) -> int:
+    counts = [0] * k
+    counts[0] = 1
+    curr_sum = 0
+    total = 0
+    
+    for x in nums:
+        curr_sum += x
+        rem = curr_sum % k
+        total += counts[rem]
+        counts[rem] += 1
+        
+    return total
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n)$ — Single pass.<br>
+<strong>Space:</strong> $O(k)$ — Remainder array of size $k$.</p>
+
 
 <div class="pager"><a href="../problems/0523-lc930-binary-subarrays-with-sum.html"><span class="lbl">← Previous</span>#930 Binary Subarrays With Sum</a><a href="../problems/0525-lc1248-count-number-of-nice-subarrays.html" style="text-align:right"><span class="lbl">Next →</span>#1248 Count Number of Nice Subarrays</a></div>
 </div>

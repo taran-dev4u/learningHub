@@ -23,35 +23,44 @@
  › Subpattern 18.1: Grouping / Frequency · Problem 534 of 699</p>
 
 <h2>📋 The problem</h2><p>Group strings so that strings which become each other by shifting every letter the same amount (wrapping z→a) share a group.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h3>Problem Overview</h3>
+<p>Given an array of strings <code>strings</code>, group all strings that belong to the same shifting sequence. Two strings $s_1$ and $s_2$ belong to the same shifting sequence if $s_1$ can be converted into $s_2$ by shifting each character of $s_1$ forward by the same number of positions cyclically around the alphabet.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Grouping / Frequency</strong> — Hashmap groups elements by a canonical key (sorted string, character signature, etc.).</p>
+<h3>Key Insights</h3>
+<p>A string's shifting identity is invariant under cyclical character differences! For example, for <code>"az"</code>: <code>('z' - 'a') % 26 = 25</code>. For <code>"ba"</code>: <code>('a' - 'b') % 26 = (-1) % 26 = 25</code>.</p>
+<p>Thus, any string can be represented by a canonical key: the tuple of cyclic differences between consecutive adjacent characters:
+$$key = \left( (s[i] - s[i - 1]) \pmod{26} ight)_{i=1}^{L-1}$$
+Strings of length 1 all share the empty tuple <code>()</code> as key.</p>
 
-<h2>Why this pattern?</h2><ul><li>"O(1) average for every operation"</li><li>eviction by recency/frequency, capacity limits</li><li>time-versioned lookups (get value at timestamp)</li><li>two-way mappings, consistent grouping</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Hash Map &amp; Cache Design master template and adapt the marked parts to this problem:</p><pre><code># Frequency buckets (LFU core idea, also "O(1) inc/dec"):
-# key → count, and count → set of keys with that count
-counts = {}                       # key → its frequency
-buckets = defaultdict(set)        # frequency → keys at that frequency
-min_freq = tracked separately     # evict from buckets[min_freq]
+<details>
+<summary><strong>Python 3 Solution (Click to Expand)</strong></summary>
+<div class="code-block">
+<pre><code class="language-python">from typing import List
+from collections import defaultdict
 
-# Timestamped values: dict of key → sorted list of (time, value)
-import bisect
-store = defaultdict(list)
-def set_val(k, v, t): store[k].append((t, v))       # times arrive increasing
-def get_val(k, t):
-    arr = store[k]
-    i = bisect.bisect_right(arr, (t, chr(0x10FFFF)))  # last entry ≤ t
-    return arr[i-1][1] if i else ""</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+class Solution:
+    def groupStrings(self, strings: List[str]) -> List[List[str]]:
+        groups = defaultdict(list)
+        
+        for s in strings:
+            # Compute canonical key of cyclical diffs
+            diff_key = []
+            for i in range(1, len(s)):
+                diff = (ord(s[i]) - ord(s[i - 1])) % 26
+                diff_key.append(diff)
+            groups[tuple(diff_key)].append(s)
+            
+        return list(groups.values())
+</code></pre>
+</div>
+</details>
+
+<h3>Complexity & Edge Cases</h3>
+<ul>
+  <li><strong>Time Complexity:</strong> $O(N \cdot L)$ where $N$ is the number of strings and $L$ is the maximum length of a string.</li>
+  <li><strong>Space Complexity:</strong> $O(N \cdot L)$ to store all grouped strings in the hash map.</li>
+  <li><strong>Edge Cases:</strong> Single character strings (e.g. <code>["a", "z"]</code> both map to <code>()</code>), wraps around <code>'z' -> 'a'</code>.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0533-lc128-longest-consecutive-sequence.html"><span class="lbl">← Previous</span>#128 Longest Consecutive Sequence</a><a href="../problems/0535-lc347-top-k-frequent-elements.html" style="text-align:right"><span class="lbl">Next →</span>#347 Top K Frequent Elements</a></div>
 </div>

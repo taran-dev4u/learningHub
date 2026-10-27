@@ -23,35 +23,81 @@
  › Subpattern 18.2: LRU Cache Design · Problem 536 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0468-lc146-lru-cache.html">Design</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Design an LRU cache with get and put in O(1) average time; when capacity is exceeded, evict the least recently used key.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h3>Problem Overview</h3>
+<p>Design a data structure that follows the constraints of a <strong>Least Recently Used (LRU) cache</strong>. Implement <code>get(key)</code> and <code>put(key, value)</code> in $O(1)$ average time complexity.</p>
 
-<h2>Where this fits</h2>
-<p><strong>LRU Cache Design</strong> — Doubly linked list orders by recency; hashmap maps key → list node for O(1) access.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Dict → doubly-linked-list nodes: dict finds, list orders; move-to-front on every access, evict tail.</div>
-<h2>Why this pattern?</h2><ul><li>"O(1) average for every operation"</li><li>eviction by recency/frequency, capacity limits</li><li>time-versioned lookups (get value at timestamp)</li><li>two-way mappings, consistent grouping</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Hash Map &amp; Cache Design master template and adapt the marked parts to this problem:</p><pre><code># Frequency buckets (LFU core idea, also "O(1) inc/dec"):
-# key → count, and count → set of keys with that count
-counts = {}                       # key → its frequency
-buckets = defaultdict(set)        # frequency → keys at that frequency
-min_freq = tracked separately     # evict from buckets[min_freq]
+<h3>Core Data Structure: Doubly Linked List + Hash Map</h3>
+<p>To achieve $O(1)$ access, we need a <strong>Hash Map</strong> mapping <code>key -> Node</code>. To achieve $O(1)$ removal and re-ordering upon access, we use a <strong>Doubly Linked List</strong> with dummy <code>head</code> (most recently used) and <code>tail</code> (least recently used) sentinel nodes.</p>
 
-# Timestamped values: dict of key → sorted list of (time, value)
-import bisect
-store = defaultdict(list)
-def set_val(k, v, t): store[k].append((t, v))       # times arrive increasing
-def get_val(k, t):
-    arr = store[k]
-    i = bisect.bisect_right(arr, (t, chr(0x10FFFF)))  # last entry ≤ t
-    return arr[i-1][1] if i else ""</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<div class="code-block">
+<pre><code>[Head Sentinel] <-> [MRU Node] <-> ... <-> [LRU Node] <-> [Tail Sentinel]
+       ^                                         ^
+       |                                         |
+Newly accessed nodes inserted here       Evictions happen right before Tail</code></pre>
+</div>
+
+<details>
+<summary><strong>Python 3 Solution (Click to Expand)</strong></summary>
+<div class="code-block">
+<pre><code class="language-python">class Node:
+    __slots__ = ('key', 'val', 'prev', 'next')
+    def __init__(self, key: int = 0, val: int = 0):
+        self.key = key
+        self.val = val
+        self.prev = None
+        self.next = None
+
+class LRUCache:
+    def __init__(self, capacity: int):
+        self.capacity = capacity
+        self.cache = {}  # key -> Node
+        self.head = Node()
+        self.tail = Node()
+        self.head.next = self.tail
+        self.tail.prev = self.head
+
+    def _remove(self, node: Node) -> None:
+        p, n = node.prev, node.next
+        p.next = n
+        n.prev = p
+
+    def _add_to_front(self, node: Node) -> None:
+        node.next = self.head.next
+        node.prev = self.head
+        self.head.next.prev = node
+        self.head.next = node
+
+    def get(self, key: int) -> int:
+        if key not in self.cache:
+            return -1
+        node = self.cache[key]
+        self._remove(node)
+        self._add_to_front(node)
+        return node.val
+
+    def put(self, key: int, value: int) -> None:
+        if key in self.cache:
+            node = self.cache[key]
+            node.val = value
+            self._remove(node)
+            self._add_to_front(node)
+        else:
+            if len(self.cache) >= self.capacity:
+                lru = self.tail.prev
+                self._remove(lru)
+                del self.cache[lru.key]
+            new_node = Node(key, value)
+            self.cache[key] = new_node
+            self._add_to_front(new_node)
+</code></pre>
+</div>
+</details>
+
+<h3>Complexity & Invariants</h3>
+<ul>
+  <li><strong>Time Complexity:</strong> $O(1)$ for both <code>get</code> and <code>put</code>. Hash map lookup is $O(1)$, pointer updates in a doubly linked list are $O(1)$.</li>
+  <li><strong>Space Complexity:</strong> $O(	ext{capacity})$ to store up to capacity nodes.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0535-lc347-top-k-frequent-elements.html"><span class="lbl">← Previous</span>#347 Top K Frequent Elements</a><a href="../problems/0537-lc432-all-o-one-data-structure.html" style="text-align:right"><span class="lbl">Next →</span>#432 All O`one Data Structure</a></div>
 </div>

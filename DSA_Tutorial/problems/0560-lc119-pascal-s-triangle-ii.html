@@ -23,39 +23,35 @@
  › Subpattern 19.5: GCD, LCM &amp; Combinatorics · Problem 560 of 699</p>
 
 <h2>📋 The problem</h2><p>Return just the k-th row of Pascal's triangle, ideally using O(k) extra space.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h3>Problem Overview</h3>
+<p>Given an integer <code>rowIndex</code>, return the <code>{2, 3, 5}</code>	ext{rowIndex}^{	ext{th}}<code>{2, 3, 5}</code> (0-indexed) row of Pascal's triangle using only <code>{2, 3, 5}</code>O(	ext{rowIndex})<code>{2, 3, 5}</code> extra space.</p>
 
-<h2>Where this fits</h2>
-<p><strong>GCD, LCM &amp; Combinatorics</strong> — Combinations C(n,k), Pascal triangle, modular nCr with Fermat's little theorem.</p>
+<h3>Key Insights</h3>
+<p>Notice the relationship between adjacent elements in row <code>{2, 3, 5}</code>n<code>{2, 3, 5}</code>:
+<code>{2, 3, 5}</code><code>{2, 3, 5}</code>\binom{n}{k} = \binom{n}{k - 1} 	imes \frac{n - k + 1}{k}<code>{2, 3, 5}</code><code>{2, 3, 5}</code>
+Starting from <code>{2, 3, 5}</code>row[0] = 1<code>{2, 3, 5}</code>, each subsequent element <code>{2, 3, 5}</code>k<code>{2, 3, 5}</code> can be computed from element <code>{2, 3, 5}</code>k - 1<code>{2, 3, 5}</code> in <code>{2, 3, 5}</code>O(1)<code>{2, 3, 5}</code> time and <code>{2, 3, 5}</code>O(1)<code>{2, 3, 5}</code> extra space!</p>
 
-<h2>Why this pattern?</h2><ul><li>divisibility, remainders, "answer modulo 10⁹+7"</li><li>counting primes/factors/trailing zeros</li><li>digit games: reverse, palindrome number, happy number</li><li>geometry: overlaps of rectangles, points on a line, areas</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Math, Number Theory &amp; Geometry master template and adapt the marked parts to this problem:</p><pre><code>import math
-math.gcd(a, b)                      # Euclid, O(log min(a,b))
-pow(a, b, MOD)                      # fast modular exponentiation, O(log b)
+<details>
+<summary><strong>Python 3 Solution (Linear Time O(k) Space)</strong></summary>
+<div class="code-block">
+<pre><code class="language-python">from typing import List
 
-def sieve(n):                       # all primes ≤ n
-    is_p = [True] * (n + 1)
-    is_p[0] = is_p[1] = False
-    for i in range(2, int(n**0.5) + 1):
-        if is_p[i]:
-            for j in range(i*i, n + 1, i):   # start at i² — smaller done
-                is_p[j] = False
-    return is_p
+class Solution:
+    def getRow(self, rowIndex: int) -> List[int]:
+        row = [1] * (rowIndex + 1)
+        for k in range(1, rowIndex):
+            row[k] = row[k - 1] * (rowIndex - k + 1) // k
+        return row
+</code></pre>
+</div>
+</details>
 
-# Digits without strings
-while n: n, d = divmod(n, 10)       # d = last digit
-
-# Cross product: orientation of C vs line AB (0 = collinear)
-cross = (bx-ax)*(cy-ay) - (by-ay)*(cx-ax)</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h3>Complexity & Edge Cases</h3>
+<ul>
+  <li><strong>Time Complexity:</strong> <code>{2, 3, 5}</code>O(k)<code>{2, 3, 5}</code> where <code>{2, 3, 5}</code>k = 	ext{rowIndex}<code>{2, 3, 5}</code>.</li>
+  <li><strong>Space Complexity:</strong> <code>{2, 3, 5}</code>O(k)<code>{2, 3, 5}</code> for the output row.</li>
+  <li><strong>Edge Cases:</strong> <code>{2, 3, 5}</code>	ext{rowIndex} = 0<code>{2, 3, 5}</code> (returns <code>[1]</code>).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0559-lc118-pascal-s-triangle.html"><span class="lbl">← Previous</span>#118 Pascal's Triangle</a><a href="../problems/0561-lc1071-greatest-common-divisor-of-strings.html" style="text-align:right"><span class="lbl">Next →</span>#1071 Greatest Common Divisor of Strings</a></div>
 </div>

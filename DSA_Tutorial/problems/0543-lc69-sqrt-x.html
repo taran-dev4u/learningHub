@@ -23,39 +23,45 @@
  › Subpattern 19.1: Powers, Logs, Roots · Problem 543 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0234-lc69-sqrt-x.html">Binary Search</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Compute the integer square root of a non-negative integer (the floor of √x) without using built-in power functions.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h3>Problem Overview</h3>
+<p>Given a non-negative integer <code>{2, 3, 5}</code>x<code>{2, 3, 5}</code>, compute and return the square root of <code>{2, 3, 5}</code>x<code>{2, 3, 5}</code> rounded down to the nearest integer. Do not use any built-in exponent functions or operators like <code>pow(x, 0.5)</code> or <code>x ** 0.5</code>.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Powers, Logs, Roots</strong> — Closed-form / iterative number theory — fast power, GCD, sieve, modular inverse.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Binary search the largest x with x² ≤ n.</div>
-<h2>Why this pattern?</h2><ul><li>divisibility, remainders, "answer modulo 10⁹+7"</li><li>counting primes/factors/trailing zeros</li><li>digit games: reverse, palindrome number, happy number</li><li>geometry: overlaps of rectangles, points on a line, areas</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Math, Number Theory &amp; Geometry master template and adapt the marked parts to this problem:</p><pre><code>import math
-math.gcd(a, b)                      # Euclid, O(log min(a,b))
-pow(a, b, MOD)                      # fast modular exponentiation, O(log b)
+<h3>Key Insights</h3>
+<p>For <code>{2, 3, 5}</code>x \ge 1<code>{2, 3, 5}</code>, <code>{2, 3, 5}</code>\lfloor \sqrt{x} floor<code>{2, 3, 5}</code> is an integer in the range <code>{2, 3, 5}</code>[1, x // 2 + 1]<code>{2, 3, 5}</code>. Because the sequence <code>{2, 3, 5}</code>1^2, 2^2, 3^2, \dots<code>{2, 3, 5}</code> is monotonically increasing, we can use <strong>Binary Search</strong> to find the largest integer <code>{2, 3, 5}</code>m<code>{2, 3, 5}</code> such that <code>{2, 3, 5}</code>m^2 \le x<code>{2, 3, 5}</code>.</p>
 
-def sieve(n):                       # all primes ≤ n
-    is_p = [True] * (n + 1)
-    is_p[0] = is_p[1] = False
-    for i in range(2, int(n**0.5) + 1):
-        if is_p[i]:
-            for j in range(i*i, n + 1, i):   # start at i² — smaller done
-                is_p[j] = False
-    return is_p
+<details>
+<summary><strong>Python 3 Solution (Binary Search)</strong></summary>
+<div class="code-block">
+<pre><code class="language-python">class Solution:
+    def mySqrt(self, x: int) -> int:
+        if x < 2:
+            return x
+        
+        left, right = 1, x // 2
+        ans = 1
+        
+        while left <= right:
+            mid = (left + right) // 2
+            sq = mid * mid
+            if sq == x:
+                return mid
+            elif sq < x:
+                ans = mid  # mid is a valid candidate
+                left = mid + 1
+            else:
+                right = mid - 1
+                
+        return ans
+</code></pre>
+</div>
+</details>
 
-# Digits without strings
-while n: n, d = divmod(n, 10)       # d = last digit
-
-# Cross product: orientation of C vs line AB (0 = collinear)
-cross = (bx-ax)*(cy-ay) - (by-ay)*(cx-ax)</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h3>Complexity & Edge Cases</h3>
+<ul>
+  <li><strong>Time Complexity:</strong> <code>{2, 3, 5}</code>O(\log x)<code>{2, 3, 5}</code> operations.</li>
+  <li><strong>Space Complexity:</strong> <code>{2, 3, 5}</code>O(1)<code>{2, 3, 5}</code>.</li>
+  <li><strong>Edge Cases:</strong> <code>{2, 3, 5}</code>x = 0<code>{2, 3, 5}</code> (returns 0), <code>{2, 3, 5}</code>x = 1<code>{2, 3, 5}</code> (returns 1), large values like <code>{2, 3, 5}</code>x = 2^{31} - 1<code>{2, 3, 5}</code>.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0542-lc50-pow-x-n.html"><span class="lbl">← Previous</span>#50 Pow(x, n)</a><a href="../problems/0544-lc372-super-pow.html" style="text-align:right"><span class="lbl">Next →</span>#372 Super Pow</a></div>
 </div>

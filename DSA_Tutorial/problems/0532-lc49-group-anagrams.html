@@ -23,35 +23,76 @@
  › Subpattern 18.1: Grouping / Frequency · Problem 532 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0432-lc49-group-anagrams.html">String Manipulation</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Group a list of words so that words that are anagrams of each other end up in the same group.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h3>Problem Overview</h3>
+<p>Given an array of strings <code>strs</code>, group the anagrams together in any order. An anagram is a word formed by rearranging the letters of a different word, using all the original letters exactly once.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Grouping / Frequency</strong> — Hashmap groups elements by a canonical key (sorted string, character signature, etc.).</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Group by canonical key: tuple(sorted(word)) or the 26-count tuple.</div>
-<h2>Why this pattern?</h2><ul><li>"O(1) average for every operation"</li><li>eviction by recency/frequency, capacity limits</li><li>time-versioned lookups (get value at timestamp)</li><li>two-way mappings, consistent grouping</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Hash Map &amp; Cache Design master template and adapt the marked parts to this problem:</p><pre><code># Frequency buckets (LFU core idea, also "O(1) inc/dec"):
-# key → count, and count → set of keys with that count
-counts = {}                       # key → its frequency
-buckets = defaultdict(set)        # frequency → keys at that frequency
-min_freq = tracked separately     # evict from buckets[min_freq]
+<h3>Key Insights</h3>
+<p>Two strings are anagrams if and only if their sorted versions are identical, or equivalently, their character frequency counts across the 26 lowercase English letters are identical. We can use a hash map where the key is the canonical representation of an anagram class and the value is a list of strings belonging to that class.</p>
 
-# Timestamped values: dict of key → sorted list of (time, value)
-import bisect
-store = defaultdict(list)
-def set_val(k, v, t): store[k].append((t, v))       # times arrive increasing
-def get_val(k, t):
-    arr = store[k]
-    i = bisect.bisect_right(arr, (t, chr(0x10FFFF)))  # last entry ≤ t
-    return arr[i-1][1] if i else ""</code></pre>
-<h2>How to work on it now</h2>
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr><th>Approach</th><th>Time Complexity</th><th>Space Complexity</th><th>Pros & Cons</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Sorted String as Key</td><td>$O(N \cdot K \log K)$</td><td>$O(N \cdot K)$</td><td>Simple to write; slower for long words.</td></tr>
+    <tr><td>26-Count Tuple as Key (Optimal)</td><td>$O(N \cdot K)$</td><td>$O(N \cdot K)$</td><td>Linear in total characters; optimal for large inputs.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>Step-by-Step Algorithm (Optimal 26-Count Tuple)</h3>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+  <li>Initialize <code>groups = collections.defaultdict(list)</code>.</li>
+  <li>For each word in <code>strs</code>:
+    <ul>
+      <li>Initialize a count array of size 26 with zeros.</li>
+      <li>For each character $c$ in the word, increment <code>count[ord(c) - ord('a')]</code>.</li>
+      <li>Convert the mutable list <code>count</code> into an immutable tuple <code>tuple(count)</code> to use as a hashable dictionary key.</li>
+      <li>Append the original word to <code>groups[tuple(count)]</code>.</li>
+    </ul>
+  </li>
+  <li>Return <code>list(groups.values())</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<div class="code-block">
+<pre><code># ASCII Dry Run for ["eat", "tea", "tan", "ate", "nat", "bat"]
+# "eat" -> count: (1,0,0,0,1,...,1,0...) -> key_1 -> ["eat"]
+# "tea" -> count: (1,0,0,0,1,...,1,0...) -> key_1 -> ["eat", "tea"]
+# "tan" -> count: (1,0,0,0,0,...,1,1...) -> key_2 -> ["tan"]
+# "ate" -> count: (1,0,0,0,1,...,1,0...) -> key_1 -> ["eat", "tea", "ate"]
+# "nat" -> count: (1,0,0,0,0,...,1,1...) -> key_2 -> ["tan", "nat"]
+# "bat" -> count: (1,1,0,0,0,...,0,1...) -> key_3 -> ["bat"]</code></pre>
+</div>
+
+<details>
+<summary><strong>Python 3 Solution (Click to Expand)</strong></summary>
+<div class="code-block">
+<pre><code class="language-python">from typing import List
+from collections import defaultdict
+
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        groups = defaultdict(list)
+        
+        for s in strs:
+            count = [0] * 26
+            for ch in s:
+                count[ord(ch) - ord('a')] += 1
+            # Tuples are hashable in Python
+            groups[tuple(count)].append(s)
+            
+        return list(groups.values())
+</code></pre>
+</div>
+</details>
+
+<h3>Complexity & Edge Cases</h3>
+<ul>
+  <li><strong>Time Complexity:</strong> $O(N \cdot K)$ where $N$ is the number of strings and $K$ is the maximum length of a string. Counting frequencies takes $O(K)$, and hashing a 26-element tuple is $O(26) = O(1)$.</li>
+  <li><strong>Space Complexity:</strong> $O(N \cdot K)$ to store the grouped strings in the hash map.</li>
+  <li><strong>Edge Cases:</strong> Single character words, empty strings <code>[""]</code>, words with identical letters (e.g. <code>"aaaa"</code>).</li>
+</ul>
 
 <div class="pager"><a href="../patterns/p18-hash-map.html"><span class="lbl">← Previous</span>Hash Map &amp; Cache Design</a><a href="../problems/0533-lc128-longest-consecutive-sequence.html" style="text-align:right"><span class="lbl">Next →</span>#128 Longest Consecutive Sequence</a></div>
 </div>

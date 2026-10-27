@@ -23,39 +23,38 @@
  › Subpattern 19.5: GCD, LCM &amp; Combinatorics · Problem 558 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0405-lc62-unique-paths.html">Dynamic Programming (DP)</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Count the paths a robot can take from the top-left to the bottom-right of an m×n grid moving only right or down.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h3>Problem Overview</h3>
+<p>A robot is located at the top-left corner of an <code>{2, 3, 5}</code>m 	imes n<code>{2, 3, 5}</code> grid. The robot can only move either down or right at any point. How many possible unique paths are there to reach the bottom-right corner?</p>
 
-<h2>Where this fits</h2>
-<p><strong>GCD, LCM &amp; Combinatorics</strong> — Combinations C(n,k), Pascal triangle, modular nCr with Fermat's little theorem.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>dp[r][c] = dp[r−1][c] + dp[r][c−1]; or closed form C(m+n−2, m−1).</div>
-<h2>Why this pattern?</h2><ul><li>divisibility, remainders, "answer modulo 10⁹+7"</li><li>counting primes/factors/trailing zeros</li><li>digit games: reverse, palindrome number, happy number</li><li>geometry: overlaps of rectangles, points on a line, areas</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Math, Number Theory &amp; Geometry master template and adapt the marked parts to this problem:</p><pre><code>import math
-math.gcd(a, b)                      # Euclid, O(log min(a,b))
-pow(a, b, MOD)                      # fast modular exponentiation, O(log b)
+<h3>Key Insights</h3>
+<p>To reach cell <code>{2, 3, 5}</code>(m-1, n-1)<code>{2, 3, 5}</code> from <code>{2, 3, 5}</code>(0, 0)<code>{2, 3, 5}</code>, the robot must make exactly:
+<ul>
+  <li><code>{2, 3, 5}</code>m - 1<code>{2, 3, 5}</code> steps Down</li>
+  <li><code>{2, 3, 5}</code>n - 1<code>{2, 3, 5}</code> steps Right</li>
+</ul>
+Total steps = <code>{2, 3, 5}</code>(m - 1) + (n - 1) = m + n - 2<code>{2, 3, 5}</code>.
+Any path is determined by choosing which <code>{2, 3, 5}</code>m - 1<code>{2, 3, 5}</code> steps are Down out of the total <code>{2, 3, 5}</code>m + n - 2<code>{2, 3, 5}</code> steps. This is a closed-form combinatorics formula:
+<code>{2, 3, 5}</code><code>{2, 3, 5}</code>\binom{m + n - 2}{m - 1} = \frac{(m + n - 2)!}{(m - 1)! \cdot (n - 1)!}<code>{2, 3, 5}</code><code>{2, 3, 5}</code></p>
 
-def sieve(n):                       # all primes ≤ n
-    is_p = [True] * (n + 1)
-    is_p[0] = is_p[1] = False
-    for i in range(2, int(n**0.5) + 1):
-        if is_p[i]:
-            for j in range(i*i, n + 1, i):   # start at i² — smaller done
-                is_p[j] = False
-    return is_p
+<details>
+<summary><strong>Python 3 Solution (Combinatorics - O(min(m, n)))</strong></summary>
+<div class="code-block">
+<pre><code class="language-python">import math
 
-# Digits without strings
-while n: n, d = divmod(n, 10)       # d = last digit
+class Solution:
+    def uniquePaths(self, m: int, n: int) -> int:
+        # Combination: C(m + n - 2, min(m - 1, n - 1))
+        return math.comb(m + n - 2, m - 1)
+</code></pre>
+</div>
+</details>
 
-# Cross product: orientation of C vs line AB (0 = collinear)
-cross = (bx-ax)*(cy-ay) - (by-ay)*(cx-ax)</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h3>Complexity & Edge Cases</h3>
+<ul>
+  <li><strong>Time Complexity:</strong> <code>{2, 3, 5}</code>O(\min(m, n))<code>{2, 3, 5}</code> multiplicative steps.</li>
+  <li><strong>Space Complexity:</strong> <code>{2, 3, 5}</code>O(1)<code>{2, 3, 5}</code>.</li>
+  <li><strong>Edge Cases:</strong> <code>{2, 3, 5}</code>m = 1<code>{2, 3, 5}</code> or <code>{2, 3, 5}</code>n = 1<code>{2, 3, 5}</code> (returns 1).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0557-lc2013-detect-squares.html"><span class="lbl">← Previous</span>#2013 Detect Squares</a><a href="../problems/0559-lc118-pascal-s-triangle.html" style="text-align:right"><span class="lbl">Next →</span>#118 Pascal's Triangle</a></div>
 </div>

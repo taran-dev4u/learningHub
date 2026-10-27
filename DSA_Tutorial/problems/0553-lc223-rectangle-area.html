@@ -23,39 +23,43 @@
  › Subpattern 19.4: Geometry &amp; Points · Problem 553 of 699</p>
 
 <h2>📋 The problem</h2><p>Given two axis-aligned rectangles, return the total area they cover (sum minus overlap).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h3>Problem Overview</h3>
+<p>Given the coordinates of two rectilinear rectangles in a 2D plane: rectangle 1 <code>{2, 3, 5}</code>(ax1, ay1)<code>{2, 3, 5}</code> to <code>{2, 3, 5}</code>(ax2, ay2)<code>{2, 3, 5}</code> and rectangle 2 <code>{2, 3, 5}</code>(bx1, by1)<code>{2, 3, 5}</code> to <code>{2, 3, 5}</code>(bx2, by2)<code>{2, 3, 5}</code>, return the total area covered by the two rectangles.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Geometry &amp; Points</strong> — Cross product, dot product, distance², bounding rectangles, lattice/grid geometry.</p>
+<h3>Key Insights</h3>
+<p>By the <strong>Principle of Inclusion-Exclusion</strong>:
+<code>{2, 3, 5}</code><code>{2, 3, 5}</code>	ext{Total Area} = 	ext{Area}_1 + 	ext{Area}_2 - 	ext{Overlap Area}<code>{2, 3, 5}</code><code>{2, 3, 5}</code>
+The overlap rectangle's boundaries are:
+<ul>
+  <li><code>{2, 3, 5}</code>	ext{overlap_width} = \max(0, \min(ax2, bx2) - \max(ax1, bx1))<code>{2, 3, 5}</code></li>
+  <li><code>{2, 3, 5}</code>	ext{overlap_height} = \max(0, \min(ay2, by2) - \max(ay1, by1))<code>{2, 3, 5}</code></li>
+</ul>
+If either overlap width or height <code>{2, 3, 5}</code>\le 0<code>{2, 3, 5}</code>, the rectangles do not intersect, and overlap area is 0.</p>
 
-<h2>Why this pattern?</h2><ul><li>divisibility, remainders, "answer modulo 10⁹+7"</li><li>counting primes/factors/trailing zeros</li><li>digit games: reverse, palindrome number, happy number</li><li>geometry: overlaps of rectangles, points on a line, areas</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Math, Number Theory &amp; Geometry master template and adapt the marked parts to this problem:</p><pre><code>import math
-math.gcd(a, b)                      # Euclid, O(log min(a,b))
-pow(a, b, MOD)                      # fast modular exponentiation, O(log b)
+<details>
+<summary><strong>Python 3 Solution (Click to Expand)</strong></summary>
+<div class="code-block">
+<pre><code class="language-python">class Solution:
+    def computeArea(self, ax1: int, ay1: int, ax2: int, ay2: int, bx1: int, by1: int, bx2: int, by2: int) -> int:
+        area1 = (ax2 - ax1) * (ay2 - ay1)
+        area2 = (bx2 - bx1) * (by2 - by1)
+        
+        # Calculate intersection width and height
+        overlap_width = max(0, min(ax2, bx2) - max(ax1, bx1))
+        overlap_height = max(0, min(ay2, by2) - max(ay1, by1))
+        overlap_area = overlap_width * overlap_height
+        
+        return area1 + area2 - overlap_area
+</code></pre>
+</div>
+</details>
 
-def sieve(n):                       # all primes ≤ n
-    is_p = [True] * (n + 1)
-    is_p[0] = is_p[1] = False
-    for i in range(2, int(n**0.5) + 1):
-        if is_p[i]:
-            for j in range(i*i, n + 1, i):   # start at i² — smaller done
-                is_p[j] = False
-    return is_p
-
-# Digits without strings
-while n: n, d = divmod(n, 10)       # d = last digit
-
-# Cross product: orientation of C vs line AB (0 = collinear)
-cross = (bx-ax)*(cy-ay) - (by-ay)*(cx-ax)</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h3>Complexity & Edge Cases</h3>
+<ul>
+  <li><strong>Time Complexity:</strong> <code>{2, 3, 5}</code>O(1)<code>{2, 3, 5}</code>.</li>
+  <li><strong>Space Complexity:</strong> <code>{2, 3, 5}</code>O(1)<code>{2, 3, 5}</code>.</li>
+  <li><strong>Edge Cases:</strong> One rectangle fully inside another, non-overlapping rectangles separated by distance.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0552-lc149-max-points-on-a-line.html"><span class="lbl">← Previous</span>#149 Max Points on a Line</a><a href="../problems/0554-lc335-self-crossing.html" style="text-align:right"><span class="lbl">Next →</span>#335 Self Crossing</a></div>
 </div>

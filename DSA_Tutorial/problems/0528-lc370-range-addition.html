@@ -23,37 +23,46 @@
  › Subpattern 17.3: Difference Array / Range Update · Problem 528 of 699</p>
 
 <h2>📋 The problem</h2><p>Apply many (start, end, value) range additions to a zero array and return the final array.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>You are given an integer <code>length</code> and an array <code>updates</code> where <code>updates[i] = [startIdx, endIdx, inc]</code>. Apply all updates to an initially zeroed array and return the final array.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Difference Array / Range Update</strong> — diff[l] += v, diff[r+1] -= v on range updates; prefix-sum the diff array at the end.</p>
+<p><strong>The Difference Array Technique:</strong>
+Instead of modifying all elements from $start$ to $end$ ($O(length)$ per update):
+Apply changes only at the boundaries in $O(1)$ time!
+- <code>diff[start] += inc</code>: indicates values from $start$ onward increase by $inc$.
+- <code>diff[end + 1] -= inc</code>: stops the increase from extending past $end$!</p>
+<p>After all updates are recorded in $O(1)$ each, compute the running prefix sum of <code>diff</code> to reconstruct the final array in a single $O(n)$ pass!</p>
 
-<h2>Why this pattern?</h2><ul><li>many range-sum queries, immutable array</li><li>"number of subarrays summing to k / divisible by k"</li><li>many range UPDATES, values read once at the end → difference array</li><li>2-D block sums → 2-D prefix (inclusion-exclusion)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Prefix Sum &amp; Difference Array master template and adapt the marked parts to this problem:</p><pre><code># Prefix sums + hash map: count subarrays summing to k
-from collections import defaultdict
-count, cur = 0, 0
-seen = defaultdict(int)
-seen[0] = 1                      # empty prefix — subarrays starting at 0
-for x in nums:
-    cur += x
-    count += seen[cur - k]       # each earlier prefix = one subarray ending here
-    seen[cur] += 1
+<h2>🐢 Brute force vs optimal</h2>
+<p>Updating intervals directly takes $O(U 	imes N)$ time. Difference array executes updates in $O(1)$ and rebuilds in $O(N)$ time.</p>
 
-# Difference array: m range updates in O(1) each
-diff = [0] * (n + 1)
-for l, r, val in updates:
-    diff[l] += val
-    diff[r + 1] -= val           # effect ends after r
-# final values = prefix sums of diff</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<div class="insight">💡 <strong>Key insight:</strong> Difference array: <code>diff[start] += inc; diff[end + 1] -= inc</code>. Final array is the running cumulative prefix sum of <code>diff</code>. $O(U + N)$ total time!</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def getModifiedArray(length: int, updates: list[list[int]]) -> list[int]:
+    diff = [0] * (length + 1)
+    
+    # 1. Apply boundary markers in O(1)
+    for start, end, inc in updates:
+        diff[start] += inc
+        diff[end + 1] -= inc
+        
+    # 2. Cumulative prefix sum in O(length)
+    res = [0] * length
+    curr = 0
+    for i in range(length):
+        curr += diff[i]
+        res[i] = curr
+        
+    return res
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(U + N)$ where $U = 	ext{len}(updates)$ and $N = length$.<br>
+<strong>Space:</strong> $O(N)$ — Difference buffer.</p>
+
 
 <div class="pager"><a href="../problems/0527-lc304-range-sum-query-2d-immutable.html"><span class="lbl">← Previous</span>#304 Range Sum Query 2D - Immutable</a><a href="../problems/0529-lc1094-car-pooling.html" style="text-align:right"><span class="lbl">Next →</span>#1094 Car Pooling</a></div>
 </div>

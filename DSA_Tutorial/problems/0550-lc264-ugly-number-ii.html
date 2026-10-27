@@ -23,39 +23,45 @@
  › Subpattern 19.3: Primes &amp; Sieve · Problem 550 of 699</p>
 
 <h2>📋 The problem</h2><p>Return the n-th 'ugly number' — the n-th positive integer whose prime factors are limited to 2, 3, and 5.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h3>Problem Overview</h3>
+<p>Given an integer <code>{2, 3, 5}</code>n<code>{2, 3, 5}</code>, return the <code>{2, 3, 5}</code>n^{	ext{th}}<code>{2, 3, 5}</code> ugly number. Ugly numbers are positive integers whose prime factors are limited to 2, 3, and 5.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Primes &amp; Sieve</strong> — Sieve of Eratosthenes / linear sieve for prime queries; trial division for one-off checks.</p>
+<h3>Key Insights</h3>
+<p>Every ugly number after 1 must be formed by multiplying a previously generated ugly number by 2, 3, or 5.
+We maintain three pointers <code>{2, 3, 5}</code>p_2, p_3, p_5<code>{2, 3, 5}</code>, each pointing to the candidate index in the sorted list of ugly numbers:
+<code>{2, 3, 5}</code><code>{2, 3, 5}</code>next_ugly = \min(ugly[p_2] 	imes 2, ugly[p_3] 	imes 3, ugly[p_5] 	imes 5)<code>{2, 3, 5}</code><code>{2, 3, 5}</code>
+Whenever the chosen candidate matches <code>{2, 3, 5}</code>ugly[p_k] 	imes k<code>{2, 3, 5}</code>, advance <code>{2, 3, 5}</code>p_k<code>{2, 3, 5}</code>. (Handling duplicates like <code>{2, 3, 5}</code>2 	imes 3 = 6<code>{2, 3, 5}</code> and <code>{2, 3, 5}</code>3 	imes 2 = 6<code>{2, 3, 5}</code> naturally by advancing both pointers).</p>
 
-<h2>Why this pattern?</h2><ul><li>divisibility, remainders, "answer modulo 10⁹+7"</li><li>counting primes/factors/trailing zeros</li><li>digit games: reverse, palindrome number, happy number</li><li>geometry: overlaps of rectangles, points on a line, areas</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Math, Number Theory &amp; Geometry master template and adapt the marked parts to this problem:</p><pre><code>import math
-math.gcd(a, b)                      # Euclid, O(log min(a,b))
-pow(a, b, MOD)                      # fast modular exponentiation, O(log b)
+<details>
+<summary><strong>Python 3 Solution (Three-Pointer DP - O(N))</strong></summary>
+<div class="code-block">
+<pre><code class="language-python">class Solution:
+    def nthUglyNumber(self, n: int) -> int:
+        ugly = [1] * n
+        p2 = p3 = p5 = 0
+        
+        for i in range(1, n):
+            c2, c3, c5 = ugly[p2] * 2, ugly[p3] * 3, ugly[p5] * 5
+            nxt = min(c2, c3, c5)
+            ugly[i] = nxt
+            
+            if nxt == c2:
+                p2 += 1
+            if nxt == c3:
+                p3 += 1
+            if nxt == c5:
+                p5 += 1
+                
+        return ugly[-1]
+</code></pre>
+</div>
+</details>
 
-def sieve(n):                       # all primes ≤ n
-    is_p = [True] * (n + 1)
-    is_p[0] = is_p[1] = False
-    for i in range(2, int(n**0.5) + 1):
-        if is_p[i]:
-            for j in range(i*i, n + 1, i):   # start at i² — smaller done
-                is_p[j] = False
-    return is_p
-
-# Digits without strings
-while n: n, d = divmod(n, 10)       # d = last digit
-
-# Cross product: orientation of C vs line AB (0 = collinear)
-cross = (bx-ax)*(cy-ay) - (by-ay)*(cx-ax)</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h3>Complexity & Edge Cases</h3>
+<ul>
+  <li><strong>Time Complexity:</strong> <code>{2, 3, 5}</code>O(n)<code>{2, 3, 5}</code> strictly linear time.</li>
+  <li><strong>Space Complexity:</strong> <code>{2, 3, 5}</code>O(n)<code>{2, 3, 5}</code> array to store <code>{2, 3, 5}</code>n<code>{2, 3, 5}</code> ugly numbers.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0549-lc263-ugly-number.html"><span class="lbl">← Previous</span>#263 Ugly Number</a><a href="../problems/0551-lc279-perfect-squares.html" style="text-align:right"><span class="lbl">Next →</span>#279 Perfect Squares</a></div>
 </div>
