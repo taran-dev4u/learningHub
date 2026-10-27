@@ -5,7 +5,7 @@ A personal static learning hub generated from the HTML sites in this folder.
 ## Included sites
 
 - DSA Ultimate Index: 940 problems, 47 sections, 425 resources
-- System Design: 322 concepts, 15 sections, 216 resources
+- System Design: 322 concepts, 15 sections, 222 resources
 - CS Fundamentals: 156 concepts, 7 sections, 43 resources
 - Behavioral and Leadership: 145 concepts, 6 sections, 25 resources
 - AI Engineering: 177 concepts, 11 sections, 56 resources

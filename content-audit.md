@@ -1,6 +1,6 @@
 # Taran's Learning Hub Content Audit
 
-Generated: 2026-10-27T11:37:53.184Z
+Generated: 2026-10-27T11:57:52.845Z
 
 ## Research References
 
@@ -85,7 +85,7 @@ Sections:
 
 ## System Design
 
-- Inventory: 15 sections, 62 subsections, 322 concepts, 216 resources.
+- Inventory: 15 sections, 62 subsections, 322 concepts, 222 resources.
 - Formatting focus: consistent navigation, closed resources, clean headings, and better fallback search links.
 - Duplicate subsection names to review: none found by title.
 - Weak/generic subsection names to review: none found by heuristic.
@@ -304,10 +304,10 @@ Sections:
 
 Sections:
 - System Design Interview Process & Requirements: 28 items, 6 subsections, 20 resources.
-- Core System Design Fundamentals: 23 items, 4 subsections, 28 resources.
-- Networking, APIs & Traffic Management: 35 items, 6 subsections, 41 resources.
+- Core System Design Fundamentals: 23 items, 4 subsections, 30 resources.
+- Networking, APIs & Traffic Management: 35 items, 6 subsections, 44 resources.
 - Data Storage, Databases & Distribution: 47 items, 8 subsections, 50 resources.
-- Caching & Content Delivery: 28 items, 6 subsections, 29 resources.
+- Caching & Content Delivery: 28 items, 6 subsections, 30 resources.
 - Asynchronous Messaging & Event Streaming: 19 items, 4 subsections, 23 resources.
 - Service Architecture Patterns: 17 items, 3 subsections, 18 resources.
 - Reliability, Resilience & Idempotency: 17 items, 4 subsections, 18 resources.

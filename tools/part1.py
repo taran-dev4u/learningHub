@@ -32,13 +32,13 @@ L1 = {
   ["Interactive latency numbers (by year)", "https://colin-scott.github.io/personal_website/research/interactive_latency.html"],
   ["AlgoMaster — Latency vs throughput vs bandwidth", "https://algomaster.io/learn/system-design/latency-vs-throughput"]]},
 
-"latency-throughput-scalability-basics.md": {"videos": [["xpDnVSmNFX0", "System Design BASICS: Horizontal vs. Vertical Scaling", "Gaurav Sen"]], "docs": [
+"latency-throughput-scalability-basics.md": {"videos": [["xpDnVSmNFX0", "System Design BASICS: Horizontal vs. Vertical Scaling", "Gaurav Sen"], ["tjubQ97lxA4", "Scale an App to Millions of Users - System Design", "Caleb Curry"]], "docs": [
   ["AlgoMaster — Scalability", "https://algomaster.io/learn/system-design/scalability"],
   ["AlgoMaster — Vertical vs horizontal scaling", "https://algomaster.io/learn/system-design/vertical-vs-horizontal-scaling"],
   ["AWS — Throughput vs latency", "https://aws.amazon.com/compare/the-difference-between-throughput-and-latency/"],
   ["Universal Scalability Law (Gunther)", "https://en.wikipedia.org/wiki/Neil_J._Gunther#Universal_Law_of_Computational_Scalability"]]},
 
-"availability-reliability-slas.md": {"videos": [["LdvduBxZRLs", "Design Patterns for High Availability: What gets you 99.999% uptime?", "Gaurav Sen"]], "docs": [
+"availability-reliability-slas.md": {"videos": [["LdvduBxZRLs", "Design Patterns for High Availability: What gets you 99.999% uptime?", "Gaurav Sen"], ["3Lis4w4_bBc", "8 Most Important Tips for Designing Fault-Tolerant System", "ByteByteGo"]], "docs": [
   ["AlgoMaster — Availability", "https://algomaster.io/learn/system-design/availability"],
   ["Google SRE Book — Service level objectives", "https://sre.google/sre-book/service-level-objectives/"],
   ["Cockroach Labs — What is fault tolerance?", "https://www.cockroachlabs.com/blog/what-is-fault-tolerance/"],
@@ -61,13 +61,13 @@ L1 = {
   ["MDN — HTTP overview", "https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview"],
   ["AlgoMaster — TCP vs UDP", "https://algomaster.io/learn/system-design/tcp-vs-udp"]]},
 
-"api-styles-rest-graphql-grpc.md": {"videos": [["4vLxWqE94l4", "Top 6 Most Popular API Architecture Styles", "ByteByteGo"]], "docs": [
+"api-styles-rest-graphql-grpc.md": {"videos": [["4vLxWqE94l4", "Top 6 Most Popular API Architecture Styles", "ByteByteGo"], ["DQ57zYedMdQ", "API Design in System Design Interviews w/ Meta Staff Engineer", "Hello Interview"]], "docs": [
   ["AlgoMaster — REST vs GraphQL", "https://blog.algomaster.io/p/rest-vs-graphql"],
   ["gRPC — Introduction and core concepts", "https://grpc.io/docs/what-is-grpc/introduction/"],
   ["GraphQL — Learn", "https://graphql.org/learn/"],
   ["Google API design guide", "https://cloud.google.com/apis/design"]]},
 
-"dns-load-balancers-traffic-routing.md": {"videos": [["YM_dEeXmnuY", "Load Balancers: Algorithms and Design", "Gaurav Sen"]], "docs": [
+"dns-load-balancers-traffic-routing.md": {"videos": [["YM_dEeXmnuY", "Load Balancers: Algorithms and Design", "Gaurav Sen"], ["xg7Dj2AXLyk", "The Ultimate Guide to Load Balancers (System Design Fundamentals)", "Software Developer Diaries"]], "docs": [
   ["AlgoMaster — How DNS actually works", "https://blog.algomaster.io/p/how-dns-actually-works"],
   ["AlgoMaster — Load balancing algorithms explained with code", "https://blog.algomaster.io/p/load-balancing-algorithms-explained-with-code"],
   ["NGINX — Inside NGINX: designed for performance and scale", "https://www.nginx.com/blog/inside-nginx-how-we-designed-for-performance-scale/"],
@@ -79,7 +79,7 @@ L1 = {
   ["microservices.io — API gateway pattern", "https://microservices.io/patterns/apigateway.html"],
   ["Istio — What is a service mesh?", "https://istio.io/latest/about/service-mesh/"]]},
 
-"rate-limiting-algorithms.md": {"videos": [["mhUQe4BKZXs", "Rate Limiting system design — token bucket, leaky bucket, sliding logs", "Tech Dummies - Narendra Lakshmana Gowda"]], "docs": [
+"rate-limiting-algorithms.md": {"videos": [["mhUQe4BKZXs", "Rate Limiting system design — token bucket, leaky bucket, sliding logs", "Tech Dummies - Narendra Lakshmana Gowda"], ["MIJFyUPG4Z4", "Design a Distributed Rate Limiter w/ a Ex-Meta Staff Engineer: System Design Breakdown", "Hello Interview"]], "docs": [
   ["AlgoMaster — Rate limiting algorithms explained with code", "https://blog.algomaster.io/p/rate-limiting-algorithms-explained-with-code"],
   ["Cloudflare — How we built rate limiting (sliding window)", "https://blog.cloudflare.com/counting-things-a-lot-of-different-things/"],
   ["Stripe — Scaling your API with rate limiters", "https://stripe.com/blog/rate-limiters"]]},
@@ -134,7 +134,7 @@ L1 = {
   ["AlgoMaster — Bloom filters", "https://algomaster.io/learn/system-design/bloom-filters"],
   ["Cassandra — Storage engine and architecture", "https://cassandra.apache.org/doc/latest/cassandra/architecture/storage-engine.html"]]},
 
-"cache-strategies.md": {"videos": [["dGAgxozNWFE", "Cache Systems Every Developer Should Know", "ByteByteGo"]], "docs": [
+"cache-strategies.md": {"videos": [["dGAgxozNWFE", "Cache Systems Every Developer Should Know", "ByteByteGo"], ["1NngTUYPdpI", "Caching in System Design Interviews w/ Meta Staff Engineer", "Hello Interview"]], "docs": [
   ["AlgoMaster — Caching strategies", "https://algomaster.io/learn/system-design/caching-strategies"],
   ["AWS Builders' Library — Caching challenges and strategies", "https://aws.amazon.com/builders-library/caching-challenges-and-strategies/"],
   ["AlgoMaster — Read-through vs write-through cache", "https://blog.algomaster.io/p/59cae60d-9717-4e20-a59e-759e370db4e5"]]},

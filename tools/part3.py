@@ -4,7 +4,7 @@ C = {
 "foundational-designs/url-shortener-tinyurl-bit-ly-hash-base62-collision-handling-analytics": {"videos": [["xFeWVugaouk", "Design a URL Shortener (TinyURL, Bit.ly)", "Jordan has no life"]], "docs": [
   ["AlgoMaster — Design a URL shortener", "https://algomaster.io/learn/system-design-interviews/design-url-shortener"],
   ["System Design Primer — Design Pastebin / TinyURL", "https://github.com/donnemartin/system-design-primer/blob/master/solutions/system_design/pastebin/README.md"]]},
-"foundational-designs/distributed-cache-redis-cluster-consistent-hashing-eviction-replication": {"videos": [["iuqZvajTOyA", "System Design Interview — Distributed Cache", "System Design Interview"]], "docs": [
+"foundational-designs/distributed-cache-redis-cluster-consistent-hashing-eviction-replication": {"videos": [["iuqZvajTOyA", "System Design Interview — Distributed Cache", "System Design Interview"], ["1NngTUYPdpI", "Caching in System Design Interviews w/ Meta Staff Engineer", "Hello Interview"]], "docs": [
   ["Redis — Cluster specification", "https://redis.io/docs/latest/operate/oss_and_stack/reference/cluster-spec/"],
   ["AlgoMaster — Distributed caching", "https://blog.algomaster.io/p/distributed-caching"]]},
 "foundational-designs/key-value-store-lsm-tree-compaction-range-queries": {"videos": [["rnZmdmlR-2M", "System Design: distributed database — key-value store", "Tushar Roy - Coding Made Simple"]], "docs": [
@@ -13,7 +13,7 @@ C = {
 "foundational-designs/content-delivery-network-pull-vs-push-origin-shield-cache-invalidation": {"videos": [["8zX0rue2Hic", "System Design: Content Delivery Networks (simplified)", "Gaurav Sen"]], "docs": [
   ["Cloudflare — What is a CDN?", "https://www.cloudflare.com/learning/cdn/what-is-a-cdn/"],
   ["Push vs pull CDNs", "https://www.geeksforgeeks.org/system-design/pull-cdn-vs-push-cdn/"]]},
-"foundational-designs/rate-limiter-distributed-token-bucket-in-redis-per-user-limits": {"videos": [["mhUQe4BKZXs", "Rate limiting system design — token bucket, leaky bucket, sliding logs", "Tech Dummies - Narendra Lakshmana Gowda"]], "docs": [
+"foundational-designs/rate-limiter-distributed-token-bucket-in-redis-per-user-limits": {"videos": [["mhUQe4BKZXs", "Rate limiting system design — token bucket, leaky bucket, sliding logs", "Tech Dummies - Narendra Lakshmana Gowda"], ["MIJFyUPG4Z4", "Design a Distributed Rate Limiter w/ a Ex-Meta Staff Engineer: System Design Breakdown", "Hello Interview"]], "docs": [
   ["Stripe — Scaling your API with rate limiters", "https://stripe.com/blog/rate-limiters"],
   ["AlgoMaster — Rate limiting algorithms explained with code", "https://blog.algomaster.io/p/rate-limiting-algorithms-explained-with-code"]]},
 "foundational-designs/distributed-job-scheduler-priority-queues-at-least-once-execution-dedup": {"videos": [], "docs": [

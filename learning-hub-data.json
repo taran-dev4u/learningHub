@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-27T11:37:53.184Z",
+  "generatedAt": "2026-10-27T11:57:52.845Z",
   "stats": {
     "domains": 7,
     "sections": 108,
@@ -7,8 +7,8 @@
     "items": 2087,
     "problems": 940,
     "concepts": 1147,
-    "resources": 848,
-    "resourceEntries": 1033,
+    "resources": 854,
+    "resourceEntries": 1039,
     "additions": 5
   },
   "sources": [
@@ -2141,19 +2141,19 @@
           ],
           "link": "system_design.html#section-2",
           "itemCount": 23,
-          "resourceCount": 28,
+          "resourceCount": 30,
           "subsections": [
             {
               "title": "Latency, Throughput & Scalability Basics",
               "description": "Core performance terms, tail latency, vertical/horizontal scaling, and throughput trade-offs.",
               "itemCount": 6,
-              "resourceCount": 6
+              "resourceCount": 7
             },
             {
               "title": "Availability, Reliability & SLAs",
               "description": "Reliability targets, downtime math, redundancy, and failover models.",
               "itemCount": 6,
-              "resourceCount": 4
+              "resourceCount": 5
             },
             {
               "title": "Consistency Models",
@@ -2180,7 +2180,7 @@
           ],
           "link": "system_design.html#section-3",
           "itemCount": 35,
-          "resourceCount": 41,
+          "resourceCount": 44,
           "subsections": [
             {
               "title": "HTTP, TLS & Protocol Fundamentals",
@@ -2192,13 +2192,13 @@
               "title": "API Styles: REST, GraphQL & gRPC",
               "description": "Choosing API contracts for public clients, internal services, streaming, and schema evolution.",
               "itemCount": 6,
-              "resourceCount": 6
+              "resourceCount": 7
             },
             {
               "title": "DNS, Load Balancers & Traffic Routing",
               "description": "DNS resolution, records, GeoDNS, L4/L7 load balancing, health checks, and routing algorithms.",
               "itemCount": 8,
-              "resourceCount": 6
+              "resourceCount": 7
             },
             {
               "title": "Proxies, API Gateways & Service Mesh",
@@ -2210,7 +2210,7 @@
               "title": "Rate Limiting Algorithms",
               "description": "Token bucket, leaky bucket, fixed/sliding windows, and distributed rate limiting.",
               "itemCount": 5,
-              "resourceCount": 5
+              "resourceCount": 6
             },
             {
               "title": "Real-Time Communication: Polling, SSE, WebSockets & WebRTC",
@@ -2294,13 +2294,13 @@
           ],
           "link": "system_design.html#section-5",
           "itemCount": 28,
-          "resourceCount": 29,
+          "resourceCount": 30,
           "subsections": [
             {
               "title": "Cache Strategies",
               "description": "Cache-aside, read-through, write-through, write-back, refresh-ahead, and where each belongs.",
               "itemCount": 5,
-              "resourceCount": 3
+              "resourceCount": 4
             },
             {
               "title": "Cache Eviction, TTL & Invalidation",
@@ -2678,7 +2678,7 @@
         }
       ],
       "itemCount": 322,
-      "resourceCount": 216,
+      "resourceCount": 222,
       "progressLabel": "concepts",
       "coverage": {
         "title": "System Design Coverage Check",
@@ -49839,11 +49839,11 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🎬YT",
-          "url": "https://www.youtube.com/watch?v=qcnSdRnMF38"
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=json+mode+and+schema-constrained+decoding+AI+engineering+explained"
         },
         {
-          "title": "🌐G",
+          "title": "🔍G",
           "url": "https://www.google.com/search?q=json+mode+and+schema-constrained+decoding+AI+engineering+tutorial"
         }
       ],
@@ -49863,11 +49863,11 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🎬YT",
-          "url": "https://www.youtube.com/watch?v=oHo6IoxPbDc"
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=function+calling+apis+AI+engineering+explained"
         },
         {
-          "title": "🌐G",
+          "title": "🔍G",
           "url": "https://www.google.com/search?q=function+calling+apis+AI+engineering+tutorial"
         }
       ],
@@ -49887,11 +49887,11 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🎬YT",
-          "url": "https://www.youtube.com/watch?v=2hH5vA9zQVo"
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=tool+selection+and+routing+AI+engineering+explained"
         },
         {
-          "title": "🌐G",
+          "title": "🔍G",
           "url": "https://www.google.com/search?q=tool+selection+and+routing+AI+engineering+tutorial"
         }
       ],
@@ -49911,11 +49911,11 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🎬YT",
-          "url": "https://www.youtube.com/watch?v=FtWHUC3fyUc"
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=parallel+tool+calls+AI+engineering+explained"
         },
         {
-          "title": "🌐G",
+          "title": "🔍G",
           "url": "https://www.google.com/search?q=parallel+tool+calls+AI+engineering+tutorial"
         }
       ],
@@ -49935,11 +49935,11 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🎬YT",
-          "url": "https://www.youtube.com/watch?v=GxYOVJbmLU8"
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=validating+and+repairing+output+AI+engineering+explained"
         },
         {
-          "title": "🌐G",
+          "title": "🔍G",
           "url": "https://www.google.com/search?q=validating+and+repairing+output+AI+engineering+tutorial"
         }
       ],
@@ -49959,11 +49959,11 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🎬YT",
-          "url": "https://www.youtube.com/watch?v=Zg0do894s9w"
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=retrieval+metrics+recall+k+mrr+AI+engineering+explained"
         },
         {
-          "title": "🌐G",
+          "title": "🔍G",
           "url": "https://www.google.com/search?q=retrieval+metrics+recall+k+mrr+AI+engineering+tutorial"
         }
       ],
@@ -49983,11 +49983,11 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🎬YT",
-          "url": "https://www.youtube.com/watch?v=udWEw-mEENw"
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=faithfulness+and+groundedness+AI+engineering+explained"
         },
         {
-          "title": "🌐G",
+          "title": "🔍G",
           "url": "https://www.google.com/search?q=faithfulness+and+groundedness+AI+engineering+tutorial"
         }
       ],
@@ -50007,11 +50007,11 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🎬YT",
-          "url": "https://www.youtube.com/watch?v=LOqM5WlD5BE"
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=golden+datasets+and+synthetic+evals+AI+engineering+explained"
         },
         {
-          "title": "🌐G",
+          "title": "🔍G",
           "url": "https://www.google.com/search?q=golden+datasets+and+synthetic+evals+AI+engineering+tutorial"
         }
       ],
@@ -50031,11 +50031,11 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🎬YT",
-          "url": "https://www.youtube.com/watch?v=sVcwVQRHIc8"
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=end-to-end+rag+eval+pipelines+AI+engineering+explained"
         },
         {
-          "title": "🌐G",
+          "title": "🔍G",
           "url": "https://www.google.com/search?q=end-to-end+rag+eval+pipelines+AI+engineering+tutorial"
         }
       ],
@@ -50055,11 +50055,11 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🎬YT",
-          "url": "https://www.youtube.com/watch?v=BwXremQ-i6I"
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=agent+failure+modes+AI+engineering+explained"
         },
         {
-          "title": "🌐G",
+          "title": "🔍G",
           "url": "https://www.google.com/search?q=agent+failure+modes+AI+engineering+tutorial"
         }
       ],
@@ -50079,11 +50079,11 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🎬YT",
-          "url": "https://www.youtube.com/watch?v=nr942N6cehA"
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=guardrails+on+actions+and+budgets+AI+engineering+explained"
         },
         {
-          "title": "🌐G",
+          "title": "🔍G",
           "url": "https://www.google.com/search?q=guardrails+on+actions+and+budgets+AI+engineering+tutorial"
         }
       ],
@@ -50103,11 +50103,11 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🎬YT",
-          "url": "https://www.youtube.com/watch?v=9iS-YYLIXiw"
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=human-in-the-loop+checkpoints+AI+engineering+explained"
         },
         {
-          "title": "🌐G",
+          "title": "🔍G",
           "url": "https://www.google.com/search?q=human-in-the-loop+checkpoints+AI+engineering+tutorial"
         }
       ],
@@ -50127,11 +50127,11 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🎬YT",
-          "url": "https://www.youtube.com/watch?v=166wZbeCM3M"
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=tracing+agent+decisions+AI+engineering+explained"
         },
         {
-          "title": "🌐G",
+          "title": "🔍G",
           "url": "https://www.google.com/search?q=tracing+agent+decisions+AI+engineering+tutorial"
         }
       ],
@@ -50151,11 +50151,11 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🎬YT",
-          "url": "https://www.youtube.com/watch?v=Cc8lLHJ03DI"
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=prompt+registries+and+versioning+AI+engineering+explained"
         },
         {
-          "title": "🌐G",
+          "title": "🔍G",
           "url": "https://www.google.com/search?q=prompt+registries+and+versioning+AI+engineering+tutorial"
         }
       ],
@@ -50175,11 +50175,11 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🎬YT",
-          "url": "https://www.youtube.com/watch?v=JT9v1xvJSQM"
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=a%2Fb+testing+prompts+AI+engineering+explained"
         },
         {
-          "title": "🌐G",
+          "title": "🔍G",
           "url": "https://www.google.com/search?q=a%2Fb+testing+prompts+AI+engineering+tutorial"
         }
       ],
@@ -50199,11 +50199,11 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🎬YT",
-          "url": "https://www.youtube.com/watch?v=jvga0NxhKA8"
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=regression+testing+on+prompt+change+AI+engineering+explained"
         },
         {
-          "title": "🌐G",
+          "title": "🔍G",
           "url": "https://www.google.com/search?q=regression+testing+on+prompt+change+AI+engineering+tutorial"
         }
       ],
@@ -50223,11 +50223,11 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🎬YT",
-          "url": "https://www.youtube.com/watch?v=zkrP78UDRLI"
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=templates+and+variable+hygiene+AI+engineering+explained"
         },
         {
-          "title": "🌐G",
+          "title": "🔍G",
           "url": "https://www.google.com/search?q=templates+and+variable+hygiene+AI+engineering+tutorial"
         }
       ],
@@ -50247,11 +50247,11 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🎬YT",
-          "url": "https://www.youtube.com/watch?v=zqeWklz36IQ"
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=token+cost+and+latency+dashboards+AI+engineering+explained"
         },
         {
-          "title": "🌐G",
+          "title": "🔍G",
           "url": "https://www.google.com/search?q=token+cost+and+latency+dashboards+AI+engineering+tutorial"
         }
       ],
@@ -50271,11 +50271,11 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🎬YT",
-          "url": "https://www.youtube.com/watch?v=zgNeoEbkTVU"
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=logging+completions+safely+AI+engineering+explained"
         },
         {
-          "title": "🌐G",
+          "title": "🔍G",
           "url": "https://www.google.com/search?q=logging+completions+safely+AI+engineering+tutorial"
         }
       ],
@@ -50295,11 +50295,11 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🎬YT",
-          "url": "https://www.youtube.com/watch?v=flSt6RIMn3k"
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=quality+drift+detection+AI+engineering+explained"
         },
         {
-          "title": "🌐G",
+          "title": "🔍G",
           "url": "https://www.google.com/search?q=quality+drift+detection+AI+engineering+tutorial"
         }
       ],
@@ -50319,11 +50319,11 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🎬YT",
-          "url": "https://www.youtube.com/watch?v=DQBqh6gcx7U&t=310s"
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=user+feedback+loops+AI+engineering+explained"
         },
         {
-          "title": "🌐G",
+          "title": "🔍G",
           "url": "https://www.google.com/search?q=user+feedback+loops+AI+engineering+tutorial"
         }
       ],
@@ -50343,11 +50343,11 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🎬YT",
-          "url": "https://www.youtube.com/watch?v=vD0E3EUb8-8&t=360s"
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=input+and+output+content+filtering+AI+engineering+explained"
         },
         {
-          "title": "🌐G",
+          "title": "🔍G",
           "url": "https://www.google.com/search?q=input+and+output+content+filtering+AI+engineering+tutorial"
         }
       ],
@@ -50367,11 +50367,11 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🎬YT",
-          "url": "https://www.youtube.com/watch?v=jrHRe9lSqqA&t=260s"
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=prompt+injection+defenses+AI+engineering+explained"
         },
         {
-          "title": "🌐G",
+          "title": "🔍G",
           "url": "https://www.google.com/search?q=prompt+injection+defenses+AI+engineering+tutorial"
         }
       ],
@@ -50391,11 +50391,11 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🎬YT",
-          "url": "https://www.youtube.com/watch?v=BVK0LBhTddY"
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=jailbreak+detection+AI+engineering+explained"
         },
         {
-          "title": "🌐G",
+          "title": "🔍G",
           "url": "https://www.google.com/search?q=jailbreak+detection+AI+engineering+tutorial"
         }
       ],
@@ -50415,11 +50415,11 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🎬YT",
-          "url": "https://www.youtube.com/watch?v=DQLvz1IPESw"
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=pii+redaction+AI+engineering+explained"
         },
         {
-          "title": "🌐G",
+          "title": "🔍G",
           "url": "https://www.google.com/search?q=pii+redaction+AI+engineering+tutorial"
         }
       ],
@@ -50439,11 +50439,11 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🎬YT",
-          "url": "https://www.youtube.com/watch?v=QHBjufYK8TA"
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=model+routing+and+cascades+AI+engineering+explained"
         },
         {
-          "title": "🌐G",
+          "title": "🔍G",
           "url": "https://www.google.com/search?q=model+routing+and+cascades+AI+engineering+tutorial"
         }
       ],
@@ -50463,11 +50463,11 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🎬YT",
-          "url": "https://www.youtube.com/watch?v=u57EnkQaUTY&t=280s"
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=caching+exact+and+semantic+AI+engineering+explained"
         },
         {
-          "title": "🌐G",
+          "title": "🔍G",
           "url": "https://www.google.com/search?q=caching+exact+and+semantic+AI+engineering+tutorial"
         }
       ],
@@ -50487,11 +50487,11 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🎬YT",
-          "url": "https://www.youtube.com/watch?v=8FXSOrk3Bhs"
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=batching+and+streaming+AI+engineering+explained"
         },
         {
-          "title": "🌐G",
+          "title": "🔍G",
           "url": "https://www.google.com/search?q=batching+and+streaming+AI+engineering+tutorial"
         }
       ],
@@ -50511,11 +50511,11 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🎬YT",
-          "url": "https://www.youtube.com/watch?v=rqjsnRnMASs"
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=quantization+and+distillation+AI+engineering+explained"
         },
         {
-          "title": "🌐G",
+          "title": "🔍G",
           "url": "https://www.google.com/search?q=quantization+and+distillation+AI+engineering+tutorial"
         }
       ],
@@ -50535,11 +50535,11 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🎬YT",
-          "url": "https://www.youtube.com/watch?v=-QVoIxEpFkM&t=340s"
+          "title": "🔍YT",
+          "url": "https://www.youtube.com/results?search_query=context+window+budgeting+AI+engineering+explained"
         },
         {
-          "title": "🌐G",
+          "title": "🔍G",
           "url": "https://www.google.com/search?q=context+window+budgeting+AI+engineering+tutorial"
         }
       ],
@@ -63372,6 +63372,14 @@
       "domainTitle": "System Design"
     },
     {
+      "id": "sd:caleb-curry-scale-an-app-to-millions-of-users:https-www-youtube-com-watch-v-tjubq97lxa4",
+      "title": "Caleb Curry — Scale an App to Millions of Users",
+      "url": "https://www.youtube.com/watch?v=tjubQ97lxA4",
+      "source": "Caleb Curry",
+      "domain": "sd",
+      "domainTitle": "System Design"
+    },
+    {
       "id": "sd:uptime-calculator:https-uptime-is",
       "title": "Uptime Calculator",
       "url": "https://uptime.is/",
@@ -63400,6 +63408,14 @@
       "title": "NeetCode — 20 Concepts",
       "url": "https://www.youtube.com/watch?v=i53Gi_K3o7I",
       "source": "NeetCode",
+      "domain": "sd",
+      "domainTitle": "System Design"
+    },
+    {
+      "id": "sd:bytebytego-8-tips-for-fault-tolerant-systems:https-www-youtube-com-watch-v-3lis4w4-bbc",
+      "title": "ByteByteGo — 8 Tips for Fault-Tolerant Systems",
+      "url": "https://www.youtube.com/watch?v=3Lis4w4_bBc",
+      "source": "ByteByteGo",
       "domain": "sd",
       "domainTitle": "System Design"
     },
@@ -63636,6 +63652,14 @@
       "domainTitle": "System Design"
     },
     {
+      "id": "sd:hello-interview-api-design-in-system-design-interviews-meta-staff-eng:https-www-youtube-com-watch-v-dq57zyedmdq",
+      "title": "Hello Interview — API Design in System Design Interviews (Meta Staff Eng)",
+      "url": "https://www.youtube.com/watch?v=DQ57zYedMdQ",
+      "source": "Hello Interview",
+      "domain": "sd",
+      "domainTitle": "System Design"
+    },
+    {
       "id": "sd:bytebytego-everything-about-dns:https-www-youtube-com-watch-v-27r4bzuj5nq",
       "title": "ByteByteGo — Everything About DNS",
       "url": "https://www.youtube.com/watch?v=27r4Bzuj5NQ",
@@ -63684,6 +63708,14 @@
       "domainTitle": "System Design"
     },
     {
+      "id": "sd:software-developer-diaries-the-ultimate-guide-to-load-balancers:https-www-youtube-com-watch-v-xg7dj2axlyk",
+      "title": "Software Developer Diaries — The Ultimate Guide to Load Balancers",
+      "url": "https://www.youtube.com/watch?v=xg7Dj2AXLyk",
+      "source": "Software Developer Diaries",
+      "domain": "sd",
+      "domainTitle": "System Design"
+    },
+    {
       "id": "sd:bytebytego-rate-limiting-token-bucket-leaky-bucket:https-www-youtube-com-watch-v-yxkodwbwqaa",
       "title": "ByteByteGo — Rate Limiting (Token Bucket, Leaky Bucket)",
       "url": "https://www.youtube.com/watch?v=YXkOdWBwqaA",
@@ -63720,6 +63752,14 @@
       "title": "Uber Rate Limiter (GitHub code)",
       "url": "https://github.com/uber-go/ratelimit/blob/master/ratelimit.go",
       "source": "Uber",
+      "domain": "sd",
+      "domainTitle": "System Design"
+    },
+    {
+      "id": "sd:hello-interview-design-a-distributed-rate-limiter-meta-staff-eng:https-www-youtube-com-watch-v-mijfyupg4z4",
+      "title": "Hello Interview — Design a Distributed Rate Limiter (Meta Staff Eng)",
+      "url": "https://www.youtube.com/watch?v=MIJFyUPG4Z4",
+      "source": "Hello Interview",
       "domain": "sd",
       "domainTitle": "System Design"
     },
@@ -64128,6 +64168,14 @@
       "title": "Primer — Cache",
       "url": "https://github.com/donnemartin/system-design-primer?tab=readme-ov-file#cache",
       "source": "donnemartin",
+      "domain": "sd",
+      "domainTitle": "System Design"
+    },
+    {
+      "id": "sd:hello-interview-caching-in-system-design-interviews-meta-staff-eng:https-www-youtube-com-watch-v-1nngtuypdpi",
+      "title": "Hello Interview — Caching in System Design Interviews (Meta Staff Eng)",
+      "url": "https://www.youtube.com/watch?v=1NngTUYPdpI",
+      "source": "Hello Interview",
       "domain": "sd",
       "domainTitle": "System Design"
     },

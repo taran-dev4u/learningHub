@@ -147,6 +147,11 @@ window.sdResources = {
      "xpDnVSmNFX0",
      "System Design BASICS: Horizontal vs. Vertical Scaling",
      "Gaurav Sen"
+    ],
+    [
+     "tjubQ97lxA4",
+     "Scale an App to Millions of Users - System Design",
+     "Caleb Curry"
     ]
    ],
    "docs": [
@@ -174,6 +179,11 @@ window.sdResources = {
      "LdvduBxZRLs",
      "Design Patterns for High Availability: What gets you 99.999% uptime?",
      "Gaurav Sen"
+    ],
+    [
+     "3Lis4w4_bBc",
+     "8 Most Important Tips for Designing Fault-Tolerant System",
+     "ByteByteGo"
     ]
    ],
    "docs": [
@@ -278,6 +288,11 @@ window.sdResources = {
      "4vLxWqE94l4",
      "Top 6 Most Popular API Architecture Styles",
      "ByteByteGo"
+    ],
+    [
+     "DQ57zYedMdQ",
+     "API Design in System Design Interviews w/ Meta Staff Engineer",
+     "Hello Interview"
     ]
    ],
    "docs": [
@@ -305,6 +320,11 @@ window.sdResources = {
      "YM_dEeXmnuY",
      "Load Balancers: Algorithms and Design",
      "Gaurav Sen"
+    ],
+    [
+     "xg7Dj2AXLyk",
+     "The Ultimate Guide to Load Balancers (System Design Fundamentals)",
+     "Software Developer Diaries"
     ]
    ],
    "docs": [
@@ -359,6 +379,11 @@ window.sdResources = {
      "mhUQe4BKZXs",
      "Rate Limiting system design — token bucket, leaky bucket, sliding logs",
      "Tech Dummies - Narendra Lakshmana Gowda"
+    ],
+    [
+     "MIJFyUPG4Z4",
+     "Design a Distributed Rate Limiter w/ a Ex-Meta Staff Engineer: System Design Breakdown",
+     "Hello Interview"
     ]
    ],
    "docs": [
@@ -614,6 +639,11 @@ window.sdResources = {
      "dGAgxozNWFE",
      "Cache Systems Every Developer Should Know",
      "ByteByteGo"
+    ],
+    [
+     "1NngTUYPdpI",
+     "Caching in System Design Interviews w/ Meta Staff Engineer",
+     "Hello Interview"
     ]
    ],
    "docs": [
@@ -1542,6 +1572,11 @@ window.sdResources = {
      "iuqZvajTOyA",
      "System Design Interview — Distributed Cache",
      "System Design Interview"
+    ],
+    [
+     "1NngTUYPdpI",
+     "Caching in System Design Interviews w/ Meta Staff Engineer",
+     "Hello Interview"
     ]
    ],
    "docs": [
@@ -1599,6 +1634,11 @@ window.sdResources = {
      "mhUQe4BKZXs",
      "Rate limiting system design — token bucket, leaky bucket, sliding logs",
      "Tech Dummies - Narendra Lakshmana Gowda"
+    ],
+    [
+     "MIJFyUPG4Z4",
+     "Design a Distributed Rate Limiter w/ a Ex-Meta Staff Engineer: System Design Breakdown",
+     "Hello Interview"
     ]
    ],
    "docs": [
