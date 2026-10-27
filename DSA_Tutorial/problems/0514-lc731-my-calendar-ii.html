@@ -23,35 +23,50 @@
  › Subpattern 16.1: Segment Tree / Range Query with Updates · Problem 514 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0593-lc731-my-calendar-ii.html">Intervals &amp; Line Sweep</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Design a calendar that allows double bookings but rejects any event causing a triple booking.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>A triple booking happens when three events have some non-empty intersection. Implement a MyCalendarTwo class that allows events that do not cause a <strong>triple booking</strong> (double booking is allowed!).</p>
 
-<h2>Where this fits</h2>
-<p><strong>Segment Tree / Range Query with Updates</strong> — Build a binary tree of intervals; each internal node stores an aggregate (sum/min/max). Lazy propagation handles range updates.</p>
+<p>Maintain two lists:
+1. <code>calendar</code>: All booked single events.
+2. <code>overlaps</code>: All double-booked interval intersections!</p>
+<p>When booking $[start, end)$:
+1. First, check if $[start, end)$ intersects with <strong>any interval in <code>overlaps</code></strong>. If yes, it would cause a triple booking! Return <code>False</code> immediately!
+2. If no conflict:
+   Find all intersections between $[start, end)$ and existing intervals in <code>calendar</code>, and add those intersection intervals to <code>overlaps</code>!
+   Add $[start, end)$ to <code>calendar</code> and return <code>True</code>.</p>
 
-<h2>Why this pattern?</h2><ul><li>interleaved "update element" + "query range sum/min/max"</li><li>"count of smaller elements after self" (offline index counting)</li><li>k-th smallest with insertions/deletions</li><li>huge value range → coordinate-compress first</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Segment Tree &amp; Fenwick Tree master template and adapt the marked parts to this problem:</p><pre><code># Fenwick / BIT — shortest correct implementation (1-indexed)
-tree = [0] * (n + 1)
-def update(i, delta):            # a[i] += delta, O(log n)
-    while i &lt;= n:
-        tree[i] += delta
-        i += i &amp; (-i)            # next block responsible for i
-def prefix(i):                   # sum a[1..i], O(log n)
-    s = 0
-    while i &gt; 0:
-        s += tree[i]
-        i -= i &amp; (-i)
-    return s
-def range_sum(l, r):
-    return prefix(r) - prefix(l - 1)</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h2>🐢 Brute force vs optimal</h2>
+<p>Explicitly tracking the overlap intersections guarantees $O(N)$ check per booking.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Maintain <code>overlaps</code> list. Reject if new event touches any double-booking. Otherwise, compute new pairwise overlaps with <code>calendar</code> and accept.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">class MyCalendarTwo:
+    def __init__(self):
+        self.calendar = []
+        self.overlaps = []
+
+    def book(self, start: int, end: int) -> bool:
+        # Check against existing double-booked intervals
+        for s, e in self.overlaps:
+            if max(start, s) < min(end, e):
+                return False # Would create triple booking!
+                
+        # Record new double-booked intervals
+        for s, e in self.calendar:
+            if max(start, s) < min(end, e):
+                self.overlaps.append((max(start, s), min(end, e)))
+                
+        self.calendar.append((start, end))
+        return True
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(N)$ per booking call where $N$ is total booked events.<br>
+<strong>Space:</strong> $O(N)$ — Stores intervals and overlap segments.</p>
+
 
 <div class="pager"><a href="../problems/0513-lc729-my-calendar-i.html"><span class="lbl">← Previous</span>#729 My Calendar I</a><a href="../problems/0515-lc732-my-calendar-iii.html" style="text-align:right"><span class="lbl">Next →</span>#732 My Calendar III</a></div>
 </div>

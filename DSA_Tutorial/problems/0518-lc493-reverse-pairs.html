@@ -23,35 +23,50 @@
  › Subpattern 16.2: Fenwick Tree / Binary Indexed Tree / Coordinate Compression · Problem 518 of 699</p>
 
 <h2>📋 The problem</h2><p>Count pairs i&lt;j with nums[i] &gt; 2·nums[j].</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given an integer array <code>nums</code>, return the number of <strong>reverse pairs</strong> in the array. A reverse pair is a pair $(i, j)$ where $0 \le i < j < len(nums)$ and $nums[i] > 2 \times nums[j]$.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Fenwick Tree / Binary Indexed Tree / Coordinate Compression</strong> — BIT supports point update + prefix sum in O(log n); coordinate-compress when indices are sparse.</p>
+<p>This is a variation of counting inversions!
+Use <strong>Merge Sort Divide-and-Conquer</strong>:
+When merging two sorted halves $nums[l \dots mid]$ and $nums[mid+1 \dots r]$:
+Both halves are already sorted!
+For each element $nums[i]$ in the left half, advance pointer $j$ in the right half while:
+$$nums[i] > 2 \times nums[j]$$
+Because $nums[i]$ is increasing, pointer $j$ only moves forward (two pointers in $O(N)$)!</p>
 
-<h2>Why this pattern?</h2><ul><li>interleaved "update element" + "query range sum/min/max"</li><li>"count of smaller elements after self" (offline index counting)</li><li>k-th smallest with insertions/deletions</li><li>huge value range → coordinate-compress first</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Segment Tree &amp; Fenwick Tree master template and adapt the marked parts to this problem:</p><pre><code># Fenwick / BIT — shortest correct implementation (1-indexed)
-tree = [0] * (n + 1)
-def update(i, delta):            # a[i] += delta, O(log n)
-    while i &lt;= n:
-        tree[i] += delta
-        i += i &amp; (-i)            # next block responsible for i
-def prefix(i):                   # sum a[1..i], O(log n)
-    s = 0
-    while i &gt; 0:
-        s += tree[i]
-        i -= i &amp; (-i)
-    return s
-def range_sum(l, r):
-    return prefix(r) - prefix(l - 1)</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h2>🐢 Brute force vs optimal</h2>
+<p>Nested loops take $O(N^2)$. Merge sort divide-and-conquer counts all reverse pairs in $O(N \log N)$ time.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Merge sort: count pairs before merging. Two pointers advance $j$ while $nums[i] > 2 \times nums[j]$, accumulating $(j - (mid + 1))$ in $O(N)$ time per level.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def reversePairs(nums: list[int]) -> int:
+    def merge_sort(l, r):
+        if l >= r:
+            return 0
+        mid = (l + r) // 2
+        count = merge_sort(l, mid) + merge_sort(mid + 1, r)
+        
+        # Count reverse pairs
+        j = mid + 1
+        for i in range(l, mid + 1):
+            while j <= r and nums[i] > 2 * nums[j]:
+                j += 1
+            count += j - (mid + 1)
+            
+        # Merge sorted halves in place
+        nums[l:r + 1] = sorted(nums[l:r + 1])
+        return count
+        
+    return merge_sort(0, len(nums) - 1)
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(N \log N)$ — Standard merge sort recurrence with $O(N)$ two-pointer scan.<br>
+<strong>Space:</strong> $O(N)$ — Temporary merge buffers and recursion stack.</p>
+
 
 <div class="pager"><a href="../problems/0517-lc327-count-of-range-sum.html"><span class="lbl">← Previous</span>#327 Count of Range Sum</a><a href="../patterns/p17-prefix-sum.html" style="text-align:right"><span class="lbl">Next →</span>Prefix Sum &amp; Difference Array</a></div>
 </div>

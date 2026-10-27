@@ -23,35 +23,50 @@
  › Subpattern 16.1: Segment Tree / Range Query with Updates · Problem 515 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0594-lc732-my-calendar-iii.html">Intervals &amp; Line Sweep</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Design a calendar where book() returns the maximum overlap count (k-booking) after adding each event.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>A $k$-booking happens when $k$ events have some non-empty intersection. Implement <code>MyCalendarThree</code> which returns the largest integer $k$ such that there exists a $k$-booking in the calendar.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Segment Tree / Range Query with Updates</strong> — Build a binary tree of intervals; each internal node stores an aggregate (sum/min/max). Lazy propagation handles range updates.</p>
+<p><strong>Line Sweep with Coordinate Delta Map:</strong>
+Use a sorted difference map (or dictionary of boundary points):
+- When an event starts at $start$: increment active events: <code>delta[start] += 1</code>.
+- When an event ends at $end$: decrement active events: <code>delta[end] -= 1</code>.</p>
+<p>To find the maximum concurrent overlapping events:
+Iterate through all boundary timestamps in sorted order, maintaining a running sum:
+$$	ext{curr\_active} += 	ext{delta}[t]$$
+$$	ext{max\_k} = \max(	ext{max\_k}, \; 	ext{curr\_active})$$</p>
 
-<h2>Why this pattern?</h2><ul><li>interleaved "update element" + "query range sum/min/max"</li><li>"count of smaller elements after self" (offline index counting)</li><li>k-th smallest with insertions/deletions</li><li>huge value range → coordinate-compress first</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Segment Tree &amp; Fenwick Tree master template and adapt the marked parts to this problem:</p><pre><code># Fenwick / BIT — shortest correct implementation (1-indexed)
-tree = [0] * (n + 1)
-def update(i, delta):            # a[i] += delta, O(log n)
-    while i &lt;= n:
-        tree[i] += delta
-        i += i &amp; (-i)            # next block responsible for i
-def prefix(i):                   # sum a[1..i], O(log n)
-    s = 0
-    while i &gt; 0:
-        s += tree[i]
-        i -= i &amp; (-i)
-    return s
-def range_sum(l, r):
-    return prefix(r) - prefix(l - 1)</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h2>🐢 Brute force vs optimal</h2>
+<p>Sorted coordinate delta map computes the global maximum overlap in $O(N)$ per booking.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Line sweep: <code>delta[start] += 1; delta[end] -= 1</code>. Sweep through sorted timestamps accumulating active events; track global max!</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">from collections import defaultdict
+
+class MyCalendarThree:
+    def __init__(self):
+        self.delta = defaultdict(int)
+
+    def book(self, startTime: int, endTime: int) -> int:
+        self.delta[startTime] += 1
+        self.delta[endTime] -= 1
+        
+        curr_active = 0
+        max_k = 0
+        for t in sorted(self.delta.keys()):
+            curr_active += self.delta[t]
+            if curr_active > max_k:
+                max_k = curr_active
+                
+        return max_k
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(N \log N)$ per booking to sort unique timestamps.<br>
+<strong>Space:</strong> $O(N)$ — Timestamp dictionary.</p>
+
 
 <div class="pager"><a href="../problems/0514-lc731-my-calendar-ii.html"><span class="lbl">← Previous</span>#731 My Calendar II</a><a href="../problems/0516-lc315-count-of-smaller-numbers-after-self.html" style="text-align:right"><span class="lbl">Next →</span>#315 Count of Smaller Numbers After Self</a></div>
 </div>

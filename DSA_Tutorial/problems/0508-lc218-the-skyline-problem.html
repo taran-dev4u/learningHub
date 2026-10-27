@@ -23,35 +23,70 @@
  › Subpattern 16.1: Segment Tree / Range Query with Updates · Problem 508 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0588-lc218-the-skyline-problem.html">Intervals &amp; Line Sweep</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Given building rectangles on a skyline, return the key points that outline their combined silhouette.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>A city's skyline is the outer contour of the silhouette formed by all the buildings. Given <code>buildings = [left, right, height]</code>, output the key points that characterize the skyline.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Segment Tree / Range Query with Updates</strong> — Build a binary tree of intervals; each internal node stores an aggregate (sum/min/max). Lazy propagation handles range updates.</p>
+<p><strong>The Event-Driven Line Sweep Pattern:</strong>
+Every building creates two discrete events:
+1. <strong>Start of building at $x = left$:</strong> pushes height $h$ into active buildings.
+2. <strong>End of building at $x = right$:</strong> removes height $h$ from active buildings.</p>
 
-<h2>Why this pattern?</h2><ul><li>interleaved "update element" + "query range sum/min/max"</li><li>"count of smaller elements after self" (offline index counting)</li><li>k-th smallest with insertions/deletions</li><li>huge value range → coordinate-compress first</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Segment Tree &amp; Fenwick Tree master template and adapt the marked parts to this problem:</p><pre><code># Fenwick / BIT — shortest correct implementation (1-indexed)
-tree = [0] * (n + 1)
-def update(i, delta):            # a[i] += delta, O(log n)
-    while i &lt;= n:
-        tree[i] += delta
-        i += i &amp; (-i)            # next block responsible for i
-def prefix(i):                   # sum a[1..i], O(log n)
-    s = 0
-    while i &gt; 0:
-        s += tree[i]
-        i -= i &amp; (-i)
-    return s
-def range_sum(l, r):
-    return prefix(r) - prefix(l - 1)</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<p>Sort all event boundaries along the x-axis:
+- For equal $x$ coordinates:
+  - If both are starts: higher building comes first (process height descending).
+  - If both are ends: lower building comes first (process height ascending).
+  - If one is start and one is end: start comes first!</p>
+<p>Maintain a <strong>Max-Heap of active heights</strong> (with lazy deletion).
+At each event $x$:
+- If current max height changes from previous max height:
+  $$(x, \; 	ext{new\_max\_height})$$
+  is a critical key point on the skyline!</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Evaluating height at every integer coordinate takes $O(W \times N)$ where $W$ is width. Line sweep with max-heap evaluates in $O(N \log N)$ time and $O(N)$ space.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Sweep vertical line left to right. Maintain active building heights in a Max-Heap with lazy deletion. Whenever the maximum height changes, record a keypoint $(x, max\_h)$!</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">import heapq
+from collections import defaultdict
+
+def getSkyline(buildings: list[list[int]]) -> list[list[int]]:
+    # Events: (x, -height) for start, (x, height) for end
+    events = []
+    for l, r, h in buildings:
+        events.append((l, -h, r)) # start event (stores end time r)
+        events.append((r, 0, 0))   # end boundary trigger
+        
+    events.sort()
+    
+    # max_heap stores (-height, end_x)
+    max_heap = [(0, float('inf'))]
+    res = []
+    prev_max_h = 0
+    
+    for x, neg_h, r in events:
+        if neg_h < 0:
+            heapq.heappush(max_heap, (neg_h, r))
+            
+        # Lazy garbage collection: pop buildings whose right boundary <= current x
+        while max_heap and max_heap[0][1] <= x:
+            heapq.heappop(max_heap)
+            
+        curr_max_h = -max_heap[0][0]
+        if curr_max_h != prev_max_h:
+            res.append([x, curr_max_h])
+            prev_max_h = curr_max_h
+            
+    return res
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(N \log N)$ — Sorting events and heap operations.<br>
+<strong>Space:</strong> $O(N)$ — Events list and max heap.</p>
+
 
 <div class="pager"><a href="../patterns/p16-segment-tree.html"><span class="lbl">← Previous</span>Segment Tree &amp; Fenwick Tree</a><a href="../problems/0509-lc307-range-sum-query-mutable.html" style="text-align:right"><span class="lbl">Next →</span>#307 Range Sum Query - Mutable</a></div>
 </div>

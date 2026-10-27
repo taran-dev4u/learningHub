@@ -23,35 +23,55 @@
  › Subpattern 16.2: Fenwick Tree / Binary Indexed Tree / Coordinate Compression · Problem 517 of 699</p>
 
 <h2>📋 The problem</h2><p>Count the range sums S(i,j) that fall inside [lower, upper], in O(n log n).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given an integer array <code>nums</code> and two integers <code>lower</code> and <code>upper</code>, return the number of range sums that lie in <code>[lower, upper]</code> inclusive.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Fenwick Tree / Binary Indexed Tree / Coordinate Compression</strong> — BIT supports point update + prefix sum in O(log n); coordinate-compress when indices are sparse.</p>
+<p>Let $prefix[i] = \sum_{k=0}^{i-1} nums[k]$.
+A subsegment sum $nums[i \dots j] = prefix[j + 1] - prefix[i]$.
+We need:
+$$lower \le prefix[j + 1] - prefix[i] \le upper$$
+Rearranging for $prefix[i]$:
+$$prefix[j + 1] - upper \le prefix[i] \le prefix[j + 1] - lower$$</p>
 
-<h2>Why this pattern?</h2><ul><li>interleaved "update element" + "query range sum/min/max"</li><li>"count of smaller elements after self" (offline index counting)</li><li>k-th smallest with insertions/deletions</li><li>huge value range → coordinate-compress first</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Segment Tree &amp; Fenwick Tree master template and adapt the marked parts to this problem:</p><pre><code># Fenwick / BIT — shortest correct implementation (1-indexed)
-tree = [0] * (n + 1)
-def update(i, delta):            # a[i] += delta, O(log n)
-    while i &lt;= n:
-        tree[i] += delta
-        i += i &amp; (-i)            # next block responsible for i
-def prefix(i):                   # sum a[1..i], O(log n)
-    s = 0
-    while i &gt; 0:
-        s += tree[i]
-        i -= i &amp; (-i)
-    return s
-def range_sum(l, r):
-    return prefix(r) - prefix(l - 1)</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h2>🐢 Brute force vs optimal</h2>
+<p>Merge sort divide-and-conquer on prefix sums solves this in $O(N \log N)$ time!</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Modified merge sort on prefix sums: for each element in right half, two pointers find the valid window in sorted left half in $O(N)$ per merge step!</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def countRangeSum(nums: list[int], lower: int, upper: int) -> int:
+    prefix = [0]
+    for x in nums:
+        prefix.append(prefix[-1] + x)
+        
+    def merge_sort(l, r):
+        if l >= r:
+            return 0
+        mid = (l + r) // 2
+        count = merge_sort(l, mid) + merge_sort(mid + 1, r)
+        
+        # Count pairs across left and right halves
+        j = k = mid + 1
+        for i in range(l, mid + 1):
+            while k <= r and prefix[k] - prefix[i] < lower:
+                k += 1
+            while j <= r and prefix[j] - prefix[i] <= upper:
+                j += 1
+            count += j - k
+            
+        # Merge sorted halves
+        prefix[l:r + 1] = sorted(prefix[l:r + 1])
+        return count
+        
+    return merge_sort(0, len(prefix) - 1)
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(N \log N)$ — Divide and conquer with linear two-pointer range checks.<br>
+<strong>Space:</strong> $O(N)$ — Prefix sum buffer and recursion stack.</p>
+
 
 <div class="pager"><a href="../problems/0516-lc315-count-of-smaller-numbers-after-self.html"><span class="lbl">← Previous</span>#315 Count of Smaller Numbers After Self</a><a href="../problems/0518-lc493-reverse-pairs.html" style="text-align:right"><span class="lbl">Next →</span>#493 Reverse Pairs</a></div>
 </div>

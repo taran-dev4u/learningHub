@@ -23,35 +23,49 @@
  › Subpattern 16.1: Segment Tree / Range Query with Updates · Problem 513 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0592-lc729-my-calendar-i.html">Intervals &amp; Line Sweep</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Design a calendar that books an event only if it doesn't double-book (overlap any existing event).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>You are implementing a program to use as your calendar. We can add a new event if adding the event will not cause a <strong>double booking</strong> (two events having some non-empty intersection $[start, end)$).</p>
 
-<h2>Where this fits</h2>
-<p><strong>Segment Tree / Range Query with Updates</strong> — Build a binary tree of intervals; each internal node stores an aggregate (sum/min/max). Lazy propagation handles range updates.</p>
+<p>Maintain booked events in sorted order of start times:
+Use binary search (<code>bisect_right</code>) to locate where the new interval $[start, end)$ should be inserted.
+Check only two neighbors:
+1. The preceding interval $[prev_s, prev_e)$: must have $prev_e \le start$.
+2. The succeeding interval $[next_s, next_e)$: must have $end \le next_s$.
+If both checks pass, insert the interval and return <code>True</code>!</p>
 
-<h2>Why this pattern?</h2><ul><li>interleaved "update element" + "query range sum/min/max"</li><li>"count of smaller elements after self" (offline index counting)</li><li>k-th smallest with insertions/deletions</li><li>huge value range → coordinate-compress first</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Segment Tree &amp; Fenwick Tree master template and adapt the marked parts to this problem:</p><pre><code># Fenwick / BIT — shortest correct implementation (1-indexed)
-tree = [0] * (n + 1)
-def update(i, delta):            # a[i] += delta, O(log n)
-    while i &lt;= n:
-        tree[i] += delta
-        i += i &amp; (-i)            # next block responsible for i
-def prefix(i):                   # sum a[1..i], O(log n)
-    s = 0
-    while i &gt; 0:
-        s += tree[i]
-        i -= i &amp; (-i)
-    return s
-def range_sum(l, r):
-    return prefix(r) - prefix(l - 1)</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h2>🐢 Brute force vs optimal</h2>
+<p>Linear check of all intervals takes $O(N)$. Binary search checks in $O(\log N)$ time and inserts in $O(N)$ time.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Sorted intervals: binary search finds insertion index in $O(\log N)$. Only verify non-overlap with immediate left neighbor (<code>prev_end <= start</code>) and right neighbor (<code>end <= next_start</code>).</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">import bisect
+
+class MyCalendar:
+    def __init__(self):
+        self.calendar = [] # sorted list of (start, end)
+
+    def book(self, start: int, end: int) -> bool:
+        idx = bisect.bisect_right(self.calendar, (start, end))
+        
+        # Check left neighbor
+        if idx > 0 and self.calendar[idx - 1][1] > start:
+            return False
+            
+        # Check right neighbor
+        if idx < len(self.calendar) and self.calendar[idx][0] < end:
+            return False
+            
+        self.calendar.insert(idx, (start, end))
+        return True
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(\log N)$ search + $O(N)$ insertion.<br>
+<strong>Space:</strong> $O(N)$ — Sorted calendar intervals.</p>
+
 
 <div class="pager"><a href="../problems/0512-lc715-range-module.html"><span class="lbl">← Previous</span>#715 Range Module</a><a href="../problems/0514-lc731-my-calendar-ii.html" style="text-align:right"><span class="lbl">Next →</span>#731 My Calendar II</a></div>
 </div>

@@ -23,35 +23,63 @@
  › Subpattern 16.1: Segment Tree / Range Query with Updates · Problem 509 of 699</p>
 
 <h2>📋 The problem</h2><p>Support both updating one element and querying a range sum on an array, each in O(log n).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given an integer array <code>nums</code>, handle multiple queries of the following types:
+1. <code>update(index, val)</code>: Update the value of <code>nums[index]</code>.
+2. <code>sumRange(left, right)</code>: Return the sum of elements between $left$ and $right$ inclusive.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Segment Tree / Range Query with Updates</strong> — Build a binary tree of intervals; each internal node stores an aggregate (sum/min/max). Lazy propagation handles range updates.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Fenwick/segment tree: point update and range query both O(log n).</div>
-<h2>Why this pattern?</h2><ul><li>interleaved "update element" + "query range sum/min/max"</li><li>"count of smaller elements after self" (offline index counting)</li><li>k-th smallest with insertions/deletions</li><li>huge value range → coordinate-compress first</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Segment Tree &amp; Fenwick Tree master template and adapt the marked parts to this problem:</p><pre><code># Fenwick / BIT — shortest correct implementation (1-indexed)
-tree = [0] * (n + 1)
-def update(i, delta):            # a[i] += delta, O(log n)
-    while i &lt;= n:
-        tree[i] += delta
-        i += i &amp; (-i)            # next block responsible for i
-def prefix(i):                   # sum a[1..i], O(log n)
-    s = 0
-    while i &gt; 0:
-        s += tree[i]
-        i -= i &amp; (-i)
-    return s
-def range_sum(l, r):
-    return prefix(r) - prefix(l - 1)</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<p><strong>Binary Indexed Tree (Fenwick Tree) / Segment Tree:</strong>
+- A plain array has $O(1)$ update but $O(N)$ query.
+- A prefix sum array has $O(1)$ query but $O(N)$ update.
+- A <strong>Fenwick Tree (BIT)</strong> or <strong>Segment Tree</strong> balances both operations to <strong>$O(\log N)$ time</strong>!</p>
+
+<p><strong>Fenwick Tree Mechanics:</strong>
+Using 1-based indexing:
+- <code>add(i, delta)</code>: Add $delta$ to index $i$, then advance $i += (i \;\&\; (-i))$ (adding lowest set bit).
+- <code>query(i)</code>: Accumulate sum at index $i$, then step $i -= (i \;\&\; (-i))$ (clearing lowest set bit).
+- <code>sumRange(l, r) = query(r + 1) - query(l)</code>.</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Fenwick tree achieves $O(\log N)$ updates and queries in strictly $O(N)$ memory with zero tree node pointers.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Fenwick tree: <code>i += (i & -i)</code> for point updates, <code>i -= (i & -i)</code> for prefix sums. Both execute in $O(\log N)$!</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">class NumArray:
+    def __init__(self, nums: list[int]):
+        self.n = len(nums)
+        self.nums = nums[:]
+        self.bit = [0] * (self.n + 1)
+        for i, val in enumerate(nums):
+            self._add(i + 1, val)
+
+    def _add(self, i: int, delta: int):
+        while i <= self.n:
+            self.bit[i] += delta
+            i += i & (-i)
+
+    def _query(self, i: int) -> int:
+        s = 0
+        while i > 0:
+            s += self.bit[i]
+            i -= i & (-i)
+        return s
+
+    def update(self, index: int, val: int) -> None:
+        delta = val - self.nums[index]
+        self.nums[index] = val
+        self._add(index + 1, delta)
+
+    def sumRange(self, left: int, right: int) -> int:
+        return self._query(right + 1) - self._query(left)
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(\log N)$ for both <code>update</code> and <code>sumRange</code>. $O(N \log N)$ (or $O(N)$) build.<br>
+<strong>Space:</strong> $O(N)$ — 1D Fenwick tree array.</p>
+
 
 <div class="pager"><a href="../problems/0508-lc218-the-skyline-problem.html"><span class="lbl">← Previous</span>#218 The Skyline Problem</a><a href="../problems/0510-lc308-range-sum-query-2d-mutable.html" style="text-align:right"><span class="lbl">Next →</span>#308 Range Sum Query 2D - Mutable</a></div>
 </div>

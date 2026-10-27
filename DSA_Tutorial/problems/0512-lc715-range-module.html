@@ -23,35 +23,59 @@
  › Subpattern 16.1: Segment Tree / Range Query with Updates · Problem 512 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0494-lc715-range-module.html">Design</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Design a structure that adds, removes, and queries coverage of number ranges (interval set with add/remove/query).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>A Range Module is a module that tracks ranges of numbers. Design a data structure to add, query, and remove intervals in half-open intervals $[left, right)$.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Segment Tree / Range Query with Updates</strong> — Build a binary tree of intervals; each internal node stores an aggregate (sum/min/max). Lazy propagation handles range updates.</p>
+<p><strong>Disjoint Sorted Intervals with Binary Search:</strong>
+Maintain a 1D flat list of boundary coordinates: <code>[l0, r0, l1, r1, ...]</code>.
+Every pair <code>track[2*i]</code> and <code>track[2*i + 1]</code> forms a valid half-open interval $[l_i, r_i)$.
+- <code>bisect_left</code> and <code>bisect_right</code> identify the exact overlapping insertion range in $O(\log N)$ time.
+- Slice replacement merges or punches holes cleanly.</p>
 
-<h2>Why this pattern?</h2><ul><li>interleaved "update element" + "query range sum/min/max"</li><li>"count of smaller elements after self" (offline index counting)</li><li>k-th smallest with insertions/deletions</li><li>huge value range → coordinate-compress first</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Segment Tree &amp; Fenwick Tree master template and adapt the marked parts to this problem:</p><pre><code># Fenwick / BIT — shortest correct implementation (1-indexed)
-tree = [0] * (n + 1)
-def update(i, delta):            # a[i] += delta, O(log n)
-    while i &lt;= n:
-        tree[i] += delta
-        i += i &amp; (-i)            # next block responsible for i
-def prefix(i):                   # sum a[1..i], O(log n)
-    s = 0
-    while i &gt; 0:
-        s += tree[i]
-        i -= i &amp; (-i)
-    return s
-def range_sum(l, r):
-    return prefix(r) - prefix(l - 1)</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h2>🐢 Brute force vs optimal</h2>
+<p>Interval list with binary search provides $O(\log N)$ query time and $O(N)$ modification time.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Flat boundary list with parity indexing: odd index indicates inside an active interval; even index indicates outside. Binary search determines state in $O(\log N)$.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">import bisect
+
+class RangeModule:
+    def __init__(self):
+        self.track = []
+
+    def addRange(self, left: int, right: int) -> None:
+        l = bisect.bisect_left(self.track, left)
+        r = bisect.bisect_right(self.track, right)
+        sub = []
+        if l % 2 == 0:
+            sub.append(left)
+        if r % 2 == 0:
+            sub.append(right)
+        self.track[l:r] = sub
+
+    def queryRange(self, left: int, right: int) -> bool:
+        l = bisect.bisect_right(self.track, left)
+        r = bisect.bisect_left(self.track, right)
+        return l % 2 == 1 and l == r
+
+    def removeRange(self, left: int, right: int) -> None:
+        l = bisect.bisect_left(self.track, left)
+        r = bisect.bisect_right(self.track, right)
+        sub = []
+        if l % 2 == 1:
+            sub.append(left)
+        if r % 2 == 1:
+            sub.append(right)
+        self.track[l:r] = sub
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> <code>queryRange</code>: $O(\log N)$. <code>addRange</code>, <code>removeRange</code>: $O(N)$ array slice.<br>
+<strong>Space:</strong> $O(N)$ — Boundary list.</p>
+
 
 <div class="pager"><a href="../problems/0511-lc699-falling-squares.html"><span class="lbl">← Previous</span>#699 Falling Squares</a><a href="../problems/0513-lc729-my-calendar-i.html" style="text-align:right"><span class="lbl">Next →</span>#729 My Calendar I</a></div>
 </div>
