@@ -6,6 +6,7 @@
   <title>Real Companies Interview Preparation Hub - Taran's Learning Hub</title>
   <link rel="stylesheet" href="assets/learning-hub-shared.css">
   <script src="assets/learning-hub-shared.js"></script>
+  <script src="assets/companies-data.js"></script>
   <style>
     :root {
       --co-bg: var(--bg, #f4f6f8);
@@ -26,17 +27,17 @@
       padding: 0 0 60px 0;
     }
     .co-wrap {
-      max-width: 1400px;
+      max-width: 1440px;
       margin: 0 auto;
-      padding: 32px 24px;
+      padding: 24px 20px;
       box-sizing: border-box;
     }
     .co-hero {
       background: linear-gradient(135deg, rgba(36, 89, 214, 0.08) 0%, rgba(216, 79, 134, 0.08) 100%);
       border: 1px solid var(--co-border);
       border-radius: var(--co-radius);
-      padding: 36px 32px;
-      margin-bottom: 32px;
+      padding: 32px 28px;
+      margin-bottom: 24px;
     }
     .co-hero-tag {
       display: inline-block;
@@ -52,138 +53,62 @@
     }
     .co-hero h1 {
       margin: 0 0 10px 0;
-      font-size: 32px;
+      font-size: 30px;
       font-weight: 800;
       letter-spacing: -0.02em;
     }
     .co-hero p {
-      margin: 0;
+      margin: 0 0 16px 0;
       color: var(--co-muted);
-      font-size: 15px;
-      max-width: 860px;
+      font-size: 14.5px;
+      max-width: 900px;
       line-height: 1.5;
     }
-
-    /* Featured Company Banner */
-    .featured-banner {
-      background: var(--co-surface);
-      border: 2px solid #ff9900;
-      border-radius: var(--co-radius);
-      box-shadow: var(--co-shadow);
-      padding: 28px;
-      margin-bottom: 36px;
-      position: relative;
-      overflow: hidden;
-    }
-    .featured-banner::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 5px;
-      background: linear-gradient(90deg, #ff9900 0%, #ff5200 100%);
-    }
-    .featured-head {
+    .stats-row {
       display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
       flex-wrap: wrap;
-      gap: 16px;
-      margin-bottom: 20px;
+      gap: 10px;
     }
-    .featured-info {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-    .company-logo-badge {
-      width: 56px;
-      height: 56px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 26px;
-      font-weight: 900;
-      color: #fff;
-      flex-shrink: 0;
-    }
-    .company-logo-badge.amazon {
-      background: #131921;
-      border: 1px solid #ff9900;
-      color: #ff9900;
-    }
-    .featured-titles h2 {
-      margin: 0 0 4px 0;
-      font-size: 24px;
-    }
-    .featured-titles p {
-      margin: 0;
-      font-size: 14px;
-      color: var(--co-muted);
-    }
-    .badge-live {
+    .stat-chip {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      font-size: 12px;
-      font-weight: 700;
-      color: #059669;
-      background: rgba(16, 185, 129, 0.12);
-      padding: 5px 12px;
-      border-radius: 99px;
-      border: 1px solid rgba(16, 185, 129, 0.3);
-    }
-    .badge-live::before {
-      content: "";
-      width: 7px;
-      height: 7px;
-      background: #10b981;
-      border-radius: 50%;
-      box-shadow: 0 0 6px #10b981;
-    }
-    .btn-live-hub {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 20px;
-      background: #ff9900;
-      color: #111 !important;
-      font-weight: 750;
-      font-size: 14px;
-      text-decoration: none !important;
+      background: var(--co-surface);
+      border: 1px solid var(--co-border);
+      padding: 6px 12px;
       border-radius: 8px;
-      transition: filter 0.15s ease, transform 0.15s ease;
+      font-size: 12.5px;
+      font-weight: 650;
+      color: var(--co-text);
     }
-    .btn-live-hub:hover {
-      filter: brightness(1.08);
-      transform: translateY(-1px);
+    .stat-num {
+      color: var(--co-accent);
+      font-weight: 800;
     }
 
     /* Action Grid */
-    .action-grid {
+    .featured-row {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 16px;
-      margin-top: 20px;
+      margin-bottom: 28px;
     }
     .action-card {
       background: var(--co-surface);
       border: 1px solid var(--co-border);
-      border-radius: 10px;
-      padding: 16px;
+      border-radius: var(--co-radius);
+      padding: 20px;
       text-decoration: none;
       color: inherit;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
+      transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
     }
     .action-card:hover {
-      border-color: #ff9900;
       transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+      border-color: var(--co-accent);
+      box-shadow: var(--co-shadow);
     }
     .card-top {
       display: flex;
@@ -192,411 +117,885 @@
       margin-bottom: 8px;
     }
     .card-icon {
-      font-size: 20px;
+      font-size: 22px;
     }
     .card-title {
-      font-size: 15px;
-      font-weight: 700;
+      font-size: 16px;
+      font-weight: 750;
     }
     .card-desc {
-      font-size: 12.5px;
+      font-size: 13px;
       color: var(--co-muted);
-      line-height: 1.4;
-      margin-bottom: 12px;
+      line-height: 1.45;
+      margin-bottom: 14px;
     }
     .card-link-text {
       font-size: 12px;
-      font-weight: 700;
-      color: #d97706;
+      font-weight: 750;
+      color: var(--co-accent);
       display: inline-flex;
       align-items: center;
       gap: 4px;
     }
 
-    /* Section Headings */
-    .section-head {
+    /* Control Bar & Tabs */
+    .control-panel {
+      background: var(--co-surface);
+      border: 1px solid var(--co-border);
+      border-radius: var(--co-radius);
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+    }
+    .tab-bar {
       display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin: 40px 0 18px 0;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
       border-bottom: 1px solid var(--co-border);
       padding-bottom: 12px;
     }
-    .section-head h2 {
-      margin: 0;
-      font-size: 22px;
-      font-weight: 800;
-    }
-    .section-head p {
-      margin: 4px 0 0 0;
-      font-size: 13px;
+    .tab-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13.5px;
+      font-weight: 700;
       color: var(--co-muted);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .tab-btn:hover {
+      background: rgba(36, 89, 214, 0.06);
+      color: var(--co-text);
+    }
+    .tab-btn.active {
+      background: var(--co-accent);
+      color: #fff;
+      border-color: var(--co-accent);
+    }
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .search-box {
+      flex-grow: 1;
+      max-width: 480px;
+      position: relative;
+    }
+    .search-box input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 10px 14px 10px 36px;
+      font-size: 13.5px;
+      border: 1px solid var(--co-border);
+      border-radius: 8px;
+      background: var(--co-bg);
+      color: var(--co-text);
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .search-box input:focus {
+      border-color: var(--co-accent);
+    }
+    .search-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--co-muted);
+      font-size: 14px;
+    }
+    .pill-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .filter-pill {
+      background: var(--co-bg);
+      border: 1px solid var(--co-border);
+      padding: 5px 12px;
+      border-radius: 99px;
+      font-size: 11.5px;
+      font-weight: 650;
+      color: var(--co-muted);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .filter-pill:hover {
+      color: var(--co-text);
+      border-color: var(--co-accent);
+    }
+    .filter-pill.active {
+      background: var(--co-accent);
+      color: #fff;
+      border-color: var(--co-accent);
     }
 
-    /* Companies Directory Grid */
+    /* Content Surfaces */
+    .tab-surface {
+      display: none;
+    }
+    .tab-surface.active {
+      display: block;
+    }
+
+    /* 1. Companies Grid */
     .company-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
       gap: 20px;
     }
     .company-card {
       background: var(--co-surface);
       border: 1px solid var(--co-border);
       border-radius: var(--co-radius);
-      padding: 24px;
-      box-shadow: var(--co-shadow);
+      padding: 22px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
       display: flex;
       flex-direction: column;
-      position: relative;
+      justify-content: space-between;
+      transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
     }
-    .company-card-head {
+    .company-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--co-accent);
+      box-shadow: var(--co-shadow);
+    }
+    .co-card-head {
       display: flex;
       align-items: center;
       gap: 14px;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
-    .company-card-logo {
-      width: 44px;
-      height: 44px;
+    .co-logo-badge {
+      width: 48px;
+      height: 48px;
       border-radius: 10px;
-      display: grid;
-      place-items: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 20px;
-      font-weight: 900;
+      font-weight: 800;
       color: #fff;
       flex-shrink: 0;
     }
-    .company-card-logo.google { background: #4285F4; }
-    .company-card-logo.meta { background: #0668E1; }
-    .company-card-logo.microsoft { background: #00A4EF; }
-    .company-card-logo.apple { background: #555555; }
-    .company-card-logo.uber { background: #000000; border: 1px solid #333; }
-    .company-card-logo.netflix { background: #E50914; }
-    
-    .company-card-titles h3 {
+    .co-titles h3 {
       margin: 0 0 2px 0;
       font-size: 18px;
+      font-weight: 800;
     }
-    .company-status {
+    .co-tier {
       font-size: 11px;
-      font-weight: 700;
-      color: var(--co-muted);
+      font-weight: 750;
+      color: var(--co-accent);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
     }
-    .company-card p {
-      font-size: 13.5px;
+    .co-tagline {
+      font-size: 13px;
       color: var(--co-muted);
       line-height: 1.45;
-      margin: 0 0 16px 0;
+      margin-bottom: 14px;
       flex-grow: 1;
     }
-    .focus-areas {
+    .co-meta-box {
+      background: var(--co-bg);
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 12px;
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+    .co-meta-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 4px;
+    }
+    .co-meta-row:last-child { margin-bottom: 0; }
+    .co-meta-label { color: var(--co-muted); font-weight: 600; }
+    .co-meta-val { font-weight: 700; color: var(--co-text); text-align: right; }
+    .co-tech-pills {
       display: flex;
       flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 16px;
+      gap: 4px;
+      margin-bottom: 14px;
     }
-    .focus-pill {
-      font-size: 11px;
+    .co-tech-pill {
+      font-size: 10.5px;
       font-weight: 600;
-      padding: 3px 8px;
-      border-radius: 6px;
+      padding: 2px 8px;
       background: var(--co-bg);
       border: 1px solid var(--co-border);
-      color: var(--co-text);
+      border-radius: 4px;
+      color: var(--co-muted);
     }
-    .company-actions {
+    .co-card-foot {
       border-top: 1px dashed var(--co-border);
-      padding-top: 14px;
+      padding-top: 12px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 12px;
     }
-    .company-actions a {
+    .btn-detail {
+      background: transparent;
+      border: 1px solid var(--co-border);
       color: var(--co-accent);
-      text-decoration: none;
-      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 750;
+      cursor: pointer;
+      transition: all 0.15s;
     }
-    .company-actions a:hover {
-      text-decoration: underline;
+    .btn-detail:hover {
+      background: var(--co-accent);
+      color: #fff;
+      border-color: var(--co-accent);
     }
 
-    /* Template Guide Box */
-    .template-box {
-      margin-top: 36px;
+    /* 2. Question Bank Grid */
+    .question-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+      gap: 16px;
+    }
+    .question-card {
       background: var(--co-surface);
-      border: 1px dashed var(--co-accent);
+      border: 1px solid var(--co-border);
       border-radius: var(--co-radius);
-      padding: 24px;
+      padding: 18px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
-    .template-box h3 {
-      margin: 0 0 8px 0;
-      font-size: 16px;
-      color: var(--co-accent);
+    .q-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
     }
-    .template-box p {
-      margin: 0 0 12px 0;
-      font-size: 13.5px;
-      color: var(--co-muted);
-      line-height: 1.5;
-    }
-    .template-box code {
-      font-size: 12px;
-      background: var(--co-bg);
-      padding: 2px 6px;
+    .q-company-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      font-weight: 750;
+      padding: 3px 8px;
       border-radius: 4px;
+      color: #fff;
+    }
+    .q-difficulty {
+      font-size: 11px;
+      font-weight: 750;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+    .diff-Easy { background: rgba(16, 185, 129, 0.12); color: #059669; }
+    .diff-Medium { background: rgba(245, 158, 11, 0.12); color: #d97706; }
+    .diff-Hard { background: rgba(239, 68, 68, 0.12); color: #dc2626; }
+    .q-title {
+      font-size: 15px;
+      font-weight: 750;
+      margin: 0 0 6px 0;
+      line-height: 1.35;
+    }
+    .q-round {
+      font-size: 11.5px;
+      font-weight: 650;
+      color: var(--co-muted);
+      margin-bottom: 10px;
+    }
+    .q-prompt {
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--co-text);
+      background: var(--co-bg);
+      border-radius: 6px;
+      padding: 10px 12px;
+      margin-bottom: 12px;
+    }
+    .q-points {
+      font-size: 12px;
+      line-height: 1.45;
+      color: var(--co-muted);
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    /* 3. Tables (AI Policy & Tech Stack) */
+    .table-container {
+      background: var(--co-surface);
+      border: 1px solid var(--co-border);
+      border-radius: var(--co-radius);
+      overflow-x: auto;
+    }
+    table.data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      text-align: left;
+    }
+    table.data-table th {
+      background: var(--co-bg);
+      padding: 12px 16px;
+      font-weight: 750;
+      border-bottom: 1px solid var(--co-border);
+      color: var(--co-muted);
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 0.05em;
+    }
+    table.data-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--co-border);
+      vertical-align: top;
+      line-height: 1.45;
+    }
+    table.data-table tr:last-child td {
+      border-bottom: none;
+    }
+    table.data-table tr:hover td {
+      background: rgba(36, 89, 214, 0.02);
+    }
+    .badge-status {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 750;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+    .status-allowed { background: rgba(16, 185, 129, 0.12); color: #059669; }
+    .status-prohibited { background: rgba(239, 68, 68, 0.12); color: #dc2626; }
+    .status-conditional { background: rgba(245, 158, 11, 0.12); color: #d97706; }
+
+    /* Modal */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .modal-backdrop.open {
+      display: flex;
+    }
+    .modal-content {
+      background: var(--co-surface);
+      border: 1px solid var(--co-border);
+      border-radius: var(--co-radius);
+      max-width: 860px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 28px;
+      position: relative;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    }
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: var(--co-bg);
+      border: 1px solid var(--co-border);
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      font-size: 18px;
+      color: var(--co-muted);
+    }
+    .modal-close:hover {
+      color: var(--co-text);
+      border-color: var(--co-accent);
+    }
+
+    @media (max-width: 768px) {
+      .question-grid, .company-grid {
+        grid-template-columns: 1fr;
+      }
+      .filter-bar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .search-box {
+        max-width: 100%;
+      }
     }
   </style>
 </head>
 <body>
   <div class="co-wrap">
     <div class="co-hero">
-      <span class="co-hero-tag">Company-Specific Tracks</span>
-      <h1>Real Companies Preparation Hub</h1>
-      <p>Targeted interview playbooks for top tech companies. Each company features its exact interview loop architecture, behavioral assessment rubrics (Leadership Principles / Values), core technical focus areas, and direct practice portals.</p>
-    </div>
-
-    <!-- FEATURED: AMAZON SDE PREPARATION HUB -->
-    <div class="featured-banner" id="amazon-track">
-      <div class="featured-head">
-        <div class="featured-info">
-          <div class="company-logo-badge amazon">a</div>
-          <div class="featured-titles">
-            <h2>Amazon SDE Preparation Hub</h2>
-            <p>Full-stack loop track for SDE I, SDE II, and Senior SDE interviews across DSA, LLD, HLD, and the 16 Leadership Principles.</p>
-          </div>
-        </div>
-        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
-          <span class="badge-live">Live Companion Portal</span>
-          <a class="btn-live-hub" href="https://amazon.interview-prep-hub.workers.dev/" target="_blank" rel="noopener noreferrer">
-            Open Live Amazon Hub ↗
-          </a>
-        </div>
-      </div>
-
-      <div class="action-grid">
-        <a class="action-card" href="https://amazon.interview-prep-hub.workers.dev/#/interview" target="_blank" rel="noopener noreferrer">
-          <div class="card-top">
-            <span class="card-icon">🔄</span>
-            <span class="card-title">Interview Process &amp; Rounds</span>
-          </div>
-          <div class="card-desc">Detailed loop structure: Online Assessment (OA), Phone Screen, and 4-5 Onsite Loop rounds including Bar Raiser standards.</div>
-          <span class="card-link-text">Explore Rounds ↗</span>
-        </a>
-
-        <a class="action-card" href="https://amazon.interview-prep-hub.workers.dev/#/lp16" target="_blank" rel="noopener noreferrer">
-          <div class="card-top">
-            <span class="card-icon">🎯</span>
-            <span class="card-title">16 Leadership Principles</span>
-          </div>
-          <div class="card-desc">Every Amazon LP analyzed with interview signals: Customer Obsession, Ownership, Bias for Action, Dive Deep, and more.</div>
-          <span class="card-link-text">Study 16 LPs ↗</span>
-        </a>
-
-        <a class="action-card" href="https://amazon.interview-prep-hub.workers.dev/#/stories" target="_blank" rel="noopener noreferrer">
-          <div class="card-top">
-            <span class="card-icon">📝</span>
-            <span class="card-title">STAR Story Bank</span>
-          </div>
-          <div class="card-desc">Structured matrix mapping your project achievements and failure lessons to specific Leadership Principles.</div>
-          <span class="card-link-text">Build Stories ↗</span>
-        </a>
-
-        <a class="action-card" href="https://amazon.interview-prep-hub.workers.dev/#/reported" target="_blank" rel="noopener noreferrer">
-          <div class="card-top">
-            <span class="card-icon">💬</span>
-            <span class="card-title">Reported Questions</span>
-          </div>
-          <div class="card-desc">Candidate-reported coding, object-oriented design, and system architecture problems verified from actual recent loops.</div>
-          <span class="card-link-text">View Questions ↗</span>
-        </a>
-
-        <a class="action-card" href="https://amazon.interview-prep-hub.workers.dev/#/mocks" target="_blank" rel="noopener noreferrer">
-          <div class="card-top">
-            <span class="card-icon">⏱️</span>
-            <span class="card-title">Timed Mock Interviews</span>
-          </div>
-          <div class="card-desc">Simulated 45-minute technical coding and 60-minute system design loops with timer and automated feedback rubrics.</div>
-          <span class="card-link-text">Start Mock ↗</span>
-        </a>
-
-        <a class="action-card" href="https://amazon.interview-prep-hub.workers.dev/#/drill" target="_blank" rel="noopener noreferrer">
-          <div class="card-top">
-            <span class="card-icon">⚡</span>
-            <span class="card-title">Daily Interview Drill</span>
-          </div>
-          <div class="card-desc">Rapid daily reps covering Leadership Principle scenarios, DSA edge cases, and high-level architecture decisions.</div>
-          <span class="card-link-text">Daily Drill ↗</span>
-        </a>
-
-        <a class="action-card" href="https://amazon.interview-prep-hub.workers.dev/#/dashboard" target="_blank" rel="noopener noreferrer">
-          <div class="card-top">
-            <span class="card-icon">📊</span>
-            <span class="card-title">Readiness Dashboard</span>
-          </div>
-          <div class="card-desc">Track your preparation velocity, story coverage across all 16 LPs, and overall loop readiness percentage.</div>
-          <span class="card-link-text">Check Dashboard ↗</span>
-        </a>
-
-        <a class="action-card" href="DSA_Ultimate_Index.html#pattern-1" data-no-panel="">
-          <div class="card-top">
-            <span class="card-icon">💡</span>
-            <span class="card-title">Top Amazon DSA Patterns</span>
-          </div>
-          <div class="card-desc">Filtered problems in DSA Index: BFS/Multi-Source BFS, Tree DFS, Monotonic Stack, Top K Elements, and Interval Scheduling.</div>
-          <span class="card-link-text">Practice DSA ↗</span>
-        </a>
+      <span class="co-hero-tag">Tech Companies Interview Intelligence</span>
+      <h1>Real Companies Interview Preparation Hub</h1>
+      <p>Targeted interview playbooks for 21 top technology companies compiled from verified sources. Features exact round architectures, level expectations (L4/L5/L6, SWE/FDSE), OA platforms, official AI interview policies, and 250+ technical question &amp; stack mappings.</p>
+      <div class="stats-row">
+        <span class="stat-chip">🏢 <span class="stat-num">21</span> Companies</span>
+        <span class="stat-chip">❓ <span class="stat-num">112</span> Technical Questions</span>
+        <span class="stat-chip">🎯 <span class="stat-num">162</span> Sourced Amazon LP Qs</span>
+        <span class="stat-chip">🤖 <span class="stat-num">21</span> AI Policies</span>
+        <span class="stat-chip">⚡ <span class="stat-num">251</span> Tech Stacks</span>
       </div>
     </div>
 
-    <!-- EXPANSION DIRECTORY: REAL COMPANIES -->
-    <div class="section-head">
-      <div>
-        <h2>Target Companies Directory</h2>
-        <p>Pre-configured company frameworks ready for custom question banks, loop rubrics, and culture notes.</p>
-      </div>
-      <span style="font-size:12px;font-weight:700;color:var(--co-muted)">7 Companies Registered</span>
+    <!-- Featured Portals Row -->
+    <div class="featured-row">
+      <a class="action-card" href="https://amazon.interview-prep-hub.workers.dev/" target="_blank" rel="noopener noreferrer">
+        <div class="card-top">
+          <span class="card-icon">📦</span>
+          <span class="card-title">Live Amazon SDE Hub</span>
+        </div>
+        <div class="card-desc">Interactive companion site deployed at Cloudflare Workers: OA tests, 16 Leadership Principles, STAR story matrix, and daily drills.</div>
+        <span class="card-link-text">Launch Live Hub ↗</span>
+      </a>
+
+      <a class="action-card" href="#tab-questions" onclick="switchTab('questions')">
+        <div class="card-top">
+          <span class="card-icon">🧠</span>
+          <span class="card-title">112 Sourced Interview Questions</span>
+        </div>
+        <div class="card-desc">Real coding, system design, and architectural questions reported by candidates at Google, Meta, Palantir, Stripe, OpenAI, and more.</div>
+        <span class="card-link-text">Explore Questions →</span>
+      </a>
+
+      <a class="action-card" href="#tab-amazon-lp" onclick="switchTab('amazon-lp')">
+        <div class="card-top">
+          <span class="card-icon">🎯</span>
+          <span class="card-title">162 Sourced Amazon LP Bank</span>
+        </div>
+        <div class="card-desc">Evidence-labeled candidate and official behavioral questions across all 16 Leadership Principles and 2026 GenAI themes.</div>
+        <span class="card-link-text">Study Amazon LPs →</span>
+      </a>
+
+      <a class="action-card" href="#tab-ai-policy" onclick="switchTab('ai-policy')">
+        <div class="card-top">
+          <span class="card-icon">🤖</span>
+          <span class="card-title">AI Interview Policies (2026)</span>
+        </div>
+        <div class="card-desc">Official company guidance on using ChatGPT, Claude, and Copilot in coding assessments and take-home assignments.</div>
+        <span class="card-link-text">Check Policies →</span>
+      </a>
     </div>
 
-    <div class="company-grid">
-      <!-- GOOGLE -->
-      <div class="company-card">
-        <div class="company-card-head">
-          <div class="company-card-logo google">G</div>
-          <div class="company-card-titles">
-            <h3>Google</h3>
-            <span class="company-status">L4 / L5 SWE Track</span>
-          </div>
-        </div>
-        <p>Heavy emphasis on optimal algorithmic complexity, graph traversals, dynamic programming, and clean modular code. System design tests massive scale and distributed primitives.</p>
-        <div class="focus-areas">
-          <span class="focus-pill">Graph Algorithms</span>
-          <span class="focus-pill">Dynamic Programming</span>
-          <span class="focus-pill">Distributed Infrastructure</span>
-          <span class="focus-pill">Googleyness &amp; Leadership</span>
-        </div>
-        <div class="company-actions">
-          <span>Target: L4/L5</span>
-          <a href="DSA_Ultimate_Index.html" data-no-panel="">DSA Index Tagged ↗</a>
-        </div>
+    <!-- Main Navigation & Filters -->
+    <div class="control-panel">
+      <div class="tab-bar">
+        <button class="tab-btn active" onclick="switchTab('companies')">🏢 Companies (21)</button>
+        <button class="tab-btn" onclick="switchTab('questions')">❓ Technical Questions (112)</button>
+        <button class="tab-btn" onclick="switchTab('ai-policy')">🤖 AI Interview Policies (21)</button>
+        <button class="tab-btn" onclick="switchTab('tech-stack')">⚡ Tech Stack Matrix (251)</button>
+        <button class="tab-btn" onclick="switchTab('amazon-lp')">🎯 Amazon LP Sourced Bank (162)</button>
       </div>
 
-      <!-- META -->
-      <div class="company-card">
-        <div class="company-card-head">
-          <div class="company-card-logo meta">M</div>
-          <div class="company-card-titles">
-            <h3>Meta</h3>
-            <span class="company-status">E4 / E5 SWE Track</span>
-          </div>
+      <div class="filter-bar">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="live-search" placeholder="Search companies, questions, technologies..." oninput="handleSearch()">
         </div>
-        <p>Speed and precision: expect 2 LeetCode Medium/Hard problems in 45 minutes with bug-free code. System design focuses on high-volume feed architecture, real-time caching, and fan-out.</p>
-        <div class="focus-areas">
-          <span class="focus-pill">Speed Coding</span>
-          <span class="focus-pill">Binary Trees &amp; BST</span>
-          <span class="focus-pill">Feed Architecture</span>
-          <span class="focus-pill">Behavioral Execution</span>
-        </div>
-        <div class="company-actions">
-          <span>Target: E4/E5</span>
-          <a href="DSA_Ultimate_Index.html" data-no-panel="">DSA Index Tagged ↗</a>
-        </div>
-      </div>
-
-      <!-- MICROSOFT -->
-      <div class="company-card">
-        <div class="company-card-head">
-          <div class="company-card-logo microsoft">MS</div>
-          <div class="company-card-titles">
-            <h3>Microsoft</h3>
-            <span class="company-status">SDE II / Senior Track</span>
-          </div>
-        </div>
-        <p>Balances algorithmic problem solving with object-oriented design and design patterns. System design emphasizes enterprise scalability, Azure cloud services, and clean APIs.</p>
-        <div class="focus-areas">
-          <span class="focus-pill">Low-Level Design (LLD)</span>
-          <span class="focus-pill">SOLID Principles</span>
-          <span class="focus-pill">Azure &amp; Cloud</span>
-          <span class="focus-pill">Collaborative Culture</span>
-        </div>
-        <div class="company-actions">
-          <span>Target: SDE II</span>
-          <a href="LLD_Tutorial/index.html" data-no-panel="">LLD Tutorial ↗</a>
-        </div>
-      </div>
-
-      <!-- APPLE -->
-      <div class="company-card">
-        <div class="company-card-head">
-          <div class="company-card-logo apple"></div>
-          <div class="company-card-titles">
-            <h3>Apple</h3>
-            <span class="company-status">ICT3 / ICT4 Track</span>
-          </div>
-        </div>
-        <p>Team-dependent with heavy focus on core CS fundamentals, memory efficiency, concurrent programming, and operating systems concepts alongside standard data structures.</p>
-        <div class="focus-areas">
-          <span class="focus-pill">OS &amp; Concurrency</span>
-          <span class="focus-pill">Memory Optimization</span>
-          <span class="focus-pill">Security &amp; Privacy</span>
-          <span class="focus-pill">Domain Expertise</span>
-        </div>
-        <div class="company-actions">
-          <span>Target: ICT4</span>
-          <a href="cs_fundamentals.html" data-no-panel="">CS Fundamentals ↗</a>
-        </div>
-      </div>
-
-      <!-- UBER -->
-      <div class="company-card">
-        <div class="company-card-head">
-          <div class="company-card-logo uber">U</div>
-          <div class="company-card-titles">
-            <h3>Uber</h3>
-            <span class="company-status">L4 / L5 Backend Track</span>
-          </div>
-        </div>
-        <p>Known for challenging system design loops around geospatial indexing (H3, Geohash), real-time ride matching, event streaming with Kafka, and high-concurrency dispatch.</p>
-        <div class="focus-areas">
-          <span class="focus-pill">Geospatial Indexing</span>
-          <span class="focus-pill">Event-Driven Kafka</span>
-          <span class="focus-pill">Dynamic Matching</span>
-          <span class="focus-pill">Distributed Caching</span>
-        </div>
-        <div class="company-actions">
-          <span>Target: L5</span>
-          <a href="system_design.html" data-no-panel="">System Design ↗</a>
-        </div>
-      </div>
-
-      <!-- NETFLIX -->
-      <div class="company-card">
-        <div class="company-card-head">
-          <div class="company-card-logo netflix">N</div>
-          <div class="company-card-titles">
-            <h3>Netflix</h3>
-            <span class="company-status">Senior SWE Track</span>
-          </div>
-        </div>
-        <p>Hires primarily senior talent with deep operational experience. Evaluates culture alignment with the Culture Memo (Freedom &amp; Responsibility) and edge streaming architecture.</p>
-        <div class="focus-areas">
-          <span class="focus-pill">Culture Memo</span>
-          <span class="focus-pill">Edge CDN Delivery</span>
-          <span class="focus-pill">Chaos Engineering</span>
-          <span class="focus-pill">Microservice Resilience</span>
-        </div>
-        <div class="company-actions">
-          <span>Target: Senior</span>
-          <a href="behavioral.html" data-no-panel="">Behavioral Prep ↗</a>
+        <div class="pill-group" id="sub-filter-pills">
+          <!-- Dynamically populated per tab -->
         </div>
       </div>
     </div>
 
-    <!-- TEMPLATE GUIDE -->
-    <div class="template-box">
-      <h3>Adding More Companies &amp; Custom Tracks</h3>
-      <p>This page is structured so you can easily append new company tracks (e.g. Bloomberg, Stripe, Databricks, Snowflake). Simply duplicate a <code>.company-card</code> block above with your target company's name, interview rounds, evaluation criteria, and links to your personal notes.</p>
+    <!-- TAB 1: COMPANIES -->
+    <div class="tab-surface active" id="surface-companies">
+      <div class="company-grid" id="companies-container"></div>
+    </div>
+
+    <!-- TAB 2: QUESTIONS BANK -->
+    <div class="tab-surface" id="surface-questions">
+      <div class="question-grid" id="questions-container"></div>
+    </div>
+
+    <!-- TAB 3: AI POLICY MATRIX -->
+    <div class="tab-surface" id="surface-ai-policy">
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th style="width: 180px;">Company</th>
+              <th style="width: 130px;">AI Policy</th>
+              <th>Official Published Guidance &amp; Rules</th>
+            </tr>
+          </thead>
+          <tbody id="ai-policy-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TAB 4: TECH STACK MATRIX -->
+    <div class="tab-surface" id="surface-tech-stack">
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th style="width: 220px;">Technology</th>
+              <th style="width: 180px;">Category</th>
+              <th>Used by Top Tech Companies</th>
+            </tr>
+          </thead>
+          <tbody id="tech-stack-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TAB 5: AMAZON LP BANK -->
+    <div class="tab-surface" id="surface-amazon-lp">
+      <div class="question-grid" id="amazon-lp-container"></div>
     </div>
   </div>
+
+  <!-- Company Detail Modal -->
+  <div class="modal-backdrop" id="company-modal" onclick="closeModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <script>
+    // State
+    var currentTab = 'companies';
+    var currentFilter = 'All';
+    var searchQuery = '';
+    var data = window.companiesData || { companies: [], questions: [], qaBank: [], techMatrix: [], amazonSourcedQuestions: [] };
+
+    function switchTab(tabId) {
+      currentTab = tabId;
+      currentFilter = 'All';
+      searchQuery = '';
+      var input = document.getElementById('live-search');
+      if (input) input.value = '';
+
+      // Update tab buttons
+      var btns = document.querySelectorAll('.tab-btn');
+      btns.forEach(function(b, idx) {
+        var names = ['companies', 'questions', 'ai-policy', 'tech-stack', 'amazon-lp'];
+        b.classList.toggle('active', names[idx] === tabId);
+      });
+
+      // Update tab surfaces
+      var surfaces = document.querySelectorAll('.tab-surface');
+      surfaces.forEach(function(s) { s.classList.remove('active'); });
+      var activeSurface = document.getElementById('surface-' + tabId);
+      if (activeSurface) activeSurface.classList.add('active');
+
+      renderFilterPills();
+      renderActiveTab();
+    }
+
+    function renderFilterPills() {
+      var container = document.getElementById('sub-filter-pills');
+      if (!container) return;
+      var pills = [];
+
+      if (currentTab === 'companies') {
+        pills = ['All', 'FAANG / Big Tech', 'Data & AI Platforms', 'Enterprise SaaS', 'Fintech & Payments', 'High-Growth Tech', 'Developer & Cloud Infrastructure'];
+      } else if (currentTab === 'questions') {
+        pills = ['All', 'Coding', 'System Design', 'Behavioral', 'Domain Deep Dive'];
+      } else if (currentTab === 'tech-stack') {
+        pills = ['All', 'Languages', 'Backend & services', 'Data & storage', 'Infrastructure', 'Frontend & mobile', 'AI & ML'];
+      } else if (currentTab === 'amazon-lp') {
+        pills = ['All', 'Customer Obsession', 'Ownership', 'Invent and Simplify', 'Bias for Action', 'Dive Deep', 'Have Backbone', 'Deliver Results', 'GenAI / 2026'];
+      }
+
+      container.innerHTML = pills.map(function(p) {
+        var activeClass = p === currentFilter ? 'active' : '';
+        return '<button class="filter-pill ' + activeClass + '" onclick="setFilter(\'' + p.replace(/'/g, "\\'") + '\')">' + p + '</button>';
+      }).join('');
+    }
+
+    function setFilter(filter) {
+      currentFilter = filter;
+      renderFilterPills();
+      renderActiveTab();
+    }
+
+    function handleSearch() {
+      searchQuery = (document.getElementById('live-search').value || '').toLowerCase().trim();
+      renderActiveTab();
+    }
+
+    function renderActiveTab() {
+      if (currentTab === 'companies') renderCompanies();
+      else if (currentTab === 'questions') renderQuestions();
+      else if (currentTab === 'ai-policy') renderAiPolicies();
+      else if (currentTab === 'tech-stack') renderTechStack();
+      else if (currentTab === 'amazon-lp') renderAmazonLp();
+    }
+
+    // 1. Render Companies
+    function renderCompanies() {
+      var container = document.getElementById('companies-container');
+      if (!container) return;
+      var list = data.companies || [];
+
+      var filtered = list.filter(function(c) {
+        var matchFilter = currentFilter === 'All' || c.tier === currentFilter;
+        var matchSearch = !searchQuery || 
+          c.name.toLowerCase().includes(searchQuery) || 
+          c.tier.toLowerCase().includes(searchQuery) ||
+          (c.tagline && c.tagline.toLowerCase().includes(searchQuery)) ||
+          (c.headquarters && c.headquarters.toLowerCase().includes(searchQuery));
+        return matchFilter && matchSearch;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--co-muted);">No companies found matching your criteria.</div>';
+        return;
+      }
+
+      container.innerHTML = filtered.map(function(c) {
+        var techPills = [];
+        if (c.techStack) {
+          var langs = (c.techStack.languages || []).slice(0, 3).map(function(t){ return t.name; });
+          var back = (c.techStack.backendAndServices || []).slice(0, 2).map(function(t){ return t.name; });
+          techPills = langs.concat(back);
+        }
+
+        var roundsCount = (c.rounds || []).length;
+        var levelsText = (c.levels || []).map(function(l){ return l.level; }).join(' · ');
+
+        return '<div class="company-card">' +
+          '<div>' +
+            '<div class="co-card-head">' +
+              '<div class="co-logo-badge" style="background: ' + (c.brandColor || '#2459d6') + '">' + c.name.charAt(0) + '</div>' +
+              '<div class="co-titles">' +
+                '<h3>' + c.name + '</h3>' +
+                '<span class="co-tier">' + c.tier + '</span>' +
+              '</div>' +
+            '</div>' +
+            '<div class="co-tagline">' + (c.tagline || c.hiringPhilosophy.value || '') + '</div>' +
+            '<div class="co-meta-box">' +
+              '<div class="co-meta-row"><span class="co-meta-label">Levels:</span><span class="co-meta-val">' + (levelsText || 'SWE / Senior') + '</span></div>' +
+              '<div class="co-meta-row"><span class="co-meta-label">Rounds:</span><span class="co-meta-val">' + roundsCount + ' Rounds (' + (c.totalRounds.value || 'Phone + Onsite') + ')</span></div>' +
+              '<div class="co-meta-row"><span class="co-meta-label">OA Platform:</span><span class="co-meta-val">' + (c.oaDetails ? c.oaDetails.platform : 'Varies') + '</span></div>' +
+              '<div class="co-meta-row"><span class="co-meta-label">AI Policy:</span><span class="co-meta-val">' + (c.aiPolicy ? c.aiPolicy.allowed : 'Conditional') + '</span></div>' +
+            '</div>' +
+            '<div class="co-tech-pills">' +
+              techPills.map(function(t){ return '<span class="co-tech-pill">' + t + '</span>'; }).join('') +
+            '</div>' +
+          '</div>' +
+          '<div class="co-card-foot">' +
+            '<span style="font-size: 11.5px; color: var(--co-muted);">' + (c.headquarters || 'United States') + '</span>' +
+            '<button class="btn-detail" onclick="openCompanyModal(\'' + c.id + '\')">View Full Loop →</button>' +
+          '</div>' +
+        '</div>';
+      }).join('');
+    }
+
+    // 2. Render Questions
+    function renderQuestions() {
+      var container = document.getElementById('questions-container');
+      if (!container) return;
+      var list = data.questions || [];
+
+      var filtered = list.filter(function(q) {
+        var matchFilter = currentFilter === 'All' || q.category === currentFilter;
+        var matchSearch = !searchQuery || 
+          q.title.toLowerCase().includes(searchQuery) || 
+          q.companyName.toLowerCase().includes(searchQuery) ||
+          q.prompt.toLowerCase().includes(searchQuery) ||
+          q.category.toLowerCase().includes(searchQuery);
+        return matchFilter && matchSearch;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--co-muted);">No questions found matching your criteria.</div>';
+        return;
+      }
+
+      container.innerHTML = filtered.map(function(q) {
+        var keyPoints = (q.keyPointsToCover || []).map(function(pt){ return '<li>' + pt + '</li>'; }).join('');
+        return '<div class="question-card">' +
+          '<div>' +
+            '<div class="q-head">' +
+              '<span class="q-company-badge" style="background: ' + (q.brandColor || '#333') + '">' + q.companyName + '</span>' +
+              '<span class="q-difficulty diff-' + q.difficulty + '">' + q.difficulty + '</span>' +
+            '</div>' +
+            '<h4 class="q-title">' + q.title + '</h4>' +
+            '<div class="q-round">Round: ' + q.roundName + ' (' + q.category + ')</div>' +
+            '<div class="q-prompt">' + q.prompt + '</div>' +
+            (keyPoints ? '<ul class="q-points">' + keyPoints + '</ul>' : '') +
+          '</div>' +
+          (q.practiceUrl ? '<div style="margin-top: 12px; text-align: right;"><a href="' + q.practiceUrl + '" target="_blank" rel="noopener" style="font-size: 12px; font-weight: 750; color: var(--co-accent); text-decoration: none;">Practice Problem ↗</a></div>' : '') +
+        '</div>';
+      }).join('');
+    }
+
+    // 3. Render AI Policies
+    function renderAiPolicies() {
+      var tbody = document.getElementById('ai-policy-tbody');
+      if (!tbody) return;
+      var list = data.companies || [];
+
+      var filtered = list.filter(function(c) {
+        return !searchQuery || c.name.toLowerCase().includes(searchQuery) || (c.aiPolicy && c.aiPolicy.guidance.toLowerCase().includes(searchQuery));
+      });
+
+      tbody.innerHTML = filtered.map(function(c) {
+        var pol = c.aiPolicy || { allowed: 'Unknown', guidance: 'No official public policy stated.' };
+        var statusClass = 'status-conditional';
+        if (pol.allowed === 'Allowed' || pol.allowed === true) statusClass = 'status-allowed';
+        else if (pol.allowed === 'Prohibited' || pol.allowed === false) statusClass = 'status-prohibited';
+
+        return '<tr>' +
+          '<td><strong>' + c.name + '</strong><br><span style="font-size:11px;color:var(--co-muted);">' + c.tier + '</span></td>' +
+          '<td><span class="badge-status ' + statusClass + '">' + pol.allowed + '</span></td>' +
+          '<td>' + pol.guidance + '</td>' +
+        '</tr>';
+      }).join('');
+    }
+
+    // 4. Render Tech Stack
+    function renderTechStack() {
+      var tbody = document.getElementById('tech-stack-tbody');
+      if (!tbody) return;
+      var list = data.techMatrix || [];
+
+      var filtered = list.filter(function(t) {
+        var matchFilter = currentFilter === 'All' || t.category === currentFilter;
+        var matchSearch = !searchQuery || t.name.toLowerCase().includes(searchQuery) || t.category.toLowerCase().includes(searchQuery);
+        return matchFilter && matchSearch;
+      });
+
+      tbody.innerHTML = filtered.map(function(t) {
+        var compBadges = (t.companies || []).map(function(c){
+          return '<span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700;color:#fff;background:' + (c.brandColor || '#333') + ';margin:2px 4px 2px 0;">' + c.name + '</span>';
+        }).join('');
+
+        return '<tr>' +
+          '<td><strong>' + t.name + '</strong></td>' +
+          '<td><span style="color:var(--co-muted);">' + t.category + '</span></td>' +
+          '<td>' + compBadges + '</td>' +
+        '</tr>';
+      }).join('');
+    }
+
+    // 5. Render Amazon LP Sourced Bank
+    function renderAmazonLp() {
+      var container = document.getElementById('amazon-lp-container');
+      if (!container) return;
+      var list = data.amazonSourcedQuestions || [];
+
+      var filtered = list.filter(function(q) {
+        var matchFilter = currentFilter === 'All' || 
+          q.leadershipPrinciple.toLowerCase().includes(currentFilter.toLowerCase()) ||
+          (currentFilter === 'GenAI / 2026' && (q.section.includes('GenAI') || q.section.includes('2026')));
+        var matchSearch = !searchQuery || 
+          q.question.toLowerCase().includes(searchQuery) || 
+          q.leadershipPrinciple.toLowerCase().includes(searchQuery) ||
+          q.section.toLowerCase().includes(searchQuery);
+        return matchFilter && matchSearch;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--co-muted);">No Amazon LP questions found matching your criteria.</div>';
+        return;
+      }
+
+      container.innerHTML = filtered.map(function(q) {
+        return '<div class="question-card">' +
+          '<div>' +
+            '<div class="q-head">' +
+              '<span class="q-company-badge" style="background:#ff9900;color:#111;">Amazon</span>' +
+              '<span class="badge-status status-conditional">' + (q.evidenceTag || 'SOURCED') + '</span>' +
+            '</div>' +
+            '<h4 class="q-title" style="color:var(--co-accent);">' + q.leadershipPrinciple + '</h4>' +
+            '<div class="q-round">Section: ' + q.section + '</div>' +
+            '<div class="q-prompt" style="font-size: 14px; font-weight: 600;">“' + q.question + '”</div>' +
+          '</div>' +
+          '<div style="font-size: 11.5px; color: var(--co-muted); margin-top: 8px;">Framing tip: Structure response strictly with STAR (Situation 10%, Task 10%, Action 60%, Result 20%).</div>' +
+        '</div>';
+      }).join('');
+    }
+
+    // Modal
+    function openCompanyModal(companyId) {
+      var c = (data.companies || []).find(function(item){ return item.id === companyId; });
+      if (!c) return;
+
+      var roundsHtml = (c.rounds || []).map(function(r, idx){
+        var sampleQs = (r.sampleQuestions || []).map(function(q){
+          return '<li style="margin-bottom:6px;"><strong>' + q.title + '</strong> (' + q.difficulty + '): ' + q.prompt + '</li>';
+        }).join('');
+
+        return '<div style="background:var(--co-bg);border-radius:8px;padding:14px;margin-bottom:12px;">' +
+          '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">' +
+            '<strong style="font-size:14.5px;">Round ' + (idx + 1) + ': ' + r.name + '</strong>' +
+            '<span style="font-size:11.5px;font-weight:700;color:var(--co-accent);">' + (r.durationMinutes || 45) + ' mins · ' + r.roundType + '</span>' +
+          '</div>' +
+          '<p style="margin:0 0 8px 0;font-size:13px;color:var(--co-muted);">' + (r.description || '') + '</p>' +
+          (sampleQs ? '<ul style="margin:0;padding-left:18px;font-size:12px;color:var(--co-text);">' + sampleQs + '</ul>' : '') +
+        '</div>';
+      }).join('');
+
+      var levelsHtml = (c.levels || []).map(function(l){
+        return '<div style="border-left:3px solid var(--co-accent);padding-left:10px;margin-bottom:10px;">' +
+          '<strong>' + l.level + ' — ' + l.title + '</strong> <span style="font-size:11.5px;color:var(--co-muted);">(' + l.experienceYears + ')</span><br>' +
+          '<span style="font-size:12.5px;color:var(--co-muted);">' + l.primaryExpectation + '</span>' +
+        '</div>';
+      }).join('');
+
+      var body = document.getElementById('modal-body');
+      body.innerHTML = '' +
+        '<div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;">' +
+          '<div class="co-logo-badge" style="width:56px;height:56px;font-size:24px;background:' + (c.brandColor || '#2459d6') + '">' + c.name.charAt(0) + '</div>' +
+          '<div>' +
+            '<h2 style="margin:0 0 4px 0;font-size:24px;">' + c.name + '</h2>' +
+            '<span class="co-tier">' + c.tier + ' · ' + (c.headquarters || 'US') + '</span>' +
+          '</div>' +
+        '</div>' +
+        '<div style="margin-bottom:20px;">' +
+          '<h4 style="margin:0 0 6px 0;text-transform:uppercase;font-size:11px;letter-spacing:0.05em;color:var(--co-muted);">Hiring Philosophy & Evaluation</h4>' +
+          '<p style="margin:0;font-size:13.5px;line-height:1.5;">' + (c.hiringPhilosophy.value || c.tagline) + '</p>' +
+        '</div>' +
+        '<div style="margin-bottom:20px;">' +
+          '<h4 style="margin:0 0 10px 0;text-transform:uppercase;font-size:11px;letter-spacing:0.05em;color:var(--co-muted);">Engineering Levels & Expectations</h4>' +
+          levelsHtml +
+        '</div>' +
+        '<div style="margin-bottom:20px;">' +
+          '<h4 style="margin:0 0 10px 0;text-transform:uppercase;font-size:11px;letter-spacing:0.05em;color:var(--co-muted);">Interview Loop Breakdown</h4>' +
+          roundsHtml +
+        '</div>' +
+        '<div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--co-border);padding-top:16px;margin-top:20px;">' +
+          '<a href="' + (c.careersUrl || '#') + '" target="_blank" rel="noopener" style="font-size:13px;font-weight:750;color:var(--co-accent);text-decoration:none;">Official Careers Portal ↗</a>' +
+          '<button class="btn-detail" onclick="closeModal()">Close</button>' +
+        '</div>';
+
+      document.getElementById('company-modal').classList.add('open');
+    }
+
+    function closeModal(e) {
+      if (!e || e.target.id === 'company-modal' || e.target.classList.contains('modal-close') || e.target.classList.contains('btn-detail')) {
+        document.getElementById('company-modal').classList.remove('open');
+      }
+    }
+
+    // Initial render
+    document.addEventListener('DOMContentLoaded', function() {
+      renderFilterPills();
+      renderActiveTab();
+    });
+  </script>
 </body>
 </html>
