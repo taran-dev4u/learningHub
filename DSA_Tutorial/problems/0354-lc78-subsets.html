@@ -23,34 +23,80 @@
  › Subpattern 11.1: Subsets / Include-Exclude · Problem 354 of 699</p>
 
 <h2>📋 The problem</h2><p>Return every possible subset (the power set) of an array of distinct integers.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given an integer array <code>nums</code> of unique elements, return all possible subsets (the power set). The solution set must not contain duplicate subsets and can be returned in any order.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Subsets / Include-Exclude</strong> — At each index, choose to include or skip — generates the 2ⁿ subsets.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>At each element: branch include/exclude; or iterate — every existing subset spawns a copy plus the new element.</div>
-<h2>Why this pattern?</h2><ul><li>"all combinations / permutations / subsets / partitions"</li><li>"generate all valid …" (parentheses, palindromes)</li><li>board search: N-Queens, Sudoku, word paths in a grid</li><li>n is small (≤ ~20) — exponential output is expected</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Backtracking master template and adapt the marked parts to this problem:</p><pre><code>def backtrack(start, path):
-    if is_complete(path):                 # base: record a snapshot
-        res.append(path[:])               # COPY — path keeps mutating!
-        return
-    for i in range(start, len(choices)):
-        if not valid(choices[i]):         # prune early
-            continue
-        path.append(choices[i])           # choose
-        backtrack(i + 1, path)            # explore  (i+1: combinations;
-        path.pop()                        # un-choose      i: reuse allowed)
+<p>For an array of length <code>n</code>, every element has exactly two choices: either <strong>include</strong> it in the current subset, or <strong>exclude</strong> it. The total number of subsets is mathematically <code>2^n</code>. A state-space tree where nodes represent candidate subsets is traversed using <strong>Backtracking</strong>.</p>
 
-res = []
-backtrack(0, [])</code></pre>
-<h2>How to work on it now</h2>
+<h2>🐢 Brute force vs optimal</h2>
+<p>Since the output itself requires <code>O(N &times; 2^N)</code> time to write <code>2^N</code> subsets of average length <code>N/2</code>, any optimal algorithm must operate in <code>O(N &times; 2^N)</code> time.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> At each level of the recursion tree, the current <code>path</code> is a valid subset! Add a copy of <code>path</code> to <code>result</code> immediately. Then iterate index <code>i</code> from <code>start</code> to <code>n - 1</code>:
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+  <li><strong>Choose:</strong> <code>path.append(nums[i])</code></li>
+  <li><strong>Explore:</strong> <code>backtrack(i + 1, path)</code></li>
+  <li><strong>Un-choose:</strong> <code>path.pop()</code></li>
+</ol></div>
+
+<h2>🪜 The approach, step by step</h2>
+<ol>
+<li>Initialize <code>result = []</code>.</li>
+<li>Define <code>backtrack(start, path)</code>:
+  <ul>
+    <li>Append <code>list(path)</code> to <code>result</code>.</li>
+    <li>For <code>i</code> from <code>start</code> to <code>len(nums) - 1</code>:
+      <ul>
+        <li><code>path.append(nums[i])</code></li>
+        <li><code>backtrack(i + 1, path)</code></li>
+        <li><code>path.pop()</code></li>
+      </ul>
+    </li>
+  </ul>
+</li>
+<li>Call <code>backtrack(0, [])</code>. Return <code>result</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>🎞️ Visual dry run — nums = [1, 2, 3]:</h2>
+<pre class="viz">backtrack(0, []) -> record []
+  i=0: path=[1] -> record [1]
+    i=1: path=[1,2] -> record [1,2]
+      i=2: path=[1,2,3] -> record [1,2,3]
+    i=2: path=[1,3] -> record [1,3]
+  i=1: path=[2] -> record [2]
+    i=2: path=[2,3] -> record [2,3]
+  i=2: path=[3] -> record [3]
+
+Result: [[], [1], [1,2], [1,2,3], [1,3], [2], [2,3], [3]] (8 subsets) ✓</pre>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def subsets(nums: list[int]) -> list[list[int]]:
+    """
+    Generates all subsets (power set) of distinct integers via backtracking.
+    """
+    res = []
+    path = []
+    n = len(nums)
+    
+    def backtrack(start):
+        # Every node in the recursion tree represents a valid subset
+        res.append(list(path))
+        
+        for i in range(start, n):
+            path.append(nums[i])      # Choose
+            backtrack(i + 1)          # Explore
+            path.pop()                # Un-choose (Backtrack)
+            
+    backtrack(0)
+    return res
+</code></pre>
+</details>
+
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O(N &times; 2^N)</code>. There are <code>2^N</code> subsets, and copying each subset takes on average <code>O(N)</code> time.</li>
+<li><strong>Space Complexity:</strong> <code>O(N)</code> recursion stack depth and path storage (excluding output array).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0353-lc77-combinations.html"><span class="lbl">← Previous</span>#77 Combinations</a><a href="../problems/0355-lc90-subsets-ii.html" style="text-align:right"><span class="lbl">Next →</span>#90 Subsets II</a></div>
 </div>

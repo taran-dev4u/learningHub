@@ -23,34 +23,56 @@
  › Subpattern 11.2: Permutations · Problem 358 of 699</p>
 
 <h2>📋 The problem</h2><p>Return all unique permutations of an array that may contain duplicate numbers.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given a collection of numbers, <code>nums</code>, that might contain <strong>duplicates</strong>, return all possible unique permutations in any order.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Permutations</strong> — Swap each index with subsequent indices to generate all n! orderings.</p>
+<div class="insight">💡 <strong>Key insight:</strong> Sort <code>nums</code>. When iterating through candidate elements at index <code>i</code>:
+If <code>used[i]</code> is True: continue.
+If <code>i > 0 and nums[i] == nums[i - 1] and not used[i - 1]</code>: <strong>continue</strong>!
+<br><br>
+Why <code>not used[i - 1]</code>?
+Because if <code>used[i - 1] == False</code>, it means <code>nums[i - 1]</code> was just un-chosen during backtracking at the exact same depth! Picking the identical duplicate <code>nums[i]</code> now would generate a duplicate permutation subtree!</div>
 
-<h2>Why this pattern?</h2><ul><li>"all combinations / permutations / subsets / partitions"</li><li>"generate all valid …" (parentheses, palindromes)</li><li>board search: N-Queens, Sudoku, word paths in a grid</li><li>n is small (≤ ~20) — exponential output is expected</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Backtracking master template and adapt the marked parts to this problem:</p><pre><code>def backtrack(start, path):
-    if is_complete(path):                 # base: record a snapshot
-        res.append(path[:])               # COPY — path keeps mutating!
-        return
-    for i in range(start, len(choices)):
-        if not valid(choices[i]):         # prune early
-            continue
-        path.append(choices[i])           # choose
-        backtrack(i + 1, path)            # explore  (i+1: combinations;
-        path.pop()                        # un-choose      i: reuse allowed)
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def permuteUnique(nums: list[int]) -> list[list[int]]:
+    """
+    Generates unique permutations of array with duplicates via sorting and used-flag pruning.
+    """
+    nums.sort()
+    n = len(nums)
+    res = []
+    path = []
+    used = [False] * n
+    
+    def backtrack():
+        if len(path) == n:
+            res.append(list(path))
+            return
+            
+        for i in range(n):
+            if used[i]:
+                continue
+            # Prune duplicate siblings at the same recursion depth
+            if i > 0 and nums[i] == nums[i - 1] and not used[i - 1]:
+                continue
+                
+            used[i] = True
+            path.append(nums[i])
+            backtrack()
+            path.pop()
+            used[i] = False
+            
+    backtrack()
+    return res
+</code></pre>
+</details>
 
-res = []
-backtrack(0, [])</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O(N &times; N!)</code>.</li>
+<li><strong>Space Complexity:</strong> <code>O(N)</code>.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0357-lc46-permutations.html"><span class="lbl">← Previous</span>#46 Permutations</a><a href="../problems/0359-lc60-permutation-sequence.html" style="text-align:right"><span class="lbl">Next →</span>#60 Permutation Sequence</a></div>
 </div>

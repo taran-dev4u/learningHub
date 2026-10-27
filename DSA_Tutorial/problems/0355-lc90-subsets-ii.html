@@ -23,34 +23,69 @@
  › Subpattern 11.1: Subsets / Include-Exclude · Problem 355 of 699</p>
 
 <h2>📋 The problem</h2><p>Return every subset of an array that may contain duplicates, without producing duplicate subsets.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given an integer array <code>nums</code> that may contain <strong>duplicates</strong>, return all possible subsets (the power set). The solution set must not contain duplicate subsets.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Subsets / Include-Exclude</strong> — At each index, choose to include or skip — generates the 2ⁿ subsets.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Sort; standard subset backtracking, skipping equal siblings at the same tree level.</div>
-<h2>Why this pattern?</h2><ul><li>"all combinations / permutations / subsets / partitions"</li><li>"generate all valid …" (parentheses, palindromes)</li><li>board search: N-Queens, Sudoku, word paths in a grid</li><li>n is small (≤ ~20) — exponential output is expected</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Backtracking master template and adapt the marked parts to this problem:</p><pre><code>def backtrack(start, path):
-    if is_complete(path):                 # base: record a snapshot
-        res.append(path[:])               # COPY — path keeps mutating!
-        return
-    for i in range(start, len(choices)):
-        if not valid(choices[i]):         # prune early
-            continue
-        path.append(choices[i])           # choose
-        backtrack(i + 1, path)            # explore  (i+1: combinations;
-        path.pop()                        # un-choose      i: reuse allowed)
+<h2>🐢 Brute force vs optimal</h2>
+<p>Generating all subsets and converting to a <code>set(tuple(x))</code> wastes computation on duplicate branches. By <strong>sorting</strong> the input and pruning identical sibling choices at the same recursion depth, we generate only unique subsets in <code>O(N &times; 2^N)</code> time.</p>
 
-res = []
-backtrack(0, [])</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> Sort <code>nums</code>. In the loop <code>for i in range(start, n)</code>:
+If <code>i > start and nums[i] == nums[i - 1]</code>: <strong>continue</strong>!
+<br><br>
+Why <code>i > start</code>? Because if <code>i == start</code>, this is the first time we are picking this duplicate element for the current position (e.g. picking the second <code>'2'</code> to make <code>[2, 2]</code>). But if <code>i > start</code>, we have already explored all subsets starting with an identical element at this level—picking it again would generate a duplicate branch!</div>
+
+<h2>🪜 The approach, step by step</h2>
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+<li>Sort <code>nums.sort()</code>.</li>
+<li>Initialize <code>res = []</code>, <code>path = []</code>.</li>
+<li>In <code>backtrack(start)</code>:
+  <ul>
+    <li>Append <code>list(path)</code> to <code>res</code>.</li>
+    <li>For <code>i</code> from <code>start</code> to <code>len(nums) - 1</code>:
+      <ul>
+        <li>If <code>i > start and nums[i] == nums[i - 1]</code>: continue (prune duplicate sibling!).</li>
+        <li><code>path.append(nums[i])</code></li>
+        <li><code>backtrack(i + 1)</code></li>
+        <li><code>path.pop()</code></li>
+      </ul>
+    </li>
+  </ul>
+</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def subsetsWithDup(nums: list[int]) -> list[list[int]]:
+    """
+    Generates all unique subsets from array with duplicates using sorting and sibling pruning.
+    """
+    nums.sort()
+    res = []
+    path = []
+    n = len(nums)
+    
+    def backtrack(start):
+        res.append(list(path))
+        
+        for i in range(start, n):
+            # Prune duplicate choices at the same recursion depth
+            if i > start and nums[i] == nums[i - 1]:
+                continue
+                
+            path.append(nums[i])
+            backtrack(i + 1)
+            path.pop()
+            
+    backtrack(0)
+    return res
+</code></pre>
+</details>
+
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O(N &times; 2^N)</code>. Sorting takes <code>O(N log N)</code>.</li>
+<li><strong>Space Complexity:</strong> <code>O(N)</code> recursion stack.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0354-lc78-subsets.html"><span class="lbl">← Previous</span>#78 Subsets</a><a href="../problems/0356-lc31-next-permutation.html" style="text-align:right"><span class="lbl">Next →</span>#31 Next Permutation</a></div>
 </div>

@@ -23,34 +23,47 @@
  › Subpattern 11.3: Combination Sum · Problem 363 of 699</p>
 
 <h2>📋 The problem</h2><p>Given candidates that may repeat and a target, list all unique combinations summing to the target where each candidate is used at most once.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given a collection of candidate numbers <code>candidates</code> (which may contain duplicates) and a <code>target</code>, find all unique combinations where candidate numbers sum to <code>target</code>. Each number in <code>candidates</code> may only be used <strong>once</strong> in the combination.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Combination Sum</strong> — Recurse with remaining target; allow/disallow reuse of the same element depending on the variant.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Sort; skip equal siblings at the same depth (i > start and c[i]==c[i−1]) to kill duplicate combinations.</div>
-<h2>Why this pattern?</h2><ul><li>"all combinations / permutations / subsets / partitions"</li><li>"generate all valid …" (parentheses, palindromes)</li><li>board search: N-Queens, Sudoku, word paths in a grid</li><li>n is small (≤ ~20) — exponential output is expected</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Backtracking master template and adapt the marked parts to this problem:</p><pre><code>def backtrack(start, path):
-    if is_complete(path):                 # base: record a snapshot
-        res.append(path[:])               # COPY — path keeps mutating!
-        return
-    for i in range(start, len(choices)):
-        if not valid(choices[i]):         # prune early
-            continue
-        path.append(choices[i])           # choose
-        backtrack(i + 1, path)            # explore  (i+1: combinations;
-        path.pop()                        # un-choose      i: reuse allowed)
+<div class="insight">💡 <strong>Key insight:</strong> Sort <code>candidates</code>. Pass <code>i + 1</code> into recursive call (each number used once). Prune duplicate sibling branches: <code>if i > start and candidates[i] == candidates[i - 1]: continue</code>.</div>
 
-res = []
-backtrack(0, [])</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def combinationSum2(candidates: list[int], target: int) -> list[list[int]]:
+    """
+    Finds unique combinations summing to target with single-use candidates and duplicates.
+    """
+    candidates.sort()
+    res = []
+    path = []
+    n = len(candidates)
+    
+    def backtrack(start, remain):
+        if remain == 0:
+            res.append(list(path))
+            return
+            
+        for i in range(start, n):
+            if candidates[i] > remain:
+                break
+            if i > start and candidates[i] == candidates[i - 1]:
+                continue  # Skip duplicate elements at same depth
+                
+            path.append(candidates[i])
+            backtrack(i + 1, remain - candidates[i])
+            path.pop()
+            
+    backtrack(0, target)
+    return res
+</code></pre>
+</details>
+
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O(2^N)</code> in worst case.</li>
+<li><strong>Space Complexity:</strong> <code>O(N)</code>.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0362-lc39-combination-sum.html"><span class="lbl">← Previous</span>#39 Combination Sum</a><a href="../problems/0364-lc216-combination-sum-iii.html" style="text-align:right"><span class="lbl">Next →</span>#216 Combination Sum III</a></div>
 </div>

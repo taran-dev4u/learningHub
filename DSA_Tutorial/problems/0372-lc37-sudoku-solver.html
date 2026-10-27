@@ -23,34 +23,51 @@
  › Subpattern 11.6: N-Queens / Constraint Satisfaction · Problem 372 of 699</p>
 
 <h2>📋 The problem</h2><p>Fill a partially completed 9×9 Sudoku grid so every row, column, and 3×3 box contains the digits 1–9 exactly once.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Write a program to solve a Sudoku puzzle by filling the empty cells (represented by <code>'.'</code>). Each of the digits <code>1-9</code> must occur exactly once in each row, each column, and each of the nine <code>3x3</code> sub-boxes.</p>
 
-<h2>Where this fits</h2>
-<p><strong>N-Queens / Constraint Satisfaction</strong> — Place pieces one by one with conflict pruning — N-Queens, Sudoku.</p>
+<div class="insight">💡 <strong>Key insight:</strong> Iterate to find the next empty cell <code>(r, c)</code>. Try placing digits <code>'1'</code> through <code>'9'</code>. If placing digit <code>d</code> is valid (not in row <code>r</code>, not in col <code>c</code>, not in sub-box), set <code>board[r][c] = d</code> and recurse. If the recursive call returns <code>True</code>, return <code>True</code> immediately! If no digit works, reset <code>board[r][c] = '.'</code> and return <code>False</code>.</div>
 
-<h2>Why this pattern?</h2><ul><li>"all combinations / permutations / subsets / partitions"</li><li>"generate all valid …" (parentheses, palindromes)</li><li>board search: N-Queens, Sudoku, word paths in a grid</li><li>n is small (≤ ~20) — exponential output is expected</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Backtracking master template and adapt the marked parts to this problem:</p><pre><code>def backtrack(start, path):
-    if is_complete(path):                 # base: record a snapshot
-        res.append(path[:])               # COPY — path keeps mutating!
-        return
-    for i in range(start, len(choices)):
-        if not valid(choices[i]):         # prune early
-            continue
-        path.append(choices[i])           # choose
-        backtrack(i + 1, path)            # explore  (i+1: combinations;
-        path.pop()                        # un-choose      i: reuse allowed)
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def solveSudoku(board: list[list[str]]) -> None:
+    """
+    Solves 9x9 Sudoku board in-place via backtracking.
+    """
+    def is_valid(r, c, ch):
+        for i in range(9):
+            if board[r][i] == ch:
+                return False
+            if board[i][c] == ch:
+                return False
+            # Check 3x3 sub-box
+            br, bc = 3 * (r // 3) + i // 3, 3 * (c // 3) + i % 3
+            if board[br][bc] == ch:
+                return False
+        return True
+        
+    def solve():
+        for r in range(9):
+            for c in range(9):
+                if board[r][c] == '.':
+                    for d in "123456789":
+                        if is_valid(r, c, d):
+                            board[r][c] = d
+                            if solve():
+                                return True
+                            board[r][c] = '.'  # Backtrack
+                    return False
+        return True
+        
+    solve()
+</code></pre>
+</details>
 
-res = []
-backtrack(0, [])</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O(9^(empty_cells))</code> bounded by <code>O(9^81) = O(1)</code> for a fixed 9x9 board.</li>
+<li><strong>Space Complexity:</strong> <code>O(81) = O(1)</code> recursion stack.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0371-lc2018-check-if-word-can-be-placed-in-crossword.html"><span class="lbl">← Previous</span>#2018 Check if Word Can Be Placed In Crossword</a><a href="../problems/0373-lc51-n-queens.html" style="text-align:right"><span class="lbl">Next →</span>#51 N-Queens</a></div>
 </div>

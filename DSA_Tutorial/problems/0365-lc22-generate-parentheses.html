@@ -23,34 +23,50 @@
  › Subpattern 11.4: Parentheses Generation · Problem 365 of 699</p>
 
 <h2>📋 The problem</h2><p>Given n, generate every string of n pairs of parentheses that is well-formed.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given <code>n</code> pairs of parentheses, write a function to generate all combinations of well-formed parentheses.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Parentheses Generation</strong> — Track open/close counts and only emit valid prefixes (open ≥ close, both ≤ n).</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Backtrack building the string: may add '(' while any remain; may add ')' only if it won't outnumber '('.</div>
-<h2>Why this pattern?</h2><ul><li>"all combinations / permutations / subsets / partitions"</li><li>"generate all valid …" (parentheses, palindromes)</li><li>board search: N-Queens, Sudoku, word paths in a grid</li><li>n is small (≤ ~20) — exponential output is expected</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Backtracking master template and adapt the marked parts to this problem:</p><pre><code>def backtrack(start, path):
-    if is_complete(path):                 # base: record a snapshot
-        res.append(path[:])               # COPY — path keeps mutating!
-        return
-    for i in range(start, len(choices)):
-        if not valid(choices[i]):         # prune early
-            continue
-        path.append(choices[i])           # choose
-        backtrack(i + 1, path)            # explore  (i+1: combinations;
-        path.pop()                        # un-choose      i: reuse allowed)
+<div class="insight">💡 <strong>Key insight:</strong> Maintain <code>open_count</code> and <code>close_count</code>:
+<ul>
+  <li>Can add <code>'('</code> if <code>open_count < n</code>.</li>
+  <li>Can add <code>')'</code> if <code>close_count < open_count</code>.</li>
+</ul>
+Base case: when <code>len(path) == 2 * n</code>, append <code>"".join(path)</code>!</div>
 
-res = []
-backtrack(0, [])</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def generateParenthesis(n: int) -> list[str]:
+    """
+    Generates well-formed parentheses strings via open/close bounded backtracking.
+    """
+    res = []
+    path = []
+    
+    def backtrack(open_count, close_count):
+        if len(path) == 2 * n:
+            res.append("".join(path))
+            return
+            
+        if open_count < n:
+            path.append('(')
+            backtrack(open_count + 1, close_count)
+            path.pop()
+            
+        if close_count < open_count:
+            path.append(')')
+            backtrack(open_count, close_count + 1)
+            path.pop()
+            
+    backtrack(0, 0)
+    return res
+</code></pre>
+</details>
+
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O(4^N / sqrt(N))</code> governed by the n-th Catalan number $C_n = rac{1}{n+1}inom{2n}{n}$.</li>
+<li><strong>Space Complexity:</strong> <code>O(N)</code> stack depth.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0364-lc216-combination-sum-iii.html"><span class="lbl">← Previous</span>#216 Combination Sum III</a><a href="../problems/0366-lc301-remove-invalid-parentheses.html" style="text-align:right"><span class="lbl">Next →</span>#301 Remove Invalid Parentheses</a></div>
 </div>

@@ -23,34 +23,54 @@
  › Subpattern 11.6: N-Queens / Constraint Satisfaction · Problem 373 of 699</p>
 
 <h2>📋 The problem</h2><p>Place n queens on an n×n board so none attack each other; return all distinct board layouts.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>The n-queens puzzle is the problem of placing <code>n</code> queens on an <code>n x n</code> chessboard such that no two queens attack each other. Return all distinct solutions.</p>
 
-<h2>Where this fits</h2>
-<p><strong>N-Queens / Constraint Satisfaction</strong> — Place pieces one by one with conflict pruning — N-Queens, Sudoku.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Backtrack row by row; track attacked columns and both diagonals (r−c, r+c) in sets.</div>
-<h2>Why this pattern?</h2><ul><li>"all combinations / permutations / subsets / partitions"</li><li>"generate all valid …" (parentheses, palindromes)</li><li>board search: N-Queens, Sudoku, word paths in a grid</li><li>n is small (≤ ~20) — exponential output is expected</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Backtracking master template and adapt the marked parts to this problem:</p><pre><code>def backtrack(start, path):
-    if is_complete(path):                 # base: record a snapshot
-        res.append(path[:])               # COPY — path keeps mutating!
-        return
-    for i in range(start, len(choices)):
-        if not valid(choices[i]):         # prune early
-            continue
-        path.append(choices[i])           # choose
-        backtrack(i + 1, path)            # explore  (i+1: combinations;
-        path.pop()                        # un-choose      i: reuse allowed)
+<div class="insight">💡 <strong>Key insight:</strong> Place one queen per row! Queens attack if they share the same column <code>c</code>, same positive diagonal (where <code>r + c</code> is constant), or same negative diagonal (where <code>r - c</code> is constant). Maintain three hash sets: <code>cols</code>, <code>pos_diag</code>, <code>neg_diag</code> for <code>O(1)</code> safety checks.</div>
 
-res = []
-backtrack(0, [])</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def solveNQueens(n: int) -> list[list[str]]:
+    """
+    Solves N-Queens using row-by-row backtracking with O(1) diagonal attack sets.
+    """
+    cols = set()
+    pos_diag = set()  # r + c
+    neg_diag = set()  # r - c
+    res = []
+    board = [['.'] * n for _ in range(n)]
+    
+    def backtrack(r):
+        if r == n:
+            res.append(["".join(row) for row in board])
+            return
+            
+        for c in range(n):
+            if c in cols or (r + c) in pos_diag or (r - c) in neg_diag:
+                continue
+                
+            cols.add(c)
+            pos_diag.add(r + c)
+            neg_diag.add(r - c)
+            board[r][c] = 'Q'
+            
+            backtrack(r + 1)
+            
+            cols.remove(c)
+            pos_diag.remove(r + c)
+            neg_diag.remove(r - c)
+            board[r][c] = '.'
+            
+    backtrack(0)
+    return res
+</code></pre>
+</details>
+
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O(N!)</code>.</li>
+<li><strong>Space Complexity:</strong> <code>O(N^2)</code> for board and sets.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0372-lc37-sudoku-solver.html"><span class="lbl">← Previous</span>#37 Sudoku Solver</a><a href="../problems/0374-lc93-restore-ip-addresses.html" style="text-align:right"><span class="lbl">Next →</span>#93 Restore IP Addresses</a></div>
 </div>

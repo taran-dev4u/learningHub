@@ -23,34 +23,54 @@
  › Subpattern 11.6: N-Queens / Constraint Satisfaction · Problem 374 of 699</p>
 
 <h2>📋 The problem</h2><p>Insert dots into a digit string to form every possible valid IPv4 address (four parts, 0–255, no leading zeros).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given a string <code>s</code> containing only digits, return all possible valid IPv4 addresses that can be formed by inserting dots into <code>s</code>.</p>
 
-<h2>Where this fits</h2>
-<p><strong>N-Queens / Constraint Satisfaction</strong> — Place pieces one by one with conflict pruning — N-Queens, Sudoku.</p>
+<div class="insight">💡 <strong>Key insight:</strong> Partition <code>s</code> into 4 parts. At each step, take 1 to 3 digits. Valid segment conditions:
+1. Integer value &le; 255.
+2. No leading zeros: <code>segment == "0" or not segment.startswith("0")</code>.</div>
 
-<h2>Why this pattern?</h2><ul><li>"all combinations / permutations / subsets / partitions"</li><li>"generate all valid …" (parentheses, palindromes)</li><li>board search: N-Queens, Sudoku, word paths in a grid</li><li>n is small (≤ ~20) — exponential output is expected</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Backtracking master template and adapt the marked parts to this problem:</p><pre><code>def backtrack(start, path):
-    if is_complete(path):                 # base: record a snapshot
-        res.append(path[:])               # COPY — path keeps mutating!
-        return
-    for i in range(start, len(choices)):
-        if not valid(choices[i]):         # prune early
-            continue
-        path.append(choices[i])           # choose
-        backtrack(i + 1, path)            # explore  (i+1: combinations;
-        path.pop()                        # un-choose      i: reuse allowed)
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def restoreIpAddresses(s: str) -> list[str]:
+    """
+    Generates all valid IPv4 address strings via 4-segment backtracking.
+    """
+    if len(s) < 4 or len(s) > 12:
+        return []
+        
+    res = []
+    path = []
+    
+    def backtrack(start):
+        if len(path) == 4:
+            if start == len(s):
+                res.append(".".join(path))
+            return
+            
+        for length in range(1, 4):
+            if start + length > len(s):
+                break
+                
+            seg = s[start:start + length]
+            # No leading zeros unless single digit 0
+            if (len(seg) > 1 and seg[0] == '0') or int(seg) > 255:
+                continue
+                
+            path.append(seg)
+            backtrack(start + length)
+            path.pop()
+            
+    backtrack(0)
+    return res
+</code></pre>
+</details>
 
-res = []
-backtrack(0, [])</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O(3^4) = O(1)</code> constant time (at most 81 partitions).</li>
+<li><strong>Space Complexity:</strong> <code>O(1)</code> space.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0373-lc51-n-queens.html"><span class="lbl">← Previous</span>#51 N-Queens</a><a href="../problems/0375-lc282-expression-add-operators.html" style="text-align:right"><span class="lbl">Next →</span>#282 Expression Add Operators</a></div>
 </div>

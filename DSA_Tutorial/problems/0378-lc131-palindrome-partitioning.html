@@ -23,34 +23,50 @@
  › Subpattern 11.7: Palindrome Partitioning · Problem 378 of 699</p>
 
 <h2>📋 The problem</h2><p>Split a string into pieces so every piece is a palindrome; return all such partitions.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given a string <code>s</code>, partition <code>s</code> such that every substring of the partition is a <strong>palindrome</strong>. Return all possible palindrome partitionings of <code>s</code>.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Palindrome Partitioning</strong> — At each prefix, try every cut where the prefix is a palindrome; recurse on the suffix.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Backtrack over cut positions; only recurse when the prefix is a palindrome (precompute or check on the fly).</div>
-<h2>Why this pattern?</h2><ul><li>"all combinations / permutations / subsets / partitions"</li><li>"generate all valid …" (parentheses, palindromes)</li><li>board search: N-Queens, Sudoku, word paths in a grid</li><li>n is small (≤ ~20) — exponential output is expected</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Backtracking master template and adapt the marked parts to this problem:</p><pre><code>def backtrack(start, path):
-    if is_complete(path):                 # base: record a snapshot
-        res.append(path[:])               # COPY — path keeps mutating!
-        return
-    for i in range(start, len(choices)):
-        if not valid(choices[i]):         # prune early
-            continue
-        path.append(choices[i])           # choose
-        backtrack(i + 1, path)            # explore  (i+1: combinations;
-        path.pop()                        # un-choose      i: reuse allowed)
+<div class="insight">💡 <strong>Key insight:</strong> Backtracking explores split points. For <code>i</code> from <code>start</code> to <code>len(s) - 1</code>: check if prefix <code>s[start:i+1]</code> is a palindrome (<code>sub == sub[::-1]</code>). If it is, append to <code>path</code> and recurse on <code>i + 1</code>. When <code>start == len(s)</code>, append <code>list(path)</code>!</div>
 
-res = []
-backtrack(0, [])</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def partition(s: str) -> list[list[str]]:
+    """
+    Finds all palindrome partitions using backtracking with substring verification.
+    """
+    res = []
+    path = []
+    n = len(s)
+    
+    def is_palindrome(left, right):
+        while left < right:
+            if s[left] != s[right]:
+                return False
+            left += 1
+            right -= 1
+        return True
+        
+    def backtrack(start):
+        if start == n:
+            res.append(list(path))
+            return
+            
+        for end in range(start, n):
+            if is_palindrome(start, end):
+                path.append(s[start:end + 1])
+                backtrack(end + 1)
+                path.pop()
+                
+    backtrack(0)
+    return res
+</code></pre>
+</details>
+
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O(N &times; 2^N)</code>. There are <code>2^(N-1)</code> possible partitions, and verifying palindromes takes <code>O(N)</code>.</li>
+<li><strong>Space Complexity:</strong> <code>O(N)</code> recursion stack.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0377-lc2698-find-the-punishment-number-of-an-integer.html"><span class="lbl">← Previous</span>#2698 Find the Punishment Number of an Integer</a><a href="../patterns/p12-dp.html" style="text-align:right"><span class="lbl">Next →</span>Dynamic Programming (DP)</a></div>
 </div>

@@ -23,34 +23,51 @@
  › Subpattern 11.2: Permutations · Problem 357 of 699</p>
 
 <h2>📋 The problem</h2><p>Return all permutations of an array of distinct numbers.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given an array <code>nums</code> of distinct integers, return all the possible <strong>permutations</strong> in any order.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Permutations</strong> — Swap each index with subsequent indices to generate all n! orderings.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Permutation backtracking with a used set (or in-place swapping).</div>
-<h2>Why this pattern?</h2><ul><li>"all combinations / permutations / subsets / partitions"</li><li>"generate all valid …" (parentheses, palindromes)</li><li>board search: N-Queens, Sudoku, word paths in a grid</li><li>n is small (≤ ~20) — exponential output is expected</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Backtracking master template and adapt the marked parts to this problem:</p><pre><code>def backtrack(start, path):
-    if is_complete(path):                 # base: record a snapshot
-        res.append(path[:])               # COPY — path keeps mutating!
-        return
-    for i in range(start, len(choices)):
-        if not valid(choices[i]):         # prune early
-            continue
-        path.append(choices[i])           # choose
-        backtrack(i + 1, path)            # explore  (i+1: combinations;
-        path.pop()                        # un-choose      i: reuse allowed)
+<p>For an array of length <code>n</code>, there are exactly <code>n!</code> permutations. At each step of the recursion tree, any element not yet used in the current prefix can be placed next.</p>
 
-res = []
-backtrack(0, [])</code></pre>
-<h2>How to work on it now</h2>
+<div class="insight">💡 <strong>Key insight:</strong> Two standard approaches:
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+  <li><strong>Visited Boolean Array:</strong> Maintain <code>visited = [False] * n</code>. Loop <code>i</code> from <code>0</code> to <code>n - 1</code>: if not visited, mark visited, push to path, recurse, pop and unmark.</li>
+  <li><strong>In-place Swapping:</strong> In <code>backtrack(first)</code>, swap <code>nums[first]</code> with <code>nums[i]</code> for <code>i &isin; [first, n-1]</code>. Requires zero auxiliary visited set!</li>
+</ol></div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def permute(nums: list[int]) -> list[list[int]]:
+    """
+    Generates all permutations using backtracking with a visited tracking array.
+    """
+    n = len(nums)
+    res = []
+    path = []
+    used = [False] * n
+    
+    def backtrack():
+        if len(path) == n:
+            res.append(list(path))
+            return
+            
+        for i in range(n):
+            if not used[i]:
+                used[i] = True
+                path.append(nums[i])
+                backtrack()
+                path.pop()
+                used[i] = False
+                
+    backtrack()
+    return res
+</code></pre>
+</details>
+
+<h2>⚡ Complexity analysis</h2>
+<ul>
+<li><strong>Time Complexity:</strong> <code>O(N &times; N!)</code>. There are <code>N!</code> permutations, and each takes <code>O(N)</code> to copy into the result.</li>
+<li><strong>Space Complexity:</strong> <code>O(N)</code> for the recursion stack and <code>used</code> array.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0356-lc31-next-permutation.html"><span class="lbl">← Previous</span>#31 Next Permutation</a><a href="../problems/0358-lc47-permutations-ii.html" style="text-align:right"><span class="lbl">Next →</span>#47 Permutations II</a></div>
 </div>
