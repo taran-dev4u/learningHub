@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-27T01:39:54.484Z",
+  "generatedAt": "2026-10-27T01:44:10.044Z",
   "stats": {
     "domains": 7,
     "sections": 108,
@@ -42810,7 +42810,7 @@
       "domain": "bh",
       "domainTitle": "Behavioral and Leadership",
       "title": "S — Situation (10%)",
-      "description": "Brief context. What was happening? Who? When? Keep to 2-3 sentences.",
+      "description": "Set the macro context in strictly 2-3 sentences: Company scale, system stakes, team size, and the critical problem trigger (e.g. 'During Black Friday peak traffic at an e-commerce platform processing 45k RPS, our primary inventory sync pipeline collapsed due to unindexed database lock contention'). Avoid sprawling background history; establish stakes and stop.",
       "section": "STAR Framework & Storytelling",
       "subsection": "STAR Components",
       "url": "",
@@ -42825,7 +42825,7 @@
           "url": "https://www.google.com/search?q=s+situation+10+behavioral+interview+tutorial"
         }
       ],
-      "search": "s — situation (10%) brief context. what was happening? who? when? keep to 2-3 sentences. behavioral and leadership star framework & storytelling star components 1.1.1"
+      "search": "s — situation (10%) set the macro context in strictly 2-3 sentences: company scale, system stakes, team size, and the critical problem trigger (e.g. 'during black friday peak traffic at an e-commerce platform processing 45k rps, our primary inventory sync pipeline collapsed due to unindexed database lock contention'). avoid sprawling background history; establish stakes and stop. behavioral and leadership star framework & storytelling star components 1.1.1"
     },
     {
       "id": "bh:1.1.2",
@@ -42834,7 +42834,7 @@
       "domain": "bh",
       "domainTitle": "Behavioral and Leadership",
       "title": "T — Task (10%)",
-      "description": "What YOU specifically were responsible for. Not the team — you.",
+      "description": "Define your exact personal mandate and architectural accountability. Separate your responsibility from the broader team: 'While the team handled customer support escalations, my specific task was to isolate the database deadlock root cause, restore throughput within a 1-hour SLA, and re-architect the concurrency model to prevent recurrence.'",
       "section": "STAR Framework & Storytelling",
       "subsection": "STAR Components",
       "url": "",
@@ -42849,7 +42849,7 @@
           "url": "https://www.google.com/search?q=t+task+10+behavioral+interview+tutorial"
         }
       ],
-      "search": "t — task (10%) what you specifically were responsible for. not the team — you. behavioral and leadership star framework & storytelling star components 1.1.2"
+      "search": "t — task (10%) define your exact personal mandate and architectural accountability. separate your responsibility from the broader team: 'while the team handled customer support escalations, my specific task was to isolate the database deadlock root cause, restore throughput within a 1-hour sla, and re-architect the concurrency model to prevent recurrence.' behavioral and leadership star framework & storytelling star components 1.1.2"
     },
     {
       "id": "bh:1.1.3",
@@ -42858,7 +42858,7 @@
       "domain": "bh",
       "domainTitle": "Behavioral and Leadership",
       "title": "A — Action (60%)",
-      "description": "Specific actions YOU took, in order. Use 'I' not 'we'. Include thought process and trade-offs.",
+      "description": "The heart of your answer (60% of total speaking time). Walk chronologically through YOUR technical and strategic actions using 'I': hypotheses tested, trade-offs evaluated (e.g. Optimistic Locking vs Distributed Redis Redlock), prototypes built, consensus driven across stakeholders, and rollback contingencies deployed. Detail the technical 'why' behind each decision.",
       "section": "STAR Framework & Storytelling",
       "subsection": "STAR Components",
       "url": "",
@@ -42873,7 +42873,7 @@
           "url": "https://www.google.com/search?q=a+action+60+behavioral+interview+tutorial"
         }
       ],
-      "search": "a — action (60%) specific actions you took, in order. use 'i' not 'we'. include thought process and trade-offs. behavioral and leadership star framework & storytelling star components 1.1.3"
+      "search": "a — action (60%) the heart of your answer (60% of total speaking time). walk chronologically through your technical and strategic actions using 'i': hypotheses tested, trade-offs evaluated (e.g. optimistic locking vs distributed redis redlock), prototypes built, consensus driven across stakeholders, and rollback contingencies deployed. detail the technical 'why' behind each decision. behavioral and leadership star framework & storytelling star components 1.1.3"
     },
     {
       "id": "bh:1.1.4",
@@ -42882,7 +42882,7 @@
       "domain": "bh",
       "domainTitle": "Behavioral and Leadership",
       "title": "R — Result (20%)",
-      "description": "Quantify the outcome. Metrics > adjectives. Include what you learned.",
+      "description": "Quantify outcomes with concrete business and technical metrics: percentage latency drop, infrastructure cost savings, revenue protected, or team velocity increase (e.g. 'Reduced p99 checkout latency by 68%, eliminated deadlocks, and saved $140k/yr in provisioned IOPS'). Conclude with explicit senior self-reflection: 'If I were to do this again, I would implement automated load shedding upfront.'",
       "section": "STAR Framework & Storytelling",
       "subsection": "STAR Components",
       "url": "",
@@ -42897,7 +42897,7 @@
           "url": "https://www.google.com/search?q=r+result+20+behavioral+interview+tutorial"
         }
       ],
-      "search": "r — result (20%) quantify the outcome. metrics > adjectives. include what you learned. behavioral and leadership star framework & storytelling star components 1.1.4"
+      "search": "r — result (20%) quantify outcomes with concrete business and technical metrics: percentage latency drop, infrastructure cost savings, revenue protected, or team velocity increase (e.g. 'reduced p99 checkout latency by 68%, eliminated deadlocks, and saved $140k/yr in provisioned iops'). conclude with explicit senior self-reflection: 'if i were to do this again, i would implement automated load shedding upfront.' behavioral and leadership star framework & storytelling star components 1.1.4"
     },
     {
       "id": "bh:1.2.1",
@@ -42906,7 +42906,7 @@
       "domain": "bh",
       "domainTitle": "Behavioral and Leadership",
       "title": "Saying 'we' instead of 'I'",
-      "description": "Interviewer is evaluating YOU. Be specific about your individual contribution.",
+      "description": "Overusing 'we' masks individual ownership and signals passive participation to FAANG Bar Raisers. An interviewer needs to calibrate YOUR personal competencies. Always state: 'The team managed deployment, but I personally designed the database sharding scheme and authored the failover automation scripts.'",
       "section": "STAR Framework & Storytelling",
       "subsection": "Common Mistakes",
       "url": "",
@@ -42914,14 +42914,14 @@
       "resources": [
         {
           "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=saying+we+instead+of+i+behavioral+interview+explained"
+          "url": "https://www.youtube.com/results?search_query=saying+behavioral+interview+explained"
         },
         {
           "title": "🔍G",
-          "url": "https://www.google.com/search?q=saying+we+instead+of+i+behavioral+interview+tutorial"
+          "url": "https://www.google.com/search?q=saying+behavioral+interview+tutorial"
         }
       ],
-      "search": "saying 'we' instead of 'i' interviewer is evaluating you. be specific about your individual contribution. behavioral and leadership star framework & storytelling common mistakes 1.2.1"
+      "search": "saying 'we' instead of 'i' overusing 'we' masks individual ownership and signals passive participation to faang bar raisers. an interviewer needs to calibrate your personal competencies. always state: 'the team managed deployment, but i personally designed the database sharding scheme and authored the failover automation scripts.' behavioral and leadership star framework & storytelling common mistakes 1.2.1"
     },
     {
       "id": "bh:1.2.2",
@@ -42930,7 +42930,7 @@
       "domain": "bh",
       "domainTitle": "Behavioral and Leadership",
       "title": "Too much context, no action",
-      "description": "If you spend 3 minutes on Situation, you've already lost the room.",
+      "description": "Spending more than 45 seconds on the Situation bores the interviewer and cuts off time for technical Actions. Interviewers do not care about your company's complete product roadmap; they care about what you specifically engineered when systems broke. Timebox Situation + Task to 45 seconds total.",
       "section": "STAR Framework & Storytelling",
       "subsection": "Common Mistakes",
       "url": "",
@@ -42945,7 +42945,7 @@
           "url": "https://www.google.com/search?q=too+much+context+no+action+behavioral+interview+tutorial"
         }
       ],
-      "search": "too much context, no action if you spend 3 minutes on situation, you've already lost the room. behavioral and leadership star framework & storytelling common mistakes 1.2.2"
+      "search": "too much context, no action spending more than 45 seconds on the situation bores the interviewer and cuts off time for technical actions. interviewers do not care about your company's complete product roadmap; they care about what you specifically engineered when systems broke. timebox situation + task to 45 seconds total. behavioral and leadership star framework & storytelling common mistakes 1.2.2"
     },
     {
       "id": "bh:1.2.3",
@@ -42954,7 +42954,7 @@
       "domain": "bh",
       "domainTitle": "Behavioral and Leadership",
       "title": "Vague results",
-      "description": "'Made things better' ≠ 'reduced p99 latency 40% saving $200k/year'.",
+      "description": "Replacing metrics with vague adjectives like 'greatly improved stability' or 'helped the team work faster' is an immediate rejection signal. Replace with concrete engineering numbers: 'Reduced deployment rollback rate from 18% to 1.2%, dropped CI build duration from 45m to 7m, and maintained 99.99% availability over 12 months.'",
       "section": "STAR Framework & Storytelling",
       "subsection": "Common Mistakes",
       "url": "",
@@ -42969,7 +42969,7 @@
           "url": "https://www.google.com/search?q=vague+results+behavioral+interview+tutorial"
         }
       ],
-      "search": "vague results 'made things better' ≠ 'reduced p99 latency 40% saving $200k/year'. behavioral and leadership star framework & storytelling common mistakes 1.2.3"
+      "search": "vague results replacing metrics with vague adjectives like 'greatly improved stability' or 'helped the team work faster' is an immediate rejection signal. replace with concrete engineering numbers: 'reduced deployment rollback rate from 18% to 1.2%, dropped ci build duration from 45m to 7m, and maintained 99.99% availability over 12 months.' behavioral and leadership star framework & storytelling common mistakes 1.2.3"
     },
     {
       "id": "bh:1.2.4",
@@ -42978,7 +42978,7 @@
       "domain": "bh",
       "domainTitle": "Behavioral and Leadership",
       "title": "No reflection / learning",
-      "description": "Senior signal: what would you do differently? What did you learn?",
+      "description": "Senior and staff candidates are judged on self-awareness and learning loops. Ending without reflection signals arrogance. Always address: What unexpected trade-off emerged in production? What technical debt was incurred? What architectural principle did this experience solidify in your engineering philosophy?",
       "section": "STAR Framework & Storytelling",
       "subsection": "Common Mistakes",
       "url": "",
@@ -42993,7 +42993,7 @@
           "url": "https://www.google.com/search?q=no+reflection+%2F+learning+behavioral+interview+tutorial"
         }
       ],
-      "search": "no reflection / learning senior signal: what would you do differently? what did you learn? behavioral and leadership star framework & storytelling common mistakes 1.2.4"
+      "search": "no reflection / learning senior and staff candidates are judged on self-awareness and learning loops. ending without reflection signals arrogance. always address: what unexpected trade-off emerged in production? what technical debt was incurred? what architectural principle did this experience solidify in your engineering philosophy? behavioral and leadership star framework & storytelling common mistakes 1.2.4"
     },
     {
       "id": "bh:1.2.5",
@@ -43002,7 +43002,7 @@
       "domain": "bh",
       "domainTitle": "Behavioral and Leadership",
       "title": "Choosing the wrong story",
-      "description": "Match story to question. A 'conflict' story for a 'leadership' question hurts you.",
+      "description": "Mismatching the story's core theme to the interviewer's question (e.g., using a pure technical optimization story when the interviewer asked about resolving interpersonal conflict). Always maintain a mental bank of 10-12 modular stories mapped across leadership competencies so you can pivot smoothly.",
       "section": "STAR Framework & Storytelling",
       "subsection": "Common Mistakes",
       "url": "",
@@ -43017,7 +43017,7 @@
           "url": "https://www.google.com/search?q=choosing+the+wrong+story+behavioral+interview+tutorial"
         }
       ],
-      "search": "choosing the wrong story match story to question. a 'conflict' story for a 'leadership' question hurts you. behavioral and leadership star framework & storytelling common mistakes 1.2.5"
+      "search": "choosing the wrong story mismatching the story's core theme to the interviewer's question (e.g., using a pure technical optimization story when the interviewer asked about resolving interpersonal conflict). always maintain a mental bank of 10-12 modular stories mapped across leadership competencies so you can pivot smoothly. behavioral and leadership star framework & storytelling common mistakes 1.2.5"
     },
     {
       "id": "bh:1.3.1",
@@ -43026,7 +43026,7 @@
       "domain": "bh",
       "domainTitle": "Behavioral and Leadership",
       "title": "SOAR (Situation, Obstacle, Action, Result)",
-      "description": "Explicitly call out the obstacle. Good when challenges are the point.",
+      "description": "SOAR (Situation, Obstacle, Action, Result): Explicitly elevates the 'Obstacle' into a standalone focal point. Best utilized for questions assessing resilience, high-stress crisis management, or overcoming resource constraints and conflicting executive mandates.",
       "section": "STAR Framework & Storytelling",
       "subsection": "Variants of STAR",
       "url": "",
@@ -43041,7 +43041,7 @@
           "url": "https://www.google.com/search?q=soar+situation+obstacle+action+result+behavioral+interview+tutorial"
         }
       ],
-      "search": "soar (situation, obstacle, action, result) explicitly call out the obstacle. good when challenges are the point. behavioral and leadership star framework & storytelling variants of star 1.3.1"
+      "search": "soar (situation, obstacle, action, result) soar (situation, obstacle, action, result): explicitly elevates the 'obstacle' into a standalone focal point. best utilized for questions assessing resilience, high-stress crisis management, or overcoming resource constraints and conflicting executive mandates. behavioral and leadership star framework & storytelling variants of star 1.3.1"
     },
     {
       "id": "bh:1.3.2",
@@ -43050,7 +43050,7 @@
       "domain": "bh",
       "domainTitle": "Behavioral and Leadership",
       "title": "CAR (Context, Action, Result)",
-      "description": "Shorter form. Good for follow-up questions or time-pressed rounds.",
+      "description": "CAR (Context, Action, Result): A condensed 90-second version that merges Situation and Task into a rapid Context statement. Ideal for follow-up probe questions, quick time-constrained behavioral screens, or panel rounds where time is limited.",
       "section": "STAR Framework & Storytelling",
       "subsection": "Variants of STAR",
       "url": "",
@@ -43065,7 +43065,7 @@
           "url": "https://www.google.com/search?q=car+context+action+result+behavioral+interview+tutorial"
         }
       ],
-      "search": "car (context, action, result) shorter form. good for follow-up questions or time-pressed rounds. behavioral and leadership star framework & storytelling variants of star 1.3.2"
+      "search": "car (context, action, result) car (context, action, result): a condensed 90-second version that merges situation and task into a rapid context statement. ideal for follow-up probe questions, quick time-constrained behavioral screens, or panel rounds where time is limited. behavioral and leadership star framework & storytelling variants of star 1.3.2"
     },
     {
       "id": "bh:1.3.3",
@@ -43074,7 +43074,7 @@
       "domain": "bh",
       "domainTitle": "Behavioral and Leadership",
       "title": "Amazon's STAR + Learning",
-      "description": "Always add 'what I'd do differently'. Amazon weights self-reflection heavily.",
+      "description": "Amazon's STAR + Learning: Amazon interviewers evaluate candidates against continuous growth and 'Learn and Be Curious'. Appending a structured 'What I learned and what I would do differently next time' elevates your response from standard mid-level execution to senior bar-raising self-awareness.",
       "section": "STAR Framework & Storytelling",
       "subsection": "Variants of STAR",
       "url": "",
@@ -43082,14 +43082,14 @@
       "resources": [
         {
           "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=amazon+s+star+%2B+learning+behavioral+interview+explained"
+          "url": "https://www.youtube.com/results?search_query=amazon+behavioral+interview+explained"
         },
         {
           "title": "🔍G",
-          "url": "https://www.google.com/search?q=amazon+s+star+%2B+learning+behavioral+interview+tutorial"
+          "url": "https://www.google.com/search?q=amazon+behavioral+interview+tutorial"
         }
       ],
-      "search": "amazon's star + learning always add 'what i'd do differently'. amazon weights self-reflection heavily. behavioral and leadership star framework & storytelling variants of star 1.3.3"
+      "search": "amazon's star + learning amazon's star + learning: amazon interviewers evaluate candidates against continuous growth and 'learn and be curious'. appending a structured 'what i learned and what i would do differently next time' elevates your response from standard mid-level execution to senior bar-raising self-awareness. behavioral and leadership star framework & storytelling variants of star 1.3.3"
     },
     {
       "id": "bh:2.1.1",
@@ -43298,11 +43298,11 @@
       "resources": [
         {
           "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=when+did+you+challenge+a+we+ve+always+done+it+behavioral+interview+explained"
+          "url": "https://www.youtube.com/results?search_query=when+did+you+challenge+a+behavioral+interview+explained"
         },
         {
           "title": "🔍G",
-          "url": "https://www.google.com/search?q=when+did+you+challenge+a+we+ve+always+done+it+behavioral+interview+tutorial"
+          "url": "https://www.google.com/search?q=when+did+you+challenge+a+behavioral+interview+tutorial"
         }
       ],
       "search": "q: when did you challenge a 'we've always done it this way' approach? situation: team had maintained a complex self-hosted distributed redis cluster solely for distributing user session tokens, requiring 15 hours/month of maintenance, failover drills, and shard balancing. task: challenge the legacy architecture and eliminate operational overhead. action: demonstrated that 99% of session lookups only needed cryptographically verified user claims; championed replacing the entire stateful redis session fleet with asymmetric stateless jwts (ed25519) paired with a lightweight dynamodb blocklist for revoked tokens. result: decommissioned 24 redis nodes, saving $42k/year in aws infrastructure; eliminated session lookup latency entirely. behavioral and leadership amazon's 16 leadership principles lp 3: invent and simplify 2.3.3"
@@ -43418,11 +43418,11 @@
       "resources": [
         {
           "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=describe+the+most+interesting+thing+you+ve+learned+in+the+behavioral+interview+explained"
+          "url": "https://www.youtube.com/results?search_query=describe+the+most+interesting+thing+you+behavioral+interview+explained"
         },
         {
           "title": "🔍G",
-          "url": "https://www.google.com/search?q=describe+the+most+interesting+thing+you+ve+learned+in+the+behavioral+interview+tutorial"
+          "url": "https://www.google.com/search?q=describe+the+most+interesting+thing+you+behavioral+interview+tutorial"
         }
       ],
       "search": "q: describe the most interesting thing you've learned in the past year. situation: generative ai emerged as a major enterprise capability, but our platform had zero llm integration or retrieval expertise. task: build personal and team mastery in ai engineering to assess product feasibility. action: completed deep dives into transformer architectures, embeddings, vector indexing (hnsw), and chunking strategies; built an open-source evaluation benchmark comparing hybrid search vs dense retrieval on internal documentation. result: authored the company's ai architecture whitepaper; prototype became the blueprint for our production rag assistant that now handles 45k enterprise queries daily. behavioral and leadership amazon's 16 leadership principles lp 5: learn and be curious 2.5.2"
@@ -43538,11 +43538,11 @@
       "resources": [
         {
           "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=tell+me+about+a+time+you+refused+to+accept+good+behavioral+interview+explained"
+          "url": "https://www.youtube.com/results?search_query=tell+me+about+a+time+you+refused+to+accept+behavioral+interview+explained"
         },
         {
           "title": "🔍G",
-          "url": "https://www.google.com/search?q=tell+me+about+a+time+you+refused+to+accept+good+behavioral+interview+tutorial"
+          "url": "https://www.google.com/search?q=tell+me+about+a+time+you+refused+to+accept+behavioral+interview+tutorial"
         }
       ],
       "search": "q: tell me about a time you refused to accept 'good enough'. situation: under extreme deadline pressure to launch a new payment integration, a partner vendor provided an sdk that lacked idempotency handling and dropped ssl verification on retries. task: refuse to compromise security and reliability standards despite intense management launch pressure. action: rejected the vendor sdk; explained to executive leadership the existential risk of duplicate charges and mitm vulnerabilities; led a 72-hour sprint to write a clean, native client using mutual tls, exponential backoff with jitter, and client-generated idempotency keys. result: launched on schedule with zero security vulnerabilities and handled $12m in transactions on day one with 100% financial reconciliation. behavioral and leadership amazon's 16 leadership principles lp 7: insist on the highest standards 2.7.1"
@@ -44018,11 +44018,11 @@
       "resources": [
         {
           "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=when+did+you+commit+to+a+plan+you+didn+t+behavioral+interview+explained"
+          "url": "https://www.youtube.com/results?search_query=when+did+you+commit+to+a+plan+you+didn+behavioral+interview+explained"
         },
         {
           "title": "🔍G",
-          "url": "https://www.google.com/search?q=when+did+you+commit+to+a+plan+you+didn+t+behavioral+interview+tutorial"
+          "url": "https://www.google.com/search?q=when+did+you+commit+to+a+plan+you+didn+behavioral+interview+tutorial"
         }
       ],
       "search": "q: when did you commit to a plan you didn't initially agree with? situation: strongly advocated for using apache kafka for an event-driven architecture, but after a thorough team vote, leadership chose aws sqs + sns to leverage existing team cloud familiarity. task: practice 'disagree and commit' with total dedication once the team decision was finalized. action: set aside personal architectural preference completely; immediately authored the official team best-practice guide for sqs/sns message filtering, dead-letter queueing, and fifo ordering; personally implemented the common wrapper library for exponential backoff retries. result: sqs/sns architecture launched successfully on schedule; team delivered the milestone with zero internal friction or resentment. behavioral and leadership amazon's 16 leadership principles lp 13: have backbone; disagree and commit 2.13.3"
@@ -44138,11 +44138,11 @@
       "resources": [
         {
           "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=describe+how+you+ve+contributed+to+team+culture.+behavioral+interview+explained"
+          "url": "https://www.youtube.com/results?search_query=describe+how+you+behavioral+interview+explained"
         },
         {
           "title": "🔍G",
-          "url": "https://www.google.com/search?q=describe+how+you+ve+contributed+to+team+culture.+behavioral+interview+tutorial"
+          "url": "https://www.google.com/search?q=describe+how+you+behavioral+interview+tutorial"
         }
       ],
       "search": "q: describe how you've contributed to team culture. situation: rapid company scaling led to an intense 'hustle' culture where engineers felt pressured to review prs and answer slack messages late at night, creating chronic anxiety. task: redesign organizational working norms to promote work-life balance and mental health. action: coached managers and senior engineers to model healthy boundaries: scheduled messages instead of sending late-night pings, instituted 'quiet focus thursdays' with zero meetings across the organization, and established clear slas for code reviews (during business hours only). result: internal employee satisfaction surveys showed a 38% increase in work-life balance satisfaction and an 18% boost in sprint story completion rates. behavioral and leadership amazon's 16 leadership principles lp 15: strive to be earth's best employer 2.15.2"
@@ -44282,11 +44282,11 @@
       "resources": [
         {
           "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=when+did+you+influence+someone+who+didn+t+report+to+behavioral+interview+explained"
+          "url": "https://www.youtube.com/results?search_query=when+did+you+influence+someone+who+didn+behavioral+interview+explained"
         },
         {
           "title": "🔍G",
-          "url": "https://www.google.com/search?q=when+did+you+influence+someone+who+didn+t+report+to+behavioral+interview+tutorial"
+          "url": "https://www.google.com/search?q=when+did+you+influence+someone+who+didn+behavioral+interview+tutorial"
         }
       ],
       "search": "when did you influence someone who didn't report to you? strategy: show how you used data, working prototypes, rfc documents, and empathy for partner team constraints rather than executive escalation to achieve architectural consensus. behavioral and leadership question categories (any company) leadership & influence 3.1.2"
@@ -44474,11 +44474,11 @@
       "resources": [
         {
           "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=most+ambiguous+problem+you+ve+solved+behavioral+interview+explained"
+          "url": "https://www.youtube.com/results?search_query=most+ambiguous+problem+you+behavioral+interview+explained"
         },
         {
           "title": "🔍G",
-          "url": "https://www.google.com/search?q=most+ambiguous+problem+you+ve+solved+behavioral+interview+tutorial"
+          "url": "https://www.google.com/search?q=most+ambiguous+problem+you+behavioral+interview+tutorial"
         }
       ],
       "search": "most ambiguous problem you've solved strategy: demonstrate structuring chaos: decomposing vague executive asks into concrete customer personas, user journeys, measurable technical requirements, and incremental milestones. behavioral and leadership question categories (any company) ambiguity & initiative 3.4.1"
@@ -45162,7 +45162,7 @@
       "domain": "bh",
       "domainTitle": "Behavioral and Leadership",
       "title": "Pick a story with quantified impact",
-      "description": "Numbers > adjectives. % improved, $ saved, users affected.",
+      "description": "Select narratives with measurable business and architectural impact. Anchor stories around concrete numbers: percentage latency improvements, QPS scale handled, cloud infrastructure expenditure reduced, or developer-hours saved per sprint.",
       "section": "Story Bank — 12 stories you need",
       "subsection": "Story preparation checklist",
       "url": "",
@@ -45177,7 +45177,7 @@
           "url": "https://www.google.com/search?q=pick+a+story+with+quantified+impact+behavioral+interview+tutorial"
         }
       ],
-      "search": "pick a story with quantified impact numbers > adjectives. % improved, $ saved, users affected. behavioral and leadership story bank — 12 stories you need story preparation checklist 4.2.1"
+      "search": "pick a story with quantified impact select narratives with measurable business and architectural impact. anchor stories around concrete numbers: percentage latency improvements, qps scale handled, cloud infrastructure expenditure reduced, or developer-hours saved per sprint. behavioral and leadership story bank — 12 stories you need story preparation checklist 4.2.1"
     },
     {
       "id": "bh:4.2.2",
@@ -45186,7 +45186,7 @@
       "domain": "bh",
       "domainTitle": "Behavioral and Leadership",
       "title": "Time-box: under 3 minutes spoken",
-      "description": "Practice with a stopwatch. 4+ minutes = interviewer disengages.",
+      "description": "Strictly timebox spoken responses between 2.5 and 3 minutes. Research shows interviewer attention drops sharply past the 3-minute mark. Practice with a digital stopwatch to instinctively gauge pacing and ensure 60% of the duration is spent on Actions.",
       "section": "Story Bank — 12 stories you need",
       "subsection": "Story preparation checklist",
       "url": "",
@@ -45201,7 +45201,7 @@
           "url": "https://www.google.com/search?q=time-box+under+3+minutes+spoken+behavioral+interview+tutorial"
         }
       ],
-      "search": "time-box: under 3 minutes spoken practice with a stopwatch. 4+ minutes = interviewer disengages. behavioral and leadership story bank — 12 stories you need story preparation checklist 4.2.2"
+      "search": "time-box: under 3 minutes spoken strictly timebox spoken responses between 2.5 and 3 minutes. research shows interviewer attention drops sharply past the 3-minute mark. practice with a digital stopwatch to instinctively gauge pacing and ensure 60% of the duration is spent on actions. behavioral and leadership story bank — 12 stories you need story preparation checklist 4.2.2"
     },
     {
       "id": "bh:4.2.3",
@@ -45210,7 +45210,7 @@
       "domain": "bh",
       "domainTitle": "Behavioral and Leadership",
       "title": "Include trade-offs and alternatives considered",
-      "description": "Shows judgment. Senior signal.",
+      "description": "Senior engineers never present simple one-dimensional decisions. Always articulate the trade-offs: 'I considered RabbitMQ for guaranteed delivery vs Kafka for high-throughput event replay; I chose Kafka despite the operational complexity because we needed to reprocess 7 days of audit events.'",
       "section": "Story Bank — 12 stories you need",
       "subsection": "Story preparation checklist",
       "url": "",
@@ -45225,7 +45225,7 @@
           "url": "https://www.google.com/search?q=include+trade-offs+and+alternatives+considered+behavioral+interview+tutorial"
         }
       ],
-      "search": "include trade-offs and alternatives considered shows judgment. senior signal. behavioral and leadership story bank — 12 stories you need story preparation checklist 4.2.3"
+      "search": "include trade-offs and alternatives considered senior engineers never present simple one-dimensional decisions. always articulate the trade-offs: 'i considered rabbitmq for guaranteed delivery vs kafka for high-throughput event replay; i chose kafka despite the operational complexity because we needed to reprocess 7 days of audit events.' behavioral and leadership story bank — 12 stories you need story preparation checklist 4.2.3"
     },
     {
       "id": "bh:4.2.4",
@@ -45234,7 +45234,7 @@
       "domain": "bh",
       "domainTitle": "Behavioral and Leadership",
       "title": "End with reflection / what you'd do differently",
-      "description": "Self-awareness without self-flagellation.",
+      "description": "End every story with proactive reflection: what you would do differently, what unforeseen edge cases emerged in production, and how this influenced your architectural guidelines for future projects.",
       "section": "Story Bank — 12 stories you need",
       "subsection": "Story preparation checklist",
       "url": "",
@@ -45242,14 +45242,14 @@
       "resources": [
         {
           "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=end+with+reflection+%2F+what+you+d+do+differently+behavioral+interview+explained"
+          "url": "https://www.youtube.com/results?search_query=end+with+reflection+%2F+what+you+behavioral+interview+explained"
         },
         {
           "title": "🔍G",
-          "url": "https://www.google.com/search?q=end+with+reflection+%2F+what+you+d+do+differently+behavioral+interview+tutorial"
+          "url": "https://www.google.com/search?q=end+with+reflection+%2F+what+you+behavioral+interview+tutorial"
         }
       ],
-      "search": "end with reflection / what you'd do differently self-awareness without self-flagellation. behavioral and leadership story bank — 12 stories you need story preparation checklist 4.2.4"
+      "search": "end with reflection / what you'd do differently end every story with proactive reflection: what you would do differently, what unforeseen edge cases emerged in production, and how this influenced your architectural guidelines for future projects. behavioral and leadership story bank — 12 stories you need story preparation checklist 4.2.4"
     },
     {
       "id": "bh:4.2.5",
@@ -45258,7 +45258,7 @@
       "domain": "bh",
       "domainTitle": "Behavioral and Leadership",
       "title": "Practice out loud, not in your head",
-      "description": "Saying it sounds nothing like thinking it. Record yourself.",
+      "description": "Rehearsing silently in your head creates a false sense of fluency. Speaking out loud engages muscle memory, exposes verbal filler ('um', 'like'), reveals awkward transitions, and enforces breathing cadence. Record and review your audio.",
       "section": "Story Bank — 12 stories you need",
       "subsection": "Story preparation checklist",
       "url": "",
@@ -45273,7 +45273,7 @@
           "url": "https://www.google.com/search?q=practice+out+loud+not+in+your+head+behavioral+interview+tutorial"
         }
       ],
-      "search": "practice out loud, not in your head saying it sounds nothing like thinking it. record yourself. behavioral and leadership story bank — 12 stories you need story preparation checklist 4.2.5"
+      "search": "practice out loud, not in your head rehearsing silently in your head creates a false sense of fluency. speaking out loud engages muscle memory, exposes verbal filler ('um', 'like'), reveals awkward transitions, and enforces breathing cadence. record and review your audio. behavioral and leadership story bank — 12 stories you need story preparation checklist 4.2.5"
     },
     {
       "id": "bh:4.2.6",
@@ -45282,7 +45282,7 @@
       "domain": "bh",
       "domainTitle": "Behavioral and Leadership",
       "title": "Map every story to a question category",
-      "description": "Build a 12-story × 8-category matrix.",
+      "description": "Build a modular 12-story by 8-competency mapping matrix. A single well-architected distributed database migration story should be versatile enough to answer questions on Deep Dive, Bias for Action, Ownership, or Delivering Results.",
       "section": "Story Bank — 12 stories you need",
       "subsection": "Story preparation checklist",
       "url": "",
@@ -45297,7 +45297,7 @@
           "url": "https://www.google.com/search?q=map+every+story+to+a+question+category+behavioral+interview+tutorial"
         }
       ],
-      "search": "map every story to a question category build a 12-story × 8-category matrix. behavioral and leadership story bank — 12 stories you need story preparation checklist 4.2.6"
+      "search": "map every story to a question category build a modular 12-story by 8-competency mapping matrix. a single well-architected distributed database migration story should be versatile enough to answer questions on deep dive, bias for action, ownership, or delivering results. behavioral and leadership story bank — 12 stories you need story preparation checklist 4.2.6"
     },
     {
       "id": "bh:5.1.1",
@@ -45306,7 +45306,7 @@
       "domain": "bh",
       "domainTitle": "Behavioral and Leadership",
       "title": "Research the company's values + recent news",
-      "description": "Show you've done homework. Mention specific products or values.",
+      "description": "Study the target company's engineering blog, recent earnings calls, architecture whitepapers, and public post-mortems. Understand their tech stack, business monetization model, and recent major product launches to ground your answers in their technical reality.",
       "section": "Interview Strategy & Mock Practice",
       "subsection": "Before the interview",
       "url": "",
@@ -45314,14 +45314,14 @@
       "resources": [
         {
           "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=research+the+company+s+values+%2B+recent+news+behavioral+interview+explained"
+          "url": "https://www.youtube.com/results?search_query=research+the+company+behavioral+interview+explained"
         },
         {
           "title": "🔍G",
-          "url": "https://www.google.com/search?q=research+the+company+s+values+%2B+recent+news+behavioral+interview+tutorial"
+          "url": "https://www.google.com/search?q=research+the+company+behavioral+interview+tutorial"
         }
       ],
-      "search": "research the company's values + recent news show you've done homework. mention specific products or values. behavioral and leadership interview strategy & mock practice before the interview 5.1.1"
+      "search": "research the company's values + recent news study the target company's engineering blog, recent earnings calls, architecture whitepapers, and public post-mortems. understand their tech stack, business monetization model, and recent major product launches to ground your answers in their technical reality. behavioral and leadership interview strategy & mock practice before the interview 5.1.1"
     },
     {
       "id": "bh:5.1.2",
@@ -45330,7 +45330,7 @@
       "domain": "bh",
       "domainTitle": "Behavioral and Leadership",
       "title": "Map your stories to their values",
-      "description": "If interviewing at Amazon: which LPs does each story hit? Same for any company's values.",
+      "description": "Deconstruct the company's core values or Amazon Leadership Principles. Pre-assign 2 strong primary stories and 1 backup story to each principle so you never hesitate or recycle narratives across consecutive interview loops.",
       "section": "Interview Strategy & Mock Practice",
       "subsection": "Before the interview",
       "url": "",
@@ -45345,7 +45345,7 @@
           "url": "https://www.google.com/search?q=map+your+stories+to+their+values+behavioral+interview+tutorial"
         }
       ],
-      "search": "map your stories to their values if interviewing at amazon: which lps does each story hit? same for any company's values. behavioral and leadership interview strategy & mock practice before the interview 5.1.2"
+      "search": "map your stories to their values deconstruct the company's core values or amazon leadership principles. pre-assign 2 strong primary stories and 1 backup story to each principle so you never hesitate or recycle narratives across consecutive interview loops. behavioral and leadership interview strategy & mock practice before the interview 5.1.2"
     },
     {
       "id": "bh:5.1.3",
@@ -45354,7 +45354,7 @@
       "domain": "bh",
       "domainTitle": "Behavioral and Leadership",
       "title": "Prepare questions to ask interviewer",
-      "description": "5-7 thoughtful questions per round. Asking nothing = red flag.",
+      "description": "Formulate 5-7 high-signal questions for the interviewer that showcase deep architectural thinking (e.g. 'How is your team balancing the operational overhead of your service mesh against latency budgets in multi-region deployments?'). Avoid superficial questions about HR perks.",
       "section": "Interview Strategy & Mock Practice",
       "subsection": "Before the interview",
       "url": "",
@@ -45369,7 +45369,7 @@
           "url": "https://www.google.com/search?q=prepare+questions+to+ask+interviewer+behavioral+interview+tutorial"
         }
       ],
-      "search": "prepare questions to ask interviewer 5-7 thoughtful questions per round. asking nothing = red flag. behavioral and leadership interview strategy & mock practice before the interview 5.1.3"
+      "search": "prepare questions to ask interviewer formulate 5-7 high-signal questions for the interviewer that showcase deep architectural thinking (e.g. 'how is your team balancing the operational overhead of your service mesh against latency budgets in multi-region deployments?'). avoid superficial questions about hr perks. behavioral and leadership interview strategy & mock practice before the interview 5.1.3"
     },
     {
       "id": "bh:5.2.1",
@@ -45378,7 +45378,7 @@
       "domain": "bh",
       "domainTitle": "Behavioral and Leadership",
       "title": "Listen for which LP / value they're probing",
-      "description": "Question phrasing tells you. 'Customer' → Customer Obsession. 'Disagreed' → Have Backbone.",
+      "description": "Carefully dissect the prompt to identify the underlying competency being evaluated. 'Tell me about a time you missed a deadline' tests Ownership and Delivering Results; 'Tell me about a time you pushed back on a senior peer' tests Have Backbone and Disagree and Commit.",
       "section": "Interview Strategy & Mock Practice",
       "subsection": "During the interview",
       "url": "",
@@ -45386,14 +45386,14 @@
       "resources": [
         {
           "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=listen+for+which+lp+%2F+value+they+re+probing+behavioral+interview+explained"
+          "url": "https://www.youtube.com/results?search_query=listen+for+which+lp+%2F+value+they+behavioral+interview+explained"
         },
         {
           "title": "🔍G",
-          "url": "https://www.google.com/search?q=listen+for+which+lp+%2F+value+they+re+probing+behavioral+interview+tutorial"
+          "url": "https://www.google.com/search?q=listen+for+which+lp+%2F+value+they+behavioral+interview+tutorial"
         }
       ],
-      "search": "listen for which lp / value they're probing question phrasing tells you. 'customer' → customer obsession. 'disagreed' → have backbone. behavioral and leadership interview strategy & mock practice during the interview 5.2.1"
+      "search": "listen for which lp / value they're probing carefully dissect the prompt to identify the underlying competency being evaluated. 'tell me about a time you missed a deadline' tests ownership and delivering results; 'tell me about a time you pushed back on a senior peer' tests have backbone and disagree and commit. behavioral and leadership interview strategy & mock practice during the interview 5.2.1"
     },
     {
       "id": "bh:5.2.2",
@@ -45402,7 +45402,7 @@
       "domain": "bh",
       "domainTitle": "Behavioral and Leadership",
       "title": "Use 'I' not 'we'",
-      "description": "Be specific about YOUR contribution.",
+      "description": "Consistently use 'I' to articulate your personal intellectual and operational contributions. When acknowledging collaboration, qualify it clearly: 'The cross-functional team defined product requirements, but I personally designed the streaming event schema and wrote the consumer group rebalancing logic.'",
       "section": "Interview Strategy & Mock Practice",
       "subsection": "During the interview",
       "url": "",
@@ -45410,14 +45410,14 @@
       "resources": [
         {
           "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=use+i+not+we+behavioral+interview+explained"
+          "url": "https://www.youtube.com/results?search_query=use+behavioral+interview+explained"
         },
         {
           "title": "🔍G",
-          "url": "https://www.google.com/search?q=use+i+not+we+behavioral+interview+tutorial"
+          "url": "https://www.google.com/search?q=use+behavioral+interview+tutorial"
         }
       ],
-      "search": "use 'i' not 'we' be specific about your contribution. behavioral and leadership interview strategy & mock practice during the interview 5.2.2"
+      "search": "use 'i' not 'we' consistently use 'i' to articulate your personal intellectual and operational contributions. when acknowledging collaboration, qualify it clearly: 'the cross-functional team defined product requirements, but i personally designed the streaming event schema and wrote the consumer group rebalancing logic.' behavioral and leadership interview strategy & mock practice during the interview 5.2.2"
     },
     {
       "id": "bh:5.2.3",
@@ -45426,7 +45426,7 @@
       "domain": "bh",
       "domainTitle": "Behavioral and Leadership",
       "title": "Quantify everything you can",
-      "description": "Numbers, percentages, dollar amounts, time saved.",
+      "description": "Infuse every milestone with quantitative data: queries per second, p99 latency milliseconds, dollar cloud spend reduction, team velocity percentage increase, or MTTR (Mean Time To Recovery) reduction.",
       "section": "Interview Strategy & Mock Practice",
       "subsection": "During the interview",
       "url": "",
@@ -45441,7 +45441,7 @@
           "url": "https://www.google.com/search?q=quantify+everything+you+can+behavioral+interview+tutorial"
         }
       ],
-      "search": "quantify everything you can numbers, percentages, dollar amounts, time saved. behavioral and leadership interview strategy & mock practice during the interview 5.2.3"
+      "search": "quantify everything you can infuse every milestone with quantitative data: queries per second, p99 latency milliseconds, dollar cloud spend reduction, team velocity percentage increase, or mttr (mean time to recovery) reduction. behavioral and leadership interview strategy & mock practice during the interview 5.2.3"
     },
     {
       "id": "bh:5.2.4",
@@ -45450,7 +45450,7 @@
       "domain": "bh",
       "domainTitle": "Behavioral and Leadership",
       "title": "Pause when needed",
-      "description": "Better to think for 5 seconds than ramble for 30. Silence is fine.",
+      "description": "Embrace a deliberate 5-second silence before answering. Pausing signals composure, executive maturity, and strategic thinking. Say: 'That's a great question; let me take 5 seconds to select the most relevant architectural example.'",
       "section": "Interview Strategy & Mock Practice",
       "subsection": "During the interview",
       "url": "",
@@ -45465,7 +45465,7 @@
           "url": "https://www.google.com/search?q=pause+when+needed+behavioral+interview+tutorial"
         }
       ],
-      "search": "pause when needed better to think for 5 seconds than ramble for 30. silence is fine. behavioral and leadership interview strategy & mock practice during the interview 5.2.4"
+      "search": "pause when needed embrace a deliberate 5-second silence before answering. pausing signals composure, executive maturity, and strategic thinking. say: 'that's a great question; let me take 5 seconds to select the most relevant architectural example.' behavioral and leadership interview strategy & mock practice during the interview 5.2.4"
     },
     {
       "id": "bh:5.2.5",
@@ -45474,7 +45474,7 @@
       "domain": "bh",
       "domainTitle": "Behavioral and Leadership",
       "title": "Take notes during your own answer",
-      "description": "Helps you stay structured (S→T→A→R) and reference back.",
+      "description": "Jot down 3-4 bullet points on paper during the interviewer's prompt: Situation, Key Action, Primary Metric, and Reflection. Referencing these notes keeps your spoken response tightly structured and prevents rambling.",
       "section": "Interview Strategy & Mock Practice",
       "subsection": "During the interview",
       "url": "",
@@ -45489,7 +45489,7 @@
           "url": "https://www.google.com/search?q=take+notes+during+your+own+answer+behavioral+interview+tutorial"
         }
       ],
-      "search": "take notes during your own answer helps you stay structured (s→t→a→r) and reference back. behavioral and leadership interview strategy & mock practice during the interview 5.2.5"
+      "search": "take notes during your own answer jot down 3-4 bullet points on paper during the interviewer's prompt: situation, key action, primary metric, and reflection. referencing these notes keeps your spoken response tightly structured and prevents rambling. behavioral and leadership interview strategy & mock practice during the interview 5.2.5"
     },
     {
       "id": "bh:5.3.1",
@@ -45498,7 +45498,7 @@
       "domain": "bh",
       "domainTitle": "Behavioral and Leadership",
       "title": "Pramp peer mock interviews (free)",
-      "description": "Random peer matching, real-time practice.",
+      "description": "Utilize Pramp for peer-to-peer behavioral mocks. Explaining complex technical decisions to engineers from different backgrounds forces you to eliminate internal company jargon and articulate architectural principles cleanly.",
       "section": "Interview Strategy & Mock Practice",
       "subsection": "Mock interview practice",
       "url": "",
@@ -45513,7 +45513,7 @@
           "url": "https://www.google.com/search?q=pramp+peer+mock+interviews+free+behavioral+interview+tutorial"
         }
       ],
-      "search": "pramp peer mock interviews (free) random peer matching, real-time practice. behavioral and leadership interview strategy & mock practice mock interview practice 5.3.1"
+      "search": "pramp peer mock interviews (free) utilize pramp for peer-to-peer behavioral mocks. explaining complex technical decisions to engineers from different backgrounds forces you to eliminate internal company jargon and articulate architectural principles cleanly. behavioral and leadership interview strategy & mock practice mock interview practice 5.3.1"
     },
     {
       "id": "bh:5.3.2",
@@ -45522,7 +45522,7 @@
       "domain": "bh",
       "domainTitle": "Behavioral and Leadership",
       "title": "interviewing.io behavioral mocks",
-      "description": "Paid (with free tier), industry-experienced interviewers.",
+      "description": "Leverage interviewing.io for anonymous mocks with vetted FAANG/Tier-1 Bar Raisers. High-caliber interviewers will relentlessly probe your stories with difficult follow-ups ('Why not use Cassandra here?', 'What went wrong?'), exposing weak points.",
       "section": "Interview Strategy & Mock Practice",
       "subsection": "Mock interview practice",
       "url": "",
@@ -45537,7 +45537,7 @@
           "url": "https://www.google.com/search?q=interviewing.io+behavioral+mocks+behavioral+interview+tutorial"
         }
       ],
-      "search": "interviewing.io behavioral mocks paid (with free tier), industry-experienced interviewers. behavioral and leadership interview strategy & mock practice mock interview practice 5.3.2"
+      "search": "interviewing.io behavioral mocks leverage interviewing.io for anonymous mocks with vetted faang/tier-1 bar raisers. high-caliber interviewers will relentlessly probe your stories with difficult follow-ups ('why not use cassandra here?', 'what went wrong?'), exposing weak points. behavioral and leadership interview strategy & mock practice mock interview practice 5.3.2"
     },
     {
       "id": "bh:5.3.3",
@@ -45546,7 +45546,7 @@
       "domain": "bh",
       "domainTitle": "Behavioral and Leadership",
       "title": "Record yourself answering",
-      "description": "Camera or audio. You'll spot patterns you don't notice live.",
+      "description": "Record video and audio of your responses. Play them back to analyze speaking pace (aim for 130-150 words/minute), eye contact, posture, filler word frequency, and whether your Actions clearly overshadowed your Situation.",
       "section": "Interview Strategy & Mock Practice",
       "subsection": "Mock interview practice",
       "url": "",
@@ -45561,7 +45561,7 @@
           "url": "https://www.google.com/search?q=record+yourself+answering+behavioral+interview+tutorial"
         }
       ],
-      "search": "record yourself answering camera or audio. you'll spot patterns you don't notice live. behavioral and leadership interview strategy & mock practice mock interview practice 5.3.3"
+      "search": "record yourself answering record video and audio of your responses. play them back to analyze speaking pace (aim for 130-150 words/minute), eye contact, posture, filler word frequency, and whether your actions clearly overshadowed your situation. behavioral and leadership interview strategy & mock practice mock interview practice 5.3.3"
     },
     {
       "id": "bh:5.3.4",
@@ -45570,7 +45570,7 @@
       "domain": "bh",
       "domainTitle": "Behavioral and Leadership",
       "title": "Practice with a friend (any background)",
-      "description": "Non-tech friends are great — they'll spot jargon and vagueness.",
+      "description": "Conduct practice sessions with non-technical peers or mentors. If a non-technical listener cannot follow the business impact and emotional arc of your conflict resolution, your technical storytelling is too convoluted.",
       "section": "Interview Strategy & Mock Practice",
       "subsection": "Mock interview practice",
       "url": "",
@@ -45585,7 +45585,7 @@
           "url": "https://www.google.com/search?q=practice+with+a+friend+any+background+behavioral+interview+tutorial"
         }
       ],
-      "search": "practice with a friend (any background) non-tech friends are great — they'll spot jargon and vagueness. behavioral and leadership interview strategy & mock practice mock interview practice 5.3.4"
+      "search": "practice with a friend (any background) conduct practice sessions with non-technical peers or mentors. if a non-technical listener cannot follow the business impact and emotional arc of your conflict resolution, your technical storytelling is too convoluted. behavioral and leadership interview strategy & mock practice mock interview practice 5.3.4"
     },
     {
       "id": "bh:5.4.1",
@@ -45594,7 +45594,7 @@
       "domain": "bh",
       "domainTitle": "Behavioral and Leadership",
       "title": "Memorized-sounding answers",
-      "description": "Practice the points, not the script. Memorized = robotic.",
+      "description": "Sounding like an AI or reading a memorized script verbatim alienates interviewers. Memorize the structural bullet points (Situation -> Action 1, 2, 3 -> Result -> Metric -> Learning), never a fixed word-for-word transcript. Speak with conversational conviction.",
       "section": "Interview Strategy & Mock Practice",
       "subsection": "Common pitfalls to avoid",
       "url": "",
@@ -45609,7 +45609,7 @@
           "url": "https://www.google.com/search?q=memorized-sounding+answers+behavioral+interview+tutorial"
         }
       ],
-      "search": "memorized-sounding answers practice the points, not the script. memorized = robotic. behavioral and leadership interview strategy & mock practice common pitfalls to avoid 5.4.1"
+      "search": "memorized-sounding answers sounding like an ai or reading a memorized script verbatim alienates interviewers. memorize the structural bullet points (situation -> action 1, 2, 3 -> result -> metric -> learning), never a fixed word-for-word transcript. speak with conversational conviction. behavioral and leadership interview strategy & mock practice common pitfalls to avoid 5.4.1"
     },
     {
       "id": "bh:5.4.2",
@@ -45618,7 +45618,7 @@
       "domain": "bh",
       "domainTitle": "Behavioral and Leadership",
       "title": "Bashing previous employer/coworkers",
-      "description": "Even if justified, it makes YOU look bad. Stay neutral or positive.",
+      "description": "Never disparage former managers, toxic coworkers, or legacy tech stacks. Blaming others demonstrates poor emotional intelligence and signals you are difficult to work with. Frame challenges objectively around conflicting technical trade-offs or legacy architectural constraints.",
       "section": "Interview Strategy & Mock Practice",
       "subsection": "Common pitfalls to avoid",
       "url": "",
@@ -45633,7 +45633,7 @@
           "url": "https://www.google.com/search?q=bashing+previous+employer%2Fcoworkers+behavioral+interview+tutorial"
         }
       ],
-      "search": "bashing previous employer/coworkers even if justified, it makes you look bad. stay neutral or positive. behavioral and leadership interview strategy & mock practice common pitfalls to avoid 5.4.2"
+      "search": "bashing previous employer/coworkers never disparage former managers, toxic coworkers, or legacy tech stacks. blaming others demonstrates poor emotional intelligence and signals you are difficult to work with. frame challenges objectively around conflicting technical trade-offs or legacy architectural constraints. behavioral and leadership interview strategy & mock practice common pitfalls to avoid 5.4.2"
     },
     {
       "id": "bh:5.4.3",
@@ -45642,7 +45642,7 @@
       "domain": "bh",
       "domainTitle": "Behavioral and Leadership",
       "title": "Vague 'I think I'm good at...' claims",
-      "description": "Show, don't tell. Replace claims with stories.",
+      "description": "Making sweeping, unsupported assertions ('I have exceptional leadership skills') without concrete narrative proof. In engineering interviews, claims without metrics and technical actions are treated as unverified assumptions.",
       "section": "Interview Strategy & Mock Practice",
       "subsection": "Common pitfalls to avoid",
       "url": "",
@@ -45650,14 +45650,14 @@
       "resources": [
         {
           "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=vague+i+think+i+m+good+at...+claims+behavioral+interview+explained"
+          "url": "https://www.youtube.com/results?search_query=vague+behavioral+interview+explained"
         },
         {
           "title": "🔍G",
-          "url": "https://www.google.com/search?q=vague+i+think+i+m+good+at...+claims+behavioral+interview+tutorial"
+          "url": "https://www.google.com/search?q=vague+behavioral+interview+tutorial"
         }
       ],
-      "search": "vague 'i think i'm good at...' claims show, don't tell. replace claims with stories. behavioral and leadership interview strategy & mock practice common pitfalls to avoid 5.4.3"
+      "search": "vague 'i think i'm good at...' claims making sweeping, unsupported assertions ('i have exceptional leadership skills') without concrete narrative proof. in engineering interviews, claims without metrics and technical actions are treated as unverified assumptions. behavioral and leadership interview strategy & mock practice common pitfalls to avoid 5.4.3"
     },
     {
       "id": "bh:5.4.4",
@@ -45666,7 +45666,7 @@
       "domain": "bh",
       "domainTitle": "Behavioral and Leadership",
       "title": "Not knowing the company",
-      "description": "Basic homework. Mission, recent products, recent news, key competitors.",
+      "description": "Demonstrating zero understanding of the company's core products, revenue models, or architectural challenges. Inability to answer 'Why this company?' signals disinterest and low preparation rigor.",
       "section": "Interview Strategy & Mock Practice",
       "subsection": "Common pitfalls to avoid",
       "url": "",
@@ -45681,7 +45681,7 @@
           "url": "https://www.google.com/search?q=not+knowing+the+company+behavioral+interview+tutorial"
         }
       ],
-      "search": "not knowing the company basic homework. mission, recent products, recent news, key competitors. behavioral and leadership interview strategy & mock practice common pitfalls to avoid 5.4.4"
+      "search": "not knowing the company demonstrating zero understanding of the company's core products, revenue models, or architectural challenges. inability to answer 'why this company?' signals disinterest and low preparation rigor. behavioral and leadership interview strategy & mock practice common pitfalls to avoid 5.4.4"
     },
     {
       "id": "bh:5.4.5",
@@ -45690,7 +45690,7 @@
       "domain": "bh",
       "domainTitle": "Behavioral and Leadership",
       "title": "Asking only about salary/perks",
-      "description": "Save compensation for after the offer. Ask about role, team, growth.",
+      "description": "Asking about compensation, vacation policies, or promotion timelines during technical and behavioral rounds. Save all compensation and benefit discussions for the HR offer negotiation stage; use interview Q&A time to demonstrate intellectual curiosity.",
       "section": "Interview Strategy & Mock Practice",
       "subsection": "Common pitfalls to avoid",
       "url": "",
@@ -45705,7 +45705,7 @@
           "url": "https://www.google.com/search?q=asking+only+about+salary%2Fperks+behavioral+interview+tutorial"
         }
       ],
-      "search": "asking only about salary/perks save compensation for after the offer. ask about role, team, growth. behavioral and leadership interview strategy & mock practice common pitfalls to avoid 5.4.5"
+      "search": "asking only about salary/perks asking about compensation, vacation policies, or promotion timelines during technical and behavioral rounds. save all compensation and benefit discussions for the hr offer negotiation stage; use interview q&a time to demonstrate intellectual curiosity. behavioral and leadership interview strategy & mock practice common pitfalls to avoid 5.4.5"
     },
     {
       "id": "bh:6.1.1",
@@ -50634,7 +50634,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "Availability Zone (AZ)",
-      "description": "Availability Zones (AZs): One or more discrete data centers with redundant power, cooling, and low-latency (<1-2ms round-trip) interconnects within a region. Deploying active workloads across &ge;3 AZs guarantees high availability against datacenter floods, fires, or power grid failures.",
+      "description": "Availability Zones (AZs): One or more discrete data centers with redundant power, cooling, and low-latency (<1-2ms round-trip) interconnects within a region. Deploying active workloads across ≥3 AZs guarantees high availability against datacenter floods, fires, or power grid failures.",
       "section": "Cloud Foundations",
       "subsection": "Global Infrastructure",
       "url": "",
@@ -50649,7 +50649,7 @@
           "url": "https://www.google.com/search?q=availability+zone+az+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "availability zone (az) availability zones (azs): one or more discrete data centers with redundant power, cooling, and low-latency (<1-2ms round-trip) interconnects within a region. deploying active workloads across &ge;3 azs guarantees high availability against datacenter floods, fires, or power grid failures. cloud - aws and azure cloud foundations global infrastructure 1.2.2"
+      "search": "availability zone (az) availability zones (azs): one or more discrete data centers with redundant power, cooling, and low-latency (<1-2ms round-trip) interconnects within a region. deploying active workloads across ≥3 azs guarantees high availability against datacenter floods, fires, or power grid failures. cloud - aws and azure cloud foundations global infrastructure 1.2.2"
     },
     {
       "id": "cloud:1.2.3",
@@ -50754,7 +50754,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "Compute / VMs: AWS 'EC2' ↔ Azure 'Azure Virtual Machines'",
-      "description": "AWS EC2 is equivalent to Azure Azure Virtual Machines.",
+      "description": "AWS EC2 (Nitro hypervisor architecture with dedicated hardware offload for VPC, EBS, and crypto) vs Azure Virtual Machines (Hyper-V / Azure Boost architecture with managed ephemeral OS disks). Both offer spot/burstable/compute-optimized instances; EC2 offers more granular instance families while Azure provides tighter integration with Windows Server licensing (Hybrid Benefit).",
       "section": "Cloud Foundations",
       "subsection": "AWS ↔ Azure Service Mapping",
       "url": "",
@@ -50769,7 +50769,7 @@
           "url": "https://www.google.com/search?q=compute+%2F+vms+aws+ec2+azure+virtual+machines+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "compute / vms: aws 'ec2' ↔ azure 'azure virtual machines' aws ec2 is equivalent to azure azure virtual machines. cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.1"
+      "search": "compute / vms: aws 'ec2' ↔ azure 'azure virtual machines' aws ec2 (nitro hypervisor architecture with dedicated hardware offload for vpc, ebs, and crypto) vs azure virtual machines (hyper-v / azure boost architecture with managed ephemeral os disks). both offer spot/burstable/compute-optimized instances; ec2 offers more granular instance families while azure provides tighter integration with windows server licensing (hybrid benefit). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.1"
     },
     {
       "id": "cloud:1.4.2",
@@ -50778,7 +50778,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "Auto Scaling: AWS 'Auto Scaling Groups' ↔ Azure 'VM Scale Sets'",
-      "description": "AWS Auto Scaling Groups is equivalent to Azure VM Scale Sets.",
+      "description": "AWS Auto Scaling Groups (Launch Templates, target tracking policies, predictive scaling based on ML, step scaling) vs Azure Virtual Machine Scale Sets (VMSS, flexible vs uniform orchestration modes, autoscale rules based on CPU/RAM metrics). Both support multi-AZ spreading and spot instance mix.",
       "section": "Cloud Foundations",
       "subsection": "AWS ↔ Azure Service Mapping",
       "url": "",
@@ -50793,7 +50793,7 @@
           "url": "https://www.google.com/search?q=auto+scaling+aws+auto+scaling+groups+azure+vm+scale+sets+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "auto scaling: aws 'auto scaling groups' ↔ azure 'vm scale sets' aws auto scaling groups is equivalent to azure vm scale sets. cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.2"
+      "search": "auto scaling: aws 'auto scaling groups' ↔ azure 'vm scale sets' aws auto scaling groups (launch templates, target tracking policies, predictive scaling based on ml, step scaling) vs azure virtual machine scale sets (vmss, flexible vs uniform orchestration modes, autoscale rules based on cpu/ram metrics). both support multi-az spreading and spot instance mix. cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.2"
     },
     {
       "id": "cloud:1.4.3",
@@ -50802,7 +50802,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "Containers: AWS 'ECS / EKS' ↔ Azure 'ACI / AKS'",
-      "description": "AWS ECS / EKS is equivalent to Azure ACI / AKS.",
+      "description": "AWS ECS (native AWS container orchestrator with Fargate serverless compute) & EKS (upstream Kubernetes with managed control plane) vs Azure ACI (Azure Container Instances for fast serverless container execution) & AKS (Azure Kubernetes Service with free control plane tier and integrated Azure CNI networking).",
       "section": "Cloud Foundations",
       "subsection": "AWS ↔ Azure Service Mapping",
       "url": "",
@@ -50817,7 +50817,7 @@
           "url": "https://www.google.com/search?q=containers+aws+ecs+%2F+eks+azure+aci+%2F+aks+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "containers: aws 'ecs / eks' ↔ azure 'aci / aks' aws ecs / eks is equivalent to azure aci / aks. cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.3"
+      "search": "containers: aws 'ecs / eks' ↔ azure 'aci / aks' aws ecs (native aws container orchestrator with fargate serverless compute) & eks (upstream kubernetes with managed control plane) vs azure aci (azure container instances for fast serverless container execution) & aks (azure kubernetes service with free control plane tier and integrated azure cni networking). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.3"
     },
     {
       "id": "cloud:1.4.4",
@@ -50826,7 +50826,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "Container Registry: AWS 'ECR' ↔ Azure 'Azure Container Registry'",
-      "description": "AWS ECR is equivalent to Azure Azure Container Registry.",
+      "description": "AWS ECR (Elastic Container Registry, immutable image tags, KMS encryption, automated Trivy vulnerability scanning, cross-region replication) vs Azure Container Registry (ACR, geo-replicated container registry, private endpoints, ACR Tasks for automated container builds on git commit).",
       "section": "Cloud Foundations",
       "subsection": "AWS ↔ Azure Service Mapping",
       "url": "",
@@ -50841,7 +50841,7 @@
           "url": "https://www.google.com/search?q=container+registry+aws+ecr+azure+container+registry+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "container registry: aws 'ecr' ↔ azure 'azure container registry' aws ecr is equivalent to azure azure container registry. cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.4"
+      "search": "container registry: aws 'ecr' ↔ azure 'azure container registry' aws ecr (elastic container registry, immutable image tags, kms encryption, automated trivy vulnerability scanning, cross-region replication) vs azure container registry (acr, geo-replicated container registry, private endpoints, acr tasks for automated container builds on git commit). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.4"
     },
     {
       "id": "cloud:1.4.5",
@@ -50850,7 +50850,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "Serverless: AWS 'Lambda' ↔ Azure 'Azure Functions'",
-      "description": "AWS Lambda is equivalent to Azure Azure Functions.",
+      "description": "AWS Lambda (Firecracker microVM isolation, 15-minute execution limit, SnapStart for instant Java startup, event source mappings) vs Azure Functions (Consumption plan, Premium plan with pre-warmed instances, Durable Functions for stateful serverless workflows via orchestrator and entity functions).",
       "section": "Cloud Foundations",
       "subsection": "AWS ↔ Azure Service Mapping",
       "url": "",
@@ -50865,7 +50865,7 @@
           "url": "https://www.google.com/search?q=serverless+aws+lambda+azure+functions+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "serverless: aws 'lambda' ↔ azure 'azure functions' aws lambda is equivalent to azure azure functions. cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.5"
+      "search": "serverless: aws 'lambda' ↔ azure 'azure functions' aws lambda (firecracker microvm isolation, 15-minute execution limit, snapstart for instant java startup, event source mappings) vs azure functions (consumption plan, premium plan with pre-warmed instances, durable functions for stateful serverless workflows via orchestrator and entity functions). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.5"
     },
     {
       "id": "cloud:1.4.6",
@@ -50874,7 +50874,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "Object Storage: AWS 'S3' ↔ Azure 'Azure Blob Storage'",
-      "description": "AWS S3 is equivalent to Azure Azure Blob Storage.",
+      "description": "AWS S3 (11 9s durability, bucket policies, ACLs, S3 Object Lock, Lifecycle rules, S3 Intelligent-Tiering) vs Azure Blob Storage (Block blobs for files, Append blobs for logging, Page blobs for VHD disks, hierarchical namespace for Azure Data Lake Storage Gen2 analytics).",
       "section": "Cloud Foundations",
       "subsection": "AWS ↔ Azure Service Mapping",
       "url": "",
@@ -50889,7 +50889,7 @@
           "url": "https://www.google.com/search?q=object+storage+aws+s3+azure+blob+storage+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "object storage: aws 's3' ↔ azure 'azure blob storage' aws s3 is equivalent to azure azure blob storage. cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.6"
+      "search": "object storage: aws 's3' ↔ azure 'azure blob storage' aws s3 (11 9s durability, bucket policies, acls, s3 object lock, lifecycle rules, s3 intelligent-tiering) vs azure blob storage (block blobs for files, append blobs for logging, page blobs for vhd disks, hierarchical namespace for azure data lake storage gen2 analytics). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.6"
     },
     {
       "id": "cloud:1.4.7",
@@ -50898,7 +50898,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "Block Storage: AWS 'EBS' ↔ Azure 'Azure Managed Disks'",
-      "description": "AWS EBS is equivalent to Azure Azure Managed Disks.",
+      "description": "AWS EBS (Elastic Block Store: gp3 baseline 3000 IOPS/125MBps, io2 Block Express up to 256k IOPS/4000MBps) vs Azure Managed Disks (Standard HDD, Standard SSD, Premium SSD v2, and Ultra Disk up to 160k IOPS for mission-critical databases; supports shared disks for clustering).",
       "section": "Cloud Foundations",
       "subsection": "AWS ↔ Azure Service Mapping",
       "url": "",
@@ -50913,7 +50913,7 @@
           "url": "https://www.google.com/search?q=block+storage+aws+ebs+azure+managed+disks+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "block storage: aws 'ebs' ↔ azure 'azure managed disks' aws ebs is equivalent to azure azure managed disks. cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.7"
+      "search": "block storage: aws 'ebs' ↔ azure 'azure managed disks' aws ebs (elastic block store: gp3 baseline 3000 iops/125mbps, io2 block express up to 256k iops/4000mbps) vs azure managed disks (standard hdd, standard ssd, premium ssd v2, and ultra disk up to 160k iops for mission-critical databases; supports shared disks for clustering). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.7"
     },
     {
       "id": "cloud:1.4.8",
@@ -50922,7 +50922,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "File Storage: AWS 'EFS / FSx' ↔ Azure 'Azure Files'",
-      "description": "AWS EFS / FSx is equivalent to Azure Azure Files.",
+      "description": "AWS EFS (Elastic File System, elastic POSIX NFSv4 shared across thousands of EC2 instances) & FSx (specialized for Lustre, Windows File Server, NetApp ONTAP) vs Azure Files (managed SMB 3.0 and NFSv4.1 shares, Azure File Sync for caching cloud files on on-premises Windows servers).",
       "section": "Cloud Foundations",
       "subsection": "AWS ↔ Azure Service Mapping",
       "url": "",
@@ -50937,7 +50937,7 @@
           "url": "https://www.google.com/search?q=file+storage+aws+efs+%2F+fsx+azure+files+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "file storage: aws 'efs / fsx' ↔ azure 'azure files' aws efs / fsx is equivalent to azure azure files. cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.8"
+      "search": "file storage: aws 'efs / fsx' ↔ azure 'azure files' aws efs (elastic file system, elastic posix nfsv4 shared across thousands of ec2 instances) & fsx (specialized for lustre, windows file server, netapp ontap) vs azure files (managed smb 3.0 and nfsv4.1 shares, azure file sync for caching cloud files on on-premises windows servers). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.8"
     },
     {
       "id": "cloud:1.4.9",
@@ -50946,7 +50946,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "Archive: AWS 'S3 Glacier' ↔ Azure 'Azure Archive Storage'",
-      "description": "AWS S3 Glacier is equivalent to Azure Azure Archive Storage.",
+      "description": "AWS S3 Glacier Flexible & Deep Archive (retrieval times from minutes in expedited to 12 hours in deep archive; lowest cost long-term cold storage) vs Azure Archive Storage (offline blob tier with rehydration priority options: High priority 1-hour vs Standard 15-hour rehydration).",
       "section": "Cloud Foundations",
       "subsection": "AWS ↔ Azure Service Mapping",
       "url": "",
@@ -50961,7 +50961,7 @@
           "url": "https://www.google.com/search?q=archive+aws+s3+glacier+azure+archive+storage+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "archive: aws 's3 glacier' ↔ azure 'azure archive storage' aws s3 glacier is equivalent to azure azure archive storage. cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.9"
+      "search": "archive: aws 's3 glacier' ↔ azure 'azure archive storage' aws s3 glacier flexible & deep archive (retrieval times from minutes in expedited to 12 hours in deep archive; lowest cost long-term cold storage) vs azure archive storage (offline blob tier with rehydration priority options: high priority 1-hour vs standard 15-hour rehydration). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.9"
     },
     {
       "id": "cloud:1.4.10",
@@ -50970,7 +50970,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "Managed SQL DB: AWS 'RDS / Aurora' ↔ Azure 'Azure SQL / Cosmos DB SQL'",
-      "description": "AWS RDS / Aurora is equivalent to Azure Azure SQL / Cosmos DB SQL.",
+      "description": "AWS RDS (managed Postgres, MySQL, MariaDB, Oracle, SQL Server) & Aurora (cloud-native engine with decoupled storage, 6 copies across 3 AZs, 15 read replicas) vs Azure SQL Database (Hyperscale architecture with decoupled storage up to 100TB) & Azure Database for PostgreSQL Flexible Server.",
       "section": "Cloud Foundations",
       "subsection": "AWS ↔ Azure Service Mapping",
       "url": "",
@@ -50985,7 +50985,7 @@
           "url": "https://www.google.com/search?q=managed+sql+db+aws+rds+%2F+aurora+azure+sql+%2F+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "managed sql db: aws 'rds / aurora' ↔ azure 'azure sql / cosmos db sql' aws rds / aurora is equivalent to azure azure sql / cosmos db sql. cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.10"
+      "search": "managed sql db: aws 'rds / aurora' ↔ azure 'azure sql / cosmos db sql' aws rds (managed postgres, mysql, mariadb, oracle, sql server) & aurora (cloud-native engine with decoupled storage, 6 copies across 3 azs, 15 read replicas) vs azure sql database (hyperscale architecture with decoupled storage up to 100tb) & azure database for postgresql flexible server. cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.10"
     },
     {
       "id": "cloud:1.4.11",
@@ -50994,7 +50994,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "NoSQL: AWS 'DynamoDB' ↔ Azure 'Cosmos DB'",
-      "description": "AWS DynamoDB is equivalent to Azure Cosmos DB.",
+      "description": "AWS DynamoDB (fully managed distributed key-value/document store, single-digit ms latency, partition/sort key design, Global Tables for active-active multi-region) vs Azure Cosmos DB (turnkey multi-region multi-master, 5 well-defined consistency levels, SLA guarantees for latency and throughput).",
       "section": "Cloud Foundations",
       "subsection": "AWS ↔ Azure Service Mapping",
       "url": "",
@@ -51009,7 +51009,7 @@
           "url": "https://www.google.com/search?q=nosql+aws+dynamodb+azure+cosmos+db+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "nosql: aws 'dynamodb' ↔ azure 'cosmos db' aws dynamodb is equivalent to azure cosmos db. cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.11"
+      "search": "nosql: aws 'dynamodb' ↔ azure 'cosmos db' aws dynamodb (fully managed distributed key-value/document store, single-digit ms latency, partition/sort key design, global tables for active-active multi-region) vs azure cosmos db (turnkey multi-region multi-master, 5 well-defined consistency levels, sla guarantees for latency and throughput). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.11"
     },
     {
       "id": "cloud:1.4.12",
@@ -51018,7 +51018,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "Cache: AWS 'ElastiCache' ↔ Azure 'Azure Cache for Redis'",
-      "description": "AWS ElastiCache is equivalent to Azure Azure Cache for Redis.",
+      "description": "AWS ElastiCache (managed Redis OSS / Valkey and Memcached, cluster mode enabled with automated failover and read replicas) vs Azure Cache for Redis (Basic/Standard/Premium tiers, Enterprise tier powered by Redis Enterprise with active-active geo-replication and Redis modules).",
       "section": "Cloud Foundations",
       "subsection": "AWS ↔ Azure Service Mapping",
       "url": "",
@@ -51033,7 +51033,7 @@
           "url": "https://www.google.com/search?q=cache+aws+elasticache+azure+cache+for+redis+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "cache: aws 'elasticache' ↔ azure 'azure cache for redis' aws elasticache is equivalent to azure azure cache for redis. cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.12"
+      "search": "cache: aws 'elasticache' ↔ azure 'azure cache for redis' aws elasticache (managed redis oss / valkey and memcached, cluster mode enabled with automated failover and read replicas) vs azure cache for redis (basic/standard/premium tiers, enterprise tier powered by redis enterprise with active-active geo-replication and redis modules). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.12"
     },
     {
       "id": "cloud:1.4.13",
@@ -51042,7 +51042,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "Data Warehouse: AWS 'Redshift' ↔ Azure 'Azure Synapse Analytics'",
-      "description": "AWS Redshift is equivalent to Azure Azure Synapse Analytics.",
+      "description": "AWS Redshift (petabyte-scale columnar MPP data warehouse, RA3 nodes with decoupled compute and managed storage, Redshift Serverless) vs Azure Synapse Analytics (formerly SQL DW, dedicated SQL pools with MPP architecture, serverless on-demand queries, integrated Apache Spark).",
       "section": "Cloud Foundations",
       "subsection": "AWS ↔ Azure Service Mapping",
       "url": "",
@@ -51057,7 +51057,7 @@
           "url": "https://www.google.com/search?q=data+warehouse+aws+redshift+azure+synapse+analytics+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "data warehouse: aws 'redshift' ↔ azure 'azure synapse analytics' aws redshift is equivalent to azure azure synapse analytics. cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.13"
+      "search": "data warehouse: aws 'redshift' ↔ azure 'azure synapse analytics' aws redshift (petabyte-scale columnar mpp data warehouse, ra3 nodes with decoupled compute and managed storage, redshift serverless) vs azure synapse analytics (formerly sql dw, dedicated sql pools with mpp architecture, serverless on-demand queries, integrated apache spark). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.13"
     },
     {
       "id": "cloud:1.4.14",
@@ -51066,7 +51066,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "Virtual Network: AWS 'VPC' ↔ Azure 'VNet'",
-      "description": "AWS VPC is equivalent to Azure VNet.",
+      "description": "AWS VPC (Virtual Private Cloud: CIDR blocks, public/private subnets, Internet Gateways, NAT Gateways, Route Tables, VPC Peering) vs Azure VNet (Virtual Network: VNet address spaces, subnets, Network Security Groups / NSGs, VNet Peering, Virtual WAN hub-and-spoke).",
       "section": "Cloud Foundations",
       "subsection": "AWS ↔ Azure Service Mapping",
       "url": "",
@@ -51081,7 +51081,7 @@
           "url": "https://www.google.com/search?q=virtual+network+aws+vpc+azure+vnet+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "virtual network: aws 'vpc' ↔ azure 'vnet' aws vpc is equivalent to azure vnet. cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.14"
+      "search": "virtual network: aws 'vpc' ↔ azure 'vnet' aws vpc (virtual private cloud: cidr blocks, public/private subnets, internet gateways, nat gateways, route tables, vpc peering) vs azure vnet (virtual network: vnet address spaces, subnets, network security groups / nsgs, vnet peering, virtual wan hub-and-spoke). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.14"
     },
     {
       "id": "cloud:1.4.15",
@@ -51090,7 +51090,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "L4 Load Balancer: AWS 'NLB' ↔ Azure 'Azure Load Balancer'",
-      "description": "AWS NLB is equivalent to Azure Azure Load Balancer.",
+      "description": "AWS Network Load Balancer (NLB: Layer 4 high-throughput ultra-low latency, static Elastic IPs per AZ, preserves source IP, handles millions of TCP/UDP connections) vs Azure Load Balancer (Layer 4 ultra-low latency load balancer, Standard SKU with zone redundancy and outbound SNAT rules).",
       "section": "Cloud Foundations",
       "subsection": "AWS ↔ Azure Service Mapping",
       "url": "",
@@ -51105,7 +51105,7 @@
           "url": "https://www.google.com/search?q=l4+load+balancer+aws+nlb+azure+load+balancer+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "l4 load balancer: aws 'nlb' ↔ azure 'azure load balancer' aws nlb is equivalent to azure azure load balancer. cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.15"
+      "search": "l4 load balancer: aws 'nlb' ↔ azure 'azure load balancer' aws network load balancer (nlb: layer 4 high-throughput ultra-low latency, static elastic ips per az, preserves source ip, handles millions of tcp/udp connections) vs azure load balancer (layer 4 ultra-low latency load balancer, standard sku with zone redundancy and outbound snat rules). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.15"
     },
     {
       "id": "cloud:1.4.16",
@@ -51114,7 +51114,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "L7 Load Balancer: AWS 'ALB' ↔ Azure 'Application Gateway'",
-      "description": "AWS ALB is equivalent to Azure Application Gateway.",
+      "description": "AWS Application Load Balancer (ALB: Layer 7 HTTP/HTTPS/gRPC routing, host/path/header rules, TLS termination, integrated Cognito authentication) vs Azure Application Gateway (Layer 7 ADC with integrated Web Application Firewall / WAF v2, URL-based routing, multi-site hosting, cookie affinity).",
       "section": "Cloud Foundations",
       "subsection": "AWS ↔ Azure Service Mapping",
       "url": "",
@@ -51129,7 +51129,7 @@
           "url": "https://www.google.com/search?q=l7+load+balancer+aws+alb+azure+application+gateway+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "l7 load balancer: aws 'alb' ↔ azure 'application gateway' aws alb is equivalent to azure application gateway. cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.16"
+      "search": "l7 load balancer: aws 'alb' ↔ azure 'application gateway' aws application load balancer (alb: layer 7 http/https/grpc routing, host/path/header rules, tls termination, integrated cognito authentication) vs azure application gateway (layer 7 adc with integrated web application firewall / waf v2, url-based routing, multi-site hosting, cookie affinity). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.16"
     },
     {
       "id": "cloud:1.4.17",
@@ -51138,7 +51138,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "API Gateway: AWS 'API Gateway' ↔ Azure 'Azure API Management'",
-      "description": "AWS API Gateway is equivalent to Azure Azure API Management.",
+      "description": "AWS API Gateway (managed REST, HTTP, and WebSocket APIs, API key management, usage plans, throttling, Lambda authorizers) vs Azure API Management (APIM: developer portal, policy engine via XML transforms, mock responses, multi-gateway deployment for hybrid on-premises).",
       "section": "Cloud Foundations",
       "subsection": "AWS ↔ Azure Service Mapping",
       "url": "",
@@ -51153,7 +51153,7 @@
           "url": "https://www.google.com/search?q=api+gateway+aws+api+gateway+azure+api+management+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "api gateway: aws 'api gateway' ↔ azure 'azure api management' aws api gateway is equivalent to azure azure api management. cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.17"
+      "search": "api gateway: aws 'api gateway' ↔ azure 'azure api management' aws api gateway (managed rest, http, and websocket apis, api key management, usage plans, throttling, lambda authorizers) vs azure api management (apim: developer portal, policy engine via xml transforms, mock responses, multi-gateway deployment for hybrid on-premises). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.17"
     },
     {
       "id": "cloud:1.4.18",
@@ -51162,7 +51162,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "CDN: AWS 'CloudFront' ↔ Azure 'Azure CDN / Front Door'",
-      "description": "AWS CloudFront is equivalent to Azure Azure CDN / Front Door.",
+      "description": "AWS CloudFront (global CDN edge network, TLS 1.3, origin shield, Lambda@Edge and CloudFront Functions for edge compute) vs Azure Front Door & Azure CDN (global Anycast L7 network combining CDN, global load balancing, SSL offload, and WAF at Microsoft's global network edge).",
       "section": "Cloud Foundations",
       "subsection": "AWS ↔ Azure Service Mapping",
       "url": "",
@@ -51177,7 +51177,7 @@
           "url": "https://www.google.com/search?q=cdn+aws+cloudfront+azure+cdn+%2F+front+door+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "cdn: aws 'cloudfront' ↔ azure 'azure cdn / front door' aws cloudfront is equivalent to azure azure cdn / front door. cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.18"
+      "search": "cdn: aws 'cloudfront' ↔ azure 'azure cdn / front door' aws cloudfront (global cdn edge network, tls 1.3, origin shield, lambda@edge and cloudfront functions for edge compute) vs azure front door & azure cdn (global anycast l7 network combining cdn, global load balancing, ssl offload, and waf at microsoft's global network edge). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.18"
     },
     {
       "id": "cloud:1.4.19",
@@ -51186,7 +51186,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "DNS: AWS 'Route 53' ↔ Azure 'Azure DNS'",
-      "description": "AWS Route 53 is equivalent to Azure Azure DNS.",
+      "description": "AWS Route 53 (highly available global authoritative DNS, latency-based, weighted, geolocation, geoproximity, and failover routing with health checks) vs Azure DNS (hosted DNS zones) & Azure Traffic Manager (DNS-based global traffic routing across endpoints).",
       "section": "Cloud Foundations",
       "subsection": "AWS ↔ Azure Service Mapping",
       "url": "",
@@ -51201,7 +51201,7 @@
           "url": "https://www.google.com/search?q=dns+aws+route+53+azure+dns+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "dns: aws 'route 53' ↔ azure 'azure dns' aws route 53 is equivalent to azure azure dns. cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.19"
+      "search": "dns: aws 'route 53' ↔ azure 'azure dns' aws route 53 (highly available global authoritative dns, latency-based, weighted, geolocation, geoproximity, and failover routing with health checks) vs azure dns (hosted dns zones) & azure traffic manager (dns-based global traffic routing across endpoints). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.19"
     },
     {
       "id": "cloud:1.4.20",
@@ -51210,7 +51210,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "Identity: AWS 'IAM' ↔ Azure 'Azure Entra ID (AAD)'",
-      "description": "AWS IAM is equivalent to Azure Azure Entra ID (AAD).",
+      "description": "AWS IAM (Identity and Access Management: users, user groups, assumable IAM roles, JSON identity and resource-based policies, Permission Boundaries) vs Azure Entra ID (formerly Azure Active Directory: cloud identity provider, OAuth2/OIDC, Conditional Access policies, Azure RBAC roles).",
       "section": "Cloud Foundations",
       "subsection": "AWS ↔ Azure Service Mapping",
       "url": "",
@@ -51225,7 +51225,7 @@
           "url": "https://www.google.com/search?q=identity+aws+iam+azure+entra+id+aad+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "identity: aws 'iam' ↔ azure 'azure entra id (aad)' aws iam is equivalent to azure azure entra id (aad). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.20"
+      "search": "identity: aws 'iam' ↔ azure 'azure entra id (aad)' aws iam (identity and access management: users, user groups, assumable iam roles, json identity and resource-based policies, permission boundaries) vs azure entra id (formerly azure active directory: cloud identity provider, oauth2/oidc, conditional access policies, azure rbac roles). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.20"
     },
     {
       "id": "cloud:1.4.21",
@@ -51234,7 +51234,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "Secrets: AWS 'Secrets Manager' ↔ Azure 'Key Vault'",
-      "description": "AWS Secrets Manager is equivalent to Azure Key Vault.",
+      "description": "AWS Secrets Manager (secure storage, fine-grained IAM access, automated lifecycle rotation for RDS/Redshift passwords via Lambda) vs Azure Key Vault (FIPS 140-2 validated HSM-backed storage for cryptographic keys, secrets, and SSL/TLS certificates with auto-renewal).",
       "section": "Cloud Foundations",
       "subsection": "AWS ↔ Azure Service Mapping",
       "url": "",
@@ -51249,7 +51249,7 @@
           "url": "https://www.google.com/search?q=secrets+aws+secrets+manager+azure+key+vault+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "secrets: aws 'secrets manager' ↔ azure 'key vault' aws secrets manager is equivalent to azure key vault. cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.21"
+      "search": "secrets: aws 'secrets manager' ↔ azure 'key vault' aws secrets manager (secure storage, fine-grained iam access, automated lifecycle rotation for rds/redshift passwords via lambda) vs azure key vault (fips 140-2 validated hsm-backed storage for cryptographic keys, secrets, and ssl/tls certificates with auto-renewal). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.21"
     },
     {
       "id": "cloud:1.4.22",
@@ -51258,7 +51258,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "Monitoring / Metrics: AWS 'CloudWatch' ↔ Azure 'Azure Monitor'",
-      "description": "AWS CloudWatch is equivalent to Azure Azure Monitor.",
+      "description": "AWS CloudWatch (centralized operational telemetry: infrastructure metrics, custom metrics, high-resolution alarms, metric math, synthetic canaries) vs Azure Monitor (unified platform for collecting metrics, metric alerts, dynamic threshold anomaly detection, Workbooks).",
       "section": "Cloud Foundations",
       "subsection": "AWS ↔ Azure Service Mapping",
       "url": "",
@@ -51273,7 +51273,7 @@
           "url": "https://www.google.com/search?q=monitoring+%2F+metrics+aws+cloudwatch+azure+monitor+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "monitoring / metrics: aws 'cloudwatch' ↔ azure 'azure monitor' aws cloudwatch is equivalent to azure azure monitor. cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.22"
+      "search": "monitoring / metrics: aws 'cloudwatch' ↔ azure 'azure monitor' aws cloudwatch (centralized operational telemetry: infrastructure metrics, custom metrics, high-resolution alarms, metric math, synthetic canaries) vs azure monitor (unified platform for collecting metrics, metric alerts, dynamic threshold anomaly detection, workbooks). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.22"
     },
     {
       "id": "cloud:1.4.23",
@@ -51282,7 +51282,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "Logging: AWS 'CloudWatch Logs' ↔ Azure 'Log Analytics'",
-      "description": "AWS CloudWatch Logs is equivalent to Azure Log Analytics.",
+      "description": "AWS CloudWatch Logs (log groups, log streams, metric filters, CloudWatch Logs Insights with SQL-like syntax, subscription filters to Kinesis/OpenSearch) vs Azure Log Analytics (part of Azure Monitor, centralized log aggregation, powerful Kusto Query Language / KQL for analytics).",
       "section": "Cloud Foundations",
       "subsection": "AWS ↔ Azure Service Mapping",
       "url": "",
@@ -51297,7 +51297,7 @@
           "url": "https://www.google.com/search?q=logging+aws+cloudwatch+logs+azure+log+analytics+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "logging: aws 'cloudwatch logs' ↔ azure 'log analytics' aws cloudwatch logs is equivalent to azure log analytics. cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.23"
+      "search": "logging: aws 'cloudwatch logs' ↔ azure 'log analytics' aws cloudwatch logs (log groups, log streams, metric filters, cloudwatch logs insights with sql-like syntax, subscription filters to kinesis/opensearch) vs azure log analytics (part of azure monitor, centralized log aggregation, powerful kusto query language / kql for analytics). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.23"
     },
     {
       "id": "cloud:1.4.24",
@@ -51306,7 +51306,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "Tracing: AWS 'X-Ray' ↔ Azure 'Application Insights'",
-      "description": "AWS X-Ray is equivalent to Azure Application Insights.",
+      "description": "AWS X-Ray (distributed request tracing, X-Ray daemon, trace segment propagation, service map visualization, latency bottleneck analysis) vs Azure Application Insights (distributed tracing, live metrics stream, application map, smart detection for failure anomalies).",
       "section": "Cloud Foundations",
       "subsection": "AWS ↔ Azure Service Mapping",
       "url": "",
@@ -51321,7 +51321,7 @@
           "url": "https://www.google.com/search?q=tracing+aws+x-ray+azure+application+insights+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "tracing: aws 'x-ray' ↔ azure 'application insights' aws x-ray is equivalent to azure application insights. cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.24"
+      "search": "tracing: aws 'x-ray' ↔ azure 'application insights' aws x-ray (distributed request tracing, x-ray daemon, trace segment propagation, service map visualization, latency bottleneck analysis) vs azure application insights (distributed tracing, live metrics stream, application map, smart detection for failure anomalies). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.24"
     },
     {
       "id": "cloud:1.4.25",
@@ -51330,7 +51330,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "Event Bus: AWS 'EventBridge' ↔ Azure 'Event Grid'",
-      "description": "AWS EventBridge is equivalent to Azure Event Grid.",
+      "description": "AWS EventBridge (serverless event bus routing JSON events between AWS services, SaaS applications, and custom microservices with content filtering rules) vs Azure Event Grid (event-driven routing engine using CloudEvents standard, high-throughput reactive pub-sub delivery).",
       "section": "Cloud Foundations",
       "subsection": "AWS ↔ Azure Service Mapping",
       "url": "",
@@ -51345,7 +51345,7 @@
           "url": "https://www.google.com/search?q=event+bus+aws+eventbridge+azure+event+grid+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "event bus: aws 'eventbridge' ↔ azure 'event grid' aws eventbridge is equivalent to azure event grid. cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.25"
+      "search": "event bus: aws 'eventbridge' ↔ azure 'event grid' aws eventbridge (serverless event bus routing json events between aws services, saas applications, and custom microservices with content filtering rules) vs azure event grid (event-driven routing engine using cloudevents standard, high-throughput reactive pub-sub delivery). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.25"
     },
     {
       "id": "cloud:1.4.26",
@@ -51354,7 +51354,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "Message Queue: AWS 'SQS' ↔ Azure 'Service Bus Queues'",
-      "description": "AWS SQS is equivalent to Azure Service Bus Queues.",
+      "description": "AWS SQS (Simple Queue Service: Standard queues with near-unlimited throughput and at-least-once delivery; FIFO queues with strictly ordered exactly-once processing) vs Azure Service Bus Queues (enterprise messaging queue with ordered sessions, dead-lettering, duplicate detection, transactions).",
       "section": "Cloud Foundations",
       "subsection": "AWS ↔ Azure Service Mapping",
       "url": "",
@@ -51369,7 +51369,7 @@
           "url": "https://www.google.com/search?q=message+queue+aws+sqs+azure+service+bus+queues+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "message queue: aws 'sqs' ↔ azure 'service bus queues' aws sqs is equivalent to azure service bus queues. cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.26"
+      "search": "message queue: aws 'sqs' ↔ azure 'service bus queues' aws sqs (simple queue service: standard queues with near-unlimited throughput and at-least-once delivery; fifo queues with strictly ordered exactly-once processing) vs azure service bus queues (enterprise messaging queue with ordered sessions, dead-lettering, duplicate detection, transactions). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.26"
     },
     {
       "id": "cloud:1.4.27",
@@ -51378,7 +51378,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "Pub-Sub: AWS 'SNS' ↔ Azure 'Service Bus Topics'",
-      "description": "AWS SNS is equivalent to Azure Service Bus Topics.",
+      "description": "AWS SNS (Simple Notification Service: pub-sub topic fan-out pushing messages to thousands of SQS queues, HTTP webhooks, Lambda functions, mobile push, and SMS) vs Azure Service Bus Topics (pub-sub topics with multiple subscriptions, each with individual SQL filter rules and actions).",
       "section": "Cloud Foundations",
       "subsection": "AWS ↔ Azure Service Mapping",
       "url": "",
@@ -51393,7 +51393,7 @@
           "url": "https://www.google.com/search?q=pub-sub+aws+sns+azure+service+bus+topics+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "pub-sub: aws 'sns' ↔ azure 'service bus topics' aws sns is equivalent to azure service bus topics. cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.27"
+      "search": "pub-sub: aws 'sns' ↔ azure 'service bus topics' aws sns (simple notification service: pub-sub topic fan-out pushing messages to thousands of sqs queues, http webhooks, lambda functions, mobile push, and sms) vs azure service bus topics (pub-sub topics with multiple subscriptions, each with individual sql filter rules and actions). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.27"
     },
     {
       "id": "cloud:1.4.28",
@@ -51402,7 +51402,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "Streaming: AWS 'Kinesis' ↔ Azure 'Event Hubs'",
-      "description": "AWS Kinesis is equivalent to Azure Event Hubs.",
+      "description": "AWS Kinesis Data Streams (real-time streaming ingestion partitioned into shards, 1MB/s write per shard, replayable retention up to 365 days, KCL consumer scaling) vs Azure Event Hubs (real-time event ingestion partitioned for horizontal scale, Event Hubs Capture to Blob/Data Lake).",
       "section": "Cloud Foundations",
       "subsection": "AWS ↔ Azure Service Mapping",
       "url": "",
@@ -51417,7 +51417,7 @@
           "url": "https://www.google.com/search?q=streaming+aws+kinesis+azure+event+hubs+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "streaming: aws 'kinesis' ↔ azure 'event hubs' aws kinesis is equivalent to azure event hubs. cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.28"
+      "search": "streaming: aws 'kinesis' ↔ azure 'event hubs' aws kinesis data streams (real-time streaming ingestion partitioned into shards, 1mb/s write per shard, replayable retention up to 365 days, kcl consumer scaling) vs azure event hubs (real-time event ingestion partitioned for horizontal scale, event hubs capture to blob/data lake). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.28"
     },
     {
       "id": "cloud:1.4.29",
@@ -51426,7 +51426,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "IaC: AWS 'CloudFormation / CDK' ↔ Azure 'ARM Templates / Bicep'",
-      "description": "AWS CloudFormation / CDK is equivalent to Azure ARM Templates / Bicep.",
+      "description": "AWS CloudFormation & AWS CDK (declarative JSON/YAML templates or imperative TypeScript/Python code synthesizing CloudFormation stacks with drift detection) vs Azure ARM Templates & Bicep (Azure Resource Manager declarative JSON or concise domain-specific Bicep language).",
       "section": "Cloud Foundations",
       "subsection": "AWS ↔ Azure Service Mapping",
       "url": "",
@@ -51441,7 +51441,7 @@
           "url": "https://www.google.com/search?q=iac+aws+cloudformation+%2F+cdk+azure+arm+templates+%2F+bicep+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "iac: aws 'cloudformation / cdk' ↔ azure 'arm templates / bicep' aws cloudformation / cdk is equivalent to azure arm templates / bicep. cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.29"
+      "search": "iac: aws 'cloudformation / cdk' ↔ azure 'arm templates / bicep' aws cloudformation & aws cdk (declarative json/yaml templates or imperative typescript/python code synthesizing cloudformation stacks with drift detection) vs azure arm templates & bicep (azure resource manager declarative json or concise domain-specific bicep language). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.29"
     },
     {
       "id": "cloud:1.4.30",
@@ -51450,7 +51450,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "Email: AWS 'SES' ↔ Azure 'Azure Communication Services'",
-      "description": "AWS SES is equivalent to Azure Azure Communication Services.",
+      "description": "AWS SES (Simple Email Service: cost-effective high-deliverability platform for transactional and marketing emails with DKIM, SPF, and DMARC verification) vs Azure Communication Services (multi-channel communications platform providing Email, SMS, Voice, and Video SDKs).",
       "section": "Cloud Foundations",
       "subsection": "AWS ↔ Azure Service Mapping",
       "url": "",
@@ -51465,7 +51465,7 @@
           "url": "https://www.google.com/search?q=email+aws+ses+azure+communication+services+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "email: aws 'ses' ↔ azure 'azure communication services' aws ses is equivalent to azure azure communication services. cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.30"
+      "search": "email: aws 'ses' ↔ azure 'azure communication services' aws ses (simple email service: cost-effective high-deliverability platform for transactional and marketing emails with dkim, spf, and dmarc verification) vs azure communication services (multi-channel communications platform providing email, sms, voice, and video sdks). cloud - aws and azure cloud foundations aws ↔ azure service mapping 1.4.30"
     },
     {
       "id": "cloud:2.1.1",
@@ -51570,7 +51570,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "AWS IAM Policy (JSON: Effect / Action / Resource)",
-      "description": "IAM Policy Evaluation Logic: Default Deny &rarr; Explicit Deny (evaluates first; immediately overrides any Allow) &rarr; Explicit Allow &rarr; Default Deny. Conditions allow granular attribute-based access control (ABAC) based on IP address, VPC endpoint source, MFA status, or resource tags.",
+      "description": "IAM Policy Evaluation Logic: Default Deny → Explicit Deny (evaluates first; immediately overrides any Allow) → Explicit Allow → Default Deny. Conditions allow granular attribute-based access control (ABAC) based on IP address, VPC endpoint source, MFA status, or resource tags.",
       "section": "Identity & Access (IAM / Entra ID)",
       "subsection": "Policies & Permissions",
       "url": "",
@@ -51585,7 +51585,7 @@
           "url": "https://www.google.com/search?q=aws+iam+policy+json+effect+%2F+action+%2F+resource+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "aws iam policy (json: effect / action / resource) iam policy evaluation logic: default deny &rarr; explicit deny (evaluates first; immediately overrides any allow) &rarr; explicit allow &rarr; default deny. conditions allow granular attribute-based access control (abac) based on ip address, vpc endpoint source, mfa status, or resource tags. cloud - aws and azure identity & access (iam / entra id) policies & permissions 2.2.1"
+      "search": "aws iam policy (json: effect / action / resource) iam policy evaluation logic: default deny → explicit deny (evaluates first; immediately overrides any allow) → explicit allow → default deny. conditions allow granular attribute-based access control (abac) based on ip address, vpc endpoint source, mfa status, or resource tags. cloud - aws and azure identity & access (iam / entra id) policies & permissions 2.2.1"
     },
     {
       "id": "cloud:2.2.2",
@@ -52002,7 +52002,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "Buckets / Containers — namespace and naming",
-      "description": "Object Storage Architecture: Flat key-value namespace storing unstructured data (blobs) accessed via HTTP REST APIs. Objects identified by bucket name and key string; provides 99.999999999% (11 9s) durability by redundantly storing data across &ge;3 facilities.",
+      "description": "Object Storage Architecture: Flat key-value namespace storing unstructured data (blobs) accessed via HTTP REST APIs. Objects identified by bucket name and key string; provides 99.999999999% (11 9s) durability by redundantly storing data across ≥3 facilities.",
       "section": "Storage",
       "subsection": "Object Storage (S3 / Azure Blob)",
       "url": "",
@@ -52017,7 +52017,7 @@
           "url": "https://www.google.com/search?q=buckets+%2F+containers+namespace+and+naming+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "buckets / containers — namespace and naming object storage architecture: flat key-value namespace storing unstructured data (blobs) accessed via http rest apis. objects identified by bucket name and key string; provides 99.999999999% (11 9s) durability by redundantly storing data across &ge;3 facilities. cloud - aws and azure storage object storage (s3 / azure blob) 4.1.1"
+      "search": "buckets / containers — namespace and naming object storage architecture: flat key-value namespace storing unstructured data (blobs) accessed via http rest apis. objects identified by bucket name and key string; provides 99.999999999% (11 9s) durability by redundantly storing data across ≥3 facilities. cloud - aws and azure storage object storage (s3 / azure blob) 4.1.1"
     },
     {
       "id": "cloud:4.1.2",
@@ -52290,7 +52290,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "Public vs Private subnets",
-      "description": "Subnet Topologies: Public Subnet: Associated with a route table containing 0.0.0.0/0 &rarr; Internet Gateway (IGW). Private Subnet: Routes 0.0.0.0/0 &rarr; NAT Gateway located in a public subnet. Isolated Subnet: Zero internet route; communicates exclusively via VPC Endpoints.",
+      "description": "Subnet Topologies: Public Subnet: Associated with a route table containing 0.0.0.0/0 → Internet Gateway (IGW). Private Subnet: Routes 0.0.0.0/0 → NAT Gateway located in a public subnet. Isolated Subnet: Zero internet route; communicates exclusively via VPC Endpoints.",
       "section": "Networking",
       "subsection": "VPC / VNet Basics",
       "url": "",
@@ -52305,7 +52305,7 @@
           "url": "https://www.google.com/search?q=public+vs+private+subnets+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "public vs private subnets subnet topologies: public subnet: associated with a route table containing 0.0.0.0/0 &rarr; internet gateway (igw). private subnet: routes 0.0.0.0/0 &rarr; nat gateway located in a public subnet. isolated subnet: zero internet route; communicates exclusively via vpc endpoints. cloud - aws and azure networking vpc / vnet basics 5.1.2"
+      "search": "public vs private subnets subnet topologies: public subnet: associated with a route table containing 0.0.0.0/0 → internet gateway (igw). private subnet: routes 0.0.0.0/0 → nat gateway located in a public subnet. isolated subnet: zero internet route; communicates exclusively via vpc endpoints. cloud - aws and azure networking vpc / vnet basics 5.1.2"
     },
     {
       "id": "cloud:5.1.3",
@@ -52362,7 +52362,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "VPC Peering / VNet Peering",
-      "description": "VPC / VNet Peering: Direct private network connection between two VPCs using cloud backbone routing. Zero single point of failure, no bandwidth throttling, traffic stays encrypted on AWS global fiber. Constraint: Non-transitive (VPC A &harr; B and B &harr; C does not enable A &harr; C).",
+      "description": "VPC / VNet Peering: Direct private network connection between two VPCs using cloud backbone routing. Zero single point of failure, no bandwidth throttling, traffic stays encrypted on AWS global fiber. Constraint: Non-transitive (VPC A ↔ B and B ↔ C does not enable A ↔ C).",
       "section": "Networking",
       "subsection": "VPC / VNet Basics",
       "url": "",
@@ -52377,7 +52377,7 @@
           "url": "https://www.google.com/search?q=vpc+peering+%2F+vnet+peering+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "vpc peering / vnet peering vpc / vnet peering: direct private network connection between two vpcs using cloud backbone routing. zero single point of failure, no bandwidth throttling, traffic stays encrypted on aws global fiber. constraint: non-transitive (vpc a &harr; b and b &harr; c does not enable a &harr; c). cloud - aws and azure networking vpc / vnet basics 5.1.5"
+      "search": "vpc peering / vnet peering vpc / vnet peering: direct private network connection between two vpcs using cloud backbone routing. zero single point of failure, no bandwidth throttling, traffic stays encrypted on aws global fiber. constraint: non-transitive (vpc a ↔ b and b ↔ c does not enable a ↔ c). cloud - aws and azure networking vpc / vnet basics 5.1.5"
     },
     {
       "id": "cloud:5.1.6",
@@ -53394,7 +53394,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "q: what is aws? — a: cloud platform: compute, storage, networking, db, analytics, ai, iot.",
-      "description": "EC2, S3, VPC — the foundation.",
+      "description": "Amazon Web Services (AWS) is a hyperscale public cloud computing platform providing on-demand compute, storage, databases, networking, ML/AI, and analytics over a pay-as-you-go model. In senior interviews, frame AWS around the Global Infrastructure: Regions (isolated geographic areas), Availability Zones (physically separated datacenters connected via redundant sub-2ms low-latency dark fiber), and Edge Locations (PoPs for CloudFront CDN and Route 53 DNS).",
       "section": "AWS Interview Q&A (250 Questions)",
       "subsection": "Core Services Q&A",
       "url": "",
@@ -53409,7 +53409,7 @@
           "url": "https://www.google.com/search?q=what+is+aws+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "q: what is aws? — a: cloud platform: compute, storage, networking, db, analytics, ai, iot. ec2, s3, vpc — the foundation. cloud - aws and azure aws interview q&a (250 questions) core services q&a 10.1.1"
+      "search": "q: what is aws? — a: cloud platform: compute, storage, networking, db, analytics, ai, iot. amazon web services (aws) is a hyperscale public cloud computing platform providing on-demand compute, storage, databases, networking, ml/ai, and analytics over a pay-as-you-go model. in senior interviews, frame aws around the global infrastructure: regions (isolated geographic areas), availability zones (physically separated datacenters connected via redundant sub-2ms low-latency dark fiber), and edge locations (pops for cloudfront cdn and route 53 dns). cloud - aws and azure aws interview q&a (250 questions) core services q&a 10.1.1"
     },
     {
       "id": "cloud:10.1.2",
@@ -53418,7 +53418,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "q: ec2 pricing models? — a: on-demand, reserved (1/3yr), spot, dedicated host.",
-      "description": "EC2, S3, VPC — the foundation.",
+      "description": "Four foundational EC2 pricing tiers: 1. On-Demand (pay by the second, zero upfront, maximum flexibility for spiky workloads). 2. Savings Plans & Reserved Instances (1 or 3-year commitment, up to 72% discount for steady-state baselines). 3. Spot Instances (bid on spare EC2 capacity with up to 90% savings, but subject to 2-minute interruption notice; ideal for stateless batch workers and fault-tolerant Kubernetes pools). 4. Dedicated Hosts (physical EC2 servers dedicated for compliance or BYOL socket-bound licensing).",
       "section": "AWS Interview Q&A (250 Questions)",
       "subsection": "Core Services Q&A",
       "url": "",
@@ -53433,7 +53433,7 @@
           "url": "https://www.google.com/search?q=ec2+pricing+models+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "q: ec2 pricing models? — a: on-demand, reserved (1/3yr), spot, dedicated host. ec2, s3, vpc — the foundation. cloud - aws and azure aws interview q&a (250 questions) core services q&a 10.1.2"
+      "search": "q: ec2 pricing models? — a: on-demand, reserved (1/3yr), spot, dedicated host. four foundational ec2 pricing tiers: 1. on-demand (pay by the second, zero upfront, maximum flexibility for spiky workloads). 2. savings plans & reserved instances (1 or 3-year commitment, up to 72% discount for steady-state baselines). 3. spot instances (bid on spare ec2 capacity with up to 90% savings, but subject to 2-minute interruption notice; ideal for stateless batch workers and fault-tolerant kubernetes pools). 4. dedicated hosts (physical ec2 servers dedicated for compliance or byol socket-bound licensing). cloud - aws and azure aws interview q&a (250 questions) core services q&a 10.1.2"
     },
     {
       "id": "cloud:10.1.3",
@@ -53442,7 +53442,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "q: s3 storage classes? — a: standard, ia, one-zone-ia, glacier, glacier deep archive, intelligent-tiering.",
-      "description": "EC2, S3, VPC — the foundation.",
+      "description": "S3 storage class spectrum: S3 Standard (frequently accessed data, 99.99% availability, 11 9s durability). S3 Intelligent-Tiering (automatically moves objects between tiers based on access patterns without operational overhead or retrieval fees). S3 Standard-IA (infrequently accessed, cheaper storage, retrieval fee). S3 One Zone-IA (stored in single AZ, 20% cheaper, vulnerable to AZ loss). S3 Glacier Flexible (retrieval in minutes to hours). S3 Glacier Deep Archive (lowest cost at ~$0.00099/GB/mo, retrieval within 12 hours).",
       "section": "AWS Interview Q&A (250 Questions)",
       "subsection": "Core Services Q&A",
       "url": "",
@@ -53457,7 +53457,7 @@
           "url": "https://www.google.com/search?q=s3+storage+classes+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "q: s3 storage classes? — a: standard, ia, one-zone-ia, glacier, glacier deep archive, intelligent-tiering. ec2, s3, vpc — the foundation. cloud - aws and azure aws interview q&a (250 questions) core services q&a 10.1.3"
+      "search": "q: s3 storage classes? — a: standard, ia, one-zone-ia, glacier, glacier deep archive, intelligent-tiering. s3 storage class spectrum: s3 standard (frequently accessed data, 99.99% availability, 11 9s durability). s3 intelligent-tiering (automatically moves objects between tiers based on access patterns without operational overhead or retrieval fees). s3 standard-ia (infrequently accessed, cheaper storage, retrieval fee). s3 one zone-ia (stored in single az, 20% cheaper, vulnerable to az loss). s3 glacier flexible (retrieval in minutes to hours). s3 glacier deep archive (lowest cost at ~$0.00099/gb/mo, retrieval within 12 hours). cloud - aws and azure aws interview q&a (250 questions) core services q&a 10.1.3"
     },
     {
       "id": "cloud:10.1.4",
@@ -53466,7 +53466,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "q: what is vpc? — a: isolated virtual network; you define cidrs, subnets, route tables, gateways.",
-      "description": "EC2, S3, VPC — the foundation.",
+      "description": "Amazon Virtual Private Cloud (VPC) is a logically isolated software-defined virtual network dedicated to your AWS account. You control IP address allocation via IPv4/IPv6 CIDR blocks (e.g. 10.0.0.0/16), provision public subnets (routed to an Internet Gateway) and private subnets (routed to a NAT Gateway for outbound-only access), configure Route Tables, and enforce security boundaries using Security Groups (stateful) and Network ACLs (stateless).",
       "section": "AWS Interview Q&A (250 Questions)",
       "subsection": "Core Services Q&A",
       "url": "",
@@ -53481,7 +53481,7 @@
           "url": "https://www.google.com/search?q=what+is+vpc+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "q: what is vpc? — a: isolated virtual network; you define cidrs, subnets, route tables, gateways. ec2, s3, vpc — the foundation. cloud - aws and azure aws interview q&a (250 questions) core services q&a 10.1.4"
+      "search": "q: what is vpc? — a: isolated virtual network; you define cidrs, subnets, route tables, gateways. amazon virtual private cloud (vpc) is a logically isolated software-defined virtual network dedicated to your aws account. you control ip address allocation via ipv4/ipv6 cidr blocks (e.g. 10.0.0.0/16), provision public subnets (routed to an internet gateway) and private subnets (routed to a nat gateway for outbound-only access), configure route tables, and enforce security boundaries using security groups (stateful) and network acls (stateless). cloud - aws and azure aws interview q&a (250 questions) core services q&a 10.1.4"
     },
     {
       "id": "cloud:10.1.5",
@@ -53490,7 +53490,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "q: ebs vs efs vs s3? — a: ebs = single-instance block. efs = multi-mount nfs. s3 = object storage, no mount.",
-      "description": "EC2, S3, VPC — the foundation.",
+      "description": "Architectural storage differences: EBS (Elastic Block Store) is raw block storage attached over the network to a single EC2 instance, behaving like a physical hard drive (ideal for databases requiring low-latency random IOPS). EFS (Elastic File System) is an elastic POSIX NFSv4 shared file system mounted concurrently across thousands of EC2 instances and containers. S3 (Simple Storage Service) is an object store accessed via REST HTTP APIs (GET/PUT), offering virtually unlimited capacity and 11 9s durability.",
       "section": "AWS Interview Q&A (250 Questions)",
       "subsection": "Core Services Q&A",
       "url": "",
@@ -53505,7 +53505,7 @@
           "url": "https://www.google.com/search?q=ebs+vs+efs+vs+s3+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "q: ebs vs efs vs s3? — a: ebs = single-instance block. efs = multi-mount nfs. s3 = object storage, no mount. ec2, s3, vpc — the foundation. cloud - aws and azure aws interview q&a (250 questions) core services q&a 10.1.5"
+      "search": "q: ebs vs efs vs s3? — a: ebs = single-instance block. efs = multi-mount nfs. s3 = object storage, no mount. architectural storage differences: ebs (elastic block store) is raw block storage attached over the network to a single ec2 instance, behaving like a physical hard drive (ideal for databases requiring low-latency random iops). efs (elastic file system) is an elastic posix nfsv4 shared file system mounted concurrently across thousands of ec2 instances and containers. s3 (simple storage service) is an object store accessed via rest http apis (get/put), offering virtually unlimited capacity and 11 9s durability. cloud - aws and azure aws interview q&a (250 questions) core services q&a 10.1.5"
     },
     {
       "id": "cloud:10.1.6",
@@ -53514,7 +53514,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "q: what is an ami? — a: template: os + software + config + volume mappings.",
-      "description": "EC2, S3, VPC — the foundation.",
+      "description": "An Amazon Machine Image (AMI) is a pre-configured immutable template required to launch an EC2 instance. It bundles: 1. Root volume snapshot (operating system, runtime libraries, application binary). 2. Launch permissions (public, private, or shared across AWS accounts). 3. Block device mapping (specifying attached EBS volumes). Modern CI/CD builds immutable 'golden AMIs' using HashiCorp Packer for rapid autoscaling boots without runtime config scripts.",
       "section": "AWS Interview Q&A (250 Questions)",
       "subsection": "Core Services Q&A",
       "url": "",
@@ -53529,7 +53529,7 @@
           "url": "https://www.google.com/search?q=what+is+an+ami+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "q: what is an ami? — a: template: os + software + config + volume mappings. ec2, s3, vpc — the foundation. cloud - aws and azure aws interview q&a (250 questions) core services q&a 10.1.6"
+      "search": "q: what is an ami? — a: template: os + software + config + volume mappings. an amazon machine image (ami) is a pre-configured immutable template required to launch an ec2 instance. it bundles: 1. root volume snapshot (operating system, runtime libraries, application binary). 2. launch permissions (public, private, or shared across aws accounts). 3. block device mapping (specifying attached ebs volumes). modern ci/cd builds immutable 'golden amis' using hashicorp packer for rapid autoscaling boots without runtime config scripts. cloud - aws and azure aws interview q&a (250 questions) core services q&a 10.1.6"
     },
     {
       "id": "cloud:10.1.7",
@@ -53538,7 +53538,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "q: security group vs nacl? — a: sg = stateful, instance, allow-only. nacl = stateless, subnet, allow+deny.",
-      "description": "EC2, S3, VPC — the foundation.",
+      "description": "Critical security comparison: Security Groups (SGs) operate at the **instance/ENI layer**, are **stateful** (inbound return traffic is automatically allowed outbound regardless of outbound rules), and support **ALLOW rules only**. Network ACLs (NACLs) operate at the **subnet boundary**, are **stateless** (return traffic must be explicitly allowed), evaluate rules in numbered order, and support both **ALLOW and DENY rules** (ideal for blocking malicious CIDR IP ranges).",
       "section": "AWS Interview Q&A (250 Questions)",
       "subsection": "Core Services Q&A",
       "url": "",
@@ -53553,7 +53553,7 @@
           "url": "https://www.google.com/search?q=security+group+vs+nacl+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "q: security group vs nacl? — a: sg = stateful, instance, allow-only. nacl = stateless, subnet, allow+deny. ec2, s3, vpc — the foundation. cloud - aws and azure aws interview q&a (250 questions) core services q&a 10.1.7"
+      "search": "q: security group vs nacl? — a: sg = stateful, instance, allow-only. nacl = stateless, subnet, allow+deny. critical security comparison: security groups (sgs) operate at the **instance/eni layer**, are **stateful** (inbound return traffic is automatically allowed outbound regardless of outbound rules), and support **allow rules only**. network acls (nacls) operate at the **subnet boundary**, are **stateless** (return traffic must be explicitly allowed), evaluate rules in numbered order, and support both **allow and deny rules** (ideal for blocking malicious cidr ip ranges). cloud - aws and azure aws interview q&a (250 questions) core services q&a 10.1.7"
     },
     {
       "id": "cloud:10.1.8",
@@ -53562,7 +53562,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "q: what is an eip? — a: static public ipv4 address. charged when unattached.",
-      "description": "EC2, S3, VPC — the foundation.",
+      "description": "An Elastic IP (EIP) is a static, persistent public IPv4 address allocated to your AWS account that can be rapidly remapped between EC2 instances or Network Interfaces in the same region to mask instance failures. Architectural cost trap: AWS charges for Elastic IPs that are allocated but **not attached** to a running instance, or when attached to a stopped instance, to prevent IPv4 hoarding.",
       "section": "AWS Interview Q&A (250 Questions)",
       "subsection": "Core Services Q&A",
       "url": "",
@@ -53577,7 +53577,7 @@
           "url": "https://www.google.com/search?q=what+is+an+eip+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "q: what is an eip? — a: static public ipv4 address. charged when unattached. ec2, s3, vpc — the foundation. cloud - aws and azure aws interview q&a (250 questions) core services q&a 10.1.8"
+      "search": "q: what is an eip? — a: static public ipv4 address. charged when unattached. an elastic ip (eip) is a static, persistent public ipv4 address allocated to your aws account that can be rapidly remapped between ec2 instances or network interfaces in the same region to mask instance failures. architectural cost trap: aws charges for elastic ips that are allocated but **not attached** to a running instance, or when attached to a stopped instance, to prevent ipv4 hoarding. cloud - aws and azure aws interview q&a (250 questions) core services q&a 10.1.8"
     },
     {
       "id": "cloud:10.1.9",
@@ -53586,7 +53586,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "q: what is auto scaling? — a: automatically add/remove ec2s. components: launch template + asg + scaling policy.",
-      "description": "EC2, S3, VPC — the foundation.",
+      "description": "AWS Auto Scaling automatically adjusts compute capacity to maintain steady, predictable performance at lowest cost. Core components: 1. Launch Template (specifies AMI, instance type, security groups, user-data). 2. Auto Scaling Group (defines min/max/desired capacity and multi-AZ subnets). 3. Scaling Policies: Target Tracking (e.g. maintain 60% average CPU or ALB request count per target), Step Scaling, or Scheduled/Predictive ML scaling.",
       "section": "AWS Interview Q&A (250 Questions)",
       "subsection": "Core Services Q&A",
       "url": "",
@@ -53601,7 +53601,7 @@
           "url": "https://www.google.com/search?q=what+is+auto+scaling+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "q: what is auto scaling? — a: automatically add/remove ec2s. components: launch template + asg + scaling policy. ec2, s3, vpc — the foundation. cloud - aws and azure aws interview q&a (250 questions) core services q&a 10.1.9"
+      "search": "q: what is auto scaling? — a: automatically add/remove ec2s. components: launch template + asg + scaling policy. aws auto scaling automatically adjusts compute capacity to maintain steady, predictable performance at lowest cost. core components: 1. launch template (specifies ami, instance type, security groups, user-data). 2. auto scaling group (defines min/max/desired capacity and multi-az subnets). 3. scaling policies: target tracking (e.g. maintain 60% average cpu or alb request count per target), step scaling, or scheduled/predictive ml scaling. cloud - aws and azure aws interview q&a (250 questions) core services q&a 10.1.9"
     },
     {
       "id": "cloud:10.1.10",
@@ -53610,7 +53610,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "q: what is cloudwatch? — a: monitoring and observability. metrics, logs, alarms, dashboards.",
-      "description": "EC2, S3, VPC — the foundation.",
+      "description": "Amazon CloudWatch is the centralized telemetry and monitoring platform for AWS resources and applications. Key subsystems: 1. Metrics (time-series performance counters collected at 1-minute standard or 1-second high resolution). 2. Alarms (triggers SNS notifications or Auto Scaling actions when thresholds breach). 3. CloudWatch Logs (aggregates application log streams). 4. CloudWatch Synthetics (runs headless browser canaries 24/7).",
       "section": "AWS Interview Q&A (250 Questions)",
       "subsection": "Core Services Q&A",
       "url": "",
@@ -53625,7 +53625,7 @@
           "url": "https://www.google.com/search?q=what+is+cloudwatch+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "q: what is cloudwatch? — a: monitoring and observability. metrics, logs, alarms, dashboards. ec2, s3, vpc — the foundation. cloud - aws and azure aws interview q&a (250 questions) core services q&a 10.1.10"
+      "search": "q: what is cloudwatch? — a: monitoring and observability. metrics, logs, alarms, dashboards. amazon cloudwatch is the centralized telemetry and monitoring platform for aws resources and applications. key subsystems: 1. metrics (time-series performance counters collected at 1-minute standard or 1-second high resolution). 2. alarms (triggers sns notifications or auto scaling actions when thresholds breach). 3. cloudwatch logs (aggregates application log streams). 4. cloudwatch synthetics (runs headless browser canaries 24/7). cloud - aws and azure aws interview q&a (250 questions) core services q&a 10.1.10"
     },
     {
       "id": "cloud:10.2.1",
@@ -53634,7 +53634,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "q: what is iam? — a: identity management. users, groups, roles, policies. control aws api access.",
-      "description": "IAM, KMS, encryption.",
+      "description": "AWS Identity and Access Management (IAM) controls authentication (who can log in) and authorization (what permissions they have) across all AWS APIs. Core entities: IAM Users (human identities), IAM User Groups (collections of users), IAM Roles (assumable identities with temporary credentials), and IAM Policies (JSON documents specifying Effect, Principal, Action, Resource, and Conditions).",
       "section": "AWS Interview Q&A (250 Questions)",
       "subsection": "IAM & Security Q&A",
       "url": "",
@@ -53649,7 +53649,7 @@
           "url": "https://www.google.com/search?q=what+is+iam+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "q: what is iam? — a: identity management. users, groups, roles, policies. control aws api access. iam, kms, encryption. cloud - aws and azure aws interview q&a (250 questions) iam & security q&a 10.2.1"
+      "search": "q: what is iam? — a: identity management. users, groups, roles, policies. control aws api access. aws identity and access management (iam) controls authentication (who can log in) and authorization (what permissions they have) across all aws apis. core entities: iam users (human identities), iam user groups (collections of users), iam roles (assumable identities with temporary credentials), and iam policies (json documents specifying effect, principal, action, resource, and conditions). cloud - aws and azure aws interview q&a (250 questions) iam & security q&a 10.2.1"
     },
     {
       "id": "cloud:10.2.2",
@@ -53658,7 +53658,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "q: types of iam policies? — a: managed (aws or customer) and inline.",
-      "description": "IAM, KMS, encryption.",
+      "description": "Types of IAM Policies: 1. AWS Managed Policies (created and maintained by AWS, e.g. AdministratorAccess). 2. Customer Managed Policies (standalone, versioned, reusable policies authored by you). 3. Inline Policies (embedded directly into a single user, group, or role; discouraged due to lack of reusability). 4. Resource-based Policies (attached directly to resources like S3 bucket policies or KMS key policies).",
       "section": "AWS Interview Q&A (250 Questions)",
       "subsection": "IAM & Security Q&A",
       "url": "",
@@ -53673,7 +53673,7 @@
           "url": "https://www.google.com/search?q=types+of+iam+policies+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "q: types of iam policies? — a: managed (aws or customer) and inline. iam, kms, encryption. cloud - aws and azure aws interview q&a (250 questions) iam & security q&a 10.2.2"
+      "search": "q: types of iam policies? — a: managed (aws or customer) and inline. types of iam policies: 1. aws managed policies (created and maintained by aws, e.g. administratoraccess). 2. customer managed policies (standalone, versioned, reusable policies authored by you). 3. inline policies (embedded directly into a single user, group, or role; discouraged due to lack of reusability). 4. resource-based policies (attached directly to resources like s3 bucket policies or kms key policies). cloud - aws and azure aws interview q&a (250 questions) iam & security q&a 10.2.2"
     },
     {
       "id": "cloud:10.2.3",
@@ -53682,7 +53682,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "q: iam role vs iam user? — a: role = assumable, no long-lived creds. user = person, has access keys.",
-      "description": "IAM, KMS, encryption.",
+      "description": "IAM User vs IAM Role: An IAM User represents a permanent identity (person or legacy app) with long-lived credentials (console password and permanent access key pairs; severe security risk if leaked). An IAM Role is an assumable identity that does NOT have permanent credentials; AWS STS (Security Token Service) issues short-lived, auto-rotating temporary credentials (valid 15m to 12h). Always use IAM Roles for EC2 instances, Lambda functions, and cross-account access.",
       "section": "AWS Interview Q&A (250 Questions)",
       "subsection": "IAM & Security Q&A",
       "url": "",
@@ -53697,7 +53697,7 @@
           "url": "https://www.google.com/search?q=iam+role+vs+iam+user+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "q: iam role vs iam user? — a: role = assumable, no long-lived creds. user = person, has access keys. iam, kms, encryption. cloud - aws and azure aws interview q&a (250 questions) iam & security q&a 10.2.3"
+      "search": "q: iam role vs iam user? — a: role = assumable, no long-lived creds. user = person, has access keys. iam user vs iam role: an iam user represents a permanent identity (person or legacy app) with long-lived credentials (console password and permanent access key pairs; severe security risk if leaked). an iam role is an assumable identity that does not have permanent credentials; aws sts (security token service) issues short-lived, auto-rotating temporary credentials (valid 15m to 12h). always use iam roles for ec2 instances, lambda functions, and cross-account access. cloud - aws and azure aws interview q&a (250 questions) iam & security q&a 10.2.3"
     },
     {
       "id": "cloud:10.2.4",
@@ -53706,7 +53706,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "q: how to encrypt data in s3? — a: sse-s3 (managed keys), sse-kms (kms keys), sse-c (client keys).",
-      "description": "IAM, KMS, encryption.",
+      "description": "Three S3 server-side encryption modes: 1. SSE-S3 (AES-256 encryption managed entirely by S3 with zero extra cost; keys rotate automatically). 2. SSE-KMS (AWS KMS keys provide audit trail via CloudTrail and granular key policies, but KMS API requests incur per-request billing and account rate limits). 3. SSE-C (Client-provided keys: customer manages the cryptographic key, S3 performs the encryption/decryption on the fly and never stores the key).",
       "section": "AWS Interview Q&A (250 Questions)",
       "subsection": "IAM & Security Q&A",
       "url": "",
@@ -53721,7 +53721,7 @@
           "url": "https://www.google.com/search?q=encrypt+data+in+s3+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "q: how to encrypt data in s3? — a: sse-s3 (managed keys), sse-kms (kms keys), sse-c (client keys). iam, kms, encryption. cloud - aws and azure aws interview q&a (250 questions) iam & security q&a 10.2.4"
+      "search": "q: how to encrypt data in s3? — a: sse-s3 (managed keys), sse-kms (kms keys), sse-c (client keys). three s3 server-side encryption modes: 1. sse-s3 (aes-256 encryption managed entirely by s3 with zero extra cost; keys rotate automatically). 2. sse-kms (aws kms keys provide audit trail via cloudtrail and granular key policies, but kms api requests incur per-request billing and account rate limits). 3. sse-c (client-provided keys: customer manages the cryptographic key, s3 performs the encryption/decryption on the fly and never stores the key). cloud - aws and azure aws interview q&a (250 questions) iam & security q&a 10.2.4"
     },
     {
       "id": "cloud:10.2.5",
@@ -53730,7 +53730,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "q: what is kms? — a: key management service. create/manage/audit encryption keys. integrated with s3, ebs, rds.",
-      "description": "IAM, KMS, encryption.",
+      "description": "AWS Key Management Service (KMS) is a managed FIPS 140-2 Level 2/3 cryptographic service for creating and controlling symmetric and asymmetric Customer Master Keys (CMKs). KMS uses Envelope Encryption: KMS encrypts a Data Encryption Key (DEK) with the master key; the plaintext DEK encrypts the actual data, and the encrypted DEK is stored alongside the ciphertext, preventing KMS performance bottlenecks.",
       "section": "AWS Interview Q&A (250 Questions)",
       "subsection": "IAM & Security Q&A",
       "url": "",
@@ -53745,7 +53745,7 @@
           "url": "https://www.google.com/search?q=what+is+kms+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "q: what is kms? — a: key management service. create/manage/audit encryption keys. integrated with s3, ebs, rds. iam, kms, encryption. cloud - aws and azure aws interview q&a (250 questions) iam & security q&a 10.2.5"
+      "search": "q: what is kms? — a: key management service. create/manage/audit encryption keys. integrated with s3, ebs, rds. aws key management service (kms) is a managed fips 140-2 level 2/3 cryptographic service for creating and controlling symmetric and asymmetric customer master keys (cmks). kms uses envelope encryption: kms encrypts a data encryption key (dek) with the master key; the plaintext dek encrypts the actual data, and the encrypted dek is stored alongside the ciphertext, preventing kms performance bottlenecks. cloud - aws and azure aws interview q&a (250 questions) iam & security q&a 10.2.5"
     },
     {
       "id": "cloud:10.2.6",
@@ -53754,7 +53754,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "q: mfa in aws? — a: additional auth factor. required for root, recommended for all. virtual (totp) or hardware.",
-      "description": "IAM, KMS, encryption.",
+      "description": "Multi-Factor Authentication (MFA) requires a second authentication factor beyond username/password. Mandated for root accounts and privileged IAM users. Options: Virtual MFA (TOTP smartphone apps like Google Authenticator), Hardware TOTP tokens, or FIDO2/WebAuthn hardware security keys (e.g. YubiKey). Enforced via IAM policy condition `aws:MultiFactorAuthPresent: 'true'`.",
       "section": "AWS Interview Q&A (250 Questions)",
       "subsection": "IAM & Security Q&A",
       "url": "",
@@ -53769,7 +53769,7 @@
           "url": "https://www.google.com/search?q=mfa+in+aws+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "q: mfa in aws? — a: additional auth factor. required for root, recommended for all. virtual (totp) or hardware. iam, kms, encryption. cloud - aws and azure aws interview q&a (250 questions) iam & security q&a 10.2.6"
+      "search": "q: mfa in aws? — a: additional auth factor. required for root, recommended for all. virtual (totp) or hardware. multi-factor authentication (mfa) requires a second authentication factor beyond username/password. mandated for root accounts and privileged iam users. options: virtual mfa (totp smartphone apps like google authenticator), hardware totp tokens, or fido2/webauthn hardware security keys (e.g. yubikey). enforced via iam policy condition `aws:multifactorauthpresent: 'true'`. cloud - aws and azure aws interview q&a (250 questions) iam & security q&a 10.2.6"
     },
     {
       "id": "cloud:10.2.7",
@@ -53778,7 +53778,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "q: explicit deny vs allow precedence? — a: explicit deny always wins over allow, regardless of other policies.",
-      "description": "IAM, KMS, encryption.",
+      "description": "Evaluation logic for IAM policies: 1. Default Deny: all requests are implicitly denied. 2. Explicit Allow: granted if an applicable policy explicitly allows the action. 3. **Explicit Deny ALWAYS wins**: If any policy (Identity-based, Resource-based, Permissions Boundary, or Organization Service Control Policy / SCP) contains an explicit `Effect: Deny`, the request is immediately rejected regardless of how many other policies grant `Allow`.",
       "section": "AWS Interview Q&A (250 Questions)",
       "subsection": "IAM & Security Q&A",
       "url": "",
@@ -53793,7 +53793,7 @@
           "url": "https://www.google.com/search?q=explicit+deny+vs+allow+precedence+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "q: explicit deny vs allow precedence? — a: explicit deny always wins over allow, regardless of other policies. iam, kms, encryption. cloud - aws and azure aws interview q&a (250 questions) iam & security q&a 10.2.7"
+      "search": "q: explicit deny vs allow precedence? — a: explicit deny always wins over allow, regardless of other policies. evaluation logic for iam policies: 1. default deny: all requests are implicitly denied. 2. explicit allow: granted if an applicable policy explicitly allows the action. 3. **explicit deny always wins**: if any policy (identity-based, resource-based, permissions boundary, or organization service control policy / scp) contains an explicit `effect: deny`, the request is immediately rejected regardless of how many other policies grant `allow`. cloud - aws and azure aws interview q&a (250 questions) iam & security q&a 10.2.7"
     },
     {
       "id": "cloud:10.3.1",
@@ -53802,7 +53802,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "q: types of aws load balancers? — a: alb (l7/http), nlb (l4/tcp), glb (l3/firewalls), classic (legacy).",
-      "description": "VPC, ELB, Route 53.",
+      "description": "Four generations of Elastic Load Balancing (ELB): 1. ALB (Application Load Balancer: Layer 7 HTTP/HTTPS/gRPC, host/path-based routing, websockets, TLS offloading). 2. NLB (Network Load Balancer: Layer 4 TCP/UDP/TLS, millions QPS, static IPs, sub-millisecond latency). 3. Gateway Load Balancer (GWLB: Layer 3/4 bump-in-the-wire for deploying 3rd party firewalls/IDS). 4. Classic Load Balancer (CLB: deprecated legacy generation).",
       "section": "AWS Interview Q&A (250 Questions)",
       "subsection": "Networking & Load Balancing Q&A",
       "url": "",
@@ -53817,7 +53817,7 @@
           "url": "https://www.google.com/search?q=types+of+aws+load+balancers+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "q: types of aws load balancers? — a: alb (l7/http), nlb (l4/tcp), glb (l3/firewalls), classic (legacy). vpc, elb, route 53. cloud - aws and azure aws interview q&a (250 questions) networking & load balancing q&a 10.3.1"
+      "search": "q: types of aws load balancers? — a: alb (l7/http), nlb (l4/tcp), glb (l3/firewalls), classic (legacy). four generations of elastic load balancing (elb): 1. alb (application load balancer: layer 7 http/https/grpc, host/path-based routing, websockets, tls offloading). 2. nlb (network load balancer: layer 4 tcp/udp/tls, millions qps, static ips, sub-millisecond latency). 3. gateway load balancer (gwlb: layer 3/4 bump-in-the-wire for deploying 3rd party firewalls/ids). 4. classic load balancer (clb: deprecated legacy generation). cloud - aws and azure aws interview q&a (250 questions) networking & load balancing q&a 10.3.1"
     },
     {
       "id": "cloud:10.3.2",
@@ -53826,7 +53826,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "q: sticky sessions? — a: route user to same instance. cookie-based. disrupts perfect load distribution.",
-      "description": "VPC, ELB, Route 53.",
+      "description": "Sticky Sessions (Session Affinity) bind a user's session to a specific backend EC2/target container using an application or duration-based cookie. Architectural trade-off: ensures local in-memory session data remains accessible, but severely degrades load balancing fairness, causes traffic hotspots, and leads to session loss during rolling deployments or instance terminations. Senior recommendation: keep services stateless and store sessions in Redis.",
       "section": "AWS Interview Q&A (250 Questions)",
       "subsection": "Networking & Load Balancing Q&A",
       "url": "",
@@ -53841,7 +53841,7 @@
           "url": "https://www.google.com/search?q=sticky+sessions+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "q: sticky sessions? — a: route user to same instance. cookie-based. disrupts perfect load distribution. vpc, elb, route 53. cloud - aws and azure aws interview q&a (250 questions) networking & load balancing q&a 10.3.2"
+      "search": "q: sticky sessions? — a: route user to same instance. cookie-based. disrupts perfect load distribution. sticky sessions (session affinity) bind a user's session to a specific backend ec2/target container using an application or duration-based cookie. architectural trade-off: ensures local in-memory session data remains accessible, but severely degrades load balancing fairness, causes traffic hotspots, and leads to session loss during rolling deployments or instance terminations. senior recommendation: keep services stateless and store sessions in redis. cloud - aws and azure aws interview q&a (250 questions) networking & load balancing q&a 10.3.2"
     },
     {
       "id": "cloud:10.3.3",
@@ -53850,7 +53850,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "q: what is a nat gateway? — a: lets private subnet instances reach internet (outbound), not the reverse. managed by aws.",
-      "description": "VPC, ELB, Route 53.",
+      "description": "A NAT Gateway allows EC2 instances in private subnets to initiate outbound connections to the internet (e.g. for OS security patches or third-party APIs) while preventing external inbound traffic from initiating connections to private instances. Managed by AWS, scales automatically up to 100 Gbps, deployed per-AZ for high availability. In contrast to legacy self-hosted NAT instances, requires zero maintenance.",
       "section": "AWS Interview Q&A (250 Questions)",
       "subsection": "Networking & Load Balancing Q&A",
       "url": "",
@@ -53865,7 +53865,7 @@
           "url": "https://www.google.com/search?q=what+is+a+nat+gateway+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "q: what is a nat gateway? — a: lets private subnet instances reach internet (outbound), not the reverse. managed by aws. vpc, elb, route 53. cloud - aws and azure aws interview q&a (250 questions) networking & load balancing q&a 10.3.3"
+      "search": "q: what is a nat gateway? — a: lets private subnet instances reach internet (outbound), not the reverse. managed by aws. a nat gateway allows ec2 instances in private subnets to initiate outbound connections to the internet (e.g. for os security patches or third-party apis) while preventing external inbound traffic from initiating connections to private instances. managed by aws, scales automatically up to 100 gbps, deployed per-az for high availability. in contrast to legacy self-hosted nat instances, requires zero maintenance. cloud - aws and azure aws interview q&a (250 questions) networking & load balancing q&a 10.3.3"
     },
     {
       "id": "cloud:10.3.4",
@@ -53874,7 +53874,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "q: vpc default aws resources? — a: route table, network acl, security group (automatically created).",
-      "description": "VPC, ELB, Route 53.",
+      "description": "When you create a default VPC, AWS automatically provisions: 1. Default Route Table (with local route). 2. Default Network ACL (allowing all inbound and outbound traffic). 3. Default Security Group (allowing all inbound from itself and all outbound). 4. Internet Gateway (attached to default VPC). 5. Public subnets in each Availability Zone with public IPv4 auto-assign enabled.",
       "section": "AWS Interview Q&A (250 Questions)",
       "subsection": "Networking & Load Balancing Q&A",
       "url": "",
@@ -53889,7 +53889,7 @@
           "url": "https://www.google.com/search?q=vpc+default+aws+resources+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "q: vpc default aws resources? — a: route table, network acl, security group (automatically created). vpc, elb, route 53. cloud - aws and azure aws interview q&a (250 questions) networking & load balancing q&a 10.3.4"
+      "search": "q: vpc default aws resources? — a: route table, network acl, security group (automatically created). when you create a default vpc, aws automatically provisions: 1. default route table (with local route). 2. default network acl (allowing all inbound and outbound traffic). 3. default security group (allowing all inbound from itself and all outbound). 4. internet gateway (attached to default vpc). 5. public subnets in each availability zone with public ipv4 auto-assign enabled. cloud - aws and azure aws interview q&a (250 questions) networking & load balancing q&a 10.3.4"
     },
     {
       "id": "cloud:10.3.5",
@@ -53898,7 +53898,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "q: route 53 routing policies? — a: simple, weighted, latency, failover, geolocation, multi-value.",
-      "description": "VPC, ELB, Route 53.",
+      "description": "Amazon Route 53 DNS routing policies: 1. Simple (single resource, no health checks). 2. Weighted (percentage distribution for canary rollouts). 3. Latency (routes to the AWS region with lowest latency for the client). 4. Failover (active-passive disaster recovery via health checks). 5. Geolocation (routes by client country/state). 6. Geoproximity (routes based on geographic distance with bias values). 7. Multi-value Answer (DNS load balancing with up to 8 healthy records).",
       "section": "AWS Interview Q&A (250 Questions)",
       "subsection": "Networking & Load Balancing Q&A",
       "url": "",
@@ -53913,7 +53913,7 @@
           "url": "https://www.google.com/search?q=route+53+routing+policies+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "q: route 53 routing policies? — a: simple, weighted, latency, failover, geolocation, multi-value. vpc, elb, route 53. cloud - aws and azure aws interview q&a (250 questions) networking & load balancing q&a 10.3.5"
+      "search": "q: route 53 routing policies? — a: simple, weighted, latency, failover, geolocation, multi-value. amazon route 53 dns routing policies: 1. simple (single resource, no health checks). 2. weighted (percentage distribution for canary rollouts). 3. latency (routes to the aws region with lowest latency for the client). 4. failover (active-passive disaster recovery via health checks). 5. geolocation (routes by client country/state). 6. geoproximity (routes based on geographic distance with bias values). 7. multi-value answer (dns load balancing with up to 8 healthy records). cloud - aws and azure aws interview q&a (250 questions) networking & load balancing q&a 10.3.5"
     },
     {
       "id": "cloud:10.3.6",
@@ -53922,7 +53922,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "q: 5 reserved ips per subnet? — a: .0 network, .1 vpc router, .2 dns, .3 future, .255 broadcast.",
-      "description": "VPC, ELB, Route 53.",
+      "description": "AWS reserves 5 IP addresses in every subnet CIDR block (e.g. in a 10.0.0.0/24 subnet with 256 addresses, only 251 are usable):.0 (Network address)..1 (Reserved by AWS for VPC router)..2 (Reserved by AWS for DNS server)..3 (Reserved by AWS for future use)..255 (Network broadcast address; AWS does not support broadcast, but address is reserved).",
       "section": "AWS Interview Q&A (250 Questions)",
       "subsection": "Networking & Load Balancing Q&A",
       "url": "",
@@ -53937,7 +53937,7 @@
           "url": "https://www.google.com/search?q=5+reserved+ips+per+subnet+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "q: 5 reserved ips per subnet? — a: .0 network, .1 vpc router, .2 dns, .3 future, .255 broadcast. vpc, elb, route 53. cloud - aws and azure aws interview q&a (250 questions) networking & load balancing q&a 10.3.6"
+      "search": "q: 5 reserved ips per subnet? — a: .0 network, .1 vpc router, .2 dns, .3 future, .255 broadcast. aws reserves 5 ip addresses in every subnet cidr block (e.g. in a 10.0.0.0/24 subnet with 256 addresses, only 251 are usable):.0 (network address)..1 (reserved by aws for vpc router)..2 (reserved by aws for dns server)..3 (reserved by aws for future use)..255 (network broadcast address; aws does not support broadcast, but address is reserved). cloud - aws and azure aws interview q&a (250 questions) networking & load balancing q&a 10.3.6"
     },
     {
       "id": "cloud:10.4.1",
@@ -53946,7 +53946,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "q: rds db engines? — a: mysql, postgres, mariadb, oracle, sql server, aurora (mysql/postgres compatible).",
-      "description": "Database services.",
+      "description": "Amazon RDS supports six relational database engines: PostgreSQL, MySQL, MariaDB, Oracle Database, Microsoft SQL Server, and Amazon Aurora (custom cloud-optimized MySQL and PostgreSQL compatible engine). RDS handles OS patching, automated point-in-time recovery, automated backups, and storage autoscaling.",
       "section": "AWS Interview Q&A (250 Questions)",
       "subsection": "RDS & DynamoDB Q&A",
       "url": "",
@@ -53961,7 +53961,7 @@
           "url": "https://www.google.com/search?q=rds+db+engines+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "q: rds db engines? — a: mysql, postgres, mariadb, oracle, sql server, aurora (mysql/postgres compatible). database services. cloud - aws and azure aws interview q&a (250 questions) rds & dynamodb q&a 10.4.1"
+      "search": "q: rds db engines? — a: mysql, postgres, mariadb, oracle, sql server, aurora (mysql/postgres compatible). amazon rds supports six relational database engines: postgresql, mysql, mariadb, oracle database, microsoft sql server, and amazon aurora (custom cloud-optimized mysql and postgresql compatible engine). rds handles os patching, automated point-in-time recovery, automated backups, and storage autoscaling. cloud - aws and azure aws interview q&a (250 questions) rds & dynamodb q&a 10.4.1"
     },
     {
       "id": "cloud:10.4.2",
@@ -53970,7 +53970,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "q: multi-az rds? — a: sync standby in another az, automatic failover ~60s. for dr — not for read scaling.",
-      "description": "Database services.",
+      "description": "RDS Multi-AZ creates a synchronous physical standby replica in a different Availability Zone within the same region. In the event of primary instance failure, host degradation, or AZ outage, RDS automatically triggers a DNS failover to the standby in ~60-120 seconds with ZERO data loss. Crucial distinction: Multi-AZ is strictly for **High Availability & Disaster Recovery**, NOT for read scaling (the standby cannot accept read traffic).",
       "section": "AWS Interview Q&A (250 Questions)",
       "subsection": "RDS & DynamoDB Q&A",
       "url": "",
@@ -53985,7 +53985,7 @@
           "url": "https://www.google.com/search?q=multi-az+rds+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "q: multi-az rds? — a: sync standby in another az, automatic failover ~60s. for dr — not for read scaling. database services. cloud - aws and azure aws interview q&a (250 questions) rds & dynamodb q&a 10.4.2"
+      "search": "q: multi-az rds? — a: sync standby in another az, automatic failover ~60s. for dr — not for read scaling. rds multi-az creates a synchronous physical standby replica in a different availability zone within the same region. in the event of primary instance failure, host degradation, or az outage, rds automatically triggers a dns failover to the standby in ~60-120 seconds with zero data loss. crucial distinction: multi-az is strictly for **high availability & disaster recovery**, not for read scaling (the standby cannot accept read traffic). cloud - aws and azure aws interview q&a (250 questions) rds & dynamodb q&a 10.4.2"
     },
     {
       "id": "cloud:10.4.3",
@@ -53994,7 +53994,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "q: rds read replica vs multi-az? — a: rr = async, read scale, possible lag. maz = sync, ha/failover.",
-      "description": "Database services.",
+      "description": "Multi-AZ vs Read Replicas: Multi-AZ is **synchronous replication**, strictly within the same region (or multi-region Aurora), automated failover, handles write/read DR, standby is non-queryable. Read Replicas use **asynchronous replication**, can be placed in same AZ, cross-AZ, or cross-region, accept read-only queries to scale read-heavy workloads, and do NOT have automatic failover without manual promotion.",
       "section": "AWS Interview Q&A (250 Questions)",
       "subsection": "RDS & DynamoDB Q&A",
       "url": "",
@@ -54009,7 +54009,7 @@
           "url": "https://www.google.com/search?q=rds+read+replica+vs+multi-az+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "q: rds read replica vs multi-az? — a: rr = async, read scale, possible lag. maz = sync, ha/failover. database services. cloud - aws and azure aws interview q&a (250 questions) rds & dynamodb q&a 10.4.3"
+      "search": "q: rds read replica vs multi-az? — a: rr = async, read scale, possible lag. maz = sync, ha/failover. multi-az vs read replicas: multi-az is **synchronous replication**, strictly within the same region (or multi-region aurora), automated failover, handles write/read dr, standby is non-queryable. read replicas use **asynchronous replication**, can be placed in same az, cross-az, or cross-region, accept read-only queries to scale read-heavy workloads, and do not have automatic failover without manual promotion. cloud - aws and azure aws interview q&a (250 questions) rds & dynamodb q&a 10.4.3"
     },
     {
       "id": "cloud:10.4.4",
@@ -54018,7 +54018,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "q: rds backup types? — a: automated backups (retention 0-35d) and manual snapshots (kept until deleted).",
-      "description": "Database services.",
+      "description": "RDS Backup mechanisms: 1. Automated Backups: daily full snapshot paired with transaction logs saved every 5 minutes to S3; allows Point-in-Time Recovery (PITR) to any second within retention window (1 to 35 days); deleted automatically when DB is deleted unless retained. 2. Manual Snapshots: user-initiated full snapshots stored in S3 that persist indefinitely until explicitly deleted by the user.",
       "section": "AWS Interview Q&A (250 Questions)",
       "subsection": "RDS & DynamoDB Q&A",
       "url": "",
@@ -54033,7 +54033,7 @@
           "url": "https://www.google.com/search?q=rds+backup+types+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "q: rds backup types? — a: automated backups (retention 0-35d) and manual snapshots (kept until deleted). database services. cloud - aws and azure aws interview q&a (250 questions) rds & dynamodb q&a 10.4.4"
+      "search": "q: rds backup types? — a: automated backups (retention 0-35d) and manual snapshots (kept until deleted). rds backup mechanisms: 1. automated backups: daily full snapshot paired with transaction logs saved every 5 minutes to s3; allows point-in-time recovery (pitr) to any second within retention window (1 to 35 days); deleted automatically when db is deleted unless retained. 2. manual snapshots: user-initiated full snapshots stored in s3 that persist indefinitely until explicitly deleted by the user. cloud - aws and azure aws interview q&a (250 questions) rds & dynamodb q&a 10.4.4"
     },
     {
       "id": "cloud:10.4.5",
@@ -54042,7 +54042,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "q: what is dynamodb? — a: fully managed nosql key-value and document db. single-digit ms at any scale.",
-      "description": "Database services.",
+      "description": "Amazon DynamoDB is a fully managed, serverless, multi-region NoSQL key-value and document database delivering single-digit millisecond response times at any scale. Partitioning is determined by Partition Key (HASH), with optional Sort Key (RANGE). Features: DynamoDB Streams (CDC log of mutations), Global Tables (active-active multi-region replication in under 1 second), and DynamoDB Accelerator (DAX) in-memory microsecond cache.",
       "section": "AWS Interview Q&A (250 Questions)",
       "subsection": "RDS & DynamoDB Q&A",
       "url": "",
@@ -54057,7 +54057,7 @@
           "url": "https://www.google.com/search?q=what+is+dynamodb+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "q: what is dynamodb? — a: fully managed nosql key-value and document db. single-digit ms at any scale. database services. cloud - aws and azure aws interview q&a (250 questions) rds & dynamodb q&a 10.4.5"
+      "search": "q: what is dynamodb? — a: fully managed nosql key-value and document db. single-digit ms at any scale. amazon dynamodb is a fully managed, serverless, multi-region nosql key-value and document database delivering single-digit millisecond response times at any scale. partitioning is determined by partition key (hash), with optional sort key (range). features: dynamodb streams (cdc log of mutations), global tables (active-active multi-region replication in under 1 second), and dynamodb accelerator (dax) in-memory microsecond cache. cloud - aws and azure aws interview q&a (250 questions) rds & dynamodb q&a 10.4.5"
     },
     {
       "id": "cloud:10.4.6",
@@ -54066,7 +54066,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "q: what is elasticache? — a: managed redis or memcached. in-memory cache. reduces db load.",
-      "description": "Database services.",
+      "description": "Amazon ElastiCache provides managed in-memory caching to eliminate relational database bottlenecks and achieve sub-millisecond read latency. Supports Redis (data structures, Pub/Sub, persistence, clustering, multi-AZ failover) and Memcached (simple multi-threaded key-value store, no persistence). Best practices: implement Cache-Aside with TTLs to prevent stale data.",
       "section": "AWS Interview Q&A (250 Questions)",
       "subsection": "RDS & DynamoDB Q&A",
       "url": "",
@@ -54081,7 +54081,7 @@
           "url": "https://www.google.com/search?q=what+is+elasticache+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "q: what is elasticache? — a: managed redis or memcached. in-memory cache. reduces db load. database services. cloud - aws and azure aws interview q&a (250 questions) rds & dynamodb q&a 10.4.6"
+      "search": "q: what is elasticache? — a: managed redis or memcached. in-memory cache. reduces db load. amazon elasticache provides managed in-memory caching to eliminate relational database bottlenecks and achieve sub-millisecond read latency. supports redis (data structures, pub/sub, persistence, clustering, multi-az failover) and memcached (simple multi-threaded key-value store, no persistence). best practices: implement cache-aside with ttls to prevent stale data. cloud - aws and azure aws interview q&a (250 questions) rds & dynamodb q&a 10.4.6"
     },
     {
       "id": "cloud:10.4.7",
@@ -54090,7 +54090,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "q: what is redshift? — a: managed data warehouse. columnar, mpp, petabyte-scale. olap not oltp.",
-      "description": "Database services.",
+      "description": "Amazon Redshift is a fully managed petabyte-scale cloud data warehouse designed for OLAP (Online Analytical Processing) business intelligence. Utilizes columnar storage (compresses identical column data by up to 70%), Massive Parallel Processing (MPP) across leader and compute nodes, and Redshift Spectrum / Concurrency Scaling to query exabytes of unstructured data directly in S3 without loading.",
       "section": "AWS Interview Q&A (250 Questions)",
       "subsection": "RDS & DynamoDB Q&A",
       "url": "",
@@ -54105,7 +54105,7 @@
           "url": "https://www.google.com/search?q=what+is+redshift+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "q: what is redshift? — a: managed data warehouse. columnar, mpp, petabyte-scale. olap not oltp. database services. cloud - aws and azure aws interview q&a (250 questions) rds & dynamodb q&a 10.4.7"
+      "search": "q: what is redshift? — a: managed data warehouse. columnar, mpp, petabyte-scale. olap not oltp. amazon redshift is a fully managed petabyte-scale cloud data warehouse designed for olap (online analytical processing) business intelligence. utilizes columnar storage (compresses identical column data by up to 70%), massive parallel processing (mpp) across leader and compute nodes, and redshift spectrum / concurrency scaling to query exabytes of unstructured data directly in s3 without loading. cloud - aws and azure aws interview q&a (250 questions) rds & dynamodb q&a 10.4.7"
     },
     {
       "id": "cloud:10.5.1",
@@ -54114,7 +54114,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "q: sqs queue types? — a: standard (at-least-once, near-unlimited tps) and fifo (exactly-once, 3k tps).",
-      "description": "Messaging, serverless, more.",
+      "description": "Amazon SQS queue types: 1. Standard Queues: near-unlimited throughput, at-least-once delivery (duplicates can occur), best-effort ordering (messages can arrive out of sequence). 2. FIFO Queues: strictly preserved First-In-First-Out ordering, exactly-once processing (message deduplication ID), throughput limited to 300 msg/sec (or 3,000 msg/sec with batching / high-throughput mode).",
       "section": "AWS Interview Q&A (250 Questions)",
       "subsection": "SQS / SNS / Lambda / Misc Q&A",
       "url": "",
@@ -54129,7 +54129,7 @@
           "url": "https://www.google.com/search?q=sqs+queue+types+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "q: sqs queue types? — a: standard (at-least-once, near-unlimited tps) and fifo (exactly-once, 3k tps). messaging, serverless, more. cloud - aws and azure aws interview q&a (250 questions) sqs / sns / lambda / misc q&a 10.5.1"
+      "search": "q: sqs queue types? — a: standard (at-least-once, near-unlimited tps) and fifo (exactly-once, 3k tps). amazon sqs queue types: 1. standard queues: near-unlimited throughput, at-least-once delivery (duplicates can occur), best-effort ordering (messages can arrive out of sequence). 2. fifo queues: strictly preserved first-in-first-out ordering, exactly-once processing (message deduplication id), throughput limited to 300 msg/sec (or 3,000 msg/sec with batching / high-throughput mode). cloud - aws and azure aws interview q&a (250 questions) sqs / sns / lambda / misc q&a 10.5.1"
     },
     {
       "id": "cloud:10.5.2",
@@ -54138,7 +54138,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "q: sqs max message size? — a: 256 kb.",
-      "description": "Messaging, serverless, more.",
+      "description": "Amazon SQS has a maximum native payload size of **256 KB** per message (text or JSON). To transmit messages larger than 256 KB (up to 2 GB), use the open-source **Amazon SQS Extended Client Library for Java/Python**: the client uploads the large payload to an S3 bucket and sends a pointer reference containing the S3 bucket and object key through the SQS message.",
       "section": "AWS Interview Q&A (250 Questions)",
       "subsection": "SQS / SNS / Lambda / Misc Q&A",
       "url": "",
@@ -54153,7 +54153,7 @@
           "url": "https://www.google.com/search?q=sqs+max+message+size+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "q: sqs max message size? — a: 256 kb. messaging, serverless, more. cloud - aws and azure aws interview q&a (250 questions) sqs / sns / lambda / misc q&a 10.5.2"
+      "search": "q: sqs max message size? — a: 256 kb. amazon sqs has a maximum native payload size of **256 kb** per message (text or json). to transmit messages larger than 256 kb (up to 2 gb), use the open-source **amazon sqs extended client library for java/python**: the client uploads the large payload to an s3 bucket and sends a pointer reference containing the s3 bucket and object key through the sqs message. cloud - aws and azure aws interview q&a (250 questions) sqs / sns / lambda / misc q&a 10.5.2"
     },
     {
       "id": "cloud:10.5.3",
@@ -54162,7 +54162,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "q: sns vs sqs? — a: sns = pub-sub fan-out. sqs = point-to-point queue. often combined (sns → sqs).",
-      "description": "Messaging, serverless, more.",
+      "description": "SNS vs SQS architectural distinction: Amazon SNS is a **push-based pub-sub messaging service** (publisher sends one message to a topic; SNS immediately fans out and pushes to thousands of subscribers simultaneously). Amazon SQS is a **pull-based message queue** (workers poll the queue, process messages, and delete them). Production pattern: SNS + SQS Fan-Out (publish to 1 SNS topic; fan out to 5 dedicated SQS queues for parallel microservice ingestion).",
       "section": "AWS Interview Q&A (250 Questions)",
       "subsection": "SQS / SNS / Lambda / Misc Q&A",
       "url": "",
@@ -54177,7 +54177,7 @@
           "url": "https://www.google.com/search?q=sns+vs+sqs+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "q: sns vs sqs? — a: sns = pub-sub fan-out. sqs = point-to-point queue. often combined (sns → sqs). messaging, serverless, more. cloud - aws and azure aws interview q&a (250 questions) sqs / sns / lambda / misc q&a 10.5.3"
+      "search": "q: sns vs sqs? — a: sns = pub-sub fan-out. sqs = point-to-point queue. often combined (sns → sqs). sns vs sqs architectural distinction: amazon sns is a **push-based pub-sub messaging service** (publisher sends one message to a topic; sns immediately fans out and pushes to thousands of subscribers simultaneously). amazon sqs is a **pull-based message queue** (workers poll the queue, process messages, and delete them). production pattern: sns + sqs fan-out (publish to 1 sns topic; fan out to 5 dedicated sqs queues for parallel microservice ingestion). cloud - aws and azure aws interview q&a (250 questions) sqs / sns / lambda / misc q&a 10.5.3"
     },
     {
       "id": "cloud:10.5.4",
@@ -54186,7 +54186,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "q: what is cloudformation? — a: infrastructure as code. json/yaml templates → aws resources. free service.",
-      "description": "Messaging, serverless, more.",
+      "description": "AWS CloudFormation is Amazon's native Infrastructure as Code (IaC) service. You author declarative JSON or YAML templates describing your desired AWS resources; CloudFormation provisions and configures them as an atomic stack. Features include Change Sets (preview modifications before applying), Rollback Triggers (auto-rollback on CloudWatch alarms), and Drift Detection (identifies unmanaged manual console changes).",
       "section": "AWS Interview Q&A (250 Questions)",
       "subsection": "SQS / SNS / Lambda / Misc Q&A",
       "url": "",
@@ -54201,7 +54201,7 @@
           "url": "https://www.google.com/search?q=what+is+cloudformation+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "q: what is cloudformation? — a: infrastructure as code. json/yaml templates → aws resources. free service. messaging, serverless, more. cloud - aws and azure aws interview q&a (250 questions) sqs / sns / lambda / misc q&a 10.5.4"
+      "search": "q: what is cloudformation? — a: infrastructure as code. json/yaml templates → aws resources. free service. aws cloudformation is amazon's native infrastructure as code (iac) service. you author declarative json or yaml templates describing your desired aws resources; cloudformation provisions and configures them as an atomic stack. features include change sets (preview modifications before applying), rollback triggers (auto-rollback on cloudwatch alarms), and drift detection (identifies unmanaged manual console changes). cloud - aws and azure aws interview q&a (250 questions) sqs / sns / lambda / misc q&a 10.5.4"
     },
     {
       "id": "cloud:10.5.5",
@@ -54210,7 +54210,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "q: what is lambda? — a: serverless compute. event-triggered. pay per 100ms. max 15-min timeout.",
-      "description": "Messaging, serverless, more.",
+      "description": "AWS Lambda is an event-driven serverless compute service. You upload code, and Lambda executes it on lightweight Firecracker microVMs in response to events (S3 uploads, DynamoDB streams, API Gateway calls). Key constraints: maximum execution timeout of 15 minutes, ephemeral `/tmp` storage up to 10 GB, execution memory from 128 MB to 10,240 MB (CPU scales proportionally with allocated memory).",
       "section": "AWS Interview Q&A (250 Questions)",
       "subsection": "SQS / SNS / Lambda / Misc Q&A",
       "url": "",
@@ -54225,7 +54225,7 @@
           "url": "https://www.google.com/search?q=what+is+lambda+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "q: what is lambda? — a: serverless compute. event-triggered. pay per 100ms. max 15-min timeout. messaging, serverless, more. cloud - aws and azure aws interview q&a (250 questions) sqs / sns / lambda / misc q&a 10.5.5"
+      "search": "q: what is lambda? — a: serverless compute. event-triggered. pay per 100ms. max 15-min timeout. aws lambda is an event-driven serverless compute service. you upload code, and lambda executes it on lightweight firecracker microvms in response to events (s3 uploads, dynamodb streams, api gateway calls). key constraints: maximum execution timeout of 15 minutes, ephemeral `/tmp` storage up to 10 gb, execution memory from 128 mb to 10,240 mb (cpu scales proportionally with allocated memory). cloud - aws and azure aws interview q&a (250 questions) sqs / sns / lambda / misc q&a 10.5.5"
     },
     {
       "id": "cloud:10.5.6",
@@ -54234,7 +54234,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "q: what is elastic beanstalk? — a: paas for web apps. upload code → eb handles provisioning, lb, scaling, health.",
-      "description": "Messaging, serverless, more.",
+      "description": "AWS Elastic Beanstalk is an easy-to-use Platform as a Service (PaaS) for deploying web applications and services. Developers upload their application code (Node.js, Python, Java, Docker), and Elastic Beanstalk handles provisioning, load balancing, auto-scaling, and health monitoring automatically, while retaining full customer control over underlying EC2 and VPC resources.",
       "section": "AWS Interview Q&A (250 Questions)",
       "subsection": "SQS / SNS / Lambda / Misc Q&A",
       "url": "",
@@ -54249,7 +54249,7 @@
           "url": "https://www.google.com/search?q=what+is+elastic+beanstalk+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "q: what is elastic beanstalk? — a: paas for web apps. upload code → eb handles provisioning, lb, scaling, health. messaging, serverless, more. cloud - aws and azure aws interview q&a (250 questions) sqs / sns / lambda / misc q&a 10.5.6"
+      "search": "q: what is elastic beanstalk? — a: paas for web apps. upload code → eb handles provisioning, lb, scaling, health. aws elastic beanstalk is an easy-to-use platform as a service (paas) for deploying web applications and services. developers upload their application code (node.js, python, java, docker), and elastic beanstalk handles provisioning, load balancing, auto-scaling, and health monitoring automatically, while retaining full customer control over underlying ec2 and vpc resources. cloud - aws and azure aws interview q&a (250 questions) sqs / sns / lambda / misc q&a 10.5.6"
     },
     {
       "id": "cloud:10.5.7",
@@ -54258,7 +54258,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "q: what is cloudfront? — a: cdn. edge caches content globally. integrates with s3, alb, custom origins.",
-      "description": "Messaging, serverless, more.",
+      "description": "Amazon CloudFront is a global Content Delivery Network (CDN) service that accelerates delivery of static and dynamic web content across 600+ Points of Presence (PoPs). It terminates TLS connections close to the end user, caches assets at edge locations with Origin Shield, and integrates with AWS WAF for DDoS mitigation and Lambda@Edge / CloudFront Functions for low-latency header transformations.",
       "section": "AWS Interview Q&A (250 Questions)",
       "subsection": "SQS / SNS / Lambda / Misc Q&A",
       "url": "",
@@ -54273,7 +54273,7 @@
           "url": "https://www.google.com/search?q=what+is+cloudfront+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "q: what is cloudfront? — a: cdn. edge caches content globally. integrates with s3, alb, custom origins. messaging, serverless, more. cloud - aws and azure aws interview q&a (250 questions) sqs / sns / lambda / misc q&a 10.5.7"
+      "search": "q: what is cloudfront? — a: cdn. edge caches content globally. integrates with s3, alb, custom origins. amazon cloudfront is a global content delivery network (cdn) service that accelerates delivery of static and dynamic web content across 600+ points of presence (pops). it terminates tls connections close to the end user, caches assets at edge locations with origin shield, and integrates with aws waf for ddos mitigation and lambda@edge / cloudfront functions for low-latency header transformations. cloud - aws and azure aws interview q&a (250 questions) sqs / sns / lambda / misc q&a 10.5.7"
     },
     {
       "id": "cloud:10.5.8",
@@ -54282,7 +54282,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "q: how many s3 buckets per account? — a: 100 by default. increase via support request.",
-      "description": "Messaging, serverless, more.",
+      "description": "By default, AWS accounts have a soft limit of **100 S3 buckets per account** (can be increased up to 1,000 buckets via a Service Quotas increase request). There is NO limit on the number of objects you can store in an individual S3 bucket, and individual objects can range from 0 bytes up to **5 Terabytes**.",
       "section": "AWS Interview Q&A (250 Questions)",
       "subsection": "SQS / SNS / Lambda / Misc Q&A",
       "url": "",
@@ -54297,7 +54297,7 @@
           "url": "https://www.google.com/search?q=how+many+s3+buckets+per+account+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "q: how many s3 buckets per account? — a: 100 by default. increase via support request. messaging, serverless, more. cloud - aws and azure aws interview q&a (250 questions) sqs / sns / lambda / misc q&a 10.5.8"
+      "search": "q: how many s3 buckets per account? — a: 100 by default. increase via support request. by default, aws accounts have a soft limit of **100 s3 buckets per account** (can be increased up to 1,000 buckets via a service quotas increase request). there is no limit on the number of objects you can store in an individual s3 bucket, and individual objects can range from 0 bytes up to **5 terabytes**. cloud - aws and azure aws interview q&a (250 questions) sqs / sns / lambda / misc q&a 10.5.8"
     },
     {
       "id": "cloud:10.5.9",
@@ -54306,7 +54306,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "q: can you reduce ebs volume size? — a: no — only increase. to shrink: snapshot → new smaller volume → copy data.",
-      "description": "Messaging, serverless, more.",
+      "description": "Can you reduce the size of an EBS volume? **No.** EBS Elastic Volumes allow dynamically increasing volume size, changing volume type (e.g. gp2 to gp3), or increasing IOPS without downtime, but reducing volume size is physically unsupported by the file system. To shrink: provision a new smaller EBS volume, attach both to an EC2 instance, format the new volume, copy the file data, and detach the old volume.",
       "section": "AWS Interview Q&A (250 Questions)",
       "subsection": "SQS / SNS / Lambda / Misc Q&A",
       "url": "",
@@ -54321,7 +54321,7 @@
           "url": "https://www.google.com/search?q=can+you+reduce+ebs+volume+size+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "q: can you reduce ebs volume size? — a: no — only increase. to shrink: snapshot → new smaller volume → copy data. messaging, serverless, more. cloud - aws and azure aws interview q&a (250 questions) sqs / sns / lambda / misc q&a 10.5.9"
+      "search": "q: can you reduce ebs volume size? — a: no — only increase. to shrink: snapshot → new smaller volume → copy data. can you reduce the size of an ebs volume? **no.** ebs elastic volumes allow dynamically increasing volume size, changing volume type (e.g. gp2 to gp3), or increasing iops without downtime, but reducing volume size is physically unsupported by the file system. to shrink: provision a new smaller ebs volume, attach both to an ec2 instance, format the new volume, copy the file data, and detach the old volume. cloud - aws and azure aws interview q&a (250 questions) sqs / sns / lambda / misc q&a 10.5.9"
     },
     {
       "id": "cloud:10.5.10",
@@ -54330,7 +54330,7 @@
       "domain": "cloud",
       "domainTitle": "Cloud - AWS and Azure",
       "title": "q: what is snowball? — a: physical data transfer appliance. petabytes in/out of aws when network is impractical.",
-      "description": "Messaging, serverless, more.",
+      "description": "AWS Snow Family (Snowcone, Snowball Edge, Snowmobile) provides physical, ruggedized hardware appliances for petabyte-to-exabyte scale offline data migration into and out of AWS when transferring data over public internet networks is physically cost-prohibitive or would take months. Snowball Edge Storage Optimized provides up to 80 TB of usable storage with 40GbE network interfaces.",
       "section": "AWS Interview Q&A (250 Questions)",
       "subsection": "SQS / SNS / Lambda / Misc Q&A",
       "url": "",
@@ -54345,7 +54345,7 @@
           "url": "https://www.google.com/search?q=what+is+snowball+AWS+Azure+cloud+tutorial"
         }
       ],
-      "search": "q: what is snowball? — a: physical data transfer appliance. petabytes in/out of aws when network is impractical. messaging, serverless, more. cloud - aws and azure aws interview q&a (250 questions) sqs / sns / lambda / misc q&a 10.5.10"
+      "search": "q: what is snowball? — a: physical data transfer appliance. petabytes in/out of aws when network is impractical. aws snow family (snowcone, snowball edge, snowmobile) provides physical, ruggedized hardware appliances for petabyte-to-exabyte scale offline data migration into and out of aws when transferring data over public internet networks is physically cost-prohibitive or would take months. snowball edge storage optimized provides up to 80 tb of usable storage with 40gbe network interfaces. cloud - aws and azure aws interview q&a (250 questions) sqs / sns / lambda / misc q&a 10.5.10"
     },
     {
       "id": "cloud:11.1.1",
