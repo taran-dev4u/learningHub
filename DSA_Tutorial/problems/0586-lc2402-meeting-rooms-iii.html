@@ -23,40 +23,66 @@
  › Subpattern 21.2: Meeting Rooms &amp; Scheduling · Problem 586 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0232-lc2402-meeting-rooms-iii.html">Heap (Priority Queue)</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Meetings queue for n rooms, taking the lowest free room (or waiting for the earliest); return the room that hosts the most meetings (two heaps).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h3>Problem Overview</h3>
+<p>You are given an integer $n$ (rooms numbered $0$ to $n - 1$) and a 2D integer array <code>meetings</code>. Meetings are allocated to the lowest numbered unused room. If all rooms are busy, the meeting is delayed until a room becomes free. Return the number of the room that held the most meetings.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Meeting Rooms &amp; Scheduling</strong> — Sort and compare current's end with the previous — counts overlaps or schedules.</p>
-
-<h2>Why this pattern?</h2><ul><li>"merge overlapping intervals" / "insert interval"</li><li>"minimum meeting rooms / platforms / arrows"</li><li>"remove fewest to make non-overlapping" (greedy by end)</li><li>bookings, calendars, seat/resource occupancy over time</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Intervals &amp; Line Sweep master template and adapt the marked parts to this problem:</p><pre><code># Merge intervals
-intervals.sort(key=lambda iv: iv[0])
-merged = []
-for s, e in intervals:
-    if merged and s &lt;= merged[-1][1]:            # overlaps the last block
-        merged[-1][1] = max(merged[-1][1], e)    # extend it
-    else:
-        merged.append([s, e])
-
-# Sweep line: max concurrent intervals
-events = []
-for s, e in intervals:
-    events.append((s, 1))          # interval opens
-    events.append((e, -1))         # interval closes
-events.sort()                      # ties: -1 before +1 ⇒ [1,2],[2,3] don't stack
-cur = peak = 0
-for _, delta in events:
-    cur += delta
-    peak = max(peak, cur)</code></pre>
-<h2>How to work on it now</h2>
+<h3>Key Insights</h3>
+<p>Two Priority Queues:
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+  <li><code>available_rooms</code>: Min-heap storing available room IDs (lowest ID on top). Initially contains $0, 1, \dots, n - 1$.</li>
+  <li><code>busy_rooms</code>: Min-heap storing tuples <code>(end_time, room_id)</code>.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+Sort <code>meetings</code> by start time. For each meeting $(start, end)$:
+<ol>
+  <li>Free any rooms whose <code>end_time <= start</code>, returning them to <code>available_rooms</code>.</li>
+  <li>If an available room exists, pop lowest room ID, assign meeting until $end$.</li>
+  <li>If all rooms are busy, pop room with earliest <code>end_time</code>:
+      The meeting starts at that room's <code>free_time</code> and runs for $duration = end - start$. Push back to <code>busy_rooms</code> with new end time <code>free_time + duration</code>.</li>
+</ol></p>
+
+<details>
+<summary><strong>Python 3 Solution (Double Min-Heap Simulation)</strong></summary>
+<div class="code-block">
+<pre><code class="language-python">from typing import List
+import heapq
+
+class Solution:
+    def mostBooked(self, n: int, meetings: List[List[int]]) -> int:
+        meetings.sort(key=lambda x: x[0])
+        
+        available = list(range(n))
+        heapq.heapify(available)
+        busy = []  # (end_time, room_id)
+        
+        room_counts = [0] * n
+        
+        for start, end in meetings:
+            duration = end - start
+            # Free rooms
+            while busy and busy[0][0] <= start:
+                _, room = heapq.heappop(busy)
+                heapq.heappush(available, room)
+                
+            if available:
+                room = heapq.heappop(available)
+                heapq.heappush(busy, (end, room))
+            else:
+                earliest_end, room = heapq.heappop(busy)
+                heapq.heappush(busy, (earliest_end + duration, room))
+                
+            room_counts[room] += 1
+            
+        max_meetings = max(room_counts)
+        return room_counts.index(max_meetings)
+</code></pre>
+</div>
+</details>
+
+<h3>Complexity & Edge Cases</h3>
+<ul>
+  <li><strong>Time Complexity:</strong> $O(M \log M + M \log n)$ where $M$ is number of meetings.</li>
+  <li><strong>Space Complexity:</strong> $O(n)$ for room heaps.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0585-lc759-employee-free-time.html"><span class="lbl">← Previous</span>#759 Employee Free Time</a><a href="../problems/0587-lc2406-divide-intervals-into-minimum-number-of-groups.html" style="text-align:right"><span class="lbl">Next →</span>#2406 Divide Intervals Into Minimum Number of Groups</a></div>
 </div>

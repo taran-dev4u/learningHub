@@ -23,40 +23,48 @@
  › Subpattern 21.1: Interval Merging / Insertion · Problem 582 of 699</p>
 
 <h2>📋 The problem</h2><p>Remove intervals fully covered by another interval; return how many remain (sort by start asc, end desc).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h3>Problem Overview</h3>
+<p>Given an array <code>intervals</code> where <code>intervals[i] = [li, ri]</code>, remove all intervals that are covered by another interval in the list. An interval $[a, b)$ is covered by $[c, d)$ if and only if $c \le a$ and $b \le d$. Return the number of remaining intervals.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Interval Merging / Insertion</strong> — Sort by start; merge/insert into a result list when they overlap.</p>
+<h3>Key Insights</h3>
+<p>Sort intervals by <strong>start ascending</strong>, and on tie by <strong>end descending</strong>:
+<code>intervals.sort(key=lambda x: (x[0], -x[1]))</code>
+With this sorting order:
+Whenever an interval has $x[0] == prev[0]$, the wider one appears first!
+We maintain <code>max_end</code> seen so far. For each interval $[s, e]$:
+<ul>
+  <li>If $e \le max_end$: It is completely covered by an earlier interval with a smaller or equal start and larger end! We don't count it.</li>
+  <li>If $e > max_end$: It is uncovered! Increment count and update $max_end = e$.</li>
+</ul></p>
 
-<h2>Why this pattern?</h2><ul><li>"merge overlapping intervals" / "insert interval"</li><li>"minimum meeting rooms / platforms / arrows"</li><li>"remove fewest to make non-overlapping" (greedy by end)</li><li>bookings, calendars, seat/resource occupancy over time</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Intervals &amp; Line Sweep master template and adapt the marked parts to this problem:</p><pre><code># Merge intervals
-intervals.sort(key=lambda iv: iv[0])
-merged = []
-for s, e in intervals:
-    if merged and s &lt;= merged[-1][1]:            # overlaps the last block
-        merged[-1][1] = max(merged[-1][1], e)    # extend it
-    else:
-        merged.append([s, e])
+<details>
+<summary><strong>Python 3 Solution (Click to Expand)</strong></summary>
+<div class="code-block">
+<pre><code class="language-python">from typing import List
 
-# Sweep line: max concurrent intervals
-events = []
-for s, e in intervals:
-    events.append((s, 1))          # interval opens
-    events.append((e, -1))         # interval closes
-events.sort()                      # ties: -1 before +1 ⇒ [1,2],[2,3] don't stack
-cur = peak = 0
-for _, delta in events:
-    cur += delta
-    peak = max(peak, cur)</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+class Solution:
+    def removeCoveredIntervals(self, intervals: List[List[int]]) -> int:
+        # Start ascending, end descending
+        intervals.sort(key=lambda x: (x[0], -x[1]))
+        
+        count = 0
+        max_end = 0
+        
+        for start, end in intervals:
+            if end > max_end:
+                count += 1
+                max_end = end
+                
+        return count
+</code></pre>
+</div>
+</details>
+
+<h3>Complexity & Edge Cases</h3>
+<ul>
+  <li><strong>Time Complexity:</strong> $O(N \log N)$ sorting + $O(N)$ scan.</li>
+  <li><strong>Space Complexity:</strong> $O(1)$ extra space.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0581-lc986-interval-list-intersections.html"><span class="lbl">← Previous</span>#986 Interval List Intersections</a><a href="../problems/0583-lc252-meeting-rooms.html" style="text-align:right"><span class="lbl">Next →</span>#252 Meeting Rooms</a></div>
 </div>

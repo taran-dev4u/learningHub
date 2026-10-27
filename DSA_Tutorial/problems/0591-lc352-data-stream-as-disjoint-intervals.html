@@ -23,40 +23,57 @@
  › Subpattern 21.4: Calendar / Booking (TreeMap) · Problem 591 of 699</p>
 
 <h2>📋 The problem</h2><p>Numbers arrive one at a time; at any point report the stream summarized as a sorted list of disjoint intervals.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h3>Problem Overview</h3>
+<p>Given a data stream input of non-negative integers $a_1, a_2, \dots$, summarize the numbers seen so far as a list of disjoint intervals.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Calendar / Booking (TreeMap)</strong> — Use a TreeMap of bookings, or two-pass overlap counting, to handle dynamic add/query.</p>
+<h3>Key Insights</h3>
+<p>Store all unique numbers in a set or boolean array / sorted list.
+When returning intervals:
+Merge consecutive numbers $[start, end]$ where each adjacent pair differs by 1.
+Using a sorted structure or binary search tree (or maintaining a balanced set in Python with <code>bisect</code>), adjacent intervals can be merged dynamically upon insertion.</p>
 
-<h2>Why this pattern?</h2><ul><li>"merge overlapping intervals" / "insert interval"</li><li>"minimum meeting rooms / platforms / arrows"</li><li>"remove fewest to make non-overlapping" (greedy by end)</li><li>bookings, calendars, seat/resource occupancy over time</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Intervals &amp; Line Sweep master template and adapt the marked parts to this problem:</p><pre><code># Merge intervals
-intervals.sort(key=lambda iv: iv[0])
-merged = []
-for s, e in intervals:
-    if merged and s &lt;= merged[-1][1]:            # overlaps the last block
-        merged[-1][1] = max(merged[-1][1], e)    # extend it
-    else:
-        merged.append([s, e])
+<details>
+<summary><strong>Python 3 Solution (Click to Expand)</strong></summary>
+<div class="code-block">
+<pre><code class="language-python">from typing import List
+import bisect
 
-# Sweep line: max concurrent intervals
-events = []
-for s, e in intervals:
-    events.append((s, 1))          # interval opens
-    events.append((e, -1))         # interval closes
-events.sort()                      # ties: -1 before +1 ⇒ [1,2],[2,3] don't stack
-cur = peak = 0
-for _, delta in events:
-    cur += delta
-    peak = max(peak, cur)</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+class SummaryRanges:
+    def __init__(self):
+        self.intervals = []  # list of [start, end]
+
+    def addNum(self, value: int) -> None:
+        # Find insertion position
+        idx = bisect.bisect_right(self.intervals, [value, float('inf')])
+        
+        # Check if already covered by previous interval
+        if idx > 0 and self.intervals[idx - 1][1] >= value:
+            return
+            
+        left_merge = (idx > 0 and self.intervals[idx - 1][1] + 1 == value)
+        right_merge = (idx < len(self.intervals) and self.intervals[idx][0] == value + 1)
+        
+        if left_merge and right_merge:
+            self.intervals[idx - 1][1] = self.intervals[idx][1]
+            self.intervals.pop(idx)
+        elif left_merge:
+            self.intervals[idx - 1][1] = value
+        elif right_merge:
+            self.intervals[idx][0] = value
+        else:
+            self.intervals.insert(idx, [value, value])
+
+    def getIntervals(self) -> List[List[int]]:
+        return self.intervals
+</code></pre>
+</div>
+</details>
+
+<h3>Complexity & Edge Cases</h3>
+<ul>
+  <li><strong>Time Complexity:</strong> <code>addNum</code> is $O(N)$ insertion in array, $O(\log N)$ in balanced BST; <code>getIntervals</code> is $O(1)$.</li>
+  <li><strong>Space Complexity:</strong> $O(N)$.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0590-lc1854-maximum-population-year.html"><span class="lbl">← Previous</span>#1854 Maximum Population Year</a><a href="../problems/0592-lc729-my-calendar-i.html" style="text-align:right"><span class="lbl">Next →</span>#729 My Calendar I</a></div>
 </div>

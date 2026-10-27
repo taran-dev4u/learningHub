@@ -23,40 +23,65 @@
  › Subpattern 21.3: Line Sweep with Events · Problem 588 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0508-lc218-the-skyline-problem.html">Segment Tree &amp; Fenwick Tree</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Given building rectangles on a skyline, return the key points that outline their combined silhouette.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h3>Problem Overview</h3>
+<p>A city's skyline is the outer contour of the silhouette formed by all the buildings. Given the locations and heights of all buildings <code>[left, right, height]</code>, return the key points that outline the skyline.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Line Sweep with Events</strong> — Convert intervals to +1/−1 point events on a sorted timeline; sweep to compute peaks.</p>
-
-<h2>Why this pattern?</h2><ul><li>"merge overlapping intervals" / "insert interval"</li><li>"minimum meeting rooms / platforms / arrows"</li><li>"remove fewest to make non-overlapping" (greedy by end)</li><li>bookings, calendars, seat/resource occupancy over time</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Intervals &amp; Line Sweep master template and adapt the marked parts to this problem:</p><pre><code># Merge intervals
-intervals.sort(key=lambda iv: iv[0])
-merged = []
-for s, e in intervals:
-    if merged and s &lt;= merged[-1][1]:            # overlaps the last block
-        merged[-1][1] = max(merged[-1][1], e)    # extend it
-    else:
-        merged.append([s, e])
-
-# Sweep line: max concurrent intervals
-events = []
-for s, e in intervals:
-    events.append((s, 1))          # interval opens
-    events.append((e, -1))         # interval closes
-events.sort()                      # ties: -1 before +1 ⇒ [1,2],[2,3] don't stack
-cur = peak = 0
-for _, delta in events:
-    cur += delta
-    peak = max(peak, cur)</code></pre>
-<h2>How to work on it now</h2>
+<h3>Key Insights</h3>
+<p><strong>Line Sweep with Max-Heap:</strong>
+Convert each building into two events along the X-axis:
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+  <li>Start of building at $x = left$: adds height $h$ (represented as $-h$ for max-heap).</li>
+  <li>End of building at $x = right$: removes height $h$.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+Sort events by X coordinate.
+At each critical X position, maintain active building heights in a max-heap.
+If the maximum height changes after processing all events at position X, record $[X, current_max_height]$ as a skyline keypoint!
+Use lazy deletion to pop expired buildings from the heap top.</p>
+
+<details>
+<summary><strong>Python 3 Solution (Click to Expand)</strong></summary>
+<div class="code-block">
+<pre><code class="language-python">from typing import List
+import heapq
+
+class Solution:
+    def getSkyline(self, buildings: List[List[int]]) -> List[List[int]]:
+        # Events: (x, -h, right) for start, (right, 0, 0) for end
+        events = []
+        for l, r, h in buildings:
+            events.append((l, -h, r))
+            events.append((r, 0, 0))
+        # Sort events: on tie, higher building first, start before end
+        events.sort()
+        
+        # Max-heap storing (-h, right)
+        heap = [(0, float('inf'))]
+        skyline = []
+        prev_h = 0
+        
+        for x, neg_h, r in events:
+            if neg_h < 0:
+                heapq.heappush(heap, (neg_h, r))
+                
+            # Pop expired buildings from heap top
+            while heap[0][1] <= x:
+                heapq.heappop(heap)
+                
+            curr_h = -heap[0][0]
+            if curr_h != prev_h:
+                skyline.append([x, curr_h])
+                prev_h = curr_h
+                
+        return skyline
+</code></pre>
+</div>
+</details>
+
+<h3>Complexity & Edge Cases</h3>
+<ul>
+  <li><strong>Time Complexity:</strong> $O(N \log N)$.</li>
+  <li><strong>Space Complexity:</strong> $O(N)$.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0587-lc2406-divide-intervals-into-minimum-number-of-groups.html"><span class="lbl">← Previous</span>#2406 Divide Intervals Into Minimum Number of Groups</a><a href="../problems/0589-lc1851-minimum-interval-to-include-each-query.html" style="text-align:right"><span class="lbl">Next →</span>#1851 Minimum Interval to Include Each Query</a></div>
 </div>

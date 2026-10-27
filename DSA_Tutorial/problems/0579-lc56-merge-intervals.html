@@ -23,40 +23,43 @@
  › Subpattern 21.1: Interval Merging / Insertion · Problem 579 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0327-lc56-merge-intervals.html">Greedy</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Merge all overlapping intervals in a list and return the non-overlapping result.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h3>Problem Overview</h3>
+<p>Given an array of <code>intervals</code> where <code>intervals[i] = [start_i, end_i]</code>, merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Interval Merging / Insertion</strong> — Sort by start; merge/insert into a result list when they overlap.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Sort by start; extend the last merged block while starts overlap its end.</div>
-<h2>Why this pattern?</h2><ul><li>"merge overlapping intervals" / "insert interval"</li><li>"minimum meeting rooms / platforms / arrows"</li><li>"remove fewest to make non-overlapping" (greedy by end)</li><li>bookings, calendars, seat/resource occupancy over time</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Intervals &amp; Line Sweep master template and adapt the marked parts to this problem:</p><pre><code># Merge intervals
-intervals.sort(key=lambda iv: iv[0])
-merged = []
-for s, e in intervals:
-    if merged and s &lt;= merged[-1][1]:            # overlaps the last block
-        merged[-1][1] = max(merged[-1][1], e)    # extend it
-    else:
-        merged.append([s, e])
+<h3>Key Insights</h3>
+<p>Sorting by start time simplifies overlap detection. If intervals are sorted such that $start_1 \le start_2 \le \dots$:
+Interval $B$ overlaps with the current merged interval $A$ if and only if:
+$$B.start \le A.end$$
+If they overlap, extend the merged interval's end: $A.end = \max(A.end, B.end)$.
+If they do not overlap ($B.start > A.end$), append $B$ as the new active interval.</p>
 
-# Sweep line: max concurrent intervals
-events = []
-for s, e in intervals:
-    events.append((s, 1))          # interval opens
-    events.append((e, -1))         # interval closes
-events.sort()                      # ties: -1 before +1 ⇒ [1,2],[2,3] don't stack
-cur = peak = 0
-for _, delta in events:
-    cur += delta
-    peak = max(peak, cur)</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<details>
+<summary><strong>Python 3 Solution (Sort + Single Scan)</strong></summary>
+<div class="code-block">
+<pre><code class="language-python">from typing import List
+
+class Solution:
+    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
+        intervals.sort(key=lambda x: x[0])
+        merged = []
+        
+        for start, end in intervals:
+            if not merged or start > merged[-1][1]:
+                merged.append([start, end])
+            else:
+                merged[-1][1] = max(merged[-1][1], end)
+                
+        return merged
+</code></pre>
+</div>
+</details>
+
+<h3>Complexity & Edge Cases</h3>
+<ul>
+  <li><strong>Time Complexity:</strong> $O(N \log N)$ for sorting + $O(N)$ linear pass.</li>
+  <li><strong>Space Complexity:</strong> $O(N)$ for sorting space / output.</li>
+  <li><strong>Edge Cases:</strong> Single interval, one interval completely enclosing another (e.g. <code>[1, 6], [2, 4]</code>), intervals touching at endpoints (e.g. <code>[1, 4], [4, 5]</code>).</li>
+</ul>
 
 <div class="pager"><a href="../patterns/p21-intervals.html"><span class="lbl">← Previous</span>Intervals &amp; Line Sweep</a><a href="../problems/0580-lc57-insert-interval.html" style="text-align:right"><span class="lbl">Next →</span>#57 Insert Interval</a></div>
 </div>

@@ -23,40 +23,50 @@
  › Subpattern 21.3: Line Sweep with Events · Problem 590 of 699</p>
 
 <h2>📋 The problem</h2><p>Given birth/death years, return the earliest year with the most people alive (difference array over years).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h3>Problem Overview</h3>
+<p>Given a 2D integer array <code>logs</code> where <code>logs[i] = [birth_i, death_i]</code>, return the earliest year with the maximum population. A person is considered alive during the years in $[birth_i, death_i - 1]$.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Line Sweep with Events</strong> — Convert intervals to +1/−1 point events on a sorted timeline; sweep to compute peaks.</p>
+<h3>Key Insights</h3>
+<p>The year range is small and fixed: $1950 \le year \le 2050$ (101 years).
+Use a <strong>Difference Array</strong> of size 101:
+For each person $[birth, death]$:
+<ul>
+  <li>Increment <code>delta[birth - 1950] += 1</code></li>
+  <li>Decrement <code>delta[death - 1950] -= 1</code> (death year is not counted)</li>
+</ul>
+Prefix sum over the difference array reveals the maximum population year in $O(N + 101)$ time.</p>
 
-<h2>Why this pattern?</h2><ul><li>"merge overlapping intervals" / "insert interval"</li><li>"minimum meeting rooms / platforms / arrows"</li><li>"remove fewest to make non-overlapping" (greedy by end)</li><li>bookings, calendars, seat/resource occupancy over time</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Intervals &amp; Line Sweep master template and adapt the marked parts to this problem:</p><pre><code># Merge intervals
-intervals.sort(key=lambda iv: iv[0])
-merged = []
-for s, e in intervals:
-    if merged and s &lt;= merged[-1][1]:            # overlaps the last block
-        merged[-1][1] = max(merged[-1][1], e)    # extend it
-    else:
-        merged.append([s, e])
+<details>
+<summary><strong>Python 3 Solution (Click to Expand)</strong></summary>
+<div class="code-block">
+<pre><code class="language-python">from typing import List
 
-# Sweep line: max concurrent intervals
-events = []
-for s, e in intervals:
-    events.append((s, 1))          # interval opens
-    events.append((e, -1))         # interval closes
-events.sort()                      # ties: -1 before +1 ⇒ [1,2],[2,3] don't stack
-cur = peak = 0
-for _, delta in events:
-    cur += delta
-    peak = max(peak, cur)</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+class Solution:
+    def maximumPopulation(self, logs: List[List[int]]) -> int:
+        delta = [0] * 102
+        for b, d in logs:
+            delta[b - 1950] += 1
+            delta[d - 1950] -= 1
+            
+        max_pop = curr_pop = 0
+        best_year = 1950
+        
+        for i in range(101):
+            curr_pop += delta[i]
+            if curr_pop > max_pop:
+                max_pop = curr_pop
+                best_year = 1950 + i
+                
+        return best_year
+</code></pre>
+</div>
+</details>
+
+<h3>Complexity & Edge Cases</h3>
+<ul>
+  <li><strong>Time Complexity:</strong> $O(N + Y)$ where $Y = 100$.</li>
+  <li><strong>Space Complexity:</strong> $O(Y) = O(1)$.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0589-lc1851-minimum-interval-to-include-each-query.html"><span class="lbl">← Previous</span>#1851 Minimum Interval to Include Each Query</a><a href="../problems/0591-lc352-data-stream-as-disjoint-intervals.html" style="text-align:right"><span class="lbl">Next →</span>#352 Data Stream as Disjoint Intervals</a></div>
 </div>

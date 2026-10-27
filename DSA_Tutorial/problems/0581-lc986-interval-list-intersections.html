@@ -23,40 +23,55 @@
  › Subpattern 21.1: Interval Merging / Insertion · Problem 581 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0332-lc986-interval-list-intersections.html">Greedy</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Given two sorted lists of disjoint intervals, return all their pairwise intersections.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h3>Problem Overview</h3>
+<p>You are given two lists of closed intervals, <code>firstList</code> and <code>secondList</code>, where each list of intervals is pairwise disjoint and in sorted order. Return the intersection of these two interval lists.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Interval Merging / Insertion</strong> — Sort by start; merge/insert into a result list when they overlap.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Two pointers over both sorted lists; intersect [max starts, min ends]; advance whichever ends first.</div>
-<h2>Why this pattern?</h2><ul><li>"merge overlapping intervals" / "insert interval"</li><li>"minimum meeting rooms / platforms / arrows"</li><li>"remove fewest to make non-overlapping" (greedy by end)</li><li>bookings, calendars, seat/resource occupancy over time</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Intervals &amp; Line Sweep master template and adapt the marked parts to this problem:</p><pre><code># Merge intervals
-intervals.sort(key=lambda iv: iv[0])
-merged = []
-for s, e in intervals:
-    if merged and s &lt;= merged[-1][1]:            # overlaps the last block
-        merged[-1][1] = max(merged[-1][1], e)    # extend it
-    else:
-        merged.append([s, e])
-
-# Sweep line: max concurrent intervals
-events = []
-for s, e in intervals:
-    events.append((s, 1))          # interval opens
-    events.append((e, -1))         # interval closes
-events.sort()                      # ties: -1 before +1 ⇒ [1,2],[2,3] don't stack
-cur = peak = 0
-for _, delta in events:
-    cur += delta
-    peak = max(peak, cur)</code></pre>
-<h2>How to work on it now</h2>
+<h3>Key Insights</h3>
+<p>Two-Pointer simulation:
+For current intervals $A = [s_1, e_1]$ and $B = [s_2, e_2]$:
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+  <li>The candidate intersection start is $\max(s_1, s_2)$, and end is $\min(e_1, e_2)$.</li>
+  <li>They intersect if and only if $\max(s_1, s_2) \le \min(e_1, e_2)$.</li>
+  <li>Advance the pointer for whichever interval ends earlier ($\min(e_1, e_2)$), because it cannot possibly intersect with any future interval!</li>
+</ol></p>
+
+<details>
+<summary><strong>Python 3 Solution (Two-Pointer Scan)</strong></summary>
+<div class="code-block">
+<pre><code class="language-python">from typing import List
+
+class Solution:
+    def intervalIntersection(self, firstList: List[List[int]], secondList: List[List[int]]) -> List[List[int]]:
+        i = j = 0
+        res = []
+        
+        while i < len(firstList) and j < len(secondList):
+            s1, e1 = firstList[i]
+            s2, e2 = secondList[j]
+            
+            start = max(s1, s2)
+            end = min(e1, e2)
+            
+            if start <= end:
+                res.append([start, end])
+                
+            # Discard interval that finishes earlier
+            if e1 < e2:
+                i += 1
+            else:
+                j += 1
+                
+        return res
+</code></pre>
+</div>
+</details>
+
+<h3>Complexity & Edge Cases</h3>
+<ul>
+  <li><strong>Time Complexity:</strong> $O(M + N)$ where $M$ and $N$ are list lengths.</li>
+  <li><strong>Space Complexity:</strong> $O(1)$ extra space excluding output.</li>
+  <li><strong>Edge Cases:</strong> Either list empty, point intersection (e.g. <code>[1, 2]</code> and <code>[2, 3]</code> -> <code>[2, 2]</code>).</li>
+</ul>
 
 <div class="pager"><a href="../problems/0580-lc57-insert-interval.html"><span class="lbl">← Previous</span>#57 Insert Interval</a><a href="../problems/0582-lc1288-remove-covered-intervals.html" style="text-align:right"><span class="lbl">Next →</span>#1288 Remove Covered Intervals</a></div>
 </div>

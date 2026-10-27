@@ -23,40 +23,45 @@
  › Subpattern 21.2: Meeting Rooms &amp; Scheduling · Problem 584 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0218-lc253-meeting-rooms-ii.html">Heap (Priority Queue)</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Given meeting intervals, return the minimum number of conference rooms needed.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h3>Problem Overview</h3>
+<p>Given an array of meeting time intervals consisting of start and end times, return the minimum number of conference rooms required.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Meeting Rooms &amp; Scheduling</strong> — Sort and compare current's end with the previous — counts overlaps or schedules.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Sweep line (+1/−1 events) peak, or min-heap of end times sized = rooms.</div>
-<h2>Why this pattern?</h2><ul><li>"merge overlapping intervals" / "insert interval"</li><li>"minimum meeting rooms / platforms / arrows"</li><li>"remove fewest to make non-overlapping" (greedy by end)</li><li>bookings, calendars, seat/resource occupancy over time</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Intervals &amp; Line Sweep master template and adapt the marked parts to this problem:</p><pre><code># Merge intervals
-intervals.sort(key=lambda iv: iv[0])
-merged = []
-for s, e in intervals:
-    if merged and s &lt;= merged[-1][1]:            # overlaps the last block
-        merged[-1][1] = max(merged[-1][1], e)    # extend it
-    else:
-        merged.append([s, e])
-
-# Sweep line: max concurrent intervals
-events = []
-for s, e in intervals:
-    events.append((s, 1))          # interval opens
-    events.append((e, -1))         # interval closes
-events.sort()                      # ties: -1 before +1 ⇒ [1,2],[2,3] don't stack
-cur = peak = 0
-for _, delta in events:
-    cur += delta
-    peak = max(peak, cur)</code></pre>
-<h2>How to work on it now</h2>
+<h3>Key Insights</h3>
+<p>This asks for the maximum number of concurrent overlapping meetings at any point in time. Two optimal techniques:
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+  <li><strong>Min-Heap:</strong> Sort intervals by start time. Keep a min-heap of active meeting end times. If the earliest finishing meeting in the heap finishes before the current meeting starts ($heap[0] \le start$), reuse that room (pop from heap). Push current meeting's end time. The heap size is the number of rooms needed: $O(N \log N)$.</li>
+  <li><strong>Line Sweep / Chronological Event Separation:</strong> Separate starts and ends into two sorted arrays. Track current active rooms: increment on start, decrement on end.</li>
+</ol></p>
+
+<details>
+<summary><strong>Python 3 Solution (Min-Heap Simulation)</strong></summary>
+<div class="code-block">
+<pre><code class="language-python">from typing import List
+import heapq
+
+class Solution:
+    def minMeetingRooms(self, intervals: List[List[int]]) -> int:
+        if not intervals:
+            return 0
+            
+        intervals.sort(key=lambda x: x[0])
+        rooms = []  # stores end times
+        
+        for start, end in intervals:
+            if rooms and rooms[0] <= start:
+                heapq.heappop(rooms)  # reuse room
+            heapq.heappush(rooms, end)
+            
+        return len(rooms)
+</code></pre>
+</div>
+</details>
+
+<h3>Complexity & Edge Cases</h3>
+<ul>
+  <li><strong>Time Complexity:</strong> $O(N \log N)$.</li>
+  <li><strong>Space Complexity:</strong> $O(N)$ for heap.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0583-lc252-meeting-rooms.html"><span class="lbl">← Previous</span>#252 Meeting Rooms</a><a href="../problems/0585-lc759-employee-free-time.html" style="text-align:right"><span class="lbl">Next →</span>#759 Employee Free Time</a></div>
 </div>

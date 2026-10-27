@@ -23,40 +23,42 @@
  › Subpattern 21.2: Meeting Rooms &amp; Scheduling · Problem 587 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0333-lc2406-divide-intervals-into-minimum-number-of-groups.html">Greedy</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Partition intervals into the fewest groups so no group has overlaps (sweep line peak = answer).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h3>Problem Overview</h3>
+<p>Given an array <code>intervals</code>, divide the intervals into one or more groups such that each interval is in exactly one group, and no two intervals in the same group intersect. Return the minimum number of groups required.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Meeting Rooms &amp; Scheduling</strong> — Sort and compare current's end with the previous — counts overlaps or schedules.</p>
+<h3>Key Insights</h3>
+<p>By Dilworth's theorem and interval scheduling theory, the minimum number of non-overlapping groups required is equal to the <strong>maximum number of mutually overlapping intervals at any point in time</strong>!
+This is mathematically identical to Meeting Rooms II (LC 253), except here intervals are inclusive $[left, right]$, so an interval ending at $t$ overlaps with one starting at $t$.
+Events: $(start, +1)$ and $(end + 1, -1)$. Sort events and track running prefix sum!</p>
 
-<h2>Why this pattern?</h2><ul><li>"merge overlapping intervals" / "insert interval"</li><li>"minimum meeting rooms / platforms / arrows"</li><li>"remove fewest to make non-overlapping" (greedy by end)</li><li>bookings, calendars, seat/resource occupancy over time</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Intervals &amp; Line Sweep master template and adapt the marked parts to this problem:</p><pre><code># Merge intervals
-intervals.sort(key=lambda iv: iv[0])
-merged = []
-for s, e in intervals:
-    if merged and s &lt;= merged[-1][1]:            # overlaps the last block
-        merged[-1][1] = max(merged[-1][1], e)    # extend it
-    else:
-        merged.append([s, e])
+<details>
+<summary><strong>Python 3 Solution (Line Sweep with Event Deltas)</strong></summary>
+<div class="code-block">
+<pre><code class="language-python">from typing import List
+from collections import defaultdict
 
-# Sweep line: max concurrent intervals
-events = []
-for s, e in intervals:
-    events.append((s, 1))          # interval opens
-    events.append((e, -1))         # interval closes
-events.sort()                      # ties: -1 before +1 ⇒ [1,2],[2,3] don't stack
-cur = peak = 0
-for _, delta in events:
-    cur += delta
-    peak = max(peak, cur)</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+class Solution:
+    def minGroups(self, intervals: List[List[int]]) -> int:
+        events = defaultdict(int)
+        for s, e in intervals:
+            events[s] += 1
+            events[e + 1] -= 1  # end is inclusive, freed at e + 1
+            
+        max_groups = curr = 0
+        for t in sorted(events.keys()):
+            curr += events[t]
+            max_groups = max(max_groups, curr)
+            
+        return max_groups
+</code></pre>
+</div>
+</details>
+
+<h3>Complexity & Edge Cases</h3>
+<ul>
+  <li><strong>Time Complexity:</strong> $O(N \log N)$ event sorting.</li>
+  <li><strong>Space Complexity:</strong> $O(N)$ event map.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0586-lc2402-meeting-rooms-iii.html"><span class="lbl">← Previous</span>#2402 Meeting Rooms III</a><a href="../problems/0588-lc218-the-skyline-problem.html" style="text-align:right"><span class="lbl">Next →</span>#218 The Skyline Problem</a></div>
 </div>

@@ -23,40 +23,54 @@
  › Subpattern 21.4: Calendar / Booking (TreeMap) · Problem 593 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0514-lc731-my-calendar-ii.html">Segment Tree &amp; Fenwick Tree</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Design a calendar that allows double bookings but rejects any event causing a triple booking.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h3>Problem Overview</h3>
+<p>Implement the <code>MyCalendarTwo</code> class such that no <strong>triple booking</strong> happens (three events have some non-empty intersection).</p>
 
-<h2>Where this fits</h2>
-<p><strong>Calendar / Booking (TreeMap)</strong> — Use a TreeMap of bookings, or two-pass overlap counting, to handle dynamic add/query.</p>
-
-<h2>Why this pattern?</h2><ul><li>"merge overlapping intervals" / "insert interval"</li><li>"minimum meeting rooms / platforms / arrows"</li><li>"remove fewest to make non-overlapping" (greedy by end)</li><li>bookings, calendars, seat/resource occupancy over time</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Intervals &amp; Line Sweep master template and adapt the marked parts to this problem:</p><pre><code># Merge intervals
-intervals.sort(key=lambda iv: iv[0])
-merged = []
-for s, e in intervals:
-    if merged and s &lt;= merged[-1][1]:            # overlaps the last block
-        merged[-1][1] = max(merged[-1][1], e)    # extend it
-    else:
-        merged.append([s, e])
-
-# Sweep line: max concurrent intervals
-events = []
-for s, e in intervals:
-    events.append((s, 1))          # interval opens
-    events.append((e, -1))         # interval closes
-events.sort()                      # ties: -1 before +1 ⇒ [1,2],[2,3] don't stack
-cur = peak = 0
-for _, delta in events:
-    cur += delta
-    peak = max(peak, cur)</code></pre>
-<h2>How to work on it now</h2>
+<h3>Key Insights</h3>
+<p>Maintain two lists:
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
+  <li><code>bookings</code>: All successfully booked single events $[s, e)$.</li>
+  <li><code>overlaps</code>: All double-booked interval segments $[\max(s_1, s_2), \min(e_1, e_2))$.</li>
 </ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+When trying to book a new interval $[start, end)$:
+<ol>
+  <li>Check if $[start, end)$ overlaps with ANY interval in <code>overlaps</code>. If yes, it would cause a triple booking! Return <code>False</code> immediately.</li>
+  <li>Otherwise, find all overlaps between $[start, end)$ and existing <code>bookings</code>, adding them to <code>overlaps</code>.</li>
+  <li>Add $[start, end)$ to <code>bookings</code> and return <code>True</code>!</li>
+</ol></p>
+
+<details>
+<summary><strong>Python 3 Solution (Double Booking Tracker)</strong></summary>
+<div class="code-block">
+<pre><code class="language-python">class MyCalendarTwo:
+    def __init__(self):
+        self.bookings = []
+        self.overlaps = []
+
+    def book(self, start: int, end: int) -> bool:
+        # 1. Check if it causes triple booking
+        for s, e in self.overlaps:
+            if max(start, s) < min(end, e):
+                return False
+                
+        # 2. Record new double-booked overlaps
+        for s, e in self.bookings:
+            os = max(start, s)
+            oe = min(end, e)
+            if os < oe:
+                self.overlaps.append((os, oe))
+                
+        self.bookings.append((start, end))
+        return True
+</code></pre>
+</div>
+</details>
+
+<h3>Complexity & Edge Cases</h3>
+<ul>
+  <li><strong>Time Complexity:</strong> $O(N)$ per booking call.</li>
+  <li><strong>Space Complexity:</strong> $O(N)$ intervals stored.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0592-lc729-my-calendar-i.html"><span class="lbl">← Previous</span>#729 My Calendar I</a><a href="../problems/0594-lc732-my-calendar-iii.html" style="text-align:right"><span class="lbl">Next →</span>#732 My Calendar III</a></div>
 </div>

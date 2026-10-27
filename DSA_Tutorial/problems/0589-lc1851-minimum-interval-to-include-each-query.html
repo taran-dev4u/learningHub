@@ -23,40 +23,60 @@
  › Subpattern 21.3: Line Sweep with Events · Problem 589 of 699</p>
 
 <h2>📋 The problem</h2><p>For each query point, return the length of the smallest interval containing it (-1 if none) — offline sort + heap.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h3>Problem Overview</h3>
+<p>Given a 2D integer array <code>intervals</code> and an integer array <code>queries</code>, the size of interval $[l, r]$ is $r - l + 1$. For each query $q_j$, find the minimum size of an interval such that $l_i \le q_j \le r_i$. If no such interval exists, return -1.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Line Sweep with Events</strong> — Convert intervals to +1/−1 point events on a sorted timeline; sweep to compute peaks.</p>
-
-<h2>Why this pattern?</h2><ul><li>"merge overlapping intervals" / "insert interval"</li><li>"minimum meeting rooms / platforms / arrows"</li><li>"remove fewest to make non-overlapping" (greedy by end)</li><li>bookings, calendars, seat/resource occupancy over time</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Intervals &amp; Line Sweep master template and adapt the marked parts to this problem:</p><pre><code># Merge intervals
-intervals.sort(key=lambda iv: iv[0])
-merged = []
-for s, e in intervals:
-    if merged and s &lt;= merged[-1][1]:            # overlaps the last block
-        merged[-1][1] = max(merged[-1][1], e)    # extend it
-    else:
-        merged.append([s, e])
-
-# Sweep line: max concurrent intervals
-events = []
-for s, e in intervals:
-    events.append((s, 1))          # interval opens
-    events.append((e, -1))         # interval closes
-events.sort()                      # ties: -1 before +1 ⇒ [1,2],[2,3] don't stack
-cur = peak = 0
-for _, delta in events:
-    cur += delta
-    peak = max(peak, cur)</code></pre>
-<h2>How to work on it now</h2>
+<h3>Key Insights</h3>
+<p><strong>Offline Queries + Min-Heap:</strong>
+Sort intervals by start time.
+Sort queries in ascending order while keeping their original indices: <code>sorted_q = sorted(enumerate(queries), key=lambda x: x[1])</code>.
+For each query $q$:
 <ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+  <li>Push all intervals with $start \le q$ into a min-heap ordered by <strong>interval size</strong> $(r - l + 1, r)$.</li>
+  <li>Pop any intervals from heap top whose $r < q$ (they cannot cover $q$ or any future larger query).</li>
+  <li>The top of the heap is the minimum size interval covering $q$!</li>
+</ol></p>
+
+<details>
+<summary><strong>Python 3 Solution (Offline Sorting + Min-Heap)</strong></summary>
+<div class="code-block">
+<pre><code class="language-python">from typing import List
+import heapq
+
+class Solution:
+    def minInterval(self, intervals: List[List[int]], queries: List[int]) -> List[int]:
+        intervals.sort(key=lambda x: x[0])
+        q_sorted = sorted(enumerate(queries), key=lambda x: x[1])
+        
+        heap = []  # (size, right)
+        ans = [-1] * len(queries)
+        i = 0
+        n = len(intervals)
+        
+        for orig_idx, q in q_sorted:
+            # Add all intervals that start <= q
+            while i < n and intervals[i][0] <= q:
+                l, r = intervals[i]
+                heapq.heappush(heap, (r - l + 1, r))
+                i += 1
+                
+            # Discard intervals that end < q
+            while heap and heap[0][1] < q:
+                heapq.heappop(heap)
+                
+            if heap:
+                ans[orig_idx] = heap[0][0]
+                
+        return ans
+</code></pre>
+</div>
+</details>
+
+<h3>Complexity & Edge Cases</h3>
+<ul>
+  <li><strong>Time Complexity:</strong> $O(N \log N + Q \log Q)$. Each interval is pushed and popped at most once.</li>
+  <li><strong>Space Complexity:</strong> $O(N + Q)$.</li>
+</ul>
 
 <div class="pager"><a href="../problems/0588-lc218-the-skyline-problem.html"><span class="lbl">← Previous</span>#218 The Skyline Problem</a><a href="../problems/0590-lc1854-maximum-population-year.html" style="text-align:right"><span class="lbl">Next →</span>#1854 Maximum Population Year</a></div>
 </div>
