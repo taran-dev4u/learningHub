@@ -23,34 +23,49 @@
  › Subpattern 12.12: Palindrome DP · Problem 424 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0036-lc5-longest-palindromic-substring.html">Two Pointer</a>, <a href="0693-lc5-longest-palindromic-substring.html">Advanced String Algorithm</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Given a string, return its longest substring that reads the same forwards and backwards.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given a string <code>s</code>, return the longest palindromic substring in <code>s</code>.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Palindrome DP</strong> — dp[i][j] = whether s[i..j] is a palindrome / length of longest palindromic subsequence.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>Every palindrome has a center: expand around all 2n−1 centers, tracking the longest.</div>
-<h2>Why this pattern?</h2><ul><li>"count the number of ways…"</li><li>"minimum/maximum cost/value to reach…"</li><li>choices at each step + overlapping futures (take/skip an item)</li><li>"longest/shortest subsequence" (non-contiguous!)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Dynamic Programming (DP) master template and adapt the marked parts to this problem:</p><pre><code># Top-down: brute-force recursion + cache
-from functools import lru_cache
-@lru_cache(None)
-def dp(i):
-    if i &lt;= base: return base_value
-    return best(dp(smaller_1), dp(smaller_2), ...)   # the recurrence
+<p>Every palindrome mirrors around its center. A string of length $n$ has exactly $2n - 1$ potential centers:
+1. $n$ odd-length centers: centered at character $s[i]$ ($i \in [0, n-1]$).
+2. $n - 1$ even-length centers: centered between $s[i]$ and $s[i+1]$ ($i \in [0, n-2]$).</p>
+<p>Expanding outward from each center until characters mismatch finds the longest palindrome in $O(n^2)$ time with $O(1)$ space. For $O(n)$ linear time, Manacher's Algorithm mirrors palindromic lengths using previously computed boundaries.</p>
 
-# Bottom-up: same recurrence, loop order = dependency order
-dp = [0] * (n + 1)
-dp[0] = base_value
-for i in range(1, n + 1):
-    dp[i] = best(dp[i-1] + ..., dp[i-2] + ...)
-# often only last 2 values needed → two variables, O(1) space</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h2>🐢 Brute force vs optimal</h2>
+<p>Testing all $O(n^2)$ substrings for palindromicity takes $O(n^3)$ time. Expand-around-center reduces time to $O(n^2)$ and space to $O(1)$ without allocating any DP table!</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Expand outward from $2n-1$ centers. For center $(l, r)$, decrement $l$ and increment $r$ while $s[l] == s[r]$. Track the maximum $(r - l - 1)$ interval.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def longestPalindrome(s: str) -> str:
+    if not s or len(s) == 1:
+        return s
+        
+    start, max_len = 0, 1
+    
+    def expand(l: int, r: int):
+        nonlocal start, max_len
+        while l >= 0 and r < len(s) and s[l] == s[r]:
+            curr_len = r - l + 1
+            if curr_len > max_len:
+                max_len = curr_len
+                start = l
+            l -= 1
+            r += 1
+            
+    for i in range(len(s)):
+        expand(i, i)       # Odd length palindrome
+        expand(i, i + 1)   # Even length palindrome
+        
+    return s[start : start + max_len]
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n^2)$ — $2n - 1$ centers, expanding at most $n$ times.<br>
+<strong>Space:</strong> $O(1)$ — Constant scalar variables (pointers).</p>
+
 
 <div class="pager"><a href="../problems/0423-lc2407-longest-increasing-subsequence-ii.html"><span class="lbl">← Previous</span>#2407 Longest Increasing Subsequence II</a><a href="../problems/0425-lc132-palindrome-partitioning-ii.html" style="text-align:right"><span class="lbl">Next →</span>#132 Palindrome Partitioning II</a></div>
 </div>

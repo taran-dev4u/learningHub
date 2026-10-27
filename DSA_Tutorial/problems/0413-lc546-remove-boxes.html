@@ -23,34 +23,57 @@
  › Subpattern 12.9: Interval DP · Problem 413 of 699</p>
 
 <h2>📋 The problem</h2><p>Remove boxes in groups of equal-colored consecutive boxes, earning k² per group of k; maximize total points.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>You are given several boxes with different colors represented by positive integers <code>boxes</code>. You may experience several rounds to remove boxes until there is no box left. Each time you can choose some continuous boxes with the same color (i.e. length <code>k >= 1</code>), remove them and get <code>k * k</code> points. Return the maximum points you can get.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Interval DP</strong> — dp[i][j] = answer on the subarray a[i..j], iterated by increasing interval length.</p>
+<p>This is one of the most famous 3D Interval DP problems in competitive programming!
+A standard 2D interval $dp[l][r]$ is insufficient because boxes to the left of $l$ with the same color as $boxes[l]$ can be accumulated and merged together after clearing intermediate boxes!</p>
 
-<h2>Why this pattern?</h2><ul><li>"count the number of ways…"</li><li>"minimum/maximum cost/value to reach…"</li><li>choices at each step + overlapping futures (take/skip an item)</li><li>"longest/shortest subsequence" (non-contiguous!)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Dynamic Programming (DP) master template and adapt the marked parts to this problem:</p><pre><code># Top-down: brute-force recursion + cache
-from functools import lru_cache
-@lru_cache(None)
-def dp(i):
-    if i &lt;= base: return base_value
-    return best(dp(smaller_1), dp(smaller_2), ...)   # the recurrence
+<p><strong>3D State Formulation:</strong>
+Let $dp[l][r][k]$ be the maximum score for subarray $boxes[l \dots r]$ given that there are already $k$ boxes adjacent to $boxes[l]$ on the left with the same color $boxes[l]$!
+1. <strong>Option 1:</strong> Remove $boxes[l]$ together with the $k$ accumulated identical boxes:
+   $$\text{gain} = (k + 1)^2 + dp[l + 1][r][0]$$
+2. <strong>Option 2:</strong> Keep $boxes[l]$ and the $k$ boxes, find another box $m \in [l+1, r]$ where $boxes[m] == boxes[l]$, clear the intermediate segment $boxes[l+1 \dots m-1]$, and merge:
+   $$\text{gain} = dp[l + 1][m - 1][0] + dp[m][r][k + 1]$$</p>
 
-# Bottom-up: same recurrence, loop order = dependency order
-dp = [0] * (n + 1)
-dp[0] = base_value
-for i in range(1, n + 1):
-    dp[i] = best(dp[i-1] + ..., dp[i-2] + ...)
-# often only last 2 values needed → two variables, O(1) space</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h2>🐢 Brute force vs optimal</h2>
+<p>Brute force search is factorial. 3D memoization bounds distinct subproblems to $O(n^4)$ states and transitions, executing smoothly within typical constraints ($n \le 100$).</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> State includes $k$: <code>dfs(l, r, k)</code> = max score on <code>boxes[l..r]</code> with $k$ matching boxes attached to <code>boxes[l]</code> from the left.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">from functools import lru_cache
+
+def removeBoxes(boxes: list[int]) -> int:
+    @lru_cache(maxsize=None)
+    def dfs(l: int, r: int, k: int) -> int:
+        if l > r:
+            return 0
+            
+        # Optimization: group consecutive matching boxes at the start
+        while l + 1 <= r and boxes[l] == boxes[l + 1]:
+            l += 1
+            k += 1
+            
+        # Option 1: burst boxes[l] and the k accumulated identical boxes
+        res = (k + 1) * (k + 1) + dfs(l + 1, r, 0)
+        
+        # Option 2: find another matching box m in (l+1..r)
+        for m in range(l + 1, r + 1):
+            if boxes[m] == boxes[l]:
+                res = max(res, dfs(l + 1, m - 1, 0) + dfs(m, r, k + 1))
+                
+        return res
+        
+    return dfs(0, len(boxes) - 1, 0)
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n^4)$ — $n^3$ states, each taking $O(n)$ transition scan.<br>
+<strong>Space:</strong> $O(n^3)$ — 3D memoization cache.</p>
+
 
 <div class="pager"><a href="../problems/0412-lc312-burst-balloons.html"><span class="lbl">← Previous</span>#312 Burst Balloons</a><a href="../problems/0414-lc95-unique-binary-search-trees-ii.html" style="text-align:right"><span class="lbl">Next →</span>#95 Unique Binary Search Trees II</a></div>
 </div>

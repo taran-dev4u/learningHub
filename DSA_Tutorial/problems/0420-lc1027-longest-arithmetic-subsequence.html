@@ -23,34 +23,45 @@
  › Subpattern 12.11: Longest Increasing Subsequence (LIS) · Problem 420 of 699</p>
 
 <h2>📋 The problem</h2><p>Return the length of the longest arithmetic subsequence (constant difference) of an array.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given an array <code>nums</code> of integers, return the length of the longest arithmetic subsequence in <code>nums</code>. A subsequence is arithmetic if $nums[i_{k+1}] - nums[i_k]$ is constant for all $k$.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Longest Increasing Subsequence (LIS)</strong> — dp[i] = length of LIS ending at i; O(n²) basic, O(n log n) with patience-sort/binary search.</p>
+<p>An arithmetic sequence is determined by its common difference $d = nums[i] - nums[j]$.
+Let $dp[i][d]$ be the length of the arithmetic subsequence ending at index $i$ with difference $d$.
+For each $j < i$:
+$$d = nums[i] - nums[j]$$
+$$dp[i][d] = dp[j].get(d, 1) + 1$$
+Global answer is $\max_{i, d} dp[i][d]$.</p>
 
-<h2>Why this pattern?</h2><ul><li>"count the number of ways…"</li><li>"minimum/maximum cost/value to reach…"</li><li>choices at each step + overlapping futures (take/skip an item)</li><li>"longest/shortest subsequence" (non-contiguous!)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Dynamic Programming (DP) master template and adapt the marked parts to this problem:</p><pre><code># Top-down: brute-force recursion + cache
-from functools import lru_cache
-@lru_cache(None)
-def dp(i):
-    if i &lt;= base: return base_value
-    return best(dp(smaller_1), dp(smaller_2), ...)   # the recurrence
+<h2>🐢 Brute force vs optimal</h2>
+<p>Using a list of hash maps $dp[i]$ where each map keys differences to subsequence lengths runs in $O(n^2)$ time and $O(n^2)$ space.</p>
 
-# Bottom-up: same recurrence, loop order = dependency order
-dp = [0] * (n + 1)
-dp[0] = base_value
-for i in range(1, n + 1):
-    dp[i] = best(dp[i-1] + ..., dp[i-2] + ...)
-# often only last 2 values needed → two variables, O(1) space</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<div class="insight">💡 <strong>Key insight:</strong> Maintain <code>dp[i][diff]</code> as the length of arithmetic subsequence ending at <code>i</code> with common difference <code>diff</code>. Transition: <code>dp[i][diff] = dp[j].get(diff, 1) + 1</code>.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def longestArithSeqLength(nums: list[int]) -> int:
+    n = len(nums)
+    dp = [{} for _ in range(n)]
+    max_len = 2
+    
+    for i in range(n):
+        for j in range(i):
+            diff = nums[i] - nums[j]
+            prev_len = dp[j].get(diff, 1)
+            curr_len = prev_len + 1
+            dp[i][diff] = curr_len
+            if curr_len > max_len:
+                max_len = curr_len
+                
+    return max_len
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n^2)$ — Double nested iteration over all index pairs $(j, i)$.<br>
+<strong>Space:</strong> $O(n^2)$ — Dictionary states across $n$ indices.</p>
+
 
 <div class="pager"><a href="../problems/0419-lc673-number-of-longest-increasing-subsequence.html"><span class="lbl">← Previous</span>#673 Number of Longest Increasing Subsequence</a><a href="../problems/0421-lc1187-make-array-strictly-increasing.html" style="text-align:right"><span class="lbl">Next →</span>#1187 Make Array Strictly Increasing</a></div>
 </div>

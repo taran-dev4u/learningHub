@@ -23,34 +23,56 @@
  › Subpattern 12.11: Longest Increasing Subsequence (LIS) · Problem 421 of 699</p>
 
 <h2>📋 The problem</h2><p>Make arr1 strictly increasing by replacing elements with elements of arr2; return the minimum replacements (-1 if impossible) (DP + binary search).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given two integer arrays <code>arr1</code> and <code>arr2</code>, return the minimum number of operations needed to make <code>arr1</code> strictly increasing. In one operation, you can choose any index in <code>arr1</code> and replace the value with any element from <code>arr2</code>. If not possible, return -1.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Longest Increasing Subsequence (LIS)</strong> — dp[i] = length of LIS ending at i; O(n²) basic, O(n log n) with patience-sort/binary search.</p>
+<p>Pre-sort and deduplicate <code>arr2</code> so we can use binary search (<code>bisect_right</code>) to find the smallest element strictly greater than a threshold.</p>
+<p>Let $dp$ be a dictionary mapping the current valid ending value to the minimum replacements used so far.
+For each element $x \in arr1$:
+1. <strong>Keep $x$ (no operation):</strong> if $x > prev$, we can transition to $x$ with $ops$ operations.
+2. <strong>Replace $x$ with smallest valid element from $arr2$:</strong> find smallest $y \in arr2$ with $y > prev$ using <code>bisect_right</code>. Transition to $y$ with $ops + 1$ operations.</p>
 
-<h2>Why this pattern?</h2><ul><li>"count the number of ways…"</li><li>"minimum/maximum cost/value to reach…"</li><li>choices at each step + overlapping futures (take/skip an item)</li><li>"longest/shortest subsequence" (non-contiguous!)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Dynamic Programming (DP) master template and adapt the marked parts to this problem:</p><pre><code># Top-down: brute-force recursion + cache
-from functools import lru_cache
-@lru_cache(None)
-def dp(i):
-    if i &lt;= base: return base_value
-    return best(dp(smaller_1), dp(smaller_2), ...)   # the recurrence
+<h2>🐢 Brute force vs optimal</h2>
+<p>DP state compression keeping only the minimum operations for each reachable value bounds state space to $O(n \times \min(m, n))$, executing within milliseconds.</p>
 
-# Bottom-up: same recurrence, loop order = dependency order
-dp = [0] * (n + 1)
-dp[0] = base_value
-for i in range(1, n + 1):
-    dp[i] = best(dp[i-1] + ..., dp[i-2] + ...)
-# often only last 2 values needed → two variables, O(1) space</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<div class="insight">💡 <strong>Key insight:</strong> Maintain map <code>dp[last_value] = min_ops</code>. For each position, greedily try either keeping <code>arr1[i]</code> or replacing it with the smallest strictly larger element in <code>arr2</code> via binary search.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">import bisect
+
+def makeArrayIncreasing(arr1: list[int], arr2: list[int]) -> int:
+    arr2 = sorted(set(arr2))
+    # dp maps: last_value_in_arr1 -> min_operations
+    dp = {-1: 0}
+    
+    for x in arr1:
+        new_dp = {}
+        for prev_val, ops in dp.items():
+            # Option 1: Keep x if strictly greater than prev_val
+            if x > prev_val:
+                if x not in new_dp or ops < new_dp[x]:
+                    new_dp[x] = ops
+                    
+            # Option 2: Replace x with smallest element in arr2 > prev_val
+            idx = bisect.bisect_right(arr2, prev_val)
+            if idx < len(arr2):
+                y = arr2[idx]
+                if y not in new_dp or ops + 1 < new_dp[y]:
+                    new_dp[y] = ops + 1
+                    
+        dp = new_dp
+        if not dp:
+            return -1
+            
+    return min(dp.values())
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n \times \min(n, m) \log m)$ — At each index, binary search into sorted <code>arr2</code>.<br>
+<strong>Space:</strong> $O(\min(n, m))$ — State map holding active branch endpoints.</p>
+
 
 <div class="pager"><a href="../problems/0420-lc1027-longest-arithmetic-subsequence.html"><span class="lbl">← Previous</span>#1027 Longest Arithmetic Subsequence</a><a href="../problems/0422-lc1671-minimum-number-of-removals-to-make-mountain-array.html" style="text-align:right"><span class="lbl">Next →</span>#1671 Minimum Number of Removals to Make Mountain Array</a></div>
 </div>

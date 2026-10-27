@@ -23,34 +23,61 @@
  › Subpattern 12.10: Catalan Numbers · Problem 414 of 699</p>
 
 <h2>📋 The problem</h2><p>Generate all structurally unique binary search trees that store the values 1..n.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given an integer <code>n</code>, return all structurally unique BST's (binary search trees) which has exactly <code>n</code> nodes of unique values from <code>1</code> to <code>n</code>.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Catalan Numbers</strong> — Sum dp[k]·dp[n-1-k] for k = 0..n-1 — counts binary trees, parenthesizations, polygon triangulations.</p>
+<p>Every number $i \in [1, n]$ can serve as the root node.
+Because of BST properties:
+- All values $< i$ (i.e. $[1 \dots i-1]$) must go into the <strong>left subtree</strong>.
+- All values $> i$ (i.e. $[i+1 \dots n]$) must go into the <strong>right subtree</strong>.</p>
+<p>Use divide and conquer: generate all possible left subtrees for $[start, i-1]$ and all possible right subtrees for $[i+1, end]$, then form Cartesian product combinations with root $i$.</p>
 
-<h2>Why this pattern?</h2><ul><li>"count the number of ways…"</li><li>"minimum/maximum cost/value to reach…"</li><li>choices at each step + overlapping futures (take/skip an item)</li><li>"longest/shortest subsequence" (non-contiguous!)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Dynamic Programming (DP) master template and adapt the marked parts to this problem:</p><pre><code># Top-down: brute-force recursion + cache
-from functools import lru_cache
-@lru_cache(None)
-def dp(i):
-    if i &lt;= base: return base_value
-    return best(dp(smaller_1), dp(smaller_2), ...)   # the recurrence
+<h2>🐢 Brute force vs optimal</h2>
+<p>The total number of structurally unique BSTs is the $n$-th Catalan number $C_n = \frac{1}{n+1}\binom{2n}{n}$. Memoizing intervals <code>(start, end)</code> prevents re-generating identical subtrees.</p>
 
-# Bottom-up: same recurrence, loop order = dependency order
-dp = [0] * (n + 1)
-dp[0] = base_value
-for i in range(1, n + 1):
-    dp[i] = best(dp[i-1] + ..., dp[i-2] + ...)
-# often only last 2 values needed → two variables, O(1) space</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<div class="insight">💡 <strong>Key insight:</strong> <code>generate(start, end)</code>: for root $i \in [start, end]$, Cartesian product of <code>left_trees</code> and <code>right_trees</code> attached to <code>TreeNode(i)</code>.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+def generateTrees(n: int) -> list[TreeNode]:
+    if n == 0:
+        return []
+        
+    memo = {}
+    
+    def build(start: int, end: int) -> list[TreeNode]:
+        if start > end:
+            return [None]
+        if (start, end) in memo:
+            return memo[(start, end)]
+            
+        all_trees = []
+        for root_val in range(start, end + 1):
+            left_trees = build(start, root_val - 1)
+            right_trees = build(root_val + 1, end)
+            
+            for l in left_trees:
+                for r in right_trees:
+                    root = TreeNode(root_val, l, r)
+                    all_trees.append(root)
+                    
+        memo[(start, end)] = all_trees
+        return all_trees
+        
+    return build(1, n)
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(4^n / n^{3/2})$ — Governed by Catalan number generation.<br>
+<strong>Space:</strong> $O(4^n / n^{3/2})$ — Space to store all unique tree structures.</p>
+
 
 <div class="pager"><a href="../problems/0413-lc546-remove-boxes.html"><span class="lbl">← Previous</span>#546 Remove Boxes</a><a href="../problems/0415-lc96-unique-binary-search-trees.html" style="text-align:right"><span class="lbl">Next →</span>#96 Unique Binary Search Trees</a></div>
 </div>

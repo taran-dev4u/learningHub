@@ -23,34 +23,55 @@
  › Subpattern 12.7: 2D Array / Edit Distance · Problem 402 of 699</p>
 
 <h2>📋 The problem</h2><p>Implement regular-expression matching over the full input string where '.' matches any single character and '*' means zero or more of the preceding element.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given an input string <code>s</code> and a pattern <code>p</code>, implement regular expression matching with support for <code>'.'</code> and <code>'*'</code>:
+- <code>'.'</code> Matches any single character.
+- <code>'*'</code> Matches zero or more of the preceding element.</p>
 
-<h2>Where this fits</h2>
-<p><strong>2D Array / Edit Distance</strong> — dp[i][j] = min ops to convert s[:i] to t[:j] via insert/delete/replace.</p>
-<div class="insight"><strong>💡 Key idea</strong><br>2-D DP over prefixes; '*' either matches empty (drop pattern pair) or consumes a char when preceding element matches.</div>
-<h2>Why this pattern?</h2><ul><li>"count the number of ways…"</li><li>"minimum/maximum cost/value to reach…"</li><li>choices at each step + overlapping futures (take/skip an item)</li><li>"longest/shortest subsequence" (non-contiguous!)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Dynamic Programming (DP) master template and adapt the marked parts to this problem:</p><pre><code># Top-down: brute-force recursion + cache
-from functools import lru_cache
-@lru_cache(None)
-def dp(i):
-    if i &lt;= base: return base_value
-    return best(dp(smaller_1), dp(smaller_2), ...)   # the recurrence
+<p>Let $dp[i][j]$ be whether $s[0 \dots i-1]$ matches $p[0 \dots j-1]$.
+1. <strong>Exact match or '.' :</strong>
+   If $p[j - 1] == s[i - 1]$ or $p[j - 1] == \text{'.'}$, then $dp[i][j] = dp[i - 1][j - 1]$.
+2. <strong>Star '*' :</strong>
+   If $p[j - 1] == \text{'*'}$, look at the preceding element $p[j - 2]$:
+   - <strong>Zero occurrences:</strong> ignore the star and preceding char: $dp[i][j] = dp[i][j - 2]$.
+   - <strong>One or more occurrences:</strong> if $s[i - 1]$ matches $p[j - 2]$ (or $p[j-2] == \text{'.'}$, then $dp[i][j] = dp[i][j] \lor dp[i - 1][j]$.</p>
 
-# Bottom-up: same recurrence, loop order = dependency order
-dp = [0] * (n + 1)
-dp[0] = base_value
-for i in range(1, n + 1):
-    dp[i] = best(dp[i-1] + ..., dp[i-2] + ...)
-# often only last 2 values needed → two variables, O(1) space</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h2>🐢 Brute force vs optimal</h2>
+<p>Star wildcards create recursive trees of depth $O(2^{m+n})$. Memoizing subproblems on the $(m+1) \times (n+1)$ state grid solves it in $O(m \times n)$ time.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> For '*': <code>dp[i][j] = dp[i][j - 2]</code> (zero occurrences) or <code>(matches(s[i-1], p[j-2]) and dp[i - 1][j])</code> (consume one more char from s).</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def isMatch(s: str, p: str) -> bool:
+    m, n = len(s), len(p)
+    dp = [[False] * (n + 1) for _ in range(m + 1)]
+    dp[0][0] = True
+    
+    # Handle patterns like a*, a*b*, a*b*c* matching empty string s
+    for j in range(2, n + 1):
+        if p[j - 1] == '*':
+            dp[0][j] = dp[0][j - 2]
+            
+    for i in range(1, m + 1):
+        for j in range(1, n + 1):
+            if p[j - 1] == '*':
+                # Case 1: zero occurrences of preceding element
+                dp[i][j] = dp[i][j - 2]
+                # Case 2: one or more occurrences
+                if p[j - 2] == '.' or p[j - 2] == s[i - 1]:
+                    dp[i][j] = dp[i][j] or dp[i - 1][j]
+            elif p[j - 1] == '.' or p[j - 1] == s[i - 1]:
+                dp[i][j] = dp[i - 1][j - 1]
+                
+    return dp[m][n]
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(m \times n)$ — Grid filled cell by cell.<br>
+<strong>Space:</strong> $O(m \times n)$ — 2D DP matrix (can be optimized to $O(n)$).</p>
+
 
 <div class="pager"><a href="../problems/0401-lc1143-longest-common-subsequence.html"><span class="lbl">← Previous</span>#1143 Longest Common Subsequence</a><a href="../problems/0403-lc44-wildcard-matching.html" style="text-align:right"><span class="lbl">Next →</span>#44 Wildcard Matching</a></div>
 </div>

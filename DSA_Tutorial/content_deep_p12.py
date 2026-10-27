@@ -1070,4 +1070,970 @@ Therefore, the number of square submatrices with bottom-right corner at $(i, j)$
 <p><strong>Time:</strong> $O(m \\times n)$ — Single pass in place.<br>
 <strong>Space:</strong> $O(1)$ — Modified in place (or $O(n)$ if matrix immutable).</p>
 ''',
+
+97: '''<h2>🧭 How to think about it</h2>
+<p>Given strings <code>s1</code>, <code>s2</code>, and <code>s3</code>, determine whether <code>s3</code> is formed by an interleaving of <code>s1</code> and <code>s2</code>.</p>
+
+<p>First, check the lengths: if $\\text{len}(s1) + \\text{len}(s2) \ne \\text{len}(s3)$, return <code>False</code> immediately.
+Let $dp[i][j]$ be a boolean indicating whether the prefix $s3[0 \\dots i+j-1]$ can be formed by interleaving $s1[0 \\dots i-1]$ and $s2[0 \\dots j-1]$.</p>
+
+<p>At position $(i, j)$ corresponding to character $s3[i + j - 1]$:
+1. If $s1[i - 1] == s3[i + j - 1]$ and $dp[i - 1][j]$ is true, then $dp[i][j] = \\text{True}$.
+2. If $s2[j - 1] == s3[i + j - 1]$ and $dp[i][j - 1]$ is true, then $dp[i][j] = \\text{True}$.</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Naive recursion explores branching paths in $O(2^{m+n})$. Dynamic programming caches intermediate prefixes in an $(m+1) \\times (n+1)$ table in $O(m \\times n)$ time and can be compressed to $O(n)$ space.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Rolling 1D array of size $n+1$: <code>dp[j] = (dp[j] and s1[i-1] == s3[i+j-1]) or (dp[j-1] and s2[j-1] == s3[i+j-1])</code>.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def isInterleave(s1: str, s2: str, s3: str) -> bool:
+    m, n, l = len(s1), len(s2), len(s3)
+    if m + n != l:
+        return False
+        
+    dp = [False] * (n + 1)
+    dp[0] = True
+    
+    # Base row: using only s2
+    for j in range(1, n + 1):
+        dp[j] = dp[j - 1] and s2[j - 1] == s3[j - 1]
+        
+    for i in range(1, m + 1):
+        dp[0] = dp[0] and s1[i - 1] == s3[i - 1]
+        for j in range(1, n + 1):
+            char_s3 = s3[i + j - 1]
+            from_s1 = dp[j] and s1[i - 1] == char_s3
+            from_s2 = dp[j - 1] and s2[j - 1] == char_s3
+            dp[j] = from_s1 or from_s2
+            
+    return dp[n]
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(m \\times n)$ where $m = \\text{len}(s1), n = \\text{len}(s2)$.<br>
+<strong>Space:</strong> $O(n)$ — Rolling 1D boolean array.</p>
+''',
+115: '''<h2>🧭 How to think about it</h2>
+<p>Given two strings <code>s</code> and <code>t</code>, return the number of distinct subsequences of <code>s</code> which equals <code>t</code>.</p>
+
+<p>Let $dp[i][j]$ be the number of distinct subsequences of $s[0 \\dots i-1]$ that equal $t[0 \\dots j-1]$.
+- If $s[i - 1] == t[j - 1]$, we have two choices:
+  1. <strong>Match this character:</strong> add $dp[i - 1][j - 1]$ (match $s[i-1]$ with $t[j-1]$).
+  2. <strong>Skip this character:</strong> add $dp[i - 1][j]$ (look for $t[0 \\dots j-1]$ earlier in $s$).
+  $$dp[i][j] = dp[i - 1][j - 1] + dp[i - 1][j]$$
+- If $s[i - 1] \ne t[j - 1]$, we cannot match, so:
+  $$dp[i][j] = dp[i - 1][j]$$</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Generating all $2^{|s|}$ subsequences is impossibly slow. 2D DP computes the answer in $O(|s| \\times |t|)$ time. Traversing <code>j</code> backwards optimizes space to $O(|t|)$!</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> 1D array backwards: if $s[i-1] == t[j-1]$, <code>dp[j] += dp[j - 1]</code> with base case <code>dp[0] = 1</code> (empty string $t$ has 1 subsequence in any prefix of $s$).</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def numDistinct(s: str, t: str) -> int:
+    m, n = len(s), len(t)
+    if m < n:
+        return 0
+        
+    dp = [0] * (n + 1)
+    dp[0] = 1
+    
+    for char_s in s:
+        for j in range(n, 0, -1):
+            if char_s == t[j - 1]:
+                dp[j] += dp[j - 1]
+                
+    return dp[n]
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(m \\times n)$ — Nested string traversal.<br>
+<strong>Space:</strong> $O(n)$ — 1D space traversing right-to-left.</p>
+''',
+583: '''<h2>🧭 How to think about it</h2>
+<p>Given two strings <code>word1</code> and <code>word2</code>, return the minimum number of steps required to make <code>word1</code> and <code>word2</code> the same. In one step, you can delete exactly one character in either string.</p>
+
+<p>To make both strings equal with minimum deletions, we should preserve the <strong>Longest Common Subsequence (LCS)</strong> of the two strings!
+Let $L = \\text{LCS}(word1, word2)$.
+Every character not in the LCS must be deleted.
+$$\\text{Min Deletions} = (\\text{len}(word1) - L) + (\\text{len}(word2) - L) = \\text{len}(word1) + \\text{len}(word2) - 2L$$</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Computing all common subsequences takes exponential time. Standard 2D LCS DP runs in $O(m \\times n)$ time and $O(n)$ space.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Min deletions $= m + n - 2 \\times \\text{LCS}(s1, s2)$. Reduces directly to Longest Common Subsequence!</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def minDistance(word1: str, word2: str) -> int:
+    m, n = len(word1), len(word2)
+    dp = [0] * (n + 1)
+    
+    for i in range(1, m + 1):
+        prev_diag = 0
+        for j in range(1, n + 1):
+            temp = dp[j]
+            if word1[i - 1] == word2[j - 1]:
+                dp[j] = prev_diag + 1
+            else:
+                dp[j] = max(dp[j], dp[j - 1])
+            prev_diag = temp
+            
+    lcs = dp[n]
+    return m + n - 2 * lcs
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(m \\times n)$ — Standard LCS calculation.<br>
+<strong>Space:</strong> $O(n)$ — 1D rolling array.</p>
+''',
+10: '''<h2>🧭 How to think about it</h2>
+<p>Given an input string <code>s</code> and a pattern <code>p</code>, implement regular expression matching with support for <code>'.'</code> and <code>'*'</code>:
+- <code>'.'</code> Matches any single character.
+- <code>'*'</code> Matches zero or more of the preceding element.</p>
+
+<p>Let $dp[i][j]$ be whether $s[0 \\dots i-1]$ matches $p[0 \\dots j-1]$.
+1. <strong>Exact match or '.' :</strong>
+   If $p[j - 1] == s[i - 1]$ or $p[j - 1] == \\text{'.'}$, then $dp[i][j] = dp[i - 1][j - 1]$.
+2. <strong>Star '*' :</strong>
+   If $p[j - 1] == \\text{'*'}$, look at the preceding element $p[j - 2]$:
+   - <strong>Zero occurrences:</strong> ignore the star and preceding char: $dp[i][j] = dp[i][j - 2]$.
+   - <strong>One or more occurrences:</strong> if $s[i - 1]$ matches $p[j - 2]$ (or $p[j-2] == \\text{'.'}$, then $dp[i][j] = dp[i][j] \\lor dp[i - 1][j]$.</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Star wildcards create recursive trees of depth $O(2^{m+n})$. Memoizing subproblems on the $(m+1) \\times (n+1)$ state grid solves it in $O(m \\times n)$ time.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> For '*': <code>dp[i][j] = dp[i][j - 2]</code> (zero occurrences) or <code>(matches(s[i-1], p[j-2]) and dp[i - 1][j])</code> (consume one more char from s).</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def isMatch(s: str, p: str) -> bool:
+    m, n = len(s), len(p)
+    dp = [[False] * (n + 1) for _ in range(m + 1)]
+    dp[0][0] = True
+    
+    # Handle patterns like a*, a*b*, a*b*c* matching empty string s
+    for j in range(2, n + 1):
+        if p[j - 1] == '*':
+            dp[0][j] = dp[0][j - 2]
+            
+    for i in range(1, m + 1):
+        for j in range(1, n + 1):
+            if p[j - 1] == '*':
+                # Case 1: zero occurrences of preceding element
+                dp[i][j] = dp[i][j - 2]
+                # Case 2: one or more occurrences
+                if p[j - 2] == '.' or p[j - 2] == s[i - 1]:
+                    dp[i][j] = dp[i][j] or dp[i - 1][j]
+            elif p[j - 1] == '.' or p[j - 1] == s[i - 1]:
+                dp[i][j] = dp[i - 1][j - 1]
+                
+    return dp[m][n]
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(m \\times n)$ — Grid filled cell by cell.<br>
+<strong>Space:</strong> $O(m \\times n)$ — 2D DP matrix (can be optimized to $O(n)$).</p>
+''',
+44: '''<h2>🧭 How to think about it</h2>
+<p>Given an input string <code>s</code> and a pattern <code>p</code>, implement wildcard pattern matching with support for <code>'?'</code> and <code>'*'</code>:
+- <code>'?'</code> Matches any single character.
+- <code>'*'</code> Matches any sequence of characters (including the empty sequence).</p>
+
+<p>Notice the critical difference from Regex (LC 10): in Wildcard, <code>'*'</code> stands by itself and matches any sequence, without needing a preceding character!
+- If $p[j - 1] == \\text{'?'}$ or $p[j - 1] == s[i - 1]$: $dp[i][j] = dp[i - 1][j - 1]$.
+- If $p[j - 1] == \\text{'*'}'$: $dp[i][j] = dp[i][j - 1] \\lor dp[i - 1][j]$
+  - $dp[i][j - 1]$ means '*' matches empty string.
+  - $dp[i - 1][j]$ means '*' matches at least one character (consumes $s[i-1]$).</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>2D DP takes $O(m \\times n)$ time. Alternatively, a greedy two-pointer approach tracking the last seen '*' and match index runs in $O(m)$ average time with $O(1)$ space!</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Greedy two-pointer: record <code>star_idx</code> and <code>match_idx</code>. When mismatch occurs, backtrack to <code>star_idx</code>, expand match length by 1, and resume.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def isMatch(s: str, p: str) -> bool:
+    s_idx, p_idx = 0, 0
+    star_idx = -1
+    match_idx = 0
+    
+    while s_idx < len(s):
+        # 1. Characters match or pattern has '?'
+        if p_idx < len(p) and (p[p_idx] == '?' or p[p_idx] == s[s_idx]):
+            s_idx += 1
+            p_idx += 1
+        # 2. Pattern has '*'
+        elif p_idx < len(p) and p[p_idx] == '*':
+            star_idx = p_idx
+            match_idx = s_idx
+            p_idx += 1
+        # 3. Last pattern char was '*' - backtrack and match one more char in s
+        elif star_idx != -1:
+            p_idx = star_idx + 1
+            match_idx += 1
+            s_idx = match_idx
+        # 4. Mismatch and no '*' to fall back on
+        else:
+            return False
+            
+    # Check remaining chars in pattern (must all be '*')
+    while p_idx < len(p) and p[p_idx] == '*':
+        p_idx += 1
+        
+    return p_idx == len(p)
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(m)$ average, $O(m \\times n)$ worst case (e.g. <code>s="aaaa", p="*a"</code>).<br>
+<strong>Space:</strong> $O(1)$ — Only a few pointer variables.</p>
+''',
+87: '''<h2>🧭 How to think about it</h2>
+<p>We can scramble a string <code>s</code> to get a string <code>t</code> using the following algorithm:
+1. If the length of the string is 1, stop.
+2. Split string into two non-empty substrings at any index.
+3. Randomly choose whether to swap the two substrings or leave them as is.
+4. Apply the algorithm recursively on each substring.</p>
+
+<p>Given <code>s1</code> and <code>s2</code> of length $n$, can <code>s2</code> be formed by scrambling <code>s1</code>?</p>
+
+<p>For any split index $k \\in [1, n-1]$:
+1. <strong>Without Swap:</strong> $s1[0 \\dots k]$ scrambles to $s2[0 \\dots k]$ AND $s1[k \\dots n]$ scrambles to $s2[k \\dots n]$.
+2. <strong>With Swap:</strong> $s1[0 \\dots k]$ scrambles to $s2[n-k \\dots n]$ AND $s1[k \\dots n]$ scrambles to $s2[0 \\dots n-k]$.</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Top-down memoized recursion with a frequency character pruning check. If <code>sorted(s1) != sorted(s2)</code>, return <code>False</code> immediately without branching!</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Memoize <code>(s1, s2)</code>. Prune early using <code>Counter(s1) != Counter(s2)</code>. For each split $k$, check (no_swap) or (swap).</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">from collections import Counter
+from functools import lru_cache
+
+def isScramble(s1: str, s2: str) -> bool:
+    @lru_cache(maxsize=None)
+    def dfs(a: str, b: str) -> bool:
+        if a == b:
+            return True
+        if Counter(a) != Counter(b):
+            return False
+            
+        n = len(a)
+        for k in range(1, n):
+            # Case 1: no swap
+            if dfs(a[:k], b[:k]) and dfs(a[k:], b[k:]):
+                return True
+            # Case 2: swapped
+            if dfs(a[:k], b[n - k:]) and dfs(a[k:], b[:n - k]):
+                return True
+                
+        return False
+        
+    return dfs(s1, s2)
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n^4)$ states with memoization.<br>
+<strong>Space:</strong> $O(n^3)$ memoization cache and recursion stack.</p>
+''',
+95: '''<h2>🧭 How to think about it</h2>
+<p>Given an integer <code>n</code>, return all structurally unique BST's (binary search trees) which has exactly <code>n</code> nodes of unique values from <code>1</code> to <code>n</code>.</p>
+
+<p>Every number $i \\in [1, n]$ can serve as the root node.
+Because of BST properties:
+- All values $< i$ (i.e. $[1 \\dots i-1]$) must go into the <strong>left subtree</strong>.
+- All values $> i$ (i.e. $[i+1 \\dots n]$) must go into the <strong>right subtree</strong>.</p>
+<p>Use divide and conquer: generate all possible left subtrees for $[start, i-1]$ and all possible right subtrees for $[i+1, end]$, then form Cartesian product combinations with root $i$.</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>The total number of structurally unique BSTs is the $n$-th Catalan number $C_n = \\frac{1}{n+1}\\binom{2n}{n}$. Memoizing intervals <code>(start, end)</code> prevents re-generating identical subtrees.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> <code>generate(start, end)</code>: for root $i \\in [start, end]$, Cartesian product of <code>left_trees</code> and <code>right_trees</code> attached to <code>TreeNode(i)</code>.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+def generateTrees(n: int) -> list[TreeNode]:
+    if n == 0:
+        return []
+        
+    memo = {}
+    
+    def build(start: int, end: int) -> list[TreeNode]:
+        if start > end:
+            return [None]
+        if (start, end) in memo:
+            return memo[(start, end)]
+            
+        all_trees = []
+        for root_val in range(start, end + 1):
+            left_trees = build(start, root_val - 1)
+            right_trees = build(root_val + 1, end)
+            
+            for l in left_trees:
+                for r in right_trees:
+                    root = TreeNode(root_val, l, r)
+                    all_trees.append(root)
+                    
+        memo[(start, end)] = all_trees
+        return all_trees
+        
+    return build(1, n)
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(4^n / n^{3/2})$ — Governed by Catalan number generation.<br>
+<strong>Space:</strong> $O(4^n / n^{3/2})$ — Space to store all unique tree structures.</p>
+''',
+96: '''<h2>🧭 How to think about it</h2>
+<p>Given an integer <code>n</code>, return the number of structurally unique BST's (binary search trees) which has exactly <code>n</code> nodes of unique values from <code>1</code> to <code>n</code>.</p>
+
+<p>Let $G(n)$ be the number of unique BSTs for sequence of length $n$.
+For each root $i \\in [1, n]$, there are $i - 1$ nodes in the left subtree and $n - i$ nodes in the right subtree:
+$$G(n) = \\sum_{i=1}^n G(i - 1) \\times G(n - i)$$
+with base cases $G(0) = 1, G(1) = 1$. This is the mathematical recurrence for <strong>Catalan Numbers</strong>!</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>1D DP tabulates $G(0) \\dots G(n)$ in $O(n^2)$ time. Alternatively, Catalan closed form $C_n = \\frac{1}{n+1}\\binom{2n}{n} = \\frac{(2n)!}{(n+1)!n!}$ computes in $O(n)$ time and $O(1)$ space.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Closed-form iterative Catalan computation: $C_{i} = C_{i-1} \\times \\frac{2(2i - 1)}{i + 1}$ computes the exact answer in $O(n)$ time!</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def numTrees(n: int) -> int:
+    """
+    Computes nth Catalan number in O(n) time and O(1) space.
+    """
+    c = 1
+    for i in range(1, n + 1):
+        c = c * 2 * (2 * i - 1) // (i + 1)
+    return c
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n)$ — Single linear mathematical iteration.<br>
+<strong>Space:</strong> $O(1)$ — Single scalar accumulator.</p>
+''',
+241: '''<h2>🧭 How to think about it</h2>
+<p>Given a string <code>expression</code> of numbers and operators, return all possible results from computing all the different possible ways to group numbers and operators (with parentheses).</p>
+
+<p>This is divide and conquer / Catalan structure:
+Every operator (<code>+</code>, <code>-</code>, <code>*</code>) splits the expression into a left subexpression and a right subexpression:
+$$\\text{diffWaysToCompute}(\\text{left}) \\quad \\text{op} \\quad \\text{diffWaysToCompute}(\\text{right})$$
+Evaluate Cartesian product of all results from left and right operands.</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Memoizing on the string slice <code>memo[expression]</code> prevents re-evaluating identical subexpressions.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> For each operator at index $i$: split into <code>expr[:i]</code> and <code>expr[i+1:]</code>, recurse with memoization, and combine pairwise results.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def diffWaysToCompute(expression: str) -> list[int]:
+    memo = {}
+    
+    def dfs(expr: str) -> list[int]:
+        if expr in memo:
+            return memo[expr]
+            
+        res = []
+        for i, ch in enumerate(expr):
+            if ch in '+-*':
+                left_results = dfs(expr[:i])
+                right_results = dfs(expr[i + 1:])
+                
+                for l in left_results:
+                    for r in right_results:
+                        if ch == '+':
+                            res.append(l + r)
+                        elif ch == '-':
+                            res.append(l - r)
+                        elif ch == '*':
+                            res.append(l * r)
+                            
+        # Base case: pure number
+        if not res:
+            res.append(int(expr))
+            
+        memo[expr] = res
+        return res
+        
+    return dfs(expression)
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(4^n / \\sqrt{n})$ — Bound by Catalan number of parenthesizations.<br>
+<strong>Space:</strong> $O(4^n / \\sqrt{n})$ — Memoization dictionary storing all subexpression evaluation lists.</p>
+''',
+312: '''<h2>🧭 How to think about it</h2>
+<p>You are given <code>n</code> balloons, indexed from <code>0</code> to <code>n - 1</code>. Each balloon is painted with a number on it represented by an array <code>nums</code>. You are asked to burst all the balloons. If you burst balloon <code>i</code> you will get <code>nums[i - 1] * nums[i] * nums[i + 1]</code> coins. Return the maximum coins you can collect.</p>
+
+<p>Pad boundaries with virtual balloons: <code>nums = [1] + nums + [1]</code>.
+If you think about which balloon to burst <em>first</em>, the left and right subproblems become coupled and dependent because bursting a balloon changes the neighbors for subsequent pops!</p>
+
+<p><strong>The Reverse Trick:</strong> Think about which balloon is burst <strong>LAST</strong> in the interval $(left, right)$!
+If balloon $k$ ($left < k < right$) is the last balloon burst in interval $(left, right)$, then balloons $left$ and $right$ are guaranteed to still be present right next to $k$:
+$$dp[l][r] = \\max_{l < k < r} (dp[l][k] + dp[k][r] + nums[l] \\times nums[k] \\times nums[r])$$
+Now the two subproblems $(l, k)$ and $(k, r)$ are completely independent!</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Thinking forward creates intractable dependencies. Thinking backwards (last balloon to pop) yields clean <strong>Interval DP</strong> with states $O(n^2)$ and transition $O(n)$, running in $O(n^3)$ time.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Reverse your thinking: choose the <strong>last</strong> balloon $k$ to burst in $(l, r)$. Coins gained $= nums[l] \\times nums[k] \\times nums[r] + dp[l][k] + dp[k][r]$.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def maxCoins(nums: list[int]) -> int:
+    padded = [1] + nums + [1]
+    n = len(padded)
+    dp = [[0] * n for _ in range(n)]
+    
+    # length of interval from 2 (no balloons inside) to n - 1
+    for length in range(2, n):
+        for left in range(0, n - length):
+            right = left + length
+            for k in range(left + 1, right):
+                coins = padded[left] * padded[k] * padded[right] + dp[left][k] + dp[k][right]
+                if coins > dp[left][right]:
+                    dp[left][right] = coins
+                    
+    return dp[0][n - 1]
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n^3)$ — Lengths $2 \\dots n$, left bounds $O(n)$, split points $k \\in (l, r)$.<br>
+<strong>Space:</strong> $O(n^2)$ — 2D table for interval $(left, right)$.</p>
+''',
+546: '''<h2>🧭 How to think about it</h2>
+<p>You are given several boxes with different colors represented by positive integers <code>boxes</code>. You may experience several rounds to remove boxes until there is no box left. Each time you can choose some continuous boxes with the same color (i.e. length <code>k >= 1</code>), remove them and get <code>k * k</code> points. Return the maximum points you can get.</p>
+
+<p>This is one of the most famous 3D Interval DP problems in competitive programming!
+A standard 2D interval $dp[l][r]$ is insufficient because boxes to the left of $l$ with the same color as $boxes[l]$ can be accumulated and merged together after clearing intermediate boxes!</p>
+
+<p><strong>3D State Formulation:</strong>
+Let $dp[l][r][k]$ be the maximum score for subarray $boxes[l \\dots r]$ given that there are already $k$ boxes adjacent to $boxes[l]$ on the left with the same color $boxes[l]$!
+1. <strong>Option 1:</strong> Remove $boxes[l]$ together with the $k$ accumulated identical boxes:
+   $$\\text{gain} = (k + 1)^2 + dp[l + 1][r][0]$$
+2. <strong>Option 2:</strong> Keep $boxes[l]$ and the $k$ boxes, find another box $m \\in [l+1, r]$ where $boxes[m] == boxes[l]$, clear the intermediate segment $boxes[l+1 \\dots m-1]$, and merge:
+   $$\\text{gain} = dp[l + 1][m - 1][0] + dp[m][r][k + 1]$$</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Brute force search is factorial. 3D memoization bounds distinct subproblems to $O(n^4)$ states and transitions, executing smoothly within typical constraints ($n \\le 100$).</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> State includes $k$: <code>dfs(l, r, k)</code> = max score on <code>boxes[l..r]</code> with $k$ matching boxes attached to <code>boxes[l]</code> from the left.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">from functools import lru_cache
+
+def removeBoxes(boxes: list[int]) -> int:
+    @lru_cache(maxsize=None)
+    def dfs(l: int, r: int, k: int) -> int:
+        if l > r:
+            return 0
+            
+        # Optimization: group consecutive matching boxes at the start
+        while l + 1 <= r and boxes[l] == boxes[l + 1]:
+            l += 1
+            k += 1
+            
+        # Option 1: burst boxes[l] and the k accumulated identical boxes
+        res = (k + 1) * (k + 1) + dfs(l + 1, r, 0)
+        
+        # Option 2: find another matching box m in (l+1..r)
+        for m in range(l + 1, r + 1):
+            if boxes[m] == boxes[l]:
+                res = max(res, dfs(l + 1, m - 1, 0) + dfs(m, r, k + 1))
+                
+        return res
+        
+    return dfs(0, len(boxes) - 1, 0)
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n^4)$ — $n^3$ states, each taking $O(n)$ transition scan.<br>
+<strong>Space:</strong> $O(n^3)$ — 3D memoization cache.</p>
+''',
+
+5: '''<h2>🧭 How to think about it</h2>
+<p>Given a string <code>s</code>, return the longest palindromic substring in <code>s</code>.</p>
+
+<p>Every palindrome mirrors around its center. A string of length $n$ has exactly $2n - 1$ potential centers:
+1. $n$ odd-length centers: centered at character $s[i]$ ($i \\in [0, n-1]$).
+2. $n - 1$ even-length centers: centered between $s[i]$ and $s[i+1]$ ($i \\in [0, n-2]$).</p>
+<p>Expanding outward from each center until characters mismatch finds the longest palindrome in $O(n^2)$ time with $O(1)$ space. For $O(n)$ linear time, Manacher's Algorithm mirrors palindromic lengths using previously computed boundaries.</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Testing all $O(n^2)$ substrings for palindromicity takes $O(n^3)$ time. Expand-around-center reduces time to $O(n^2)$ and space to $O(1)$ without allocating any DP table!</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Expand outward from $2n-1$ centers. For center $(l, r)$, decrement $l$ and increment $r$ while $s[l] == s[r]$. Track the maximum $(r - l - 1)$ interval.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def longestPalindrome(s: str) -> str:
+    if not s or len(s) == 1:
+        return s
+        
+    start, max_len = 0, 1
+    
+    def expand(l: int, r: int):
+        nonlocal start, max_len
+        while l >= 0 and r < len(s) and s[l] == s[r]:
+            curr_len = r - l + 1
+            if curr_len > max_len:
+                max_len = curr_len
+                start = l
+            l -= 1
+            r += 1
+            
+    for i in range(len(s)):
+        expand(i, i)       # Odd length palindrome
+        expand(i, i + 1)   # Even length palindrome
+        
+    return s[start : start + max_len]
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n^2)$ — $2n - 1$ centers, expanding at most $n$ times.<br>
+<strong>Space:</strong> $O(1)$ — Constant scalar variables (pointers).</p>
+''',
+647: '''<h2>🧭 How to think about it</h2>
+<p>Given a string <code>s</code>, return the number of palindromic substrings in it.</p>
+
+<p>A substring is a palindrome if it reads the same forward and backward. Like <strong>LC 5</strong>, every palindromic substring must have a center.
+Expanding around each of the $2n - 1$ centers, every successful match $s[l] == s[r]$ contributes exactly <strong>one</strong> valid palindrome!</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Brute force generation of all substrings takes $O(n^3)$. Expand-around-center checks all centers in $O(n^2)$ time and $O(1)$ auxiliary space.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> As you expand from center $(l, r)$, increment <code>count += 1</code> on every matching step <code>s[l] == s[r]</code>.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def countSubstrings(s: str) -> int:
+    n = len(s)
+    total = 0
+    
+    def count_palindromes(l: int, r: int) -> int:
+        c = 0
+        while l >= 0 and r < n and s[l] == s[r]:
+            c += 1
+            l -= 1
+            r += 1
+        return c
+        
+    for i in range(n):
+        total += count_palindromes(i, i)     # Odd centers
+        total += count_palindromes(i, i + 1) # Even centers
+        
+    return total
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n^2)$ — Each expansion runs at most $O(n)$.<br>
+<strong>Space:</strong> $O(1)$ — Only count accumulators.</p>
+''',
+132: '''<h2>🧭 How to think about it</h2>
+<p>Given a string <code>s</code>, partition <code>s</code> such that every substring of the partition is a palindrome. Return the minimum cuts needed for a palindrome partitioning of <code>s</code>.</p>
+
+<p>Let $cuts[i]$ be the minimum cuts needed for prefix $s[0 \\dots i]$.
+To find $cuts[i]$, consider all possible palindromic suffixes $s[j \\dots i]$ ($0 \\le j \\le i$):
+- If $s[0 \\dots i]$ is already a palindrome ($j = 0$), then $cuts[i] = 0$.
+- If $s[j \\dots i]$ is a palindrome for $j > 0$, then $cuts[i] = \\min(cuts[i], \\; cuts[j - 1] + 1)$.</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Precomputing or simultaneously updating palindrome intervals with expand-around-center optimizes the solution to $O(n^2)$ time and $O(n)$ space.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Maintain <code>cuts[i] = i</code> (worst case: cut every char). While expanding palindrome $(l, r)$, transition <code>cuts[r] = min(cuts[r], (cuts[l - 1] + 1) if l > 0 else 0)</code>.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def minCut(s: str) -> int:
+    n = len(s)
+    cuts = list(range(n)) # cuts[i] initialized to i (max possible cuts)
+    
+    for mid in range(n):
+        # Odd-length palindromes centered at mid
+        l, r = mid, mid
+        while l >= 0 and r < n and s[l] == s[r]:
+            new_cut = 0 if l == 0 else cuts[l - 1] + 1
+            cuts[r] = min(cuts[r], new_cut)
+            l -= 1
+            r += 1
+            
+        # Even-length palindromes centered between mid and mid + 1
+        l, r = mid, mid + 1
+        while l >= 0 and r < n and s[l] == s[r]:
+            new_cut = 0 if l == 0 else cuts[l - 1] + 1
+            cuts[r] = min(cuts[r], new_cut)
+            l -= 1
+            r += 1
+            
+    return cuts[-1]
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n^2)$ — Each character center expanded in $O(n)$ time.<br>
+<strong>Space:</strong> $O(n)$ — 1D cuts array of length $n$.</p>
+''',
+1312: '''<h2>🧭 How to think about it</h2>
+<p>Given a string <code>s</code>. In one step you can insert any character at any position of the string. Return the minimum number of steps to make <code>s</code> a palindrome.</p>
+
+<p>Any character that is already part of the <strong>Longest Palindromic Subsequence (LPS)</strong> does NOT need to be paired by insertion—it is already mirrored!
+Every character outside the LPS requires exactly one matching insertion on the opposite side.
+$$\\text{Min Insertions} = \\text{len}(s) - \\text{LPS}(s)$$
+Recall: $\\text{LPS}(s) = \\text{LCS}(s, \\text{reverse}(s))$!</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>This problem reduces directly to finding the Longest Palindromic Subsequence (LC 516) or LCS with the reversed string in $O(n^2)$ time and $O(n)$ space.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Min Insertions $= n - \\text{LPS}(s)$. Compute LPS bottom-up on intervals $[l, r]$ or via LCS with reversed string.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def minInsertions(s: str) -> int:
+    n = len(s)
+    dp = [0] * n
+    
+    # Bottom-up interval DP for Longest Palindromic Subsequence
+    for l in range(n - 1, -1, -1):
+        prev_diag = 0
+        dp[l] = 1 # Single character is palindrome of length 1
+        for r in range(l + 1, n):
+            temp = dp[r]
+            if s[l] == s[r]:
+                dp[r] = prev_diag + 2
+            else:
+                dp[r] = max(dp[r], dp[r - 1])
+            prev_diag = temp
+            
+    lps = dp[n - 1]
+    return n - lps
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n^2)$ — Nested interval loops.<br>
+<strong>Space:</strong> $O(n)$ — 1D rolling array for LPS.</p>
+''',
+354: '''<h2>🧭 How to think about it</h2>
+<p>You are given a 2D array of integers <code>envelopes</code> where <code>envelopes[i] = [w_i, h_i]</code> represents the width and the height of an envelope. One envelope can fit into another if and only if both the width and height of one envelope are strictly greater than the other envelope. Return the maximum number of envelopes you can Russian doll (put inside one another).</p>
+
+<p>This is a 2D variation of <strong>Longest Increasing Subsequence (LIS)</strong>.
+If we sort envelopes by width ascending, we reduce one dimension!
+<strong>The Clever Sorting Trick:</strong>
+- Sort width <strong>ascending</strong>: <code>w1 < w2</code> ensures width is non-decreasing.
+- If widths are equal, sort height <strong>descending</strong>: <code>h1 > h2</code>!</p>
+<p>Why descending on height for identical widths? Because an envelope cannot contain another envelope of the <em>same</em> width! By sorting height descending, when we run standard 1D LIS on heights, we can never pick two envelopes with the same width!</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Standard $O(n^2)$ LIS DP gets TLE ($n = 10^5$). With the sorting trick, binary search LIS (Patience Sorting / <code>bisect_left</code>) solves it in $O(n \\log n)$ time!</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Sort by <code>(width, -height)</code>, then extract heights and run $O(n \\log n)$ Patience Sorting LIS with binary search.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">import bisect
+
+def maxEnvelopes(envelopes: list[list[int]]) -> int:
+    # Sort width ascending, height descending
+    envelopes.sort(key=lambda x: (x[0], -x[1]))
+    
+    # Run O(n log n) LIS on heights
+    tails = []
+    for _, h in envelopes:
+        idx = bisect.bisect_left(tails, h)
+        if idx == len(tails):
+            tails.append(h)
+        else:
+            tails[idx] = h
+            
+    return len(tails)
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n \\log n)$ — Sorting takes $O(n \\log n)$ and binary search LIS takes $O(n \\log n)$.<br>
+<strong>Space:</strong> $O(n)$ — <code>tails</code> array storing active increasing subsequence tails.</p>
+''',
+673: '''<h2>🧭 How to think about it</h2>
+<p>Given an integer array <code>nums</code>, return the number of longest increasing subsequences.</p>
+
+<p>We maintain two arrays:
+- $length[i]$: the length of the longest increasing subsequence ending at index $i$.
+- $count[i]$: the number of longest increasing subsequences of length $length[i]$ ending at index $i$.</p>
+
+<p>For each pair $j < i$ with $nums[j] < nums[i]$:
+1. If $length[j] + 1 > length[i]$: we found a strictly longer LIS! Set $length[i] = length[j] + 1$ and reset $count[i] = count[j]$.
+2. If $length[j] + 1 == length[i]$: we found another way to achieve this maximum length! Add $count[i] += count[j]$.</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>$O(n^2)$ DP tracks both length and counts simultaneously. At the end, find global max length $M = \\max(length)$ and sum all $count[i]$ where $length[i] == M$.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Two DP arrays: <code>length[i]</code> and <code>count[i]</code>. When <code>length[j] + 1 == length[i]</code>, accumulate <code>count[i] += count[j]</code>.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def findNumberOfLIS(nums: list[int]) -> int:
+    if not nums:
+        return 0
+    n = len(nums)
+    length = [1] * n
+    count = [1] * n
+    
+    for i in range(n):
+        for j in range(i):
+            if nums[j] < nums[i]:
+                if length[j] + 1 > length[i]:
+                    length[i] = length[j] + 1
+                    count[i] = count[j]
+                elif length[j] + 1 == length[i]:
+                    count[i] += count[j]
+                    
+    max_len = max(length)
+    return sum(c for l, c in zip(length, count) if l == max_len)
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n^2)$ — Nested loops over all pairs $(j, i)$.<br>
+<strong>Space:</strong> $O(n)$ — Two linear arrays <code>length</code> and <code>count</code>.</p>
+''',
+1027: '''<h2>🧭 How to think about it</h2>
+<p>Given an array <code>nums</code> of integers, return the length of the longest arithmetic subsequence in <code>nums</code>. A subsequence is arithmetic if $nums[i_{k+1}] - nums[i_k]$ is constant for all $k$.</p>
+
+<p>An arithmetic sequence is determined by its common difference $d = nums[i] - nums[j]$.
+Let $dp[i][d]$ be the length of the arithmetic subsequence ending at index $i$ with difference $d$.
+For each $j < i$:
+$$d = nums[i] - nums[j]$$
+$$dp[i][d] = dp[j].get(d, 1) + 1$$
+Global answer is $\\max_{i, d} dp[i][d]$.</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Using a list of hash maps $dp[i]$ where each map keys differences to subsequence lengths runs in $O(n^2)$ time and $O(n^2)$ space.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Maintain <code>dp[i][diff]</code> as the length of arithmetic subsequence ending at <code>i</code> with common difference <code>diff</code>. Transition: <code>dp[i][diff] = dp[j].get(diff, 1) + 1</code>.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def longestArithSeqLength(nums: list[int]) -> int:
+    n = len(nums)
+    dp = [{} for _ in range(n)]
+    max_len = 2
+    
+    for i in range(n):
+        for j in range(i):
+            diff = nums[i] - nums[j]
+            prev_len = dp[j].get(diff, 1)
+            curr_len = prev_len + 1
+            dp[i][diff] = curr_len
+            if curr_len > max_len:
+                max_len = curr_len
+                
+    return max_len
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n^2)$ — Double nested iteration over all index pairs $(j, i)$.<br>
+<strong>Space:</strong> $O(n^2)$ — Dictionary states across $n$ indices.</p>
+''',
+1187: '''<h2>🧭 How to think about it</h2>
+<p>Given two integer arrays <code>arr1</code> and <code>arr2</code>, return the minimum number of operations needed to make <code>arr1</code> strictly increasing. In one operation, you can choose any index in <code>arr1</code> and replace the value with any element from <code>arr2</code>. If not possible, return -1.</p>
+
+<p>Pre-sort and deduplicate <code>arr2</code> so we can use binary search (<code>bisect_right</code>) to find the smallest element strictly greater than a threshold.</p>
+<p>Let $dp$ be a dictionary mapping the current valid ending value to the minimum replacements used so far.
+For each element $x \\in arr1$:
+1. <strong>Keep $x$ (no operation):</strong> if $x > prev$, we can transition to $x$ with $ops$ operations.
+2. <strong>Replace $x$ with smallest valid element from $arr2$:</strong> find smallest $y \\in arr2$ with $y > prev$ using <code>bisect_right</code>. Transition to $y$ with $ops + 1$ operations.</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>DP state compression keeping only the minimum operations for each reachable value bounds state space to $O(n \\times \\min(m, n))$, executing within milliseconds.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Maintain map <code>dp[last_value] = min_ops</code>. For each position, greedily try either keeping <code>arr1[i]</code> or replacing it with the smallest strictly larger element in <code>arr2</code> via binary search.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">import bisect
+
+def makeArrayIncreasing(arr1: list[int], arr2: list[int]) -> int:
+    arr2 = sorted(set(arr2))
+    # dp maps: last_value_in_arr1 -> min_operations
+    dp = {-1: 0}
+    
+    for x in arr1:
+        new_dp = {}
+        for prev_val, ops in dp.items():
+            # Option 1: Keep x if strictly greater than prev_val
+            if x > prev_val:
+                if x not in new_dp or ops < new_dp[x]:
+                    new_dp[x] = ops
+                    
+            # Option 2: Replace x with smallest element in arr2 > prev_val
+            idx = bisect.bisect_right(arr2, prev_val)
+            if idx < len(arr2):
+                y = arr2[idx]
+                if y not in new_dp or ops + 1 < new_dp[y]:
+                    new_dp[y] = ops + 1
+                    
+        dp = new_dp
+        if not dp:
+            return -1
+            
+    return min(dp.values())
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n \\times \\min(n, m) \\log m)$ — At each index, binary search into sorted <code>arr2</code>.<br>
+<strong>Space:</strong> $O(\\min(n, m))$ — State map holding active branch endpoints.</p>
+''',
+1671: '''<h2>🧭 How to think about it</h2>
+<p>You may recall that an array <code>arr</code> is a mountain array if and only if:
+- $\\text{len}(arr) \\ge 3$
+- There exists some index $i$ ($0 < i < \\text{len}(arr) - 1$) such that $arr[0] < arr[1] < \\dots < arr[i]$ and $arr[i] > arr[i+1] > \\dots > arr[-1]$.</p>
+<p>Given an integer array <code>nums</code>, return the minimum number of elements to remove to make <code>nums</code> a mountain array.</p>
+
+<p>Minimizing removals is equivalent to <strong>maximizing the length of the mountain array</strong>!
+For every valid peak index $i$:
+$$\\text{Mountain Length} = LIS_{left}[i] + LIS_{right}[i] - 1$$
+where:
+- $LIS_{left}[i]$ is the Longest Increasing Subsequence in $nums[0 \\dots i]$ ending at $i$.
+- $LIS_{right}[i]$ is the Longest Decreasing Subsequence starting at $i$ (i.e. LIS in reversed array ending at $i$).</p>
+<p>A peak is valid only if $LIS_{left}[i] \\ge 2$ and $LIS_{right}[i] \\ge 2$ (must have at least one element strictly climbing up and one climbing down!).</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Compute $LIS_{left}$ and $LIS_{right}$ using $O(n \\log n)$ Patience Sorting. Maximize valid mountain length in $O(n \\log n)$ time total!</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Compute forward LIS and backward LIS in $O(n \\log n)$. For every peak with $left \\ge 2$ and $right \\ge 2$, removals $= n - (left + right - 1)$.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">import bisect
+
+def minimumMountainRemovals(nums: list[int]) -> int:
+    n = len(nums)
+    
+    # 1. Forward LIS ending at i
+    lis_left = [1] * n
+    tails = []
+    for i in range(n):
+        idx = bisect.bisect_left(tails, nums[i])
+        if idx == len(tails):
+            tails.append(nums[i])
+        else:
+            tails[idx] = nums[i]
+        lis_left[i] = idx + 1
+        
+    # 2. Backward LIS starting at i
+    lis_right = [1] * n
+    tails = []
+    for i in range(n - 1, -1, -1):
+        idx = bisect.bisect_left(tails, nums[i])
+        if idx == len(tails):
+            tails.append(nums[i])
+        else:
+            tails[idx] = nums[i]
+        lis_right[i] = idx + 1
+        
+    # 3. Find max mountain length
+    max_mountain = 0
+    for i in range(1, n - 1):
+        if lis_left[i] >= 2 and lis_right[i] >= 2:
+            max_mountain = max(max_mountain, lis_left[i] + lis_right[i] - 1)
+            
+    return n - max_mountain
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n \\log n)$ — Two binary search LIS passes.<br>
+<strong>Space:</strong> $O(n)$ — Arrays storing <code>lis_left</code> and <code>lis_right</code>.</p>
+''',
+2407: '''<h2>🧭 How to think about it</h2>
+<p>You are given an integer array <code>nums</code> and an integer <code>k</code>. Find the longest subsequence of <code>nums</code> that meets the following requirements:
+1. The subsequence is strictly increasing.
+2. The difference between adjacent elements in the subsequence is at most <code>k</code> (i.e. $nums[i+1] - nums[i] \\le k$).</p>
+
+<p>For each number $x \\in nums$, we can extend any previous subsequence ending at value $v \\in [\\max(1, x - k), x - 1]$.
+$$dp[x] = 1 + \\max_{v \\in [\\max(1, x - k), x - 1]} dp[v]$$
+This requires a dynamic point-update and range-maximum query over the value domain $[1, \\max(nums)]$!
+A <strong>Segment Tree</strong> or <strong>Fenwick Tree</strong> over the value range executes both query and update in $O(\\log M)$ time!</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Checking all previous values takes $O(n \\times k)$ or $O(n^2)$. Using a Segment Tree on value range $M = \\max(nums)$ solves it in $O(n \\log M)$ time!</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Segment tree over value domain $[1, M]$: query range $\\max$ on $[\\max(1, x-k), x-1]$, add 1, and update point $x$ with new max length.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">class SegmentTree:
+    def __init__(self, size):
+        self.n = size
+        self.tree = [0] * (4 * size)
+        
+    def query(self, node, start, end, l, r):
+        if r < start or end < l:
+            return 0
+        if l <= start and end <= r:
+            return self.tree[node]
+        mid = (start + end) // 2
+        p1 = self.query(2 * node, start, mid, l, r)
+        p2 = self.query(2 * node + 1, mid + 1, end, l, r)
+        return max(p1, p2)
+        
+    def update(self, node, start, end, idx, val):
+        if start == end:
+            self.tree[node] = max(self.tree[node], val)
+            return
+        mid = (start + end) // 2
+        if idx <= mid:
+            self.update(2 * node, start, mid, idx, val)
+        else:
+            self.update(2 * node + 1, mid + 1, end, idx, val)
+        self.tree[node] = max(self.tree[2 * node], self.tree[2 * node + 1])
+
+def lengthOfLIS(nums: list[int], k: int) -> int:
+    max_val = max(nums)
+    st = SegmentTree(max_val)
+    
+    for x in nums:
+        left_bound = max(1, x - k)
+        right_bound = x - 1
+        best_prev = 0
+        if left_bound <= right_bound:
+            best_prev = st.query(1, 1, max_val, left_bound, right_bound)
+        st.update(1, 1, max_val, x, best_prev + 1)
+        
+    return st.tree[1]
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n \\log M)$ where $M = \\max(nums)$. $n$ range queries and point updates.<br>
+<strong>Space:</strong> $O(M)$ — Segment tree nodes for value domain.</p>
+''',
 }

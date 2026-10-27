@@ -23,34 +23,69 @@
  › Subpattern 12.11: Longest Increasing Subsequence (LIS) · Problem 423 of 699</p>
 
 <h2>📋 The problem</h2><p>Longest strictly increasing subsequence where adjacent chosen values differ by at most k (DP over values with a max-segment-tree).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>You are given an integer array <code>nums</code> and an integer <code>k</code>. Find the longest subsequence of <code>nums</code> that meets the following requirements:
+1. The subsequence is strictly increasing.
+2. The difference between adjacent elements in the subsequence is at most <code>k</code> (i.e. $nums[i+1] - nums[i] \le k$).</p>
 
-<h2>Where this fits</h2>
-<p><strong>Longest Increasing Subsequence (LIS)</strong> — dp[i] = length of LIS ending at i; O(n²) basic, O(n log n) with patience-sort/binary search.</p>
+<p>For each number $x \in nums$, we can extend any previous subsequence ending at value $v \in [\max(1, x - k), x - 1]$.
+$$dp[x] = 1 + \max_{v \in [\max(1, x - k), x - 1]} dp[v]$$
+This requires a dynamic point-update and range-maximum query over the value domain $[1, \max(nums)]$!
+A <strong>Segment Tree</strong> or <strong>Fenwick Tree</strong> over the value range executes both query and update in $O(\log M)$ time!</p>
 
-<h2>Why this pattern?</h2><ul><li>"count the number of ways…"</li><li>"minimum/maximum cost/value to reach…"</li><li>choices at each step + overlapping futures (take/skip an item)</li><li>"longest/shortest subsequence" (non-contiguous!)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Dynamic Programming (DP) master template and adapt the marked parts to this problem:</p><pre><code># Top-down: brute-force recursion + cache
-from functools import lru_cache
-@lru_cache(None)
-def dp(i):
-    if i &lt;= base: return base_value
-    return best(dp(smaller_1), dp(smaller_2), ...)   # the recurrence
+<h2>🐢 Brute force vs optimal</h2>
+<p>Checking all previous values takes $O(n \times k)$ or $O(n^2)$. Using a Segment Tree on value range $M = \max(nums)$ solves it in $O(n \log M)$ time!</p>
 
-# Bottom-up: same recurrence, loop order = dependency order
-dp = [0] * (n + 1)
-dp[0] = base_value
-for i in range(1, n + 1):
-    dp[i] = best(dp[i-1] + ..., dp[i-2] + ...)
-# often only last 2 values needed → two variables, O(1) space</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<div class="insight">💡 <strong>Key insight:</strong> Segment tree over value domain $[1, M]$: query range $\max$ on $[\max(1, x-k), x-1]$, add 1, and update point $x$ with new max length.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">class SegmentTree:
+    def __init__(self, size):
+        self.n = size
+        self.tree = [0] * (4 * size)
+        
+    def query(self, node, start, end, l, r):
+        if r < start or end < l:
+            return 0
+        if l <= start and end <= r:
+            return self.tree[node]
+        mid = (start + end) // 2
+        p1 = self.query(2 * node, start, mid, l, r)
+        p2 = self.query(2 * node + 1, mid + 1, end, l, r)
+        return max(p1, p2)
+        
+    def update(self, node, start, end, idx, val):
+        if start == end:
+            self.tree[node] = max(self.tree[node], val)
+            return
+        mid = (start + end) // 2
+        if idx <= mid:
+            self.update(2 * node, start, mid, idx, val)
+        else:
+            self.update(2 * node + 1, mid + 1, end, idx, val)
+        self.tree[node] = max(self.tree[2 * node], self.tree[2 * node + 1])
+
+def lengthOfLIS(nums: list[int], k: int) -> int:
+    max_val = max(nums)
+    st = SegmentTree(max_val)
+    
+    for x in nums:
+        left_bound = max(1, x - k)
+        right_bound = x - 1
+        best_prev = 0
+        if left_bound <= right_bound:
+            best_prev = st.query(1, 1, max_val, left_bound, right_bound)
+        st.update(1, 1, max_val, x, best_prev + 1)
+        
+    return st.tree[1]
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n \log M)$ where $M = \max(nums)$. $n$ range queries and point updates.<br>
+<strong>Space:</strong> $O(M)$ — Segment tree nodes for value domain.</p>
+
 
 <div class="pager"><a href="../problems/0422-lc1671-minimum-number-of-removals-to-make-mountain-array.html"><span class="lbl">← Previous</span>#1671 Minimum Number of Removals to Make Mountain Array</a><a href="../problems/0424-lc5-longest-palindromic-substring.html" style="text-align:right"><span class="lbl">Next →</span>#5 Longest Palindromic Substring</a></div>
 </div>

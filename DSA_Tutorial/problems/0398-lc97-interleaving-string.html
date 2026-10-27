@@ -23,34 +23,52 @@
  › Subpattern 12.6: 2D Array / Longest Common Subsequence (LCS) · Problem 398 of 699</p>
 
 <h2>📋 The problem</h2><p>Decide whether string s3 can be formed by interleaving s1 and s2 while keeping each string's internal order.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given strings <code>s1</code>, <code>s2</code>, and <code>s3</code>, determine whether <code>s3</code> is formed by an interleaving of <code>s1</code> and <code>s2</code>.</p>
 
-<h2>Where this fits</h2>
-<p><strong>2D Array / Longest Common Subsequence (LCS)</strong> — dp[i][j] = LCS length of prefixes; +1 on match, max otherwise.</p>
+<p>First, check the lengths: if $\text{len}(s1) + \text{len}(s2) 
+e \text{len}(s3)$, return <code>False</code> immediately.
+Let $dp[i][j]$ be a boolean indicating whether the prefix $s3[0 \dots i+j-1]$ can be formed by interleaving $s1[0 \dots i-1]$ and $s2[0 \dots j-1]$.</p>
 
-<h2>Why this pattern?</h2><ul><li>"count the number of ways…"</li><li>"minimum/maximum cost/value to reach…"</li><li>choices at each step + overlapping futures (take/skip an item)</li><li>"longest/shortest subsequence" (non-contiguous!)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Dynamic Programming (DP) master template and adapt the marked parts to this problem:</p><pre><code># Top-down: brute-force recursion + cache
-from functools import lru_cache
-@lru_cache(None)
-def dp(i):
-    if i &lt;= base: return base_value
-    return best(dp(smaller_1), dp(smaller_2), ...)   # the recurrence
+<p>At position $(i, j)$ corresponding to character $s3[i + j - 1]$:
+1. If $s1[i - 1] == s3[i + j - 1]$ and $dp[i - 1][j]$ is true, then $dp[i][j] = \text{True}$.
+2. If $s2[j - 1] == s3[i + j - 1]$ and $dp[i][j - 1]$ is true, then $dp[i][j] = \text{True}$.</p>
 
-# Bottom-up: same recurrence, loop order = dependency order
-dp = [0] * (n + 1)
-dp[0] = base_value
-for i in range(1, n + 1):
-    dp[i] = best(dp[i-1] + ..., dp[i-2] + ...)
-# often only last 2 values needed → two variables, O(1) space</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h2>🐢 Brute force vs optimal</h2>
+<p>Naive recursion explores branching paths in $O(2^{m+n})$. Dynamic programming caches intermediate prefixes in an $(m+1) \times (n+1)$ table in $O(m \times n)$ time and can be compressed to $O(n)$ space.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Rolling 1D array of size $n+1$: <code>dp[j] = (dp[j] and s1[i-1] == s3[i+j-1]) or (dp[j-1] and s2[j-1] == s3[i+j-1])</code>.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def isInterleave(s1: str, s2: str, s3: str) -> bool:
+    m, n, l = len(s1), len(s2), len(s3)
+    if m + n != l:
+        return False
+        
+    dp = [False] * (n + 1)
+    dp[0] = True
+    
+    # Base row: using only s2
+    for j in range(1, n + 1):
+        dp[j] = dp[j - 1] and s2[j - 1] == s3[j - 1]
+        
+    for i in range(1, m + 1):
+        dp[0] = dp[0] and s1[i - 1] == s3[i - 1]
+        for j in range(1, n + 1):
+            char_s3 = s3[i + j - 1]
+            from_s1 = dp[j] and s1[i - 1] == char_s3
+            from_s2 = dp[j - 1] and s2[j - 1] == char_s3
+            dp[j] = from_s1 or from_s2
+            
+    return dp[n]
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(m \times n)$ where $m = \text{len}(s1), n = \text{len}(s2)$.<br>
+<strong>Space:</strong> $O(n)$ — Rolling 1D boolean array.</p>
+
 
 <div class="pager"><a href="../problems/0397-lc87-scramble-string.html"><span class="lbl">← Previous</span>#87 Scramble String</a><a href="../problems/0399-lc115-distinct-subsequences.html" style="text-align:right"><span class="lbl">Next →</span>#115 Distinct Subsequences</a></div>
 </div>

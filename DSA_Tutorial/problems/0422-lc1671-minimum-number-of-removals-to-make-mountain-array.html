@@ -23,34 +23,68 @@
  › Subpattern 12.11: Longest Increasing Subsequence (LIS) · Problem 422 of 699</p>
 
 <h2>📋 The problem</h2><p>Return the minimum removals so the array becomes a strict mountain (LIS from the left + LDS from the right, combined at peaks).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>You may recall that an array <code>arr</code> is a mountain array if and only if:
+- $\text{len}(arr) \ge 3$
+- There exists some index $i$ ($0 < i < \text{len}(arr) - 1$) such that $arr[0] < arr[1] < \dots < arr[i]$ and $arr[i] > arr[i+1] > \dots > arr[-1]$.</p>
+<p>Given an integer array <code>nums</code>, return the minimum number of elements to remove to make <code>nums</code> a mountain array.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Longest Increasing Subsequence (LIS)</strong> — dp[i] = length of LIS ending at i; O(n²) basic, O(n log n) with patience-sort/binary search.</p>
+<p>Minimizing removals is equivalent to <strong>maximizing the length of the mountain array</strong>!
+For every valid peak index $i$:
+$$\text{Mountain Length} = LIS_{left}[i] + LIS_{right}[i] - 1$$
+where:
+- $LIS_{left}[i]$ is the Longest Increasing Subsequence in $nums[0 \dots i]$ ending at $i$.
+- $LIS_{right}[i]$ is the Longest Decreasing Subsequence starting at $i$ (i.e. LIS in reversed array ending at $i$).</p>
+<p>A peak is valid only if $LIS_{left}[i] \ge 2$ and $LIS_{right}[i] \ge 2$ (must have at least one element strictly climbing up and one climbing down!).</p>
 
-<h2>Why this pattern?</h2><ul><li>"count the number of ways…"</li><li>"minimum/maximum cost/value to reach…"</li><li>choices at each step + overlapping futures (take/skip an item)</li><li>"longest/shortest subsequence" (non-contiguous!)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Dynamic Programming (DP) master template and adapt the marked parts to this problem:</p><pre><code># Top-down: brute-force recursion + cache
-from functools import lru_cache
-@lru_cache(None)
-def dp(i):
-    if i &lt;= base: return base_value
-    return best(dp(smaller_1), dp(smaller_2), ...)   # the recurrence
+<h2>🐢 Brute force vs optimal</h2>
+<p>Compute $LIS_{left}$ and $LIS_{right}$ using $O(n \log n)$ Patience Sorting. Maximize valid mountain length in $O(n \log n)$ time total!</p>
 
-# Bottom-up: same recurrence, loop order = dependency order
-dp = [0] * (n + 1)
-dp[0] = base_value
-for i in range(1, n + 1):
-    dp[i] = best(dp[i-1] + ..., dp[i-2] + ...)
-# often only last 2 values needed → two variables, O(1) space</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<div class="insight">💡 <strong>Key insight:</strong> Compute forward LIS and backward LIS in $O(n \log n)$. For every peak with $left \ge 2$ and $right \ge 2$, removals $= n - (left + right - 1)$.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">import bisect
+
+def minimumMountainRemovals(nums: list[int]) -> int:
+    n = len(nums)
+    
+    # 1. Forward LIS ending at i
+    lis_left = [1] * n
+    tails = []
+    for i in range(n):
+        idx = bisect.bisect_left(tails, nums[i])
+        if idx == len(tails):
+            tails.append(nums[i])
+        else:
+            tails[idx] = nums[i]
+        lis_left[i] = idx + 1
+        
+    # 2. Backward LIS starting at i
+    lis_right = [1] * n
+    tails = []
+    for i in range(n - 1, -1, -1):
+        idx = bisect.bisect_left(tails, nums[i])
+        if idx == len(tails):
+            tails.append(nums[i])
+        else:
+            tails[idx] = nums[i]
+        lis_right[i] = idx + 1
+        
+    # 3. Find max mountain length
+    max_mountain = 0
+    for i in range(1, n - 1):
+        if lis_left[i] >= 2 and lis_right[i] >= 2:
+            max_mountain = max(max_mountain, lis_left[i] + lis_right[i] - 1)
+            
+    return n - max_mountain
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n \log n)$ — Two binary search LIS passes.<br>
+<strong>Space:</strong> $O(n)$ — Arrays storing <code>lis_left</code> and <code>lis_right</code>.</p>
+
 
 <div class="pager"><a href="../problems/0421-lc1187-make-array-strictly-increasing.html"><span class="lbl">← Previous</span>#1187 Make Array Strictly Increasing</a><a href="../problems/0423-lc2407-longest-increasing-subsequence-ii.html" style="text-align:right"><span class="lbl">Next →</span>#2407 Longest Increasing Subsequence II</a></div>
 </div>

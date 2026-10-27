@@ -23,34 +23,46 @@
  › Subpattern 12.9: Interval DP · Problem 412 of 699</p>
 <p class="progress-note">This problem also appears under: <a href="0619-lc312-burst-balloons.html">Advanced Dynamic Programming</a> — same problem, different lens.</p>
 <h2>📋 The problem</h2><p>Bursting a balloon earns left·self·right coins (adjacent survivors); pop all balloons in the order that maximizes coins.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>You are given <code>n</code> balloons, indexed from <code>0</code> to <code>n - 1</code>. Each balloon is painted with a number on it represented by an array <code>nums</code>. You are asked to burst all the balloons. If you burst balloon <code>i</code> you will get <code>nums[i - 1] * nums[i] * nums[i + 1]</code> coins. Return the maximum coins you can collect.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Interval DP</strong> — dp[i][j] = answer on the subarray a[i..j], iterated by increasing interval length.</p>
+<p>Pad boundaries with virtual balloons: <code>nums = [1] + nums + [1]</code>.
+If you think about which balloon to burst <em>first</em>, the left and right subproblems become coupled and dependent because bursting a balloon changes the neighbors for subsequent pops!</p>
 
-<h2>Why this pattern?</h2><ul><li>"count the number of ways…"</li><li>"minimum/maximum cost/value to reach…"</li><li>choices at each step + overlapping futures (take/skip an item)</li><li>"longest/shortest subsequence" (non-contiguous!)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Dynamic Programming (DP) master template and adapt the marked parts to this problem:</p><pre><code># Top-down: brute-force recursion + cache
-from functools import lru_cache
-@lru_cache(None)
-def dp(i):
-    if i &lt;= base: return base_value
-    return best(dp(smaller_1), dp(smaller_2), ...)   # the recurrence
+<p><strong>The Reverse Trick:</strong> Think about which balloon is burst <strong>LAST</strong> in the interval $(left, right)$!
+If balloon $k$ ($left < k < right$) is the last balloon burst in interval $(left, right)$, then balloons $left$ and $right$ are guaranteed to still be present right next to $k$:
+$$dp[l][r] = \max_{l < k < r} (dp[l][k] + dp[k][r] + nums[l] \times nums[k] \times nums[r])$$
+Now the two subproblems $(l, k)$ and $(k, r)$ are completely independent!</p>
 
-# Bottom-up: same recurrence, loop order = dependency order
-dp = [0] * (n + 1)
-dp[0] = base_value
-for i in range(1, n + 1):
-    dp[i] = best(dp[i-1] + ..., dp[i-2] + ...)
-# often only last 2 values needed → two variables, O(1) space</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<h2>🐢 Brute force vs optimal</h2>
+<p>Thinking forward creates intractable dependencies. Thinking backwards (last balloon to pop) yields clean <strong>Interval DP</strong> with states $O(n^2)$ and transition $O(n)$, running in $O(n^3)$ time.</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Reverse your thinking: choose the <strong>last</strong> balloon $k$ to burst in $(l, r)$. Coins gained $= nums[l] \times nums[k] \times nums[r] + dp[l][k] + dp[k][r]$.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def maxCoins(nums: list[int]) -> int:
+    padded = [1] + nums + [1]
+    n = len(padded)
+    dp = [[0] * n for _ in range(n)]
+    
+    # length of interval from 2 (no balloons inside) to n - 1
+    for length in range(2, n):
+        for left in range(0, n - length):
+            right = left + length
+            for k in range(left + 1, right):
+                coins = padded[left] * padded[k] * padded[right] + dp[left][k] + dp[k][right]
+                if coins > dp[left][right]:
+                    dp[left][right] = coins
+                    
+    return dp[0][n - 1]
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n^3)$ — Lengths $2 \dots n$, left bounds $O(n)$, split points $k \in (l, r)$.<br>
+<strong>Space:</strong> $O(n^2)$ — 2D table for interval $(left, right)$.</p>
+
 
 <div class="pager"><a href="../problems/0411-lc1277-count-square-submatrices-with-all-ones.html"><span class="lbl">← Previous</span>#1277 Count Square Submatrices with All Ones</a><a href="../problems/0413-lc546-remove-boxes.html" style="text-align:right"><span class="lbl">Next →</span>#546 Remove Boxes</a></div>
 </div>

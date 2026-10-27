@@ -23,34 +23,44 @@
  › Subpattern 12.6: 2D Array / Longest Common Subsequence (LCS) · Problem 400 of 699</p>
 
 <h2>📋 The problem</h2><p>Return the minimum deletions (from either string) to make two strings equal.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given two strings <code>word1</code> and <code>word2</code>, return the minimum number of steps required to make <code>word1</code> and <code>word2</code> the same. In one step, you can delete exactly one character in either string.</p>
 
-<h2>Where this fits</h2>
-<p><strong>2D Array / Longest Common Subsequence (LCS)</strong> — dp[i][j] = LCS length of prefixes; +1 on match, max otherwise.</p>
+<p>To make both strings equal with minimum deletions, we should preserve the <strong>Longest Common Subsequence (LCS)</strong> of the two strings!
+Let $L = \text{LCS}(word1, word2)$.
+Every character not in the LCS must be deleted.
+$$\text{Min Deletions} = (\text{len}(word1) - L) + (\text{len}(word2) - L) = \text{len}(word1) + \text{len}(word2) - 2L$$</p>
 
-<h2>Why this pattern?</h2><ul><li>"count the number of ways…"</li><li>"minimum/maximum cost/value to reach…"</li><li>choices at each step + overlapping futures (take/skip an item)</li><li>"longest/shortest subsequence" (non-contiguous!)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Dynamic Programming (DP) master template and adapt the marked parts to this problem:</p><pre><code># Top-down: brute-force recursion + cache
-from functools import lru_cache
-@lru_cache(None)
-def dp(i):
-    if i &lt;= base: return base_value
-    return best(dp(smaller_1), dp(smaller_2), ...)   # the recurrence
+<h2>🐢 Brute force vs optimal</h2>
+<p>Computing all common subsequences takes exponential time. Standard 2D LCS DP runs in $O(m \times n)$ time and $O(n)$ space.</p>
 
-# Bottom-up: same recurrence, loop order = dependency order
-dp = [0] * (n + 1)
-dp[0] = base_value
-for i in range(1, n + 1):
-    dp[i] = best(dp[i-1] + ..., dp[i-2] + ...)
-# often only last 2 values needed → two variables, O(1) space</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<div class="insight">💡 <strong>Key insight:</strong> Min deletions $= m + n - 2 \times \text{LCS}(s1, s2)$. Reduces directly to Longest Common Subsequence!</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def minDistance(word1: str, word2: str) -> int:
+    m, n = len(word1), len(word2)
+    dp = [0] * (n + 1)
+    
+    for i in range(1, m + 1):
+        prev_diag = 0
+        for j in range(1, n + 1):
+            temp = dp[j]
+            if word1[i - 1] == word2[j - 1]:
+                dp[j] = prev_diag + 1
+            else:
+                dp[j] = max(dp[j], dp[j - 1])
+            prev_diag = temp
+            
+    lcs = dp[n]
+    return m + n - 2 * lcs
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(m \times n)$ — Standard LCS calculation.<br>
+<strong>Space:</strong> $O(n)$ — 1D rolling array.</p>
+
 
 <div class="pager"><a href="../problems/0399-lc115-distinct-subsequences.html"><span class="lbl">← Previous</span>#115 Distinct Subsequences</a><a href="../problems/0401-lc1143-longest-common-subsequence.html" style="text-align:right"><span class="lbl">Next →</span>#1143 Longest Common Subsequence</a></div>
 </div>

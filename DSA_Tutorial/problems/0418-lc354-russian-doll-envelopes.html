@@ -23,34 +23,46 @@
  › Subpattern 12.11: Longest Increasing Subsequence (LIS) · Problem 418 of 699</p>
 
 <h2>📋 The problem</h2><p>Count the longest chain of envelopes that nest (each strictly larger in both width and height).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>You are given a 2D array of integers <code>envelopes</code> where <code>envelopes[i] = [w_i, h_i]</code> represents the width and the height of an envelope. One envelope can fit into another if and only if both the width and height of one envelope are strictly greater than the other envelope. Return the maximum number of envelopes you can Russian doll (put inside one another).</p>
 
-<h2>Where this fits</h2>
-<p><strong>Longest Increasing Subsequence (LIS)</strong> — dp[i] = length of LIS ending at i; O(n²) basic, O(n log n) with patience-sort/binary search.</p>
+<p>This is a 2D variation of <strong>Longest Increasing Subsequence (LIS)</strong>.
+If we sort envelopes by width ascending, we reduce one dimension!
+<strong>The Clever Sorting Trick:</strong>
+- Sort width <strong>ascending</strong>: <code>w1 < w2</code> ensures width is non-decreasing.
+- If widths are equal, sort height <strong>descending</strong>: <code>h1 > h2</code>!</p>
+<p>Why descending on height for identical widths? Because an envelope cannot contain another envelope of the <em>same</em> width! By sorting height descending, when we run standard 1D LIS on heights, we can never pick two envelopes with the same width!</p>
 
-<h2>Why this pattern?</h2><ul><li>"count the number of ways…"</li><li>"minimum/maximum cost/value to reach…"</li><li>choices at each step + overlapping futures (take/skip an item)</li><li>"longest/shortest subsequence" (non-contiguous!)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Dynamic Programming (DP) master template and adapt the marked parts to this problem:</p><pre><code># Top-down: brute-force recursion + cache
-from functools import lru_cache
-@lru_cache(None)
-def dp(i):
-    if i &lt;= base: return base_value
-    return best(dp(smaller_1), dp(smaller_2), ...)   # the recurrence
+<h2>🐢 Brute force vs optimal</h2>
+<p>Standard $O(n^2)$ LIS DP gets TLE ($n = 10^5$). With the sorting trick, binary search LIS (Patience Sorting / <code>bisect_left</code>) solves it in $O(n \log n)$ time!</p>
 
-# Bottom-up: same recurrence, loop order = dependency order
-dp = [0] * (n + 1)
-dp[0] = base_value
-for i in range(1, n + 1):
-    dp[i] = best(dp[i-1] + ..., dp[i-2] + ...)
-# often only last 2 values needed → two variables, O(1) space</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<div class="insight">💡 <strong>Key insight:</strong> Sort by <code>(width, -height)</code>, then extract heights and run $O(n \log n)$ Patience Sorting LIS with binary search.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">import bisect
+
+def maxEnvelopes(envelopes: list[list[int]]) -> int:
+    # Sort width ascending, height descending
+    envelopes.sort(key=lambda x: (x[0], -x[1]))
+    
+    # Run O(n log n) LIS on heights
+    tails = []
+    for _, h in envelopes:
+        idx = bisect.bisect_left(tails, h)
+        if idx == len(tails):
+            tails.append(h)
+        else:
+            tails[idx] = h
+            
+    return len(tails)
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n \log n)$ — Sorting takes $O(n \log n)$ and binary search LIS takes $O(n \log n)$.<br>
+<strong>Space:</strong> $O(n)$ — <code>tails</code> array storing active increasing subsequence tails.</p>
+
 
 <div class="pager"><a href="../problems/0417-lc300-longest-increasing-subsequence.html"><span class="lbl">← Previous</span>#300 Longest Increasing Subsequence</a><a href="../problems/0419-lc673-number-of-longest-increasing-subsequence.html" style="text-align:right"><span class="lbl">Next →</span>#673 Number of Longest Increasing Subsequence</a></div>
 </div>

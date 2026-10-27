@@ -23,34 +23,36 @@
  › Subpattern 12.10: Catalan Numbers · Problem 415 of 699</p>
 
 <h2>📋 The problem</h2><p>Count how many structurally unique binary search trees can store values 1..n.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given an integer <code>n</code>, return the number of structurally unique BST's (binary search trees) which has exactly <code>n</code> nodes of unique values from <code>1</code> to <code>n</code>.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Catalan Numbers</strong> — Sum dp[k]·dp[n-1-k] for k = 0..n-1 — counts binary trees, parenthesizations, polygon triangulations.</p>
+<p>Let $G(n)$ be the number of unique BSTs for sequence of length $n$.
+For each root $i \in [1, n]$, there are $i - 1$ nodes in the left subtree and $n - i$ nodes in the right subtree:
+$$G(n) = \sum_{i=1}^n G(i - 1) \times G(n - i)$$
+with base cases $G(0) = 1, G(1) = 1$. This is the mathematical recurrence for <strong>Catalan Numbers</strong>!</p>
 
-<h2>Why this pattern?</h2><ul><li>"count the number of ways…"</li><li>"minimum/maximum cost/value to reach…"</li><li>choices at each step + overlapping futures (take/skip an item)</li><li>"longest/shortest subsequence" (non-contiguous!)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Dynamic Programming (DP) master template and adapt the marked parts to this problem:</p><pre><code># Top-down: brute-force recursion + cache
-from functools import lru_cache
-@lru_cache(None)
-def dp(i):
-    if i &lt;= base: return base_value
-    return best(dp(smaller_1), dp(smaller_2), ...)   # the recurrence
+<h2>🐢 Brute force vs optimal</h2>
+<p>1D DP tabulates $G(0) \dots G(n)$ in $O(n^2)$ time. Alternatively, Catalan closed form $C_n = \frac{1}{n+1}\binom{2n}{n} = \frac{(2n)!}{(n+1)!n!}$ computes in $O(n)$ time and $O(1)$ space.</p>
 
-# Bottom-up: same recurrence, loop order = dependency order
-dp = [0] * (n + 1)
-dp[0] = base_value
-for i in range(1, n + 1):
-    dp[i] = best(dp[i-1] + ..., dp[i-2] + ...)
-# often only last 2 values needed → two variables, O(1) space</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<div class="insight">💡 <strong>Key insight:</strong> Closed-form iterative Catalan computation: $C_{i} = C_{i-1} \times \frac{2(2i - 1)}{i + 1}$ computes the exact answer in $O(n)$ time!</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def numTrees(n: int) -> int:
+    """
+    Computes nth Catalan number in O(n) time and O(1) space.
+    """
+    c = 1
+    for i in range(1, n + 1):
+        c = c * 2 * (2 * i - 1) // (i + 1)
+    return c
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n)$ — Single linear mathematical iteration.<br>
+<strong>Space:</strong> $O(1)$ — Single scalar accumulator.</p>
+
 
 <div class="pager"><a href="../problems/0414-lc95-unique-binary-search-trees-ii.html"><span class="lbl">← Previous</span>#95 Unique Binary Search Trees II</a><a href="../problems/0416-lc241-different-ways-to-add-parentheses.html" style="text-align:right"><span class="lbl">Next →</span>#241 Different Ways to Add Parentheses</a></div>
 </div>

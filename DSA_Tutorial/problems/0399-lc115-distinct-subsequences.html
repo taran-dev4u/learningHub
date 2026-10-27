@@ -23,34 +23,46 @@
  › Subpattern 12.6: 2D Array / Longest Common Subsequence (LCS) · Problem 399 of 699</p>
 
 <h2>📋 The problem</h2><p>Count how many distinct subsequences of string s equal string t.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given two strings <code>s</code> and <code>t</code>, return the number of distinct subsequences of <code>s</code> which equals <code>t</code>.</p>
 
-<h2>Where this fits</h2>
-<p><strong>2D Array / Longest Common Subsequence (LCS)</strong> — dp[i][j] = LCS length of prefixes; +1 on match, max otherwise.</p>
+<p>Let $dp[i][j]$ be the number of distinct subsequences of $s[0 \dots i-1]$ that equal $t[0 \dots j-1]$.
+- If $s[i - 1] == t[j - 1]$, we have two choices:
+  1. <strong>Match this character:</strong> add $dp[i - 1][j - 1]$ (match $s[i-1]$ with $t[j-1]$).
+  2. <strong>Skip this character:</strong> add $dp[i - 1][j]$ (look for $t[0 \dots j-1]$ earlier in $s$).
+  $$dp[i][j] = dp[i - 1][j - 1] + dp[i - 1][j]$$
+- If $s[i - 1] 
+e t[j - 1]$, we cannot match, so:
+  $$dp[i][j] = dp[i - 1][j]$$</p>
 
-<h2>Why this pattern?</h2><ul><li>"count the number of ways…"</li><li>"minimum/maximum cost/value to reach…"</li><li>choices at each step + overlapping futures (take/skip an item)</li><li>"longest/shortest subsequence" (non-contiguous!)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Dynamic Programming (DP) master template and adapt the marked parts to this problem:</p><pre><code># Top-down: brute-force recursion + cache
-from functools import lru_cache
-@lru_cache(None)
-def dp(i):
-    if i &lt;= base: return base_value
-    return best(dp(smaller_1), dp(smaller_2), ...)   # the recurrence
+<h2>🐢 Brute force vs optimal</h2>
+<p>Generating all $2^{|s|}$ subsequences is impossibly slow. 2D DP computes the answer in $O(|s| \times |t|)$ time. Traversing <code>j</code> backwards optimizes space to $O(|t|)$!</p>
 
-# Bottom-up: same recurrence, loop order = dependency order
-dp = [0] * (n + 1)
-dp[0] = base_value
-for i in range(1, n + 1):
-    dp[i] = best(dp[i-1] + ..., dp[i-2] + ...)
-# often only last 2 values needed → two variables, O(1) space</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<div class="insight">💡 <strong>Key insight:</strong> 1D array backwards: if $s[i-1] == t[j-1]$, <code>dp[j] += dp[j - 1]</code> with base case <code>dp[0] = 1</code> (empty string $t$ has 1 subsequence in any prefix of $s$).</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def numDistinct(s: str, t: str) -> int:
+    m, n = len(s), len(t)
+    if m < n:
+        return 0
+        
+    dp = [0] * (n + 1)
+    dp[0] = 1
+    
+    for char_s in s:
+        for j in range(n, 0, -1):
+            if char_s == t[j - 1]:
+                dp[j] += dp[j - 1]
+                
+    return dp[n]
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(m \times n)$ — Nested string traversal.<br>
+<strong>Space:</strong> $O(n)$ — 1D space traversing right-to-left.</p>
+
 
 <div class="pager"><a href="../problems/0398-lc97-interleaving-string.html"><span class="lbl">← Previous</span>#97 Interleaving String</a><a href="../problems/0400-lc583-delete-operation-for-two-strings.html" style="text-align:right"><span class="lbl">Next →</span>#583 Delete Operation for Two Strings</a></div>
 </div>

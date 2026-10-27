@@ -23,34 +23,56 @@
  › Subpattern 12.6: 2D Array / Longest Common Subsequence (LCS) · Problem 397 of 699</p>
 
 <h2>📋 The problem</h2><p>Decide whether one string is a 'scramble' of another, where scrambling recursively splits a string in two and may swap the halves.</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>We can scramble a string <code>s</code> to get a string <code>t</code> using the following algorithm:
+1. If the length of the string is 1, stop.
+2. Split string into two non-empty substrings at any index.
+3. Randomly choose whether to swap the two substrings or leave them as is.
+4. Apply the algorithm recursively on each substring.</p>
 
-<h2>Where this fits</h2>
-<p><strong>2D Array / Longest Common Subsequence (LCS)</strong> — dp[i][j] = LCS length of prefixes; +1 on match, max otherwise.</p>
+<p>Given <code>s1</code> and <code>s2</code> of length $n$, can <code>s2</code> be formed by scrambling <code>s1</code>?</p>
 
-<h2>Why this pattern?</h2><ul><li>"count the number of ways…"</li><li>"minimum/maximum cost/value to reach…"</li><li>choices at each step + overlapping futures (take/skip an item)</li><li>"longest/shortest subsequence" (non-contiguous!)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Dynamic Programming (DP) master template and adapt the marked parts to this problem:</p><pre><code># Top-down: brute-force recursion + cache
+<p>For any split index $k \in [1, n-1]$:
+1. <strong>Without Swap:</strong> $s1[0 \dots k]$ scrambles to $s2[0 \dots k]$ AND $s1[k \dots n]$ scrambles to $s2[k \dots n]$.
+2. <strong>With Swap:</strong> $s1[0 \dots k]$ scrambles to $s2[n-k \dots n]$ AND $s1[k \dots n]$ scrambles to $s2[0 \dots n-k]$.</p>
+
+<h2>🐢 Brute force vs optimal</h2>
+<p>Top-down memoized recursion with a frequency character pruning check. If <code>sorted(s1) != sorted(s2)</code>, return <code>False</code> immediately without branching!</p>
+
+<div class="insight">💡 <strong>Key insight:</strong> Memoize <code>(s1, s2)</code>. Prune early using <code>Counter(s1) != Counter(s2)</code>. For each split $k$, check (no_swap) or (swap).</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">from collections import Counter
 from functools import lru_cache
-@lru_cache(None)
-def dp(i):
-    if i &lt;= base: return base_value
-    return best(dp(smaller_1), dp(smaller_2), ...)   # the recurrence
 
-# Bottom-up: same recurrence, loop order = dependency order
-dp = [0] * (n + 1)
-dp[0] = base_value
-for i in range(1, n + 1):
-    dp[i] = best(dp[i-1] + ..., dp[i-2] + ...)
-# often only last 2 values needed → two variables, O(1) space</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+def isScramble(s1: str, s2: str) -> bool:
+    @lru_cache(maxsize=None)
+    def dfs(a: str, b: str) -> bool:
+        if a == b:
+            return True
+        if Counter(a) != Counter(b):
+            return False
+            
+        n = len(a)
+        for k in range(1, n):
+            # Case 1: no swap
+            if dfs(a[:k], b[:k]) and dfs(a[k:], b[k:]):
+                return True
+            # Case 2: swapped
+            if dfs(a[:k], b[n - k:]) and dfs(a[k:], b[:n - k]):
+                return True
+                
+        return False
+        
+    return dfs(s1, s2)
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n^4)$ states with memoization.<br>
+<strong>Space:</strong> $O(n^3)$ memoization cache and recursion stack.</p>
+
 
 <div class="pager"><a href="../problems/0396-lc140-word-break-ii.html"><span class="lbl">← Previous</span>#140 Word Break II</a><a href="../problems/0398-lc97-interleaving-string.html" style="text-align:right"><span class="lbl">Next →</span>#97 Interleaving String</a></div>
 </div>

@@ -23,34 +23,46 @@
  › Subpattern 12.12: Palindrome DP · Problem 428 of 699</p>
 
 <h2>📋 The problem</h2><p>Return the minimum insertions to make a string a palindrome (n − longest palindromic subsequence).</p><p class="progress-note">Restated in our own words — the LeetCode icon above opens the formal statement with exact constraints and examples.</p>
+<h2>🧭 How to think about it</h2>
+<p>Given a string <code>s</code>. In one step you can insert any character at any position of the string. Return the minimum number of steps to make <code>s</code> a palindrome.</p>
 
-<h2>Where this fits</h2>
-<p><strong>Palindrome DP</strong> — dp[i][j] = whether s[i..j] is a palindrome / length of longest palindromic subsequence.</p>
+<p>Any character that is already part of the <strong>Longest Palindromic Subsequence (LPS)</strong> does NOT need to be paired by insertion—it is already mirrored!
+Every character outside the LPS requires exactly one matching insertion on the opposite side.
+$$\text{Min Insertions} = \text{len}(s) - \text{LPS}(s)$$
+Recall: $\text{LPS}(s) = \text{LCS}(s, \text{reverse}(s))$!</p>
 
-<h2>Why this pattern?</h2><ul><li>"count the number of ways…"</li><li>"minimum/maximum cost/value to reach…"</li><li>choices at each step + overlapping futures (take/skip an item)</li><li>"longest/shortest subsequence" (non-contiguous!)</li></ul>
-<h2>Pattern template to adapt</h2><p>Start from the Dynamic Programming (DP) master template and adapt the marked parts to this problem:</p><pre><code># Top-down: brute-force recursion + cache
-from functools import lru_cache
-@lru_cache(None)
-def dp(i):
-    if i &lt;= base: return base_value
-    return best(dp(smaller_1), dp(smaller_2), ...)   # the recurrence
+<h2>🐢 Brute force vs optimal</h2>
+<p>This problem reduces directly to finding the Longest Palindromic Subsequence (LC 516) or LCS with the reversed string in $O(n^2)$ time and $O(n)$ space.</p>
 
-# Bottom-up: same recurrence, loop order = dependency order
-dp = [0] * (n + 1)
-dp[0] = base_value
-for i in range(1, n + 1):
-    dp[i] = best(dp[i-1] + ..., dp[i-2] + ...)
-# often only last 2 values needed → two variables, O(1) space</code></pre>
-<h2>How to work on it now</h2>
-<ol>
-<li>Read the problem on LeetCode (icon above) and restate it in your own words.</li>
-<li>Write the brute force first — know what you are improving.</li>
-<li>Apply the subpattern idea above; dry-run your code on a 4–5 element example by hand.</li>
-<li>Check edge cases: empty input, one element, duplicates, extremes.</li>
-</ol>
-<div class="status-light">📖 <strong>Deep tutorial status:</strong> guided outline (v1). A full step-by-step walkthrough
-(brute force → insight → dry run → commented solution → edge cases → follow-ups) is scheduled for this page in the
-deepening sessions — see <code>PROGRESS.md</code>. Nothing will be skipped.</div>
+<div class="insight">💡 <strong>Key insight:</strong> Min Insertions $= n - \text{LPS}(s)$. Compute LPS bottom-up on intervals $[l, r]$ or via LCS with reversed string.</div>
+
+<h2>✅ The solution</h2>
+<details><summary>Reveal the commented solution (attempt it first!)</summary>
+<pre><code class="language-python">def minInsertions(s: str) -> int:
+    n = len(s)
+    dp = [0] * n
+    
+    # Bottom-up interval DP for Longest Palindromic Subsequence
+    for l in range(n - 1, -1, -1):
+        prev_diag = 0
+        dp[l] = 1 # Single character is palindrome of length 1
+        for r in range(l + 1, n):
+            temp = dp[r]
+            if s[l] == s[r]:
+                dp[r] = prev_diag + 2
+            else:
+                dp[r] = max(dp[r], dp[r - 1])
+            prev_diag = temp
+            
+    lps = dp[n - 1]
+    return n - lps
+</code></pre>
+</details>
+
+<h2>Complexity</h2>
+<p><strong>Time:</strong> $O(n^2)$ — Nested interval loops.<br>
+<strong>Space:</strong> $O(n)$ — 1D rolling array for LPS.</p>
+
 
 <div class="pager"><a href="../problems/0427-lc647-palindromic-substrings.html"><span class="lbl">← Previous</span>#647 Palindromic Substrings</a><a href="../patterns/p13-string-manipulation.html" style="text-align:right"><span class="lbl">Next →</span>String Manipulation</a></div>
 </div>
