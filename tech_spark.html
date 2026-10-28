@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Apache Spark Big Data Processing Masterclass | Learning Hub</title>
+<link href="assets/learning-hub-shared.css" rel="stylesheet"/>
+<script src="assets/learning-hub-shared.js"></script>
+<style>
+
+
+
+/* All-in-One Tech Portal Design System */
+:root {
+  --bg: #f7f8fb;
+  --surface: #ffffff;
+  --surface-2: #eef2f7;
+  --surface-3: #e4eaf2;
+  --text: #172033;
+  --muted: #5b6578;
+  --faint: #7a8599;
+  --border: #dbe2ec;
+  --navy: #172554;
+  --navy-2: #1e3a8a;
+  --blue: #2563eb;
+  --amber: #f59e0b;
+  --green: #0f9f6e;
+  --red: #dc4c64;
+  --violet: #7c3aed;
+  --shadow: 0 4px 16px rgba(23, 32, 51, 0.06);
+  --shadow-lift: 0 12px 32px rgba(23, 32, 51, 0.12);
+  --bg-elev: var(--surface-2);
+  --bg-card: var(--surface);
+  --bg-row-alt: var(--surface-2);
+  --text-dim: var(--muted);
+  --text-faint: var(--faint);
+  --border-strong: var(--border);
+  --accent: var(--blue);
+  --accent-dim: rgba(37, 99, 235, 0.1);
+  --link: var(--blue);
+  --quote-bg: rgba(37, 99, 235, 0.05);
+  --done: var(--green);
+  --done-bg: rgba(15, 159, 110, 0.12);
+  --shadow-card: var(--shadow);
+  --shadow-banner: 0 4px 14px rgba(0,0,0,0.08);
+}
+html.dark, html[data-theme="dark"] {
+  --bg: #0b1120;
+  --surface: #151f32;
+  --surface-2: #1e293b;
+  --surface-3: #27354a;
+  --text: #f1f5f9;
+  --muted: #94a3b8;
+  --faint: #64748b;
+  --border: #1e293b;
+  --navy: #1e293b;
+  --navy-2: #243552;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  --shadow-lift: 0 12px 32px rgba(0, 0, 0, 0.5);
+  --bg-elev: #151f32;
+  --bg-card: #151f32;
+  --bg-row-alt: #1a263d;
+  --text-dim: #94a3b8;
+  --text-faint: #64748b;
+  --border-strong: #334155;
+  --accent: #38bdf8;
+  --accent-dim: rgba(56, 189, 248, 0.15);
+  --link: #38bdf8;
+  --quote-bg: rgba(56, 189, 248, 0.08);
+  --done: #10b981;
+  --done-bg: rgba(16, 185, 129, 0.15);
+}
+html.black, html[data-theme="black"] {
+  --bg: #000000;
+  --surface: #0a0a0a;
+  --surface-2: #141414;
+  --surface-3: #1f1f1f;
+  --text: #ffffff;
+  --muted: #888888;
+  --faint: #555555;
+  --border: #222222;
+  --navy: #0e0e0e;
+  --navy-2: #181818;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+  --shadow-lift: 0 12px 32px rgba(0, 0, 0, 0.9);
+  --bg-elev: #0e0e0e;
+  --bg-card: #0a0a0a;
+  --bg-row-alt: #121212;
+  --text-dim: #888888;
+  --text-faint: #555555;
+  --border-strong: #2c2c2c;
+  --accent: #60a5fa;
+  --accent-dim: rgba(96, 165, 250, 0.18);
+  --link: #60a5fa;
+  --quote-bg: rgba(96, 165, 250, 0.08);
+  --done: #22c55e;
+  --done-bg: rgba(34, 197, 94, 0.15);
+}
+.wrap { max-width: 1440px; margin: 0 auto; padding: 20px 20px 80px; }
+.tech-breadcrumb {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 700;
+  margin: 0 0 16px; padding: 6px 12px;
+  background: var(--surface-2); border: 1px solid var(--border);
+  border-radius: 8px; width: fit-content;
+}
+.tech-bc-home { color: var(--accent); text-decoration: none; }
+.tech-bc-home:hover { text-decoration: underline; }
+.tech-bc-sep { color: var(--faint); }
+.tech-bc-curr { color: var(--text); }
+.domain-deck-section { margin: 24px 0 28px; }
+.domain-deck-head {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px; margin-bottom: 14px;
+}
+.domain-deck-head h2 {
+  font-size: 20px; margin: 0; font-weight: 800; letter-spacing: -0.01em; color: var(--text);
+}
+.domain-deck-subtitle {
+  font-size: 13px; color: var(--muted); margin: 2px 0 0;
+}
+.domain-deck {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 14px;
+}
+.domain-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px; display: flex; flex-direction: column;
+  box-shadow: var(--shadow); transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+  position: relative; cursor: pointer;
+}
+.domain-card:hover {
+  transform: translateY(-2px); border-color: var(--accent); box-shadow: var(--shadow-lift);
+}
+.domain-card.active-deck-card {
+  border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent), var(--shadow-lift);
+}
+.domain-card-head { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
+.domain-card-icon {
+  font-size: 24px; line-height: 1; flex-shrink: 0;
+  background: var(--surface-2); padding: 8px; border-radius: 10px; border: 1px solid var(--border);
+}
+.domain-card-meta { flex: 1; min-width: 0; }
+.domain-card-idx {
+  font-size: 10.5px; font-weight: 800; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 0.08em;
+}
+.domain-card-title {
+  font-size: 15.5px; font-weight: 800; margin: 2px 0 0; color: var(--text); line-height: 1.3;
+}
+.domain-card-desc {
+  font-size: 12px; color: var(--muted); line-height: 1.5; margin: 0 0 12px; flex: 1;
+}
+.domain-card-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.d-chip {
+  font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px;
+  background: var(--surface-2); border: 1px solid var(--border); color: var(--text-dim);
+}
+.d-chip.masterclass-badge {
+  background: rgba(37, 99, 235, 0.12); border-color: var(--accent); color: var(--accent);
+}
+.domain-card-actions { display: flex; gap: 8px; align-items: center; margin-top: auto; }
+.d-act-btn {
+  flex: 1; min-height: 32px; padding: 5px 10px; border-radius: 7px;
+  border: 1px solid var(--border); background: var(--surface-2); color: var(--text);
+  font-size: 12px; font-weight: 700; cursor: pointer; display: inline-flex;
+  align-items: center; justify-content: center; gap: 4px; transition: all 0.15s ease;
+}
+.d-act-btn:hover { background: var(--accent); color: #ffffff; border-color: var(--accent); }
+.d-act-link {
+  min-height: 32px; padding: 5px 11px; border-radius: 7px; border: 1px solid var(--accent);
+  background: var(--accent); color: #ffffff; font-size: 12px; font-weight: 800;
+  text-decoration: none; display: inline-flex; align-items: center; justify-content: center;
+  gap: 4px; transition: all 0.15s ease; white-space: nowrap;
+}
+.d-act-link:hover { opacity: 0.9; transform: translateY(-1px); }
+.domain-nav-bar {
+  position: sticky; top: 53px; z-index: 60; background: var(--surface);
+  border-bottom: 1px solid var(--border); border-top: 1px solid var(--border);
+  padding: 8px 12px; margin: 0 -20px 22px; backdrop-filter: blur(12px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.domain-nav-scroll {
+  display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none;
+  -webkit-overflow-scrolling: touch; max-width: 1440px; margin: 0 auto; padding: 0 8px;
+}
+.domain-nav-scroll::-webkit-scrollbar { display: none; }
+.d-nav-pill {
+  display: inline-flex; align-items: center; gap: 5px; min-height: 32px;
+  padding: 4px 12px; border-radius: 999px; border: 1px solid var(--border);
+  background: var(--surface-2); color: var(--muted); font-size: 12px;
+  font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s ease;
+}
+.d-nav-pill:hover { border-color: var(--accent); color: var(--text); transform: translateY(-1px); }
+.d-nav-pill.active {
+  background: var(--accent); border-color: var(--accent); color: #ffffff;
+  box-shadow: 0 2px 10px rgba(37, 99, 235, 0.35);
+}
+.domain-focus-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px; padding: 12px 18px; margin-bottom: 16px;
+  background: var(--surface); border: 1px solid var(--accent);
+  border-radius: 10px; box-shadow: var(--shadow);
+}
+.focus-bar-left { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.focus-bar-pill {
+  font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em;
+  padding: 3px 8px; border-radius: 6px; background: var(--accent-dim);
+  color: var(--accent); border: 1px solid var(--accent);
+}
+.focus-bar-title { font-size: 15px; font-weight: 800; color: var(--text); }
+.focus-bar-stats { font-size: 12px; color: var(--muted); font-weight: 600; }
+.focus-bar-right { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.focus-btn {
+  min-height: 30px; padding: 4px 10px; border-radius: 6px; border: 1px solid var(--border);
+  background: var(--surface-2); color: var(--text); font-size: 12px; font-weight: 700;
+  cursor: pointer; transition: all 0.15s ease;
+}
+.focus-btn:hover { background: var(--border); color: var(--text); }
+.focus-btn.view-all-btn {
+  background: var(--accent-dim); border-color: var(--accent); color: var(--accent);
+}
+.focus-btn.view-all-btn:hover { background: var(--accent); color: #ffffff; }
+.focus-btn.masterclass-btn {
+  background: var(--accent); border-color: var(--accent); color: #ffffff;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 4px;
+}
+.section.hidden-domain { display: none !important; }
+.sister-guides-card {
+  margin: 40px 0 20px; padding: 20px 24px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; box-shadow: var(--shadow);
+}
+.sister-title { font-size: 15px; font-weight: 800; color: var(--text); margin-bottom: 12px; }
+.sister-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+.sister-link {
+  display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px;
+  border-radius: 8px; background: var(--surface-2); border: 1px solid var(--border);
+  color: var(--text); text-decoration: none; font-size: 12.5px; font-weight: 700;
+  transition: all 0.15s ease;
+}
+.sister-link:hover { border-color: var(--accent); background: var(--accent-dim); transform: translateY(-1px); }
+.sister-link.active-hub { background: var(--accent); border-color: var(--accent); color: #ffffff; }
+@media (max-width: 768px) {
+  .hero h1 { font-size: 26px; }
+  .domain-nav-bar { margin: 0 -12px 18px; }
+  .domain-focus-bar { flex-direction: column; align-items: flex-start; }
+}
+
+:root {
+  --bg: #0f1115; --bg-elev: #161922; --bg-card: #1c2030; --bg-row-alt: #1a1d2a;
+  --text: #e6e8ee; --text-dim: #9aa0b0; --text-faint: #6b7080;
+  --border: #2a2f42; --border-strong: #3a3f55;
+  --accent: #0786a3; --accent-dim: rgba(7,134,163,0.15);
+  --link: #38bdf8;
+  --quote-bg: rgba(7,134,163,0.06);
+  --done: #00b894; --done-bg: rgba(0,184,148,0.12);
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.2);
+  --shadow-banner: 0 4px 14px rgba(0,0,0,0.25);
+}
+html.light {
+  --bg: #fafbfc; --bg-elev: #ffffff; --bg-card: #ffffff; --bg-row-alt: #f8f9fb;
+  --text: #1a1d24; --text-dim: #5a6072; --text-faint: #8b91a3;
+  --border: #e4e7ee; --border-strong: #d0d4de;
+  --accent: #0284c7; --accent-dim: rgba(2,132,199,0.1);
+  --link: #0369a1;
+  --quote-bg: rgba(2,132,199,0.05);
+  --done: #00a884; --done-bg: rgba(0,168,132,0.12);
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-banner: 0 4px 14px rgba(0,0,0,0.08);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; line-height: 1.55;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--bg); color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.2s, color 0.2s;
+}
+.wrap { max-width: 1240px; margin: 0 auto; padding: 24px 20px 80px; }
+.hero { text-align: center; padding: 16px 0 24px; border-bottom: 1px solid var(--border); margin-bottom: 20px; }
+.hero h1 { font-size: 32px; margin: 6px 0 4px; letter-spacing: -0.02em; }
+.hero .subtitle { color: var(--text-dim); margin: 0; font-size: 14px; }
+.hero .edition {
+  display: inline-block; color: var(--accent); font-weight: 700; font-size: 11px;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  background: var(--accent-dim); padding: 4px 10px; border-radius: 4px;
+}
+.stats { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-top: 20px; }
+.stat {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 10px; padding: 8px 14px; min-width: 80px;
+  box-shadow: var(--shadow-card);
+}
+.stat .n { font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.stat .l { font-size: 10px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 2px; }
+
+.overall-progress {
+  background: var(--bg-elev); border: 1px solid var(--border);
+  border-radius: 10px; padding: 14px 20px; margin: 18px 0 18px;
+  display: flex; align-items: center; gap: 16px;
+}
+.overall-progress .lbl { font-size: 12px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; }
+.overall-progress .bar-track {
+  flex: 1; height: 10px; background: var(--bg-card);
+  border-radius: 5px; overflow: hidden; border: 1px solid var(--border);
+}
+.overall-progress .bar-fill {
+  height: 100%; background: linear-gradient(90deg, var(--done), var(--accent));
+  transition: width 0.3s ease; width: 0%;
+}
+.overall-progress .pct { font-weight: 700; font-variant-numeric: tabular-nums; font-size: 14px; min-width: 80px; text-align: right; }
+
+.controls {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--bg); backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  padding: 10px 0; margin: 0 0 20px;
+}
+.controls-row {
+  display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+  background: var(--bg-elev); border: 1px solid var(--border);
+  border-radius: 10px; padding: 10px 14px;
+}
+.controls-row .label {
+  font-size: 10px; color: var(--text-faint);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  font-weight: 700; margin-right: 2px;
+}
+.search { flex: 1; min-width: 180px; }
+.search input {
+  width: 100%; padding: 6px 11px; font-size: 13px;
+  background: var(--bg-card); border: 1px solid var(--border); color: var(--text);
+  border-radius: 5px;
+}
+.search input:focus { outline: none; border-color: var(--accent); }
+.icon-btn {
+  padding: 5px 9px; font-size: 14px;
+  background: var(--bg-card); border: 1px solid var(--border);
+  color: var(--text-dim); border-radius: 5px; cursor: pointer;
+  transition: all 0.12s;
+}
+.icon-btn:hover { background: var(--accent); color: white; border-color: var(--accent); }
+.filter-btn {
+  padding: 5px 10px; font-size: 11px; font-weight: 700;
+  background: var(--bg-card); border: 1px solid var(--border);
+  color: var(--text-dim); border-radius: 5px; cursor: pointer;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  transition: all 0.12s; letter-spacing: 0.02em;
+}
+.filter-btn:hover { background: var(--bg); color: var(--text); }
+.filter-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+.filter-btn.status-bookmarked.active { background: #ffa94d; border-color: #ffa94d; }
+.filter-btn.status-done.active { background: var(--done); border-color: var(--done); }
+.sep { width: 1px; height: 20px; background: var(--border); margin: 0 2px; }
+
+.toc {
+  background: var(--bg-elev); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px 22px; margin-bottom: 28px;
+}
+.toc h2 {
+  font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--text-faint); margin: 0 0 12px; font-weight: 700;
+}
+.toc-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 3px 12px;
+}
+.toc a {
+  display: flex; align-items: center; gap: 10px;
+  padding: 6px 8px; border-radius: 6px; color: var(--text);
+  text-decoration: none; font-size: 12.5px;
+  transition: background 0.12s;
+}
+.toc a:hover { background: var(--bg-card); }
+.toc .roman {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 10px; color: var(--text-faint); min-width: 28px;
+}
+.toc .name { flex: 1; }
+.toc .cnt {
+  font-size: 9.5px; color: var(--text-faint);
+  font-variant-numeric: tabular-nums;
+  background: var(--bg-card); padding: 1px 6px; border-radius: 3px;
+}
+
+.section { margin: 48px 0 0; }
+.section-banner {
+  border-radius: 12px; padding: 18px 24px; color: white;
+  display: flex; align-items: center; gap: 16px;
+  box-shadow: var(--shadow-banner);
+}
+.section-banner .num {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 22px; font-weight: 700; opacity: 0.95;
+  min-width: 56px; text-align: center;
+  padding: 6px 10px; background: rgba(255,255,255,0.18);
+  border-radius: 7px;
+}
+.section-banner .info { flex: 1; min-width: 0; }
+.section-banner .label {
+  font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em;
+  opacity: 0.85; margin-bottom: 1px;
+}
+.section-banner h2 { margin: 0; font-size: 20px; font-weight: 700; letter-spacing: -0.01em; }
+.section-banner .meta { font-size: 11.5px; opacity: 0.9; margin-top: 3px; }
+.section-banner .ppg { min-width: 140px; text-align: right; }
+.section-banner .ppg .pct-text { font-size: 13px; font-weight: 700; margin-bottom: 4px; font-variant-numeric: tabular-nums; }
+.section-banner .ppg .pp-track { height: 6px; background: rgba(255,255,255,0.25); border-radius: 3px; overflow: hidden; }
+.section-banner .ppg .pp-fill { height: 100%; background: white; border-radius: 3px; width: 0%; transition: width 0.3s; }
+
+.section-desc {
+  background: var(--quote-bg);
+  border-left: 4px solid var(--section-color, var(--accent));
+  border-radius: 0 8px 8px 0;
+  padding: 12px 18px; margin: 14px 0 6px 24px; font-size: 13.5px;
+}
+.section-desc .tagline { font-size: 14.5px; font-weight: 700; color: var(--text); margin: 0 0 6px; }
+.section-desc .row { margin: 4px 0; color: var(--text-dim); }
+.section-desc .row b { color: var(--text); }
+
+.subsection {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-left: 4px solid var(--section-color, var(--accent));
+  border-radius: 10px; margin: 16px 0 0 24px; padding: 14px 18px 16px;
+  box-shadow: var(--shadow-card);
+}
+.subsection-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 6px; flex-wrap: wrap; }
+.subsection-tag {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 10px; background: var(--bg-elev); border: 1px solid var(--border);
+  color: var(--text-dim); padding: 2px 7px; border-radius: 4px;
+  font-weight: 700; letter-spacing: 0.04em;
+}
+.subsection h3 { margin: 0; font-size: 14.5px; font-weight: 700; flex: 1; min-width: 0; color: var(--text); }
+.subsection-desc {
+  font-size: 12.5px; color: var(--text-dim); margin: 4px 0 8px;
+  padding: 7px 11px; background: var(--bg-elev); border-radius: 6px; line-height: 1.5;
+}
+
+.concepts {
+  list-style: none; padding: 0; margin: 8px 0 0;
+  border-radius: 8px; overflow: hidden;
+  border: 1px solid var(--border);
+}
+.concepts li {
+  display: grid;
+  grid-template-columns: 28px 22px 1fr auto;
+  gap: 10px; align-items: center;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-elev);
+  transition: background 0.12s;
+}
+.concepts li:last-child { border-bottom: none; }
+.concepts li:nth-child(even) { background: var(--bg-row-alt); }
+.concepts li:hover { background: var(--accent-dim); }
+.concepts li.hidden { display: none; }
+.concepts li.done { background: var(--done-bg); }
+.concepts li.done .cname { color: var(--text-dim); text-decoration: line-through; }
+.done-check {
+  width: 22px; height: 22px; cursor: pointer;
+  border: 2px solid var(--border-strong); border-radius: 5px;
+  background: var(--bg-card);
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.15s; flex-shrink: 0;
+}
+.done-check:hover { border-color: var(--done); }
+.done-check.checked { background: var(--done); border-color: var(--done); color: white; }
+.done-check.checked::after { content: '✓'; font-weight: 700; font-size: 14px; }
+.bookmark-star {
+  cursor: pointer; font-size: 16px; color: var(--border-strong);
+  user-select: none; transition: color 0.15s, transform 0.15s; flex-shrink: 0;
+}
+.bookmark-star:hover { color: #ffa94d; transform: scale(1.15); }
+.bookmark-star.active { color: #ffa94d; }
+.cname { color: var(--text); font-size: 13.5px; font-weight: 600; }
+.cname b { color: var(--accent); }
+.res-links { display: flex; gap: 4px; flex-shrink: 0; flex-wrap: wrap; }
+.res-links a {
+  font-size: 10.5px; padding: 3px 7px; border-radius: 4px;
+  background: var(--bg-card); border: 1px solid var(--border);
+  color: var(--text-dim); text-decoration: none;
+  white-space: nowrap; font-weight: 600;
+  transition: all 0.12s;
+}
+.res-links a:hover { background: var(--accent); color: white; border-color: var(--accent); }
+.res-links a.video:hover { background: #ff0000; border-color: #ff0000; }
+
+.resources-section {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 10px; padding: 12px 16px; margin: 10px 0 8px 24px;
+}
+.resources-section .head {
+  display: flex; align-items: center; justify-content: space-between;
+  cursor: pointer; user-select: none;
+}
+.resources-section .head h4 {
+  margin: 0; font-size: 11.5px; color: var(--text-faint);
+  text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700;
+}
+.resources-section .head .count {
+  font-size: 10.5px; color: var(--text-faint);
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+}
+.resources-section .head .chevron {
+  color: var(--text-faint); font-size: 11px; margin-left: 8px;
+  transition: transform 0.18s; display: inline-block;
+}
+.resources-section.open .chevron { transform: rotate(90deg); }
+.resources-body { display: none; margin-top: 10px; }
+.resources-section.open .resources-body { display: block; }
+.res-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 5px 8px;
+}
+.res-link {
+  display: flex; align-items: center; gap: 8px;
+  padding: 6px 10px; border-radius: 6px;
+  background: var(--bg-elev); border: 1px solid var(--border);
+  text-decoration: none; color: var(--text);
+  font-size: 12.5px; transition: all 0.12s;
+}
+.res-link:hover { background: var(--accent); color: white; border-color: var(--accent); }
+.res-link:hover .res-source { color: rgba(255,255,255,0.8); }
+.res-icon { font-size: 13px; flex-shrink: 0; }
+.res-title { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.res-source { font-size: 9.5px; color: var(--text-faint); margin-left: auto; padding-left: 6px; white-space: nowrap; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+
+.top {
+  position: fixed; bottom: 20px; right: 20px;
+  background: var(--accent); color: white;
+  padding: 10px 14px; border-radius: 8px;
+  text-decoration: none; font-size: 13px; font-weight: 600;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.2); z-index: 100;
+}
+
+@media (max-width: 900px) {
+  .wrap { padding: 16px 12px 80px; }
+  .subsection, .section-desc, .resources-section { margin-left: 0; }
+  .section-banner { flex-direction: column; align-items: flex-start; }
+  .section-banner .ppg { min-width: 100%; text-align: left; }
+  .hero h1 { font-size: 24px; }
+  .concepts li { grid-template-columns: 24px 20px 1fr; gap: 6px; padding: 6px 8px; }
+  .concepts li .res-links { display: none; }
+}
+@media print {
+  body { background: white; color: black; }
+  .controls, .top, .filter-btn, .icon-btn { display: none !important; }
+  .resources-section .resources-body { display: block !important; }
+  .section { page-break-inside: avoid; }
+  a { color: black; text-decoration: underline; }
+}
+
+
+/* Crosslink Card Styles */
+.domain-crosslink-card {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 22px 26px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.07) 0%, rgba(124, 58, 237, 0.07) 100%);
+  border: 1px solid rgba(37, 99, 235, 0.25);
+  margin-top: 14px;
+}
+.domain-crosslink-content h3 {
+  margin: 4px 0 6px;
+  font-size: 1.18rem;
+  font-weight: 850;
+  color: var(--text);
+}
+.domain-crosslink-content p {
+  margin: 0;
+  font-size: .88rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+.domain-crosslink-tag {
+  font-size: .72rem;
+  font-weight: 850;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--blue);
+}
+.domain-crosslink-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 22px;
+  border-radius: 10px;
+  background: var(--blue);
+  color: #fff;
+  font-size: .88rem;
+  font-weight: 800;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all .15s ease;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+}
+.domain-crosslink-btn:hover {
+  background: var(--navy-2);
+  transform: translateY(-1px);
+  color: #fff;
+}
+.d-nav-pill.link-pill {
+  border-style: dashed;
+  border-color: var(--blue);
+  color: var(--blue);
+  text-decoration: none;
+  font-weight: 750;
+}
+.d-nav-pill.link-pill:hover {
+  background: var(--blue);
+  color: #fff;
+}
+@media (max-width: 768px) {
+  .domain-crosslink-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+
+</style>
+</head>
+<body data-site="cloud">
+<div class="wrap">
+  <div class="tech-breadcrumb">
+    <a class="tech-bc-home" href="all_tech.html">← All-in-One Tech Portal</a>
+    <span class="tech-bc-sep">/</span>
+    <span class="tech-bc-curr">Apache Spark Big Data Processing Masterclass</span>
+  </div>
+
+  <div class="hero">
+    <div class="edition">Distributed In-Memory Cluster Computing · Masterclass · 4 Subsections · 13 Concepts</div>
+    <h1>Apache Spark Big Data Processing Masterclass</h1>
+    <p class="subtitle">High-performance distributed cluster computing: RDD core primitives, DataFrame/Dataset APIs, Catalyst query optimization, Tungsten off-heap memory management, wide vs narrow shuffle stages, Spark SQL, and Structured Streaming.</p>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="n">4</div><div class="l">Subsections</div></div>
+    <div class="stat"><div class="n">13</div><div class="l">Concepts</div></div>
+    <div class="stat"><div class="n">100%</div><div class="l">Curated</div></div>
+    <div class="stat"><div class="n">15+</div><div class="l">Verified Docs &amp; Labs</div></div>
+  </div>
+
+  <div class="overall-progress">
+    <span class="lbl">Masterclass Progress</span>
+    <div class="bar-track"><div class="bar-fill" id="overall-bar"></div></div>
+    <span class="pct" id="overall-pct">0 / 13</span>
+  </div>
+
+  <div class="controls">
+    <div class="controls-row">
+      <span class="label">Filter:</span>
+      <button class="filter-btn status-done" data-filter="status" data-val="done">Done</button>
+      <button class="filter-btn" data-filter="status" data-val="undone">Not Done</button>
+      <button class="filter-btn status-bookmarked" data-filter="status" data-val="bookmarked">★ Bookmarked</button>
+      <span class="sep"></span>
+      <div class="search"><input id="search-input" placeholder="Search 13 concepts…" type="search"/></div>
+      <button class="icon-btn" id="random-btn" title="Random concept">🎲</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">🌓</button>
+      <button class="icon-btn" onclick="window.print()" title="Print">🖨️</button>
+      <button class="filter-btn" id="clear-filters">Clear</button>
+    </div>
+  </div>
+
+  <section class="section domain-section" data-domain="spark" id="section-11" style="--section-color:hsl(18, 80%, 50%)">
+<div id="spark"></div>
+<div class="focus-bar-right">
+<button class="focus-btn" onclick="navigateDomain(-1)" type="button">← Prev Domain</button>
+<button class="focus-btn view-all-btn" onclick="switchDomain('all')" type="button">🌐 View All (16)</button>
+<button class="focus-btn" onclick="navigateDomain(1)" type="button">Next Domain →</button>
+</div>
+</div>
+<div class="section-banner" style="background:linear-gradient(135deg, hsl(18, 85%, 45%), hsl(38, 75%, 35%))">
+<div class="num">11</div>
+<div class="info">
+<div class="label">Section 11 of 16</div>
+<h2>11. Apache Spark Big Data Engine</h2>
+<div class="meta">4 subsections · 13 concepts</div>
+</div>
+<div class="ppg">
+<div class="pct-text" data-pp-text="11">0 / 13</div>
+<div class="pp-track"><div class="pp-fill" data-pp-fill="11"></div></div>
+</div>
+</div>
+<div class="section-desc">
+<div class="tagline">In-memory distributed computing, Directed Acyclic Graph (DAG) query optimization, and structured streaming.</div>
+<div class="row"><b>Core Focus:</b> RDD lineage &amp; fault tolerance, Catalyst query optimizer, Tungsten off-heap memory, and shuffle partition tuning.</div>
+<div class="row"><b>Production Trade-offs:</b> In-memory cache speed vs JVM garbage collection pauses, wide transformation shuffles vs co-located joins.</div>
+</div>
+<div class="resources-section">
+<div class="head" onclick="this.parentElement.classList.toggle('open')">
+<h4>📚 Learn this domain</h4>
+<div><span class="count">4 curated resources</span><span class="chevron">▶</span></div>
+</div>
+<div class="resources-body">
+<div class="res-grid">
+<a class="res-link" href="https://spark.apache.org/docs/latest/" rel="noopener" target="_blank"><span class="res-icon">📖</span><span class="res-title">Apache Spark Official Documentation</span><span class="res-source">Apache</span></a>
+<a class="res-link" href="https://www.youtube.com/watch?v=_C8kWso4ne4" rel="noopener" target="_blank"><span class="res-icon">🎥</span><span class="res-title">Apache Spark Full Course (freeCodeCamp)</span><span class="res-source">freeCodeCamp</span></a>
+<a class="res-link" href="https://www.databricks.com/spark/getting-started" rel="noopener" target="_blank"><span class="res-icon">📝</span><span class="res-title">Databricks: Spark Definitive Guide Concepts</span><span class="res-source">Databricks</span></a>
+<a class="res-link" href="https://www.oreilly.com/library/view/learning-spark-2nd/9781492050032/" rel="noopener" target="_blank"><span class="res-icon">📖</span><span class="res-title">Learning Spark: Lightning-Fast Data Analytics</span><span class="res-source">O'Reilly</span></a>
+</div>
+</div>
+</div>
+<div class="subsection">
+<div class="subsection-head">
+<span class="subsection-tag">11.1</span>
+<h3>Spark Architecture, Cluster Topologies &amp; DAG Engine</h3>
+<span style="font-size:11px;color:var(--text-faint);">3 concepts</span>
+</div>
+<div class="subsection-desc">Masterclass lessons covering Spark Architecture, Cluster Topologies &amp; DAG Engine architecture, operational mechanisms, and failure modes.</div>
+<ol class="concepts">
+<li data-cid="11.1.1" data-name="spark cluster architecture  driver program  cluster manager  k8s yarn    executors">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Spark Cluster Architecture: Driver Program, Cluster Manager (K8s/YARN) &amp; Executors</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Spark Cluster Architecture: Driver Program, Cluster Manager (K8s/YARN) &amp; Executors.</div>
+</div>
+<div class="res-links"><a class="video" data-start="0" data-vchannel="freeCodeCamp.org" data-vdur="" data-vtitle="Spark Cluster Architecture: Driver Program, Cluster Manager (K8s/YARN) &amp; Executors" href="https://www.youtube.com/watch?v=_C8kWso4ne4&amp;t=0s" rel="noopener" target="_blank" title="Watch walkthrough: Spark Cluster Architecture: Driver Program, Cluster Manager (K8s/YARN) &amp; Executors">🎬YT</a><a href="https://spark.apache.org/docs/latest/cluster-overview.html" rel="noopener" target="_blank" title="Apache Spark Cluster Mode Overview">🌐Doc</a></div>
+</li>
+<li data-cid="11.1.2" data-name="job execution lifecycle  jobs  stages  tasks   dagscheduler graph construction">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Job Execution Lifecycle: Jobs, Stages, Tasks &amp; DAGScheduler Graph Construction</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Job Execution Lifecycle: Jobs, Stages, Tasks &amp; DAGScheduler Graph Construction.</div>
+</div>
+<div class="res-links"><a class="video" data-start="300" data-vchannel="freeCodeCamp.org" data-vdur="" data-vtitle="Job Execution Lifecycle: Jobs, Stages, Tasks &amp; DAGScheduler Graph Construction" href="https://www.youtube.com/watch?v=_C8kWso4ne4&amp;t=300s" rel="noopener" target="_blank" title="Watch walkthrough: Job Execution Lifecycle: Jobs, Stages, Tasks &amp; DAGScheduler Graph Construction">🎬YT</a><a href="https://spark.apache.org/docs/latest/cluster-overview.html" rel="noopener" target="_blank" title="Apache Spark Cluster Mode Overview">🌐Doc</a></div>
+</li>
+<li data-cid="11.1.3" data-name="narrow vs wide dependencies   shuffle boundary triggering">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Narrow vs Wide Dependencies &amp; Shuffle Boundary Triggering</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Narrow dependencies (map, filter) execute in-memory on local partitions without network movement; Wide dependencies (groupByKey, join) require expensive cluster-wide data shuffles.</div>
+</div>
+<div class="res-links"><a class="video" data-start="600" data-vchannel="freeCodeCamp.org" data-vdur="" data-vtitle="Narrow vs Wide Dependencies &amp; Shuffle Boundary Triggering" href="https://www.youtube.com/watch?v=_C8kWso4ne4&amp;t=600s" rel="noopener" target="_blank" title="Watch walkthrough: Narrow vs Wide Dependencies &amp; Shuffle Boundary Triggering">🎬YT</a><a href="https://spark.apache.org/docs/latest/cluster-overview.html" rel="noopener" target="_blank" title="Apache Spark Cluster Mode Overview">🌐Doc</a></div>
+</li>
+</ol>
+</div>
+<div class="subsection">
+<div class="subsection-head">
+<span class="subsection-tag">11.2</span>
+<h3>Resilient Distributed Datasets (RDDs) &amp; Lineage</h3>
+<span style="font-size:11px;color:var(--text-faint);">3 concepts</span>
+</div>
+<div class="subsection-desc">Masterclass lessons covering Resilient Distributed Datasets (RDDs) &amp; Lineage architecture, operational mechanisms, and failure modes.</div>
+<ol class="concepts">
+<li data-cid="11.2.1" data-name="rdd fundamentals  immutability  partitioning   deterministic lineage graphs">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">RDD Fundamentals: Immutability, Partitioning &amp; Deterministic Lineage Graphs</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for RDD Fundamentals: Immutability, Partitioning &amp; Deterministic Lineage Graphs.</div>
+</div>
+<div class="res-links"><a class="video" data-start="900" data-vchannel="freeCodeCamp.org" data-vdur="" data-vtitle="RDD Fundamentals: Immutability, Partitioning &amp; Deterministic Lineage Graphs" href="https://www.youtube.com/watch?v=_C8kWso4ne4&amp;t=900s" rel="noopener" target="_blank" title="Watch walkthrough: RDD Fundamentals: Immutability, Partitioning &amp; Deterministic Lineage Graphs">🎬YT</a><a href="https://spark.apache.org/docs/latest/rdd-programming-guide.html" rel="noopener" target="_blank" title="Spark RDD Programming Guide">🌐Doc</a></div>
+</li>
+<li data-cid="11.2.2" data-name="transformations  lazy  vs actions  eager  map  filter vs reducebykey  collect">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Transformations (Lazy) vs Actions (Eager): map, filter vs reduceByKey, collect</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Transformations (Lazy) vs Actions (Eager): map, filter vs reduceByKey, collect.</div>
+</div>
+<div class="res-links"><a class="video" data-start="1200" data-vchannel="freeCodeCamp.org" data-vdur="" data-vtitle="Transformations (Lazy) vs Actions (Eager): map, filter vs reduceByKey, collect" href="https://www.youtube.com/watch?v=_C8kWso4ne4&amp;t=1200s" rel="noopener" target="_blank" title="Watch walkthrough: Transformations (Lazy) vs Actions (Eager): map, filter vs reduceByKey, collect">🎬YT</a><a href="https://spark.apache.org/docs/latest/rdd-programming-guide.html" rel="noopener" target="_blank" title="Spark RDD Programming Guide">🌐Doc</a></div>
+</li>
+<li data-cid="11.2.3" data-name="fault tolerance  lineage graph recomputation vs rdd checkpointing">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Fault Tolerance: Lineage Graph Recomputation vs RDD Checkpointing</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Fault Tolerance: Lineage Graph Recomputation vs RDD Checkpointing.</div>
+</div>
+<div class="res-links"><a class="video" data-start="1500" data-vchannel="freeCodeCamp.org" data-vdur="" data-vtitle="Fault Tolerance: Lineage Graph Recomputation vs RDD Checkpointing" href="https://www.youtube.com/watch?v=_C8kWso4ne4&amp;t=1500s" rel="noopener" target="_blank" title="Watch walkthrough: Fault Tolerance: Lineage Graph Recomputation vs RDD Checkpointing">🎬YT</a><a href="https://spark.apache.org/docs/latest/rdd-programming-guide.html" rel="noopener" target="_blank" title="Spark RDD Programming Guide">🌐Doc</a></div>
+</li>
+</ol>
+</div>
+<div class="subsection">
+<div class="subsection-head">
+<span class="subsection-tag">11.3</span>
+<h3>Spark DataFrames, Datasets &amp; Catalyst Optimization</h3>
+<span style="font-size:11px;color:var(--text-faint);">3 concepts</span>
+</div>
+<div class="subsection-desc">Masterclass lessons covering Spark DataFrames, Datasets &amp; Catalyst Optimization architecture, operational mechanisms, and failure modes.</div>
+<ol class="concepts">
+<li data-cid="11.3.1" data-name="dataframes   spark sql  schema enforced structured big data processing">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">DataFrames &amp; Spark SQL: Schema Enforced Structured Big Data Processing</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for DataFrames &amp; Spark SQL: Schema Enforced Structured Big Data Processing.</div>
+</div>
+<div class="res-links"><a class="video" data-start="1800" data-vchannel="freeCodeCamp.org" data-vdur="" data-vtitle="DataFrames &amp; Spark SQL: Schema Enforced Structured Big Data Processing" href="https://www.youtube.com/watch?v=_C8kWso4ne4&amp;t=1800s" rel="noopener" target="_blank" title="Watch walkthrough: DataFrames &amp; Spark SQL: Schema Enforced Structured Big Data Processing">🎬YT</a><a href="https://spark.apache.org/docs/latest/sql-programming-guide.html" rel="noopener" target="_blank" title="Spark SQL, DataFrames and Datasets Guide">🌐Doc</a></div>
+</li>
+<li data-cid="11.3.2" data-name="catalyst optimizer  analysis  logical optimization  physical planning   code gen">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Catalyst Optimizer: Analysis, Logical Optimization, Physical Planning &amp; Code Gen</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Catalyst Optimizer: Analysis, Logical Optimization, Physical Planning &amp; Code Gen.</div>
+</div>
+<div class="res-links"><a class="video" data-start="2400" data-vchannel="freeCodeCamp.org" data-vdur="" data-vtitle="Catalyst Optimizer: Analysis, Logical Optimization, Physical Planning &amp; Code Gen" href="https://www.youtube.com/watch?v=_C8kWso4ne4&amp;t=2400s" rel="noopener" target="_blank" title="Watch walkthrough: Catalyst Optimizer: Analysis, Logical Optimization, Physical Planning &amp; Code Gen">🎬YT</a><a href="https://spark.apache.org/docs/latest/sql-programming-guide.html" rel="noopener" target="_blank" title="Spark SQL, DataFrames and Datasets Guide">🌐Doc</a></div>
+</li>
+<li data-cid="11.3.3" data-name="tungsten execution engine  off heap binary memory management   whole stage codegen">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Tungsten Execution Engine: Off-Heap Binary Memory Management &amp; Whole-Stage Codegen</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Tungsten Execution Engine: Off-Heap Binary Memory Management &amp; Whole-Stage Codegen.</div>
+</div>
+<div class="res-links"><a class="video" data-start="3000" data-vchannel="freeCodeCamp.org" data-vdur="" data-vtitle="Tungsten Execution Engine: Off-Heap Binary Memory Management &amp; Whole-Stage Codegen" href="https://www.youtube.com/watch?v=_C8kWso4ne4&amp;t=3000s" rel="noopener" target="_blank" title="Watch walkthrough: Tungsten Execution Engine: Off-Heap Binary Memory Management &amp; Whole-Stage Codegen">🎬YT</a><a href="https://spark.apache.org/docs/latest/sql-programming-guide.html" rel="noopener" target="_blank" title="Spark SQL, DataFrames and Datasets Guide">🌐Doc</a></div>
+</li>
+</ol>
+</div>
+<div class="subsection">
+<div class="subsection-head">
+<span class="subsection-tag">11.4</span>
+<h3>Shuffle Optimization, Memory Tuning &amp; Structured Streaming</h3>
+<span style="font-size:11px;color:var(--text-faint);">4 concepts</span>
+</div>
+<div class="subsection-desc">Masterclass lessons covering Shuffle Optimization, Memory Tuning &amp; Structured Streaming architecture, operational mechanisms, and failure modes.</div>
+<ol class="concepts">
+<li data-cid="11.4.1" data-name="shuffle optimization  partition tuning  spark sql shuffle partitions    broadcast joins">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Shuffle Optimization: Partition Tuning (spark.sql.shuffle.partitions) &amp; Broadcast Joins</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Shuffle Optimization: Partition Tuning (spark.sql.shuffle.partitions) &amp; Broadcast Joins.</div>
+</div>
+<div class="res-links"><a class="video" data-start="3600" data-vchannel="freeCodeCamp.org" data-vdur="" data-vtitle="Shuffle Optimization: Partition Tuning (spark.sql.shuffle.partitions) &amp; Broadcast Joins" href="https://www.youtube.com/watch?v=_C8kWso4ne4&amp;t=3600s" rel="noopener" target="_blank" title="Watch walkthrough: Shuffle Optimization: Partition Tuning (spark.sql.shuffle.partitions) &amp; Broadcast Joins">🎬YT</a><a href="https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html" rel="noopener" target="_blank" title="Spark Structured Streaming Programming Guide">🌐Doc</a></div>
+</li>
+<li data-cid="11.4.2" data-name="spark memory management  storage memory vs execution memory   spilling">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Spark Memory Management: Storage Memory vs Execution Memory &amp; Spilling</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Spark Memory Management: Storage Memory vs Execution Memory &amp; Spilling.</div>
+</div>
+<div class="res-links"><a class="video" data-start="4200" data-vchannel="freeCodeCamp.org" data-vdur="" data-vtitle="Spark Memory Management: Storage Memory vs Execution Memory &amp; Spilling" href="https://www.youtube.com/watch?v=_C8kWso4ne4&amp;t=4200s" rel="noopener" target="_blank" title="Watch walkthrough: Spark Memory Management: Storage Memory vs Execution Memory &amp; Spilling">🎬YT</a><a href="https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html" rel="noopener" target="_blank" title="Spark Structured Streaming Programming Guide">🌐Doc</a></div>
+</li>
+<li data-cid="11.4.3" data-name="handling data skew  key salting   skew join hints">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Handling Data Skew: Key Salting &amp; Skew Join Hints</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Handling Data Skew: Key Salting &amp; Skew Join Hints.</div>
+</div>
+<div class="res-links"><a class="video" data-start="4800" data-vchannel="freeCodeCamp.org" data-vdur="" data-vtitle="Handling Data Skew: Key Salting &amp; Skew Join Hints" href="https://www.youtube.com/watch?v=_C8kWso4ne4&amp;t=4800s" rel="noopener" target="_blank" title="Watch walkthrough: Handling Data Skew: Key Salting &amp; Skew Join Hints">🎬YT</a><a href="https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html" rel="noopener" target="_blank" title="Spark Structured Streaming Programming Guide">🌐Doc</a></div>
+</li>
+<li data-cid="11.4.4" data-name="spark structured streaming  event time processing  watermarking   micro batching">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Spark Structured Streaming: Event-Time Processing, Watermarking &amp; Micro-Batching</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Spark Structured Streaming: Event-Time Processing, Watermarking &amp; Micro-Batching.</div>
+</div>
+<div class="res-links"><a class="video" data-start="5400" data-vchannel="freeCodeCamp.org" data-vdur="" data-vtitle="Spark Structured Streaming: Event-Time Processing, Watermarking &amp; Micro-Batching" href="https://www.youtube.com/watch?v=_C8kWso4ne4&amp;t=5400s" rel="noopener" target="_blank" title="Watch walkthrough: Spark Structured Streaming: Event-Time Processing, Watermarking &amp; Micro-Batching">🎬YT</a><a href="https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html" rel="noopener" target="_blank" title="Spark Structured Streaming Programming Guide">🌐Doc</a></div>
+</li>
+</ol>
+</div>
+</section>
+
+  
+  <div class="sister-guides-card">
+    <div class="sister-title">🚀 Complete Engineering &amp; Cloud Masterclasses</div>
+    <div class="sister-grid">
+      <a class="sister-link" href="tech_aws.html">☁️ AWS Cloud</a>
+      <a class="sister-link" href="tech_azure.html">🔷 Microsoft Azure</a>
+      <a class="sister-link" href="tech_gcp.html">🌐 Google Cloud Platform</a>
+      <a class="sister-link" href="tech_linux.html">🐧 Linux &amp; CLI</a>
+      <a class="sister-link" href="tech_git.html">🌿 Git &amp; GitHub</a>
+      <a class="sister-link" href="tech_docker_k8s.html">🐳 Docker &amp; Kubernetes</a>
+      <a class="sister-link" href="tech_cicd.html">🚀 CI/CD Pipelines</a>
+      <a class="sister-link" href="tech_terraform.html">🏗️ Terraform IaC</a>
+      <a class="sister-link" href="tech_kafka.html">⚡ Apache Kafka</a>
+      <a class="sister-link" href="tech_spark.html">📊 Apache Spark</a>
+      <a class="sister-link" href="tech_postgres.html">🐘 PostgreSQL</a>
+      <a class="sister-link" href="tech_redis.html">🔴 Redis Caching</a>
+      <a class="sister-link" href="tech_java.html">☕ Java &amp; Spring Boot</a>
+      <a class="sister-link" href="tech_fastapi.html">🐍 Python &amp; FastAPI</a>
+      <a class="sister-link" href="tech_apis.html">🔌 Production APIs</a>
+      <a class="sister-link active-hub" href="cloud_aws_azure.html">☁️ Cloud Platforms Hub &rarr;</a>
+      <a class="sister-link active-hub" href="all_tech.html">🌐 All-in-One Tech Portal &rarr;</a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+window.SITE_SLUG = "cloud";
+</script>
+<script>
+
+(function() {
+  const SLUG = window.SITE_SLUG || 'cloud';
+  const KEY_DONE = 'hub_done_' + SLUG;
+  const KEY_BM = 'hub_bm_' + SLUG;
+
+  let doneSet = new Set();
+  try {
+    const raw = localStorage.getItem(KEY_DONE);
+    if (raw) doneSet = new Set(JSON.parse(raw));
+  } catch (e) {}
+
+  let bmSet = new Set();
+  try {
+    const raw = localStorage.getItem(KEY_BM);
+    if (raw) bmSet = new Set(JSON.parse(raw));
+  } catch (e) {}
+
+  function saveDone() {
+    try { localStorage.setItem(KEY_DONE, JSON.stringify([...doneSet])); } catch (e) {}
+  }
+  function saveBm() {
+    try { localStorage.setItem(KEY_BM, JSON.stringify([...bmSet])); } catch (e) {}
+  }
+
+  function updateProgress() {
+    const all = document.querySelectorAll('li[data-cid]');
+    const total = all.length;
+    let done = 0;
+    all.forEach(li => {
+      const cid = li.getAttribute('data-cid');
+      const isDone = doneSet.has(cid);
+      li.classList.toggle('done', isDone);
+      li.classList.toggle('is-done', isDone);
+      const chk = li.querySelector('.done-check');
+      if (chk) {
+        chk.classList.toggle('checked', isDone);
+        chk.innerHTML = isDone ? '✓' : '';
+      }
+      if (isDone) done++;
+      const isBm = bmSet.has(cid);
+      li.classList.toggle('is-bm', isBm);
+      const star = li.querySelector('.bookmark-star');
+      if (star) {
+        star.classList.toggle('active', isBm);
+        star.textContent = isBm ? '★' : '☆';
+      }
+    });
+    const pct = total ? Math.round((done / total) * 100) : 0;
+    const bar = document.getElementById('overall-bar');
+    if (bar) bar.style.width = pct + '%';
+    const txt = document.getElementById('overall-pct');
+    if (txt) txt.textContent = done + ' / ' + total + ' (' + pct + '%)';
+  }
+
+  document.querySelectorAll('li[data-cid]').forEach(li => {
+    const cid = li.getAttribute('data-cid');
+    const chk = li.querySelector('.done-check');
+    if (chk) {
+      chk.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (doneSet.has(cid)) doneSet.delete(cid);
+        else doneSet.add(cid);
+        saveDone();
+        updateProgress();
+      });
+    }
+    const star = li.querySelector('.bookmark-star');
+    if (star) {
+      star.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (bmSet.has(cid)) bmSet.delete(cid);
+        else bmSet.add(cid);
+        saveBm();
+        updateProgress();
+      });
+    }
+  });
+
+  let activeFilter = null;
+  document.querySelectorAll('.filter-btn[data-filter]').forEach(b => {
+    b.addEventListener('click', () => {
+      const val = b.getAttribute('data-val');
+      if (activeFilter === val) {
+        activeFilter = null;
+        b.classList.remove('active');
+      } else {
+        document.querySelectorAll('.filter-btn[data-filter]').forEach(x => x.classList.remove('active'));
+        activeFilter = val;
+        b.classList.add('active');
+      }
+      applyFilters();
+    });
+  });
+
+  const sInput = document.getElementById('search-input');
+  if (sInput) sInput.addEventListener('input', applyFilters);
+
+  const clearBtn = document.getElementById('clear-filters');
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      activeFilter = null;
+      document.querySelectorAll('.filter-btn').forEach(x => x.classList.remove('active'));
+      if (sInput) sInput.value = '';
+      applyFilters();
+    });
+  }
+
+  function applyFilters() {
+    const q = (sInput ? sInput.value : '').toLowerCase().trim();
+    document.querySelectorAll('li[data-cid]').forEach(li => {
+      const cid = li.getAttribute('data-cid');
+      const text = (li.getAttribute('data-name') || li.textContent).toLowerCase();
+      let match = true;
+      if (activeFilter === 'done' && !doneSet.has(cid)) match = false;
+      if (activeFilter === 'undone' && doneSet.has(cid)) match = false;
+      if (activeFilter === 'bookmarked' && !bmSet.has(cid)) match = false;
+      if (q && !text.includes(q)) match = false;
+      li.style.display = match ? '' : 'none';
+    });
+  }
+
+  const randBtn = document.getElementById('random-btn');
+  if (randBtn) {
+    randBtn.addEventListener('click', () => {
+      const all = Array.from(document.querySelectorAll('li[data-cid]')).filter(li => li.style.display !== 'none');
+      if (!all.length) return;
+      const pick = all[Math.floor(Math.random() * all.length)];
+      pick.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      pick.style.outline = '3px solid var(--accent)';
+      setTimeout(() => { pick.style.outline = ''; }, 2000);
+    });
+  }
+
+  updateProgress();
+})();
+
+</script>
+</body>
+</html>

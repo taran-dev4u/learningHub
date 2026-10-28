@@ -31,6 +31,9 @@
 | `ai_data.html` | **AI & Data Hub**: 4 tracks (AI Engineering, Machine Learning Engineering, Data Science, Data Engineering) — 24 subsections, 96 concepts, Command Deck, sticky pill bar, Domain Isolation Engine | ✅ Redesigned & Active | Playwright + Audit |
 | `ai_engineering.html` | **AI Engineering from Scratch Masterclass**: 20 phases, 542 lessons, full MIT curriculum snapshot, direct link integration | ✅ Active with Hub Breadcrumb | Playwright + Audit |
 | `tech_aws.html` | Standalone AWS Cloud Architecture Masterclass (7 subsections, 36 concepts) | ✅ Deployed | Playwright + Audit |
+| `tech_azure.html` | Standalone Microsoft Azure Cloud Architecture Masterclass (4 subsections, 19 concepts) | ✅ Deployed | Playwright + Audit |
+| `tech_gcp.html` | Standalone Google Cloud Platform Architecture Masterclass (3 subsections, 14 concepts) | ✅ Deployed | Playwright + Audit |
+| `tech_spark.html` | Standalone Apache Spark Big Data Processing Masterclass (4 subsections, 13 concepts) | ✅ Deployed | Playwright + Audit |
 | `tech_linux.html` | Standalone Linux & Terminal Power Engineering Masterclass (3 subsections, 12 concepts) | ✅ Deployed | Playwright + Audit |
 | `tech_git.html` | Standalone Git & GitHub Architecture Masterclass (4 subsections, 17 concepts) | ✅ Deployed | Playwright + Audit |
 | `tech_docker_k8s.html` | Standalone Docker & Kubernetes Container Orchestration Masterclass (8 subsections, 31 concepts) | ✅ Deployed | Playwright + Audit |
@@ -81,11 +84,12 @@ The autonomous agent is scheduled via recurring cron notification (`0 */3 * * *`
     - `tech_java.html` (Java & Spring Boot Microservices — 4 subs, 16 concepts)
     - `tech_fastapi.html` (Python & FastAPI Backend Engineering — 2 subs, 8 concepts)
     - `tech_apis.html` (Production API Design & Architecture — 2 subs, 8 concepts)
-- [ ] **Next Masterclass Expansions (Batch 4 - Final Cloud & Big Data Set)**:
-  - Generate standalone masterclass pages for:
-    - `tech_azure.html` (Microsoft Azure Enterprise Architecture)
-    - `tech_gcp.html` (Google Cloud Platform Architecture)
-    - `tech_spark.html` (Apache Spark Big Data Engine)
+- [x] **Expand Standalone Masterclasses (Batch 4 - Final Cloud & Big Data Set)**:
+  - Generated and verified:
+    - `tech_azure.html` (Microsoft Azure Enterprise Cloud Architecture — 4 subs, 19 concepts)
+    - `tech_gcp.html` (Google Cloud Platform Architecture — 3 subs, 14 concepts)
+    - `tech_spark.html` (Apache Spark Big Data Processing — 4 subs, 13 concepts)
+  - **100% of all Cloud Platforms (AWS, Azure, GCP) and All-Tech Disciplines (13 domains) now have dedicated masterclass pages!**
 - [ ] **DSA Unique Problem Descriptions**:
   - Replace recycled descriptions across DSA patterns with distinct problem-specific intuition summaries.
 - [ ] **Mobile & Performance Polish**:
@@ -240,3 +244,31 @@ The autonomous agent is scheduled via recurring cron notification (`0 */3 * * *`
     - Verified breadcrumbs, sister links, 1289px concept rows, study rail `.hub-actions` mount, and Light/Black themes.
 - **Automated Generator**:
   - Created official project generator `tools/build_ai_data_portal.py` for atomic, idempotent builds of `ai_data.html` and the 3 standalone masterclasses.
+
+### [2026-10-28 12:05 UTC] Scheduled Maintenance Check & Launch of Final Cloud & Big Data Masterclasses (Iterations 4 & 5)
+- **Scheduled Maintenance Execution**:
+  - Processed cron task notifications `0 */3 * * *` (Iterations 4 and 5).
+  - Confirmed 0 findings in `tools/audit_site.py` across all pages.
+  - Verified clean git state and JS asset integrity.
+- **Generated 3 Standalone Masterclasses (Batch 4 - Complete Cloud & Big Data Set)**:
+  - **Microsoft Azure Cloud Architecture Masterclass (`tech_azure.html`)**:
+    - 4 subsections, 19 concepts covering Entra ID, VM & App Service runtimes, VNet secure topologies, Cosmos DB globally distributed databases, Azure SQL, and AKS microservices.
+  - **Google Cloud Platform Architecture Masterclass (`tech_gcp.html`)**:
+    - 3 subsections, 14 concepts covering GKE enterprise clusters, Cloud Run scale-to-zero serverless, BigQuery petabyte data warehousing, Cloud Spanner, and global VPC networking.
+  - **Apache Spark Big Data Processing Masterclass (`tech_spark.html`)**:
+    - 4 subsections, 13 concepts covering RDD primitives, DataFrame APIs, Catalyst optimizer, Tungsten memory management, shuffle stages, and Structured Streaming.
+- **100% Masterclass Milestone Achieved**:
+  - Every single domain in Cloud Platforms (AWS, Azure, GCP) now has a dedicated masterclass.
+  - Every single discipline in the All-in-One Tech Portal (all 13 domains: Linux, Git, Docker/K8s, Terraform, CI/CD, Kafka, Spark, PostgreSQL, Redis, Java, FastAPI, APIs) now has a dedicated masterclass.
+  - Every single track in AI & Data (all 4 tracks: AI Engineering, Machine Learning Engineering, Data Science, Data Engineering) now has a dedicated masterclass.
+  - Total standalone masterclasses expanded to **18 standalone guides** across the entire hub!
+- **Cross-Linking & Navigation**:
+  - Updated Command Deck cards in `cloud_aws_azure.html` and `all_tech.html` with `Dedicated Masterclass ↗` buttons and section focus links.
+  - Integrated 17-link companion grid (`🚀 Complete Engineering & Cloud Masterclasses`) across all masterclasses.
+  - Maintained unified progress synchronization (`window.SITE_SLUG = "cloud"`).
+- **Verification Suite**:
+  - `python tools/audit_site.py`: **0 findings** across all 790 pages.
+  - `node tools/verify-learning-hub.mjs`: All 16 pages passed.
+  - Headless Playwright suite (`scratch/test_final_masterclasses_playwright.py`):
+    - Zero horizontal overflow (`scrollWidth === clientWidth === 1440px`).
+    - Verified breadcrumbs, 1373px concept rows, study rail `.hub-actions` mount, and Light/Black themes.
