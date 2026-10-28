@@ -34,6 +34,7 @@ __BASE__
 template = template.replace('__PHASES__', str(c['phases'])).replace('__LESSONS__', str(c['phase'])).replace('__REV__', revision)
 atomic(ROOT / 'ai_engineering.html', template.replace('__BASE__', ''))
 atomic(ROOT / 'AI_Engineering_Tutorial/index.html', template.replace('__BASE__', '').replace('href="assets/', 'href="../assets/').replace('src="assets/', 'src="../assets/'))
+atomic(ROOT / 'AI_Engineering_Tutorial/reader.html', template.replace('__BASE__', '').replace('<body data-ai-curriculum>', '<body data-ai-curriculum class="aic-panel-mode">').replace('href="assets/', 'href="../assets/').replace('src="assets/', 'src="../assets/'))
 guide = ROOT / 'AI_Engineering_Tutorial/concept-guide.html'
 if guide.exists() and '<base href="../">' in guide.read_text(encoding='utf-8'):
     guide_html = guide.read_text(encoding='utf-8').replace('<base href="../">', '')

@@ -5,6 +5,7 @@
   var base = new URL('../', script.src).href;
   var release = new URL(script.src).searchParams.get('v') || '1';
   var root, catalog, sourceIndex, entries, groups, packs = new Map(), filePromise;
+  var panelMode=window.self!==window.top && new URLSearchParams(location.search).has('panel');
   var query = '', kind = '', pageNumber = 0, selected = 'overview', routeToken = 0;
   var NAV_KEY = 'hub_ai_nav_closed_v1', TOC_KEY = 'hub_ai_toc_closed_v1';
   function closed(key) { return localStorage.getItem(key) === '1'; }
@@ -131,11 +132,11 @@
     }
     bindToolbar(render);render();
   }
-  async function fileBrowser(prefix) {
-    await files();document.getElementById('aic-main').innerHTML='<h2 class="aic-section-title">Source files</h2><p class="aic-description">Every tracked file from the pinned repository is preserved locally. Code and HTML are displayed as source.</p>'+toolbar(true);
+  async function fileBrowser(prefix, from) {
+    await files();if(panelMode)window.parent.postMessage({type:'ai-reader-title',title:'Code & files'},location.origin);document.getElementById('aic-main').innerHTML=(from?'<div class="aic-actions">'+button('← Back to lesson',route(from))+'</div>':'')+'<h2 class="aic-section-title">Source files</h2><p class="aic-description">Every tracked file from the pinned repository is preserved locally. Code and HTML are displayed as source.</p>'+toolbar(true);
     function render(){
       var q=query.toLowerCase(), list=Object.keys(sourceIndex.files).filter(function(p){return !p.startsWith('@generated/')&&(!prefix||p.startsWith(prefix))&&p.toLowerCase().includes(q);}).sort();
-      document.getElementById('aic-results').innerHTML='<p class="aic-description">'+list.length.toLocaleString()+' files'+(prefix?' in '+esc(prefix):'')+'</p><div class="aic-card">'+list.slice(pageNumber*100,(pageNumber+1)*100).map(function(p){return '<div class="aic-file"><a href="'+route(p)+'">'+esc(p)+'</a><small>'+formatBytes(sourceIndex.files[p].size)+'</small></div>';}).join('')+'</div>'+pagination(list.length,100);bindPagination(render);
+      document.getElementById('aic-results').innerHTML='<p class="aic-description">'+list.length.toLocaleString()+' files'+(prefix?' in '+esc(prefix):'')+'</p><div class="aic-card">'+list.slice(pageNumber*100,(pageNumber+1)*100).map(function(p){return '<div class="aic-file"><a href="'+route(p)+(from?'&from='+encodeURIComponent(from):'')+'">'+esc(p)+'</a><small>'+formatBytes(sourceIndex.files[p].size)+'</small></div>';}).join('')+'</div>'+pagination(list.length,100);bindPagination(render);
     }bindToolbar(render);render();
   }
   function resolveSource(href,path){
@@ -157,17 +158,17 @@
     article.querySelectorAll('[data-check-question]').forEach(function(button){button.onclick=function(){var i=Number(button.dataset.checkQuestion),q=data.questions[i],selected=Array.from(article.querySelectorAll('input[name="quiz-'+i+'"]:checked')).map(function(input){return Number(input.value);}),correct=Array.isArray(q.correct)?q.correct:[q.correct],ok=selected.length===correct.length&&selected.every(function(value){return correct.includes(value);}),answer=article.querySelector('[data-question-answer="'+i+'"]');answer.hidden=false;answer.innerHTML='<b>'+(ok?'Correct.':'Review the answer.')+'</b><p>'+esc(q.explanation||'')+'</p><p>Source answer: '+correct.map(function(n){return esc((q.options||[])[n]||n);}).join('; ')+'</p>';};});
   }
   async function reader(path, params, token) {
-    var main=document.getElementById('aic-main'), e=entries.get(path), origin=e?e.path:path;
-    var g=e&&groups.get(e.group), prefix=origin.includes('/docs/')?origin.split('/docs/')[0]+'/':origin.slice(0,origin.lastIndexOf('/')+1);
+    var main=document.getElementById('aic-main'), e=entries.get(path), origin=e?e.path:path, context=entries.get(params.get('from'))||e;
+    var g=context&&groups.get(context.group), prefix=origin.includes('/docs/')?origin.split('/docs/')[0]+'/':origin.slice(0,origin.lastIndexOf('/')+1);
     main.innerHTML='<p class="aic-description" role="status">Loading lesson explanations and examples…</p>';
     var loaded=await content(path);if(token!==routeToken)return;
     var sourceLink=sourceUrl(origin), displayTitle=e?e.title:path;
     var lessonNav='';
-    if(e&&e.kind==='phase'&&g){
-      var phaseEntries=g.entries, position=phaseEntries.indexOf(e.id), previous=position>0?entries.get(phaseEntries[position-1]):null, next=position<phaseEntries.length-1?entries.get(phaseEntries[position+1]):null;
-      lessonNav='<section class="aic-phase-guide" aria-label="Lessons in this phase"><div class="aic-phase-heading"><span class="aic-eyebrow">'+esc(g.title)+'</span><span>Lesson '+(position+1)+' of '+phaseEntries.length+'</span></div><div class="aic-phase-step">'+(previous?button('← '+previous.title,route(previous.contentPath)):'<span>First lesson</span>')+(next?button(next.title+' →',route(next.contentPath),' primary'):'<span>Last lesson</span>')+'</div><details class="aic-phase-list" open><summary>All '+phaseEntries.length+' lessons in this phase</summary><ol>'+phaseEntries.map(function(id,i){var item=entries.get(id);return '<li'+(id===e.id?' class="current" aria-current="step"':'')+'><a href="'+route(item.contentPath)+'">'+(i+1)+'. '+esc(item.title)+'</a></li>';}).join('')+'</ol></details></section>';
+    if(context&&context.kind==='phase'&&g){
+      var phaseEntries=g.entries, position=phaseEntries.indexOf(context.id), previous=position>0?entries.get(phaseEntries[position-1]):null, next=position<phaseEntries.length-1?entries.get(phaseEntries[position+1]):null;
+      lessonNav='<section class="aic-phase-guide" aria-label="Lessons in this phase"><div class="aic-phase-heading"><span class="aic-eyebrow">'+esc(g.title)+'</span><span>Lesson '+(position+1)+' of '+phaseEntries.length+'</span></div><div class="aic-phase-step">'+(previous?button('← '+previous.title,route(previous.contentPath)):'<span>First lesson</span>')+(next?button(next.title+' →',route(next.contentPath),' primary'):'<span>Last lesson</span>')+'</div><details class="aic-phase-list" open><summary>All '+phaseEntries.length+' lessons in this phase</summary><ol>'+phaseEntries.map(function(id,i){var item=entries.get(id);return '<li'+(id===context.id?' class="current" aria-current="step"':'')+'><a href="'+route(item.contentPath)+'">'+(i+1)+'. '+esc(item.title)+'</a></li>';}).join('')+'</ol></details></section>';
     }
-    main.innerHTML=lessonNav+'<div class="aic-actions">'+button('← '+(g?g.title:'Source files'),g?'#group='+encodeURIComponent(g.id):'#files=')+button('GitHub source ↗',sourceUrl(origin))+(e&&e.originalSite?button('Original interactive guide ↗',e.originalSite):'')+lessonVideo(e)+'<button class="aic-button" id="aic-download">Download file</button>'+button('Files & code','#files='+encodeURIComponent(prefix))+'</div><h2 class="aic-section-title" style="margin-top:18px">'+esc(e?e.title:path)+'</h2>'+
+    main.innerHTML=lessonNav+'<div class="aic-actions">'+(params.get('from')&&params.get('from')!==path?button('← Back to lesson',route(params.get('from')))+button('← Files','#files='+encodeURIComponent(prefix)+'&from='+encodeURIComponent(params.get('from'))):button('← '+(g?g.title:'Source files'),g?'#group='+encodeURIComponent(g.id):'#files='))+button('GitHub source ↗',sourceUrl(origin))+(e&&e.originalSite?button('Original interactive guide ↗',e.originalSite):'')+lessonVideo(e)+'<button class="aic-button" id="aic-download">Download file</button>'+button('Files & code','#files='+encodeURIComponent(prefix)+'&from='+encodeURIComponent(params.get('from')||path))+'</div><h2 class="aic-section-title" style="margin-top:18px">'+esc(e?e.title:path)+'</h2>'+
       (e&&e.status==='planned'?'<p class="aic-note">This is planned upstream material. The source has no completed lesson or implementation yet.</p>':'')+
       '<p class="aic-description">'+esc(origin)+'</p><div class="aic-reading" id="aic-reading"><article class="aic-article" id="aic-article"></article><aside class="aic-toc-wrap"><button class="aic-toggle" id="aic-toc-toggle" type="button" aria-controls="aic-toc"></button><nav class="aic-toc" aria-label="Lesson sections" id="aic-toc"></nav></aside></div>';
     var reading=document.getElementById('aic-reading'),toc=document.getElementById('aic-toc'),tocToggle=document.getElementById('aic-toc-toggle');
@@ -187,7 +188,8 @@
     }else{
       var pre=document.createElement('pre'), code=document.createElement('code');code.textContent=loaded.data.content;pre.appendChild(code);article.appendChild(pre);if(window.hljs)hljs.highlightElement(code);
     }
-    if(params.get('tab')==='files'){location.hash='files='+encodeURIComponent(prefix);return;}
+    if(panelMode)window.parent.postMessage({type:'ai-reader-title',title:displayTitle},location.origin);
+    if(params.get('tab')==='files'){location.hash='files='+encodeURIComponent(prefix)+'&from='+encodeURIComponent(path);return;}
     var section=params.get('section');if(section){var target=document.getElementById('aic-'+section);if(target)target.scrollIntoView({block:'start'});}
     else main.scrollIntoView({block:'start'});
   }
@@ -201,11 +203,25 @@
     var token=++routeToken, params=new URLSearchParams(location.hash.slice(1));query='';pageNumber=0;kind='';selected=params.get('group')||'overview';if(params.has('read')&&entries.has(params.get('read')))selected=entries.get(params.get('read')).group;shell();
     try{
       if(params.has('read'))await reader(params.get('read'),params,token);
-      else if(params.has('files'))await fileBrowser(params.get('files'));
+      else if(params.has('files'))await fileBrowser(params.get('files'),params.get('from'));
       else if(selected==='overview')overview();
       else{var g=groups.get(selected);document.getElementById('aic-main').innerHTML='<h2 class="aic-section-title">'+esc(g?g.title:'Every study item')+'</h2><p class="aic-description">'+esc(g&&g.description||'Search and study the complete imported curriculum.')+'</p>'+toolbar(false);bindToolbar(renderItems);renderItems();}
     }catch(error){document.getElementById('aic-main').innerHTML='<div class="aic-note">'+esc(error.message)+'</div>';}
   }
-  async function init(){root=document.getElementById('ai-curriculum');try{var response=await fetch(base+'AI_Engineering_Tutorial/catalog.json?v='+release);if(!response.ok)throw Error('Curriculum catalogue could not load');catalog=await response.json();entries=new Map(catalog.entries.map(function(e){return[e.contentPath,e];}));groups=new Map(catalog.groups.map(function(g){return[g.id,g];}));window.addEventListener('hashchange',navigate);await navigate();}catch(error){root.innerHTML='<h1>AI Engineering</h1><p>'+esc(error.message)+'</p>';}}
+  function setupReaderPanel(){
+    if(panelMode)return;
+    var pane=document.createElement('section');pane.className='aic-reader-panel';pane.id='aic-reader-panel';pane.hidden=true;
+    pane.innerHTML='<header class="aic-reader-bar"><strong id="aic-reader-title">Lesson</strong><div><button type="button" id="aic-reader-dock" aria-label="Move reader to left">⇄</button><button type="button" id="aic-reader-expand" aria-label="Expand reader">⛶</button><button type="button" id="aic-reader-close" aria-label="Close reader">×</button></div></header><iframe id="aic-reader-frame" title="AI lesson reader"></iframe>';
+    document.body.appendChild(pane);
+    var frame=pane.querySelector('iframe'),lastFocus=null;
+    function close(){pane.hidden=true;frame.src='about:blank';document.body.classList.remove('aic-reader-open');if(lastFocus&&lastFocus.isConnected)lastFocus.focus();}
+    pane.querySelector('#aic-reader-close').onclick=close;
+    pane.querySelector('#aic-reader-dock').onclick=function(){pane.classList.toggle('dock-left');this.setAttribute('aria-label',pane.classList.contains('dock-left')?'Move reader to right':'Move reader to left');};
+    pane.querySelector('#aic-reader-expand').onclick=function(){pane.classList.toggle('expanded');this.setAttribute('aria-label',pane.classList.contains('expanded')?'Restore reader width':'Expand reader');};
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!pane.hidden)close();});
+    window.addEventListener('message',function(e){if(e.origin===location.origin&&e.source===frame.contentWindow&&e.data&&e.data.type==='ai-reader-title')pane.querySelector('#aic-reader-title').textContent=e.data.title;});
+    root.addEventListener('click',function(e){var a=e.target.closest('a[href]');if(!a)return;var href=a.getAttribute('href');if(!href||!/^#(?:read|files)=/.test(href))return;e.preventDefault();lastFocus=a;pane.hidden=false;document.body.classList.add('aic-reader-open');pane.querySelector('#aic-reader-title').textContent='Loading lesson…';frame.src=base+'AI_Engineering_Tutorial/reader.html?panel=1&v='+release+href;});
+  }
+  async function init(){root=document.getElementById('ai-curriculum');try{var response=await fetch(base+'AI_Engineering_Tutorial/catalog.json?v='+release);if(!response.ok)throw Error('Curriculum catalogue could not load');catalog=await response.json();entries=new Map(catalog.entries.map(function(e){return[e.contentPath,e];}));groups=new Map(catalog.groups.map(function(g){return[g.id,g];}));window.addEventListener('hashchange',navigate);setupReaderPanel();await navigate();}catch(error){root.innerHTML='<h1>AI Engineering</h1><p>'+esc(error.message)+'</p>';}}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 }());
