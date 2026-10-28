@@ -63,13 +63,13 @@ const sourceDefs = [
   },
   {
     key: "cloud",
-    title: "Cloud - AWS and Azure",
+    title: "Cloud & DevOps Engineering",
     file: "cloud_aws_azure.html",
     kind: "concept",
     label: "Cloud",
     color: "#0786a3",
     storage: { done: "hub_done_cloud", bookmark: "hub_bm_cloud" },
-    summary: "AWS and Azure service mapping, cloud foundations, IaC, observability, and interview Q&A.",
+    summary: "Complete Cloud & DevOps roadmap: AWS, Azure, GCP, Linux, Git, Docker, Kubernetes, Terraform, CI/CD, Kafka, Spark, PostgreSQL, Redis, Java/Spring Boot, Python/FastAPI, and API Design.",
     relatedLinks: [["Open Cloud & DevOps Tutorial", "Cloud_DevOps_Tutorial/index.html"]],
   },
   {
@@ -307,28 +307,37 @@ const coverageBySource = {
     ],
   },
   cloud: {
-    title: "Cloud Coverage Check",
-    source: "roadmap.sh AWS + AWS/Azure Well-Architected guidance",
+    title: "Cloud & DevOps Coverage Check",
+    source: "roadmap.sh DevOps & Cloud Architect + CNCF + AWS & Azure Well-Architected Frameworks",
     notes: [
-      "Keep AWS and Azure mappings side-by-side for interview recall.",
-      "Add reliability, security, cost, and operational excellence to each service family.",
-      "Practice explaining why a managed service is chosen, not only what it is called.",
+      "Keep cloud architecture, container orchestration, and distributed systems patterns top-of-mind.",
+      "Add reliability, security, cost, and operational excellence to each infrastructure tier.",
+      "Practice explaining architectural trade-offs: latency vs durability, consistency vs availability.",
     ],
     topics: [
-      "Well-Architected pillars",
-      "Landing zones",
-      "Cost governance",
-      "Backup and disaster recovery",
-      "Secrets management",
-      "Container platforms",
-      "Zero-trust networking",
-      "Cloud migration patterns",
+      "AWS & Azure Multi-Cloud Architecture",
+      "GCP Hierarchy & Distributed Services",
+      "Linux Kernel Primitives & Diagnostics",
+      "Git Architecture & Rebase Mechanics",
+      "Docker Optimization & Security",
+      "Kubernetes Scheduling, Ingress & Helm",
+      "Terraform State Locking & Modular IaC",
+      "CI/CD GitOps & Progressive Delivery",
+      "Apache Kafka Partitions & KRaft Quorum",
+      "Apache Spark Catalyst & Shuffle Tuning",
+      "PostgreSQL MVCC, WAL & Index Tuning",
+      "Redis Caching Topologies & Clustering",
+      "Spring Boot Microservice Resiliency",
+      "FastAPI Asyncio & SQLAlchemy 2.0",
+      "Enterprise REST, gRPC & Rate Limiting",
     ],
     resources: [
       ["Local Cloud & DevOps Tutorial Hub (58 Lessons)", "Cloud_DevOps_Tutorial/index.html"],
-      ["roadmap.sh AWS", "https://roadmap.sh/aws"],
+      ["roadmap.sh DevOps", "https://roadmap.sh/devops"],
+      ["CNCF Cloud Native Interactive Landscape", "https://landscape.cncf.io/"],
       ["AWS Well-Architected Framework", "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html"],
       ["Azure Well-Architected Framework", "https://learn.microsoft.com/en-us/azure/well-architected/"],
+      ["The Linux Foundation", "https://www.linuxfoundation.org/"],
     ],
   },
   interview: {
@@ -2841,7 +2850,7 @@ function gapSearchContext(key) {
     cs: "computer science",
     bh: "behavioral interview",
     ai: "AI engineering",
-    cloud: "AWS Azure cloud",
+    cloud: "cloud devops architecture",
     interview: "interview preparation",
   }[key] || "";
 }
@@ -3021,7 +3030,7 @@ function rewriteConceptSearchLinks(html, source) {
     cs: "computer science",
     bh: "behavioral interview",
     ai: "AI engineering",
-    cloud: "AWS Azure cloud",
+    cloud: "cloud devops architecture",
     interview: "interview preparation",
   }[source.key] || source.title;
   return html.replace(/<li\b([^>]*\bdata-cid=["'][^"']+["'][^>]*)>([\s\S]*?)<\/li>/gi, (full, open, body) => {
@@ -3085,7 +3094,7 @@ function transformSourcePage(source) {
   if (navScript) html = html.replace("</body>", `${navScript}\n</body>`);
   // one-time cleanup of blank lines earlier builds appended
   html = html.replace(/\n{3,}(?=<\/head>)/g, "\n").replace(/\n{3,}(?=<\/body>)/g, "\n");
-  fs.writeFileSync(filePath, html, "utf8");
+  write(source.file, html);
 }
 
 function duplicateTitles(values) {
@@ -3257,7 +3266,7 @@ function updateSourceNavs() {
   for (const source of sourceDefs) {
     const filePath = path.join(root, source.file);
     const html = fs.readFileSync(filePath, "utf8");
-    fs.writeFileSync(filePath, html.replace(/href=["']hub\.html["']/g, 'href="index.html"'), "utf8");
+    write(source.file, html.replace(/href=["']hub\.html["']/g, 'href="index.html"'));
   }
 }
 

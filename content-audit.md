@@ -1,6 +1,6 @@
 # Taran's Learning Hub Content Audit
 
-Generated: 2026-10-28T05:37:31.652Z
+Generated: 2026-10-28T05:55:13.290Z
 
 ## Research References
 
@@ -400,28 +400,33 @@ Sections:
 - MLOps: 16 items, 4 subsections, 4 resources.
 - Production AI Engineering: 30 items, 7 subsections, 6 resources.
 
-## Cloud - AWS and Azure
+## Cloud & DevOps Engineering
 
-- Inventory: 11 sections, 34 subsections, 194 concepts, 55 resources.
+- Inventory: 16 sections, 58 subsections, 239 concepts, 76 resources.
 - Formatting focus: consistent navigation, closed resources, clean headings, and better fallback search links.
 - Duplicate subsection names to review: none found by title.
 - Weak/generic subsection names to review: none found by heuristic.
-- Coverage source: roadmap.sh AWS + AWS/Azure Well-Architected guidance.
-- Missing/priority candidates: Well-Architected pillars, Landing zones, Cost governance, Backup and disaster recovery, Secrets management, Container platforms, Zero-trust networking, Cloud migration patterns.
-- Recommended next resources: Local Cloud & DevOps Tutorial Hub (58 Lessons), roadmap.sh AWS, AWS Well-Architected Framework, Azure Well-Architected Framework.
+- Coverage source: roadmap.sh DevOps & Cloud Architect + CNCF + AWS & Azure Well-Architected Frameworks.
+- Missing/priority candidates: AWS & Azure Multi-Cloud Architecture, GCP Hierarchy & Distributed Services, Linux Kernel Primitives & Diagnostics, Git Architecture & Rebase Mechanics, Docker Optimization & Security, Kubernetes Scheduling, Ingress & Helm, Terraform State Locking & Modular IaC, CI/CD GitOps & Progressive Delivery, Apache Kafka Partitions & KRaft Quorum, Apache Spark Catalyst & Shuffle Tuning, PostgreSQL MVCC, WAL & Index Tuning, Redis Caching Topologies & Clustering, Spring Boot Microservice Resiliency, FastAPI Asyncio & SQLAlchemy 2.0, Enterprise REST, gRPC & Rate Limiting.
+- Recommended next resources: Local Cloud & DevOps Tutorial Hub (58 Lessons), roadmap.sh DevOps, CNCF Cloud Native Interactive Landscape, AWS Well-Architected Framework, Azure Well-Architected Framework, The Linux Foundation.
 
 Sections:
-- Cloud Foundations: 39 items, 4 subsections, 4 resources.
-- Identity & Access (IAM / Entra ID): 8 items, 2 subsections, 3 resources.
-- Compute: 14 items, 3 subsections, 4 resources.
-- Storage: 11 items, 2 subsections, 2 resources.
-- Networking: 15 items, 3 subsections, 3 resources.
-- Databases: 10 items, 2 subsections, 2 resources.
-- Messaging & Events: 9 items, 2 subsections, 2 resources.
-- Monitoring & Observability: 7 items, 2 subsections, 2 resources.
-- Infrastructure as Code: 6 items, 1 subsections, 4 resources.
-- AWS Interview Q&A (250 Questions): 40 items, 5 subsections, 4 resources.
-- Architecture & Governance: 35 items, 8 subsections, 6 resources.
+- 1. AWS (Amazon Web Services) Masterclass: 36 items, 7 subsections, 6 resources.
+- 2. Microsoft Azure Masterclass: 19 items, 4 subsections, 6 resources.
+- 3. Google Cloud Platform (GCP) Masterclass: 14 items, 3 subsections, 5 resources.
+- 4. Linux & Terminal Power Engineering: 12 items, 3 subsections, 5 resources.
+- 5. Git & GitHub Architecture: 17 items, 4 subsections, 5 resources.
+- 6. Docker & Containerization Deep-Dive: 11 items, 3 subsections, 5 resources.
+- 7. Kubernetes (K8s) Container Orchestration: 20 items, 5 subsections, 5 resources.
+- 8. Infrastructure as Code (IaC) with Terraform: 12 items, 3 subsections, 4 resources.
+- 9. CI/CD Pipelines & DevOps Automation: 12 items, 3 subsections, 4 resources.
+- 10. Apache Kafka Distributed Streaming: 14 items, 4 subsections, 4 resources.
+- 11. Apache Spark Big Data Engine: 13 items, 4 subsections, 4 resources.
+- 12. Database Engineering & PostgreSQL Internals: 15 items, 4 subsections, 4 resources.
+- 13. In-Memory Caching with Redis: 12 items, 3 subsections, 4 resources.
+- 14. Java & Spring Boot Microservices: 16 items, 4 subsections, 4 resources.
+- 15. Python Backend Engineering with FastAPI: 8 items, 2 subsections, 4 resources.
+- 16. Production API Design & Architecture: 8 items, 2 subsections, 5 resources.
 
 ## Interview Prep
 
