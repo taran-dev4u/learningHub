@@ -33,7 +33,7 @@
     marked: 'https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js',
     purify: 'https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.6/purify.min.js'
   };
-  var el, frame, list, titleEl, kickerEl, openLink, moreLink, googleLink, tabsEl, videoView, readView, docsEl, viewer, channelBar, speedBar;
+  var el, frame, list, titleEl, kickerEl, openLink, googleLink, tabsEl, videoView, readView, docsEl, viewer, channelBar, speedBar;
   var SPEED_KEY = 'vp_playback_speed_v1';
   var SPEEDS = [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2];
   var state = { videos: [], anim: [], docs: [], tab: 'videos', idx: 0, title: '', query: '', doc: -1, speed: 1 };
@@ -222,10 +222,11 @@
       '<div class="vp-video-view">' +
         '<div class="vp-player"><iframe class="vp-frame" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>' +
         '<div class="vp-speedbar" aria-label="Video playback speed"></div>' +
+        '<div class="vp-playlist">' +
         '<div class="vp-channel-bar"></div>' +
         '<div class="vp-list-head"><span>More videos on this topic</span></div>' +
         '<div class="vp-list"></div>' +
-        '<a class="vp-more" target="_blank" rel="noopener noreferrer">Search YouTube for more ↗</a>' +
+        '</div>' +
       '</div>' +
       '<div class="vp-read-view" hidden>' +
         '<div class="vp-docs"></div>' +
@@ -239,7 +240,6 @@
     titleEl = el.querySelector('.vp-title');
     kickerEl = el.querySelector('.vp-kicker');
     openLink = el.querySelector('.vp-open-yt');
-    moreLink = el.querySelector('.vp-more');
     googleLink = el.querySelector('.vp-google');
     tabsEl = el.querySelector('.vp-tabs');
     videoView = el.querySelector('.vp-video-view');
@@ -419,7 +419,6 @@
     viewer.innerHTML = '';
     var vids = curVideos();
     el.querySelector('.vp-list-head').style.display = vids.length > 1 ? '' : 'none';
-    moreLink.href = 'https://www.youtube.com/results?search_query=' + encodeURIComponent(state.query + (tab === 'anim' ? ' animation visualized' : ''));
     if (!vids.length) {
       frame.src = 'about:blank';
       if (channelBar) {

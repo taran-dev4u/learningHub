@@ -376,10 +376,10 @@
   }
   var css = document.createElement("link");
   css.rel = "stylesheet";
-  css.href = root + "assets/video-panel.css?v=4";
+  css.href = root + "assets/video-panel.css?v=5";
   document.head.appendChild(css);
   var js = document.createElement("script");
-  js.src = root + "assets/video-panel.js?v=6";
+  js.src = root + "assets/video-panel.js?v=7";
   js.defer = true;
   document.head.appendChild(js);
 
