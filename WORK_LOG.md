@@ -157,3 +157,25 @@ The autonomous agent is scheduled via recurring cron notification (`0 */3 * * *`
   - `node tools/verify-learning-hub.mjs`: All checks passed.
   - Playwright visual and functional regression test (`scratch/test_adfree_player_playwright.py`): Verified Piped embed load, YouTube toggle, Invidious switch, and perfect layout in Light and Black themes.
   - Pushed to `origin main` (commit `78d76b6`).
+
+### [2026-10-28 07:39 UTC] Architectural Separation of Cloud Platforms Hub & All-in-One Tech Portal
+- **User Architecture Realignment**:
+  - Separated Cloud Platforms from Core Software Engineering & Tooling across two dedicated surfaces.
+  - Renamed top navbar link from `Cloud Tutorial` (`Cloud Tut`) to `All-Tech` (`all_tech.html`), while preserving `Cloud` (`cloud_aws_azure.html`).
+- **Cloud Platforms Hub (`cloud_aws_azure.html`)**:
+  - Dedicated strictly to Cloud Providers: AWS (36 concepts), Microsoft Azure (19 concepts), and Google Cloud Platform (14 concepts) — 14 subsections, 69 concepts total.
+  - Multi-Cloud Command Deck above the fold with 3 provider cards + cross-link banner to `all_tech.html`.
+  - Sticky domain pill bar with `All Cloud (3)`, `AWS`, `Azure`, `GCP`, plus quick link pill to `All-Tech Portal ↗`.
+- **All-in-One Tech & Software Engineering Portal (`all_tech.html`)**:
+  - Dedicated to core software engineering, infrastructure & backend tooling: Linux (12 concepts), Git & GitHub (17 concepts), Docker (11 concepts), Kubernetes (20 concepts), Terraform IaC (12 concepts), CI/CD (12 concepts), Kafka (14 concepts), Spark (13 concepts), PostgreSQL (15 concepts), Redis (12 concepts), Java & Spring Boot (16 concepts), Python/FastAPI (8 concepts), and API Design (8 concepts) — 44 subsections, 170 concepts total.
+  - Core Engineering Command Deck with 13 discipline cards + cross-link banner to `cloud_aws_azure.html`.
+  - Sticky domain pill bar with `All Tech (13)`, `Linux`, `Git`, `Docker`, `K8s`, `Terraform`, `CI/CD`, `Kafka`, `Spark`, `PostgreSQL`, `Redis`, `Java`, `FastAPI`, `APIs`, plus quick link pill to `Cloud Platforms ↗`.
+  - Domain Isolation Engine allowing 1-click domain filtering and deep URL hash routing (`#linux`, `#docker`, `#k8s`, etc.).
+- **Zero Data Loss & Masterclasses**:
+  - 100% of 239 concepts preserved with complete curriculum writeups, direct YouTube links with timestamps, and documentation pointers.
+  - Updated all 12 standalone masterclasses (`tech_aws.html`, `tech_linux.html`, etc.) with accurate breadcrumb navigation.
+- **Verification Suite**:
+  - `python tools/audit_site.py`: **0 findings** across all 782 pages.
+  - `node tools/verify-learning-hub.mjs`: All 9 pages passed.
+  - Playwright visual and functional regression test (`scratch/test_split_pages_playwright.py`): Verified navbar links, domain pills, domain isolation, and crosslink cards across Light and Black themes.
+  - Pushed to `origin main` (commit `b7b61f0`).
