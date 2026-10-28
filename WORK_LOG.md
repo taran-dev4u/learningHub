@@ -143,3 +143,17 @@ The autonomous agent is scheduled via recurring cron notification (`0 */3 * * *`
   - `python tools/audit_site.py`: **0 findings** across all 773 pages.
   - `node tools/verify-learning-hub.mjs`: All checks passed.
   - Playwright test (`scratch/test_tech_portal_playwright.py`): Verified domain isolation, pill switching, breadcrumbs, checkbox toggles, and zero horizontal overflow (`scrollWidth <= clientWidth`).
+
+### [2026-10-28 07:14 UTC] Built-In Ad-Free Clean Player Mode in Study Panel & YouTube Ad Elimination
+- **Root Cause Analysis**:
+  - Investigated why Chrome ad blockers permit video ads inside the embedded player on `github.io`.
+  - Identified cross-origin iframe sandboxing, Chrome Manifest V3 declarativeNetRequest restrictions, and YouTube's server-stitched video stream insertion.
+- **Implemented Built-In Ad-Free Player Engine**:
+  - Updated `assets/video-panel.js` and `assets/video-panel.css` with a native `🛡️ Ad-Free: ON / OFF` toggle and engine switcher (`Piped`, `Invidious`, `YouTube`).
+  - Defaults to Ad-Free (`Piped`), completely eliminating pre-roll, mid-roll, post-roll, and pop-up ads across all 781 pages.
+  - Preserves exact timestamp jumps (`⏱️ Starts at mm:ss`), playback speeds, responsive docking, and user preference in `localStorage`.
+- **Verification**:
+  - `python tools/audit_site.py`: **0 findings** across all 781 pages.
+  - `node tools/verify-learning-hub.mjs`: All checks passed.
+  - Playwright visual and functional regression test (`scratch/test_adfree_player_playwright.py`): Verified Piped embed load, YouTube toggle, Invidious switch, and perfect layout in Light and Black themes.
+  - Pushed to `origin main` (commit `78d76b6`).
