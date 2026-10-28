@@ -279,6 +279,27 @@ To scale horizontally without falling victim to coherency penalties, the applica
 
 ---
 
+## Back-of-Envelope Sizing Calculations
+
+**Why this belongs next to latency and throughput:** A traffic estimate is only useful when it changes a design decision. First convert demand into requests per second, then use measured service capacity and a peak factor to size the fleet. Treat every benchmark as an assumption until load tests on the real workload replace it.
+
+### From daily demand to peak QPS
+
+Suppose a product makes **12 million API requests per day**. The average arrival rate is $12{,}000{,}000 / 86{,}400 \approx 139$ requests per second. If the busiest hour is estimated at **five times** the daily average, plan for about **695 peak requests per second**. The factor is an explicit planning assumption, not a universal constant; real traffic traces should replace it.
+
+The read/write split matters because reads may be cacheable while writes often require durable work. At a 9:1 read/write ratio, 695 peak QPS means roughly 626 reads and 69 writes per second. Estimate cache hit rate, database transactions, payload sizes, and network bandwidth separately for those paths. A 90% read cache hit rate would leave about 63 read misses per second, but write load remains about 69 per second. A cache cannot erase the write bottleneck.
+
+### From latency to concurrency and servers
+
+Little's Law says $L = \lambda W$: the average number of in-flight requests equals arrival rate multiplied by mean time in the system. At 695 QPS and **80 ms mean end-to-end response time**, roughly $695 \times 0.08 = 56$ requests are in flight. This is a concurrency estimate, not a thread count: an asynchronous service can manage many in-flight requests with fewer threads. Use tail latency, queueing, and downstream connection limits to test whether this estimate is safe.
+
+If load testing shows **200 QPS per instance at saturation**, and the chosen steady-state target is **60% utilization**, budget 120 QPS per instance. The initial count is $\lceil 695 / 120 \rceil = 6$ instances. Then check whether the fleet still meets the target after one instance or one availability zone fails; if not, add capacity. A single busy database or shared rate limit may still cap the whole service before the application instances do.
+
+> [!WARNING]
+> Do not size only from average QPS or claim a fixed "requests per server" number without workload evidence. State the peak factor, payload assumptions, measured throughput, target utilization, and failure headroom. Recalculate when those inputs change.
+
+---
+
 ## Teacher FAQ: Common Architectural Misconceptions
 
 > [!NOTE]

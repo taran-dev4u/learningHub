@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud & DevOps Tutorial Hub</title>
+    <meta name="description" content="Cloud, DevOps, and backend engineering curriculum: AWS, Azure, GCP, Docker, Kubernetes, Terraform, Git, CI/CD, Kafka, Spark, PostgreSQL, and Redis.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css">
+    <link rel="stylesheet" href="../assets/learning-hub-shared.css">
+    <script src="../assets/learning-hub-shared.js"></script>
+    <link rel="stylesheet" href="../assets/algomaster-theme.css?v=1">
+</head>
+<body class="am">
+    <h1 style="position:absolute;left:-9999px">Cloud & DevOps Tutorial Hub</h1>
+
+    <header class="am-topbar">
+        <a class="am-brand" href="index.html" style="text-decoration:none;color:inherit">
+            <span class="am-logo">☁️</span>
+            <span><b>Cloud & DevOps Tutorial</b><br><span>Cloud, Containers & Infrastructure</span></span>
+        </a>
+        <nav class="am-top-links">
+            <a class="current" href="#">Curriculum</a>
+            <a href="../cloud_aws_azure.html" style="font-weight:700">☁️ Cloud Reference Guide &rarr;</a>
+        </nav>
+    </header>
+
+    <main class="am-wrap" id="am-root"></main>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.5/purify.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.8.0/dist/mermaid.min.js"></script>
+    <script>if (typeof mermaid !== 'undefined') mermaid.initialize({ startOnLoad: false, theme: 'base' });</script>
+    <script>
+      window.TUTORIAL_CONFIG = {
+        title: 'Learn Cloud, DevOps & Distributed Systems Systematically',
+        subtitle: 'AWS, Azure, GCP, Docker, Kubernetes, Terraform, Git, CI/CD, Kafka, Spark, PostgreSQL, and Redis engineering masterclasses.',
+        storageKey: 'hub_done_cloud_devops',
+        progressDomain: 'cloud',
+        companionLink: {
+          tag: 'Quick Reference & Progress Matrix',
+          title: 'Cloud & DevOps Reference Guide (AWS, Azure, GCP)',
+          desc: 'Switch to the multi-cloud matrix with verified direct YouTube links, chapter timestamps, and architectural cheat sheets.',
+          label: 'Switch to Cloud Reference Guide \u2192',
+          href: '../cloud_aws_azure.html'
+        }
+      };
+    </script>
+    <script src="contentBundle.js?v=1"></script>
+    <script src="topics.js?v=1"></script>
+    <script src="resources.js?v=1"></script>
+    <script src="../assets/tutorial-app.js?v=1"></script>
+</body>
+</html>

@@ -29,6 +29,7 @@
     { label: "Behavioral",    short: "Behavioral",    href: "behavioral.html" },
     { label: "AI",            short: "AI",            href: "ai_engineering.html" },
     { label: "Cloud",         short: "Cloud",         href: "cloud_aws_azure.html" },
+    { label: "Cloud Tutorial",short: "Cloud Tut",     href: "Cloud_DevOps_Tutorial/index.html" },
     { label: "Interview Prep",short: "Interview",     href: "interview_prep.html" },
     { label: "Companies",     short: "Companies",     href: "companies.html" },
     { label: "Library",       short: "Library",       href: "library.html" },
@@ -138,7 +139,7 @@
     var targetFile = target[target.length - 1];
     var targetDir = target.length > 1 ? target[target.length - 2] : "";
     if (targetDir) return here.parent === targetDir || p.indexOf("/" + targetDir + "/") >= 0;
-    return here.file === targetFile && !here.parent.match(/^(DSA_Tutorial|LLD_Tutorial|System_Design_Tutorial|auto-me|ConvertedDocs)$/);
+    return here.file === targetFile && !here.parent.match(/^(DSA_Tutorial|LLD_Tutorial|System_Design_Tutorial|Cloud_DevOps_Tutorial|AI_Engineering_Tutorial|auto-me|ConvertedDocs)$/);
   }
 
   function buildNav() {

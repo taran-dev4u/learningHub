@@ -429,7 +429,7 @@
      against YouTube's oEmbed API. */
   function curated(hash) {
     var out = { videos: [], docs: [] };
-    var store = window.sdResources || window.aiResources || window.roadmapResources;
+    var store = window.sdResources || window.aiResources || window.cloudDevOpsResources || window.roadmapResources;
     if (!store) return out;
     var key = String(hash).replace(/^#/, "");
     var hit = store.concepts && store.concepts[key];

@@ -358,21 +358,35 @@
       });
     });
 
-    scrollToConcept(item.conceptId);
+    scrollToConcept(item);
     var active = root.querySelector('.am-side-link.active');
     if (active) active.scrollIntoView({ block: 'nearest' });
   }
 
-  function scrollToConcept(anchor) {
+  function scrollToConcept(item) {
+    var anchor = item && item.conceptId;
     if (!anchor) { window.scrollTo({ top: 0 }); return; }
     var el = document.getElementById(anchor);
+    var article = document.getElementById('am-article');
+    var heads = article ? Array.prototype.slice.call(article.querySelectorAll('h1, h2, h3')) : [];
     if (!el) {
-      var heads = Array.prototype.slice.call(document.querySelectorAll('#am-article h1, #am-article h2, #am-article h3'));
       var clean = anchor.replace(/-/g, '');
       el = heads.find(function (h) {
         var id = h.id.replace(/-/g, '');
         return id.length > 3 && (clean.indexOf(id) !== -1 || id.indexOf(clean) !== -1);
       });
+    }
+    if (!el && article) {
+      var override = (window.tutorialAnchorTargets || {})[item.file + '#' + anchor];
+      if (override) el = heads.find(function (h) {
+        var textSlug = h.textContent.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+        return textSlug === override;
+      });
+    }
+    if (!el && article) {
+      var title = splitTitle(item.conceptTitle).short.toLowerCase();
+      var candidates = Array.prototype.slice.call(article.querySelectorAll('h2, h3, h4, p, li, td'));
+      el = candidates.find(function (node) { return node.textContent.toLowerCase().indexOf(title) !== -1; });
     }
     if (el) el.scrollIntoView({ block: 'start' });
     else window.scrollTo({ top: 0 });

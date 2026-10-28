@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-27T11:57:52.845Z",
+  "generatedAt": "2026-10-28T05:37:31.652Z",
   "stats": {
     "domains": 7,
     "sections": 108,
@@ -3917,6 +3917,12 @@
         "bookmark": "hub_bm_cloud"
       },
       "summary": "AWS and Azure service mapping, cloud foundations, IaC, observability, and interview Q&A.",
+      "relatedLinks": [
+        [
+          "Open Cloud & DevOps Tutorial",
+          "Cloud_DevOps_Tutorial/index.html"
+        ]
+      ],
       "sections": [
         {
           "id": "section-1",
@@ -4310,6 +4316,10 @@
           "Cloud migration patterns"
         ],
         "resources": [
+          [
+            "Local Cloud & DevOps Tutorial Hub (58 Lessons)",
+            "Cloud_DevOps_Tutorial/index.html"
+          ],
           [
             "roadmap.sh AWS",
             "https://roadmap.sh/aws"
@@ -49839,8 +49849,8 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=json+mode+and+schema-constrained+decoding+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=39172s"
         },
         {
           "title": "🔍G",
@@ -49863,8 +49873,8 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=function+calling+apis+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=39172s"
         },
         {
           "title": "🔍G",
@@ -49887,8 +49897,8 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=tool+selection+and+routing+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=39172s"
         },
         {
           "title": "🔍G",
@@ -49911,8 +49921,8 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=parallel+tool+calls+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=39172s"
         },
         {
           "title": "🔍G",
@@ -49935,8 +49945,8 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=validating+and+repairing+output+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=39172s"
         },
         {
           "title": "🔍G",
@@ -49959,8 +49969,8 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=retrieval+metrics+recall+k+mrr+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=33371s"
         },
         {
           "title": "🔍G",
@@ -49983,8 +49993,8 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=faithfulness+and+groundedness+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=33371s"
         },
         {
           "title": "🔍G",
@@ -50007,8 +50017,8 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=golden+datasets+and+synthetic+evals+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=33371s"
         },
         {
           "title": "🔍G",
@@ -50031,8 +50041,8 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=end-to-end+rag+eval+pipelines+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=33371s"
         },
         {
           "title": "🔍G",
@@ -50055,8 +50065,8 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=agent+failure+modes+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=41441s"
         },
         {
           "title": "🔍G",
@@ -50079,8 +50089,8 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=guardrails+on+actions+and+budgets+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=41441s"
         },
         {
           "title": "🔍G",
@@ -50103,8 +50113,8 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=human-in-the-loop+checkpoints+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=41441s"
         },
         {
           "title": "🔍G",
@@ -50127,8 +50137,8 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=tracing+agent+decisions+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=41441s"
         },
         {
           "title": "🔍G",
@@ -50151,8 +50161,8 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=prompt+registries+and+versioning+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=3Lis4w4_bBc"
         },
         {
           "title": "🔍G",
@@ -50175,8 +50185,8 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=a%2Fb+testing+prompts+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=3Lis4w4_bBc"
         },
         {
           "title": "🔍G",
@@ -50199,8 +50209,8 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=regression+testing+on+prompt+change+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=3Lis4w4_bBc"
         },
         {
           "title": "🔍G",
@@ -50223,8 +50233,8 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=templates+and+variable+hygiene+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=3Lis4w4_bBc"
         },
         {
           "title": "🔍G",
@@ -50247,8 +50257,8 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=token+cost+and+latency+dashboards+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=30420s"
         },
         {
           "title": "🔍G",
@@ -50271,8 +50281,8 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=logging+completions+safely+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=30420s"
         },
         {
           "title": "🔍G",
@@ -50295,8 +50305,8 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=quality+drift+detection+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=30420s"
         },
         {
           "title": "🔍G",
@@ -50319,8 +50329,8 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=user+feedback+loops+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=30420s"
         },
         {
           "title": "🔍G",
@@ -50343,8 +50353,8 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=input+and+output+content+filtering+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=32722s"
         },
         {
           "title": "🔍G",
@@ -50367,8 +50377,8 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=prompt+injection+defenses+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=32722s"
         },
         {
           "title": "🔍G",
@@ -50391,8 +50401,8 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=jailbreak+detection+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=32722s"
         },
         {
           "title": "🔍G",
@@ -50415,8 +50425,8 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=pii+redaction+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=32722s"
         },
         {
           "title": "🔍G",
@@ -50439,8 +50449,8 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=model+routing+and+cascades+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=44750s"
         },
         {
           "title": "🔍G",
@@ -50463,8 +50473,8 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=caching+exact+and+semantic+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=44750s"
         },
         {
           "title": "🔍G",
@@ -50487,8 +50497,8 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=batching+and+streaming+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=44750s"
         },
         {
           "title": "🔍G",
@@ -50511,8 +50521,8 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=quantization+and+distillation+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=44750s"
         },
         {
           "title": "🔍G",
@@ -50535,8 +50545,8 @@
       "link": "ai_engineering.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=context+window+budgeting+AI+engineering+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=44750s"
         },
         {
           "title": "🔍G",
@@ -50559,8 +50569,8 @@
       "link": "cloud_aws_azure.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=iaas+vs+paas+vs+saas+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=1285s"
         },
         {
           "title": "🔍G",
@@ -50583,8 +50593,8 @@
       "link": "cloud_aws_azure.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=public+vs+private+vs+hybrid+cloud+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=1516s"
         },
         {
           "title": "🔍G",
@@ -50607,8 +50617,8 @@
       "link": "cloud_aws_azure.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=cloud+economics+pay-as-you-go+%2B+elasticity+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=2209s"
         },
         {
           "title": "🔍G",
@@ -50631,8 +50641,8 @@
       "link": "cloud_aws_azure.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=region+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=5634s"
         },
         {
           "title": "🔍G",
@@ -50655,8 +50665,8 @@
       "link": "cloud_aws_azure.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=availability+zone+az+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=3254s"
         },
         {
           "title": "🔍G",
@@ -50679,8 +50689,8 @@
       "link": "cloud_aws_azure.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=edge+locations+%2F+pops+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=5800s"
         },
         {
           "title": "🔍G",
@@ -50703,8 +50713,8 @@
       "link": "cloud_aws_azure.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=pick+a+region+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=1055s"
         },
         {
           "title": "🔍G",
@@ -50727,8 +50737,8 @@
       "link": "cloud_aws_azure.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=shared+responsibility+model+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=15323s"
         },
         {
           "title": "🔍G",
@@ -50751,8 +50761,8 @@
       "link": "cloud_aws_azure.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=well-architected+framework+6+pillars+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=39172s"
         },
         {
           "title": "🔍G",
@@ -50775,8 +50785,8 @@
       "link": "cloud_aws_azure.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=compute+%2F+vms+aws+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=831s"
         },
         {
           "title": "🔍G",
@@ -50799,8 +50809,8 @@
       "link": "cloud_aws_azure.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=auto+scaling+aws+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=831s"
         },
         {
           "title": "🔍G",
@@ -50823,8 +50833,8 @@
       "link": "cloud_aws_azure.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=containers+aws+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=831s"
         },
         {
           "title": "🔍G",
@@ -50847,8 +50857,8 @@
       "link": "cloud_aws_azure.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=container+registry+aws+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=831s"
         },
         {
           "title": "🔍G",
@@ -50871,8 +50881,8 @@
       "link": "cloud_aws_azure.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=serverless+aws+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=831s"
         },
         {
           "title": "🔍G",
@@ -50895,8 +50905,8 @@
       "link": "cloud_aws_azure.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=object+storage+aws+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=831s"
         },
         {
           "title": "🔍G",
@@ -50919,8 +50929,8 @@
       "link": "cloud_aws_azure.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=block+storage+aws+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=831s"
         },
         {
           "title": "🔍G",
@@ -50943,8 +50953,8 @@
       "link": "cloud_aws_azure.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=file+storage+aws+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=831s"
         },
         {
           "title": "🔍G",
@@ -50967,8 +50977,8 @@
       "link": "cloud_aws_azure.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=archive+aws+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=831s"
         },
         {
           "title": "🔍G",
@@ -50991,8 +51001,8 @@
       "link": "cloud_aws_azure.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=managed+sql+db+aws+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=831s"
         },
         {
           "title": "🔍G",
@@ -51015,8 +51025,8 @@
       "link": "cloud_aws_azure.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=nosql+aws+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=831s"
         },
         {
           "title": "🔍G",
@@ -51039,8 +51049,8 @@
       "link": "cloud_aws_azure.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=cache+aws+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=831s"
         },
         {
           "title": "🔍G",
@@ -51063,8 +51073,8 @@
       "link": "cloud_aws_azure.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=data+warehouse+aws+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=831s"
         },
         {
           "title": "🔍G",
@@ -51087,8 +51097,8 @@
       "link": "cloud_aws_azure.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=virtual+network+aws+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=831s"
         },
         {
           "title": "🔍G",
@@ -51111,8 +51121,8 @@
       "link": "cloud_aws_azure.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=l4+load+balancer+aws+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=831s"
         },
         {
           "title": "🔍G",
@@ -51135,8 +51145,8 @@
       "link": "cloud_aws_azure.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=l7+load+balancer+aws+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=831s"
         },
         {
           "title": "🔍G",
@@ -51159,8 +51169,8 @@
       "link": "cloud_aws_azure.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=api+gateway+aws+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=831s"
         },
         {
           "title": "🔍G",
@@ -51183,8 +51193,8 @@
       "link": "cloud_aws_azure.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=cdn+aws+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=831s"
         },
         {
           "title": "🔍G",
@@ -51207,8 +51217,8 @@
       "link": "cloud_aws_azure.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=dns+aws+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=831s"
         },
         {
           "title": "🔍G",
@@ -51231,8 +51241,8 @@
       "link": "cloud_aws_azure.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=identity+aws+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=831s"
         },
         {
           "title": "🔍G",
@@ -51255,8 +51265,8 @@
       "link": "cloud_aws_azure.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=secrets+aws+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=831s"
         },
         {
           "title": "🔍G",
@@ -51279,8 +51289,8 @@
       "link": "cloud_aws_azure.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=monitoring+%2F+metrics+aws+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=831s"
         },
         {
           "title": "🔍G",
@@ -51303,8 +51313,8 @@
       "link": "cloud_aws_azure.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=logging+aws+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=831s"
         },
         {
           "title": "🔍G",
@@ -51327,8 +51337,8 @@
       "link": "cloud_aws_azure.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=tracing+aws+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=831s"
         },
         {
           "title": "🔍G",
@@ -51351,8 +51361,8 @@
       "link": "cloud_aws_azure.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=event+bus+aws+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=831s"
         },
         {
           "title": "🔍G",
@@ -51375,8 +51385,8 @@
       "link": "cloud_aws_azure.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=message+queue+aws+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=831s"
         },
         {
           "title": "🔍G",
@@ -51399,8 +51409,8 @@
       "link": "cloud_aws_azure.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=pub-sub+aws+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=831s"
         },
         {
           "title": "🔍G",
@@ -51423,8 +51433,8 @@
       "link": "cloud_aws_azure.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=streaming+aws+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=831s"
         },
         {
           "title": "🔍G",
@@ -51447,8 +51457,8 @@
       "link": "cloud_aws_azure.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=iac+aws+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=831s"
         },
         {
           "title": "🔍G",
@@ -51471,8 +51481,8 @@
       "link": "cloud_aws_azure.html#section-1",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=email+aws+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=831s"
         },
         {
           "title": "🔍G",
@@ -51495,8 +51505,8 @@
       "link": "cloud_aws_azure.html#section-2",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=iam+users+%2F+groups+%2F+roles+aws+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=29289s"
         },
         {
           "title": "🔍G",
@@ -51519,8 +51529,8 @@
       "link": "cloud_aws_azure.html#section-2",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=managed+identity+azure+%2F+iam+role+for+ec2+aws+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=29850s"
         },
         {
           "title": "🔍G",
@@ -51543,8 +51553,8 @@
       "link": "cloud_aws_azure.html#section-2",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=federation+saml+%2F+oidc+%2F+sso+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=30100s"
         },
         {
           "title": "🔍G",
@@ -51567,8 +51577,8 @@
       "link": "cloud_aws_azure.html#section-2",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=aws+organizations+%2F+azure+management+groups+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=30420s"
         },
         {
           "title": "🔍G",
@@ -51591,8 +51601,8 @@
       "link": "cloud_aws_azure.html#section-2",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=aws+iam+policy+json+effect+%2F+action+%2F+resource+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=8365s"
         },
         {
           "title": "🔍G",
@@ -51615,8 +51625,8 @@
       "link": "cloud_aws_azure.html#section-2",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=azure+rbac+built-in+roles+owner%2Fcontributor%2Freader+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=9344s"
         },
         {
           "title": "🔍G",
@@ -51639,8 +51649,8 @@
       "link": "cloud_aws_azure.html#section-2",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=permission+boundaries+%2F+service+control+policies+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=8800s"
         },
         {
           "title": "🔍G",
@@ -51663,8 +51673,8 @@
       "link": "cloud_aws_azure.html#section-2",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=secrets+manager+%2F+key+vault+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=8474s"
         },
         {
           "title": "🔍G",
@@ -51687,8 +51697,8 @@
       "link": "cloud_aws_azure.html#section-3",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=instance+families+general+%2F+compute+%2F+memory+%2F+gpu+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=25047s"
         },
         {
           "title": "🔍G",
@@ -51711,8 +51721,8 @@
       "link": "cloud_aws_azure.html#section-3",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=ami+%2F+vm+image+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=25500s"
         },
         {
           "title": "🔍G",
@@ -51735,8 +51745,8 @@
       "link": "cloud_aws_azure.html#section-3",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=on-demand+vs+reserved+vs+spot+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=28150s"
         },
         {
           "title": "🔍G",
@@ -51759,8 +51769,8 @@
       "link": "cloud_aws_azure.html#section-3",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=auto+scaling+groups+asg+%2F+vm+scale+sets+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=29050s"
         },
         {
           "title": "🔍G",
@@ -51783,8 +51793,8 @@
       "link": "cloud_aws_azure.html#section-3",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=user+data+%2F+cloud-init+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=1055s"
         },
         {
           "title": "🔍G",
@@ -51807,8 +51817,8 @@
       "link": "cloud_aws_azure.html#section-3",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=elastic+ip+%2F+static+public+ip+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=1055s"
         },
         {
           "title": "🔍G",
@@ -51831,8 +51841,8 @@
       "link": "cloud_aws_azure.html#section-3",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=ecs+%2F+aci+no+kubernetes+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=2533s"
         },
         {
           "title": "🔍G",
@@ -51855,8 +51865,8 @@
       "link": "cloud_aws_azure.html#section-3",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=eks+%2F+aks+managed+kubernetes+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=5696s"
         },
         {
           "title": "🔍G",
@@ -51879,8 +51889,8 @@
       "link": "cloud_aws_azure.html#section-3",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=fargate+%2F+container+apps+serverless+containers+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=4017s"
         },
         {
           "title": "🔍G",
@@ -51903,8 +51913,8 @@
       "link": "cloud_aws_azure.html#section-3",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=ecr+%2F+azure+container+registry+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=831s"
         },
         {
           "title": "🔍G",
@@ -51927,8 +51937,8 @@
       "link": "cloud_aws_azure.html#section-3",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=lambda+%2F+azure+functions+event-driven+compute+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=3c-iBn73dDE&t=118s"
         },
         {
           "title": "🔍G",
@@ -51951,8 +51961,8 @@
       "link": "cloud_aws_azure.html#section-3",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=cold+starts+causes+and+mitigation+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=32722s"
         },
         {
           "title": "🔍G",
@@ -51975,8 +51985,8 @@
       "link": "cloud_aws_azure.html#section-3",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=execution+limits+timeout+memory+concurrency+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=X48VuDVv0do&t=1349s"
         },
         {
           "title": "🔍G",
@@ -51999,8 +52009,8 @@
       "link": "cloud_aws_azure.html#section-3",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=step+functions+%2F+logic+apps+orchestration+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=33100s"
         },
         {
           "title": "🔍G",
@@ -52023,8 +52033,8 @@
       "link": "cloud_aws_azure.html#section-4",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=buckets+%2F+containers+namespace+and+naming+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=19668s"
         },
         {
           "title": "🔍G",
@@ -52047,8 +52057,8 @@
       "link": "cloud_aws_azure.html#section-4",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=storage+classes+%2F+access+tiers+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=20400s"
         },
         {
           "title": "🔍G",
@@ -52071,8 +52081,8 @@
       "link": "cloud_aws_azure.html#section-4",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=versioning+%2B+object+lock+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=21100s"
         },
         {
           "title": "🔍G",
@@ -52095,8 +52105,8 @@
       "link": "cloud_aws_azure.html#section-4",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=encryption+at+rest+sse-s3+sse-kms+cmk+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=1055s"
         },
         {
           "title": "🔍G",
@@ -52119,8 +52129,8 @@
       "link": "cloud_aws_azure.html#section-4",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=pre-signed+urls+%2F+sas+tokens+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=1055s"
         },
         {
           "title": "🔍G",
@@ -52143,8 +52153,8 @@
       "link": "cloud_aws_azure.html#section-4",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=cross-region+replication+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=1055s"
         },
         {
           "title": "🔍G",
@@ -52167,8 +52177,8 @@
       "link": "cloud_aws_azure.html#section-4",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=s3+object+size+limits+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=1055s"
         },
         {
           "title": "🔍G",
@@ -52191,8 +52201,8 @@
       "link": "cloud_aws_azure.html#section-4",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=ebs+types+gp3+%2F+io2+%2F+st1+%2F+sc1+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=4221s"
         },
         {
           "title": "🔍G",
@@ -52215,8 +52225,8 @@
       "link": "cloud_aws_azure.html#section-4",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=ebs+snapshots+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=7724s"
         },
         {
           "title": "🔍G",
@@ -52239,8 +52249,8 @@
       "link": "cloud_aws_azure.html#section-4",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=efs+%2F+azure+files+shared+file+system+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=5901s"
         },
         {
           "title": "🔍G",
@@ -52263,8 +52273,8 @@
       "link": "cloud_aws_azure.html#section-4",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=ebs+vs+efs+vs+s3+when+to+use+which+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=1055s"
         },
         {
           "title": "🔍G",
@@ -52287,8 +52297,8 @@
       "link": "cloud_aws_azure.html#section-5",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=cidr+blocks+%2F+address+space+planning+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=23739s"
         },
         {
           "title": "🔍G",
@@ -52311,8 +52321,8 @@
       "link": "cloud_aws_azure.html#section-5",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=public+vs+private+subnets+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=24150s"
         },
         {
           "title": "🔍G",
@@ -52335,8 +52345,8 @@
       "link": "cloud_aws_azure.html#section-5",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=internet+gateway+igw+and+nat+gateway+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=24400s"
         },
         {
           "title": "🔍G",
@@ -52359,8 +52369,8 @@
       "link": "cloud_aws_azure.html#section-5",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=route+tables+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=24680s"
         },
         {
           "title": "🔍G",
@@ -52383,8 +52393,8 @@
       "link": "cloud_aws_azure.html#section-5",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=vpc+peering+%2F+vnet+peering+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=831s"
         },
         {
           "title": "🔍G",
@@ -52407,8 +52417,8 @@
       "link": "cloud_aws_azure.html#section-5",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=transit+gateway+%2F+azure+virtual+wan+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=831s"
         },
         {
           "title": "🔍G",
@@ -52431,8 +52441,8 @@
       "link": "cloud_aws_azure.html#section-5",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=vpn+%2B+direct+connect+%2F+expressroute+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=1055s"
         },
         {
           "title": "🔍G",
@@ -52455,8 +52465,8 @@
       "link": "cloud_aws_azure.html#section-5",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=security+groups+aws+stateful+instance-level+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=5102s"
         },
         {
           "title": "🔍G",
@@ -52479,8 +52489,8 @@
       "link": "cloud_aws_azure.html#section-5",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=nacls+aws+stateless+subnet-level+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=5400s"
         },
         {
           "title": "🔍G",
@@ -52503,8 +52513,8 @@
       "link": "cloud_aws_azure.html#section-5",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=nsgs+azure+stateful+subnet+or+nic+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=5480s"
         },
         {
           "title": "🔍G",
@@ -52527,8 +52537,8 @@
       "link": "cloud_aws_azure.html#section-5",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=sg+vs+nacl+key+differences+aws+exam+favourite+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=1055s"
         },
         {
           "title": "🔍G",
@@ -52551,8 +52561,8 @@
       "link": "cloud_aws_azure.html#section-5",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=alb+l7+http+vs+nlb+l4+tcp+aws+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=xg7Dj2AXLyk&t=0s"
         },
         {
           "title": "🔍G",
@@ -52575,8 +52585,8 @@
       "link": "cloud_aws_azure.html#section-5",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=azure+app+gateway+l7+vs+azure+lb+l4+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=5612s"
         },
         {
           "title": "🔍G",
@@ -52599,8 +52609,8 @@
       "link": "cloud_aws_azure.html#section-5",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=cloudfront+%2F+azure+cdn+%2F+front+door+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=831s"
         },
         {
           "title": "🔍G",
@@ -52623,8 +52633,8 @@
       "link": "cloud_aws_azure.html#section-5",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=route+53+routing+policies+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=1055s"
         },
         {
           "title": "🔍G",
@@ -52647,8 +52657,8 @@
       "link": "cloud_aws_azure.html#section-6",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=rds+managed+mysql%2Fpostgres%2Fsql+server%2Foracle+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=21926s"
         },
         {
           "title": "🔍G",
@@ -52671,8 +52681,8 @@
       "link": "cloud_aws_azure.html#section-6",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=aurora+cloud-native+sql+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=22450s"
         },
         {
           "title": "🔍G",
@@ -52695,8 +52705,8 @@
       "link": "cloud_aws_azure.html#section-6",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=multi-az+primary+%2B+standby+in+another+az+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=4442s"
         },
         {
           "title": "🔍G",
@@ -52719,8 +52729,8 @@
       "link": "cloud_aws_azure.html#section-6",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=read+replicas+async+for+read+scaling+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=1055s"
         },
         {
           "title": "🔍G",
@@ -52743,8 +52753,8 @@
       "link": "cloud_aws_azure.html#section-6",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=azure+sql+database+%2F+managed+instance+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=831s"
         },
         {
           "title": "🔍G",
@@ -52767,8 +52777,8 @@
       "link": "cloud_aws_azure.html#section-6",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=dynamodb+key-value+%2F+document+infinite+scale+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=22800s"
         },
         {
           "title": "🔍G",
@@ -52791,8 +52801,8 @@
       "link": "cloud_aws_azure.html#section-6",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=dynamodb+partition+key+design+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=4580s"
         },
         {
           "title": "🔍G",
@@ -52815,8 +52825,8 @@
       "link": "cloud_aws_azure.html#section-6",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=cosmos+db+azure+multi-model+multi-region+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=831s"
         },
         {
           "title": "🔍G",
@@ -52839,8 +52849,8 @@
       "link": "cloud_aws_azure.html#section-6",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=elasticache+%2F+azure+cache+for+redis+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=831s"
         },
         {
           "title": "🔍G",
@@ -52863,8 +52873,8 @@
       "link": "cloud_aws_azure.html#section-6",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=redshift+%2F+azure+synapse+data+warehouse+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=831s"
         },
         {
           "title": "🔍G",
@@ -52887,8 +52897,8 @@
       "link": "cloud_aws_azure.html#section-7",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=sqs+standard+vs+fifo+queue+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=32035s"
         },
         {
           "title": "🔍G",
@@ -52911,8 +52921,8 @@
       "link": "cloud_aws_azure.html#section-7",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=sns+topics+pub%2Fsub+fan-out+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=32400s"
         },
         {
           "title": "🔍G",
@@ -52935,8 +52945,8 @@
       "link": "cloud_aws_azure.html#section-7",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=azure+service+bus+enterprise+messaging+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=4600s"
         },
         {
           "title": "🔍G",
@@ -52959,8 +52969,8 @@
       "link": "cloud_aws_azure.html#section-7",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=dead+letter+queues+dlq+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=1055s"
         },
         {
           "title": "🔍G",
@@ -52983,8 +52993,8 @@
       "link": "cloud_aws_azure.html#section-7",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=eventbridge+%2F+azure+event+grid+event+bus+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=831s"
         },
         {
           "title": "🔍G",
@@ -53007,8 +53017,8 @@
       "link": "cloud_aws_azure.html#section-7",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=kinesis+data+streams+aws+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=32550s"
         },
         {
           "title": "🔍G",
@@ -53031,8 +53041,8 @@
       "link": "cloud_aws_azure.html#section-7",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=azure+event+hubs+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=4650s"
         },
         {
           "title": "🔍G",
@@ -53055,8 +53065,8 @@
       "link": "cloud_aws_azure.html#section-7",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=amazon+msk+managed+kafka+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=1055s"
         },
         {
           "title": "🔍G",
@@ -53079,8 +53089,8 @@
       "link": "cloud_aws_azure.html#section-7",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=kinesis+vs+sqs+vs+msk+when+to+use+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=1055s"
         },
         {
           "title": "🔍G",
@@ -53103,8 +53113,8 @@
       "link": "cloud_aws_azure.html#section-8",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=cloudwatch+metrics+built-in+%2B+custom+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=37126s"
         },
         {
           "title": "🔍G",
@@ -53127,8 +53137,8 @@
       "link": "cloud_aws_azure.html#section-8",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=cloudwatch+alarms+auto+scaling+%2F+sns+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=37550s"
         },
         {
           "title": "🔍G",
@@ -53151,8 +53161,8 @@
       "link": "cloud_aws_azure.html#section-8",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=azure+monitor+%2B+action+groups+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=831s"
         },
         {
           "title": "🔍G",
@@ -53175,8 +53185,8 @@
       "link": "cloud_aws_azure.html#section-8",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=cloudwatch+logs+log+groups+streams+retention+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=9658s"
         },
         {
           "title": "🔍G",
@@ -53199,8 +53209,8 @@
       "link": "cloud_aws_azure.html#section-8",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=azure+log+analytics+%2F+kql+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=9720s"
         },
         {
           "title": "🔍G",
@@ -53223,8 +53233,8 @@
       "link": "cloud_aws_azure.html#section-8",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=aws+x-ray+%2F+azure+application+insights+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=831s"
         },
         {
           "title": "🔍G",
@@ -53247,8 +53257,8 @@
       "link": "cloud_aws_azure.html#section-8",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=cloudtrail+%2F+azure+activity+log+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=NKEFWyqJ5XA&t=831s"
         },
         {
           "title": "🔍G",
@@ -53271,8 +53281,8 @@
       "link": "cloud_aws_azure.html#section-9",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=cloudformation+aws-native+json%2Fyaml+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=7xngnjfIlK4&t=56s"
         },
         {
           "title": "🔍G",
@@ -53295,8 +53305,8 @@
       "link": "cloud_aws_azure.html#section-9",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=aws+cdk+iac+in+python%2Ftypescript+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=7xngnjfIlK4&t=1712s"
         },
         {
           "title": "🔍G",
@@ -53319,8 +53329,8 @@
       "link": "cloud_aws_azure.html#section-9",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=arm+templates+%2F+bicep+azure+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=7xngnjfIlK4&t=4802s"
         },
         {
           "title": "🔍G",
@@ -53343,8 +53353,8 @@
       "link": "cloud_aws_azure.html#section-9",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=terraform+multi-cloud+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=1055s"
         },
         {
           "title": "🔍G",
@@ -53367,8 +53377,8 @@
       "link": "cloud_aws_azure.html#section-9",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=pulumi+code-native+iac+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=1055s"
         },
         {
           "title": "🔍G",
@@ -53391,8 +53401,8 @@
       "link": "cloud_aws_azure.html#section-9",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=iac+best+practices+modules+state+ci%2Fcd+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=1055s"
         },
         {
           "title": "🔍G",
@@ -53415,8 +53425,8 @@
       "link": "cloud_aws_azure.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=what+is+aws+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=25047s"
         },
         {
           "title": "🔍G",
@@ -53439,8 +53449,8 @@
       "link": "cloud_aws_azure.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=ec2+pricing+models+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=25047s"
         },
         {
           "title": "🔍G",
@@ -53463,8 +53473,8 @@
       "link": "cloud_aws_azure.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=s3+storage+classes+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=25047s"
         },
         {
           "title": "🔍G",
@@ -53487,8 +53497,8 @@
       "link": "cloud_aws_azure.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=what+is+vpc+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=25047s"
         },
         {
           "title": "🔍G",
@@ -53511,8 +53521,8 @@
       "link": "cloud_aws_azure.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=ebs+vs+efs+vs+s3+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=25047s"
         },
         {
           "title": "🔍G",
@@ -53535,8 +53545,8 @@
       "link": "cloud_aws_azure.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=what+is+an+ami+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=25047s"
         },
         {
           "title": "🔍G",
@@ -53559,8 +53569,8 @@
       "link": "cloud_aws_azure.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=security+group+vs+nacl+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=25047s"
         },
         {
           "title": "🔍G",
@@ -53583,8 +53593,8 @@
       "link": "cloud_aws_azure.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=what+is+an+eip+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=25047s"
         },
         {
           "title": "🔍G",
@@ -53607,8 +53617,8 @@
       "link": "cloud_aws_azure.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=what+is+auto+scaling+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=25047s"
         },
         {
           "title": "🔍G",
@@ -53631,8 +53641,8 @@
       "link": "cloud_aws_azure.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=what+is+cloudwatch+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=25047s"
         },
         {
           "title": "🔍G",
@@ -53655,8 +53665,8 @@
       "link": "cloud_aws_azure.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=what+is+iam+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=19668s"
         },
         {
           "title": "🔍G",
@@ -53679,8 +53689,8 @@
       "link": "cloud_aws_azure.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=types+of+iam+policies+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=19668s"
         },
         {
           "title": "🔍G",
@@ -53703,8 +53713,8 @@
       "link": "cloud_aws_azure.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=iam+role+vs+iam+user+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=19668s"
         },
         {
           "title": "🔍G",
@@ -53727,8 +53737,8 @@
       "link": "cloud_aws_azure.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=encrypt+data+in+s3+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=19668s"
         },
         {
           "title": "🔍G",
@@ -53751,8 +53761,8 @@
       "link": "cloud_aws_azure.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=what+is+kms+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=19668s"
         },
         {
           "title": "🔍G",
@@ -53775,8 +53785,8 @@
       "link": "cloud_aws_azure.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=mfa+in+aws+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=19668s"
         },
         {
           "title": "🔍G",
@@ -53799,8 +53809,8 @@
       "link": "cloud_aws_azure.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=explicit+deny+vs+allow+precedence+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=19668s"
         },
         {
           "title": "🔍G",
@@ -53823,8 +53833,8 @@
       "link": "cloud_aws_azure.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=types+of+aws+load+balancers+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=23739s"
         },
         {
           "title": "🔍G",
@@ -53847,8 +53857,8 @@
       "link": "cloud_aws_azure.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=sticky+sessions+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=23739s"
         },
         {
           "title": "🔍G",
@@ -53871,8 +53881,8 @@
       "link": "cloud_aws_azure.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=what+is+a+nat+gateway+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=23739s"
         },
         {
           "title": "🔍G",
@@ -53895,8 +53905,8 @@
       "link": "cloud_aws_azure.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=vpc+default+aws+resources+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=23739s"
         },
         {
           "title": "🔍G",
@@ -53919,8 +53929,8 @@
       "link": "cloud_aws_azure.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=route+53+routing+policies+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=23739s"
         },
         {
           "title": "🔍G",
@@ -53943,8 +53953,8 @@
       "link": "cloud_aws_azure.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=5+reserved+ips+per+subnet+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=23739s"
         },
         {
           "title": "🔍G",
@@ -53967,8 +53977,8 @@
       "link": "cloud_aws_azure.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=rds+db+engines+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=29289s"
         },
         {
           "title": "🔍G",
@@ -53991,8 +54001,8 @@
       "link": "cloud_aws_azure.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=multi-az+rds+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=29289s"
         },
         {
           "title": "🔍G",
@@ -54015,8 +54025,8 @@
       "link": "cloud_aws_azure.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=rds+read+replica+vs+multi-az+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=29289s"
         },
         {
           "title": "🔍G",
@@ -54039,8 +54049,8 @@
       "link": "cloud_aws_azure.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=rds+backup+types+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=29289s"
         },
         {
           "title": "🔍G",
@@ -54063,8 +54073,8 @@
       "link": "cloud_aws_azure.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=what+is+dynamodb+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=29289s"
         },
         {
           "title": "🔍G",
@@ -54087,8 +54097,8 @@
       "link": "cloud_aws_azure.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=what+is+elasticache+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=29289s"
         },
         {
           "title": "🔍G",
@@ -54111,8 +54121,8 @@
       "link": "cloud_aws_azure.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=what+is+redshift+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=29289s"
         },
         {
           "title": "🔍G",
@@ -54135,8 +54145,8 @@
       "link": "cloud_aws_azure.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=sqs+queue+types+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=21926s"
         },
         {
           "title": "🔍G",
@@ -54159,8 +54169,8 @@
       "link": "cloud_aws_azure.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=sqs+max+message+size+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=21926s"
         },
         {
           "title": "🔍G",
@@ -54183,8 +54193,8 @@
       "link": "cloud_aws_azure.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=sns+vs+sqs+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=21926s"
         },
         {
           "title": "🔍G",
@@ -54207,8 +54217,8 @@
       "link": "cloud_aws_azure.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=what+is+cloudformation+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=21926s"
         },
         {
           "title": "🔍G",
@@ -54231,8 +54241,8 @@
       "link": "cloud_aws_azure.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=what+is+lambda+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=21926s"
         },
         {
           "title": "🔍G",
@@ -54255,8 +54265,8 @@
       "link": "cloud_aws_azure.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=what+is+elastic+beanstalk+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=21926s"
         },
         {
           "title": "🔍G",
@@ -54279,8 +54289,8 @@
       "link": "cloud_aws_azure.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=what+is+cloudfront+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=21926s"
         },
         {
           "title": "🔍G",
@@ -54303,8 +54313,8 @@
       "link": "cloud_aws_azure.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=how+many+s3+buckets+per+account+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=21926s"
         },
         {
           "title": "🔍G",
@@ -54327,8 +54337,8 @@
       "link": "cloud_aws_azure.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=can+you+reduce+ebs+volume+size+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=21926s"
         },
         {
           "title": "🔍G",
@@ -54351,8 +54361,8 @@
       "link": "cloud_aws_azure.html#section-10",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=what+is+snowball+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=21926s"
         },
         {
           "title": "🔍G",
@@ -54375,8 +54385,8 @@
       "link": "cloud_aws_azure.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=operational+excellence+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=39172s"
         },
         {
           "title": "🔍G",
@@ -54399,8 +54409,8 @@
       "link": "cloud_aws_azure.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=security+pillar+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=39172s"
         },
         {
           "title": "🔍G",
@@ -54423,8 +54433,8 @@
       "link": "cloud_aws_azure.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=reliability+pillar+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=39172s"
         },
         {
           "title": "🔍G",
@@ -54447,8 +54457,8 @@
       "link": "cloud_aws_azure.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=performance+efficiency+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=39172s"
         },
         {
           "title": "🔍G",
@@ -54471,8 +54481,8 @@
       "link": "cloud_aws_azure.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=cost+optimization+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=39172s"
         },
         {
           "title": "🔍G",
@@ -54495,8 +54505,8 @@
       "link": "cloud_aws_azure.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=sustainability+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=39172s"
         },
         {
           "title": "🔍G",
@@ -54519,8 +54529,8 @@
       "link": "cloud_aws_azure.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=aws+organizations+and+control+tower+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=33371s"
         },
         {
           "title": "🔍G",
@@ -54543,8 +54553,8 @@
       "link": "cloud_aws_azure.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=azure+management+groups+and+subscriptions+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=33371s"
         },
         {
           "title": "🔍G",
@@ -54567,8 +54577,8 @@
       "link": "cloud_aws_azure.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=account%2Fsubscription+isolation+strategy+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=33371s"
         },
         {
           "title": "🔍G",
@@ -54591,8 +54601,8 @@
       "link": "cloud_aws_azure.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=guardrails+scps+and+azure+policy+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=33371s"
         },
         {
           "title": "🔍G",
@@ -54615,8 +54625,8 @@
       "link": "cloud_aws_azure.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=tagging+and+cost+allocation+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=41441s"
         },
         {
           "title": "🔍G",
@@ -54639,8 +54649,8 @@
       "link": "cloud_aws_azure.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=budgets+and+anomaly+alerts+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=41441s"
         },
         {
           "title": "🔍G",
@@ -54663,8 +54673,8 @@
       "link": "cloud_aws_azure.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=savings+plans+and+reserved+capacity+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=41441s"
         },
         {
           "title": "🔍G",
@@ -54687,8 +54697,8 @@
       "link": "cloud_aws_azure.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=finops+practice+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=41441s"
         },
         {
           "title": "🔍G",
@@ -54711,8 +54721,8 @@
       "link": "cloud_aws_azure.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=rto+and+rpo+targets+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=3Lis4w4_bBc"
         },
         {
           "title": "🔍G",
@@ -54735,8 +54745,8 @@
       "link": "cloud_aws_azure.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=backup+vs+snapshot+vs+replication+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=3Lis4w4_bBc"
         },
         {
           "title": "🔍G",
@@ -54759,8 +54769,8 @@
       "link": "cloud_aws_azure.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=dr+strategies+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=3Lis4w4_bBc"
         },
         {
           "title": "🔍G",
@@ -54783,8 +54793,8 @@
       "link": "cloud_aws_azure.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=cross-region+failover+testing+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=3Lis4w4_bBc"
         },
         {
           "title": "🔍G",
@@ -54807,8 +54817,8 @@
       "link": "cloud_aws_azure.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=secrets+manager+vs+key+vault+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=30420s"
         },
         {
           "title": "🔍G",
@@ -54831,8 +54841,8 @@
       "link": "cloud_aws_azure.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=kms+envelope+encryption+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=30420s"
         },
         {
           "title": "🔍G",
@@ -54855,8 +54865,8 @@
       "link": "cloud_aws_azure.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=secret+rotation+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=30420s"
         },
         {
           "title": "🔍G",
@@ -54879,8 +54889,8 @@
       "link": "cloud_aws_azure.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=iam+roles+vs+static+credentials+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=30420s"
         },
         {
           "title": "🔍G",
@@ -54903,8 +54913,8 @@
       "link": "cloud_aws_azure.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=ecs+vs+eks+vs+aks+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=32722s"
         },
         {
           "title": "🔍G",
@@ -54927,8 +54937,8 @@
       "link": "cloud_aws_azure.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=fargate+and+serverless+containers+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=32722s"
         },
         {
           "title": "🔍G",
@@ -54951,8 +54961,8 @@
       "link": "cloud_aws_azure.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=cluster+autoscaling+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=32722s"
         },
         {
           "title": "🔍G",
@@ -54975,8 +54985,8 @@
       "link": "cloud_aws_azure.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=service+discovery+and+ingress+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=32722s"
         },
         {
           "title": "🔍G",
@@ -54999,8 +55009,8 @@
       "link": "cloud_aws_azure.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=image+registries+and+scanning+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=32722s"
         },
         {
           "title": "🔍G",
@@ -55023,8 +55033,8 @@
       "link": "cloud_aws_azure.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=identity-based+access+vs+network+perimeter+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=44750s"
         },
         {
           "title": "🔍G",
@@ -55047,8 +55057,8 @@
       "link": "cloud_aws_azure.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=privatelink+and+private+endpoints+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=44750s"
         },
         {
           "title": "🔍G",
@@ -55071,8 +55081,8 @@
       "link": "cloud_aws_azure.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=mtls+service-to-service+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=44750s"
         },
         {
           "title": "🔍G",
@@ -55095,8 +55105,8 @@
       "link": "cloud_aws_azure.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=microsegmentation+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=44750s"
         },
         {
           "title": "🔍G",
@@ -55119,8 +55129,8 @@
       "link": "cloud_aws_azure.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=the+6+rs+of+migration+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=40475s"
         },
         {
           "title": "🔍G",
@@ -55143,8 +55153,8 @@
       "link": "cloud_aws_azure.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=strangler+fig+pattern+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=40475s"
         },
         {
           "title": "🔍G",
@@ -55167,8 +55177,8 @@
       "link": "cloud_aws_azure.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=database+migration+dms+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=40475s"
         },
         {
           "title": "🔍G",
@@ -55191,8 +55201,8 @@
       "link": "cloud_aws_azure.html#section-11",
       "resources": [
         {
-          "title": "🔍YT",
-          "url": "https://www.youtube.com/results?search_query=hybrid+connectivity+AWS+Azure+cloud+explained"
+          "title": "🎬YT",
+          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc&t=40475s"
         },
         {
           "title": "🔍G",
@@ -67586,6 +67596,10 @@
         "Cloud migration patterns"
       ],
       "resources": [
+        [
+          "Local Cloud & DevOps Tutorial Hub (58 Lessons)",
+          "Cloud_DevOps_Tutorial/index.html"
+        ],
         [
           "roadmap.sh AWS",
           "https://roadmap.sh/aws"

@@ -70,6 +70,7 @@ const sourceDefs = [
     color: "#0786a3",
     storage: { done: "hub_done_cloud", bookmark: "hub_bm_cloud" },
     summary: "AWS and Azure service mapping, cloud foundations, IaC, observability, and interview Q&A.",
+    relatedLinks: [["Open Cloud & DevOps Tutorial", "Cloud_DevOps_Tutorial/index.html"]],
   },
   {
     key: "interview",
@@ -324,6 +325,7 @@ const coverageBySource = {
       "Cloud migration patterns",
     ],
     resources: [
+      ["Local Cloud & DevOps Tutorial Hub (58 Lessons)", "Cloud_DevOps_Tutorial/index.html"],
       ["roadmap.sh AWS", "https://roadmap.sh/aws"],
       ["AWS Well-Architected Framework", "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html"],
       ["Azure Well-Architected Framework", "https://learn.microsoft.com/en-us/azure/well-architected/"],
@@ -2844,11 +2846,32 @@ function gapSearchContext(key) {
   }[key] || "";
 }
 
+const GAP_VERIFIED_VIDEOS = {
+  // Cloud Section 11 gap
+  "11.1": { id: "SOTamWNgDKc", title: "AWS Well-Architected Framework: 6 Pillars", channel: "freeCodeCamp.org", start: 39172 },
+  "11.2": { id: "SOTamWNgDKc", title: "AWS Organizations & Account Governance", channel: "freeCodeCamp.org", start: 33371 },
+  "11.3": { id: "SOTamWNgDKc", title: "AWS Cost Allocation, Budgets & FinOps", channel: "freeCodeCamp.org", start: 41441 },
+  "11.4": { id: "3Lis4w4_bBc", title: "Disaster Recovery, High Availability & Fault Tolerance", channel: "ByteByteGo", start: 0 },
+  "11.5": { id: "SOTamWNgDKc", title: "AWS Secrets Management & KMS", channel: "freeCodeCamp.org", start: 30420 },
+  "11.6": { id: "SOTamWNgDKc", title: "Container Platforms: AWS ECS vs EKS", channel: "freeCodeCamp.org", start: 32722 },
+  "11.7": { id: "SOTamWNgDKc", title: "Zero-Trust Architecture & Cloud Security", channel: "freeCodeCamp.org", start: 44750 },
+  "11.8": { id: "SOTamWNgDKc", title: "Cloud Migration Patterns & TCO", channel: "freeCodeCamp.org", start: 40475 },
+};
+
 function gapConceptLi(cid, name, desc, context) {
   const topic = normalizeSearchTopic(name);
-  const yt = `https://www.youtube.com/results?search_query=${queryEncode(`${topic} ${context} explained`)}`;
+  const subPrefix = cid.split(".").slice(0, 2).join(".");
+  const verified = GAP_VERIFIED_VIDEOS[subPrefix] || GAP_VERIFIED_VIDEOS[cid];
+  let yt;
+  if (verified) {
+    const timeParam = verified.start ? `&amp;t=${verified.start}s` : "";
+    const fullTitle = `${name} — ${verified.title}`;
+    yt = `<a class="video" href="https://www.youtube.com/watch?v=${verified.id}${timeParam}" data-vtitle="${escHtml(fullTitle)}" data-vchannel="${escHtml(verified.channel)}" data-start="${verified.start}" target="_blank" rel="noopener" title="YouTube video: ${escHtml(fullTitle)}">🎬YT</a>`;
+  } else {
+    yt = `<a class="video" href="https://www.youtube.com/results?search_query=${queryEncode(`${topic} ${context} explained`)}" target="_blank" rel="noopener">🔍YT</a>`;
+  }
   const google = `https://www.google.com/search?q=${queryEncode(`${topic} ${context} tutorial`)}`;
-  return `<li data-cid="${cid}" data-name="${escHtml(name.toLowerCase())}"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">${escHtml(name)}</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">${escHtml(desc)}</div></div><div class="res-links"><a class="video" href="${yt}" target="_blank" rel="noopener">🔍YT</a><a class="" href="${google}" target="_blank" rel="noopener">🔍G</a></div></li>`;
+  return `<li data-cid="${cid}" data-name="${escHtml(name.toLowerCase())}"><div class="done-check" title="Mark as done"></div><div class="bookmark-star" title="Bookmark">☆</div><div><div class="cname">${escHtml(name)}</div><div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">${escHtml(desc)}</div></div><div class="res-links">${yt}<a class="" href="${google}" target="_blank" rel="noopener">🔍G</a></div></li>`;
 }
 
 function gapSectionHtml(source) {

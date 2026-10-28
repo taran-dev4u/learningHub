@@ -1,6 +1,6 @@
 # Taran's Learning Hub Content Audit
 
-Generated: 2026-10-27T11:57:52.845Z
+Generated: 2026-10-28T05:37:31.652Z
 
 ## Research References
 
@@ -408,7 +408,7 @@ Sections:
 - Weak/generic subsection names to review: none found by heuristic.
 - Coverage source: roadmap.sh AWS + AWS/Azure Well-Architected guidance.
 - Missing/priority candidates: Well-Architected pillars, Landing zones, Cost governance, Backup and disaster recovery, Secrets management, Container platforms, Zero-trust networking, Cloud migration patterns.
-- Recommended next resources: roadmap.sh AWS, AWS Well-Architected Framework, Azure Well-Architected Framework.
+- Recommended next resources: Local Cloud & DevOps Tutorial Hub (58 Lessons), roadmap.sh AWS, AWS Well-Architected Framework, Azure Well-Architected Framework.
 
 Sections:
 - Cloud Foundations: 39 items, 4 subsections, 4 resources.
