@@ -1,6 +1,6 @@
 # Taran's Learning Hub Content Audit
 
-Generated: 2026-10-28T06:18:23.763Z
+Generated: 2026-10-28T06:57:39.491Z
 
 ## Research References
 
@@ -402,7 +402,7 @@ Sections:
 
 ## Cloud & DevOps Engineering
 
-- Inventory: 16 sections, 58 subsections, 239 concepts, 76 resources.
+- Inventory: 0 sections, 0 subsections, 0 concepts, 76 resources.
 - Formatting focus: consistent navigation, closed resources, clean headings, and better fallback search links.
 - Duplicate subsection names to review: none found by title.
 - Weak/generic subsection names to review: none found by heuristic.
@@ -411,22 +411,6 @@ Sections:
 - Recommended next resources: Local Cloud & DevOps Tutorial Hub (58 Lessons), roadmap.sh DevOps, CNCF Cloud Native Interactive Landscape, AWS Well-Architected Framework, Azure Well-Architected Framework, The Linux Foundation.
 
 Sections:
-- 1. AWS (Amazon Web Services) Masterclass: 36 items, 7 subsections, 6 resources.
-- 2. Microsoft Azure Masterclass: 19 items, 4 subsections, 6 resources.
-- 3. Google Cloud Platform (GCP) Masterclass: 14 items, 3 subsections, 5 resources.
-- 4. Linux & Terminal Power Engineering: 12 items, 3 subsections, 5 resources.
-- 5. Git & GitHub Architecture: 17 items, 4 subsections, 5 resources.
-- 6. Docker & Containerization Deep-Dive: 11 items, 3 subsections, 5 resources.
-- 7. Kubernetes (K8s) Container Orchestration: 20 items, 5 subsections, 5 resources.
-- 8. Infrastructure as Code (IaC) with Terraform: 12 items, 3 subsections, 4 resources.
-- 9. CI/CD Pipelines & DevOps Automation: 12 items, 3 subsections, 4 resources.
-- 10. Apache Kafka Distributed Streaming: 14 items, 4 subsections, 4 resources.
-- 11. Apache Spark Big Data Engine: 13 items, 4 subsections, 4 resources.
-- 12. Database Engineering & PostgreSQL Internals: 15 items, 4 subsections, 4 resources.
-- 13. In-Memory Caching with Redis: 12 items, 3 subsections, 4 resources.
-- 14. Java & Spring Boot Microservices: 16 items, 4 subsections, 4 resources.
-- 15. Python Backend Engineering with FastAPI: 8 items, 2 subsections, 4 resources.
-- 16. Production API Design & Architecture: 8 items, 2 subsections, 5 resources.
 
 ## Interview Prep
 

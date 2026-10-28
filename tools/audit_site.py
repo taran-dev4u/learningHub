@@ -29,7 +29,7 @@ will start lying to you. Verify a surprising hit by hand before "fixing" it.
 import os, re, sys, json, html, collections, urllib.parse
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SKIP = {".git", ".venv", "node_modules", "__pycache__"}
+SKIP = {".git", ".venv", "node_modules", "__pycache__", "scratch"}
 
 # every element that can start a new counted group
 BOUND = (r'<div class="subpattern">|<div class="subsection">'

@@ -3,8 +3,245 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>Cloud &amp; DevOps Engineering</title>
+<title>All-in-One Tech & Engineering Portal | AWS, DevOps, Git, CI/CD, K8s, Backend</title>
 <style>
+
+/* All-in-One Tech Portal Design System */
+:root {
+  --bg: #f7f8fb;
+  --surface: #ffffff;
+  --surface-2: #eef2f7;
+  --surface-3: #e4eaf2;
+  --text: #172033;
+  --muted: #5b6578;
+  --faint: #7a8599;
+  --border: #dbe2ec;
+  --navy: #172554;
+  --navy-2: #1e3a8a;
+  --blue: #2563eb;
+  --amber: #f59e0b;
+  --green: #0f9f6e;
+  --red: #dc4c64;
+  --violet: #7c3aed;
+  --shadow: 0 4px 16px rgba(23, 32, 51, 0.06);
+  --shadow-lift: 0 12px 32px rgba(23, 32, 51, 0.12);
+  --bg-elev: var(--surface-2);
+  --bg-card: var(--surface);
+  --bg-row-alt: var(--surface-2);
+  --text-dim: var(--muted);
+  --text-faint: var(--faint);
+  --border-strong: var(--border);
+  --accent: var(--blue);
+  --accent-dim: rgba(37, 99, 235, 0.1);
+  --link: var(--blue);
+  --quote-bg: rgba(37, 99, 235, 0.05);
+  --done: var(--green);
+  --done-bg: rgba(15, 159, 110, 0.12);
+  --shadow-card: var(--shadow);
+  --shadow-banner: 0 4px 14px rgba(0,0,0,0.08);
+}
+html.dark, html[data-theme="dark"] {
+  --bg: #0b1120;
+  --surface: #151f32;
+  --surface-2: #1e293b;
+  --surface-3: #27354a;
+  --text: #f1f5f9;
+  --muted: #94a3b8;
+  --faint: #64748b;
+  --border: #1e293b;
+  --navy: #1e293b;
+  --navy-2: #243552;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  --shadow-lift: 0 12px 32px rgba(0, 0, 0, 0.5);
+  --bg-elev: #151f32;
+  --bg-card: #151f32;
+  --bg-row-alt: #1a263d;
+  --text-dim: #94a3b8;
+  --text-faint: #64748b;
+  --border-strong: #334155;
+  --accent: #38bdf8;
+  --accent-dim: rgba(56, 189, 248, 0.15);
+  --link: #38bdf8;
+  --quote-bg: rgba(56, 189, 248, 0.08);
+  --done: #10b981;
+  --done-bg: rgba(16, 185, 129, 0.15);
+}
+html.black, html[data-theme="black"] {
+  --bg: #000000;
+  --surface: #0a0a0a;
+  --surface-2: #141414;
+  --surface-3: #1f1f1f;
+  --text: #ffffff;
+  --muted: #888888;
+  --faint: #555555;
+  --border: #222222;
+  --navy: #0e0e0e;
+  --navy-2: #181818;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+  --shadow-lift: 0 12px 32px rgba(0, 0, 0, 0.9);
+  --bg-elev: #0e0e0e;
+  --bg-card: #0a0a0a;
+  --bg-row-alt: #121212;
+  --text-dim: #888888;
+  --text-faint: #555555;
+  --border-strong: #2c2c2c;
+  --accent: #60a5fa;
+  --accent-dim: rgba(96, 165, 250, 0.18);
+  --link: #60a5fa;
+  --quote-bg: rgba(96, 165, 250, 0.08);
+  --done: #22c55e;
+  --done-bg: rgba(34, 197, 94, 0.15);
+}
+.wrap { max-width: 1440px; margin: 0 auto; padding: 20px 20px 80px; }
+.tech-breadcrumb {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 700;
+  margin: 0 0 16px; padding: 6px 12px;
+  background: var(--surface-2); border: 1px solid var(--border);
+  border-radius: 8px; width: fit-content;
+}
+.tech-bc-home { color: var(--accent); text-decoration: none; }
+.tech-bc-home:hover { text-decoration: underline; }
+.tech-bc-sep { color: var(--faint); }
+.tech-bc-curr { color: var(--text); }
+.domain-deck-section { margin: 24px 0 28px; }
+.domain-deck-head {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px; margin-bottom: 14px;
+}
+.domain-deck-head h2 {
+  font-size: 20px; margin: 0; font-weight: 800; letter-spacing: -0.01em; color: var(--text);
+}
+.domain-deck-subtitle {
+  font-size: 13px; color: var(--muted); margin: 2px 0 0;
+}
+.domain-deck {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 14px;
+}
+.domain-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px; display: flex; flex-direction: column;
+  box-shadow: var(--shadow); transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+  position: relative; cursor: pointer;
+}
+.domain-card:hover {
+  transform: translateY(-2px); border-color: var(--accent); box-shadow: var(--shadow-lift);
+}
+.domain-card.active-deck-card {
+  border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent), var(--shadow-lift);
+}
+.domain-card-head { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
+.domain-card-icon {
+  font-size: 24px; line-height: 1; flex-shrink: 0;
+  background: var(--surface-2); padding: 8px; border-radius: 10px; border: 1px solid var(--border);
+}
+.domain-card-meta { flex: 1; min-width: 0; }
+.domain-card-idx {
+  font-size: 10.5px; font-weight: 800; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 0.08em;
+}
+.domain-card-title {
+  font-size: 15.5px; font-weight: 800; margin: 2px 0 0; color: var(--text); line-height: 1.3;
+}
+.domain-card-desc {
+  font-size: 12px; color: var(--muted); line-height: 1.5; margin: 0 0 12px; flex: 1;
+}
+.domain-card-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.d-chip {
+  font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px;
+  background: var(--surface-2); border: 1px solid var(--border); color: var(--text-dim);
+}
+.d-chip.masterclass-badge {
+  background: rgba(37, 99, 235, 0.12); border-color: var(--accent); color: var(--accent);
+}
+.domain-card-actions { display: flex; gap: 8px; align-items: center; margin-top: auto; }
+.d-act-btn {
+  flex: 1; min-height: 32px; padding: 5px 10px; border-radius: 7px;
+  border: 1px solid var(--border); background: var(--surface-2); color: var(--text);
+  font-size: 12px; font-weight: 700; cursor: pointer; display: inline-flex;
+  align-items: center; justify-content: center; gap: 4px; transition: all 0.15s ease;
+}
+.d-act-btn:hover { background: var(--accent); color: #ffffff; border-color: var(--accent); }
+.d-act-link {
+  min-height: 32px; padding: 5px 11px; border-radius: 7px; border: 1px solid var(--accent);
+  background: var(--accent); color: #ffffff; font-size: 12px; font-weight: 800;
+  text-decoration: none; display: inline-flex; align-items: center; justify-content: center;
+  gap: 4px; transition: all 0.15s ease; white-space: nowrap;
+}
+.d-act-link:hover { opacity: 0.9; transform: translateY(-1px); }
+.domain-nav-bar {
+  position: sticky; top: 53px; z-index: 60; background: var(--surface);
+  border-bottom: 1px solid var(--border); border-top: 1px solid var(--border);
+  padding: 8px 12px; margin: 0 -20px 22px; backdrop-filter: blur(12px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.domain-nav-scroll {
+  display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none;
+  -webkit-overflow-scrolling: touch; max-width: 1440px; margin: 0 auto; padding: 0 8px;
+}
+.domain-nav-scroll::-webkit-scrollbar { display: none; }
+.d-nav-pill {
+  display: inline-flex; align-items: center; gap: 5px; min-height: 32px;
+  padding: 4px 12px; border-radius: 999px; border: 1px solid var(--border);
+  background: var(--surface-2); color: var(--muted); font-size: 12px;
+  font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s ease;
+}
+.d-nav-pill:hover { border-color: var(--accent); color: var(--text); transform: translateY(-1px); }
+.d-nav-pill.active {
+  background: var(--accent); border-color: var(--accent); color: #ffffff;
+  box-shadow: 0 2px 10px rgba(37, 99, 235, 0.35);
+}
+.domain-focus-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px; padding: 12px 18px; margin-bottom: 16px;
+  background: var(--surface); border: 1px solid var(--accent);
+  border-radius: 10px; box-shadow: var(--shadow);
+}
+.focus-bar-left { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.focus-bar-pill {
+  font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em;
+  padding: 3px 8px; border-radius: 6px; background: var(--accent-dim);
+  color: var(--accent); border: 1px solid var(--accent);
+}
+.focus-bar-title { font-size: 15px; font-weight: 800; color: var(--text); }
+.focus-bar-stats { font-size: 12px; color: var(--muted); font-weight: 600; }
+.focus-bar-right { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.focus-btn {
+  min-height: 30px; padding: 4px 10px; border-radius: 6px; border: 1px solid var(--border);
+  background: var(--surface-2); color: var(--text); font-size: 12px; font-weight: 700;
+  cursor: pointer; transition: all 0.15s ease;
+}
+.focus-btn:hover { background: var(--border); color: var(--text); }
+.focus-btn.view-all-btn {
+  background: var(--accent-dim); border-color: var(--accent); color: var(--accent);
+}
+.focus-btn.view-all-btn:hover { background: var(--accent); color: #ffffff; }
+.focus-btn.masterclass-btn {
+  background: var(--accent); border-color: var(--accent); color: #ffffff;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 4px;
+}
+.section.hidden-domain { display: none !important; }
+.sister-guides-card {
+  margin: 40px 0 20px; padding: 20px 24px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; box-shadow: var(--shadow);
+}
+.sister-title { font-size: 15px; font-weight: 800; color: var(--text); margin-bottom: 12px; }
+.sister-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+.sister-link {
+  display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px;
+  border-radius: 8px; background: var(--surface-2); border: 1px solid var(--border);
+  color: var(--text); text-decoration: none; font-size: 12.5px; font-weight: 700;
+  transition: all 0.15s ease;
+}
+.sister-link:hover { border-color: var(--accent); background: var(--accent-dim); transform: translateY(-1px); }
+.sister-link.active-hub { background: var(--accent); border-color: var(--accent); color: #ffffff; }
+@media (max-width: 768px) {
+  .hero h1 { font-size: 26px; }
+  .domain-nav-bar { margin: 0 -12px 18px; }
+  .domain-focus-bar { flex-direction: column; align-items: flex-start; }
+}
+
 :root {
   --bg: #0f1115; --bg-elev: #161922; --bg-card: #1c2030; --bg-row-alt: #1a1d2a;
   --text: #e6e8ee; --text-dim: #9aa0b0; --text-faint: #6b7080;
@@ -416,10 +653,10 @@ body {
     </div>
   </div>
 
-  <div class="hero">
-    <div class="edition">v2 · Cloud &amp; DevOps Engineering · 16 Domains · 58 Masterclasses · 239 Concepts</div>
-    <h1>Cloud &amp; DevOps Engineering</h1>
-    <p class="subtitle">AWS · Azure · GCP · Linux · Git · Docker · Kubernetes · Terraform · CI/CD · Kafka · Spark · PostgreSQL · Redis · Java/Spring Boot · Python/FastAPI · API Design</p>
+      <div class="hero">
+    <div class="edition">v3 · All-in-One Tech &amp; Engineering Portal · 16 Disciplines · 58 Subsections · 239 Concepts</div>
+    <h1>All-in-One Tech &amp; Engineering Portal</h1>
+    <p class="subtitle">Complete interactive curriculum across Cloud Architecture, DevOps, Containerization, Distributed Systems, Databases &amp; Modern Backend Engineering.</p>
   </div>
 
   <div class="stats">
@@ -451,7 +688,380 @@ body {
     </div>
   </div>
 
-  <section class="resources-section" style="margin: 0 0 24px;">
+  
+
+  <section class="domain-deck-section" id="domain-navigator">
+    <div class="domain-deck-head">
+      <div>
+        <h2>Interactive Domain Navigator</h2>
+        <p class="domain-deck-subtitle">Select any engineering discipline to isolate that domain, or open its dedicated masterclass.</p>
+      </div>
+      <button type="button" class="focus-btn view-all-btn" onclick="switchDomain('all')">🌐 View All 16 Domains</button>
+    </div>
+    <div class="domain-deck">
+    <div class="domain-card" data-domain="aws" id="card-aws" onclick="switchDomain('aws')">
+      <div class="domain-card-head">
+        <div class="domain-card-icon">☁️</div>
+        <div class="domain-card-meta">
+          <span class="domain-card-idx">Domain 01 / 16</span>
+          <h3 class="domain-card-title">AWS Cloud Architecture</h3>
+        </div>
+      </div>
+      <p class="domain-card-desc">Global infra, IAM least privilege, VPC network topology, EC2, Auto Scaling, S3, EBS, RDS, Aurora, DynamoDB, ECS, EKS, Lambda & CloudWatch.</p>
+      <div class="domain-card-chips">
+        <span class="d-chip">36 concepts</span>
+        <span class="d-chip">7 subsections</span>
+        <span class="d-chip masterclass-badge">Standalone Guide ↗</span>
+      </div>
+      <div class="domain-card-actions">
+        <button type="button" class="d-act-btn">Explore Domain ↓</button>
+        <a href="tech_aws.html" class="d-act-link" onclick="event.stopPropagation()">Masterclass ↗</a>
+      </div>
+    </div>
+    <div class="domain-card" data-domain="azure" id="card-azure" onclick="switchDomain('azure')">
+      <div class="domain-card-head">
+        <div class="domain-card-icon">🔷</div>
+        <div class="domain-card-meta">
+          <span class="domain-card-idx">Domain 02 / 16</span>
+          <h3 class="domain-card-title">Microsoft Azure Cloud</h3>
+        </div>
+      </div>
+      <p class="domain-card-desc">Entra ID, Virtual Machines, App Services, Blob Storage, Cosmos DB, Azure SQL, VNet, AKS container orchestration & Event Grid.</p>
+      <div class="domain-card-chips">
+        <span class="d-chip">19 concepts</span>
+        <span class="d-chip">4 subsections</span>
+        
+      </div>
+      <div class="domain-card-actions">
+        <button type="button" class="d-act-btn">Explore Domain ↓</button>
+        
+      </div>
+    </div>
+    <div class="domain-card" data-domain="gcp" id="card-gcp" onclick="switchDomain('gcp')">
+      <div class="domain-card-head">
+        <div class="domain-card-icon">🌐</div>
+        <div class="domain-card-meta">
+          <span class="domain-card-idx">Domain 03 / 16</span>
+          <h3 class="domain-card-title">Google Cloud Platform (GCP)</h3>
+        </div>
+      </div>
+      <p class="domain-card-desc">Compute Engine, GKE, Cloud Run, Cloud Functions, Cloud Storage, BigQuery data analytics, Cloud Spanner & VPC networking.</p>
+      <div class="domain-card-chips">
+        <span class="d-chip">14 concepts</span>
+        <span class="d-chip">3 subsections</span>
+        
+      </div>
+      <div class="domain-card-actions">
+        <button type="button" class="d-act-btn">Explore Domain ↓</button>
+        
+      </div>
+    </div>
+    <div class="domain-card" data-domain="linux" id="card-linux" onclick="switchDomain('linux')">
+      <div class="domain-card-head">
+        <div class="domain-card-icon">🐧</div>
+        <div class="domain-card-meta">
+          <span class="domain-card-idx">Domain 04 / 16</span>
+          <h3 class="domain-card-title">Linux & Terminal Power Engineering</h3>
+        </div>
+      </div>
+      <p class="domain-card-desc">Filesystem hierarchy (FHS), permissions, signals, systemd, process lifecycle, memory/IO diagnostics, pipes & production Bash automation.</p>
+      <div class="domain-card-chips">
+        <span class="d-chip">12 concepts</span>
+        <span class="d-chip">3 subsections</span>
+        <span class="d-chip masterclass-badge">Standalone Guide ↗</span>
+      </div>
+      <div class="domain-card-actions">
+        <button type="button" class="d-act-btn">Explore Domain ↓</button>
+        <a href="tech_linux.html" class="d-act-link" onclick="event.stopPropagation()">Masterclass ↗</a>
+      </div>
+    </div>
+    <div class="domain-card" data-domain="git" id="card-git" onclick="switchDomain('git')">
+      <div class="domain-card-head">
+        <div class="domain-card-icon">🌿</div>
+        <div class="domain-card-meta">
+          <span class="domain-card-idx">Domain 05 / 16</span>
+          <h3 class="domain-card-title">Git & GitHub Architecture</h3>
+        </div>
+      </div>
+      <p class="domain-card-desc">Git DAG object model (blobs, trees, commits), 3 trees, staging, branching models, interactive rebase, cherry-pick, merge conflicts & reflog.</p>
+      <div class="domain-card-chips">
+        <span class="d-chip">17 concepts</span>
+        <span class="d-chip">4 subsections</span>
+        <span class="d-chip masterclass-badge">Standalone Guide ↗</span>
+      </div>
+      <div class="domain-card-actions">
+        <button type="button" class="d-act-btn">Explore Domain ↓</button>
+        <a href="tech_git.html" class="d-act-link" onclick="event.stopPropagation()">Masterclass ↗</a>
+      </div>
+    </div>
+    <div class="domain-card" data-domain="docker" id="card-docker" onclick="switchDomain('docker')">
+      <div class="domain-card-head">
+        <div class="domain-card-icon">🐳</div>
+        <div class="domain-card-meta">
+          <span class="domain-card-idx">Domain 06 / 16</span>
+          <h3 class="domain-card-title">Docker & Containerization Deep-Dive</h3>
+        </div>
+      </div>
+      <p class="domain-card-desc">Linux namespaces, cgroups, UnionFS Overlay2, multi-stage Dockerfile optimization, container networking & Compose orchestration.</p>
+      <div class="domain-card-chips">
+        <span class="d-chip">11 concepts</span>
+        <span class="d-chip">3 subsections</span>
+        <span class="d-chip masterclass-badge">Standalone Guide ↗</span>
+      </div>
+      <div class="domain-card-actions">
+        <button type="button" class="d-act-btn">Explore Domain ↓</button>
+        <a href="tech_docker_k8s.html" class="d-act-link" onclick="event.stopPropagation()">Masterclass ↗</a>
+      </div>
+    </div>
+    <div class="domain-card" data-domain="k8s" id="card-k8s" onclick="switchDomain('k8s')">
+      <div class="domain-card-head">
+        <div class="domain-card-icon">☸️</div>
+        <div class="domain-card-meta">
+          <span class="domain-card-idx">Domain 07 / 16</span>
+          <h3 class="domain-card-title">Kubernetes (K8s) Container Orchestration</h3>
+        </div>
+      </div>
+      <p class="domain-card-desc">Control plane, etcd quorum, Pod lifecycle, Deployments, Services, Ingress controllers, DaemonSets, StatefulSets & Helm packaging.</p>
+      <div class="domain-card-chips">
+        <span class="d-chip">20 concepts</span>
+        <span class="d-chip">5 subsections</span>
+        <span class="d-chip masterclass-badge">Standalone Guide ↗</span>
+      </div>
+      <div class="domain-card-actions">
+        <button type="button" class="d-act-btn">Explore Domain ↓</button>
+        <a href="tech_docker_k8s.html" class="d-act-link" onclick="event.stopPropagation()">Masterclass ↗</a>
+      </div>
+    </div>
+    <div class="domain-card" data-domain="terraform" id="card-terraform" onclick="switchDomain('terraform')">
+      <div class="domain-card-head">
+        <div class="domain-card-icon">🏗️</div>
+        <div class="domain-card-meta">
+          <span class="domain-card-idx">Domain 08 / 16</span>
+          <h3 class="domain-card-title">Infrastructure as Code (IaC) with Terraform</h3>
+        </div>
+      </div>
+      <p class="domain-card-desc">HCL syntax, providers, resources, remote state backend, DynamoDB state locking, reusable modules & state drift reconciliation.</p>
+      <div class="domain-card-chips">
+        <span class="d-chip">12 concepts</span>
+        <span class="d-chip">3 subsections</span>
+        
+      </div>
+      <div class="domain-card-actions">
+        <button type="button" class="d-act-btn">Explore Domain ↓</button>
+        
+      </div>
+    </div>
+    <div class="domain-card" data-domain="cicd" id="card-cicd" onclick="switchDomain('cicd')">
+      <div class="domain-card-head">
+        <div class="domain-card-icon">🚀</div>
+        <div class="domain-card-meta">
+          <span class="domain-card-idx">Domain 09 / 16</span>
+          <h3 class="domain-card-title">CI/CD Pipelines & DevOps Automation</h3>
+        </div>
+      </div>
+      <p class="domain-card-desc">Continuous integration, automated test suites, delivery vs deployment, GitHub Actions workflows, Jenkins pipelines, Blue/Green & Canary rollouts.</p>
+      <div class="domain-card-chips">
+        <span class="d-chip">12 concepts</span>
+        <span class="d-chip">3 subsections</span>
+        <span class="d-chip masterclass-badge">Standalone Guide ↗</span>
+      </div>
+      <div class="domain-card-actions">
+        <button type="button" class="d-act-btn">Explore Domain ↓</button>
+        <a href="tech_cicd.html" class="d-act-link" onclick="event.stopPropagation()">Masterclass ↗</a>
+      </div>
+    </div>
+    <div class="domain-card" data-domain="kafka" id="card-kafka" onclick="switchDomain('kafka')">
+      <div class="domain-card-head">
+        <div class="domain-card-icon">⚡</div>
+        <div class="domain-card-meta">
+          <span class="domain-card-idx">Domain 10 / 16</span>
+          <h3 class="domain-card-title">Apache Kafka Distributed Streaming</h3>
+        </div>
+      </div>
+      <p class="domain-card-desc">Distributed commit log, broker cluster architecture, partition rebalancing, consumer group protocols & exactly-once semantics (EOS).</p>
+      <div class="domain-card-chips">
+        <span class="d-chip">14 concepts</span>
+        <span class="d-chip">4 subsections</span>
+        
+      </div>
+      <div class="domain-card-actions">
+        <button type="button" class="d-act-btn">Explore Domain ↓</button>
+        
+      </div>
+    </div>
+    <div class="domain-card" data-domain="spark" id="card-spark" onclick="switchDomain('spark')">
+      <div class="domain-card-head">
+        <div class="domain-card-icon">📊</div>
+        <div class="domain-card-meta">
+          <span class="domain-card-idx">Domain 11 / 16</span>
+          <h3 class="domain-card-title">Apache Spark Big Data Engine</h3>
+        </div>
+      </div>
+      <p class="domain-card-desc">RDDs, DataFrames, Spark SQL, Catalyst optimizer, wide vs narrow transformations, cluster memory management & distributed shuffling.</p>
+      <div class="domain-card-chips">
+        <span class="d-chip">13 concepts</span>
+        <span class="d-chip">4 subsections</span>
+        
+      </div>
+      <div class="domain-card-actions">
+        <button type="button" class="d-act-btn">Explore Domain ↓</button>
+        
+      </div>
+    </div>
+    <div class="domain-card" data-domain="postgres" id="card-postgres" onclick="switchDomain('postgres')">
+      <div class="domain-card-head">
+        <div class="domain-card-icon">🐘</div>
+        <div class="domain-card-meta">
+          <span class="domain-card-idx">Domain 12 / 16</span>
+          <h3 class="domain-card-title">Database Engineering & PostgreSQL Internals</h3>
+        </div>
+      </div>
+      <p class="domain-card-desc">ACID guarantees, MVCC transaction isolation, WAL logging, B-tree, Hash, GIN, GiST indexes, EXPLAIN ANALYZE query planning & connection pooling.</p>
+      <div class="domain-card-chips">
+        <span class="d-chip">15 concepts</span>
+        <span class="d-chip">4 subsections</span>
+        
+      </div>
+      <div class="domain-card-actions">
+        <button type="button" class="d-act-btn">Explore Domain ↓</button>
+        
+      </div>
+    </div>
+    <div class="domain-card" data-domain="redis" id="card-redis" onclick="switchDomain('redis')">
+      <div class="domain-card-head">
+        <div class="domain-card-icon">🔴</div>
+        <div class="domain-card-meta">
+          <span class="domain-card-idx">Domain 13 / 16</span>
+          <h3 class="domain-card-title">In-Memory Caching with Redis</h3>
+        </div>
+      </div>
+      <p class="domain-card-desc">Single-threaded event loop, String, Hash, List, Set, Sorted Set, cache-aside, write-through, TTL eviction & Redis Sentinel / Cluster HA.</p>
+      <div class="domain-card-chips">
+        <span class="d-chip">12 concepts</span>
+        <span class="d-chip">3 subsections</span>
+        
+      </div>
+      <div class="domain-card-actions">
+        <button type="button" class="d-act-btn">Explore Domain ↓</button>
+        
+      </div>
+    </div>
+    <div class="domain-card" data-domain="java" id="card-java" onclick="switchDomain('java')">
+      <div class="domain-card-head">
+        <div class="domain-card-icon">☕</div>
+        <div class="domain-card-meta">
+          <span class="domain-card-idx">Domain 14 / 16</span>
+          <h3 class="domain-card-title">Java & Spring Boot Microservices</h3>
+        </div>
+      </div>
+      <p class="domain-card-desc">JVM memory model, G1/ZGC collectors, Spring IoC, Spring Boot auto-configuration, Spring Data JPA, Hibernate L1/L2 cache & Resilience4j.</p>
+      <div class="domain-card-chips">
+        <span class="d-chip">16 concepts</span>
+        <span class="d-chip">4 subsections</span>
+        
+      </div>
+      <div class="domain-card-actions">
+        <button type="button" class="d-act-btn">Explore Domain ↓</button>
+        
+      </div>
+    </div>
+    <div class="domain-card" data-domain="python" id="card-python" onclick="switchDomain('python')">
+      <div class="domain-card-head">
+        <div class="domain-card-icon">🐍</div>
+        <div class="domain-card-meta">
+          <span class="domain-card-idx">Domain 15 / 16</span>
+          <h3 class="domain-card-title">Python Backend Engineering with FastAPI</h3>
+        </div>
+      </div>
+      <p class="domain-card-desc">Async/await event loop, ASGI vs WSGI, Pydantic data validation, dependency injection, SQLAlchemy 2.0 async ORM & high-concurrency APIs.</p>
+      <div class="domain-card-chips">
+        <span class="d-chip">8 concepts</span>
+        <span class="d-chip">2 subsections</span>
+        
+      </div>
+      <div class="domain-card-actions">
+        <button type="button" class="d-act-btn">Explore Domain ↓</button>
+        
+      </div>
+    </div>
+    <div class="domain-card" data-domain="apis" id="card-apis" onclick="switchDomain('apis')">
+      <div class="domain-card-head">
+        <div class="domain-card-icon">🔌</div>
+        <div class="domain-card-meta">
+          <span class="domain-card-idx">Domain 16 / 16</span>
+          <h3 class="domain-card-title">Production API Design & Architecture</h3>
+        </div>
+      </div>
+      <p class="domain-card-desc">REST vs GraphQL vs gRPC, idempotent HTTP methods, API versioning strategies, token bucket rate limiting, OAuth2, JWT & OpenAPI governance.</p>
+      <div class="domain-card-chips">
+        <span class="d-chip">8 concepts</span>
+        <span class="d-chip">2 subsections</span>
+        
+      </div>
+      <div class="domain-card-actions">
+        <button type="button" class="d-act-btn">Explore Domain ↓</button>
+        
+      </div>
+    </div>
+    </div>
+  </section>
+  <div class="domain-nav-bar" id="domain-nav-bar">
+    <div class="domain-nav-scroll">
+      <button type="button" class="d-nav-pill active" data-target="all" onclick="switchDomain('all')">
+        <span>🌐</span> All Domains (16)
+      </button>
+      <button type="button" class="d-nav-pill" data-target="aws" onclick="switchDomain('aws')">
+        <span>☁️</span> AWS
+      </button>
+      <button type="button" class="d-nav-pill" data-target="azure" onclick="switchDomain('azure')">
+        <span>🔷</span> Azure
+      </button>
+      <button type="button" class="d-nav-pill" data-target="gcp" onclick="switchDomain('gcp')">
+        <span>🌐</span> GCP
+      </button>
+      <button type="button" class="d-nav-pill" data-target="linux" onclick="switchDomain('linux')">
+        <span>🐧</span> Linux
+      </button>
+      <button type="button" class="d-nav-pill" data-target="git" onclick="switchDomain('git')">
+        <span>🌿</span> Git
+      </button>
+      <button type="button" class="d-nav-pill" data-target="docker" onclick="switchDomain('docker')">
+        <span>🐳</span> Docker
+      </button>
+      <button type="button" class="d-nav-pill" data-target="k8s" onclick="switchDomain('k8s')">
+        <span>☸️</span> Kubernetes
+      </button>
+      <button type="button" class="d-nav-pill" data-target="terraform" onclick="switchDomain('terraform')">
+        <span>🏗️</span> Terraform
+      </button>
+      <button type="button" class="d-nav-pill" data-target="cicd" onclick="switchDomain('cicd')">
+        <span>🚀</span> CI/CD
+      </button>
+      <button type="button" class="d-nav-pill" data-target="kafka" onclick="switchDomain('kafka')">
+        <span>⚡</span> Kafka
+      </button>
+      <button type="button" class="d-nav-pill" data-target="spark" onclick="switchDomain('spark')">
+        <span>📊</span> Spark
+      </button>
+      <button type="button" class="d-nav-pill" data-target="postgres" onclick="switchDomain('postgres')">
+        <span>🐘</span> PostgreSQL
+      </button>
+      <button type="button" class="d-nav-pill" data-target="redis" onclick="switchDomain('redis')">
+        <span>🔴</span> Redis
+      </button>
+      <button type="button" class="d-nav-pill" data-target="java" onclick="switchDomain('java')">
+        <span>☕</span> Java
+      </button>
+      <button type="button" class="d-nav-pill" data-target="python" onclick="switchDomain('python')">
+        <span>🐍</span> FastAPI
+      </button>
+      <button type="button" class="d-nav-pill" data-target="apis" onclick="switchDomain('apis')">
+        <span>🔌</span> APIs
+      </button>
+    </div>
+  </div>
+
+<section class="resources-section" style="margin: 0 0 24px;">
     <div class="head" onclick="this.parentElement.classList.toggle('open')">
       <h4>🌟 Universal Anchor Resources</h4>
       <div><span class="count">16 authoritative sources</span><span class="chevron">▶</span></div>
@@ -509,7 +1119,21 @@ body {
 <a href="#section-15"><span class="roman">15</span><span class="name"><b>Python Backend Engineering with FastAPI</b><br/><span style="font-size:10px;color:var(--text-faint)">Asynchronous Python &amp; FastAPI Framework Core | SQLAlchemy 2.0 Async, Migrations &amp; Production Testing</span></span><span class="cnt">2s | 8c</span></a>
 <a href="#section-16"><span class="roman">16</span><span class="name"><b>Production API Design &amp; Architecture</b><br/><span style="font-size:10px;color:var(--text-faint)">API Styles | API Security, Rate Limiting &amp; Enterprise Governance</span></span><span class="cnt">2s | 8c</span></a>
 </div></nav>
-<section class="section" id="section-1" style="--section-color:hsl(215, 80%, 50%)">
+<section class="section domain-section" id="section-1" data-domain="aws" style="--section-color:hsl(215, 80%, 50%)">
+  <div id="aws"></div>
+  <div class="domain-focus-bar">
+    <div class="focus-bar-left">
+      <span class="focus-bar-pill">Domain 1 of 16</span>
+      <span class="focus-bar-title">AWS Cloud Architecture</span>
+      <span class="focus-bar-stats">36 concepts &bull; 7 subsections</span>
+    </div>
+    <div class="focus-bar-right">
+      <button type="button" class="focus-btn" onclick="navigateDomain(-1)">← Prev Domain</button>
+      <button type="button" class="focus-btn view-all-btn" onclick="switchDomain('all')">🌐 View All (16)</button>
+      <button type="button" class="focus-btn" onclick="navigateDomain(1)">Next Domain →</button>
+      <a href="tech_aws.html" class="focus-btn masterclass-btn">Dedicated Masterclass ↗</a>
+    </div>
+  </div>
   <div class="section-banner" style="background:linear-gradient(135deg, hsl(215, 85%, 45%), hsl(235, 75%, 35%))">
     <div class="num">1</div>
     <div class="info">
@@ -938,7 +1562,21 @@ body {
     </ol>
   </div>
 </section>
-<section class="section" id="section-2" style="--section-color:hsl(205, 80%, 50%)">
+<section class="section domain-section" id="section-2" data-domain="azure" style="--section-color:hsl(205, 80%, 50%)">
+  <div id="azure"></div>
+  <div class="domain-focus-bar">
+    <div class="focus-bar-left">
+      <span class="focus-bar-pill">Domain 2 of 16</span>
+      <span class="focus-bar-title">Microsoft Azure Cloud</span>
+      <span class="focus-bar-stats">19 concepts &bull; 4 subsections</span>
+    </div>
+    <div class="focus-bar-right">
+      <button type="button" class="focus-btn" onclick="navigateDomain(-1)">← Prev Domain</button>
+      <button type="button" class="focus-btn view-all-btn" onclick="switchDomain('all')">🌐 View All (16)</button>
+      <button type="button" class="focus-btn" onclick="navigateDomain(1)">Next Domain →</button>
+      
+    </div>
+  </div>
   <div class="section-banner" style="background:linear-gradient(135deg, hsl(205, 85%, 45%), hsl(225, 75%, 35%))">
     <div class="num">2</div>
     <div class="info">
@@ -1184,7 +1822,21 @@ body {
     </ol>
   </div>
 </section>
-<section class="section" id="section-3" style="--section-color:hsl(145, 80%, 50%)">
+<section class="section domain-section" id="section-3" data-domain="gcp" style="--section-color:hsl(145, 80%, 50%)">
+  <div id="gcp"></div>
+  <div class="domain-focus-bar">
+    <div class="focus-bar-left">
+      <span class="focus-bar-pill">Domain 3 of 16</span>
+      <span class="focus-bar-title">Google Cloud Platform (GCP)</span>
+      <span class="focus-bar-stats">14 concepts &bull; 3 subsections</span>
+    </div>
+    <div class="focus-bar-right">
+      <button type="button" class="focus-btn" onclick="navigateDomain(-1)">← Prev Domain</button>
+      <button type="button" class="focus-btn view-all-btn" onclick="switchDomain('all')">🌐 View All (16)</button>
+      <button type="button" class="focus-btn" onclick="navigateDomain(1)">Next Domain →</button>
+      
+    </div>
+  </div>
   <div class="section-banner" style="background:linear-gradient(135deg, hsl(145, 85%, 45%), hsl(165, 75%, 35%))">
     <div class="num">3</div>
     <div class="info">
@@ -1374,7 +2026,21 @@ body {
     </ol>
   </div>
 </section>
-<section class="section" id="section-4" style="--section-color:hsl(38, 80%, 50%)">
+<section class="section domain-section" id="section-4" data-domain="linux" style="--section-color:hsl(38, 80%, 50%)">
+  <div id="linux"></div>
+  <div class="domain-focus-bar">
+    <div class="focus-bar-left">
+      <span class="focus-bar-pill">Domain 4 of 16</span>
+      <span class="focus-bar-title">Linux & Terminal Power Engineering</span>
+      <span class="focus-bar-stats">12 concepts &bull; 3 subsections</span>
+    </div>
+    <div class="focus-bar-right">
+      <button type="button" class="focus-btn" onclick="navigateDomain(-1)">← Prev Domain</button>
+      <button type="button" class="focus-btn view-all-btn" onclick="switchDomain('all')">🌐 View All (16)</button>
+      <button type="button" class="focus-btn" onclick="navigateDomain(1)">Next Domain →</button>
+      <a href="tech_linux.html" class="focus-btn masterclass-btn">Dedicated Masterclass ↗</a>
+    </div>
+  </div>
   <div class="section-banner" style="background:linear-gradient(135deg, hsl(38, 85%, 45%), hsl(58, 75%, 35%))">
     <div class="num">4</div>
     <div class="info">
@@ -1546,7 +2212,21 @@ body {
     </ol>
   </div>
 </section>
-<section class="section" id="section-5" style="--section-color:hsl(12, 80%, 50%)">
+<section class="section domain-section" id="section-5" data-domain="git" style="--section-color:hsl(12, 80%, 50%)">
+  <div id="git"></div>
+  <div class="domain-focus-bar">
+    <div class="focus-bar-left">
+      <span class="focus-bar-pill">Domain 5 of 16</span>
+      <span class="focus-bar-title">Git & GitHub Architecture</span>
+      <span class="focus-bar-stats">17 concepts &bull; 4 subsections</span>
+    </div>
+    <div class="focus-bar-right">
+      <button type="button" class="focus-btn" onclick="navigateDomain(-1)">← Prev Domain</button>
+      <button type="button" class="focus-btn view-all-btn" onclick="switchDomain('all')">🌐 View All (16)</button>
+      <button type="button" class="focus-btn" onclick="navigateDomain(1)">Next Domain →</button>
+      <a href="tech_git.html" class="focus-btn masterclass-btn">Dedicated Masterclass ↗</a>
+    </div>
+  </div>
   <div class="section-banner" style="background:linear-gradient(135deg, hsl(12, 85%, 45%), hsl(32, 75%, 35%))">
     <div class="num">5</div>
     <div class="info">
@@ -1773,7 +2453,21 @@ body {
     </ol>
   </div>
 </section>
-<section class="section" id="section-6" style="--section-color:hsl(195, 80%, 50%)">
+<section class="section domain-section" id="section-6" data-domain="docker" style="--section-color:hsl(195, 80%, 50%)">
+  <div id="docker"></div>
+  <div class="domain-focus-bar">
+    <div class="focus-bar-left">
+      <span class="focus-bar-pill">Domain 6 of 16</span>
+      <span class="focus-bar-title">Docker & Containerization Deep-Dive</span>
+      <span class="focus-bar-stats">11 concepts &bull; 3 subsections</span>
+    </div>
+    <div class="focus-bar-right">
+      <button type="button" class="focus-btn" onclick="navigateDomain(-1)">← Prev Domain</button>
+      <button type="button" class="focus-btn view-all-btn" onclick="switchDomain('all')">🌐 View All (16)</button>
+      <button type="button" class="focus-btn" onclick="navigateDomain(1)">Next Domain →</button>
+      <a href="tech_docker_k8s.html" class="focus-btn masterclass-btn">Dedicated Masterclass ↗</a>
+    </div>
+  </div>
   <div class="section-banner" style="background:linear-gradient(135deg, hsl(195, 85%, 45%), hsl(215, 75%, 35%))">
     <div class="num">6</div>
     <div class="info">
@@ -1936,7 +2630,21 @@ body {
     </ol>
   </div>
 </section>
-<section class="section" id="section-7" style="--section-color:hsl(225, 80%, 50%)">
+<section class="section domain-section" id="section-7" data-domain="k8s" style="--section-color:hsl(225, 80%, 50%)">
+  <div id="k8s"></div>
+  <div class="domain-focus-bar">
+    <div class="focus-bar-left">
+      <span class="focus-bar-pill">Domain 7 of 16</span>
+      <span class="focus-bar-title">Kubernetes (K8s) Container Orchestration</span>
+      <span class="focus-bar-stats">20 concepts &bull; 5 subsections</span>
+    </div>
+    <div class="focus-bar-right">
+      <button type="button" class="focus-btn" onclick="navigateDomain(-1)">← Prev Domain</button>
+      <button type="button" class="focus-btn view-all-btn" onclick="switchDomain('all')">🌐 View All (16)</button>
+      <button type="button" class="focus-btn" onclick="navigateDomain(1)">Next Domain →</button>
+      <a href="tech_docker_k8s.html" class="focus-btn masterclass-btn">Dedicated Masterclass ↗</a>
+    </div>
+  </div>
   <div class="section-banner" style="background:linear-gradient(135deg, hsl(225, 85%, 45%), hsl(245, 75%, 35%))">
     <div class="num">7</div>
     <div class="info">
@@ -2200,7 +2908,21 @@ body {
     </ol>
   </div>
 </section>
-<section class="section" id="section-8" style="--section-color:hsl(270, 80%, 50%)">
+<section class="section domain-section" id="section-8" data-domain="terraform" style="--section-color:hsl(270, 80%, 50%)">
+  <div id="terraform"></div>
+  <div class="domain-focus-bar">
+    <div class="focus-bar-left">
+      <span class="focus-bar-pill">Domain 8 of 16</span>
+      <span class="focus-bar-title">Infrastructure as Code (IaC) with Terraform</span>
+      <span class="focus-bar-stats">12 concepts &bull; 3 subsections</span>
+    </div>
+    <div class="focus-bar-right">
+      <button type="button" class="focus-btn" onclick="navigateDomain(-1)">← Prev Domain</button>
+      <button type="button" class="focus-btn view-all-btn" onclick="switchDomain('all')">🌐 View All (16)</button>
+      <button type="button" class="focus-btn" onclick="navigateDomain(1)">Next Domain →</button>
+      
+    </div>
+  </div>
   <div class="section-banner" style="background:linear-gradient(135deg, hsl(270, 85%, 45%), hsl(290, 75%, 35%))">
     <div class="num">8</div>
     <div class="info">
@@ -2371,7 +3093,21 @@ body {
     </ol>
   </div>
 </section>
-<section class="section" id="section-9" style="--section-color:hsl(335, 80%, 50%)">
+<section class="section domain-section" id="section-9" data-domain="cicd" style="--section-color:hsl(335, 80%, 50%)">
+  <div id="cicd"></div>
+  <div class="domain-focus-bar">
+    <div class="focus-bar-left">
+      <span class="focus-bar-pill">Domain 9 of 16</span>
+      <span class="focus-bar-title">CI/CD Pipelines & DevOps Automation</span>
+      <span class="focus-bar-stats">12 concepts &bull; 3 subsections</span>
+    </div>
+    <div class="focus-bar-right">
+      <button type="button" class="focus-btn" onclick="navigateDomain(-1)">← Prev Domain</button>
+      <button type="button" class="focus-btn view-all-btn" onclick="switchDomain('all')">🌐 View All (16)</button>
+      <button type="button" class="focus-btn" onclick="navigateDomain(1)">Next Domain →</button>
+      <a href="tech_cicd.html" class="focus-btn masterclass-btn">Dedicated Masterclass ↗</a>
+    </div>
+  </div>
   <div class="section-banner" style="background:linear-gradient(135deg, hsl(335, 85%, 45%), hsl(355, 75%, 35%))">
     <div class="num">9</div>
     <div class="info">
@@ -2542,7 +3278,21 @@ body {
     </ol>
   </div>
 </section>
-<section class="section" id="section-10" style="--section-color:hsl(25, 80%, 50%)">
+<section class="section domain-section" id="section-10" data-domain="kafka" style="--section-color:hsl(25, 80%, 50%)">
+  <div id="kafka"></div>
+  <div class="domain-focus-bar">
+    <div class="focus-bar-left">
+      <span class="focus-bar-pill">Domain 10 of 16</span>
+      <span class="focus-bar-title">Apache Kafka Distributed Streaming</span>
+      <span class="focus-bar-stats">14 concepts &bull; 4 subsections</span>
+    </div>
+    <div class="focus-bar-right">
+      <button type="button" class="focus-btn" onclick="navigateDomain(-1)">← Prev Domain</button>
+      <button type="button" class="focus-btn view-all-btn" onclick="switchDomain('all')">🌐 View All (16)</button>
+      <button type="button" class="focus-btn" onclick="navigateDomain(1)">Next Domain →</button>
+      
+    </div>
+  </div>
   <div class="section-banner" style="background:linear-gradient(135deg, hsl(25, 85%, 45%), hsl(45, 75%, 35%))">
     <div class="num">10</div>
     <div class="info">
@@ -2741,7 +3491,21 @@ body {
     </ol>
   </div>
 </section>
-<section class="section" id="section-11" style="--section-color:hsl(18, 80%, 50%)">
+<section class="section domain-section" id="section-11" data-domain="spark" style="--section-color:hsl(18, 80%, 50%)">
+  <div id="spark"></div>
+  <div class="domain-focus-bar">
+    <div class="focus-bar-left">
+      <span class="focus-bar-pill">Domain 11 of 16</span>
+      <span class="focus-bar-title">Apache Spark Big Data Engine</span>
+      <span class="focus-bar-stats">13 concepts &bull; 4 subsections</span>
+    </div>
+    <div class="focus-bar-right">
+      <button type="button" class="focus-btn" onclick="navigateDomain(-1)">← Prev Domain</button>
+      <button type="button" class="focus-btn view-all-btn" onclick="switchDomain('all')">🌐 View All (16)</button>
+      <button type="button" class="focus-btn" onclick="navigateDomain(1)">Next Domain →</button>
+      
+    </div>
+  </div>
   <div class="section-banner" style="background:linear-gradient(135deg, hsl(18, 85%, 45%), hsl(38, 75%, 35%))">
     <div class="num">11</div>
     <div class="info">
@@ -2931,7 +3695,21 @@ body {
     </ol>
   </div>
 </section>
-<section class="section" id="section-12" style="--section-color:hsl(215, 80%, 50%)">
+<section class="section domain-section" id="section-12" data-domain="postgres" style="--section-color:hsl(215, 80%, 50%)">
+  <div id="postgres"></div>
+  <div class="domain-focus-bar">
+    <div class="focus-bar-left">
+      <span class="focus-bar-pill">Domain 12 of 16</span>
+      <span class="focus-bar-title">Database Engineering & PostgreSQL Internals</span>
+      <span class="focus-bar-stats">15 concepts &bull; 4 subsections</span>
+    </div>
+    <div class="focus-bar-right">
+      <button type="button" class="focus-btn" onclick="navigateDomain(-1)">← Prev Domain</button>
+      <button type="button" class="focus-btn view-all-btn" onclick="switchDomain('all')">🌐 View All (16)</button>
+      <button type="button" class="focus-btn" onclick="navigateDomain(1)">Next Domain →</button>
+      
+    </div>
+  </div>
   <div class="section-banner" style="background:linear-gradient(135deg, hsl(215, 85%, 45%), hsl(235, 75%, 35%))">
     <div class="num">12</div>
     <div class="info">
@@ -3139,7 +3917,21 @@ body {
     </ol>
   </div>
 </section>
-<section class="section" id="section-13" style="--section-color:hsl(355, 80%, 50%)">
+<section class="section domain-section" id="section-13" data-domain="redis" style="--section-color:hsl(355, 80%, 50%)">
+  <div id="redis"></div>
+  <div class="domain-focus-bar">
+    <div class="focus-bar-left">
+      <span class="focus-bar-pill">Domain 13 of 16</span>
+      <span class="focus-bar-title">In-Memory Caching with Redis</span>
+      <span class="focus-bar-stats">12 concepts &bull; 3 subsections</span>
+    </div>
+    <div class="focus-bar-right">
+      <button type="button" class="focus-btn" onclick="navigateDomain(-1)">← Prev Domain</button>
+      <button type="button" class="focus-btn view-all-btn" onclick="switchDomain('all')">🌐 View All (16)</button>
+      <button type="button" class="focus-btn" onclick="navigateDomain(1)">Next Domain →</button>
+      
+    </div>
+  </div>
   <div class="section-banner" style="background:linear-gradient(135deg, hsl(355, 85%, 45%), hsl(375, 75%, 35%))">
     <div class="num">13</div>
     <div class="info">
@@ -3310,7 +4102,21 @@ body {
     </ol>
   </div>
 </section>
-<section class="section" id="section-14" style="--section-color:hsl(135, 80%, 50%)">
+<section class="section domain-section" id="section-14" data-domain="java" style="--section-color:hsl(135, 80%, 50%)">
+  <div id="java"></div>
+  <div class="domain-focus-bar">
+    <div class="focus-bar-left">
+      <span class="focus-bar-pill">Domain 14 of 16</span>
+      <span class="focus-bar-title">Java & Spring Boot Microservices</span>
+      <span class="focus-bar-stats">16 concepts &bull; 4 subsections</span>
+    </div>
+    <div class="focus-bar-right">
+      <button type="button" class="focus-btn" onclick="navigateDomain(-1)">← Prev Domain</button>
+      <button type="button" class="focus-btn view-all-btn" onclick="switchDomain('all')">🌐 View All (16)</button>
+      <button type="button" class="focus-btn" onclick="navigateDomain(1)">Next Domain →</button>
+      
+    </div>
+  </div>
   <div class="section-banner" style="background:linear-gradient(135deg, hsl(135, 85%, 45%), hsl(155, 75%, 35%))">
     <div class="num">14</div>
     <div class="info">
@@ -3527,7 +4333,21 @@ body {
     </ol>
   </div>
 </section>
-<section class="section" id="section-15" style="--section-color:hsl(175, 80%, 50%)">
+<section class="section domain-section" id="section-15" data-domain="python" style="--section-color:hsl(175, 80%, 50%)">
+  <div id="python"></div>
+  <div class="domain-focus-bar">
+    <div class="focus-bar-left">
+      <span class="focus-bar-pill">Domain 15 of 16</span>
+      <span class="focus-bar-title">Python Backend Engineering with FastAPI</span>
+      <span class="focus-bar-stats">8 concepts &bull; 2 subsections</span>
+    </div>
+    <div class="focus-bar-right">
+      <button type="button" class="focus-btn" onclick="navigateDomain(-1)">← Prev Domain</button>
+      <button type="button" class="focus-btn view-all-btn" onclick="switchDomain('all')">🌐 View All (16)</button>
+      <button type="button" class="focus-btn" onclick="navigateDomain(1)">Next Domain →</button>
+      
+    </div>
+  </div>
   <div class="section-banner" style="background:linear-gradient(135deg, hsl(175, 85%, 45%), hsl(195, 75%, 35%))">
     <div class="num">15</div>
     <div class="info">
@@ -3652,7 +4472,21 @@ body {
     </ol>
   </div>
 </section>
-<section class="section" id="section-16" style="--section-color:hsl(285, 80%, 50%)">
+<section class="section domain-section" id="section-16" data-domain="apis" style="--section-color:hsl(285, 80%, 50%)">
+  <div id="apis"></div>
+  <div class="domain-focus-bar">
+    <div class="focus-bar-left">
+      <span class="focus-bar-pill">Domain 16 of 16</span>
+      <span class="focus-bar-title">Production API Design & Architecture</span>
+      <span class="focus-bar-stats">8 concepts &bull; 2 subsections</span>
+    </div>
+    <div class="focus-bar-right">
+      <button type="button" class="focus-btn" onclick="navigateDomain(-1)">← Prev Domain</button>
+      <button type="button" class="focus-btn view-all-btn" onclick="switchDomain('all')">🌐 View All (16)</button>
+      <button type="button" class="focus-btn" onclick="navigateDomain(1)">Next Domain →</button>
+      
+    </div>
+  </div>
   <div class="section-banner" style="background:linear-gradient(135deg, hsl(285, 85%, 45%), hsl(305, 75%, 35%))">
     <div class="num">16</div>
     <div class="info">
@@ -3912,6 +4746,92 @@ body {
 
   renderState();
 })();
+</script>
+<script>
+
+  // ============================================================
+  // All-in-One Tech Portal Interactive Navigation & Routing
+  // ============================================================
+  const DOMAIN_SLUGS = ["aws","azure","gcp","linux","git","docker","k8s","terraform","cicd","kafka","spark","postgres","redis","java","python","apis"];
+  let currentActiveDomain = 'all';
+
+  window.switchDomain = function(slug) {
+    if (!slug || slug === 'all') {
+      currentActiveDomain = 'all';
+      document.querySelectorAll('.section.domain-section').forEach(sec => {
+        sec.classList.remove('hidden-domain');
+      });
+      document.querySelectorAll('.domain-card').forEach(card => {
+        card.classList.remove('active-deck-card');
+      });
+      document.querySelectorAll('.d-nav-pill').forEach(pill => {
+        pill.classList.toggle('active', pill.dataset.target === 'all');
+      });
+      if (history.replaceState) {
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
+      return;
+    }
+
+    currentActiveDomain = slug;
+    const target = document.querySelector(`.section.domain-section[data-domain="${slug}"]`) || document.getElementById(`section-${slug}`) || document.getElementById(slug);
+    if (!target) return;
+
+    document.querySelectorAll('.section.domain-section').forEach(sec => {
+      if (sec === target || sec.getAttribute('data-domain') === slug) {
+        sec.classList.remove('hidden-domain');
+      } else {
+        sec.classList.add('hidden-domain');
+      }
+    });
+
+    document.querySelectorAll('.domain-card').forEach(card => {
+      card.classList.toggle('active-deck-card', card.dataset.domain === slug);
+    });
+
+    document.querySelectorAll('.d-nav-pill').forEach(pill => {
+      pill.classList.toggle('active', pill.dataset.target === slug);
+    });
+
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (history.replaceState) {
+      history.replaceState(null, '', '#' + slug);
+    }
+  };
+
+  window.navigateDomain = function(step) {
+    let idx = DOMAIN_SLUGS.indexOf(currentActiveDomain);
+    if (idx === -1) idx = step > 0 ? -1 : DOMAIN_SLUGS.length;
+    let nextIdx = (idx + step + DOMAIN_SLUGS.length) % DOMAIN_SLUGS.length;
+    window.switchDomain(DOMAIN_SLUGS[nextIdx]);
+  };
+
+  function checkUrlHash() {
+    const hash = window.location.hash.replace(/^#/, '');
+    if (!hash) return;
+    if (DOMAIN_SLUGS.includes(hash)) {
+      window.switchDomain(hash);
+    } else if (hash.startsWith('section-')) {
+      const secNum = parseInt(hash.replace('section-', ''), 10);
+      if (secNum >= 1 && secNum <= DOMAIN_SLUGS.length) {
+        window.switchDomain(DOMAIN_SLUGS[secNum - 1]);
+      }
+    }
+  }
+
+  window.addEventListener('hashchange', checkUrlHash);
+
+  const sInputOriginal = document.getElementById('search-input');
+  if (sInputOriginal) {
+    sInputOriginal.addEventListener('input', (e) => {
+      if (e.target.value.trim().length > 0 && currentActiveDomain !== 'all') {
+        window.switchDomain('all');
+      }
+    });
+  }
+
+  checkUrlHash();
+
 </script>
 </body>
 </html>

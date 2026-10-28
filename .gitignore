@@ -10,3 +10,5 @@ tools/.dsa-cache/
 tools/linkcheck/links.json
 tools/linkcheck/cache.json.local
 scratch/
+AI_Engineering_Tutorial/source/
+tools/import_ai_curriculum.py

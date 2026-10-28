@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AWS Cloud Architecture Masterclass | Taran's Learning Hub</title>
+<link rel="stylesheet" href="assets/learning-hub-shared.css">
+<script src="assets/learning-hub-shared.js"></script>
+<style>
+
+
+/* All-in-One Tech Portal Design System */
+:root {
+  --bg: #f7f8fb;
+  --surface: #ffffff;
+  --surface-2: #eef2f7;
+  --surface-3: #e4eaf2;
+  --text: #172033;
+  --muted: #5b6578;
+  --faint: #7a8599;
+  --border: #dbe2ec;
+  --navy: #172554;
+  --navy-2: #1e3a8a;
+  --blue: #2563eb;
+  --amber: #f59e0b;
+  --green: #0f9f6e;
+  --red: #dc4c64;
+  --violet: #7c3aed;
+  --shadow: 0 4px 16px rgba(23, 32, 51, 0.06);
+  --shadow-lift: 0 12px 32px rgba(23, 32, 51, 0.12);
+  --bg-elev: var(--surface-2);
+  --bg-card: var(--surface);
+  --bg-row-alt: var(--surface-2);
+  --text-dim: var(--muted);
+  --text-faint: var(--faint);
+  --border-strong: var(--border);
+  --accent: var(--blue);
+  --accent-dim: rgba(37, 99, 235, 0.1);
+  --link: var(--blue);
+  --quote-bg: rgba(37, 99, 235, 0.05);
+  --done: var(--green);
+  --done-bg: rgba(15, 159, 110, 0.12);
+  --shadow-card: var(--shadow);
+  --shadow-banner: 0 4px 14px rgba(0,0,0,0.08);
+}
+html.dark, html[data-theme="dark"] {
+  --bg: #0b1120;
+  --surface: #151f32;
+  --surface-2: #1e293b;
+  --surface-3: #27354a;
+  --text: #f1f5f9;
+  --muted: #94a3b8;
+  --faint: #64748b;
+  --border: #1e293b;
+  --navy: #1e293b;
+  --navy-2: #243552;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  --shadow-lift: 0 12px 32px rgba(0, 0, 0, 0.5);
+  --bg-elev: #151f32;
+  --bg-card: #151f32;
+  --bg-row-alt: #1a263d;
+  --text-dim: #94a3b8;
+  --text-faint: #64748b;
+  --border-strong: #334155;
+  --accent: #38bdf8;
+  --accent-dim: rgba(56, 189, 248, 0.15);
+  --link: #38bdf8;
+  --quote-bg: rgba(56, 189, 248, 0.08);
+  --done: #10b981;
+  --done-bg: rgba(16, 185, 129, 0.15);
+}
+html.black, html[data-theme="black"] {
+  --bg: #000000;
+  --surface: #0a0a0a;
+  --surface-2: #141414;
+  --surface-3: #1f1f1f;
+  --text: #ffffff;
+  --muted: #888888;
+  --faint: #555555;
+  --border: #222222;
+  --navy: #0e0e0e;
+  --navy-2: #181818;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+  --shadow-lift: 0 12px 32px rgba(0, 0, 0, 0.9);
+  --bg-elev: #0e0e0e;
+  --bg-card: #0a0a0a;
+  --bg-row-alt: #121212;
+  --text-dim: #888888;
+  --text-faint: #555555;
+  --border-strong: #2c2c2c;
+  --accent: #60a5fa;
+  --accent-dim: rgba(96, 165, 250, 0.18);
+  --link: #60a5fa;
+  --quote-bg: rgba(96, 165, 250, 0.08);
+  --done: #22c55e;
+  --done-bg: rgba(34, 197, 94, 0.15);
+}
+.wrap { max-width: 1440px; margin: 0 auto; padding: 20px 20px 80px; }
+.tech-breadcrumb {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 700;
+  margin: 0 0 16px; padding: 6px 12px;
+  background: var(--surface-2); border: 1px solid var(--border);
+  border-radius: 8px; width: fit-content;
+}
+.tech-bc-home { color: var(--accent); text-decoration: none; }
+.tech-bc-home:hover { text-decoration: underline; }
+.tech-bc-sep { color: var(--faint); }
+.tech-bc-curr { color: var(--text); }
+.domain-deck-section { margin: 24px 0 28px; }
+.domain-deck-head {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px; margin-bottom: 14px;
+}
+.domain-deck-head h2 {
+  font-size: 20px; margin: 0; font-weight: 800; letter-spacing: -0.01em; color: var(--text);
+}
+.domain-deck-subtitle {
+  font-size: 13px; color: var(--muted); margin: 2px 0 0;
+}
+.domain-deck {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 14px;
+}
+.domain-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px; display: flex; flex-direction: column;
+  box-shadow: var(--shadow); transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+  position: relative; cursor: pointer;
+}
+.domain-card:hover {
+  transform: translateY(-2px); border-color: var(--accent); box-shadow: var(--shadow-lift);
+}
+.domain-card.active-deck-card {
+  border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent), var(--shadow-lift);
+}
+.domain-card-head { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
+.domain-card-icon {
+  font-size: 24px; line-height: 1; flex-shrink: 0;
+  background: var(--surface-2); padding: 8px; border-radius: 10px; border: 1px solid var(--border);
+}
+.domain-card-meta { flex: 1; min-width: 0; }
+.domain-card-idx {
+  font-size: 10.5px; font-weight: 800; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 0.08em;
+}
+.domain-card-title {
+  font-size: 15.5px; font-weight: 800; margin: 2px 0 0; color: var(--text); line-height: 1.3;
+}
+.domain-card-desc {
+  font-size: 12px; color: var(--muted); line-height: 1.5; margin: 0 0 12px; flex: 1;
+}
+.domain-card-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.d-chip {
+  font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px;
+  background: var(--surface-2); border: 1px solid var(--border); color: var(--text-dim);
+}
+.d-chip.masterclass-badge {
+  background: rgba(37, 99, 235, 0.12); border-color: var(--accent); color: var(--accent);
+}
+.domain-card-actions { display: flex; gap: 8px; align-items: center; margin-top: auto; }
+.d-act-btn {
+  flex: 1; min-height: 32px; padding: 5px 10px; border-radius: 7px;
+  border: 1px solid var(--border); background: var(--surface-2); color: var(--text);
+  font-size: 12px; font-weight: 700; cursor: pointer; display: inline-flex;
+  align-items: center; justify-content: center; gap: 4px; transition: all 0.15s ease;
+}
+.d-act-btn:hover { background: var(--accent); color: #ffffff; border-color: var(--accent); }
+.d-act-link {
+  min-height: 32px; padding: 5px 11px; border-radius: 7px; border: 1px solid var(--accent);
+  background: var(--accent); color: #ffffff; font-size: 12px; font-weight: 800;
+  text-decoration: none; display: inline-flex; align-items: center; justify-content: center;
+  gap: 4px; transition: all 0.15s ease; white-space: nowrap;
+}
+.d-act-link:hover { opacity: 0.9; transform: translateY(-1px); }
+.domain-nav-bar {
+  position: sticky; top: 53px; z-index: 60; background: var(--surface);
+  border-bottom: 1px solid var(--border); border-top: 1px solid var(--border);
+  padding: 8px 12px; margin: 0 -20px 22px; backdrop-filter: blur(12px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.domain-nav-scroll {
+  display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none;
+  -webkit-overflow-scrolling: touch; max-width: 1440px; margin: 0 auto; padding: 0 8px;
+}
+.domain-nav-scroll::-webkit-scrollbar { display: none; }
+.d-nav-pill {
+  display: inline-flex; align-items: center; gap: 5px; min-height: 32px;
+  padding: 4px 12px; border-radius: 999px; border: 1px solid var(--border);
+  background: var(--surface-2); color: var(--muted); font-size: 12px;
+  font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s ease;
+}
+.d-nav-pill:hover { border-color: var(--accent); color: var(--text); transform: translateY(-1px); }
+.d-nav-pill.active {
+  background: var(--accent); border-color: var(--accent); color: #ffffff;
+  box-shadow: 0 2px 10px rgba(37, 99, 235, 0.35);
+}
+.domain-focus-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px; padding: 12px 18px; margin-bottom: 16px;
+  background: var(--surface); border: 1px solid var(--accent);
+  border-radius: 10px; box-shadow: var(--shadow);
+}
+.focus-bar-left { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.focus-bar-pill {
+  font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em;
+  padding: 3px 8px; border-radius: 6px; background: var(--accent-dim);
+  color: var(--accent); border: 1px solid var(--accent);
+}
+.focus-bar-title { font-size: 15px; font-weight: 800; color: var(--text); }
+.focus-bar-stats { font-size: 12px; color: var(--muted); font-weight: 600; }
+.focus-bar-right { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.focus-btn {
+  min-height: 30px; padding: 4px 10px; border-radius: 6px; border: 1px solid var(--border);
+  background: var(--surface-2); color: var(--text); font-size: 12px; font-weight: 700;
+  cursor: pointer; transition: all 0.15s ease;
+}
+.focus-btn:hover { background: var(--border); color: var(--text); }
+.focus-btn.view-all-btn {
+  background: var(--accent-dim); border-color: var(--accent); color: var(--accent);
+}
+.focus-btn.view-all-btn:hover { background: var(--accent); color: #ffffff; }
+.focus-btn.masterclass-btn {
+  background: var(--accent); border-color: var(--accent); color: #ffffff;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 4px;
+}
+.section.hidden-domain { display: none !important; }
+.sister-guides-card {
+  margin: 40px 0 20px; padding: 20px 24px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; box-shadow: var(--shadow);
+}
+.sister-title { font-size: 15px; font-weight: 800; color: var(--text); margin-bottom: 12px; }
+.sister-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+.sister-link {
+  display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px;
+  border-radius: 8px; background: var(--surface-2); border: 1px solid var(--border);
+  color: var(--text); text-decoration: none; font-size: 12.5px; font-weight: 700;
+  transition: all 0.15s ease;
+}
+.sister-link:hover { border-color: var(--accent); background: var(--accent-dim); transform: translateY(-1px); }
+.sister-link.active-hub { background: var(--accent); border-color: var(--accent); color: #ffffff; }
+@media (max-width: 768px) {
+  .hero h1 { font-size: 26px; }
+  .domain-nav-bar { margin: 0 -12px 18px; }
+  .domain-focus-bar { flex-direction: column; align-items: flex-start; }
+}
+
+:root {
+  --bg: #0f1115; --bg-elev: #161922; --bg-card: #1c2030; --bg-row-alt: #1a1d2a;
+  --text: #e6e8ee; --text-dim: #9aa0b0; --text-faint: #6b7080;
+  --border: #2a2f42; --border-strong: #3a3f55;
+  --accent: #0786a3; --accent-dim: rgba(7,134,163,0.15);
+  --link: #38bdf8;
+  --quote-bg: rgba(7,134,163,0.06);
+  --done: #00b894; --done-bg: rgba(0,184,148,0.12);
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.2);
+  --shadow-banner: 0 4px 14px rgba(0,0,0,0.25);
+}
+html.light {
+  --bg: #fafbfc; --bg-elev: #ffffff; --bg-card: #ffffff; --bg-row-alt: #f8f9fb;
+  --text: #1a1d24; --text-dim: #5a6072; --text-faint: #8b91a3;
+  --border: #e4e7ee; --border-strong: #d0d4de;
+  --accent: #0284c7; --accent-dim: rgba(2,132,199,0.1);
+  --link: #0369a1;
+  --quote-bg: rgba(2,132,199,0.05);
+  --done: #00a884; --done-bg: rgba(0,168,132,0.12);
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-banner: 0 4px 14px rgba(0,0,0,0.08);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; line-height: 1.55;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--bg); color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.2s, color 0.2s;
+}
+.wrap { max-width: 1240px; margin: 0 auto; padding: 24px 20px 80px; }
+.hero { text-align: center; padding: 16px 0 24px; border-bottom: 1px solid var(--border); margin-bottom: 20px; }
+.hero h1 { font-size: 32px; margin: 6px 0 4px; letter-spacing: -0.02em; }
+.hero .subtitle { color: var(--text-dim); margin: 0; font-size: 14px; }
+.hero .edition {
+  display: inline-block; color: var(--accent); font-weight: 700; font-size: 11px;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  background: var(--accent-dim); padding: 4px 10px; border-radius: 4px;
+}
+.stats { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-top: 20px; }
+.stat {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 10px; padding: 8px 14px; min-width: 80px;
+  box-shadow: var(--shadow-card);
+}
+.stat .n { font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.stat .l { font-size: 10px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 2px; }
+
+.overall-progress {
+  background: var(--bg-elev); border: 1px solid var(--border);
+  border-radius: 10px; padding: 14px 20px; margin: 18px 0 18px;
+  display: flex; align-items: center; gap: 16px;
+}
+.overall-progress .lbl { font-size: 12px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; }
+.overall-progress .bar-track {
+  flex: 1; height: 10px; background: var(--bg-card);
+  border-radius: 5px; overflow: hidden; border: 1px solid var(--border);
+}
+.overall-progress .bar-fill {
+  height: 100%; background: linear-gradient(90deg, var(--done), var(--accent));
+  transition: width 0.3s ease; width: 0%;
+}
+.overall-progress .pct { font-weight: 700; font-variant-numeric: tabular-nums; font-size: 14px; min-width: 80px; text-align: right; }
+
+.controls {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--bg); backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  padding: 10px 0; margin: 0 0 20px;
+}
+.controls-row {
+  display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+  background: var(--bg-elev); border: 1px solid var(--border);
+  border-radius: 10px; padding: 10px 14px;
+}
+.controls-row .label {
+  font-size: 10px; color: var(--text-faint);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  font-weight: 700; margin-right: 2px;
+}
+.search { flex: 1; min-width: 180px; }
+.search input {
+  width: 100%; padding: 6px 11px; font-size: 13px;
+  background: var(--bg-card); border: 1px solid var(--border); color: var(--text);
+  border-radius: 5px;
+}
+.search input:focus { outline: none; border-color: var(--accent); }
+.icon-btn {
+  padding: 5px 9px; font-size: 14px;
+  background: var(--bg-card); border: 1px solid var(--border);
+  color: var(--text-dim); border-radius: 5px; cursor: pointer;
+  transition: all 0.12s;
+}
+.icon-btn:hover { background: var(--accent); color: white; border-color: var(--accent); }
+.filter-btn {
+  padding: 5px 10px; font-size: 11px; font-weight: 700;
+  background: var(--bg-card); border: 1px solid var(--border);
+  color: var(--text-dim); border-radius: 5px; cursor: pointer;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  transition: all 0.12s; letter-spacing: 0.02em;
+}
+.filter-btn:hover { background: var(--bg); color: var(--text); }
+.filter-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+.filter-btn.status-bookmarked.active { background: #ffa94d; border-color: #ffa94d; }
+.filter-btn.status-done.active { background: var(--done); border-color: var(--done); }
+.sep { width: 1px; height: 20px; background: var(--border); margin: 0 2px; }
+
+.toc {
+  background: var(--bg-elev); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px 22px; margin-bottom: 28px;
+}
+.toc h2 {
+  font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--text-faint); margin: 0 0 12px; font-weight: 700;
+}
+.toc-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 3px 12px;
+}
+.toc a {
+  display: flex; align-items: center; gap: 10px;
+  padding: 6px 8px; border-radius: 6px; color: var(--text);
+  text-decoration: none; font-size: 12.5px;
+  transition: background 0.12s;
+}
+.toc a:hover { background: var(--bg-card); }
+.toc .roman {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 10px; color: var(--text-faint); min-width: 28px;
+}
+.toc .name { flex: 1; }
+.toc .cnt {
+  font-size: 9.5px; color: var(--text-faint);
+  font-variant-numeric: tabular-nums;
+  background: var(--bg-card); padding: 1px 6px; border-radius: 3px;
+}
+
+.section { margin: 48px 0 0; }
+.section-banner {
+  border-radius: 12px; padding: 18px 24px; color: white;
+  display: flex; align-items: center; gap: 16px;
+  box-shadow: var(--shadow-banner);
+}
+.section-banner .num {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 22px; font-weight: 700; opacity: 0.95;
+  min-width: 56px; text-align: center;
+  padding: 6px 10px; background: rgba(255,255,255,0.18);
+  border-radius: 7px;
+}
+.section-banner .info { flex: 1; min-width: 0; }
+.section-banner .label {
+  font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em;
+  opacity: 0.85; margin-bottom: 1px;
+}
+.section-banner h2 { margin: 0; font-size: 20px; font-weight: 700; letter-spacing: -0.01em; }
+.section-banner .meta { font-size: 11.5px; opacity: 0.9; margin-top: 3px; }
+.section-banner .ppg { min-width: 140px; text-align: right; }
+.section-banner .ppg .pct-text { font-size: 13px; font-weight: 700; margin-bottom: 4px; font-variant-numeric: tabular-nums; }
+.section-banner .ppg .pp-track { height: 6px; background: rgba(255,255,255,0.25); border-radius: 3px; overflow: hidden; }
+.section-banner .ppg .pp-fill { height: 100%; background: white; border-radius: 3px; width: 0%; transition: width 0.3s; }
+
+.section-desc {
+  background: var(--quote-bg);
+  border-left: 4px solid var(--section-color, var(--accent));
+  border-radius: 0 8px 8px 0;
+  padding: 12px 18px; margin: 14px 0 6px 24px; font-size: 13.5px;
+}
+.section-desc .tagline { font-size: 14.5px; font-weight: 700; color: var(--text); margin: 0 0 6px; }
+.section-desc .row { margin: 4px 0; color: var(--text-dim); }
+.section-desc .row b { color: var(--text); }
+
+.subsection {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-left: 4px solid var(--section-color, var(--accent));
+  border-radius: 10px; margin: 16px 0 0 24px; padding: 14px 18px 16px;
+  box-shadow: var(--shadow-card);
+}
+.subsection-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 6px; flex-wrap: wrap; }
+.subsection-tag {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 10px; background: var(--bg-elev); border: 1px solid var(--border);
+  color: var(--text-dim); padding: 2px 7px; border-radius: 4px;
+  font-weight: 700; letter-spacing: 0.04em;
+}
+.subsection h3 { margin: 0; font-size: 14.5px; font-weight: 700; flex: 1; min-width: 0; color: var(--text); }
+.subsection-desc {
+  font-size: 12.5px; color: var(--text-dim); margin: 4px 0 8px;
+  padding: 7px 11px; background: var(--bg-elev); border-radius: 6px; line-height: 1.5;
+}
+
+.concepts {
+  list-style: none; padding: 0; margin: 8px 0 0;
+  border-radius: 8px; overflow: hidden;
+  border: 1px solid var(--border);
+}
+.concepts li {
+  display: grid;
+  grid-template-columns: 28px 22px 1fr auto;
+  gap: 10px; align-items: center;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-elev);
+  transition: background 0.12s;
+}
+.concepts li:last-child { border-bottom: none; }
+.concepts li:nth-child(even) { background: var(--bg-row-alt); }
+.concepts li:hover { background: var(--accent-dim); }
+.concepts li.hidden { display: none; }
+.concepts li.done { background: var(--done-bg); }
+.concepts li.done .cname { color: var(--text-dim); text-decoration: line-through; }
+.done-check {
+  width: 22px; height: 22px; cursor: pointer;
+  border: 2px solid var(--border-strong); border-radius: 5px;
+  background: var(--bg-card);
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.15s; flex-shrink: 0;
+}
+.done-check:hover { border-color: var(--done); }
+.done-check.checked { background: var(--done); border-color: var(--done); color: white; }
+.done-check.checked::after { content: '✓'; font-weight: 700; font-size: 14px; }
+.bookmark-star {
+  cursor: pointer; font-size: 16px; color: var(--border-strong);
+  user-select: none; transition: color 0.15s, transform 0.15s; flex-shrink: 0;
+}
+.bookmark-star:hover { color: #ffa94d; transform: scale(1.15); }
+.bookmark-star.active { color: #ffa94d; }
+.cname { color: var(--text); font-size: 13.5px; font-weight: 600; }
+.cname b { color: var(--accent); }
+.res-links { display: flex; gap: 4px; flex-shrink: 0; flex-wrap: wrap; }
+.res-links a {
+  font-size: 10.5px; padding: 3px 7px; border-radius: 4px;
+  background: var(--bg-card); border: 1px solid var(--border);
+  color: var(--text-dim); text-decoration: none;
+  white-space: nowrap; font-weight: 600;
+  transition: all 0.12s;
+}
+.res-links a:hover { background: var(--accent); color: white; border-color: var(--accent); }
+.res-links a.video:hover { background: #ff0000; border-color: #ff0000; }
+
+.resources-section {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 10px; padding: 12px 16px; margin: 10px 0 8px 24px;
+}
+.resources-section .head {
+  display: flex; align-items: center; justify-content: space-between;
+  cursor: pointer; user-select: none;
+}
+.resources-section .head h4 {
+  margin: 0; font-size: 11.5px; color: var(--text-faint);
+  text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700;
+}
+.resources-section .head .count {
+  font-size: 10.5px; color: var(--text-faint);
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+}
+.resources-section .head .chevron {
+  color: var(--text-faint); font-size: 11px; margin-left: 8px;
+  transition: transform 0.18s; display: inline-block;
+}
+.resources-section.open .chevron { transform: rotate(90deg); }
+.resources-body { display: none; margin-top: 10px; }
+.resources-section.open .resources-body { display: block; }
+.res-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 5px 8px;
+}
+.res-link {
+  display: flex; align-items: center; gap: 8px;
+  padding: 6px 10px; border-radius: 6px;
+  background: var(--bg-elev); border: 1px solid var(--border);
+  text-decoration: none; color: var(--text);
+  font-size: 12.5px; transition: all 0.12s;
+}
+.res-link:hover { background: var(--accent); color: white; border-color: var(--accent); }
+.res-link:hover .res-source { color: rgba(255,255,255,0.8); }
+.res-icon { font-size: 13px; flex-shrink: 0; }
+.res-title { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.res-source { font-size: 9.5px; color: var(--text-faint); margin-left: auto; padding-left: 6px; white-space: nowrap; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+
+.top {
+  position: fixed; bottom: 20px; right: 20px;
+  background: var(--accent); color: white;
+  padding: 10px 14px; border-radius: 8px;
+  text-decoration: none; font-size: 13px; font-weight: 600;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.2); z-index: 100;
+}
+
+@media (max-width: 900px) {
+  .wrap { padding: 16px 12px 80px; }
+  .subsection, .section-desc, .resources-section { margin-left: 0; }
+  .section-banner { flex-direction: column; align-items: flex-start; }
+  .section-banner .ppg { min-width: 100%; text-align: left; }
+  .hero h1 { font-size: 24px; }
+  .concepts li { grid-template-columns: 24px 20px 1fr; gap: 6px; padding: 6px 8px; }
+  .concepts li .res-links { display: none; }
+}
+@media print {
+  body { background: white; color: black; }
+  .controls, .top, .filter-btn, .icon-btn { display: none !important; }
+  .resources-section .resources-body { display: block !important; }
+  .section { page-break-inside: avoid; }
+  a { color: black; text-decoration: underline; }
+}
+
+
+/* All-in-One Tech Portal Design System */
+:root {
+  --bg: #f7f8fb;
+  --surface: #ffffff;
+  --surface-2: #eef2f7;
+  --surface-3: #e4eaf2;
+  --text: #172033;
+  --muted: #5b6578;
+  --faint: #7a8599;
+  --border: #dbe2ec;
+  --navy: #172554;
+  --navy-2: #1e3a8a;
+  --blue: #2563eb;
+  --amber: #f59e0b;
+  --green: #0f9f6e;
+  --red: #dc4c64;
+  --violet: #7c3aed;
+  --shadow: 0 4px 16px rgba(23, 32, 51, 0.06);
+  --shadow-lift: 0 12px 32px rgba(23, 32, 51, 0.12);
+  --bg-elev: var(--surface-2);
+  --bg-card: var(--surface);
+  --bg-row-alt: var(--surface-2);
+  --text-dim: var(--muted);
+  --text-faint: var(--faint);
+  --border-strong: var(--border);
+  --accent: var(--blue);
+  --accent-dim: rgba(37, 99, 235, 0.1);
+  --link: var(--blue);
+  --quote-bg: rgba(37, 99, 235, 0.05);
+  --done: var(--green);
+  --done-bg: rgba(15, 159, 110, 0.12);
+  --shadow-card: var(--shadow);
+  --shadow-banner: 0 4px 14px rgba(0,0,0,0.08);
+}
+html.dark, html[data-theme="dark"] {
+  --bg: #0b1120;
+  --surface: #151f32;
+  --surface-2: #1e293b;
+  --surface-3: #27354a;
+  --text: #f1f5f9;
+  --muted: #94a3b8;
+  --faint: #64748b;
+  --border: #1e293b;
+  --navy: #1e293b;
+  --navy-2: #243552;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  --shadow-lift: 0 12px 32px rgba(0, 0, 0, 0.5);
+  --bg-elev: #151f32;
+  --bg-card: #151f32;
+  --bg-row-alt: #1a263d;
+  --text-dim: #94a3b8;
+  --text-faint: #64748b;
+  --border-strong: #334155;
+  --accent: #38bdf8;
+  --accent-dim: rgba(56, 189, 248, 0.15);
+  --link: #38bdf8;
+  --quote-bg: rgba(56, 189, 248, 0.08);
+  --done: #10b981;
+  --done-bg: rgba(16, 185, 129, 0.15);
+}
+html.black, html[data-theme="black"] {
+  --bg: #000000;
+  --surface: #0a0a0a;
+  --surface-2: #141414;
+  --surface-3: #1f1f1f;
+  --text: #ffffff;
+  --muted: #888888;
+  --faint: #555555;
+  --border: #222222;
+  --navy: #0e0e0e;
+  --navy-2: #181818;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+  --shadow-lift: 0 12px 32px rgba(0, 0, 0, 0.9);
+  --bg-elev: #0e0e0e;
+  --bg-card: #0a0a0a;
+  --bg-row-alt: #121212;
+  --text-dim: #888888;
+  --text-faint: #555555;
+  --border-strong: #2c2c2c;
+  --accent: #60a5fa;
+  --accent-dim: rgba(96, 165, 250, 0.18);
+  --link: #60a5fa;
+  --quote-bg: rgba(96, 165, 250, 0.08);
+  --done: #22c55e;
+  --done-bg: rgba(34, 197, 94, 0.15);
+}
+.wrap { max-width: 1440px; margin: 0 auto; padding: 20px 20px 80px; }
+.tech-breadcrumb {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 700;
+  margin: 0 0 16px; padding: 6px 12px;
+  background: var(--surface-2); border: 1px solid var(--border);
+  border-radius: 8px; width: fit-content;
+}
+.tech-bc-home { color: var(--accent); text-decoration: none; }
+.tech-bc-home:hover { text-decoration: underline; }
+.tech-bc-sep { color: var(--faint); }
+.tech-bc-curr { color: var(--text); }
+.domain-deck-section { margin: 24px 0 28px; }
+.domain-deck-head {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px; margin-bottom: 14px;
+}
+.domain-deck-head h2 {
+  font-size: 20px; margin: 0; font-weight: 800; letter-spacing: -0.01em; color: var(--text);
+}
+.domain-deck-subtitle {
+  font-size: 13px; color: var(--muted); margin: 2px 0 0;
+}
+.domain-deck {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 14px;
+}
+.domain-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px; display: flex; flex-direction: column;
+  box-shadow: var(--shadow); transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+  position: relative; cursor: pointer;
+}
+.domain-card:hover {
+  transform: translateY(-2px); border-color: var(--accent); box-shadow: var(--shadow-lift);
+}
+.domain-card.active-deck-card {
+  border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent), var(--shadow-lift);
+}
+.domain-card-head { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
+.domain-card-icon {
+  font-size: 24px; line-height: 1; flex-shrink: 0;
+  background: var(--surface-2); padding: 8px; border-radius: 10px; border: 1px solid var(--border);
+}
+.domain-card-meta { flex: 1; min-width: 0; }
+.domain-card-idx {
+  font-size: 10.5px; font-weight: 800; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 0.08em;
+}
+.domain-card-title {
+  font-size: 15.5px; font-weight: 800; margin: 2px 0 0; color: var(--text); line-height: 1.3;
+}
+.domain-card-desc {
+  font-size: 12px; color: var(--muted); line-height: 1.5; margin: 0 0 12px; flex: 1;
+}
+.domain-card-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.d-chip {
+  font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px;
+  background: var(--surface-2); border: 1px solid var(--border); color: var(--text-dim);
+}
+.d-chip.masterclass-badge {
+  background: rgba(37, 99, 235, 0.12); border-color: var(--accent); color: var(--accent);
+}
+.domain-card-actions { display: flex; gap: 8px; align-items: center; margin-top: auto; }
+.d-act-btn {
+  flex: 1; min-height: 32px; padding: 5px 10px; border-radius: 7px;
+  border: 1px solid var(--border); background: var(--surface-2); color: var(--text);
+  font-size: 12px; font-weight: 700; cursor: pointer; display: inline-flex;
+  align-items: center; justify-content: center; gap: 4px; transition: all 0.15s ease;
+}
+.d-act-btn:hover { background: var(--accent); color: #ffffff; border-color: var(--accent); }
+.d-act-link {
+  min-height: 32px; padding: 5px 11px; border-radius: 7px; border: 1px solid var(--accent);
+  background: var(--accent); color: #ffffff; font-size: 12px; font-weight: 800;
+  text-decoration: none; display: inline-flex; align-items: center; justify-content: center;
+  gap: 4px; transition: all 0.15s ease; white-space: nowrap;
+}
+.d-act-link:hover { opacity: 0.9; transform: translateY(-1px); }
+.domain-nav-bar {
+  position: sticky; top: 53px; z-index: 60; background: var(--surface);
+  border-bottom: 1px solid var(--border); border-top: 1px solid var(--border);
+  padding: 8px 12px; margin: 0 -20px 22px; backdrop-filter: blur(12px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.domain-nav-scroll {
+  display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none;
+  -webkit-overflow-scrolling: touch; max-width: 1440px; margin: 0 auto; padding: 0 8px;
+}
+.domain-nav-scroll::-webkit-scrollbar { display: none; }
+.d-nav-pill {
+  display: inline-flex; align-items: center; gap: 5px; min-height: 32px;
+  padding: 4px 12px; border-radius: 999px; border: 1px solid var(--border);
+  background: var(--surface-2); color: var(--muted); font-size: 12px;
+  font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s ease;
+}
+.d-nav-pill:hover { border-color: var(--accent); color: var(--text); transform: translateY(-1px); }
+.d-nav-pill.active {
+  background: var(--accent); border-color: var(--accent); color: #ffffff;
+  box-shadow: 0 2px 10px rgba(37, 99, 235, 0.35);
+}
+.domain-focus-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px; padding: 12px 18px; margin-bottom: 16px;
+  background: var(--surface); border: 1px solid var(--accent);
+  border-radius: 10px; box-shadow: var(--shadow);
+}
+.focus-bar-left { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.focus-bar-pill {
+  font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em;
+  padding: 3px 8px; border-radius: 6px; background: var(--accent-dim);
+  color: var(--accent); border: 1px solid var(--accent);
+}
+.focus-bar-title { font-size: 15px; font-weight: 800; color: var(--text); }
+.focus-bar-stats { font-size: 12px; color: var(--muted); font-weight: 600; }
+.focus-bar-right { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.focus-btn {
+  min-height: 30px; padding: 4px 10px; border-radius: 6px; border: 1px solid var(--border);
+  background: var(--surface-2); color: var(--text); font-size: 12px; font-weight: 700;
+  cursor: pointer; transition: all 0.15s ease;
+}
+.focus-btn:hover { background: var(--border); color: var(--text); }
+.focus-btn.view-all-btn {
+  background: var(--accent-dim); border-color: var(--accent); color: var(--accent);
+}
+.focus-btn.view-all-btn:hover { background: var(--accent); color: #ffffff; }
+.focus-btn.masterclass-btn {
+  background: var(--accent); border-color: var(--accent); color: #ffffff;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 4px;
+}
+.section.hidden-domain { display: none !important; }
+.sister-guides-card {
+  margin: 40px 0 20px; padding: 20px 24px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; box-shadow: var(--shadow);
+}
+.sister-title { font-size: 15px; font-weight: 800; color: var(--text); margin-bottom: 12px; }
+.sister-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+.sister-link {
+  display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px;
+  border-radius: 8px; background: var(--surface-2); border: 1px solid var(--border);
+  color: var(--text); text-decoration: none; font-size: 12.5px; font-weight: 700;
+  transition: all 0.15s ease;
+}
+.sister-link:hover { border-color: var(--accent); background: var(--accent-dim); transform: translateY(-1px); }
+.sister-link.active-hub { background: var(--accent); border-color: var(--accent); color: #ffffff; }
+@media (max-width: 768px) {
+  .hero h1 { font-size: 26px; }
+  .domain-nav-bar { margin: 0 -12px 18px; }
+  .domain-focus-bar { flex-direction: column; align-items: flex-start; }
+}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="tech-breadcrumb">
+    <a href="cloud_aws_azure.html" class="tech-bc-home">← All-in-One Tech Portal</a>
+    <span class="tech-bc-sep">/</span>
+    <span class="tech-bc-curr">AWS Cloud Architecture Masterclass</span>
+  </div>
+
+  <div class="hero">
+    <div class="edition">Cloud Architecture · Masterclass 01 · 7 Subsections · 36 Concepts</div>
+    <h1>AWS Cloud Architecture Masterclass</h1>
+    <p class="subtitle">Production cloud infrastructure: IAM least privilege, VPC network isolation, multi-tier EC2/ELB compute, managed RDS/DynamoDB databases, and event-driven serverless architectures.</p>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="n">7</div><div class="l">Subsections</div></div>
+    <div class="stat"><div class="n">36</div><div class="l">Concepts</div></div>
+    <div class="stat"><div class="n">100%</div><div class="l">Curated</div></div>
+    <div class="stat"><div class="n">15+</div><div class="l">Verified Docs &amp; Labs</div></div>
+  </div>
+
+  <div class="overall-progress">
+    <span class="lbl">Masterclass Progress</span>
+    <div class="bar-track"><div class="bar-fill" id="overall-bar"></div></div>
+    <span class="pct" id="overall-pct">0 / 36</span>
+  </div>
+
+  <div class="controls">
+    <div class="controls-row">
+      <span class="label">Filter:</span>
+      <button class="filter-btn status-done" data-filter="status" data-val="done">Done</button>
+      <button class="filter-btn" data-filter="status" data-val="undone">Not Done</button>
+      <button class="filter-btn status-bookmarked" data-filter="status" data-val="bookmarked">★ Bookmarked</button>
+      <span class="sep"></span>
+      <div class="search"><input id="search-input" placeholder="Search 36 concepts…" type="search"/></div>
+      <button class="icon-btn" id="random-btn" title="Random concept">🎲</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">🌓</button>
+      <button class="icon-btn" onclick="window.print()" title="Print">🖨️</button>
+      <button class="filter-btn" id="clear-filters">Clear</button>
+    </div>
+  </div>
+
+  <section class="section domain-section" id="section-1" data-domain="aws" style="--section-color:hsl(215, 80%, 50%)">
+  <div id="aws"></div>
+  <div class="domain-focus-bar">
+    <div class="focus-bar-left">
+      <span class="focus-bar-pill">Domain 1 of 16</span>
+      <span class="focus-bar-title">AWS Cloud Architecture</span>
+      <span class="focus-bar-stats">36 concepts &bull; 7 subsections</span>
+    </div>
+    <div class="focus-bar-right">
+      <button type="button" class="focus-btn" onclick="navigateDomain(-1)">← Prev Domain</button>
+      <button type="button" class="focus-btn view-all-btn" onclick="switchDomain('all')">🌐 View All (16)</button>
+      <button type="button" class="focus-btn" onclick="navigateDomain(1)">Next Domain →</button>
+      <a href="tech_aws.html" class="focus-btn masterclass-btn">Dedicated Masterclass ↗</a>
+    </div>
+  </div>
+  <div class="section-banner" style="background:linear-gradient(135deg, hsl(215, 85%, 45%), hsl(235, 75%, 35%))">
+    <div class="num">1</div>
+    <div class="info">
+      <div class="label">Section 1 of 16</div>
+      <h2>1. AWS (Amazon Web Services) Masterclass</h2>
+      <div class="meta">7 subsections · 36 concepts</div>
+    </div>
+    <div class="ppg">
+      <div class="pct-text" data-pp-text="1">0 / 36</div>
+      <div class="pp-track"><div class="pp-fill" data-pp-fill="1"></div></div>
+    </div>
+  </div>
+  <div class="section-desc">
+    <div class="tagline">Architect resilient, secure, and auto-scaling cloud infrastructure on Amazon Web Services.</div>
+    <div class="row"><b>Core Focus:</b> IAM least privilege, VPC network isolation, multi-tier compute, managed databases, and serverless microservices.</div>
+    <div class="row"><b>Production Trade-offs:</b> On-demand elasticity vs reserved commitments, managed convenience vs operational lock-in.</div>
+  </div>
+  <div class="resources-section">
+    <div class="head" onclick="this.parentElement.classList.toggle('open')">
+      <h4>📚 Learn this domain</h4>
+      <div><span class="count">6 curated resources</span><span class="chevron">▶</span></div>
+    </div>
+    <div class="resources-body">
+      <div class="res-grid">
+        <a class="res-link" href="https://docs.aws.amazon.com/" target="_blank" rel="noopener"><span class="res-icon">📖</span><span class="res-title">AWS Documentation (Official)</span><span class="res-source">AWS</span></a>
+        <a class="res-link" href="https://aws.amazon.com/architecture/well-architected/" target="_blank" rel="noopener"><span class="res-icon">📖</span><span class="res-title">AWS Well-Architected Framework</span><span class="res-source">AWS</span></a>
+        <a class="res-link" href="https://www.youtube.com/watch?v=SOTamWNgDKc" target="_blank" rel="noopener"><span class="res-icon">🎥</span><span class="res-title">freeCodeCamp AWS Practitioner (14hr)</span><span class="res-source">freeCodeCamp</span></a>
+        <a class="res-link" href="https://aws.amazon.com/architecture/" target="_blank" rel="noopener"><span class="res-icon">📝</span><span class="res-title">AWS Architecture Center &amp; Reference Architectures</span><span class="res-source">AWS</span></a>
+        <a class="res-link" href="https://github.com/open-guides/og-aws" target="_blank" rel="noopener"><span class="res-icon">🛠️</span><span class="res-title">Open Guide to AWS (GitHub)</span><span class="res-source">GitHub</span></a>
+        <a class="res-link" href="https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html" target="_blank" rel="noopener"><span class="res-icon">🔐</span><span class="res-title">AWS Security Best Practices &amp; IAM Guide</span><span class="res-source">AWS</span></a>
+      </div>
+    </div>
+  </div>
+  <div class="subsection">
+    <div class="subsection-head">
+      <span class="subsection-tag">1.1</span>
+      <h3>AWS Foundations &amp; Identity and Access Management (IAM)</h3>
+      <span style="font-size:11px;color:var(--text-faint);">5 concepts</span>
+    </div>
+    <div class="subsection-desc">Masterclass lessons covering AWS Foundations &amp; Identity and Access Management (IAM) architecture, operational mechanisms, and failure modes.</div>
+    <ol class="concepts">
+      <li data-cid="1.1.1" data-name="cloud computing models  iaas  paas  saas    shared responsibility">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Cloud Computing Models (IaaS, PaaS, SaaS) &amp; Shared Responsibility</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">IaaS (EC2) provides hardware virtualization, PaaS (Elastic Beanstalk) manages runtimes, and SaaS (WorkMail) delivers complete apps; the Shared Responsibility Model demarcates AWS cloud security vs customer in-the-cloud compliance.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=SOTamWNgDKc&t=1055s" data-vtitle="Cloud Computing Models (IaaS, PaaS, SaaS) &amp; Shared Responsibility" data-vchannel="freeCodeCamp.org" data-start="1055" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Cloud Computing Models (IaaS, PaaS, SaaS) &amp; Shared Responsibility">🎬YT</a><a href="https://aws.amazon.com/architecture/well-architected/" target="_blank" rel="noopener" title="AWS Well-Architected Framework">🌐Doc</a></div>
+      </li>
+      <li data-cid="1.1.2" data-name="aws global infrastructure  regions  availability zones   edge locations">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">AWS Global Infrastructure: Regions, Availability Zones &amp; Edge Locations</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Physical Regions contain 3+ isolated Availability Zones linked via low-latency dark fiber; 400+ Edge Locations accelerate CloudFront CDN caching and Route 53 DNS resolution worldwide.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=SOTamWNgDKc&t=5634s" data-vtitle="AWS Global Infrastructure: Regions, Availability Zones &amp; Edge Locations" data-vchannel="freeCodeCamp.org" data-start="5634" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: AWS Global Infrastructure: Regions, Availability Zones &amp; Edge Locations">🎬YT</a><a href="https://aws.amazon.com/architecture/well-architected/" target="_blank" rel="noopener" title="AWS Well-Architected Framework">🌐Doc</a></div>
+      </li>
+      <li data-cid="1.1.3" data-name="iam fundamentals  root user security  iam users  groups   policies">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">IAM Fundamentals: Root User Security, IAM Users, Groups &amp; Policies</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Root user account lock-down with hardware MFA; least-privilege IAM users and group inheritance governed by JSON identity policies with explicit Allow/Deny evaluation rules.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=SOTamWNgDKc&t=29289s" data-vtitle="IAM Fundamentals: Root User Security, IAM Users, Groups &amp; Policies" data-vchannel="freeCodeCamp.org" data-start="29289" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: IAM Fundamentals: Root User Security, IAM Users, Groups &amp; Policies">🎬YT</a><a href="https://aws.amazon.com/architecture/well-architected/" target="_blank" rel="noopener" title="AWS Well-Architected Framework">🌐Doc</a></div>
+      </li>
+      <li data-cid="1.1.4" data-name="iam roles  instance profiles   sts assumerole delegation">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">IAM Roles, Instance Profiles &amp; STS AssumeRole Delegation</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Temporary credential generation via AWS STS AssumeRole; instance profiles attach IAM roles directly to EC2 and container ENIs, eliminating long-lived hardcoded credentials.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=SOTamWNgDKc&t=29850s" data-vtitle="IAM Roles, Instance Profiles &amp; STS AssumeRole Delegation" data-vchannel="freeCodeCamp.org" data-start="29850" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: IAM Roles, Instance Profiles &amp; STS AssumeRole Delegation">🎬YT</a><a href="https://aws.amazon.com/architecture/well-architected/" target="_blank" rel="noopener" title="AWS Well-Architected Framework">🌐Doc</a></div>
+      </li>
+      <li data-cid="1.1.5" data-name="policy evaluation logic  explicit deny  scps   permission boundaries">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Policy Evaluation Logic: Explicit Deny, SCPs &amp; Permission Boundaries</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Deterministic JSON policy evaluation order: explicit deny overrides all; multi-account guardrail ceilings enforced by AWS Organizations SCPs and developer IAM permission boundaries.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=SOTamWNgDKc&t=30420s" data-vtitle="Policy Evaluation Logic: Explicit Deny, SCPs &amp; Permission Boundaries" data-vchannel="freeCodeCamp.org" data-start="30420" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Policy Evaluation Logic: Explicit Deny, SCPs &amp; Permission Boundaries">🎬YT</a><a href="https://aws.amazon.com/architecture/well-architected/" target="_blank" rel="noopener" title="AWS Well-Architected Framework">🌐Doc</a></div>
+      </li>
+    </ol>
+  </div>
+  <div class="subsection">
+    <div class="subsection-head">
+      <span class="subsection-tag">1.2</span>
+      <h3>AWS VPC &amp; Network Architecture</h3>
+      <span style="font-size:11px;color:var(--text-faint);">5 concepts</span>
+    </div>
+    <div class="subsection-desc">Masterclass lessons covering AWS VPC &amp; Network Architecture architecture, operational mechanisms, and failure modes.</div>
+    <ol class="concepts">
+      <li data-cid="1.2.1" data-name="vpc fundamentals  cidr blocks  public vs private subnets   route tables">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">VPC Fundamentals: CIDR Blocks, Public vs Private Subnets &amp; Route Tables</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Logical network isolation defined by private CIDR blocks (/16); subnets (/24) partitioned into public vs private tiers with route tables directing traffic to designated gateways.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=SOTamWNgDKc&t=23739s" data-vtitle="VPC Fundamentals: CIDR Blocks, Public vs Private Subnets &amp; Route Tables" data-vchannel="freeCodeCamp.org" data-start="23739" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: VPC Fundamentals: CIDR Blocks, Public vs Private Subnets &amp; Route Tables">🎬YT</a><a href="https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html" target="_blank" rel="noopener" title="Amazon VPC User Guide">🌐Doc</a></div>
+      </li>
+      <li data-cid="1.2.2" data-name="internet gateways  igw  nat gateways   egress only gateways">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Internet Gateways (IGW), NAT Gateways &amp; Egress-Only Gateways</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Internet Gateways provide two-way 1:1 NAT for public subnets; managed NAT Gateways enable secure outbound-only internet connectivity for private subnets across multiple AZs.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=SOTamWNgDKc&t=24150s" data-vtitle="Internet Gateways (IGW), NAT Gateways &amp; Egress-Only Gateways" data-vchannel="freeCodeCamp.org" data-start="24150" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Internet Gateways (IGW), NAT Gateways &amp; Egress-Only Gateways">🎬YT</a><a href="https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html" target="_blank" rel="noopener" title="Amazon VPC User Guide">🌐Doc</a></div>
+      </li>
+      <li data-cid="1.2.3" data-name="security groups  stateful  vs network acls  stateless">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Security Groups (Stateful) vs Network ACLs (Stateless)</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Security Groups are stateful firewalls operating at the elastic network interface (ENI) layer; Network ACLs provide stateless, numbered subnet-level perimeter packet filtering.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=SOTamWNgDKc&t=24680s" data-vtitle="Security Groups (Stateful) vs Network ACLs (Stateless)" data-vchannel="freeCodeCamp.org" data-start="24680" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Security Groups (Stateful) vs Network ACLs (Stateless)">🎬YT</a><a href="https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html" target="_blank" rel="noopener" title="Amazon VPC User Guide">🌐Doc</a></div>
+      </li>
+      <li data-cid="1.2.4" data-name="vpc peering  transit gateway   direct connect hybrid networking">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">VPC Peering, Transit Gateway &amp; Direct Connect Hybrid Networking</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">VPC Peering provides non-transitive 1:1 network routing; AWS Transit Gateway acts as a central hub simplifying multi-VPC meshes and hybrid AWS Direct Connect circuits.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=SOTamWNgDKc&t=25100s" data-vtitle="VPC Peering, Transit Gateway &amp; Direct Connect Hybrid Networking" data-vchannel="freeCodeCamp.org" data-start="25100" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: VPC Peering, Transit Gateway &amp; Direct Connect Hybrid Networking">🎬YT</a><a href="https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html" target="_blank" rel="noopener" title="Amazon VPC User Guide">🌐Doc</a></div>
+      </li>
+      <li data-cid="1.2.5" data-name="vpc endpoints  gateway vs interface privatelink endpoints">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">VPC Endpoints (Gateway vs Interface PrivateLink Endpoints)</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Gateway Endpoints route S3 and DynamoDB traffic privately via route tables at zero hourly cost; Interface Endpoints (AWS PrivateLink) create private ENIs inside VPC subnets.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=SOTamWNgDKc&t=25520s" data-vtitle="VPC Endpoints (Gateway vs Interface PrivateLink Endpoints)" data-vchannel="freeCodeCamp.org" data-start="25520" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: VPC Endpoints (Gateway vs Interface PrivateLink Endpoints)">🎬YT</a><a href="https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html" target="_blank" rel="noopener" title="Amazon VPC User Guide">🌐Doc</a></div>
+      </li>
+    </ol>
+  </div>
+  <div class="subsection">
+    <div class="subsection-head">
+      <span class="subsection-tag">1.3</span>
+      <h3>AWS Compute: EC2, Elastic Load Balancing &amp; Auto Scaling</h3>
+      <span style="font-size:11px;color:var(--text-faint);">5 concepts</span>
+    </div>
+    <div class="subsection-desc">Masterclass lessons covering AWS Compute: EC2, Elastic Load Balancing &amp; Auto Scaling architecture, operational mechanisms, and failure modes.</div>
+    <ol class="concepts">
+      <li data-cid="1.3.1" data-name="ec2 architecture  instance types  amis   user data bootstrap scripts">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">EC2 Architecture: Instance Types, AMIs &amp; User Data Bootstrap Scripts</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Nitro system hypervisors powering general-purpose, compute-optimized, and memory-optimized instances; bootstrap automated provisioning via EC2 UserData scripts and custom AMIs.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=SOTamWNgDKc&t=25047s" data-vtitle="EC2 Architecture: Instance Types, AMIs &amp; User Data Bootstrap Scripts" data-vchannel="freeCodeCamp.org" data-start="25047" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: EC2 Architecture: Instance Types, AMIs &amp; User Data Bootstrap Scripts">🎬YT</a><a href="https://docs.aws.amazon.com/ec2/" target="_blank" rel="noopener" title="Amazon EC2 Documentation">🌐Doc</a></div>
+      </li>
+      <li data-cid="1.3.2" data-name="ec2 pricing models  on demand  savings plans  reserved   spot instances">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">EC2 Pricing Models: On-Demand, Savings Plans, Reserved &amp; Spot Instances</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">On-Demand for unpredictable traffic, Savings Plans and Reserved Instances for steady-state baselines (up to 72% discount), and Spot Instances for fault-tolerant batch workloads.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=SOTamWNgDKc&t=28150s" data-vtitle="EC2 Pricing Models: On-Demand, Savings Plans, Reserved &amp; Spot Instances" data-vchannel="freeCodeCamp.org" data-start="28150" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: EC2 Pricing Models: On-Demand, Savings Plans, Reserved &amp; Spot Instances">🎬YT</a><a href="https://docs.aws.amazon.com/ec2/" target="_blank" rel="noopener" title="Amazon EC2 Documentation">🌐Doc</a></div>
+      </li>
+      <li data-cid="1.3.3" data-name="elastic load balancers  alb  layer 7  vs nlb  layer 4  architecture">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Elastic Load Balancers: ALB (Layer 7) vs NLB (Layer 4) Architecture</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Application Load Balancer (ALB) inspects Layer 7 HTTP/HTTPS headers, paths, and host headers; Network Load Balancer (NLB) routes Layer 4 TCP/UDP traffic with static IPs in ultra-low microseconds.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=SOTamWNgDKc&t=28550s" data-vtitle="Elastic Load Balancers: ALB (Layer 7) vs NLB (Layer 4) Architecture" data-vchannel="freeCodeCamp.org" data-start="28550" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Elastic Load Balancers: ALB (Layer 7) vs NLB (Layer 4) Architecture">🎬YT</a><a href="https://docs.aws.amazon.com/ec2/" target="_blank" rel="noopener" title="Amazon EC2 Documentation">🌐Doc</a></div>
+      </li>
+      <li data-cid="1.3.4" data-name="target groups  health checks   cross zone load balancing">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Target Groups, Health Checks &amp; Cross-Zone Load Balancing</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Target Groups route traffic across EC2, Lambda, or IP targets; active health checks remove unhealthy instances while cross-zone balancing distributes requests uniformly across AZs.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=SOTamWNgDKc&t=28800s" data-vtitle="Target Groups, Health Checks &amp; Cross-Zone Load Balancing" data-vchannel="freeCodeCamp.org" data-start="28800" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Target Groups, Health Checks &amp; Cross-Zone Load Balancing">🎬YT</a><a href="https://docs.aws.amazon.com/ec2/" target="_blank" rel="noopener" title="Amazon EC2 Documentation">🌐Doc</a></div>
+      </li>
+      <li data-cid="1.3.5" data-name="auto scaling groups  asg  launch templates   dynamic scaling policies">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Auto Scaling Groups (ASG): Launch Templates &amp; Dynamic Scaling Policies</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Auto Scaling Groups (ASGs) maintain fleet availability using Launch Templates; dynamic target-tracking, step-scaling, and predictive scaling adapt capacity to real-time CPU/traffic loads.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=SOTamWNgDKc&t=29050s" data-vtitle="Auto Scaling Groups (ASG): Launch Templates &amp; Dynamic Scaling Policies" data-vchannel="freeCodeCamp.org" data-start="29050" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Auto Scaling Groups (ASG): Launch Templates &amp; Dynamic Scaling Policies">🎬YT</a><a href="https://docs.aws.amazon.com/ec2/" target="_blank" rel="noopener" title="Amazon EC2 Documentation">🌐Doc</a></div>
+      </li>
+    </ol>
+  </div>
+  <div class="subsection">
+    <div class="subsection-head">
+      <span class="subsection-tag">1.4</span>
+      <h3>AWS Storage: S3 Object Storage, EBS Block Storage &amp; EFS</h3>
+      <span style="font-size:11px;color:var(--text-faint);">5 concepts</span>
+    </div>
+    <div class="subsection-desc">Masterclass lessons covering AWS Storage: S3 Object Storage, EBS Block Storage &amp; EFS architecture, operational mechanisms, and failure modes.</div>
+    <ol class="concepts">
+      <li data-cid="1.4.1" data-name="amazon s3 architecture  buckets  keys   consistency guarantees">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Amazon S3 Architecture: Buckets, Keys &amp; Consistency Guarantees</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Globally unique bucket namespace with key-value object storage; provides 99.999999999% (11 9s) durability with strong read-after-write consistency across multiple AZs.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=SOTamWNgDKc&t=19668s" data-vtitle="Amazon S3 Architecture: Buckets, Keys &amp; Consistency Guarantees" data-vchannel="freeCodeCamp.org" data-start="19668" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Amazon S3 Architecture: Buckets, Keys &amp; Consistency Guarantees">🎬YT</a><a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html" target="_blank" rel="noopener" title="Amazon S3 User Guide">🌐Doc</a></div>
+      </li>
+      <li data-cid="1.4.2" data-name="s3 storage classes  standard  intelligent tiering  glacier   lifecycle rules">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">S3 Storage Classes: Standard, Intelligent-Tiering, Glacier &amp; Lifecycle Rules</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">S3 Standard for hot data, Intelligent-Tiering for automatic cost optimization, Standard-IA for infrequent access, and Glacier Flexible/Deep Archive for low-cost compliance retention.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=SOTamWNgDKc&t=20400s" data-vtitle="S3 Storage Classes: Standard, Intelligent-Tiering, Glacier &amp; Lifecycle Rules" data-vchannel="freeCodeCamp.org" data-start="20400" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: S3 Storage Classes: Standard, Intelligent-Tiering, Glacier &amp; Lifecycle Rules">🎬YT</a><a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html" target="_blank" rel="noopener" title="Amazon S3 User Guide">🌐Doc</a></div>
+      </li>
+      <li data-cid="1.4.3" data-name="s3 security  bucket policies  pre signed urls  cors   kms encryption">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">S3 Security: Bucket Policies, Pre-Signed URLs, CORS &amp; KMS Encryption</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Server-side encryption via SSE-S3 or KMS (SSE-KMS); granular access controls via Bucket Policies, Block Public Access, and time-limited pre-signed URLs for secure client uploads.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=SOTamWNgDKc&t=21100s" data-vtitle="S3 Security: Bucket Policies, Pre-Signed URLs, CORS &amp; KMS Encryption" data-vchannel="freeCodeCamp.org" data-start="21100" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: S3 Security: Bucket Policies, Pre-Signed URLs, CORS &amp; KMS Encryption">🎬YT</a><a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html" target="_blank" rel="noopener" title="Amazon S3 User Guide">🌐Doc</a></div>
+      </li>
+      <li data-cid="1.4.4" data-name="ebs volume types  gp3 vs io2 block express   snapshot snapshots">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">EBS Volume Types: gp3 vs io2 Block Express &amp; Snapshot Snapshots</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Low-latency block storage for EC2: general purpose gp3 with baseline 3,000 IOPS, provisioned IOPS io2 Block Express for mission-critical databases, and incremental S3-backed snapshots.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=SOTamWNgDKc&t=21500s" data-vtitle="EBS Volume Types: gp3 vs io2 Block Express &amp; Snapshot Snapshots" data-vchannel="freeCodeCamp.org" data-start="21500" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: EBS Volume Types: gp3 vs io2 Block Express &amp; Snapshot Snapshots">🎬YT</a><a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html" target="_blank" rel="noopener" title="Amazon S3 User Guide">🌐Doc</a></div>
+      </li>
+      <li data-cid="1.4.5" data-name="amazon efs distributed network file system   amazon fsx for high performance">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Amazon EFS Distributed Network File System &amp; Amazon FSx for High Performance</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Amazon EFS Distributed Network File System &amp; Amazon FSx for High Performance.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=SOTamWNgDKc&t=21850s" data-vtitle="Amazon EFS Distributed Network File System &amp; Amazon FSx for High Performance" data-vchannel="freeCodeCamp.org" data-start="21850" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Amazon EFS Distributed Network File System &amp; Amazon FSx for High Performance">🎬YT</a><a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html" target="_blank" rel="noopener" title="Amazon S3 User Guide">🌐Doc</a></div>
+      </li>
+    </ol>
+  </div>
+  <div class="subsection">
+    <div class="subsection-head">
+      <span class="subsection-tag">1.5</span>
+      <h3>AWS Databases: RDS, Aurora &amp; DynamoDB</h3>
+      <span style="font-size:11px;color:var(--text-faint);">5 concepts</span>
+    </div>
+    <div class="subsection-desc">Masterclass lessons covering AWS Databases: RDS, Aurora &amp; DynamoDB architecture, operational mechanisms, and failure modes.</div>
+    <ol class="concepts">
+      <li data-cid="1.5.1" data-name="amazon rds  multi az synchronous deployments vs asynchronous read replicas">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Amazon RDS: Multi-AZ Synchronous Deployments vs Asynchronous Read Replicas</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Amazon RDS: Multi-AZ Synchronous Deployments vs Asynchronous Read Replicas.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=SOTamWNgDKc&t=21926s" data-vtitle="Amazon RDS: Multi-AZ Synchronous Deployments vs Asynchronous Read Replicas" data-vchannel="freeCodeCamp.org" data-start="21926" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Amazon RDS: Multi-AZ Synchronous Deployments vs Asynchronous Read Replicas">🎬YT</a><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html" target="_blank" rel="noopener" title="Amazon Relational Database Service (RDS)">🌐Doc</a></div>
+      </li>
+      <li data-cid="1.5.2" data-name="amazon aurora  storage engine architecture   serverless v2">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Amazon Aurora: Storage Engine Architecture &amp; Serverless v2</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Amazon Aurora: Storage Engine Architecture &amp; Serverless v2.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=SOTamWNgDKc&t=22450s" data-vtitle="Amazon Aurora: Storage Engine Architecture &amp; Serverless v2" data-vchannel="freeCodeCamp.org" data-start="22450" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Amazon Aurora: Storage Engine Architecture &amp; Serverless v2">🎬YT</a><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html" target="_blank" rel="noopener" title="Amazon Relational Database Service (RDS)">🌐Doc</a></div>
+      </li>
+      <li data-cid="1.5.3" data-name="dynamodb data modeling  partition keys  sort keys   access patterns">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">DynamoDB Data Modeling: Partition Keys, Sort Keys &amp; Access Patterns</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for DynamoDB Data Modeling: Partition Keys, Sort Keys &amp; Access Patterns.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=SOTamWNgDKc&t=22800s" data-vtitle="DynamoDB Data Modeling: Partition Keys, Sort Keys &amp; Access Patterns" data-vchannel="freeCodeCamp.org" data-start="22800" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: DynamoDB Data Modeling: Partition Keys, Sort Keys &amp; Access Patterns">🎬YT</a><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html" target="_blank" rel="noopener" title="Amazon Relational Database Service (RDS)">🌐Doc</a></div>
+      </li>
+      <li data-cid="1.5.4" data-name="dynamodb global secondary indexes  gsi  vs local secondary indexes  lsi">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">DynamoDB Global Secondary Indexes (GSI) vs Local Secondary Indexes (LSI)</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for DynamoDB Global Secondary Indexes (GSI) vs Local Secondary Indexes (LSI).</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=SOTamWNgDKc&t=23200s" data-vtitle="DynamoDB Global Secondary Indexes (GSI) vs Local Secondary Indexes (LSI)" data-vchannel="freeCodeCamp.org" data-start="23200" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: DynamoDB Global Secondary Indexes (GSI) vs Local Secondary Indexes (LSI)">🎬YT</a><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html" target="_blank" rel="noopener" title="Amazon Relational Database Service (RDS)">🌐Doc</a></div>
+      </li>
+      <li data-cid="1.5.5" data-name="dynamodb streams  ttl   dax in memory acceleration">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">DynamoDB Streams, TTL &amp; DAX In-Memory Acceleration</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for DynamoDB Streams, TTL &amp; DAX In-Memory Acceleration.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=SOTamWNgDKc&t=23550s" data-vtitle="DynamoDB Streams, TTL &amp; DAX In-Memory Acceleration" data-vchannel="freeCodeCamp.org" data-start="23550" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: DynamoDB Streams, TTL &amp; DAX In-Memory Acceleration">🎬YT</a><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html" target="_blank" rel="noopener" title="Amazon Relational Database Service (RDS)">🌐Doc</a></div>
+      </li>
+    </ol>
+  </div>
+  <div class="subsection">
+    <div class="subsection-head">
+      <span class="subsection-tag">1.6</span>
+      <h3>AWS Containers &amp; Serverless: ECS, EKS, Lambda &amp; API Gateway</h3>
+      <span style="font-size:11px;color:var(--text-faint);">5 concepts</span>
+    </div>
+    <div class="subsection-desc">Masterclass lessons covering AWS Containers &amp; Serverless: ECS, EKS, Lambda &amp; API Gateway architecture, operational mechanisms, and failure modes.</div>
+    <ol class="concepts">
+      <li data-cid="1.6.1" data-name="amazon ecs  task definitions  tasks  services   ec2 vs fargate">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Amazon ECS: Task Definitions, Tasks, Services &amp; EC2 vs Fargate</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Amazon ECS: Task Definitions, Tasks, Services &amp; EC2 vs Fargate.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=SOTamWNgDKc&t=32722s" data-vtitle="Amazon ECS: Task Definitions, Tasks, Services &amp; EC2 vs Fargate" data-vchannel="freeCodeCamp.org" data-start="32722" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Amazon ECS: Task Definitions, Tasks, Services &amp; EC2 vs Fargate">🎬YT</a><a href="https://docs.aws.amazon.com/lambda/latest/dg/welcome.html" target="_blank" rel="noopener" title="AWS Lambda Developer Guide">🌐Doc</a></div>
+      </li>
+      <li data-cid="1.6.2" data-name="amazon eks  managed control plane  managed node groups   irsa">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Amazon EKS: Managed Control Plane, Managed Node Groups &amp; IRSA</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Amazon EKS: Managed Control Plane, Managed Node Groups &amp; IRSA.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=SOTamWNgDKc&t=33400s" data-vtitle="Amazon EKS: Managed Control Plane, Managed Node Groups &amp; IRSA" data-vchannel="freeCodeCamp.org" data-start="33400" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Amazon EKS: Managed Control Plane, Managed Node Groups &amp; IRSA">🎬YT</a><a href="https://docs.aws.amazon.com/lambda/latest/dg/welcome.html" target="_blank" rel="noopener" title="AWS Lambda Developer Guide">🌐Doc</a></div>
+      </li>
+      <li data-cid="1.6.3" data-name="aws lambda  execution lifecycle  cold starts  layers   concurrency limits">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">AWS Lambda: Execution Lifecycle, Cold Starts, Layers &amp; Concurrency Limits</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for AWS Lambda: Execution Lifecycle, Cold Starts, Layers &amp; Concurrency Limits.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=SOTamWNgDKc&t=36334s" data-vtitle="AWS Lambda: Execution Lifecycle, Cold Starts, Layers &amp; Concurrency Limits" data-vchannel="freeCodeCamp.org" data-start="36334" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: AWS Lambda: Execution Lifecycle, Cold Starts, Layers &amp; Concurrency Limits">🎬YT</a><a href="https://docs.aws.amazon.com/lambda/latest/dg/welcome.html" target="_blank" rel="noopener" title="AWS Lambda Developer Guide">🌐Doc</a></div>
+      </li>
+      <li data-cid="1.6.4" data-name="amazon api gateway  rest vs http apis  authorizers   websocket apis">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Amazon API Gateway: REST vs HTTP APIs, Authorizers &amp; WebSocket APIs</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Amazon API Gateway: REST vs HTTP APIs, Authorizers &amp; WebSocket APIs.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=SOTamWNgDKc&t=36700s" data-vtitle="Amazon API Gateway: REST vs HTTP APIs, Authorizers &amp; WebSocket APIs" data-vchannel="freeCodeCamp.org" data-start="36700" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Amazon API Gateway: REST vs HTTP APIs, Authorizers &amp; WebSocket APIs">🎬YT</a><a href="https://docs.aws.amazon.com/lambda/latest/dg/welcome.html" target="_blank" rel="noopener" title="AWS Lambda Developer Guide">🌐Doc</a></div>
+      </li>
+      <li data-cid="1.6.5" data-name="aws step functions   eventbridge event driven serverless workflows">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">AWS Step Functions &amp; EventBridge Event-Driven Serverless Workflows</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for AWS Step Functions &amp; EventBridge Event-Driven Serverless Workflows.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=SOTamWNgDKc&t=37000s" data-vtitle="AWS Step Functions &amp; EventBridge Event-Driven Serverless Workflows" data-vchannel="freeCodeCamp.org" data-start="37000" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: AWS Step Functions &amp; EventBridge Event-Driven Serverless Workflows">🎬YT</a><a href="https://docs.aws.amazon.com/lambda/latest/dg/welcome.html" target="_blank" rel="noopener" title="AWS Lambda Developer Guide">🌐Doc</a></div>
+      </li>
+    </ol>
+  </div>
+  <div class="subsection">
+    <div class="subsection-head">
+      <span class="subsection-tag">1.7</span>
+      <h3>AWS Messaging &amp; Observability: SQS, SNS, CloudWatch &amp; Route 53</h3>
+      <span style="font-size:11px;color:var(--text-faint);">6 concepts</span>
+    </div>
+    <div class="subsection-desc">Masterclass lessons covering AWS Messaging &amp; Observability: SQS, SNS, CloudWatch &amp; Route 53 architecture, operational mechanisms, and failure modes.</div>
+    <ol class="concepts">
+      <li data-cid="1.7.1" data-name="amazon sqs  standard vs fifo queues  visibility timeout   dead letter queues  dlq">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Amazon SQS: Standard vs FIFO Queues, Visibility Timeout &amp; Dead-Letter Queues (DLQ)</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Amazon SQS: Standard vs FIFO Queues, Visibility Timeout &amp; Dead-Letter Queues (DLQ).</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=SOTamWNgDKc&t=32035s" data-vtitle="Amazon SQS: Standard vs FIFO Queues, Visibility Timeout &amp; Dead-Letter Queues (DLQ)" data-vchannel="freeCodeCamp.org" data-start="32035" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Amazon SQS: Standard vs FIFO Queues, Visibility Timeout &amp; Dead-Letter Queues (DLQ)">🎬YT</a><a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html" target="_blank" rel="noopener" title="Amazon SQS Developer Guide">🌐Doc</a></div>
+      </li>
+      <li data-cid="1.7.2" data-name="amazon sns  pub sub topics  fan out patterns   sms email delivery">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Amazon SNS: Pub/Sub Topics, Fan-Out Patterns &amp; SMS/Email Delivery</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Amazon SNS: Pub/Sub Topics, Fan-Out Patterns &amp; SMS/Email Delivery.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=SOTamWNgDKc&t=32400s" data-vtitle="Amazon SNS: Pub/Sub Topics, Fan-Out Patterns &amp; SMS/Email Delivery" data-vchannel="freeCodeCamp.org" data-start="32400" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Amazon SNS: Pub/Sub Topics, Fan-Out Patterns &amp; SMS/Email Delivery">🎬YT</a><a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html" target="_blank" rel="noopener" title="Amazon SQS Developer Guide">🌐Doc</a></div>
+      </li>
+      <li data-cid="1.7.3" data-name="amazon cloudwatch  custom metrics  metric alarms   cloudwatch logs insights">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Amazon CloudWatch: Custom Metrics, Metric Alarms &amp; CloudWatch Logs Insights</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Amazon CloudWatch: Custom Metrics, Metric Alarms &amp; CloudWatch Logs Insights.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=SOTamWNgDKc&t=37126s" data-vtitle="Amazon CloudWatch: Custom Metrics, Metric Alarms &amp; CloudWatch Logs Insights" data-vchannel="freeCodeCamp.org" data-start="37126" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Amazon CloudWatch: Custom Metrics, Metric Alarms &amp; CloudWatch Logs Insights">🎬YT</a><a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html" target="_blank" rel="noopener" title="Amazon SQS Developer Guide">🌐Doc</a></div>
+      </li>
+      <li data-cid="1.7.4" data-name="aws cloudtrail   aws x ray  audit logging   distributed tracing">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">AWS CloudTrail &amp; AWS X-Ray: Audit Logging &amp; Distributed Tracing</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for AWS CloudTrail &amp; AWS X-Ray: Audit Logging &amp; Distributed Tracing.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=SOTamWNgDKc&t=37550s" data-vtitle="AWS CloudTrail &amp; AWS X-Ray: Audit Logging &amp; Distributed Tracing" data-vchannel="freeCodeCamp.org" data-start="37550" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: AWS CloudTrail &amp; AWS X-Ray: Audit Logging &amp; Distributed Tracing">🎬YT</a><a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html" target="_blank" rel="noopener" title="Amazon SQS Developer Guide">🌐Doc</a></div>
+      </li>
+      <li data-cid="1.7.5" data-name="amazon route 53  hosted zones  dns routing policies   health checks">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Amazon Route 53: Hosted Zones, DNS Routing Policies &amp; Health Checks</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Amazon Route 53: Hosted Zones, DNS Routing Policies &amp; Health Checks.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=SOTamWNgDKc&t=24800s" data-vtitle="Amazon Route 53: Hosted Zones, DNS Routing Policies &amp; Health Checks" data-vchannel="freeCodeCamp.org" data-start="24800" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Amazon Route 53: Hosted Zones, DNS Routing Policies &amp; Health Checks">🎬YT</a><a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html" target="_blank" rel="noopener" title="Amazon SQS Developer Guide">🌐Doc</a></div>
+      </li>
+      <li data-cid="1.7.6" data-name="amazon cloudfront  cdn edge caching  origins  oac   lambda edge">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Amazon CloudFront: CDN Edge Caching, Origins, OAC &amp; Lambda@Edge</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Amazon CloudFront: CDN Edge Caching, Origins, OAC &amp; Lambda@Edge.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=SOTamWNgDKc&t=25200s" data-vtitle="Amazon CloudFront: CDN Edge Caching, Origins, OAC &amp; Lambda@Edge" data-vchannel="freeCodeCamp.org" data-start="25200" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Amazon CloudFront: CDN Edge Caching, Origins, OAC &amp; Lambda@Edge">🎬YT</a><a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html" target="_blank" rel="noopener" title="Amazon SQS Developer Guide">🌐Doc</a></div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+  <div class="sister-guides-card">
+    <div class="sister-title">🚀 Companion Engineering Masterclasses</div>
+    <div class="sister-grid">
+      <a href="tech_aws.html" class="sister-link">☁️ AWS Cloud Masterclass</a>
+      <a href="tech_linux.html" class="sister-link">🐧 Linux &amp; Terminal Masterclass</a>
+      <a href="tech_git.html" class="sister-link">🌿 Git &amp; GitHub Masterclass</a>
+      <a href="tech_docker_k8s.html" class="sister-link">🐳 Docker &amp; Kubernetes Masterclass</a>
+      <a href="tech_cicd.html" class="sister-link">🚀 CI/CD Pipelines Masterclass</a>
+      <a href="cloud_aws_azure.html" class="sister-link active-hub">🌐 All-in-One Tech Portal (16 Domains) &rarr;</a>
+    </div>
+  </div>
+</div>
+
+<script>
+window.SITE_SLUG = "cloud";
+</script>
+<script>
+
+(function() {
+  const SLUG = 'cloud';
+  const KEY_DONE = 'hub_done_' + SLUG;
+  const KEY_BM = 'hub_bm_' + SLUG;
+  const KEY_THEME = 'learning_hub_theme';
+
+  function applyTheme(t) {
+    if (t === 'light') {
+      document.documentElement.classList.add('light');
+      document.documentElement.classList.remove('dark', 'black');
+    } else if (t === 'black') {
+      document.documentElement.classList.add('black');
+      document.documentElement.classList.remove('light', 'dark');
+    } else {
+      document.documentElement.classList.add('dark');
+      document.documentElement.classList.remove('light', 'black');
+    }
+  }
+  applyTheme(localStorage.getItem(KEY_THEME) || localStorage.getItem('hub_theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'));
+
+  const themeBtn = document.getElementById('theme-toggle');
+  if (themeBtn) themeBtn.addEventListener('click', () => {
+    let cur = localStorage.getItem(KEY_THEME) || 'dark';
+    let next = cur === 'light' ? 'dark' : (cur === 'dark' ? 'black' : 'light');
+    localStorage.setItem(KEY_THEME, next);
+    localStorage.setItem('hub_theme', next);
+    applyTheme(next);
+  });
+
+  let doneSet = new Set(JSON.parse(localStorage.getItem(KEY_DONE) || '[]'));
+  let bmSet = new Set(JSON.parse(localStorage.getItem(KEY_BM) || '[]'));
+
+  function saveState() {
+    localStorage.setItem(KEY_DONE, JSON.stringify(Array.from(doneSet)));
+    localStorage.setItem(KEY_BM, JSON.stringify(Array.from(bmSet)));
+    updateProgress();
+  }
+
+  function updateProgress() {
+    const all = document.querySelectorAll('.concepts li[data-cid]');
+    let d = 0;
+    all.forEach(li => {
+      if (doneSet.has(li.dataset.cid)) d++;
+    });
+    const pct = all.length ? Math.round((d / all.length) * 100) : 0;
+    const bar = document.getElementById('overall-bar');
+    const txt = document.getElementById('overall-pct');
+    if (bar) bar.style.width = pct + '%';
+    if (txt) txt.textContent = d + ' / ' + all.length;
+  }
+
+  document.querySelectorAll('.concepts li[data-cid]').forEach(li => {
+    const cid = li.dataset.cid;
+    const check = li.querySelector('.done-check');
+    const star = li.querySelector('.bookmark-star');
+
+    if (doneSet.has(cid)) {
+      li.classList.add('done');
+      if (check) check.classList.add('checked');
+    }
+    if (bmSet.has(cid)) {
+      if (star) star.classList.add('active');
+    }
+
+    if (check) check.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (doneSet.has(cid)) {
+        doneSet.delete(cid);
+        li.classList.remove('done');
+        check.classList.remove('checked');
+      } else {
+        doneSet.add(cid);
+        li.classList.add('done');
+        check.classList.add('checked');
+      }
+      saveState();
+      applyFilters();
+    });
+
+    if (star) star.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (bmSet.has(cid)) {
+        bmSet.delete(cid);
+        star.classList.remove('active');
+      } else {
+        bmSet.add(cid);
+        star.classList.add('active');
+      }
+      saveState();
+      applyFilters();
+    });
+  });
+
+  const filters = { status: null, search: '' };
+  function applyFilters() {
+    const q = filters.search.toLowerCase();
+    document.querySelectorAll('.concepts li[data-cid]').forEach(li => {
+      const cid = li.dataset.cid;
+      const isDone = doneSet.has(cid);
+      const isBm = bmSet.has(cid);
+      const text = li.textContent.toLowerCase();
+
+      let show = true;
+      if (filters.status === 'done' && !isDone) show = false;
+      if (filters.status === 'undone' && isDone) show = false;
+      if (filters.status === 'bookmarked' && !isBm) show = false;
+      if (q && !text.includes(q)) show = false;
+
+      li.classList.toggle('hidden', !show);
+    });
+  }
+
+  document.querySelectorAll('.filter-btn[data-filter]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const val = btn.dataset.val;
+      if (filters.status === val) {
+        filters.status = null;
+        btn.classList.remove('active');
+      } else {
+        document.querySelectorAll('.filter-btn[data-filter]').forEach(b => b.classList.remove('active'));
+        filters.status = val;
+        btn.classList.add('active');
+      }
+      applyFilters();
+    });
+  });
+
+  const clearBtn = document.getElementById('clear-filters');
+  if (clearBtn) clearBtn.addEventListener('click', () => {
+    filters.status = null;
+    filters.search = '';
+    const sInput = document.getElementById('search-input');
+    if (sInput) sInput.value = '';
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    applyFilters();
+  });
+
+  const sInput = document.getElementById('search-input');
+  if (sInput) sInput.addEventListener('input', e => {
+    filters.search = e.target.value;
+    applyFilters();
+  });
+
+  const randBtn = document.getElementById('random-btn');
+  if (randBtn) randBtn.addEventListener('click', () => {
+    const visible = Array.from(document.querySelectorAll('.concepts li[data-cid]:not(.hidden)'));
+    if (!visible.length) return;
+    const chosen = visible[Math.floor(Math.random() * visible.length)];
+    chosen.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    chosen.style.transition = 'box-shadow 0.4s';
+    chosen.style.boxShadow = '0 0 0 3px var(--accent)';
+    setTimeout(() => { chosen.style.boxShadow = ''; }, 2000);
+  });
+
+  updateProgress();
+})();
+
+</script>
+</body>
+</html>
