@@ -29,7 +29,7 @@
       });
     }
     if (!script || !script.src) return;
-    var href = new URL('video-panel.css?v=6', script.src).href;
+    var href = new URL('video-panel.css?v=7', script.src).href;
     var styles = Array.prototype.slice.call(document.querySelectorAll('link[rel="stylesheet"]')).filter(function (node) {
       return /\/video-panel\.css(?:[?#]|$)/.test(node.href || '');
     });
@@ -52,7 +52,7 @@
   var FRAME_HOSTS = [
     'walkccc.me', 'neetcode.io', 'leetcode.doocs.org', 'java-design-patterns.com', 'docs.oracle.com',
     'docs.python.org', 'en.wikipedia.org', 'genai.owasp.org', 'sre.google', 'pages.cs.wisc.edu',
-    'www.allthingsdistributed.com', 'static.googleusercontent.com'
+    'www.allthingsdistributed.com', 'static.googleusercontent.com', 'piped.video', 'yewtu.be'
   ];
   var CDN = {
     marked: 'https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js',
@@ -61,7 +61,18 @@
   var el, frame, list, titleEl, kickerEl, openLink, googleLink, tabsEl, videoView, readView, docsEl, viewer, channelBar, speedBar;
   var SPEED_KEY = 'vp_playback_speed_v1';
   var SPEEDS = [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2];
-  var state = { videos: [], anim: [], docs: [], tab: 'videos', idx: 0, title: '', query: '', doc: -1, speed: 1 };
+  var ENGINE_KEY = 'vp_player_engine_v1';
+  var ENGINES = ['piped', 'invidious', 'youtube'];
+  function savedEngine() {
+    var eng = 'piped';
+    try {
+      var val = localStorage.getItem(ENGINE_KEY);
+      if (val && ENGINES.indexOf(val) >= 0) eng = val;
+      else if (val === 'off' || localStorage.getItem('vp_clean_player') === '0') eng = 'youtube';
+    } catch (e) {}
+    return eng;
+  }
+  var state = { videos: [], anim: [], docs: [], tab: 'videos', idx: 0, title: '', query: '', doc: -1, speed: 1, engine: 'piped' };
 
   function esc(s) {
     return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
@@ -313,7 +324,21 @@
     }
     speedBar.addEventListener('click', function (e) {
       var b = e.target.closest('[data-vp-speed]');
-      if (b) setSpeed(parseFloat(b.dataset.vpSpeed) || 1, true);
+      if (b) {
+        setSpeed(parseFloat(b.dataset.vpSpeed) || 1, true);
+        return;
+      }
+      var ab = e.target.closest('.vp-adblock-btn');
+      if (ab) {
+        toggleAdFree();
+        return;
+      }
+    });
+    speedBar.addEventListener('change', function (e) {
+      var sel = e.target.closest('.vp-engine-select');
+      if (sel) {
+        setEngine(sel.value, true);
+      }
     });
     list.addEventListener('click', function (e) {
       var item = e.target.closest('[data-vp-i]');
@@ -398,9 +423,46 @@
 
   function renderSpeedBar() {
     if (!speedBar) return;
-    speedBar.innerHTML = '<span class="vp-speed-label">Speed</span>' + SPEEDS.map(function (s) {
-      return '<button type="button" class="vp-speed' + (state.speed === s ? ' active' : '') + '" data-vp-speed="' + s + '">' + speedLabel(s) + '</button>';
-    }).join('');
+    var eng = state.engine || savedEngine();
+    var isAdFree = eng !== 'youtube';
+    speedBar.innerHTML =
+      '<div class="vp-speed-group">' +
+        '<span class="vp-speed-label">Speed</span>' +
+        SPEEDS.map(function (s) {
+          return '<button type="button" class="vp-speed' + (state.speed === s ? ' active' : '') + '" data-vp-speed="' + s + '">' + speedLabel(s) + '</button>';
+        }).join('') +
+      '</div>' +
+      '<div class="vp-engine-group">' +
+        '<button type="button" class="vp-adblock-btn' + (isAdFree ? ' active' : '') + '" title="Click to toggle Ad-Free player on/off">' +
+          (isAdFree ? '🛡️ Ad-Free: ON' : '🛡️ Ad-Free: OFF') +
+        '</button>' +
+        '<select class="vp-engine-select" title="Streaming Engine">' +
+          '<option value="piped"' + (eng === 'piped' ? ' selected' : '') + '>Piped (Ad-Free)</option>' +
+          '<option value="invidious"' + (eng === 'invidious' ? ' selected' : '') + '>Invidious (Ad-Free)</option>' +
+          '<option value="youtube"' + (eng === 'youtube' ? ' selected' : '') + '>YouTube (Standard)</option>' +
+        '</select>' +
+      '</div>';
+  }
+
+  function setEngine(engine, persist) {
+    state.engine = ENGINES.indexOf(engine) >= 0 ? engine : 'piped';
+    if (persist) {
+      try {
+        localStorage.setItem(ENGINE_KEY, state.engine);
+        localStorage.setItem('vp_clean_player', state.engine === 'youtube' ? '0' : '1');
+      } catch (e) {}
+    }
+    renderSpeedBar();
+    var vids = curVideos();
+    if (vids.length) {
+      play(state.tab === 'videos' ? Math.min(state.idx, vids.length - 1) : 0);
+    }
+  }
+
+  function toggleAdFree() {
+    var cur = state.engine || savedEngine();
+    var next = (cur === 'youtube') ? 'piped' : 'youtube';
+    setEngine(next, true);
   }
 
   function postSpeed() {
@@ -410,7 +472,7 @@
         event: 'command',
         func: 'setPlaybackRate',
         args: [state.speed]
-      }), 'https://www.youtube-nocookie.com');
+      }), '*');
     } catch (e) {}
   }
 
@@ -552,13 +614,29 @@
     frame.onload = function () { setTimeout(postSpeed, 600); };
     var start = parseVideoStart(v);
     var cleanId = (v[0] || '').split('?')[0].split('&')[0];
-    var embedUrl = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(cleanId) +
-      '?autoplay=1&rel=0&modestbranding=1&playsinline=1&enablejsapi=1' +
-      (start > 0 ? '&start=' + start : '') +
-      (origin ? '&origin=' + encodeURIComponent(origin) : '');
+    var eng = state.engine || savedEngine();
+
+    var embedUrl, directUrl, directTitle;
+    if (eng === 'piped') {
+      embedUrl = 'https://piped.video/embed/' + encodeURIComponent(cleanId) + (start > 0 ? '?t=' + start : '');
+      directUrl = 'https://piped.video/watch?v=' + encodeURIComponent(cleanId) + (start > 0 ? '&t=' + start : '');
+      directTitle = 'Open this video in Ad-Free Piped player' + (start > 0 ? ' (starts at ' + formatTime(start) + ')' : '');
+    } else if (eng === 'invidious') {
+      embedUrl = 'https://yewtu.be/embed/' + encodeURIComponent(cleanId) + '?autoplay=1' + (start > 0 ? '&start=' + start : '');
+      directUrl = 'https://yewtu.be/watch?v=' + encodeURIComponent(cleanId) + (start > 0 ? '&t=' + start : '');
+      directTitle = 'Open this video in Ad-Free Invidious player' + (start > 0 ? ' (starts at ' + formatTime(start) + ')' : '');
+    } else {
+      embedUrl = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(cleanId) +
+        '?autoplay=1&rel=0&modestbranding=1&playsinline=1&enablejsapi=1' +
+        (start > 0 ? '&start=' + start : '') +
+        (origin ? '&origin=' + encodeURIComponent(origin) : '');
+      directUrl = 'https://www.youtube.com/watch?v=' + encodeURIComponent(cleanId) + (start > 0 ? '&t=' + start + 's' : '');
+      directTitle = 'Open this video on YouTube' + (start > 0 ? ' (starts at ' + formatTime(start) + ')' : '');
+    }
+
     frame.src = embedUrl;
-    openLink.href = 'https://www.youtube.com/watch?v=' + encodeURIComponent(cleanId) + (start > 0 ? '&t=' + start + 's' : '');
-    openLink.title = 'Open this video on YouTube' + (start > 0 ? ' (starts at ' + formatTime(start) + ')' : '');
+    openLink.href = directUrl;
+    openLink.title = directTitle;
     list.querySelectorAll('.vp-item').forEach(function (b, k) { b.classList.toggle('active', k === i); });
     if (channelBar) {
       channelBar.querySelectorAll('button').forEach(function (b, k) { b.classList.toggle('active', k === i); });
@@ -741,6 +819,7 @@
     state.idx = Math.max(0, opts.index || 0);
     state.doc = opts.docIndex == null ? -1 : opts.docIndex;
     state.speed = savedSpeed();
+    state.engine = savedEngine();
     if (!state.videos.length && !state.anim.length && !state.docs.length) return false;
     var tab = opts.tab || (state.videos.length ? 'videos' : state.anim.length ? 'anim' : 'read');
     titleEl.textContent = state.title;
