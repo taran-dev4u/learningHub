@@ -18,6 +18,31 @@
   'use strict';
   if (window.VideoPanel) return;
 
+  // An older shared loader can still be cached after this script updates.
+  // Pair the panel with its own stylesheet release instead of trusting the
+  // loader's CSS query string, which can otherwise restore the clipped list.
+  (function ensurePanelStyles() {
+    var script = document.currentScript;
+    if (!script || !script.src) {
+      script = Array.prototype.slice.call(document.scripts).find(function (node) {
+        return /\/video-panel\.js(?:[?#]|$)/.test(node.src || '');
+      });
+    }
+    if (!script || !script.src) return;
+    var href = new URL('video-panel.css?v=6', script.src).href;
+    var styles = Array.prototype.slice.call(document.querySelectorAll('link[rel="stylesheet"]')).filter(function (node) {
+      return /\/video-panel\.css(?:[?#]|$)/.test(node.href || '');
+    });
+    if (!styles.length) {
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = href;
+      document.head.appendChild(link);
+    } else {
+      styles.forEach(function (link) { if (link.href !== href) link.href = href; });
+    }
+  }());
+
   var W_KEY = 'video_panel_width_v1';
   var MIN_W = 340;
   function maxAllowedWidth() {

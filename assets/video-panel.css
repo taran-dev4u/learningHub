@@ -152,7 +152,7 @@ html.vp-active body { padding-right: var(--vp-offset, 0px); }
 @media (max-width: 899px) {
   .vp-panel {
     top: auto; left: 0; right: 0; width: 100% !important; min-width: 0; max-width: none;
-    height: min(72vh, 640px); border-left: 0; border-top: 1px solid var(--vp-border);
+    height: min(85dvh, 800px); border-left: 0; border-top: 1px solid var(--vp-border);
     border-radius: 16px 16px 0 0; transform: translateY(105%);
   }
   .vp-panel.vp-open { transform: none; }
@@ -184,7 +184,7 @@ html[data-theme="dark"] .vp-panel, html.dark .vp-panel { box-shadow: -18px 0 40p
 
 .vp-video-view, .vp-read-view { flex: 1; min-height: 0; display: flex; flex-direction: column; }
 .vp-video-view { overflow-y: auto; }
-.vp-playlist { display: flex; flex-direction: column; flex: 1 0 168px; min-height: 168px; }
+.vp-playlist { display: flex; flex-direction: column; flex: 1 0 248px; min-height: 248px; }
 .vp-video-view[hidden], .vp-read-view[hidden] { display: none; }
 
 /* A wide player and its playlist share the available height instead of
