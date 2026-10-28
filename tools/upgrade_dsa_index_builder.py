@@ -33,7 +33,9 @@ print(f"Original file length: {len(html)} chars, {len(html.splitlines())} lines"
 pattern_matches = list(re.finditer(r'<(?:section|div)\s+class="pattern"\s+id="([^"]+)"[^>]*>', html))
 print(f"Pattern tags found: {len(pattern_matches)}")
 
-sidebar_items = []
+curated_items = []
+striver_items = []
+
 for i, m in enumerate(pattern_matches):
     pid = m.group(1)
     sub = html[m.start():m.start() + 2000]
@@ -42,12 +44,18 @@ for i, m in enumerate(pattern_matches):
     next_start = pattern_matches[i+1].start() if i + 1 < len(pattern_matches) else len(html)
     pat_body = html[m.start():next_start]
     lcs = set(re.findall(r'<li [^>]*data-lc="([^"]+)"', pat_body))
-    sidebar_items.append({
+    item = {
         'id': pid,
         'title': title,
         'count': len(lcs),
         'index': i + 1
-    })
+    }
+    if pid.startswith('pattern-striver_'):
+        striver_items.append(item)
+    else:
+        curated_items.append(item)
+
+print(f"Curated patterns: {len(curated_items)}, Striver patterns: {len(striver_items)}")
 
 # 2. Modern Amazon SDE Prep CSS
 modern_css = '''
@@ -263,6 +271,54 @@ modern_css = '''
   #side-nav a.active small {
     background: var(--surface-2);
     color: var(--text);
+  }
+
+  /* ===== STRIVER SIDEBAR DROPDOWN / EXPANDABLE GROUP ===== */
+  .side-striver-wrapper {
+    margin-top: 8px;
+    border-top: 1px solid var(--border);
+    padding-top: 8px;
+  }
+  .side-striver-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 9px 10px;
+    border-radius: 8px;
+    color: var(--text);
+    background: color-mix(in srgb, var(--striver) 10%, var(--surface));
+    border: 1px solid color-mix(in srgb, var(--striver) 25%, var(--border));
+    cursor: pointer;
+    font-size: 12.5px;
+    font-weight: 750;
+    transition: all .15s ease;
+    user-select: none;
+  }
+  .side-striver-toggle:hover {
+    background: color-mix(in srgb, var(--striver) 20%, var(--surface));
+    color: var(--striver);
+    border-color: var(--striver);
+  }
+  .side-striver-arrow {
+    font-size: 11px;
+    color: var(--striver);
+    transition: transform .18s ease;
+  }
+  .side-striver-wrapper.open .side-striver-arrow {
+    transform: rotate(90deg);
+  }
+  .side-striver-sublist {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 6px;
+    padding-left: 10px;
+    border-left: 2px solid color-mix(in srgb, var(--striver) 40%, var(--border));
+  }
+  .side-striver-sublist .side-link {
+    font-size: 11.5px;
+    padding: 6px 8px;
   }
 
   .sidebar-toggle {
@@ -890,6 +946,177 @@ modern_css = '''
   }
   .sub-res-link .src { opacity: 0.75; font-size: 9.5px; margin-left: 4px; }
 
+  /* ===== STRIVER A2Z ACCORDION & CONTAINER ===== */
+  .striver-container {
+    margin: 44px 0 20px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--surface);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: border-color .2s ease;
+  }
+  .striver-container:hover {
+    border-color: var(--striver);
+  }
+
+  .striver-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 22px 26px;
+    background: linear-gradient(135deg, color-mix(in srgb, var(--striver) 12%, var(--surface)), var(--surface));
+    cursor: pointer;
+    user-select: none;
+    border-bottom: 1px solid transparent;
+    transition: all .18s ease;
+  }
+  .striver-container.expanded .striver-banner {
+    border-bottom-color: var(--border);
+  }
+  .striver-banner:hover {
+    background: linear-gradient(135deg, color-mix(in srgb, var(--striver) 18%, var(--surface)), var(--surface));
+  }
+
+  .striver-banner-left {
+    flex: 1;
+    min-width: 0;
+  }
+  .striver-banner-tag {
+    display: inline-block;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 10px;
+    font-weight: 850;
+    letter-spacing: .08em;
+    color: var(--striver);
+    background: rgba(124, 58, 237, 0.12);
+    padding: 3px 8px;
+    border-radius: 5px;
+    margin-bottom: 8px;
+  }
+  .striver-banner-title {
+    margin: 0 0 6px;
+    font-size: 21px;
+    font-weight: 850;
+    color: var(--navy);
+    letter-spacing: -0.02em;
+  }
+  .striver-banner-sub {
+    margin: 0;
+    font-size: 13.5px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .striver-banner-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+  .striver-counter-badge {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--striver);
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    padding: 6px 12px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .striver-toggle-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    background: var(--striver);
+    color: white;
+    border: 1px solid var(--striver);
+    font-size: 13px;
+    font-weight: 750;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(124, 58, 237, 0.25);
+    transition: all .16s ease;
+  }
+  .striver-toggle-button:hover {
+    background: #6d28d9;
+    border-color: #6d28d9;
+    transform: translateY(-1px);
+  }
+  .striver-toggle-icon {
+    font-size: 11px;
+    transition: transform .2s ease;
+  }
+  .striver-container.expanded .striver-toggle-icon {
+    transform: rotate(180deg);
+  }
+
+  .striver-content {
+    padding: 16px 20px 28px;
+    background: color-mix(in srgb, var(--surface-2) 30%, var(--surface));
+  }
+
+  .striver-content .pattern {
+    margin: 20px 0 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px 20px;
+    box-shadow: var(--shadow);
+  }
+  .striver-content .pattern:first-child {
+    margin-top: 4px;
+  }
+  .striver-content .pattern .head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .striver-content .pattern .head h2 {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--navy);
+    flex: 1;
+    min-width: 200px;
+  }
+  .striver-content .progress-bar-container {
+    flex: 0 0 140px;
+    height: 8px;
+    background: var(--surface-2);
+    border-radius: 999px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .striver-content .progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--striver), var(--blue));
+    width: 0%;
+    border-radius: 999px;
+    transition: width .3s ease;
+  }
+  .striver-content .count {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 11.5px;
+    font-weight: 800;
+    color: var(--muted);
+    min-width: 50px;
+    text-align: right;
+  }
+  .striver-content h3 {
+    margin: 14px 0 8px 4px !important;
+    color: var(--striver) !important;
+    font-size: 13.5px !important;
+    font-weight: 750 !important;
+  }
+
   /* ===== PROBLEMS TABLE (Amazon Prep Card Grid Style) ===== */
   ol.problems {
     list-style: none;
@@ -1382,6 +1609,8 @@ modern_css = '''
     .sidebar-toggle { left: 12px; }
     body.sidebar-open .sidebar-toggle { left: calc(var(--sidebar-w, 290px) - 15px); }
     .content-area { width: 100% !important; margin-left: 0 !important; padding: 14px 10px 60px !important; }
+    .striver-banner { flex-direction: column; align-items: flex-start; gap: 14px; }
+    .striver-banner-right { width: 100%; justify-content: space-between; }
   }
   @media (max-width: 900px) {
     .pattern-banner { flex-direction: column; align-items: flex-start; }
@@ -1461,6 +1690,7 @@ modern_css = '''
     .sidebar, .sidebar-toggle, .controls, .top, .filter-btn, .icon-btn, .resources-section .head { display: none !important; }
     .content-area { width: 100% !important; margin: 0 !important; padding: 0 !important; }
     .resources-section .resources-body { display: block !important; }
+    .striver-content { display: block !important; }
     .pattern { page-break-inside: avoid; }
     .pattern-banner { background: #2563eb !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     a { color: black; text-decoration: underline; }
@@ -1472,13 +1702,11 @@ modern_css = '''
 
 # Replace the first <style> tag
 new_html = re.sub(r'<style>[\s\S]*?</style>', f'<style>{modern_css}\n</style>', html, count=1)
-
-# Remove the second obsolete style tag <style id="site-nav-style">...</style> if present
 new_html = re.sub(r'<style id="site-nav-style">[\s\S]*?</style>', '', new_html)
 
-# 3. Generate Sidebar HTML
+# 3. Generate Sidebar Navigation (Curated 1..29 + Striver Expandable Sublist)
 side_links_html = []
-for item in sidebar_items:
+for item in curated_items:
     pid = item['id']
     title = item['title']
     cnt = item['count']
@@ -1489,6 +1717,35 @@ for item in sidebar_items:
         f'<small id="pstat-{pid}">0 / {cnt}</small>'
         f'</a>'
     )
+
+striver_sublinks = []
+striver_total_problems = 0
+for item in striver_items:
+    pid = item['id']
+    title = item['title']
+    cnt = item['count']
+    idx = item['index']
+    striver_total_problems += cnt
+    clean_title = title.replace('Striver: ', '')
+    striver_sublinks.append(
+        f'<a href="#{pid}" class="side-link side-sub-link" data-pid="{pid}">'
+        f'<span class="p-title">{idx}. {clean_title}</span>'
+        f'<small id="pstat-{pid}">0 / {cnt}</small>'
+        f'</a>'
+    )
+
+striver_sidebar_markup = f'''<div class="side-striver-wrapper" id="side-striver-wrapper">
+  <div class="side-striver-toggle" id="side-striver-toggle" role="button" tabindex="0" title="Click to expand/collapse Striver A2Z topics">
+    <span class="p-title">★ Striver A2Z Sheet</span>
+    <span class="side-striver-arrow" id="side-striver-arrow">▸</span>
+    <small id="pstat-striver-all">0 / {striver_total_problems}</small>
+  </div>
+  <div class="side-striver-sublist" id="side-striver-sublist" style="display: none;">
+{chr(10).join(striver_sublinks)}
+  </div>
+</div>'''
+
+side_links_html.append(striver_sidebar_markup)
 side_nav_content = '\n'.join(side_links_html)
 
 sidebar_markup = f'''<div class="app-layout">
@@ -1512,7 +1769,13 @@ if body_wrap_match:
     new_html = new_html[:body_wrap_match.start()] + '<body>\n' + sidebar_markup + new_html[body_wrap_match.end():]
     print("Replaced body wrap with app-layout, sidebar, and content-area")
 else:
-    print("WARNING: Could not find <body>\\s*<div class=\"wrap\">")
+    # If app-layout already exists, replace #side-nav directly
+    new_html = re.sub(
+        r'<nav id="side-nav">[\s\S]*?</nav>',
+        f'<nav id="side-nav">\n{side_nav_content}\n    </nav>',
+        new_html
+    )
+    print("Updated #side-nav with curated patterns and expandable Striver group")
 
 if 'id="result-count"' not in new_html:
     new_html = new_html.replace(
@@ -1521,17 +1784,42 @@ if 'id="result-count"' not in new_html:
     )
     print("Added #result-count to controls")
 
-new_html = new_html.replace(
-    'placeholder="Search problems by name or LC#…"',
-    'placeholder="Search problems by name or LC# (press / to focus)…"'
-)
+# 4. Wrap Striver section on the main page in expandable container
+m_start = re.search(r'<div class="pattern" id="pattern-striver_100"', new_html)
+if m_start:
+    striver_start_idx = m_start.start()
+    pos_s117 = new_html.find('id="pattern-striver_117"')
+    pos_script = new_html.rfind('<script>')
+    sub = new_html[pos_s117:pos_script]
+    last_div_rel = sub.rfind('</div>')
+    striver_end_idx = pos_s117 + last_div_rel + 6
 
-new_html = re.sub(
-    r'</script>\s*</div>\s*</body>\s*</html>',
-    '</script>\n</div>\n</main>\n</div>\n</body></html>',
-    new_html
-)
+    striver_block = new_html[striver_start_idx:striver_end_idx]
 
+    striver_main_container = f'''<section class="striver-container" id="striver-sheet-section">
+  <div class="striver-banner" id="striver-main-toggle" role="button" tabindex="0">
+    <div class="striver-banner-left">
+      <div class="striver-banner-tag">★ STRIVER A2Z DSA SHEET</div>
+      <h2 class="striver-banner-title">Striver A2Z Curriculum (18 Topics · 331 Problems)</h2>
+      <p class="striver-banner-sub">Complete topic-by-topic progression: Learn the basics, Sorting, Arrays, Binary Search, LinkedList, Recursion, Bit Manipulation, Stack/Queue, Trees, Graphs, Dynamic Programming, Tries, and more.</p>
+    </div>
+    <div class="striver-banner-right">
+      <div class="striver-counter-badge" id="striver-main-stat">0 / 331 Solved</div>
+      <button type="button" class="striver-toggle-button" id="striver-expand-btn">
+        <span id="striver-toggle-text">Expand Striver Sheet</span>
+        <span class="striver-toggle-icon" id="striver-main-arrow">▼</span>
+      </button>
+    </div>
+  </div>
+  <div class="striver-content" id="striver-accordion-body" style="display: none;">
+{striver_block}
+  </div>
+</section>'''
+
+    new_html = new_html[:striver_start_idx] + striver_main_container + new_html[striver_end_idx:]
+    print("Wrapped 18 Striver patterns in expandable #striver-sheet-section")
+
+# 5. Modern Script with Striver Expand/Collapse Interactivity
 modern_script = '''<script>
 (function() {
   const STORAGE_SOLVED = 'dsa_index_solved_v1';
@@ -1616,6 +1904,80 @@ modern_script = '''<script>
       const pstat = document.getElementById(`pstat-${p.id}`);
       if (pstat) pstat.textContent = `${solvedP} / ${totalP}`;
     });
+
+    // Update Striver sheet aggregate stats
+    let striverTotal = 0;
+    let striverSolved = 0;
+    document.querySelectorAll('#striver-accordion-body .pattern').forEach(p => {
+      const lcs = (p.dataset.patternLcs || '').split(',').filter(Boolean);
+      const uniq = new Set(lcs);
+      striverTotal += uniq.size;
+      striverSolved += [...uniq].filter(lc => solved.has(lc)).length;
+    });
+    const striverMainStat = document.getElementById('striver-main-stat');
+    if (striverMainStat) striverMainStat.textContent = `${striverSolved} / ${striverTotal} Solved`;
+    const pstatStriverAll = document.getElementById('pstat-striver-all');
+    if (pstatStriverAll) pstatStriverAll.textContent = `${striverSolved} / ${striverTotal}`;
+  }
+
+  // ===== Striver Section Expand / Collapse =====
+  const striverContainer = document.getElementById('striver-sheet-section');
+  const striverMainToggle = document.getElementById('striver-main-toggle');
+  const striverBody = document.getElementById('striver-accordion-body');
+  const striverToggleText = document.getElementById('striver-toggle-text');
+  const sideStriverToggle = document.getElementById('side-striver-toggle');
+  const sideStriverWrapper = document.getElementById('side-striver-wrapper');
+  const sideStriverSublist = document.getElementById('side-striver-sublist');
+
+  function setStriverExpanded(expand, scrollIntoView) {
+    if (!striverBody) return;
+    if (expand) {
+      striverBody.style.display = 'block';
+      if (striverContainer) striverContainer.classList.add('expanded');
+      if (striverToggleText) striverToggleText.textContent = 'Collapse Striver Sheet';
+      if (sideStriverWrapper) sideStriverWrapper.classList.add('open');
+      if (sideStriverSublist) sideStriverSublist.style.display = 'flex';
+      if (scrollIntoView && striverContainer) {
+        striverContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    } else {
+      striverBody.style.display = 'none';
+      if (striverContainer) striverContainer.classList.remove('expanded');
+      if (striverToggleText) striverToggleText.textContent = 'Expand Striver Sheet';
+      if (sideStriverWrapper) sideStriverWrapper.classList.remove('open');
+      if (sideStriverSublist) sideStriverSublist.style.display = 'none';
+    }
+  }
+
+  if (striverMainToggle) {
+    striverMainToggle.addEventListener('click', (e) => {
+      const isCurrentlyOpen = striverBody && striverBody.style.display !== 'none';
+      setStriverExpanded(!isCurrentlyOpen, false);
+    });
+  }
+
+  if (sideStriverToggle) {
+    sideStriverToggle.addEventListener('click', (e) => {
+      const isSideOpen = sideStriverWrapper && sideStriverWrapper.classList.contains('open');
+      if (isSideOpen) {
+        setStriverExpanded(false, false);
+      } else {
+        setStriverExpanded(true, true);
+      }
+    });
+  }
+
+  document.querySelectorAll('#side-striver-sublist a.side-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      setStriverExpanded(true, false);
+      if (window.innerWidth <= 1024) {
+        document.body.classList.remove('sidebar-open');
+      }
+    });
+  });
+
+  if (window.location.hash && window.location.hash.includes('striver')) {
+    setStriverExpanded(true, true);
   }
 
   // Solve checkbox
@@ -1695,6 +2057,7 @@ modern_script = '''<script>
 
   function applyFilters() {
     let visibleCount = 0;
+    let visibleInStriver = 0;
     document.querySelectorAll('ol.problems li[data-lc]').forEach(li => {
       let show = true;
       if (filters.diff.size > 0 && !filters.diff.has(li.dataset.diff)) show = false;
@@ -1718,10 +2081,18 @@ modern_script = '''<script>
         if (!hay.includes(filters.search)) show = false;
       }
       li.classList.toggle('hidden', !show);
-      if (show) visibleCount++;
+      if (show) {
+        visibleCount++;
+        if (li.closest('#striver-accordion-body')) visibleInStriver++;
+      }
     });
     const resCountEl = document.getElementById('result-count');
     if (resCountEl) resCountEl.textContent = `${visibleCount} problems`;
+
+    // Auto-expand Striver sheet if search or filter matches Striver problems
+    if ((filters.search || filters.list.has('striver')) && visibleInStriver > 0) {
+      setStriverExpanded(true, false);
+    }
   }
 
   document.querySelectorAll('.filter-btn[data-filter]').forEach(btn => {
@@ -1734,6 +2105,9 @@ modern_script = '''<script>
         } else {
           filters[f].add(v);
           btn.classList.add('active');
+          if (f === 'list' && v === 'striver') {
+            setStriverExpanded(true, true);
+          }
         }
       } else {
         const same = filters[f] === v;
@@ -1794,6 +2168,9 @@ modern_script = '''<script>
     const visible = Array.from(document.querySelectorAll('ol.problems li[data-lc]:not(.hidden)'));
     if (!visible.length) { alert('No problems match current filters.'); return; }
     const pick = visible[Math.floor(Math.random() * visible.length)];
+    if (pick.closest('#striver-accordion-body')) {
+      setStriverExpanded(true, false);
+    }
     pick.scrollIntoView({ behavior: 'smooth', block: 'center' });
     pick.style.transition = 'box-shadow 0.4s, transform 0.4s';
     pick.style.boxShadow = '0 0 0 3px var(--blue), 0 6px 20px rgba(37, 99, 235, 0.4)';
@@ -1864,5 +2241,5 @@ new_html = re.sub(r'<script>\s*\(function\(\)\s*\{[\s\S]*?\}\)\(\);\s*</script>'
 # Atomic write to DSA_Ultimate_Index.html
 atomic_write(INDEX_PATH, new_html)
 
-print("Atomically wrote upgraded DSA_Ultimate_Index.html")
+print("Atomically wrote upgraded DSA_Ultimate_Index.html with expandable Striver section and clean sidebar!")
 print(f"New file size: {len(new_html)} chars, {len(new_html.splitlines())} lines")
