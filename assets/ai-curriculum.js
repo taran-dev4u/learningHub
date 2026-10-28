@@ -71,7 +71,7 @@
       'Source snapshot <a href="' + esc(catalog.source.repository + '/tree/' + catalog.source.revision) + '">' + catalog.source.revision.slice(0,12) + '</a>. ' +
       '<a href="' + base + 'AI_Engineering_Tutorial/SOURCE_LICENSE.txt">Copyright and license</a> · <a href="' + base + 'AI_Engineering_Tutorial/coverage.json">Import coverage</a></footer>';
     var layout=document.getElementById('aic-layout'),nav=document.getElementById('aic-nav'),toggle=document.getElementById('aic-nav-toggle');
-    function sync(){var value=closed(NAV_KEY);layout.classList.toggle('nav-closed',value);nav.hidden=value;toggle.textContent=value?'☰ Show roadmap':'☰ Hide roadmap';toggle.setAttribute('aria-expanded',String(!value));}
+    function sync(){var value=closed(NAV_KEY);layout.classList.toggle('nav-closed',value);nav.hidden=value;toggle.textContent=value?'›':'‹';toggle.setAttribute('aria-label',value?'Show roadmap':'Hide roadmap');toggle.title=value?'Show roadmap':'Hide roadmap';toggle.setAttribute('aria-expanded',String(!value));}
     toggle.onclick=function(){localStorage.setItem(NAV_KEY,closed(NAV_KEY)?'0':'1');sync();};sync();
   }
   function toolbar(fileMode) {
