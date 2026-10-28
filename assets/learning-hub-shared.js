@@ -29,7 +29,7 @@
     { label: "Behavioral",    short: "Behavioral",    href: "behavioral.html" },
     { label: "AI",            short: "AI",            href: "ai_engineering.html" },
     { label: "Cloud",         short: "Cloud",         href: "cloud_aws_azure.html" },
-    { label: "Cloud Tutorial",short: "Cloud Tut",     href: "Cloud_DevOps_Tutorial/index.html" },
+    { label: "All-Tech",      short: "All-Tech",      href: "all_tech.html" },
     { label: "Interview Prep",short: "Interview",     href: "interview_prep.html" },
     { label: "Companies",     short: "Companies",     href: "companies.html" },
     { label: "Library",       short: "Library",       href: "library.html" },

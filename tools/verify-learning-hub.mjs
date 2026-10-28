@@ -13,6 +13,7 @@ const pages = [
   "behavioral.html",
   "ai_engineering.html",
   "cloud_aws_azure.html",
+  "all_tech.html",
   "interview_prep.html",
 ];
 
