@@ -6,6 +6,8 @@
   var release = new URL(script.src).searchParams.get('v') || '1';
   var root, catalog, sourceIndex, entries, groups, packs = new Map(), filePromise;
   var query = '', kind = '', pageNumber = 0, selected = 'overview', routeToken = 0;
+  var NAV_KEY = 'hub_ai_nav_closed_v1', TOC_KEY = 'hub_ai_toc_closed_v1';
+  function closed(key) { return localStorage.getItem(key) === '1'; }
   var DONE_KEY = 'hub_done_ai_source_v1';
   var BOOKMARK_KEY = 'hub_bm_ai_source_v1';
   function doneSet() { try { return new Set(JSON.parse(localStorage.getItem(DONE_KEY) || '[]')); } catch (_) { return new Set(); } }
@@ -39,6 +41,14 @@
     return { record: record, data: data };
   }
   function bytesOf(data) { return data.encoding === 'base64' ? Uint8Array.from(atob(data.content), function (c) { return c.charCodeAt(0); }) : new TextEncoder().encode(data.content); }
+  // Each link below was matched to the named lesson and checked against the creator's video page.
+  var CURATED_VIDEO = {
+    'phases/01-math-foundations/01-linear-algebra-intuition/docs/en.md': ['Vectors | Essence of linear algebra', '3Blue1Brown', 'fNk_zzaMoSs'],
+    'phases/01-math-foundations/02-vectors-matrices-operations/docs/en.md': ['Vectors | Essence of linear algebra', '3Blue1Brown', 'fNk_zzaMoSs'],
+    'phases/08-generative-ai/03-gans-generator-discriminator/docs/en.md': ['Generative Adversarial Networks (GANs)', 'Computerphile', 'Sw9r8CL98N0'],
+    'phases/05-nlp-foundations-to-advanced/19-subword-tokenization/docs/en.md': ["Let's build the GPT Tokenizer", 'Andrej Karpathy', 'zduSFxRajkE']
+  };
+  function lessonVideo(e) { var v=e&&CURATED_VIDEO[e.path]; return v ? '<a class="aic-button" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v='+v[2]+'">▶ '+esc(v[0])+' · '+esc(v[1])+' ↗</a>' : ''; }
   function hero() {
     var c = catalog.counts;
     return '<header class="aic-hero"><span class="aic-eyebrow">Learning Hub · AI engineering lessons</span><h1>AI Engineering from Scratch</h1>' +
@@ -49,17 +59,20 @@
   }
   function navigation() {
     var last = '';
-    return '<nav class="aic-nav" aria-label="AI syllabus"><a href="#group=overview"' + (selected === 'overview' ? ' class="active"' : '') + '>Curriculum roadmap</a><a href="#group=all">Every study item <small>' + catalog.counts.entries + '</small></a>' + catalog.groups.map(function (g) {
+    return '<nav class="aic-nav" id="aic-nav" aria-label="AI syllabus">&nbsp;<span class="aic-eyebrow">All phases</span><a href="#group=overview"' + (selected === 'overview' ? ' class="active"' : '') + '>Curriculum roadmap</a><a href="#group=all">Every study item <small>' + catalog.counts.entries + '</small></a>' + catalog.groups.map(function (g) {
       var label = '';
       if (last !== g.kind) { last = g.kind; label = '<h2>' + esc(g.kind) + '</h2>'; }
       return label + '<a href="#group=' + encodeURIComponent(g.id) + '"' + (selected === g.id ? ' class="active"' : '') + '><span>' + esc(g.title) + '</span><small>' + g.entries.length + '</small></a>';
     }).join('') + '<h2>Repository</h2><a href="#files=">Browse every source file</a></nav>';
   }
   function shell() {
-    root.innerHTML = hero() + '<div class="aic-layout">' + navigation() + '<div class="aic-main" id="aic-main"></div></div>' +
+    root.innerHTML = hero() + '<div class="aic-layout" id="aic-layout"><div class="aic-nav-wrap"><button class="aic-toggle" id="aic-nav-toggle" type="button" aria-controls="aic-nav"></button>' + navigation() + '</div>' + '<div class="aic-main" id="aic-main"></div></div>' +
       '<footer class="aic-footer">Adapted from <a href="' + esc(catalog.source.repository) + '">Rohit Ghumare and contributors’ AI Engineering from Scratch</a>, MIT licensed. ' +
       'Source snapshot <a href="' + esc(catalog.source.repository + '/tree/' + catalog.source.revision) + '">' + catalog.source.revision.slice(0,12) + '</a>. ' +
       '<a href="' + base + 'AI_Engineering_Tutorial/SOURCE_LICENSE.txt">Copyright and license</a> · <a href="' + base + 'AI_Engineering_Tutorial/coverage.json">Import coverage</a></footer>';
+    var layout=document.getElementById('aic-layout'),nav=document.getElementById('aic-nav'),toggle=document.getElementById('aic-nav-toggle');
+    function sync(){var value=closed(NAV_KEY);layout.classList.toggle('nav-closed',value);nav.hidden=value;toggle.textContent=value?'☰ Show roadmap':'☰ Hide roadmap';toggle.setAttribute('aria-expanded',String(!value));}
+    toggle.onclick=function(){localStorage.setItem(NAV_KEY,closed(NAV_KEY)?'0':'1');sync();};sync();
   }
   function toolbar(fileMode) {
     return '<div class="aic-toolbar"><input id="aic-search" type="search" aria-label="Search the complete syllabus" placeholder="' + (fileMode ? 'Search every source filename…' : 'Search every topic and subtopic…') + '" value="' + esc(query) + '">' +
@@ -81,7 +94,7 @@
     var hs = e.headings.filter(function (h) { return h.level > 1; });
     return '<article class="aic-card' + (done.has(e.id) ? ' done' : '') + '"><div class="aic-card-head"><input type="checkbox" data-done="' + esc(e.id) + '" aria-label="Complete ' + esc(e.title) + '"' + (done.has(e.id) ? ' checked' : '') + '><div>' +
       '<span class="aic-badge">' + esc(e.kind + ' · ' + e.status) + '</span><h3><a href="' + route(e.contentPath) + '">' + esc(e.title) + '</a></h3><p>' + esc(e.summary) + '</p>' +
-      '<div class="aic-actions">' + button(e.status==='planned'?'Read plan':'Open lesson', route(e.contentPath)) + (e.status==='planned'?'':button('Code & files', route(e.contentPath) + '&tab=files')) + (e.videos.length ? '<button class="aic-button" data-watch="' + esc(e.id) + '">Watch ' + e.videos.length + '</button>' : '') + '<button class="aic-button" data-bookmark="'+esc(e.id)+'" aria-pressed="'+saved.has(e.id)+'">'+(saved.has(e.id)?'★ Saved':'☆ Save')+'</button></div></div></div>' +
+      '<div class="aic-actions">' + button(e.status==='planned'?'Read plan':'Open lesson', route(e.contentPath)) + (e.status==='planned'?'':button('Code & files', route(e.contentPath) + '&tab=files')) + (CURATED_VIDEO[e.path] ? lessonVideo(e) : e.videos.length ? '<button class="aic-button" data-watch="' + esc(e.id) + '">Watch ' + e.videos.length + '</button>' : '') + '<button class="aic-button" data-bookmark="'+esc(e.id)+'" aria-pressed="'+saved.has(e.id)+'">'+(saved.has(e.id)?'★ Saved':'☆ Save')+'</button></div></div></div>' +
       (e.kind==='phase' ? '<details class="aic-inline-lesson" data-inline-lesson="'+esc(e.contentPath)+'"><summary>Read explanation, worked examples & exercises here</summary><div class="aic-inline-body"></div></details>' : '') +
       (hs.length ? '<details><summary>Full syllabus · ' + hs.length + ' subtopics</summary><ol class="aic-syllabus">' + hs.map(function (h) { return '<li style="--level:' + (h.level - 2) + '"><a href="' + route(e.contentPath,h.anchor) + '">' + esc(h.title) + '</a></li>'; }).join('') + '</ol></details>' : '') + '</article>';
   }
@@ -114,7 +127,7 @@
     document.getElementById('aic-main').innerHTML = toolbar(false);
     function render() {
       if(query || kind){renderItems();return;}
-      document.getElementById('aic-results').innerHTML = '<section class="aic-start aic-card"><span class="aic-eyebrow">Start studying</span><h2>Explanations, examples and exercises</h2><p>Open a phase and expand a lesson to read it directly in the roadmap. The full lesson reader also includes a section-by-section contents list.</p>'+button('Begin the first lesson',route(catalog.entries.find(function(e){return e.kind==='phase';}).contentPath),' primary')+'</section><h2 class="aic-section-title">Learning roadmap</h2><p class="aic-description">Start with the twenty phases, then use the manuals, labs, projects and focused paths. Expand a core lesson to read its explanations, worked code and exercises without leaving this page.</p><div class="aic-grid">' + catalog.groups.map(function(g){return '<article class="aic-group"><span class="aic-badge">'+esc(g.kind)+' · '+g.entries.length+' items</span><h3><a href="#group='+encodeURIComponent(g.id)+'">'+esc(g.title)+'</a></h3><p>'+esc(g.description||'Complete topics, subtopics and source material.')+'</p>'+button('Explore','#group='+encodeURIComponent(g.id))+'</article>';}).join('')+'</div>';
+      document.getElementById('aic-results').innerHTML = '<section class="aic-start aic-card"><span class="aic-eyebrow">Start studying</span><h2>Explanations, examples and exercises</h2><p>Open a phase and expand a lesson to read it directly in the roadmap. The full lesson reader also includes a section-by-section contents list.</p>'+button('Begin the first lesson',route(catalog.entries.find(function(e){return e.kind==='phase';}).contentPath),' primary')+'</section><section class="aic-start aic-card"><span class="aic-eyebrow">Recommended additions</span><h2>Production evaluation topics to study next</h2><p>The source has related lessons, but no dedicated core lesson on experiment design or label leakage. Study controlled experiments, safe train/validation/test splitting, leakage checks, and feedback loops using the official course modules below.</p><div class="aic-actions"><a class="aic-button" href="https://developers.google.com/machine-learning/crash-course/production-ml-systems" target="_blank" rel="noopener noreferrer">Google: Production ML systems ↗</a><a class="aic-button" href="https://developers.google.com/machine-learning/crash-course/overfitting" target="_blank" rel="noopener noreferrer">Google: Generalization &amp; overfitting ↗</a></div></section><h2 class="aic-section-title">Learning roadmap</h2><p class="aic-description">Start with the twenty phases, then use the manuals, labs, projects and focused paths. Expand a core lesson to read its explanations, worked code and exercises without leaving this page.</p><div class="aic-grid">' + catalog.groups.map(function(g){return '<article class="aic-group"><span class="aic-badge">'+esc(g.kind)+' · '+g.entries.length+' items</span><h3><a href="#group='+encodeURIComponent(g.id)+'">'+esc(g.title)+'</a></h3><p>'+esc(g.description||'Complete topics, subtopics and source material.')+'</p>'+button('Explore','#group='+encodeURIComponent(g.id))+'</article>';}).join('')+'</div>';
     }
     bindToolbar(render);render();
   }
@@ -149,9 +162,17 @@
     main.innerHTML='<p class="aic-description" role="status">Loading lesson explanations and examples…</p>';
     var loaded=await content(path);if(token!==routeToken)return;
     var sourceLink=sourceUrl(origin), displayTitle=e?e.title:path;
-    main.innerHTML='<div class="aic-actions">'+button('← '+(g?g.title:'Source files'),g?'#group='+encodeURIComponent(g.id):'#files=')+button('GitHub source ↗',sourceLink)+(e&&e.originalSite?button('Original interactive guide ↗',e.originalSite):'')+'<button class="aic-button" id="aic-download">Download file</button>'+button('Files & code','#files='+encodeURIComponent(prefix))+'</div><h2 class="aic-section-title" style="margin-top:18px">'+esc(displayTitle)+'</h2>'+
+    var lessonNav='';
+    if(e&&e.kind==='phase'&&g){
+      var phaseEntries=g.entries, position=phaseEntries.indexOf(e.id), previous=position>0?entries.get(phaseEntries[position-1]):null, next=position<phaseEntries.length-1?entries.get(phaseEntries[position+1]):null;
+      lessonNav='<section class="aic-phase-guide" aria-label="Lessons in this phase"><div class="aic-phase-heading"><span class="aic-eyebrow">'+esc(g.title)+'</span><span>Lesson '+(position+1)+' of '+phaseEntries.length+'</span></div><div class="aic-phase-step">'+(previous?button('← '+previous.title,route(previous.contentPath)):'<span>First lesson</span>')+(next?button(next.title+' →',route(next.contentPath),' primary'):'<span>Last lesson</span>')+'</div><details class="aic-phase-list" open><summary>All '+phaseEntries.length+' lessons in this phase</summary><ol>'+phaseEntries.map(function(id,i){var item=entries.get(id);return '<li'+(id===e.id?' class="current" aria-current="step"':'')+'><a href="'+route(item.contentPath)+'">'+(i+1)+'. '+esc(item.title)+'</a></li>';}).join('')+'</ol></details></section>';
+    }
+    main.innerHTML=lessonNav+'<div class="aic-actions">'+button('← '+(g?g.title:'Source files'),g?'#group='+encodeURIComponent(g.id):'#files=')+button('GitHub source ↗',sourceUrl(origin))+(e&&e.originalSite?button('Original interactive guide ↗',e.originalSite):'')+lessonVideo(e)+'<button class="aic-button" id="aic-download">Download file</button>'+button('Files & code','#files='+encodeURIComponent(prefix))+'</div><h2 class="aic-section-title" style="margin-top:18px">'+esc(e?e.title:path)+'</h2>'+
       (e&&e.status==='planned'?'<p class="aic-note">This is planned upstream material. The source has no completed lesson or implementation yet.</p>':'')+
-      '<p class="aic-description">'+esc(origin)+'</p><div class="aic-reading"><article class="aic-article" id="aic-article"></article><nav class="aic-toc" aria-label="Lesson sections" id="aic-toc"></nav></div>';
+      '<p class="aic-description">'+esc(origin)+'</p><div class="aic-reading" id="aic-reading"><article class="aic-article" id="aic-article"></article><aside class="aic-toc-wrap"><button class="aic-toggle" id="aic-toc-toggle" type="button" aria-controls="aic-toc"></button><nav class="aic-toc" aria-label="Lesson sections" id="aic-toc"></nav></aside></div>';
+    var reading=document.getElementById('aic-reading'),toc=document.getElementById('aic-toc'),tocToggle=document.getElementById('aic-toc-toggle');
+    function syncToc(){var value=closed(TOC_KEY);reading.classList.toggle('toc-closed',value);toc.hidden=value;tocToggle.textContent=value?'☷ Show lesson contents':'☷ Hide lesson contents';tocToggle.setAttribute('aria-expanded',String(!value));}
+    tocToggle.onclick=function(){localStorage.setItem(TOC_KEY,closed(TOC_KEY)?'0':'1');syncToc();};syncToc();
     document.getElementById('aic-download').onclick=function(){var blob=new Blob([bytesOf(loaded.data)],{type:loaded.record.mime});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=path.split('/').pop();a.click();setTimeout(function(){URL.revokeObjectURL(a.href);},1000);};
     var article=document.getElementById('aic-article');
     var quiz=null;if(/\.json$/i.test(path)&&loaded.data.encoding==='utf8'){try{quiz=JSON.parse(loaded.data.content);}catch(_){/* Invalid fixtures remain readable as source. */}}
@@ -165,12 +186,6 @@
       renderQuiz(article,quiz);
     }else{
       var pre=document.createElement('pre'), code=document.createElement('code');code.textContent=loaded.data.content;pre.appendChild(code);article.appendChild(pre);if(window.hljs)hljs.highlightElement(code);
-    }
-    if(e&&e.kind==='phase'){
-      var phaseEntries=groups.get(e.group).entries,position=phaseEntries.indexOf(e.id),other=[];
-      if(position>0)other.push(button('← Previous lesson',route(entries.get(phaseEntries[position-1]).contentPath)));
-      if(position<phaseEntries.length-1)other.push(button('Next lesson →',route(entries.get(phaseEntries[position+1]).contentPath),' primary'));
-      var navigation=document.createElement('nav');navigation.className='aic-actions';navigation.setAttribute('aria-label','Lesson sequence');navigation.innerHTML=other.join('');main.appendChild(navigation);
     }
     if(params.get('tab')==='files'){location.hash='files='+encodeURIComponent(prefix);return;}
     var section=params.get('section');if(section){var target=document.getElementById('aic-'+section);if(target)target.scrollIntoView({block:'start'});}
