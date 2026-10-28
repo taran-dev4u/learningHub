@@ -6,7 +6,6 @@ const root = path.resolve(import.meta.dirname, '..');
 const tutorials = [
   ['System_Design_Tutorial', ['contentBundle.js', 'topics.js', 'anchor-targets.js']],
   ['LLD_Tutorial', ['contentBundle.js', 'topics.js', 'roadmap-additions.js']],
-  ['AI_Engineering_Tutorial', ['contentBundle.js', 'topics.js']],
 ];
 const slug = (value) => String(value).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 const errors = [];
@@ -51,6 +50,20 @@ for (const [directory, scripts] of tutorials) {
     }
   }
   console.log(`${directory}: ${topics.length} sections, ${rows} roadmap rows checked`);
+}
+
+const aiRoot = path.join(root, 'AI_Engineering_Tutorial');
+if (fs.existsSync(path.join(aiRoot, 'catalog.json'))) {
+  const catalog = JSON.parse(fs.readFileSync(path.join(aiRoot, 'catalog.json'), 'utf8'));
+  const source = JSON.parse(fs.readFileSync(path.join(aiRoot, 'source/index.json'), 'utf8'));
+  const ids = new Set(catalog.entries.map((entry) => entry.id));
+  for (const entry of catalog.entries) {
+    if (!source.files[entry.contentPath]) errors.push(`AI: missing source ${entry.contentPath}`);
+  }
+  for (const group of catalog.groups) {
+    if (!group.entries.length || group.entries.some((id) => !ids.has(id))) errors.push(`AI: invalid group ${group.id}`);
+  }
+  console.log(`AI_Engineering_Tutorial: ${catalog.groups.length} groups, ${catalog.entries.length} complete source destinations checked`);
 }
 
 if (errors.length) {

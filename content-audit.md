@@ -1,6 +1,6 @@
 # Taran's Learning Hub Content Audit
 
-Generated: 2026-10-28T07:04:27.935Z
+Generated: 2026-10-28T07:33:24.122Z
 
 ## Research References
 
@@ -368,10 +368,10 @@ Sections:
 
 ## AI Engineering
 
-- Inventory: 11 sections, 37 subsections, 177 concepts, 56 resources.
+- Inventory: 38 sections, 2543 subsections, 2543 study items, 2269 resources.
 - Formatting focus: consistent navigation, closed resources, clean headings, and better fallback search links.
-- Duplicate subsection names to review: none found by title.
-- Weak/generic subsection names to review: none found by heuristic.
+- Duplicate subsection names to review: Python for AI Engineering (2), ML System Design — From Problem to Deployed Model (2), Monitoring Models in Production — Data Drift and Concept Drift (2), Feature Stores and Training-Serving Skew (2), Vision Transformers (ViT) (2), Sentiment Analysis (2), Sequence-to-Sequence Models (2), Attention Mechanism — The Breakthrough (2)
+- Weak/generic subsection names to review: PPO, GPT, JAX
 - Coverage source: roadmap.sh AI Engineer + OpenAI Cookbook + production LLM practice.
 - Missing/priority candidates: Structured outputs, Function/tool calling, RAG evaluation, Agent reliability, Prompt/version management, LLM observability, Safety and guardrails, Cost and latency optimization.
 - Recommended next resources: Local AI Engineering Tutorial Hub (542 Lessons), AI Engineering from Scratch, roadmap.sh AI Engineer, OpenAI Cookbook, Hugging Face NLP Course.
@@ -388,17 +388,44 @@ Sections:
   - Hugging Face NLP Course: https://huggingface.co/learn/nlp-course
 
 Sections:
-- LLM Fundamentals: 15 items, 3 subsections, 4 resources.
-- Prompt Engineering: 12 items, 3 subsections, 4 resources.
-- RAG (Retrieval-Augmented Generation): 19 items, 3 subsections, 4 resources.
-- Agents & Tool Use: 16 items, 3 subsections, 4 resources.
-- Evals & Testing: 10 items, 2 subsections, 4 resources.
-- Fine-tuning & Training: 10 items, 2 subsections, 4 resources.
-- Production LLM Systems: 15 items, 4 subsections, 3 resources.
-- Classical Machine Learning: 23 items, 4 subsections, 4 resources.
-- Deep Learning: 11 items, 2 subsections, 4 resources.
-- MLOps: 16 items, 4 subsections, 4 resources.
-- Production AI Engineering: 30 items, 7 subsections, 6 resources.
+- Phase 00 · Setup & Tooling: 13 items, 13 subsections, 13 resources.
+- Phase 01 · Math Foundations: 22 items, 22 subsections, 22 resources.
+- Phase 02 · ML Fundamentals: 21 items, 21 subsections, 21 resources.
+- Phase 03 · Deep Learning Core: 13 items, 13 subsections, 13 resources.
+- Phase 04 · Computer Vision: 28 items, 28 subsections, 28 resources.
+- Phase 05 · NLP: Foundations to Advanced: 29 items, 29 subsections, 29 resources.
+- Phase 06 · Speech & Audio: 17 items, 17 subsections, 17 resources.
+- Phase 07 · Transformers Deep Dive: 16 items, 16 subsections, 16 resources.
+- Phase 08 · Generative AI: 15 items, 15 subsections, 15 resources.
+- Phase 09 · Reinforcement Learning: 12 items, 12 subsections, 12 resources.
+- Phase 10 · LLMs from Scratch: 24 items, 24 subsections, 24 resources.
+- Phase 11 · LLM Engineering: 17 items, 17 subsections, 17 resources.
+- Phase 12 · Multimodal AI: 25 items, 25 subsections, 25 resources.
+- Phase 13 · Tools & Protocols: 45 items, 45 subsections, 45 resources.
+- Phase 14 · Agent Engineering: 54 items, 54 subsections, 54 resources.
+- Phase 15 · Autonomous Systems: 22 items, 22 subsections, 22 resources.
+- Phase 16 · Multi-Agent & Swarms: 25 items, 25 subsections, 25 resources.
+- Phase 17 · Infrastructure & Production: 29 items, 29 subsections, 29 resources.
+- Phase 18 · Ethics, Safety & Alignment: 30 items, 30 subsections, 30 resources.
+- Phase 19 · Capstone Projects: 85 items, 85 subsections, 85 resources.
+- A2A 101: 36 items, 36 subsections, 36 resources.
+- Docker Sandboxes and Docker Agent 101: 42 items, 42 subsections, 42 resources.
+- Miles 101: 40 items, 40 subsections, 40 resources.
+- Reverse Engineering 101: 33 items, 33 subsections, 33 resources.
+- SGLang 101: 37 items, 37 subsections, 37 resources.
+- vLLM 101: 53 items, 53 subsections, 53 resources.
+- Hands-on practice: 51 items, 51 subsections, 51 resources.
+- Runnable projects: 79 items, 79 subsections, 79 resources.
+- Planned projects: 26 items, 26 subsections, 1 resources.
+- Claude Certification Curriculum: 37 items, 37 subsections, 37 resources.
+- MCPA Certification Curriculum: 35 items, 35 subsections, 35 resources.
+- Cheat sheets: 309 items, 309 subsections, 309 resources.
+- Learning paths: 13 items, 13 subsections, 13 resources.
+- Glossary: 250 items, 250 subsections, 1 resources.
+- Prompts, skills & lesson outputs: 526 items, 526 subsections, 526 resources.
+- Lesson quizzes & certification assessments: 416 items, 416 subsections, 416 resources.
+- Course guides and roadmaps: 15 items, 15 subsections, 15 resources.
+- Interactive visual guides: 3 items, 3 subsections, 3 resources.
 
 ## Cloud & DevOps Engineering
 

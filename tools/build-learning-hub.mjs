@@ -57,8 +57,8 @@ const sourceDefs = [
     kind: "concept",
     label: "AI",
     color: "#7b61d8",
-    storage: { done: "hub_done_ai", bookmark: "hub_bm_ai" },
-    summary: "LLM fundamentals, RAG, agents, evals, fine-tuning, ML, deep learning, and MLOps.",
+    storage: { done: "hub_done_ai_source_v1", bookmark: "hub_bm_ai_source_v1" },
+    summary: "Complete source curriculum: phases, manuals, code, labs, projects, certifications, paths, cheat sheets, and glossary.",
     relatedLinks: [["Open AI Engineering Tutorial", "AI_Engineering_Tutorial/index.html"]],
   },
   {
@@ -1545,6 +1545,33 @@ function uniqueBy(items, fn) {
   return out;
 }
 
+function parseAiCurriculum(source) {
+  const catalog = JSON.parse(read('AI_Engineering_Tutorial/catalog.json'));
+  const byId = new Map(catalog.entries.map((entry) => [entry.id, entry]));
+  const sourceLink = (entry) => `${catalog.source.repository}/blob/${catalog.source.revision}/${entry.path}`;
+  const resources = catalog.entries.map((entry) => ({
+    title: entry.title, url: sourceLink(entry), domain: source.key, domainTitle: source.title,
+    section: catalog.groups.find((group) => group.id === entry.group)?.title || entry.kind, type: 'source',
+  }));
+  const sections = catalog.groups.map((group) => ({
+    id: group.id, title: group.title, meta: group.kind, tagline: group.description || '',
+    link: `${source.file}#group=${encodeURIComponent(group.id)}`, itemCount: group.entries.length,
+    resourceCount: new Set(group.entries.map((id) => sourceLink(byId.get(id)))).size,
+    subsections: group.entries.map((id) => ({title: byId.get(id).title, description: byId.get(id).summary,
+      itemCount: 1, resourceCount: 1})),
+  }));
+  const items = catalog.entries.map((entry) => ({
+    id: `ai:${entry.id}`, key: entry.id, type: 'concept', domain: source.key, domainTitle: source.title,
+    title: entry.title, description: entry.summary,
+    section: catalog.groups.find((group) => group.id === entry.group)?.title || entry.kind,
+    subsection: entry.kind, url: sourceLink(entry),
+    link: `${source.file}#read=${encodeURIComponent(entry.contentPath)}`,
+    resources: [{title: 'Pinned source', url: sourceLink(entry)}],
+    search: [entry.title, entry.summary, entry.kind, ...entry.headings.map((heading) => heading.title)].join(' ').toLowerCase(),
+  }));
+  return {sections, items, resources};
+}
+
 function buildData() {
   const parsedSources = [];
   let allItems = [];
@@ -1552,7 +1579,8 @@ function buildData() {
 
   for (const source of sourceDefs) {
     const html = read(source.file);
-    const parsed = source.key === "dsa" ? parseDsaPage(source, html) : parseConceptPage(source, html);
+    const parsed = source.key === "ai" && html.includes('data-ai-curriculum') ? parseAiCurriculum(source)
+      : source.key === "dsa" ? parseDsaPage(source, html) : parseConceptPage(source, html);
     const itemCount = parsed.items.length;
     // Count distinct destinations: the same link listed under several
     // sections with different labels is one resource, not several.
@@ -1562,7 +1590,7 @@ function buildData() {
       sections: parsed.sections,
       itemCount,
       resourceCount,
-      progressLabel: source.kind === "problem" ? "problems" : "concepts",
+      progressLabel: source.key === "ai" && html.includes('data-ai-curriculum') ? "study items" : source.kind === "problem" ? "problems" : "concepts",
       coverage: coverageBySource[source.key],
     };
     parsedSources.push(sourceRecord);
@@ -3069,6 +3097,7 @@ function removeGeneratedPageChrome(html) {
 function transformSourcePage(source) {
   const filePath = path.join(root, source.file);
   let html = fs.readFileSync(filePath, "utf8");
+  if (source.key === 'ai' && html.includes('data-ai-curriculum')) return;
   html = removeGeneratedPageChrome(html);
   const gapHtml = gapSectionHtml(source);
   if (gapHtml) {
@@ -3225,6 +3254,8 @@ jobs:
 }
 
 function readme(data) {
+  const aiSnapshot = fs.existsSync(path.join(root, 'AI_Engineering_Tutorial/catalog.json'))
+    ? JSON.parse(read('AI_Engineering_Tutorial/catalog.json')) : null;
   return `# Taran's Learning Hub
 
 A personal static learning hub generated from the HTML sites in this folder.
@@ -3237,6 +3268,7 @@ ${data.sources.map((s) => `- ${s.title}: ${s.itemCount} ${s.progressLabel}, ${s.
 
 - DSA Tutorial: \`DSA_Tutorial/index.html\` with 747 generated pages and 699 problem tutorials (one page per problem per pattern; duplicates inside a pattern removed).
 - System Design Tutorial Hub: \`System_Design_Tutorial/index.html\` with 15 sections, 62 mapped topics, and 62 bundled markdown lessons.
+${aiSnapshot ? `- AI Engineering: \`ai_engineering.html\` and \`AI_Engineering_Tutorial/index.html\` share the complete MIT curriculum snapshot: ${aiSnapshot.counts.phase} core lessons, ${aiSnapshot.counts.manuals} manuals, ${aiSnapshot.counts.practice} labs, ${aiSnapshot.counts.project} projects, ${aiSnapshot.counts.certificationLessons} certification lessons, ${aiSnapshot.counts.cheatsheet} cheat sheets, ${aiSnapshot.counts.path} paths, ${aiSnapshot.counts.glossary} glossary terms, and all ${aiSnapshot.counts.sourceFiles} tracked source files. Revision: \`${aiSnapshot.source.revision}\`.\n` : ''}\
 - Interview Prep: \`interview_prep.html\` with answer methods, behavioral stories, Generative AI & LLM systems, Autonomous AI Agents, Forward Deployed Engineering (FDE), AI system design case studies, and a word-by-word transcript runner.
 
 ## Current UI
@@ -3272,6 +3304,14 @@ function updateSourceNavs() {
 
 write("interview_prep.html", interviewPrepHtml());
 const data = buildData();
+// Preserve the build timestamp when the actual catalogue is unchanged.
+const previousDataPath = path.join(root, 'learning-hub-data.json');
+if (fs.existsSync(previousDataPath)) {
+  const previousData = JSON.parse(fs.readFileSync(previousDataPath, 'utf8'));
+  if (JSON.stringify({...data, generatedAt: null}) === JSON.stringify({...previousData, generatedAt: null})) {
+    data.generatedAt = previousData.generatedAt;
+  }
+}
 write("learning-hub-data.json", `${JSON.stringify(data, null, 2)}\n`);
 write(
   "search-index.json",
