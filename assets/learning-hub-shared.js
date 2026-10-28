@@ -72,6 +72,7 @@
     root.classList.toggle("light", !dark);
     root.classList.toggle("black", theme === "black");
     root.setAttribute("data-theme", theme);
+    window.LearningHubTheme = theme;
     if (persist !== false) {
       writeStore(THEME_KEY, theme);
       /* page-level scripts only understand light/dark */
@@ -86,7 +87,6 @@
       btn.setAttribute("aria-label", label);
       btn.setAttribute("title", label);
     }
-    window.LearningHubTheme = theme;
     try {
       window.dispatchEvent(new CustomEvent("learning-hub-theme", { detail: { theme: theme } }));
     } catch (e) {}

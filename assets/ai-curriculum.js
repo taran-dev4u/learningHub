@@ -173,6 +173,7 @@
     main.innerHTML=lessonNav+'<div class="aic-actions">'+(params.get('from')&&params.get('from')!==path?button('← Back to lesson',route(params.get('from')))+button('← Files','#files='+encodeURIComponent(prefix)+'&from='+encodeURIComponent(params.get('from'))):button('← '+(g?g.title:'Source files'),g?'#group='+encodeURIComponent(g.id):'#files='))+button('GitHub source ↗',sourceUrl(origin))+(e&&e.originalSite?button('Original interactive guide ↗',e.originalSite):'')+lessonVideo(e)+'<button class="aic-button" id="aic-download">Download file</button>'+button('Files & code','#files='+encodeURIComponent(prefix)+'&from='+encodeURIComponent(params.get('from')||path))+'</div><h2 class="aic-section-title" style="margin-top:18px">'+esc(e?e.title:path)+'</h2>'+
       (e&&e.status==='planned'?'<p class="aic-note">This is planned upstream material. The source has no completed lesson or implementation yet.</p>':'')+
       '<p class="aic-description">'+esc(origin)+'</p><div class="aic-reading" id="aic-reading"><article class="aic-article" id="aic-article"></article><aside class="aic-toc-wrap"><button class="aic-toggle" id="aic-toc-toggle" type="button" aria-controls="aic-toc"></button><nav class="aic-toc" aria-label="Lesson sections" id="aic-toc"></nav></aside></div>';
+    if(panelMode){var phaseList=main.querySelector('.aic-phase-list');if(phaseList)phaseList.open=false;}
     var reading=document.getElementById('aic-reading'),toc=document.getElementById('aic-toc'),tocToggle=document.getElementById('aic-toc-toggle');
     function syncToc(){var value=closed(TOC_KEY);reading.classList.toggle('toc-closed',value);toc.hidden=value;tocToggle.textContent=value?'☷ Show lesson contents':'☷ Hide lesson contents';tocToggle.setAttribute('aria-expanded',String(!value));}
     tocToggle.onclick=function(){localStorage.setItem(TOC_KEY,closed(TOC_KEY)?'0':'1');syncToc();};syncToc();
@@ -213,16 +214,39 @@
   function setupReaderPanel(){
     if(panelMode)return;
     var pane=document.createElement('section');pane.className='aic-reader-panel';pane.id='aic-reader-panel';pane.hidden=true;
-    pane.innerHTML='<header class="aic-reader-bar"><strong id="aic-reader-title">Lesson</strong><div><button type="button" id="aic-reader-dock" aria-label="Move reader to left">⇄</button><button type="button" id="aic-reader-expand" aria-label="Expand reader">⛶</button><button type="button" id="aic-reader-close" aria-label="Close reader">×</button></div></header><iframe id="aic-reader-frame" title="AI lesson reader"></iframe>';
+    pane.innerHTML='<header class="aic-reader-bar"><strong id="aic-reader-title">Lesson</strong><div class="aic-reader-tools"><label class="aic-reader-width">Width <input id="aic-reader-width" type="range" min="40" max="90" value="60" aria-label="Reader panel width"></label><button type="button" id="aic-site-theme" aria-label="Change site theme">Site: Light</button><button type="button" id="aic-reader-theme" aria-label="Change reader theme">Reader: Light</button><button type="button" id="aic-reader-dock" aria-label="Move reader to left" title="Move reader to left">⇄</button><button type="button" id="aic-reader-expand" aria-label="Expand reader" title="Expand reader">⛶</button><button type="button" id="aic-reader-minimize" aria-label="Minimize reader" title="Minimize reader">›</button><button type="button" id="aic-reader-close" aria-label="Close reader" title="Close reader">×</button></div></header><iframe id="aic-reader-frame" title="AI lesson reader"></iframe>';
     document.body.appendChild(pane);
-    var frame=pane.querySelector('iframe'),lastFocus=null;
-    function close(){pane.hidden=true;frame.src='about:blank';document.body.classList.remove('aic-reader-open');if(lastFocus&&lastFocus.isConnected)lastFocus.focus();}
+    var frame=pane.querySelector('iframe'),lastFocus=null,themeOrder=['light','dark','black'],readerThemeKey='hub_ai_reader_theme_v1';
+    function readerTheme(){var value=localStorage.getItem(readerThemeKey);return themeOrder.includes(value)?value:(document.documentElement.getAttribute('data-theme')||'light');}
+    function applyReaderTheme(){
+      var value=readerTheme();pane.setAttribute('data-reader-theme',value);pane.querySelector('#aic-reader-theme').textContent='Reader: '+value[0].toUpperCase()+value.slice(1);
+      if(!frame.contentDocument||frame.contentWindow.location.href==='about:blank')return;
+      var root=frame.contentDocument.documentElement;
+      root.classList.toggle('light',value==='light');root.classList.toggle('dark',value!=='light');root.classList.toggle('black',value==='black');root.setAttribute('data-theme',value);
+    }
+    function syncSiteTheme(){var value=document.documentElement.getAttribute('data-theme')||'light';pane.querySelector('#aic-site-theme').textContent='Site: '+value[0].toUpperCase()+value.slice(1);}
+    var savedWidth=Number(localStorage.getItem('hub_ai_reader_width_v1'));
+    if(savedWidth>=40&&savedWidth<=90)pane.querySelector('#aic-reader-width').value=String(savedWidth);
+    function syncLayout(){
+      var width=pane.querySelector('#aic-reader-width').value+'vw';
+      document.body.style.setProperty('--aic-reader-width',width);
+      document.body.classList.toggle('aic-reader-minimized',!pane.hidden&&pane.classList.contains('minimized'));
+      document.body.classList.toggle('aic-reader-expanded',!pane.hidden&&pane.classList.contains('expanded'));
+      document.body.classList.toggle('aic-reader-dock-left',!pane.hidden&&pane.classList.contains('dock-left'));
+    }
+    syncLayout();
+    frame.addEventListener('load',applyReaderTheme);
+    window.addEventListener('learning-hub-theme',syncSiteTheme);syncSiteTheme();
+    function close(){pane.hidden=true;frame.src='about:blank';document.body.classList.remove('aic-reader-open');syncLayout();if(lastFocus&&lastFocus.isConnected)lastFocus.focus();}
     pane.querySelector('#aic-reader-close').onclick=close;
-    pane.querySelector('#aic-reader-dock').onclick=function(){pane.classList.toggle('dock-left');this.setAttribute('aria-label',pane.classList.contains('dock-left')?'Move reader to right':'Move reader to left');};
-    pane.querySelector('#aic-reader-expand').onclick=function(){pane.classList.toggle('expanded');this.setAttribute('aria-label',pane.classList.contains('expanded')?'Restore reader width':'Expand reader');};
-    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!pane.hidden)close();});
+    pane.querySelector('#aic-site-theme').onclick=function(){var button=document.querySelector('.hub-nav [data-hub-theme]');if(button)button.click();syncSiteTheme();};
+    pane.querySelector('#aic-reader-theme').onclick=function(){var value=readerTheme();localStorage.setItem(readerThemeKey,themeOrder[(themeOrder.indexOf(value)+1)%themeOrder.length]);applyReaderTheme();};
+    pane.querySelector('#aic-reader-width').oninput=function(){localStorage.setItem('hub_ai_reader_width_v1',this.value);pane.classList.remove('expanded','minimized');syncLayout();};
+    pane.querySelector('#aic-reader-dock').onclick=function(){pane.classList.toggle('dock-left');syncLayout();this.setAttribute('aria-label',pane.classList.contains('dock-left')?'Move reader to right':'Move reader to left');};
+    pane.querySelector('#aic-reader-expand').onclick=function(){pane.classList.remove('minimized');pane.classList.toggle('expanded');syncLayout();this.setAttribute('aria-label',pane.classList.contains('expanded')?'Restore reader width':'Expand reader');};
+    pane.querySelector('#aic-reader-minimize').onclick=function(){pane.classList.toggle('minimized');var value=pane.classList.contains('minimized');syncLayout();this.textContent=value?(pane.classList.contains('dock-left')?'›':'‹'):'›';this.setAttribute('aria-label',value?'Restore reader':'Minimize reader');this.title=value?'Restore reader':'Minimize reader';};
     window.addEventListener('message',function(e){if(e.origin===location.origin&&e.source===frame.contentWindow&&e.data&&e.data.type==='ai-reader-title')pane.querySelector('#aic-reader-title').textContent=e.data.title;});
-    root.addEventListener('click',function(e){var a=e.target.closest('a[href]');if(!a)return;var href=a.getAttribute('href');if(!href||!/^#(?:read|files)=/.test(href))return;e.preventDefault();lastFocus=a;pane.hidden=false;document.body.classList.add('aic-reader-open');pane.querySelector('#aic-reader-title').textContent='Loading lesson…';frame.src=base+'AI_Engineering_Tutorial/reader.html?panel=1&v='+release+href;});
+    root.addEventListener('click',function(e){var a=e.target.closest('a[href]');if(!a)return;var href=a.getAttribute('href');if(!href||!/^#(?:read|files)=/.test(href))return;e.preventDefault();lastFocus=a;pane.hidden=false;pane.classList.remove('minimized');document.body.classList.add('aic-reader-open');syncLayout();pane.querySelector('#aic-reader-title').textContent='Loading lesson…';frame.src=base+'AI_Engineering_Tutorial/reader.html?panel=1&v='+release+href;});
   }
   async function init(){root=document.getElementById('ai-curriculum');try{var response=await fetch(base+'AI_Engineering_Tutorial/catalog.json?v='+release);if(!response.ok)throw Error('Curriculum catalogue could not load');catalog=await response.json();entries=new Map(catalog.entries.map(function(e){return[e.contentPath,e];}));groups=new Map(catalog.groups.map(function(g){return[g.id,g];}));window.addEventListener('hashchange',navigate);setupReaderPanel();await navigate();}catch(error){root.innerHTML='<h1>AI Engineering</h1><p>'+esc(error.message)+'</p>';}}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
