@@ -52,7 +52,9 @@
   function lessonVideo(e) { var v=e&&CURATED_VIDEO[e.path]; return v ? '<a class="aic-button" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v='+v[2]+'">▶ '+esc(v[0])+' · '+esc(v[1])+' ↗</a>' : ''; }
   function hero() {
     var c = catalog.counts;
-    return '<header class="aic-hero"><span class="aic-eyebrow">Learning Hub · AI engineering lessons</span><h1>AI Engineering from Scratch</h1>' +
+    return '<header class="aic-hero">' +
+      '<div style="margin-bottom:12px"><a href="' + base + 'ai_data.html" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--aic-accent,#7c3aed);text-decoration:none;padding:5px 12px;border-radius:6px;background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.2)">← AI &amp; Data Hub</a></div>' +
+      '<span class="aic-eyebrow">Learning Hub · AI engineering lessons</span><h1>AI Engineering from Scratch</h1>' +
       '<p>Read explanations and worked examples here, then practise with code and exercises. Follow the phases in order. Reference files and project plans are listed separately from lessons.</p>' +
       '<div class="aic-links">' + button('Roadmap', '#group=overview') + button('All topics', '#group=all') + button('Source files', '#files=') +
       button('Concept guide', base + 'AI_Engineering_Tutorial/concept-guide.html') + button('Original website ↗', catalog.source.website) + '</div>' +

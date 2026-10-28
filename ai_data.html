@@ -1,0 +1,1936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>AI &amp; Data Hub (AI · ML · Data Science · Data Engineering) | Learning Hub</title>
+<link href="assets/learning-hub-shared.css" rel="stylesheet"/>
+<script src="assets/learning-hub-shared.js"></script>
+<style>
+
+
+
+/* All-in-One Tech Portal Design System */
+:root {
+  --bg: #f7f8fb;
+  --surface: #ffffff;
+  --surface-2: #eef2f7;
+  --surface-3: #e4eaf2;
+  --text: #172033;
+  --muted: #5b6578;
+  --faint: #7a8599;
+  --border: #dbe2ec;
+  --navy: #172554;
+  --navy-2: #1e3a8a;
+  --blue: #2563eb;
+  --amber: #f59e0b;
+  --green: #0f9f6e;
+  --red: #dc4c64;
+  --violet: #7c3aed;
+  --shadow: 0 4px 16px rgba(23, 32, 51, 0.06);
+  --shadow-lift: 0 12px 32px rgba(23, 32, 51, 0.12);
+  --bg-elev: var(--surface-2);
+  --bg-card: var(--surface);
+  --bg-row-alt: var(--surface-2);
+  --text-dim: var(--muted);
+  --text-faint: var(--faint);
+  --border-strong: var(--border);
+  --accent: var(--blue);
+  --accent-dim: rgba(37, 99, 235, 0.1);
+  --link: var(--blue);
+  --quote-bg: rgba(37, 99, 235, 0.05);
+  --done: var(--green);
+  --done-bg: rgba(15, 159, 110, 0.12);
+  --shadow-card: var(--shadow);
+  --shadow-banner: 0 4px 14px rgba(0,0,0,0.08);
+}
+html.dark, html[data-theme="dark"] {
+  --bg: #0b1120;
+  --surface: #151f32;
+  --surface-2: #1e293b;
+  --surface-3: #27354a;
+  --text: #f1f5f9;
+  --muted: #94a3b8;
+  --faint: #64748b;
+  --border: #1e293b;
+  --navy: #1e293b;
+  --navy-2: #243552;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  --shadow-lift: 0 12px 32px rgba(0, 0, 0, 0.5);
+  --bg-elev: #151f32;
+  --bg-card: #151f32;
+  --bg-row-alt: #1a263d;
+  --text-dim: #94a3b8;
+  --text-faint: #64748b;
+  --border-strong: #334155;
+  --accent: #38bdf8;
+  --accent-dim: rgba(56, 189, 248, 0.15);
+  --link: #38bdf8;
+  --quote-bg: rgba(56, 189, 248, 0.08);
+  --done: #10b981;
+  --done-bg: rgba(16, 185, 129, 0.15);
+}
+html.black, html[data-theme="black"] {
+  --bg: #000000;
+  --surface: #0a0a0a;
+  --surface-2: #141414;
+  --surface-3: #1f1f1f;
+  --text: #ffffff;
+  --muted: #888888;
+  --faint: #555555;
+  --border: #222222;
+  --navy: #0e0e0e;
+  --navy-2: #181818;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+  --shadow-lift: 0 12px 32px rgba(0, 0, 0, 0.9);
+  --bg-elev: #0e0e0e;
+  --bg-card: #0a0a0a;
+  --bg-row-alt: #121212;
+  --text-dim: #888888;
+  --text-faint: #555555;
+  --border-strong: #2c2c2c;
+  --accent: #60a5fa;
+  --accent-dim: rgba(96, 165, 250, 0.18);
+  --link: #60a5fa;
+  --quote-bg: rgba(96, 165, 250, 0.08);
+  --done: #22c55e;
+  --done-bg: rgba(34, 197, 94, 0.15);
+}
+.wrap { max-width: 1440px; margin: 0 auto; padding: 20px 20px 80px; }
+.tech-breadcrumb {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 700;
+  margin: 0 0 16px; padding: 6px 12px;
+  background: var(--surface-2); border: 1px solid var(--border);
+  border-radius: 8px; width: fit-content;
+}
+.tech-bc-home { color: var(--accent); text-decoration: none; }
+.tech-bc-home:hover { text-decoration: underline; }
+.tech-bc-sep { color: var(--faint); }
+.tech-bc-curr { color: var(--text); }
+.domain-deck-section { margin: 24px 0 28px; }
+.domain-deck-head {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px; margin-bottom: 14px;
+}
+.domain-deck-head h2 {
+  font-size: 20px; margin: 0; font-weight: 800; letter-spacing: -0.01em; color: var(--text);
+}
+.domain-deck-subtitle {
+  font-size: 13px; color: var(--muted); margin: 2px 0 0;
+}
+.domain-deck {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 14px;
+}
+.domain-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px; display: flex; flex-direction: column;
+  box-shadow: var(--shadow); transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+  position: relative; cursor: pointer;
+}
+.domain-card:hover {
+  transform: translateY(-2px); border-color: var(--accent); box-shadow: var(--shadow-lift);
+}
+.domain-card.active-deck-card {
+  border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent), var(--shadow-lift);
+}
+.domain-card-head { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
+.domain-card-icon {
+  font-size: 24px; line-height: 1; flex-shrink: 0;
+  background: var(--surface-2); padding: 8px; border-radius: 10px; border: 1px solid var(--border);
+}
+.domain-card-meta { flex: 1; min-width: 0; }
+.domain-card-idx {
+  font-size: 10.5px; font-weight: 800; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 0.08em;
+}
+.domain-card-title {
+  font-size: 15.5px; font-weight: 800; margin: 2px 0 0; color: var(--text); line-height: 1.3;
+}
+.domain-card-desc {
+  font-size: 12px; color: var(--muted); line-height: 1.5; margin: 0 0 12px; flex: 1;
+}
+.domain-card-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.d-chip {
+  font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px;
+  background: var(--surface-2); border: 1px solid var(--border); color: var(--text-dim);
+}
+.d-chip.masterclass-badge {
+  background: rgba(37, 99, 235, 0.12); border-color: var(--accent); color: var(--accent);
+}
+.domain-card-actions { display: flex; gap: 8px; align-items: center; margin-top: auto; }
+.d-act-btn {
+  flex: 1; min-height: 32px; padding: 5px 10px; border-radius: 7px;
+  border: 1px solid var(--border); background: var(--surface-2); color: var(--text);
+  font-size: 12px; font-weight: 700; cursor: pointer; display: inline-flex;
+  align-items: center; justify-content: center; gap: 4px; transition: all 0.15s ease;
+}
+.d-act-btn:hover { background: var(--accent); color: #ffffff; border-color: var(--accent); }
+.d-act-link {
+  min-height: 32px; padding: 5px 11px; border-radius: 7px; border: 1px solid var(--accent);
+  background: var(--accent); color: #ffffff; font-size: 12px; font-weight: 800;
+  text-decoration: none; display: inline-flex; align-items: center; justify-content: center;
+  gap: 4px; transition: all 0.15s ease; white-space: nowrap;
+}
+.d-act-link:hover { opacity: 0.9; transform: translateY(-1px); }
+.domain-nav-bar {
+  position: sticky; top: 53px; z-index: 60; background: var(--surface);
+  border-bottom: 1px solid var(--border); border-top: 1px solid var(--border);
+  padding: 8px 12px; margin: 0 -20px 22px; backdrop-filter: blur(12px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.domain-nav-scroll {
+  display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none;
+  -webkit-overflow-scrolling: touch; max-width: 1440px; margin: 0 auto; padding: 0 8px;
+}
+.domain-nav-scroll::-webkit-scrollbar { display: none; }
+.d-nav-pill {
+  display: inline-flex; align-items: center; gap: 5px; min-height: 32px;
+  padding: 4px 12px; border-radius: 999px; border: 1px solid var(--border);
+  background: var(--surface-2); color: var(--muted); font-size: 12px;
+  font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s ease;
+}
+.d-nav-pill:hover { border-color: var(--accent); color: var(--text); transform: translateY(-1px); }
+.d-nav-pill.active {
+  background: var(--accent); border-color: var(--accent); color: #ffffff;
+  box-shadow: 0 2px 10px rgba(37, 99, 235, 0.35);
+}
+.domain-focus-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px; padding: 12px 18px; margin-bottom: 16px;
+  background: var(--surface); border: 1px solid var(--accent);
+  border-radius: 10px; box-shadow: var(--shadow);
+}
+.focus-bar-left { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.focus-bar-pill {
+  font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em;
+  padding: 3px 8px; border-radius: 6px; background: var(--accent-dim);
+  color: var(--accent); border: 1px solid var(--accent);
+}
+.focus-bar-title { font-size: 15px; font-weight: 800; color: var(--text); }
+.focus-bar-stats { font-size: 12px; color: var(--muted); font-weight: 600; }
+.focus-bar-right { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.focus-btn {
+  min-height: 30px; padding: 4px 10px; border-radius: 6px; border: 1px solid var(--border);
+  background: var(--surface-2); color: var(--text); font-size: 12px; font-weight: 700;
+  cursor: pointer; transition: all 0.15s ease;
+}
+.focus-btn:hover { background: var(--border); color: var(--text); }
+.focus-btn.view-all-btn {
+  background: var(--accent-dim); border-color: var(--accent); color: var(--accent);
+}
+.focus-btn.view-all-btn:hover { background: var(--accent); color: #ffffff; }
+.focus-btn.masterclass-btn {
+  background: var(--accent); border-color: var(--accent); color: #ffffff;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 4px;
+}
+.section.hidden-domain { display: none !important; }
+.sister-guides-card {
+  margin: 40px 0 20px; padding: 20px 24px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; box-shadow: var(--shadow);
+}
+.sister-title { font-size: 15px; font-weight: 800; color: var(--text); margin-bottom: 12px; }
+.sister-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+.sister-link {
+  display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px;
+  border-radius: 8px; background: var(--surface-2); border: 1px solid var(--border);
+  color: var(--text); text-decoration: none; font-size: 12.5px; font-weight: 700;
+  transition: all 0.15s ease;
+}
+.sister-link:hover { border-color: var(--accent); background: var(--accent-dim); transform: translateY(-1px); }
+.sister-link.active-hub { background: var(--accent); border-color: var(--accent); color: #ffffff; }
+@media (max-width: 768px) {
+  .hero h1 { font-size: 26px; }
+  .domain-nav-bar { margin: 0 -12px 18px; }
+  .domain-focus-bar { flex-direction: column; align-items: flex-start; }
+}
+
+:root {
+  --bg: #0f1115; --bg-elev: #161922; --bg-card: #1c2030; --bg-row-alt: #1a1d2a;
+  --text: #e6e8ee; --text-dim: #9aa0b0; --text-faint: #6b7080;
+  --border: #2a2f42; --border-strong: #3a3f55;
+  --accent: #0786a3; --accent-dim: rgba(7,134,163,0.15);
+  --link: #38bdf8;
+  --quote-bg: rgba(7,134,163,0.06);
+  --done: #00b894; --done-bg: rgba(0,184,148,0.12);
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.2);
+  --shadow-banner: 0 4px 14px rgba(0,0,0,0.25);
+}
+html.light {
+  --bg: #fafbfc; --bg-elev: #ffffff; --bg-card: #ffffff; --bg-row-alt: #f8f9fb;
+  --text: #1a1d24; --text-dim: #5a6072; --text-faint: #8b91a3;
+  --border: #e4e7ee; --border-strong: #d0d4de;
+  --accent: #0284c7; --accent-dim: rgba(2,132,199,0.1);
+  --link: #0369a1;
+  --quote-bg: rgba(2,132,199,0.05);
+  --done: #00a884; --done-bg: rgba(0,168,132,0.12);
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-banner: 0 4px 14px rgba(0,0,0,0.08);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; line-height: 1.55;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--bg); color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.2s, color 0.2s;
+}
+.wrap { max-width: 1240px; margin: 0 auto; padding: 24px 20px 80px; }
+.hero { text-align: center; padding: 16px 0 24px; border-bottom: 1px solid var(--border); margin-bottom: 20px; }
+.hero h1 { font-size: 32px; margin: 6px 0 4px; letter-spacing: -0.02em; }
+.hero .subtitle { color: var(--text-dim); margin: 0; font-size: 14px; }
+.hero .edition {
+  display: inline-block; color: var(--accent); font-weight: 700; font-size: 11px;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  background: var(--accent-dim); padding: 4px 10px; border-radius: 4px;
+}
+.stats { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-top: 20px; }
+.stat {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 10px; padding: 8px 14px; min-width: 80px;
+  box-shadow: var(--shadow-card);
+}
+.stat .n { font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.stat .l { font-size: 10px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 2px; }
+
+.overall-progress {
+  background: var(--bg-elev); border: 1px solid var(--border);
+  border-radius: 10px; padding: 14px 20px; margin: 18px 0 18px;
+  display: flex; align-items: center; gap: 16px;
+}
+.overall-progress .lbl { font-size: 12px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; }
+.overall-progress .bar-track {
+  flex: 1; height: 10px; background: var(--bg-card);
+  border-radius: 5px; overflow: hidden; border: 1px solid var(--border);
+}
+.overall-progress .bar-fill {
+  height: 100%; background: linear-gradient(90deg, var(--done), var(--accent));
+  transition: width 0.3s ease; width: 0%;
+}
+.overall-progress .pct { font-weight: 700; font-variant-numeric: tabular-nums; font-size: 14px; min-width: 80px; text-align: right; }
+
+.controls {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--bg); backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  padding: 10px 0; margin: 0 0 20px;
+}
+.controls-row {
+  display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+  background: var(--bg-elev); border: 1px solid var(--border);
+  border-radius: 10px; padding: 10px 14px;
+}
+.controls-row .label {
+  font-size: 10px; color: var(--text-faint);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  font-weight: 700; margin-right: 2px;
+}
+.search { flex: 1; min-width: 180px; }
+.search input {
+  width: 100%; padding: 6px 11px; font-size: 13px;
+  background: var(--bg-card); border: 1px solid var(--border); color: var(--text);
+  border-radius: 5px;
+}
+.search input:focus { outline: none; border-color: var(--accent); }
+.icon-btn {
+  padding: 5px 9px; font-size: 14px;
+  background: var(--bg-card); border: 1px solid var(--border);
+  color: var(--text-dim); border-radius: 5px; cursor: pointer;
+  transition: all 0.12s;
+}
+.icon-btn:hover { background: var(--accent); color: white; border-color: var(--accent); }
+.filter-btn {
+  padding: 5px 10px; font-size: 11px; font-weight: 700;
+  background: var(--bg-card); border: 1px solid var(--border);
+  color: var(--text-dim); border-radius: 5px; cursor: pointer;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  transition: all 0.12s; letter-spacing: 0.02em;
+}
+.filter-btn:hover { background: var(--bg); color: var(--text); }
+.filter-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+.filter-btn.status-bookmarked.active { background: #ffa94d; border-color: #ffa94d; }
+.filter-btn.status-done.active { background: var(--done); border-color: var(--done); }
+.sep { width: 1px; height: 20px; background: var(--border); margin: 0 2px; }
+
+.toc {
+  background: var(--bg-elev); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px 22px; margin-bottom: 28px;
+}
+.toc h2 {
+  font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--text-faint); margin: 0 0 12px; font-weight: 700;
+}
+.toc-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 3px 12px;
+}
+.toc a {
+  display: flex; align-items: center; gap: 10px;
+  padding: 6px 8px; border-radius: 6px; color: var(--text);
+  text-decoration: none; font-size: 12.5px;
+  transition: background 0.12s;
+}
+.toc a:hover { background: var(--bg-card); }
+.toc .roman {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 10px; color: var(--text-faint); min-width: 28px;
+}
+.toc .name { flex: 1; }
+.toc .cnt {
+  font-size: 9.5px; color: var(--text-faint);
+  font-variant-numeric: tabular-nums;
+  background: var(--bg-card); padding: 1px 6px; border-radius: 3px;
+}
+
+.section { margin: 48px 0 0; }
+.section-banner {
+  border-radius: 12px; padding: 18px 24px; color: white;
+  display: flex; align-items: center; gap: 16px;
+  box-shadow: var(--shadow-banner);
+}
+.section-banner .num {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 22px; font-weight: 700; opacity: 0.95;
+  min-width: 56px; text-align: center;
+  padding: 6px 10px; background: rgba(255,255,255,0.18);
+  border-radius: 7px;
+}
+.section-banner .info { flex: 1; min-width: 0; }
+.section-banner .label {
+  font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em;
+  opacity: 0.85; margin-bottom: 1px;
+}
+.section-banner h2 { margin: 0; font-size: 20px; font-weight: 700; letter-spacing: -0.01em; }
+.section-banner .meta { font-size: 11.5px; opacity: 0.9; margin-top: 3px; }
+.section-banner .ppg { min-width: 140px; text-align: right; }
+.section-banner .ppg .pct-text { font-size: 13px; font-weight: 700; margin-bottom: 4px; font-variant-numeric: tabular-nums; }
+.section-banner .ppg .pp-track { height: 6px; background: rgba(255,255,255,0.25); border-radius: 3px; overflow: hidden; }
+.section-banner .ppg .pp-fill { height: 100%; background: white; border-radius: 3px; width: 0%; transition: width 0.3s; }
+
+.section-desc {
+  background: var(--quote-bg);
+  border-left: 4px solid var(--section-color, var(--accent));
+  border-radius: 0 8px 8px 0;
+  padding: 12px 18px; margin: 14px 0 6px 24px; font-size: 13.5px;
+}
+.section-desc .tagline { font-size: 14.5px; font-weight: 700; color: var(--text); margin: 0 0 6px; }
+.section-desc .row { margin: 4px 0; color: var(--text-dim); }
+.section-desc .row b { color: var(--text); }
+
+.subsection {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-left: 4px solid var(--section-color, var(--accent));
+  border-radius: 10px; margin: 16px 0 0 24px; padding: 14px 18px 16px;
+  box-shadow: var(--shadow-card);
+}
+.subsection-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 6px; flex-wrap: wrap; }
+.subsection-tag {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 10px; background: var(--bg-elev); border: 1px solid var(--border);
+  color: var(--text-dim); padding: 2px 7px; border-radius: 4px;
+  font-weight: 700; letter-spacing: 0.04em;
+}
+.subsection h3 { margin: 0; font-size: 14.5px; font-weight: 700; flex: 1; min-width: 0; color: var(--text); }
+.subsection-desc {
+  font-size: 12.5px; color: var(--text-dim); margin: 4px 0 8px;
+  padding: 7px 11px; background: var(--bg-elev); border-radius: 6px; line-height: 1.5;
+}
+
+.concepts {
+  list-style: none; padding: 0; margin: 8px 0 0;
+  border-radius: 8px; overflow: hidden;
+  border: 1px solid var(--border);
+}
+.concepts li {
+  display: grid;
+  grid-template-columns: 28px 22px 1fr auto;
+  gap: 10px; align-items: center;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-elev);
+  transition: background 0.12s;
+}
+.concepts li:last-child { border-bottom: none; }
+.concepts li:nth-child(even) { background: var(--bg-row-alt); }
+.concepts li:hover { background: var(--accent-dim); }
+.concepts li.hidden { display: none; }
+.concepts li.done { background: var(--done-bg); }
+.concepts li.done .cname { color: var(--text-dim); text-decoration: line-through; }
+.done-check {
+  width: 22px; height: 22px; cursor: pointer;
+  border: 2px solid var(--border-strong); border-radius: 5px;
+  background: var(--bg-card);
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.15s; flex-shrink: 0;
+}
+.done-check:hover { border-color: var(--done); }
+.done-check.checked { background: var(--done); border-color: var(--done); color: white; }
+.done-check.checked::after { content: '✓'; font-weight: 700; font-size: 14px; }
+.bookmark-star {
+  cursor: pointer; font-size: 16px; color: var(--border-strong);
+  user-select: none; transition: color 0.15s, transform 0.15s; flex-shrink: 0;
+}
+.bookmark-star:hover { color: #ffa94d; transform: scale(1.15); }
+.bookmark-star.active { color: #ffa94d; }
+.cname { color: var(--text); font-size: 13.5px; font-weight: 600; }
+.cname b { color: var(--accent); }
+.res-links { display: flex; gap: 4px; flex-shrink: 0; flex-wrap: wrap; }
+.res-links a {
+  font-size: 10.5px; padding: 3px 7px; border-radius: 4px;
+  background: var(--bg-card); border: 1px solid var(--border);
+  color: var(--text-dim); text-decoration: none;
+  white-space: nowrap; font-weight: 600;
+  transition: all 0.12s;
+}
+.res-links a:hover { background: var(--accent); color: white; border-color: var(--accent); }
+.res-links a.video:hover { background: #ff0000; border-color: #ff0000; }
+
+.resources-section {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 10px; padding: 12px 16px; margin: 10px 0 8px 24px;
+}
+.resources-section .head {
+  display: flex; align-items: center; justify-content: space-between;
+  cursor: pointer; user-select: none;
+}
+.resources-section .head h4 {
+  margin: 0; font-size: 11.5px; color: var(--text-faint);
+  text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700;
+}
+.resources-section .head .count {
+  font-size: 10.5px; color: var(--text-faint);
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+}
+.resources-section .head .chevron {
+  color: var(--text-faint); font-size: 11px; margin-left: 8px;
+  transition: transform 0.18s; display: inline-block;
+}
+.resources-section.open .chevron { transform: rotate(90deg); }
+.resources-body { display: none; margin-top: 10px; }
+.resources-section.open .resources-body { display: block; }
+.res-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 5px 8px;
+}
+.res-link {
+  display: flex; align-items: center; gap: 8px;
+  padding: 6px 10px; border-radius: 6px;
+  background: var(--bg-elev); border: 1px solid var(--border);
+  text-decoration: none; color: var(--text);
+  font-size: 12.5px; transition: all 0.12s;
+}
+.res-link:hover { background: var(--accent); color: white; border-color: var(--accent); }
+.res-link:hover .res-source { color: rgba(255,255,255,0.8); }
+.res-icon { font-size: 13px; flex-shrink: 0; }
+.res-title { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.res-source { font-size: 9.5px; color: var(--text-faint); margin-left: auto; padding-left: 6px; white-space: nowrap; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+
+.top {
+  position: fixed; bottom: 20px; right: 20px;
+  background: var(--accent); color: white;
+  padding: 10px 14px; border-radius: 8px;
+  text-decoration: none; font-size: 13px; font-weight: 600;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.2); z-index: 100;
+}
+
+@media (max-width: 900px) {
+  .wrap { padding: 16px 12px 80px; }
+  .subsection, .section-desc, .resources-section { margin-left: 0; }
+  .section-banner { flex-direction: column; align-items: flex-start; }
+  .section-banner .ppg { min-width: 100%; text-align: left; }
+  .hero h1 { font-size: 24px; }
+  .concepts li { grid-template-columns: 24px 20px 1fr; gap: 6px; padding: 6px 8px; }
+  .concepts li .res-links { display: none; }
+}
+@media print {
+  body { background: white; color: black; }
+  .controls, .top, .filter-btn, .icon-btn { display: none !important; }
+  .resources-section .resources-body { display: block !important; }
+  .section { page-break-inside: avoid; }
+  a { color: black; text-decoration: underline; }
+}
+
+
+/* Crosslink Card Styles */
+.domain-crosslink-card {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 22px 26px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.07) 0%, rgba(124, 58, 237, 0.07) 100%);
+  border: 1px solid rgba(37, 99, 235, 0.25);
+  margin-top: 14px;
+}
+.domain-crosslink-content h3 {
+  margin: 4px 0 6px;
+  font-size: 1.18rem;
+  font-weight: 850;
+  color: var(--text);
+}
+.domain-crosslink-content p {
+  margin: 0;
+  font-size: .88rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+.domain-crosslink-tag {
+  font-size: .72rem;
+  font-weight: 850;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--blue);
+}
+.domain-crosslink-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 22px;
+  border-radius: 10px;
+  background: var(--blue);
+  color: #fff;
+  font-size: .88rem;
+  font-weight: 800;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all .15s ease;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+}
+.domain-crosslink-btn:hover {
+  background: var(--navy-2);
+  transform: translateY(-1px);
+  color: #fff;
+}
+.d-nav-pill.link-pill {
+  border-style: dashed;
+  border-color: var(--blue);
+  color: var(--blue);
+  text-decoration: none;
+  font-weight: 750;
+}
+.d-nav-pill.link-pill:hover {
+  background: var(--blue);
+  color: #fff;
+}
+@media (max-width: 768px) {
+  .domain-crosslink-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+
+</style>
+</head>
+<body data-site="ai_data">
+<div class="wrap">
+  <div class="hero">
+    <div class="edition">v4 · AI &amp; Data Hub · 4 Strategic Tracks · 24 Subsections · 96 Concepts</div>
+    <h1>AI &amp; Data Hub (AI · ML · Data Science · Data Engineering)</h1>
+    <p class="subtitle">Complete end-to-end curriculum spanning Generative AI &amp; LLM Engineering, Classical &amp; Deep Machine Learning, Applied Data Science &amp; Statistics, and Enterprise Data Engineering &amp; Lakehouse Architectures.</p>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="n">4</div><div class="l">Tracks</div></div>
+    <div class="stat"><div class="n">24</div><div class="l">Subsections</div></div>
+    <div class="stat"><div class="n">96</div><div class="l">Concepts</div></div>
+    <div class="stat"><div class="n">4</div><div class="l">Masterclasses</div></div>
+    <div class="stat"><div class="n">60+</div><div class="l">Resources</div></div>
+  </div>
+
+  <div class="overall-progress">
+    <span class="lbl">Your Progress</span>
+    <div class="bar-track"><div class="bar-fill" id="overall-bar"></div></div>
+    <span class="pct" id="overall-pct">0 / 96</span>
+  </div>
+
+  <div class="controls">
+    <div class="controls-row">
+      <span class="label">Filter:</span>
+      <button class="filter-btn status-done" data-filter="status" data-val="done">Done</button>
+      <button class="filter-btn" data-filter="status" data-val="undone">Not Done</button>
+      <button class="filter-btn status-bookmarked" data-filter="status" data-val="bookmarked">★ Bookmarked</button>
+      <span class="sep"></span>
+      <div class="search"><input id="search-input" placeholder="Search 96 AI, ML, Data Science &amp; Data Engineering concepts…" type="search"/></div>
+      <button class="icon-btn" id="random-btn" title="Random concept">🎲</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">🌓</button>
+      <button class="icon-btn" onclick="window.print()" title="Print">🖨️</button>
+      <button class="filter-btn" id="clear-filters">Clear</button>
+    </div>
+  </div>
+
+  <section class="domain-deck-section" id="domain-navigator">
+    <div class="domain-deck-head">
+      <span class="domain-deck-kicker">Unified AI &amp; Data Command Deck</span>
+      <h2>Explore AI &amp; Data Tracks</h2>
+      <p class="domain-deck-subtitle">Select any track to isolate its curriculum, or open its dedicated deep-dive masterclass.</p>
+    </div>
+    <div class="domain-deck">
+      <div class="domain-card" data-domain="ai-eng" id="card-ai-eng" onclick="switchDomain('ai-eng')">
+<div class="domain-card-head">
+<div class="domain-card-icon">🤖</div>
+<div class="domain-card-meta">
+<span class="domain-card-idx">Track 01 / 04</span>
+<h3 class="domain-card-title">AI Engineering (Generative AI, LLMs & Agents)</h3>
+</div>
+</div>
+<p class="domain-card-desc">Foundation models, Transformers, Prompt Engineering, RAG architectures, Vector DBs, Autonomous Agents, LoRA fine-tuning & evaluation.</p>
+<div class="domain-card-chips">
+<span class="domain-card-chip highlight">LLMs, RAG, Agents, Fine-Tuning & Vector DBs</span>
+</div>
+<div class="domain-card-actions">
+<button class="domain-btn-view" onclick="event.stopPropagation(); switchDomain('ai-eng')" type="button">Focus Track</button>
+<a class="domain-btn-masterclass" href="ai_engineering.html">Dedicated Masterclass ↗</a>
+</div>
+</div><div class="domain-card" data-domain="ml-eng" id="card-ml-eng" onclick="switchDomain('ml-eng')">
+<div class="domain-card-head">
+<div class="domain-card-icon">🧠</div>
+<div class="domain-card-meta">
+<span class="domain-card-idx">Track 02 / 04</span>
+<h3 class="domain-card-title">Machine Learning Engineering (MLE)</h3>
+</div>
+</div>
+<p class="domain-card-desc">Classical supervised & unsupervised algorithms, Deep Learning with PyTorch, feature pipelines, MLOps, model registries, serving & drift.</p>
+<div class="domain-card-chips">
+<span class="domain-card-chip highlight">Algorithms, PyTorch, MLOps & Production Serving</span>
+</div>
+<div class="domain-card-actions">
+<button class="domain-btn-view" onclick="event.stopPropagation(); switchDomain('ml-eng')" type="button">Focus Track</button>
+
+</div>
+</div><div class="domain-card" data-domain="data-science" id="card-data-science" onclick="switchDomain('data-science')">
+<div class="domain-card-head">
+<div class="domain-card-icon">🔬</div>
+<div class="domain-card-meta">
+<span class="domain-card-idx">Track 03 / 04</span>
+<h3 class="domain-card-title">Data Science & Applied Analytics</h3>
+</div>
+</div>
+<p class="domain-card-desc">Applied mathematics, probability, inferential statistics, Exploratory Data Analysis (EDA), hypothesis testing, A/B testing & time-series.</p>
+<div class="domain-card-chips">
+<span class="domain-card-chip highlight">Statistics, EDA, Hypothesis Testing & A/B Testing</span>
+</div>
+<div class="domain-card-actions">
+<button class="domain-btn-view" onclick="event.stopPropagation(); switchDomain('data-science')" type="button">Focus Track</button>
+
+</div>
+</div><div class="domain-card" data-domain="data-eng" id="card-data-eng" onclick="switchDomain('data-eng')">
+<div class="domain-card-head">
+<div class="domain-card-icon">🏗️</div>
+<div class="domain-card-meta">
+<span class="domain-card-idx">Track 04 / 04</span>
+<h3 class="domain-card-title">Data Engineering & Modern Data Stack</h3>
+</div>
+</div>
+<p class="domain-card-desc">Cloud data warehouses (Snowflake, BigQuery), Apache Spark, Lakehouse table formats (Iceberg, Delta), dbt modeling, Airflow & Kafka.</p>
+<div class="domain-card-chips">
+<span class="domain-card-chip highlight">Warehousing, Spark, Lakehouse, dbt & Kafka</span>
+</div>
+<div class="domain-card-actions">
+<button class="domain-btn-view" onclick="event.stopPropagation(); switchDomain('data-eng')" type="button">Focus Track</button>
+
+</div>
+</div>
+    </div>
+  </section>
+
+  <div class="domain-nav-bar" id="domain-nav-bar">
+    <div class="domain-nav-scroll">
+      <button class="d-nav-pill active" data-target="all" onclick="switchDomain('all')">All Tracks (4)</button><button class="d-nav-pill" data-target="ai-eng" onclick="switchDomain('ai-eng')">🤖 AI</button><button class="d-nav-pill" data-target="ml-eng" onclick="switchDomain('ml-eng')">🧠 Machine</button><button class="d-nav-pill" data-target="data-science" onclick="switchDomain('data-science')">🔬 Data</button><button class="d-nav-pill" data-target="data-eng" onclick="switchDomain('data-eng')">🏗️ Data</button><a href="ai_engineering.html" class="d-nav-pill link-pill">🚀 Open Full AI Curriculum ↗</a>
+    </div>
+  </div>
+
+  <section class="section domain-section" id="section-1" data-domain="ai-eng" style="--section-color:hsl(260, 80%, 50%)">
+<div class="domain-focus-bar">
+<div class="domain-focus-badge">🤖 Track 1 of 4</div>
+<div class="domain-focus-title">AI Engineering (Generative AI, LLMs & Agents)</div>
+<div class="domain-focus-nav">
+<button class="domain-focus-btn" onclick="navigateDomain(-1)" title="Previous Track">← Prev Track</button>
+<button class="domain-focus-btn" onclick="switchDomain('all')" title="View All Tracks">View All (4)</button>
+<button class="domain-focus-btn" onclick="navigateDomain(1)" title="Next Track">Next Track →</button>
+<a class="domain-focus-link" href="ai_engineering.html">Open Full AI Engineering  Masterclass ↗</a>
+</div>
+</div>
+<h2>AI Engineering (Generative AI, LLMs & Agents)</h2>
+<div class="sec-desc">
+<p><strong>Core Focus:</strong> Foundation models, Transformers, Prompt Engineering, RAG architectures, Vector DBs, Autonomous Agents, LoRA fine-tuning & evaluation.</p>
+<p><strong>Track Key:</strong> LLMs, RAG, Agents, Fine-Tuning & Vector DBs</p>
+</div>
+<div class="subsection">
+<h3>1.1 Foundation Models, Transformers & LLM Architecture</h3>
+<ol class="concepts">
+<li data-cid="ai-foundation-models" data-name="foundation models, pre-training & next-token prediction">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Foundation Models, Pre-training & Next-Token Prediction</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Autoregressive language modeling, causal masking, pre-training loss, self-supervised objectives, and parameter scaling from billions to trillions of parameters.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="3Blue1Brown" data-vdur="20:00" data-vtitle="Foundation Models, Pre-training & Next-Token Prediction" href="https://www.youtube.com/watch?v=zjkBMFhNj_g" rel="noopener" target="_blank" title="Watch walkthrough: Foundation Models, Pre-training & Next-Token Prediction">🎬YT</a><a href="https://en.wikipedia.org/wiki/Foundation" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ai-transformer-attention" data-name="transformer architecture & multi-head self-attention">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Transformer Architecture & Multi-Head Self-Attention</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Scaled dot-product attention, query-key-value projections, positional encodings (RoPE), residual connections, and layer normalization mechanics.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="3Blue1Brown" data-vdur="20:00" data-vtitle="Transformer Architecture & Multi-Head Self-Attention" href="https://www.youtube.com/watch?v=wjZofJX0v4U" rel="noopener" target="_blank" title="Watch walkthrough: Transformer Architecture & Multi-Head Self-Attention">🎬YT</a><a href="https://en.wikipedia.org/wiki/Transformer" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ai-tokenization-sampling" data-name="tokenization (bpe/wordpiece), context windows & temperature sampling">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Tokenization (BPE/WordPiece), Context Windows & Temperature Sampling</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Byte-pair encoding (BPE), vocabulary sizes, token fragmentation, context length constraints, greedy search vs top-p (nucleus) and top-k sampling.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="Andrej Karpathy" data-vdur="20:00" data-vtitle="Tokenization (BPE/WordPiece), Context Windows & Temperature Sampling" href="https://www.youtube.com/watch?v=zduSFxRajkE" rel="noopener" target="_blank" title="Watch walkthrough: Tokenization (BPE/WordPiece), Context Windows & Temperature Sampling">🎬YT</a><a href="https://en.wikipedia.org/wiki/Tokenization" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ai-scaling-inference" data-name="scaling laws, compute optimal models & efficient inference">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Scaling Laws, Compute Optimal Models & Efficient Inference</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Chinchilla scaling laws, compute vs data tradeoffs, Key-Value (KV) cache memory footprint, FlashAttention memory bandwidth optimization, and PagedAttention.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="Andrej Karpathy" data-vdur="20:00" data-vtitle="Scaling Laws, Compute Optimal Models & Efficient Inference" href="https://www.youtube.com/watch?v=kCc8FmEb1nY" rel="noopener" target="_blank" title="Watch walkthrough: Scaling Laws, Compute Optimal Models & Efficient Inference">🎬YT</a><a href="https://en.wikipedia.org/wiki/Scaling" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li>
+</ol>
+</div><div class="subsection">
+<h3>1.2 Prompt Engineering & In-Context Learning</h3>
+<ol class="concepts">
+<li data-cid="ai-prompt-principles" data-name="core prompting principles, system prompts & instruction formatting">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Core Prompting Principles, System Prompts & Instruction Formatting</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Instruction clarity, role priming, persona adoption, input/output delimiters, context window management, and zero-shot task elicitation.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="DeepLearning.AI" data-vdur="20:00" data-vtitle="Core Prompting Principles, System Prompts & Instruction Formatting" href="https://www.youtube.com/watch?v=jC4v5AS4RIM" rel="noopener" target="_blank" title="Watch walkthrough: Core Prompting Principles, System Prompts & Instruction Formatting">🎬YT</a><a href="https://en.wikipedia.org/wiki/Core" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ai-few-shot-cot" data-name="few-shot in-context learning & chain-of-thought (cot) reasoning">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Few-Shot In-Context Learning & Chain-of-Thought (CoT) Reasoning</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Exemplar selection, demonstration ordering, step-by-step rationales, zero-shot CoT ('Let\'s think step by step'), and self-consistency decoding.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="DeepLearning.AI" data-vdur="20:00" data-vtitle="Few-Shot In-Context Learning & Chain-of-Thought (CoT) Reasoning" href="https://www.youtube.com/watch?v=dQ57zYedMdQ" rel="noopener" target="_blank" title="Watch walkthrough: Few-Shot In-Context Learning & Chain-of-Thought (CoT) Reasoning">🎬YT</a><a href="https://en.wikipedia.org/wiki/Few-Shot" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ai-structured-outputs" data-name="structured outputs, json mode & schema enforcement">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Structured Outputs, JSON Mode & Schema Enforcement</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Constrained decoding, grammar-based sampling, JSON schema validation, Pydantic model extraction, and reliable API payload generation.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Structured Outputs, JSON Mode & Schema Enforcement" href="https://www.youtube.com/watch?v=0hbbZ_1e_h0" rel="noopener" target="_blank" title="Watch walkthrough: Structured Outputs, JSON Mode & Schema Enforcement">🎬YT</a><a href="https://en.wikipedia.org/wiki/Structured" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ai-prompt-security" data-name="prompt injection attacks, jailbreaking & defense strategies">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Prompt Injection Attacks, Jailbreaking & Defense Strategies</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Direct and indirect prompt injections, data exfiltration through tool execution, adversarial jailbreaks, sandwich defense, and input validation filters.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Prompt Injection Attacks, Jailbreaking & Defense Strategies" href="https://www.youtube.com/watch?v=v2gD8BHOa14" rel="noopener" target="_blank" title="Watch walkthrough: Prompt Injection Attacks, Jailbreaking & Defense Strategies">🎬YT</a><a href="https://en.wikipedia.org/wiki/Prompt" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li>
+</ol>
+</div><div class="subsection">
+<h3>1.3 Retrieval-Augmented Generation (RAG) Architecture</h3>
+<ol class="concepts">
+<li data-cid="ai-rag-fundamentals" data-name="rag workflow architecture: ingestion, chunking, indexing & generation">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">RAG Workflow Architecture: Ingestion, Chunking, Indexing & Generation</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">End-to-end RAG pipelines, external knowledge injection, grounding model responses, hallucination reduction, and context length expansion.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="IBM Technology" data-vdur="20:00" data-vtitle="RAG Workflow Architecture: Ingestion, Chunking, Indexing & Generation" href="https://www.youtube.com/watch?v=T-D1OfcDW1M" rel="noopener" target="_blank" title="Watch walkthrough: RAG Workflow Architecture: Ingestion, Chunking, Indexing & Generation">🎬YT</a><a href="https://en.wikipedia.org/wiki/RAG" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ai-chunking-embeddings" data-name="semantic chunking strategies & dense embedding models">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Semantic Chunking Strategies & Dense Embedding Models</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Fixed-size, sentence-based, recursive character, and semantic chunking; dense vector embeddings, representation spaces, and cross-lingual models.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Semantic Chunking Strategies & Dense Embedding Models" href="https://www.youtube.com/watch?v=gQddt9AgDsE" rel="noopener" target="_blank" title="Watch walkthrough: Semantic Chunking Strategies & Dense Embedding Models">🎬YT</a><a href="https://en.wikipedia.org/wiki/Semantic" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ai-hybrid-search-rrf" data-name="hybrid search: dense vector retrieval + bm25 lexical search & rrf">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Hybrid Search: Dense Vector Retrieval + BM25 Lexical Search & RRF</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Sparse keyword matching with BM25, dense semantic retrieval, score normalization, and Reciprocal Rank Fusion (RRF) for optimal recall.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Hybrid Search: Dense Vector Retrieval + BM25 Lexical Search & RRF" href="https://www.youtube.com/watch?v=2TGp1O8qVf8" rel="noopener" target="_blank" title="Watch walkthrough: Hybrid Search: Dense Vector Retrieval + BM25 Lexical Search & RRF">🎬YT</a><a href="https://en.wikipedia.org/wiki/Hybrid" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ai-reranking-advanced" data-name="re-ranking with cross-encoders & multi-query expansion">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Re-ranking with Cross-Encoders & Multi-Query Expansion</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Two-stage retrieval pipelines, bi-encoders for fast candidate retrieval, cross-encoders for deep semantic re-ranking, and query decomposition.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="DeepLearning.AI" data-vdur="20:00" data-vtitle="Re-ranking with Cross-Encoders & Multi-Query Expansion" href="https://www.youtube.com/watch?v=yws4kZoxLrk" rel="noopener" target="_blank" title="Watch walkthrough: Re-ranking with Cross-Encoders & Multi-Query Expansion">🎬YT</a><a href="https://en.wikipedia.org/wiki/Re-ranking" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li>
+</ol>
+</div><div class="subsection">
+<h3>1.4 Vector Databases & Semantic Storage</h3>
+<ol class="concepts">
+<li data-cid="ai-vector-db-mechanics" data-name="vector database mechanics: approximate nearest neighbor (ann) & hnsw indexing">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Vector Database Mechanics: Approximate Nearest Neighbor (ANN) & HNSW Indexing</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Exact k-NN vs Approximate Nearest Neighbor, Hierarchical Navigable Small World (HNSW) graphs, Inverted File Index (IVF), and product quantization.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="Computerphile" data-vdur="20:00" data-vtitle="Vector Database Mechanics: Approximate Nearest Neighbor (ANN) & HNSW Indexing" href="https://www.youtube.com/watch?v=klTvEwg3oJ8" rel="noopener" target="_blank" title="Watch walkthrough: Vector Database Mechanics: Approximate Nearest Neighbor (ANN) & HNSW Indexing">🎬YT</a><a href="https://en.wikipedia.org/wiki/Vector" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ai-pinecone-chroma" data-name="managed vector stores: pinecone, chromadb & weaviate">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Managed Vector Stores: Pinecone, ChromaDB & Weaviate</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Fully-managed cloud vector indexes, serverless pricing, embedded vector databases for prototyping, and hybrid keyword-vector storage.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Managed Vector Stores: Pinecone, ChromaDB & Weaviate" href="https://www.youtube.com/watch?v=QdDoFfkVkcw" rel="noopener" target="_blank" title="Watch walkthrough: Managed Vector Stores: Pinecone, ChromaDB & Weaviate">🎬YT</a><a href="https://en.wikipedia.org/wiki/Managed" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ai-milvus-qdrant" data-name="open-source vector engines: qdrant, milvus & pgvector for postgresql">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Open-Source Vector Engines: Qdrant, Milvus & pgvector for PostgreSQL</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Rust-based vector search engines, distributed Milvus clusters, and running native vector similarity search inside relational PostgreSQL via pgvector.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="Fireship" data-vdur="20:00" data-vtitle="Open-Source Vector Engines: Qdrant, Milvus & pgvector for PostgreSQL" href="https://www.youtube.com/watch?v=7uK3ddA9KFA" rel="noopener" target="_blank" title="Watch walkthrough: Open-Source Vector Engines: Qdrant, Milvus & pgvector for PostgreSQL">🎬YT</a><a href="https://en.wikipedia.org/wiki/Open-Source" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ai-distance-metrics" data-name="vector distance metrics: cosine similarity, dot product & euclidean distance">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Vector Distance Metrics: Cosine Similarity, Dot Product & Euclidean Distance</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Mathematical foundations of vector similarity: geometric angle (cosine), magnitude-sensitive inner products, and Euclidean L2 metric spaces.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Vector Distance Metrics: Cosine Similarity, Dot Product & Euclidean Distance" href="https://www.youtube.com/watch?v=e9U0QAFbfLI" rel="noopener" target="_blank" title="Watch walkthrough: Vector Distance Metrics: Cosine Similarity, Dot Product & Euclidean Distance">🎬YT</a><a href="https://en.wikipedia.org/wiki/Vector" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li>
+</ol>
+</div><div class="subsection">
+<h3>1.5 Autonomous AI Agents & Multi-Agent Frameworks</h3>
+<ol class="concepts">
+<li data-cid="ai-agent-loop-react" data-name="the react (reason + act) pattern & autonomous decision loops">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">The ReAct (Reason + Act) Pattern & Autonomous Decision Loops</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Observation-Thought-Action execution cycles, self-correction, task decomposition, stop conditions, and handling non-deterministic tool outputs.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="DeepLearning.AI" data-vdur="20:00" data-vtitle="The ReAct (Reason + Act) Pattern & Autonomous Decision Loops" href="https://www.youtube.com/watch?v=bzcRHN4Z5iE" rel="noopener" target="_blank" title="Watch walkthrough: The ReAct (Reason + Act) Pattern & Autonomous Decision Loops">🎬YT</a><a href="https://en.wikipedia.org/wiki/The" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ai-tool-calling-exec" data-name="dynamic tool calling, api execution & environment sandboxing">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Dynamic Tool Calling, API Execution & Environment Sandboxing</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Model-invoked external functions, parameter extraction, secure sandboxed code execution, web search integration, and error handling.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Dynamic Tool Calling, API Execution & Environment Sandboxing" href="https://www.youtube.com/watch?v=0LzvhbA-F5s" rel="noopener" target="_blank" title="Watch walkthrough: Dynamic Tool Calling, API Execution & Environment Sandboxing">🎬YT</a><a href="https://en.wikipedia.org/wiki/Dynamic" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ai-agent-memory" data-name="agent memory architectures: short-term buffer, sliding windows & vector memory">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Agent Memory Architectures: Short-Term Buffer, Sliding Windows & Vector Memory</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Conversation state management, token-constrained sliding buffers, recursive conversational summarization, and semantic memory recall.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="LangChain" data-vdur="20:00" data-vtitle="Agent Memory Architectures: Short-Term Buffer, Sliding Windows & Vector Memory" href="https://www.youtube.com/watch?v=1oEQqJ_XQx4" rel="noopener" target="_blank" title="Watch walkthrough: Agent Memory Architectures: Short-Term Buffer, Sliding Windows & Vector Memory">🎬YT</a><a href="https://en.wikipedia.org/wiki/Agent" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ai-langgraph-crewai" data-name="multi-agent orchestration: langgraph stateful graphs & crewai role playing">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Multi-Agent Orchestration: LangGraph Stateful Graphs & CrewAI Role Playing</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Cyclic graph workflows, human-in-the-loop approval nodes, state persistence, role-based delegation, and collaborative agent consensus.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Multi-Agent Orchestration: LangGraph Stateful Graphs & CrewAI Role Playing" href="https://www.youtube.com/watch?v=hvAPnpSfSGo" rel="noopener" target="_blank" title="Watch walkthrough: Multi-Agent Orchestration: LangGraph Stateful Graphs & CrewAI Role Playing">🎬YT</a><a href="https://en.wikipedia.org/wiki/Multi-Agent" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li>
+</ol>
+</div><div class="subsection">
+<h3>1.6 Fine-Tuning, Parameter-Efficient Adaptation & Alignment</h3>
+<ol class="concepts">
+<li data-cid="ai-finetuning-transfer" data-name="full fine-tuning vs transfer learning & task adaptation">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Full Fine-Tuning vs Transfer Learning & Task Adaptation</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Weight updating across all layers, catastrophic forgetting, compute and memory requirements, domain adaptation, and instruction fine-tuning.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="Andrej Karpathy" data-vdur="20:00" data-vtitle="Full Fine-Tuning vs Transfer Learning & Task Adaptation" href="https://www.youtube.com/watch?v=e-gwvmhyU7A" rel="noopener" target="_blank" title="Watch walkthrough: Full Fine-Tuning vs Transfer Learning & Task Adaptation">🎬YT</a><a href="https://en.wikipedia.org/wiki/Full" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ai-peft-lora" data-name="parameter-efficient fine-tuning (peft) & low-rank adaptation (lora)">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Parameter-Efficient Fine-Tuning (PEFT) & Low-Rank Adaptation (LoRA)</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Freezing base model weights, injecting trainable low-rank rank-decomposition matrices (A and B), and reducing trainable parameter counts by 99%.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="Weights & Biases" data-vdur="20:00" data-vtitle="Parameter-Efficient Fine-Tuning (PEFT) & Low-Rank Adaptation (LoRA)" href="https://www.youtube.com/watch?v=dA-NhCtrrVE" rel="noopener" target="_blank" title="Watch walkthrough: Parameter-Efficient Fine-Tuning (PEFT) & Low-Rank Adaptation (LoRA)">🎬YT</a><a href="https://en.wikipedia.org/wiki/Parameter-Efficient" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ai-qlora-quantization" data-name="4-bit quantization (qlora) & gpu memory optimization">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">4-bit Quantization (QLoRA) & GPU Memory Optimization</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">NormalFloat4 (NF4) data type, double quantization, paged optimizers, and fine-tuning 70B parameter models on consumer hardware.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="Hugging Face" data-vdur="20:00" data-vtitle="4-bit Quantization (QLoRA) & GPU Memory Optimization" href="https://www.youtube.com/watch?v=TPcXVJ1VSRI" rel="noopener" target="_blank" title="Watch walkthrough: 4-bit Quantization (QLoRA) & GPU Memory Optimization">🎬YT</a><a href="https://en.wikipedia.org/wiki/4-bit" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ai-rlhf-dpo" data-name="model alignment: reinforcement learning from human feedback (rlhf) & dpo">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Model Alignment: Reinforcement Learning from Human Feedback (RLHF) & DPO</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Reward model training, PPO policy optimization, Direct Preference Optimization (DPO) without reinforcement learning, and safety alignment.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="DeepLearning.AI" data-vdur="20:00" data-vtitle="Model Alignment: Reinforcement Learning from Human Feedback (RLHF) & DPO" href="https://www.youtube.com/watch?v=vE3m6U7fS4I" rel="noopener" target="_blank" title="Watch walkthrough: Model Alignment: Reinforcement Learning from Human Feedback (RLHF) & DPO">🎬YT</a><a href="https://en.wikipedia.org/wiki/Model" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li>
+</ol>
+</div><div class="subsection">
+<h3>1.7 AI Safety, Guardrails & LLM Evaluation</h3>
+<ol class="concepts">
+<li data-cid="ai-guardrails-moderation" data-name="input/output guardrails: nemo guardrails & llama guard">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Input/Output Guardrails: NeMo Guardrails & Llama Guard</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Programmable guardrail policies, topical rails, safety rails, hallucination mitigation, and sensitive data (PII) masking.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="NVIDIA" data-vdur="20:00" data-vtitle="Input/Output Guardrails: NeMo Guardrails & Llama Guard" href="https://www.youtube.com/watch?v=8V3G7aZcE3A" rel="noopener" target="_blank" title="Watch walkthrough: Input/Output Guardrails: NeMo Guardrails & Llama Guard">🎬YT</a><a href="https://en.wikipedia.org/wiki/Input/Output" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ai-rag-triad-eval" data-name="the rag triad: faithfulness, answer relevance & context relevance">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">The RAG Triad: Faithfulness, Answer Relevance & Context Relevance</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Evaluating retrieval precision, assessing whether answers are grounded in retrieved context, and measuring question answering fidelity.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="TruLens" data-vdur="20:00" data-vtitle="The RAG Triad: Faithfulness, Answer Relevance & Context Relevance" href="https://www.youtube.com/watch?v=hG9r2mG2t4g" rel="noopener" target="_blank" title="Watch walkthrough: The RAG Triad: Faithfulness, Answer Relevance & Context Relevance">🎬YT</a><a href="https://en.wikipedia.org/wiki/The" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ai-eval-frameworks" data-name="automated llm evaluation: ragas, trulens & deepeval">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Automated LLM Evaluation: Ragas, TruLens & Deepeval</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Synthetic test generation, automated metric scoring, CI/CD evaluation pipelines, and tracking model drift across prompt revisions.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="DeepLearning.AI" data-vdur="20:00" data-vtitle="Automated LLM Evaluation: Ragas, TruLens & Deepeval" href="https://www.youtube.com/watch?v=nO_3y12sZ7k" rel="noopener" target="_blank" title="Watch walkthrough: Automated LLM Evaluation: Ragas, TruLens & Deepeval">🎬YT</a><a href="https://en.wikipedia.org/wiki/Automated" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ai-llm-as-judge" data-name="llm-as-a-judge methodologies, benchmark datasets & golden sets">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">LLM-as-a-Judge Methodologies, Benchmark Datasets & Golden Sets</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Using frontier models to grade reasoning outputs, pairwise comparisons, position bias mitigation, and standard benchmark evaluation.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="LLM-as-a-Judge Methodologies, Benchmark Datasets & Golden Sets" href="https://www.youtube.com/watch?v=uK7YjH_9wG4" rel="noopener" target="_blank" title="Watch walkthrough: LLM-as-a-Judge Methodologies, Benchmark Datasets & Golden Sets">🎬YT</a><a href="https://en.wikipedia.org/wiki/LLM-as-a-Judge" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li>
+</ol>
+</div>
+</section><section class="section domain-section" id="section-2" data-domain="ml-eng" style="--section-color:hsl(320, 80%, 50%)">
+<div class="domain-focus-bar">
+<div class="domain-focus-badge">🧠 Track 2 of 4</div>
+<div class="domain-focus-title">Machine Learning Engineering (MLE)</div>
+<div class="domain-focus-nav">
+<button class="domain-focus-btn" onclick="navigateDomain(-1)" title="Previous Track">← Prev Track</button>
+<button class="domain-focus-btn" onclick="switchDomain('all')" title="View All Tracks">View All (4)</button>
+<button class="domain-focus-btn" onclick="navigateDomain(1)" title="Next Track">Next Track →</button>
+
+</div>
+</div>
+<h2>Machine Learning Engineering (MLE)</h2>
+<div class="sec-desc">
+<p><strong>Core Focus:</strong> Classical supervised & unsupervised algorithms, Deep Learning with PyTorch, feature pipelines, MLOps, model registries, serving & drift.</p>
+<p><strong>Track Key:</strong> Algorithms, PyTorch, MLOps & Production Serving</p>
+</div>
+<div class="subsection">
+<h3>2.1 Supervised & Unsupervised Learning Algorithms</h3>
+<ol class="concepts">
+<li data-cid="ml-linear-logistic" data-name="linear & logistic regression: cost functions, gradient descent & odds ratios">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Linear & Logistic Regression: Cost Functions, Gradient Descent & Odds Ratios</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Ordinary least squares, sigmoid activation, log-loss cross-entropy, decision boundaries, and interpretability in linear modeling.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Linear & Logistic Regression: Cost Functions, Gradient Descent & Odds Ratios" href="https://www.youtube.com/watch?v=nk2CQITm_eo" rel="noopener" target="_blank" title="Watch walkthrough: Linear & Logistic Regression: Cost Functions, Gradient Descent & Odds Ratios">🎬YT</a><a href="https://en.wikipedia.org/wiki/Linear" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ml-trees-ensembles" data-name="decision trees, bagging & random forest ensembles">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Decision Trees, Bagging & Random Forest Ensembles</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Gini impurity, entropy information gain, tree pruning, bootstrap aggregating (bagging), and feature subspace random forests.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Decision Trees, Bagging & Random Forest Ensembles" href="https://www.youtube.com/watch?v=J4Wdy0Wc_xQ" rel="noopener" target="_blank" title="Watch walkthrough: Decision Trees, Bagging & Random Forest Ensembles">🎬YT</a><a href="https://en.wikipedia.org/wiki/Decision" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ml-gradient-boosting" data-name="gradient boosting: xgboost, lightgbm & catboost internals">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Gradient Boosting: XGBoost, LightGBM & CatBoost Internals</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Sequential residual fitting, shrinkage learning rate, histogram-based splitting, leaf-wise vs depth-wise tree growth, and categorical features.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Gradient Boosting: XGBoost, LightGBM & CatBoost Internals" href="https://www.youtube.com/watch?v=OtD8wVaFm6E" rel="noopener" target="_blank" title="Watch walkthrough: Gradient Boosting: XGBoost, LightGBM & CatBoost Internals">🎬YT</a><a href="https://en.wikipedia.org/wiki/Gradient" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ml-unsupervised-clustering" data-name="unsupervised learning: k-means clustering, hierarchical & pca">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Unsupervised Learning: K-Means Clustering, Hierarchical & PCA</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Centroid convergence, inertia elbow method, silhouette analysis, dendrograms, and orthogonal variance projection via PCA.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Unsupervised Learning: K-Means Clustering, Hierarchical & PCA" href="https://www.youtube.com/watch?v=4b5d3muPQmA" rel="noopener" target="_blank" title="Watch walkthrough: Unsupervised Learning: K-Means Clustering, Hierarchical & PCA">🎬YT</a><a href="https://en.wikipedia.org/wiki/Unsupervised" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li>
+</ol>
+</div><div class="subsection">
+<h3>2.2 Deep Learning Architectures & PyTorch</h3>
+<ol class="concepts">
+<li data-cid="ml-neural-networks-backprop" data-name="multilayer perceptrons (mlp), activation functions & backpropagation">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Multilayer Perceptrons (MLP), Activation Functions & Backpropagation</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Forward pass, chain rule derivative calculation, vanishing and exploding gradients, ReLU, LeakyReLU, GELU, and weight initialization.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="3Blue1Brown" data-vdur="20:00" data-vtitle="Multilayer Perceptrons (MLP), Activation Functions & Backpropagation" href="https://www.youtube.com/watch?v=aircAruvnKk" rel="noopener" target="_blank" title="Watch walkthrough: Multilayer Perceptrons (MLP), Activation Functions & Backpropagation">🎬YT</a><a href="https://en.wikipedia.org/wiki/Multilayer" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ml-optimization-adam" data-name="loss functions & optimization: sgd with momentum, rmsprop & adam">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Loss Functions & Optimization: SGD with Momentum, RMSprop & Adam</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Convex vs non-convex optimization, exponential moving average of gradients, adaptive learning rates, weight decay, and learning rate warmups.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Loss Functions & Optimization: SGD with Momentum, RMSprop & Adam" href="https://www.youtube.com/watch?v=IHZwWFHWa-w" rel="noopener" target="_blank" title="Watch walkthrough: Loss Functions & Optimization: SGD with Momentum, RMSprop & Adam">🎬YT</a><a href="https://en.wikipedia.org/wiki/Loss" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ml-pytorch-fundamentals" data-name="pytorch core: tensors, autograd, nn.module & custom training loops">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">PyTorch Core: Tensors, Autograd, nn.Module & Custom Training Loops</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Dynamic computational graphs, tensor GPU memory allocation, automatic differentiation with .backward(), and optimizer step iteration.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="PyTorch Core: Tensors, Autograd, nn.Module & Custom Training Loops" href="https://www.youtube.com/watch?v=V_xro1bcAuA" rel="noopener" target="_blank" title="Watch walkthrough: PyTorch Core: Tensors, Autograd, nn.Module & Custom Training Loops">🎬YT</a><a href="https://en.wikipedia.org/wiki/PyTorch" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ml-cnn-rnn-foundations" data-name="vision & sequence models: convolutional neural networks (cnns) & lstms">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Vision & Sequence Models: Convolutional Neural Networks (CNNs) & LSTMs</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Convolution kernels, pooling layers, feature maps, recurrent hidden state transitions, gating mechanisms (Forget, Input, Output gates) in LSTMs.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="3Blue1Brown" data-vdur="20:00" data-vtitle="Vision & Sequence Models: Convolutional Neural Networks (CNNs) & LSTMs" href="https://www.youtube.com/watch?v=KuXjwB4LzSA" rel="noopener" target="_blank" title="Watch walkthrough: Vision & Sequence Models: Convolutional Neural Networks (CNNs) & LSTMs">🎬YT</a><a href="https://en.wikipedia.org/wiki/Vision" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li>
+</ol>
+</div><div class="subsection">
+<h3>2.3 Feature Engineering, Preprocessing & Validation</h3>
+<ol class="concepts">
+<li data-cid="ml-feature-encoding-scaling" data-name="feature preprocessing: one-hot, ordinal encoding & standard scaling">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Feature Preprocessing: One-Hot, Ordinal Encoding & Standard Scaling</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Handling categorical cardinalities, z-score normalization, min-max scaling, target encoding, and frequency encoding.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Feature Preprocessing: One-Hot, Ordinal Encoding & Standard Scaling" href="https://www.youtube.com/watch?v=irHhDMb3Vz0" rel="noopener" target="_blank" title="Watch walkthrough: Feature Preprocessing: One-Hot, Ordinal Encoding & Standard Scaling">🎬YT</a><a href="https://en.wikipedia.org/wiki/Feature" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ml-missing-imputation" data-name="missing value imputation, outlier detection & robust scaling">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Missing Value Imputation, Outlier Detection & Robust Scaling</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">MCAR vs MAR vs MNAR missingness, KNN/iterative imputation, interquartile range (IQR) fencing, and robust median-based scalers.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Missing Value Imputation, Outlier Detection & Robust Scaling" href="https://www.youtube.com/watch?v=m_hmflGZoxU" rel="noopener" target="_blank" title="Watch walkthrough: Missing Value Imputation, Outlier Detection & Robust Scaling">🎬YT</a><a href="https://en.wikipedia.org/wiki/Missing" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ml-cross-validation" data-name="k-fold cross-validation, stratified sampling & train/val/test splits">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">K-Fold Cross-Validation, Stratified Sampling & Train/Val/Test Splits</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Mitigating sample bias, class-balanced stratification, time-series split walk-forward validation, and hyperparameter grid search.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="K-Fold Cross-Validation, Stratified Sampling & Train/Val/Test Splits" href="https://www.youtube.com/watch?v=fSytzGwwBVw" rel="noopener" target="_blank" title="Watch walkthrough: K-Fold Cross-Validation, Stratified Sampling & Train/Val/Test Splits">🎬YT</a><a href="https://en.wikipedia.org/wiki/K-Fold" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ml-data-leakage" data-name="data leakage prevention: preprocessing inside cross-validation pipelines">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Data Leakage Prevention: Preprocessing Inside Cross-Validation Pipelines</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Feature leakage, target leakage, fit/transform pipeline boundaries, and building scikit-learn Pipeline and ColumnTransformer objects.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Data Leakage Prevention: Preprocessing Inside Cross-Validation Pipelines" href="https://www.youtube.com/watch?v=URdnFlZnqnk" rel="noopener" target="_blank" title="Watch walkthrough: Data Leakage Prevention: Preprocessing Inside Cross-Validation Pipelines">🎬YT</a><a href="https://en.wikipedia.org/wiki/Data" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li>
+</ol>
+</div><div class="subsection">
+<h3>2.4 Model Evaluation & Diagnostics</h3>
+<ol class="concepts">
+<li data-cid="ml-classification-metrics" data-name="classification metrics: precision, recall, f1-score, roc-auc & pr-auc">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Classification Metrics: Precision, Recall, F1-Score, ROC-AUC & PR-AUC</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Confusion matrix, false positives vs false negatives trade-off, precision-recall curve for imbalanced data, and probability thresholds.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Classification Metrics: Precision, Recall, F1-Score, ROC-AUC & PR-AUC" href="https://www.youtube.com/watch?v=4jRBRDbJemM" rel="noopener" target="_blank" title="Watch walkthrough: Classification Metrics: Precision, Recall, F1-Score, ROC-AUC & PR-AUC">🎬YT</a><a href="https://en.wikipedia.org/wiki/Classification" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ml-regression-metrics" data-name="regression metrics: mean squared error (mse), rmse, mae & r-squared">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Regression Metrics: Mean Squared Error (MSE), RMSE, MAE & R-Squared</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Penalizing large errors with MSE, interpretability of MAE, residual plots, and explained variance in target distributions.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Regression Metrics: Mean Squared Error (MSE), RMSE, MAE & R-Squared" href="https://www.youtube.com/watch?v=2AQKmw14mHM" rel="noopener" target="_blank" title="Watch walkthrough: Regression Metrics: Mean Squared Error (MSE), RMSE, MAE & R-Squared">🎬YT</a><a href="https://en.wikipedia.org/wiki/Regression" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ml-bias-variance" data-name="the bias-variance tradeoff: underfitting vs overfitting diagnostics">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">The Bias-Variance Tradeoff: Underfitting vs Overfitting Diagnostics</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Decomposing expected prediction error, learning curves, model capacity, validation loss divergence, and regularization remedies.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="The Bias-Variance Tradeoff: Underfitting vs Overfitting Diagnostics" href="https://www.youtube.com/watch?v=EuBBz3bI-aA" rel="noopener" target="_blank" title="Watch walkthrough: The Bias-Variance Tradeoff: Underfitting vs Overfitting Diagnostics">🎬YT</a><a href="https://en.wikipedia.org/wiki/The" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ml-regularization" data-name="regularization techniques: l1 (lasso), l2 (ridge), dropout & early stopping">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Regularization Techniques: L1 (Lasso), L2 (Ridge), Dropout & Early Stopping</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">L1 parameter sparsity, L2 weight decay penalty, randomly dropping neurons during training, and stopping criteria on validation plateaus.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Regularization Techniques: L1 (Lasso), L2 (Ridge), Dropout & Early Stopping" href="https://www.youtube.com/watch?v=Q81RR3yKn30" rel="noopener" target="_blank" title="Watch walkthrough: Regularization Techniques: L1 (Lasso), L2 (Ridge), Dropout & Early Stopping">🎬YT</a><a href="https://en.wikipedia.org/wiki/Regularization" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li>
+</ol>
+</div><div class="subsection">
+<h3>2.5 MLOps: Tracking, Pipelines & Feature Stores</h3>
+<ol class="concepts">
+<li data-cid="ml-experiment-tracking" data-name="experiment tracking & model registry with mlflow / weights & biases">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Experiment Tracking & Model Registry with MLflow / Weights & Biases</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Logging hyperparameters, loss curves, artifacts, model versioning, transition stages (Staging, Production), and lineage audits.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Experiment Tracking & Model Registry with MLflow / Weights & Biases" href="https://www.youtube.com/watch?v=6rVf8tL4lH4" rel="noopener" target="_blank" title="Watch walkthrough: Experiment Tracking & Model Registry with MLflow / Weights & Biases">🎬YT</a><a href="https://en.wikipedia.org/wiki/Experiment" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ml-pipeline-orchestration" data-name="automated ml pipelines: kubeflow, metaflow & ci/cd for ml">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Automated ML Pipelines: Kubeflow, Metaflow & CI/CD for ML</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Reproducible DAG workflows, containerized training steps, artifact caching, and continuous training (CT) triggers upon data updates.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Automated ML Pipelines: Kubeflow, Metaflow & CI/CD for ML" href="https://www.youtube.com/watch?v=qTfZzYcR7pM" rel="noopener" target="_blank" title="Watch walkthrough: Automated ML Pipelines: Kubeflow, Metaflow & CI/CD for ML">🎬YT</a><a href="https://en.wikipedia.org/wiki/Automated" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ml-feature-stores" data-name="centralized feature stores: feast & feature pipelines">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Centralized Feature Stores: Feast & Feature Pipelines</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Decoupling feature engineering from model consumption, point-in-time correct joins to prevent data leakage, and low-latency online serving.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Centralized Feature Stores: Feast & Feature Pipelines" href="https://www.youtube.com/watch?v=zGgZp9c2VzA" rel="noopener" target="_blank" title="Watch walkthrough: Centralized Feature Stores: Feast & Feature Pipelines">🎬YT</a><a href="https://en.wikipedia.org/wiki/Centralized" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ml-model-versioning" data-name="model versioning, artifact lineage & reproducibility">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Model Versioning, Artifact Lineage & Reproducibility</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Semantic versioning for model weights, data-code-model linkage via DVC, hardware environment freezing, and deterministic seeds.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Model Versioning, Artifact Lineage & Reproducibility" href="https://www.youtube.com/watch?v=kYJv8P2zHk8" rel="noopener" target="_blank" title="Watch walkthrough: Model Versioning, Artifact Lineage & Reproducibility">🎬YT</a><a href="https://en.wikipedia.org/wiki/Model" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li>
+</ol>
+</div><div class="subsection">
+<h3>2.6 Model Deployment, Inference & Monitoring</h3>
+<ol class="concepts">
+<li data-cid="ml-serving-fastapi" data-name="low-latency model serving with fastapi & rest/grpc endpoints">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Low-Latency Model Serving with FastAPI & REST/gRPC Endpoints</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Asynchronous request handling, model warm-up, batching predictions, input payload validation, and health check probes.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Low-Latency Model Serving with FastAPI & REST/gRPC Endpoints" href="https://www.youtube.com/watch?v=h5wZ4_6bQ1Q" rel="noopener" target="_blank" title="Watch walkthrough: Low-Latency Model Serving with FastAPI & REST/gRPC Endpoints">🎬YT</a><a href="https://en.wikipedia.org/wiki/Low-Latency" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ml-triton-serving" data-name="production inference servers: nvidia triton & torchserve">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Production Inference Servers: NVIDIA Triton & TorchServe</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Multi-model concurrency, dynamic batching, GPU kernel acceleration, TensorRT compilation, and model pipelining.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="NVIDIA" data-vdur="20:00" data-vtitle="Production Inference Servers: NVIDIA Triton & TorchServe" href="https://www.youtube.com/watch?v=Vb7C_7a3d3M" rel="noopener" target="_blank" title="Watch walkthrough: Production Inference Servers: NVIDIA Triton & TorchServe">🎬YT</a><a href="https://en.wikipedia.org/wiki/Production" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ml-drift-monitoring" data-name="model monitoring: data drift (ks-test), concept drift & evidently ai">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Model Monitoring: Data Drift (KS-Test), Concept Drift & Evidently AI</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Feature distribution divergence, label distribution shifts, Kolmogorov-Smirnov statistical tests, population stability index (PSI), and alerting.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="Evidently AI" data-vdur="20:00" data-vtitle="Model Monitoring: Data Drift (KS-Test), Concept Drift & Evidently AI" href="https://www.youtube.com/watch?v=7uK3ddA9KFA" rel="noopener" target="_blank" title="Watch walkthrough: Model Monitoring: Data Drift (KS-Test), Concept Drift & Evidently AI">🎬YT</a><a href="https://en.wikipedia.org/wiki/Model" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ml-batch-inference" data-name="high-throughput batch inference & asynchronous scoring pipelines">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">High-Throughput Batch Inference & Asynchronous Scoring Pipelines</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Serverless batch jobs, parallel worker scoring with Ray/Spark, partitioning output tables, and error recovery in batch workloads.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="High-Throughput Batch Inference & Asynchronous Scoring Pipelines" href="https://www.youtube.com/watch?v=kYJv8P2zHk8" rel="noopener" target="_blank" title="Watch walkthrough: High-Throughput Batch Inference & Asynchronous Scoring Pipelines">🎬YT</a><a href="https://en.wikipedia.org/wiki/High-Throughput" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li>
+</ol>
+</div>
+</section><section class="section domain-section" id="section-3" data-domain="data-science" style="--section-color:hsl(20, 80%, 50%)">
+<div class="domain-focus-bar">
+<div class="domain-focus-badge">🔬 Track 3 of 4</div>
+<div class="domain-focus-title">Data Science & Applied Analytics</div>
+<div class="domain-focus-nav">
+<button class="domain-focus-btn" onclick="navigateDomain(-1)" title="Previous Track">← Prev Track</button>
+<button class="domain-focus-btn" onclick="switchDomain('all')" title="View All Tracks">View All (4)</button>
+<button class="domain-focus-btn" onclick="navigateDomain(1)" title="Next Track">Next Track →</button>
+
+</div>
+</div>
+<h2>Data Science & Applied Analytics</h2>
+<div class="sec-desc">
+<p><strong>Core Focus:</strong> Applied mathematics, probability, inferential statistics, Exploratory Data Analysis (EDA), hypothesis testing, A/B testing & time-series.</p>
+<p><strong>Track Key:</strong> Statistics, EDA, Hypothesis Testing & A/B Testing</p>
+</div>
+<div class="subsection">
+<h3>3.1 Applied Mathematics & Linear Algebra</h3>
+<ol class="concepts">
+<li data-cid="ds-linear-algebra-vectors" data-name="vector spaces, dot products, vector norms & projections">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Vector Spaces, Dot Products, Vector Norms & Projections</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Vector operations, Euclidean norm (L2), Manhattan norm (L1), dot product geometric projection, and vector basis transformations.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="3Blue1Brown" data-vdur="20:00" data-vtitle="Vector Spaces, Dot Products, Vector Norms & Projections" href="https://www.youtube.com/watch?v=fNk_zzaMoSs" rel="noopener" target="_blank" title="Watch walkthrough: Vector Spaces, Dot Products, Vector Norms & Projections">🎬YT</a><a href="https://en.wikipedia.org/wiki/Vector" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ds-matrix-operations" data-name="matrix transformations, determinants, matrix inversion & rank">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Matrix Transformations, Determinants, Matrix Inversion & Rank</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Linear transformations, scaling, rotations, matrix rank, singular matrices, determinants as area scaling, and system of linear equations.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="3Blue1Brown" data-vdur="20:00" data-vtitle="Matrix Transformations, Determinants, Matrix Inversion & Rank" href="https://www.youtube.com/watch?v=kYB8IZa5AuE" rel="noopener" target="_blank" title="Watch walkthrough: Matrix Transformations, Determinants, Matrix Inversion & Rank">🎬YT</a><a href="https://en.wikipedia.org/wiki/Matrix" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ds-eigenvalues-pca" data-name="eigenvalues, eigenvectors & principal component analysis (pca)">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Eigenvalues, Eigenvectors & Principal Component Analysis (PCA)</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Characteristic equation, invariant transformation vectors, covariance matrix eigendecomposition, and dimensionality reduction.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="3Blue1Brown" data-vdur="20:00" data-vtitle="Eigenvalues, Eigenvectors & Principal Component Analysis (PCA)" href="https://www.youtube.com/watch?v=PFDu9oVAE-g" rel="noopener" target="_blank" title="Watch walkthrough: Eigenvalues, Eigenvectors & Principal Component Analysis (PCA)">🎬YT</a><a href="https://en.wikipedia.org/wiki/Eigenvalues," rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ds-calculus-gradients" data-name="multivariable calculus: partial derivatives, gradients & hessian matrices">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Multivariable Calculus: Partial Derivatives, Gradients & Hessian Matrices</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Directional derivatives, the gradient vector pointing in direction of steepest ascent, tangent planes, and second derivative curvature matrices.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="3Blue1Brown" data-vdur="20:00" data-vtitle="Multivariable Calculus: Partial Derivatives, Gradients & Hessian Matrices" href="https://www.youtube.com/watch?v=TrcCbdWwCBc" rel="noopener" target="_blank" title="Watch walkthrough: Multivariable Calculus: Partial Derivatives, Gradients & Hessian Matrices">🎬YT</a><a href="https://en.wikipedia.org/wiki/Multivariable" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li>
+</ol>
+</div><div class="subsection">
+<h3>3.2 Probability & Inferential Statistics</h3>
+<ol class="concepts">
+<li data-cid="ds-probability-distributions" data-name="probability distributions: normal, binomial, uniform & poisson">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Probability Distributions: Normal, Binomial, Uniform & Poisson</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Probability density functions (PDF), cumulative distribution functions (CDF), expected value, variance, and skewness/kurtosis.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Probability Distributions: Normal, Binomial, Uniform & Poisson" href="https://www.youtube.com/watch?v=oI3hZJqXJuc" rel="noopener" target="_blank" title="Watch walkthrough: Probability Distributions: Normal, Binomial, Uniform & Poisson">🎬YT</a><a href="https://en.wikipedia.org/wiki/Probability" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ds-clt-sampling" data-name="the central limit theorem (clt), standard error & sampling distributions">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">The Central Limit Theorem (CLT), Standard Error & Sampling Distributions</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Distribution of sample means approaching Gaussian regardless of population distribution, sample size rules (n >= 30), and standard error.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="The Central Limit Theorem (CLT), Standard Error & Sampling Distributions" href="https://www.youtube.com/watch?v=YAlJCEDH2uY" rel="noopener" target="_blank" title="Watch walkthrough: The Central Limit Theorem (CLT), Standard Error & Sampling Distributions">🎬YT</a><a href="https://en.wikipedia.org/wiki/The" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ds-bayes-theorem" data-name="conditional probability, bayes' theorem & prior/posterior inference">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Conditional Probability, Bayes' Theorem & Prior/Posterior Inference</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Joint probability, marginal probability, updating prior beliefs with likelihood to calculate posterior probabilities, and false positive paradox.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="3Blue1Brown" data-vdur="20:00" data-vtitle="Conditional Probability, Bayes' Theorem & Prior/Posterior Inference" href="https://www.youtube.com/watch?v=HZGCoVF3YvM" rel="noopener" target="_blank" title="Watch walkthrough: Conditional Probability, Bayes' Theorem & Prior/Posterior Inference">🎬YT</a><a href="https://en.wikipedia.org/wiki/Conditional" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ds-confidence-intervals" data-name="confidence intervals, margin of error & estimation">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Confidence Intervals, Margin of Error & Estimation</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Point estimates, critical z and t values, interpreting 95% confidence intervals, sample size estimation, and bootstrap resampling.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Confidence Intervals, Margin of Error & Estimation" href="https://www.youtube.com/watch?v=TqOeMYtOc1w" rel="noopener" target="_blank" title="Watch walkthrough: Confidence Intervals, Margin of Error & Estimation">🎬YT</a><a href="https://en.wikipedia.org/wiki/Confidence" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li>
+</ol>
+</div><div class="subsection">
+<h3>3.3 Exploratory Data Analysis (EDA) & Scientific Computing</h3>
+<ol class="concepts">
+<li data-cid="ds-numpy-vectorization" data-name="high-performance numpy: array broadcasting, vectorization & memory">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">High-Performance NumPy: Array Broadcasting, Vectorization & Memory</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Contiguous C vs Fortran memory order, strided arrays, eliminating Python for-loops via SIMD vectorization, and universal functions (ufuncs).</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="High-Performance NumPy: Array Broadcasting, Vectorization & Memory" href="https://www.youtube.com/watch?v=QUT1VHiLmmI" rel="noopener" target="_blank" title="Watch walkthrough: High-Performance NumPy: Array Broadcasting, Vectorization & Memory">🎬YT</a><a href="https://en.wikipedia.org/wiki/High-Performance" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ds-pandas-wrangling" data-name="pandas data wrangling: groupby, merging, pivot tables & multi-indexing">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Pandas Data Wrangling: GroupBy, Merging, Pivot Tables & Multi-Indexing</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Split-apply-combine strategy, inner/outer/left joins, handling multi-level indexes, reshaping data via melt/pivot, and datetime manipulation.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="Keith Galli" data-vdur="20:00" data-vtitle="Pandas Data Wrangling: GroupBy, Merging, Pivot Tables & Multi-Indexing" href="https://www.youtube.com/watch?v=vmEHCJofslg" rel="noopener" target="_blank" title="Watch walkthrough: Pandas Data Wrangling: GroupBy, Merging, Pivot Tables & Multi-Indexing">🎬YT</a><a href="https://en.wikipedia.org/wiki/Pandas" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ds-polars-columnar" data-name="high-speed columnar processing with polars & lazy evaluation">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">High-Speed Columnar Processing with Polars & Lazy Evaluation</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Rust-powered DataFrame processing, Apache Arrow memory layout, multithreaded query planning, lazy computation graphs, and memory efficiency.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="High-Speed Columnar Processing with Polars & Lazy Evaluation" href="https://www.youtube.com/watch?v=t_o7jD2iV9E" rel="noopener" target="_blank" title="Watch walkthrough: High-Speed Columnar Processing with Polars & Lazy Evaluation">🎬YT</a><a href="https://en.wikipedia.org/wiki/High-Speed" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ds-visualization-storytelling" data-name="data visualization: distribution plots, heatmaps & visual storytelling">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Data Visualization: Distribution Plots, Heatmaps & Visual Storytelling</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Grammar of graphics, selecting effective visualizations (box plots, violin plots, pairplots), correlation heatmaps, and executive presentations.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Data Visualization: Distribution Plots, Heatmaps & Visual Storytelling" href="https://www.youtube.com/watch?v=6GUZXDef2U0" rel="noopener" target="_blank" title="Watch walkthrough: Data Visualization: Distribution Plots, Heatmaps & Visual Storytelling">🎬YT</a><a href="https://en.wikipedia.org/wiki/Data" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li>
+</ol>
+</div><div class="subsection">
+<h3>3.4 Hypothesis Testing & A/B Experimentation</h3>
+<ol class="concepts">
+<li data-cid="ds-hypothesis-foundations" data-name="null & alternative hypotheses, alpha (significance level), p-values & effect size">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Null & Alternative Hypotheses, Alpha (Significance Level), p-values & Effect Size</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Formulating testable hypotheses, Type I error (false positive), Type II error (false negative), p-value interpretation, and Cohen's d effect size.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Null & Alternative Hypotheses, Alpha (Significance Level), p-values & Effect Size" href="https://www.youtube.com/watch?v=0oc49DyA3hU" rel="noopener" target="_blank" title="Watch walkthrough: Null & Alternative Hypotheses, Alpha (Significance Level), p-values & Effect Size">🎬YT</a><a href="https://en.wikipedia.org/wiki/Null" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ds-parametric-tests" data-name="parametric tests: one-sample, two-sample & paired student's t-tests">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Parametric Tests: One-Sample, Two-Sample & Paired Student's t-Tests</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Testing difference in sample means, degrees of freedom, Student's t-distribution vs standard normal, Welch's t-test for unequal variances.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Parametric Tests: One-Sample, Two-Sample & Paired Student's t-Tests" href="https://www.youtube.com/watch?v=Nvyb7U5nKrk" rel="noopener" target="_blank" title="Watch walkthrough: Parametric Tests: One-Sample, Two-Sample & Paired Student's t-Tests">🎬YT</a><a href="https://en.wikipedia.org/wiki/Parametric" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ds-anova-chisquare" data-name="multi-group comparisons: one-way anova & chi-square independence tests">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Multi-Group Comparisons: One-Way ANOVA & Chi-Square Independence Tests</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">F-statistic, between-group vs within-group variance, Tukey's HSD post-hoc test, contingency tables, and observed vs expected frequencies.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Multi-Group Comparisons: One-Way ANOVA & Chi-Square Independence Tests" href="https://www.youtube.com/watch?v=NF5_btOaFgk" rel="noopener" target="_blank" title="Watch walkthrough: Multi-Group Comparisons: One-Way ANOVA & Chi-Square Independence Tests">🎬YT</a><a href="https://en.wikipedia.org/wiki/Multi-Group" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ds-ab-testing-design" data-name="a/b testing design: sample size calculation, statistical power & mde">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">A/B Testing Design: Sample Size Calculation, Statistical Power & MDE</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Determining test duration, statistical power (1 - Beta = 80%), Minimum Detectable Effect (MDE), sample ratio mismatch (SRM), and novelty bias.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="A/B Testing Design: Sample Size Calculation, Statistical Power & MDE" href="https://www.youtube.com/watch?v=8H6Qk-83bBg" rel="noopener" target="_blank" title="Watch walkthrough: A/B Testing Design: Sample Size Calculation, Statistical Power & MDE">🎬YT</a><a href="https://en.wikipedia.org/wiki/A/B" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li>
+</ol>
+</div><div class="subsection">
+<h3>3.5 Time-Series Analysis & Forecasting</h3>
+<ol class="concepts">
+<li data-cid="ds-timeseries-components" data-name="time-series components: trend, seasonality, cyclical & residual noise">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Time-Series Components: Trend, Seasonality, Cyclical & Residual Noise</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Additive vs multiplicative decomposition, moving averages, rolling statistics, calendar seasonality, and detrending techniques.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Time-Series Components: Trend, Seasonality, Cyclical & Residual Noise" href="https://www.youtube.com/watch?v=DeORzP0go5I" rel="noopener" target="_blank" title="Watch walkthrough: Time-Series Components: Trend, Seasonality, Cyclical & Residual Noise">🎬YT</a><a href="https://en.wikipedia.org/wiki/Time-Series" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ds-stationarity-tests" data-name="stationarity, autocorrelation (acf/pacf) & augmented dickey-fuller test">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Stationarity, Autocorrelation (ACF/PACF) & Augmented Dickey-Fuller Test</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Mean and variance stability over time, lag plots, autocorrelation function, partial autocorrelation function, and unit root testing.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Stationarity, Autocorrelation (ACF/PACF) & Augmented Dickey-Fuller Test" href="https://www.youtube.com/watch?v=oXhN3iP4S5E" rel="noopener" target="_blank" title="Watch walkthrough: Stationarity, Autocorrelation (ACF/PACF) & Augmented Dickey-Fuller Test">🎬YT</a><a href="https://en.wikipedia.org/wiki/Stationarity," rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ds-arima-models" data-name="auto-regressive integrated moving average (arima) & sarima">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Auto-Regressive Integrated Moving Average (ARIMA) & SARIMA</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Autoregressive lag order (p), differencing degree (d), moving average error order (q), seasonal period (s), and model residual diagnostics.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Auto-Regressive Integrated Moving Average (ARIMA) & SARIMA" href="https://www.youtube.com/watch?v=3UmyHed0iYE" rel="noopener" target="_blank" title="Watch walkthrough: Auto-Regressive Integrated Moving Average (ARIMA) & SARIMA">🎬YT</a><a href="https://en.wikipedia.org/wiki/Auto-Regressive" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ds-prophet-exponential" data-name="modern forecasting: holt-winters exponential smoothing & meta prophet">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Modern Forecasting: Holt-Winters Exponential Smoothing & Meta Prophet</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Triple exponential smoothing (level, trend, seasonal), generalized additive models with non-linear trends, and holiday impact modeling.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Modern Forecasting: Holt-Winters Exponential Smoothing & Meta Prophet" href="https://www.youtube.com/watch?v=pG4Wb8vO6A0" rel="noopener" target="_blank" title="Watch walkthrough: Modern Forecasting: Holt-Winters Exponential Smoothing & Meta Prophet">🎬YT</a><a href="https://en.wikipedia.org/wiki/Modern" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li>
+</ol>
+</div>
+</section><section class="section domain-section" id="section-4" data-domain="data-eng" style="--section-color:hsl(80, 80%, 50%)">
+<div class="domain-focus-bar">
+<div class="domain-focus-badge">🏗️ Track 4 of 4</div>
+<div class="domain-focus-title">Data Engineering & Modern Data Stack</div>
+<div class="domain-focus-nav">
+<button class="domain-focus-btn" onclick="navigateDomain(-1)" title="Previous Track">← Prev Track</button>
+<button class="domain-focus-btn" onclick="switchDomain('all')" title="View All Tracks">View All (4)</button>
+<button class="domain-focus-btn" onclick="navigateDomain(1)" title="Next Track">Next Track →</button>
+
+</div>
+</div>
+<h2>Data Engineering & Modern Data Stack</h2>
+<div class="sec-desc">
+<p><strong>Core Focus:</strong> Cloud data warehouses (Snowflake, BigQuery), Apache Spark, Lakehouse table formats (Iceberg, Delta), dbt modeling, Airflow & Kafka.</p>
+<p><strong>Track Key:</strong> Warehousing, Spark, Lakehouse, dbt & Kafka</p>
+</div>
+<div class="subsection">
+<h3>4.1 Data Warehousing & Cloud OLAP Engines</h3>
+<ol class="concepts">
+<li data-cid="de-oltp-vs-olap" data-name="oltp (row-oriented) vs olap (columnar): storage & query optimization">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">OLTP (Row-Oriented) vs OLAP (Columnar): Storage & Query Optimization</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Row-based B-trees for high write concurrency vs Column-based storage for large analytical aggregations, vectorization, and compression ratios.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="ByteByteGo" data-vdur="20:00" data-vtitle="OLTP (Row-Oriented) vs OLAP (Columnar): Storage & Query Optimization" href="https://www.youtube.com/watch?v=1uTfG6eA0oE" rel="noopener" target="_blank" title="Watch walkthrough: OLTP (Row-Oriented) vs OLAP (Columnar): Storage & Query Optimization">🎬YT</a><a href="https://en.wikipedia.org/wiki/OLTP" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="de-snowflake-architecture" data-name="snowflake multi-cluster shared data architecture & virtual warehouses">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Snowflake Multi-Cluster Shared Data Architecture & Virtual Warehouses</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Decoupled storage, compute, and cloud services layers; micro-partitions, virtual warehouse compute auto-scaling, and zero-copy cloning.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Snowflake Multi-Cluster Shared Data Architecture & Virtual Warehouses" href="https://www.youtube.com/watch?v=v_sD7Lp0uUo" rel="noopener" target="_blank" title="Watch walkthrough: Snowflake Multi-Cluster Shared Data Architecture & Virtual Warehouses">🎬YT</a><a href="https://en.wikipedia.org/wiki/Snowflake" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="de-bigquery-storage" data-name="google bigquery architecture: capacitor columnar storage & dremel">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Google BigQuery Architecture: Capacitor Columnar Storage & Dremel</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Serverless multi-tenant slots, Colossus distributed storage, Capacitor columnar format with RLE/dictionary encoding, and Dremel query engine.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="Google Cloud Tech" data-vdur="20:00" data-vtitle="Google BigQuery Architecture: Capacitor Columnar Storage & Dremel" href="https://www.youtube.com/watch?v=d3t4V_i4C5o" rel="noopener" target="_blank" title="Watch walkthrough: Google BigQuery Architecture: Capacitor Columnar Storage & Dremel">🎬YT</a><a href="https://en.wikipedia.org/wiki/Google" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="de-partitioning-clustering" data-name="table partitioning, clustering keys & query cost reduction">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Table Partitioning, Clustering Keys & Query Cost Reduction</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Date/ingestion partitioning, pruning unneeded partitions, multi-column clustering sort orders, and optimizing scan bytes.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="SeattleDataGuy" data-vdur="20:00" data-vtitle="Table Partitioning, Clustering Keys & Query Cost Reduction" href="https://www.youtube.com/watch?v=9jR4U_X6Z2Q" rel="noopener" target="_blank" title="Watch walkthrough: Table Partitioning, Clustering Keys & Query Cost Reduction">🎬YT</a><a href="https://en.wikipedia.org/wiki/Table" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li>
+</ol>
+</div><div class="subsection">
+<h3>4.2 Distributed Data Processing with Apache Spark</h3>
+<ol class="concepts">
+<li data-cid="de-spark-architecture" data-name="apache spark cluster architecture: driver, cluster manager & executors">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Apache Spark Cluster Architecture: Driver, Cluster Manager & Executors</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Driver program, SparkContext, DAGScheduler, TaskScheduler, Worker nodes, Executor JVMs, and distributed memory allocation.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Apache Spark Cluster Architecture: Driver, Cluster Manager & Executors" href="https://www.youtube.com/watch?v=_C-WDoJpUWY" rel="noopener" target="_blank" title="Watch walkthrough: Apache Spark Cluster Architecture: Driver, Cluster Manager & Executors">🎬YT</a><a href="https://en.wikipedia.org/wiki/Apache" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="de-spark-transformations" data-name="spark transformations: narrow vs wide dependencies & the shuffle stage">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Spark Transformations: Narrow vs Wide Dependencies & The Shuffle Stage</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Map/filter (narrow) without network transfers vs GroupBy/join (wide) requiring cluster-wide data shuffle, stage boundaries, and skew.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Spark Transformations: Narrow vs Wide Dependencies & The Shuffle Stage" href="https://www.youtube.com/watch?v=3mJkWkH9P6Q" rel="noopener" target="_blank" title="Watch walkthrough: Spark Transformations: Narrow vs Wide Dependencies & The Shuffle Stage">🎬YT</a><a href="https://en.wikipedia.org/wiki/Spark" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="de-pyspark-dataframes" data-name="pyspark dataframes, spark sql & distributed aggregations">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">PySpark DataFrames, Spark SQL & Distributed Aggregations</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">DataFrame API syntax, structured streaming, window functions, user-defined functions (UDFs vs pandas UDFs with Arrow), and broadcast joins.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="PySpark DataFrames, Spark SQL & Distributed Aggregations" href="https://www.youtube.com/watch?v=XrpSRCwISdk" rel="noopener" target="_blank" title="Watch walkthrough: PySpark DataFrames, Spark SQL & Distributed Aggregations">🎬YT</a><a href="https://en.wikipedia.org/wiki/PySpark" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="de-catalyst-optimizer" data-name="the catalyst query optimizer & tungsten memory management">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">The Catalyst Query Optimizer & Tungsten Memory Management</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Logical plan generation, rule-based optimization, cost-based optimization, physical plan selection, and off-heap binary format processing.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="The Catalyst Query Optimizer & Tungsten Memory Management" href="https://www.youtube.com/watch?v=r0X6X_6r7uM" rel="noopener" target="_blank" title="Watch walkthrough: The Catalyst Query Optimizer & Tungsten Memory Management">🎬YT</a><a href="https://en.wikipedia.org/wiki/The" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li>
+</ol>
+</div><div class="subsection">
+<h3>4.3 Data Lakehouse Architecture & Open Table Formats</h3>
+<ol class="concepts">
+<li data-cid="de-lakehouse-evolution" data-name="lakehouse evolution: object storage, acid transactions & metadata">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Lakehouse Evolution: Object Storage, ACID Transactions & Metadata</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Combining data lake cost-efficiency with data warehouse ACID guarantees, schema enforcement, concurrency, and metadata management.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="Databricks" data-vdur="20:00" data-vtitle="Lakehouse Evolution: Object Storage, ACID Transactions & Metadata" href="https://www.youtube.com/watch?v=vA8Z2k_o8bE" rel="noopener" target="_blank" title="Watch walkthrough: Lakehouse Evolution: Object Storage, ACID Transactions & Metadata">🎬YT</a><a href="https://en.wikipedia.org/wiki/Lakehouse" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="de-apache-iceberg" data-name="apache iceberg: snapshot architecture, manifest files & partitioning">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Apache Iceberg: Snapshot Architecture, Manifest Files & Partitioning</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Hierarchical metadata tree: Iceberg catalog, metadata file, manifest lists, manifest files, data files, hidden partitioning, and time travel.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="SeattleDataGuy" data-vdur="20:00" data-vtitle="Apache Iceberg: Snapshot Architecture, Manifest Files & Partitioning" href="https://www.youtube.com/watch?v=4u1Q2f_x5aQ" rel="noopener" target="_blank" title="Watch walkthrough: Apache Iceberg: Snapshot Architecture, Manifest Files & Partitioning">🎬YT</a><a href="https://en.wikipedia.org/wiki/Apache" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="de-delta-lake" data-name="delta lake: transaction log (delta log), acid guarantees & time travel">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Delta Lake: Transaction Log (Delta Log), ACID Guarantees & Time Travel</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">JSON/Parquet commit log, atomic commit protocols, optimistic concurrency control, vacuuming old snapshots, and MERGE upsert commands.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="Databricks" data-vdur="20:00" data-vtitle="Delta Lake: Transaction Log (Delta Log), ACID Guarantees & Time Travel" href="https://www.youtube.com/watch?v=6rVf8tL4lH4" rel="noopener" target="_blank" title="Watch walkthrough: Delta Lake: Transaction Log (Delta Log), ACID Guarantees & Time Travel">🎬YT</a><a href="https://en.wikipedia.org/wiki/Delta" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="de-parquet-internals" data-name="columnar file formats: apache parquet anatomy & compression">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Columnar File Formats: Apache Parquet Anatomy & Compression</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Parquet file structure: File Header, Row Groups, Column Chunks, Data Pages, Dictionary Pages, Snappy/ZSTD compression, and stats pruning.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="SeattleDataGuy" data-vdur="20:00" data-vtitle="Columnar File Formats: Apache Parquet Anatomy & Compression" href="https://www.youtube.com/watch?v=1uTfG6eA0oE" rel="noopener" target="_blank" title="Watch walkthrough: Columnar File Formats: Apache Parquet Anatomy & Compression">🎬YT</a><a href="https://en.wikipedia.org/wiki/Columnar" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li>
+</ol>
+</div><div class="subsection">
+<h3>4.4 Data Transformation & Dimensional Modeling with dbt</h3>
+<ol class="concepts">
+<li data-cid="de-dbt-fundamentals" data-name="data build tool (dbt): models, ref macros & modular sql dags">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Data Build Tool (dbt): Models, Ref Macros & Modular SQL DAGs</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">ELT paradigm, declarative SQL transformations, the {{ ref() }} function building lineage graphs, staging vs intermediate vs mart layers.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Data Build Tool (dbt): Models, Ref Macros & Modular SQL DAGs" href="https://www.youtube.com/watch?v=5rT8X2k-4kU" rel="noopener" target="_blank" title="Watch walkthrough: Data Build Tool (dbt): Models, Ref Macros & Modular SQL DAGs">🎬YT</a><a href="https://en.wikipedia.org/wiki/Data" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="de-dbt-testing-docs" data-name="dbt data quality: schema tests, singular tests & auto-docs">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">dbt Data Quality: Schema Tests, Singular Tests & Auto-Docs</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Asserting unique, not_null, accepted_values, relationships foreign keys; compiling data catalogs, interactive DAG visualizers, and CI runs.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="SeattleDataGuy" data-vdur="20:00" data-vtitle="dbt Data Quality: Schema Tests, Singular Tests & Auto-Docs" href="https://www.youtube.com/watch?v=6rVf8tL4lH4" rel="noopener" target="_blank" title="Watch walkthrough: dbt Data Quality: Schema Tests, Singular Tests & Auto-Docs">🎬YT</a><a href="https://en.wikipedia.org/wiki/dbt" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="de-dimensional-modeling" data-name="dimensional modeling: kimball star schema vs snowflake schema">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Dimensional Modeling: Kimball Star Schema vs Snowflake Schema</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Business processes, grains, Fact tables (additive, semi-additive, non-additive measures), Dimension tables, surrogate keys, and normalization.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="SeattleDataGuy" data-vdur="20:00" data-vtitle="Dimensional Modeling: Kimball Star Schema vs Snowflake Schema" href="https://www.youtube.com/watch?v=3g8K1P_q0qQ" rel="noopener" target="_blank" title="Watch walkthrough: Dimensional Modeling: Kimball Star Schema vs Snowflake Schema">🎬YT</a><a href="https://en.wikipedia.org/wiki/Dimensional" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="de-scd-patterns" data-name="slowly changing dimensions (scd type 1, type 2 & type 3)">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Slowly Changing Dimensions (SCD Type 1, Type 2 & Type 3)</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Overwriting values (Type 1), tracking historical changes with valid_from/valid_to dates and is_current flags (Type 2), and dbt snapshots.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="SeattleDataGuy" data-vdur="20:00" data-vtitle="Slowly Changing Dimensions (SCD Type 1, Type 2 & Type 3)" href="https://www.youtube.com/watch?v=2AQKmw14mHM" rel="noopener" target="_blank" title="Watch walkthrough: Slowly Changing Dimensions (SCD Type 1, Type 2 & Type 3)">🎬YT</a><a href="https://en.wikipedia.org/wiki/Slowly" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li>
+</ol>
+</div><div class="subsection">
+<h3>4.5 Workflow Orchestration & Modern Data Pipelines</h3>
+<ol class="concepts">
+<li data-cid="de-airflow-dags" data-name="apache airflow core: dags, operators, tasks, sensors & dependencies">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Apache Airflow Core: DAGs, Operators, Tasks, Sensors & Dependencies</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Python-defined pipeline topologies, BashOperator, PythonOperator, external trigger sensors, XCom task communication, and pool concurrency.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="Marc Lamberti" data-vdur="20:00" data-vtitle="Apache Airflow Core: DAGs, Operators, Tasks, Sensors & Dependencies" href="https://www.youtube.com/watch?v=K9AnJ9_ZAXE" rel="noopener" target="_blank" title="Watch walkthrough: Apache Airflow Core: DAGs, Operators, Tasks, Sensors & Dependencies">🎬YT</a><a href="https://en.wikipedia.org/wiki/Apache" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="de-airflow-scheduling" data-name="airflow execution: celery/kubernetes executors & idempotent tasks">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Airflow Execution: Celery/Kubernetes Executors & Idempotent Tasks</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Distributed task execution, stateless worker pods, data interval concepts (logical date vs execution date), backfilling historical partitions.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="Marc Lamberti" data-vdur="20:00" data-vtitle="Airflow Execution: Celery/Kubernetes Executors & Idempotent Tasks" href="https://www.youtube.com/watch?v=IHZwWFHWa-w" rel="noopener" target="_blank" title="Watch walkthrough: Airflow Execution: Celery/Kubernetes Executors & Idempotent Tasks">🎬YT</a><a href="https://en.wikipedia.org/wiki/Airflow" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="de-dagster-assets" data-name="modern asset-based orchestration with dagster & prefect">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Modern Asset-Based Orchestration with Dagster & Prefect</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Software-defined assets (SDAs), declarative data dependencies, dynamic parameter pipelines, and immediate local testability.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="SeattleDataGuy" data-vdur="20:00" data-vtitle="Modern Asset-Based Orchestration with Dagster & Prefect" href="https://www.youtube.com/watch?v=7uK3ddA9KFA" rel="noopener" target="_blank" title="Watch walkthrough: Modern Asset-Based Orchestration with Dagster & Prefect">🎬YT</a><a href="https://en.wikipedia.org/wiki/Modern" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="de-pipeline-observability" data-name="data pipeline observability: sla alerts, data lineage & circuit breakers">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Data Pipeline Observability: SLA Alerts, Data Lineage & Circuit Breakers</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Monitoring pipeline execution latency, data freshness SLAs, Monte Carlo data observability, OpenLineage standards, and circuit breakers.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Data Pipeline Observability: SLA Alerts, Data Lineage & Circuit Breakers" href="https://www.youtube.com/watch?v=kYJv8P2zHk8" rel="noopener" target="_blank" title="Watch walkthrough: Data Pipeline Observability: SLA Alerts, Data Lineage & Circuit Breakers">🎬YT</a><a href="https://en.wikipedia.org/wiki/Data" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li>
+</ol>
+</div><div class="subsection">
+<h3>4.6 Real-Time Data Streaming & Event Processing</h3>
+<ol class="concepts">
+<li data-cid="de-streaming-fundamentals" data-name="stream processing fundamentals: event time, processing time & watermarks">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Stream Processing Fundamentals: Event Time, Processing Time & Watermarks</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Unbounded data streams, out-of-order event arrivals, late data handling, watermarks, tumbling windows, hopping windows, and session windows.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="ByteByteGo" data-vdur="20:00" data-vtitle="Stream Processing Fundamentals: Event Time, Processing Time & Watermarks" href="https://www.youtube.com/watch?v=Vb7C_7a3d3M" rel="noopener" target="_blank" title="Watch walkthrough: Stream Processing Fundamentals: Event Time, Processing Time & Watermarks">🎬YT</a><a href="https://en.wikipedia.org/wiki/Stream" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="de-kafka-pipelines" data-name="apache kafka architecture: topics, partitions, consumer groups & offsets">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Apache Kafka Architecture: Topics, Partitions, Consumer Groups & Offsets</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Distributed write-ahead log, partition hashing, leader-follower replication, consumer offset commits (__consumer_offsets), and log compaction.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Apache Kafka Architecture: Topics, Partitions, Consumer Groups & Offsets" href="https://www.youtube.com/watch?v=Ch5VhJzaoaI" rel="noopener" target="_blank" title="Watch walkthrough: Apache Kafka Architecture: Topics, Partitions, Consumer Groups & Offsets">🎬YT</a><a href="https://en.wikipedia.org/wiki/Apache" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="de-kafka-connect" data-name="kafka connect (source & sink connectors) & schema registry">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Kafka Connect (Source & Sink Connectors) & Schema Registry</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Streaming change data capture (Debezium CDC), Kafka to Data Lakehouse ingestion, schema evolution enforcement with Apache Avro and Protobuf.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="Confluent" data-vdur="20:00" data-vtitle="Kafka Connect (Source & Sink Connectors) & Schema Registry" href="https://www.youtube.com/watch?v=kCc8FmEb1nY" rel="noopener" target="_blank" title="Watch walkthrough: Kafka Connect (Source & Sink Connectors) & Schema Registry">🎬YT</a><a href="https://en.wikipedia.org/wiki/Kafka" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="de-flink-streaming" data-name="stateful stream processing with apache flink & window operations">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Stateful Stream Processing with Apache Flink & Window Operations</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Distributed snapshots (Chandy-Lamport algorithm), RocksDB state backend, exactly-once processing end-to-end, and low-latency complex event CEP.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="Apache Flink" data-vdur="20:00" data-vtitle="Stateful Stream Processing with Apache Flink & Window Operations" href="https://www.youtube.com/watch?v=Vb7C_7a3d3M" rel="noopener" target="_blank" title="Watch walkthrough: Stateful Stream Processing with Apache Flink & Window Operations">🎬YT</a><a href="https://en.wikipedia.org/wiki/Stateful" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li>
+</ol>
+</div>
+</section>
+
+</div>
+
+<script>
+window.SITE_SLUG = "ai_data";
+</script>
+<script>
+(function() {
+  const SLUG = window.SITE_SLUG || 'ai_data';
+  const KEY_DONE = 'hub_done_' + SLUG;
+  const KEY_BM = 'hub_bm_' + SLUG;
+  const KEY_THEME = 'learning_hub_theme';
+
+  function applyTheme(t) {
+    if (t === 'light') document.documentElement.classList.add('light');
+    else document.documentElement.classList.remove('light');
+  }
+
+  let doneSet = new Set();
+  try {
+    const raw = localStorage.getItem(KEY_DONE);
+    if (raw) doneSet = new Set(JSON.parse(raw));
+  } catch (e) {}
+
+  let bmSet = new Set();
+  try {
+    const raw = localStorage.getItem(KEY_BM);
+    if (raw) bmSet = new Set(JSON.parse(raw));
+  } catch (e) {}
+
+  function saveDone() {
+    try { localStorage.setItem(KEY_DONE, JSON.stringify([...doneSet])); } catch (e) {}
+  }
+  function saveBm() {
+    try { localStorage.setItem(KEY_BM, JSON.stringify([...bmSet])); } catch (e) {}
+  }
+
+  function updateProgress() {
+    const all = document.querySelectorAll('li[data-cid]');
+    const total = all.length;
+    let done = 0;
+    all.forEach(li => {
+      const cid = li.getAttribute('data-cid');
+      const isDone = doneSet.has(cid);
+      li.classList.toggle('done', isDone);
+      li.classList.toggle('is-done', isDone);
+      const chk = li.querySelector('.done-check');
+      if (chk) {
+        chk.classList.toggle('checked', isDone);
+        chk.innerHTML = isDone ? '✓' : '';
+      }
+      if (isDone) done++;
+      const isBm = bmSet.has(cid);
+      li.classList.toggle('is-bm', isBm);
+      const star = li.querySelector('.bookmark-star');
+      if (star) {
+        star.classList.toggle('active', isBm);
+        star.textContent = isBm ? '★' : '☆';
+      }
+    });
+    const pct = total ? Math.round((done / total) * 100) : 0;
+    const bar = document.getElementById('overall-bar');
+    if (bar) bar.style.width = pct + '%';
+    const txt = document.getElementById('overall-pct');
+    if (txt) txt.textContent = done + ' / ' + total + ' (' + pct + '%)';
+  }
+
+  document.querySelectorAll('li[data-cid]').forEach(li => {
+    const cid = li.getAttribute('data-cid');
+    const chk = li.querySelector('.done-check');
+    if (chk) {
+      chk.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (doneSet.has(cid)) doneSet.delete(cid);
+        else doneSet.add(cid);
+        saveDone();
+        updateProgress();
+      });
+    }
+    const star = li.querySelector('.bookmark-star');
+    if (star) {
+      star.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (bmSet.has(cid)) bmSet.delete(cid);
+        else bmSet.add(cid);
+        saveBm();
+        updateProgress();
+      });
+    }
+  });
+
+  // Filters & Search
+  let activeFilter = null;
+  document.querySelectorAll('.filter-btn[data-filter]').forEach(b => {
+    b.addEventListener('click', () => {
+      const val = b.getAttribute('data-val');
+      if (activeFilter === val) {
+        activeFilter = null;
+        b.classList.remove('active');
+      } else {
+        document.querySelectorAll('.filter-btn[data-filter]').forEach(x => x.classList.remove('active'));
+        activeFilter = val;
+        b.classList.add('active');
+      }
+      applyFilters();
+    });
+  });
+
+  const sInput = document.getElementById('search-input');
+  if (sInput) sInput.addEventListener('input', applyFilters);
+
+  const clearBtn = document.getElementById('clear-filters');
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      activeFilter = null;
+      document.querySelectorAll('.filter-btn').forEach(x => x.classList.remove('active'));
+      if (sInput) sInput.value = '';
+      applyFilters();
+    });
+  }
+
+  function applyFilters() {
+    const q = (sInput ? sInput.value : '').toLowerCase().trim();
+    document.querySelectorAll('li[data-cid]').forEach(li => {
+      const cid = li.getAttribute('data-cid');
+      const text = (li.getAttribute('data-name') || li.textContent).toLowerCase();
+      let match = true;
+      if (activeFilter === 'done' && !doneSet.has(cid)) match = false;
+      if (activeFilter === 'undone' && doneSet.has(cid)) match = false;
+      if (activeFilter === 'bookmarked' && !bmSet.has(cid)) match = false;
+      if (q && !text.includes(q)) match = false;
+      li.style.display = match ? '' : 'none';
+    });
+  }
+
+  const randBtn = document.getElementById('random-btn');
+  if (randBtn) {
+    randBtn.addEventListener('click', () => {
+      const all = Array.from(document.querySelectorAll('li[data-cid]')).filter(li => li.style.display !== 'none');
+      if (!all.length) return;
+      const pick = all[Math.floor(Math.random() * all.length)];
+      pick.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      pick.style.outline = '3px solid var(--accent)';
+      setTimeout(() => { pick.style.outline = ''; }, 2000);
+    });
+  }
+
+  updateProgress();
+})();
+</script>
+<script>
+  const DOMAIN_SLUGS = ["ai-eng", "ml-eng", "data-science", "data-eng"];
+  let currentActiveDomain = 'all';
+
+  window.switchDomain = function(slug) {
+    if (!slug || slug === 'all') {
+      currentActiveDomain = 'all';
+      document.querySelectorAll('.section.domain-section').forEach(sec => {
+        sec.classList.remove('hidden-domain');
+      });
+      document.querySelectorAll('.domain-card').forEach(card => {
+        card.classList.remove('active-deck-card');
+      });
+      document.querySelectorAll('.d-nav-pill').forEach(pill => {
+        pill.classList.toggle('active', pill.dataset.target === 'all');
+      });
+      if (history.replaceState) {
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
+      return;
+    }
+
+    currentActiveDomain = slug;
+    const target = document.querySelector(`.section.domain-section[data-domain="${slug}"]`) || document.getElementById(`section-${slug}`) || document.getElementById(slug);
+    if (!target) return;
+
+    document.querySelectorAll('.section.domain-section').forEach(sec => {
+      if (sec === target || sec.getAttribute('data-domain') === slug) {
+        sec.classList.remove('hidden-domain');
+      } else {
+        sec.classList.add('hidden-domain');
+      }
+    });
+
+    document.querySelectorAll('.domain-card').forEach(card => {
+      card.classList.toggle('active-deck-card', card.dataset.domain === slug);
+    });
+
+    document.querySelectorAll('.d-nav-pill').forEach(pill => {
+      pill.classList.toggle('active', pill.dataset.target === slug);
+    });
+
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (history.replaceState) {
+      history.replaceState(null, '', '#' + slug);
+    }
+  };
+
+  window.navigateDomain = function(step) {
+    let idx = DOMAIN_SLUGS.indexOf(currentActiveDomain);
+    if (idx === -1) idx = step > 0 ? -1 : DOMAIN_SLUGS.length;
+    let nextIdx = (idx + step + DOMAIN_SLUGS.length) % DOMAIN_SLUGS.length;
+    window.switchDomain(DOMAIN_SLUGS[nextIdx]);
+  };
+
+  function checkUrlHash() {
+    const hash = window.location.hash.replace(/^#/, '');
+    if (!hash) return;
+    if (DOMAIN_SLUGS.includes(hash)) {
+      window.switchDomain(hash);
+    } else if (hash.startsWith('section-')) {
+      const secNum = parseInt(hash.replace('section-', ''), 10);
+      if (secNum >= 1 && secNum <= DOMAIN_SLUGS.length) {
+        window.switchDomain(DOMAIN_SLUGS[secNum - 1]);
+      }
+    }
+  }
+
+  window.addEventListener('hashchange', checkUrlHash);
+
+  const sInputOriginal = document.getElementById('search-input');
+  if (sInputOriginal) {
+    sInputOriginal.addEventListener('input', (e) => {
+      if (e.target.value.trim().length > 0 && currentActiveDomain !== 'all') {
+        window.switchDomain('all');
+      }
+    });
+  }
+
+  checkUrlHash();
+</script>
+</body>
+</html>

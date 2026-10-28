@@ -27,7 +27,7 @@
     { label: "LLD Tutorial",  short: "LLD",           href: "LLD_Tutorial/index.html" },
     { label: "CS",            short: "CS",            href: "cs_fundamentals.html" },
     { label: "Behavioral",    short: "Behavioral",    href: "behavioral.html" },
-    { label: "AI",            short: "AI",            href: "ai_engineering.html" },
+    { label: "AI & Data",     short: "AI & Data",     href: "ai_data.html" },
     { label: "Cloud",         short: "Cloud",         href: "cloud_aws_azure.html" },
     { label: "All-Tech",      short: "All-Tech",      href: "all_tech.html" },
     { label: "Interview Prep",short: "Interview",     href: "interview_prep.html" },

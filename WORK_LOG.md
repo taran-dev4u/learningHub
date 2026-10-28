@@ -26,7 +26,10 @@
 |---|---|---|---|
 | `index.html` | Universal landing hub, 7 site cards, global catalog search | ✅ Up to date | `build-learning-hub.mjs` |
 | `DSA_Ultimate_Index.html` | 47 patterns, 219 subpatterns, 940 problems, expandable Striver A2Z dropdown | ✅ Upgraded to Amazon SDE Hub UX | Playwright + Audit |
-| `cloud_aws_azure.html` | **All-in-One Tech & Engineering Portal**: 16 domains, 58 subsections, 239 concepts, above-the-fold Interactive Domain Deck, sticky domain switcher, focused view isolation | ✅ Redesigned & Active | Playwright + Audit |
+| `cloud_aws_azure.html` | **Cloud Platforms Hub**: AWS (36 concepts), Microsoft Azure (19 concepts), GCP (14 concepts) — 14 subsections, 69 concepts, Multi-Cloud Command Deck, sticky domain switcher, focused view isolation | ✅ Redesigned & Active | Playwright + Audit |
+| `all_tech.html` | **All-in-One Tech & Software Engineering Portal**: 13 disciplines (Linux, Git, Docker, K8s, Terraform, CI/CD, Kafka, Spark, PostgreSQL, Redis, Java, FastAPI, APIs) — 44 subsections, 170 concepts | ✅ Redesigned & Active | Playwright + Audit |
+| `ai_data.html` | **AI & Data Hub**: 4 tracks (AI Engineering, Machine Learning Engineering, Data Science, Data Engineering) — 24 subsections, 96 concepts, Command Deck, sticky pill bar, Domain Isolation Engine | ✅ Redesigned & Active | Playwright + Audit |
+| `ai_engineering.html` | **AI Engineering from Scratch Masterclass**: 20 phases, 542 lessons, full MIT curriculum snapshot, direct link integration | ✅ Active with Hub Breadcrumb | Playwright + Audit |
 | `tech_aws.html` | Standalone AWS Cloud Architecture Masterclass (7 subsections, 36 concepts) | ✅ Deployed | Playwright + Audit |
 | `tech_linux.html` | Standalone Linux & Terminal Power Engineering Masterclass (3 subsections, 12 concepts) | ✅ Deployed | Playwright + Audit |
 | `tech_git.html` | Standalone Git & GitHub Architecture Masterclass (4 subsections, 17 concepts) | ✅ Deployed | Playwright + Audit |
@@ -179,3 +182,31 @@ The autonomous agent is scheduled via recurring cron notification (`0 */3 * * *`
   - `node tools/verify-learning-hub.mjs`: All 9 pages passed.
   - Playwright visual and functional regression test (`scratch/test_split_pages_playwright.py`): Verified navbar links, domain pills, domain isolation, and crosslink cards across Light and Black themes.
   - Pushed to `origin main` (commit `b7b61f0`).
+
+### [2026-10-28 07:58 UTC] Unified AI & Data Hub (AI · ML · Data Science · Data Engineering) & AI Masterclass Integration
+- **User Request & Architecture Alignment**:
+  - Transformed the single AI Engineering view into a comprehensive, multi-track **AI & Data Hub** (`ai_data.html`), matching the high-efficiency architecture of the Cloud and All-Tech portals.
+  - Updated global top navigation link in `assets/learning-hub-shared.js` from `AI` to `AI & Data` pointing to `ai_data.html`.
+- **4 Comprehensive Strategic Tracks (24 Subsections · 96 Concepts)**:
+  - **Track 1: AI Engineering (Generative AI, LLMs & Agents)**:
+    - 7 subsections, 28 concepts: Foundation Models & Transformers, Prompt Engineering & In-Context Learning, Retrieval-Augmented Generation (RAG) Architecture, Vector Databases & Semantic Storage, Autonomous AI Agents & Multi-Agent Frameworks, Fine-Tuning (PEFT, LoRA, QLoRA, RLHF, DPO), AI Safety, Guardrails & LLM Evaluation.
+    - Integrated direct 1-click links to the existing 542-lesson deep masterclass `ai_engineering.html`.
+  - **Track 2: Machine Learning Engineering (MLE)**:
+    - 6 subsections, 24 concepts: Supervised & Unsupervised Learning Algorithms, Deep Learning Architectures & PyTorch, Feature Engineering & Validation, Model Evaluation & Diagnostics, MLOps: Tracking & Feature Stores, Production Serving & Low-Latency Inference (Triton, vLLM, TensorRT-LLM, ONNX, drift detection).
+  - **Track 3: Data Science & Applied Analytics**:
+    - 5 subsections, 20 concepts: Exploratory Data Analysis & Feature Insights, Probability & Mathematical Statistics, Inferential Statistics & Hypothesis Testing, A/B Testing & Causal Inference, Time Series Forecasting & Anomaly Detection.
+  - **Track 4: Data Engineering & Modern Data Stack**:
+    - 6 subsections, 24 concepts: Modern Data Warehousing & Distributed Query Engines (Snowflake, BigQuery, ClickHouse, DuckDB), Distributed Processing with Apache Spark & PySpark, Data Lakehouse Architecture & Open Table Formats (Apache Iceberg, Delta Lake, Parquet), Data Transformation & Dimensional Modeling with dbt (Kimball, SCD Type 1/2/3), Workflow Orchestration & Data Pipelines (Airflow, Dagster, Observability), Real-Time Data Streaming (Kafka, Flink, Event Time & Watermarks).
+- **Interactive Command Deck & Domain Isolation**:
+  - Interactive above-the-fold Command Deck with 4 track cards featuring dedicated badge chips, focus buttons, and direct masterclass launch links.
+  - Sticky domain pill bar (`All Tracks (4)`, `AI`, `Machine`, `Data Science`, `Data Engineering`, plus `Open Full AI Curriculum ↗`).
+  - Domain Isolation Engine providing 1-click focus and URL hash synchronisation (`#ai-eng`, `#ml-eng`, `#data-science`, `#data-eng`).
+- **Seamless Navigation & Breadcrumbs**:
+  - Added sticky backlink breadcrumb `← AI & Data Hub` in `assets/ai-curriculum.js` hero so learners exploring `ai_engineering.html` can immediately return to the central AI & Data Hub.
+- **Verification & Green Suite**:
+  - `python tools/audit_site.py`: **0 findings** across all 784 pages.
+  - `node tools/verify-learning-hub.mjs`: All 10 pages passed.
+  - Headless Playwright suite (`scratch/test_ai_data_playwright.py` & `scratch/verify_server_and_screenshots.py`):
+    - Zero horizontal overflow (`scrollWidth === clientWidth === 1440px`).
+    - Verified full 1289px row width, 942px concept title width, study rail `.hub-actions` mount, star bookmark toggle, and done checkmark toggle.
+    - Verified Light and Black themes.
