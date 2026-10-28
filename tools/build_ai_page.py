@@ -8,7 +8,12 @@ from import_ai_curriculum import atomic
 ROOT = Path(__file__).resolve().parent.parent
 catalog = json.loads((ROOT / 'AI_Engineering_Tutorial/catalog.json').read_text(encoding='utf-8'))
 c = catalog['counts']
-revision = hashlib.sha256((ROOT / 'assets/ai-curriculum.js').read_bytes() + (ROOT / 'assets/ai-curriculum.css').read_bytes() + (ROOT / 'AI_Engineering_Tutorial/catalog.json').read_bytes()).hexdigest()[:12]
+revision = hashlib.sha256(b''.join((ROOT / path).read_bytes() for path in (
+    'assets/ai-curriculum.js', 'assets/ai-curriculum.css',
+    'AI_Engineering_Tutorial/catalog.json',
+    'AI_Engineering_Tutorial/companion-data.json',
+    'AI_Engineering_Tutorial/companion-guides.json',
+))).hexdigest()[:12]
 template = '''<!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">

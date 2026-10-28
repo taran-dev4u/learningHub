@@ -4,7 +4,7 @@
   var script = document.currentScript;
   var base = new URL('../', script.src).href;
   var release = new URL(script.src).searchParams.get('v') || '1';
-  var root, catalog, sourceIndex, entries, groups, packs = new Map(), filePromise;
+  var root, catalog, sourceIndex, entries, groups, packs = new Map(), filePromise, companionPromise;
   var panelMode=window.self!==window.top && new URLSearchParams(location.search).has('panel');
   var query = '', kind = '', pageNumber = 0, selected = 'overview', routeToken = 0;
   var NAV_KEY = 'hub_ai_nav_closed_v1', TOC_KEY = 'hub_ai_toc_closed_v1';
@@ -17,7 +17,15 @@
   function route(path, section) { return '#read=' + encodeURIComponent(path) + (section ? '&section=' + encodeURIComponent(section) : ''); }
   function sourceUrl(path) { return catalog.source.repository + '/blob/' + catalog.source.revision + '/' + path.split('/').map(encodeURIComponent).join('/'); }
   function formatBytes(n) { return n > 1e6 ? (n / 1e6).toFixed(1) + ' MB' : n > 1000 ? Math.round(n / 1000) + ' KB' : n + ' B'; }
-  function button(label, href, extra) { return '<a class="aic-button' + (extra || '') + '" href="' + esc(href) + '">' + esc(label) + '</a>'; }
+  function button(label, href, extra) { return '<a class="aic-button' + (extra || '') + '" href="' + esc(href) + '"' + (/^https?:\/\//.test(href)?' target="_blank" rel="noopener noreferrer"':'') + '>' + esc(label) + '</a>'; }
+  function companionRoute(tab, phase) { return '#companion=' + encodeURIComponent(tab || 'guide') + (phase ? '&phase=' + encodeURIComponent(phase) : ''); }
+  function companionData() {
+    if (!companionPromise) companionPromise = Promise.all([
+      fetch(base + 'AI_Engineering_Tutorial/companion-data.json?v=' + release).then(function(r){if(!r.ok)throw Error('Companion index could not load');return r.json();}),
+      fetch(base + 'AI_Engineering_Tutorial/companion-guides.json?v=' + release).then(function(r){if(!r.ok)throw Error('Companion guides could not load');return r.json();})
+    ]).then(function(parts){return {index:parts[0],guides:parts[1]};}).catch(function(error){companionPromise=null;throw error;});
+    return companionPromise;
+  }
   function slug(s) { return s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') || 'section'; }
   async function files() {
     if (!filePromise) filePromise = fetch(base + 'AI_Engineering_Tutorial/source/index.json?v=' + release).then(function (r) { if (!r.ok) throw Error('Source index could not load'); return r.json(); }).then(function (d) { sourceIndex = d; return d; });
@@ -56,7 +64,7 @@
       '<div style="margin-bottom:12px"><a href="' + base + 'ai_data.html" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--aic-accent,#7c3aed);text-decoration:none;padding:5px 12px;border-radius:6px;background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.2)">← AI &amp; Data Hub</a></div>' +
       '<span class="aic-eyebrow">Learning Hub · AI engineering lessons</span><h1>AI Engineering from Scratch</h1>' +
       '<p>Read explanations and worked examples here, then practise with code and exercises. Follow the phases in order. Reference files and project plans are listed separately from lessons.</p>' +
-      '<div class="aic-links">' + button('Roadmap', '#group=overview') + button('All topics', '#group=all') + button('Source files', '#files=') +
+      '<div class="aic-links">' + button('Roadmap', '#group=overview') + button('All topics', '#group=all') + button('Seven-source companion', companionRoute('guide')) + button('Source files', '#files=') +
       button('Concept guide', base + 'AI_Engineering_Tutorial/concept-guide.html') + button('Original website ↗', catalog.source.website) + '</div>' +
       '<div class="aic-stats">' + [[c.phases,'phases'],[c.phase,'core lessons'],[c.subtopics,'indexed section headings'],[c.manuals,'manuals'],[c.practice,'practice labs'],[c.sourceFiles,'source files']].map(function (x) { return '<div class="aic-stat"><b>' + x[0].toLocaleString() + '</b><span>' + x[1] + '</span></div>'; }).join('') + '</div></header>';
   }
@@ -66,13 +74,13 @@
       var label = '';
       if (last !== g.kind) { last = g.kind; label = '<h2>' + esc(g.kind) + '</h2>'; }
       return label + '<a href="#group=' + encodeURIComponent(g.id) + '"' + (selected === g.id ? ' class="active"' : '') + '><span>' + esc(g.title) + '</span><small>' + g.entries.length + '</small></a>';
-    }).join('') + '<h2>Repository</h2><a href="#files=">Browse every source file</a></nav>';
+    }).join('') + '<h2>More study material</h2><a href="' + companionRoute('guide') + '">Phase study guides</a><a href="' + companionRoute('topics') + '">Seven-source topic index</a><a href="' + companionRoute('questions') + '">Interview questions</a><a href="' + companionRoute('files') + '">External source files</a><h2>Repository</h2><a href="#files=">Browse original source files</a></nav>';
   }
   function shell() {
     root.innerHTML = hero() + '<div class="aic-layout" id="aic-layout"><div class="aic-nav-wrap"><button class="aic-toggle" id="aic-nav-toggle" type="button" aria-controls="aic-nav"></button>' + navigation() + '</div>' + '<div class="aic-main" id="aic-main"></div></div>' +
       '<footer class="aic-footer">Adapted from <a href="' + esc(catalog.source.repository) + '">Rohit Ghumare and contributors’ AI Engineering from Scratch</a>, MIT licensed. ' +
       'Source snapshot <a href="' + esc(catalog.source.repository + '/tree/' + catalog.source.revision) + '">' + catalog.source.revision.slice(0,12) + '</a>. ' +
-      '<a href="' + base + 'AI_Engineering_Tutorial/SOURCE_LICENSE.txt">Copyright and license</a> · <a href="' + base + 'AI_Engineering_Tutorial/coverage.json">Import coverage</a></footer>';
+      '<a href="' + base + 'AI_Engineering_Tutorial/SOURCE_LICENSE.txt">Copyright and license</a> · <a href="' + base + 'AI_Engineering_Tutorial/COMPANION_ATTRIBUTION.md">Companion source attribution</a> · <a href="' + base + 'AI_Engineering_Tutorial/coverage.json">Import coverage</a></footer>';
     var layout=document.getElementById('aic-layout'),nav=document.getElementById('aic-nav'),toggle=document.getElementById('aic-nav-toggle');
     function sync(){var value=closed(NAV_KEY);layout.classList.toggle('nav-closed',value);nav.hidden=value;toggle.textContent=value?'›':'‹';toggle.setAttribute('aria-label',value?'Show roadmap':'Hide roadmap');toggle.title=value?'Show roadmap':'Hide roadmap';toggle.setAttribute('aria-expanded',String(!value));}
     toggle.onclick=function(){localStorage.setItem(NAV_KEY,closed(NAV_KEY)?'0':'1');sync();};sync();
@@ -133,6 +141,82 @@
       document.getElementById('aic-results').innerHTML = '<section class="aic-start aic-card"><span class="aic-eyebrow">Start studying</span><h2>Explanations, examples and exercises</h2><p>Open a phase and expand a lesson to read it directly in the roadmap. The full lesson reader also includes a section-by-section contents list.</p>'+button('Begin the first lesson',route(catalog.entries.find(function(e){return e.kind==='phase';}).contentPath),' primary')+'</section><section class="aic-start aic-card"><span class="aic-eyebrow">Recommended additions</span><h2>Production evaluation topics to study next</h2><p>The source has related lessons, but no dedicated core lesson on experiment design or label leakage. Study controlled experiments, safe train/validation/test splitting, leakage checks, and feedback loops using the official course modules below.</p><div class="aic-actions"><a class="aic-button" href="https://developers.google.com/machine-learning/crash-course/production-ml-systems" target="_blank" rel="noopener noreferrer">Google: Production ML systems ↗</a><a class="aic-button" href="https://developers.google.com/machine-learning/crash-course/overfitting" target="_blank" rel="noopener noreferrer">Google: Generalization &amp; overfitting ↗</a></div></section><h2 class="aic-section-title">Learning roadmap</h2><p class="aic-description">Start with the twenty phases, then use the manuals, labs, projects and focused paths. Expand a core lesson to read its explanations, worked code and exercises without leaving this page.</p><div class="aic-grid">' + catalog.groups.map(function(g){return '<article class="aic-group"><span class="aic-badge">'+esc(g.kind)+' · '+g.entries.length+' items</span><h3><a href="#group='+encodeURIComponent(g.id)+'">'+esc(g.title)+'</a></h3><p>'+esc(g.description||'Complete topics, subtopics and source material.')+'</p>'+button('Explore','#group='+encodeURIComponent(g.id))+'</article>';}).join('')+'</div>';
     }
     bindToolbar(render);render();
+  }
+  function externalFileUrl(data, repo, path) {
+    var source=data.sources.find(function(s){return s.id===repo;});
+    return source ? 'https://github.com/'+repo+'/blob/'+source.revision+'/'+path.split('/').map(encodeURIComponent).join('/') : '#';
+  }
+  function phaseGuideHtml(phase, data, guides, compact) {
+    var guide=guides[phase];if(!guide)return '';
+    var g=groups.get(phase), mapped=data.topics.filter(function(t){return t.phase===Number(phase.slice(-2));});
+    var sourceNames=Array.from(new Set(mapped.map(function(t){return t.source;})));
+    return '<section class="aic-companion-guide aic-card" aria-label="Companion study guide"><span class="aic-eyebrow">Seven-source companion · '+esc(g?g.title:phase)+'</span><h2>'+esc(guide.title)+'</h2><p>'+esc(guide.explanation)+'</p>'+
+      '<div class="aic-table-wrap"><table><thead><tr>'+guide.headers.map(function(h){return '<th>'+esc(h)+'</th>';}).join('')+'</tr></thead><tbody>'+guide.rows.map(function(row){return '<tr>'+row.map(function(cell){return '<td>'+esc(cell)+'</td>';}).join('')+'</tr>';}).join('')+'</tbody></table></div>'+
+      (!compact&&guide.deepDive?'<section class="aic-deep-dive"><h3>Inference engineering, topic by topic</h3><p>Study these in order, then use the pinned course and system design sources for more examples.</p>'+guide.deepDive.map(function(item){return '<article><h4>'+esc(item[0])+'</h4><p>'+esc(item[1])+'</p></article>';}).join('')+'<div class="aic-actions">'+button('Open course Module 12 ↗',externalFileUrl(data,'amitshekhariitbhu/ai-engineering-course','README.md')+'#module-12-llm-inference-engineering')+button('Open AI system design source ↗',externalFileUrl(data,'amitshekhariitbhu/ai-system-design','README.md'))+'</div></section>':'')+
+      '<div class="aic-guide-notes"><div><strong>Worked case</strong><p>'+esc(guide.worked)+'</p></div><div><strong>Try it</strong><p>'+esc(guide.practice)+'</p></div></div>'+
+      '<p class="aic-source-line">'+mapped.length.toLocaleString()+' indexed headings from '+sourceNames.length+' of the requested repositories are mapped to this phase. '+(compact?'Use the topic index to browse them all.':'The index links each heading back to its pinned source file.')+'</p><div class="aic-actions">'+(compact?button('Read full guide',companionRoute('guide',phase),' primary'):'')+button('Browse mapped topics',companionRoute('topics',phase))+button('Practice questions',companionRoute('questions',phase))+button('All seven sources',companionRoute('files',phase))+'</div></section>';
+  }
+  function companionSelect(label,id,options,value) {
+    return '<label class="aic-companion-filter">'+esc(label)+'<select id="'+id+'"><option value="">All</option>'+options.map(function(o){return '<option value="'+esc(o[0])+'"'+(String(value)===String(o[0])?' selected':'')+'>'+esc(o[1])+'</option>';}).join('')+'</select></label>';
+  }
+  var ANSWER_FRAMEWORKS = {
+    'Coding and Data Structures':'Clarify inputs and constraints, state a simple correct approach, then improve complexity if needed. Trace an edge case and explain tests before declaring the implementation done.',
+    'ML and DL Fundamentals':'Define the learning objective and available data, choose a baseline, then explain the model mechanics and failure conditions. Include a split that matches deployment and a metric that reflects the real cost of errors.',
+    'LLM Internals and Architecture':'Draw the data flow with tensor shapes. Explain why the component exists, its compute and memory costs, and what changes at training versus inference. State a failure case or alternative design.',
+    'Inference, Serving and GPU Performance':'Start from prompt/output length, request rate and latency target. Estimate weight and KV memory, identify prefill or decode as the bottleneck, then compare scheduling, cache, quantization and routing options with TTFT, p99 and cost.',
+    'RAG and Retrieval':'Separate document ingestion, candidate retrieval, reranking and answer generation. Measure whether the right passage was found before scoring the answer. Discuss exact-match queries, citations, freshness and access control.',
+    'Agents and Tool Use':'Specify the task, observable state, allowed tools, stop condition and budget. Walk through one loop, a tool failure and a prompt-injection attempt. Explain how a verifier confirms the final result.',
+    'Fine-Tuning, Post-Training and Alignment':'Compare prompt and retrieval baselines first. Describe training examples, loss or preference signal, adaptation method, held-out evaluation and a rollback condition. Distinguish weight changes from runtime context.',
+    'Evaluation and Observability':'Define a golden set and outcome metric before changing the system. Add slices, human review or calibrated judge checks, regression thresholds and production traces. Explain what signal would trigger rollback.',
+    'Safety, Security and Responsible AI':'Name the assets and trust boundaries. Show where untrusted input enters, what tools can do, what validation is enforced and how you test both unsafe compliance and false refusal.',
+    'Multimodal, Speech and Voice AI':'Describe how each modality is sampled, encoded and aligned, then how evidence is cited. Measure quality by task and slice; for voice include interruption handling and end-to-end latency.',
+    'AI System Design':'Clarify user task, scale, latency and privacy requirements. Draw data flow and model choice, estimate capacity, choose evaluation and monitoring, then discuss failure paths and cost trade-offs.',
+    'Applied and Forward-Deployed Scenarios':'Start with the customer workflow and decision to improve. Build the smallest measurable pilot, identify integration and privacy constraints, and define an owner for feedback and escalation.',
+    'Behavioral and Culture':'Use a concrete situation, your own action and a measured result. Explain the trade-off and what you learned; avoid claiming a team outcome without identifying your contribution.'
+  };
+  async function companion(params) {
+    var parts=await companionData(),data=parts.index,guides=parts.guides;
+    var tab=params.get('companion')||'guide', phase=params.get('phase')||'', main=document.getElementById('aic-main');
+    if(!['guide','topics','questions','files'].includes(tab))tab='guide';
+    var phaseOptions=catalog.groups.filter(function(g){return g.id.startsWith('phase-');}).map(function(g){return [g.id,g.title];});
+    var sourceOptions=data.sources.map(function(s){return [s.id,s.id.split('/')[1]];});
+    var title={guide:'Study guides',topics:'Topic and subtopic index',questions:'Company wise interview practice',files:'Complete source file inventory'}[tab];
+    main.innerHTML='<div class="aic-companion-head"><span class="aic-eyebrow">Seven pinned public repositories</span><h2 class="aic-section-title">'+title+'</h2><p class="aic-description">'+data.counts.sources+' sources · '+data.counts.files.toLocaleString()+' files · '+data.counts.topics.toLocaleString()+' indexed headings · '+data.counts.questions.toLocaleString()+' interview prompts. The guide explanations and tables are original Learning Hub material; source links open the pinned repository revision.</p><div class="aic-companion-tabs">'+[['guide','Study guides'],['topics','Topics'],['questions','Interview questions'],['files','Every source file']].map(function(item){return button(item[1],companionRoute(item[0],phase),item[0]===tab?' primary':'');}).join('')+'</div></div>';
+    if(tab==='guide') {
+      if(phase) {
+        var pnum=Number(phase.slice(-2)), prev=pnum>0?'phase-'+String(pnum-1).padStart(2,'0'):null,next=pnum<19?'phase-'+String(pnum+1).padStart(2,'0'):null;
+        main.innerHTML+='<div class="aic-phase-step">'+(prev?button('← Previous phase',companionRoute('guide',prev)):'')+button('Back to phase lessons','#group='+phase)+(next?button('Next phase →',companionRoute('guide',next)):'')+'</div>'+phaseGuideHtml(phase,data,guides,false);
+      } else {
+        main.innerHTML+='<div class="aic-grid">'+phaseOptions.map(function(o){var guide=guides[o[0]];return '<article class="aic-group"><span class="aic-badge">'+esc(o[1])+'</span><h3>'+esc(guide.title)+'</h3><p>'+esc(guide.explanation)+'</p>'+button('Read guide and table',companionRoute('guide',o[0]))+'</article>';}).join('')+'</div>';
+      }
+      main.innerHTML+='<h3 class="aic-section-title aic-source-heading">The seven sources</h3><div class="aic-grid">'+data.sources.map(function(s){return '<article class="aic-group"><span class="aic-badge">'+esc(s.license)+'</span><h3>'+esc(s.id.split('/')[1])+'</h3><p>'+esc(s.description)+'</p><small>Revision '+esc(s.revision.slice(0,12))+' · '+s.files+' files</small><div class="aic-actions">'+button('Open pinned repository ↗',s.url)+button('Browse its files',companionRoute('files'))+'</div></article>';}).join('')+'</div>';
+      return;
+    }
+    var source='',kind='',company='';
+    main.innerHTML+='<div class="aic-companion-controls"><input type="search" id="aic-companion-search" aria-label="Search companion material" placeholder="Search '+(tab==='questions'?'questions, companies or topics':'headings, files or repositories')+'…">'+companionSelect('Phase','aic-companion-phase',phaseOptions,phase)+(tab==='questions'?'':companionSelect('Repository','aic-companion-source',sourceOptions,''))+(tab==='files'?companionSelect('Type','aic-companion-kind',[['reading','Reading'],['lesson','Tutorial lesson'],['notebook','Notebook'],['code','Code'],['media','Media'],['file','Other']],''):'')+(tab==='questions'?companionSelect('Company','aic-companion-company',Array.from(new Set(data.questions.map(function(q){return q.company;}))).sort().map(function(c){return [c,c];}),''):'')+'</div><div id="aic-companion-results"></div>';
+    var input=document.getElementById('aic-companion-search'),phaseInput=document.getElementById('aic-companion-phase'),sourceInput=document.getElementById('aic-companion-source'),kindInput=document.getElementById('aic-companion-kind'),companyInput=document.getElementById('aic-companion-company');
+    function render(){
+      var q=input.value.trim().toLowerCase(),p=phaseInput.value,phaseNumber=p?Number(p.slice(-2)):null;
+      var list=(tab==='topics'?data.topics:tab==='questions'?data.questions:data.files).filter(function(item){
+        if(phaseNumber!==null&&item.phase!==phaseNumber)return false;
+        if(source&&item.source!==source)return false;
+        if(kind&&item.kind!==kind)return false;
+        if(company&&item.company!==company)return false;
+        return !q||Object.values(item).join(' ').toLowerCase().includes(q);
+      });
+      var size=60, slice=list.slice(pageNumber*size,(pageNumber+1)*size), html='';
+      if(tab==='topics')html=slice.map(function(t){return '<article class="aic-companion-row"><span class="aic-badge">Phase '+String(t.phase).padStart(2,'0')+'</span><div><strong>'+esc(t.title)+'</strong><small>'+esc(t.source.split('/')[1])+' · '+esc(t.path)+'</small></div>'+button('Read source ↗',externalFileUrl(data,t.source,t.path))+'</article>';}).join('');
+      else if(tab==='questions')html=slice.map(function(item){return '<article class="aic-companion-row"><span class="aic-badge">'+esc(item.company)+'</span><div><strong>'+esc(item.question)+'</strong><small>'+esc(item.area)+' · Phase '+String(item.phase).padStart(2,'0')+'</small><details class="aic-answer-plan"><summary>How to structure your answer</summary><p>'+esc(ANSWER_FRAMEWORKS[item.area]||ANSWER_FRAMEWORKS['AI System Design'])+'</p>'+button('Study this phase',companionRoute('guide','phase-'+String(item.phase).padStart(2,'0')))+'</details></div>'+button('Source ↗',externalFileUrl(data,item.source,'README.md'))+'</article>';}).join('');
+      else html=slice.map(function(item){return '<article class="aic-companion-row"><span class="aic-badge">'+esc(item.kind)+'</span><div><strong>'+esc(item.path.split('/').pop())+'</strong><small>'+esc(item.source.split('/')[1])+' · '+esc(item.path)+' · '+formatBytes(item.size)+'</small></div>'+button('Open file ↗',externalFileUrl(data,item.source,item.path))+'</article>';}).join('');
+      document.getElementById('aic-companion-results').innerHTML='<p class="aic-description">'+list.length.toLocaleString()+' matching '+(tab==='questions'?'practice prompts':tab==='topics'?'topic headings':'source files')+'. '+(tab==='questions'?'Use the phase study guide for an answer framework.':'Open a pinned source file for the full upstream material.')+'</p><div class="aic-companion-list">'+(html||'<p class="aic-note">No matches. Try another phase or search term.</p>')+'</div>'+pagination(list.length,size);
+      bindPagination(render);
+    }
+    input.oninput=function(){pageNumber=0;render();};
+    phaseInput.onchange=function(){pageNumber=0;render();};
+    if(sourceInput)sourceInput.onchange=function(){source=this.value;pageNumber=0;render();};
+    if(kindInput)kindInput.onchange=function(){kind=this.value;pageNumber=0;render();};
+    if(companyInput)companyInput.onchange=function(){company=this.value;pageNumber=0;render();};
+    render();
   }
   async function fileBrowser(prefix, from) {
     await files();if(panelMode)window.parent.postMessage({type:'ai-reader-title',title:'Code & files'},location.origin);document.getElementById('aic-main').innerHTML=(from?'<div class="aic-actions">'+button('← Back to lesson',route(from))+'</div>':'')+'<h2 class="aic-section-title">Source files</h2><p class="aic-description">Every tracked file from the pinned repository is preserved locally. Code and HTML are displayed as source.</p>'+toolbar(true);
@@ -204,17 +288,18 @@
   }
   async function navigate(){
     var raw=location.hash.slice(1);
-    if(raw&&!/^(?:read|group|files)=/.test(raw)){
+    if(raw&&!/^(?:read|group|files|companion)=/.test(raw)){
       var old=await fetch(base+'AI_Engineering_Tutorial/legacy-routes.json?v='+release).then(function(r){return r.json();});
       if(old[raw]){location.replace(route(old[raw]));return;}
       var phase=raw.match(/^phase-\d+/);if(phase){location.replace('#group='+phase[0]);return;}
     }
-    var token=++routeToken, params=new URLSearchParams(location.hash.slice(1));query='';pageNumber=0;kind='';selected=params.get('group')||'overview';if(params.has('read')&&entries.has(params.get('read')))selected=entries.get(params.get('read')).group;shell();
+    var token=++routeToken, params=new URLSearchParams(location.hash.slice(1));query='';pageNumber=0;kind='';selected=params.get('group')||params.get('phase')||'overview';if(params.has('read')&&entries.has(params.get('read')))selected=entries.get(params.get('read')).group;shell();root.classList.toggle('aic-companion-view',params.has('companion'));
     try{
-      if(params.has('read'))await reader(params.get('read'),params,token);
+      if(params.has('companion'))await companion(params);
+      else if(params.has('read'))await reader(params.get('read'),params,token);
       else if(params.has('files'))await fileBrowser(params.get('files'),params.get('from'));
       else if(selected==='overview')overview();
-      else{var g=groups.get(selected);document.getElementById('aic-main').innerHTML='<h2 class="aic-section-title">'+esc(g?g.title:'Every study item')+'</h2><p class="aic-description">'+esc(g&&g.description||'Search and study the complete imported curriculum.')+'</p>'+toolbar(false);bindToolbar(renderItems);renderItems();}
+      else{var g=groups.get(selected),guide='';if(selected.startsWith('phase-')){var parts=await companionData();guide='<details class="aic-companion-details" open><summary>Companion study guide, decision table and mapped sources</summary>'+phaseGuideHtml(selected,parts.index,parts.guides,true)+'</details>';}document.getElementById('aic-main').innerHTML='<h2 class="aic-section-title">'+esc(g?g.title:'Every study item')+'</h2><p class="aic-description">'+esc(g&&g.description||'Search and study the complete imported curriculum.')+'</p>'+guide+toolbar(false);bindToolbar(renderItems);renderItems();}
     }catch(error){document.getElementById('aic-main').innerHTML='<div class="aic-note">'+esc(error.message)+'</div>';}
   }
   function setupReaderPanel(){

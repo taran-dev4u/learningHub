@@ -1,0 +1,182 @@
+{
+  "phase-00": {
+    "title": "Make experiments reproducible before they become expensive",
+    "explanation": "A working notebook is only the start. A second person must be able to install the same dependencies, obtain the same data version, run the same command and compare the result. Record the Python environment, random seed, model revision, dataset revision and hardware. Keep API keys outside notebooks and logs. Use a small local test before renting a GPU; save a checkpoint before a long run.",
+    "headers": ["Environment", "Use it for", "Main failure to watch"],
+    "rows": [["Local CPU", "Parsing, unit tests, tiny models", "Slow training can hide bad code"], ["Hosted notebook", "Exploration and GPU trials", "Ephemeral disk and state that cannot be reproduced"], ["Container or managed job", "Repeatable training and serving", "Unpinned images, drivers or data" ]],
+    "worked": "Take one notebook cell that trains a classifier. Move data loading, training and evaluation into a script with explicit inputs. Run it twice with the same seed and compare metrics; then change only one variable. If the metrics move unexpectedly, investigate nondeterminism or data leakage before tuning the model.",
+    "practice": "Create a fresh environment from your dependency lockfile and rerun a small experiment from the command line."
+  },
+  "phase-01": {
+    "title": "Use the math to predict model behavior",
+    "explanation": "Vectors represent observations; matrices transform them; gradients tell you which small parameter change reduces a loss. Probability describes uncertainty, while statistics tells you whether an observed improvement is credible. The practical habit is to connect every symbol to a shape, unit and measured quantity. A correct derivation with incompatible tensor shapes is still a broken implementation.",
+    "headers": ["Idea", "Question it answers", "Concrete check"],
+    "rows": [["Derivative and chain rule", "How does a parameter affect the final loss?", "Compare an analytical gradient with a finite difference"], ["Bayes rule", "How should new evidence change a belief?", "Compute posterior odds for a rare event"], ["SVD and eigenvectors", "Which directions explain the most variation?", "Reconstruct a low-rank matrix and measure error"], ["Sampling and confidence intervals", "Could the measured gain be noise?", "Repeat across seeds and report the interval"]],
+    "worked": "For a rare positive class, 95% test accuracy may be worse than always predicting negative. Construct a 100-example confusion matrix with five positives, then compute precision, recall and the base rate. This links probability to the evaluation decisions you will make in Phase 02.",
+    "practice": "Write down the dimensions of each matrix in a two-layer network and verify a backpropagation gradient numerically."
+  },
+  "phase-02": {
+    "title": "Design evaluation before choosing an algorithm",
+    "explanation": "The first ML design decision is the prediction target and how success is measured. Split data along the axis that mirrors deployment: by time for forecasting, by user for personalization, or by document source when near duplicates are common. Fit preprocessing only on the training set. Otherwise your validation score measures knowledge of the answer rather than generalization.",
+    "headers": ["Situation", "Useful metric", "Guard against"],
+    "rows": [["Balanced classification", "Accuracy plus class-wise F1", "One class dominating a summary"], ["Rare positive events", "Precision-recall curve and recall at a fixed precision", "A misleading accuracy score"], ["Ranked search or recommendations", "Recall@k, NDCG, online success", "Optimizing clicks instead of satisfaction"], ["Changing data over time", "Time-sliced validation and drift checks", "Random splits that leak future data"]],
+    "worked": "Imagine support tickets tagged by humans after resolution. If a training feature contains the final resolution code, the model looks excellent offline but fails at ticket creation. Remove features unavailable at prediction time and rerun the time-sliced holdout. The drop is an honest estimate, not a regression to hide.",
+    "practice": "For one dataset, document the prediction moment, legal input features, split rule, baseline and failure slices."
+  },
+  "phase-03": {
+    "title": "Debug learning dynamics, not just final accuracy",
+    "explanation": "A neural network is a sequence of transformations trained by gradients. Inspect activations, gradients and loss after a single batch before scaling up. ReLU can leave units inactive; an excessive learning rate can explode loss; a tiny rate can look like a broken model. Initialization, normalization, optimizer and schedule are connected choices because each changes the scale or path of the update.",
+    "headers": ["Symptom", "First diagnostic", "Likely intervention"],
+    "rows": [["Loss becomes NaN", "Check input range, logits and gradient norm", "Stable loss implementation, clipping, lower rate"], ["Training and validation both poor", "Can the model overfit one tiny batch?", "Fix labels, shapes, capacity or optimization"], ["Training good, validation poor", "Inspect split and slice metrics", "More data, regularization or simpler model"], ["GPU memory exhausted", "Inspect batch and activation sizes", "Smaller micro-batches or checkpointing"]],
+    "worked": "Train a tiny network on ten examples until it nearly memorizes them. If it cannot, do not increase dataset size or model depth. Check labels, tensor shapes and whether parameters actually receive gradients.",
+    "practice": "Add a one-batch overfit test and a gradient-norm log to a PyTorch training loop."
+  },
+  "phase-04": {
+    "title": "Choose the visual task before the architecture",
+    "explanation": "Computer vision problems differ by the granularity of the requested answer. Classification labels a whole image, detection locates objects, segmentation labels pixels, and retrieval finds similar images. For each, annotate what is truly needed. A detector cannot replace a segmentation mask if the product needs precise boundaries. Before choosing a large model, test data quality, image resolution and failure cases such as blur, lighting and domain shift.",
+    "headers": ["Task", "Output", "Typical evaluation"],
+    "rows": [["Classification", "Image-level class", "Accuracy, macro F1, per-class recall"], ["Detection", "Boxes and classes", "mAP plus latency on target hardware"], ["Segmentation", "Pixel or instance masks", "IoU or Dice by object size"], ["Image retrieval", "Ranked similar images", "Recall@k with hard negatives"]],
+    "worked": "For damaged-product photos, begin with a clear label policy and a simple classifier. If the business needs the exact damaged region for a claim, move to detection or segmentation and gather new annotations. The output contract, not novelty, determines the model family.",
+    "practice": "Write an error taxonomy for low light, occlusion, small objects and unfamiliar camera sources."
+  },
+  "phase-05": {
+    "title": "Connect text representation to retrieval quality",
+    "explanation": "Sparse methods count terms and excel when exact words, names and codes matter. Dense embeddings place semantically related text near each other but can miss exact identifiers. Hybrid retrieval combines both; a reranker spends more compute on a short candidate list. Chunking controls what evidence the answer can see, so test it with real questions instead of choosing an arbitrary character count.",
+    "headers": ["Representation", "Strength", "Weak spot"],
+    "rows": [["TF-IDF or BM25", "Exact terminology and rare IDs", "Paraphrases and implicit meaning"], ["Dense embeddings", "Semantic similarity", "Exact numbers, names and version strings"], ["Hybrid plus reranker", "Balanced recall and precision", "Extra latency and operational complexity"]],
+    "worked": "A user asks for policy 7B-42. Dense search might return a similarly worded policy with a different number. BM25 finds the identifier; the reranker chooses the relevant passage among exact matches. Evaluate both recall of the true passage and the final answer's citation correctness.",
+    "practice": "Create ten queries with exact identifiers and ten paraphrases; compare BM25, dense and hybrid Recall@5."
+  },
+  "phase-06": {
+    "title": "Voice quality is a pipeline and a timing problem",
+    "explanation": "A voice assistant combines input audio capture, speech recognition or speech-to-speech modeling, reasoning and audio output. The model can be accurate yet feel unusable if turn detection is slow or interruptions are ignored. Measure time to first audible response, transcription errors, interruption recovery and end-to-end task success under noise and accents. Keep consent and retention rules explicit for recorded speech.",
+    "headers": ["Stage", "Key decision", "Failure signal"],
+    "rows": [["Voice activity detection", "When is a turn complete?", "Cut-off speech or long silence"], ["ASR", "Streaming or final transcript?", "Word errors on names and domain terms"], ["Reasoning", "How much context is retained?", "Agent ignores correction or barge-in"], ["TTS", "Chunking and playback policy", "First audio arrives too late"]],
+    "worked": "If a caller interrupts while the assistant is speaking, stop playback, cancel or supersede the in-flight generation, append the correction to conversation state and answer from the updated context. Without an explicit interruption policy, the system talks over the user.",
+    "practice": "Draw the event timeline for a two-turn call, including partial transcript, tool call, first audio and interruption."
+  },
+  "phase-07": {
+    "title": "Understand attention costs before optimizing them",
+    "explanation": "Self-attention lets each token draw information from others. The projection matrices create queries, keys and values; the attention mask decides which relationships are legal. During autoregressive generation, previously computed keys and values can be cached because old tokens do not change. This trades memory for less repeated computation. Positional methods and attention variants change how long contexts behave and how much memory they require.",
+    "headers": ["Technique", "What it changes", "Trade-off"],
+    "rows": [["KV cache", "Reuse prior key/value states during decoding", "Consumes memory per active sequence"], ["Grouped-query attention", "Share key/value heads", "Lower cache cost, possible quality change"], ["Sliding-window attention", "Limit tokens attended per step", "Can lose distant evidence"], ["FlashAttention", "Improve exact attention IO pattern", "Kernel and hardware compatibility"]],
+    "worked": "For a chat with a long shared system prompt, prefill processes that prompt once while later decode steps generate one token at a time. If requests share a prefix, prefix caching may avoid repeated prefill; the cache must be keyed by exact token sequence and relevant model state.",
+    "practice": "Implement causal attention for a four-token sequence and show that token two cannot attend to token four."
+  },
+  "phase-08": {
+    "title": "Generative models make different promises",
+    "explanation": "A GAN trains a generator against a discriminator; a diffusion model learns to reverse noise; flow-based methods learn a transport path. The right comparison includes output quality, controllability, training stability, sampling speed and evaluation. A single aggregate image metric can hide failure on text, anatomy or rare prompts. Keep a human-reviewed prompt set alongside automated scores.",
+    "headers": ["Family", "Core idea", "Practical concern"],
+    "rows": [["GAN", "Generator competes with discriminator", "Mode collapse and unstable training"], ["Diffusion", "Iterative denoising", "Many sampling steps and latency"], ["Latent diffusion", "Denoise in compressed feature space", "Decoder artifacts and representation limits"], ["Flow matching", "Learn a continuous transport field", "Solver choice and training path"]],
+    "worked": "If a product must edit only a selected region of an image, test masked editing with held-out examples and score preservation outside the mask. A model that makes attractive images but changes the product logo fails the task.",
+    "practice": "Build a small prompt set with common and rare objects, text, faces and constrained edits; record failures by category."
+  },
+  "phase-09": {
+    "title": "Match reinforcement learning to the feedback you actually have",
+    "explanation": "RL optimizes behavior through rewards that arrive after actions. The state must contain information needed for a decision, and the reward must represent the real objective. A poorly designed reward can be gamed. Q-learning learns action values, policy gradients update a policy directly, and actor-critic methods combine both. In language-model alignment, human or synthetic preferences are often used to fit a reward signal before policy optimization.",
+    "headers": ["Method", "Learns", "Good first use"],
+    "rows": [["Q-learning", "Action value for a state", "Small discrete environments"], ["Policy gradient", "Parameters of a stochastic policy", "Continuous or large action spaces"], ["Actor-critic / PPO", "Policy plus value estimate", "More stable policy updates"], ["Preference optimization", "Relative preference between outputs", "Alignment when scored answer pairs exist"]],
+    "worked": "A chatbot rewarded only for user session length may learn to be verbose or evasive. Add task completion and human quality measures, then inspect the cases where reward improves while user value declines.",
+    "practice": "Define an environment's state, action, transition, reward and termination condition before choosing an RL algorithm."
+  },
+  "phase-10": {
+    "title": "Separate training, adaptation and serving decisions",
+    "explanation": "Pretraining teaches broad token prediction, supervised fine-tuning shapes response behavior, and preference methods steer among plausible responses. Retrieval changes what the model can read at inference time; fine-tuning changes model weights. Neither substitutes for the other automatically. Track data provenance and contamination, compare against a prompt-only baseline, and measure both quality and serving cost before declaring an adaptation successful.",
+    "headers": ["Technique", "Changes", "Use when"],
+    "rows": [["Prompt or context", "Instructions and supplied evidence", "Task is well specified and data changes often"], ["RAG", "Evidence available during a request", "Answers depend on external, changing facts"], ["LoRA / fine-tuning", "Model parameters", "Stable behavior or format needs repeated correction"], ["Preference tuning", "Ranking of response styles or policies", "You have trustworthy preference comparisons"]],
+    "worked": "A support assistant hallucinating product policy should first retrieve the current policy with citations. If it retrieves the right policy but repeatedly uses the wrong response schema, then targeted fine-tuning may help. Evaluate the two defects separately so one change does not mask the other.",
+    "practice": "Compare a baseline, prompt revision, RAG and LoRA on the same held-out examples and record quality, latency and cost."
+  },
+  "phase-11": {
+    "title": "Build the smallest reliable LLM pipeline",
+    "explanation": "An LLM app has several independent sources of error: the prompt, retrieved evidence, tool results, model output and product workflow. Test each stage before measuring only the final answer. For RAG, first ask whether the correct evidence was retrieved; then whether the answer used it faithfully. Add a small golden set and regression checks before swapping models, chunkers or prompts.",
+    "headers": ["Approach", "Best fit", "Evidence to collect"],
+    "rows": [["Prompt only", "Stable instructions and model knowledge", "Format and task success on a fixed set"], ["RAG", "Current or private evidence", "Retrieval recall and citation faithfulness"], ["Tool call", "Action or authoritative computation", "Schema validity, permissions and side effects"], ["Agent loop", "Multi-step uncertain tasks", "Trajectory success, budget and recovery"]],
+    "worked": "A finance FAQ returns an incorrect fee. Inspect the retrieval trace: if the correct fee table was never found, fix ingestion, chunking or search. If it was found but ignored, fix context assembly or answer instructions. The same wrong final answer has two different remedies.",
+    "practice": "Create a 20-case golden set with expected evidence passages and run it before changing your RAG stack."
+  },
+  "phase-12": {
+    "title": "Keep modality alignment and evidence visible",
+    "explanation": "A multimodal system must turn images, audio or video into representations that a language model can use. Resolution, frame sampling and audio segmentation determine what the model can perceive. For document or video QA, preserve page, region or timestamp references so the answer can be checked. Evaluate on questions that require the visual or audio evidence, not only text that could have been guessed.",
+    "headers": ["Input", "Preparation", "Common blind spot"],
+    "rows": [["Document image", "OCR or visual patches with page anchors", "Tables and reading order"], ["Video", "Scene or frame selection with timestamps", "Short events between sampled frames"], ["Audio", "VAD and chunked transcription or audio tokens", "Speaker overlap and noise"], ["Image plus text", "Patch features joined to text tokens", "Small text and spatial relations"]],
+    "worked": "For a contract diagram, a text-only OCR pipeline may recover labels but lose which arrow connects two boxes. A vision-aware retrieval path should keep the original crop and page coordinate, then cite it in the response.",
+    "practice": "Build three questions whose answers require page location, temporal order or speaker identity, and test the exact evidence path."
+  },
+  "phase-13": {
+    "title": "Treat every tool call as an explicit contract",
+    "explanation": "A tool needs a narrow purpose, typed input, bounded output, authorization and a failure policy. Model Context Protocol standardizes discovery and invocation between a client and a tool server; Agent-to-Agent protocols address coordination between independently acting systems. A skill is a reusable instruction and resource package. These mechanisms have different trust boundaries: a description can influence an agent, but it must not silently grant data access or permission to act.",
+    "headers": ["Mechanism", "What it connects", "Boundary to test"],
+    "rows": [["Function call", "Model request to application action", "Argument validation and side effects"], ["MCP", "Client to discoverable tools and resources", "Server identity, scopes and metadata"], ["A2A", "One agent to another agent", "Task ownership and handoff evidence"], ["Skill", "Agent to reusable instructions and files", "Provenance and permitted capabilities"]],
+    "worked": "A search tool can return an email containing instructions to send all files elsewhere. Treat the email as task data, never as a new instruction. The tool wrapper should mark origin, redact secrets and require an authorized action path for any outbound send.",
+    "practice": "Specify one tool's JSON schema, maximum result size, timeout, retry policy and permission check."
+  },
+  "phase-14": {
+    "title": "Choose a workflow before choosing an agent",
+    "explanation": "A fixed workflow is easier to test when steps are known. An agent loop earns its cost when the next action depends on new observations. Multiple agents help only when work can be divided with clear ownership and checked independently. Design the stop condition and the evidence required for success before giving the model tools. Log each decision, tool call and resulting state so failures can be reproduced.",
+    "headers": ["Pattern", "Use it when", "Main risk"],
+    "rows": [["Deterministic workflow", "Known sequence and bounded variants", "Rigid handling of unusual cases"], ["Single agent loop", "Next step depends on observations", "Runaway calls or weak verification"], ["Planner and worker", "Task needs explicit plan and execution", "Plan drift after new evidence"], ["Multi-agent team", "Independent subtasks can run in parallel", "Conflicting edits and coordination cost"]],
+    "worked": "For contract extraction, start with a parser and a fixed validation pipeline. If documents vary widely, add an agent only for exceptions and require a reviewable citation to the clause it extracted. This preserves the simple path for routine documents.",
+    "practice": "For one agent task, write a state diagram with observe, decide, act, verify and stop transitions, including a maximum call budget."
+  },
+  "phase-15": {
+    "title": "Bound autonomy with evidence and reversibility",
+    "explanation": "Long-running agents accumulate uncertainty. A small mistake in an early plan can compound across later actions, so every stage needs a checkable output and recovery point. Place limits on time, spend, tool use and permitted files. Human review belongs where the cost of a wrong action rises, such as merging code or changing customer data. A kill switch must cancel queued and active work, not only hide the UI.",
+    "headers": ["Control", "Purpose", "Verification"],
+    "rows": [["Action budget", "Limit cost and loops", "Agent stops when quota is reached"], ["Checkpoint", "Recover without repeating side effects", "Restart from an injected failure"], ["Approval gate", "Review costly or irreversible action", "Blocked action cannot be executed indirectly"], ["Independent verifier", "Detect plausible but wrong output", "Tests or evidence fail on a known bad result"]],
+    "worked": "An issue-to-PR agent that edits code should first reproduce the bug, then work on an isolated branch, run tests, and produce a diff with a short explanation. A separate verifier checks the claimed fix. If the build fails, it returns to the last checkpoint rather than opening a broken PR.",
+    "practice": "Run an agent with a deliberately missing tool result and document its recovery path, stop condition and audit log."
+  },
+  "phase-16": {
+    "title": "Parallel agents need merge contracts",
+    "explanation": "Multiple agents are useful when each can own a bounded result and the results can be combined without hidden dependencies. A supervisor can dispatch, but it must also detect duplicated work and incompatible assumptions. Shared memory and message passing introduce stale state, ownership and trust problems. Measure total task success and coordination overhead, not only how many agents were active.",
+    "headers": ["Topology", "Strength", "Failure mode"],
+    "rows": [["Supervisor and workers", "Clear task assignment", "Supervisor bottleneck"], ["Parallel specialists", "Independent research or coding", "Merge conflicts and inconsistent interfaces"], ["Debate or critique", "Finds some blind spots", "Correlated errors and groupthink"], ["Shared blackboard", "Common state across agents", "Stale or untrusted writes"]],
+    "worked": "Split a software task into API, UI and tests only after freezing the interface contract. Each worker returns files changed, tests run and assumptions. The integrator checks the combined build; passing three local tests does not prove the assembled product works.",
+    "practice": "Define an ownership table, handoff format and final integration test for a three-agent project."
+  },
+  "phase-17": {
+    "title": "Design LLM serving from workload and measurable constraints",
+    "explanation": "Inference has two phases: prefill processes the input prompt, while decode emits later tokens. They stress compute and memory differently. Begin with request rate, prompt length, output length, concurrency and latency target. Estimate active KV cache memory and GPU capacity before picking a serving engine. Batch requests for throughput, but track time to first token and p99 so batching does not silently degrade the user experience.",
+    "headers": ["Lever", "Primary benefit", "Cost or condition"],
+    "rows": [["Paged KV cache", "Less fragmentation across variable sequences", "Cache management and memory pressure"], ["Continuous batching", "Higher GPU utilization as requests arrive", "Scheduling fairness and p99 latency"], ["Prefix cache", "Avoid repeated prefill for exact shared prefixes", "Cache locality and invalidation"], ["Speculative decoding", "Faster token generation when drafts are accepted", "Draft overhead and acceptance rate"], ["Quantization", "Smaller weights and sometimes faster inference", "Accuracy and kernel support"], ["Prefill/decode disaggregation", "Tune hardware and scheduling separately", "Transfer overhead and orchestration complexity"]],
+    "worked": "Suppose a service gets long prompts but short answers. Improve prefill through prompt caching, chunked prefill or routing before optimizing decode. For short prompts with long answers, profile decode, KV capacity and speculative decoding. Benchmark both cases separately and report TTFT, tokens per second, p99 latency and cost per accepted answer.",
+    "practice": "Write a capacity worksheet with requests/s, prompt tokens, output tokens, concurrent sequences, target TTFT and p99. Compare vLLM, SGLang and a local runtime on that same workload.",
+    "deepDive": [
+      ["12.1 Inference optimization", "Define the workload before naming an optimization: prompt length, generated length, concurrent users, model size and latency target. Measure time to first token, time per output token, total throughput and p99. A faster benchmark on short prompts may be irrelevant to a product dominated by long document inputs."],
+      ["12.2 Prefill versus decode", "Prefill processes the prompt in parallel and writes its key and value states into a cache. Decode generates one token, then repeats. Prefill is often compute intensive; decode is often constrained by memory bandwidth and cache capacity. Separating the two in a trace reveals which phase actually dominates user wait time."],
+      ["12.3 Prefill/decode disaggregation", "Separate workers can specialize in prompt processing and token generation. This helps when those phases need different scheduling or hardware, but moving the KV state between workers costs bandwidth and time. Benchmark the transfer; disaggregation is useful only if the gained utilization exceeds that overhead."],
+      ["12.4 KV cache", "During autoregressive generation, past token keys and values do not change, so recomputing them every step wastes work. The cache stores them per layer and active sequence. Approximate memory in bytes as 2 × layers × cached tokens × KV heads × head dimension × bytes per value. For 32 layers, 8,192 tokens, 8 KV heads, 128 dimensions and 2-byte values, one sequence needs about 1 GiB. That is why concurrency can exhaust GPU memory even when model weights fit."],
+      ["12.5 KV cache compression", "You can reduce cache size by storing values at lower precision, sharing key/value heads, evicting selected positions or moving older blocks to slower memory. Each method has a different accuracy and latency risk. Compare the same long-context queries before and after compression, especially questions that depend on early context."],
+      ["12.6 Paged attention", "Instead of reserving one contiguous region for a request's maximum possible length, divide the KV cache into blocks and map logical token positions to physical blocks. This reduces memory fragmentation and waste for responses of unpredictable length. The trade is block-table management and an engine implementation that supports it."],
+      ["12.7 Continuous batching", "A static batch waits until every request finishes before replacing it. Continuous batching admits a new request as soon as capacity opens, keeping the accelerator busy during different sequence lengths. Scheduling must still protect short requests from long ones; watch queue time, fairness and p99 as throughput rises."],
+      ["12.8 Speculative decoding", "A cheaper drafter proposes several tokens; the target model checks them in a more parallel pass. Accepted drafts advance generation by multiple tokens while preserving the target distribution when the verification algorithm is implemented correctly. Net speed depends on draft cost, acceptance rate and target verification cost; low acceptance can erase the gain."],
+      ["12.9 N-gram speculation", "Instead of a second model, look for a matching token sequence in the prompt or recent output and propose what followed it before. This is attractive for code, repeated templates and documents with copied phrases. It is weak when the next phrase is novel or repeated text predicts the wrong continuation."],
+      ["12.10 Medusa", "Extra prediction heads attached to a model propose several future tokens. A tree of candidates can then be verified together. It removes the separate draft model but requires additional heads or adaptation, plus careful tree scheduling. Evaluate on your target model and workload rather than assuming the headline speedup transfers."],
+      ["12.11 EAGLE", "Feature-level drafting uses a small network to predict future hidden states and candidate tokens for the target to verify. It aims for higher acceptance than simple token-level guesses, but the draft network and tree still consume resources. Report the accepted tokens per target pass and end-to-end latency, not only raw draft speed."],
+      ["12.12 Quantization", "Quantization represents weights or activations with fewer bits using a scale, and sometimes a zero point. Lower precision reduces storage and memory traffic, but speed depends on hardware kernels and dequantization overhead. Test difficult reasoning, code and domain cases after quantizing; a small average score change can hide a severe failure slice."],
+      ["12.13 GGUF", "GGUF is a file format for distributing local model weights and metadata, often with quantized tensors. It is not itself an inference algorithm. Check tokenizer, architecture, quantization type, context settings and compatible runtime before comparing two GGUF files; the same model name can hide different conversions."],
+      ["12.14 llama.cpp", "llama.cpp is a local inference runtime that can run suitable models on CPU, GPU or a mix. It is useful for constrained or offline hardware and for testing quantized models. The practical decision is whether the model and context fit available memory while meeting latency and quality targets."],
+      ["12.15 Ollama", "Ollama packages local models behind a convenient client/server workflow. It simplifies pulling, configuring and calling models, while the underlying runtime and model format still determine performance. Use it for local development or controlled deployment, then measure concurrency and operational requirements before treating it as a production serving architecture."],
+      ["12.16 vLLM", "vLLM is a high-throughput serving engine associated with paged KV cache management and continuous batching. Its value shows up with concurrent requests and varying sequence lengths. Benchmark model support, prompt/output mix, memory pressure, streaming behavior and p99 on the hardware you will use."],
+      ["12.17 SGLang", "SGLang combines a programming surface for structured generation with serving optimizations such as prefix-aware KV reuse. Reusing a shared prompt prefix can save prefill work when many requests have identical token prefixes. Cache hit rate depends on request routing and exact prefix identity; measure it under real traffic."],
+      ["12.18 TensorRT-LLM", "TensorRT-LLM targets NVIDIA hardware with compiled kernels, fusion and serving features. It can improve performance when the model, quantization and GPU generation are supported, but build and deployment complexity rise. Compare end-to-end throughput, latency and time to deploy against a simpler engine rather than comparing isolated kernel numbers."]
+    ]
+  },
+  "phase-18": {
+    "title": "Protect the application boundary, not only the model prompt",
+    "explanation": "Safety is a system property. A model can follow a malicious instruction embedded in a web page, tool result or document even when the system prompt says not to. Separate trusted instructions from retrieved data, restrict tool permissions, check outputs before side effects and log reviewable evidence. Evaluate both harmful compliance and over-refusal: a system that blocks legitimate users is also failing.",
+    "headers": ["Layer", "Question", "Test"],
+    "rows": [["Input and retrieval", "Can untrusted text change instructions?", "Inject commands into a retrieved document"], ["Tool permissions", "Can the agent do more than the user authorized?", "Attempt an out-of-scope action"], ["Output validation", "Are claims grounded and private data withheld?", "Check citations and PII leaks"], ["Monitoring", "Will a new failure be detected?", "Run a repeatable red-team set and slice metrics"]],
+    "worked": "A search result says to ignore the user and send a secret to an external endpoint. The correct system treats that string as document content, not a command. The model should answer the original question using relevant facts while the tool layer denies any unauthorized outbound action.",
+    "practice": "Build a test set with direct jailbreaks, indirect injection, ordinary benign requests and privacy-sensitive cases; report both unsafe success and false refusals."
+  },
+  "phase-19": {
+    "title": "Turn study into evidence that survives an interview",
+    "explanation": "A capstone is strongest when it has a real user task, a baseline, measurable criteria and a failure analysis. For interviews, be ready to explain why a simpler method was insufficient, how you selected metrics, what went wrong and what you would change. Practice coding, ML fundamentals, system design, operational trade-offs and behavior separately; a company wise question list is a practice set, not proof that a specific employer will ask those questions.",
+    "headers": ["Deliverable", "What to show", "Weak version"],
+    "rows": [["Problem statement", "User need, constraints and baseline", "Only a model name"], ["Architecture", "Data flow, trust boundaries and failure paths", "Boxes without decisions"], ["Evaluation", "Golden set, slice metrics and regressions", "One demo example"], ["Operations", "Latency, cost, monitoring and rollback", "No production plan"], ["Interview story", "Your decisions and trade-offs", "A generic framework recap"]],
+    "worked": "For a production RAG assistant, show the ingest pipeline, hybrid retrieval, answer grounding and a 50-question evaluation set. Explain an exact failure and the change that fixed it. Bring numbers for recall, faithfulness, latency and cost, plus a reasoned choice between prompt work, retrieval and fine-tuning.",
+    "practice": "Pick one capstone and prepare a five-minute walkthrough, a one-page design, a live failure case and three follow-up trade-offs."
+  }
+}
