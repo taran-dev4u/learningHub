@@ -45,3 +45,11 @@ html.black #ai-curriculum { --ac-surface:#080a0f; --ac-border:#252936; --ac-mute
 .aic-pagination { display:flex; justify-content:center; align-items:center; gap:15px; padding:20px; font-size:12px; }.aic-footer { margin:24px 0 8px; color:var(--ac-muted); font-size:11px; line-height:1.7; }.aic-footer a { color:inherit; }
 @media(max-width:1000px) { .aic-layout { grid-template-columns:210px minmax(0,1fr); }.aic-reading { grid-template-columns:minmax(0,1fr); }.aic-toc { position:static; max-height:180px; grid-row:1; } }
 @media(max-width:700px) { #ai-curriculum { padding:12px; }.aic-hero { padding:18px; }.aic-layout { display:block; }.aic-nav { position:static; max-height:170px; margin-bottom:14px; }.aic-stats { gap:14px; }.aic-article { padding:18px; font-size:14px; }.aic-article h1 { font-size:25px; }.aic-links { gap:6px; }.aic-toolbar input { width:100%; } }
+
+.aic-start { margin-bottom:22px; border-left:4px solid var(--ac-accent); }
+.aic-start h2 { margin:8px 0; }
+.aic-inline-lesson > summary { color:var(--ac-accent); font-size:14px; font-weight:700; padding:8px 0; }
+.aic-inline-body { margin-top:12px; }
+.aic-inline-body .aic-article { border:0; padding:8px 4px; }
+.aic-inline-body .aic-article p { font-size:15px; line-height:1.75; color:inherit; }
+.aic-inline-body .aic-article h3 { font-size:19px; }

@@ -32,18 +32,20 @@
       }
       return JSON.parse(new TextDecoder().decode(bytes));
     }));
-    var pack = await packs.get(record.pack), data = pack[record.hash];
+    var pack;
+    try{pack=await packs.get(record.pack);}catch(error){packs.delete(record.pack);throw error;}
+    var data = pack[record.hash];
     if (!data) throw Error('Source pack is missing a file');
     return { record: record, data: data };
   }
   function bytesOf(data) { return data.encoding === 'base64' ? Uint8Array.from(atob(data.content), function (c) { return c.charCodeAt(0); }) : new TextEncoder().encode(data.content); }
   function hero() {
     var c = catalog.counts;
-    return '<header class="aic-hero"><span class="aic-eyebrow">Learning Hub · complete source curriculum</span><h1>AI Engineering from Scratch</h1>' +
-      '<p>Learn from the original lessons, every topic and subtopic, code, quizzes, manuals and practice files. Follow the phases in order or choose a focused learning path.</p>' +
+    return '<header class="aic-hero"><span class="aic-eyebrow">Learning Hub · AI engineering lessons</span><h1>AI Engineering from Scratch</h1>' +
+      '<p>Read explanations and worked examples here, then practise with code and exercises. Follow the phases in order. Reference files and project plans are listed separately from lessons.</p>' +
       '<div class="aic-links">' + button('Roadmap', '#group=overview') + button('All topics', '#group=all') + button('Source files', '#files=') +
       button('Concept guide', base + 'AI_Engineering_Tutorial/concept-guide.html') + button('Original website ↗', catalog.source.website) + '</div>' +
-      '<div class="aic-stats">' + [[c.phases,'phases'],[c.phase,'core lessons'],[c.subtopics,'subtopics / headings'],[c.manuals,'manuals'],[c.practice,'practice labs'],[c.sourceFiles,'source files']].map(function (x) { return '<div class="aic-stat"><b>' + x[0].toLocaleString() + '</b><span>' + x[1] + '</span></div>'; }).join('') + '</div></header>';
+      '<div class="aic-stats">' + [[c.phases,'phases'],[c.phase,'core lessons'],[c.subtopics,'indexed section headings'],[c.manuals,'manuals'],[c.practice,'practice labs'],[c.sourceFiles,'source files']].map(function (x) { return '<div class="aic-stat"><b>' + x[0].toLocaleString() + '</b><span>' + x[1] + '</span></div>'; }).join('') + '</div></header>';
   }
   function navigation() {
     var last = '';
@@ -79,10 +81,22 @@
     var hs = e.headings.filter(function (h) { return h.level > 1; });
     return '<article class="aic-card' + (done.has(e.id) ? ' done' : '') + '"><div class="aic-card-head"><input type="checkbox" data-done="' + esc(e.id) + '" aria-label="Complete ' + esc(e.title) + '"' + (done.has(e.id) ? ' checked' : '') + '><div>' +
       '<span class="aic-badge">' + esc(e.kind + ' · ' + e.status) + '</span><h3><a href="' + route(e.contentPath) + '">' + esc(e.title) + '</a></h3><p>' + esc(e.summary) + '</p>' +
-      '<div class="aic-actions">' + button(e.status==='planned'?'Read plan':'Read', route(e.contentPath)) + (e.status==='planned'?'':button('Code & files', route(e.contentPath) + '&tab=files')) + (e.videos.length ? '<button class="aic-button" data-watch="' + esc(e.id) + '">Watch ' + e.videos.length + '</button>' : '') + '<button class="aic-button" data-bookmark="'+esc(e.id)+'" aria-pressed="'+saved.has(e.id)+'">'+(saved.has(e.id)?'★ Saved':'☆ Save')+'</button></div></div></div>' +
+      '<div class="aic-actions">' + button(e.status==='planned'?'Read plan':'Open lesson', route(e.contentPath)) + (e.status==='planned'?'':button('Code & files', route(e.contentPath) + '&tab=files')) + (e.videos.length ? '<button class="aic-button" data-watch="' + esc(e.id) + '">Watch ' + e.videos.length + '</button>' : '') + '<button class="aic-button" data-bookmark="'+esc(e.id)+'" aria-pressed="'+saved.has(e.id)+'">'+(saved.has(e.id)?'★ Saved':'☆ Save')+'</button></div></div></div>' +
+      (e.kind==='phase' ? '<details class="aic-inline-lesson" data-inline-lesson="'+esc(e.contentPath)+'"><summary>Read explanation, worked examples & exercises here</summary><div class="aic-inline-body"></div></details>' : '') +
       (hs.length ? '<details><summary>Full syllabus · ' + hs.length + ' subtopics</summary><ol class="aic-syllabus">' + hs.map(function (h) { return '<li style="--level:' + (h.level - 2) + '"><a href="' + route(e.contentPath,h.anchor) + '">' + esc(h.title) + '</a></li>'; }).join('') + '</ol></details>' : '') + '</article>';
   }
   function bindCards() {
+    root.querySelectorAll('[data-inline-lesson]').forEach(function(details){
+      details.addEventListener('toggle',async function(){
+        if(!details.open||details.dataset.loaded==='1')return;
+        var host=details.querySelector('.aic-inline-body'),path=details.dataset.inlineLesson,e=entries.get(path);
+        details.dataset.loaded='1';host.innerHTML='<p role="status">Loading lesson explanations…</p>';
+        try{
+          var loaded=await content(path);host.innerHTML='<article class="aic-article"></article>';
+          renderMarkdown(host.querySelector('article'),loaded.data.content,path,e.path,e,'inline-'+Array.from(entries.keys()).indexOf(path)+'-');
+        }catch(error){details.dataset.loaded='0';host.innerHTML='<p role="alert">'+esc(error.message)+'. Close and reopen this lesson to retry.</p>';}
+      });
+    });
     root.querySelectorAll('[data-done]').forEach(function (input) { input.onchange = function () { var d=doneSet(); if(input.checked)d.add(input.dataset.done);else d.delete(input.dataset.done);localStorage.setItem(DONE_KEY,JSON.stringify(Array.from(d)));input.closest('.aic-card').classList.toggle('done',input.checked); }; });
     root.querySelectorAll('[data-watch]').forEach(function (button) { button.onclick = function () { var e=entries.get(button.dataset.watch); if(window.VideoPanel)window.VideoPanel.open({title:e.title,query:e.title+' AI engineering',videos:e.videos,docs:[],originEl:button}); }; });
     root.querySelectorAll('[data-bookmark]').forEach(function(button){button.onclick=function(){var saved=bookmarks(),id=button.dataset.bookmark;if(saved.has(id))saved.delete(id);else saved.add(id);localStorage.setItem(BOOKMARK_KEY,JSON.stringify(Array.from(saved)));button.textContent=saved.has(id)?'★ Saved':'☆ Save';button.setAttribute('aria-pressed',String(saved.has(id)));};});
@@ -100,7 +114,7 @@
     document.getElementById('aic-main').innerHTML = toolbar(false);
     function render() {
       if(query || kind){renderItems();return;}
-      document.getElementById('aic-results').innerHTML = '<h2 class="aic-section-title">Your complete learning roadmap</h2><p class="aic-description">Start with the twenty phases, then use the manuals, labs, projects and focused paths. Every lesson opens its original complete content.</p><div class="aic-grid">' + catalog.groups.map(function(g){return '<article class="aic-group"><span class="aic-badge">'+esc(g.kind)+' · '+g.entries.length+' items</span><h3><a href="#group='+encodeURIComponent(g.id)+'">'+esc(g.title)+'</a></h3><p>'+esc(g.description||'Complete topics, subtopics and source material.')+'</p>'+button('Explore','#group='+encodeURIComponent(g.id))+'</article>';}).join('')+'</div>';
+      document.getElementById('aic-results').innerHTML = '<section class="aic-start aic-card"><span class="aic-eyebrow">Start studying</span><h2>Explanations, examples and exercises</h2><p>Open a phase and expand a lesson to read it directly in the roadmap. The full lesson reader also includes a section-by-section contents list.</p>'+button('Begin the first lesson',route(catalog.entries.find(function(e){return e.kind==='phase';}).contentPath),' primary')+'</section><h2 class="aic-section-title">Learning roadmap</h2><p class="aic-description">Start with the twenty phases, then use the manuals, labs, projects and focused paths. Expand a core lesson to read its explanations, worked code and exercises without leaving this page.</p><div class="aic-grid">' + catalog.groups.map(function(g){return '<article class="aic-group"><span class="aic-badge">'+esc(g.kind)+' · '+g.entries.length+' items</span><h3><a href="#group='+encodeURIComponent(g.id)+'">'+esc(g.title)+'</a></h3><p>'+esc(g.description||'Complete topics, subtopics and source material.')+'</p>'+button('Explore','#group='+encodeURIComponent(g.id))+'</article>';}).join('')+'</div>';
     }
     bindToolbar(render);render();
   }
@@ -116,6 +130,15 @@
     var u=new URL(href,'https://source.invalid/'+path);
     return {path:decodeURIComponent(u.pathname.slice(1)),hash:decodeURIComponent(u.hash.slice(1))};
   }
+  function renderMarkdown(article,text,path,origin,e,idPrefix){
+      article.innerHTML=DOMPurify.sanitize(marked.parse(text),{FORBID_TAGS:['script','style','form','input','button','iframe']});
+      var seen={}, renderedHeads=article.querySelectorAll('h1,h2,h3,h4,h5,h6');renderedHeads.forEach(function(h,i){var s=slug(h.textContent);seen[s]=(seen[s]||0)+1;h.id=idPrefix+(e&&e.headings.length===renderedHeads.length?e.headings[i].anchor:s+(seen[s]>1?'-'+seen[s]:''));});
+      article.querySelectorAll('a[href]').forEach(function(a){var href=a.getAttribute('href'), resolved=resolveSource(href,origin);if(resolved&&sourceIndex.files[resolved.path])a.href=route(resolved.path,resolved.hash);else if(resolved)a.href=new URL(href,catalog.source.website).href;else if(href&&href[0]==='#')a.href=route(path,href.slice(1));else {a.target='_blank';a.rel='noopener noreferrer';}});
+      article.querySelectorAll('img[src]').forEach(async function(img){var r=resolveSource(img.getAttribute('src'),origin);if(r&&sourceIndex.files[r.path]){var v=await content(r.path);img.src=URL.createObjectURL(new Blob([bytesOf(v.data)],{type:v.record.mime}));}});
+      article.querySelectorAll('pre code.language-figure').forEach(function(code){var note=document.createElement('p');note.className='aic-note';note.innerHTML='Interactive figure: '+esc(code.textContent.trim())+'. '+button('Open the original interactive lesson ↗',catalog.source.website+'lesson?path='+encodeURIComponent(origin.replace(/\/docs\/en\.md$/,'')));code.closest('pre').replaceWith(note);});
+      if(window.hljs)article.querySelectorAll('pre code:not(.language-mermaid)').forEach(function(code){hljs.highlightElement(code);});
+      if(window.renderMathInElement)renderMathInElement(article,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false},{left:'$',right:'$',display:false}],throwOnError:false});
+  }
   function renderQuiz(article,data){
     article.innerHTML=data.questions.map(function(q,i){var multiple=Array.isArray(q.correct)&&q.correct.length>1;return '<section class="aic-card"><span class="aic-badge">Question '+(i+1)+(q.stage?' · '+esc(q.stage):'')+'</span><h3>'+esc(q.question||q.prompt||'Question')+'</h3><fieldset style="border:0;padding:0">'+(q.options||[]).map(function(option,j){return '<label style="display:block;padding:8px 0;cursor:pointer"><input type="'+(multiple?'checkbox':'radio')+'" name="quiz-'+i+'" value="'+j+'"> '+esc(typeof option==='string'?option:JSON.stringify(option))+'</label>';}).join('')+'</fieldset><button class="aic-button" data-check-question="'+i+'">Check answer</button><div data-question-answer="'+i+'" hidden class="aic-note"></div></section>';}).join('');
     article.querySelectorAll('[data-check-question]').forEach(function(button){button.onclick=function(){var i=Number(button.dataset.checkQuestion),q=data.questions[i],selected=Array.from(article.querySelectorAll('input[name="quiz-'+i+'"]:checked')).map(function(input){return Number(input.value);}),correct=Array.isArray(q.correct)?q.correct:[q.correct],ok=selected.length===correct.length&&selected.every(function(value){return correct.includes(value);}),answer=article.querySelector('[data-question-answer="'+i+'"]');answer.hidden=false;answer.innerHTML='<b>'+(ok?'Correct.':'Review the answer.')+'</b><p>'+esc(q.explanation||'')+'</p><p>Source answer: '+correct.map(function(n){return esc((q.options||[])[n]||n);}).join('; ')+'</p>';};});
@@ -123,7 +146,7 @@
   async function reader(path, params, token) {
     var main=document.getElementById('aic-main'), e=entries.get(path), origin=e?e.path:path;
     var g=e&&groups.get(e.group), prefix=origin.includes('/docs/')?origin.split('/docs/')[0]+'/':origin.slice(0,origin.lastIndexOf('/')+1);
-    main.innerHTML='<p class="aic-description">Loading complete source…</p>';
+    main.innerHTML='<p class="aic-description" role="status">Loading lesson explanations and examples…</p>';
     var loaded=await content(path);if(token!==routeToken)return;
     var sourceLink=sourceUrl(origin), displayTitle=e?e.title:path;
     main.innerHTML='<div class="aic-actions">'+button('← '+(g?g.title:'Source files'),g?'#group='+encodeURIComponent(g.id):'#files=')+button('GitHub source ↗',sourceLink)+(e&&e.originalSite?button('Original interactive guide ↗',e.originalSite):'')+'<button class="aic-button" id="aic-download">Download file</button>'+button('Files & code','#files='+encodeURIComponent(prefix))+'</div><h2 class="aic-section-title" style="margin-top:18px">'+esc(displayTitle)+'</h2>'+
@@ -136,18 +159,18 @@
       if(loaded.record.mime.startsWith('image/')){var img=document.createElement('img');img.alt=displayTitle;img.src=URL.createObjectURL(new Blob([bytesOf(loaded.data)],{type:loaded.record.mime}));article.appendChild(img);}
       else article.innerHTML='<p>This binary source file is preserved in the snapshot. Use Download file to save it.</p>';
     }else if(/\.md$/i.test(path)){
-      article.innerHTML=DOMPurify.sanitize(marked.parse(loaded.data.content),{FORBID_TAGS:['script','style','form','input','button','iframe']});
-      var seen={}, renderedHeads=article.querySelectorAll('h1,h2,h3,h4,h5,h6');renderedHeads.forEach(function(h,i){var s=slug(h.textContent);seen[s]=(seen[s]||0)+1;h.id='aic-'+(e&&e.headings.length===renderedHeads.length?e.headings[i].anchor:s+(seen[s]>1?'-'+seen[s]:''));});
-      article.querySelectorAll('a[href]').forEach(function(a){var href=a.getAttribute('href'), resolved=resolveSource(href,origin);if(resolved&&sourceIndex.files[resolved.path])a.href=route(resolved.path,resolved.hash);else if(resolved)a.href=new URL(href,catalog.source.website).href;else if(href&&href[0]==='#')a.href=route(path,href.slice(1));else {a.target='_blank';a.rel='noopener noreferrer';}});
-      article.querySelectorAll('img[src]').forEach(async function(img){var r=resolveSource(img.getAttribute('src'),origin);if(r&&sourceIndex.files[r.path]){var v=await content(r.path);img.src=URL.createObjectURL(new Blob([bytesOf(v.data)],{type:v.record.mime}));}});
-      article.querySelectorAll('pre code.language-figure').forEach(function(code){var note=document.createElement('p');note.className='aic-note';note.innerHTML='Interactive figure: '+esc(code.textContent.trim())+'. '+button('Open the original interactive lesson ↗',catalog.source.website+'lesson?path='+encodeURIComponent(origin.replace(/\/docs\/en\.md$/,'')));code.closest('pre').replaceWith(note);});
-      if(window.hljs)article.querySelectorAll('pre code:not(.language-mermaid)').forEach(function(code){hljs.highlightElement(code);});
-      if(window.renderMathInElement)renderMathInElement(article,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false},{left:'$',right:'$',display:false}],throwOnError:false});
+      renderMarkdown(article,loaded.data.content,path,origin,e,'aic-');
       var hs=Array.from(article.querySelectorAll('h2,h3,h4,h5,h6'));document.getElementById('aic-toc').innerHTML='<span class="aic-eyebrow">In this lesson</span>'+hs.map(function(h){return '<a href="'+route(path,h.id.slice(4))+'">'+esc(h.textContent)+'</a>';}).join('');
     }else if(quiz&&Array.isArray(quiz.questions)&&quiz.questions.length&&quiz.questions.every(function(q){return Array.isArray(q.options)&&q.correct!=null;})){
       renderQuiz(article,quiz);
     }else{
       var pre=document.createElement('pre'), code=document.createElement('code');code.textContent=loaded.data.content;pre.appendChild(code);article.appendChild(pre);if(window.hljs)hljs.highlightElement(code);
+    }
+    if(e&&e.kind==='phase'){
+      var phaseEntries=groups.get(e.group).entries,position=phaseEntries.indexOf(e.id),other=[];
+      if(position>0)other.push(button('← Previous lesson',route(entries.get(phaseEntries[position-1]).contentPath)));
+      if(position<phaseEntries.length-1)other.push(button('Next lesson →',route(entries.get(phaseEntries[position+1]).contentPath),' primary'));
+      var navigation=document.createElement('nav');navigation.className='aic-actions';navigation.setAttribute('aria-label','Lesson sequence');navigation.innerHTML=other.join('');main.appendChild(navigation);
     }
     if(params.get('tab')==='files'){location.hash='files='+encodeURIComponent(prefix);return;}
     var section=params.get('section');if(section){var target=document.getElementById('aic-'+section);if(target)target.scrollIntoView({block:'start'});}
