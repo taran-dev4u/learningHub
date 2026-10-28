@@ -56,7 +56,7 @@ html.black #ai-curriculum { --ac-surface:#080a0f; --ac-border:#252936; --ac-mute
 
 .aic-layout.nav-closed { grid-template-columns:minmax(0,1fr); gap:0; }
 .aic-layout { position:relative; }
-.aic-layout.nav-closed .aic-nav-wrap { position:absolute; top:0; left:-24px; width:30px; z-index:3; }
+.aic-layout.nav-closed .aic-nav-wrap { position:fixed; top:65px; left:0; width:30px; z-index:10020; }
 .aic-layout.nav-closed .aic-nav-toggle { width:30px; }
 .aic-layout.nav-closed .aic-main { grid-column:1; }
 .aic-nav-wrap { min-width:0; position:sticky; top:65px; }
@@ -79,7 +79,7 @@ html.black #ai-curriculum { --ac-surface:#080a0f; --ac-border:#252936; --ac-mute
 .aic-phase-list li.current { background:color-mix(in srgb,var(--ac-accent) 15%,transparent); font-weight:700; }
 .aic-phase-list a { color:inherit; text-decoration:none; }
 @media(max-width:1000px) { .aic-reading.toc-closed { grid-template-columns:minmax(0,1fr); }.aic-toc-wrap { position:static; grid-row:1; } }
-@media(max-width:700px) { .aic-layout.nav-closed { display:block; }.aic-layout.nav-closed .aic-nav-wrap { left:-12px; }.aic-nav-wrap { position:static; }.aic-phase-step a { max-width:100%; } }
+@media(max-width:700px) { .aic-layout.nav-closed { display:block; }.aic-layout.nav-closed .aic-nav-wrap { left:0; }.aic-nav-wrap { position:static; }.aic-phase-step a { max-width:100%; } }
 
 /* Lesson drawer keeps the selected phase and its cards in place. */
 .aic-reader-panel[hidden] { display:none; }
