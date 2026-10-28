@@ -177,7 +177,7 @@ def build() -> None:
                 title = clean(Path(path).stem.replace('-', ' ').replace('_', ' '))
                 phase = phase_for(repo, path, title)
                 inline = False
-                if pack_name and record.get('size', 0) <= 1_000_000 and file_kind(path) != 'media':
+                if pack_name and 0 < record.get('size', 0) <= 1_000_000 and file_kind(path) != 'media':
                     try:
                         raw_text = raw_bytes.decode('utf8')
                         if '\x00' not in raw_text:

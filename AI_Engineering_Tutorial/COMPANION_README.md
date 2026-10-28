@@ -11,8 +11,8 @@ repositories without pretending they are part of that original source.
 - `companion-data.json`: a complete 684-file inventory, 3,484 indexed Markdown
   and notebook headings, and 598 interview prompts at the pinned revisions.
   Counts are computed by `tools/build_ai_companion.py`, not typed into the UI.
-- `companion-content/`: six compressed packs holding 658 UTF-8 source files
-  from repositories with MIT or Apache-2.0 licenses. Markdown lessons,
+- `companion-content/`: six compressed packs holding all nonempty UTF-8 source
+  files from repositories with MIT or Apache-2.0 licenses. Markdown lessons,
   notebooks and code open in the existing right-side reader. Notebook
   markdown and code cells are displayed in order; saved image outputs and
   interactive execution remain available in the pinned original file.
