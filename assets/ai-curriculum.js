@@ -175,7 +175,7 @@
       '<p class="aic-description">'+esc(origin)+'</p><div class="aic-reading" id="aic-reading"><article class="aic-article" id="aic-article"></article><aside class="aic-toc-wrap"><button class="aic-toggle" id="aic-toc-toggle" type="button" aria-controls="aic-toc"></button><nav class="aic-toc" aria-label="Lesson sections" id="aic-toc"></nav></aside></div>';
     if(panelMode){var phaseList=main.querySelector('.aic-phase-list');if(phaseList)phaseList.open=false;}
     var reading=document.getElementById('aic-reading'),toc=document.getElementById('aic-toc'),tocToggle=document.getElementById('aic-toc-toggle');
-    function syncToc(){var value=closed(TOC_KEY);reading.classList.toggle('toc-closed',value);toc.hidden=value;tocToggle.textContent=value?'☷ Show lesson contents':'☷ Hide lesson contents';tocToggle.setAttribute('aria-expanded',String(!value));}
+    function syncToc(){var value=closed(TOC_KEY);reading.classList.toggle('toc-closed',value);toc.hidden=value;tocToggle.textContent=value?'‹':'›';tocToggle.setAttribute('aria-label',value?'Show lesson contents':'Hide lesson contents');tocToggle.title=value?'Show lesson contents':'Hide lesson contents';tocToggle.setAttribute('aria-expanded',String(!value));}
     tocToggle.onclick=function(){localStorage.setItem(TOC_KEY,closed(TOC_KEY)?'0':'1');syncToc();};syncToc();
     document.getElementById('aic-download').onclick=function(){var blob=new Blob([bytesOf(loaded.data)],{type:loaded.record.mime});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=path.split('/').pop();a.click();setTimeout(function(){URL.revokeObjectURL(a.href);},1000);};
     var article=document.getElementById('aic-article');
