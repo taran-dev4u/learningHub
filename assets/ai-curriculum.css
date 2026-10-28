@@ -141,3 +141,7 @@ html .aic-reader-panel[data-reader-theme="black"] { --ac-surface:#080a0f; --ac-b
   body.aic-panel-mode .aic-reading:not(.toc-closed) .aic-toc-wrap { position:fixed; top:70px; right:0; bottom:0; width:min(220px,65vw); z-index:30; background:var(--ac-surface); border-left:1px solid var(--ac-border); padding:8px; overflow:auto; }
   body.aic-panel-mode .aic-reading:not(.toc-closed) { grid-template-columns:minmax(0,1fr); }
 }
+
+.aic-equation { max-width:100%; overflow-x:auto; padding:14px 10px; margin:18px 0; border:1px solid var(--ac-border); border-radius:8px; background:color-mix(in srgb,var(--ac-accent) 5%,var(--ac-surface)); text-align:center; }
+.aic-equation .katex-display { margin:0; }
+.aic-equation-source { border-left:3px solid #e48a39 !important; }

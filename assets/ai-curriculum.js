@@ -152,6 +152,12 @@
       article.querySelectorAll('a[href]').forEach(function(a){var href=a.getAttribute('href'), resolved=resolveSource(href,origin);if(resolved&&sourceIndex.files[resolved.path])a.href=route(resolved.path,resolved.hash);else if(resolved)a.href=new URL(href,catalog.source.website).href;else if(href&&href[0]==='#')a.href=route(path,href.slice(1));else {a.target='_blank';a.rel='noopener noreferrer';}});
       article.querySelectorAll('img[src]').forEach(async function(img){var r=resolveSource(img.getAttribute('src'),origin);if(r&&sourceIndex.files[r.path]){var v=await content(r.path);img.src=URL.createObjectURL(new Blob([bytesOf(v.data)],{type:v.record.mime}));}});
       article.querySelectorAll('pre code.language-figure').forEach(function(code){var note=document.createElement('p');note.className='aic-note';note.innerHTML='Interactive figure: '+esc(code.textContent.trim())+'. '+button('Open the original interactive lesson ↗',catalog.source.website+'lesson?path='+encodeURIComponent(origin.replace(/\/docs\/en\.md$/,'')));code.closest('pre').replaceWith(note);});
+      article.querySelectorAll('pre code.language-math, pre code.language-latex, pre code.language-tex, pre code.language-katex').forEach(function(code){
+        if(!window.katex)return;
+        var equation=document.createElement('div');equation.className='aic-equation';equation.setAttribute('role','math');
+        try{katex.render(code.textContent.trim(),equation,{displayMode:true,throwOnError:true,output:'htmlAndMathml'});code.closest('pre').replaceWith(equation);}
+        catch(error){code.closest('pre').classList.add('aic-equation-source');}
+      });
       if(window.hljs)article.querySelectorAll('pre code:not(.language-mermaid)').forEach(function(code){hljs.highlightElement(code);});
       if(window.renderMathInElement)renderMathInElement(article,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false},{left:'$',right:'$',display:false}],throwOnError:false});
   }
