@@ -182,7 +182,7 @@ DOMAINS = [
         "icon": "🔴",
         "desc": "Single-threaded event loop, String, Hash, List, Set, Sorted Set, cache-aside, write-through, TTL eviction & Redis Sentinel / Cluster HA.",
         "badge": "Sub-Millisecond Cache Strategies & Distributed Locks",
-        "page": None,
+        "page": "tech_redis.html",
         "page_title": "In-Memory Caching with Redis Masterclass",
         "page_subtitle": "Ultra-low-latency in-memory data structures: non-blocking IO multiplexing, Redis Cluster sharding, Sentinel failover, cache stampede prevention, and Redlock."
     },
@@ -193,7 +193,7 @@ DOMAINS = [
         "icon": "☕",
         "desc": "JVM memory model, G1/ZGC collectors, Spring IoC, Spring Boot auto-configuration, Spring Data JPA, Hibernate L1/L2 cache & Resilience4j.",
         "badge": "Enterprise Microservices & Cloud-Native Backends",
-        "page": None,
+        "page": "tech_java.html",
         "page_title": "Java & Spring Boot Microservices Masterclass",
         "page_subtitle": "Enterprise backend engineering: JVM heap tuning, garbage collection algorithms, Spring dependency injection, Hibernate N+1 resolution, and resilient microservices."
     },
@@ -204,7 +204,7 @@ DOMAINS = [
         "icon": "🐍",
         "desc": "Async/await event loop, ASGI vs WSGI, Pydantic data validation, dependency injection, SQLAlchemy 2.0 async ORM & high-concurrency APIs.",
         "badge": "Asynchronous High-Performance API Engineering",
-        "page": None,
+        "page": "tech_fastapi.html",
         "page_title": "Python & FastAPI Backend Masterclass",
         "page_subtitle": "Asynchronous Python backend engineering: uvloop event loop internals, ASGI concurrency, Pydantic type serialization, async SQLAlchemy, and Dockerized production APIs."
     },
@@ -215,7 +215,7 @@ DOMAINS = [
         "icon": "🔌",
         "desc": "REST vs GraphQL vs gRPC, idempotent HTTP methods, API versioning strategies, token bucket rate limiting, OAuth2, JWT & OpenAPI governance.",
         "badge": "REST, gRPC, OAuth2, Rate Limiting & Contract Design",
-        "page": None,
+        "page": "tech_apis.html",
         "page_title": "Production API Design & Architecture Masterclass",
         "page_subtitle": "Enterprise API contracts: idempotent endpoint design, gRPC protobuf serialization, GraphQL schema federation, token bucket throttling, and OAuth2/OIDC security."
     }
@@ -721,14 +721,18 @@ def build_standalone_page(page_name, page_title, page_subtitle, badge, domain_ke
   <div class="sister-guides-card">
     <div class="sister-title">🚀 Companion Engineering Masterclasses</div>
     <div class="sister-grid">
-      <a href="tech_aws.html" class="sister-link">☁️ AWS Cloud Masterclass</a>
-      <a href="tech_linux.html" class="sister-link">🐧 Linux &amp; Terminal Masterclass</a>
-      <a href="tech_git.html" class="sister-link">🌿 Git &amp; GitHub Masterclass</a>
-      <a href="tech_docker_k8s.html" class="sister-link">🐳 Docker &amp; Kubernetes Masterclass</a>
-      <a href="tech_cicd.html" class="sister-link">🚀 CI/CD Pipelines Masterclass</a>
-      <a href="tech_terraform.html" class="sister-link">🏗️ Terraform IaC Masterclass</a>
-      <a href="tech_kafka.html" class="sister-link">⚡ Apache Kafka Masterclass</a>
-      <a href="tech_postgres.html" class="sister-link">🐘 PostgreSQL Masterclass</a>
+      <a href="tech_aws.html" class="sister-link">☁️ AWS Cloud</a>
+      <a href="tech_linux.html" class="sister-link">🐧 Linux &amp; CLI</a>
+      <a href="tech_git.html" class="sister-link">🌿 Git &amp; GitHub</a>
+      <a href="tech_docker_k8s.html" class="sister-link">🐳 Docker &amp; Kubernetes</a>
+      <a href="tech_cicd.html" class="sister-link">🚀 CI/CD Pipelines</a>
+      <a href="tech_terraform.html" class="sister-link">🏗️ Terraform IaC</a>
+      <a href="tech_kafka.html" class="sister-link">⚡ Apache Kafka</a>
+      <a href="tech_postgres.html" class="sister-link">🐘 PostgreSQL</a>
+      <a href="tech_redis.html" class="sister-link">🔴 Redis Caching</a>
+      <a href="tech_java.html" class="sister-link">☕ Java &amp; Spring Boot</a>
+      <a href="tech_fastapi.html" class="sister-link">🐍 Python &amp; FastAPI</a>
+      <a href="tech_apis.html" class="sister-link">🔌 Production APIs</a>
       <a href="cloud_aws_azure.html" class="sister-link active-hub">🌐 All-in-One Tech Portal (16 Domains) &rarr;</a>
     </div>
   </div>
@@ -778,6 +782,22 @@ build_standalone_page("tech_kafka.html", "Apache Kafka Distributed Streaming Mas
 build_standalone_page("tech_postgres.html", "Database Engineering & PostgreSQL Internals Masterclass",
     "Relational database internals: ACID transaction isolation, MVCC vacuuming, WAL replication, index selector algorithms, query execution plans, and PgBouncer.",
     "Database Engineering · Masterclass 08", ["postgres"])
+
+build_standalone_page("tech_redis.html", "In-Memory Caching with Redis Masterclass",
+    "Ultra-low-latency in-memory data structures: non-blocking IO multiplexing, Redis Cluster sharding, Sentinel failover, cache stampede prevention, and Redlock.",
+    "Caching & In-Memory Data · Masterclass 09", ["redis"])
+
+build_standalone_page("tech_java.html", "Java & Spring Boot Microservices Masterclass",
+    "Enterprise backend engineering: JVM heap tuning, garbage collection algorithms, Spring dependency injection, Hibernate N+1 resolution, and resilient microservices.",
+    "Enterprise Microservices · Masterclass 10", ["java"])
+
+build_standalone_page("tech_fastapi.html", "Python & FastAPI Backend Engineering Masterclass",
+    "Asynchronous Python backend engineering: uvloop event loop internals, ASGI concurrency, Pydantic type serialization, async SQLAlchemy, and Dockerized production APIs.",
+    "Async Backend Engineering · Masterclass 11", ["python"])
+
+build_standalone_page("tech_apis.html", "Production API Design & Architecture Masterclass",
+    "Enterprise API contracts: idempotent endpoint design, gRPC protobuf serialization, GraphQL schema federation, token bucket throttling, and OAuth2/OIDC security.",
+    "API Architecture · Masterclass 12", ["apis"])
 
 # 2. Transform cloud_aws_azure.html
 deck_cards = []

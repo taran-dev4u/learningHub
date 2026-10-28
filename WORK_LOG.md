@@ -35,6 +35,10 @@
 | `tech_terraform.html` | Standalone Terraform & Infrastructure as Code Masterclass (3 subsections, 12 concepts) | ✅ Deployed | Playwright + Audit |
 | `tech_kafka.html` | Standalone Apache Kafka Distributed Streaming Masterclass (4 subsections, 14 concepts) | ✅ Deployed | Playwright + Audit |
 | `tech_postgres.html` | Standalone Database Engineering & PostgreSQL Internals Masterclass (4 subsections, 15 concepts) | ✅ Deployed | Playwright + Audit |
+| `tech_redis.html` | Standalone In-Memory Caching with Redis Masterclass (3 subsections, 12 concepts) | ✅ Deployed | Playwright + Audit |
+| `tech_java.html` | Standalone Java & Spring Boot Microservices Masterclass (4 subsections, 16 concepts) | ✅ Deployed | Playwright + Audit |
+| `tech_fastapi.html` | Standalone Python & FastAPI Backend Engineering Masterclass (2 subsections, 8 concepts) | ✅ Deployed | Playwright + Audit |
+| `tech_apis.html` | Standalone Production API Design & Architecture Masterclass (2 subsections, 8 concepts) | ✅ Deployed | Playwright + Audit |
 | `system_design.html` | 15 topics, 62 subtopics, 322 concepts + video panels & direct timestamps | ✅ Active | Audit + Verify |
 | `System_Design_Tutorial/` | 62 deep roadmap lessons with Algomaster theme (100% video coverage) | ✅ Active | `build_sd_resources.py` |
 | `AI_Engineering_Tutorial/` | 11 domains, 37 subsections, 177 concepts | ✅ Active | Audit + Verify |
@@ -65,12 +69,17 @@ The autonomous agent is scheduled via recurring cron notification (`0 */3 * * *`
     - `tech_terraform.html` (Terraform & Infrastructure as Code — 3 subs, 12 concepts)
     - `tech_kafka.html` (Apache Kafka Distributed Streaming — 4 subs, 14 concepts)
     - `tech_postgres.html` (Database Engineering & PostgreSQL Internals — 4 subs, 15 concepts)
-- [ ] **Next Masterclass Expansions (Batch 3)**:
+- [x] **Expand Standalone Masterclasses (Batch 3)**:
+  - Generated and verified:
+    - `tech_redis.html` (In-Memory Caching with Redis — 3 subs, 12 concepts)
+    - `tech_java.html` (Java & Spring Boot Microservices — 4 subs, 16 concepts)
+    - `tech_fastapi.html` (Python & FastAPI Backend Engineering — 2 subs, 8 concepts)
+    - `tech_apis.html` (Production API Design & Architecture — 2 subs, 8 concepts)
+- [ ] **Next Masterclass Expansions (Batch 4 - Final Cloud & Big Data Set)**:
   - Generate standalone masterclass pages for:
-    - `tech_redis.html` (In-Memory Caching with Redis)
-    - `tech_java.html` (Java & Spring Boot Microservices)
-    - `tech_fastapi.html` (Python & FastAPI Backend Engineering)
-    - `tech_apis.html` (Production API Design & Architecture)
+    - `tech_azure.html` (Microsoft Azure Enterprise Architecture)
+    - `tech_gcp.html` (Google Cloud Platform Architecture)
+    - `tech_spark.html` (Apache Spark Big Data Engine)
 - [ ] **DSA Unique Problem Descriptions**:
   - Replace recycled descriptions across DSA patterns with distinct problem-specific intuition summaries.
 - [ ] **Mobile & Performance Polish**:
@@ -79,6 +88,22 @@ The autonomous agent is scheduled via recurring cron notification (`0 */3 * * *`
 ---
 
 ## 5. Detailed Session Changelog
+
+### Session: October 28, 2026 (Iteration 2: Scheduled Maintenance & Masterclasses Batch 3)
+- **Automated Trigger**: Executed scheduled maintenance check iteration 2.
+- **Generated 4 New Standalone Masterclasses (Batch 3)**:
+  - Created `tech_redis.html` (3 subsections, 12 concepts, In-Memory Caching with Redis).
+  - Created `tech_java.html` (4 subsections, 16 concepts, Java & Spring Boot Microservices).
+  - Created `tech_fastapi.html` (2 subsections, 8 concepts, Python & FastAPI Backend Engineering).
+  - Created `tech_apis.html` (2 subsections, 8 concepts, Production API Design & Architecture).
+  - Total standalone masterclasses expanded from 8 to **12 standalone guides**!
+- **Updated Navigation & Cross-Links**:
+  - Updated the Domain Deck in `cloud_aws_azure.html` with `Standalone Guide ↗` action links for all 12 masterclasses.
+  - Updated the companion footer cards across all 12 masterclasses with deep links to all sister guides.
+- **Verification & Green Suite**:
+  - `tools/audit_site.py`: **0 findings** across all 781 pages.
+  - `tools/verify-learning-hub.mjs`: All checks green.
+  - Playwright test: Verified all 12 standalone masterclasses and main portal with zero overflow and zero console errors.
 
 ### Session: October 28, 2026 (Iteration 1: Scheduled Maintenance & Masterclasses Batch 2)
 - **Automated Trigger**: Executed scheduled maintenance check iteration 1.
