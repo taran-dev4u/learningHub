@@ -117,8 +117,7 @@ html .aic-reader-panel[data-reader-theme="black"] { --ac-surface:#080a0f; --ac-b
 
 @media(min-width:701px) {
   body.aic-reader-open:not(.aic-reader-expanded) #ai-curriculum { width:calc(100vw - var(--aic-reader-width,60vw)); box-sizing:border-box; }
-  body.aic-reader-open:not(.aic-reader-expanded):not(.aic-reader-minimized) #aic-layout { display:block; }
-  body.aic-reader-open:not(.aic-reader-expanded):not(.aic-reader-minimized) #aic-layout > .aic-nav-wrap { display:none; }
+  body.aic-reader-open:not(.aic-reader-expanded):not(.aic-reader-minimized) #aic-layout:not(.nav-closed) { grid-template-columns:clamp(150px,12vw,210px) minmax(0,1fr); gap:12px; }
   body.aic-reader-open.aic-reader-dock-left:not(.aic-reader-expanded) #ai-curriculum { margin-left:var(--aic-reader-width,60vw); }
   body.aic-reader-open.aic-reader-minimized #ai-curriculum { width:calc(100vw - 48px); }
   body.aic-reader-open.aic-reader-minimized.aic-reader-dock-left #ai-curriculum { margin-left:48px; }
