@@ -1,0 +1,1694 @@
+{
+  "source": {
+    "playlistUrl": "https://www.youtube.com/playlist?list=PL6Zs6LgrJj3tDXv8a_elC6eT_4R5gfX4d",
+    "repositoryUrl": "https://github.com/dinesh-varyani/ds-algos",
+    "channelUrl": "https://www.youtube.com/@itsdineshvaryani",
+    "channelId": "UCd0L83mMeQ4Ioy4IjaSYhvA"
+  },
+  "videos": {
+    "-WgPTuBYSCE": {
+      "title": "Top Down Approach - Fibonacci Number in Dynamic Programming | Animation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 1522,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D-WgPTuBYSCE&format=json"
+    },
+    "-X6ji6sjxD4": {
+      "title": "Breadth First Search (BFS) traversal of an Undirected Graph | Animation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 943,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D-X6ji6sjxD4&format=json"
+    },
+    "0Hn18rUkZKY": {
+      "title": "How to remove duplicate from sorted Singy Linked List in Java?",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 669,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D0Hn18rUkZKY&format=json"
+    },
+    "19p9d9PCDkA": {
+      "title": "Sort an array of 0’s, 1’s, and 2’s (Dutch National Flag Problem) Part 1 | Animation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 1227,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D19p9d9PCDkA&format=json"
+    },
+    "44A_jk4_Rx8": {
+      "title": "Introduction to Hashing | Data Structures and Algorithms",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 862,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D44A_jk4_Rx8&format=json"
+    },
+    "4lATqBxapmc": {
+      "title": "Search in a row and column wise sorted matrix | Animation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 940,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D4lATqBxapmc&format=json"
+    },
+    "5czD98BU28o": {
+      "title": "Detect a loop in a Singly Linked List in Java | Implementation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 436,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D5czD98BU28o&format=json"
+    },
+    "6rDKLqFLfh0": {
+      "title": "Adjacency List Representation of an Undirected Graph in Java | Implementation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 584,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D6rDKLqFLfh0&format=json"
+    },
+    "7ynKGC1_cVk": {
+      "title": "How to merge two sorted arrays in Java? | Implementation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 744,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D7ynKGC1_cVk&format=json"
+    },
+    "8Upn_Z_VjQw": {
+      "title": "Bottom Up Approach - Fibonacci Number in Dynamic Programming | Animation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 784,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D8Upn_Z_VjQw&format=json"
+    },
+    "9TVrlVAtpv8": {
+      "title": "Valid Parentheses problem (Balanced Brackets) | Animation | Coding Interview Question",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 987,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D9TVrlVAtpv8&format=json"
+    },
+    "9eAMIKZ3edI": {
+      "title": "Is Valid Subsequence problem (Implementation) in Java | Coding Interview Question",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 537,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D9eAMIKZ3edI&format=json"
+    },
+    "9qFLiiNPDEI": {
+      "title": "Adjacency Matrix Representation of Graph in Java",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 266,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D9qFLiiNPDEI&format=json"
+    },
+    "ACoLBU0nPAw": {
+      "title": "Validate Binary Search Tree | Animation | Leetcode #98 | Coding Interview question",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 2037,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DACoLBU0nPAw&format=json"
+    },
+    "B1Mau6NCHx0": {
+      "title": "How to represent Binary Search Tree in Java? | Animation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 607,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DB1Mau6NCHx0&format=json"
+    },
+    "B2g1shI0pbk": {
+      "title": "How to insert a value in a Binary Search Tree in Java  (Recursive) | Animation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 1187,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DB2g1shI0pbk&format=json"
+    },
+    "CysMrYVgyGU": {
+      "title": "Introduction to One-Dimensional Array",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 300,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DCysMrYVgyGU&format=json"
+    },
+    "DYpEpZzNmiA": {
+      "title": "How to find middle node in a Singly Linked List in Java? | Data Structures and Algorithms",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 725,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DDYpEpZzNmiA&format=json"
+    },
+    "Fg4VIjTdHx4": {
+      "title": "Create a Singly Linked List in Java (Animation)",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 343,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DFg4VIjTdHx4&format=json"
+    },
+    "FjU-6e881Uk": {
+      "title": "How to move Zeroes to end of an Array? | Implementation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 359,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DFjU-6e881Uk&format=json"
+    },
+    "GDNUL4lv8Nc": {
+      "title": "Insertion Sort in Java | Sorting Algorithm | Implementation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 522,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DGDNUL4lv8Nc&format=json"
+    },
+    "HLui6CzK-bI": {
+      "title": "How to check if a given String is a Palindrome | String Algorithms | Implementation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 388,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DHLui6CzK-bI&format=json"
+    },
+    "HihXfX24GO4": {
+      "title": "Sliding Window Maximum (Maximum of all subarrays of size k) | Leetcode #239 | Animation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 2828,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DHihXfX24GO4&format=json"
+    },
+    "I6AJxmyQ9dA": {
+      "title": "Bottom Up Approach - Fibonacci Number in Dynamic Programming | Implementation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 454,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DI6AJxmyQ9dA&format=json"
+    },
+    "I6i4AyDsMQA": {
+      "title": "How to insert a word in Trie - Part 1 | Animation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 821,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DI6i4AyDsMQA&format=json"
+    },
+    "IMWiPqoneT4": {
+      "title": "Merge Two Sorted Lists | Animation | Leetcode #21 | Coding Interview Question",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 1798,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DIMWiPqoneT4&format=json"
+    },
+    "Ic4K6pz0rRo": {
+      "title": "Quick Sort in One video | Animations and Implementations",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 5732,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DIc4K6pz0rRo&format=json"
+    },
+    "IdBENG4jRWY": {
+      "title": "Merge Two Sorted Lists | Implementation | Leetcode #21 | Coding Interview Question",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 861,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DIdBENG4jRWY&format=json"
+    },
+    "JUDNrDg-LhQ": {
+      "title": "Next Greater Element | Animation | Coding Interview",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 1283,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DJUDNrDg-LhQ&format=json"
+    },
+    "KPQTOH_adT0": {
+      "title": "Binary Search in Java",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 951,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DKPQTOH_adT0&format=json"
+    },
+    "Kd__dmFHoZo": {
+      "title": "Adjacency List Representation of Graph in Java",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 169,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DKd__dmFHoZo&format=json"
+    },
+    "LRUdf9VpO0w": {
+      "title": "Insert node at the beginning of a Singly Linked List in Java (Implementation)",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 178,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DLRUdf9VpO0w&format=json"
+    },
+    "MGs4rxFQmfE": {
+      "title": "Find length of a Singly Linked List in Java (Implementation)",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 237,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DMGs4rxFQmfE&format=json"
+    },
+    "MWV5I3W-0JU": {
+      "title": "Recursion and Dynamic Programming - Part 1",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 330,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DMWV5I3W-0JU&format=json"
+    },
+    "MZM63AvAs7s": {
+      "title": "Merge Sort in One video | Animations and Implementations",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 5931,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DMZM63AvAs7s&format=json"
+    },
+    "MmIeokeCdjY": {
+      "title": "Recursive Depth First Search (DFS) traversal of an Undirected Graph | Animation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 1157,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DMmIeokeCdjY&format=json"
+    },
+    "NWl-LtrWU-o": {
+      "title": "Connected Components in an Undirected Graph | Graph Data Structure | Animation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 1755,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DNWl-LtrWU-o&format=json"
+    },
+    "O282KYvGkyc": {
+      "title": "Search Insert Position in a Sorted Array | Animation | Leetcode #35 | Coding Interview Question",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 1304,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DO282KYvGkyc&format=json"
+    },
+    "PaQA-9mHMRY": {
+      "title": "Find the Missing Number in an Array | Animation | Coding Interview Question",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 586,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DPaQA-9mHMRY&format=json"
+    },
+    "PkrEpxfhSao": {
+      "title": "How to Reverse an Array in Java - Animation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 527,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DPkrEpxfhSao&format=json"
+    },
+    "Q485CWk_QWk": {
+      "title": "How to check if a given String is a Palindrome ? | String Algorithms | Animation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 736,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DQ485CWk_QWk&format=json"
+    },
+    "QK6I45kC2VQ": {
+      "title": "How to merge two sorted arrays in Java? | Animation | Part 1",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 554,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DQK6I45kC2VQ&format=json"
+    },
+    "R4V4n-waxn4": {
+      "title": "Recursive PreOrder traversal of a Binary Tree in Java",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 1566,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DR4V4n-waxn4&format=json"
+    },
+    "T2HMp69s8jw": {
+      "title": "Introduction to Graphs | Graph Data Structure and Algorithms",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 209,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DT2HMp69s8jw&format=json"
+    },
+    "TKIAVBsCLqk": {
+      "title": "Insertion Sort algorithm in Java (Part 2) | Animation | Sorting Algorithm",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 1221,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DTKIAVBsCLqk&format=json"
+    },
+    "TnKfIlImSKI": {
+      "title": "How to implement Trie in Java? | Animation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 459,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DTnKfIlImSKI&format=json"
+    },
+    "UULE-HyfERc": {
+      "title": "Find Second Maximum value in an Array | Animation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 771,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DUULE-HyfERc&format=json"
+    },
+    "Us4N22SEbM0": {
+      "title": "How to implement a Stack using a Linked List in Java ? | Stack Data Structure",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 1184,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DUs4N22SEbM0&format=json"
+    },
+    "VaIaJMeNWtU": {
+      "title": "Iterative Preorder traversal of a Binary Tree in Java",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 994,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DVaIaJMeNWtU&format=json"
+    },
+    "W3TklBfIK9U": {
+      "title": "Insertion Sort in Java -  Part 1 | Animation | Sorting Algorithms",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 806,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DW3TklBfIK9U&format=json"
+    },
+    "WI1qQavJIRo": {
+      "title": "Represent a Singly Linked List in Java",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 170,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DWI1qQavJIRo&format=json"
+    },
+    "WtoyZk6fgJ0": {
+      "title": "How to delete first node in a Doubly Linked List in Java ?",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 918,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DWtoyZk6fgJ0&format=json"
+    },
+    "WxM-EENBY-w": {
+      "title": "Iterative Depth First Search (DFS) traversal of an Undirected Graph | Animation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 1065,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DWxM-EENBY-w&format=json"
+    },
+    "Wzk6BBEBlYE": {
+      "title": "Iterative Depth First Search (DFS) traversal of an Undirected Graph | Implementation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 389,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DWzk6BBEBlYE&format=json"
+    },
+    "X1LdtRW88c0": {
+      "title": "Adjacency Matrix Representation of an Undirected Graph in Java | Implementation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 465,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DX1LdtRW88c0&format=json"
+    },
+    "XcJ16QUeJr0": {
+      "title": "Implement a Stack using an Array | Stack Data Structure | Animations",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 1388,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DXcJ16QUeJr0&format=json"
+    },
+    "Xxk_j0fBXws": {
+      "title": "Insert node at the beginning of a Singly Linked List in Java (Animation)",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 390,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DXxk_j0fBXws&format=json"
+    },
+    "YgfaeRol4e0": {
+      "title": "Doubly Linked List concepts in one complete video | Animations and Implementations",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 4290,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DYgfaeRol4e0&format=json"
+    },
+    "YrTJFPa9CpM": {
+      "title": "How to reverse an array in Java ? | Implementation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 209,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DYrTJFPa9CpM&format=json"
+    },
+    "ZD12jyrrUGI": {
+      "title": "Kadane's Algorithm for Maximum Sum Subarray - 2 | Dynamic Programming |  Animation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 1254,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DZD12jyrrUGI&format=json"
+    },
+    "ZHLAiHiYgeI": {
+      "title": "How to insert a value in a Binary Search Tree (Recursive) | Implementation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 443,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DZHLAiHiYgeI&format=json"
+    },
+    "Zh8RcXFOKVo": {
+      "title": "Find the Missing Number in an Array | Implementation | Coding Interview Question",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 266,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DZh8RcXFOKVo&format=json"
+    },
+    "ZovnBKd6O7g": {
+      "title": "Create a Singly Linked List in Java (Implementation)",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 265,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DZovnBKd6O7g&format=json"
+    },
+    "_0sLV_H9gIY": {
+      "title": "LeetCode #1: Two Sum I | Facebook Coding Interview | LeetCode Two Sum Java",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 989,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D_0sLV_H9gIY&format=json"
+    },
+    "_JcH9H9TVcY": {
+      "title": "How to represent Binary Search Tree in Java? | Implementation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 185,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D_JcH9H9TVcY&format=json"
+    },
+    "aInhXAUOJoY": {
+      "title": "How to Reverse an Integer in Java? | Coding Interview Question | Animation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 1144,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DaInhXAUOJoY&format=json"
+    },
+    "aWFrL3qBRF4": {
+      "title": "Linear Search in Java | Searching Algorithm | Implementation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 246,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DaWFrL3qBRF4&format=json"
+    },
+    "adS-s2Stg_A": {
+      "title": "How to find nth node from the end of a Singly Linked List in Java?",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 797,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DadS-s2Stg_A&format=json"
+    },
+    "bZrgAfkrs9M": {
+      "title": "Three Sum problem Animation in Java | Coding Interview Question",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 1421,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DbZrgAfkrs9M&format=json"
+    },
+    "bgWX-auJpI0": {
+      "title": "Is Valid Subsequence problem (animation) in Java | Coding Interview Question",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 1141,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DbgWX-auJpI0&format=json"
+    },
+    "c1lX6ntrj64": {
+      "title": "How to implement Trie in Java ? | Implementation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 252,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Dc1lX6ntrj64&format=json"
+    },
+    "dOynDPicyiI": {
+      "title": "Priority Queue and Binary Heap in One Video | Animation & Implementations",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 7250,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DdOynDPicyiI&format=json"
+    },
+    "dj7MYmhrebE": {
+      "title": "What are Hash Functions? | Hashing Data Structure",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 638,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Ddj7MYmhrebE&format=json"
+    },
+    "dm25MsWHYuk": {
+      "title": "Print a given matrix in Spiral form | Animation | Coding Interview Question",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 2066,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Ddm25MsWHYuk&format=json"
+    },
+    "dxNTArjcas8": {
+      "title": "Optimal Substructure property in Dynamic Programming",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 266,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DdxNTArjcas8&format=json"
+    },
+    "e4JbuvkhrpI": {
+      "title": "How to find start of a loop in a Singly Linked List? (Implementation)",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 491,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3De4JbuvkhrpI&format=json"
+    },
+    "eFreSZFj1bI": {
+      "title": "Bubble Sort in Java - Part 1 | Animation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 518,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DeFreSZFj1bI&format=json"
+    },
+    "ezwtvaqiZH8": {
+      "title": "Selection Sort Algorithm in Java (Part 2) | Animation | Data Structures and Algorithm",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 1282,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DezwtvaqiZH8&format=json"
+    },
+    "f35VqXSsP6Y": {
+      "title": "Kadane's Algorithm for Maximum Sum Subarray - 3 | Dynamic Programming | Implementation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 393,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Df35VqXSsP6Y&format=json"
+    },
+    "fF1aJL-4Yzk": {
+      "title": "Bubble Sort in Java | Implementation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 511,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DfF1aJL-4Yzk&format=json"
+    },
+    "feLNtgVg1xI": {
+      "title": "How to search an element in a Singly Linked List in Java ?",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 637,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DfeLNtgVg1xI&format=json"
+    },
+    "gX36VvycDnY": {
+      "title": "Top Down Approach - Fibonacci Number in Dynamic Programming | Implementation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 580,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DgX36VvycDnY&format=json"
+    },
+    "grewOnmAd0k": {
+      "title": "Breadth First Search (BFS) traversal of an Undirected Graph | Implementation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 365,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DgrewOnmAd0k&format=json"
+    },
+    "hEPciOcibZs": {
+      "title": "Introduction to Hash Table | Hashing Data Structure",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 517,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DhEPciOcibZs&format=json"
+    },
+    "hXAqTO7VqUQ": {
+      "title": "Level order traversal of a Binary Tree in Java",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 1116,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DhXAqTO7VqUQ&format=json"
+    },
+    "iz0T9z3V84g": {
+      "title": "Number of Islands | Leetcode #200 | Animation | Amazon Interview Question",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 2881,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Diz0T9z3V84g&format=json"
+    },
+    "j5j6_45nxP0": {
+      "title": "LeetCode #1: Two Sum II Implementation | Facebook Coding Interview | LeetCode Two Sum Java",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 585,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Dj5j6_45nxP0&format=json"
+    },
+    "jT3dwqvPA8g": {
+      "title": "Overlapping Subproblems property in Dynamic Programming",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 395,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DjT3dwqvPA8g&format=json"
+    },
+    "jY-EUKXYT20": {
+      "title": "Reverse a Singly Linked List in Java | Leetcode #206 | Data Structures & Algorithms",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 645,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DjY-EUKXYT20&format=json"
+    },
+    "jircscEJnWI": {
+      "title": "How to insert node at the beginning of a Doubly Linked List in Java ?",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 616,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DjircscEJnWI&format=json"
+    },
+    "k9r80o_DeK4": {
+      "title": "How to Implement a Singly Linked List in Java | Data Structures and Algorithms",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 144,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Dk9r80o_DeK4&format=json"
+    },
+    "lStz4y5Cq4c": {
+      "title": "LeetCode #101: Symmetric Tree | Animation | Amazon Interview Question",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 1322,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DlStz4y5Cq4c&format=json"
+    },
+    "lTyEeOhB0Fs": {
+      "title": "Declaration and Initialization of a One-Dimensional Array",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 375,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DlTyEeOhB0Fs&format=json"
+    },
+    "m4Wb3kXk_iA": {
+      "title": "Iterative Postorder Traversal of a Binary Tree | Implementation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 874,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Dm4Wb3kXk_iA&format=json"
+    },
+    "m8ERwzH7JOI": {
+      "title": "Recursion and Dynamic Programming - Part 2",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 1185,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Dm8ERwzH7JOI&format=json"
+    },
+    "mQk6Y5B_0Mk": {
+      "title": "How to represent a Binary Tree in Java ?",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 500,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DmQk6Y5B_0Mk&format=json"
+    },
+    "mS8SgO_Ux4s": {
+      "title": "LeetCode #1: Two Sum II Animation | Facebook Coding Interview | LeetCode Two Sum Java",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 934,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DmS8SgO_Ux4s&format=json"
+    },
+    "n1fnwWfgcvY": {
+      "title": "How to search a given key in a Binary Search Tree (Recursive) | Animation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 1110,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Dn1fnwWfgcvY&format=json"
+    },
+    "nALxbxZnzks": {
+      "title": "Insert Interval | Leetcode 57 | Animation | Coding Interview Problem",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 1449,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DnALxbxZnzks&format=json"
+    },
+    "npKnie2kjiM": {
+      "title": "Squares of a Sorted Array | Animation | Coding Interview Question",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 886,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DnpKnie2kjiM&format=json"
+    },
+    "nt8uN6pQrnw": {
+      "title": "Adjacency List Representation of an Undirected Graph in Java | Animation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 444,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Dnt8uN6pQrnw&format=json"
+    },
+    "oFf4oTE7GgY": {
+      "title": "How to insert a word in Trie - Part 2 | Animation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 1381,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DoFf4oTE7GgY&format=json"
+    },
+    "og-ab_WgWBc": {
+      "title": "Search in a row and column wise sorted matrix | Implementation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 351,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Dog-ab_WgWBc&format=json"
+    },
+    "pYyl9QAtRdk": {
+      "title": "Bubble Sort in Java - Part 2 | Animation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 1260,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DpYyl9QAtRdk&format=json"
+    },
+    "q99_b1z715M": {
+      "title": "Find length of a Singly Linked List in Java (Animation)",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 345,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Dq99_b1z715M&format=json"
+    },
+    "qE9KOe3Fu7Q": {
+      "title": "LeetCode #2: Add Two Numbers | Animation | Google Coding Interview | LeetCode Add Two Numbers Java",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 1199,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DqE9KOe3Fu7Q&format=json"
+    },
+    "qWFKDj41eVw": {
+      "title": "Introduction to Dynamic Programming",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 371,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DqWFKDj41eVw&format=json"
+    },
+    "rOpnLs0lXy0": {
+      "title": "How to detect a loop in a Singly Linked List in Java? (Animation)",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 574,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DrOpnLs0lXy0&format=json"
+    },
+    "sn8BPJGRA8U": {
+      "title": "Implement a Queue Datastructure (one video) | Animations and Implementations",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 2412,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Dsn8BPJGRA8U&format=json"
+    },
+    "srRqxjRA9dQ": {
+      "title": "Sort an array of 0’s, 1’s, and 2’s (Dutch National Flag Problem) Part 2 | Animation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 759,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DsrRqxjRA9dQ&format=json"
+    },
+    "ss0j3BuPNTk": {
+      "title": "Remove Duplicates from Sorted Array | Leetcode 26 | Animation | Coding Interview Problem",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 1084,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Dss0j3BuPNTk&format=json"
+    },
+    "tSrUFzSn-P0": {
+      "title": "How to merge two sorted arrays in Java? | Animation | Part 2",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 918,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DtSrUFzSn-P0&format=json"
+    },
+    "u8moN7j6P8w": {
+      "title": "Selection Sort Algorithm in Java (Part 1) | Animation | Data Structure and Algorithm",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 786,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Du8moN7j6P8w&format=json"
+    },
+    "uMTrIjP_0Gw": {
+      "title": "Iterative Inorder traversal of a Binary Tree in Java",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 1723,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DuMTrIjP_0Gw&format=json"
+    },
+    "uO1Pe5MCGAc": {
+      "title": "Merge Intervals | Leetcode 56 | Animation | Coding Interview Problem",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 1334,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DuO1Pe5MCGAc&format=json"
+    },
+    "ucJfhsLCBw0": {
+      "title": "Implementation - How to insert a word in Trie ?",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 444,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DucJfhsLCBw0&format=json"
+    },
+    "uigaktgcQWU": {
+      "title": "Iterative Postorder Traversal of a Binary Tree | Animation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 1676,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DuigaktgcQWU&format=json"
+    },
+    "vQ5S6rESu8w": {
+      "title": "Selection Sort Algorithm in Java (Part 3) | Implementation | Data Structures and Algorithms",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 463,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DvQ5S6rESu8w&format=json"
+    },
+    "vpXcceCmSbg": {
+      "title": "Recursive Inorder traversal of Binary Tree in Java",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 1617,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DvpXcceCmSbg&format=json"
+    },
+    "vr0jRG5wuMQ": {
+      "title": "Squares of a Sorted Array | Implementation | Coding Interview Question",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 560,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Dvr0jRG5wuMQ&format=json"
+    },
+    "w-qeVOijccg": {
+      "title": "Product of an Array except self | Animation | Coding Interview",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 1345,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Dw-qeVOijccg&format=json"
+    },
+    "wL1oxXrEgr4": {
+      "title": "How to search a given key in a Binary Search Tree (Recursive) | Implementation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 400,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DwL1oxXrEgr4&format=json"
+    },
+    "wL7JOLxbMI4": {
+      "title": "How to Implement a Binary Tree in Java | Binary Tree Data Structure",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 467,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DwL7JOLxbMI4&format=json"
+    },
+    "wvz5Jz_PW_8": {
+      "title": "How to move Zeroes to end of an Array? | Animation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 885,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Dwvz5Jz_PW_8&format=json"
+    },
+    "xDMFBKjxZNc": {
+      "title": "Recursive Postorder traversal of a Binary Tree in Java",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 1607,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DxDMFBKjxZNc&format=json"
+    },
+    "xSbScg7ONw8": {
+      "title": "Linear Search in Java | Searching Algorithm | Animation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 345,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DxSbScg7ONw8&format=json"
+    },
+    "y3zb6paCCy8": {
+      "title": "Kadane's Algorithm for Maximum Sum Subarray - 1 | Dynamic Programming | Conceptual Overview",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 1152,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Dy3zb6paCCy8&format=json"
+    },
+    "yAt_P1x6LuU": {
+      "title": "Remove Element | Leetcode 27 | Animation | Coding Interview Problem",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 1061,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DyAt_P1x6LuU&format=json"
+    },
+    "yKNOZ8bPdRQ": {
+      "title": "How to find start of a loop in a Singly Linked List? (Animation)",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 765,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DyKNOZ8bPdRQ&format=json"
+    },
+    "zKrEIlwbF5A": {
+      "title": "LeetCode #3: Longest Substring Without Repeating Characters | Animation | Google Coding Interview",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 1470,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DzKrEIlwbF5A&format=json"
+    },
+    "zqXDwFhfPtI": {
+      "title": "Adjacency Matrix Representation of an Undirected Graph in Java | Animation",
+      "author": "Dinesh Varyani",
+      "authorUrl": "https://www.youtube.com/@itsdineshvaryani",
+      "durationSeconds": 470,
+      "verifiedAt": "2026-10-28",
+      "verificationUrl": "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DzqXDwFhfPtI&format=json"
+    }
+  },
+  "matches": [
+    {
+      "slug": "two-sum",
+      "kind": "exact",
+      "videoIds": [
+        "_0sLV_H9gIY",
+        "mS8SgO_Ux4s",
+        "j5j6_45nxP0"
+      ]
+    },
+    {
+      "slug": "add-two-numbers",
+      "kind": "exact",
+      "videoIds": [
+        "qE9KOe3Fu7Q"
+      ]
+    },
+    {
+      "slug": "longest-substring-without-repeating-characters",
+      "kind": "exact",
+      "videoIds": [
+        "zKrEIlwbF5A"
+      ]
+    },
+    {
+      "slug": "3sum",
+      "kind": "exact",
+      "videoIds": [
+        "bZrgAfkrs9M"
+      ]
+    },
+    {
+      "slug": "valid-parentheses",
+      "kind": "exact",
+      "videoIds": [
+        "9TVrlVAtpv8"
+      ]
+    },
+    {
+      "slug": "merge-two-sorted-lists",
+      "kind": "exact",
+      "videoIds": [
+        "IMWiPqoneT4",
+        "IdBENG4jRWY"
+      ]
+    },
+    {
+      "slug": "remove-duplicates-from-sorted-array",
+      "kind": "exact",
+      "videoIds": [
+        "ss0j3BuPNTk"
+      ]
+    },
+    {
+      "slug": "remove-element",
+      "kind": "exact",
+      "videoIds": [
+        "yAt_P1x6LuU"
+      ]
+    },
+    {
+      "slug": "search-insert-position",
+      "kind": "exact",
+      "videoIds": [
+        "O282KYvGkyc"
+      ]
+    },
+    {
+      "slug": "maximum-subarray",
+      "kind": "exact",
+      "videoIds": [
+        "y3zb6paCCy8",
+        "ZD12jyrrUGI",
+        "f35VqXSsP6Y"
+      ]
+    },
+    {
+      "slug": "spiral-matrix",
+      "kind": "exact",
+      "videoIds": [
+        "dm25MsWHYuk"
+      ]
+    },
+    {
+      "slug": "merge-intervals",
+      "kind": "exact",
+      "videoIds": [
+        "uO1Pe5MCGAc"
+      ]
+    },
+    {
+      "slug": "insert-interval",
+      "kind": "exact",
+      "videoIds": [
+        "nALxbxZnzks"
+      ]
+    },
+    {
+      "slug": "sort-colors",
+      "kind": "exact",
+      "videoIds": [
+        "19p9d9PCDkA",
+        "srRqxjRA9dQ"
+      ]
+    },
+    {
+      "slug": "remove-duplicates-from-sorted-list",
+      "kind": "exact",
+      "videoIds": [
+        "0Hn18rUkZKY"
+      ]
+    },
+    {
+      "slug": "binary-tree-inorder-traversal",
+      "kind": "exact",
+      "videoIds": [
+        "vpXcceCmSbg",
+        "uMTrIjP_0Gw"
+      ]
+    },
+    {
+      "slug": "validate-binary-search-tree",
+      "kind": "exact",
+      "videoIds": [
+        "ACoLBU0nPAw"
+      ]
+    },
+    {
+      "slug": "symmetric-tree",
+      "kind": "exact",
+      "videoIds": [
+        "lStz4y5Cq4c"
+      ]
+    },
+    {
+      "slug": "binary-tree-level-order-traversal",
+      "kind": "exact",
+      "videoIds": [
+        "hXAqTO7VqUQ"
+      ]
+    },
+    {
+      "slug": "linked-list-cycle",
+      "kind": "exact",
+      "videoIds": [
+        "rOpnLs0lXy0",
+        "5czD98BU28o"
+      ]
+    },
+    {
+      "slug": "linked-list-cycle-ii",
+      "kind": "exact",
+      "videoIds": [
+        "yKNOZ8bPdRQ",
+        "e4JbuvkhrpI"
+      ]
+    },
+    {
+      "slug": "binary-tree-preorder-traversal",
+      "kind": "exact",
+      "videoIds": [
+        "R4V4n-waxn4",
+        "VaIaJMeNWtU"
+      ]
+    },
+    {
+      "slug": "binary-tree-postorder-traversal",
+      "kind": "exact",
+      "videoIds": [
+        "xDMFBKjxZNc",
+        "uigaktgcQWU",
+        "m4Wb3kXk_iA"
+      ]
+    },
+    {
+      "slug": "number-of-islands",
+      "kind": "exact",
+      "videoIds": [
+        "iz0T9z3V84g"
+      ]
+    },
+    {
+      "slug": "reverse-linked-list",
+      "kind": "exact",
+      "videoIds": [
+        "jY-EUKXYT20"
+      ]
+    },
+    {
+      "slug": "product-of-array-except-self",
+      "kind": "exact",
+      "videoIds": [
+        "w-qeVOijccg"
+      ]
+    },
+    {
+      "slug": "sliding-window-maximum",
+      "kind": "exact",
+      "videoIds": [
+        "HihXfX24GO4"
+      ]
+    },
+    {
+      "slug": "search-a-2d-matrix-ii",
+      "kind": "exact",
+      "videoIds": [
+        "4lATqBxapmc",
+        "og-ab_WgWBc"
+      ]
+    },
+    {
+      "slug": "move-zeroes",
+      "kind": "exact",
+      "videoIds": [
+        "wvz5Jz_PW_8",
+        "FjU-6e881Uk"
+      ]
+    },
+    {
+      "slug": "fibonacci-number",
+      "kind": "exact",
+      "videoIds": [
+        "8Upn_Z_VjQw",
+        "I6AJxmyQ9dA",
+        "-WgPTuBYSCE",
+        "gX36VvycDnY"
+      ]
+    },
+    {
+      "slug": "search-in-a-binary-search-tree",
+      "kind": "exact",
+      "videoIds": [
+        "n1fnwWfgcvY",
+        "wL1oxXrEgr4"
+      ]
+    },
+    {
+      "slug": "insert-into-a-binary-search-tree",
+      "kind": "exact",
+      "videoIds": [
+        "B2g1shI0pbk",
+        "ZHLAiHiYgeI"
+      ]
+    },
+    {
+      "slug": "binary-search",
+      "kind": "exact",
+      "videoIds": [
+        "KPQTOH_adT0"
+      ]
+    },
+    {
+      "slug": "squares-of-a-sorted-array",
+      "kind": "exact",
+      "videoIds": [
+        "npKnie2kjiM",
+        "vr0jRG5wuMQ"
+      ]
+    },
+    {
+      "slug": "reverse-integer",
+      "kind": "topic",
+      "focus": "Integer reversal technique",
+      "videoIds": [
+        "aInhXAUOJoY"
+      ]
+    },
+    {
+      "slug": "remove-nth-node-from-end-of-list",
+      "kind": "topic",
+      "focus": "Finding the nth node from the end",
+      "videoIds": [
+        "adS-s2Stg_A"
+      ]
+    },
+    {
+      "slug": "merge-sorted-array",
+      "kind": "topic",
+      "focus": "Merging sorted arrays; separate output array",
+      "videoIds": [
+        "QK6I45kC2VQ",
+        "tSrUFzSn-P0",
+        "7ynKGC1_cVk"
+      ]
+    },
+    {
+      "slug": "valid-palindrome",
+      "kind": "topic",
+      "focus": "Basic palindrome check; review problem-specific normalization",
+      "videoIds": [
+        "Q485CWk_QWk",
+        "HLui6CzK-bI"
+      ]
+    },
+    {
+      "slug": "missing-number",
+      "kind": "topic",
+      "focus": "Missing-number technique; review the input range",
+      "videoIds": [
+        "PaQA-9mHMRY",
+        "Zh8RcXFOKVo"
+      ]
+    },
+    {
+      "slug": "is-subsequence",
+      "kind": "topic",
+      "focus": "Subsequence technique using arrays",
+      "videoIds": [
+        "bgWX-auJpI0",
+        "9eAMIKZ3edI"
+      ]
+    },
+    {
+      "slug": "next-greater-element-i",
+      "kind": "topic",
+      "focus": "Next-greater-element stack technique",
+      "videoIds": [
+        "JUDNrDg-LhQ"
+      ]
+    },
+    {
+      "slug": "middle-of-the-linked-list",
+      "kind": "topic",
+      "focus": "Middle-node technique; check the even-length convention",
+      "videoIds": [
+        "DYpEpZzNmiA"
+      ]
+    },
+    {
+      "slug": "implement-trie-prefix-tree",
+      "kind": "topic",
+      "focus": "Trie representation and insertion",
+      "videoIds": [
+        "TnKfIlImSKI",
+        "c1lX6ntrj64",
+        "I6i4AyDsMQA",
+        "oFf4oTE7GgY",
+        "ucJfhsLCBw0"
+      ]
+    },
+    {
+      "rowId": "s2869",
+      "kind": "topic",
+      "focus": "Array fundamentals",
+      "videoIds": [
+        "CysMrYVgyGU",
+        "lTyEeOhB0Fs"
+      ]
+    },
+    {
+      "rowId": "s342",
+      "kind": "topic",
+      "focus": "Reversing an array",
+      "videoIds": [
+        "PkrEpxfhSao",
+        "YrTJFPa9CpM"
+      ]
+    },
+    {
+      "rowId": "s1203",
+      "kind": "topic",
+      "focus": "Hashing and hash tables",
+      "videoIds": [
+        "44A_jk4_Rx8",
+        "dj7MYmhrebE",
+        "hEPciOcibZs"
+      ]
+    },
+    {
+      "rowId": "s947",
+      "kind": "topic",
+      "focus": "Selection sort",
+      "videoIds": [
+        "u8moN7j6P8w",
+        "ezwtvaqiZH8",
+        "vQ5S6rESu8w"
+      ]
+    },
+    {
+      "rowId": "s943",
+      "kind": "topic",
+      "focus": "Bubble sort",
+      "videoIds": [
+        "eFreSZFj1bI",
+        "pYyl9QAtRdk",
+        "fF1aJL-4Yzk"
+      ]
+    },
+    {
+      "rowId": "s944",
+      "kind": "topic",
+      "focus": "Insertion sort",
+      "videoIds": [
+        "W3TklBfIK9U",
+        "TKIAVBsCLqk",
+        "GDNUL4lv8Nc"
+      ]
+    },
+    {
+      "rowId": "s945",
+      "kind": "topic",
+      "focus": "Merge sort",
+      "videoIds": [
+        "MZM63AvAs7s"
+      ]
+    },
+    {
+      "rowId": "s946",
+      "kind": "topic",
+      "focus": "Quick sort",
+      "videoIds": [
+        "Ic4K6pz0rRo"
+      ]
+    },
+    {
+      "rowId": "s43",
+      "kind": "topic",
+      "focus": "Second maximum in an array",
+      "videoIds": [
+        "UULE-HyfERc"
+      ]
+    },
+    {
+      "rowId": "s41",
+      "kind": "topic",
+      "focus": "Linear search",
+      "videoIds": [
+        "xSbScg7ONw8",
+        "aWFrL3qBRF4"
+      ]
+    },
+    {
+      "rowId": "s44",
+      "kind": "topic",
+      "focus": "Missing number in an array",
+      "videoIds": [
+        "PaQA-9mHMRY",
+        "Zh8RcXFOKVo"
+      ]
+    },
+    {
+      "rowId": "s1237",
+      "kind": "topic",
+      "focus": "Singly linked list fundamentals",
+      "videoIds": [
+        "WI1qQavJIRo",
+        "k9r80o_DeK4",
+        "Fg4VIjTdHx4",
+        "ZovnBKd6O7g"
+      ]
+    },
+    {
+      "rowId": "s356",
+      "kind": "topic",
+      "focus": "Insert at the head of a linked list",
+      "videoIds": [
+        "Xxk_j0fBXws",
+        "LRUdf9VpO0w"
+      ]
+    },
+    {
+      "rowId": "s470",
+      "kind": "topic",
+      "focus": "Linked list length",
+      "videoIds": [
+        "q99_b1z715M",
+        "MGs4rxFQmfE"
+      ]
+    },
+    {
+      "rowId": "s905",
+      "kind": "topic",
+      "focus": "Searching a linked list",
+      "videoIds": [
+        "feLNtgVg1xI"
+      ]
+    },
+    {
+      "rowId": "s1234",
+      "kind": "topic",
+      "focus": "Doubly linked lists",
+      "videoIds": [
+        "YgfaeRol4e0"
+      ]
+    },
+    {
+      "rowId": "s361",
+      "kind": "topic",
+      "focus": "Insert at the head of a doubly linked list",
+      "videoIds": [
+        "jircscEJnWI"
+      ]
+    },
+    {
+      "rowId": "s348",
+      "kind": "topic",
+      "focus": "Delete the head of a doubly linked list",
+      "videoIds": [
+        "WtoyZk6fgJ0"
+      ]
+    },
+    {
+      "rowId": "s390",
+      "kind": "topic",
+      "focus": "Stack using an array",
+      "videoIds": [
+        "XcJ16QUeJr0"
+      ]
+    },
+    {
+      "rowId": "s391",
+      "kind": "topic",
+      "focus": "Stack using a linked list",
+      "videoIds": [
+        "Us4N22SEbM0"
+      ]
+    },
+    {
+      "rowId": "s388",
+      "kind": "topic",
+      "focus": "Queue implementation",
+      "videoIds": [
+        "sn8BPJGRA8U"
+      ]
+    },
+    {
+      "rowId": "s1223",
+      "kind": "topic",
+      "focus": "Priority queues and binary heaps",
+      "videoIds": [
+        "dOynDPicyiI"
+      ]
+    },
+    {
+      "rowId": "s2865",
+      "kind": "topic",
+      "focus": "Binary tree fundamentals",
+      "videoIds": [
+        "mQk6Y5B_0Mk",
+        "wL7JOLxbMI4"
+      ]
+    },
+    {
+      "rowId": "s2864",
+      "kind": "topic",
+      "focus": "Binary tree representation in Java",
+      "videoIds": [
+        "mQk6Y5B_0Mk",
+        "wL7JOLxbMI4"
+      ]
+    },
+    {
+      "rowId": "s1153",
+      "kind": "topic",
+      "focus": "Binary search tree fundamentals",
+      "videoIds": [
+        "B1Mau6NCHx0",
+        "_JcH9H9TVcY"
+      ]
+    },
+    {
+      "rowId": "s1222",
+      "kind": "topic",
+      "focus": "Graph fundamentals",
+      "videoIds": [
+        "T2HMp69s8jw"
+      ]
+    },
+    {
+      "rowId": "s2871",
+      "kind": "topic",
+      "focus": "Graph representation in Java",
+      "videoIds": [
+        "9qFLiiNPDEI",
+        "zqXDwFhfPtI",
+        "X1LdtRW88c0",
+        "Kd__dmFHoZo",
+        "nt8uN6pQrnw",
+        "6rDKLqFLfh0"
+      ]
+    },
+    {
+      "rowId": "s528",
+      "kind": "topic",
+      "focus": "Connected components",
+      "videoIds": [
+        "NWl-LtrWU-o"
+      ]
+    },
+    {
+      "rowId": "s529",
+      "kind": "topic",
+      "focus": "Graph traversal",
+      "videoIds": [
+        "-X6ji6sjxD4",
+        "grewOnmAd0k",
+        "WxM-EENBY-w",
+        "Wzk6BBEBlYE",
+        "MmIeokeCdjY"
+      ]
+    },
+    {
+      "rowId": "s2831",
+      "kind": "topic",
+      "focus": "Depth-first search",
+      "videoIds": [
+        "WxM-EENBY-w",
+        "Wzk6BBEBlYE",
+        "MmIeokeCdjY"
+      ]
+    },
+    {
+      "rowId": "s1195",
+      "kind": "topic",
+      "focus": "Dynamic programming foundations",
+      "videoIds": [
+        "qWFKDj41eVw",
+        "MWV5I3W-0JU",
+        "m8ERwzH7JOI",
+        "dxNTArjcas8",
+        "jT3dwqvPA8g"
+      ]
+    },
+    {
+      "rowId": "s1027",
+      "kind": "topic",
+      "focus": "Trie representation and insertion",
+      "videoIds": [
+        "TnKfIlImSKI",
+        "c1lX6ntrj64",
+        "I6i4AyDsMQA",
+        "oFf4oTE7GgY",
+        "ucJfhsLCBw0"
+      ]
+    }
+  ]
+}

@@ -95,9 +95,8 @@
     return out;
   }
 
-  /* ---------- DSA: NeetCode walkthrough + LeetCode solutions, per problem ----------
-     assets/dsa-resources.js maps a LeetCode slug to the video NeetCode publishes
-     for that exact problem, so the link always matches the row. Loaded lazily,
+  /* ---------- DSA: curated walkthroughs and labelled topic support ----------
+     Resources are mapped to the problem or foundational topic. Loaded lazily,
      only on pages that actually list problems. */
   var dsaPending = false;
   function ensureDsaData(onReady) {
@@ -105,7 +104,7 @@
     if (dsaPending) return false;
     dsaPending = true;
     var s = document.createElement("script");
-    s.src = root() + "assets/dsa-resources.js?v=2";
+    s.src = root() + "assets/dsa-resources.js?v=3";
     s.onload = function () { onReady && onReady(); };
     s.onerror = function () { window.dsaResources = {}; onReady && onReady(); };
     document.head.appendChild(s);
@@ -139,7 +138,8 @@
       if (hit.videos && Array.isArray(hit.videos) && hit.videos.length) {
         hit.videos.forEach(function (v) {
           if (v && v[0] && !found.videos.some(function (x) { return x[0] === v[0]; })) {
-            found.videos.push([v[0], v[1] || "Video", v[2] || "YouTube", v[3] || ""]);
+            var note = /^Topic support:/.test(v[4] || "") ? v[4] : "";
+            found.videos.push([v[0], v[1] || "Video", v[2] || "YouTube", v[3] || "", 0, { note: note }]);
           }
         });
       } else if (hit.v) {

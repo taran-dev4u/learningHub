@@ -19,6 +19,9 @@ const ROOT = process.cwd();
 const REG = path.join(ROOT, 'assets', 'dsa-resources.js');
 const INDEX = path.join(ROOT, 'DSA_Ultimate_Index.html');
 const NEETCODE = path.join(ROOT, 'tools', '.dsa-cache', 'neetcode.json');
+const DINESH = JSON.parse(fs.readFileSync(path.join(ROOT, 'tools', 'dinesh_varyani_videos.json'), 'utf8'));
+const summary = JSON.parse(fs.readFileSync(path.join(ROOT, 'tools', 'problems_summary.json'), 'utf8'));
+const problems = new Map(summary.map((problem) => [problem.lcId, problem]));
 
 /* hosts assets/video-panel.js can render inside the panel */
 const PANEL_HOSTS = new Set([
@@ -47,8 +50,8 @@ for (const [slug, id] of Object.entries(slugIndex)) {
   check(pageIds.has(String(id)), `slug alias ${slug} points at missing row ${id}`);
 }
 
-/* every video id must come from NeetCode's own data, and must be the video
-   they list for that problem — this is the check the old data could not pass */
+/* NeetCode-labelled matches must agree with their own problem metadata.
+   Dinesh Varyani matches are checked against the separate oEmbed catalogue. */
 let ncBySlug = null;
 if (fs.existsSync(NEETCODE)) {
   ncBySlug = new Map();
@@ -64,16 +67,47 @@ const slugOf = (id) => {
 
 const videoOwners = new Map();
 let videos = 0, reads = 0, panelReads = 0;
+let dineshVideos = 0, dineshRows = 0;
+for (const [id, video] of Object.entries(DINESH.videos)) {
+  check(video.author === 'Dinesh Varyani' && video.authorUrl === DINESH.source.channelUrl,
+    `Dinesh catalogue ${id}: unexpected channel`);
+  check(/^\d{4}-\d{2}-\d{2}$/.test(video.verifiedAt || ''), `Dinesh catalogue ${id}: missing verification date`);
+  const url = new URL(video.verificationUrl);
+  check(url.hostname === 'www.youtube.com' && url.pathname === '/oembed' &&
+    url.searchParams.get('url') === `https://www.youtube.com/watch?v=${id}`,
+  `Dinesh catalogue ${id}: missing video-specific oEmbed evidence`);
+}
 for (const k of keys) {
   const p = reg[k];
+  const problem = problems.get(k);
+  const expectedDinesh = DINESH.matches.filter((match) => match.slug ? match.slug === problem?.slug : match.rowId === k);
+  if (expectedDinesh.length) dineshRows++;
+  for (const match of expectedDinesh) {
+    for (const id of match.videoIds) check(p.videos.some((v) => v[0] === id), `${k}: missing curated Dinesh Varyani video ${id}`);
+  }
   check(typeof p.t === 'string' && p.t.length > 0, `${k}: empty title`);
   check(Array.isArray(p.videos), `${k}: videos is not an array`);
   check(Array.isArray(p.reads), `${k}: reads is not an array`);
   check((p.reads || []).length >= 5, `${k}: fewer than 5 reads`);
 
+  const videoIds = new Set();
   for (const v of p.videos || []) {
     videos++;
+    check(!videoIds.has(v[0]), `${k}: duplicate video ${v[0]}`);
+    videoIds.add(v[0]);
     check(/^[A-Za-z0-9_-]{11}$/.test(v[0]), `${k}: "${v[0]}" is not a YouTube id`);
+    if (v[2] === 'Dinesh Varyani') {
+      dineshVideos++;
+      const source = DINESH.videos[v[0]];
+      const match = expectedDinesh.find((entry) => entry.videoIds.includes(v[0]));
+      check(!!source && source.title === v[1], `${k}: Dinesh video ${v[0]} title differs from verified metadata`);
+      check(!!match, `${k}: Dinesh video ${v[0]} is not curated for this problem/topic`);
+      if (match) {
+        check(match.kind === 'exact' ? v[4] === 'Verified Dinesh Varyani problem walkthrough' : v[4] === `Topic support: ${match.focus}`,
+          `${k}: Dinesh video ${v[0]} has the wrong exact/topic label`);
+        if (match.slug) check(slugOf(k) === match.slug, `${k}: Dinesh mapping is for ${match.slug}, not the page's problem`);
+      }
+    }
     if (ncBySlug) {
       const slug = slugOf(k);
       if (/Verified exact problem|Official NeetCode metadata/.test(v[4] || '')) {
@@ -116,6 +150,7 @@ for (const [id, owners] of videoOwners) {
 }
 
 console.log(`rows ${keys.length} | videos ${videos} | reads ${reads} (panel-openable ${panelReads})`);
+console.log(`Dinesh Varyani: ${dineshVideos} video placements on ${dineshRows} rows; ${Object.keys(DINESH.videos).length} verified source videos`);
 if (!ncBySlug) console.log('note: tools/.dsa-cache/neetcode.json absent — provenance of video ids not checked');
 if (fail.length) {
   console.error(`\nFAIL: ${fail.length} problem(s)`);

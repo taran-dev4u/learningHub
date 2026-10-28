@@ -445,7 +445,7 @@
     if (!v) return 0;
     if (v[4] != null && v[4] !== '') {
       var s = Number(v[4]);
-      if (!isNaN(s) && s > 0) return Math.floor(s);
+      if (!isNaN(s) && s >= 0) return Math.floor(s);
     }
     if (v.start != null) {
       var s2 = Number(v.start);
@@ -510,11 +510,13 @@
       var start = parseVideoStart(v);
       var cleanId = (v[0] || '').split('?')[0].split('&')[0];
       var timeLabel = start > 0 ? ('▶ ' + formatTime(start)) : (v[3] ? esc(v[3]) : '');
+      var note = v[5] && v[5].note;
       return '<button type="button" class="vp-item" data-vp-i="' + i + '">' +
         '<span class="vp-thumb"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/' + esc(cleanId) + '/mqdefault.jpg">' +
         (timeLabel ? '<span class="vp-dur">' + esc(timeLabel) + '</span>' : '') + '</span>' +
         '<span class="vp-meta"><span class="vp-vt">' + esc(v[1] || 'Video') + '</span>' +
-        '<span class="vp-ch">' + esc(v[2] || '') + (start > 0 ? ' · ⏱️ Starts at ' + formatTime(start) : '') + '</span></span></button>';
+        '<span class="vp-ch">' + esc(v[2] || '') + (start > 0 ? ' · ⏱️ Starts at ' + formatTime(start) : '') + '</span>' +
+        (note ? '<span class="vp-ch">' + esc(note) + '</span>' : '') + '</span></button>';
     }).join('');
   }
 

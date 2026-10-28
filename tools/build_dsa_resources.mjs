@@ -2,11 +2,10 @@
 /**
  * Builder script to generate assets/dsa-resources.js.
  *
- * Quality rule: a direct video is emitted only when NeetCode's official
- * .problemSiteData.json names that YouTube id for the exact LeetCode slug.
- * Problems without a provenanced video intentionally get no video; the study
- * rail shows a labelled YouTube search instead. Do not add a per-problem
- * video quota here.
+ * Dinesh Varyani additions come from an explicit problem/topic mapping whose
+ * titles and channel are verified through YouTube oEmbed. Related variants
+ * are labelled as topic support. Never require a per-problem video quota.
+ * --add-dinesh preserves the existing registry and adds only this catalogue.
  */
 
 import fs from 'node:fs';
@@ -23,6 +22,8 @@ const LOCAL_TUTORIALS_FILE = path.join(ROOT, 'tools', '.dsa-cache', 'local_tutor
 const NEETCODE_FILE = path.join(ROOT, 'tools', '.dsa-cache', 'neetcode.json');
 const LEGACY_RESOURCES_FILE = path.join(ROOT, 'assets', 'dsa-resources.js');
 const OUTPUT_FILE = path.join(ROOT, 'assets', 'dsa-resources.js');
+const DINESH_FILE = path.join(ROOT, 'tools', 'dinesh_varyani_videos.json');
+const ADD_DINESH_ONLY = process.argv.includes('--add-dinesh');
 const NEETCODE_SOURCE_URL = 'https://raw.githubusercontent.com/neetcode-gh/leetcode/main/.problemSiteData.json';
 
 console.log('Loading DSA resource datasets...');
@@ -36,6 +37,7 @@ const videoCache = readJson(HARVESTED_VIDEOS_FILE, {});
 const doocsIndex = readJson(DOOCS_INDEX_FILE, {});
 const localTutorials = readJson(LOCAL_TUTORIALS_FILE, {});
 const neetcodeRows = readJson(NEETCODE_FILE, []);
+const dineshCatalog = readJson(DINESH_FILE, { videos: {}, matches: [] });
 
 const neetcodeBySlug = new Map();
 for (const row of neetcodeRows) {
@@ -305,6 +307,35 @@ function makeVideos(prob, ncRow) {
   return out.slice(0, 5);
 }
 
+function withDineshVideos(prob, existing) {
+  const additions = [];
+  for (const match of dineshCatalog.matches) {
+    if (match.slug ? match.slug !== prob.slug : match.rowId !== prob.lcId) continue;
+    for (const id of match.videoIds) {
+      const video = dineshCatalog.videos[id];
+      if (!video || video.author !== 'Dinesh Varyani' || video.authorUrl !== dineshCatalog.source.channelUrl) {
+        throw new Error(`Unverified Dinesh Varyani catalogue entry: ${id}`);
+      }
+      const seconds = Number(video.durationSeconds) || 0;
+      const duration = seconds ? (seconds >= 3600
+        ? `${Math.floor(seconds / 3600)}:${String(Math.floor(seconds / 60) % 60).padStart(2, '0')}:${String(seconds % 60).padStart(2, '0')}`
+        : `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}`) : '';
+      additions.push([id, video.title, video.author, duration,
+        match.kind === 'exact' ? 'Verified Dinesh Varyani problem walkthrough' : `Topic support: ${match.focus}`]);
+    }
+  }
+  if (!additions.length) return existing;
+  const addedIds = new Set(additions.map((video) => video[0]));
+  const base = existing.filter((video) => !addedIds.has(video[0]));
+  const ordered = [
+    ...base.filter((video) => !/Topic support/.test(video[4] || '')),
+    ...additions,
+    ...base.filter((video) => /Topic support/.test(video[4] || '')),
+  ];
+  const seen = new Set();
+  return ordered.filter((video) => !seen.has(video[0]) && seen.add(video[0]));
+}
+
 function topicLabel(key) {
   return String(key).replace(/_/g, ' ').replace(/\b\w/g, (m) => m.toUpperCase());
 }
@@ -354,21 +385,18 @@ for (const p of summary) {
   const slug = String(p.slug || '').toLowerCase();
   const ncRow = slug ? neetcodeBySlug.get(slug) : null;
   const tufArticle = striverArticleMap.get(p.lcId) || '';
-  const videos = makeVideos(p, ncRow);
-  const reads = makeReads(p, tufArticle, ncRow);
-  if (videos.length < 5) {
-    console.error(`FAIL: ${p.lcId} ${p.title} has only ${videos.length} videos; run tools/curate_dsa_videos.mjs`);
-    process.exit(1);
-  }
+  const legacyEntry = legacyData[p.lcId] || (slug && legacyData[slug]) || {};
+  if (ADD_DINESH_ONLY && !Array.isArray(legacyEntry.videos)) throw new Error(`Missing existing row ${p.lcId}`);
+  const videos = withDineshVideos(p, ADD_DINESH_ONLY ? legacyEntry.videos : makeVideos(p, ncRow));
+  const reads = ADD_DINESH_ONLY ? legacyEntry.reads : makeReads(p, tufArticle, ncRow);
   if (reads.length < 5) {
     console.error(`FAIL: ${p.lcId} ${p.title} has only ${reads.length} reads`);
     process.exit(1);
   }
 
-  const legacyEntry = legacyData[p.lcId] || (slug && legacyData[slug]) || {};
   const label = legacyEntry.l || (p.isStriver ? 'Striver A2Z' : 'LeetCode');
 
-  const entry = {
+  const entry = ADD_DINESH_ONLY ? { ...legacyEntry, v: videos[0] ? videos[0][0] : '', videos } : {
     v: videos[0] ? videos[0][0] : '',
     t: p.title,
     d: p.diff || 'Medium',
@@ -388,14 +416,14 @@ for (const p of summary) {
 console.log('Assembled registry:');
 console.log(`  Canonical DSA rows: ${Object.keys(resources).length} / ${summary.length}`);
 console.log(`  Slug aliases for tutorial pages: ${Object.keys(slugIndex).length}`);
-console.log(`  Verified direct videos: ${totalVideos}`);
+console.log(`  Video links (problem walkthroughs and topic support): ${totalVideos}`);
 console.log(`  Direct reading links: ${totalReads}`);
 
 const fileHeader = `/* DSA Problem Resources Registry.
    Auto-generated by tools/build_dsa_resources.mjs.
    Covers the DSA Ultimate Index rows with exact direct reading links.
-   Videos are emitted only when NeetCode's official metadata names the video for the exact LeetCode slug.
-   Problems without a verified video intentionally fall back to a labelled YouTube search in study-rail.js.
+   Dinesh Varyani videos use explicit mappings verified against YouTube oEmbed metadata.
+   Exact walkthroughs and supporting topic/variant videos are labelled separately; no video quota is required.
 */
 window.dsaResources = `;
 
@@ -417,14 +445,7 @@ for (let attempt = 0; attempt < 5; attempt++) {
     written = true;
     break;
   } catch (err) {
-    try {
-      fs.copyFileSync(tempFile, OUTPUT_FILE);
-      fs.unlinkSync(tempFile);
-      written = true;
-      break;
-    } catch (e) {
-      Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 100);
-    }
+    Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 100 * (attempt + 1));
   }
 }
 

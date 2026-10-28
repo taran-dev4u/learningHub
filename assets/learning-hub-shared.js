@@ -379,7 +379,7 @@
   css.href = root + "assets/video-panel.css?v=4";
   document.head.appendChild(css);
   var js = document.createElement("script");
-  js.src = root + "assets/video-panel.js?v=5";
+  js.src = root + "assets/video-panel.js?v=6";
   js.defer = true;
   document.head.appendChild(js);
 
@@ -389,7 +389,7 @@
   railCss.href = root + "assets/study-rail.css?v=1";
   document.head.appendChild(railCss);
   var railJs = document.createElement("script");
-  railJs.src = root + "assets/study-rail.js?v=1";
+  railJs.src = root + "assets/study-rail.js?v=2";
   railJs.defer = true;
   document.head.appendChild(railJs);
 })();
