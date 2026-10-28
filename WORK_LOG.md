@@ -32,8 +32,11 @@
 | `tech_git.html` | Standalone Git & GitHub Architecture Masterclass (4 subsections, 17 concepts) | ✅ Deployed | Playwright + Audit |
 | `tech_docker_k8s.html` | Standalone Docker & Kubernetes Container Orchestration Masterclass (8 subsections, 31 concepts) | ✅ Deployed | Playwright + Audit |
 | `tech_cicd.html` | Standalone CI/CD Pipelines & DevOps Automation Masterclass (3 subsections, 12 concepts) | ✅ Deployed | Playwright + Audit |
+| `tech_terraform.html` | Standalone Terraform & Infrastructure as Code Masterclass (3 subsections, 12 concepts) | ✅ Deployed | Playwright + Audit |
+| `tech_kafka.html` | Standalone Apache Kafka Distributed Streaming Masterclass (4 subsections, 14 concepts) | ✅ Deployed | Playwright + Audit |
+| `tech_postgres.html` | Standalone Database Engineering & PostgreSQL Internals Masterclass (4 subsections, 15 concepts) | ✅ Deployed | Playwright + Audit |
 | `system_design.html` | 15 topics, 62 subtopics, 322 concepts + video panels & direct timestamps | ✅ Active | Audit + Verify |
-| `System_Design_Tutorial/` | 62 deep roadmap lessons with Algomaster theme | ✅ Active | `build_sd_resources.py` |
+| `System_Design_Tutorial/` | 62 deep roadmap lessons with Algomaster theme (100% video coverage) | ✅ Active | `build_sd_resources.py` |
 | `AI_Engineering_Tutorial/` | 11 domains, 37 subsections, 177 concepts | ✅ Active | Audit + Verify |
 | `interview_prep.html` | 11 sections, 153 items + Amazon companion hub integration | ✅ Fully generated | `build-learning-hub.mjs` |
 
@@ -55,15 +58,19 @@ The autonomous agent is scheduled via recurring cron notification (`0 */3 * * *`
 
 ## 4. Pending Research & Improvement Backlog
 
-- [ ] **Curate Remaining Videos for All-in-One Tech Portal**:
-  - Add provenanced timestamped video walkthroughs for Azure, GCP, Terraform, Kafka, Spark, PostgreSQL, Redis, Java/Spring Boot, and Python/FastAPI.
-- [ ] **Complete System Design 23 Lessons Without Video**:
-  - Add curated, high-retention video links for the 23 System Design lessons currently lacking video resources.
-- [ ] **Deepen Standalone Masterclasses**:
+- [x] **Complete System Design 62 Lessons Video Audit**:
+  - Verified 100% of 62 roadmap lessons and all 322 concepts in `system_design.html` have verified video links.
+- [x] **Expand Standalone Masterclasses (Batch 2)**:
+  - Generated and verified:
+    - `tech_terraform.html` (Terraform & Infrastructure as Code — 3 subs, 12 concepts)
+    - `tech_kafka.html` (Apache Kafka Distributed Streaming — 4 subs, 14 concepts)
+    - `tech_postgres.html` (Database Engineering & PostgreSQL Internals — 4 subs, 15 concepts)
+- [ ] **Next Masterclass Expansions (Batch 3)**:
   - Generate standalone masterclass pages for:
-    - `tech_kafka.html` (Apache Kafka Distributed Streaming)
-    - `tech_postgres.html` (PostgreSQL Internals & Query Optimization)
-    - `tech_terraform.html` (Terraform & Infrastructure as Code)
+    - `tech_redis.html` (In-Memory Caching with Redis)
+    - `tech_java.html` (Java & Spring Boot Microservices)
+    - `tech_fastapi.html` (Python & FastAPI Backend Engineering)
+    - `tech_apis.html` (Production API Design & Architecture)
 - [ ] **DSA Unique Problem Descriptions**:
   - Replace recycled descriptions across DSA patterns with distinct problem-specific intuition summaries.
 - [ ] **Mobile & Performance Polish**:
@@ -72,6 +79,25 @@ The autonomous agent is scheduled via recurring cron notification (`0 */3 * * *`
 ---
 
 ## 5. Detailed Session Changelog
+
+### Session: October 28, 2026 (Iteration 1: Scheduled Maintenance & Masterclasses Batch 2)
+- **Automated Trigger**: Executed scheduled maintenance check iteration 1.
+- **Audited Video Resources**:
+  - Ran deep verification across all tutorial assets: confirmed all 62 lessons in `System_Design_Tutorial/resources.js` and all 322 concepts in `system_design.html` have direct verified videos.
+  - Confirmed all 239 concepts in `cloud_aws_azure.html` have direct `watch?v=` links.
+- **Generated 3 New Standalone Masterclasses**:
+  - Created `tech_terraform.html` (3 subsections, 12 concepts, Terraform & Infrastructure as Code).
+  - Created `tech_kafka.html` (4 subsections, 14 concepts, Apache Kafka Distributed Streaming).
+  - Created `tech_postgres.html` (4 subsections, 15 concepts, Database Engineering & PostgreSQL Internals).
+  - Total standalone masterclasses expanded from 5 to 8!
+- **Updated Navigation & Cross-Links**:
+  - Updated Domain Deck in `cloud_aws_azure.html` with `Standalone Guide ↗` badges and links for all 8 masterclasses.
+  - Updated companion cards on all 8 standalone pages to include links to all sister masterclasses.
+  - Enhanced `tools/audit_site.py` with standard `<base href>` resolution.
+- **Verification & Green Suite**:
+  - `tools/audit_site.py`: **0 findings** across all 777 pages.
+  - `tools/verify-learning-hub.mjs`: All checks green.
+  - Playwright test: Verified all 8 standalone masterclasses and main portal.
 
 ### Session: October 28, 2026 (Phase 1 Refactor & Portal Launch)
 - **Refactored `cloud_aws_azure.html` to All-in-One Tech & Engineering Portal**:

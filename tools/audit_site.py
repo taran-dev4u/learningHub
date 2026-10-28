@@ -99,6 +99,8 @@ for path in pages:
     if re.search(r"console\.(log|debug)\(", t): add("console-log", rel)
 
     # ---- links ----
+    base_m = re.search(r'<base\s+href="([^"]+)"', t)
+    base_dir = os.path.normpath(os.path.join(os.path.dirname(path), base_m.group(1))) if base_m else os.path.dirname(path)
     for m in re.finditer(r'href="([^"]+)"', body):
         href = html.unescape(m.group(1))
         if "${" in href or "' +" in href: continue
@@ -108,7 +110,7 @@ for path in pages:
         if href.startswith("#"): continue
         p = urllib.parse.unquote(href.split("#")[0].split("?")[0])
         if not p: continue
-        tgt = os.path.normpath(os.path.join(os.path.dirname(path), p))
+        tgt = os.path.normpath(os.path.join(base_dir, p))
         if not os.path.exists(tgt): add("broken-link", rel, href[:60])
         elif "#" in href and tgt.endswith(".html"):
             frag = href.split("#", 1)[1]

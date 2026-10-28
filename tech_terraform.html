@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terraform & Infrastructure as Code Masterclass | Taran's Learning Hub</title>
+<link rel="stylesheet" href="assets/learning-hub-shared.css">
+<script src="assets/learning-hub-shared.js"></script>
+<style>
+
+
+/* All-in-One Tech Portal Design System */
+:root {
+  --bg: #f7f8fb;
+  --surface: #ffffff;
+  --surface-2: #eef2f7;
+  --surface-3: #e4eaf2;
+  --text: #172033;
+  --muted: #5b6578;
+  --faint: #7a8599;
+  --border: #dbe2ec;
+  --navy: #172554;
+  --navy-2: #1e3a8a;
+  --blue: #2563eb;
+  --amber: #f59e0b;
+  --green: #0f9f6e;
+  --red: #dc4c64;
+  --violet: #7c3aed;
+  --shadow: 0 4px 16px rgba(23, 32, 51, 0.06);
+  --shadow-lift: 0 12px 32px rgba(23, 32, 51, 0.12);
+  --bg-elev: var(--surface-2);
+  --bg-card: var(--surface);
+  --bg-row-alt: var(--surface-2);
+  --text-dim: var(--muted);
+  --text-faint: var(--faint);
+  --border-strong: var(--border);
+  --accent: var(--blue);
+  --accent-dim: rgba(37, 99, 235, 0.1);
+  --link: var(--blue);
+  --quote-bg: rgba(37, 99, 235, 0.05);
+  --done: var(--green);
+  --done-bg: rgba(15, 159, 110, 0.12);
+  --shadow-card: var(--shadow);
+  --shadow-banner: 0 4px 14px rgba(0,0,0,0.08);
+}
+html.dark, html[data-theme="dark"] {
+  --bg: #0b1120;
+  --surface: #151f32;
+  --surface-2: #1e293b;
+  --surface-3: #27354a;
+  --text: #f1f5f9;
+  --muted: #94a3b8;
+  --faint: #64748b;
+  --border: #1e293b;
+  --navy: #1e293b;
+  --navy-2: #243552;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  --shadow-lift: 0 12px 32px rgba(0, 0, 0, 0.5);
+  --bg-elev: #151f32;
+  --bg-card: #151f32;
+  --bg-row-alt: #1a263d;
+  --text-dim: #94a3b8;
+  --text-faint: #64748b;
+  --border-strong: #334155;
+  --accent: #38bdf8;
+  --accent-dim: rgba(56, 189, 248, 0.15);
+  --link: #38bdf8;
+  --quote-bg: rgba(56, 189, 248, 0.08);
+  --done: #10b981;
+  --done-bg: rgba(16, 185, 129, 0.15);
+}
+html.black, html[data-theme="black"] {
+  --bg: #000000;
+  --surface: #0a0a0a;
+  --surface-2: #141414;
+  --surface-3: #1f1f1f;
+  --text: #ffffff;
+  --muted: #888888;
+  --faint: #555555;
+  --border: #222222;
+  --navy: #0e0e0e;
+  --navy-2: #181818;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+  --shadow-lift: 0 12px 32px rgba(0, 0, 0, 0.9);
+  --bg-elev: #0e0e0e;
+  --bg-card: #0a0a0a;
+  --bg-row-alt: #121212;
+  --text-dim: #888888;
+  --text-faint: #555555;
+  --border-strong: #2c2c2c;
+  --accent: #60a5fa;
+  --accent-dim: rgba(96, 165, 250, 0.18);
+  --link: #60a5fa;
+  --quote-bg: rgba(96, 165, 250, 0.08);
+  --done: #22c55e;
+  --done-bg: rgba(34, 197, 94, 0.15);
+}
+.wrap { max-width: 1440px; margin: 0 auto; padding: 20px 20px 80px; }
+.tech-breadcrumb {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 700;
+  margin: 0 0 16px; padding: 6px 12px;
+  background: var(--surface-2); border: 1px solid var(--border);
+  border-radius: 8px; width: fit-content;
+}
+.tech-bc-home { color: var(--accent); text-decoration: none; }
+.tech-bc-home:hover { text-decoration: underline; }
+.tech-bc-sep { color: var(--faint); }
+.tech-bc-curr { color: var(--text); }
+.domain-deck-section { margin: 24px 0 28px; }
+.domain-deck-head {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px; margin-bottom: 14px;
+}
+.domain-deck-head h2 {
+  font-size: 20px; margin: 0; font-weight: 800; letter-spacing: -0.01em; color: var(--text);
+}
+.domain-deck-subtitle {
+  font-size: 13px; color: var(--muted); margin: 2px 0 0;
+}
+.domain-deck {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 14px;
+}
+.domain-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px; display: flex; flex-direction: column;
+  box-shadow: var(--shadow); transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+  position: relative; cursor: pointer;
+}
+.domain-card:hover {
+  transform: translateY(-2px); border-color: var(--accent); box-shadow: var(--shadow-lift);
+}
+.domain-card.active-deck-card {
+  border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent), var(--shadow-lift);
+}
+.domain-card-head { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
+.domain-card-icon {
+  font-size: 24px; line-height: 1; flex-shrink: 0;
+  background: var(--surface-2); padding: 8px; border-radius: 10px; border: 1px solid var(--border);
+}
+.domain-card-meta { flex: 1; min-width: 0; }
+.domain-card-idx {
+  font-size: 10.5px; font-weight: 800; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 0.08em;
+}
+.domain-card-title {
+  font-size: 15.5px; font-weight: 800; margin: 2px 0 0; color: var(--text); line-height: 1.3;
+}
+.domain-card-desc {
+  font-size: 12px; color: var(--muted); line-height: 1.5; margin: 0 0 12px; flex: 1;
+}
+.domain-card-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.d-chip {
+  font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px;
+  background: var(--surface-2); border: 1px solid var(--border); color: var(--text-dim);
+}
+.d-chip.masterclass-badge {
+  background: rgba(37, 99, 235, 0.12); border-color: var(--accent); color: var(--accent);
+}
+.domain-card-actions { display: flex; gap: 8px; align-items: center; margin-top: auto; }
+.d-act-btn {
+  flex: 1; min-height: 32px; padding: 5px 10px; border-radius: 7px;
+  border: 1px solid var(--border); background: var(--surface-2); color: var(--text);
+  font-size: 12px; font-weight: 700; cursor: pointer; display: inline-flex;
+  align-items: center; justify-content: center; gap: 4px; transition: all 0.15s ease;
+}
+.d-act-btn:hover { background: var(--accent); color: #ffffff; border-color: var(--accent); }
+.d-act-link {
+  min-height: 32px; padding: 5px 11px; border-radius: 7px; border: 1px solid var(--accent);
+  background: var(--accent); color: #ffffff; font-size: 12px; font-weight: 800;
+  text-decoration: none; display: inline-flex; align-items: center; justify-content: center;
+  gap: 4px; transition: all 0.15s ease; white-space: nowrap;
+}
+.d-act-link:hover { opacity: 0.9; transform: translateY(-1px); }
+.domain-nav-bar {
+  position: sticky; top: 53px; z-index: 60; background: var(--surface);
+  border-bottom: 1px solid var(--border); border-top: 1px solid var(--border);
+  padding: 8px 12px; margin: 0 -20px 22px; backdrop-filter: blur(12px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.domain-nav-scroll {
+  display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none;
+  -webkit-overflow-scrolling: touch; max-width: 1440px; margin: 0 auto; padding: 0 8px;
+}
+.domain-nav-scroll::-webkit-scrollbar { display: none; }
+.d-nav-pill {
+  display: inline-flex; align-items: center; gap: 5px; min-height: 32px;
+  padding: 4px 12px; border-radius: 999px; border: 1px solid var(--border);
+  background: var(--surface-2); color: var(--muted); font-size: 12px;
+  font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s ease;
+}
+.d-nav-pill:hover { border-color: var(--accent); color: var(--text); transform: translateY(-1px); }
+.d-nav-pill.active {
+  background: var(--accent); border-color: var(--accent); color: #ffffff;
+  box-shadow: 0 2px 10px rgba(37, 99, 235, 0.35);
+}
+.domain-focus-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px; padding: 12px 18px; margin-bottom: 16px;
+  background: var(--surface); border: 1px solid var(--accent);
+  border-radius: 10px; box-shadow: var(--shadow);
+}
+.focus-bar-left { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.focus-bar-pill {
+  font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em;
+  padding: 3px 8px; border-radius: 6px; background: var(--accent-dim);
+  color: var(--accent); border: 1px solid var(--accent);
+}
+.focus-bar-title { font-size: 15px; font-weight: 800; color: var(--text); }
+.focus-bar-stats { font-size: 12px; color: var(--muted); font-weight: 600; }
+.focus-bar-right { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.focus-btn {
+  min-height: 30px; padding: 4px 10px; border-radius: 6px; border: 1px solid var(--border);
+  background: var(--surface-2); color: var(--text); font-size: 12px; font-weight: 700;
+  cursor: pointer; transition: all 0.15s ease;
+}
+.focus-btn:hover { background: var(--border); color: var(--text); }
+.focus-btn.view-all-btn {
+  background: var(--accent-dim); border-color: var(--accent); color: var(--accent);
+}
+.focus-btn.view-all-btn:hover { background: var(--accent); color: #ffffff; }
+.focus-btn.masterclass-btn {
+  background: var(--accent); border-color: var(--accent); color: #ffffff;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 4px;
+}
+.section.hidden-domain { display: none !important; }
+.sister-guides-card {
+  margin: 40px 0 20px; padding: 20px 24px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; box-shadow: var(--shadow);
+}
+.sister-title { font-size: 15px; font-weight: 800; color: var(--text); margin-bottom: 12px; }
+.sister-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+.sister-link {
+  display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px;
+  border-radius: 8px; background: var(--surface-2); border: 1px solid var(--border);
+  color: var(--text); text-decoration: none; font-size: 12.5px; font-weight: 700;
+  transition: all 0.15s ease;
+}
+.sister-link:hover { border-color: var(--accent); background: var(--accent-dim); transform: translateY(-1px); }
+.sister-link.active-hub { background: var(--accent); border-color: var(--accent); color: #ffffff; }
+@media (max-width: 768px) {
+  .hero h1 { font-size: 26px; }
+  .domain-nav-bar { margin: 0 -12px 18px; }
+  .domain-focus-bar { flex-direction: column; align-items: flex-start; }
+}
+
+:root {
+  --bg: #0f1115; --bg-elev: #161922; --bg-card: #1c2030; --bg-row-alt: #1a1d2a;
+  --text: #e6e8ee; --text-dim: #9aa0b0; --text-faint: #6b7080;
+  --border: #2a2f42; --border-strong: #3a3f55;
+  --accent: #0786a3; --accent-dim: rgba(7,134,163,0.15);
+  --link: #38bdf8;
+  --quote-bg: rgba(7,134,163,0.06);
+  --done: #00b894; --done-bg: rgba(0,184,148,0.12);
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.2);
+  --shadow-banner: 0 4px 14px rgba(0,0,0,0.25);
+}
+html.light {
+  --bg: #fafbfc; --bg-elev: #ffffff; --bg-card: #ffffff; --bg-row-alt: #f8f9fb;
+  --text: #1a1d24; --text-dim: #5a6072; --text-faint: #8b91a3;
+  --border: #e4e7ee; --border-strong: #d0d4de;
+  --accent: #0284c7; --accent-dim: rgba(2,132,199,0.1);
+  --link: #0369a1;
+  --quote-bg: rgba(2,132,199,0.05);
+  --done: #00a884; --done-bg: rgba(0,168,132,0.12);
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-banner: 0 4px 14px rgba(0,0,0,0.08);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; line-height: 1.55;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--bg); color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.2s, color 0.2s;
+}
+.wrap { max-width: 1240px; margin: 0 auto; padding: 24px 20px 80px; }
+.hero { text-align: center; padding: 16px 0 24px; border-bottom: 1px solid var(--border); margin-bottom: 20px; }
+.hero h1 { font-size: 32px; margin: 6px 0 4px; letter-spacing: -0.02em; }
+.hero .subtitle { color: var(--text-dim); margin: 0; font-size: 14px; }
+.hero .edition {
+  display: inline-block; color: var(--accent); font-weight: 700; font-size: 11px;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  background: var(--accent-dim); padding: 4px 10px; border-radius: 4px;
+}
+.stats { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-top: 20px; }
+.stat {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 10px; padding: 8px 14px; min-width: 80px;
+  box-shadow: var(--shadow-card);
+}
+.stat .n { font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.stat .l { font-size: 10px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 2px; }
+
+.overall-progress {
+  background: var(--bg-elev); border: 1px solid var(--border);
+  border-radius: 10px; padding: 14px 20px; margin: 18px 0 18px;
+  display: flex; align-items: center; gap: 16px;
+}
+.overall-progress .lbl { font-size: 12px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; }
+.overall-progress .bar-track {
+  flex: 1; height: 10px; background: var(--bg-card);
+  border-radius: 5px; overflow: hidden; border: 1px solid var(--border);
+}
+.overall-progress .bar-fill {
+  height: 100%; background: linear-gradient(90deg, var(--done), var(--accent));
+  transition: width 0.3s ease; width: 0%;
+}
+.overall-progress .pct { font-weight: 700; font-variant-numeric: tabular-nums; font-size: 14px; min-width: 80px; text-align: right; }
+
+.controls {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--bg); backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  padding: 10px 0; margin: 0 0 20px;
+}
+.controls-row {
+  display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+  background: var(--bg-elev); border: 1px solid var(--border);
+  border-radius: 10px; padding: 10px 14px;
+}
+.controls-row .label {
+  font-size: 10px; color: var(--text-faint);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  font-weight: 700; margin-right: 2px;
+}
+.search { flex: 1; min-width: 180px; }
+.search input {
+  width: 100%; padding: 6px 11px; font-size: 13px;
+  background: var(--bg-card); border: 1px solid var(--border); color: var(--text);
+  border-radius: 5px;
+}
+.search input:focus { outline: none; border-color: var(--accent); }
+.icon-btn {
+  padding: 5px 9px; font-size: 14px;
+  background: var(--bg-card); border: 1px solid var(--border);
+  color: var(--text-dim); border-radius: 5px; cursor: pointer;
+  transition: all 0.12s;
+}
+.icon-btn:hover { background: var(--accent); color: white; border-color: var(--accent); }
+.filter-btn {
+  padding: 5px 10px; font-size: 11px; font-weight: 700;
+  background: var(--bg-card); border: 1px solid var(--border);
+  color: var(--text-dim); border-radius: 5px; cursor: pointer;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  transition: all 0.12s; letter-spacing: 0.02em;
+}
+.filter-btn:hover { background: var(--bg); color: var(--text); }
+.filter-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+.filter-btn.status-bookmarked.active { background: #ffa94d; border-color: #ffa94d; }
+.filter-btn.status-done.active { background: var(--done); border-color: var(--done); }
+.sep { width: 1px; height: 20px; background: var(--border); margin: 0 2px; }
+
+.toc {
+  background: var(--bg-elev); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px 22px; margin-bottom: 28px;
+}
+.toc h2 {
+  font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--text-faint); margin: 0 0 12px; font-weight: 700;
+}
+.toc-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 3px 12px;
+}
+.toc a {
+  display: flex; align-items: center; gap: 10px;
+  padding: 6px 8px; border-radius: 6px; color: var(--text);
+  text-decoration: none; font-size: 12.5px;
+  transition: background 0.12s;
+}
+.toc a:hover { background: var(--bg-card); }
+.toc .roman {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 10px; color: var(--text-faint); min-width: 28px;
+}
+.toc .name { flex: 1; }
+.toc .cnt {
+  font-size: 9.5px; color: var(--text-faint);
+  font-variant-numeric: tabular-nums;
+  background: var(--bg-card); padding: 1px 6px; border-radius: 3px;
+}
+
+.section { margin: 48px 0 0; }
+.section-banner {
+  border-radius: 12px; padding: 18px 24px; color: white;
+  display: flex; align-items: center; gap: 16px;
+  box-shadow: var(--shadow-banner);
+}
+.section-banner .num {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 22px; font-weight: 700; opacity: 0.95;
+  min-width: 56px; text-align: center;
+  padding: 6px 10px; background: rgba(255,255,255,0.18);
+  border-radius: 7px;
+}
+.section-banner .info { flex: 1; min-width: 0; }
+.section-banner .label {
+  font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em;
+  opacity: 0.85; margin-bottom: 1px;
+}
+.section-banner h2 { margin: 0; font-size: 20px; font-weight: 700; letter-spacing: -0.01em; }
+.section-banner .meta { font-size: 11.5px; opacity: 0.9; margin-top: 3px; }
+.section-banner .ppg { min-width: 140px; text-align: right; }
+.section-banner .ppg .pct-text { font-size: 13px; font-weight: 700; margin-bottom: 4px; font-variant-numeric: tabular-nums; }
+.section-banner .ppg .pp-track { height: 6px; background: rgba(255,255,255,0.25); border-radius: 3px; overflow: hidden; }
+.section-banner .ppg .pp-fill { height: 100%; background: white; border-radius: 3px; width: 0%; transition: width 0.3s; }
+
+.section-desc {
+  background: var(--quote-bg);
+  border-left: 4px solid var(--section-color, var(--accent));
+  border-radius: 0 8px 8px 0;
+  padding: 12px 18px; margin: 14px 0 6px 24px; font-size: 13.5px;
+}
+.section-desc .tagline { font-size: 14.5px; font-weight: 700; color: var(--text); margin: 0 0 6px; }
+.section-desc .row { margin: 4px 0; color: var(--text-dim); }
+.section-desc .row b { color: var(--text); }
+
+.subsection {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-left: 4px solid var(--section-color, var(--accent));
+  border-radius: 10px; margin: 16px 0 0 24px; padding: 14px 18px 16px;
+  box-shadow: var(--shadow-card);
+}
+.subsection-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 6px; flex-wrap: wrap; }
+.subsection-tag {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 10px; background: var(--bg-elev); border: 1px solid var(--border);
+  color: var(--text-dim); padding: 2px 7px; border-radius: 4px;
+  font-weight: 700; letter-spacing: 0.04em;
+}
+.subsection h3 { margin: 0; font-size: 14.5px; font-weight: 700; flex: 1; min-width: 0; color: var(--text); }
+.subsection-desc {
+  font-size: 12.5px; color: var(--text-dim); margin: 4px 0 8px;
+  padding: 7px 11px; background: var(--bg-elev); border-radius: 6px; line-height: 1.5;
+}
+
+.concepts {
+  list-style: none; padding: 0; margin: 8px 0 0;
+  border-radius: 8px; overflow: hidden;
+  border: 1px solid var(--border);
+}
+.concepts li {
+  display: grid;
+  grid-template-columns: 28px 22px 1fr auto;
+  gap: 10px; align-items: center;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-elev);
+  transition: background 0.12s;
+}
+.concepts li:last-child { border-bottom: none; }
+.concepts li:nth-child(even) { background: var(--bg-row-alt); }
+.concepts li:hover { background: var(--accent-dim); }
+.concepts li.hidden { display: none; }
+.concepts li.done { background: var(--done-bg); }
+.concepts li.done .cname { color: var(--text-dim); text-decoration: line-through; }
+.done-check {
+  width: 22px; height: 22px; cursor: pointer;
+  border: 2px solid var(--border-strong); border-radius: 5px;
+  background: var(--bg-card);
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.15s; flex-shrink: 0;
+}
+.done-check:hover { border-color: var(--done); }
+.done-check.checked { background: var(--done); border-color: var(--done); color: white; }
+.done-check.checked::after { content: '✓'; font-weight: 700; font-size: 14px; }
+.bookmark-star {
+  cursor: pointer; font-size: 16px; color: var(--border-strong);
+  user-select: none; transition: color 0.15s, transform 0.15s; flex-shrink: 0;
+}
+.bookmark-star:hover { color: #ffa94d; transform: scale(1.15); }
+.bookmark-star.active { color: #ffa94d; }
+.cname { color: var(--text); font-size: 13.5px; font-weight: 600; }
+.cname b { color: var(--accent); }
+.res-links { display: flex; gap: 4px; flex-shrink: 0; flex-wrap: wrap; }
+.res-links a {
+  font-size: 10.5px; padding: 3px 7px; border-radius: 4px;
+  background: var(--bg-card); border: 1px solid var(--border);
+  color: var(--text-dim); text-decoration: none;
+  white-space: nowrap; font-weight: 600;
+  transition: all 0.12s;
+}
+.res-links a:hover { background: var(--accent); color: white; border-color: var(--accent); }
+.res-links a.video:hover { background: #ff0000; border-color: #ff0000; }
+
+.resources-section {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 10px; padding: 12px 16px; margin: 10px 0 8px 24px;
+}
+.resources-section .head {
+  display: flex; align-items: center; justify-content: space-between;
+  cursor: pointer; user-select: none;
+}
+.resources-section .head h4 {
+  margin: 0; font-size: 11.5px; color: var(--text-faint);
+  text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700;
+}
+.resources-section .head .count {
+  font-size: 10.5px; color: var(--text-faint);
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+}
+.resources-section .head .chevron {
+  color: var(--text-faint); font-size: 11px; margin-left: 8px;
+  transition: transform 0.18s; display: inline-block;
+}
+.resources-section.open .chevron { transform: rotate(90deg); }
+.resources-body { display: none; margin-top: 10px; }
+.resources-section.open .resources-body { display: block; }
+.res-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 5px 8px;
+}
+.res-link {
+  display: flex; align-items: center; gap: 8px;
+  padding: 6px 10px; border-radius: 6px;
+  background: var(--bg-elev); border: 1px solid var(--border);
+  text-decoration: none; color: var(--text);
+  font-size: 12.5px; transition: all 0.12s;
+}
+.res-link:hover { background: var(--accent); color: white; border-color: var(--accent); }
+.res-link:hover .res-source { color: rgba(255,255,255,0.8); }
+.res-icon { font-size: 13px; flex-shrink: 0; }
+.res-title { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.res-source { font-size: 9.5px; color: var(--text-faint); margin-left: auto; padding-left: 6px; white-space: nowrap; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+
+.top {
+  position: fixed; bottom: 20px; right: 20px;
+  background: var(--accent); color: white;
+  padding: 10px 14px; border-radius: 8px;
+  text-decoration: none; font-size: 13px; font-weight: 600;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.2); z-index: 100;
+}
+
+@media (max-width: 900px) {
+  .wrap { padding: 16px 12px 80px; }
+  .subsection, .section-desc, .resources-section { margin-left: 0; }
+  .section-banner { flex-direction: column; align-items: flex-start; }
+  .section-banner .ppg { min-width: 100%; text-align: left; }
+  .hero h1 { font-size: 24px; }
+  .concepts li { grid-template-columns: 24px 20px 1fr; gap: 6px; padding: 6px 8px; }
+  .concepts li .res-links { display: none; }
+}
+@media print {
+  body { background: white; color: black; }
+  .controls, .top, .filter-btn, .icon-btn { display: none !important; }
+  .resources-section .resources-body { display: block !important; }
+  .section { page-break-inside: avoid; }
+  a { color: black; text-decoration: underline; }
+}
+
+
+/* All-in-One Tech Portal Design System */
+:root {
+  --bg: #f7f8fb;
+  --surface: #ffffff;
+  --surface-2: #eef2f7;
+  --surface-3: #e4eaf2;
+  --text: #172033;
+  --muted: #5b6578;
+  --faint: #7a8599;
+  --border: #dbe2ec;
+  --navy: #172554;
+  --navy-2: #1e3a8a;
+  --blue: #2563eb;
+  --amber: #f59e0b;
+  --green: #0f9f6e;
+  --red: #dc4c64;
+  --violet: #7c3aed;
+  --shadow: 0 4px 16px rgba(23, 32, 51, 0.06);
+  --shadow-lift: 0 12px 32px rgba(23, 32, 51, 0.12);
+  --bg-elev: var(--surface-2);
+  --bg-card: var(--surface);
+  --bg-row-alt: var(--surface-2);
+  --text-dim: var(--muted);
+  --text-faint: var(--faint);
+  --border-strong: var(--border);
+  --accent: var(--blue);
+  --accent-dim: rgba(37, 99, 235, 0.1);
+  --link: var(--blue);
+  --quote-bg: rgba(37, 99, 235, 0.05);
+  --done: var(--green);
+  --done-bg: rgba(15, 159, 110, 0.12);
+  --shadow-card: var(--shadow);
+  --shadow-banner: 0 4px 14px rgba(0,0,0,0.08);
+}
+html.dark, html[data-theme="dark"] {
+  --bg: #0b1120;
+  --surface: #151f32;
+  --surface-2: #1e293b;
+  --surface-3: #27354a;
+  --text: #f1f5f9;
+  --muted: #94a3b8;
+  --faint: #64748b;
+  --border: #1e293b;
+  --navy: #1e293b;
+  --navy-2: #243552;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  --shadow-lift: 0 12px 32px rgba(0, 0, 0, 0.5);
+  --bg-elev: #151f32;
+  --bg-card: #151f32;
+  --bg-row-alt: #1a263d;
+  --text-dim: #94a3b8;
+  --text-faint: #64748b;
+  --border-strong: #334155;
+  --accent: #38bdf8;
+  --accent-dim: rgba(56, 189, 248, 0.15);
+  --link: #38bdf8;
+  --quote-bg: rgba(56, 189, 248, 0.08);
+  --done: #10b981;
+  --done-bg: rgba(16, 185, 129, 0.15);
+}
+html.black, html[data-theme="black"] {
+  --bg: #000000;
+  --surface: #0a0a0a;
+  --surface-2: #141414;
+  --surface-3: #1f1f1f;
+  --text: #ffffff;
+  --muted: #888888;
+  --faint: #555555;
+  --border: #222222;
+  --navy: #0e0e0e;
+  --navy-2: #181818;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+  --shadow-lift: 0 12px 32px rgba(0, 0, 0, 0.9);
+  --bg-elev: #0e0e0e;
+  --bg-card: #0a0a0a;
+  --bg-row-alt: #121212;
+  --text-dim: #888888;
+  --text-faint: #555555;
+  --border-strong: #2c2c2c;
+  --accent: #60a5fa;
+  --accent-dim: rgba(96, 165, 250, 0.18);
+  --link: #60a5fa;
+  --quote-bg: rgba(96, 165, 250, 0.08);
+  --done: #22c55e;
+  --done-bg: rgba(34, 197, 94, 0.15);
+}
+.wrap { max-width: 1440px; margin: 0 auto; padding: 20px 20px 80px; }
+.tech-breadcrumb {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 700;
+  margin: 0 0 16px; padding: 6px 12px;
+  background: var(--surface-2); border: 1px solid var(--border);
+  border-radius: 8px; width: fit-content;
+}
+.tech-bc-home { color: var(--accent); text-decoration: none; }
+.tech-bc-home:hover { text-decoration: underline; }
+.tech-bc-sep { color: var(--faint); }
+.tech-bc-curr { color: var(--text); }
+.domain-deck-section { margin: 24px 0 28px; }
+.domain-deck-head {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px; margin-bottom: 14px;
+}
+.domain-deck-head h2 {
+  font-size: 20px; margin: 0; font-weight: 800; letter-spacing: -0.01em; color: var(--text);
+}
+.domain-deck-subtitle {
+  font-size: 13px; color: var(--muted); margin: 2px 0 0;
+}
+.domain-deck {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 14px;
+}
+.domain-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px; display: flex; flex-direction: column;
+  box-shadow: var(--shadow); transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+  position: relative; cursor: pointer;
+}
+.domain-card:hover {
+  transform: translateY(-2px); border-color: var(--accent); box-shadow: var(--shadow-lift);
+}
+.domain-card.active-deck-card {
+  border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent), var(--shadow-lift);
+}
+.domain-card-head { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
+.domain-card-icon {
+  font-size: 24px; line-height: 1; flex-shrink: 0;
+  background: var(--surface-2); padding: 8px; border-radius: 10px; border: 1px solid var(--border);
+}
+.domain-card-meta { flex: 1; min-width: 0; }
+.domain-card-idx {
+  font-size: 10.5px; font-weight: 800; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 0.08em;
+}
+.domain-card-title {
+  font-size: 15.5px; font-weight: 800; margin: 2px 0 0; color: var(--text); line-height: 1.3;
+}
+.domain-card-desc {
+  font-size: 12px; color: var(--muted); line-height: 1.5; margin: 0 0 12px; flex: 1;
+}
+.domain-card-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.d-chip {
+  font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px;
+  background: var(--surface-2); border: 1px solid var(--border); color: var(--text-dim);
+}
+.d-chip.masterclass-badge {
+  background: rgba(37, 99, 235, 0.12); border-color: var(--accent); color: var(--accent);
+}
+.domain-card-actions { display: flex; gap: 8px; align-items: center; margin-top: auto; }
+.d-act-btn {
+  flex: 1; min-height: 32px; padding: 5px 10px; border-radius: 7px;
+  border: 1px solid var(--border); background: var(--surface-2); color: var(--text);
+  font-size: 12px; font-weight: 700; cursor: pointer; display: inline-flex;
+  align-items: center; justify-content: center; gap: 4px; transition: all 0.15s ease;
+}
+.d-act-btn:hover { background: var(--accent); color: #ffffff; border-color: var(--accent); }
+.d-act-link {
+  min-height: 32px; padding: 5px 11px; border-radius: 7px; border: 1px solid var(--accent);
+  background: var(--accent); color: #ffffff; font-size: 12px; font-weight: 800;
+  text-decoration: none; display: inline-flex; align-items: center; justify-content: center;
+  gap: 4px; transition: all 0.15s ease; white-space: nowrap;
+}
+.d-act-link:hover { opacity: 0.9; transform: translateY(-1px); }
+.domain-nav-bar {
+  position: sticky; top: 53px; z-index: 60; background: var(--surface);
+  border-bottom: 1px solid var(--border); border-top: 1px solid var(--border);
+  padding: 8px 12px; margin: 0 -20px 22px; backdrop-filter: blur(12px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.domain-nav-scroll {
+  display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none;
+  -webkit-overflow-scrolling: touch; max-width: 1440px; margin: 0 auto; padding: 0 8px;
+}
+.domain-nav-scroll::-webkit-scrollbar { display: none; }
+.d-nav-pill {
+  display: inline-flex; align-items: center; gap: 5px; min-height: 32px;
+  padding: 4px 12px; border-radius: 999px; border: 1px solid var(--border);
+  background: var(--surface-2); color: var(--muted); font-size: 12px;
+  font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s ease;
+}
+.d-nav-pill:hover { border-color: var(--accent); color: var(--text); transform: translateY(-1px); }
+.d-nav-pill.active {
+  background: var(--accent); border-color: var(--accent); color: #ffffff;
+  box-shadow: 0 2px 10px rgba(37, 99, 235, 0.35);
+}
+.domain-focus-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px; padding: 12px 18px; margin-bottom: 16px;
+  background: var(--surface); border: 1px solid var(--accent);
+  border-radius: 10px; box-shadow: var(--shadow);
+}
+.focus-bar-left { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.focus-bar-pill {
+  font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em;
+  padding: 3px 8px; border-radius: 6px; background: var(--accent-dim);
+  color: var(--accent); border: 1px solid var(--accent);
+}
+.focus-bar-title { font-size: 15px; font-weight: 800; color: var(--text); }
+.focus-bar-stats { font-size: 12px; color: var(--muted); font-weight: 600; }
+.focus-bar-right { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.focus-btn {
+  min-height: 30px; padding: 4px 10px; border-radius: 6px; border: 1px solid var(--border);
+  background: var(--surface-2); color: var(--text); font-size: 12px; font-weight: 700;
+  cursor: pointer; transition: all 0.15s ease;
+}
+.focus-btn:hover { background: var(--border); color: var(--text); }
+.focus-btn.view-all-btn {
+  background: var(--accent-dim); border-color: var(--accent); color: var(--accent);
+}
+.focus-btn.view-all-btn:hover { background: var(--accent); color: #ffffff; }
+.focus-btn.masterclass-btn {
+  background: var(--accent); border-color: var(--accent); color: #ffffff;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 4px;
+}
+.section.hidden-domain { display: none !important; }
+.sister-guides-card {
+  margin: 40px 0 20px; padding: 20px 24px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; box-shadow: var(--shadow);
+}
+.sister-title { font-size: 15px; font-weight: 800; color: var(--text); margin-bottom: 12px; }
+.sister-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+.sister-link {
+  display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px;
+  border-radius: 8px; background: var(--surface-2); border: 1px solid var(--border);
+  color: var(--text); text-decoration: none; font-size: 12.5px; font-weight: 700;
+  transition: all 0.15s ease;
+}
+.sister-link:hover { border-color: var(--accent); background: var(--accent-dim); transform: translateY(-1px); }
+.sister-link.active-hub { background: var(--accent); border-color: var(--accent); color: #ffffff; }
+@media (max-width: 768px) {
+  .hero h1 { font-size: 26px; }
+  .domain-nav-bar { margin: 0 -12px 18px; }
+  .domain-focus-bar { flex-direction: column; align-items: flex-start; }
+}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="tech-breadcrumb">
+    <a href="cloud_aws_azure.html" class="tech-bc-home">← All-in-One Tech Portal</a>
+    <span class="tech-bc-sep">/</span>
+    <span class="tech-bc-curr">Terraform & Infrastructure as Code Masterclass</span>
+  </div>
+
+  <div class="hero">
+    <div class="edition">Infrastructure as Code · Masterclass 06 · 3 Subsections · 12 Concepts</div>
+    <h1>Terraform & Infrastructure as Code Masterclass</h1>
+    <p class="subtitle">Enterprise IaC: declarative HCL syntax, provider patterns, remote S3/GCS state backends, DynamoDB locking, modular architectures, and drift management.</p>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="n">3</div><div class="l">Subsections</div></div>
+    <div class="stat"><div class="n">12</div><div class="l">Concepts</div></div>
+    <div class="stat"><div class="n">100%</div><div class="l">Curated</div></div>
+    <div class="stat"><div class="n">15+</div><div class="l">Verified Docs &amp; Labs</div></div>
+  </div>
+
+  <div class="overall-progress">
+    <span class="lbl">Masterclass Progress</span>
+    <div class="bar-track"><div class="bar-fill" id="overall-bar"></div></div>
+    <span class="pct" id="overall-pct">0 / 12</span>
+  </div>
+
+  <div class="controls">
+    <div class="controls-row">
+      <span class="label">Filter:</span>
+      <button class="filter-btn status-done" data-filter="status" data-val="done">Done</button>
+      <button class="filter-btn" data-filter="status" data-val="undone">Not Done</button>
+      <button class="filter-btn status-bookmarked" data-filter="status" data-val="bookmarked">★ Bookmarked</button>
+      <span class="sep"></span>
+      <div class="search"><input id="search-input" placeholder="Search 12 concepts…" type="search"/></div>
+      <button class="icon-btn" id="random-btn" title="Random concept">🎲</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">🌓</button>
+      <button class="icon-btn" onclick="window.print()" title="Print">🖨️</button>
+      <button class="filter-btn" id="clear-filters">Clear</button>
+    </div>
+  </div>
+
+  <section class="section domain-section" id="section-8" data-domain="terraform" style="--section-color:hsl(270, 80%, 50%)">
+  <div id="terraform"></div>
+  <div class="domain-focus-bar">
+    <div class="focus-bar-left">
+      <span class="focus-bar-pill">Domain 8 of 16</span>
+      <span class="focus-bar-title">Infrastructure as Code (IaC) with Terraform</span>
+      <span class="focus-bar-stats">12 concepts &bull; 3 subsections</span>
+    </div>
+    <div class="focus-bar-right">
+      <button type="button" class="focus-btn" onclick="navigateDomain(-1)">← Prev Domain</button>
+      <button type="button" class="focus-btn view-all-btn" onclick="switchDomain('all')">🌐 View All (16)</button>
+      <button type="button" class="focus-btn" onclick="navigateDomain(1)">Next Domain →</button>
+      
+    </div>
+  </div>
+  <div class="section-banner" style="background:linear-gradient(135deg, hsl(270, 85%, 45%), hsl(290, 75%, 35%))">
+    <div class="num">8</div>
+    <div class="info">
+      <div class="label">Section 8 of 16</div>
+      <h2>8. Infrastructure as Code (IaC) with Terraform</h2>
+      <div class="meta">3 subsections · 12 concepts</div>
+    </div>
+    <div class="ppg">
+      <div class="pct-text" data-pp-text="8">0 / 12</div>
+      <div class="pp-track"><div class="pp-fill" data-pp-fill="8"></div></div>
+    </div>
+  </div>
+  <div class="section-desc">
+    <div class="tagline">Declarative cloud provisioning, state graph dependency resolution, and immutable infrastructure delivery.</div>
+    <div class="row"><b>Core Focus:</b> HCL configuration, remote state locking with S3 &amp; DynamoDB, reusable module design, and drift reconciliation.</div>
+    <div class="row"><b>Production Trade-offs:</b> State lock concurrency bottlenecks vs concurrent team updates, monolithic state files vs layered workspaces.</div>
+  </div>
+  <div class="resources-section">
+    <div class="head" onclick="this.parentElement.classList.toggle('open')">
+      <h4>📚 Learn this domain</h4>
+      <div><span class="count">4 curated resources</span><span class="chevron">▶</span></div>
+    </div>
+    <div class="resources-body">
+      <div class="res-grid">
+        <a class="res-link" href="https://developer.hashicorp.com/terraform/docs" target="_blank" rel="noopener"><span class="res-icon">📖</span><span class="res-title">Terraform Documentation &amp; Tutorials</span><span class="res-source">HashiCorp</span></a>
+        <a class="res-link" href="https://www.youtube.com/watch?v=SLB_c_ayRMo" target="_blank" rel="noopener"><span class="res-icon">🎥</span><span class="res-title">Terraform Course - Automate Your AWS Cloud Infrastructure (YouTube)</span><span class="res-source">freeCodeCamp</span></a>
+        <a class="res-link" href="https://www.terraform-best-practices.com/" target="_blank" rel="noopener"><span class="res-icon">📝</span><span class="res-title">Terraform Best Practices (Anton Babenko)</span><span class="res-source">Community</span></a>
+        <a class="res-link" href="https://registry.terraform.io/" target="_blank" rel="noopener"><span class="res-icon">📦</span><span class="res-title">Terraform Registry: Official Cloud Providers</span><span class="res-source">HashiCorp</span></a>
+      </div>
+    </div>
+  </div>
+  <div class="subsection">
+    <div class="subsection-head">
+      <span class="subsection-tag">8.1</span>
+      <h3>Terraform Core, HCL Syntax &amp; Workflow</h3>
+      <span style="font-size:11px;color:var(--text-faint);">4 concepts</span>
+    </div>
+    <div class="subsection-desc">Masterclass lessons covering Terraform Core, HCL Syntax &amp; Workflow architecture, operational mechanisms, and failure modes.</div>
+    <ol class="concepts">
+      <li data-cid="8.1.1" data-name="iac declarative paradigm  desired state vs imperative scripting">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">IaC Declarative Paradigm: Desired State vs Imperative Scripting</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for IaC Declarative Paradigm: Desired State vs Imperative Scripting.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=7xngnjfIlK4&t=56s" data-vtitle="IaC Declarative Paradigm: Desired State vs Imperative Scripting" data-vchannel="DevOps Directive" data-start="56" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: IaC Declarative Paradigm: Desired State vs Imperative Scripting">🎬YT</a><a href="https://developer.hashicorp.com/terraform/docs" target="_blank" rel="noopener" title="Terraform CLI Documentation">🌐Doc</a></div>
+      </li>
+      <li data-cid="8.1.2" data-name="hcl syntax  providers  resources  variables  locals   outputs">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">HCL Syntax: Providers, Resources, Variables, Locals &amp; Outputs</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for HCL Syntax: Providers, Resources, Variables, Locals &amp; Outputs.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=7xngnjfIlK4&t=251s" data-vtitle="HCL Syntax: Providers, Resources, Variables, Locals &amp; Outputs" data-vchannel="DevOps Directive" data-start="251" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: HCL Syntax: Providers, Resources, Variables, Locals &amp; Outputs">🎬YT</a><a href="https://developer.hashicorp.com/terraform/docs" target="_blank" rel="noopener" title="Terraform CLI Documentation">🌐Doc</a></div>
+      </li>
+      <li data-cid="8.1.3" data-name="the terraform workflow  terraform init  plan  apply   destroy">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">The Terraform Workflow: terraform init, plan, apply &amp; destroy</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for The Terraform Workflow: terraform init, plan, apply &amp; destroy.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=7xngnjfIlK4&t=876s" data-vtitle="The Terraform Workflow: terraform init, plan, apply &amp; destroy" data-vchannel="DevOps Directive" data-start="876" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: The Terraform Workflow: terraform init, plan, apply &amp; destroy">🎬YT</a><a href="https://developer.hashicorp.com/terraform/docs" target="_blank" rel="noopener" title="Terraform CLI Documentation">🌐Doc</a></div>
+      </li>
+      <li data-cid="8.1.4" data-name="resource dependencies  implicit vs explicit  depends on  dependency graphs">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Resource Dependencies: Implicit vs Explicit (depends_on) Dependency Graphs</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Resource Dependencies: Implicit vs Explicit (depends_on) Dependency Graphs.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=7xngnjfIlK4&t=1213s" data-vtitle="Resource Dependencies: Implicit vs Explicit (depends_on) Dependency Graphs" data-vchannel="DevOps Directive" data-start="1213" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Resource Dependencies: Implicit vs Explicit (depends_on) Dependency Graphs">🎬YT</a><a href="https://developer.hashicorp.com/terraform/docs" target="_blank" rel="noopener" title="Terraform CLI Documentation">🌐Doc</a></div>
+      </li>
+    </ol>
+  </div>
+  <div class="subsection">
+    <div class="subsection-head">
+      <span class="subsection-tag">8.2</span>
+      <h3>Terraform State Management &amp; Remote Backends</h3>
+      <span style="font-size:11px;color:var(--text-faint);">4 concepts</span>
+    </div>
+    <div class="subsection-desc">Masterclass lessons covering Terraform State Management &amp; Remote Backends architecture, operational mechanisms, and failure modes.</div>
+    <ol class="concepts">
+      <li data-cid="8.2.1" data-name="terraform state  terraform tfstate internal structure   drift detection">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Terraform State: terraform.tfstate Internal Structure &amp; Drift Detection</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Terraform State: terraform.tfstate Internal Structure &amp; Drift Detection.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=7xngnjfIlK4&t=1712s" data-vtitle="Terraform State: terraform.tfstate Internal Structure &amp; Drift Detection" data-vchannel="DevOps Directive" data-start="1712" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Terraform State: terraform.tfstate Internal Structure &amp; Drift Detection">🎬YT</a><a href="https://developer.hashicorp.com/terraform/language/state" target="_blank" rel="noopener" title="Terraform State Documentation">🌐Doc</a></div>
+      </li>
+      <li data-cid="8.2.2" data-name="remote backends  s3 backend with dynamodb distributed state locking">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Remote Backends: S3 Backend with DynamoDB Distributed State Locking</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Production remote backends store state files centrally in encrypted Amazon S3 buckets, while DynamoDB tables enforce distributed state locking to prevent concurrent apply race conditions.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=7xngnjfIlK4&t=2711s" data-vtitle="Remote Backends: S3 Backend with DynamoDB Distributed State Locking" data-vchannel="DevOps Directive" data-start="2711" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Remote Backends: S3 Backend with DynamoDB Distributed State Locking">🎬YT</a><a href="https://developer.hashicorp.com/terraform/language/state" target="_blank" rel="noopener" title="Terraform State Documentation">🌐Doc</a></div>
+      </li>
+      <li data-cid="8.2.3" data-name="state manipulation  terraform state list  show  mv  rm   import">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">State Manipulation: terraform state list, show, mv, rm &amp; import</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for State Manipulation: terraform state list, show, mv, rm &amp; import.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=7xngnjfIlK4&t=3503s" data-vtitle="State Manipulation: terraform state list, show, mv, rm &amp; import" data-vchannel="DevOps Directive" data-start="3503" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: State Manipulation: terraform state list, show, mv, rm &amp; import">🎬YT</a><a href="https://developer.hashicorp.com/terraform/language/state" target="_blank" rel="noopener" title="Terraform State Documentation">🌐Doc</a></div>
+      </li>
+      <li data-cid="8.2.4" data-name="protecting sensitive data in terraform state   environment workspaces">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Protecting Sensitive Data in Terraform State &amp; Environment Workspaces</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Protecting Sensitive Data in Terraform State &amp; Environment Workspaces.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=7xngnjfIlK4&t=4280s" data-vtitle="Protecting Sensitive Data in Terraform State &amp; Environment Workspaces" data-vchannel="DevOps Directive" data-start="4280" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Protecting Sensitive Data in Terraform State &amp; Environment Workspaces">🎬YT</a><a href="https://developer.hashicorp.com/terraform/language/state" target="_blank" rel="noopener" title="Terraform State Documentation">🌐Doc</a></div>
+      </li>
+    </ol>
+  </div>
+  <div class="subsection">
+    <div class="subsection-head">
+      <span class="subsection-tag">8.3</span>
+      <h3>Reusable Modules, Loops &amp; Advanced IaC Patterns</h3>
+      <span style="font-size:11px;color:var(--text-faint);">4 concepts</span>
+    </div>
+    <div class="subsection-desc">Masterclass lessons covering Reusable Modules, Loops &amp; Advanced IaC Patterns architecture, operational mechanisms, and failure modes.</div>
+    <ol class="concepts">
+      <li data-cid="8.3.1" data-name="terraform modules  root vs child modules  input variables   output contracts">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Terraform Modules: Root vs Child Modules, Input Variables &amp; Output Contracts</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Terraform Modules: Root vs Child Modules, Input Variables &amp; Output Contracts.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=7xngnjfIlK4&t=4802s" data-vtitle="Terraform Modules: Root vs Child Modules, Input Variables &amp; Output Contracts" data-vchannel="DevOps Directive" data-start="4802" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Terraform Modules: Root vs Child Modules, Input Variables &amp; Output Contracts">🎬YT</a><a href="https://developer.hashicorp.com/terraform/language/modules" target="_blank" rel="noopener" title="Terraform Modules Guide">🌐Doc</a></div>
+      </li>
+      <li data-cid="8.3.2" data-name="meta arguments  count vs for each   dynamic blocks construction">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Meta-Arguments: count vs for_each &amp; Dynamic Blocks Construction</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Meta-Arguments: count vs for_each &amp; Dynamic Blocks Construction.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=7xngnjfIlK4&t=5340s" data-vtitle="Meta-Arguments: count vs for_each &amp; Dynamic Blocks Construction" data-vchannel="DevOps Directive" data-start="5340" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Meta-Arguments: count vs for_each &amp; Dynamic Blocks Construction">🎬YT</a><a href="https://developer.hashicorp.com/terraform/language/modules" target="_blank" rel="noopener" title="Terraform Modules Guide">🌐Doc</a></div>
+      </li>
+      <li data-cid="8.3.3" data-name="data sources  dynamically querying existing infrastructure state">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Data Sources: Dynamically Querying Existing Infrastructure State</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Data Sources: Dynamically Querying Existing Infrastructure State.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=7xngnjfIlK4&t=5766s" data-vtitle="Data Sources: Dynamically Querying Existing Infrastructure State" data-vchannel="DevOps Directive" data-start="5766" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Data Sources: Dynamically Querying Existing Infrastructure State">🎬YT</a><a href="https://developer.hashicorp.com/terraform/language/modules" target="_blank" rel="noopener" title="Terraform Modules Guide">🌐Doc</a></div>
+      </li>
+      <li data-cid="8.3.4" data-name="resource lifecycle hooks  create before destroy  prevent destroy   ignore changes">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Resource Lifecycle Hooks: create_before_destroy, prevent_destroy &amp; ignore_changes</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Resource Lifecycle Hooks: create_before_destroy, prevent_destroy &amp; ignore_changes.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=7xngnjfIlK4&t=6210s" data-vtitle="Resource Lifecycle Hooks: create_before_destroy, prevent_destroy &amp; ignore_changes" data-vchannel="DevOps Directive" data-start="6210" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Resource Lifecycle Hooks: create_before_destroy, prevent_destroy &amp; ignore_changes">🎬YT</a><a href="https://developer.hashicorp.com/terraform/language/modules" target="_blank" rel="noopener" title="Terraform Modules Guide">🌐Doc</a></div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+  <div class="sister-guides-card">
+    <div class="sister-title">🚀 Companion Engineering Masterclasses</div>
+    <div class="sister-grid">
+      <a href="tech_aws.html" class="sister-link">☁️ AWS Cloud Masterclass</a>
+      <a href="tech_linux.html" class="sister-link">🐧 Linux &amp; Terminal Masterclass</a>
+      <a href="tech_git.html" class="sister-link">🌿 Git &amp; GitHub Masterclass</a>
+      <a href="tech_docker_k8s.html" class="sister-link">🐳 Docker &amp; Kubernetes Masterclass</a>
+      <a href="tech_cicd.html" class="sister-link">🚀 CI/CD Pipelines Masterclass</a>
+      <a href="tech_terraform.html" class="sister-link">🏗️ Terraform IaC Masterclass</a>
+      <a href="tech_kafka.html" class="sister-link">⚡ Apache Kafka Masterclass</a>
+      <a href="tech_postgres.html" class="sister-link">🐘 PostgreSQL Masterclass</a>
+      <a href="cloud_aws_azure.html" class="sister-link active-hub">🌐 All-in-One Tech Portal (16 Domains) &rarr;</a>
+    </div>
+  </div>
+</div>
+
+<script>
+window.SITE_SLUG = "cloud";
+</script>
+<script>
+
+(function() {
+  const SLUG = 'cloud';
+  const KEY_DONE = 'hub_done_' + SLUG;
+  const KEY_BM = 'hub_bm_' + SLUG;
+  const KEY_THEME = 'learning_hub_theme';
+
+  function applyTheme(t) {
+    if (t === 'light') {
+      document.documentElement.classList.add('light');
+      document.documentElement.classList.remove('dark', 'black');
+    } else if (t === 'black') {
+      document.documentElement.classList.add('black');
+      document.documentElement.classList.remove('light', 'dark');
+    } else {
+      document.documentElement.classList.add('dark');
+      document.documentElement.classList.remove('light', 'black');
+    }
+  }
+  applyTheme(localStorage.getItem(KEY_THEME) || localStorage.getItem('hub_theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'));
+
+  const themeBtn = document.getElementById('theme-toggle');
+  if (themeBtn) themeBtn.addEventListener('click', () => {
+    let cur = localStorage.getItem(KEY_THEME) || 'dark';
+    let next = cur === 'light' ? 'dark' : (cur === 'dark' ? 'black' : 'light');
+    localStorage.setItem(KEY_THEME, next);
+    localStorage.setItem('hub_theme', next);
+    applyTheme(next);
+  });
+
+  let doneSet = new Set(JSON.parse(localStorage.getItem(KEY_DONE) || '[]'));
+  let bmSet = new Set(JSON.parse(localStorage.getItem(KEY_BM) || '[]'));
+
+  function saveState() {
+    localStorage.setItem(KEY_DONE, JSON.stringify(Array.from(doneSet)));
+    localStorage.setItem(KEY_BM, JSON.stringify(Array.from(bmSet)));
+    updateProgress();
+  }
+
+  function updateProgress() {
+    const all = document.querySelectorAll('.concepts li[data-cid]');
+    let d = 0;
+    all.forEach(li => {
+      if (doneSet.has(li.dataset.cid)) d++;
+    });
+    const pct = all.length ? Math.round((d / all.length) * 100) : 0;
+    const bar = document.getElementById('overall-bar');
+    const txt = document.getElementById('overall-pct');
+    if (bar) bar.style.width = pct + '%';
+    if (txt) txt.textContent = d + ' / ' + all.length;
+  }
+
+  document.querySelectorAll('.concepts li[data-cid]').forEach(li => {
+    const cid = li.dataset.cid;
+    const check = li.querySelector('.done-check');
+    const star = li.querySelector('.bookmark-star');
+
+    if (doneSet.has(cid)) {
+      li.classList.add('done');
+      if (check) check.classList.add('checked');
+    }
+    if (bmSet.has(cid)) {
+      if (star) star.classList.add('active');
+    }
+
+    if (check) check.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (doneSet.has(cid)) {
+        doneSet.delete(cid);
+        li.classList.remove('done');
+        check.classList.remove('checked');
+      } else {
+        doneSet.add(cid);
+        li.classList.add('done');
+        check.classList.add('checked');
+      }
+      saveState();
+      applyFilters();
+    });
+
+    if (star) star.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (bmSet.has(cid)) {
+        bmSet.delete(cid);
+        star.classList.remove('active');
+      } else {
+        bmSet.add(cid);
+        star.classList.add('active');
+      }
+      saveState();
+      applyFilters();
+    });
+  });
+
+  const filters = { status: null, search: '' };
+  function applyFilters() {
+    const q = filters.search.toLowerCase();
+    document.querySelectorAll('.concepts li[data-cid]').forEach(li => {
+      const cid = li.dataset.cid;
+      const isDone = doneSet.has(cid);
+      const isBm = bmSet.has(cid);
+      const text = li.textContent.toLowerCase();
+
+      let show = true;
+      if (filters.status === 'done' && !isDone) show = false;
+      if (filters.status === 'undone' && isDone) show = false;
+      if (filters.status === 'bookmarked' && !isBm) show = false;
+      if (q && !text.includes(q)) show = false;
+
+      li.classList.toggle('hidden', !show);
+    });
+  }
+
+  document.querySelectorAll('.filter-btn[data-filter]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const val = btn.dataset.val;
+      if (filters.status === val) {
+        filters.status = null;
+        btn.classList.remove('active');
+      } else {
+        document.querySelectorAll('.filter-btn[data-filter]').forEach(b => b.classList.remove('active'));
+        filters.status = val;
+        btn.classList.add('active');
+      }
+      applyFilters();
+    });
+  });
+
+  const clearBtn = document.getElementById('clear-filters');
+  if (clearBtn) clearBtn.addEventListener('click', () => {
+    filters.status = null;
+    filters.search = '';
+    const sInput = document.getElementById('search-input');
+    if (sInput) sInput.value = '';
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    applyFilters();
+  });
+
+  const sInput = document.getElementById('search-input');
+  if (sInput) sInput.addEventListener('input', e => {
+    filters.search = e.target.value;
+    applyFilters();
+  });
+
+  const randBtn = document.getElementById('random-btn');
+  if (randBtn) randBtn.addEventListener('click', () => {
+    const visible = Array.from(document.querySelectorAll('.concepts li[data-cid]:not(.hidden)'));
+    if (!visible.length) return;
+    const chosen = visible[Math.floor(Math.random() * visible.length)];
+    chosen.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    chosen.style.transition = 'box-shadow 0.4s';
+    chosen.style.boxShadow = '0 0 0 3px var(--accent)';
+    setTimeout(() => { chosen.style.boxShadow = ''; }, 2000);
+  });
+
+  updateProgress();
+})();
+
+</script>
+</body>
+</html>

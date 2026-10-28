@@ -127,7 +127,7 @@ DOMAINS = [
         "icon": "🏗️",
         "desc": "HCL syntax, providers, resources, remote state backend, DynamoDB state locking, reusable modules & state drift reconciliation.",
         "badge": "Declarative Cloud Provisioning & State Locking",
-        "page": None,
+        "page": "tech_terraform.html",
         "page_title": "Terraform & Infrastructure as Code Masterclass",
         "page_subtitle": "Enterprise IaC: declarative HCL syntax, provider patterns, remote S3/GCS state backends, DynamoDB locking, modular architectures, and drift management."
     },
@@ -149,7 +149,7 @@ DOMAINS = [
         "icon": "⚡",
         "desc": "Distributed commit log, broker cluster architecture, partition rebalancing, consumer group protocols & exactly-once semantics (EOS).",
         "badge": "High-Throughput Distributed Event Streaming",
-        "page": None,
+        "page": "tech_kafka.html",
         "page_title": "Apache Kafka Distributed Streaming Masterclass",
         "page_subtitle": "High-throughput event streaming: partition design, consumer rebalance protocols, idempotent producers, transaction coordinators, and Kafka Connect/Streams."
     },
@@ -171,7 +171,7 @@ DOMAINS = [
         "icon": "🐘",
         "desc": "ACID guarantees, MVCC transaction isolation, WAL logging, B-tree, Hash, GIN, GiST indexes, EXPLAIN ANALYZE query planning & connection pooling.",
         "badge": "MVCC, Indexing Internals, Sharding & Query Optimization",
-        "page": None,
+        "page": "tech_postgres.html",
         "page_title": "Database Engineering & PostgreSQL Masterclass",
         "page_subtitle": "Relational database internals: ACID transaction isolation, MVCC vacuuming, WAL replication, index selector algorithms, query execution plans, and PgBouncer."
     },
@@ -726,6 +726,9 @@ def build_standalone_page(page_name, page_title, page_subtitle, badge, domain_ke
       <a href="tech_git.html" class="sister-link">🌿 Git &amp; GitHub Masterclass</a>
       <a href="tech_docker_k8s.html" class="sister-link">🐳 Docker &amp; Kubernetes Masterclass</a>
       <a href="tech_cicd.html" class="sister-link">🚀 CI/CD Pipelines Masterclass</a>
+      <a href="tech_terraform.html" class="sister-link">🏗️ Terraform IaC Masterclass</a>
+      <a href="tech_kafka.html" class="sister-link">⚡ Apache Kafka Masterclass</a>
+      <a href="tech_postgres.html" class="sister-link">🐘 PostgreSQL Masterclass</a>
       <a href="cloud_aws_azure.html" class="sister-link active-hub">🌐 All-in-One Tech Portal (16 Domains) &rarr;</a>
     </div>
   </div>
@@ -763,6 +766,18 @@ build_standalone_page("tech_docker_k8s.html", "Docker & Kubernetes Container Orc
 build_standalone_page("tech_cicd.html", "CI/CD Pipelines & DevOps Automation Masterclass",
     "Modern continuous integration & deployment: automated test pipelines, GitHub Actions workflows, Jenkins architectures, Blue/Green deployments, Canary rollouts, and GitOps.",
     "DevOps Automation · Masterclass 05", ["cicd"])
+
+build_standalone_page("tech_terraform.html", "Terraform & Infrastructure as Code Masterclass",
+    "Enterprise IaC: declarative HCL syntax, provider patterns, remote S3/GCS state backends, DynamoDB locking, modular architectures, and drift management.",
+    "Infrastructure as Code · Masterclass 06", ["terraform"])
+
+build_standalone_page("tech_kafka.html", "Apache Kafka Distributed Streaming Masterclass",
+    "High-throughput event streaming: partition design, consumer rebalance protocols, idempotent producers, transaction coordinators, and Kafka Connect/Streams.",
+    "Distributed Streaming · Masterclass 07", ["kafka"])
+
+build_standalone_page("tech_postgres.html", "Database Engineering & PostgreSQL Internals Masterclass",
+    "Relational database internals: ACID transaction isolation, MVCC vacuuming, WAL replication, index selector algorithms, query execution plans, and PgBouncer.",
+    "Database Engineering · Masterclass 08", ["postgres"])
 
 # 2. Transform cloud_aws_azure.html
 deck_cards = []
