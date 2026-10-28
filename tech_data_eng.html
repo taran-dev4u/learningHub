@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Data Engineering & Lakehouse Architecture Masterclass | Learning Hub</title>
+<link href="assets/learning-hub-shared.css" rel="stylesheet"/>
+<script src="assets/learning-hub-shared.js"></script>
+<style>
+
+
+
+/* All-in-One Tech Portal Design System */
+:root {
+  --bg: #f7f8fb;
+  --surface: #ffffff;
+  --surface-2: #eef2f7;
+  --surface-3: #e4eaf2;
+  --text: #172033;
+  --muted: #5b6578;
+  --faint: #7a8599;
+  --border: #dbe2ec;
+  --navy: #172554;
+  --navy-2: #1e3a8a;
+  --blue: #2563eb;
+  --amber: #f59e0b;
+  --green: #0f9f6e;
+  --red: #dc4c64;
+  --violet: #7c3aed;
+  --shadow: 0 4px 16px rgba(23, 32, 51, 0.06);
+  --shadow-lift: 0 12px 32px rgba(23, 32, 51, 0.12);
+  --bg-elev: var(--surface-2);
+  --bg-card: var(--surface);
+  --bg-row-alt: var(--surface-2);
+  --text-dim: var(--muted);
+  --text-faint: var(--faint);
+  --border-strong: var(--border);
+  --accent: var(--blue);
+  --accent-dim: rgba(37, 99, 235, 0.1);
+  --link: var(--blue);
+  --quote-bg: rgba(37, 99, 235, 0.05);
+  --done: var(--green);
+  --done-bg: rgba(15, 159, 110, 0.12);
+  --shadow-card: var(--shadow);
+  --shadow-banner: 0 4px 14px rgba(0,0,0,0.08);
+}
+html.dark, html[data-theme="dark"] {
+  --bg: #0b1120;
+  --surface: #151f32;
+  --surface-2: #1e293b;
+  --surface-3: #27354a;
+  --text: #f1f5f9;
+  --muted: #94a3b8;
+  --faint: #64748b;
+  --border: #1e293b;
+  --navy: #1e293b;
+  --navy-2: #243552;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  --shadow-lift: 0 12px 32px rgba(0, 0, 0, 0.5);
+  --bg-elev: #151f32;
+  --bg-card: #151f32;
+  --bg-row-alt: #1a263d;
+  --text-dim: #94a3b8;
+  --text-faint: #64748b;
+  --border-strong: #334155;
+  --accent: #38bdf8;
+  --accent-dim: rgba(56, 189, 248, 0.15);
+  --link: #38bdf8;
+  --quote-bg: rgba(56, 189, 248, 0.08);
+  --done: #10b981;
+  --done-bg: rgba(16, 185, 129, 0.15);
+}
+html.black, html[data-theme="black"] {
+  --bg: #000000;
+  --surface: #0a0a0a;
+  --surface-2: #141414;
+  --surface-3: #1f1f1f;
+  --text: #ffffff;
+  --muted: #888888;
+  --faint: #555555;
+  --border: #222222;
+  --navy: #0e0e0e;
+  --navy-2: #181818;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+  --shadow-lift: 0 12px 32px rgba(0, 0, 0, 0.9);
+  --bg-elev: #0e0e0e;
+  --bg-card: #0a0a0a;
+  --bg-row-alt: #121212;
+  --text-dim: #888888;
+  --text-faint: #555555;
+  --border-strong: #2c2c2c;
+  --accent: #60a5fa;
+  --accent-dim: rgba(96, 165, 250, 0.18);
+  --link: #60a5fa;
+  --quote-bg: rgba(96, 165, 250, 0.08);
+  --done: #22c55e;
+  --done-bg: rgba(34, 197, 94, 0.15);
+}
+.wrap { max-width: 1440px; margin: 0 auto; padding: 20px 20px 80px; }
+.tech-breadcrumb {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 700;
+  margin: 0 0 16px; padding: 6px 12px;
+  background: var(--surface-2); border: 1px solid var(--border);
+  border-radius: 8px; width: fit-content;
+}
+.tech-bc-home { color: var(--accent); text-decoration: none; }
+.tech-bc-home:hover { text-decoration: underline; }
+.tech-bc-sep { color: var(--faint); }
+.tech-bc-curr { color: var(--text); }
+.domain-deck-section { margin: 24px 0 28px; }
+.domain-deck-head {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px; margin-bottom: 14px;
+}
+.domain-deck-head h2 {
+  font-size: 20px; margin: 0; font-weight: 800; letter-spacing: -0.01em; color: var(--text);
+}
+.domain-deck-subtitle {
+  font-size: 13px; color: var(--muted); margin: 2px 0 0;
+}
+.domain-deck {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 14px;
+}
+.domain-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px; display: flex; flex-direction: column;
+  box-shadow: var(--shadow); transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+  position: relative; cursor: pointer;
+}
+.domain-card:hover {
+  transform: translateY(-2px); border-color: var(--accent); box-shadow: var(--shadow-lift);
+}
+.domain-card.active-deck-card {
+  border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent), var(--shadow-lift);
+}
+.domain-card-head { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
+.domain-card-icon {
+  font-size: 24px; line-height: 1; flex-shrink: 0;
+  background: var(--surface-2); padding: 8px; border-radius: 10px; border: 1px solid var(--border);
+}
+.domain-card-meta { flex: 1; min-width: 0; }
+.domain-card-idx {
+  font-size: 10.5px; font-weight: 800; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 0.08em;
+}
+.domain-card-title {
+  font-size: 15.5px; font-weight: 800; margin: 2px 0 0; color: var(--text); line-height: 1.3;
+}
+.domain-card-desc {
+  font-size: 12px; color: var(--muted); line-height: 1.5; margin: 0 0 12px; flex: 1;
+}
+.domain-card-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.d-chip {
+  font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px;
+  background: var(--surface-2); border: 1px solid var(--border); color: var(--text-dim);
+}
+.d-chip.masterclass-badge {
+  background: rgba(37, 99, 235, 0.12); border-color: var(--accent); color: var(--accent);
+}
+.domain-card-actions { display: flex; gap: 8px; align-items: center; margin-top: auto; }
+.d-act-btn {
+  flex: 1; min-height: 32px; padding: 5px 10px; border-radius: 7px;
+  border: 1px solid var(--border); background: var(--surface-2); color: var(--text);
+  font-size: 12px; font-weight: 700; cursor: pointer; display: inline-flex;
+  align-items: center; justify-content: center; gap: 4px; transition: all 0.15s ease;
+}
+.d-act-btn:hover { background: var(--accent); color: #ffffff; border-color: var(--accent); }
+.d-act-link {
+  min-height: 32px; padding: 5px 11px; border-radius: 7px; border: 1px solid var(--accent);
+  background: var(--accent); color: #ffffff; font-size: 12px; font-weight: 800;
+  text-decoration: none; display: inline-flex; align-items: center; justify-content: center;
+  gap: 4px; transition: all 0.15s ease; white-space: nowrap;
+}
+.d-act-link:hover { opacity: 0.9; transform: translateY(-1px); }
+.domain-nav-bar {
+  position: sticky; top: 53px; z-index: 60; background: var(--surface);
+  border-bottom: 1px solid var(--border); border-top: 1px solid var(--border);
+  padding: 8px 12px; margin: 0 -20px 22px; backdrop-filter: blur(12px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.domain-nav-scroll {
+  display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none;
+  -webkit-overflow-scrolling: touch; max-width: 1440px; margin: 0 auto; padding: 0 8px;
+}
+.domain-nav-scroll::-webkit-scrollbar { display: none; }
+.d-nav-pill {
+  display: inline-flex; align-items: center; gap: 5px; min-height: 32px;
+  padding: 4px 12px; border-radius: 999px; border: 1px solid var(--border);
+  background: var(--surface-2); color: var(--muted); font-size: 12px;
+  font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s ease;
+}
+.d-nav-pill:hover { border-color: var(--accent); color: var(--text); transform: translateY(-1px); }
+.d-nav-pill.active {
+  background: var(--accent); border-color: var(--accent); color: #ffffff;
+  box-shadow: 0 2px 10px rgba(37, 99, 235, 0.35);
+}
+.domain-focus-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px; padding: 12px 18px; margin-bottom: 16px;
+  background: var(--surface); border: 1px solid var(--accent);
+  border-radius: 10px; box-shadow: var(--shadow);
+}
+.focus-bar-left { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.focus-bar-pill {
+  font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em;
+  padding: 3px 8px; border-radius: 6px; background: var(--accent-dim);
+  color: var(--accent); border: 1px solid var(--accent);
+}
+.focus-bar-title { font-size: 15px; font-weight: 800; color: var(--text); }
+.focus-bar-stats { font-size: 12px; color: var(--muted); font-weight: 600; }
+.focus-bar-right { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.focus-btn {
+  min-height: 30px; padding: 4px 10px; border-radius: 6px; border: 1px solid var(--border);
+  background: var(--surface-2); color: var(--text); font-size: 12px; font-weight: 700;
+  cursor: pointer; transition: all 0.15s ease;
+}
+.focus-btn:hover { background: var(--border); color: var(--text); }
+.focus-btn.view-all-btn {
+  background: var(--accent-dim); border-color: var(--accent); color: var(--accent);
+}
+.focus-btn.view-all-btn:hover { background: var(--accent); color: #ffffff; }
+.focus-btn.masterclass-btn {
+  background: var(--accent); border-color: var(--accent); color: #ffffff;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 4px;
+}
+.section.hidden-domain { display: none !important; }
+.sister-guides-card {
+  margin: 40px 0 20px; padding: 20px 24px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; box-shadow: var(--shadow);
+}
+.sister-title { font-size: 15px; font-weight: 800; color: var(--text); margin-bottom: 12px; }
+.sister-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+.sister-link {
+  display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px;
+  border-radius: 8px; background: var(--surface-2); border: 1px solid var(--border);
+  color: var(--text); text-decoration: none; font-size: 12.5px; font-weight: 700;
+  transition: all 0.15s ease;
+}
+.sister-link:hover { border-color: var(--accent); background: var(--accent-dim); transform: translateY(-1px); }
+.sister-link.active-hub { background: var(--accent); border-color: var(--accent); color: #ffffff; }
+@media (max-width: 768px) {
+  .hero h1 { font-size: 26px; }
+  .domain-nav-bar { margin: 0 -12px 18px; }
+  .domain-focus-bar { flex-direction: column; align-items: flex-start; }
+}
+
+:root {
+  --bg: #0f1115; --bg-elev: #161922; --bg-card: #1c2030; --bg-row-alt: #1a1d2a;
+  --text: #e6e8ee; --text-dim: #9aa0b0; --text-faint: #6b7080;
+  --border: #2a2f42; --border-strong: #3a3f55;
+  --accent: #0786a3; --accent-dim: rgba(7,134,163,0.15);
+  --link: #38bdf8;
+  --quote-bg: rgba(7,134,163,0.06);
+  --done: #00b894; --done-bg: rgba(0,184,148,0.12);
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.2);
+  --shadow-banner: 0 4px 14px rgba(0,0,0,0.25);
+}
+html.light {
+  --bg: #fafbfc; --bg-elev: #ffffff; --bg-card: #ffffff; --bg-row-alt: #f8f9fb;
+  --text: #1a1d24; --text-dim: #5a6072; --text-faint: #8b91a3;
+  --border: #e4e7ee; --border-strong: #d0d4de;
+  --accent: #0284c7; --accent-dim: rgba(2,132,199,0.1);
+  --link: #0369a1;
+  --quote-bg: rgba(2,132,199,0.05);
+  --done: #00a884; --done-bg: rgba(0,168,132,0.12);
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-banner: 0 4px 14px rgba(0,0,0,0.08);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; line-height: 1.55;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--bg); color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.2s, color 0.2s;
+}
+.wrap { max-width: 1240px; margin: 0 auto; padding: 24px 20px 80px; }
+.hero { text-align: center; padding: 16px 0 24px; border-bottom: 1px solid var(--border); margin-bottom: 20px; }
+.hero h1 { font-size: 32px; margin: 6px 0 4px; letter-spacing: -0.02em; }
+.hero .subtitle { color: var(--text-dim); margin: 0; font-size: 14px; }
+.hero .edition {
+  display: inline-block; color: var(--accent); font-weight: 700; font-size: 11px;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  background: var(--accent-dim); padding: 4px 10px; border-radius: 4px;
+}
+.stats { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-top: 20px; }
+.stat {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 10px; padding: 8px 14px; min-width: 80px;
+  box-shadow: var(--shadow-card);
+}
+.stat .n { font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.stat .l { font-size: 10px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 2px; }
+
+.overall-progress {
+  background: var(--bg-elev); border: 1px solid var(--border);
+  border-radius: 10px; padding: 14px 20px; margin: 18px 0 18px;
+  display: flex; align-items: center; gap: 16px;
+}
+.overall-progress .lbl { font-size: 12px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; }
+.overall-progress .bar-track {
+  flex: 1; height: 10px; background: var(--bg-card);
+  border-radius: 5px; overflow: hidden; border: 1px solid var(--border);
+}
+.overall-progress .bar-fill {
+  height: 100%; background: linear-gradient(90deg, var(--done), var(--accent));
+  transition: width 0.3s ease; width: 0%;
+}
+.overall-progress .pct { font-weight: 700; font-variant-numeric: tabular-nums; font-size: 14px; min-width: 80px; text-align: right; }
+
+.controls {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--bg); backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  padding: 10px 0; margin: 0 0 20px;
+}
+.controls-row {
+  display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+  background: var(--bg-elev); border: 1px solid var(--border);
+  border-radius: 10px; padding: 10px 14px;
+}
+.controls-row .label {
+  font-size: 10px; color: var(--text-faint);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  font-weight: 700; margin-right: 2px;
+}
+.search { flex: 1; min-width: 180px; }
+.search input {
+  width: 100%; padding: 6px 11px; font-size: 13px;
+  background: var(--bg-card); border: 1px solid var(--border); color: var(--text);
+  border-radius: 5px;
+}
+.search input:focus { outline: none; border-color: var(--accent); }
+.icon-btn {
+  padding: 5px 9px; font-size: 14px;
+  background: var(--bg-card); border: 1px solid var(--border);
+  color: var(--text-dim); border-radius: 5px; cursor: pointer;
+  transition: all 0.12s;
+}
+.icon-btn:hover { background: var(--accent); color: white; border-color: var(--accent); }
+.filter-btn {
+  padding: 5px 10px; font-size: 11px; font-weight: 700;
+  background: var(--bg-card); border: 1px solid var(--border);
+  color: var(--text-dim); border-radius: 5px; cursor: pointer;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  transition: all 0.12s; letter-spacing: 0.02em;
+}
+.filter-btn:hover { background: var(--bg); color: var(--text); }
+.filter-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+.filter-btn.status-bookmarked.active { background: #ffa94d; border-color: #ffa94d; }
+.filter-btn.status-done.active { background: var(--done); border-color: var(--done); }
+.sep { width: 1px; height: 20px; background: var(--border); margin: 0 2px; }
+
+.toc {
+  background: var(--bg-elev); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px 22px; margin-bottom: 28px;
+}
+.toc h2 {
+  font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--text-faint); margin: 0 0 12px; font-weight: 700;
+}
+.toc-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 3px 12px;
+}
+.toc a {
+  display: flex; align-items: center; gap: 10px;
+  padding: 6px 8px; border-radius: 6px; color: var(--text);
+  text-decoration: none; font-size: 12.5px;
+  transition: background 0.12s;
+}
+.toc a:hover { background: var(--bg-card); }
+.toc .roman {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 10px; color: var(--text-faint); min-width: 28px;
+}
+.toc .name { flex: 1; }
+.toc .cnt {
+  font-size: 9.5px; color: var(--text-faint);
+  font-variant-numeric: tabular-nums;
+  background: var(--bg-card); padding: 1px 6px; border-radius: 3px;
+}
+
+.section { margin: 48px 0 0; }
+.section-banner {
+  border-radius: 12px; padding: 18px 24px; color: white;
+  display: flex; align-items: center; gap: 16px;
+  box-shadow: var(--shadow-banner);
+}
+.section-banner .num {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 22px; font-weight: 700; opacity: 0.95;
+  min-width: 56px; text-align: center;
+  padding: 6px 10px; background: rgba(255,255,255,0.18);
+  border-radius: 7px;
+}
+.section-banner .info { flex: 1; min-width: 0; }
+.section-banner .label {
+  font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em;
+  opacity: 0.85; margin-bottom: 1px;
+}
+.section-banner h2 { margin: 0; font-size: 20px; font-weight: 700; letter-spacing: -0.01em; }
+.section-banner .meta { font-size: 11.5px; opacity: 0.9; margin-top: 3px; }
+.section-banner .ppg { min-width: 140px; text-align: right; }
+.section-banner .ppg .pct-text { font-size: 13px; font-weight: 700; margin-bottom: 4px; font-variant-numeric: tabular-nums; }
+.section-banner .ppg .pp-track { height: 6px; background: rgba(255,255,255,0.25); border-radius: 3px; overflow: hidden; }
+.section-banner .ppg .pp-fill { height: 100%; background: white; border-radius: 3px; width: 0%; transition: width 0.3s; }
+
+.section-desc {
+  background: var(--quote-bg);
+  border-left: 4px solid var(--section-color, var(--accent));
+  border-radius: 0 8px 8px 0;
+  padding: 12px 18px; margin: 14px 0 6px 24px; font-size: 13.5px;
+}
+.section-desc .tagline { font-size: 14.5px; font-weight: 700; color: var(--text); margin: 0 0 6px; }
+.section-desc .row { margin: 4px 0; color: var(--text-dim); }
+.section-desc .row b { color: var(--text); }
+
+.subsection {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-left: 4px solid var(--section-color, var(--accent));
+  border-radius: 10px; margin: 16px 0 0 24px; padding: 14px 18px 16px;
+  box-shadow: var(--shadow-card);
+}
+.subsection-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 6px; flex-wrap: wrap; }
+.subsection-tag {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 10px; background: var(--bg-elev); border: 1px solid var(--border);
+  color: var(--text-dim); padding: 2px 7px; border-radius: 4px;
+  font-weight: 700; letter-spacing: 0.04em;
+}
+.subsection h3 { margin: 0; font-size: 14.5px; font-weight: 700; flex: 1; min-width: 0; color: var(--text); }
+.subsection-desc {
+  font-size: 12.5px; color: var(--text-dim); margin: 4px 0 8px;
+  padding: 7px 11px; background: var(--bg-elev); border-radius: 6px; line-height: 1.5;
+}
+
+.concepts {
+  list-style: none; padding: 0; margin: 8px 0 0;
+  border-radius: 8px; overflow: hidden;
+  border: 1px solid var(--border);
+}
+.concepts li {
+  display: grid;
+  grid-template-columns: 28px 22px 1fr auto;
+  gap: 10px; align-items: center;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-elev);
+  transition: background 0.12s;
+}
+.concepts li:last-child { border-bottom: none; }
+.concepts li:nth-child(even) { background: var(--bg-row-alt); }
+.concepts li:hover { background: var(--accent-dim); }
+.concepts li.hidden { display: none; }
+.concepts li.done { background: var(--done-bg); }
+.concepts li.done .cname { color: var(--text-dim); text-decoration: line-through; }
+.done-check {
+  width: 22px; height: 22px; cursor: pointer;
+  border: 2px solid var(--border-strong); border-radius: 5px;
+  background: var(--bg-card);
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.15s; flex-shrink: 0;
+}
+.done-check:hover { border-color: var(--done); }
+.done-check.checked { background: var(--done); border-color: var(--done); color: white; }
+.done-check.checked::after { content: '✓'; font-weight: 700; font-size: 14px; }
+.bookmark-star {
+  cursor: pointer; font-size: 16px; color: var(--border-strong);
+  user-select: none; transition: color 0.15s, transform 0.15s; flex-shrink: 0;
+}
+.bookmark-star:hover { color: #ffa94d; transform: scale(1.15); }
+.bookmark-star.active { color: #ffa94d; }
+.cname { color: var(--text); font-size: 13.5px; font-weight: 600; }
+.cname b { color: var(--accent); }
+.res-links { display: flex; gap: 4px; flex-shrink: 0; flex-wrap: wrap; }
+.res-links a {
+  font-size: 10.5px; padding: 3px 7px; border-radius: 4px;
+  background: var(--bg-card); border: 1px solid var(--border);
+  color: var(--text-dim); text-decoration: none;
+  white-space: nowrap; font-weight: 600;
+  transition: all 0.12s;
+}
+.res-links a:hover { background: var(--accent); color: white; border-color: var(--accent); }
+.res-links a.video:hover { background: #ff0000; border-color: #ff0000; }
+
+.resources-section {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 10px; padding: 12px 16px; margin: 10px 0 8px 24px;
+}
+.resources-section .head {
+  display: flex; align-items: center; justify-content: space-between;
+  cursor: pointer; user-select: none;
+}
+.resources-section .head h4 {
+  margin: 0; font-size: 11.5px; color: var(--text-faint);
+  text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700;
+}
+.resources-section .head .count {
+  font-size: 10.5px; color: var(--text-faint);
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+}
+.resources-section .head .chevron {
+  color: var(--text-faint); font-size: 11px; margin-left: 8px;
+  transition: transform 0.18s; display: inline-block;
+}
+.resources-section.open .chevron { transform: rotate(90deg); }
+.resources-body { display: none; margin-top: 10px; }
+.resources-section.open .resources-body { display: block; }
+.res-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 5px 8px;
+}
+.res-link {
+  display: flex; align-items: center; gap: 8px;
+  padding: 6px 10px; border-radius: 6px;
+  background: var(--bg-elev); border: 1px solid var(--border);
+  text-decoration: none; color: var(--text);
+  font-size: 12.5px; transition: all 0.12s;
+}
+.res-link:hover { background: var(--accent); color: white; border-color: var(--accent); }
+.res-link:hover .res-source { color: rgba(255,255,255,0.8); }
+.res-icon { font-size: 13px; flex-shrink: 0; }
+.res-title { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.res-source { font-size: 9.5px; color: var(--text-faint); margin-left: auto; padding-left: 6px; white-space: nowrap; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+
+.top {
+  position: fixed; bottom: 20px; right: 20px;
+  background: var(--accent); color: white;
+  padding: 10px 14px; border-radius: 8px;
+  text-decoration: none; font-size: 13px; font-weight: 600;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.2); z-index: 100;
+}
+
+@media (max-width: 900px) {
+  .wrap { padding: 16px 12px 80px; }
+  .subsection, .section-desc, .resources-section { margin-left: 0; }
+  .section-banner { flex-direction: column; align-items: flex-start; }
+  .section-banner .ppg { min-width: 100%; text-align: left; }
+  .hero h1 { font-size: 24px; }
+  .concepts li { grid-template-columns: 24px 20px 1fr; gap: 6px; padding: 6px 8px; }
+  .concepts li .res-links { display: none; }
+}
+@media print {
+  body { background: white; color: black; }
+  .controls, .top, .filter-btn, .icon-btn { display: none !important; }
+  .resources-section .resources-body { display: block !important; }
+  .section { page-break-inside: avoid; }
+  a { color: black; text-decoration: underline; }
+}
+
+
+/* Crosslink Card Styles */
+.domain-crosslink-card {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 22px 26px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.07) 0%, rgba(124, 58, 237, 0.07) 100%);
+  border: 1px solid rgba(37, 99, 235, 0.25);
+  margin-top: 14px;
+}
+.domain-crosslink-content h3 {
+  margin: 4px 0 6px;
+  font-size: 1.18rem;
+  font-weight: 850;
+  color: var(--text);
+}
+.domain-crosslink-content p {
+  margin: 0;
+  font-size: .88rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+.domain-crosslink-tag {
+  font-size: .72rem;
+  font-weight: 850;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--blue);
+}
+.domain-crosslink-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 22px;
+  border-radius: 10px;
+  background: var(--blue);
+  color: #fff;
+  font-size: .88rem;
+  font-weight: 800;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all .15s ease;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+}
+.domain-crosslink-btn:hover {
+  background: var(--navy-2);
+  transform: translateY(-1px);
+  color: #fff;
+}
+.d-nav-pill.link-pill {
+  border-style: dashed;
+  border-color: var(--blue);
+  color: var(--blue);
+  text-decoration: none;
+  font-weight: 750;
+}
+.d-nav-pill.link-pill:hover {
+  background: var(--blue);
+  color: #fff;
+}
+@media (max-width: 768px) {
+  .domain-crosslink-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+
+</style>
+</head>
+<body data-site="ai_data">
+<div class="wrap">
+  <div class="tech-breadcrumb">
+    <a class="tech-bc-home" href="ai_data.html">← AI &amp; Data Hub</a>
+    <span class="tech-bc-sep">/</span>
+    <span class="tech-bc-curr">Data Engineering & Lakehouse Architecture Masterclass</span>
+  </div>
+
+  <div class="hero">
+    <div class="edition">Warehouses, Spark, Lakehouse, dbt, Airflow & Kafka · 6 Subsections · 24 Concepts</div>
+    <h1>Data Engineering & Lakehouse Architecture Masterclass</h1>
+    <p class="subtitle">Enterprise data engineering: cloud analytical data warehouses, distributed PySpark processing, open lakehouse table formats (Iceberg, Delta Lake), dbt modeling, Airflow DAG orchestration, and real-time Kafka/Flink streaming.</p>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="n">6</div><div class="l">Subsections</div></div>
+    <div class="stat"><div class="n">24</div><div class="l">Concepts</div></div>
+    <div class="stat"><div class="n">100%</div><div class="l">Curated</div></div>
+    <div class="stat"><div class="n">15+</div><div class="l">Verified Docs &amp; Labs</div></div>
+  </div>
+
+  <div class="overall-progress">
+    <span class="lbl">Masterclass Progress</span>
+    <div class="bar-track"><div class="bar-fill" id="overall-bar"></div></div>
+    <span class="pct" id="overall-pct">0 / 24</span>
+  </div>
+
+  <div class="controls">
+    <div class="controls-row">
+      <span class="label">Filter:</span>
+      <button class="filter-btn status-done" data-filter="status" data-val="done">Done</button>
+      <button class="filter-btn" data-filter="status" data-val="undone">Not Done</button>
+      <button class="filter-btn status-bookmarked" data-filter="status" data-val="bookmarked">★ Bookmarked</button>
+      <span class="sep"></span>
+      <div class="search"><input id="search-input" placeholder="Search 24 concepts…" type="search"/></div>
+      <button class="icon-btn" id="random-btn" title="Random concept">🎲</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">🌓</button>
+      <button class="icon-btn" onclick="window.print()" title="Print">🖨️</button>
+      <button class="filter-btn" id="clear-filters">Clear</button>
+    </div>
+  </div>
+
+  <section class="section domain-section" id="section-4" data-domain="data-eng" style="--section-color:hsl(280, 80%, 50%)">
+<h2>Data Engineering & Modern Data Stack</h2>
+<div class="sec-desc">
+<p><strong>Core Focus:</strong> Modern data warehousing, Apache Spark, Lakehouses (Iceberg/Delta), dbt transformation, Airflow orchestration & Kafka/Flink streaming.</p>
+<p><strong>Track Key:</strong> Warehouses, Spark, Lakehouse, dbt, Airflow & Kafka</p>
+</div>
+<div class="subsection">
+<h3>1.1 Modern Data Warehousing & Analytical Engines</h3>
+<ol class="concepts">
+<li data-cid="de-oltp-vs-olap" data-name="oltp vs olap architecture: row-store vs columnar execution">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">OLTP vs OLAP Architecture: Row-Store vs Columnar Execution</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">B-tree transactional indexes vs columnar projection, dictionary encoding, run-length compression, vectorized query execution, and SIMD instructions.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="ByteByteGo" data-vdur="20:00" data-vtitle="OLTP vs OLAP Architecture: Row-Store vs Columnar Execution" href="https://www.youtube.com/watch?v=bzcRHN4Z5iE" rel="noopener" target="_blank" title="Watch walkthrough: OLTP vs OLAP Architecture: Row-Store vs Columnar Execution">🎬YT</a><a href="https://en.wikipedia.org/wiki/OLTP" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="de-cloud-warehouses" data-name="cloud data warehouses: snowflake virtual warehouses & bigquery slot architecture">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Cloud Data Warehouses: Snowflake Virtual Warehouses & BigQuery Slot Architecture</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Decoupled storage and compute, micro-partitions in Snowflake, capacitor storage in Google BigQuery, and reservation pricing models.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Cloud Data Warehouses: Snowflake Virtual Warehouses & BigQuery Slot Architecture" href="https://www.youtube.com/watch?v=yE9v9fZkY4A" rel="noopener" target="_blank" title="Watch walkthrough: Cloud Data Warehouses: Snowflake Virtual Warehouses & BigQuery Slot Architecture">🎬YT</a><a href="https://en.wikipedia.org/wiki/Cloud" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="de-clickhouse-duckdb" data-name="modern analytical query engines: clickhouse & embedded duckdb">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Modern Analytical Query Engines: ClickHouse & Embedded DuckDB</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">LSM-tree merge tree engines in ClickHouse, vectorized column processing, and zero-dependency in-process analytics using DuckDB.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="SeattleDataGuy" data-vdur="20:00" data-vtitle="Modern Analytical Query Engines: ClickHouse & Embedded DuckDB" href="https://www.youtube.com/watch?v=nO_3y12sZ7k" rel="noopener" target="_blank" title="Watch walkthrough: Modern Analytical Query Engines: ClickHouse & Embedded DuckDB">🎬YT</a><a href="https://en.wikipedia.org/wiki/Modern" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="de-partitioning-clustering" data-name="query optimization: partitioning pruning, clustering keys & data skipping">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Query Optimization: Partitioning Pruning, Clustering Keys & Data Skipping</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Min-max metadata pruning, bloom filters, sorting clustering keys, preventing full table scans, and optimizing partition cardinality.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="SeattleDataGuy" data-vdur="20:00" data-vtitle="Query Optimization: Partitioning Pruning, Clustering Keys & Data Skipping" href="https://www.youtube.com/watch?v=3mJkWkH9P6Q" rel="noopener" target="_blank" title="Watch walkthrough: Query Optimization: Partitioning Pruning, Clustering Keys & Data Skipping">🎬YT</a><a href="https://en.wikipedia.org/wiki/Query" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li>
+</ol>
+</div><div class="subsection">
+<h3>1.2 Distributed Processing with Apache Spark & PySpark</h3>
+<ol class="concepts">
+<li data-cid="de-spark-architecture" data-name="apache spark cluster architecture: driver, executors & memory management">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Apache Spark Cluster Architecture: Driver, Executors & Memory Management</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Cluster manager (YARN/K8s), worker nodes, executor memory fractions (Storage vs Execution memory), tasks, and partitions.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Apache Spark Cluster Architecture: Driver, Executors & Memory Management" href="https://www.youtube.com/watch?v=3mJkWkH9P6Q" rel="noopener" target="_blank" title="Watch walkthrough: Apache Spark Cluster Architecture: Driver, Executors & Memory Management">🎬YT</a><a href="https://en.wikipedia.org/wiki/Apache" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="de-spark-transformations" data-name="spark transformations: narrow vs wide dependencies & the shuffle stage">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Spark Transformations: Narrow vs Wide Dependencies & The Shuffle Stage</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Map/filter (narrow) without network transfers vs GroupBy/join (wide) requiring cluster-wide data shuffle, stage boundaries, and skew.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Spark Transformations: Narrow vs Wide Dependencies & The Shuffle Stage" href="https://www.youtube.com/watch?v=3mJkWkH9P6Q" rel="noopener" target="_blank" title="Watch walkthrough: Spark Transformations: Narrow vs Wide Dependencies & The Shuffle Stage">🎬YT</a><a href="https://en.wikipedia.org/wiki/Spark" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="de-pyspark-dataframes" data-name="pyspark dataframes, spark sql & distributed aggregations">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">PySpark DataFrames, Spark SQL & Distributed Aggregations</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">DataFrame API syntax, structured streaming, window functions, user-defined functions (UDFs vs pandas UDFs with Arrow), and broadcast joins.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="PySpark DataFrames, Spark SQL & Distributed Aggregations" href="https://www.youtube.com/watch?v=XrpSRCwISdk" rel="noopener" target="_blank" title="Watch walkthrough: PySpark DataFrames, Spark SQL & Distributed Aggregations">🎬YT</a><a href="https://en.wikipedia.org/wiki/PySpark" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="de-catalyst-optimizer" data-name="the catalyst query optimizer & tungsten memory management">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">The Catalyst Query Optimizer & Tungsten Memory Management</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Logical plan generation, rule-based optimization, cost-based optimization, physical plan selection, and off-heap binary format processing.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="The Catalyst Query Optimizer & Tungsten Memory Management" href="https://www.youtube.com/watch?v=r0X6X_6r7uM" rel="noopener" target="_blank" title="Watch walkthrough: The Catalyst Query Optimizer & Tungsten Memory Management">🎬YT</a><a href="https://en.wikipedia.org/wiki/The" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li>
+</ol>
+</div><div class="subsection">
+<h3>1.3 Data Lakehouse Architecture & Open Table Formats</h3>
+<ol class="concepts">
+<li data-cid="de-lakehouse-evolution" data-name="lakehouse evolution: object storage, acid transactions & metadata">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Lakehouse Evolution: Object Storage, ACID Transactions & Metadata</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Combining data lake cost-efficiency with data warehouse ACID guarantees, schema enforcement, concurrency, and metadata management.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="Databricks" data-vdur="20:00" data-vtitle="Lakehouse Evolution: Object Storage, ACID Transactions & Metadata" href="https://www.youtube.com/watch?v=vA8Z2k_o8bE" rel="noopener" target="_blank" title="Watch walkthrough: Lakehouse Evolution: Object Storage, ACID Transactions & Metadata">🎬YT</a><a href="https://en.wikipedia.org/wiki/Lakehouse" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="de-apache-iceberg" data-name="apache iceberg: snapshot architecture, manifest files & partitioning">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Apache Iceberg: Snapshot Architecture, Manifest Files & Partitioning</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Hierarchical metadata tree: Iceberg catalog, metadata file, manifest lists, manifest files, data files, hidden partitioning, and time travel.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="SeattleDataGuy" data-vdur="20:00" data-vtitle="Apache Iceberg: Snapshot Architecture, Manifest Files & Partitioning" href="https://www.youtube.com/watch?v=4u1Q2f_x5aQ" rel="noopener" target="_blank" title="Watch walkthrough: Apache Iceberg: Snapshot Architecture, Manifest Files & Partitioning">🎬YT</a><a href="https://en.wikipedia.org/wiki/Apache" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="de-delta-lake" data-name="delta lake: transaction log (delta log), acid guarantees & time travel">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Delta Lake: Transaction Log (Delta Log), ACID Guarantees & Time Travel</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">JSON/Parquet commit log, atomic commit protocols, optimistic concurrency control, vacuuming old snapshots, and MERGE upsert commands.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="Databricks" data-vdur="20:00" data-vtitle="Delta Lake: Transaction Log (Delta Log), ACID Guarantees & Time Travel" href="https://www.youtube.com/watch?v=6rVf8tL4lH4" rel="noopener" target="_blank" title="Watch walkthrough: Delta Lake: Transaction Log (Delta Log), ACID Guarantees & Time Travel">🎬YT</a><a href="https://en.wikipedia.org/wiki/Delta" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="de-parquet-internals" data-name="columnar file formats: apache parquet anatomy & compression">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Columnar File Formats: Apache Parquet Anatomy & Compression</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Parquet file structure: File Header, Row Groups, Column Chunks, Data Pages, Dictionary Pages, Snappy/ZSTD compression, and stats pruning.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="SeattleDataGuy" data-vdur="20:00" data-vtitle="Columnar File Formats: Apache Parquet Anatomy & Compression" href="https://www.youtube.com/watch?v=1uTfG6eA0oE" rel="noopener" target="_blank" title="Watch walkthrough: Columnar File Formats: Apache Parquet Anatomy & Compression">🎬YT</a><a href="https://en.wikipedia.org/wiki/Columnar" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li>
+</ol>
+</div><div class="subsection">
+<h3>1.4 Data Transformation & Dimensional Modeling with dbt</h3>
+<ol class="concepts">
+<li data-cid="de-dbt-fundamentals" data-name="data build tool (dbt): models, ref macros & modular sql dags">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Data Build Tool (dbt): Models, Ref Macros & Modular SQL DAGs</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">ELT paradigm, declarative SQL transformations, the {{ ref() }} function building lineage graphs, staging vs intermediate vs mart layers.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Data Build Tool (dbt): Models, Ref Macros & Modular SQL DAGs" href="https://www.youtube.com/watch?v=5rT8X2k-4kU" rel="noopener" target="_blank" title="Watch walkthrough: Data Build Tool (dbt): Models, Ref Macros & Modular SQL DAGs">🎬YT</a><a href="https://en.wikipedia.org/wiki/Data" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="de-dbt-testing-docs" data-name="dbt data quality: schema tests, singular tests & auto-docs">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">dbt Data Quality: Schema Tests, Singular Tests & Auto-Docs</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Asserting unique, not_null, accepted_values, relationships foreign keys; compiling data catalogs, interactive DAG visualizers, and CI runs.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="SeattleDataGuy" data-vdur="20:00" data-vtitle="dbt Data Quality: Schema Tests, Singular Tests & Auto-Docs" href="https://www.youtube.com/watch?v=6rVf8tL4lH4" rel="noopener" target="_blank" title="Watch walkthrough: dbt Data Quality: Schema Tests, Singular Tests & Auto-Docs">🎬YT</a><a href="https://en.wikipedia.org/wiki/dbt" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="de-dimensional-modeling" data-name="dimensional modeling: kimball star schema vs snowflake schema">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Dimensional Modeling: Kimball Star Schema vs Snowflake Schema</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Business processes, grains, Fact tables (additive, semi-additive, non-additive measures), Dimension tables, surrogate keys, and normalization.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="SeattleDataGuy" data-vdur="20:00" data-vtitle="Dimensional Modeling: Kimball Star Schema vs Snowflake Schema" href="https://www.youtube.com/watch?v=3g8K1P_q0qQ" rel="noopener" target="_blank" title="Watch walkthrough: Dimensional Modeling: Kimball Star Schema vs Snowflake Schema">🎬YT</a><a href="https://en.wikipedia.org/wiki/Dimensional" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="de-scd-patterns" data-name="slowly changing dimensions (scd type 1, type 2 & type 3)">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Slowly Changing Dimensions (SCD Type 1, Type 2 & Type 3)</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Overwriting values (Type 1), tracking historical changes with valid_from/valid_to dates and is_current flags (Type 2), and dbt snapshots.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="SeattleDataGuy" data-vdur="20:00" data-vtitle="Slowly Changing Dimensions (SCD Type 1, Type 2 & Type 3)" href="https://www.youtube.com/watch?v=2AQKmw14mHM" rel="noopener" target="_blank" title="Watch walkthrough: Slowly Changing Dimensions (SCD Type 1, Type 2 & Type 3)">🎬YT</a><a href="https://en.wikipedia.org/wiki/Slowly" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li>
+</ol>
+</div><div class="subsection">
+<h3>1.5 Workflow Orchestration & Modern Data Pipelines</h3>
+<ol class="concepts">
+<li data-cid="de-airflow-dags" data-name="apache airflow core: dags, operators, tasks, sensors & dependencies">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Apache Airflow Core: DAGs, Operators, Tasks, Sensors & Dependencies</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Python-defined pipeline topologies, BashOperator, PythonOperator, external trigger sensors, XCom task communication, and pool concurrency.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="Marc Lamberti" data-vdur="20:00" data-vtitle="Apache Airflow Core: DAGs, Operators, Tasks, Sensors & Dependencies" href="https://www.youtube.com/watch?v=K9AnJ9_ZAXE" rel="noopener" target="_blank" title="Watch walkthrough: Apache Airflow Core: DAGs, Operators, Tasks, Sensors & Dependencies">🎬YT</a><a href="https://en.wikipedia.org/wiki/Apache" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="de-airflow-scheduling" data-name="airflow execution: celery/kubernetes executors & idempotent tasks">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Airflow Execution: Celery/Kubernetes Executors & Idempotent Tasks</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Distributed task execution, stateless worker pods, data interval concepts (logical date vs execution date), backfilling historical partitions.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="Marc Lamberti" data-vdur="20:00" data-vtitle="Airflow Execution: Celery/Kubernetes Executors & Idempotent Tasks" href="https://www.youtube.com/watch?v=IHZwWFHWa-w" rel="noopener" target="_blank" title="Watch walkthrough: Airflow Execution: Celery/Kubernetes Executors & Idempotent Tasks">🎬YT</a><a href="https://en.wikipedia.org/wiki/Airflow" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="de-dagster-assets" data-name="modern asset-based orchestration with dagster & prefect">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Modern Asset-Based Orchestration with Dagster & Prefect</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Software-defined assets (SDAs), declarative data dependencies, dynamic parameter pipelines, and immediate local testability.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="SeattleDataGuy" data-vdur="20:00" data-vtitle="Modern Asset-Based Orchestration with Dagster & Prefect" href="https://www.youtube.com/watch?v=7uK3ddA9KFA" rel="noopener" target="_blank" title="Watch walkthrough: Modern Asset-Based Orchestration with Dagster & Prefect">🎬YT</a><a href="https://en.wikipedia.org/wiki/Modern" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="de-pipeline-observability" data-name="data pipeline observability: sla alerts, data lineage & circuit breakers">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Data Pipeline Observability: SLA Alerts, Data Lineage & Circuit Breakers</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Monitoring pipeline execution latency, data freshness SLAs, Monte Carlo data observability, OpenLineage standards, and circuit breakers.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Data Pipeline Observability: SLA Alerts, Data Lineage & Circuit Breakers" href="https://www.youtube.com/watch?v=kYJv8P2zHk8" rel="noopener" target="_blank" title="Watch walkthrough: Data Pipeline Observability: SLA Alerts, Data Lineage & Circuit Breakers">🎬YT</a><a href="https://en.wikipedia.org/wiki/Data" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li>
+</ol>
+</div><div class="subsection">
+<h3>1.6 Real-Time Data Streaming & Event Processing</h3>
+<ol class="concepts">
+<li data-cid="de-streaming-fundamentals" data-name="stream processing fundamentals: event time, processing time & watermarks">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Stream Processing Fundamentals: Event Time, Processing Time & Watermarks</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Unbounded data streams, out-of-order event arrivals, late data handling, watermarks, tumbling windows, hopping windows, and session windows.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="ByteByteGo" data-vdur="20:00" data-vtitle="Stream Processing Fundamentals: Event Time, Processing Time & Watermarks" href="https://www.youtube.com/watch?v=Vb7C_7a3d3M" rel="noopener" target="_blank" title="Watch walkthrough: Stream Processing Fundamentals: Event Time, Processing Time & Watermarks">🎬YT</a><a href="https://en.wikipedia.org/wiki/Stream" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="de-kafka-pipelines" data-name="apache kafka architecture: topics, partitions, consumer groups & offsets">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Apache Kafka Architecture: Topics, Partitions, Consumer Groups & Offsets</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Distributed write-ahead log, partition hashing, leader-follower replication, consumer offset commits (__consumer_offsets), and log compaction.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Apache Kafka Architecture: Topics, Partitions, Consumer Groups & Offsets" href="https://www.youtube.com/watch?v=Ch5VhJzaoaI" rel="noopener" target="_blank" title="Watch walkthrough: Apache Kafka Architecture: Topics, Partitions, Consumer Groups & Offsets">🎬YT</a><a href="https://en.wikipedia.org/wiki/Apache" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="de-kafka-connect" data-name="kafka connect (source & sink connectors) & schema registry">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Kafka Connect (Source & Sink Connectors) & Schema Registry</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Streaming change data capture (Debezium CDC), Kafka to Data Lakehouse ingestion, schema evolution enforcement with Apache Avro and Protobuf.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="Confluent" data-vdur="20:00" data-vtitle="Kafka Connect (Source & Sink Connectors) & Schema Registry" href="https://www.youtube.com/watch?v=kCc8FmEb1nY" rel="noopener" target="_blank" title="Watch walkthrough: Kafka Connect (Source & Sink Connectors) & Schema Registry">🎬YT</a><a href="https://en.wikipedia.org/wiki/Kafka" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="de-flink-streaming" data-name="stateful stream processing with apache flink & window operations">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Stateful Stream Processing with Apache Flink & Window Operations</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Distributed snapshots (Chandy-Lamport algorithm), RocksDB state backend, exactly-once processing end-to-end, and low-latency complex event CEP.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="Apache Flink" data-vdur="20:00" data-vtitle="Stateful Stream Processing with Apache Flink & Window Operations" href="https://www.youtube.com/watch?v=Vb7C_7a3d3M" rel="noopener" target="_blank" title="Watch walkthrough: Stateful Stream Processing with Apache Flink & Window Operations">🎬YT</a><a href="https://en.wikipedia.org/wiki/Stateful" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li>
+</ol>
+</div>
+</section>
+
+  <div class="sister-guides-card">
+    <div class="sister-title">🤖 Companion AI &amp; Data Masterclasses</div>
+    <div class="sister-grid">
+      <a class="sister-link" href="ai_engineering.html">🤖 AI Engineering from Scratch (542 Lessons)</a>
+      <a class="sister-link" href="tech_ml.html">🧠 Machine Learning Engineering Masterclass</a>
+      <a class="sister-link" href="tech_data_science.html">📊 Data Science &amp; Applied Analytics Masterclass</a>
+      <a class="sister-link" href="tech_data_eng.html">⚡ Data Engineering &amp; Lakehouse Masterclass</a>
+      <a class="sister-link active-hub" href="ai_data.html">🌐 Unified AI &amp; Data Hub (4 Tracks) &rarr;</a>
+    </div>
+  </div>
+</div>
+
+<script>
+window.SITE_SLUG = "ai_data";
+</script>
+<script>
+(function() {
+  const SLUG = window.SITE_SLUG || 'ai_data';
+  const KEY_DONE = 'hub_done_' + SLUG;
+  const KEY_BM = 'hub_bm_' + SLUG;
+
+  let doneSet = new Set();
+  try {
+    const raw = localStorage.getItem(KEY_DONE);
+    if (raw) doneSet = new Set(JSON.parse(raw));
+  } catch (e) {}
+
+  let bmSet = new Set();
+  try {
+    const raw = localStorage.getItem(KEY_BM);
+    if (raw) bmSet = new Set(JSON.parse(raw));
+  } catch (e) {}
+
+  function saveDone() {
+    try { localStorage.setItem(KEY_DONE, JSON.stringify([...doneSet])); } catch (e) {}
+  }
+  function saveBm() {
+    try { localStorage.setItem(KEY_BM, JSON.stringify([...bmSet])); } catch (e) {}
+  }
+
+  function updateProgress() {
+    const all = document.querySelectorAll('li[data-cid]');
+    const total = all.length;
+    let done = 0;
+    all.forEach(li => {
+      const cid = li.getAttribute('data-cid');
+      const isDone = doneSet.has(cid);
+      li.classList.toggle('done', isDone);
+      li.classList.toggle('is-done', isDone);
+      const chk = li.querySelector('.done-check');
+      if (chk) {
+        chk.classList.toggle('checked', isDone);
+        chk.innerHTML = isDone ? '✓' : '';
+      }
+      if (isDone) done++;
+      const isBm = bmSet.has(cid);
+      li.classList.toggle('is-bm', isBm);
+      const star = li.querySelector('.bookmark-star');
+      if (star) {
+        star.classList.toggle('active', isBm);
+        star.textContent = isBm ? '★' : '☆';
+      }
+    });
+    const pct = total ? Math.round((done / total) * 100) : 0;
+    const bar = document.getElementById('overall-bar');
+    if (bar) bar.style.width = pct + '%';
+    const txt = document.getElementById('overall-pct');
+    if (txt) txt.textContent = done + ' / ' + total + ' (' + pct + '%)';
+  }
+
+  document.querySelectorAll('li[data-cid]').forEach(li => {
+    const cid = li.getAttribute('data-cid');
+    const chk = li.querySelector('.done-check');
+    if (chk) {
+      chk.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (doneSet.has(cid)) doneSet.delete(cid);
+        else doneSet.add(cid);
+        saveDone();
+        updateProgress();
+      });
+    }
+    const star = li.querySelector('.bookmark-star');
+    if (star) {
+      star.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (bmSet.has(cid)) bmSet.delete(cid);
+        else bmSet.add(cid);
+        saveBm();
+        updateProgress();
+      });
+    }
+  });
+
+  let activeFilter = null;
+  document.querySelectorAll('.filter-btn[data-filter]').forEach(b => {
+    b.addEventListener('click', () => {
+      const val = b.getAttribute('data-val');
+      if (activeFilter === val) {
+        activeFilter = null;
+        b.classList.remove('active');
+      } else {
+        document.querySelectorAll('.filter-btn[data-filter]').forEach(x => x.classList.remove('active'));
+        activeFilter = val;
+        b.classList.add('active');
+      }
+      applyFilters();
+    });
+  });
+
+  const sInput = document.getElementById('search-input');
+  if (sInput) sInput.addEventListener('input', applyFilters);
+
+  const clearBtn = document.getElementById('clear-filters');
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      activeFilter = null;
+      document.querySelectorAll('.filter-btn').forEach(x => x.classList.remove('active'));
+      if (sInput) sInput.value = '';
+      applyFilters();
+    });
+  }
+
+  function applyFilters() {
+    const q = (sInput ? sInput.value : '').toLowerCase().trim();
+    document.querySelectorAll('li[data-cid]').forEach(li => {
+      const cid = li.getAttribute('data-cid');
+      const text = (li.getAttribute('data-name') || li.textContent).toLowerCase();
+      let match = true;
+      if (activeFilter === 'done' && !doneSet.has(cid)) match = false;
+      if (activeFilter === 'undone' && doneSet.has(cid)) match = false;
+      if (activeFilter === 'bookmarked' && !bmSet.has(cid)) match = false;
+      if (q && !text.includes(q)) match = false;
+      li.style.display = match ? '' : 'none';
+    });
+  }
+
+  const randBtn = document.getElementById('random-btn');
+  if (randBtn) {
+    randBtn.addEventListener('click', () => {
+      const all = Array.from(document.querySelectorAll('li[data-cid]')).filter(li => li.style.display !== 'none');
+      if (!all.length) return;
+      const pick = all[Math.floor(Math.random() * all.length)];
+      pick.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      pick.style.outline = '3px solid var(--accent)';
+      setTimeout(() => { pick.style.outline = ''; }, 2000);
+    });
+  }
+
+  updateProgress();
+})();
+</script>
+</body>
+</html>

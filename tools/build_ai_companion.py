@@ -7,8 +7,13 @@ copies of upstream lessons. Run after refreshing the pinned snapshots.
 from __future__ import annotations
 
 import json
+import gzip
+import hashlib
+import os
 import re
 import sys
+import tempfile
+import time
 import zipfile
 from pathlib import Path
 
@@ -20,6 +25,7 @@ INVENTORY = SCRATCH / 'ai_sources_inventory.json'
 ZIPS = SCRATCH / 'ai_source_zips'
 OUTPUT = ROOT / 'AI_Engineering_Tutorial' / 'companion-data.json'
 LICENSES = ROOT / 'AI_Engineering_Tutorial' / 'companion-licenses'
+CONTENT = ROOT / 'AI_Engineering_Tutorial' / 'companion-content'
 
 DESCRIPTIONS = {
     'alirezadir/AIMLInterviews': 'ML coding, fundamentals, system design cases and interview practice. Much of the current source text is Chinese; English readers can use the mapped topic names and code exercises.',
@@ -114,6 +120,22 @@ def file_kind(path: str) -> str:
     if suffix in ('.png', '.jpg', '.jpeg', '.svg', '.pdf'): return 'media'
     return 'file'
 
+def atomic_bytes(path: Path, data: bytes) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.NamedTemporaryFile('wb', dir=path.parent, delete=False) as temp:
+        temp.write(data)
+        name = temp.name
+    try:
+        for attempt in range(4):
+            try:
+                os.replace(name, path)
+                break
+            except OSError:
+                if attempt == 3: raise
+                time.sleep(0.2 * (attempt + 1))
+    finally:
+        if os.path.exists(name): os.unlink(name)
+
 def build() -> None:
     if not INVENTORY.exists(): raise SystemExit('Missing complete tree inventory: ' + str(INVENTORY))
     raw = json.loads(INVENTORY.read_text(encoding='utf8'))
@@ -131,10 +153,13 @@ def build() -> None:
             members = {p.split('/', 1)[1]: p for p in zip_file.namelist() if '/' in p and not p.endswith('/')}
             if set(members) != set(expected):
                 raise SystemExit('Archive and Git tree differ: ' + repo)
+            pack_name = 'companion-content/' + repo.replace('/', '--') + '.json.gz' if item['license'] else None
             source = {'id': repo, 'revision': revision, 'license': item['license'] or 'No license declared',
                       'description': DESCRIPTIONS[repo], 'files': len(expected),
-                      'url': 'https://github.com/' + repo + '/tree/' + revision}
+                      'url': 'https://github.com/' + repo + '/tree/' + revision,
+                      'pack': pack_name}
             result['sources'].append(source)
+            pack = {}
             license_path = next((p for p in ('LICENSE', 'LICENSE.md', 'LICENSE.txt') if p in members), None)
             if license_path:
                 LICENSES.mkdir(exist_ok=True)
@@ -145,19 +170,32 @@ def build() -> None:
                                  '- Declared license: ' + source['license'],
                                  '- Local license copy: ' + (local_license.relative_to(ROOT).as_posix() if license_path else 'none declared upstream'), ''])
             for path, record in sorted(expected.items()):
+                raw_bytes = zip_file.read(members[path])
+                blob = hashlib.sha1(b'blob ' + str(len(raw_bytes)).encode() + b'\0' + raw_bytes).hexdigest()
+                if blob != record['sha']:
+                    raise SystemExit('Git blob mismatch: ' + repo + '/' + path)
                 title = clean(Path(path).stem.replace('-', ' ').replace('_', ' '))
                 phase = phase_for(repo, path, title)
+                inline = False
+                if pack_name and record.get('size', 0) <= 1_000_000 and file_kind(path) != 'media':
+                    try:
+                        raw_text = raw_bytes.decode('utf8')
+                        if '\x00' not in raw_text:
+                            pack[path] = raw_text
+                            inline = True
+                    except UnicodeDecodeError:
+                        pass
                 result['files'].append({'source': repo, 'path': path, 'kind': file_kind(path),
-                                        'size': record.get('size', 0), 'phase': phase})
+                                        'size': record.get('size', 0), 'phase': phase, 'inline': inline})
                 if not path.lower().endswith(('.md', '.ipynb')) or record.get('size', 0) == 0:
                     continue
                 # Chinese and Persian translations remain in the complete file list.
                 if path.startswith(('cn/', 'fa/')): continue
                 try:
                     if path.endswith('.ipynb'):
-                        notebook = json.loads(zip_file.read(members[path]))
+                        notebook = json.loads(raw_bytes)
                         text = '\n'.join(''.join(cell.get('source', [])) for cell in notebook.get('cells', []) if cell.get('cell_type') == 'markdown')
-                    else: text = zip_file.read(members[path]).decode('utf8', 'replace')
+                    else: text = raw_bytes.decode('utf8', 'replace')
                 except (ValueError, UnicodeError): continue
                 current_phase = phase
                 company = ''
@@ -194,7 +232,14 @@ def build() -> None:
                                 result['questions'].append({'company': company, 'area': section,
                                                             'question': wording, 'phase': phase_for(repo, path, section),
                                                             'source': repo})
+            if pack_name:
+                source['inlineFiles'] = len(pack)
+                payload = json.dumps(pack, ensure_ascii=False, separators=(',', ':')).encode('utf8')
+                atomic_bytes(ROOT / 'AI_Engineering_Tutorial' / pack_name, gzip.compress(payload, compresslevel=9, mtime=0))
+            else:
+                source['inlineFiles'] = 0
     counts = {key: len(result[key]) for key in ('sources', 'files', 'topics', 'questions')}
+    counts['inlineFiles'] = sum(source['inlineFiles'] for source in result['sources'])
     result['counts'] = counts
     atomic(OUTPUT, json.dumps(result, ensure_ascii=False, separators=(',', ':')))
     atomic(ROOT / 'AI_Engineering_Tutorial' / 'COMPANION_ATTRIBUTION.md', '\n'.join(attributions) + '\n')

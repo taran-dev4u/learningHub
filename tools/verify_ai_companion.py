@@ -1,5 +1,6 @@
 """Check companion provenance, phase coverage and index integrity."""
 import json
+import gzip
 from collections import Counter
 from pathlib import Path
 
@@ -22,6 +23,11 @@ for source in data['sources']:
     assert source['url'].endswith(source['revision'])
     if source['license'] != 'No license declared':
         assert (BASE / 'companion-licenses' / (source['id'].replace('/', '--') + '.txt')).exists()
+        pack = json.loads(gzip.decompress((BASE / source['pack']).read_bytes()))
+        assert len(pack) == source['inlineFiles']
+        assert set(pack) == {f['path'] for f in data['files'] if f['source'] == source['id'] and f['inline']}
+    else:
+        assert source['pack'] is None and source['inlineFiles'] == 0
 for topic in data['topics']:
     assert (topic['source'], topic['path']) in files
     assert topic['title'] and 0 <= topic['phase'] < 20 and 1 <= topic['level'] <= 5
@@ -34,5 +40,6 @@ for phase, guide in guides.items():
     assert guide['headers'] and guide['rows']
     assert all(len(row) == len(guide['headers']) for row in guide['rows'])
 assert len(guides['phase-17']['deepDive']) == 18
+assert data['counts']['inlineFiles'] == sum(f['inline'] for f in data['files'])
 assert set(Counter(t['phase'] for t in data['topics'])) == set(range(20))
 print('AI companion verified:', data['counts'], '20 phase guides, 18 inference topics')

@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Machine Learning Engineering Masterclass | Learning Hub</title>
+<link href="assets/learning-hub-shared.css" rel="stylesheet"/>
+<script src="assets/learning-hub-shared.js"></script>
+<style>
+
+
+
+/* All-in-One Tech Portal Design System */
+:root {
+  --bg: #f7f8fb;
+  --surface: #ffffff;
+  --surface-2: #eef2f7;
+  --surface-3: #e4eaf2;
+  --text: #172033;
+  --muted: #5b6578;
+  --faint: #7a8599;
+  --border: #dbe2ec;
+  --navy: #172554;
+  --navy-2: #1e3a8a;
+  --blue: #2563eb;
+  --amber: #f59e0b;
+  --green: #0f9f6e;
+  --red: #dc4c64;
+  --violet: #7c3aed;
+  --shadow: 0 4px 16px rgba(23, 32, 51, 0.06);
+  --shadow-lift: 0 12px 32px rgba(23, 32, 51, 0.12);
+  --bg-elev: var(--surface-2);
+  --bg-card: var(--surface);
+  --bg-row-alt: var(--surface-2);
+  --text-dim: var(--muted);
+  --text-faint: var(--faint);
+  --border-strong: var(--border);
+  --accent: var(--blue);
+  --accent-dim: rgba(37, 99, 235, 0.1);
+  --link: var(--blue);
+  --quote-bg: rgba(37, 99, 235, 0.05);
+  --done: var(--green);
+  --done-bg: rgba(15, 159, 110, 0.12);
+  --shadow-card: var(--shadow);
+  --shadow-banner: 0 4px 14px rgba(0,0,0,0.08);
+}
+html.dark, html[data-theme="dark"] {
+  --bg: #0b1120;
+  --surface: #151f32;
+  --surface-2: #1e293b;
+  --surface-3: #27354a;
+  --text: #f1f5f9;
+  --muted: #94a3b8;
+  --faint: #64748b;
+  --border: #1e293b;
+  --navy: #1e293b;
+  --navy-2: #243552;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  --shadow-lift: 0 12px 32px rgba(0, 0, 0, 0.5);
+  --bg-elev: #151f32;
+  --bg-card: #151f32;
+  --bg-row-alt: #1a263d;
+  --text-dim: #94a3b8;
+  --text-faint: #64748b;
+  --border-strong: #334155;
+  --accent: #38bdf8;
+  --accent-dim: rgba(56, 189, 248, 0.15);
+  --link: #38bdf8;
+  --quote-bg: rgba(56, 189, 248, 0.08);
+  --done: #10b981;
+  --done-bg: rgba(16, 185, 129, 0.15);
+}
+html.black, html[data-theme="black"] {
+  --bg: #000000;
+  --surface: #0a0a0a;
+  --surface-2: #141414;
+  --surface-3: #1f1f1f;
+  --text: #ffffff;
+  --muted: #888888;
+  --faint: #555555;
+  --border: #222222;
+  --navy: #0e0e0e;
+  --navy-2: #181818;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+  --shadow-lift: 0 12px 32px rgba(0, 0, 0, 0.9);
+  --bg-elev: #0e0e0e;
+  --bg-card: #0a0a0a;
+  --bg-row-alt: #121212;
+  --text-dim: #888888;
+  --text-faint: #555555;
+  --border-strong: #2c2c2c;
+  --accent: #60a5fa;
+  --accent-dim: rgba(96, 165, 250, 0.18);
+  --link: #60a5fa;
+  --quote-bg: rgba(96, 165, 250, 0.08);
+  --done: #22c55e;
+  --done-bg: rgba(34, 197, 94, 0.15);
+}
+.wrap { max-width: 1440px; margin: 0 auto; padding: 20px 20px 80px; }
+.tech-breadcrumb {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 700;
+  margin: 0 0 16px; padding: 6px 12px;
+  background: var(--surface-2); border: 1px solid var(--border);
+  border-radius: 8px; width: fit-content;
+}
+.tech-bc-home { color: var(--accent); text-decoration: none; }
+.tech-bc-home:hover { text-decoration: underline; }
+.tech-bc-sep { color: var(--faint); }
+.tech-bc-curr { color: var(--text); }
+.domain-deck-section { margin: 24px 0 28px; }
+.domain-deck-head {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px; margin-bottom: 14px;
+}
+.domain-deck-head h2 {
+  font-size: 20px; margin: 0; font-weight: 800; letter-spacing: -0.01em; color: var(--text);
+}
+.domain-deck-subtitle {
+  font-size: 13px; color: var(--muted); margin: 2px 0 0;
+}
+.domain-deck {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 14px;
+}
+.domain-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px; display: flex; flex-direction: column;
+  box-shadow: var(--shadow); transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+  position: relative; cursor: pointer;
+}
+.domain-card:hover {
+  transform: translateY(-2px); border-color: var(--accent); box-shadow: var(--shadow-lift);
+}
+.domain-card.active-deck-card {
+  border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent), var(--shadow-lift);
+}
+.domain-card-head { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
+.domain-card-icon {
+  font-size: 24px; line-height: 1; flex-shrink: 0;
+  background: var(--surface-2); padding: 8px; border-radius: 10px; border: 1px solid var(--border);
+}
+.domain-card-meta { flex: 1; min-width: 0; }
+.domain-card-idx {
+  font-size: 10.5px; font-weight: 800; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 0.08em;
+}
+.domain-card-title {
+  font-size: 15.5px; font-weight: 800; margin: 2px 0 0; color: var(--text); line-height: 1.3;
+}
+.domain-card-desc {
+  font-size: 12px; color: var(--muted); line-height: 1.5; margin: 0 0 12px; flex: 1;
+}
+.domain-card-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.d-chip {
+  font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px;
+  background: var(--surface-2); border: 1px solid var(--border); color: var(--text-dim);
+}
+.d-chip.masterclass-badge {
+  background: rgba(37, 99, 235, 0.12); border-color: var(--accent); color: var(--accent);
+}
+.domain-card-actions { display: flex; gap: 8px; align-items: center; margin-top: auto; }
+.d-act-btn {
+  flex: 1; min-height: 32px; padding: 5px 10px; border-radius: 7px;
+  border: 1px solid var(--border); background: var(--surface-2); color: var(--text);
+  font-size: 12px; font-weight: 700; cursor: pointer; display: inline-flex;
+  align-items: center; justify-content: center; gap: 4px; transition: all 0.15s ease;
+}
+.d-act-btn:hover { background: var(--accent); color: #ffffff; border-color: var(--accent); }
+.d-act-link {
+  min-height: 32px; padding: 5px 11px; border-radius: 7px; border: 1px solid var(--accent);
+  background: var(--accent); color: #ffffff; font-size: 12px; font-weight: 800;
+  text-decoration: none; display: inline-flex; align-items: center; justify-content: center;
+  gap: 4px; transition: all 0.15s ease; white-space: nowrap;
+}
+.d-act-link:hover { opacity: 0.9; transform: translateY(-1px); }
+.domain-nav-bar {
+  position: sticky; top: 53px; z-index: 60; background: var(--surface);
+  border-bottom: 1px solid var(--border); border-top: 1px solid var(--border);
+  padding: 8px 12px; margin: 0 -20px 22px; backdrop-filter: blur(12px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.domain-nav-scroll {
+  display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none;
+  -webkit-overflow-scrolling: touch; max-width: 1440px; margin: 0 auto; padding: 0 8px;
+}
+.domain-nav-scroll::-webkit-scrollbar { display: none; }
+.d-nav-pill {
+  display: inline-flex; align-items: center; gap: 5px; min-height: 32px;
+  padding: 4px 12px; border-radius: 999px; border: 1px solid var(--border);
+  background: var(--surface-2); color: var(--muted); font-size: 12px;
+  font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s ease;
+}
+.d-nav-pill:hover { border-color: var(--accent); color: var(--text); transform: translateY(-1px); }
+.d-nav-pill.active {
+  background: var(--accent); border-color: var(--accent); color: #ffffff;
+  box-shadow: 0 2px 10px rgba(37, 99, 235, 0.35);
+}
+.domain-focus-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px; padding: 12px 18px; margin-bottom: 16px;
+  background: var(--surface); border: 1px solid var(--accent);
+  border-radius: 10px; box-shadow: var(--shadow);
+}
+.focus-bar-left { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.focus-bar-pill {
+  font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em;
+  padding: 3px 8px; border-radius: 6px; background: var(--accent-dim);
+  color: var(--accent); border: 1px solid var(--accent);
+}
+.focus-bar-title { font-size: 15px; font-weight: 800; color: var(--text); }
+.focus-bar-stats { font-size: 12px; color: var(--muted); font-weight: 600; }
+.focus-bar-right { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.focus-btn {
+  min-height: 30px; padding: 4px 10px; border-radius: 6px; border: 1px solid var(--border);
+  background: var(--surface-2); color: var(--text); font-size: 12px; font-weight: 700;
+  cursor: pointer; transition: all 0.15s ease;
+}
+.focus-btn:hover { background: var(--border); color: var(--text); }
+.focus-btn.view-all-btn {
+  background: var(--accent-dim); border-color: var(--accent); color: var(--accent);
+}
+.focus-btn.view-all-btn:hover { background: var(--accent); color: #ffffff; }
+.focus-btn.masterclass-btn {
+  background: var(--accent); border-color: var(--accent); color: #ffffff;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 4px;
+}
+.section.hidden-domain { display: none !important; }
+.sister-guides-card {
+  margin: 40px 0 20px; padding: 20px 24px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; box-shadow: var(--shadow);
+}
+.sister-title { font-size: 15px; font-weight: 800; color: var(--text); margin-bottom: 12px; }
+.sister-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+.sister-link {
+  display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px;
+  border-radius: 8px; background: var(--surface-2); border: 1px solid var(--border);
+  color: var(--text); text-decoration: none; font-size: 12.5px; font-weight: 700;
+  transition: all 0.15s ease;
+}
+.sister-link:hover { border-color: var(--accent); background: var(--accent-dim); transform: translateY(-1px); }
+.sister-link.active-hub { background: var(--accent); border-color: var(--accent); color: #ffffff; }
+@media (max-width: 768px) {
+  .hero h1 { font-size: 26px; }
+  .domain-nav-bar { margin: 0 -12px 18px; }
+  .domain-focus-bar { flex-direction: column; align-items: flex-start; }
+}
+
+:root {
+  --bg: #0f1115; --bg-elev: #161922; --bg-card: #1c2030; --bg-row-alt: #1a1d2a;
+  --text: #e6e8ee; --text-dim: #9aa0b0; --text-faint: #6b7080;
+  --border: #2a2f42; --border-strong: #3a3f55;
+  --accent: #0786a3; --accent-dim: rgba(7,134,163,0.15);
+  --link: #38bdf8;
+  --quote-bg: rgba(7,134,163,0.06);
+  --done: #00b894; --done-bg: rgba(0,184,148,0.12);
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.2);
+  --shadow-banner: 0 4px 14px rgba(0,0,0,0.25);
+}
+html.light {
+  --bg: #fafbfc; --bg-elev: #ffffff; --bg-card: #ffffff; --bg-row-alt: #f8f9fb;
+  --text: #1a1d24; --text-dim: #5a6072; --text-faint: #8b91a3;
+  --border: #e4e7ee; --border-strong: #d0d4de;
+  --accent: #0284c7; --accent-dim: rgba(2,132,199,0.1);
+  --link: #0369a1;
+  --quote-bg: rgba(2,132,199,0.05);
+  --done: #00a884; --done-bg: rgba(0,168,132,0.12);
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-banner: 0 4px 14px rgba(0,0,0,0.08);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; line-height: 1.55;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--bg); color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.2s, color 0.2s;
+}
+.wrap { max-width: 1240px; margin: 0 auto; padding: 24px 20px 80px; }
+.hero { text-align: center; padding: 16px 0 24px; border-bottom: 1px solid var(--border); margin-bottom: 20px; }
+.hero h1 { font-size: 32px; margin: 6px 0 4px; letter-spacing: -0.02em; }
+.hero .subtitle { color: var(--text-dim); margin: 0; font-size: 14px; }
+.hero .edition {
+  display: inline-block; color: var(--accent); font-weight: 700; font-size: 11px;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  background: var(--accent-dim); padding: 4px 10px; border-radius: 4px;
+}
+.stats { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-top: 20px; }
+.stat {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 10px; padding: 8px 14px; min-width: 80px;
+  box-shadow: var(--shadow-card);
+}
+.stat .n { font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.stat .l { font-size: 10px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 2px; }
+
+.overall-progress {
+  background: var(--bg-elev); border: 1px solid var(--border);
+  border-radius: 10px; padding: 14px 20px; margin: 18px 0 18px;
+  display: flex; align-items: center; gap: 16px;
+}
+.overall-progress .lbl { font-size: 12px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; }
+.overall-progress .bar-track {
+  flex: 1; height: 10px; background: var(--bg-card);
+  border-radius: 5px; overflow: hidden; border: 1px solid var(--border);
+}
+.overall-progress .bar-fill {
+  height: 100%; background: linear-gradient(90deg, var(--done), var(--accent));
+  transition: width 0.3s ease; width: 0%;
+}
+.overall-progress .pct { font-weight: 700; font-variant-numeric: tabular-nums; font-size: 14px; min-width: 80px; text-align: right; }
+
+.controls {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--bg); backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  padding: 10px 0; margin: 0 0 20px;
+}
+.controls-row {
+  display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+  background: var(--bg-elev); border: 1px solid var(--border);
+  border-radius: 10px; padding: 10px 14px;
+}
+.controls-row .label {
+  font-size: 10px; color: var(--text-faint);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  font-weight: 700; margin-right: 2px;
+}
+.search { flex: 1; min-width: 180px; }
+.search input {
+  width: 100%; padding: 6px 11px; font-size: 13px;
+  background: var(--bg-card); border: 1px solid var(--border); color: var(--text);
+  border-radius: 5px;
+}
+.search input:focus { outline: none; border-color: var(--accent); }
+.icon-btn {
+  padding: 5px 9px; font-size: 14px;
+  background: var(--bg-card); border: 1px solid var(--border);
+  color: var(--text-dim); border-radius: 5px; cursor: pointer;
+  transition: all 0.12s;
+}
+.icon-btn:hover { background: var(--accent); color: white; border-color: var(--accent); }
+.filter-btn {
+  padding: 5px 10px; font-size: 11px; font-weight: 700;
+  background: var(--bg-card); border: 1px solid var(--border);
+  color: var(--text-dim); border-radius: 5px; cursor: pointer;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  transition: all 0.12s; letter-spacing: 0.02em;
+}
+.filter-btn:hover { background: var(--bg); color: var(--text); }
+.filter-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+.filter-btn.status-bookmarked.active { background: #ffa94d; border-color: #ffa94d; }
+.filter-btn.status-done.active { background: var(--done); border-color: var(--done); }
+.sep { width: 1px; height: 20px; background: var(--border); margin: 0 2px; }
+
+.toc {
+  background: var(--bg-elev); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px 22px; margin-bottom: 28px;
+}
+.toc h2 {
+  font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--text-faint); margin: 0 0 12px; font-weight: 700;
+}
+.toc-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 3px 12px;
+}
+.toc a {
+  display: flex; align-items: center; gap: 10px;
+  padding: 6px 8px; border-radius: 6px; color: var(--text);
+  text-decoration: none; font-size: 12.5px;
+  transition: background 0.12s;
+}
+.toc a:hover { background: var(--bg-card); }
+.toc .roman {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 10px; color: var(--text-faint); min-width: 28px;
+}
+.toc .name { flex: 1; }
+.toc .cnt {
+  font-size: 9.5px; color: var(--text-faint);
+  font-variant-numeric: tabular-nums;
+  background: var(--bg-card); padding: 1px 6px; border-radius: 3px;
+}
+
+.section { margin: 48px 0 0; }
+.section-banner {
+  border-radius: 12px; padding: 18px 24px; color: white;
+  display: flex; align-items: center; gap: 16px;
+  box-shadow: var(--shadow-banner);
+}
+.section-banner .num {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 22px; font-weight: 700; opacity: 0.95;
+  min-width: 56px; text-align: center;
+  padding: 6px 10px; background: rgba(255,255,255,0.18);
+  border-radius: 7px;
+}
+.section-banner .info { flex: 1; min-width: 0; }
+.section-banner .label {
+  font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em;
+  opacity: 0.85; margin-bottom: 1px;
+}
+.section-banner h2 { margin: 0; font-size: 20px; font-weight: 700; letter-spacing: -0.01em; }
+.section-banner .meta { font-size: 11.5px; opacity: 0.9; margin-top: 3px; }
+.section-banner .ppg { min-width: 140px; text-align: right; }
+.section-banner .ppg .pct-text { font-size: 13px; font-weight: 700; margin-bottom: 4px; font-variant-numeric: tabular-nums; }
+.section-banner .ppg .pp-track { height: 6px; background: rgba(255,255,255,0.25); border-radius: 3px; overflow: hidden; }
+.section-banner .ppg .pp-fill { height: 100%; background: white; border-radius: 3px; width: 0%; transition: width 0.3s; }
+
+.section-desc {
+  background: var(--quote-bg);
+  border-left: 4px solid var(--section-color, var(--accent));
+  border-radius: 0 8px 8px 0;
+  padding: 12px 18px; margin: 14px 0 6px 24px; font-size: 13.5px;
+}
+.section-desc .tagline { font-size: 14.5px; font-weight: 700; color: var(--text); margin: 0 0 6px; }
+.section-desc .row { margin: 4px 0; color: var(--text-dim); }
+.section-desc .row b { color: var(--text); }
+
+.subsection {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-left: 4px solid var(--section-color, var(--accent));
+  border-radius: 10px; margin: 16px 0 0 24px; padding: 14px 18px 16px;
+  box-shadow: var(--shadow-card);
+}
+.subsection-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 6px; flex-wrap: wrap; }
+.subsection-tag {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 10px; background: var(--bg-elev); border: 1px solid var(--border);
+  color: var(--text-dim); padding: 2px 7px; border-radius: 4px;
+  font-weight: 700; letter-spacing: 0.04em;
+}
+.subsection h3 { margin: 0; font-size: 14.5px; font-weight: 700; flex: 1; min-width: 0; color: var(--text); }
+.subsection-desc {
+  font-size: 12.5px; color: var(--text-dim); margin: 4px 0 8px;
+  padding: 7px 11px; background: var(--bg-elev); border-radius: 6px; line-height: 1.5;
+}
+
+.concepts {
+  list-style: none; padding: 0; margin: 8px 0 0;
+  border-radius: 8px; overflow: hidden;
+  border: 1px solid var(--border);
+}
+.concepts li {
+  display: grid;
+  grid-template-columns: 28px 22px 1fr auto;
+  gap: 10px; align-items: center;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-elev);
+  transition: background 0.12s;
+}
+.concepts li:last-child { border-bottom: none; }
+.concepts li:nth-child(even) { background: var(--bg-row-alt); }
+.concepts li:hover { background: var(--accent-dim); }
+.concepts li.hidden { display: none; }
+.concepts li.done { background: var(--done-bg); }
+.concepts li.done .cname { color: var(--text-dim); text-decoration: line-through; }
+.done-check {
+  width: 22px; height: 22px; cursor: pointer;
+  border: 2px solid var(--border-strong); border-radius: 5px;
+  background: var(--bg-card);
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.15s; flex-shrink: 0;
+}
+.done-check:hover { border-color: var(--done); }
+.done-check.checked { background: var(--done); border-color: var(--done); color: white; }
+.done-check.checked::after { content: '✓'; font-weight: 700; font-size: 14px; }
+.bookmark-star {
+  cursor: pointer; font-size: 16px; color: var(--border-strong);
+  user-select: none; transition: color 0.15s, transform 0.15s; flex-shrink: 0;
+}
+.bookmark-star:hover { color: #ffa94d; transform: scale(1.15); }
+.bookmark-star.active { color: #ffa94d; }
+.cname { color: var(--text); font-size: 13.5px; font-weight: 600; }
+.cname b { color: var(--accent); }
+.res-links { display: flex; gap: 4px; flex-shrink: 0; flex-wrap: wrap; }
+.res-links a {
+  font-size: 10.5px; padding: 3px 7px; border-radius: 4px;
+  background: var(--bg-card); border: 1px solid var(--border);
+  color: var(--text-dim); text-decoration: none;
+  white-space: nowrap; font-weight: 600;
+  transition: all 0.12s;
+}
+.res-links a:hover { background: var(--accent); color: white; border-color: var(--accent); }
+.res-links a.video:hover { background: #ff0000; border-color: #ff0000; }
+
+.resources-section {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 10px; padding: 12px 16px; margin: 10px 0 8px 24px;
+}
+.resources-section .head {
+  display: flex; align-items: center; justify-content: space-between;
+  cursor: pointer; user-select: none;
+}
+.resources-section .head h4 {
+  margin: 0; font-size: 11.5px; color: var(--text-faint);
+  text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700;
+}
+.resources-section .head .count {
+  font-size: 10.5px; color: var(--text-faint);
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+}
+.resources-section .head .chevron {
+  color: var(--text-faint); font-size: 11px; margin-left: 8px;
+  transition: transform 0.18s; display: inline-block;
+}
+.resources-section.open .chevron { transform: rotate(90deg); }
+.resources-body { display: none; margin-top: 10px; }
+.resources-section.open .resources-body { display: block; }
+.res-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 5px 8px;
+}
+.res-link {
+  display: flex; align-items: center; gap: 8px;
+  padding: 6px 10px; border-radius: 6px;
+  background: var(--bg-elev); border: 1px solid var(--border);
+  text-decoration: none; color: var(--text);
+  font-size: 12.5px; transition: all 0.12s;
+}
+.res-link:hover { background: var(--accent); color: white; border-color: var(--accent); }
+.res-link:hover .res-source { color: rgba(255,255,255,0.8); }
+.res-icon { font-size: 13px; flex-shrink: 0; }
+.res-title { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.res-source { font-size: 9.5px; color: var(--text-faint); margin-left: auto; padding-left: 6px; white-space: nowrap; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+
+.top {
+  position: fixed; bottom: 20px; right: 20px;
+  background: var(--accent); color: white;
+  padding: 10px 14px; border-radius: 8px;
+  text-decoration: none; font-size: 13px; font-weight: 600;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.2); z-index: 100;
+}
+
+@media (max-width: 900px) {
+  .wrap { padding: 16px 12px 80px; }
+  .subsection, .section-desc, .resources-section { margin-left: 0; }
+  .section-banner { flex-direction: column; align-items: flex-start; }
+  .section-banner .ppg { min-width: 100%; text-align: left; }
+  .hero h1 { font-size: 24px; }
+  .concepts li { grid-template-columns: 24px 20px 1fr; gap: 6px; padding: 6px 8px; }
+  .concepts li .res-links { display: none; }
+}
+@media print {
+  body { background: white; color: black; }
+  .controls, .top, .filter-btn, .icon-btn { display: none !important; }
+  .resources-section .resources-body { display: block !important; }
+  .section { page-break-inside: avoid; }
+  a { color: black; text-decoration: underline; }
+}
+
+
+/* Crosslink Card Styles */
+.domain-crosslink-card {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 22px 26px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.07) 0%, rgba(124, 58, 237, 0.07) 100%);
+  border: 1px solid rgba(37, 99, 235, 0.25);
+  margin-top: 14px;
+}
+.domain-crosslink-content h3 {
+  margin: 4px 0 6px;
+  font-size: 1.18rem;
+  font-weight: 850;
+  color: var(--text);
+}
+.domain-crosslink-content p {
+  margin: 0;
+  font-size: .88rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+.domain-crosslink-tag {
+  font-size: .72rem;
+  font-weight: 850;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--blue);
+}
+.domain-crosslink-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 22px;
+  border-radius: 10px;
+  background: var(--blue);
+  color: #fff;
+  font-size: .88rem;
+  font-weight: 800;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all .15s ease;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+}
+.domain-crosslink-btn:hover {
+  background: var(--navy-2);
+  transform: translateY(-1px);
+  color: #fff;
+}
+.d-nav-pill.link-pill {
+  border-style: dashed;
+  border-color: var(--blue);
+  color: var(--blue);
+  text-decoration: none;
+  font-weight: 750;
+}
+.d-nav-pill.link-pill:hover {
+  background: var(--blue);
+  color: #fff;
+}
+@media (max-width: 768px) {
+  .domain-crosslink-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+
+</style>
+</head>
+<body data-site="ai_data">
+<div class="wrap">
+  <div class="tech-breadcrumb">
+    <a class="tech-bc-home" href="ai_data.html">← AI &amp; Data Hub</a>
+    <span class="tech-bc-sep">/</span>
+    <span class="tech-bc-curr">Machine Learning Engineering Masterclass</span>
+  </div>
+
+  <div class="hero">
+    <div class="edition">Algorithms, PyTorch, MLOps & Production Serving · 6 Subsections · 24 Concepts</div>
+    <h1>Machine Learning Engineering Masterclass</h1>
+    <p class="subtitle">Production machine learning architecture: classical algorithms, PyTorch deep learning, feature pipelines, cross-validation, MLOps tracking, and low-latency Triton/vLLM serving.</p>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="n">6</div><div class="l">Subsections</div></div>
+    <div class="stat"><div class="n">24</div><div class="l">Concepts</div></div>
+    <div class="stat"><div class="n">100%</div><div class="l">Curated</div></div>
+    <div class="stat"><div class="n">15+</div><div class="l">Verified Docs &amp; Labs</div></div>
+  </div>
+
+  <div class="overall-progress">
+    <span class="lbl">Masterclass Progress</span>
+    <div class="bar-track"><div class="bar-fill" id="overall-bar"></div></div>
+    <span class="pct" id="overall-pct">0 / 24</span>
+  </div>
+
+  <div class="controls">
+    <div class="controls-row">
+      <span class="label">Filter:</span>
+      <button class="filter-btn status-done" data-filter="status" data-val="done">Done</button>
+      <button class="filter-btn" data-filter="status" data-val="undone">Not Done</button>
+      <button class="filter-btn status-bookmarked" data-filter="status" data-val="bookmarked">★ Bookmarked</button>
+      <span class="sep"></span>
+      <div class="search"><input id="search-input" placeholder="Search 24 concepts…" type="search"/></div>
+      <button class="icon-btn" id="random-btn" title="Random concept">🎲</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">🌓</button>
+      <button class="icon-btn" onclick="window.print()" title="Print">🖨️</button>
+      <button class="filter-btn" id="clear-filters">Clear</button>
+    </div>
+  </div>
+
+  <section class="section domain-section" id="section-2" data-domain="ml-eng" style="--section-color:hsl(280, 80%, 50%)">
+<h2>Machine Learning Engineering (MLE)</h2>
+<div class="sec-desc">
+<p><strong>Core Focus:</strong> Classical supervised & unsupervised algorithms, Deep Learning with PyTorch, feature pipelines, MLOps, model registries, serving & drift.</p>
+<p><strong>Track Key:</strong> Algorithms, PyTorch, MLOps & Production Serving</p>
+</div>
+<div class="subsection">
+<h3>1.1 Supervised & Unsupervised Learning Algorithms</h3>
+<ol class="concepts">
+<li data-cid="ml-linear-logistic" data-name="linear & logistic regression: cost functions, gradient descent & odds ratios">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Linear & Logistic Regression: Cost Functions, Gradient Descent & Odds Ratios</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Ordinary least squares, sigmoid activation, log-loss cross-entropy, decision boundaries, and interpretability in linear modeling.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Linear & Logistic Regression: Cost Functions, Gradient Descent & Odds Ratios" href="https://www.youtube.com/watch?v=nk2CQITm_eo" rel="noopener" target="_blank" title="Watch walkthrough: Linear & Logistic Regression: Cost Functions, Gradient Descent & Odds Ratios">🎬YT</a><a href="https://en.wikipedia.org/wiki/Linear" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ml-trees-ensembles" data-name="decision trees, bagging & random forest ensembles">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Decision Trees, Bagging & Random Forest Ensembles</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Gini impurity, entropy information gain, tree pruning, bootstrap aggregating (bagging), and feature subspace random forests.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Decision Trees, Bagging & Random Forest Ensembles" href="https://www.youtube.com/watch?v=J4Wdy0Wc_xQ" rel="noopener" target="_blank" title="Watch walkthrough: Decision Trees, Bagging & Random Forest Ensembles">🎬YT</a><a href="https://en.wikipedia.org/wiki/Decision" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ml-gradient-boosting" data-name="gradient boosting: xgboost, lightgbm & catboost internals">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Gradient Boosting: XGBoost, LightGBM & CatBoost Internals</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Sequential residual fitting, shrinkage learning rate, histogram-based splitting, leaf-wise vs depth-wise tree growth, and categorical features.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Gradient Boosting: XGBoost, LightGBM & CatBoost Internals" href="https://www.youtube.com/watch?v=OtD8wVaFm6E" rel="noopener" target="_blank" title="Watch walkthrough: Gradient Boosting: XGBoost, LightGBM & CatBoost Internals">🎬YT</a><a href="https://en.wikipedia.org/wiki/Gradient" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ml-unsupervised-clustering" data-name="unsupervised learning: k-means clustering, hierarchical & pca">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Unsupervised Learning: K-Means Clustering, Hierarchical & PCA</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Centroid convergence, inertia elbow method, silhouette analysis, dendrograms, and orthogonal variance projection via PCA.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Unsupervised Learning: K-Means Clustering, Hierarchical & PCA" href="https://www.youtube.com/watch?v=4b5d3muPQmA" rel="noopener" target="_blank" title="Watch walkthrough: Unsupervised Learning: K-Means Clustering, Hierarchical & PCA">🎬YT</a><a href="https://en.wikipedia.org/wiki/Unsupervised" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li>
+</ol>
+</div><div class="subsection">
+<h3>1.2 Deep Learning Architectures & PyTorch</h3>
+<ol class="concepts">
+<li data-cid="ml-neural-networks-backprop" data-name="multilayer perceptrons (mlp), activation functions & backpropagation">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Multilayer Perceptrons (MLP), Activation Functions & Backpropagation</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Forward pass, chain rule derivative calculation, vanishing and exploding gradients, ReLU, LeakyReLU, GELU, and weight initialization.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="3Blue1Brown" data-vdur="20:00" data-vtitle="Multilayer Perceptrons (MLP), Activation Functions & Backpropagation" href="https://www.youtube.com/watch?v=aircAruvnKk" rel="noopener" target="_blank" title="Watch walkthrough: Multilayer Perceptrons (MLP), Activation Functions & Backpropagation">🎬YT</a><a href="https://en.wikipedia.org/wiki/Multilayer" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ml-optimization-adam" data-name="loss functions & optimization: sgd with momentum, rmsprop & adam">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Loss Functions & Optimization: SGD with Momentum, RMSprop & Adam</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Convex vs non-convex optimization, exponential moving average of gradients, adaptive learning rates, weight decay, and learning rate warmups.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Loss Functions & Optimization: SGD with Momentum, RMSprop & Adam" href="https://www.youtube.com/watch?v=IHZwWFHWa-w" rel="noopener" target="_blank" title="Watch walkthrough: Loss Functions & Optimization: SGD with Momentum, RMSprop & Adam">🎬YT</a><a href="https://en.wikipedia.org/wiki/Loss" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ml-pytorch-fundamentals" data-name="pytorch core: tensors, autograd, nn.module & custom training loops">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">PyTorch Core: Tensors, Autograd, nn.Module & Custom Training Loops</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Dynamic computational graphs, tensor GPU memory allocation, automatic differentiation with .backward(), and optimizer step iteration.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="PyTorch Core: Tensors, Autograd, nn.Module & Custom Training Loops" href="https://www.youtube.com/watch?v=V_xro1bcAuA" rel="noopener" target="_blank" title="Watch walkthrough: PyTorch Core: Tensors, Autograd, nn.Module & Custom Training Loops">🎬YT</a><a href="https://en.wikipedia.org/wiki/PyTorch" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ml-cnn-rnn-foundations" data-name="vision & sequence models: convolutional neural networks (cnns) & lstms">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Vision & Sequence Models: Convolutional Neural Networks (CNNs) & LSTMs</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Convolution kernels, pooling layers, feature maps, recurrent hidden state transitions, gating mechanisms (Forget, Input, Output gates) in LSTMs.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="3Blue1Brown" data-vdur="20:00" data-vtitle="Vision & Sequence Models: Convolutional Neural Networks (CNNs) & LSTMs" href="https://www.youtube.com/watch?v=KuXjwB4LzSA" rel="noopener" target="_blank" title="Watch walkthrough: Vision & Sequence Models: Convolutional Neural Networks (CNNs) & LSTMs">🎬YT</a><a href="https://en.wikipedia.org/wiki/Vision" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li>
+</ol>
+</div><div class="subsection">
+<h3>1.3 Feature Engineering, Preprocessing & Validation</h3>
+<ol class="concepts">
+<li data-cid="ml-feature-encoding-scaling" data-name="feature preprocessing: one-hot, ordinal encoding & standard scaling">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Feature Preprocessing: One-Hot, Ordinal Encoding & Standard Scaling</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Handling categorical cardinalities, z-score normalization, min-max scaling, target encoding, and frequency encoding.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Feature Preprocessing: One-Hot, Ordinal Encoding & Standard Scaling" href="https://www.youtube.com/watch?v=irHhDMb3Vz0" rel="noopener" target="_blank" title="Watch walkthrough: Feature Preprocessing: One-Hot, Ordinal Encoding & Standard Scaling">🎬YT</a><a href="https://en.wikipedia.org/wiki/Feature" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ml-missing-imputation" data-name="missing value imputation, outlier detection & robust scaling">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Missing Value Imputation, Outlier Detection & Robust Scaling</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">MCAR vs MAR vs MNAR missingness, KNN/iterative imputation, interquartile range (IQR) fencing, and robust median-based scalers.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Missing Value Imputation, Outlier Detection & Robust Scaling" href="https://www.youtube.com/watch?v=m_hmflGZoxU" rel="noopener" target="_blank" title="Watch walkthrough: Missing Value Imputation, Outlier Detection & Robust Scaling">🎬YT</a><a href="https://en.wikipedia.org/wiki/Missing" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ml-cross-validation" data-name="k-fold cross-validation, stratified sampling & train/val/test splits">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">K-Fold Cross-Validation, Stratified Sampling & Train/Val/Test Splits</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Mitigating sample bias, class-balanced stratification, time-series split walk-forward validation, and hyperparameter grid search.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="K-Fold Cross-Validation, Stratified Sampling & Train/Val/Test Splits" href="https://www.youtube.com/watch?v=fSytzGwwBVw" rel="noopener" target="_blank" title="Watch walkthrough: K-Fold Cross-Validation, Stratified Sampling & Train/Val/Test Splits">🎬YT</a><a href="https://en.wikipedia.org/wiki/K-Fold" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ml-data-leakage" data-name="data leakage prevention: preprocessing inside cross-validation pipelines">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Data Leakage Prevention: Preprocessing Inside Cross-Validation Pipelines</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Feature leakage, target leakage, fit/transform pipeline boundaries, and building scikit-learn Pipeline and ColumnTransformer objects.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Data Leakage Prevention: Preprocessing Inside Cross-Validation Pipelines" href="https://www.youtube.com/watch?v=URdnFlZnqnk" rel="noopener" target="_blank" title="Watch walkthrough: Data Leakage Prevention: Preprocessing Inside Cross-Validation Pipelines">🎬YT</a><a href="https://en.wikipedia.org/wiki/Data" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li>
+</ol>
+</div><div class="subsection">
+<h3>1.4 Model Evaluation & Diagnostics</h3>
+<ol class="concepts">
+<li data-cid="ml-classification-metrics" data-name="classification metrics: precision, recall, f1-score, roc-auc & pr-auc">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Classification Metrics: Precision, Recall, F1-Score, ROC-AUC & PR-AUC</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Confusion matrix, false positives vs false negatives trade-off, precision-recall curve for imbalanced data, and probability thresholds.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Classification Metrics: Precision, Recall, F1-Score, ROC-AUC & PR-AUC" href="https://www.youtube.com/watch?v=4jRBRDbJemM" rel="noopener" target="_blank" title="Watch walkthrough: Classification Metrics: Precision, Recall, F1-Score, ROC-AUC & PR-AUC">🎬YT</a><a href="https://en.wikipedia.org/wiki/Classification" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ml-regression-metrics" data-name="regression metrics: mean squared error (mse), rmse, mae & r-squared">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Regression Metrics: Mean Squared Error (MSE), RMSE, MAE & R-Squared</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Penalizing large errors with MSE, interpretability of MAE, residual plots, and explained variance in target distributions.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Regression Metrics: Mean Squared Error (MSE), RMSE, MAE & R-Squared" href="https://www.youtube.com/watch?v=2AQKmw14mHM" rel="noopener" target="_blank" title="Watch walkthrough: Regression Metrics: Mean Squared Error (MSE), RMSE, MAE & R-Squared">🎬YT</a><a href="https://en.wikipedia.org/wiki/Regression" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ml-bias-variance" data-name="the bias-variance tradeoff: underfitting vs overfitting diagnostics">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">The Bias-Variance Tradeoff: Underfitting vs Overfitting Diagnostics</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Decomposing expected prediction error, learning curves, model capacity, validation loss divergence, and regularization remedies.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="The Bias-Variance Tradeoff: Underfitting vs Overfitting Diagnostics" href="https://www.youtube.com/watch?v=EuBBz3bI-aA" rel="noopener" target="_blank" title="Watch walkthrough: The Bias-Variance Tradeoff: Underfitting vs Overfitting Diagnostics">🎬YT</a><a href="https://en.wikipedia.org/wiki/The" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ml-regularization" data-name="regularization techniques: l1 (lasso), l2 (ridge), dropout & early stopping">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Regularization Techniques: L1 (Lasso), L2 (Ridge), Dropout & Early Stopping</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">L1 parameter sparsity, L2 weight decay penalty, randomly dropping neurons during training, and stopping criteria on validation plateaus.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Regularization Techniques: L1 (Lasso), L2 (Ridge), Dropout & Early Stopping" href="https://www.youtube.com/watch?v=Q81RR3yKn30" rel="noopener" target="_blank" title="Watch walkthrough: Regularization Techniques: L1 (Lasso), L2 (Ridge), Dropout & Early Stopping">🎬YT</a><a href="https://en.wikipedia.org/wiki/Regularization" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li>
+</ol>
+</div><div class="subsection">
+<h3>1.5 MLOps: Tracking, Pipelines & Feature Stores</h3>
+<ol class="concepts">
+<li data-cid="ml-experiment-tracking" data-name="experiment tracking & model registry with mlflow / weights & biases">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Experiment Tracking & Model Registry with MLflow / Weights & Biases</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Logging hyperparameters, loss curves, artifacts, model versioning, transition stages (Staging, Production), and lineage audits.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Experiment Tracking & Model Registry with MLflow / Weights & Biases" href="https://www.youtube.com/watch?v=6rVf8tL4lH4" rel="noopener" target="_blank" title="Watch walkthrough: Experiment Tracking & Model Registry with MLflow / Weights & Biases">🎬YT</a><a href="https://en.wikipedia.org/wiki/Experiment" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ml-pipeline-orchestration" data-name="automated ml pipelines: kubeflow, metaflow & ci/cd for ml">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Automated ML Pipelines: Kubeflow, Metaflow & CI/CD for ML</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Reproducible DAG workflows, containerized training steps, artifact caching, and continuous training (CT) triggers upon data updates.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Automated ML Pipelines: Kubeflow, Metaflow & CI/CD for ML" href="https://www.youtube.com/watch?v=qTfZzYcR7pM" rel="noopener" target="_blank" title="Watch walkthrough: Automated ML Pipelines: Kubeflow, Metaflow & CI/CD for ML">🎬YT</a><a href="https://en.wikipedia.org/wiki/Automated" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ml-feature-stores" data-name="centralized feature stores: feast & feature pipelines">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Centralized Feature Stores: Feast & Feature Pipelines</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Decoupling feature engineering from model consumption, point-in-time correct joins to prevent data leakage, and low-latency online serving.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Centralized Feature Stores: Feast & Feature Pipelines" href="https://www.youtube.com/watch?v=zGgZp9c2VzA" rel="noopener" target="_blank" title="Watch walkthrough: Centralized Feature Stores: Feast & Feature Pipelines">🎬YT</a><a href="https://en.wikipedia.org/wiki/Centralized" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ml-model-versioning" data-name="model versioning, artifact lineage & reproducibility">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Model Versioning, Artifact Lineage & Reproducibility</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Semantic versioning for model weights, data-code-model linkage via DVC, hardware environment freezing, and deterministic seeds.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Model Versioning, Artifact Lineage & Reproducibility" href="https://www.youtube.com/watch?v=kYJv8P2zHk8" rel="noopener" target="_blank" title="Watch walkthrough: Model Versioning, Artifact Lineage & Reproducibility">🎬YT</a><a href="https://en.wikipedia.org/wiki/Model" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li>
+</ol>
+</div><div class="subsection">
+<h3>1.6 Production Serving & Low-Latency Inference</h3>
+<ol class="concepts">
+<li data-cid="ml-serving-architectures" data-name="model serving architectures: fastapi, triton inference server & torchserve">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Model Serving Architectures: FastAPI, Triton Inference Server & TorchServe</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Synchronous REST endpoints vs asynchronous gRPC streaming, dynamic request batching, concurrent model execution, and GPU saturation.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Model Serving Architectures: FastAPI, Triton Inference Server & TorchServe" href="https://www.youtube.com/watch?v=0LzvhbA-F5s" rel="noopener" target="_blank" title="Watch walkthrough: Model Serving Architectures: FastAPI, Triton Inference Server & TorchServe">🎬YT</a><a href="https://en.wikipedia.org/wiki/Model" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ml-optimized-runtimes" data-name="inference optimization: onnx runtime, tensorrt & vllm engines">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Inference Optimization: ONNX Runtime, TensorRT & vLLM Engines</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Graph optimization, operator fusion, FP16/INT8 post-training quantization, PagedAttention continuous batching, and CUDA execution engines.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="NVIDIA" data-vdur="20:00" data-vtitle="Inference Optimization: ONNX Runtime, TensorRT & vLLM Engines" href="https://www.youtube.com/watch?v=7uK3ddA9KFA" rel="noopener" target="_blank" title="Watch walkthrough: Inference Optimization: ONNX Runtime, TensorRT & vLLM Engines">🎬YT</a><a href="https://en.wikipedia.org/wiki/Inference" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ml-monitoring-drift" data-name="production monitoring: data drift (ks-test), concept drift & evidentially">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Production Monitoring: Data Drift (KS-Test), Concept Drift & Evidentially</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Statistical drift detection, Kolmogorov-Smirnov test, Population Stability Index (PSI), ground truth latency, and model degradation alerts.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Production Monitoring: Data Drift (KS-Test), Concept Drift & Evidentially" href="https://www.youtube.com/watch?v=kYJv8P2zHk8" rel="noopener" target="_blank" title="Watch walkthrough: Production Monitoring: Data Drift (KS-Test), Concept Drift & Evidentially">🎬YT</a><a href="https://en.wikipedia.org/wiki/Production" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ml-deployment-strategies" data-name="deployment strategies: shadow deployments, canary releases & a/b testing">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Deployment Strategies: Shadow Deployments, Canary Releases & A/B Testing</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Routing production traffic copies to shadow models, incremental canary traffic shifting, statistical hypothesis validation, and auto-rollback.</div>
+</div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Deployment Strategies: Shadow Deployments, Canary Releases & A/B Testing" href="https://www.youtube.com/watch?v=5rT8X2k-4kU" rel="noopener" target="_blank" title="Watch walkthrough: Deployment Strategies: Shadow Deployments, Canary Releases & A/B Testing">🎬YT</a><a href="https://en.wikipedia.org/wiki/Deployment" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li>
+</ol>
+</div>
+</section>
+
+  <div class="sister-guides-card">
+    <div class="sister-title">🤖 Companion AI &amp; Data Masterclasses</div>
+    <div class="sister-grid">
+      <a class="sister-link" href="ai_engineering.html">🤖 AI Engineering from Scratch (542 Lessons)</a>
+      <a class="sister-link" href="tech_ml.html">🧠 Machine Learning Engineering Masterclass</a>
+      <a class="sister-link" href="tech_data_science.html">📊 Data Science &amp; Applied Analytics Masterclass</a>
+      <a class="sister-link" href="tech_data_eng.html">⚡ Data Engineering &amp; Lakehouse Masterclass</a>
+      <a class="sister-link active-hub" href="ai_data.html">🌐 Unified AI &amp; Data Hub (4 Tracks) &rarr;</a>
+    </div>
+  </div>
+</div>
+
+<script>
+window.SITE_SLUG = "ai_data";
+</script>
+<script>
+(function() {
+  const SLUG = window.SITE_SLUG || 'ai_data';
+  const KEY_DONE = 'hub_done_' + SLUG;
+  const KEY_BM = 'hub_bm_' + SLUG;
+
+  let doneSet = new Set();
+  try {
+    const raw = localStorage.getItem(KEY_DONE);
+    if (raw) doneSet = new Set(JSON.parse(raw));
+  } catch (e) {}
+
+  let bmSet = new Set();
+  try {
+    const raw = localStorage.getItem(KEY_BM);
+    if (raw) bmSet = new Set(JSON.parse(raw));
+  } catch (e) {}
+
+  function saveDone() {
+    try { localStorage.setItem(KEY_DONE, JSON.stringify([...doneSet])); } catch (e) {}
+  }
+  function saveBm() {
+    try { localStorage.setItem(KEY_BM, JSON.stringify([...bmSet])); } catch (e) {}
+  }
+
+  function updateProgress() {
+    const all = document.querySelectorAll('li[data-cid]');
+    const total = all.length;
+    let done = 0;
+    all.forEach(li => {
+      const cid = li.getAttribute('data-cid');
+      const isDone = doneSet.has(cid);
+      li.classList.toggle('done', isDone);
+      li.classList.toggle('is-done', isDone);
+      const chk = li.querySelector('.done-check');
+      if (chk) {
+        chk.classList.toggle('checked', isDone);
+        chk.innerHTML = isDone ? '✓' : '';
+      }
+      if (isDone) done++;
+      const isBm = bmSet.has(cid);
+      li.classList.toggle('is-bm', isBm);
+      const star = li.querySelector('.bookmark-star');
+      if (star) {
+        star.classList.toggle('active', isBm);
+        star.textContent = isBm ? '★' : '☆';
+      }
+    });
+    const pct = total ? Math.round((done / total) * 100) : 0;
+    const bar = document.getElementById('overall-bar');
+    if (bar) bar.style.width = pct + '%';
+    const txt = document.getElementById('overall-pct');
+    if (txt) txt.textContent = done + ' / ' + total + ' (' + pct + '%)';
+  }
+
+  document.querySelectorAll('li[data-cid]').forEach(li => {
+    const cid = li.getAttribute('data-cid');
+    const chk = li.querySelector('.done-check');
+    if (chk) {
+      chk.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (doneSet.has(cid)) doneSet.delete(cid);
+        else doneSet.add(cid);
+        saveDone();
+        updateProgress();
+      });
+    }
+    const star = li.querySelector('.bookmark-star');
+    if (star) {
+      star.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (bmSet.has(cid)) bmSet.delete(cid);
+        else bmSet.add(cid);
+        saveBm();
+        updateProgress();
+      });
+    }
+  });
+
+  let activeFilter = null;
+  document.querySelectorAll('.filter-btn[data-filter]').forEach(b => {
+    b.addEventListener('click', () => {
+      const val = b.getAttribute('data-val');
+      if (activeFilter === val) {
+        activeFilter = null;
+        b.classList.remove('active');
+      } else {
+        document.querySelectorAll('.filter-btn[data-filter]').forEach(x => x.classList.remove('active'));
+        activeFilter = val;
+        b.classList.add('active');
+      }
+      applyFilters();
+    });
+  });
+
+  const sInput = document.getElementById('search-input');
+  if (sInput) sInput.addEventListener('input', applyFilters);
+
+  const clearBtn = document.getElementById('clear-filters');
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      activeFilter = null;
+      document.querySelectorAll('.filter-btn').forEach(x => x.classList.remove('active'));
+      if (sInput) sInput.value = '';
+      applyFilters();
+    });
+  }
+
+  function applyFilters() {
+    const q = (sInput ? sInput.value : '').toLowerCase().trim();
+    document.querySelectorAll('li[data-cid]').forEach(li => {
+      const cid = li.getAttribute('data-cid');
+      const text = (li.getAttribute('data-name') || li.textContent).toLowerCase();
+      let match = true;
+      if (activeFilter === 'done' && !doneSet.has(cid)) match = false;
+      if (activeFilter === 'undone' && doneSet.has(cid)) match = false;
+      if (activeFilter === 'bookmarked' && !bmSet.has(cid)) match = false;
+      if (q && !text.includes(q)) match = false;
+      li.style.display = match ? '' : 'none';
+    });
+  }
+
+  const randBtn = document.getElementById('random-btn');
+  if (randBtn) {
+    randBtn.addEventListener('click', () => {
+      const all = Array.from(document.querySelectorAll('li[data-cid]')).filter(li => li.style.display !== 'none');
+      if (!all.length) return;
+      const pick = all[Math.floor(Math.random() * all.length)];
+      pick.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      pick.style.outline = '3px solid var(--accent)';
+      setTimeout(() => { pick.style.outline = ''; }, 2000);
+    });
+  }
+
+  updateProgress();
+})();
+</script>
+</body>
+</html>

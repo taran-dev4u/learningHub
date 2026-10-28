@@ -4,7 +4,7 @@
   var script = document.currentScript;
   var base = new URL('../', script.src).href;
   var release = new URL(script.src).searchParams.get('v') || '1';
-  var root, catalog, sourceIndex, entries, groups, packs = new Map(), filePromise, companionPromise;
+  var root, catalog, sourceIndex, entries, groups, packs = new Map(), filePromise, companionPromise, companionPacks = new Map();
   var panelMode=window.self!==window.top && new URLSearchParams(location.search).has('panel');
   var query = '', kind = '', pageNumber = 0, selected = 'overview', routeToken = 0;
   var NAV_KEY = 'hub_ai_nav_closed_v1', TOC_KEY = 'hub_ai_toc_closed_v1';
@@ -19,6 +19,13 @@
   function formatBytes(n) { return n > 1e6 ? (n / 1e6).toFixed(1) + ' MB' : n > 1000 ? Math.round(n / 1000) + ' KB' : n + ' B'; }
   function button(label, href, extra) { return '<a class="aic-button' + (extra || '') + '" href="' + esc(href) + '"' + (/^https?:\/\//.test(href)?' target="_blank" rel="noopener noreferrer"':'') + '>' + esc(label) + '</a>'; }
   function companionRoute(tab, phase) { return '#companion=' + encodeURIComponent(tab || 'guide') + (phase ? '&phase=' + encodeURIComponent(phase) : ''); }
+  function companionReadRoute(source,path,heading,from,phase) {
+    var params=new URLSearchParams({companion:'read',source:source,path:path});
+    if(heading)params.set('heading',heading);
+    if(from)params.set('from',from);
+    if(phase)params.set('phase',phase);
+    return '#'+params.toString();
+  }
   function companionData() {
     if (!companionPromise) companionPromise = Promise.all([
       fetch(base + 'AI_Engineering_Tutorial/companion-data.json?v=' + release).then(function(r){if(!r.ok)throw Error('Companion index could not load');return r.json();}),
@@ -146,6 +153,51 @@
     var source=data.sources.find(function(s){return s.id===repo;});
     return source ? 'https://github.com/'+repo+'/blob/'+source.revision+'/'+path.split('/').map(encodeURIComponent).join('/') : '#';
   }
+  async function companionContent(data, repo, path) {
+    var source=data.sources.find(function(s){return s.id===repo;}), file=data.files.find(function(f){return f.source===repo&&f.path===path;});
+    if(!source||!source.pack||!file||!file.inline)throw Error('This file is available from its pinned source repository.');
+    if(!companionPacks.has(repo))companionPacks.set(repo,fetch(base+'AI_Engineering_Tutorial/'+source.pack+'?v='+release).then(async function(r){
+      if(!r.ok)throw Error('Companion source pack could not load');
+      var bytes=new Uint8Array(await r.arrayBuffer());
+      var stream=new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'));
+      return JSON.parse(await new Response(stream).text());
+    }).catch(function(error){companionPacks.delete(repo);throw error;}));
+    var pack=await companionPacks.get(repo);
+    if(!(path in pack))throw Error('Companion source file is missing from its pack');
+    return pack[path];
+  }
+  function companionMarkdown(text, article, data, repo, path) {
+    if(!window.marked||!window.DOMPurify){article.innerHTML='<pre>'+esc(text)+'</pre>';return;}
+    article.innerHTML=DOMPurify.sanitize(marked.parse(text),{FORBID_TAGS:['script','style','form','input','button','iframe']});
+    var seen={};article.querySelectorAll('h1,h2,h3,h4,h5,h6').forEach(function(h){var name=slug(h.textContent);seen[name]=(seen[name]||0)+1;h.id='companion-'+name+(seen[name]>1?'-'+seen[name]:'');});
+    article.querySelectorAll('a[href]').forEach(function(a){
+      var href=a.getAttribute('href');if(!href)return;
+      if(href[0]==='#'){a.addEventListener('click',function(event){event.preventDefault();var target=article.querySelector('#companion-'+CSS.escape(href.slice(1)));if(target)target.scrollIntoView({block:'start'});});return;}
+      if(/^(?:https?:|mailto:)/i.test(href)){a.target='_blank';a.rel='noopener noreferrer';return;}
+      var resolved=new URL(href,'https://source.invalid/'+path),targetPath=decodeURIComponent(resolved.pathname.slice(1));
+      var target=data.files.find(function(f){return f.source===repo&&f.path===targetPath;});
+      a.href=target&&target.inline?companionReadRoute(repo,targetPath,'','files',''):externalFileUrl(data,repo,targetPath);
+      if(!target||!target.inline){a.target='_blank';a.rel='noopener noreferrer';}
+    });
+    article.querySelectorAll('img[src]').forEach(function(img){var src=img.getAttribute('src');if(!src||/^(?:https?:|data:)/i.test(src))return;var resolved=new URL(src,'https://source.invalid/'+path),source=data.sources.find(function(s){return s.id===repo;});img.src='https://raw.githubusercontent.com/'+repo+'/'+source.revision+'/'+resolved.pathname.slice(1);});
+    article.querySelectorAll('pre code.language-math,pre code.language-latex,pre code.language-tex').forEach(function(code){if(!window.katex)return;var box=document.createElement('div');box.className='aic-equation';try{katex.render(code.textContent,box,{displayMode:true,throwOnError:true,output:'htmlAndMathml'});code.closest('pre').replaceWith(box);}catch(_){/* Keep the readable source formula. */}});
+    if(window.renderMathInElement)renderMathInElement(article,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}],throwOnError:false});
+    if(window.hljs)article.querySelectorAll('pre code').forEach(function(code){try{hljs.highlightElement(code);}catch(_){}});
+  }
+  async function companionRead(params,data,main) {
+    var repo=params.get('source')||'',path=params.get('path')||'',file=data.files.find(function(f){return f.source===repo&&f.path===path;});
+    if(!file||!file.inline)throw Error('This source file is not available in the inline reader');
+    var source=data.sources.find(function(s){return s.id===repo;}),from=params.get('from')||'files',phase=params.get('phase')||'',content=await companionContent(data,repo,path);
+    main.innerHTML='<div class="aic-actions">'+button('← Back to '+(from==='topics'?'topics':'source files'),companionRoute(from,phase))+button('Original file ↗',externalFileUrl(data,repo,path))+'</div><h2 class="aic-section-title aic-source-heading">'+esc(path.split('/').pop())+'</h2><p class="aic-description">'+esc(repo)+' · '+esc(path)+' · '+esc(source.license)+' · pinned at '+esc(source.revision.slice(0,12))+'</p><article class="aic-article aic-companion-article" id="aic-companion-article"></article>';
+    var article=document.getElementById('aic-companion-article');
+    if(path.toLowerCase().endsWith('.md'))companionMarkdown(content,article,data,repo,path);
+    else if(path.toLowerCase().endsWith('.ipynb')){
+      var notebook=JSON.parse(content);article.innerHTML='<div class="aic-note">Notebook markdown and code cells are shown in order. Open the original file for stored images and interactive execution.</div>';
+      notebook.cells.forEach(function(cell){var cellText=Array.isArray(cell.source)?cell.source.join(''):String(cell.source||'');if(cell.cell_type==='markdown'){var section=document.createElement('section');article.appendChild(section);companionMarkdown(cellText,section,data,repo,path);}else if(cell.cell_type==='code'){var pre=document.createElement('pre'),code=document.createElement('code');code.textContent=cellText;pre.appendChild(code);article.appendChild(pre);(cell.outputs||[]).forEach(function(output){var value=output.text||(output.data&&output.data['text/plain']);if(value){var out=document.createElement('pre');out.className='aic-notebook-output';out.textContent=Array.isArray(value)?value.join(''):String(value);article.appendChild(out);}});}});
+    }else{var pre=document.createElement('pre'),code=document.createElement('code');code.textContent=content;pre.appendChild(code);article.appendChild(pre);if(window.hljs)try{hljs.highlightElement(code);}catch(_){}}
+    var heading=params.get('heading');if(heading){var target=Array.from(article.querySelectorAll('h1,h2,h3,h4,h5,h6')).find(function(h){return h.textContent.trim().toLowerCase()===heading.trim().toLowerCase();});if(target)target.scrollIntoView({block:'start'});}
+    if(panelMode)window.parent.postMessage({type:'ai-reader-title',title:path.split('/').pop()},location.origin);
+  }
   function phaseGuideHtml(phase, data, guides, compact) {
     var guide=guides[phase];if(!guide)return '';
     var g=groups.get(phase), mapped=data.topics.filter(function(t){return t.phase===Number(phase.slice(-2));});
@@ -154,7 +206,7 @@
       '<div class="aic-table-wrap"><table><thead><tr>'+guide.headers.map(function(h){return '<th>'+esc(h)+'</th>';}).join('')+'</tr></thead><tbody>'+guide.rows.map(function(row){return '<tr>'+row.map(function(cell){return '<td>'+esc(cell)+'</td>';}).join('')+'</tr>';}).join('')+'</tbody></table></div>'+
       (!compact&&guide.deepDive?'<section class="aic-deep-dive"><h3>Inference engineering, topic by topic</h3><p>Study these in order, then use the pinned course and system design sources for more examples.</p>'+guide.deepDive.map(function(item){return '<article><h4>'+esc(item[0])+'</h4><p>'+esc(item[1])+'</p></article>';}).join('')+'<div class="aic-actions">'+button('Open course Module 12 ↗',externalFileUrl(data,'amitshekhariitbhu/ai-engineering-course','README.md')+'#module-12-llm-inference-engineering')+button('Open AI system design source ↗',externalFileUrl(data,'amitshekhariitbhu/ai-system-design','README.md'))+'</div></section>':'')+
       '<div class="aic-guide-notes"><div><strong>Worked case</strong><p>'+esc(guide.worked)+'</p></div><div><strong>Try it</strong><p>'+esc(guide.practice)+'</p></div></div>'+
-      '<p class="aic-source-line">'+mapped.length.toLocaleString()+' indexed headings from '+sourceNames.length+' of the requested repositories are mapped to this phase. '+(compact?'Use the topic index to browse them all.':'The index links each heading back to its pinned source file.')+'</p><div class="aic-actions">'+(compact?button('Read full guide',companionRoute('guide',phase),' primary'):'')+button('Browse mapped topics',companionRoute('topics',phase))+button('Practice questions',companionRoute('questions',phase))+button('All seven sources',companionRoute('files',phase))+'</div></section>';
+      '<p class="aic-source-line">'+mapped.length.toLocaleString()+' indexed headings from '+sourceNames.length+' of the requested repositories are mapped to this phase. '+(compact?'Use the topic index to browse them all.':'The index links each heading back to its pinned source file.')+'</p><div class="aic-actions">'+(compact?button('Read full guide',companionRoute('guide',phase),' primary'):'')+button('Browse mapped topics',companionRoute('topics',phase))+button('Practice questions',companionRoute('questions',phase))+button('Source files for phase',companionRoute('files',phase))+'</div></section>';
   }
   function companionSelect(label,id,options,value) {
     return '<label class="aic-companion-filter">'+esc(label)+'<select id="'+id+'"><option value="">All</option>'+options.map(function(o){return '<option value="'+esc(o[0])+'"'+(String(value)===String(o[0])?' selected':'')+'>'+esc(o[1])+'</option>';}).join('')+'</select></label>';
@@ -177,7 +229,8 @@
   async function companion(params) {
     var parts=await companionData(),data=parts.index,guides=parts.guides;
     var tab=params.get('companion')||'guide', phase=params.get('phase')||'', main=document.getElementById('aic-main');
-    if(!['guide','topics','questions','files'].includes(tab))tab='guide';
+    if(!['guide','topics','questions','files','read'].includes(tab))tab='guide';
+    if(tab==='read'){await companionRead(params,data,main);return;}
     var phaseOptions=catalog.groups.filter(function(g){return g.id.startsWith('phase-');}).map(function(g){return [g.id,g.title];});
     var sourceOptions=data.sources.map(function(s){return [s.id,s.id.split('/')[1]];});
     var title={guide:'Study guides',topics:'Topic and subtopic index',questions:'Company wise interview practice',files:'Complete source file inventory'}[tab];
@@ -189,11 +242,11 @@
       } else {
         main.innerHTML+='<div class="aic-grid">'+phaseOptions.map(function(o){var guide=guides[o[0]];return '<article class="aic-group"><span class="aic-badge">'+esc(o[1])+'</span><h3>'+esc(guide.title)+'</h3><p>'+esc(guide.explanation)+'</p>'+button('Read guide and table',companionRoute('guide',o[0]))+'</article>';}).join('')+'</div>';
       }
-      main.innerHTML+='<h3 class="aic-section-title aic-source-heading">The seven sources</h3><div class="aic-grid">'+data.sources.map(function(s){return '<article class="aic-group"><span class="aic-badge">'+esc(s.license)+'</span><h3>'+esc(s.id.split('/')[1])+'</h3><p>'+esc(s.description)+'</p><small>Revision '+esc(s.revision.slice(0,12))+' · '+s.files+' files</small><div class="aic-actions">'+button('Open pinned repository ↗',s.url)+button('Browse its files',companionRoute('files'))+'</div></article>';}).join('')+'</div>';
+      main.innerHTML+='<h3 class="aic-section-title aic-source-heading">The seven sources</h3><div class="aic-grid">'+data.sources.map(function(s){return '<article class="aic-group"><span class="aic-badge">'+esc(s.license)+'</span><h3>'+esc(s.id.split('/')[1])+'</h3><p>'+esc(s.description)+'</p><small>Revision '+esc(s.revision.slice(0,12))+' · '+s.files+' files · '+s.inlineFiles+' readable here</small><div class="aic-actions">'+button('Open pinned repository ↗',s.url)+button('Browse its files',companionRoute('files')+'&source='+encodeURIComponent(s.id))+'</div></article>';}).join('')+'</div>';
       return;
     }
-    var source='',kind='',company='';
-    main.innerHTML+='<div class="aic-companion-controls"><input type="search" id="aic-companion-search" aria-label="Search companion material" placeholder="Search '+(tab==='questions'?'questions, companies or topics':'headings, files or repositories')+'…">'+companionSelect('Phase','aic-companion-phase',phaseOptions,phase)+(tab==='questions'?'':companionSelect('Repository','aic-companion-source',sourceOptions,''))+(tab==='files'?companionSelect('Type','aic-companion-kind',[['reading','Reading'],['lesson','Tutorial lesson'],['notebook','Notebook'],['code','Code'],['media','Media'],['file','Other']],''):'')+(tab==='questions'?companionSelect('Company','aic-companion-company',Array.from(new Set(data.questions.map(function(q){return q.company;}))).sort().map(function(c){return [c,c];}),''):'')+'</div><div id="aic-companion-results"></div>';
+    var source=params.get('source')||'',kind='',company='';
+    main.innerHTML+='<div class="aic-companion-controls"><input type="search" id="aic-companion-search" aria-label="Search companion material" placeholder="Search '+(tab==='questions'?'questions, companies or topics':'headings, files or repositories')+'…">'+companionSelect('Phase','aic-companion-phase',phaseOptions,phase)+(tab==='questions'?'':companionSelect('Repository','aic-companion-source',sourceOptions,source))+(tab==='files'?companionSelect('Type','aic-companion-kind',[['reading','Reading'],['lesson','Tutorial lesson'],['notebook','Notebook'],['code','Code'],['media','Media'],['file','Other']],''):'')+(tab==='questions'?companionSelect('Company','aic-companion-company',Array.from(new Set(data.questions.map(function(q){return q.company;}))).sort().map(function(c){return [c,c];}),''):'')+'</div><div id="aic-companion-results"></div>';
     var input=document.getElementById('aic-companion-search'),phaseInput=document.getElementById('aic-companion-phase'),sourceInput=document.getElementById('aic-companion-source'),kindInput=document.getElementById('aic-companion-kind'),companyInput=document.getElementById('aic-companion-company');
     function render(){
       var q=input.value.trim().toLowerCase(),p=phaseInput.value,phaseNumber=p?Number(p.slice(-2)):null;
@@ -205,10 +258,10 @@
         return !q||Object.values(item).join(' ').toLowerCase().includes(q);
       });
       var size=60, slice=list.slice(pageNumber*size,(pageNumber+1)*size), html='';
-      if(tab==='topics')html=slice.map(function(t){return '<article class="aic-companion-row"><span class="aic-badge">Phase '+String(t.phase).padStart(2,'0')+'</span><div><strong>'+esc(t.title)+'</strong><small>'+esc(t.source.split('/')[1])+' · '+esc(t.path)+'</small></div>'+button('Read source ↗',externalFileUrl(data,t.source,t.path))+'</article>';}).join('');
+      if(tab==='topics')html=slice.map(function(t){var f=data.files.find(function(file){return file.source===t.source&&file.path===t.path;});return '<article class="aic-companion-row"><span class="aic-badge">Phase '+String(t.phase).padStart(2,'0')+'</span><div><strong>'+esc(t.title)+'</strong><small>'+esc(t.source.split('/')[1])+' · '+esc(t.path)+'</small></div>'+(f&&f.inline?button('Read here',companionReadRoute(t.source,t.path,t.title,'topics',p),' primary'):'')+button('Original ↗',externalFileUrl(data,t.source,t.path))+'</article>';}).join('');
       else if(tab==='questions')html=slice.map(function(item){return '<article class="aic-companion-row"><span class="aic-badge">'+esc(item.company)+'</span><div><strong>'+esc(item.question)+'</strong><small>'+esc(item.area)+' · Phase '+String(item.phase).padStart(2,'0')+'</small><details class="aic-answer-plan"><summary>How to structure your answer</summary><p>'+esc(ANSWER_FRAMEWORKS[item.area]||ANSWER_FRAMEWORKS['AI System Design'])+'</p>'+button('Study this phase',companionRoute('guide','phase-'+String(item.phase).padStart(2,'0')))+'</details></div>'+button('Source ↗',externalFileUrl(data,item.source,'README.md'))+'</article>';}).join('');
-      else html=slice.map(function(item){return '<article class="aic-companion-row"><span class="aic-badge">'+esc(item.kind)+'</span><div><strong>'+esc(item.path.split('/').pop())+'</strong><small>'+esc(item.source.split('/')[1])+' · '+esc(item.path)+' · '+formatBytes(item.size)+'</small></div>'+button('Open file ↗',externalFileUrl(data,item.source,item.path))+'</article>';}).join('');
-      document.getElementById('aic-companion-results').innerHTML='<p class="aic-description">'+list.length.toLocaleString()+' matching '+(tab==='questions'?'practice prompts':tab==='topics'?'topic headings':'source files')+'. '+(tab==='questions'?'Use the phase study guide for an answer framework.':'Open a pinned source file for the full upstream material.')+'</p><div class="aic-companion-list">'+(html||'<p class="aic-note">No matches. Try another phase or search term.</p>')+'</div>'+pagination(list.length,size);
+      else html=slice.map(function(item){return '<article class="aic-companion-row"><span class="aic-badge">'+esc(item.kind)+'</span><div><strong>'+esc(item.path.split('/').pop())+'</strong><small>'+esc(item.source.split('/')[1])+' · '+esc(item.path)+' · '+formatBytes(item.size)+'</small></div>'+(item.inline?button('Read here',companionReadRoute(item.source,item.path,'','files',p),' primary'):'')+button('Original ↗',externalFileUrl(data,item.source,item.path))+'</article>';}).join('');
+      document.getElementById('aic-companion-results').innerHTML='<p class="aic-description">'+list.length.toLocaleString()+' matching '+(tab==='questions'?'practice prompts':tab==='topics'?'topic headings':'source files')+'. '+(tab==='questions'?'Use the answer plan and phase guide to practise.':'Read licensed files here or open their pinned originals.')+'</p><div class="aic-companion-list">'+(html||'<p class="aic-note">No matches. Try another phase or search term.</p>')+'</div>'+pagination(list.length,size);
       bindPagination(render);
     }
     input.oninput=function(){pageNumber=0;render();};
@@ -337,7 +390,7 @@
     pane.querySelector('#aic-reader-expand').onclick=function(){pane.classList.remove('minimized');pane.classList.toggle('expanded');syncLayout();this.setAttribute('aria-label',pane.classList.contains('expanded')?'Restore reader width':'Expand reader');};
     pane.querySelector('#aic-reader-minimize').onclick=function(){pane.classList.toggle('minimized');var value=pane.classList.contains('minimized');syncLayout();this.textContent=value?(pane.classList.contains('dock-left')?'›':'‹'):'›';this.setAttribute('aria-label',value?'Restore reader':'Minimize reader');this.title=value?'Restore reader':'Minimize reader';};
     window.addEventListener('message',function(e){if(e.origin===location.origin&&e.source===frame.contentWindow&&e.data&&e.data.type==='ai-reader-title')pane.querySelector('#aic-reader-title').textContent=e.data.title;});
-    root.addEventListener('click',function(e){var a=e.target.closest('a[href]');if(!a)return;var href=a.getAttribute('href');if(!href||!/^#(?:read|files)=/.test(href))return;e.preventDefault();lastFocus=a;pane.hidden=false;pane.classList.remove('minimized');document.body.classList.add('aic-reader-open');syncLayout();pane.querySelector('#aic-reader-title').textContent='Loading lesson…';frame.src=base+'AI_Engineering_Tutorial/reader.html?panel=1&v='+release+href;});
+    root.addEventListener('click',function(e){var a=e.target.closest('a[href]');if(!a)return;var href=a.getAttribute('href');if(!href||!/^#(?:(?:read|files)=|companion=read(?:&|$))/.test(href))return;e.preventDefault();lastFocus=a;pane.hidden=false;pane.classList.remove('minimized');document.body.classList.add('aic-reader-open');syncLayout();pane.querySelector('#aic-reader-title').textContent='Loading lesson…';frame.src=base+'AI_Engineering_Tutorial/reader.html?panel=1&v='+release+href;});
   }
   async function init(){root=document.getElementById('ai-curriculum');try{var response=await fetch(base+'AI_Engineering_Tutorial/catalog.json?v='+release);if(!response.ok)throw Error('Curriculum catalogue could not load');catalog=await response.json();entries=new Map(catalog.entries.map(function(e){return[e.contentPath,e];}));groups=new Map(catalog.groups.map(function(g){return[g.id,g];}));window.addEventListener('hashchange',navigate);setupReaderPanel();await navigate();}catch(error){root.innerHTML='<h1>AI Engineering</h1><p>'+esc(error.message)+'</p>';}}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();

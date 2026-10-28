@@ -11,17 +11,22 @@ repositories without pretending they are part of that original source.
 - `companion-data.json`: a complete 684-file inventory, 3,484 indexed Markdown
   and notebook headings, and 598 interview prompts at the pinned revisions.
   Counts are computed by `tools/build_ai_companion.py`, not typed into the UI.
+- `companion-content/`: six compressed packs holding 658 UTF-8 source files
+  from repositories with MIT or Apache-2.0 licenses. Markdown lessons,
+  notebooks and code open in the existing right-side reader. Notebook
+  markdown and code cells are displayed in order; saved image outputs and
+  interactive execution remain available in the pinned original file.
 - `COMPANION_ATTRIBUTION.md` and `companion-licenses/`: source revisions and
   licenses. The playbook repo declares no license; only its short heading
   titles and links are indexed. Learning Hub tables are independently written.
 
 The companion appears on `ai_engineering.html`, on every phase landing page,
 and in the AI curriculum sidebar. Its topic, question and file browsers are
-searchable and filterable. Every source link points to a pinned Git revision.
-The source file browser includes code and media, while the topic browser lists
-teaching headings; these are separate counts. The original source material
-still lives with its author. The question browser provides an original answer
-framework by subject, not fabricated answers to every question.
+searchable and filterable. Licensed text files open inline, and every file
+also has a link to its pinned upstream original. The file browser includes
+code and media, while the topic browser lists teaching headings; these are
+separate counts. The question browser provides an original answer framework
+by subject, not fabricated answers to every question.
 
 ## Rebuild
 
@@ -38,7 +43,8 @@ node tools/verify-learning-hub.mjs
 
 To review newer upstream revisions, run the fetcher with `--latest`, inspect
 the changed topics and licenses, then rebuild. The builder rejects truncated
-GitHub trees and archives whose paths differ from the tree inventory.
+GitHub trees, mismatched paths and any file whose Git blob hash differs from
+the pinned tree inventory.
 
 ## Coverage boundaries
 

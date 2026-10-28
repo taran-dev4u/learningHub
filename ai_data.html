@@ -700,39 +700,39 @@ body {
 </div>
 <div class="domain-card-actions">
 <button class="domain-btn-view" onclick="event.stopPropagation(); switchDomain('ml-eng')" type="button">Focus Track</button>
-
+<a class="domain-btn-masterclass" href="tech_ml.html">Dedicated Masterclass ↗</a>
 </div>
 </div><div class="domain-card" data-domain="data-science" id="card-data-science" onclick="switchDomain('data-science')">
 <div class="domain-card-head">
-<div class="domain-card-icon">🔬</div>
+<div class="domain-card-icon">📊</div>
 <div class="domain-card-meta">
 <span class="domain-card-idx">Track 03 / 04</span>
 <h3 class="domain-card-title">Data Science & Applied Analytics</h3>
 </div>
 </div>
-<p class="domain-card-desc">Applied mathematics, probability, inferential statistics, Exploratory Data Analysis (EDA), hypothesis testing, A/B testing & time-series.</p>
+<p class="domain-card-desc">Exploratory data analysis, statistical modeling, hypothesis testing, causal inference, A/B experiments & time series analysis.</p>
 <div class="domain-card-chips">
-<span class="domain-card-chip highlight">Statistics, EDA, Hypothesis Testing & A/B Testing</span>
+<span class="domain-card-chip highlight">Statistics, EDA, Hypothesis Testing, A/B & Time Series</span>
 </div>
 <div class="domain-card-actions">
 <button class="domain-btn-view" onclick="event.stopPropagation(); switchDomain('data-science')" type="button">Focus Track</button>
-
+<a class="domain-btn-masterclass" href="tech_data_science.html">Dedicated Masterclass ↗</a>
 </div>
 </div><div class="domain-card" data-domain="data-eng" id="card-data-eng" onclick="switchDomain('data-eng')">
 <div class="domain-card-head">
-<div class="domain-card-icon">🏗️</div>
+<div class="domain-card-icon">⚡</div>
 <div class="domain-card-meta">
 <span class="domain-card-idx">Track 04 / 04</span>
 <h3 class="domain-card-title">Data Engineering & Modern Data Stack</h3>
 </div>
 </div>
-<p class="domain-card-desc">Cloud data warehouses (Snowflake, BigQuery), Apache Spark, Lakehouse table formats (Iceberg, Delta), dbt modeling, Airflow & Kafka.</p>
+<p class="domain-card-desc">Modern data warehousing, Apache Spark, Lakehouses (Iceberg/Delta), dbt transformation, Airflow orchestration & Kafka/Flink streaming.</p>
 <div class="domain-card-chips">
-<span class="domain-card-chip highlight">Warehousing, Spark, Lakehouse, dbt & Kafka</span>
+<span class="domain-card-chip highlight">Warehouses, Spark, Lakehouse, dbt, Airflow & Kafka</span>
 </div>
 <div class="domain-card-actions">
 <button class="domain-btn-view" onclick="event.stopPropagation(); switchDomain('data-eng')" type="button">Focus Track</button>
-
+<a class="domain-btn-masterclass" href="tech_data_eng.html">Dedicated Masterclass ↗</a>
 </div>
 </div>
     </div>
@@ -740,7 +740,7 @@ body {
 
   <div class="domain-nav-bar" id="domain-nav-bar">
     <div class="domain-nav-scroll">
-      <button class="d-nav-pill active" data-target="all" onclick="switchDomain('all')">All Tracks (4)</button><button class="d-nav-pill" data-target="ai-eng" onclick="switchDomain('ai-eng')">🤖 AI</button><button class="d-nav-pill" data-target="ml-eng" onclick="switchDomain('ml-eng')">🧠 Machine</button><button class="d-nav-pill" data-target="data-science" onclick="switchDomain('data-science')">🔬 Data</button><button class="d-nav-pill" data-target="data-eng" onclick="switchDomain('data-eng')">🏗️ Data</button><a href="ai_engineering.html" class="d-nav-pill link-pill">🚀 Open Full AI Curriculum ↗</a>
+      <button class="d-nav-pill active" data-target="all" onclick="switchDomain('all')">All Tracks (4)</button><button class="d-nav-pill" data-target="ai-eng" onclick="switchDomain('ai-eng')">🤖 AI</button><button class="d-nav-pill" data-target="ml-eng" onclick="switchDomain('ml-eng')">🧠 Machine</button><button class="d-nav-pill" data-target="data-science" onclick="switchDomain('data-science')">📊 Data</button><button class="d-nav-pill" data-target="data-eng" onclick="switchDomain('data-eng')">⚡ Data</button><a href="ai_engineering.html" class="d-nav-pill link-pill">🚀 Open Full AI Curriculum ↗</a>
     </div>
   </div>
 
@@ -752,7 +752,7 @@ body {
 <button class="domain-focus-btn" onclick="navigateDomain(-1)" title="Previous Track">← Prev Track</button>
 <button class="domain-focus-btn" onclick="switchDomain('all')" title="View All Tracks">View All (4)</button>
 <button class="domain-focus-btn" onclick="navigateDomain(1)" title="Next Track">Next Track →</button>
-<a class="domain-focus-link" href="ai_engineering.html">Open Full AI Engineering  Masterclass ↗</a>
+<a class="domain-focus-link" href="ai_engineering.html">Open Full Masterclass ↗</a>
 </div>
 </div>
 <h2>AI Engineering (Generative AI, LLMs & Agents)</h2>
@@ -1028,7 +1028,7 @@ body {
 <button class="domain-focus-btn" onclick="navigateDomain(-1)" title="Previous Track">← Prev Track</button>
 <button class="domain-focus-btn" onclick="switchDomain('all')" title="View All Tracks">View All (4)</button>
 <button class="domain-focus-btn" onclick="navigateDomain(1)" title="Next Track">Next Track →</button>
-
+<a class="domain-focus-link" href="tech_ml.html">Open Full Masterclass ↗</a>
 </div>
 </div>
 <h2>Machine Learning Engineering (MLE)</h2>
@@ -1222,309 +1222,309 @@ body {
 </li>
 </ol>
 </div><div class="subsection">
-<h3>2.6 Model Deployment, Inference & Monitoring</h3>
+<h3>2.6 Production Serving & Low-Latency Inference</h3>
 <ol class="concepts">
-<li data-cid="ml-serving-fastapi" data-name="low-latency model serving with fastapi & rest/grpc endpoints">
+<li data-cid="ml-serving-architectures" data-name="model serving architectures: fastapi, triton inference server & torchserve">
 <div class="done-check" title="Mark as done"></div>
 <div class="bookmark-star" title="Bookmark">☆</div>
 <div>
-<div class="cname">Low-Latency Model Serving with FastAPI & REST/gRPC Endpoints</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Asynchronous request handling, model warm-up, batching predictions, input payload validation, and health check probes.</div>
+<div class="cname">Model Serving Architectures: FastAPI, Triton Inference Server & TorchServe</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Synchronous REST endpoints vs asynchronous gRPC streaming, dynamic request batching, concurrent model execution, and GPU saturation.</div>
 </div>
-<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Low-Latency Model Serving with FastAPI & REST/gRPC Endpoints" href="https://www.youtube.com/watch?v=h5wZ4_6bQ1Q" rel="noopener" target="_blank" title="Watch walkthrough: Low-Latency Model Serving with FastAPI & REST/gRPC Endpoints">🎬YT</a><a href="https://en.wikipedia.org/wiki/Low-Latency" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
-</li><li data-cid="ml-triton-serving" data-name="production inference servers: nvidia triton & torchserve">
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Model Serving Architectures: FastAPI, Triton Inference Server & TorchServe" href="https://www.youtube.com/watch?v=0LzvhbA-F5s" rel="noopener" target="_blank" title="Watch walkthrough: Model Serving Architectures: FastAPI, Triton Inference Server & TorchServe">🎬YT</a><a href="https://en.wikipedia.org/wiki/Model" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ml-optimized-runtimes" data-name="inference optimization: onnx runtime, tensorrt & vllm engines">
 <div class="done-check" title="Mark as done"></div>
 <div class="bookmark-star" title="Bookmark">☆</div>
 <div>
-<div class="cname">Production Inference Servers: NVIDIA Triton & TorchServe</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Multi-model concurrency, dynamic batching, GPU kernel acceleration, TensorRT compilation, and model pipelining.</div>
+<div class="cname">Inference Optimization: ONNX Runtime, TensorRT & vLLM Engines</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Graph optimization, operator fusion, FP16/INT8 post-training quantization, PagedAttention continuous batching, and CUDA execution engines.</div>
 </div>
-<div class="res-links"><a class="video" data-start="00:00" data-vchannel="NVIDIA" data-vdur="20:00" data-vtitle="Production Inference Servers: NVIDIA Triton & TorchServe" href="https://www.youtube.com/watch?v=Vb7C_7a3d3M" rel="noopener" target="_blank" title="Watch walkthrough: Production Inference Servers: NVIDIA Triton & TorchServe">🎬YT</a><a href="https://en.wikipedia.org/wiki/Production" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
-</li><li data-cid="ml-drift-monitoring" data-name="model monitoring: data drift (ks-test), concept drift & evidently ai">
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="NVIDIA" data-vdur="20:00" data-vtitle="Inference Optimization: ONNX Runtime, TensorRT & vLLM Engines" href="https://www.youtube.com/watch?v=7uK3ddA9KFA" rel="noopener" target="_blank" title="Watch walkthrough: Inference Optimization: ONNX Runtime, TensorRT & vLLM Engines">🎬YT</a><a href="https://en.wikipedia.org/wiki/Inference" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ml-monitoring-drift" data-name="production monitoring: data drift (ks-test), concept drift & evidentially">
 <div class="done-check" title="Mark as done"></div>
 <div class="bookmark-star" title="Bookmark">☆</div>
 <div>
-<div class="cname">Model Monitoring: Data Drift (KS-Test), Concept Drift & Evidently AI</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Feature distribution divergence, label distribution shifts, Kolmogorov-Smirnov statistical tests, population stability index (PSI), and alerting.</div>
+<div class="cname">Production Monitoring: Data Drift (KS-Test), Concept Drift & Evidentially</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Statistical drift detection, Kolmogorov-Smirnov test, Population Stability Index (PSI), ground truth latency, and model degradation alerts.</div>
 </div>
-<div class="res-links"><a class="video" data-start="00:00" data-vchannel="Evidently AI" data-vdur="20:00" data-vtitle="Model Monitoring: Data Drift (KS-Test), Concept Drift & Evidently AI" href="https://www.youtube.com/watch?v=7uK3ddA9KFA" rel="noopener" target="_blank" title="Watch walkthrough: Model Monitoring: Data Drift (KS-Test), Concept Drift & Evidently AI">🎬YT</a><a href="https://en.wikipedia.org/wiki/Model" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
-</li><li data-cid="ml-batch-inference" data-name="high-throughput batch inference & asynchronous scoring pipelines">
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Production Monitoring: Data Drift (KS-Test), Concept Drift & Evidentially" href="https://www.youtube.com/watch?v=kYJv8P2zHk8" rel="noopener" target="_blank" title="Watch walkthrough: Production Monitoring: Data Drift (KS-Test), Concept Drift & Evidentially">🎬YT</a><a href="https://en.wikipedia.org/wiki/Production" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ml-deployment-strategies" data-name="deployment strategies: shadow deployments, canary releases & a/b testing">
 <div class="done-check" title="Mark as done"></div>
 <div class="bookmark-star" title="Bookmark">☆</div>
 <div>
-<div class="cname">High-Throughput Batch Inference & Asynchronous Scoring Pipelines</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Serverless batch jobs, parallel worker scoring with Ray/Spark, partitioning output tables, and error recovery in batch workloads.</div>
+<div class="cname">Deployment Strategies: Shadow Deployments, Canary Releases & A/B Testing</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Routing production traffic copies to shadow models, incremental canary traffic shifting, statistical hypothesis validation, and auto-rollback.</div>
 </div>
-<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="High-Throughput Batch Inference & Asynchronous Scoring Pipelines" href="https://www.youtube.com/watch?v=kYJv8P2zHk8" rel="noopener" target="_blank" title="Watch walkthrough: High-Throughput Batch Inference & Asynchronous Scoring Pipelines">🎬YT</a><a href="https://en.wikipedia.org/wiki/High-Throughput" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Deployment Strategies: Shadow Deployments, Canary Releases & A/B Testing" href="https://www.youtube.com/watch?v=5rT8X2k-4kU" rel="noopener" target="_blank" title="Watch walkthrough: Deployment Strategies: Shadow Deployments, Canary Releases & A/B Testing">🎬YT</a><a href="https://en.wikipedia.org/wiki/Deployment" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
 </li>
 </ol>
 </div>
 </section><section class="section domain-section" id="section-3" data-domain="data-science" style="--section-color:hsl(20, 80%, 50%)">
 <div class="domain-focus-bar">
-<div class="domain-focus-badge">🔬 Track 3 of 4</div>
+<div class="domain-focus-badge">📊 Track 3 of 4</div>
 <div class="domain-focus-title">Data Science & Applied Analytics</div>
 <div class="domain-focus-nav">
 <button class="domain-focus-btn" onclick="navigateDomain(-1)" title="Previous Track">← Prev Track</button>
 <button class="domain-focus-btn" onclick="switchDomain('all')" title="View All Tracks">View All (4)</button>
 <button class="domain-focus-btn" onclick="navigateDomain(1)" title="Next Track">Next Track →</button>
-
+<a class="domain-focus-link" href="tech_data_science.html">Open Full Masterclass ↗</a>
 </div>
 </div>
 <h2>Data Science & Applied Analytics</h2>
 <div class="sec-desc">
-<p><strong>Core Focus:</strong> Applied mathematics, probability, inferential statistics, Exploratory Data Analysis (EDA), hypothesis testing, A/B testing & time-series.</p>
-<p><strong>Track Key:</strong> Statistics, EDA, Hypothesis Testing & A/B Testing</p>
+<p><strong>Core Focus:</strong> Exploratory data analysis, statistical modeling, hypothesis testing, causal inference, A/B experiments & time series analysis.</p>
+<p><strong>Track Key:</strong> Statistics, EDA, Hypothesis Testing, A/B & Time Series</p>
 </div>
 <div class="subsection">
-<h3>3.1 Applied Mathematics & Linear Algebra</h3>
+<h3>3.1 Exploratory Data Analysis & Feature Insights</h3>
 <ol class="concepts">
-<li data-cid="ds-linear-algebra-vectors" data-name="vector spaces, dot products, vector norms & projections">
+<li data-cid="ds-eda-distributions" data-name="distribution analysis: skewness, kurtosis & q-q normality plots">
 <div class="done-check" title="Mark as done"></div>
 <div class="bookmark-star" title="Bookmark">☆</div>
 <div>
-<div class="cname">Vector Spaces, Dot Products, Vector Norms & Projections</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Vector operations, Euclidean norm (L2), Manhattan norm (L1), dot product geometric projection, and vector basis transformations.</div>
+<div class="cname">Distribution Analysis: Skewness, Kurtosis & Q-Q Normality Plots</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Assessing univariate distributions, log and power transforms (Box-Cox), identifying heavy tails, and visual normality validation via Q-Q plots.</div>
 </div>
-<div class="res-links"><a class="video" data-start="00:00" data-vchannel="3Blue1Brown" data-vdur="20:00" data-vtitle="Vector Spaces, Dot Products, Vector Norms & Projections" href="https://www.youtube.com/watch?v=fNk_zzaMoSs" rel="noopener" target="_blank" title="Watch walkthrough: Vector Spaces, Dot Products, Vector Norms & Projections">🎬YT</a><a href="https://en.wikipedia.org/wiki/Vector" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
-</li><li data-cid="ds-matrix-operations" data-name="matrix transformations, determinants, matrix inversion & rank">
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Distribution Analysis: Skewness, Kurtosis & Q-Q Normality Plots" href="https://www.youtube.com/watch?v=smJBsZ4YQZg" rel="noopener" target="_blank" title="Watch walkthrough: Distribution Analysis: Skewness, Kurtosis & Q-Q Normality Plots">🎬YT</a><a href="https://en.wikipedia.org/wiki/Distribution" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ds-bivariate-correlation" data-name="correlation mechanics: pearson, spearman rank & kendall tau">
 <div class="done-check" title="Mark as done"></div>
 <div class="bookmark-star" title="Bookmark">☆</div>
 <div>
-<div class="cname">Matrix Transformations, Determinants, Matrix Inversion & Rank</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Linear transformations, scaling, rotations, matrix rank, singular matrices, determinants as area scaling, and system of linear equations.</div>
+<div class="cname">Correlation Mechanics: Pearson, Spearman Rank & Kendall Tau</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Linear vs monotonic relationships, sensitivity to outliers, rank transformation, covariance matrices, and multicollinearity diagnostics (VIF).</div>
 </div>
-<div class="res-links"><a class="video" data-start="00:00" data-vchannel="3Blue1Brown" data-vdur="20:00" data-vtitle="Matrix Transformations, Determinants, Matrix Inversion & Rank" href="https://www.youtube.com/watch?v=kYB8IZa5AuE" rel="noopener" target="_blank" title="Watch walkthrough: Matrix Transformations, Determinants, Matrix Inversion & Rank">🎬YT</a><a href="https://en.wikipedia.org/wiki/Matrix" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
-</li><li data-cid="ds-eigenvalues-pca" data-name="eigenvalues, eigenvectors & principal component analysis (pca)">
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Correlation Mechanics: Pearson, Spearman Rank & Kendall Tau" href="https://www.youtube.com/watch?v=xZ_z8KWkhXE" rel="noopener" target="_blank" title="Watch walkthrough: Correlation Mechanics: Pearson, Spearman Rank & Kendall Tau">🎬YT</a><a href="https://en.wikipedia.org/wiki/Correlation" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ds-multivariate-reduction" data-name="multivariate analysis: dimensionality reduction via pca & t-sne">
 <div class="done-check" title="Mark as done"></div>
 <div class="bookmark-star" title="Bookmark">☆</div>
 <div>
-<div class="cname">Eigenvalues, Eigenvectors & Principal Component Analysis (PCA)</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Characteristic equation, invariant transformation vectors, covariance matrix eigendecomposition, and dimensionality reduction.</div>
+<div class="cname">Multivariate Analysis: Dimensionality Reduction via PCA & t-SNE</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">High-dimensional geometric projection, eigenvalue decomposition of covariance matrices, perplexity tuning in t-SNE, and UMAP clustering.</div>
 </div>
-<div class="res-links"><a class="video" data-start="00:00" data-vchannel="3Blue1Brown" data-vdur="20:00" data-vtitle="Eigenvalues, Eigenvectors & Principal Component Analysis (PCA)" href="https://www.youtube.com/watch?v=PFDu9oVAE-g" rel="noopener" target="_blank" title="Watch walkthrough: Eigenvalues, Eigenvectors & Principal Component Analysis (PCA)">🎬YT</a><a href="https://en.wikipedia.org/wiki/Eigenvalues," rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
-</li><li data-cid="ds-calculus-gradients" data-name="multivariable calculus: partial derivatives, gradients & hessian matrices">
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Multivariate Analysis: Dimensionality Reduction via PCA & t-SNE" href="https://www.youtube.com/watch?v=FgakZw6K1QQ" rel="noopener" target="_blank" title="Watch walkthrough: Multivariate Analysis: Dimensionality Reduction via PCA & t-SNE">🎬YT</a><a href="https://en.wikipedia.org/wiki/Multivariate" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ds-data-cleaning-automation" data-name="robust data cleaning & anomaly detection with isolation forests">
 <div class="done-check" title="Mark as done"></div>
 <div class="bookmark-star" title="Bookmark">☆</div>
 <div>
-<div class="cname">Multivariable Calculus: Partial Derivatives, Gradients & Hessian Matrices</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Directional derivatives, the gradient vector pointing in direction of steepest ascent, tangent planes, and second derivative curvature matrices.</div>
+<div class="cname">Robust Data Cleaning & Anomaly Detection with Isolation Forests</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Tree-based anomaly partitioning, outlier contamination factor tuning, automated missingness imputation strategies, and pandas profiling.</div>
 </div>
-<div class="res-links"><a class="video" data-start="00:00" data-vchannel="3Blue1Brown" data-vdur="20:00" data-vtitle="Multivariable Calculus: Partial Derivatives, Gradients & Hessian Matrices" href="https://www.youtube.com/watch?v=TrcCbdWwCBc" rel="noopener" target="_blank" title="Watch walkthrough: Multivariable Calculus: Partial Derivatives, Gradients & Hessian Matrices">🎬YT</a><a href="https://en.wikipedia.org/wiki/Multivariable" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Robust Data Cleaning & Anomaly Detection with Isolation Forests" href="https://www.youtube.com/watch?v=5p8wTXPG4Dk" rel="noopener" target="_blank" title="Watch walkthrough: Robust Data Cleaning & Anomaly Detection with Isolation Forests">🎬YT</a><a href="https://en.wikipedia.org/wiki/Robust" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
 </li>
 </ol>
 </div><div class="subsection">
-<h3>3.2 Probability & Inferential Statistics</h3>
+<h3>3.2 Probability & Mathematical Statistics</h3>
 <ol class="concepts">
-<li data-cid="ds-probability-distributions" data-name="probability distributions: normal, binomial, uniform & poisson">
+<li data-cid="ds-probability-distributions" data-name="core probability distributions: normal, binomial, poisson & exponential">
 <div class="done-check" title="Mark as done"></div>
 <div class="bookmark-star" title="Bookmark">☆</div>
 <div>
-<div class="cname">Probability Distributions: Normal, Binomial, Uniform & Poisson</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Probability density functions (PDF), cumulative distribution functions (CDF), expected value, variance, and skewness/kurtosis.</div>
+<div class="cname">Core Probability Distributions: Normal, Binomial, Poisson & Exponential</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Probability density functions (PDF), cumulative distribution functions (CDF), Poisson arrival processes, and memoryless exponential modeling.</div>
 </div>
-<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Probability Distributions: Normal, Binomial, Uniform & Poisson" href="https://www.youtube.com/watch?v=oI3hZJqXJuc" rel="noopener" target="_blank" title="Watch walkthrough: Probability Distributions: Normal, Binomial, Uniform & Poisson">🎬YT</a><a href="https://en.wikipedia.org/wiki/Probability" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
-</li><li data-cid="ds-clt-sampling" data-name="the central limit theorem (clt), standard error & sampling distributions">
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Core Probability Distributions: Normal, Binomial, Poisson & Exponential" href="https://www.youtube.com/watch?v=oI3hZASlRsE" rel="noopener" target="_blank" title="Watch walkthrough: Core Probability Distributions: Normal, Binomial, Poisson & Exponential">🎬YT</a><a href="https://en.wikipedia.org/wiki/Core" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ds-bayes-theorem" data-name="bayesian probability: prior, likelihood, posterior & conjugate priors">
 <div class="done-check" title="Mark as done"></div>
 <div class="bookmark-star" title="Bookmark">☆</div>
 <div>
-<div class="cname">The Central Limit Theorem (CLT), Standard Error & Sampling Distributions</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Distribution of sample means approaching Gaussian regardless of population distribution, sample size rules (n >= 30), and standard error.</div>
+<div class="cname">Bayesian Probability: Prior, Likelihood, Posterior & Conjugate Priors</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Conditional probability updating, Bayes Theorem formula derivation, Beta-Binomial conjugate analysis, and MAP vs MLE estimation.</div>
 </div>
-<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="The Central Limit Theorem (CLT), Standard Error & Sampling Distributions" href="https://www.youtube.com/watch?v=YAlJCEDH2uY" rel="noopener" target="_blank" title="Watch walkthrough: The Central Limit Theorem (CLT), Standard Error & Sampling Distributions">🎬YT</a><a href="https://en.wikipedia.org/wiki/The" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
-</li><li data-cid="ds-bayes-theorem" data-name="conditional probability, bayes' theorem & prior/posterior inference">
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="3Blue1Brown" data-vdur="20:00" data-vtitle="Bayesian Probability: Prior, Likelihood, Posterior & Conjugate Priors" href="https://www.youtube.com/watch?v=HZGCoVF3YvM" rel="noopener" target="_blank" title="Watch walkthrough: Bayesian Probability: Prior, Likelihood, Posterior & Conjugate Priors">🎬YT</a><a href="https://en.wikipedia.org/wiki/Bayesian" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ds-clt-sampling" data-name="the central limit theorem (clt) & sampling distributions">
 <div class="done-check" title="Mark as done"></div>
 <div class="bookmark-star" title="Bookmark">☆</div>
 <div>
-<div class="cname">Conditional Probability, Bayes' Theorem & Prior/Posterior Inference</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Joint probability, marginal probability, updating prior beliefs with likelihood to calculate posterior probabilities, and false positive paradox.</div>
+<div class="cname">The Central Limit Theorem (CLT) & Sampling Distributions</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Sample mean convergence to normality, standard error formula, finite population correction factor, and sample size power requirements.</div>
 </div>
-<div class="res-links"><a class="video" data-start="00:00" data-vchannel="3Blue1Brown" data-vdur="20:00" data-vtitle="Conditional Probability, Bayes' Theorem & Prior/Posterior Inference" href="https://www.youtube.com/watch?v=HZGCoVF3YvM" rel="noopener" target="_blank" title="Watch walkthrough: Conditional Probability, Bayes' Theorem & Prior/Posterior Inference">🎬YT</a><a href="https://en.wikipedia.org/wiki/Conditional" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
-</li><li data-cid="ds-confidence-intervals" data-name="confidence intervals, margin of error & estimation">
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="The Central Limit Theorem (CLT) & Sampling Distributions" href="https://www.youtube.com/watch?v=YAlJCEDH2uY" rel="noopener" target="_blank" title="Watch walkthrough: The Central Limit Theorem (CLT) & Sampling Distributions">🎬YT</a><a href="https://en.wikipedia.org/wiki/The" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ds-maximum-likelihood" data-name="maximum likelihood estimation (mle) & expectation maximization">
 <div class="done-check" title="Mark as done"></div>
 <div class="bookmark-star" title="Bookmark">☆</div>
 <div>
-<div class="cname">Confidence Intervals, Margin of Error & Estimation</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Point estimates, critical z and t values, interpreting 95% confidence intervals, sample size estimation, and bootstrap resampling.</div>
+<div class="cname">Maximum Likelihood Estimation (MLE) & Expectation Maximization</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Constructing likelihood functions, log-likelihood optimization, parameter score equations, and latent variable estimation via EM algorithms.</div>
 </div>
-<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Confidence Intervals, Margin of Error & Estimation" href="https://www.youtube.com/watch?v=TqOeMYtOc1w" rel="noopener" target="_blank" title="Watch walkthrough: Confidence Intervals, Margin of Error & Estimation">🎬YT</a><a href="https://en.wikipedia.org/wiki/Confidence" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Maximum Likelihood Estimation (MLE) & Expectation Maximization" href="https://www.youtube.com/watch?v=XepXtl9YKSE" rel="noopener" target="_blank" title="Watch walkthrough: Maximum Likelihood Estimation (MLE) & Expectation Maximization">🎬YT</a><a href="https://en.wikipedia.org/wiki/Maximum" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
 </li>
 </ol>
 </div><div class="subsection">
-<h3>3.3 Exploratory Data Analysis (EDA) & Scientific Computing</h3>
+<h3>3.3 Inferential Statistics & Hypothesis Testing</h3>
 <ol class="concepts">
-<li data-cid="ds-numpy-vectorization" data-name="high-performance numpy: array broadcasting, vectorization & memory">
+<li data-cid="ds-hypothesis-framing" data-name="hypothesis formulation: null vs alternative, type i & type ii errors">
 <div class="done-check" title="Mark as done"></div>
 <div class="bookmark-star" title="Bookmark">☆</div>
 <div>
-<div class="cname">High-Performance NumPy: Array Broadcasting, Vectorization & Memory</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Contiguous C vs Fortran memory order, strided arrays, eliminating Python for-loops via SIMD vectorization, and universal functions (ufuncs).</div>
+<div class="cname">Hypothesis Formulation: Null vs Alternative, Type I & Type II Errors</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Formulating testable claims, significance level alpha, statistical power (1 - beta), p-value interpretation, and decision matrices.</div>
 </div>
-<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="High-Performance NumPy: Array Broadcasting, Vectorization & Memory" href="https://www.youtube.com/watch?v=QUT1VHiLmmI" rel="noopener" target="_blank" title="Watch walkthrough: High-Performance NumPy: Array Broadcasting, Vectorization & Memory">🎬YT</a><a href="https://en.wikipedia.org/wiki/High-Performance" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
-</li><li data-cid="ds-pandas-wrangling" data-name="pandas data wrangling: groupby, merging, pivot tables & multi-indexing">
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Hypothesis Formulation: Null vs Alternative, Type I & Type II Errors" href="https://www.youtube.com/watch?v=0oc49DyA3hU" rel="noopener" target="_blank" title="Watch walkthrough: Hypothesis Formulation: Null vs Alternative, Type I & Type II Errors">🎬YT</a><a href="https://en.wikipedia.org/wiki/Hypothesis" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ds-parametric-tests" data-name="parametric tests: one-sample, two-sample student's t-test & paired t-test">
 <div class="done-check" title="Mark as done"></div>
 <div class="bookmark-star" title="Bookmark">☆</div>
 <div>
-<div class="cname">Pandas Data Wrangling: GroupBy, Merging, Pivot Tables & Multi-Indexing</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Split-apply-combine strategy, inner/outer/left joins, handling multi-level indexes, reshaping data via melt/pivot, and datetime manipulation.</div>
+<div class="cname">Parametric Tests: One-Sample, Two-Sample Student's t-Test & Paired t-Test</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Degrees of freedom calculation, pooled vs unpooled variance (Welch's t-test), Cohen's d effect size, and paired sample mean differences.</div>
 </div>
-<div class="res-links"><a class="video" data-start="00:00" data-vchannel="Keith Galli" data-vdur="20:00" data-vtitle="Pandas Data Wrangling: GroupBy, Merging, Pivot Tables & Multi-Indexing" href="https://www.youtube.com/watch?v=vmEHCJofslg" rel="noopener" target="_blank" title="Watch walkthrough: Pandas Data Wrangling: GroupBy, Merging, Pivot Tables & Multi-Indexing">🎬YT</a><a href="https://en.wikipedia.org/wiki/Pandas" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
-</li><li data-cid="ds-polars-columnar" data-name="high-speed columnar processing with polars & lazy evaluation">
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Parametric Tests: One-Sample, Two-Sample Student's t-Test & Paired t-Test" href="https://www.youtube.com/watch?v=pTmLQvMM-1M" rel="noopener" target="_blank" title="Watch walkthrough: Parametric Tests: One-Sample, Two-Sample Student's t-Test & Paired t-Test">🎬YT</a><a href="https://en.wikipedia.org/wiki/Parametric" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ds-anova-f-test" data-name="analysis of variance (anova) & f-distribution">
 <div class="done-check" title="Mark as done"></div>
 <div class="bookmark-star" title="Bookmark">☆</div>
 <div>
-<div class="cname">High-Speed Columnar Processing with Polars & Lazy Evaluation</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Rust-powered DataFrame processing, Apache Arrow memory layout, multithreaded query planning, lazy computation graphs, and memory efficiency.</div>
+<div class="cname">Analysis of Variance (ANOVA) & F-Distribution</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">One-way vs two-way ANOVA, partitioning sum of squares (between vs within groups), F-statistic calculation, and Tukey's HSD post-hoc tests.</div>
 </div>
-<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="High-Speed Columnar Processing with Polars & Lazy Evaluation" href="https://www.youtube.com/watch?v=t_o7jD2iV9E" rel="noopener" target="_blank" title="Watch walkthrough: High-Speed Columnar Processing with Polars & Lazy Evaluation">🎬YT</a><a href="https://en.wikipedia.org/wiki/High-Speed" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
-</li><li data-cid="ds-visualization-storytelling" data-name="data visualization: distribution plots, heatmaps & visual storytelling">
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Analysis of Variance (ANOVA) & F-Distribution" href="https://www.youtube.com/watch?v=ITf4vHhyGpc" rel="noopener" target="_blank" title="Watch walkthrough: Analysis of Variance (ANOVA) & F-Distribution">🎬YT</a><a href="https://en.wikipedia.org/wiki/Analysis" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ds-non-parametric" data-name="non-parametric tests: chi-square independence, mann-whitney u & kruskal-wallis">
 <div class="done-check" title="Mark as done"></div>
 <div class="bookmark-star" title="Bookmark">☆</div>
 <div>
-<div class="cname">Data Visualization: Distribution Plots, Heatmaps & Visual Storytelling</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Grammar of graphics, selecting effective visualizations (box plots, violin plots, pairplots), correlation heatmaps, and executive presentations.</div>
+<div class="cname">Non-Parametric Tests: Chi-Square Independence, Mann-Whitney U & Kruskal-Wallis</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Observed vs expected contingency tables, rank-sum statistics for non-normal continuous data, and distribution-free multi-group comparisons.</div>
 </div>
-<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Data Visualization: Distribution Plots, Heatmaps & Visual Storytelling" href="https://www.youtube.com/watch?v=6GUZXDef2U0" rel="noopener" target="_blank" title="Watch walkthrough: Data Visualization: Distribution Plots, Heatmaps & Visual Storytelling">🎬YT</a><a href="https://en.wikipedia.org/wiki/Data" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Non-Parametric Tests: Chi-Square Independence, Mann-Whitney U & Kruskal-Wallis" href="https://www.youtube.com/watch?v=7_cs1YlZoug" rel="noopener" target="_blank" title="Watch walkthrough: Non-Parametric Tests: Chi-Square Independence, Mann-Whitney U & Kruskal-Wallis">🎬YT</a><a href="https://en.wikipedia.org/wiki/Non-Parametric" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
 </li>
 </ol>
 </div><div class="subsection">
-<h3>3.4 Hypothesis Testing & A/B Experimentation</h3>
+<h3>3.4 A/B Testing & Causal Inference</h3>
 <ol class="concepts">
-<li data-cid="ds-hypothesis-foundations" data-name="null & alternative hypotheses, alpha (significance level), p-values & effect size">
+<li data-cid="ds-ab-design-power" data-name="a/b test design: sample size calculation, power analysis & minimum detectable effect">
 <div class="done-check" title="Mark as done"></div>
 <div class="bookmark-star" title="Bookmark">☆</div>
 <div>
-<div class="cname">Null & Alternative Hypotheses, Alpha (Significance Level), p-values & Effect Size</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Formulating testable hypotheses, Type I error (false positive), Type II error (false negative), p-value interpretation, and Cohen's d effect size.</div>
+<div class="cname">A/B Test Design: Sample Size Calculation, Power Analysis & Minimum Detectable Effect</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Statistical power calculation formula, baseline conversion rate, minimum detectable effect (MDE), and sample size determination.</div>
 </div>
-<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Null & Alternative Hypotheses, Alpha (Significance Level), p-values & Effect Size" href="https://www.youtube.com/watch?v=0oc49DyA3hU" rel="noopener" target="_blank" title="Watch walkthrough: Null & Alternative Hypotheses, Alpha (Significance Level), p-values & Effect Size">🎬YT</a><a href="https://en.wikipedia.org/wiki/Null" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
-</li><li data-cid="ds-parametric-tests" data-name="parametric tests: one-sample, two-sample & paired student's t-tests">
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="A/B Test Design: Sample Size Calculation, Power Analysis & Minimum Detectable Effect" href="https://www.youtube.com/watch?v=bv-tgptpnU8" rel="noopener" target="_blank" title="Watch walkthrough: A/B Test Design: Sample Size Calculation, Power Analysis & Minimum Detectable Effect">🎬YT</a><a href="https://en.wikipedia.org/wiki/A/B" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ds-randomization-srm" data-name="randomization mechanics, hashing & sample ratio mismatch (srm)">
 <div class="done-check" title="Mark as done"></div>
 <div class="bookmark-star" title="Bookmark">☆</div>
 <div>
-<div class="cname">Parametric Tests: One-Sample, Two-Sample & Paired Student's t-Tests</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Testing difference in sample means, degrees of freedom, Student's t-distribution vs standard normal, Welch's t-test for unequal variances.</div>
+<div class="cname">Randomization Mechanics, Hashing & Sample Ratio Mismatch (SRM)</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Consistent hashing for user bucketing, identifying Sample Ratio Mismatch (SRM) using Chi-square tests, and preventing experimental contamination.</div>
 </div>
-<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Parametric Tests: One-Sample, Two-Sample & Paired Student's t-Tests" href="https://www.youtube.com/watch?v=Nvyb7U5nKrk" rel="noopener" target="_blank" title="Watch walkthrough: Parametric Tests: One-Sample, Two-Sample & Paired Student's t-Tests">🎬YT</a><a href="https://en.wikipedia.org/wiki/Parametric" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
-</li><li data-cid="ds-anova-chisquare" data-name="multi-group comparisons: one-way anova & chi-square independence tests">
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Randomization Mechanics, Hashing & Sample Ratio Mismatch (SRM)" href="https://www.youtube.com/watch?v=2AQKmw14mHM" rel="noopener" target="_blank" title="Watch walkthrough: Randomization Mechanics, Hashing & Sample Ratio Mismatch (SRM)">🎬YT</a><a href="https://en.wikipedia.org/wiki/Randomization" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ds-sequential-testing" data-name="multi-armed bandits vs fixed-horizon a/b testing & sequential analysis">
 <div class="done-check" title="Mark as done"></div>
 <div class="bookmark-star" title="Bookmark">☆</div>
 <div>
-<div class="cname">Multi-Group Comparisons: One-Way ANOVA & Chi-Square Independence Tests</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">F-statistic, between-group vs within-group variance, Tukey's HSD post-hoc test, contingency tables, and observed vs expected frequencies.</div>
+<div class="cname">Multi-Armed Bandits vs Fixed-Horizon A/B Testing & Sequential Analysis</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Addressing the peeking problem, alpha spending functions, Thompson Sampling, Upper Confidence Bound (UCB), and dynamic exploration-exploitation.</div>
 </div>
-<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Multi-Group Comparisons: One-Way ANOVA & Chi-Square Independence Tests" href="https://www.youtube.com/watch?v=NF5_btOaFgk" rel="noopener" target="_blank" title="Watch walkthrough: Multi-Group Comparisons: One-Way ANOVA & Chi-Square Independence Tests">🎬YT</a><a href="https://en.wikipedia.org/wiki/Multi-Group" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
-</li><li data-cid="ds-ab-testing-design" data-name="a/b testing design: sample size calculation, statistical power & mde">
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Multi-Armed Bandits vs Fixed-Horizon A/B Testing & Sequential Analysis" href="https://www.youtube.com/watch?v=e3L4VocZnnQ" rel="noopener" target="_blank" title="Watch walkthrough: Multi-Armed Bandits vs Fixed-Horizon A/B Testing & Sequential Analysis">🎬YT</a><a href="https://en.wikipedia.org/wiki/Multi-Armed" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ds-causal-inference" data-name="causal inference: difference-in-differences (did) & propensity score matching">
 <div class="done-check" title="Mark as done"></div>
 <div class="bookmark-star" title="Bookmark">☆</div>
 <div>
-<div class="cname">A/B Testing Design: Sample Size Calculation, Statistical Power & MDE</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Determining test duration, statistical power (1 - Beta = 80%), Minimum Detectable Effect (MDE), sample ratio mismatch (SRM), and novelty bias.</div>
+<div class="cname">Causal Inference: Difference-in-Differences (DiD) & Propensity Score Matching</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Counterfactual reasoning, selection bias mitigation, quasi-experiments, parallel trends assumption in DiD, and synthetic control methods.</div>
 </div>
-<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="A/B Testing Design: Sample Size Calculation, Statistical Power & MDE" href="https://www.youtube.com/watch?v=8H6Qk-83bBg" rel="noopener" target="_blank" title="Watch walkthrough: A/B Testing Design: Sample Size Calculation, Statistical Power & MDE">🎬YT</a><a href="https://en.wikipedia.org/wiki/A/B" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Causal Inference: Difference-in-Differences (DiD) & Propensity Score Matching" href="https://www.youtube.com/watch?v=6rVf8tL4lH4" rel="noopener" target="_blank" title="Watch walkthrough: Causal Inference: Difference-in-Differences (DiD) & Propensity Score Matching">🎬YT</a><a href="https://en.wikipedia.org/wiki/Causal" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
 </li>
 </ol>
 </div><div class="subsection">
-<h3>3.5 Time-Series Analysis & Forecasting</h3>
+<h3>3.5 Time Series Forecasting & Anomaly Detection</h3>
 <ol class="concepts">
-<li data-cid="ds-timeseries-components" data-name="time-series components: trend, seasonality, cyclical & residual noise">
+<li data-cid="ds-timeseries-components" data-name="time series anatomy: trend, seasonality, residuals & stationarity">
 <div class="done-check" title="Mark as done"></div>
 <div class="bookmark-star" title="Bookmark">☆</div>
 <div>
-<div class="cname">Time-Series Components: Trend, Seasonality, Cyclical & Residual Noise</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Additive vs multiplicative decomposition, moving averages, rolling statistics, calendar seasonality, and detrending techniques.</div>
+<div class="cname">Time Series Anatomy: Trend, Seasonality, Residuals & Stationarity</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Additive vs multiplicative decomposition, moving averages, autocorrelation function (ACF), partial ACF (PACF), and Augmented Dickey-Fuller tests.</div>
 </div>
-<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Time-Series Components: Trend, Seasonality, Cyclical & Residual Noise" href="https://www.youtube.com/watch?v=DeORzP0go5I" rel="noopener" target="_blank" title="Watch walkthrough: Time-Series Components: Trend, Seasonality, Cyclical & Residual Noise">🎬YT</a><a href="https://en.wikipedia.org/wiki/Time-Series" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
-</li><li data-cid="ds-stationarity-tests" data-name="stationarity, autocorrelation (acf/pacf) & augmented dickey-fuller test">
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Time Series Anatomy: Trend, Seasonality, Residuals & Stationarity" href="https://www.youtube.com/watch?v=e8Yw4alG16Q" rel="noopener" target="_blank" title="Watch walkthrough: Time Series Anatomy: Trend, Seasonality, Residuals & Stationarity">🎬YT</a><a href="https://en.wikipedia.org/wiki/Time" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ds-arima-sarimax" data-name="arima, sarima & exogenous regressors (sarimax)">
 <div class="done-check" title="Mark as done"></div>
 <div class="bookmark-star" title="Bookmark">☆</div>
 <div>
-<div class="cname">Stationarity, Autocorrelation (ACF/PACF) & Augmented Dickey-Fuller Test</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Mean and variance stability over time, lag plots, autocorrelation function, partial autocorrelation function, and unit root testing.</div>
+<div class="cname">ARIMA, SARIMA & Exogenous Regressors (SARIMAX)</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Autoregressive (p), Integrated differencing (d), Moving Average (q) orders, seasonal order tuning (P, D, Q, s), and AIC/BIC model selection.</div>
 </div>
-<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Stationarity, Autocorrelation (ACF/PACF) & Augmented Dickey-Fuller Test" href="https://www.youtube.com/watch?v=oXhN3iP4S5E" rel="noopener" target="_blank" title="Watch walkthrough: Stationarity, Autocorrelation (ACF/PACF) & Augmented Dickey-Fuller Test">🎬YT</a><a href="https://en.wikipedia.org/wiki/Stationarity," rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
-</li><li data-cid="ds-arima-models" data-name="auto-regressive integrated moving average (arima) & sarima">
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="ARIMA, SARIMA & Exogenous Regressors (SARIMAX)" href="https://www.youtube.com/watch?v=3UmyHed0iYE" rel="noopener" target="_blank" title="Watch walkthrough: ARIMA, SARIMA & Exogenous Regressors (SARIMAX)">🎬YT</a><a href="https://en.wikipedia.org/wiki/ARIMA," rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ds-prophet-forecasting" data-name="additive time series with meta prophet & holiday effects">
 <div class="done-check" title="Mark as done"></div>
 <div class="bookmark-star" title="Bookmark">☆</div>
 <div>
-<div class="cname">Auto-Regressive Integrated Moving Average (ARIMA) & SARIMA</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Autoregressive lag order (p), differencing degree (d), moving average error order (q), seasonal period (s), and model residual diagnostics.</div>
+<div class="cname">Additive Time Series with Meta Prophet & Holiday Effects</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Piecewise linear/logistic trend curves, Fourier series seasonal components, holiday indicators, and robust handling of missing dates/outliers.</div>
 </div>
-<div class="res-links"><a class="video" data-start="00:00" data-vchannel="StatQuest" data-vdur="20:00" data-vtitle="Auto-Regressive Integrated Moving Average (ARIMA) & SARIMA" href="https://www.youtube.com/watch?v=3UmyHed0iYE" rel="noopener" target="_blank" title="Watch walkthrough: Auto-Regressive Integrated Moving Average (ARIMA) & SARIMA">🎬YT</a><a href="https://en.wikipedia.org/wiki/Auto-Regressive" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
-</li><li data-cid="ds-prophet-exponential" data-name="modern forecasting: holt-winters exponential smoothing & meta prophet">
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Additive Time Series with Meta Prophet & Holiday Effects" href="https://www.youtube.com/watch?v=j0e23nk2TCo" rel="noopener" target="_blank" title="Watch walkthrough: Additive Time Series with Meta Prophet & Holiday Effects">🎬YT</a><a href="https://en.wikipedia.org/wiki/Additive" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="ds-ts-anomaly-detection" data-name="time series anomaly detection: stl decomposition & dynamic thresholds">
 <div class="done-check" title="Mark as done"></div>
 <div class="bookmark-star" title="Bookmark">☆</div>
 <div>
-<div class="cname">Modern Forecasting: Holt-Winters Exponential Smoothing & Meta Prophet</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Triple exponential smoothing (level, trend, seasonal), generalized additive models with non-linear trends, and holiday impact modeling.</div>
+<div class="cname">Time Series Anomaly Detection: STL Decomposition & Dynamic Thresholds</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Residual z-score thresholding, Exponential Moving Average (EMA) bounds, seasonal-trend decomposition anomaly flags, and alert smoothing.</div>
 </div>
-<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Modern Forecasting: Holt-Winters Exponential Smoothing & Meta Prophet" href="https://www.youtube.com/watch?v=pG4Wb8vO6A0" rel="noopener" target="_blank" title="Watch walkthrough: Modern Forecasting: Holt-Winters Exponential Smoothing & Meta Prophet">🎬YT</a><a href="https://en.wikipedia.org/wiki/Modern" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Time Series Anomaly Detection: STL Decomposition & Dynamic Thresholds" href="https://www.youtube.com/watch?v=1uTfG6eA0oE" rel="noopener" target="_blank" title="Watch walkthrough: Time Series Anomaly Detection: STL Decomposition & Dynamic Thresholds">🎬YT</a><a href="https://en.wikipedia.org/wiki/Time" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
 </li>
 </ol>
 </div>
 </section><section class="section domain-section" id="section-4" data-domain="data-eng" style="--section-color:hsl(80, 80%, 50%)">
 <div class="domain-focus-bar">
-<div class="domain-focus-badge">🏗️ Track 4 of 4</div>
+<div class="domain-focus-badge">⚡ Track 4 of 4</div>
 <div class="domain-focus-title">Data Engineering & Modern Data Stack</div>
 <div class="domain-focus-nav">
 <button class="domain-focus-btn" onclick="navigateDomain(-1)" title="Previous Track">← Prev Track</button>
 <button class="domain-focus-btn" onclick="switchDomain('all')" title="View All Tracks">View All (4)</button>
 <button class="domain-focus-btn" onclick="navigateDomain(1)" title="Next Track">Next Track →</button>
-
+<a class="domain-focus-link" href="tech_data_eng.html">Open Full Masterclass ↗</a>
 </div>
 </div>
 <h2>Data Engineering & Modern Data Stack</h2>
 <div class="sec-desc">
-<p><strong>Core Focus:</strong> Cloud data warehouses (Snowflake, BigQuery), Apache Spark, Lakehouse table formats (Iceberg, Delta), dbt modeling, Airflow & Kafka.</p>
-<p><strong>Track Key:</strong> Warehousing, Spark, Lakehouse, dbt & Kafka</p>
+<p><strong>Core Focus:</strong> Modern data warehousing, Apache Spark, Lakehouses (Iceberg/Delta), dbt transformation, Airflow orchestration & Kafka/Flink streaming.</p>
+<p><strong>Track Key:</strong> Warehouses, Spark, Lakehouse, dbt, Airflow & Kafka</p>
 </div>
 <div class="subsection">
-<h3>4.1 Data Warehousing & Cloud OLAP Engines</h3>
+<h3>4.1 Modern Data Warehousing & Analytical Engines</h3>
 <ol class="concepts">
-<li data-cid="de-oltp-vs-olap" data-name="oltp (row-oriented) vs olap (columnar): storage & query optimization">
+<li data-cid="de-oltp-vs-olap" data-name="oltp vs olap architecture: row-store vs columnar execution">
 <div class="done-check" title="Mark as done"></div>
 <div class="bookmark-star" title="Bookmark">☆</div>
 <div>
-<div class="cname">OLTP (Row-Oriented) vs OLAP (Columnar): Storage & Query Optimization</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Row-based B-trees for high write concurrency vs Column-based storage for large analytical aggregations, vectorization, and compression ratios.</div>
+<div class="cname">OLTP vs OLAP Architecture: Row-Store vs Columnar Execution</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">B-tree transactional indexes vs columnar projection, dictionary encoding, run-length compression, vectorized query execution, and SIMD instructions.</div>
 </div>
-<div class="res-links"><a class="video" data-start="00:00" data-vchannel="ByteByteGo" data-vdur="20:00" data-vtitle="OLTP (Row-Oriented) vs OLAP (Columnar): Storage & Query Optimization" href="https://www.youtube.com/watch?v=1uTfG6eA0oE" rel="noopener" target="_blank" title="Watch walkthrough: OLTP (Row-Oriented) vs OLAP (Columnar): Storage & Query Optimization">🎬YT</a><a href="https://en.wikipedia.org/wiki/OLTP" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
-</li><li data-cid="de-snowflake-architecture" data-name="snowflake multi-cluster shared data architecture & virtual warehouses">
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="ByteByteGo" data-vdur="20:00" data-vtitle="OLTP vs OLAP Architecture: Row-Store vs Columnar Execution" href="https://www.youtube.com/watch?v=bzcRHN4Z5iE" rel="noopener" target="_blank" title="Watch walkthrough: OLTP vs OLAP Architecture: Row-Store vs Columnar Execution">🎬YT</a><a href="https://en.wikipedia.org/wiki/OLTP" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="de-cloud-warehouses" data-name="cloud data warehouses: snowflake virtual warehouses & bigquery slot architecture">
 <div class="done-check" title="Mark as done"></div>
 <div class="bookmark-star" title="Bookmark">☆</div>
 <div>
-<div class="cname">Snowflake Multi-Cluster Shared Data Architecture & Virtual Warehouses</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Decoupled storage, compute, and cloud services layers; micro-partitions, virtual warehouse compute auto-scaling, and zero-copy cloning.</div>
+<div class="cname">Cloud Data Warehouses: Snowflake Virtual Warehouses & BigQuery Slot Architecture</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Decoupled storage and compute, micro-partitions in Snowflake, capacitor storage in Google BigQuery, and reservation pricing models.</div>
 </div>
-<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Snowflake Multi-Cluster Shared Data Architecture & Virtual Warehouses" href="https://www.youtube.com/watch?v=v_sD7Lp0uUo" rel="noopener" target="_blank" title="Watch walkthrough: Snowflake Multi-Cluster Shared Data Architecture & Virtual Warehouses">🎬YT</a><a href="https://en.wikipedia.org/wiki/Snowflake" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
-</li><li data-cid="de-bigquery-storage" data-name="google bigquery architecture: capacitor columnar storage & dremel">
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Cloud Data Warehouses: Snowflake Virtual Warehouses & BigQuery Slot Architecture" href="https://www.youtube.com/watch?v=yE9v9fZkY4A" rel="noopener" target="_blank" title="Watch walkthrough: Cloud Data Warehouses: Snowflake Virtual Warehouses & BigQuery Slot Architecture">🎬YT</a><a href="https://en.wikipedia.org/wiki/Cloud" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="de-clickhouse-duckdb" data-name="modern analytical query engines: clickhouse & embedded duckdb">
 <div class="done-check" title="Mark as done"></div>
 <div class="bookmark-star" title="Bookmark">☆</div>
 <div>
-<div class="cname">Google BigQuery Architecture: Capacitor Columnar Storage & Dremel</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Serverless multi-tenant slots, Colossus distributed storage, Capacitor columnar format with RLE/dictionary encoding, and Dremel query engine.</div>
+<div class="cname">Modern Analytical Query Engines: ClickHouse & Embedded DuckDB</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">LSM-tree merge tree engines in ClickHouse, vectorized column processing, and zero-dependency in-process analytics using DuckDB.</div>
 </div>
-<div class="res-links"><a class="video" data-start="00:00" data-vchannel="Google Cloud Tech" data-vdur="20:00" data-vtitle="Google BigQuery Architecture: Capacitor Columnar Storage & Dremel" href="https://www.youtube.com/watch?v=d3t4V_i4C5o" rel="noopener" target="_blank" title="Watch walkthrough: Google BigQuery Architecture: Capacitor Columnar Storage & Dremel">🎬YT</a><a href="https://en.wikipedia.org/wiki/Google" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
-</li><li data-cid="de-partitioning-clustering" data-name="table partitioning, clustering keys & query cost reduction">
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="SeattleDataGuy" data-vdur="20:00" data-vtitle="Modern Analytical Query Engines: ClickHouse & Embedded DuckDB" href="https://www.youtube.com/watch?v=nO_3y12sZ7k" rel="noopener" target="_blank" title="Watch walkthrough: Modern Analytical Query Engines: ClickHouse & Embedded DuckDB">🎬YT</a><a href="https://en.wikipedia.org/wiki/Modern" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+</li><li data-cid="de-partitioning-clustering" data-name="query optimization: partitioning pruning, clustering keys & data skipping">
 <div class="done-check" title="Mark as done"></div>
 <div class="bookmark-star" title="Bookmark">☆</div>
 <div>
-<div class="cname">Table Partitioning, Clustering Keys & Query Cost Reduction</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Date/ingestion partitioning, pruning unneeded partitions, multi-column clustering sort orders, and optimizing scan bytes.</div>
+<div class="cname">Query Optimization: Partitioning Pruning, Clustering Keys & Data Skipping</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Min-max metadata pruning, bloom filters, sorting clustering keys, preventing full table scans, and optimizing partition cardinality.</div>
 </div>
-<div class="res-links"><a class="video" data-start="00:00" data-vchannel="SeattleDataGuy" data-vdur="20:00" data-vtitle="Table Partitioning, Clustering Keys & Query Cost Reduction" href="https://www.youtube.com/watch?v=9jR4U_X6Z2Q" rel="noopener" target="_blank" title="Watch walkthrough: Table Partitioning, Clustering Keys & Query Cost Reduction">🎬YT</a><a href="https://en.wikipedia.org/wiki/Table" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="SeattleDataGuy" data-vdur="20:00" data-vtitle="Query Optimization: Partitioning Pruning, Clustering Keys & Data Skipping" href="https://www.youtube.com/watch?v=3mJkWkH9P6Q" rel="noopener" target="_blank" title="Watch walkthrough: Query Optimization: Partitioning Pruning, Clustering Keys & Data Skipping">🎬YT</a><a href="https://en.wikipedia.org/wiki/Query" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
 </li>
 </ol>
 </div><div class="subsection">
-<h3>4.2 Distributed Data Processing with Apache Spark</h3>
+<h3>4.2 Distributed Processing with Apache Spark & PySpark</h3>
 <ol class="concepts">
-<li data-cid="de-spark-architecture" data-name="apache spark cluster architecture: driver, cluster manager & executors">
+<li data-cid="de-spark-architecture" data-name="apache spark cluster architecture: driver, executors & memory management">
 <div class="done-check" title="Mark as done"></div>
 <div class="bookmark-star" title="Bookmark">☆</div>
 <div>
-<div class="cname">Apache Spark Cluster Architecture: Driver, Cluster Manager & Executors</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Driver program, SparkContext, DAGScheduler, TaskScheduler, Worker nodes, Executor JVMs, and distributed memory allocation.</div>
+<div class="cname">Apache Spark Cluster Architecture: Driver, Executors & Memory Management</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Cluster manager (YARN/K8s), worker nodes, executor memory fractions (Storage vs Execution memory), tasks, and partitions.</div>
 </div>
-<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Apache Spark Cluster Architecture: Driver, Cluster Manager & Executors" href="https://www.youtube.com/watch?v=_C-WDoJpUWY" rel="noopener" target="_blank" title="Watch walkthrough: Apache Spark Cluster Architecture: Driver, Cluster Manager & Executors">🎬YT</a><a href="https://en.wikipedia.org/wiki/Apache" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
+<div class="res-links"><a class="video" data-start="00:00" data-vchannel="freeCodeCamp" data-vdur="20:00" data-vtitle="Apache Spark Cluster Architecture: Driver, Executors & Memory Management" href="https://www.youtube.com/watch?v=3mJkWkH9P6Q" rel="noopener" target="_blank" title="Watch walkthrough: Apache Spark Cluster Architecture: Driver, Executors & Memory Management">🎬YT</a><a href="https://en.wikipedia.org/wiki/Apache" rel="noopener" target="_blank" title="Reference Guide">🌐Doc</a></div>
 </li><li data-cid="de-spark-transformations" data-name="spark transformations: narrow vs wide dependencies & the shuffle stage">
 <div class="done-check" title="Mark as done"></div>
 <div class="bookmark-star" title="Bookmark">☆</div>
@@ -1712,12 +1712,6 @@ window.SITE_SLUG = "ai_data";
   const SLUG = window.SITE_SLUG || 'ai_data';
   const KEY_DONE = 'hub_done_' + SLUG;
   const KEY_BM = 'hub_bm_' + SLUG;
-  const KEY_THEME = 'learning_hub_theme';
-
-  function applyTheme(t) {
-    if (t === 'light') document.documentElement.classList.add('light');
-    else document.documentElement.classList.remove('light');
-  }
 
   let doneSet = new Set();
   try {
@@ -1792,7 +1786,6 @@ window.SITE_SLUG = "ai_data";
     }
   });
 
-  // Filters & Search
   let activeFilter = null;
   document.querySelectorAll('.filter-btn[data-filter]').forEach(b => {
     b.addEventListener('click', () => {

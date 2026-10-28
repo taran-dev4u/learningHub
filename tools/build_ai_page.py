@@ -13,7 +13,7 @@ revision = hashlib.sha256(b''.join((ROOT / path).read_bytes() for path in (
     'AI_Engineering_Tutorial/catalog.json',
     'AI_Engineering_Tutorial/companion-data.json',
     'AI_Engineering_Tutorial/companion-guides.json',
-))).hexdigest()[:12]
+)) + b''.join(path.read_bytes() for path in sorted((ROOT / 'AI_Engineering_Tutorial/companion-content').glob('*.json.gz')))).hexdigest()[:12]
 template = '''<!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">

@@ -42,6 +42,9 @@
 | `tech_java.html` | Standalone Java & Spring Boot Microservices Masterclass (4 subsections, 16 concepts) | ✅ Deployed | Playwright + Audit |
 | `tech_fastapi.html` | Standalone Python & FastAPI Backend Engineering Masterclass (2 subsections, 8 concepts) | ✅ Deployed | Playwright + Audit |
 | `tech_apis.html` | Standalone Production API Design & Architecture Masterclass (2 subsections, 8 concepts) | ✅ Deployed | Playwright + Audit |
+| `tech_ml.html` | Standalone Machine Learning Engineering Masterclass (6 subsections, 24 concepts) | ✅ Deployed | Playwright + Audit |
+| `tech_data_science.html` | Standalone Data Science & Applied Analytics Masterclass (5 subsections, 20 concepts) | ✅ Deployed | Playwright + Audit |
+| `tech_data_eng.html` | Standalone Data Engineering & Lakehouse Architecture Masterclass (6 subsections, 24 concepts) | ✅ Deployed | Playwright + Audit |
 | `system_design.html` | 15 topics, 62 subtopics, 322 concepts + video panels & direct timestamps | ✅ Active | Audit + Verify |
 | `System_Design_Tutorial/` | 62 deep roadmap lessons with Algomaster theme (100% video coverage) | ✅ Active | `build_sd_resources.py` |
 | `AI_Engineering_Tutorial/` | 11 domains, 37 subsections, 177 concepts | ✅ Active | Audit + Verify |
@@ -210,3 +213,30 @@ The autonomous agent is scheduled via recurring cron notification (`0 */3 * * *`
     - Zero horizontal overflow (`scrollWidth === clientWidth === 1440px`).
     - Verified full 1289px row width, 942px concept title width, study rail `.hub-actions` mount, star bookmark toggle, and done checkmark toggle.
     - Verified Light and Black themes.
+
+### [2026-10-28 09:05 UTC] Scheduled Maintenance Check & Launch of 3 Standalone AI/Data Masterclasses (Iteration 3)
+- **Scheduled Maintenance Execution**:
+  - Processed cron task notification `0 */3 * * *` (Iteration 3).
+  - Verified repository health: git working tree clean, baseline checks passed.
+  - Verified System Design 62 lessons: 100% video coverage confirmed (0 lessons without verified video).
+- **Curated & Launched 3 Dedicated Masterclasses**:
+  - **Machine Learning Engineering Masterclass (`tech_ml.html`)**:
+    - 6 subsections, 24 concepts covering Classical Algorithms, PyTorch, Feature Preprocessing & Leakage, Evaluation & Bias-Variance, MLOps Pipelines & Feature Stores, and Low-Latency Triton/vLLM Serving.
+  - **Data Science & Applied Analytics Masterclass (`tech_data_science.html`)**:
+    - 5 subsections, 20 concepts covering EDA & Distribution Analysis, Mathematical Probability & Bayes, Parametric & Non-Parametric Hypothesis Testing, A/B Testing & Causal Inference, and Time Series Forecasting.
+  - **Data Engineering & Lakehouse Architecture Masterclass (`tech_data_eng.html`)**:
+    - 6 subsections, 24 concepts covering Cloud Data Warehouses, Apache Spark & PySpark, Lakehouses (Iceberg/Delta Lake), dbt Modeling, Airflow DAG Orchestration, and Real-Time Kafka/Flink Streaming.
+- **Unified Masterclass Navigation & Architecture**:
+  - Updated `ai_data.html` Command Deck cards: Tracks 2, 3, and 4 now feature dedicated `Dedicated Masterclass ↗` launch buttons.
+  - Added section focus banner buttons (`Open Full Masterclass ↗`) on all tracks in `ai_data.html`.
+  - Added top breadcrumbs (`← AI & Data Hub`) on all 3 masterclasses.
+  - Added bottom companion grids (`🤖 Companion AI & Data Masterclasses`) cross-linking all 4 AI/Data tracks.
+  - Synchronized progress state with `hub_done_ai_data` so progress ticks mirror across all pages.
+- **Verification Suite**:
+  - `python tools/audit_site.py`: **0 findings** across all 787 pages.
+  - `node tools/verify-learning-hub.mjs`: All 13 pages passed.
+  - Headless Playwright suite (`scratch/test_ai_masterclasses_playwright.py`):
+    - Verified 1440px full-width layout with zero overflow (`scrollWidth === clientWidth`) across all 3 pages.
+    - Verified breadcrumbs, sister links, 1289px concept rows, study rail `.hub-actions` mount, and Light/Black themes.
+- **Automated Generator**:
+  - Created official project generator `tools/build_ai_data_portal.py` for atomic, idempotent builds of `ai_data.html` and the 3 standalone masterclasses.
