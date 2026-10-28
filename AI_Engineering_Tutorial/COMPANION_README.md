@@ -8,6 +8,10 @@ repositories without pretending they are part of that original source.
   explanation, a decision table, a worked case and an exercise. Phase 17 also
   has an 18-part inference engineering deep dive corresponding to the topics
   in Amit Shekhar's Module 12.
+- `decision-playbook.json`: seven original, detailed decision guides inspired
+  by the source playbook's topic map. Each includes explanations, a comparison
+  table, subtopics, a worked case and a practice exercise. The AI page exposes
+  this as a separate "Decision playbook" tab.
 - `companion-data.json`: a complete 684-file inventory, 3,484 indexed Markdown
   and notebook headings, and 598 interview prompts at the pinned revisions.
   Counts are computed by `tools/build_ai_companion.py`, not typed into the UI.

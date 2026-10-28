@@ -8,6 +8,7 @@ ROOT = Path(__file__).resolve().parent.parent
 BASE = ROOT / 'AI_Engineering_Tutorial'
 data = json.loads((BASE / 'companion-data.json').read_text(encoding='utf8'))
 guides = json.loads((BASE / 'companion-guides.json').read_text(encoding='utf8'))
+playbook = json.loads((BASE / 'decision-playbook.json').read_text(encoding='utf8'))
 
 assert len(data['sources']) == 7
 assert set(guides) == {f'phase-{i:02d}' for i in range(20)}
@@ -40,6 +41,14 @@ for phase, guide in guides.items():
     assert guide['headers'] and guide['rows']
     assert all(len(row) == len(guide['headers']) for row in guide['rows'])
 assert len(guides['phase-17']['deepDive']) == 18
+assert len(playbook['sections']) == 7
+assert len({section['id'] for section in playbook['sections']}) == 7
+assert playbook['source'].startswith('https://github.com/louisfb01/ai-engineering-cheatsheets/')
+for section in playbook['sections']:
+    assert section['phase'] in guides
+    assert all(section.get(key) for key in ('title', 'explanation', 'worked', 'exercise', 'headers', 'rows', 'subtopics'))
+    assert all(len(row) == len(section['headers']) for row in section['rows'])
+    assert all(len(topic) == 2 and all(topic) for topic in section['subtopics'])
 assert data['counts']['inlineFiles'] == sum(f['inline'] for f in data['files'])
 assert set(Counter(t['phase'] for t in data['topics'])) == set(range(20))
-print('AI companion verified:', data['counts'], '20 phase guides, 18 inference topics')
+print('AI companion verified:', data['counts'], '20 phase guides, 18 inference topics, 7 decision areas')

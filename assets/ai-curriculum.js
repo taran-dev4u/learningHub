@@ -29,8 +29,9 @@
   function companionData() {
     if (!companionPromise) companionPromise = Promise.all([
       fetch(base + 'AI_Engineering_Tutorial/companion-data.json?v=' + release).then(function(r){if(!r.ok)throw Error('Companion index could not load');return r.json();}),
-      fetch(base + 'AI_Engineering_Tutorial/companion-guides.json?v=' + release).then(function(r){if(!r.ok)throw Error('Companion guides could not load');return r.json();})
-    ]).then(function(parts){return {index:parts[0],guides:parts[1]};}).catch(function(error){companionPromise=null;throw error;});
+      fetch(base + 'AI_Engineering_Tutorial/companion-guides.json?v=' + release).then(function(r){if(!r.ok)throw Error('Companion guides could not load');return r.json();}),
+      fetch(base + 'AI_Engineering_Tutorial/decision-playbook.json?v=' + release).then(function(r){if(!r.ok)throw Error('Decision playbook could not load');return r.json();})
+    ]).then(function(parts){return {index:parts[0],guides:parts[1],playbook:parts[2]};}).catch(function(error){companionPromise=null;throw error;});
     return companionPromise;
   }
   function slug(s) { return s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') || 'section'; }
@@ -71,7 +72,7 @@
       '<div style="margin-bottom:12px"><a href="' + base + 'ai_data.html" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--aic-accent,#7c3aed);text-decoration:none;padding:5px 12px;border-radius:6px;background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.2)">← AI &amp; Data Hub</a></div>' +
       '<span class="aic-eyebrow">Learning Hub · AI engineering lessons</span><h1>AI Engineering from Scratch</h1>' +
       '<p>Read explanations and worked examples here, then practise with code and exercises. Follow the phases in order. Reference files and project plans are listed separately from lessons.</p>' +
-      '<div class="aic-links">' + button('Roadmap', '#group=overview') + button('All topics', '#group=all') + button('Seven-source companion', companionRoute('guide')) + button('Source files', '#files=') +
+      '<div class="aic-links">' + button('Roadmap', '#group=overview') + button('All topics', '#group=all') + button('Seven-source companion', companionRoute('guide')) + button('Decision playbook', companionRoute('playbook')) + button('Source files', '#files=') +
       button('Concept guide', base + 'AI_Engineering_Tutorial/concept-guide.html') + button('Original website ↗', catalog.source.website) + '</div>' +
       '<div class="aic-stats">' + [[c.phases,'phases'],[c.phase,'core lessons'],[c.subtopics,'indexed section headings'],[c.manuals,'manuals'],[c.practice,'practice labs'],[c.sourceFiles,'source files']].map(function (x) { return '<div class="aic-stat"><b>' + x[0].toLocaleString() + '</b><span>' + x[1] + '</span></div>'; }).join('') + '</div></header>';
   }
@@ -81,7 +82,7 @@
       var label = '';
       if (last !== g.kind) { last = g.kind; label = '<h2>' + esc(g.kind) + '</h2>'; }
       return label + '<a href="#group=' + encodeURIComponent(g.id) + '"' + (selected === g.id ? ' class="active"' : '') + '><span>' + esc(g.title) + '</span><small>' + g.entries.length + '</small></a>';
-    }).join('') + '<h2>More study material</h2><a href="' + companionRoute('guide') + '">Phase study guides</a><a href="' + companionRoute('topics') + '">Seven-source topic index</a><a href="' + companionRoute('questions') + '">Interview questions</a><a href="' + companionRoute('files') + '">External source files</a><h2>Repository</h2><a href="#files=">Browse original source files</a></nav>';
+    }).join('') + '<h2>More study material</h2><a href="' + companionRoute('guide') + '">Phase study guides</a><a href="' + companionRoute('playbook') + '">AI decision playbook</a><a href="' + companionRoute('topics') + '">Seven-source topic index</a><a href="' + companionRoute('questions') + '">Interview questions</a><a href="' + companionRoute('files') + '">External source files</a><h2>Repository</h2><a href="#files=">Browse original source files</a></nav>';
   }
   function shell() {
     root.innerHTML = hero() + '<div class="aic-layout" id="aic-layout"><div class="aic-nav-wrap"><button class="aic-toggle" id="aic-nav-toggle" type="button" aria-controls="aic-nav"></button>' + navigation() + '</div>' + '<div class="aic-main" id="aic-main"></div></div>' +
@@ -226,15 +227,21 @@
     'Applied and Forward-Deployed Scenarios':'Start with the customer workflow and decision to improve. Build the smallest measurable pilot, identify integration and privacy constraints, and define an owner for feedback and escalation.',
     'Behavioral and Culture':'Use a concrete situation, your own action and a measured result. Explain the trade-off and what you learned; avoid claiming a team outcome without identifying your contribution.'
   };
+  function decisionPlaybookHtml(playbook) {
+    return '<div class="aic-playbook-intro aic-card"><p>'+esc(playbook.intro)+'</p><div class="aic-playbook-index" aria-label="Playbook sections">'+playbook.sections.map(function(section){return '<a href="'+companionRoute('playbook')+'&section='+encodeURIComponent(section.id)+'">'+esc(section.title)+'</a>';}).join('')+'</div></div>'+
+      playbook.sections.map(function(section){return '<section class="aic-companion-guide aic-card aic-playbook-section" id="playbook-'+esc(section.id)+'"><span class="aic-eyebrow">'+esc(catalog.groups.find(function(g){return g.id===section.phase;})?.title||section.phase)+'</span><h3>'+esc(section.title)+'</h3><p>'+esc(section.explanation)+'</p><div class="aic-table-wrap"><table><thead><tr>'+section.headers.map(function(h){return '<th>'+esc(h)+'</th>';}).join('')+'</tr></thead><tbody>'+section.rows.map(function(row){return '<tr>'+row.map(function(cell){return '<td>'+esc(cell)+'</td>';}).join('')+'</tr>';}).join('')+'</tbody></table></div><h4>Topics to study</h4><div class="aic-playbook-subtopics">'+section.subtopics.map(function(topic){return '<article><strong>'+esc(topic[0])+'</strong><p>'+esc(topic[1])+'</p></article>';}).join('')+'</div><div class="aic-guide-notes"><div><strong>Worked case</strong><p>'+esc(section.worked)+'</p></div><div><strong>Try it</strong><p>'+esc(section.exercise)+'</p></div></div><div class="aic-actions">'+button('Study related phase',companionRoute('guide',section.phase))+button('Explore source topics',companionRoute('topics',section.phase))+'</div></section>';}).join('')+
+      '<p class="aic-source-line">This guide is independently written for Learning Hub. '+button('Read the source playbook ↗',playbook.source)+'</p>';
+  }
   async function companion(params) {
-    var parts=await companionData(),data=parts.index,guides=parts.guides;
+    var parts=await companionData(),data=parts.index,guides=parts.guides,playbook=parts.playbook;
     var tab=params.get('companion')||'guide', phase=params.get('phase')||'', main=document.getElementById('aic-main');
-    if(!['guide','topics','questions','files','read'].includes(tab))tab='guide';
+    if(!['guide','playbook','topics','questions','files','read'].includes(tab))tab='guide';
     if(tab==='read'){await companionRead(params,data,main);return;}
     var phaseOptions=catalog.groups.filter(function(g){return g.id.startsWith('phase-');}).map(function(g){return [g.id,g.title];});
     var sourceOptions=data.sources.map(function(s){return [s.id,s.id.split('/')[1]];});
-    var title={guide:'Study guides',topics:'Topic and subtopic index',questions:'Company wise interview practice',files:'Complete source file inventory'}[tab];
-    main.innerHTML='<div class="aic-companion-head"><span class="aic-eyebrow">Seven pinned public repositories</span><h2 class="aic-section-title">'+title+'</h2><p class="aic-description">'+data.counts.sources+' sources · '+data.counts.files.toLocaleString()+' files · '+data.counts.inlineFiles.toLocaleString()+' readable here · '+data.counts.topics.toLocaleString()+' indexed headings · '+data.counts.questions.toLocaleString()+' interview prompts. The guide explanations and tables are original Learning Hub material; source links open the pinned repository revision.</p><div class="aic-companion-tabs">'+[['guide','Study guides'],['topics','Topics'],['questions','Interview questions'],['files','Every source file']].map(function(item){return button(item[1],companionRoute(item[0],phase),item[0]===tab?' primary':'');}).join('')+'</div></div>';
+    var title={guide:'Study guides',playbook:'AI engineering decision playbook',topics:'Topic and subtopic index',questions:'Company wise interview practice',files:'Complete source file inventory'}[tab];
+    main.innerHTML='<div class="aic-companion-head"><span class="aic-eyebrow">Seven pinned public repositories</span><h2 class="aic-section-title">'+title+'</h2><p class="aic-description">'+data.counts.sources+' sources · '+data.counts.files.toLocaleString()+' files · '+data.counts.inlineFiles.toLocaleString()+' readable here · '+data.counts.topics.toLocaleString()+' indexed headings · '+data.counts.questions.toLocaleString()+' interview prompts. The guide explanations and tables are original Learning Hub material; source links open the pinned repository revision.</p><div class="aic-companion-tabs">'+[['guide','Study guides'],['playbook','Decision playbook'],['topics','Topics'],['questions','Interview questions'],['files','Every source file']].map(function(item){return button(item[1],companionRoute(item[0],phase),item[0]===tab?' primary':'');}).join('')+'</div></div>';
+    if(tab==='playbook'){main.innerHTML+=decisionPlaybookHtml(playbook);var section=params.get('section');if(section){var target=document.getElementById('playbook-'+section);if(target)target.scrollIntoView({block:'start'});}return;}
     if(tab==='guide') {
       if(phase) {
         var pnum=Number(phase.slice(-2)), prev=pnum>0?'phase-'+String(pnum-1).padStart(2,'0'):null,next=pnum<19?'phase-'+String(pnum+1).padStart(2,'0'):null;
