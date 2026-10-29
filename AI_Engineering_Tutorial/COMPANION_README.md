@@ -12,6 +12,10 @@ repositories without pretending they are part of that original source.
   by the source playbook's topic map. Each includes explanations, a comparison
   table, subtopics, a worked case and a practice exercise. The AI page exposes
   this as a separate "Decision playbook" tab.
+- `engineer-path.json`: the original focused engineering path. Core stages and
+  optional specializations cover all 20 phases, with direct lesson links,
+  build assignments, decision tables, release criteria, and official references.
+  Progress on its focus lessons uses the existing lesson completion storage.
 - `aishwaryanr/awesome-generative-ai-guide`: the main GenAI resource. Its
   pinned MIT-licensed snapshot is indexed in full, with
   readable text opened inline and binary media linked to the pinned original.

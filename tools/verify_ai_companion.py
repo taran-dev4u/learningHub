@@ -9,6 +9,8 @@ BASE = ROOT / 'AI_Engineering_Tutorial'
 data = json.loads((BASE / 'companion-data.json').read_text(encoding='utf8'))
 guides = json.loads((BASE / 'companion-guides.json').read_text(encoding='utf8'))
 playbook = json.loads((BASE / 'decision-playbook.json').read_text(encoding='utf8'))
+path_data = json.loads((BASE / 'engineer-path.json').read_text(encoding='utf8'))
+catalog = json.loads((BASE / 'catalog.json').read_text(encoding='utf8'))
 
 assert len(data['sources']) == 8
 assert set(guides) == {f'phase-{i:02d}' for i in range(20)}
@@ -59,6 +61,21 @@ for section in playbook['sections']:
     assert all(section.get(key) for key in ('title', 'explanation', 'worked', 'exercise', 'headers', 'rows', 'subtopics'))
     assert all(len(row) == len(section['headers']) for row in section['rows'])
     assert all(len(topic) == 2 and all(topic) for topic in section['subtopics'])
+assert len(path_data['stages']) >= 10
+assert len({stage['id'] for stage in path_data['stages']}) == len(path_data['stages'])
+assert {number for stage in path_data['stages'] for number in stage['phases']} == set(range(20))
+lesson_lookup = {(entry['group'][6:], entry['id'].split('/')[2]): entry
+                 for entry in catalog['entries'] if entry['kind'] == 'phase'}
+assert len(lesson_lookup) == catalog['counts']['phase']
+for stage in path_data['stages']:
+    assert stage['kind'] in ('core', 'specialization')
+    assert all(stage.get(field) for field in ('title', 'why', 'explanation', 'headers', 'rows',
+                                             'lessonKeys', 'build', 'pass', 'failure', 'source'))
+    assert all(len(row) == len(stage['headers']) for row in stage['rows'])
+    assert stage['source']['url'].startswith('https://')
+    for key in stage['lessonKeys']:
+        phase, slug = key.split('/', 1)
+        assert (phase, slug) in lesson_lookup, key
 assert data['counts']['inlineFiles'] == sum(f['inline'] for f in data['files'])
 assert set(Counter(t['phase'] for t in data['topics'])) == set(range(20))
-print('AI companion verified:', data['counts'], '20 phase guides, 18 inference topics, 7 decision areas')
+print('AI companion verified:', data['counts'], '20 phase guides, 18 inference topics, 7 decision areas,', len(path_data['stages']), 'engineer stages')

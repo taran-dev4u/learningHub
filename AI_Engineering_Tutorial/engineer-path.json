@@ -1,0 +1,162 @@
+{
+  "title": "AI Engineer: from foundations to production",
+  "intro": "Use this focused path to turn the full 20-phase curriculum into working engineering skill. Each stage links to complete lessons already on this site, gives a practical build, and states what evidence proves you can move on. The full syllabus remains available for deeper study. Core stages form the main path; specializations are chosen for the product you want to build.",
+  "stages": [
+    {
+      "id": "workbench", "kind": "core", "title": "1. Build a reproducible workbench", "phases": [0],
+      "why": "A model result is useful only when another person can reproduce it. Treat the environment, dataset version, prompt, model identifier, random seed, and evaluation command as part of the experiment, not as notes you might reconstruct later.",
+      "explanation": "Start with Python, a virtual environment, Git, and a small command-line application. Keep secrets outside source control. Separate configuration from code, validate required settings at startup, and make one command run tests. Containerize only after the local workflow is understandable. A reproducible baseline lets you distinguish a model improvement from a changed dependency or dataset.",
+      "headers": ["Decision", "Practical default", "Evidence to record"],
+      "rows": [["Dependency management", "Pin direct dependencies and record the interpreter version", "A clean checkout installs and runs on a second machine"], ["Experiment identity", "Version data, code, prompt and model together", "A result can be traced to an exact input and configuration"], ["Secrets", "Use environment injection and least-privilege keys", "No key appears in commits, logs or exported notebooks"]],
+      "lessonKeys": ["00/13-python-for-ai-engineering", "00/06-python-environments", "00/02-git-and-collaboration", "00/04-apis-and-keys", "00/07-docker-for-ai"],
+      "build": "Create a tiny text-classification repository with a CLI, a pinned environment, a ten-case fixture, a repeatable test command and a README that a stranger can follow from a clean checkout.",
+      "pass": ["A clean checkout runs the same fixture without editing source code", "A failed configuration produces a useful error without exposing a secret", "The result records data, code, prompt and model versions"],
+      "failure": "A notebook that runs only in your current session is an experiment sketch, not a reproducible system.",
+      "source": {"label": "Google ML Crash Course", "url": "https://developers.google.com/machine-learning/crash-course/"}
+    },
+    {
+      "id": "math-ml", "kind": "core", "title": "2. Reason about data and measurement", "phases": [1, 2],
+      "why": "Many apparent model gains are measurement errors: leakage, a random split that hides a time shift, or a single average that conceals failure on the users who matter. Learn enough math to explain the metric and enough statistics to distrust it responsibly.",
+      "explanation": "Derivatives explain how parameters change; probability expresses uncertainty; linear algebra describes data and model transformations. Apply those tools to a baseline model before using a larger network. Choose a split that represents deployment: time-based for future prediction, group-based for repeated people or accounts, and a truly held-out set for final claims. Inspect class balance, missingness and subgroup performance. If you tune against the test set, it stops being a test set.",
+      "headers": ["Question", "First check", "Failure revealed"],
+      "rows": [["Will the same entity appear twice?", "Group the split by entity", "Identity leakage"], ["Will predictions be made in the future?", "Split by time and replay availability", "Future-data leakage"], ["Which error is expensive?", "Choose precision, recall, calibration or cost-weighted utility", "A high aggregate score that misses the real objective"]],
+      "lessonKeys": ["01/04-calculus-for-ml", "01/06-probability-and-distributions", "01/15-statistics-for-ml", "02/09-model-evaluation", "02/19-ml-system-design", "02/20-model-monitoring-and-drift"],
+      "build": "Train a simple classifier, then compare a naive random split with a group or time split. Keep the same model and show how the measured result changes. Write down the deployment decision and the metric before tuning.",
+      "pass": ["The split prevents the same entity or future information crossing the boundary", "A baseline and at least two meaningful error slices are reported", "The selected threshold follows a stated cost of false positives and false negatives"],
+      "failure": "Do not declare success from a single accuracy number or a test set reused for every design choice.",
+      "source": {"label": "Google: production ML systems", "url": "https://developers.google.com/machine-learning/crash-course/production-ml-systems"}
+    },
+    {
+      "id": "model-internals", "kind": "core", "title": "3. Understand learning and transformers", "phases": [3, 5, 7],
+      "why": "An engineer does not need to train a frontier model to debug one. Tokenization, attention, losses and gradients explain context limits, embedding behavior, latency, and why a training run diverges.",
+      "explanation": "Implement a tiny network and inspect a forward pass, loss and gradient. Then trace text from bytes to tokens, token IDs, embeddings, attention scores, residual blocks and output logits. For attention, know the tensor shapes and the quadratic score-matrix cost. For a decoder-only model, distinguish prefill from token-by-token decode. Use a profiler or simple counters to show where memory and compute go rather than treating the transformer as an opaque API.",
+      "headers": ["Symptom", "Mechanism to inspect", "Useful experiment"],
+      "rows": [["Training loss explodes", "Gradient scale, initialization and learning rate", "Record norms and overfit one small batch"], ["Long prompts become slow", "Attention work, prefill and KV cache", "Measure latency against input and output length separately"], ["Text retrieval misses exact names", "Tokenization and semantic embedding limits", "Compare keyword and dense retrieval on the same queries"]],
+      "lessonKeys": ["03/03-backpropagation", "03/11-intro-to-pytorch", "05/02-bag-of-words-tfidf", "05/19-subword-tokenization", "07/02-self-attention-from-scratch", "07/05-full-transformer"],
+      "build": "Implement self-attention on a tiny matrix, verify shapes and a masked token, then train a small classifier and inspect one wrong prediction back to its tokens and gradient trace.",
+      "pass": ["You can explain every tensor shape through the attention block", "A unit check catches a missing causal mask", "You can predict how doubling prompt length changes the work in the simple attention implementation"],
+      "failure": "Do not use a framework's success on one example as proof that masking, padding or gradients are correct.",
+      "source": {"label": "Hugging Face LLM Course", "url": "https://huggingface.co/learn/llm-course/en/chapter1/1"}
+    },
+    {
+      "id": "adaptation", "kind": "core", "title": "4. Choose prompting, retrieval or adaptation", "phases": [10],
+      "why": "Training changes weights; retrieval changes available evidence; prompting changes instructions and examples. Confusing these mechanisms wastes money and often makes a system harder to update.",
+      "explanation": "First create a strong prompt and a held-out evaluation set. If errors arise from missing or changing facts, improve retrieval. If the behavior or output style is consistently wrong despite good context, consider supervised fine-tuning or a small adapter. Track training examples and data provenance. Compare the adapted model with the baseline on unseen slices, including refusals, formatting and regressions. Quantization and serving choices should be evaluated after quality is measured, not assumed free.",
+      "headers": ["Failure pattern", "Likely first move", "What would change the decision"],
+      "rows": [["Current facts are absent", "Retrieval with citations", "Evidence is available but the model still cannot use it"], ["Output format is inconsistent", "Schema-constrained output and validation", "Repeated failures survive a clear contract"], ["Specialized behavior is stable and repeated", "Curated examples, then parameter-efficient tuning", "A simpler prompt meets the same held-out target"]],
+      "lessonKeys": ["10/01-tokenizers", "10/03-data-pipelines", "10/06-instruction-tuning-sft", "10/08-dpo", "11/08-fine-tuning-lora"],
+      "build": "For one narrow task, compare a baseline prompt, a retrieved-context version and a small adaptation plan. Keep the same held-out examples and record quality, latency and cost per successful task.",
+      "pass": ["The chosen technique addresses an observed failure rather than a trend", "Training and test examples cannot overlap by source or near duplicate", "A regression gate blocks release if a critical slice worsens"],
+      "failure": "Fine-tuning a model to memorize frequently changing documents makes freshness and correction harder.",
+      "source": {"label": "Hugging Face: datasets and fine-tuning", "url": "https://huggingface.co/learn/llm-course/en/chapter5/1"}
+    },
+    {
+      "id": "llm-contract", "kind": "core", "title": "5. Build a reliable LLM application contract", "phases": [11, 13],
+      "why": "A production LLM call is a component in a larger system. The API needs explicit inputs, outputs, timeouts, retries, limits and failure behavior so callers can rely on it.",
+      "explanation": "Define a small task contract: accepted input, required output fields, allowed tools, latency budget and data retention. Use schema validation after generation; a valid JSON string is still not necessarily a valid business action. Record the model and prompt version with each result. Retry only operations that are safe to repeat, and use an idempotency key for side effects. Keep provider-specific request objects behind an adapter so model changes do not ripple through the product.",
+      "headers": ["Boundary", "Enforcement", "Test"],
+      "rows": [["Output structure", "Parse and validate fields in code", "Missing, extra and wrong-type fields fail"], ["External action", "Allowlisted tool and server-side authorization", "Model text alone cannot grant permission"], ["Transient failure", "Bounded retry, timeout and idempotency", "The same request does not execute an action twice"]],
+      "lessonKeys": ["11/01-prompt-engineering", "11/03-structured-outputs", "11/09-function-calling", "13/02-function-calling-deep-dive", "13/05-tool-schema-design", "13/07-building-an-mcp-server"],
+      "build": "Implement a typed support-ticket classifier with a model adapter, a strict result schema, a timeout, a retry budget and an audit record. Add malformed outputs and duplicate requests to the test fixtures.",
+      "pass": ["Invalid model output is rejected before downstream use", "A duplicate call cannot repeat a side effect", "Changing the model adapter does not change the application contract"],
+      "failure": "A prompt asking the model to behave safely is useful context, but it is not an authorization or validation layer.",
+      "source": {"label": "OpenAI: production best practices", "url": "https://developers.openai.com/api/docs/guides/production-best-practices"}
+    },
+    {
+      "id": "retrieval", "kind": "core", "title": "6. Build retrieval around evidence", "phases": [5, 11],
+      "why": "A fluent answer can still be wrong. Retrieval gives the model inspectable evidence, but only if ingestion, permissions, ranking and citations are designed as one pipeline.",
+      "explanation": "Start with documents you can version and inspect. Preserve title, section, timestamp, owner and access label on each chunk. Establish a keyword baseline before adding dense vectors. Measure whether the correct passage appears in top-k results before evaluating the final answer. Add hybrid retrieval and reranking only when measured misses justify them. Filter by the caller's permissions before ranking or generation; a citation is useful only when it points to a passage the caller is allowed to see and the answer actually follows it.",
+      "headers": ["Stage", "Metric", "Common failure"],
+      "rows": [["Ingestion", "Parsing coverage and version freshness", "Tables or headings disappear from chunks"], ["Retrieval", "Recall@k and per-query failure review", "Exact identifiers are lost by semantic search"], ["Answer", "Supported-claim rate and abstention quality", "A citation is attached to an unsupported claim"]],
+      "lessonKeys": ["05/14-information-retrieval-search", "05/23-chunking-strategies-rag", "11/04-embeddings", "11/06-rag", "11/07-advanced-rag", "19/68-rag-eval-precision-recall"],
+      "build": "Index a small versioned document set and compare keyword, dense and hybrid retrieval on at least twenty answerable, unanswerable and access-restricted queries. Require passage-level citations and an explicit abstention path.",
+      "pass": ["Top-k retrieval misses are separated from generation failures", "A restricted passage never reaches an unauthorized answer", "Every factual answer cites supporting text; unanswerable queries abstain"],
+      "failure": "Increasing context length cannot repair a retriever that never found the right document.",
+      "source": {"label": "vLLM RAG application examples", "url": "https://docs.vllm.ai/en/latest/"}
+    },
+    {
+      "id": "evaluation", "kind": "core", "title": "7. Make evaluation the release gate", "phases": [2, 11, 17],
+      "why": "AI systems change when prompts, models, tools, documents and users change. A regression suite makes those changes reviewable instead of relying on a few successful demos.",
+      "explanation": "Collect representative tasks, edge cases and known failures with an owner and expected outcome. Use deterministic checks when possible: schema validity, exact IDs, access denial and executable code tests. Use human review for ambiguous quality; calibrate model judges against a human-labeled subset before trusting them. Report scores by task and user segment, not only an average. Compare candidates against the current version with confidence intervals or repeated samples when outputs are stochastic. Connect offline evals to production feedback while keeping privacy and retention rules explicit.",
+      "headers": ["Layer", "Recommended check", "Release signal"],
+      "rows": [["Contract", "Schema, tool arguments, safety invariants", "Zero critical violations"], ["Task quality", "Golden cases and slice-level review", "Candidate meets target without key regressions"], ["Operations", "Latency, error rate and cost per successful task", "Budget and service target hold under load"]],
+      "lessonKeys": ["02/09-model-evaluation", "11/10-evaluation", "05/27-llm-evaluation-frameworks", "17/21-ab-testing-llm-features", "19/41-eval-pipeline"],
+      "build": "Create a versioned evaluation set for the retrieval application. Add task correctness, unsupported claims, forbidden access, schema validity, latency and cost. Record a baseline, then make one change and write a go/no-go decision.",
+      "pass": ["Each test case states what success means and why it is included", "At least one negative and one adversarial case are present", "A failing critical case blocks promotion even if the mean score rises"],
+      "failure": "An LLM judge that agrees with itself is not evidence it agrees with users or domain experts.",
+      "source": {"label": "OpenAI: evaluation best practices", "url": "https://developers.openai.com/api/docs/guides/evaluation-best-practices"}
+    },
+    {
+      "id": "agents", "kind": "core", "title": "8. Add tools and agents only where control is needed", "phases": [13, 14],
+      "why": "A fixed workflow is easier to inspect when the steps are known. An agent earns its complexity when it must choose actions from changing observations and can be bounded by explicit authority and verification.",
+      "explanation": "Begin with a deterministic workflow for routing, retrieval and approval. Give each tool a narrow schema, a clear description, a timeout, and a server-side permission check. If the system must choose its next step, add an agent loop with a step limit, cost budget and stop condition. Persist enough state for restart, and treat every tool result as data that may contain hostile instructions. Evaluate completed tasks, unintended side effects and recovery from tool failures; do not count plausible reasoning traces as task success.",
+      "headers": ["Situation", "Choose", "Why"],
+      "rows": [["Steps known in advance", "Code-driven workflow", "Predictable, testable control flow"], ["Variable search within bounded tools", "Single agent with limits", "Model selects among safe next actions"], ["Independent subtasks with clear contracts", "Parallel workers or supervisor", "Concurrency pays only if merging and review are explicit"]],
+      "lessonKeys": ["13/05-tool-schema-design", "13/15-mcp-security-tool-poisoning", "14/01-the-agent-loop", "14/12-anthropic-workflow-patterns", "14/13-langgraph-stateful-graphs", "14/30-eval-driven-agent-development"],
+      "build": "Create a research assistant that can search an approved document set, draft a cited answer and request human approval before an external action. Test a timeout, malformed tool result and hostile instruction inside a retrieved page.",
+      "pass": ["The agent stops at a defined step and cost limit", "Untrusted tool text cannot change authorization", "A failed or repeated tool call does not duplicate an action"],
+      "failure": "Adding a second agent without a distinct responsibility and merge contract usually adds latency and failure paths.",
+      "source": {"label": "Anthropic: building effective agents", "url": "https://www.anthropic.com/research/building-effective-agents"}
+    },
+    {
+      "id": "safety", "kind": "core", "title": "9. Engineer security, privacy and bounded autonomy", "phases": [15, 16, 18],
+      "why": "The model can encounter attacker-controlled text in user input, documents and tool results. Safety comes from system boundaries and a tested response to failure, not from one prompt line.",
+      "explanation": "Draw a trust diagram: user, model, retriever, tool, external service and stored memory. For each edge, define what data crosses, what authority the recipient has and how access is checked. Limit tool credentials and filesystem or network scope. Require explicit approval for high-consequence writes. Add action budgets, checkpoints, an emergency stop and rollback where side effects are possible. Test both successful attacks and false refusals: a system that blocks every legitimate request also fails its purpose. Treat retention, PII handling and audit access as part of the design.",
+      "headers": ["Threat", "Control", "Test case"],
+      "rows": [["Indirect prompt injection", "Keep retrieved text as untrusted data; enforce tool policy in code", "A document asks for secrets or a new instruction"], ["Excessive agency", "Narrow permissions, approval and action budget", "A tool attempts an out-of-scope write"], ["Sensitive data leak", "Minimize collection, redact logs, restrict retrieval", "Cross-user document or secret appears in context"]],
+      "lessonKeys": ["18/15-indirect-prompt-injection", "15/13-cost-governors", "15/15-propose-then-commit", "15/16-checkpoints-rollback", "16/23-failure-modes-mast-groupthink", "17/25-security-secrets-audit"],
+      "build": "Threat-model the agent from stage 8 and add a malicious document, unauthorized tool request, repeated action and cross-user retrieval fixture. Record the expected deny or approval outcome for each.",
+      "pass": ["Permissions are checked by trusted code before every side effect", "A prompt-injection fixture cannot obtain a secret or action", "The system can stop and recover from a partially completed task"],
+      "failure": "A refusal prompt does not replace access control, output validation or a human approval gate.",
+      "source": {"label": "OWASP: prompt injection risk", "url": "https://genai.owasp.org/llmrisk/llm01-prompt-injection/"}
+    },
+    {
+      "id": "operations", "kind": "core", "title": "10. Serve, observe and operate the system", "phases": [17],
+      "why": "A successful local demo says little about queueing, tail latency, saturation, retries, cost or incidents. Production skill is the ability to preserve task quality while managing those constraints.",
+      "explanation": "Model the workload before choosing a serving stack: request rate, prompt length, output length, concurrency, latency target and acceptable cost. Separate time to first token from decode time. Compare managed APIs with self-hosting using total cost and operational ownership, not token price alone. Trace an application request through retrieval, model call, tools and final response; log versions and error categories without storing unnecessary sensitive text. Use load tests, canary release, rollback criteria and an incident runbook. Optimize only after measuring the bottleneck.",
+      "headers": ["Metric", "What it reveals", "Action when it fails"],
+      "rows": [["TTFT and p99 end-to-end", "Queueing and prefill cost", "Inspect prompt size, batching and saturation"], ["Tokens and cost per successful task", "Waste hidden by per-token pricing", "Route simpler tasks, cache carefully, shorten context"], ["Failure and rollback rate", "Operational risk of changes", "Canary, diagnose by version and revert"]],
+      "lessonKeys": ["17/04-vllm-serving-internals", "17/08-inference-metrics-goodput", "17/13-llm-observability", "17/20-shadow-canary-progressive", "17/22-load-testing-llm-apis", "17/27-finops-llms"],
+      "build": "Load-test the retrieval or agent application with short and long prompts. Produce p50/p95/p99 latency, time to first token, error rate, cost per successful task and a rollback rule. Simulate one provider failure.",
+      "pass": ["The bottleneck is supported by a trace or profile", "A canary rule prevents a worse candidate from broad release", "The runbook identifies an owner, alert, rollback and customer impact check"],
+      "failure": "Average latency and token price alone conceal tail behavior and expensive unsuccessful tasks.",
+      "source": {"label": "vLLM serving and monitoring docs", "url": "https://docs.vllm.ai/en/latest/"}
+    },
+    {
+      "id": "capstone", "kind": "core", "title": "11. Ship a defensible capstone", "phases": [19],
+      "why": "A portfolio claim should be backed by a running system, repeatable evaluation, documented trade-offs and a failure story. The capstone joins the previous stages into one reviewable engineering result.",
+      "explanation": "Choose a real workflow with a named user and measurable outcome. Build a baseline before adding retrieval, agents or fine-tuning. Keep a versioned data sample, architecture diagram, API contract, evaluation set, security boundary, traces, latency and cost report. Demonstrate one failure and how you diagnosed and fixed it. Explain what you deliberately left out and what evidence would justify adding it. A polished UI is useful, but the engineering evidence is the central artifact.",
+      "headers": ["Artifact", "Minimum evidence", "Reviewer question it answers"],
+      "rows": [["Architecture and contract", "Data flow, trust boundaries and schemas", "What can this system do and where can it fail?"], ["Evaluation report", "Baseline, slices, regressions and release threshold", "Does the new version improve the user task?"], ["Operations report", "Load, latency, cost, alerts and rollback", "Can somebody own this after the demo?"]],
+      "lessonKeys": ["19/08-production-rag-chatbot", "19/11-llm-observability-dashboard", "19/27-eval-harness-fixture-tasks", "19/68-rag-eval-precision-recall", "19/69-end-to-end-rag-system"],
+      "build": "Ship one end-to-end application: a grounded support assistant, a bounded research agent, a coding assistant or a document QA tool. Include a README with setup, threat model, test data, evaluation command, metrics table, known failures and a short demo.",
+      "pass": ["A reviewer can reproduce the baseline and candidate evaluation", "An unauthorized or unanswerable request has a defined safe outcome", "A trace and runbook explain a production failure and recovery"],
+      "failure": "Do not present a list of frameworks, screenshots or an unmeasured demo as proof of system quality.",
+      "source": {"label": "OpenAI: evaluation best practices", "url": "https://developers.openai.com/api/docs/guides/evaluation-best-practices"}
+    },
+    {
+      "id": "multimodal", "kind": "specialization", "title": "Specialize: vision, documents and voice", "phases": [4, 6, 12],
+      "why": "Images, documents and audio are not simply long text prompts. They have sampling, alignment, temporal and modality-specific evaluation problems.",
+      "explanation": "For documents, compare OCR text with vision-native reading on tables, diagrams and scanned pages. Preserve page and region references so an answer can point to evidence. For voice, separate capture, speech recognition, model reasoning and speech output; measure end-to-end latency and interruption behavior, not just model response time. For images and video, test the task on realistic resolution, occlusion and temporal slices. Choose this branch when your application actually handles these modalities.",
+      "headers": ["Use case", "First baseline", "Special risk"],
+      "rows": [["Document QA", "OCR plus text retrieval", "Layout or table relationships disappear"], ["Voice assistant", "ASR → LLM → TTS pipeline", "Turn-taking and perceived latency fail"], ["Visual search", "Image embedding with labeled examples", "A good global score hides important scene slices"]],
+      "lessonKeys": ["04/19-ocr-document-understanding", "04/25-vision-language-models", "06/04-speech-recognition-asr", "06/12-voice-assistant-pipeline", "12/22-document-diagram-understanding", "12/24-multimodal-rag-cross-modal"],
+      "build": "Extend the capstone with one real modality. Create a small labeled fixture containing a table, a low-quality scan or a noisy speech clip, and compare the new pipeline with a text-only baseline.",
+      "pass": ["The modality-specific failure slices are reported separately", "An answer points to the right page, region or audio segment", "Latency includes capture and rendering, not only the model call"],
+      "failure": "Do not infer visual or audio quality from a text-only benchmark.",
+      "source": {"label": "Hugging Face LLM Course", "url": "https://huggingface.co/learn/llm-course/en/chapter1/1"}
+    },
+    {
+      "id": "generative-rl", "kind": "specialization", "title": "Specialize: generative media and reinforcement learning", "phases": [8, 9],
+      "why": "Image generation and reinforcement learning are useful specializations, but they solve different problems from ordinary LLM application engineering. Study them when the product or research question requires them.",
+      "explanation": "For generative media, compare latent diffusion, autoregressive generation and conditioning by what they model and how they are evaluated. A sample grid is not enough: report prompt adherence, diversity, failure slices, provenance and human review. For reinforcement learning, define states, actions, rewards, transitions and a baseline policy. Check whether feedback is immediate or delayed and whether a simulator is faithful enough to train safely. Distinguish preference optimization for language models from control policies in an environment.",
+      "headers": ["Task", "Modeling choice", "Evaluation evidence"],
+      "rows": [["Conditional image generation", "Conditioning plus a generative model", "Human quality and prompt adherence by slice"], ["Sequential decision task", "MDP and baseline policy", "Return, variance and unsafe actions"], ["Language preference optimization", "Labeled preferences and held-out comparisons", "Win rate plus regression and safety checks"]],
+      "lessonKeys": ["08/03-gans-generator-discriminator", "08/06-diffusion-ddpm-from-scratch", "08/14-evaluation-fid-clip-score", "09/01-mdps-states-actions-rewards", "09/08-ppo", "09/09-reward-modeling-rlhf"],
+      "build": "Pick one branch. For media, compare two generation methods on a fixed prompt set and document failed outputs. For RL, implement a small environment and compare a learned policy with a simple baseline over multiple seeds.",
+      "pass": ["The objective and baseline are defined before training", "Results include variance or human-review disagreement", "A failure analysis explains where the chosen method breaks"],
+      "failure": "A single striking sample or one lucky reward curve is not a trustworthy evaluation.",
+      "source": {"label": "Google ML Crash Course", "url": "https://developers.google.com/machine-learning/crash-course/"}
+    }
+  ]
+}
