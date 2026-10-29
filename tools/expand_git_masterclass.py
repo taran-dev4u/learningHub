@@ -34,19 +34,19 @@ GIT_SUBSECTIONS = [
         "concepts": [
             ("5.1.1", "Git Object Model: Blobs, Trees, Commits & Annotated Tags in .git/objects",
              "Content-addressable key-value store, SHA-1/SHA-256 cryptographic hashing, immutable zlib blob compression, tree directory snapshots, and commit DAG parent pointers.",
-             "https://www.youtube.com/watch?v=fctCbTWsPvg", "00:00", "Computerphile", "ConvertedDocs/Git/beej_guide_to_git.html#the-git-log-and-head"),
+             "https://www.youtube.com/watch?v=fctCbTWsPvg", "00:00", "Computerphile", "Git_Tutorial/index.html#the-git-log-and-head"),
             ("5.1.2", "The Three Trees: Working Directory, Staging Area (Index) & Git Repository",
              "The tripartite architecture: untracked and modified files on disk, binary index staging area (.git/index), and committed object snapshots in HEAD.",
-             "https://www.youtube.com/watch?v=HVsySz-h9r4", "00:00", "freeCodeCamp.org", "ConvertedDocs/Git/beej_guide_to_git.html#git-basics"),
+             "https://www.youtube.com/watch?v=HVsySz-h9r4", "00:00", "freeCodeCamp.org", "Git_Tutorial/index.html#git-basics"),
             ("5.1.3", "Git Diff Internals: Working vs Staging vs Commit Comparisons",
              "Computing unified diffs with Myers and Histogram algorithms; comparing working tree to stage (git diff), stage to HEAD (git diff --staged), and branch comparisons (git diff A..B).",
-             "https://www.youtube.com/watch?v=usS9A_E_260", "00:00", "Corey Schafer", "ConvertedDocs/Git/beej_guide_to_git.html#diff"),
+             "https://www.youtube.com/watch?v=usS9A_E_260", "00:00", "Corey Schafer", "Git_Tutorial/index.html#diff"),
             ("5.1.4", "Atomic Commits, git add -p Patch Staging & Commit Hygiene",
              "Single-responsibility commits, interactive hunk-by-hunk staging with git add -p and s (split), and crafting conventional commit messages (feat, fix, chore, refactor).",
-             "https://www.youtube.com/watch?v=sPvg_9gQ9jU", "00:00", "Fireship", "ConvertedDocs/Git/beej_guide_to_git.html#patch-mode-applying-partial-changes"),
+             "https://www.youtube.com/watch?v=sPvg_9gQ9jU", "00:00", "Fireship", "Git_Tutorial/index.html#patch-mode-applying-partial-changes"),
             ("5.1.5", "File States, Short Status Flags & .gitignore Pattern Syntax",
              "Untracked, unmodified, modified, and staged lifecycle; rapid diagnostics with git status -s; .gitignore globbing rules, negation patterns (!), and cleaning untracked files (git clean -fd).",
-             "https://www.youtube.com/watch?v=8JJ101D3KnE", "00:00", "Traversy Media", "ConvertedDocs/Git/beej_guide_to_git.html#file-states")
+             "https://www.youtube.com/watch?v=8JJ101D3KnE", "00:00", "Traversy Media", "Git_Tutorial/index.html#file-states")
         ]
     },
     {
@@ -54,19 +54,19 @@ GIT_SUBSECTIONS = [
         "concepts": [
             ("5.2.1", "Branching Workflows: Trunk-Based Development vs GitFlow",
              "Fast-moving short-lived feature branches in trunk-based CI/CD vs release-branching in GitFlow; branch pointers as 41-byte ref files in .git/refs/heads/.",
-             "https://www.youtube.com/watch?v=e2IbNHi4uCI", "00:00", "freeCodeCamp.org", "ConvertedDocs/Git/beej_guide_to_git.html#branches-and-fast-forward-merges"),
+             "https://www.youtube.com/watch?v=e2IbNHi4uCI", "00:00", "freeCodeCamp.org", "Git_Tutorial/index.html#branches-and-fast-forward-merges"),
             ("5.2.2", "Merge Mechanics: Fast-Forward Merges vs True 3-Way Merge Commits",
              "Fast-forward pointer updates without new commits, 3-way merges identifying common merge bases, --no-ff merge commits, and recursive vs ort merge strategies.",
-             "https://www.youtube.com/watch?v=3a2x1kA_G7U", "00:00", "The Net Ninja", "ConvertedDocs/Git/beej_guide_to_git.html#merge"),
+             "https://www.youtube.com/watch?v=3a2x1kA_G7U", "00:00", "The Net Ninja", "Git_Tutorial/index.html#merge"),
             ("5.2.3", "Merge Conflict Anatomy, Conflict Markers & Resolution Workflows",
              "Dissecting conflict markers (<<<<<<< HEAD, =======, >>>>>>>), resolving overlapping line changes, using git status during conflict states, and git merge --abort.",
-             "https://www.youtube.com/watch?v=JtIX3HJKwfo", "00:00", "freeCodeCamp.org", "ConvertedDocs/Git/beej_guide_to_git.html#merge"),
+             "https://www.youtube.com/watch?v=JtIX3HJKwfo", "00:00", "freeCodeCamp.org", "Git_Tutorial/index.html#merge"),
             ("5.2.4", "Interactive Rebasing (git rebase -i): Pick, Squash, Reword & Fixup",
              "Rewriting local commit histories, squashing fix commits, rewording commit messages, dropping unwanted commits, and handling rebase pauses (git rebase --continue / --abort).",
-             "https://www.youtube.com/watch?v=Tyd3zp_6b00", "00:00", "Fireship", "ConvertedDocs/Git/beej_guide_to_git.html#rebase"),
+             "https://www.youtube.com/watch?v=Tyd3zp_6b00", "00:00", "Fireship", "Git_Tutorial/index.html#rebase"),
             ("5.2.5", "Merge vs Rebase Trade-Offs & Safe Force Pushing (--force-with-lease)",
              "Linear commit history vs preserved historical context; golden rule of rebasing on public branches; preventing collaborator overwrites with git push --force-with-lease.",
-             "https://www.youtube.com/watch?v=0chZFIZLR_0", "00:00", "freeCodeCamp.org", "ConvertedDocs/Git/beej_guide_to_git.html#rebase")
+             "https://www.youtube.com/watch?v=0chZFIZLR_0", "00:00", "freeCodeCamp.org", "Git_Tutorial/index.html#rebase")
         ]
     },
     {
@@ -74,19 +74,19 @@ GIT_SUBSECTIONS = [
         "concepts": [
             ("5.3.1", "Git Reflog: Recovering Lost Commits, Deleted Branches & Broken Rebases",
              "The local reference log tracking every HEAD movement (.git/logs/HEAD), finding orphaned commit hashes, and restoring deleted branches using git branch <name> HEAD@{n}.",
-             "https://www.youtube.com/watch?v=339jxX7b9oY", "00:00", "Fireship", "ConvertedDocs/Git/beej_guide_to_git.html#the-reference-log-reflog"),
+             "https://www.youtube.com/watch?v=339jxX7b9oY", "00:00", "Fireship", "Git_Tutorial/index.html#the-reference-log-reflog"),
             ("5.3.2", "Git Reset Modes: --soft, --mixed & --hard Demystified",
              "Moving HEAD pointer: --soft (keeps changes staged in index), --mixed (resets index, keeps changes in working tree), and --hard (discards both index and working tree modifications).",
-             "https://www.youtube.com/watch?v=Xh0Y9Z0l75g", "00:00", "Corey Schafer", "ConvertedDocs/Git/beej_guide_to_git.html#reset"),
+             "https://www.youtube.com/watch?v=Xh0Y9Z0l75g", "00:00", "Corey Schafer", "Git_Tutorial/index.html#reset"),
             ("5.3.3", "Git Revert: Safe Public Undos via Inverse Commits",
              "Generating new commits that invert previous commit diffs without rewriting history; reverting single commits, merge commits with -m 1, and ranges of commits.",
-             "https://www.youtube.com/watch?v=mJ-Te3kG1iU", "00:00", "The Net Ninja", "ConvertedDocs/Git/beej_guide_to_git.html#revert"),
+             "https://www.youtube.com/watch?v=mJ-Te3kG1iU", "00:00", "The Net Ninja", "Git_Tutorial/index.html#revert"),
             ("5.3.4", "Modern Git Ergonomics: git restore & git switch vs Overloaded Checkout",
              "Disentangling overloaded git checkout: using git switch for branch navigation and creation (-c), and git restore for discarding uncommitted changes (--staged vs working copy).",
-             "https://www.youtube.com/watch?v=sPvg_9gQ9jU", "00:00", "Fireship", "ConvertedDocs/Git/beej_guide_to_git.html#file-states"),
+             "https://www.youtube.com/watch?v=sPvg_9gQ9jU", "00:00", "Fireship", "Git_Tutorial/index.html#file-states"),
             ("5.3.5", "Git Bisect: Binary Searching History to Pinpoint Regressions",
              "Identifying the exact commit introducing a bug in O(log N) steps; git bisect start, git bisect bad, git bisect good, and automated binary searching with git bisect run <script>.",
-             "https://www.youtube.com/watch?v=P21Vj0FjIos", "00:00", "Fireship", "ConvertedDocs/Git/beej_guide_to_git.html#appendix-other-references")
+             "https://www.youtube.com/watch?v=P21Vj0FjIos", "00:00", "Fireship", "Git_Tutorial/index.html#appendix-other-references")
         ]
     },
     {
@@ -94,19 +94,19 @@ GIT_SUBSECTIONS = [
         "concepts": [
             ("5.4.1", "Git Stash Mechanics: Stashing Staged, Untracked & Branching Stashes",
              "Temporarily shelving uncommitted work with git stash push -m 'msg', applying vs popping, inspecting with git stash show -p, stashing untracked files (-u), and git stash branch.",
-             "https://www.youtube.com/watch?v=KLEDKgMmbBI", "00:00", "Corey Schafer", "ConvertedDocs/Git/beej_guide_to_git.html#stash"),
+             "https://www.youtube.com/watch?v=KLEDKgMmbBI", "00:00", "Corey Schafer", "Git_Tutorial/index.html#stash"),
             ("5.4.2", "Git Cherry-Pick & Git Worktrees for Isolated Multi-Branch Working",
              "Splicing specific commits across divergent branches; utilizing git worktree add to check out and build multiple branches simultaneously in linked separate directories.",
-             "https://www.youtube.com/watch?v=2uEqYw-N8u8", "00:00", "Fireship", "ConvertedDocs/Git/beej_guide_to_git.html#worktrees"),
+             "https://www.youtube.com/watch?v=2uEqYw-N8u8", "00:00", "Fireship", "Git_Tutorial/index.html#worktrees"),
             ("5.4.3", "Git Submodules & Subtrees for Multi-Repository Dependency Management",
              "Embedding foreign Git repositories as submodules at pinned commit hashes; .gitmodules configuration, git submodule update --init --recursive, and git subtree comparisons.",
-             "https://www.youtube.com/watch?v=gSlXo2iLFig", "00:00", "freeCodeCamp.org", "ConvertedDocs/Git/beej_guide_to_git.html#submodules"),
+             "https://www.youtube.com/watch?v=gSlXo2iLFig", "00:00", "freeCodeCamp.org", "Git_Tutorial/index.html#submodules"),
             ("5.4.4", "Configuration Architecture, Global vs Local Scopes & Power Aliases",
              "Hierarchical configuration files (system, global ~/.gitconfig, local .git/config); setting core editors, credential helpers, line endings, and custom productivity aliases.",
-             "https://www.youtube.com/watch?v=hwP7mwU4ycQ", "00:00", "Corey Schafer", "ConvertedDocs/Git/beej_guide_to_git.html#configuration"),
+             "https://www.youtube.com/watch?v=hwP7mwU4ycQ", "00:00", "Corey Schafer", "Git_Tutorial/index.html#configuration"),
             ("5.4.5", "Git Blame, Commit Attribution & Ignoring Whitespace Noise",
              "Line-by-line file attribution with git blame -L, tracing origin commits, ignoring whitespace and formatting churn with .git-blame-ignore-revs, and git log -S pickaxe search.",
-             "https://www.youtube.com/watch?v=9Z0l75g-1aU", "00:00", "The Net Ninja", "ConvertedDocs/Git/beej_guide_to_git.html#whos-to-blame-for-this-code")
+             "https://www.youtube.com/watch?v=9Z0l75g-1aU", "00:00", "The Net Ninja", "Git_Tutorial/index.html#whos-to-blame-for-this-code")
         ]
     },
     {
@@ -114,10 +114,10 @@ GIT_SUBSECTIONS = [
         "concepts": [
             ("5.5.1", "Remotes Architecture: Origin, Upstream & Remote-Tracking Branches",
              "Managing distributed remotes (git remote add), anatomy of origin/main remote-tracking references, git fetch vs git pull --rebase, and upstream tracking flags (-u).",
-             "https://www.youtube.com/watch?v=Gg4bLk8cGNo", "00:00", "freeCodeCamp.org", "ConvertedDocs/Git/beej_guide_to_git.html#remotes-repos-in-other-places"),
+             "https://www.youtube.com/watch?v=Gg4bLk8cGNo", "00:00", "freeCodeCamp.org", "Git_Tutorial/index.html#remotes-repos-in-other-places"),
             ("5.5.2", "Enterprise Pull Requests: Branch Protection Rules, Checks & CODEOWNERS",
              "Modern pull request lifecycle, linear commit history enforcement, mandatory status checks, review approvals, code owner routing via .github/CODEOWNERS, and auto-merge.",
-             "https://www.youtube.com/watch?v=8lGpZkjnkt4", "00:00", "freeCodeCamp.org", "ConvertedDocs/Git/beej_guide_to_git.html#github-forking-and-pull-requests"),
+             "https://www.youtube.com/watch?v=8lGpZkjnkt4", "00:00", "freeCodeCamp.org", "Git_Tutorial/index.html#github-forking-and-pull-requests"),
             ("5.5.3", "GitHub Actions Core: Workflows, Jobs, Steps, Matrix Builds & Runners",
              "Declarative YAML workflow topologies triggered on push/PR events; runner isolation, parallel matrix builds across OS/Python versions, and conditional job execution dependencies.",
              "https://www.youtube.com/watch?v=R8_veQiYBjI", "00:00", "freeCodeCamp.org", "https://docs.github.com/en/actions"),
@@ -131,16 +131,16 @@ GIT_SUBSECTIONS = [
         "concepts": [
             ("5.6.1", "Error Survival: [rejected] non-fast-forward (fetch first)",
              "Why Git rejects pushes when the remote branch has new commits; why blind force pushing is dangerous; resolving smoothly with git pull --rebase and pushing cleanly.",
-             "https://www.youtube.com/watch?v=vV_X1j_B13Y", "00:00", "Corey Schafer", "ConvertedDocs/Git/beej_guide_to_git.html#appendix-errors-and-scary-messages"),
+             "https://www.youtube.com/watch?v=vV_X1j_B13Y", "00:00", "Corey Schafer", "Git_Tutorial/index.html#appendix-errors-and-scary-messages"),
             ("5.6.2", "Error Survival: You are in 'detached HEAD' state",
              "What a detached HEAD actually means (HEAD points directly to a commit hash rather than a named branch); how to inspect code safely, save experiments to a new branch, and get back to main.",
-             "https://www.youtube.com/watch?v=2ReR1YJnNUM", "00:00", "Fireship", "ConvertedDocs/Git/beej_guide_to_git.html#the-git-log-and-head"),
+             "https://www.youtube.com/watch?v=2ReR1YJnNUM", "00:00", "Fireship", "Git_Tutorial/index.html#the-git-log-and-head"),
             ("5.6.3", "Error Survival: fatal: refusing to merge unrelated histories",
              "Diagnosing why this occurs when combining independently initialized Git repositories; utilizing --allow-unrelated-histories safely and stitching root commit histories.",
-             "https://www.youtube.com/watch?v=fctCbTWsPvg", "00:00", "Computerphile", "ConvertedDocs/Git/beej_guide_to_git.html#appendix-errors-and-scary-messages"),
+             "https://www.youtube.com/watch?v=fctCbTWsPvg", "00:00", "Computerphile", "Git_Tutorial/index.html#appendix-errors-and-scary-messages"),
             ("5.6.4", "Emergency Exit: Escaping Vim/Nano & Aborting Hazardous Git Operations",
              "Beej's essential guide to escaping the default terminal editor when trapped in a commit message (:wq, :q!, ZZ); safely aborting runaway merges (git merge --abort) and rebases (git rebase --abort).",
-             "https://www.youtube.com/watch?v=ggSyF1SVFr4", "00:00", "Fireship", "ConvertedDocs/Git/beej_guide_to_git.html#editor-get-out")
+             "https://www.youtube.com/watch?v=ggSyF1SVFr4", "00:00", "Fireship", "Git_Tutorial/index.html#editor-get-out")
         ]
     }
 ]
@@ -210,7 +210,7 @@ def update_tech_git():
       </div>
     </div>
     <div style="display:flex;gap:8px">
-      <a href="ConvertedDocs/Git/beej_guide_to_git.html" target="_blank" style="padding:6px 14px;font-size:12.5px;font-weight:700;background:var(--accent);color:#fff;border-radius:6px;text-decoration:none">Read Offline Edition ↗</a>
+      <a href="Git_Tutorial/index.html" target="_blank" style="padding:6px 14px;font-size:12.5px;font-weight:700;background:var(--accent);color:#fff;border-radius:6px;text-decoration:none">Read Offline Edition ↗</a>
       <a href="https://beej.us/guide/bggit/html/split/index.html" target="_blank" rel="noopener noreferrer" style="padding:6px 14px;font-size:12.5px;font-weight:600;background:var(--surface-2);color:var(--text);border:1px solid var(--border);border-radius:6px;text-decoration:none">Original Web ↗</a>
     </div>
   </div>"""
@@ -234,6 +234,7 @@ def update_tech_git():
       <button class="focus-btn" onclick="navigateDomain(-1)" type="button">← Prev Domain</button>
       <button class="focus-btn view-all-btn" onclick="switchDomain('all')" type="button">🌐 View All (16)</button>
       <button class="focus-btn" onclick="navigateDomain(1)" type="button">Next Domain →</button>
+      <a class="focus-btn" href="Git_Tutorial/index.html" style="background:var(--accent);color:#fff">📘 Git Tutorial (38 Ch) ↗</a>
       <a class="focus-btn masterclass-btn" href="all_tech.html#section-5">Tech Portal View ↗</a>
     </div>
   </div>
@@ -290,6 +291,7 @@ def update_all_tech():
 <button class="focus-btn" onclick="navigateDomain(-1)" type="button">← Prev Domain</button>
 <button class="focus-btn view-all-btn" onclick="switchDomain('all')" type="button">🌐 View All (16)</button>
 <button class="focus-btn" onclick="navigateDomain(1)" type="button">Next Domain →</button>
+<a class="focus-btn" href="Git_Tutorial/index.html" style="background:var(--accent);color:#fff">📘 Git Tutorial (38 Ch) ↗</a>
 <a class="focus-btn masterclass-btn" href="tech_git.html">Dedicated Masterclass ↗</a>
 </div>
 </div>

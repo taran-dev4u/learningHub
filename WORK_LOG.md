@@ -5,7 +5,7 @@
 > **Primary Repository:** `E:\Absolute learning\learningHub` (Branch: `main`)
 > **Live Site:** [https://taran-dev4u.github.io/learningHub/](https://taran-dev4u.github.io/learningHub/)
 > **Companion Hub:** [https://amazon.interview-prep-hub.workers.dev/](https://amazon.interview-prep-hub.workers.dev/)
-> **Audit Status:** `tools/audit_site.py` → **0 findings** across 791 scanned pages
+> **Audit Status:** `tools/audit_site.py` → **0 findings** across 792 scanned pages
 
 ---
 
@@ -36,7 +36,8 @@
 | `tech_spark.html` | Standalone Apache Spark Big Data Processing Masterclass (4 subsections, 13 concepts) | ✅ Deployed | Playwright + Audit |
 | `tech_linux.html` | Standalone Linux & Terminal Power Engineering Masterclass (3 subsections, 12 concepts) | ✅ Deployed | Playwright + Audit |
 | `tech_git.html` | Standalone Git & GitHub Architecture Masterclass (6 subsections, 28 concepts, Beej's Guide integration) | ✅ Deployed | Playwright + Audit |
-| `ConvertedDocs/Git/beej_guide_to_git.html` | Brian "Beej" Hall's Quick Guide to Git (Unabridged offline book, 38 chapters) | ✅ Deployed & Integrated | Playwright + Audit |
+| `Git_Tutorial/index.html` | **Git Master Tutorial (Beej's Guide to Git)**: Split-pane interactive reader (38 chapters, 270 topics, instant search, reading tracker) | ✅ Deployed & Verified | Playwright + Audit |
+| `ConvertedDocs/Git/beej_guide_to_git.html` | Brian "Beej" Hall's Quick Guide to Git (Unabridged offline split tutorial, 38 chapters) | ✅ Deployed & Integrated | Playwright + Audit |
 | `tech_docker_k8s.html` | Standalone Docker & Kubernetes Container Orchestration Masterclass (8 subsections, 31 concepts) | ✅ Deployed | Playwright + Audit |
 | `tech_cicd.html` | Standalone CI/CD Pipelines & DevOps Automation Masterclass (3 subsections, 12 concepts) | ✅ Deployed | Playwright + Audit |
 | `tech_terraform.html` | Standalone Terraform & Infrastructure as Code Masterclass (3 subsections, 12 concepts) | ✅ Deployed | Playwright + Audit |
@@ -316,3 +317,34 @@ The autonomous agent is scheduled via recurring cron notification (`0 */3 * * *`
     - Verified initial load has `sidebar-collapsed` on body, toggle icon `›`, sidebar positioned at `left = -290px` (off-screen), and content area occupying `width = 1440px` (100% of viewport).
     - Verified zero horizontal overflow (`scrollWidth === clientWidth === 1440px`) across both light and black themes.
     - Verified clicking `#sidebar-toggle` expands the sidebar (`‹`, `left = 0px`, `localStorage = '0'`) and clicking again collapses it (`›`, `localStorage = '1'`).
+### [2026-10-29 06:15 UTC] Git Split-Pane Master Tutorial (38 Chapters, 270 Topics) & Beej's Guide Full Integration
+- **User Request**: "i could not find this in the learning hub have you included each and every topic without missing anything" & "try to include as a tutorial like left side panel contents and right side as a page"
+- **100% Topic Completeness Verification**:
+  - Scraped live table of contents from `https://beej.us/guide/bggit/html/split/index.html`.
+  - Audited local book against all 270 sections, subsections, and chapters.
+  - Confirmed 270 out of 270 topics matched (100.0% completeness, zero missing content).
+- **Interactive Split-Pane Architecture (`Git_Tutorial/index.html`)**:
+  - **Left Navigation Rail (330px)**:
+    - Sticky top control deck: live instant search input, completed count badge (`localStorage` persistence under `hub_done_git_beej`), and view mode toggle (`Chapter View` vs `All Chapters`).
+    - All 38 chapters with collapsible subtopic outlines, numbered pills, per-chapter completion checkboxes, and anchor links.
+    - Mobile-responsive drawer with top-bar toggle button for tablet and mobile viewports.
+  - **Right Chapter Reader Panel (Flexible Full-Width)**:
+    - Rendered chapter views with clean header breadcrumbs, reading time indicators, top and bottom Previous/Next chapter navigation buttons.
+    - Preserved all code blocks, command listings, terminal outputs, callout blockquotes, and local diagram illustrations (`img/img_080_010.png`, `img/img_difftool.png`).
+    - Smart URL hash resolution (`DOMContentLoaded` + `hashchange`): direct links to anchors (e.g. `#rebase`, `#reflog`, `#cherry-pick`) automatically activate the enclosing chapter and smoothly scroll into view.
+- **Mirrored Offline Tutorial (`ConvertedDocs/Git/beej_guide_to_git.html`)**:
+  - Upgraded converted doc to match the split-pane tutorial interface while maintaining compatibility with library readers.
+- **Cross-Hub Wiring & Discoverability**:
+  - **All-in-One Tech Portal (`all_tech.html`)**: Added primary `📘 Git Tutorial ↗` action button to `card-git` and Section 5 focus bar.
+  - **Git Masterclass (`tech_git.html`)**: Added prominent `Open Interactive Tutorial (38 Ch) ↗` action button in the hero header banner and linked all 28 concept deep-dives directly to corresponding tutorial anchors.
+  - **Reading Library (`library.html`)**: Linked primary card button to `Git_Tutorial/index.html`.
+  - **Global Hub Search (`search-index.json` & `tools/build-learning-hub.mjs`)**: Indexed all 38 individual chapters in global search catalog.
+- **Comprehensive Verification Suite**:
+  - `python tools/audit_site.py`: **0 findings** across all 792 pages.
+  - `node tools/verify-learning-hub.mjs`: All checked hub pages passed.
+  - Headless Playwright test suite (`scratch/test_git_tutorial_playwright.py`):
+    - Verified 38 chapters in DOM and sidebar.
+    - Verified initial Chapter 1 activation.
+    - Verified zero horizontal overflow (`scrollWidth === clientWidth === 1440px`) across Light and Black themes.
+    - Verified chapter switching, Next/Prev navigation buttons, search filter for `reflog`, and automatic hash anchor resolution to `#rebase` (activating Chapter 15).
+    - Verified interactive reading progress counter and `localStorage` persistence.

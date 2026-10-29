@@ -3313,17 +3313,69 @@ if (fs.existsSync(previousDataPath)) {
   }
 }
 write("learning-hub-data.json", `${JSON.stringify(data, null, 2)}\n`);
+const beejChapters = [
+  { num: 1, id: "foreword", title: "Foreword" },
+  { num: 2, id: "git-basics", title: "Git Basics: Workflow, Staging, Commits & Push" },
+  { num: 3, id: "github-how-to-use-it", title: "GitHub: How To Use It (Auth, SSH, CLI & PATs)" },
+  { num: 4, id: "the-git-log-and-head", title: "The Git Log and HEAD Reference" },
+  { num: 5, id: "branches-and-fast-forward-merges", title: "Branches and Fast-Forward Merges" },
+  { num: 6, id: "merge", title: "Merging and Merge Conflicts" },
+  { num: 7, id: "using-subdirectories-with-git", title: "Using Subdirectories with Git" },
+  { num: 8, id: "ignoring-files-with-.gitignore", title: "Ignoring Files with .gitignore" },
+  { num: 9, id: "remotes-repos-in-other-places", title: "Remotes: Repos in Other Places" },
+  { num: 10, id: "remote-tracking-branch", title: "Remote Tracking Branches & Upstream" },
+  { num: 11, id: "file-states", title: "File States & Lifecycle" },
+  { num: 12, id: "diff", title: "Comparing Files with Diff" },
+  { num: 13, id: "renaming-and-removing-files", title: "Renaming and Removing Files" },
+  { num: 14, id: "collaboration-across-branches", title: "Collaboration across Branches" },
+  { num: 15, id: "rebase", title: "Rebasing: Moving Commits & Linear History" },
+  { num: 16, id: "stash", title: "Stashing: Temporarily Set Changes Aside" },
+  { num: 17, id: "github-forking-and-pull-requests", title: "GitHub: Forking and Pull Requests" },
+  { num: 18, id: "revert", title: "Reverting: Undoing Commits Safely" },
+  { num: 19, id: "reset", title: "Reset: Moving Branches & HEAD Around (--soft, --mixed, --hard)" },
+  { num: 20, id: "the-reference-log-reflog", title: "The Reference Log (reflog) Disaster Recovery" },
+  { num: 21, id: "patch-mode-applying-partial-changes", title: "Patch Mode: Applying Partial Changes (git add -p)" },
+  { num: 22, id: "cherry-pick-bringing-in-specific-commits", title: "Cherry-Pick: Bringing in Specific Commits" },
+  { num: 23, id: "whos-to-blame-for-this-code", title: "Who's to Blame for this Code? (git blame)" },
+  { num: 24, id: "configuration", title: "Configuration (~/.gitconfig)" },
+  { num: 25, id: "git-aliases", title: "Git Aliases & Productivity Shortcuts" },
+  { num: 26, id: "changing-identity", title: "Changing Identity (Author & Committer)" },
+  { num: 27, id: "amend", title: "Amending Commits (git commit --amend)" },
+  { num: 28, id: "difftool-1", title: "Difftool Setup & Usage" },
+  { num: 29, id: "mergetool", title: "Mergetool Setup & Usage" },
+  { num: 30, id: "submodules", title: "Submodules: Repos Within Repos" },
+  { num: 31, id: "tags", title: "Tags: Labeling Commits (Lightweight & Annotated)" },
+  { num: 32, id: "worktrees", title: "Worktrees: Working On Multiple Branches At Once" },
+  { num: 33, id: "making-playground", title: "Appendix: Making a Local Playground" },
+  { num: 34, id: "editor-get-out", title: "Appendix: Getting Out of Terminal Editors (Vim/Nano)" },
+  { num: 35, id: "appendix-errors-and-scary-messages", title: "Appendix: Errors and Scary Messages (Detached HEAD, Non-Fast-Forward)" },
+  { num: 36, id: "vim-tutorial", title: "Appendix: Just Enough Vim" },
+  { num: 37, id: "appendix-other-references", title: "Appendix: Other References" },
+  { num: 38, id: "quick-reference", title: "Quick Reference & Glossary" },
+];
+
+const beejSearchItems = beejChapters.map((ch) => ({
+  k: "cloud",
+  c: `beej-ch-${ch.num}`,
+  t: `Beej's Quick Guide to Git · Chapter ${ch.num}: ${ch.title}`,
+  s: "Beej's Git Tutorial",
+  a: `Git_Tutorial/index.html#chapter-${ch.num}`,
+}));
+
+const allSearchItems = [
+  ...data.items.map((item) => ({
+    k: item.domain,
+    c: item.key,
+    t: item.title,
+    s: item.section,
+    a: item.link,
+  })),
+  ...beejSearchItems,
+];
+
 write(
   "search-index.json",
-  `${JSON.stringify(
-    data.items.map((item) => ({
-      k: item.domain,
-      c: item.key,
-      t: item.title,
-      s: item.section,
-      a: item.link,
-    })),
-  )}\n`,
+  `${JSON.stringify(allSearchItems)}\n`,
 );
 write("index.html", simpleHubHtml(data));
 write("hub.html", redirectHtml("index.html"));
