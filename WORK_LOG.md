@@ -26,11 +26,11 @@
 |---|---|---|---|
 | `index.html` | Universal landing hub, 7 site cards, global catalog search | ✅ Up to date | `build-learning-hub.mjs` |
 | `DSA_Ultimate_Index.html` | 47 patterns, 219 subpatterns, 940 problems, default-collapsed pattern sidebar & full-width layout | ✅ Upgraded & Verified | Playwright + Audit |
-| `cloud_aws_azure.html` | **Cloud Platforms Hub**: AWS (36 concepts), Microsoft Azure (19 concepts), GCP (14 concepts) — 14 subsections, 69 concepts, Multi-Cloud Command Deck, sticky domain switcher, focused view isolation | ✅ Redesigned & Active | Playwright + Audit |
+| `cloud_aws_azure.html` | **Cloud Platforms Hub**: AWS (55 concepts), Microsoft Azure (19 concepts), GCP (14 concepts) — 18 subsections, 88 concepts, Multi-Cloud Command Deck, sticky domain switcher, focused view isolation | ✅ Redesigned & Active | Playwright + Audit |
 | `all_tech.html` | **All-in-One Tech & Software Engineering Portal**: 13 disciplines (Linux, Git, Docker, K8s, Terraform, CI/CD, Kafka, Spark, PostgreSQL, Redis, Java, FastAPI, APIs) — 50 subsections, 197 concepts | ✅ Redesigned & Active | Playwright + Audit |
 | `ai_data.html` | **AI & Data Hub**: 4 tracks (AI Engineering, Machine Learning Engineering, Data Science, Data Engineering) — 24 subsections, 96 concepts, Command Deck, sticky pill bar, Domain Isolation Engine | ✅ Redesigned & Active | Playwright + Audit |
 | `ai_engineering.html` | **AI Engineering from Scratch Masterclass**: 20 phases, 542 lessons, full MIT curriculum snapshot, direct link integration | ✅ Active with Hub Breadcrumb | Playwright + Audit |
-| `tech_aws.html` | Standalone AWS Cloud Architecture Masterclass (7 subsections, 36 concepts) | ✅ Deployed | Playwright + Audit |
+| `tech_aws.html` | Standalone AWS Cloud Architecture Masterclass (11 subsections, 55 concepts, Complete Enterprise Services Inventory) | ✅ Deployed & Verified | Playwright + Audit |
 | `tech_azure.html` | Standalone Microsoft Azure Cloud Architecture Masterclass (4 subsections, 19 concepts) | ✅ Deployed | Playwright + Audit |
 | `tech_gcp.html` | Standalone Google Cloud Platform Architecture Masterclass (3 subsections, 14 concepts) | ✅ Deployed | Playwright + Audit |
 | `tech_spark.html` | Standalone Apache Spark Big Data Processing Masterclass (4 subsections, 13 concepts) | ✅ Deployed | Playwright + Audit |
@@ -395,3 +395,85 @@ The autonomous agent is scheduled via recurring cron notification (`0 */3 * * *`
   - Headless Playwright test suite (`scratch/test_api_expansion_playwright.py`):
     - Verified 24 concepts and 6 subsections in `tech_apis.html`.
     - Verified 197 total concepts in `all_tech.html` with zero horizontal overflow (`scrollWidth === clientWidth === 1440px`) across Light and Black themes.
+
+### [2026-10-29 07:35 UTC] Hourly Loop Iteration 2: AWS Complete Enterprise Services & Architecture Masterclass (11 Subsections, 55 Concepts)
+- **User Directive & Scope**:
+  - Implement full exhaustive enterprise coverage for AWS: "For AWS, there will be multiple services, all should be covered and there will be multiple concepts for each and every service. All should be covered, something like this."
+  - Maintain the gold-standard Git-style hierarchical numbering (`1.1.1` to `1.11.5`) without omitting any major service or architectural primitive.
+- **Curriculum Architecture (55 Concepts across 11 Subsections)**:
+  - **1.1 AWS Foundations & Identity and Access Management (IAM) (5 concepts)**:
+    - `1.1.1` Cloud Computing Models (IaaS, PaaS, SaaS) & Shared Responsibility Model
+    - `1.1.2` AWS Global Infrastructure: Regions, Availability Zones & Edge Locations
+    - `1.1.3` IAM Fundamentals: Root User Security, IAM Users, Groups & Policies
+    - `1.1.4` IAM Roles, Instance Profiles & STS AssumeRole Delegation
+    - `1.1.5` Policy Evaluation Logic: Explicit Deny, SCPs & Permission Boundaries
+  - **1.2 AWS VPC & Core Network Architecture (5 concepts)**:
+    - `1.2.1` VPC Fundamentals: CIDR Blocks, Public vs Private Subnets & Route Tables
+    - `1.2.2` Internet Gateways (IGW), NAT Gateways & Egress-Only Gateways
+    - `1.2.3` Security Groups (Stateful) vs Network ACLs (Stateless)
+    - `1.2.4` VPC Peering, Transit Gateway (TGW) & Direct Connect (DX) Hybrid Networking
+    - `1.2.5` VPC Endpoints (Gateway vs Interface PrivateLink Endpoints)
+  - **1.3 AWS Compute: EC2, Elastic Load Balancing & Auto Scaling (5 concepts)**:
+    - `1.3.1` EC2 Architecture: Instance Families, AMIs, Nitro Hypervisor & Bootstrap Scripts
+    - `1.3.2` EC2 Pricing Models: On-Demand, Savings Plans, Reserved & Spot Instances
+    - `1.3.3` Elastic Load Balancers: ALB (Layer 7) vs NLB (Layer 4) Architecture
+    - `1.3.4` Target Groups, Health Checks & Cross-Zone Load Balancing
+    - `1.3.5` Auto Scaling Groups (ASG): Launch Templates & Dynamic Scaling Policies
+  - **1.4 AWS Storage: S3 Object Storage, EBS Block Storage & EFS (5 concepts)**:
+    - `1.4.1` Amazon S3 Architecture: Buckets, Keys & Strong Consistency Guarantees
+    - `1.4.2` S3 Storage Classes: Standard, Intelligent-Tiering, Glacier & Lifecycle Rules
+    - `1.4.3` S3 Security: Bucket Policies, Pre-Signed URLs, CORS & KMS Encryption
+    - `1.4.4` EBS Volume Types: gp3 vs io2 Block Express & Snapshot Automation
+    - `1.4.5` Amazon EFS Distributed Network File System & Amazon FSx (Lustre/Windows)
+  - **1.5 AWS Relational, NoSQL & In-Memory Databases (5 concepts)**:
+    - `1.5.1` Amazon RDS: Multi-AZ Synchronous Deployments vs Asynchronous Read Replicas
+    - `1.5.2` Amazon Aurora: Distributed Storage Engine Architecture & Serverless v2 Auto-Scaling
+    - `1.5.3` DynamoDB Data Modeling: Partition Keys, Sort Keys & Access Patterns
+    - `1.5.4` DynamoDB Global Secondary Indexes (GSI) vs Local Secondary Indexes (LSI)
+    - `1.5.5` Amazon ElastiCache (Redis/Memcached) & DynamoDB DAX Acceleration
+  - **1.6 AWS Containers & Serverless Compute (5 concepts)**:
+    - `1.6.1` Amazon ECS: Task Definitions, Services, EC2 Launch Type vs AWS Fargate
+    - `1.6.2` Amazon EKS: Managed Control Plane, Managed Node Groups & IRSA Pod Identities
+    - `1.6.3` AWS Lambda: Execution Lifecycle, Cold Starts, Layers & Provisioned Concurrency
+    - `1.6.4` Amazon API Gateway: REST vs HTTP APIs, Custom Authorizers & WebSocket APIs
+    - `1.6.5` AWS Step Functions & EventBridge Event-Driven Serverless Workflows
+  - **1.7 AWS Messaging, Event Streaming & Decoupling (5 concepts)**:
+    - `1.7.1` Amazon SQS: Standard vs FIFO Queues, Visibility Timeout & Dead-Letter Queues (DLQ)
+    - `1.7.2` Amazon SNS: Pub/Sub Topics, Fan-Out Patterns, Message Filtering & SMS/Email Delivery
+    - `1.7.3` Amazon Kinesis Data Streams & Kinesis Data Firehose Real-Time Ingestion
+    - `1.7.4` Amazon EventBridge: Event Buses, Content Filtering Rules & Schema Registry
+    - `1.7.5` Amazon Managed Streaming for Apache Kafka (Amazon MSK) & Amazon MQ
+  - **1.8 Edge Networking, Content Delivery & DNS Routing (5 concepts)**:
+    - `1.8.1` Amazon Route 53: Hosted Zones, DNS Record Types (A, CNAME, Alias)
+    - `1.8.2` Route 53 Routing Policies: Latency, Geolocation, Failover & Weighted
+    - `1.8.3` Amazon CloudFront: CDN Edge Caching, Origins, Origin Access Control (OAC)
+    - `1.8.4` Edge Compute: CloudFront Functions vs Lambda@Edge Request/Response Interception
+    - `1.8.5` AWS Global Accelerator: Anycast IP Routing & Edge-to-VPC Acceleration
+  - **1.9 Security, Cryptography & Threat Detection (5 concepts)**:
+    - `1.9.1` AWS KMS: Customer Managed Keys (CMK), Envelope Encryption & Key Policies
+    - `1.9.2` AWS Secrets Manager & Systems Manager Parameter Store Secret Rotation
+    - `1.9.3` AWS WAF (Web Application Firewall) & AWS Shield DDoS Protection
+    - `1.9.4` AWS GuardDuty Intelligent Threat Detection & Amazon Macie Sensitive Data Discovery
+    - `1.9.5` AWS Security Hub, Amazon Inspector & AWS Network Firewall
+  - **1.10 Big Data Analytics, Search & Machine Learning (5 concepts)**:
+    - `1.10.1` Amazon Redshift: Columnar MPP Data Warehousing & Redshift Serverless
+    - `1.10.2` Amazon Athena: Interactive Serverless SQL Analytics over S3 Data Lakes
+    - `1.10.3` AWS Glue: Serverless ETL Pipelines, Data Catalog & DynamicFrame Transformations
+    - `1.10.4` Amazon OpenSearch Service: Distributed Full-Text Search, Analytics & Logstash
+    - `1.10.5` Amazon Bedrock & SageMaker: Managed Foundation Models & Machine Learning APIs
+  - **1.11 Infrastructure as Code, Governance & Observability (5 concepts)**:
+    - `1.11.1` AWS CloudFormation: Declarative Templates, Drift Detection & StackSets
+    - `1.11.2` AWS Cloud Development Kit (CDK): Imperative IaC Constructs (L1/L2/L3)
+    - `1.11.3` AWS Organizations, Control Tower & Multi-Account Landing Zones
+    - `1.11.4` AWS Systems Manager (SSM): Session Manager Secure Shell & Run Command
+    - `1.11.5` AWS CloudWatch & CloudTrail: Logs Insights, Metric Alarms & Audit Governance
+- **Cross-Hub Synchronization & Global Search**:
+  - `cloud_aws_azure.html`: Expanded AWS section to 11 subsections and 55 concepts. Updated portal totals to **3 Cloud Providers · 18 Subsections · 88 Concepts**.
+  - `tech_aws.html`: Upgraded to full 11-subsection, 55-concept standalone masterclass with updated hero, stats cards, and 0–55 progress bar.
+  - `tools/build-learning-hub.mjs` & `search-index.json`: Added all 55 AWS concepts to the global search catalog.
+- **Verification Suite**:
+  - `python tools/audit_site.py`: **0 findings** across all 792 scanned pages.
+  - `node tools/verify-learning-hub.mjs`: All 16 hub pages passed with all checks green.
+  - Headless Playwright test suite (`scratch/test_aws_expansion_playwright.py`):
+    - Verified 55 concepts and 11 subsections in `tech_aws.html`.
+    - Verified 88 total concepts in `cloud_aws_azure.html` with zero horizontal overflow (`scrollWidth === clientWidth === 1440px`) across Light and Black themes.
