@@ -1,7 +1,7 @@
-# Seven-source AI engineering companion
+# Eight-source AI engineering companion
 
 The core 542-lesson curriculum remains the pinned Rohit Ghumare import in
-`catalog.json` and `source/`. The companion adds seven requested public
+`catalog.json` and `source/`. The companion adds eight requested public
 repositories without pretending they are part of that original source.
 
 - `companion-guides.json`: 20 original Learning Hub study guides. Each has an
@@ -12,10 +12,16 @@ repositories without pretending they are part of that original source.
   by the source playbook's topic map. Each includes explanations, a comparison
   table, subtopics, a worked case and a practice exercise. The AI page exposes
   this as a separate "Decision playbook" tab.
-- `companion-data.json`: a complete 684-file inventory, 3,484 indexed Markdown
-  and notebook headings, and 598 interview prompts at the pinned revisions.
+- `aishwaryanr/awesome-generative-ai-guide`: the main GenAI resource. Its
+  pinned MIT-licensed snapshot is indexed in full, with
+  readable text opened inline and binary media linked to the pinned original.
+  The dedicated tab organizes journeys, nine topic pages, interview roles,
+  courses, projects, research updates, and video notes. Its headings also
+  appear in the phase topic index.
+- `companion-data.json`: the complete file inventory, indexed Markdown and
+  notebook headings, and interview prompts at the pinned revisions.
   Counts are computed by `tools/build_ai_companion.py`, not typed into the UI.
-- `companion-content/`: six compressed packs holding all nonempty UTF-8 source
+- `companion-content/`: seven compressed packs holding all nonempty UTF-8 source
   files from repositories with MIT or Apache-2.0 licenses. Markdown lessons,
   notebooks and code open in the existing right-side reader. Notebook
   markdown and code cells are displayed in order; saved image outputs and
@@ -52,7 +58,7 @@ the pinned tree inventory.
 
 ## Coverage boundaries
 
-The seven repositories overlap heavily with the core syllabus. This import
+The eight repositories overlap heavily with the core syllabus. This import
 indexes their entire tracked file trees and readable headings while the study
 guides explain the major decisions in original prose. An indexed source
 heading is a pointer to its full upstream lesson, not a claim that its entire

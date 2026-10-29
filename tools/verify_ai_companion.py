@@ -10,14 +10,24 @@ data = json.loads((BASE / 'companion-data.json').read_text(encoding='utf8'))
 guides = json.loads((BASE / 'companion-guides.json').read_text(encoding='utf8'))
 playbook = json.loads((BASE / 'decision-playbook.json').read_text(encoding='utf8'))
 
-assert len(data['sources']) == 7
+assert len(data['sources']) == 8
 assert set(guides) == {f'phase-{i:02d}' for i in range(20)}
 for key in ('sources', 'files', 'topics', 'questions'):
     assert data['counts'][key] == len(data[key]), key
 sources = {s['id']: s for s in data['sources']}
-assert len(sources) == 7
+assert len(sources) == 8
 files = {(f['source'], f['path']) for f in data['files']}
 assert len(files) == len(data['files'])
+main = 'aishwaryanr/awesome-generative-ai-guide'
+assert sources[main]['license'] == 'MIT'
+for path in ('README.md', 'journeys/build.md', 'journeys/use.md',
+             'journeys/understand.md', 'paths/agent-builder.md',
+             'paths/harness-engineering.md', 'paths/interview-prep.md',
+             'interview_prep/roles/ai-engineer/README.md'):
+    assert (main, path) in files
+for topic in ('foundations', 'prompting', 'rag', 'fine-tuning', 'agents',
+              'evaluation', 'multimodal', 'production', 'safety-security'):
+    assert (main, f'topics/{topic}.md') in files
 for source in data['sources']:
     assert len(source['revision']) == 40
     assert source['files'] == sum(f['source'] == source['id'] for f in data['files'])

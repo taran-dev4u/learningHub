@@ -1,4 +1,4 @@
-"""Build a pinned, searchable companion index for the seven requested AI repos.
+"""Build a pinned, searchable companion index for the requested AI repos.
 
 Inputs are complete GitHub tree inventories and codeload ZIP snapshots kept in
 ignored scratch/. The output contains metadata and topic/question titles, not
@@ -35,6 +35,7 @@ DESCRIPTIONS = {
     'amitshekhariitbhu/ai-system-design': 'AI system design concepts, capacity estimation, serving, RAG, agents, operations and case studies.',
     'owainlewis/youtube-tutorials': 'Practical tutorial lessons and code for RAG, agents, development workflows and deployment. The repository does not publish direct video IDs for these lessons.',
     'louisfb01/ai-engineering-cheatsheets': 'Decision oriented AI engineering playbook. Headings are indexed; original decision tables in the Learning Hub companion guides are independently written.',
+    'aishwaryanr/awesome-generative-ai-guide': 'Main generative AI resource: learning journeys, topic guides, courses, interview roles and cases, research updates, notebooks, and video notes.',
 }
 
 COURSE_MODULES = {0: 0, 1: 2, 2: 3, 3: 7, 4: 10, 5: 10, 6: 10,
@@ -67,6 +68,25 @@ def phase_for(repo: str, path: str, title: str, current: int | None = None) -> i
     if any(x in subject for x in ('diffusion model', 'generative image', 'generative model', 'generative adversarial', 'stylegan')): return 8
     if any(x in subject for x in ('reinforcement learning', 'policy gradient', 'q-learning', 'reward modeling')): return 9
     if any(x in subject for x in ('autonomous agent', 'background agent', 'long-running agent', 'scheduled agent')): return 15
+    if repo.endswith('/awesome-generative-ai-guide'):
+        if path.startswith('interview_prep/'):
+            if '/system-design/' in path: return 17
+            if '/roles/' in path: return 19
+            return 19
+        if path.startswith('research_updates/'): return 19
+        if path.startswith('topics/'):
+            return {'foundations': 10, 'prompting': 11, 'rag': 11,
+                    'fine-tuning': 10, 'agents': 14, 'evaluation': 11,
+                    'multimodal': 12, 'production': 17,
+                    'safety-security': 18}.get(Path(path).stem, 11)
+        if path.startswith('journeys/') or path.startswith('paths/'): return 0
+        if any(x in low for x in ('security', 'safety', 'red-team', 'guardrail')): return 18
+        if any(x in low for x in ('rag', 'retrieval', 'vector', 'embedding', 'prompt', 'eval')): return 11
+        if any(x in low for x in ('agent', 'mcp', 'tool use', 'harness')): return 14
+        if any(x in low for x in ('inference', 'serving', 'llmops', 'production')): return 17
+        if any(x in low for x in ('multimodal', 'vision', 'audio', 'voice')): return 12
+        if any(x in low for x in ('fine-tun', 'lora', 'peft')): return 10
+        return 11
     if repo.endswith('/ai-engineering-course'):
         m = re.search(r'\bmodule\s+(\d+)\b', title, re.I)
         if m: return COURSE_MODULES.get(int(m.group(1)), 19)
@@ -139,11 +159,11 @@ def atomic_bytes(path: Path, data: bytes) -> None:
 def build() -> None:
     if not INVENTORY.exists(): raise SystemExit('Missing complete tree inventory: ' + str(INVENTORY))
     raw = json.loads(INVENTORY.read_text(encoding='utf8'))
-    if len(raw) != 7 or any(x['truncated'] for x in raw):
-        raise SystemExit('Expected seven complete, non-truncated GitHub trees')
+    if len(raw) != 8 or any(x['truncated'] for x in raw):
+        raise SystemExit('Expected eight complete, non-truncated GitHub trees')
     result = {'sources': [], 'files': [], 'topics': [], 'questions': []}
     attributions = ['# AI Engineering companion sources', '',
-                    'The Learning Hub explanations and decision tables are original. This index links seven pinned public repositories and reproduces short topic titles and Apache-licensed interview practice prompts. See each source for its full material and current updates.', '']
+                    'The Learning Hub explanations and decision tables are original. This index links eight pinned public repositories and reproduces short topic titles and Apache-licensed interview practice prompts. See each source for its full material and current updates.', '']
     for item in raw:
         repo, revision = item['repo'], item['revision']
         archive = ZIPS / (repo.replace('/', '--') + '.zip')

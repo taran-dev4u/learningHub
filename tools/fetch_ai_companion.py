@@ -1,6 +1,6 @@
-"""Fetch the seven pinned public AI source snapshots for a reproducible rebuild.
+"""Fetch the pinned public AI source snapshots for a reproducible rebuild.
 
-Run from anywhere: python tools/fetch_ai_companion.py [--latest]
+Run from anywhere: python tools/fetch_ai_companion.py [--latest] [--only owner/repo]
 The default uses revisions already recorded in companion-data.json. --latest
 refreshes to each repository's current default-branch head for a new review.
 """
@@ -18,6 +18,8 @@ ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / 'AI_Engineering_Tutorial' / 'companion-data.json'
 SCRATCH = ROOT / 'scratch'
 ZIPS = SCRATCH / 'ai_source_zips'
+NEW_SOURCE = ('aishwaryanr/awesome-generative-ai-guide',
+              '242d53d5605c9bfe52c187e50a97664f9dc5febf')
 
 def fetch(url: str) -> bytes:
     request = Request(url, headers={'User-Agent': 'LearningHub-source-audit',
@@ -43,11 +45,21 @@ def atomic_bytes(path: Path, data: bytes) -> None:
 
 def main() -> None:
     latest = '--latest' in sys.argv[1:]
+    only = sys.argv[sys.argv.index('--only') + 1] if '--only' in sys.argv[1:] else None
     sources = json.loads(DATA.read_text(encoding='utf8'))['sources']
-    if len(sources) != 7: raise SystemExit('Expected seven pinned sources')
+    if not any(source['id'] == NEW_SOURCE[0] for source in sources):
+        sources.append({'id': NEW_SOURCE[0], 'revision': NEW_SOURCE[1]})
+    if len(sources) != 8: raise SystemExit('Expected eight pinned sources')
+    if only and only not in {source['id'] for source in sources}:
+        raise SystemExit('Unknown source: ' + only)
+    previous = {item['repo']: item for item in json.loads((SCRATCH / 'ai_sources_inventory.json').read_text(encoding='utf8'))} if only else {}
     inventory = []
     for source in sources:
         repo = source['id']
+        if only and repo != only:
+            if repo not in previous: raise SystemExit('Missing prior inventory: ' + repo)
+            inventory.append(previous[repo])
+            continue
         meta = json.loads(fetch('https://api.github.com/repos/' + repo))
         revision = source['revision']
         if latest:

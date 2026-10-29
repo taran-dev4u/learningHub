@@ -1,6 +1,6 @@
 # AI Engineering companion sources
 
-The Learning Hub explanations and decision tables are original. This index links seven pinned public repositories and reproduces short topic titles and Apache-licensed interview practice prompts. See each source for its full material and current updates.
+The Learning Hub explanations and decision tables are original. This index links eight pinned public repositories and reproduces short topic titles and Apache-licensed interview practice prompts. See each source for its full material and current updates.
 
 ## alirezadir/AIMLInterviews
 
@@ -50,4 +50,11 @@ The Learning Hub explanations and decision tables are original. This index links
 - Source: https://github.com/louisfb01/ai-engineering-cheatsheets/tree/3a3319e2f384c56a71ddd9ee62ed42b33881579b
 - Declared license: No license declared
 - Local license copy: none declared upstream
+
+## aishwaryanr/awesome-generative-ai-guide
+
+- Pinned revision: `242d53d5605c9bfe52c187e50a97664f9dc5febf`
+- Source: https://github.com/aishwaryanr/awesome-generative-ai-guide/tree/242d53d5605c9bfe52c187e50a97664f9dc5febf
+- Declared license: MIT
+- Local license copy: AI_Engineering_Tutorial/companion-licenses/aishwaryanr--awesome-generative-ai-guide.txt
 
