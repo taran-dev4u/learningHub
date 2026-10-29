@@ -1,7 +1,7 @@
 # Taran's Learning Hub — Engineering Development & Maintenance Log
 
 > **Autonomous Continuous Development Log**
-> **Cadence:** Scheduled every 3 hours (`0 */3 * * *`)
+> **Cadence:** Scheduled Hourly Loop (`0 * * * *`, Daemon)
 > **Primary Repository:** `E:\Absolute learning\learningHub` (Branch: `main`)
 > **Live Site:** [https://taran-dev4u.github.io/learningHub/](https://taran-dev4u.github.io/learningHub/)
 > **Companion Hub:** [https://amazon.interview-prep-hub.workers.dev/](https://amazon.interview-prep-hub.workers.dev/)
@@ -27,7 +27,7 @@
 | `index.html` | Universal landing hub, 7 site cards, global catalog search | ✅ Up to date | `build-learning-hub.mjs` |
 | `DSA_Ultimate_Index.html` | 47 patterns, 219 subpatterns, 940 problems, default-collapsed pattern sidebar & full-width layout | ✅ Upgraded & Verified | Playwright + Audit |
 | `cloud_aws_azure.html` | **Cloud Platforms Hub**: AWS (36 concepts), Microsoft Azure (19 concepts), GCP (14 concepts) — 14 subsections, 69 concepts, Multi-Cloud Command Deck, sticky domain switcher, focused view isolation | ✅ Redesigned & Active | Playwright + Audit |
-| `all_tech.html` | **All-in-One Tech & Software Engineering Portal**: 13 disciplines (Linux, Git, Docker, K8s, Terraform, CI/CD, Kafka, Spark, PostgreSQL, Redis, Java, FastAPI, APIs) — 46 subsections, 181 concepts | ✅ Redesigned & Active | Playwright + Audit |
+| `all_tech.html` | **All-in-One Tech & Software Engineering Portal**: 13 disciplines (Linux, Git, Docker, K8s, Terraform, CI/CD, Kafka, Spark, PostgreSQL, Redis, Java, FastAPI, APIs) — 50 subsections, 197 concepts | ✅ Redesigned & Active | Playwright + Audit |
 | `ai_data.html` | **AI & Data Hub**: 4 tracks (AI Engineering, Machine Learning Engineering, Data Science, Data Engineering) — 24 subsections, 96 concepts, Command Deck, sticky pill bar, Domain Isolation Engine | ✅ Redesigned & Active | Playwright + Audit |
 | `ai_engineering.html` | **AI Engineering from Scratch Masterclass**: 20 phases, 542 lessons, full MIT curriculum snapshot, direct link integration | ✅ Active with Hub Breadcrumb | Playwright + Audit |
 | `tech_aws.html` | Standalone AWS Cloud Architecture Masterclass (7 subsections, 36 concepts) | ✅ Deployed | Playwright + Audit |
@@ -46,7 +46,7 @@
 | `tech_redis.html` | Standalone In-Memory Caching with Redis Masterclass (3 subsections, 12 concepts) | ✅ Deployed | Playwright + Audit |
 | `tech_java.html` | Standalone Java & Spring Boot Microservices Masterclass (4 subsections, 16 concepts) | ✅ Deployed | Playwright + Audit |
 | `tech_fastapi.html` | Standalone Python & FastAPI Backend Engineering Masterclass (2 subsections, 8 concepts) | ✅ Deployed | Playwright + Audit |
-| `tech_apis.html` | Standalone Production API Design & Architecture Masterclass (2 subsections, 8 concepts) | ✅ Deployed | Playwright + Audit |
+| `tech_apis.html` | Standalone Production API Design & Architecture Masterclass (6 subsections, 24 concepts, All Protocols & Architecture Types) | ✅ Deployed & Verified | Playwright + Audit |
 | `tech_ml.html` | Standalone Machine Learning Engineering Masterclass (6 subsections, 24 concepts) | ✅ Deployed | Playwright + Audit |
 | `tech_data_science.html` | Standalone Data Science & Applied Analytics Masterclass (5 subsections, 20 concepts) | ✅ Deployed | Playwright + Audit |
 | `tech_data_eng.html` | Standalone Data Engineering & Lakehouse Architecture Masterclass (6 subsections, 24 concepts) | ✅ Deployed | Playwright + Audit |
@@ -348,3 +348,50 @@ The autonomous agent is scheduled via recurring cron notification (`0 */3 * * *`
     - Verified zero horizontal overflow (`scrollWidth === clientWidth === 1440px`) across Light and Black themes.
     - Verified chapter switching, Next/Prev navigation buttons, search filter for `reflog`, and automatic hash anchor resolution to `#rebase` (activating Chapter 15).
     - Verified interactive reading progress counter and `localStorage` persistence.
+
+### [2026-10-29 07:25 UTC] Hourly Loop Iteration 1: Production API Masterclass Deep Expansion (6 Subsections, 24 Concepts, All Protocols & Architecture Types)
+- **User Request & Directive**:
+  - Establish a persistent hourly autonomous research & improvement schedule (`0 * * * *`, Daemon background task).
+  - Adopt the rigorous organizational standard set by the Git Guide: complete hierarchical numbering (`16.1.1` to `16.6.4`), zero omitted concepts, exhaustive coverage across all architecture types, and perfectly formatted topics and subtopics.
+  - Start by comprehensively expanding **Production API Design & Architecture** across both `tech_apis.html` and `all_tech.html` Domain 13.
+- **Curriculum Architecture (24 Concepts across 6 Subsections)**:
+  - **16.1 API Architectural Paradigms, Protocols & Wire Formats (4 concepts)**:
+    - `16.1.1` REST & Resource-Oriented Architecture (ROA): Richardson Maturity Model L0-L3 HATEOAS, HTTP verb semantics (safe vs idempotent: GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS), status code taxonomies (200, 201, 204, 304, 400, 401, 403, 404, 409, 422, 429, 500, 502, 503), noun-based URI path hierarchies, content negotiation.
+    - `16.1.2` GraphQL Schemas, Execution & Apollo Federation: SDL, Queries, Mutations, Subscriptions, AST resolvers, N+1 problem & DataLoader batching, Schema Stitching vs Apollo Federation (subgraphs, router, `@key`, `@shareable`), query cost & depth limiting.
+    - `16.1.3` gRPC & Protocol Buffers (Protobuf v3): HTTP/2 multiplexed framing, binary wire encoding (varints, zigzag, length-delimited), proto3 schemas, Unary, Server/Client/Bidirectional Streaming, gRPC-Web, deadlines, metadata interceptors.
+    - `16.1.4` Real-Time & Streaming APIs (WebSockets, SSE & Webhooks): Full-duplex persistent frames (`ws://`, `wss://`), Server-Sent Events (SSE) unidirectional HTTP streaming (`text/event-stream`), Webhook outbound delivery (HMAC-SHA256 signatures, idempotency, exponential backoff retries, dead-letter queues), long polling fallback.
+  - **16.2 API Specifications, Schema Governance & Evolution (4 concepts)**:
+    - `16.2.1` OpenAPI Specification (OAS 3.0 & 3.1) & Swagger Ecosystem: Contract-first design, YAML/JSON schemas, paths, operations, components, OpenAPI Generator client/server SDKs, Swagger UI, Redoc, Stoplight.
+    - `16.2.2` AsyncAPI & Event-Driven Message Contracts: Machine-readable specifications for Kafka topics, RabbitMQ queues, MQTT channels, WebSocket messages, channels, operations, and protocol bindings.
+    - `16.2.3` JSON Schema Validation & Consumer-Driven Contract Testing (Pact): Draft 2020-12 / Draft-07 validation engines (ajv, pydantic), consumer-driven contract testing with Pact, broker verification, preventing breaking regressions in CI/CD.
+    - `16.2.4` API Versioning Strategies & Schema Evolution: URI path versioning (`/v1/`), custom header versioning (`Accept: application/vnd.company.v1+json`), query parameter versioning, additive changes, deprecation headers (`Sunset`, `Deprecation`), breaking change policies.
+  - **16.3 Data Handling, Querying & Transport Optimization (4 concepts)**:
+    - `16.3.1` Pagination Patterns (Offset-Limit vs Keyset Cursor-Based): Performance degradation of SQL `OFFSET` on large datasets, keyset/cursor pagination using indexed sort keys (`created_at`, `id`), opaque base64 cursor encoding, RFC 5988 `Link` navigation headers.
+    - `16.3.2` Advanced Filtering, Multi-Field Sorting & Sparse Fieldsets: JSON:API compound filtering (`?filter[status]=active`), dynamic multi-column ordering (`?sort=-created_at,price`), sparse fieldsets (`?fields=id,title`), and GraphQL field selection comparison.
+    - `16.3.3` HTTP Caching, Conditional Requests & CDN Edge Validation: `Cache-Control` directives (`max-age`, `s-maxage`, `no-cache`, `no-store`, `must-revalidate`, `stale-while-revalidate`), validator headers (Strong `ETag` vs Weak `W/"..."`, `Last-Modified`), conditional requests (`If-None-Match` -> 304, `If-Match` optimistic locking), CDN edge caching.
+    - `16.3.4` Payload Compression, Streaming & Binary Encodings: Gzip, Brotli `br`, `Transfer-Encoding: chunked`, newline-delimited JSON (NDJSON) streaming, and binary payload serialization (MessagePack, CBOR, Avro).
+  - **16.4 API Resilience, Traffic Management & Fault Tolerance (4 concepts)**:
+    - `16.4.1` Rate Limiting & Throttling Algorithms: Token Bucket, Leaky Bucket, Fixed Window Counter, Sliding Window Log, Sliding Window Counter; distributed atomic token enforcement with Redis Lua scripts; HTTP 429 response standards (`Retry-After`, `RateLimit-Limit`, `RateLimit-Remaining`, `RateLimit-Reset`).
+    - `16.4.2` Idempotency Mechanisms & Duplicate Request Prevention: `Idempotency-Key` headers, distributed atomic deduplication locks (Redis, DynamoDB conditional writes), caching and replaying execution responses for retried mutating operations.
+    - `16.4.3` Circuit Breakers, Exponential Backoff & Timeout Budgets: Distributed circuit breaker state machines (Closed, Open, Half-Open), failure threshold triggers, recovery probes, exponential backoff with full jitter formulas, deadline propagation across microservice call graphs.
+    - `16.4.4` RFC 7807 / RFC 9457 Problem Details & Standardized Errors: Structured machine-readable error representations (`application/problem+json`), standard fields (`type`, `title`, `status`, `detail`, `instance`, `invalid_params`), correlation/request trace IDs, suppressing internal stack traces.
+  - **16.5 API Security, Identity Federation & OWASP API Top 10 (4 concepts)**:
+    - `16.5.1` API Authentication Mechanics (API Keys, Bearer Tokens & mTLS): Key rotation and hashing, HTTP Bearer Authorization headers, Mutual TLS (mTLS) zero-trust bidirectional certificate validation for service-to-service communication.
+    - `16.5.2` OAuth 2.0 Framework & OpenID Connect (OIDC): Authorization Code Grant with PKCE for SPAs/mobile, Client Credentials grant for machine-to-machine, Refresh Token rotation strategies, JSON Web Tokens (JWT: Header, Payload, Signature), asymmetric signing (RS256, ES256), JWKS endpoint verification.
+    - `16.5.3` Fine-Grained Authorization (RBAC, ABAC & Policy as Code): Role-Based Access Control (RBAC), Attribute-Based Access Control (ABAC), OAuth scopes vs claims, Policy-as-Code engines (Open Policy Agent OPA / Rego, AWS Cedar, Zanzibar ReBAC).
+    - `16.5.4` OWASP API Security Top 10 Vulnerabilities & Defense in Depth: Broken Object Level Authorization (BOLA/IDOR) mitigations, Broken Function Level Authorization (BFLA), Unrestricted Resource Consumption, Mass Assignment, SSRF in webhook dispatchers, CORS policy (`Access-Control-Allow-Origin`, preflight `OPTIONS`).
+  - **16.6 API Gateway Architecture, Service Mesh & Observability (4 concepts)**:
+    - `16.6.1` API Gateway Architectural Patterns & Topologies: Edge gateway vs internal microgateway, reverse proxy routing, SSL/TLS termination, protocol translation (REST-to-gRPC, JSON-to-Kafka), request transformation, Kong, Apache APISIX, Traefik, AWS API Gateway, Envoy Proxy.
+    - `16.6.2` Service Mesh & Microservice East-West Traffic: Envoy data plane sidecars, Istio / Linkerd control planes, automatic mTLS encryption, traffic management (canaries, traffic splitting, fault injection), circuit breaking at the mesh layer.
+    - `16.6.3` Distributed Tracing, Metrics & Observability (OpenTelemetry): W3C Trace Context (`traceparent`, `tracestate`), OpenTelemetry (OTel) instrumentation, distributed trace context propagation across HTTP/gRPC boundaries, Jaeger and Zipkin visualization, Golden Signals.
+    - `16.6.4` API Developer Experience (DX), Mocking & Governance: Developer self-service onboarding portals, interactive API documentation, sandbox environments and mock servers (Prism, Mockoon), API monetization and quota tiers, SDK maintenance automation, Spectral schema linters.
+- **Cross-Hub Synchronization & Global Search**:
+  - `all_tech.html`: Expanded Domain 13 to all 6 subsections and 24 concepts. Updated portal totals to **13 Disciplines · 50 Subsections · 197 Concepts**.
+  - `tech_apis.html`: Upgraded to full 6-subsection, 24-concept standalone masterclass with updated hero, stats cards, and progress bar.
+  - `tools/build-learning-hub.mjs` & `search-index.json`: Added all 24 API concepts to global catalog search index.
+- **Verification Suite**:
+  - `python tools/audit_site.py`: **0 findings** across all 792 scanned pages.
+  - `node tools/verify-learning-hub.mjs`: All 16 hub pages passed with all checks green.
+  - Headless Playwright test suite (`scratch/test_api_expansion_playwright.py`):
+    - Verified 24 concepts and 6 subsections in `tech_apis.html`.
+    - Verified 197 total concepts in `all_tech.html` with zero horizontal overflow (`scrollWidth === clientWidth === 1440px`) across Light and Black themes.

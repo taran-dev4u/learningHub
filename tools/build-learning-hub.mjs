@@ -3362,6 +3362,41 @@ const beejSearchItems = beejChapters.map((ch) => ({
   a: `Git_Tutorial/index.html#chapter-${ch.num}`,
 }));
 
+const apiConcepts = [
+  { cid: "16.1.1", t: "REST & Resource-Oriented Architecture (ROA)" },
+  { cid: "16.1.2", t: "GraphQL Schemas, Execution & Apollo Federation" },
+  { cid: "16.1.3", t: "gRPC & Protocol Buffers (Protobuf v3)" },
+  { cid: "16.1.4", t: "Real-Time & Streaming APIs: WebSockets, SSE & Webhooks" },
+  { cid: "16.2.1", t: "OpenAPI Specification (OAS 3.0 & 3.1) & Swagger Ecosystem" },
+  { cid: "16.2.2", t: "AsyncAPI & Event-Driven Message Contracts" },
+  { cid: "16.2.3", t: "JSON Schema Validation & Consumer-Driven Contract Testing (Pact)" },
+  { cid: "16.2.4", t: "API Versioning Strategies & Schema Evolution" },
+  { cid: "16.3.1", t: "Pagination Patterns: Offset-Limit vs Keyset (Cursor-Based)" },
+  { cid: "16.3.2", t: "Advanced Filtering, Multi-Field Sorting & Sparse Fieldsets" },
+  { cid: "16.3.3", t: "HTTP Caching, Conditional Requests & CDN Edge Validation" },
+  { cid: "16.3.4", t: "Payload Compression, Streaming & Binary Encodings" },
+  { cid: "16.4.1", t: "Rate Limiting & Throttling Algorithms" },
+  { cid: "16.4.2", t: "Idempotency Mechanisms & Duplicate Request Prevention" },
+  { cid: "16.4.3", t: "Circuit Breakers, Exponential Backoff & Timeout Budgets" },
+  { cid: "16.4.4", t: "RFC 7807 / RFC 9457 Problem Details & Standardized Errors" },
+  { cid: "16.5.1", t: "API Authentication Mechanics: API Keys, Bearer Tokens & mTLS" },
+  { cid: "16.5.2", t: "OAuth 2.0 Framework & OpenID Connect (OIDC)" },
+  { cid: "16.5.3", t: "Fine-Grained Authorization: RBAC, ABAC & Policy as Code" },
+  { cid: "16.5.4", t: "OWASP API Security Top 10 Vulnerabilities & Defense in Depth" },
+  { cid: "16.6.1", t: "API Gateway Architectural Patterns & Topologies" },
+  { cid: "16.6.2", t: "Service Mesh & Microservice East-West Traffic" },
+  { cid: "16.6.3", t: "Distributed Tracing, Metrics & Observability (OpenTelemetry)" },
+  { cid: "16.6.4", t: "API Developer Experience (DX), Mocking & Governance" },
+];
+
+const apiSearchItems = apiConcepts.map((item) => ({
+  k: "cloud",
+  c: `api-${item.cid}`,
+  t: `API Architecture · ${item.cid}: ${item.t}`,
+  s: "Production API Design & Architecture",
+  a: `tech_apis.html`,
+}));
+
 const allSearchItems = [
   ...data.items.map((item) => ({
     k: item.domain,
@@ -3371,6 +3406,7 @@ const allSearchItems = [
     a: item.link,
   })),
   ...beejSearchItems,
+  ...apiSearchItems,
 ];
 
 write(

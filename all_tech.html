@@ -634,8 +634,8 @@ body {
 
   <div class="stats">
     <div class="stat"><div class="n">13</div><div class="l">Disciplines</div></div>
-    <div class="stat"><div class="n">46</div><div class="l">Subsections</div></div>
-    <div class="stat"><div class="n">181</div><div class="l">Concepts</div></div>
+    <div class="stat"><div class="n">50</div><div class="l">Subsections</div></div>
+    <div class="stat"><div class="n">197</div><div class="l">Concepts</div></div>
     <div class="stat"><div class="n">13</div><div class="l">Masterclasses</div></div>
     <div class="stat"><div class="n">85+</div><div class="l">Resources</div></div>
   </div>
@@ -3433,7 +3433,7 @@ body {
 <div class="focus-bar-left">
 <span class="focus-bar-pill">Domain 16 of 16</span>
 <span class="focus-bar-title">Production API Design &amp; Architecture</span>
-<span class="focus-bar-stats">8 concepts • 2 subsections</span>
+<span class="focus-bar-stats">24 concepts &bull; 6 subsections</span>
 </div>
 <div class="focus-bar-right">
 <button class="focus-btn" onclick="navigateDomain(-1)" type="button">← Prev Domain</button>
@@ -3446,10 +3446,10 @@ body {
 <div class="info">
 <div class="label">Section 16 of 16</div>
 <h2>16. Production API Design &amp; Architecture</h2>
-<div class="meta">2 subsections · 8 concepts</div>
+<div class="meta">6 subsections · 24 concepts</div>
 </div>
 <div class="ppg">
-<div class="pct-text" data-pp-text="16">0 / 8</div>
+<div class="pct-text" data-pp-text="16">0 / 24</div>
 <div class="pp-track"><div class="pp-fill" data-pp-fill="16"></div></div>
 </div>
 </div>
@@ -3476,92 +3476,276 @@ body {
 <div class="subsection">
 <div class="subsection-head">
 <span class="subsection-tag">16.1</span>
-<h3>API Styles: REST, GraphQL, gRPC &amp; HTTP Protocols</h3>
+<h3>API Architectural Paradigms, Protocols &amp; Wire Formats</h3>
 <span style="font-size:11px;color:var(--text-faint);">4 concepts</span>
 </div>
-<div class="subsection-desc">Masterclass lessons covering API Styles: REST, GraphQL, gRPC &amp; HTTP Protocols architecture, operational mechanisms, and failure modes.</div>
+<div class="subsection-desc">Foundational transport protocols, architectural styles, and wire formats from REST to gRPC and full-duplex streaming.</div>
 <ol class="concepts">
-<li data-cid="16.1.1" data-name="http protocols  http 1 1 pipelining vs http 2 multiplexing vs http 3 quic udp">
+<li data-cid="16.1.1" data-name="rest resource oriented architecture roa">
 <div class="done-check" title="Mark as done"></div>
 <div class="bookmark-star" title="Bookmark">☆</div>
 <div>
-<div class="cname">HTTP Protocols: HTTP/1.1 Pipelining vs HTTP/2 Multiplexing vs HTTP/3 QUIC UDP</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for HTTP Protocols: HTTP/1.1 Pipelining vs HTTP/2 Multiplexing vs HTTP/3 QUIC UDP.</div>
+<div class="cname">REST &amp; Resource-Oriented Architecture (ROA)</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Richardson Maturity Model (Level 0 to Level 3 HATEOAS), HTTP verb semantics (safe vs idempotent: GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS), standard status code taxonomies (200, 201, 204, 304, 400, 401, 403, 404, 409, 422, 429, 500, 502, 503), noun-based URI path hierarchies, and content negotiation via Accept and Content-Type.</div>
 </div>
-<div class="res-links"><a class="video" data-start="0" data-vchannel="Hello Interview" data-vdur="" data-vtitle="HTTP Protocols: HTTP/1.1 Pipelining vs HTTP/2 Multiplexing vs HTTP/3 QUIC UDP" href="https://www.youtube.com/watch?v=DQ57zYedMdQ&amp;t=0s" rel="noopener" target="_blank" title="Watch walkthrough: HTTP Protocols: HTTP/1.1 Pipelining vs HTTP/2 Multiplexing vs HTTP/3 QUIC UDP">🎬YT</a><a href="https://github.com/microsoft/api-guidelines" rel="noopener" target="_blank" title="Microsoft REST API Guidelines">🌐Doc</a></div>
+<div class="res-links"><a class="video" data-start="0" data-vchannel="Traversy Media" data-vdur="" data-vtitle="REST &amp; Resource-Oriented Architecture (ROA)" href="https://www.youtube.com/watch?v=-mN3VyJuCjM" rel="noopener" target="_blank" title="Watch walkthrough: REST &amp; Resource-Oriented Architecture (ROA)">🎬YT</a><a href="https://github.com/microsoft/api-guidelines" rel="noopener" target="_blank" title="Official Reference">🌐Doc</a></div>
 </li>
-<li data-cid="16.1.2" data-name="rest architecture  richardson maturity model  resource uris  methods   hateoas">
+<li data-cid="16.1.2" data-name="graphql schemas execution apollo federation">
 <div class="done-check" title="Mark as done"></div>
 <div class="bookmark-star" title="Bookmark">☆</div>
 <div>
-<div class="cname">REST Architecture: Richardson Maturity Model, Resource URIs, Methods &amp; HATEOAS</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for REST Architecture: Richardson Maturity Model, Resource URIs, Methods &amp; HATEOAS.</div>
+<div class="cname">GraphQL Schemas, Execution &amp; Apollo Federation</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Schema Definition Language (SDL), Queries, Mutations, Subscriptions, AST parsing and execution resolvers, the N+1 problem and DataLoader batching/memoization, Schema Stitching vs Apollo Federation (subgraphs, router, @key, @shareable), and query depth/cost analysis for security.</div>
 </div>
-<div class="res-links"><a class="video" data-start="300" data-vchannel="Hello Interview" data-vdur="" data-vtitle="REST Architecture: Richardson Maturity Model, Resource URIs, Methods &amp; HATEOAS" href="https://www.youtube.com/watch?v=DQ57zYedMdQ&amp;t=300s" rel="noopener" target="_blank" title="Watch walkthrough: REST Architecture: Richardson Maturity Model, Resource URIs, Methods &amp; HATEOAS">🎬YT</a><a href="https://github.com/microsoft/api-guidelines" rel="noopener" target="_blank" title="Microsoft REST API Guidelines">🌐Doc</a></div>
+<div class="res-links"><a class="video" data-start="0" data-vchannel="Fireship" data-vdur="" data-vtitle="GraphQL Schemas, Execution &amp; Apollo Federation" href="https://www.youtube.com/watch?v=yWzKJPw_VzM" rel="noopener" target="_blank" title="Watch walkthrough: GraphQL Schemas, Execution &amp; Apollo Federation">🎬YT</a><a href="https://graphql.org/learn/" rel="noopener" target="_blank" title="Official Reference">🌐Doc</a></div>
 </li>
-<li data-cid="16.1.3" data-name="graphql architecture  schema definition language  sdl  queries  mutations   solving n 1 with dataloader">
+<li data-cid="16.1.3" data-name="grpc protocol buffers protobuf v3">
 <div class="done-check" title="Mark as done"></div>
 <div class="bookmark-star" title="Bookmark">☆</div>
 <div>
-<div class="cname">GraphQL Architecture: Schema Definition Language (SDL), Queries, Mutations &amp; Solving N+1 with DataLoader</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for GraphQL Architecture: Schema Definition Language (SDL), Queries, Mutations &amp; Solving N+1 with DataLoader.</div>
+<div class="cname">gRPC &amp; Protocol Buffers (Protobuf v3)</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">HTTP/2 multiplexed framing, binary wire encoding (varints, zigzag, length-delimited), proto3 interface definition, communication patterns (Unary, Server Streaming, Client Streaming, Bidirectional Streaming), gRPC-Web bridging, deadlines/cancellations, and metadata interceptors.</div>
 </div>
-<div class="res-links"><a class="video" data-start="750" data-vchannel="Hello Interview" data-vdur="" data-vtitle="GraphQL Architecture: Schema Definition Language (SDL), Queries, Mutations &amp; Solving N+1 with DataLoader" href="https://www.youtube.com/watch?v=DQ57zYedMdQ&amp;t=750s" rel="noopener" target="_blank" title="Watch walkthrough: GraphQL Architecture: Schema Definition Language (SDL), Queries, Mutations &amp; Solving N+1 with DataLoader">🎬YT</a><a href="https://github.com/microsoft/api-guidelines" rel="noopener" target="_blank" title="Microsoft REST API Guidelines">🌐Doc</a></div>
+<div class="res-links"><a class="video" data-start="0" data-vchannel="Hussein Nasser" data-vdur="" data-vtitle="gRPC &amp; Protocol Buffers (Protobuf v3)" href="https://www.youtube.com/watch?v=gnchfOoj9Ec" rel="noopener" target="_blank" title="Watch walkthrough: gRPC &amp; Protocol Buffers (Protobuf v3)">🎬YT</a><a href="https://grpc.io/docs/what-is-grpc/core-concepts/" rel="noopener" target="_blank" title="Official Reference">🌐Doc</a></div>
 </li>
-<li data-cid="16.1.4" data-name="grpc   protocol buffers  binary serialization  http 2 transport  unary vs streaming rpcs">
+<li data-cid="16.1.4" data-name="real time streaming apis websockets sse webhooks">
 <div class="done-check" title="Mark as done"></div>
 <div class="bookmark-star" title="Bookmark">☆</div>
 <div>
-<div class="cname">gRPC &amp; Protocol Buffers: Binary Serialization, HTTP/2 Transport, Unary vs Streaming RPCs</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for gRPC &amp; Protocol Buffers: Binary Serialization, HTTP/2 Transport, Unary vs Streaming RPCs.</div>
+<div class="cname">Real-Time &amp; Streaming APIs: WebSockets, SSE &amp; Webhooks</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">WebSockets full-duplex persistent TCP frames (ws://, wss://), Server-Sent Events (SSE) unidirectional HTTP streaming (text/event-stream), Webhook outbound delivery patterns (HMAC-SHA256 signature verification, idempotency, exponential backoff retries, and dead-letter queues), and long polling fallback mechanics.</div>
 </div>
-<div class="res-links"><a class="video" data-start="1200" data-vchannel="Hello Interview" data-vdur="" data-vtitle="gRPC &amp; Protocol Buffers: Binary Serialization, HTTP/2 Transport, Unary vs Streaming RPCs" href="https://www.youtube.com/watch?v=DQ57zYedMdQ&amp;t=1200s" rel="noopener" target="_blank" title="Watch walkthrough: gRPC &amp; Protocol Buffers: Binary Serialization, HTTP/2 Transport, Unary vs Streaming RPCs">🎬YT</a><a href="https://github.com/microsoft/api-guidelines" rel="noopener" target="_blank" title="Microsoft REST API Guidelines">🌐Doc</a></div>
+<div class="res-links"><a class="video" data-start="0" data-vchannel="Fireship" data-vdur="" data-vtitle="Real-Time &amp; Streaming APIs: WebSockets, SSE &amp; Webhooks" href="https://www.youtube.com/watch?v=1BfCnjr_Vjg" rel="noopener" target="_blank" title="Watch walkthrough: Real-Time &amp; Streaming APIs: WebSockets, SSE &amp; Webhooks">🎬YT</a><a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events" rel="noopener" target="_blank" title="Official Reference">🌐Doc</a></div>
 </li>
 </ol>
 </div>
 <div class="subsection">
 <div class="subsection-head">
 <span class="subsection-tag">16.2</span>
-<h3>API Security, Rate Limiting &amp; Enterprise Governance</h3>
+<h3>API Specifications, Schema Governance &amp; Evolution</h3>
 <span style="font-size:11px;color:var(--text-faint);">4 concepts</span>
 </div>
-<div class="subsection-desc">Masterclass lessons covering API Security, Rate Limiting &amp; Enterprise Governance architecture, operational mechanisms, and failure modes.</div>
+<div class="subsection-desc">Machine-readable contract definitions, schema validation engines, versioning hygiene, and consumer-driven contract testing.</div>
 <ol class="concepts">
-<li data-cid="16.2.1" data-name="owasp api security top 10  broken object level authorization  bola  mass assignment   mitigations">
+<li data-cid="16.2.1" data-name="openapi specification oas 3 0 3 1 swagger ecosystem">
 <div class="done-check" title="Mark as done"></div>
 <div class="bookmark-star" title="Bookmark">☆</div>
 <div>
-<div class="cname">OWASP API Security Top 10: Broken Object Level Authorization (BOLA), Mass Assignment &amp; Mitigations</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for OWASP API Security Top 10: Broken Object Level Authorization (BOLA), Mass Assignment &amp; Mitigations.</div>
+<div class="cname">OpenAPI Specification (OAS 3.0 &amp; 3.1) &amp; Swagger Ecosystem</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Contract-first design, YAML/JSON schemas, paths, operations, request bodies, reusable components, discriminators, automated client/server SDK code generation (OpenAPI Generator), and interactive documentation (Swagger UI, Redoc, Stoplight).</div>
 </div>
-<div class="res-links"><a class="video" data-start="0" data-vchannel="Hello Interview" data-vdur="" data-vtitle="OWASP API Security Top 10: Broken Object Level Authorization (BOLA), Mass Assignment &amp; Mitigations" href="https://www.youtube.com/watch?v=MIJFyUPG4Z4&amp;t=0s" rel="noopener" target="_blank" title="Watch walkthrough: OWASP API Security Top 10: Broken Object Level Authorization (BOLA), Mass Assignment &amp; Mitigations">🎬YT</a><a href="https://owasp.org/www-project-api-security/" rel="noopener" target="_blank" title="OWASP API Security Top 10">🌐Doc</a></div>
+<div class="res-links"><a class="video" data-start="0" data-vchannel="freeCodeCamp.org" data-vdur="" data-vtitle="OpenAPI Specification (OAS 3.0 &amp; 3.1) &amp; Swagger Ecosystem" href="https://www.youtube.com/watch?v=7PrxUe7vL5k" rel="noopener" target="_blank" title="Watch walkthrough: OpenAPI Specification (OAS 3.0 &amp; 3.1) &amp; Swagger Ecosystem">🎬YT</a><a href="https://spec.openapis.org/oas/v3.1.0" rel="noopener" target="_blank" title="Official Reference">🌐Doc</a></div>
 </li>
-<li data-cid="16.2.2" data-name="rate limiting algorithms  token bucket  leaky bucket  sliding window log   sliding window counter">
+<li data-cid="16.2.2" data-name="asyncapi event driven message contracts">
 <div class="done-check" title="Mark as done"></div>
 <div class="bookmark-star" title="Bookmark">☆</div>
 <div>
-<div class="cname">Rate Limiting Algorithms: Token Bucket, Leaky Bucket, Sliding Window Log &amp; Sliding Window Counter</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Rate Limiting Algorithms: Token Bucket, Leaky Bucket, Sliding Window Log &amp; Sliding Window Counter.</div>
+<div class="cname">AsyncAPI &amp; Event-Driven Message Contracts</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Machine-readable specifications for asynchronous event architectures (Kafka topics, RabbitMQ queues, MQTT channels, WebSocket messages), channels, operations (send/receive), payload schemas, and protocol bindings.</div>
 </div>
-<div class="res-links"><a class="video" data-start="350" data-vchannel="Hello Interview" data-vdur="" data-vtitle="Rate Limiting Algorithms: Token Bucket, Leaky Bucket, Sliding Window Log &amp; Sliding Window Counter" href="https://www.youtube.com/watch?v=MIJFyUPG4Z4&amp;t=350s" rel="noopener" target="_blank" title="Watch walkthrough: Rate Limiting Algorithms: Token Bucket, Leaky Bucket, Sliding Window Log &amp; Sliding Window Counter">🎬YT</a><a href="https://owasp.org/www-project-api-security/" rel="noopener" target="_blank" title="OWASP API Security Top 10">🌐Doc</a></div>
+<div class="res-links"><a class="video" data-start="0" data-vchannel="IBM Technology" data-vdur="" data-vtitle="AsyncAPI &amp; Event-Driven Message Contracts" href="https://www.youtube.com/watch?v=nN40NqQfKx8" rel="noopener" target="_blank" title="Watch walkthrough: AsyncAPI &amp; Event-Driven Message Contracts">🎬YT</a><a href="https://www.asyncapi.com/docs/concepts/overview" rel="noopener" target="_blank" title="Official Reference">🌐Doc</a></div>
 </li>
-<li data-cid="16.2.3" data-name="idempotent api design  idempotency keys  unique constraints   distributed locks">
+<li data-cid="16.2.3" data-name="json schema validation consumer driven contract testing pact">
 <div class="done-check" title="Mark as done"></div>
 <div class="bookmark-star" title="Bookmark">☆</div>
 <div>
-<div class="cname">Idempotent API Design: Idempotency Keys, Unique Constraints &amp; Distributed Locks</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Idempotent API Design: Idempotency Keys, Unique Constraints &amp; Distributed Locks.</div>
+<div class="cname">JSON Schema Validation &amp; Consumer-Driven Contract Testing (Pact)</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Draft 2020-12 / Draft-07 schema validation engines (ajv, pydantic), consumer-driven contract testing with Pact, broker verification, preventing breaking schema regressions, and CI/CD contract validation gates.</div>
 </div>
-<div class="res-links"><a class="video" data-start="850" data-vchannel="Hello Interview" data-vdur="" data-vtitle="Idempotent API Design: Idempotency Keys, Unique Constraints &amp; Distributed Locks" href="https://www.youtube.com/watch?v=MIJFyUPG4Z4&amp;t=850s" rel="noopener" target="_blank" title="Watch walkthrough: Idempotent API Design: Idempotency Keys, Unique Constraints &amp; Distributed Locks">🎬YT</a><a href="https://owasp.org/www-project-api-security/" rel="noopener" target="_blank" title="OWASP API Security Top 10">🌐Doc</a></div>
+<div class="res-links"><a class="video" data-start="0" data-vchannel="Continuous Delivery" data-vdur="" data-vtitle="JSON Schema Validation &amp; Consumer-Driven Contract Testing (Pact)" href="https://www.youtube.com/watch?v=sAAX4W_G_1Q" rel="noopener" target="_blank" title="Watch walkthrough: JSON Schema Validation &amp; Consumer-Driven Contract Testing (Pact)">🎬YT</a><a href="https://json-schema.org/learn/getting-started-step-by-step" rel="noopener" target="_blank" title="Official Reference">🌐Doc</a></div>
 </li>
-<li data-cid="16.2.4" data-name="api pagination strategies  offset limit vs cursor based  keyset  pagination for massive datasets">
+<li data-cid="16.2.4" data-name="api versioning strategies schema evolution">
 <div class="done-check" title="Mark as done"></div>
 <div class="bookmark-star" title="Bookmark">☆</div>
 <div>
-<div class="cname">API Pagination Strategies: Offset/Limit vs Cursor-Based (Keyset) Pagination for Massive Datasets</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for API Pagination Strategies: Offset/Limit vs Cursor-Based (Keyset) Pagination for Massive Datasets.</div>
+<div class="cname">API Versioning Strategies &amp; Schema Evolution</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">URI path versioning (/v1/), custom header versioning (Accept: application/vnd.company.v1+json), query parameter versioning, backward and forward compatibility rules (Additive Changes, Deprecation workflows via Sunset and Deprecation RFC headers, breaking change policies).</div>
 </div>
-<div class="res-links"><a class="video" data-start="1200" data-vchannel="Hello Interview" data-vdur="" data-vtitle="API Pagination Strategies: Offset/Limit vs Cursor-Based (Keyset) Pagination for Massive Datasets" href="https://www.youtube.com/watch?v=MIJFyUPG4Z4&amp;t=1200s" rel="noopener" target="_blank" title="Watch walkthrough: API Pagination Strategies: Offset/Limit vs Cursor-Based (Keyset) Pagination for Massive Datasets">🎬YT</a><a href="https://owasp.org/www-project-api-security/" rel="noopener" target="_blank" title="OWASP API Security Top 10">🌐Doc</a></div>
+<div class="res-links"><a class="video" data-start="0" data-vchannel="ByteByteGo" data-vdur="" data-vtitle="API Versioning Strategies &amp; Schema Evolution" href="https://www.youtube.com/watch?v=XhIq6V4Xh2M" rel="noopener" target="_blank" title="Watch walkthrough: API Versioning Strategies &amp; Schema Evolution">🎬YT</a><a href="https://restfulapi.net/versioning/" rel="noopener" target="_blank" title="Official Reference">🌐Doc</a></div>
+</li>
+</ol>
+</div>
+<div class="subsection">
+<div class="subsection-head">
+<span class="subsection-tag">16.3</span>
+<h3>Data Handling, Querying &amp; Transport Optimization</h3>
+<span style="font-size:11px;color:var(--text-faint);">4 concepts</span>
+</div>
+<div class="subsection-desc">Scalable dataset traversal, conditional caching, compound filtering, and high-efficiency binary transport.</div>
+<ol class="concepts">
+<li data-cid="16.3.1" data-name="pagination patterns offset limit vs keyset cursor based">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Pagination Patterns: Offset-Limit vs Keyset (Cursor-Based)</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Performance degradation of SQL OFFSET on large datasets, keyset/cursor pagination using indexed sort keys (created_at, id), encoding opaque cursors (Base64), RFC 5988 Link navigation headers, and infinite scrolling data contracts.</div>
+</div>
+<div class="res-links"><a class="video" data-start="0" data-vchannel="Hussein Nasser" data-vdur="" data-vtitle="Pagination Patterns: Offset-Limit vs Keyset (Cursor-Based)" href="https://www.youtube.com/watch?v=zwBXIdn_3qI" rel="noopener" target="_blank" title="Watch walkthrough: Pagination Patterns: Offset-Limit vs Keyset (Cursor-Based)">🎬YT</a><a href="https://jsonapi.org/format/#fetching-pagination" rel="noopener" target="_blank" title="Official Reference">🌐Doc</a></div>
+</li>
+<li data-cid="16.3.2" data-name="advanced filtering multi field sorting sparse fieldsets">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Advanced Filtering, Multi-Field Sorting &amp; Sparse Fieldsets</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">JSON:API style compound filtering (?filter[status]=active&amp;filter[price_gte]=100), dynamic multi-column ordering (?sort=-created_at,price), sparse fieldsets (?fields=id,title,author), and GraphQL field selection comparison.</div>
+</div>
+<div class="res-links"><a class="video" data-start="0" data-vchannel="Web Dev Simplified" data-vdur="" data-vtitle="Advanced Filtering, Multi-Field Sorting &amp; Sparse Fieldsets" href="https://www.youtube.com/watch?v=u18N7rZ-xL8" rel="noopener" target="_blank" title="Watch walkthrough: Advanced Filtering, Multi-Field Sorting &amp; Sparse Fieldsets">🎬YT</a><a href="https://jsonapi.org/format/#fetching-filtering" rel="noopener" target="_blank" title="Official Reference">🌐Doc</a></div>
+</li>
+<li data-cid="16.3.3" data-name="http caching conditional requests cdn edge validation">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">HTTP Caching, Conditional Requests &amp; CDN Edge Validation</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Cache-Control directives (max-age, s-maxage, no-cache, no-store, must-revalidate, stale-while-revalidate), validator headers (Strong ETag vs Weak W/..., Last-Modified), conditional requests (If-None-Match -&gt; 304 Not Modified, If-Match optimistic concurrency), and CDN edge caching.</div>
+</div>
+<div class="res-links"><a class="video" data-start="0" data-vchannel="Computerphile" data-vdur="" data-vtitle="HTTP Caching, Conditional Requests &amp; CDN Edge Validation" href="https://www.youtube.com/watch?v=HiBdZskyv2A" rel="noopener" target="_blank" title="Watch walkthrough: HTTP Caching, Conditional Requests &amp; CDN Edge Validation">🎬YT</a><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching" rel="noopener" target="_blank" title="Official Reference">🌐Doc</a></div>
+</li>
+<li data-cid="16.3.4" data-name="payload compression streaming binary encodings">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Payload Compression, Streaming &amp; Binary Encodings</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">HTTP payload compression algorithms (Gzip, Brotli br), Content-Encoding vs Transfer-Encoding: chunked, newline-delimited JSON (NDJSON) streaming for large tabular exports, and binary payload serialization (MessagePack, CBOR, Avro).</div>
+</div>
+<div class="res-links"><a class="video" data-start="0" data-vchannel="Computerphile" data-vdur="" data-vtitle="Payload Compression, Streaming &amp; Binary Encodings" href="https://www.youtube.com/watch?v=4b4MUYve_U8" rel="noopener" target="_blank" title="Watch walkthrough: Payload Compression, Streaming &amp; Binary Encodings">🎬YT</a><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Encoding" rel="noopener" target="_blank" title="Official Reference">🌐Doc</a></div>
+</li>
+</ol>
+</div>
+<div class="subsection">
+<div class="subsection-head">
+<span class="subsection-tag">16.4</span>
+<h3>API Resilience, Traffic Management &amp; Fault Tolerance</h3>
+<span style="font-size:11px;color:var(--text-faint);">4 concepts</span>
+</div>
+<div class="subsection-desc">Mitigating thundering herds, preventing duplicate billing, handling cascading downstream outages, and standardized error envelopes.</div>
+<ol class="concepts">
+<li data-cid="16.4.1" data-name="rate limiting throttling algorithms">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Rate Limiting &amp; Throttling Algorithms</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Token Bucket, Leaky Bucket, Fixed Window Counter, Sliding Window Log, Sliding Window Counter; distributed atomic token enforcement with Redis Lua scripts; HTTP 429 Too Many Requests response standards (Retry-After, RateLimit-Limit, RateLimit-Remaining, RateLimit-Reset).</div>
+</div>
+<div class="res-links"><a class="video" data-start="0" data-vchannel="Hello Interview" data-vdur="" data-vtitle="Rate Limiting &amp; Throttling Algorithms" href="https://www.youtube.com/watch?v=MIJFyUPG4Z4" rel="noopener" target="_blank" title="Watch walkthrough: Rate Limiting &amp; Throttling Algorithms">🎬YT</a><a href="https://cloud.google.com/architecture/rate-limiting-strategies-techniques" rel="noopener" target="_blank" title="Official Reference">🌐Doc</a></div>
+</li>
+<li data-cid="16.4.2" data-name="idempotency mechanisms duplicate request prevention">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Idempotency Mechanisms &amp; Duplicate Request Prevention</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Enterprise idempotency keys (Idempotency-Key / X-Idempotency-Key headers), distributed atomic deduplication locks (Redis, DynamoDB conditional writes), caching and replaying execution responses for retried mutating operations (payments, order processing).</div>
+</div>
+<div class="res-links"><a class="video" data-start="0" data-vchannel="Hello Interview" data-vdur="" data-vtitle="Idempotency Mechanisms &amp; Duplicate Request Prevention" href="https://www.youtube.com/watch?v=DQ57zYedMdQ" rel="noopener" target="_blank" title="Watch walkthrough: Idempotency Mechanisms &amp; Duplicate Request Prevention">🎬YT</a><a href="https://stripe.com/docs/api/idempotent_requests" rel="noopener" target="_blank" title="Official Reference">🌐Doc</a></div>
+</li>
+<li data-cid="16.4.3" data-name="circuit breakers exponential backoff timeout budgets">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Circuit Breakers, Exponential Backoff &amp; Timeout Budgets</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Distributed circuit breaker finite state machines (Closed, Open, Half-Open), failure threshold triggers, recovery probes, exponential backoff with full jitter formulas, deadline propagation across microservice call graphs, and graceful degradation fallbacks.</div>
+</div>
+<div class="res-links"><a class="video" data-start="0" data-vchannel="ByteByteGo" data-vdur="" data-vtitle="Circuit Breakers, Exponential Backoff &amp; Timeout Budgets" href="https://www.youtube.com/watch?v=ADHcBxEXvFA" rel="noopener" target="_blank" title="Watch walkthrough: Circuit Breakers, Exponential Backoff &amp; Timeout Budgets">🎬YT</a><a href="https://martinfowler.com/bliki/CircuitBreaker.html" rel="noopener" target="_blank" title="Official Reference">🌐Doc</a></div>
+</li>
+<li data-cid="16.4.4" data-name="rfc 7807 rfc 9457 problem details standardized errors">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">RFC 7807 / RFC 9457 Problem Details &amp; Standardized Errors</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Structured machine-readable error representations (application/problem+json), standard fields (type, title, status, detail, instance, invalid_params), correlation/request trace IDs, suppressing internal stack traces, and developer-friendly error taxonomies.</div>
+</div>
+<div class="res-links"><a class="video" data-start="0" data-vchannel="IBM Technology" data-vdur="" data-vtitle="RFC 7807 / RFC 9457 Problem Details &amp; Standardized Errors" href="https://www.youtube.com/watch?v=2n3xS8eR2J8" rel="noopener" target="_blank" title="Watch walkthrough: RFC 7807 / RFC 9457 Problem Details &amp; Standardized Errors">🎬YT</a><a href="https://datatracker.ietf.org/doc/html/rfc7807" rel="noopener" target="_blank" title="Official Reference">🌐Doc</a></div>
+</li>
+</ol>
+</div>
+<div class="subsection">
+<div class="subsection-head">
+<span class="subsection-tag">16.5</span>
+<h3>API Security, Identity Federation &amp; OWASP API Top 10</h3>
+<span style="font-size:11px;color:var(--text-faint);">4 concepts</span>
+</div>
+<div class="subsection-desc">Cryptographic authentication, zero-trust mTLS, delegated authorization tokens, and vulnerability defense against the OWASP API Top 10.</div>
+<ol class="concepts">
+<li data-cid="16.5.1" data-name="api authentication mechanics api keys bearer tokens mtls">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">API Authentication Mechanics: API Keys, Bearer Tokens &amp; mTLS</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">API Key rotation and hashing (never raw in URLs), HTTP Bearer Authorization headers, Mutual TLS (mTLS) zero-trust bidirectional certificate validation for service-to-service communication, and client certificate thumbprint binding.</div>
+</div>
+<div class="res-links"><a class="video" data-start="0" data-vchannel="Hussein Nasser" data-vdur="" data-vtitle="API Authentication Mechanics: API Keys, Bearer Tokens &amp; mTLS" href="https://www.youtube.com/watch?v=7Q17ubqLfaM" rel="noopener" target="_blank" title="Watch walkthrough: API Authentication Mechanics: API Keys, Bearer Tokens &amp; mTLS">🎬YT</a><a href="https://owasp.org/www-project-api-security/" rel="noopener" target="_blank" title="Official Reference">🌐Doc</a></div>
+</li>
+<li data-cid="16.5.2" data-name="oauth 2 0 framework openid connect oidc">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">OAuth 2.0 Framework &amp; OpenID Connect (OIDC)</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Authorization Code Grant with Proof Key for Code Exchange (PKCE) for public clients/SPAs, Client Credentials grant for machine-to-machine, Refresh Token rotation strategies, JSON Web Tokens (JWT: Header, Payload, Signature), asymmetric signing (RS256, ES256), and JWKS (.well-known/jwks.json) key verification.</div>
+</div>
+<div class="res-links"><a class="video" data-start="0" data-vchannel="ByteByteGo" data-vdur="" data-vtitle="OAuth 2.0 Framework &amp; OpenID Connect (OIDC)" href="https://www.youtube.com/watch?v=CPbvxxslDTU" rel="noopener" target="_blank" title="Watch walkthrough: OAuth 2.0 Framework &amp; OpenID Connect (OIDC)">🎬YT</a><a href="https://oauth.net/2/" rel="noopener" target="_blank" title="Official Reference">🌐Doc</a></div>
+</li>
+<li data-cid="16.5.3" data-name="fine grained authorization rbac abac policy as code">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Fine-Grained Authorization: RBAC, ABAC &amp; Policy as Code</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Role-Based Access Control (RBAC), Attribute-Based Access Control (ABAC) evaluating user/resource/environment attributes, OAuth scopes vs JWT claims, and Policy-as-Code engines (Open Policy Agent OPA / Rego, AWS Cedar, Zanzibar relationship-based access control ReBAC).</div>
+</div>
+<div class="res-links"><a class="video" data-start="0" data-vchannel="IBM Technology" data-vdur="" data-vtitle="Fine-Grained Authorization: RBAC, ABAC &amp; Policy as Code" href="https://www.youtube.com/watch?v=R6tUNpR4flk" rel="noopener" target="_blank" title="Watch walkthrough: Fine-Grained Authorization: RBAC, ABAC &amp; Policy as Code">🎬YT</a><a href="https://www.openpolicyagent.org/docs/latest/" rel="noopener" target="_blank" title="Official Reference">🌐Doc</a></div>
+</li>
+<li data-cid="16.5.4" data-name="owasp api security top 10 vulnerabilities defense in depth">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">OWASP API Security Top 10 Vulnerabilities &amp; Defense in Depth</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Broken Object Level Authorization (BOLA/IDOR) mitigations, Broken Function Level Authorization (BFLA), Unrestricted Resource Consumption, Mass Assignment / Object Property Level Authorization, Server-Side Request Forgery (SSRF) in webhook dispatchers, CORS policy (Access-Control-Allow-Origin, preflight OPTIONS), and input sanitization.</div>
+</div>
+<div class="res-links"><a class="video" data-start="0" data-vchannel="freeCodeCamp.org" data-vdur="" data-vtitle="OWASP API Security Top 10 Vulnerabilities &amp; Defense in Depth" href="https://www.youtube.com/watch?v=4sE1a4Yk9_o" rel="noopener" target="_blank" title="Watch walkthrough: OWASP API Security Top 10 Vulnerabilities &amp; Defense in Depth">🎬YT</a><a href="https://owasp.org/API-Security/editions/2023/en/0x11-t10/" rel="noopener" target="_blank" title="Official Reference">🌐Doc</a></div>
+</li>
+</ol>
+</div>
+<div class="subsection">
+<div class="subsection-head">
+<span class="subsection-tag">16.6</span>
+<h3>API Gateway Architecture, Service Mesh &amp; Observability</h3>
+<span style="font-size:11px;color:var(--text-faint);">4 concepts</span>
+</div>
+<div class="subsection-desc">Edge routing topologies, east-west microservice traffic management, OpenTelemetry distributed tracing, and developer self-service.</div>
+<ol class="concepts">
+<li data-cid="16.6.1" data-name="api gateway architectural patterns topologies">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">API Gateway Architectural Patterns &amp; Topologies</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Edge gateway vs internal microgateway, reverse proxy routing, SSL/TLS termination, protocol translation (REST-to-gRPC, JSON-to-Kafka), request transformation, and top modern gateways (Kong Gateway, Apache APISIX, Traefik, AWS API Gateway, Envoy Proxy).</div>
+</div>
+<div class="res-links"><a class="video" data-start="0" data-vchannel="ByteByteGo" data-vdur="" data-vtitle="API Gateway Architectural Patterns &amp; Topologies" href="https://www.youtube.com/watch?v=hRP5VvC9r0I" rel="noopener" target="_blank" title="Watch walkthrough: API Gateway Architectural Patterns &amp; Topologies">🎬YT</a><a href="https://docs.konghq.com/gateway/latest/" rel="noopener" target="_blank" title="Official Reference">🌐Doc</a></div>
+</li>
+<li data-cid="16.6.2" data-name="service mesh microservice east west traffic">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Service Mesh &amp; Microservice East-West Traffic</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Envoy data plane sidecars, Istio / Linkerd control planes, mTLS automatic encryption, traffic management (canary deployments, percentage traffic splitting, fault injection), and circuit breaking at the infrastructure mesh layer.</div>
+</div>
+<div class="res-links"><a class="video" data-start="0" data-vchannel="IBM Technology" data-vdur="" data-vtitle="Service Mesh &amp; Microservice East-West Traffic" href="https://www.youtube.com/watch?v=16fgzklcF7Y" rel="noopener" target="_blank" title="Watch walkthrough: Service Mesh &amp; Microservice East-West Traffic">🎬YT</a><a href="https://istio.io/latest/about/service-mesh/" rel="noopener" target="_blank" title="Official Reference">🌐Doc</a></div>
+</li>
+<li data-cid="16.6.3" data-name="distributed tracing metrics observability opentelemetry">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">Distributed Tracing, Metrics &amp; Observability (OpenTelemetry)</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">W3C Trace Context standards (traceparent, tracestate), OpenTelemetry (OTel) instrumentation, distributed trace context propagation across HTTP/gRPC boundaries, Jaeger and Zipkin visualization, and API Golden Signals (Latency, Traffic, Errors, Saturation).</div>
+</div>
+<div class="res-links"><a class="video" data-start="0" data-vchannel="ByteByteGo" data-vdur="" data-vtitle="Distributed Tracing, Metrics &amp; Observability (OpenTelemetry)" href="https://www.youtube.com/watch?v=l_tQ_h6_ZlE" rel="noopener" target="_blank" title="Watch walkthrough: Distributed Tracing, Metrics &amp; Observability (OpenTelemetry)">🎬YT</a><a href="https://opentelemetry.io/docs/concepts/what-is-opentelemetry/" rel="noopener" target="_blank" title="Official Reference">🌐Doc</a></div>
+</li>
+<li data-cid="16.6.4" data-name="api developer experience dx mocking governance">
+<div class="done-check" title="Mark as done"></div>
+<div class="bookmark-star" title="Bookmark">☆</div>
+<div>
+<div class="cname">API Developer Experience (DX), Mocking &amp; Governance</div>
+<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Developer self-service onboarding portals, interactive API documentation, sandbox environments and mock servers (Prism, Mockoon), API monetization and quota tiers, SDK maintenance automation, and enterprise schema linters (Spectral).</div>
+</div>
+<div class="res-links"><a class="video" data-start="0" data-vchannel="Continuous Delivery" data-vdur="" data-vtitle="API Developer Experience (DX), Mocking &amp; Governance" href="https://www.youtube.com/watch?v=rTmyJkZk37g" rel="noopener" target="_blank" title="Watch walkthrough: API Developer Experience (DX), Mocking &amp; Governance">🎬YT</a><a href="https://stoplight.io/open-source/spectral" rel="noopener" target="_blank" title="Official Reference">🌐Doc</a></div>
 </li>
 </ol>
 </div>
