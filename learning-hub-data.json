@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-28T07:33:24.122Z",
+  "generatedAt": "2026-10-29T09:18:47.374Z",
   "stats": {
     "domains": 7,
     "sections": 124,
@@ -7,8 +7,8 @@
     "items": 4259,
     "problems": 940,
     "concepts": 3319,
-    "resources": 3083,
-    "resourceEntries": 3560,
+    "resources": 3031,
+    "resourceEntries": 3481,
     "additions": 5
   },
   "sources": [
@@ -19214,7 +19214,7 @@
       ],
       "sections": [],
       "itemCount": 0,
-      "resourceCount": 76,
+      "resourceCount": 17,
       "progressLabel": "concepts",
       "coverage": {
         "title": "Cloud & DevOps Coverage Check",
@@ -143120,138 +143120,10 @@
       "type": "source"
     },
     {
-      "id": "cloud:aws-documentation:https-docs-aws-amazon-com",
-      "title": "AWS Documentation",
+      "id": "cloud:aws-documentation-official:https-docs-aws-amazon-com",
+      "title": "AWS Documentation (Official)",
       "url": "https://docs.aws.amazon.com/",
       "source": "AWS",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:azure-documentation:https-learn-microsoft-com-en-us-azure",
-      "title": "Azure Documentation",
-      "url": "https://learn.microsoft.com/en-us/azure/",
-      "source": "Microsoft",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:google-cloud-documentation:https-cloud-google-com-docs",
-      "title": "Google Cloud Documentation",
-      "url": "https://cloud.google.com/docs",
-      "source": "Google",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:kubernetes-documentation:https-kubernetes-io-docs-home",
-      "title": "Kubernetes Documentation",
-      "url": "https://kubernetes.io/docs/home/",
-      "source": "CNCF",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:docker-official-guides:https-docs-docker-com",
-      "title": "Docker Official Guides",
-      "url": "https://docs.docker.com/",
-      "source": "Docker",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:terraform-registry-documentation:https-developer-hashicorp-com-terraform-docs",
-      "title": "Terraform Registry & Documentation",
-      "url": "https://developer.hashicorp.com/terraform/docs",
-      "source": "HashiCorp",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:github-actions-documentation:https-docs-github-com-en-actions",
-      "title": "GitHub Actions Documentation",
-      "url": "https://docs.github.com/en/actions",
-      "source": "GitHub",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:apache-kafka-documentation:https-kafka-apache-org-documentation",
-      "title": "Apache Kafka Documentation",
-      "url": "https://kafka.apache.org/documentation/",
-      "source": "Apache",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:apache-spark-documentation:https-spark-apache-org-docs-latest",
-      "title": "Apache Spark Documentation",
-      "url": "https://spark.apache.org/docs/latest/",
-      "source": "Apache",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:postgresql-official-manual:https-www-postgresql-org-docs-current",
-      "title": "PostgreSQL Official Manual",
-      "url": "https://www.postgresql.org/docs/current/",
-      "source": "PostgreSQL",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:redis-documentation:https-redis-io-docs",
-      "title": "Redis Documentation",
-      "url": "https://redis.io/docs/",
-      "source": "Redis",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:spring-boot-reference-guide:https-docs-spring-io-spring-boot-docs-current-reference-html",
-      "title": "Spring Boot Reference Guide",
-      "url": "https://docs.spring.io/spring-boot/docs/current/reference/html/",
-      "source": "Spring",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:fastapi-framework-guide:https-fastapi-tiangolo-com",
-      "title": "FastAPI Framework Guide",
-      "url": "https://fastapi.tiangolo.com/",
-      "source": "FastAPI",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:owasp-api-security-top-10:https-owasp-org-www-project-api-security",
-      "title": "OWASP API Security Top 10",
-      "url": "https://owasp.org/www-project-api-security/",
-      "source": "OWASP",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:roadmap-sh-devops-cloud:https-roadmap-sh-devops",
-      "title": "roadmap.sh DevOps & Cloud",
-      "url": "https://roadmap.sh/devops",
-      "source": "roadmap.sh",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:brendan-gregg-linux-performance:https-www-brendangregg-com-linuxperf-html",
-      "title": "Brendan Gregg Linux Performance",
-      "url": "https://www.brendangregg.com/linuxperf.html",
-      "source": "Performance",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:aws-architecture-center:https-aws-amazon-com-architecture",
-      "title": "AWS Architecture Center",
-      "url": "https://aws.amazon.com/architecture/",
-      "source": "aws.amazon.com",
       "domain": "cloud",
       "domainTitle": "Cloud & DevOps Engineering"
     },
@@ -143259,86 +143131,6 @@
       "id": "cloud:aws-well-architected-framework:https-aws-amazon-com-architecture-well-architected",
       "title": "AWS Well-Architected Framework",
       "url": "https://aws.amazon.com/architecture/well-architected/",
-      "source": "aws.amazon.com",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:microsoft-learn-for-azure:https-learn-microsoft-com-en-us-training-azure",
-      "title": "Microsoft Learn for Azure",
-      "url": "https://learn.microsoft.com/en-us/training/azure/",
-      "source": "learn.microsoft.com",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:azure-architecture-center:https-learn-microsoft-com-en-us-azure-architecture",
-      "title": "Azure Architecture Center",
-      "url": "https://learn.microsoft.com/en-us/azure/architecture/",
-      "source": "learn.microsoft.com",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:google-cloud-architecture-center:https-cloud-google-com-architecture",
-      "title": "Google Cloud Architecture Center",
-      "url": "https://cloud.google.com/architecture",
-      "source": "cloud.google.com",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:docker-documentation:https-docs-docker-com",
-      "title": "Docker Documentation",
-      "url": "https://docs.docker.com/",
-      "source": "docs.docker.com",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:terraform-registry:https-registry-terraform-io",
-      "title": "Terraform Registry",
-      "url": "https://registry.terraform.io/",
-      "source": "registry.terraform.io",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:postgresql-documentation:https-www-postgresql-org-docs-current",
-      "title": "PostgreSQL Documentation",
-      "url": "https://www.postgresql.org/docs/current/",
-      "source": "postgresql.org",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:spring-boot-reference:https-docs-spring-io-spring-boot-docs-current-reference-html",
-      "title": "Spring Boot Reference",
-      "url": "https://docs.spring.io/spring-boot/docs/current/reference/html/",
-      "source": "docs.spring.io",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:fastapi-documentation:https-fastapi-tiangolo-com",
-      "title": "FastAPI Documentation",
-      "url": "https://fastapi.tiangolo.com/",
-      "source": "fastapi.tiangolo.com",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:roadmap-sh-devops:https-roadmap-sh-devops",
-      "title": "Roadmap.sh DevOps",
-      "url": "https://roadmap.sh/devops",
-      "source": "roadmap.sh",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:aws-documentation-official:https-docs-aws-amazon-com",
-      "title": "AWS Documentation (Official)",
-      "url": "https://docs.aws.amazon.com/",
       "source": "AWS",
       "domain": "cloud",
       "domainTitle": "Cloud & DevOps Engineering"
@@ -143400,6 +143192,14 @@
       "domainTitle": "Cloud & DevOps Engineering"
     },
     {
+      "id": "cloud:azure-architecture-center:https-learn-microsoft-com-en-us-azure-architecture",
+      "title": "Azure Architecture Center",
+      "url": "https://learn.microsoft.com/en-us/azure/architecture/",
+      "source": "Microsoft",
+      "domain": "cloud",
+      "domainTitle": "Cloud & DevOps Engineering"
+    },
+    {
       "id": "cloud:microsoft-entra-id-azure-ad-architecture:https-learn-microsoft-com-en-us-entra-identity",
       "title": "Microsoft Entra ID (Azure AD) Architecture",
       "url": "https://learn.microsoft.com/en-us/entra/identity/",
@@ -143412,6 +143212,14 @@
       "title": "Azure vs AWS Service Comparison Map",
       "url": "https://learn.microsoft.com/en-us/azure/architecture/aws-professional/services",
       "source": "Microsoft",
+      "domain": "cloud",
+      "domainTitle": "Cloud & DevOps Engineering"
+    },
+    {
+      "id": "cloud:google-cloud-documentation:https-cloud-google-com-docs",
+      "title": "Google Cloud Documentation",
+      "url": "https://cloud.google.com/docs",
+      "source": "Google",
       "domain": "cloud",
       "domainTitle": "Cloud & DevOps Engineering"
     },
@@ -143444,446 +143252,6 @@
       "title": "Google Kubernetes Engine (GKE) Best Practices",
       "url": "https://cloud.google.com/kubernetes-engine/docs/best-practices",
       "source": "Google",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:the-linux-command-line-william-shotts:https-linuxcommand-org-tlcl-php",
-      "title": "The Linux Command Line (William Shotts)",
-      "url": "https://linuxcommand.org/tlcl.php",
-      "source": "Book",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:brendan-gregg-linux-performance:https-www-brendangregg-com-linuxperf-html",
-      "title": "Brendan Gregg: Linux Performance",
-      "url": "https://www.brendangregg.com/linuxperf.html",
-      "source": "Brendan Gregg",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:linux-journey-modern-learning-guide:https-linuxjourney-com",
-      "title": "Linux Journey: Modern Learning Guide",
-      "url": "https://linuxjourney.com/",
-      "source": "LinuxJourney",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:bash-reference-manual-gnu:https-www-gnu-org-software-bash-manual",
-      "title": "Bash Reference Manual (GNU)",
-      "url": "https://www.gnu.org/software/bash/manual/",
-      "source": "GNU",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:linux-system-administration-crash-course-youtube:https-www-youtube-com-watch-v-wbp0rb-zjak",
-      "title": "Linux System Administration Crash Course (YouTube)",
-      "url": "https://www.youtube.com/watch?v=wBp0Rb-ZJak",
-      "source": "freeCodeCamp",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:pro-git-book-scott-chacon-ben-straub:https-git-scm-com-book-en-v2",
-      "title": "Pro Git Book (Scott Chacon & Ben Straub)",
-      "url": "https://git-scm.com/book/en/v2",
-      "source": "Git-SCM",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:git-internals-architecture-peepcode:https-github-com-pluralsight-git-internals-pdf",
-      "title": "Git Internals Architecture (PeepCode)",
-      "url": "https://github.com/pluralsight/git-internals-pdf",
-      "source": "Pluralsight",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:git-and-github-for-beginners-crash-course-youtube:https-www-youtube-com-watch-v-rgoj5yh7evk",
-      "title": "Git and GitHub for Beginners - Crash Course (YouTube)",
-      "url": "https://www.youtube.com/watch?v=RGOj5yH7evk",
-      "source": "freeCodeCamp",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:conventional-commits-specification:https-www-conventionalcommits-org",
-      "title": "Conventional Commits Specification",
-      "url": "https://www.conventionalcommits.org/",
-      "source": "Specification",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:docker-official-documentation:https-docs-docker-com",
-      "title": "Docker Official Documentation",
-      "url": "https://docs.docker.com/",
-      "source": "Docker",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:docker-tutorial-for-beginners-techworld-with-nana:https-www-youtube-com-watch-v-3c-ibn73dde",
-      "title": "Docker Tutorial for Beginners (TechWorld with Nana)",
-      "url": "https://www.youtube.com/watch?v=3c-iBn73dDE",
-      "source": "TechWorld with Nana",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:dockerfile-best-practices-security-guidelines:https-docs-docker-com-develop-develop-images-dockerfile-best-practices",
-      "title": "Dockerfile Best Practices & Security Guidelines",
-      "url": "https://docs.docker.com/develop/develop-images/dockerfile_best-practices/",
-      "source": "Docker",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:oci-open-container-initiative-image-specification:https-github-com-opencontainers-image-spec",
-      "title": "OCI (Open Container Initiative) Image Specification",
-      "url": "https://github.com/opencontainers/image-spec",
-      "source": "CNCF",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:docker-compose-specification:https-compose-spec-io",
-      "title": "Docker Compose Specification",
-      "url": "https://compose-spec.io/",
-      "source": "Docker",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:kubernetes-official-documentation:https-kubernetes-io-docs-home",
-      "title": "Kubernetes Official Documentation",
-      "url": "https://kubernetes.io/docs/home/",
-      "source": "CNCF",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:kubernetes-full-course-techworld-with-nana:https-www-youtube-com-watch-v-x48vudvv0do",
-      "title": "Kubernetes Full Course (TechWorld with Nana)",
-      "url": "https://www.youtube.com/watch?v=X48VuDVv0do",
-      "source": "TechWorld with Nana",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:kubernetes-the-hard-way-kelsey-hightower:https-github-com-kelseyhightower-kubernetes-the-hard-way",
-      "title": "Kubernetes The Hard Way (Kelsey Hightower)",
-      "url": "https://github.com/kelseyhightower/kubernetes-the-hard-way",
-      "source": "GitHub",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:helm-the-kubernetes-package-manager:https-helm-sh-docs",
-      "title": "Helm: The Kubernetes Package Manager",
-      "url": "https://helm.sh/docs/",
-      "source": "CNCF",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:kubernetes-production-best-practices-security-checklist:https-kubernetes-io-docs-concepts-security-overview",
-      "title": "Kubernetes Production Best Practices & Security Checklist",
-      "url": "https://kubernetes.io/docs/concepts/security/overview/",
-      "source": "CNCF",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:terraform-documentation-tutorials:https-developer-hashicorp-com-terraform-docs",
-      "title": "Terraform Documentation & Tutorials",
-      "url": "https://developer.hashicorp.com/terraform/docs",
-      "source": "HashiCorp",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:terraform-course-automate-your-aws-cloud-infrastructure-youtube:https-www-youtube-com-watch-v-slb-c-ayrmo",
-      "title": "Terraform Course - Automate Your AWS Cloud Infrastructure (YouTube)",
-      "url": "https://www.youtube.com/watch?v=SLB_c_ayRMo",
-      "source": "freeCodeCamp",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:terraform-best-practices-anton-babenko:https-www-terraform-best-practices-com",
-      "title": "Terraform Best Practices (Anton Babenko)",
-      "url": "https://www.terraform-best-practices.com/",
-      "source": "Community",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:terraform-registry-official-cloud-providers:https-registry-terraform-io",
-      "title": "Terraform Registry: Official Cloud Providers",
-      "url": "https://registry.terraform.io/",
-      "source": "HashiCorp",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:github-actions-ci-cd-complete-tutorial-nana:https-www-youtube-com-watch-v-r8-veqiybji",
-      "title": "GitHub Actions CI/CD Complete Tutorial (Nana)",
-      "url": "https://www.youtube.com/watch?v=R8_veQiYBjI",
-      "source": "TechWorld with Nana",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:jenkins-user-handbook:https-www-jenkins-io-doc-book",
-      "title": "Jenkins User Handbook",
-      "url": "https://www.jenkins.io/doc/book/",
-      "source": "Jenkins",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:argocd-declarative-gitops-for-kubernetes:https-argo-cd-readthedocs-io-en-stable",
-      "title": "ArgoCD: Declarative GitOps for Kubernetes",
-      "url": "https://argo-cd.readthedocs.io/en/stable/",
-      "source": "CNCF",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:martin-fowler-continuous-integration-delivery:https-martinfowler-com-articles-continuousintegration-html",
-      "title": "Martin Fowler: Continuous Integration & Delivery",
-      "url": "https://martinfowler.com/articles/continuousIntegration.html",
-      "source": "Martin Fowler",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:apache-kafka-official-documentation:https-kafka-apache-org-documentation",
-      "title": "Apache Kafka Official Documentation",
-      "url": "https://kafka.apache.org/documentation/",
-      "source": "Apache",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:apache-kafka-crash-course-hussein-nasser:https-www-youtube-com-watch-v-r873blbmub4",
-      "title": "Apache Kafka Crash Course (Hussein Nasser)",
-      "url": "https://www.youtube.com/watch?v=R873BlBMUB4",
-      "source": "Hussein Nasser",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:confluent-developer-kafka-tutorials-patterns:https-developer-confluent-io",
-      "title": "Confluent Developer: Kafka Tutorials & Patterns",
-      "url": "https://developer.confluent.io/",
-      "source": "Confluent",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:kafka-the-definitive-guide-o-reilly-confluent:https-www-confluent-io-resources-kafka-the-definitive-guide",
-      "title": "Kafka: The Definitive Guide (O'Reilly / Confluent)",
-      "url": "https://www.confluent.io/resources/kafka-the-definitive-guide/",
-      "source": "O'Reilly",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:apache-spark-official-documentation:https-spark-apache-org-docs-latest",
-      "title": "Apache Spark Official Documentation",
-      "url": "https://spark.apache.org/docs/latest/",
-      "source": "Apache",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:apache-spark-full-course-freecodecamp:https-www-youtube-com-watch-v-c8kwso4ne4",
-      "title": "Apache Spark Full Course (freeCodeCamp)",
-      "url": "https://www.youtube.com/watch?v=_C8kWso4ne4",
-      "source": "freeCodeCamp",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:databricks-spark-definitive-guide-concepts:https-www-databricks-com-spark-getting-started",
-      "title": "Databricks: Spark Definitive Guide Concepts",
-      "url": "https://www.databricks.com/spark/getting-started",
-      "source": "Databricks",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:learning-spark-lightning-fast-data-analytics:https-www-oreilly-com-library-view-learning-spark-2nd-9781492050032",
-      "title": "Learning Spark: Lightning-Fast Data Analytics",
-      "url": "https://www.oreilly.com/library/view/learning-spark-2nd/9781492050032/",
-      "source": "O'Reilly",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:postgresql-official-documentation:https-www-postgresql-org-docs-current",
-      "title": "PostgreSQL Official Documentation",
-      "url": "https://www.postgresql.org/docs/current/",
-      "source": "PostgreSQL",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:use-the-index-luke-sql-indexing-guide:https-use-the-index-luke-com",
-      "title": "Use The Index, Luke (SQL Indexing Guide)",
-      "url": "https://use-the-index-luke.com/",
-      "source": "Markus Winand",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:cmu-15-445-database-systems-internals:https-15445-courses-cs-cmu-edu",
-      "title": "CMU 15-445: Database Systems Internals",
-      "url": "https://15445.courses.cs.cmu.edu/",
-      "source": "Andy Pavlo / CMU",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:the-internals-of-postgresql-hironobu-suzuki:https-www-interdb-jp-pg",
-      "title": "The Internals of PostgreSQL (Hironobu Suzuki)",
-      "url": "https://www.interdb.jp/pg/",
-      "source": "InterDB",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:redis-official-documentation:https-redis-io-docs",
-      "title": "Redis Official Documentation",
-      "url": "https://redis.io/docs/",
-      "source": "Redis",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:redis-crash-course-tutorial-traversy-media:https-www-youtube-com-watch-v-hbt56gfj998",
-      "title": "Redis Crash Course Tutorial (Traversy Media)",
-      "url": "https://www.youtube.com/watch?v=Hbt56gFj998",
-      "source": "Traversy Media",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:redis-university-free-developer-courses:https-university-redis-com",
-      "title": "Redis University: Free Developer Courses",
-      "url": "https://university.redis.com/",
-      "source": "Redis",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:redis-cluster-specification-architecture:https-redis-io-docs-management-scaling",
-      "title": "Redis Cluster Specification & Architecture",
-      "url": "https://redis.io/docs/management/scaling/",
-      "source": "Redis",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:spring-boot-reference-documentation:https-docs-spring-io-spring-boot-docs-current-reference-html",
-      "title": "Spring Boot Reference Documentation",
-      "url": "https://docs.spring.io/spring-boot/docs/current/reference/html/",
-      "source": "Spring",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:spring-boot-tutorial-full-course-2023-amigoscode:https-www-youtube-com-watch-v-9sgdpanrc8u",
-      "title": "Spring Boot Tutorial | Full Course [2023] (Amigoscode)",
-      "url": "https://www.youtube.com/watch?v=9SGDpanrc8U",
-      "source": "Amigoscode",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:baeldung-spring-boot-enterprise-java-guides:https-www-baeldung-com",
-      "title": "Baeldung: Spring Boot & Enterprise Java Guides",
-      "url": "https://www.baeldung.com/",
-      "source": "Baeldung",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:java-virtual-machine-specification-oracle-se-21:https-docs-oracle-com-javase-specs-jvms-se21-html-index-html",
-      "title": "Java Virtual Machine Specification (Oracle SE 21)",
-      "url": "https://docs.oracle.com/javase/specs/jvms/se21/html/index.html",
-      "source": "Oracle",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:fastapi-official-documentation:https-fastapi-tiangolo-com",
-      "title": "FastAPI Official Documentation",
-      "url": "https://fastapi.tiangolo.com/",
-      "source": "FastAPI",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:python-api-development-full-course-freecodecamp:https-www-youtube-com-watch-v-0sovcwfmrta",
-      "title": "Python API Development - Full Course (freeCodeCamp)",
-      "url": "https://www.youtube.com/watch?v=0sOvCWFmrtA",
-      "source": "freeCodeCamp",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:pydantic-v2-documentation:https-docs-pydantic-dev-latest",
-      "title": "Pydantic v2 Documentation",
-      "url": "https://docs.pydantic.dev/latest/",
-      "source": "Pydantic",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:sqlalchemy-2-0-asyncio-documentation:https-docs-sqlalchemy-org-en-20-orm-extensions-asyncio-html",
-      "title": "SQLAlchemy 2.0 Asyncio Documentation",
-      "url": "https://docs.sqlalchemy.org/en/20/orm/extensions/asyncio.html",
-      "source": "SQLAlchemy",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:api-design-in-system-design-interviews-hello-interview:https-www-youtube-com-watch-v-dq57zyedmdq",
-      "title": "API Design in System Design Interviews (Hello Interview)",
-      "url": "https://www.youtube.com/watch?v=DQ57zYedMdQ",
-      "source": "Hello Interview",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:design-a-distributed-rate-limiter-hello-interview:https-www-youtube-com-watch-v-mijfyupg4z4",
-      "title": "Design a Distributed Rate Limiter (Hello Interview)",
-      "url": "https://www.youtube.com/watch?v=MIJFyUPG4Z4",
-      "source": "Hello Interview",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:microsoft-rest-api-guidelines:https-github-com-microsoft-api-guidelines",
-      "title": "Microsoft REST API Guidelines",
-      "url": "https://github.com/microsoft/api-guidelines",
-      "source": "Microsoft",
-      "domain": "cloud",
-      "domainTitle": "Cloud & DevOps Engineering"
-    },
-    {
-      "id": "cloud:grpc-core-concepts-and-architecture:https-grpc-io-docs-what-is-grpc-core-concepts",
-      "title": "gRPC Core Concepts and Architecture",
-      "url": "https://grpc.io/docs/what-is-grpc/core-concepts/",
-      "source": "CNCF",
       "domain": "cloud",
       "domainTitle": "Cloud & DevOps Engineering"
     },

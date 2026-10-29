@@ -1,6 +1,6 @@
 # Taran's Learning Hub Content Audit
 
-Generated: 2026-10-28T07:33:24.122Z
+Generated: 2026-10-29T09:18:47.374Z
 
 ## Research References
 
@@ -429,7 +429,7 @@ Sections:
 
 ## Cloud & DevOps Engineering
 
-- Inventory: 0 sections, 0 subsections, 0 concepts, 76 resources.
+- Inventory: 0 sections, 0 subsections, 0 concepts, 17 resources.
 - Formatting focus: consistent navigation, closed resources, clean headings, and better fallback search links.
 - Duplicate subsection names to review: none found by title.
 - Weak/generic subsection names to review: none found by heuristic.

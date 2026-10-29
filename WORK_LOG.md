@@ -5,7 +5,7 @@
 > **Primary Repository:** `E:\Absolute learning\learningHub` (Branch: `main`)
 > **Live Site:** [https://taran-dev4u.github.io/learningHub/](https://taran-dev4u.github.io/learningHub/)
 > **Companion Hub:** [https://amazon.interview-prep-hub.workers.dev/](https://amazon.interview-prep-hub.workers.dev/)
-> **Audit Status:** `tools/audit_site.py` → **0 findings** across 773 scanned pages
+> **Audit Status:** `tools/audit_site.py` → **0 findings** across 791 scanned pages
 
 ---
 
@@ -27,7 +27,7 @@
 | `index.html` | Universal landing hub, 7 site cards, global catalog search | ✅ Up to date | `build-learning-hub.mjs` |
 | `DSA_Ultimate_Index.html` | 47 patterns, 219 subpatterns, 940 problems, expandable Striver A2Z dropdown | ✅ Upgraded to Amazon SDE Hub UX | Playwright + Audit |
 | `cloud_aws_azure.html` | **Cloud Platforms Hub**: AWS (36 concepts), Microsoft Azure (19 concepts), GCP (14 concepts) — 14 subsections, 69 concepts, Multi-Cloud Command Deck, sticky domain switcher, focused view isolation | ✅ Redesigned & Active | Playwright + Audit |
-| `all_tech.html` | **All-in-One Tech & Software Engineering Portal**: 13 disciplines (Linux, Git, Docker, K8s, Terraform, CI/CD, Kafka, Spark, PostgreSQL, Redis, Java, FastAPI, APIs) — 44 subsections, 170 concepts | ✅ Redesigned & Active | Playwright + Audit |
+| `all_tech.html` | **All-in-One Tech & Software Engineering Portal**: 13 disciplines (Linux, Git, Docker, K8s, Terraform, CI/CD, Kafka, Spark, PostgreSQL, Redis, Java, FastAPI, APIs) — 46 subsections, 181 concepts | ✅ Redesigned & Active | Playwright + Audit |
 | `ai_data.html` | **AI & Data Hub**: 4 tracks (AI Engineering, Machine Learning Engineering, Data Science, Data Engineering) — 24 subsections, 96 concepts, Command Deck, sticky pill bar, Domain Isolation Engine | ✅ Redesigned & Active | Playwright + Audit |
 | `ai_engineering.html` | **AI Engineering from Scratch Masterclass**: 20 phases, 542 lessons, full MIT curriculum snapshot, direct link integration | ✅ Active with Hub Breadcrumb | Playwright + Audit |
 | `tech_aws.html` | Standalone AWS Cloud Architecture Masterclass (7 subsections, 36 concepts) | ✅ Deployed | Playwright + Audit |
@@ -35,7 +35,8 @@
 | `tech_gcp.html` | Standalone Google Cloud Platform Architecture Masterclass (3 subsections, 14 concepts) | ✅ Deployed | Playwright + Audit |
 | `tech_spark.html` | Standalone Apache Spark Big Data Processing Masterclass (4 subsections, 13 concepts) | ✅ Deployed | Playwright + Audit |
 | `tech_linux.html` | Standalone Linux & Terminal Power Engineering Masterclass (3 subsections, 12 concepts) | ✅ Deployed | Playwright + Audit |
-| `tech_git.html` | Standalone Git & GitHub Architecture Masterclass (4 subsections, 17 concepts) | ✅ Deployed | Playwright + Audit |
+| `tech_git.html` | Standalone Git & GitHub Architecture Masterclass (6 subsections, 28 concepts, Beej's Guide integration) | ✅ Deployed | Playwright + Audit |
+| `ConvertedDocs/Git/beej_guide_to_git.html` | Brian "Beej" Hall's Quick Guide to Git (Unabridged offline book, 38 chapters) | ✅ Deployed & Integrated | Playwright + Audit |
 | `tech_docker_k8s.html` | Standalone Docker & Kubernetes Container Orchestration Masterclass (8 subsections, 31 concepts) | ✅ Deployed | Playwright + Audit |
 | `tech_cicd.html` | Standalone CI/CD Pipelines & DevOps Automation Masterclass (3 subsections, 12 concepts) | ✅ Deployed | Playwright + Audit |
 | `tech_terraform.html` | Standalone Terraform & Infrastructure as Code Masterclass (3 subsections, 12 concepts) | ✅ Deployed | Playwright + Audit |
@@ -272,3 +273,32 @@ The autonomous agent is scheduled via recurring cron notification (`0 */3 * * *`
   - Headless Playwright suite (`scratch/test_final_masterclasses_playwright.py`):
     - Zero horizontal overflow (`scrollWidth === clientWidth === 1440px`).
     - Verified breadcrumbs, 1373px concept rows, study rail `.hub-actions` mount, and Light/Black themes.
+### [2026-10-29 05:20 UTC] Beej's Guide to Git Offline Book Integration & Git Masterclass Expansion to 28 Concepts
+- **Beej's Quick Guide to Git Offline Book Conversion**:
+  - Downloaded and converted full unabridged edition from `https://beej.us/guide/bggit/html/` (38 chapters) into clean, responsive HTML book at `ConvertedDocs/Git/beej_guide_to_git.html`.
+  - Downloaded diagram assets to `ConvertedDocs/Git/img/` (`img_080_010.png`, `img_difftool.png`).
+  - Integrated Learning Hub runtime theme support (`light`, `dark`, `black`), table of contents rail, and clean reading typography.
+  - Sanitized Pandoc empty line anchors, converted HTTP links to HTTPS, and replaced local user path patterns to maintain zero-finding audit compliance.
+- **Library Integration (`library.html`)**:
+  - Added dedicated card in `library.html` linking directly to the offline converted guide and original online site.
+- **Git Masterclass Expansion (`tech_git.html`)**:
+  - Expanded from 4 subsections (17 concepts) to **6 subsections (28 concepts)**:
+    - `5.1 Git Architecture, Object Storage & Internal Mechanics` (5 concepts: DAG object model, 3 trees, diff engines, patch staging, status flags).
+    - `5.2 Branching Strategies, Merging & Interactive Rebasing` (5 concepts: trunk vs GitFlow, fast-forward vs 3-way merges, conflict resolution, rebase interactive, lease safety).
+    - `5.3 Disaster Recovery, History Manipulation & Undos` (5 concepts: reflog resurrection, reset soft/mixed/hard, revert, restore & switch, bisect binary regressions).
+    - `5.4 Productivity Workflows, Stashing & Power Tools` (5 concepts: stash mechanics, worktrees & cherry-pick, submodules/subtrees, configuration & aliases, blame attribution).
+    - `5.5 GitHub Enterprise Collaboration & CI/CD Actions` (4 concepts: remotes architecture, branch protection & CODEOWNERS, GitHub Actions core, secrets & OIDC).
+    - `5.6 Emergency Survival: Demystifying Scary Git Errors` (4 concepts: non-fast-forward push rejection, detached HEAD, unrelated histories, escaping terminal editor/traps).
+  - Added prominent recommended reading banner linking to `ConvertedDocs/Git/beej_guide_to_git.html` directly from the hero header.
+  - Curated 100% verified video walkthroughs (Fireship, Corey Schafer, Computerphile, freeCodeCamp, The Net Ninja) and deep anchor links to Beej's guide for all 28 concepts.
+- **All-in-One Tech Portal Sync (`all_tech.html`)**:
+  - Synchronized Git domain in `all_tech.html` with all 6 subsections and 28 concepts.
+  - Updated portal totals: **13 Disciplines · 46 Subsections · 181 Concepts** (all 13 domains remain 100% intact).
+  - Updated `card-git` with `28 concepts`, `6 subsections`, and `Beej's Guide Integrated` badge.
+- **Verification & Testing**:
+  - `python tools/audit_site.py`: **0 findings** across all 791 pages.
+  - `node tools/verify-learning-hub.mjs`: All checked pages passed.
+  - Headless Playwright tests (`scratch/test_rendered_pages.py`):
+    - `tech_git.html`: Light and black themes verified at 1440px with `scrollWidth === clientWidth` (zero overflow), 28 concepts present.
+    - `all_tech.html`: Light and black themes verified at 1440px with `scrollWidth === clientWidth`, 181 concepts present.
+    - `beej_guide_to_git.html`: Responsive layout verified with zero horizontal overflow in light and black themes.

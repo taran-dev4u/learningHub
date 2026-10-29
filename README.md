@@ -9,7 +9,7 @@ A personal static learning hub generated from the HTML sites in this folder.
 - CS Fundamentals: 156 concepts, 7 sections, 43 resources
 - Behavioral and Leadership: 145 concepts, 6 sections, 25 resources
 - AI Engineering: 2543 study items, 38 sections, 2269 resources
-- Cloud & DevOps Engineering: 0 concepts, 0 sections, 76 resources
+- Cloud & DevOps Engineering: 0 concepts, 0 sections, 17 resources
 - Interview Prep: 153 concepts, 11 sections, 44 resources
 
 ## Added tutorial sub-sites
