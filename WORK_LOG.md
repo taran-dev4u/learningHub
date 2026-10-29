@@ -25,7 +25,7 @@
 | Surface / Page | Scope & Content | Status | Verification Gate |
 |---|---|---|---|
 | `index.html` | Universal landing hub, 7 site cards, global catalog search | ✅ Up to date | `build-learning-hub.mjs` |
-| `DSA_Ultimate_Index.html` | 47 patterns, 219 subpatterns, 940 problems, expandable Striver A2Z dropdown | ✅ Upgraded to Amazon SDE Hub UX | Playwright + Audit |
+| `DSA_Ultimate_Index.html` | 47 patterns, 219 subpatterns, 940 problems, default-collapsed pattern sidebar & full-width layout | ✅ Upgraded & Verified | Playwright + Audit |
 | `cloud_aws_azure.html` | **Cloud Platforms Hub**: AWS (36 concepts), Microsoft Azure (19 concepts), GCP (14 concepts) — 14 subsections, 69 concepts, Multi-Cloud Command Deck, sticky domain switcher, focused view isolation | ✅ Redesigned & Active | Playwright + Audit |
 | `all_tech.html` | **All-in-One Tech & Software Engineering Portal**: 13 disciplines (Linux, Git, Docker, K8s, Terraform, CI/CD, Kafka, Spark, PostgreSQL, Redis, Java, FastAPI, APIs) — 46 subsections, 181 concepts | ✅ Redesigned & Active | Playwright + Audit |
 | `ai_data.html` | **AI & Data Hub**: 4 tracks (AI Engineering, Machine Learning Engineering, Data Science, Data Engineering) — 24 subsections, 96 concepts, Command Deck, sticky pill bar, Domain Isolation Engine | ✅ Redesigned & Active | Playwright + Audit |
@@ -302,3 +302,17 @@ The autonomous agent is scheduled via recurring cron notification (`0 */3 * * *`
     - `tech_git.html`: Light and black themes verified at 1440px with `scrollWidth === clientWidth` (zero overflow), 28 concepts present.
     - `all_tech.html`: Light and black themes verified at 1440px with `scrollWidth === clientWidth`, 181 concepts present.
     - `beej_guide_to_git.html`: Responsive layout verified with zero horizontal overflow in light and black themes.
+### [2026-10-29 05:48 UTC] DSA Ultimate Index Pattern Sidebar Default Collapsed
+- **User Request**: "the dsa ultimate index page left side panel should be by default collapsed"
+- **Implementation in `DSA_Ultimate_Index.html`**:
+  - Added `class="sidebar-collapsed"` directly to `<body>` markup to prevent open sidebar flicker on initial load.
+  - Initialized `<button class="sidebar-toggle" ...>` with right arrow `›` icon.
+  - Added synchronous inline script right after `<body>` to honor previous user preference if explicitly opened (`dsa_sidebar_collapsed === '0'`).
+  - Updated toggle click logic in script so initial unconfigured state defaults to collapsed (`body.classList.add('sidebar-collapsed')` and icon `›`), expanding to full width (`100%`) on desktop.
+- **Verification & Testing**:
+  - `python tools/audit_site.py`: **0 findings** across all 791 pages.
+  - `node tools/verify-learning-hub.mjs`: All checked pages passed.
+  - Headless Playwright test suite (`scratch/test_dsa_sidebar_playwright.py`):
+    - Verified initial load has `sidebar-collapsed` on body, toggle icon `›`, sidebar positioned at `left = -290px` (off-screen), and content area occupying `width = 1440px` (100% of viewport).
+    - Verified zero horizontal overflow (`scrollWidth === clientWidth === 1440px`) across both light and black themes.
+    - Verified clicking `#sidebar-toggle` expands the sidebar (`‹`, `left = 0px`, `localStorage = '0'`) and clicking again collapses it (`›`, `localStorage = '1'`).

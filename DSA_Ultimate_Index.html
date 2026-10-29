@@ -1737,7 +1737,12 @@
 }
 </style>
 </head>
-<body>
+<body class="sidebar-collapsed">
+<script>
+  if (localStorage.getItem('dsa_sidebar_collapsed') === '0') {
+    document.body.classList.remove('sidebar-collapsed');
+  }
+</script>
 <div class="app-layout">
 <aside class="sidebar" id="sidebar">
   <div class="sidebar-inner">
@@ -1805,7 +1810,7 @@
     </nav>
   </div>
 </aside>
-<button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle Pattern Sidebar" title="Toggle Sidebar">‹</button>
+<button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle Pattern Sidebar" title="Toggle Sidebar">›</button>
 <main class="content-area">
 <div class="wrap">
 
@@ -23442,10 +23447,13 @@ class Trie:
     setTimeout(() => { pick.style.boxShadow = ''; pick.style.transform = ''; }, 2500);
   });
 
-  // Sidebar toggle
+  // Sidebar toggle (default collapsed)
   const sidebarToggle = document.getElementById('sidebar-toggle');
   if (sidebarToggle) {
-    if (localStorage.getItem('dsa_sidebar_collapsed') === '1') {
+    if (localStorage.getItem('dsa_sidebar_collapsed') === '0') {
+      document.body.classList.remove('sidebar-collapsed');
+      sidebarToggle.textContent = '‹';
+    } else {
       document.body.classList.add('sidebar-collapsed');
       sidebarToggle.textContent = '›';
     }
