@@ -3463,6 +3463,41 @@ const awsSearchItems = awsConcepts.map((item) => ({
   a: `tech_aws.html`,
 }));
 
+const linuxConcepts = [
+  { cid: "4.1.1", t: "Linux Filesystem Hierarchy Standard (FHS): /etc, /var, /proc, /sys & /dev" },
+  { cid: "4.1.2", t: "Inodes, Hard Links, Symbolic Links & Ext4/XFS File Storage" },
+  { cid: "4.1.3", t: "Storage Device Partitioning, Mounting & /etc/fstab UUID Automation" },
+  { cid: "4.1.4", t: "Logical Volume Management (LVM): Physical Volumes, Volume Groups & Logical Volumes" },
+  { cid: "4.2.1", t: "Standard File Permissions & Umask Computation" },
+  { cid: "4.2.2", t: "Special Permission Bits: SUID, SGID & Sticky Bit Mechanics" },
+  { cid: "4.2.3", t: "POSIX Access Control Lists (ACLs): getfacl & setfacl Fine-Grained Rules" },
+  { cid: "4.2.4", t: "Linux Security Modules: SELinux Contexts & AppArmor Profiles" },
+  { cid: "4.3.1", t: "Process Lifecycle: fork(), exec(), wait(), PID 1, Zombie & Orphan States" },
+  { cid: "4.3.2", t: "Linux Kernel Signals: SIGTERM, SIGKILL, SIGHUP & Signal Traps" },
+  { cid: "4.3.3", t: "CPU Scheduling Priorities: Nice Values, Renice & Completely Fair Scheduler (CFS)" },
+  { cid: "4.3.4", t: "Systemd Service Architecture: Unit Files, Targets, Dependencies & journalctl" },
+  { cid: "4.4.1", t: "Virtual Memory Architecture: Pages, Page Tables, MMU & Translation Lookaside Buffers" },
+  { cid: "4.4.2", t: "Memory Diagnostics: free, Buffer vs Cache, Swappiness & the OOM Killer" },
+  { cid: "4.4.3", t: "System Performance Diagnostics: Load Averages, vmstat, mpstat & pidstat" },
+  { cid: "4.4.4", t: "Storage I/O Diagnostics: iostat, df, du, lsof & Kernel Page Cache Flushes" },
+  { cid: "4.5.1", t: "Network Interfaces, IP Addressing & Routing Tables (iproute2)" },
+  { cid: "4.5.2", t: "Socket States & Network Diagnostics: ss, netstat, lsof -i & curl / dig" },
+  { cid: "4.5.3", t: "Packet Filtering & Firewalls: Netfilter, iptables, nftables & ufw" },
+  { cid: "4.5.4", t: "Network Packet Capture & Deep Analysis: tcpdump & Wireshark Pcap Mechanics" },
+  { cid: "4.6.1", t: "Standard Streams, File Descriptors (0, 1, 2) & Pipeline Redirection" },
+  { cid: "4.6.2", t: "Text Parsing Powerhouses: grep, sed Stream Editor & awk Field Processing" },
+  { cid: "4.6.3", t: "Enterprise Bash Scripting: Robust Safety Flags, Traps & Exit Codes" },
+  { cid: "4.6.4", t: "Inter-Process Communication (IPC): Named Pipes (FIFOs), Unix Domain Sockets & Shared Memory" },
+];
+
+const linuxSearchItems = linuxConcepts.map((item) => ({
+  k: "cloud",
+  c: `linux-${item.cid}`,
+  t: `Linux Engineering · ${item.cid}: ${item.t}`,
+  s: "Linux & Terminal Power Engineering",
+  a: `tech_linux.html`,
+}));
+
 const allSearchItems = [
   ...data.items.map((item) => ({
     k: item.domain,
@@ -3474,6 +3509,7 @@ const allSearchItems = [
   ...beejSearchItems,
   ...apiSearchItems,
   ...awsSearchItems,
+  ...linuxSearchItems,
 ];
 
 write(

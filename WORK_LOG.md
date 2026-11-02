@@ -27,14 +27,14 @@
 | `index.html` | Universal landing hub, 7 site cards, global catalog search | ✅ Up to date | `build-learning-hub.mjs` |
 | `DSA_Ultimate_Index.html` | 47 patterns, 219 subpatterns, 940 problems, default-collapsed pattern sidebar & full-width layout | ✅ Upgraded & Verified | Playwright + Audit |
 | `cloud_aws_azure.html` | **Cloud Platforms Hub**: AWS (55 concepts), Microsoft Azure (19 concepts), GCP (14 concepts) — 18 subsections, 88 concepts, Multi-Cloud Command Deck, sticky domain switcher, focused view isolation | ✅ Redesigned & Active | Playwright + Audit |
-| `all_tech.html` | **All-in-One Tech & Software Engineering Portal**: 13 disciplines (Linux, Git, Docker, K8s, Terraform, CI/CD, Kafka, Spark, PostgreSQL, Redis, Java, FastAPI, APIs) — 50 subsections, 197 concepts | ✅ Redesigned & Active | Playwright + Audit |
+| `all_tech.html` | **All-in-One Tech & Software Engineering Portal**: 13 disciplines (Linux, Git, Docker, K8s, Terraform, CI/CD, Kafka, Spark, PostgreSQL, Redis, Java, FastAPI, APIs) — 53 subsections, 209 concepts | ✅ Redesigned & Active | Playwright + Audit |
 | `ai_data.html` | **AI & Data Hub**: 4 tracks (AI Engineering, Machine Learning Engineering, Data Science, Data Engineering) — 24 subsections, 96 concepts, Command Deck, sticky pill bar, Domain Isolation Engine | ✅ Redesigned & Active | Playwright + Audit |
 | `ai_engineering.html` | **AI Engineering from Scratch Masterclass**: 20 phases, 542 lessons, full MIT curriculum snapshot, direct link integration | ✅ Active with Hub Breadcrumb | Playwright + Audit |
 | `tech_aws.html` | Standalone AWS Cloud Architecture Masterclass (11 subsections, 55 concepts, Complete Enterprise Services Inventory) | ✅ Deployed & Verified | Playwright + Audit |
 | `tech_azure.html` | Standalone Microsoft Azure Cloud Architecture Masterclass (4 subsections, 19 concepts) | ✅ Deployed | Playwright + Audit |
 | `tech_gcp.html` | Standalone Google Cloud Platform Architecture Masterclass (3 subsections, 14 concepts) | ✅ Deployed | Playwright + Audit |
 | `tech_spark.html` | Standalone Apache Spark Big Data Processing Masterclass (4 subsections, 13 concepts) | ✅ Deployed | Playwright + Audit |
-| `tech_linux.html` | Standalone Linux & Terminal Power Engineering Masterclass (3 subsections, 12 concepts) | ✅ Deployed | Playwright + Audit |
+| `tech_linux.html` | Standalone Linux & Terminal Power Engineering Masterclass (6 subsections, 24 concepts, VFS, ACLs, CFS, Memory & Networking) | ✅ Deployed & Verified | Playwright + Audit |
 | `tech_git.html` | Standalone Git & GitHub Architecture Masterclass (6 subsections, 28 concepts, Beej's Guide integration) | ✅ Deployed | Playwright + Audit |
 | `Git_Tutorial/index.html` | **Git Master Tutorial (Beej's Guide to Git)**: Split-pane interactive reader (38 chapters, 270 topics, instant search, reading tracker) | ✅ Deployed & Verified | Playwright + Audit |
 | `ConvertedDocs/Git/beej_guide_to_git.html` | Brian "Beej" Hall's Quick Guide to Git (Unabridged offline split tutorial, 38 chapters) | ✅ Deployed & Integrated | Playwright + Audit |
@@ -477,3 +477,50 @@ The autonomous agent is scheduled via recurring cron notification (`0 */3 * * *`
   - Headless Playwright test suite (`scratch/test_aws_expansion_playwright.py`):
     - Verified 55 concepts and 11 subsections in `tech_aws.html`.
     - Verified 88 total concepts in `cloud_aws_azure.html` with zero horizontal overflow (`scrollWidth === clientWidth === 1440px`) across Light and Black themes.
+
+### [2026-11-02 15:52 UTC] Daily Automation Test Run: Linux & Terminal Power Engineering Deep Expansion (6 Subsections, 24 Concepts)
+- **Persistent Sidecar Automation Configured & Tested**:
+  - Registered persistent Antigravity automation sidecar: `Learning Hub Daily Research & Expansion` (`learning-hub-daily-research`) under `~/.gemini/config/sidecars/learning-hub-daily-research/sidecar.json`.
+  - Configured with `restart_policy: always` and `CRON_TZ=America/New_York 0 9 * * *` to run every day at 9:00 AM Eastern Time unattended across server/IDE restarts.
+  - Executed full test run to verify end-to-end tooling permissions (`audit_site.py`, `verify-learning-hub.mjs`, `build-learning-hub.mjs`, git operations, and headless Playwright tests).
+- **Curriculum Architecture (24 Concepts across 6 Subsections)**:
+  - **4.1 Linux Filesystem Hierarchy, VFS & Storage Subsystems (4 concepts)**:
+    - `4.1.1` Linux Filesystem Hierarchy Standard (FHS): /etc, /var, /proc, /sys & /dev
+    - `4.1.2` Inodes, Hard Links, Symbolic Links & Ext4/XFS File Storage
+    - `4.1.3` Storage Device Partitioning, Mounting & /etc/fstab UUID Automation
+    - `4.1.4` Logical Volume Management (LVM): Physical Volumes, Volume Groups & Logical Volumes
+  - **4.2 Linux Permissions, Access Control Lists (ACLs) & Kernel Security (4 concepts)**:
+    - `4.2.1` Standard File Permissions & Umask Computation
+    - `4.2.2` Special Permission Bits: SUID, SGID & Sticky Bit Mechanics
+    - `4.2.3` POSIX Access Control Lists (ACLs): getfacl & setfacl Fine-Grained Rules
+    - `4.2.4` Linux Security Modules: SELinux Contexts & AppArmor Profiles
+  - **4.3 Process Lifecycle, Scheduling, Signals & Systemd Internals (4 concepts)**:
+    - `4.3.1` Process Lifecycle: fork(), exec(), wait(), PID 1, Zombie & Orphan States
+    - `4.3.2` Linux Kernel Signals: SIGTERM, SIGKILL, SIGHUP & Signal Traps
+    - `4.3.3` CPU Scheduling Priorities: Nice Values, Renice & Completely Fair Scheduler (CFS)
+    - `4.3.4` Systemd Service Architecture: Unit Files, Targets, Dependencies & journalctl
+  - **4.4 Memory Management, Virtual Memory, Paging & Kernel Diagnostics (4 concepts)**:
+    - `4.4.1` Virtual Memory Architecture: Pages, Page Tables, MMU & Translation Lookaside Buffers
+    - `4.4.2` Memory Diagnostics: free, Buffer vs Cache, Swappiness & the OOM Killer
+    - `4.4.3` System Performance Diagnostics: Load Averages, vmstat, mpstat & pidstat
+    - `4.4.4` Storage I/O Diagnostics: iostat, df, du, lsof & Kernel Page Cache Flushes
+  - **4.5 Linux Networking Primitives, Sockets, IPTables & Troubleshooting (4 concepts)**:
+    - `4.5.1` Network Interfaces, IP Addressing & Routing Tables (iproute2)
+    - `4.5.2` Socket States & Network Diagnostics: ss, netstat, lsof -i & curl / dig
+    - `4.5.3` Packet Filtering & Firewalls: Netfilter, iptables, nftables & ufw
+    - `4.5.4` Network Packet Capture & Deep Analysis: tcpdump & Wireshark Pcap Mechanics
+  - **4.6 Advanced Text Processing, IPC, Pipelines & Shell Scripting (4 concepts)**:
+    - `4.6.1` Standard Streams, File Descriptors (0, 1, 2) & Pipeline Redirection
+    - `4.6.2` Text Parsing Powerhouses: grep, sed Stream Editor & awk Field Processing
+    - `4.6.3` Enterprise Bash Scripting: Robust Safety Flags, Traps & Exit Codes
+    - `4.6.4` Inter-Process Communication (IPC): Named Pipes (FIFOs), Unix Domain Sockets & Shared Memory
+- **Cross-Hub Synchronization & Global Search**:
+  - `all_tech.html`: Expanded Linux domain to all 6 subsections and 24 concepts. Updated portal totals to **13 Disciplines · 53 Subsections · 209 Concepts**.
+  - `tech_linux.html`: Upgraded to full 6-subsection, 24-concept standalone masterclass with updated hero, stats cards, and 0–24 progress bar.
+  - `tools/build-learning-hub.mjs` & `search-index.json`: Added all 24 Linux concepts to the global search catalog.
+- **Verification Suite**:
+  - `python tools/audit_site.py`: **0 findings** across all 792 scanned pages.
+  - `node tools/verify-learning-hub.mjs`: All 16 hub pages passed with all checks green.
+  - Headless Playwright test suite (`scratch/test_linux_expansion_playwright.py`):
+    - Verified 24 concepts and 6 subsections in `tech_linux.html`.
+    - Verified 209 total concepts in `all_tech.html` with zero horizontal overflow (`scrollWidth === clientWidth === 1440px`) across Light and Black themes.
