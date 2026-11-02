@@ -101,7 +101,7 @@ def build_git_tutorial():
         <div class="sidebar-ch-head">
           <input type="checkbox" class="ch-read-check" id="read-ch-{num}" onclick="toggleChapterRead({num}, event)" title="Mark Chapter {num} as read">
           <a class="sidebar-ch-link" href="#{cid}" onclick="onChapterLinkClick({num}, '{cid}', event)">
-            <span class="ch-num-badge">Ch {num}</span>
+            <span class="ch-num-badge">{num:02d}</span>
             <span class="ch-title-text">{title}</span>
           </a>
           {toggle_btn}
@@ -124,25 +124,29 @@ def build_git_tutorial():
             ch_html_parts.append(s)
 
         ch_content_html = "".join(ch_html_parts)
+        ch_content_html = re.sub(r'# vim:[^\n]*\n?', '', ch_content_html)
+        ch_content_html = re.sub(r'\\hyphenation\{[^}]*\}\s*', '', ch_content_html)
+        ch_content_html = re.sub(r'\bNo hyphenation\b\s*', '', ch_content_html)
+        ch_content_html = re.sub(r'\bIndex see alsos\b\s*', '', ch_content_html)
 
-        # Prev / Next footer cards
+        # Prev / Next footer cards (Atlas Style)
         prev_card = ""
         if prev_ch:
             prev_card = f"""<a class="ch-nav-card prev-card" href="#{prev_ch['id']}" onclick="goToChapter({prev_ch['num']}, event)">
-  <div class="nav-dir">← Previous Chapter</div>
-  <div class="nav-title">Ch {prev_ch['num']}: {prev_ch['title']}</div>
+  <div class="nav-dir">← PREVIOUS CHAPTER</div>
+  <div class="nav-title">Ch {prev_ch['num']:02d}: {prev_ch['title']}</div>
 </a>"""
         else:
-            prev_card = """<div class="ch-nav-card disabled"><div class="nav-dir">Start of Guide</div><div class="nav-title">Chapter 1: Foreword</div></div>"""
+            prev_card = """<div class="ch-nav-card prev-card disabled"><div class="nav-dir">← PREVIOUS CHAPTER</div><div class="nav-title">Start of Guide</div></div>"""
 
         next_card = ""
         if next_ch:
             next_card = f"""<a class="ch-nav-card next-card" href="#{next_ch['id']}" onclick="goToChapter({next_ch['num']}, event)">
-  <div class="nav-dir">Next Chapter →</div>
-  <div class="nav-title">Ch {next_ch['num']}: {next_ch['title']}</div>
+  <div class="nav-dir">NEXT CHAPTER →</div>
+  <div class="nav-title">Ch {next_ch['num']:02d}: {next_ch['title']}</div>
 </a>"""
         else:
-            next_card = """<div class="ch-nav-card disabled"><div class="nav-dir">End of Guide</div><div class="nav-title">Congratulations! All 38 Chapters Complete.</div></div>"""
+            next_card = """<div class="ch-nav-card next-card disabled"><div class="nav-dir">NEXT CHAPTER →</div><div class="nav-title">All 38 Chapters Complete</div></div>"""
 
         prev_btn_disabled = 'disabled="disabled"' if not prev_ch else ''
         next_btn_disabled = 'disabled="disabled"' if not next_ch else ''
@@ -150,21 +154,22 @@ def build_git_tutorial():
         pane = f"""    <article class="chapter-pane{' active' if num == 1 else ''}" id="chapter-{num}" data-chapter-num="{num}" data-chid="{cid}" data-chapter-title="{title}">
       <header class="pane-header-bar">
         <div class="pane-header-meta">
-          <span class="pane-badge">Chapter {num} of 38</span>
+          <span class="pane-badge">Module {num:02d}</span>
+          <span class="pane-crumb">Beej's Guide to Git &rsaquo; <b>{title}</b></span>
           <span class="pane-sep">•</span>
-          <span class="pane-book-title">Beej's Quick Guide to Git</span>
-          <span class="pane-sep">•</span>
-          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/{cid}.html" target="_blank" rel="noopener noreferrer">Original Online Web ↗</a>
+          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/{cid}.html" target="_blank" rel="noopener noreferrer">Original Web ↗</a>
         </div>
         <div class="pane-actions">
           <button class="pane-nav-btn prev-btn" onclick="goToChapter({num - 1}, event)" {prev_btn_disabled}>← Prev</button>
           <button class="pane-nav-btn next-btn" onclick="goToChapter({num + 1}, event)" {next_btn_disabled}>Next →</button>
-          <button class="pane-read-toggle-btn" id="pane-read-btn-{num}" onclick="toggleChapterRead({num}, event)">Mark Read ✓</button>
+          <button class="pane-read-toggle-btn" id="pane-read-btn-{num}" onclick="toggleChapterRead({num}, event)">Mark Completed ✓</button>
         </div>
       </header>
 
-      <div class="pane-body">
+      <div class="pane-card">
+        <div class="pane-body">
 {ch_content_html}
+        </div>
       </div>
 
       <footer class="pane-footer-nav">
@@ -189,86 +194,178 @@ def build_git_tutorial():
   <script src="../assets/learning-hub-shared.js"></script>
   <style>
     :root {{
-      --tut-sidebar-w: 330px;
-      --bg: #f8fafc;
-      --surface: #ffffff;
-      --surface-2: #f1f5f9;
-      --surface-3: #e2e8f0;
-      --text: #0f172a;
-      --muted: #475569;
-      --border: #cbd5e1;
-      --accent: #2563eb;
-      --accent-dim: rgba(37, 99, 235, 0.08);
-      --code-bg: #0f172a;
-      --code-text: #f8fafc;
-      --shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      --tut-sidebar-w: 290px;
+      --bg: #F7F8FA;
+      --surface: #FFFFFF;
+      --surface-2: #F0F2F6;
+      --surface-3: #E3E4EB;
+      --text: #15171C;
+      --muted: #474C5A;
+      --faint: #8A92A6;
+      --border: #E3E4EB;
+      --border-strong: #C9CCD7;
+      --separator: #ECEDF2;
+      --accent: #5B3CC4;
+      --accent-dim: #EFEBFC;
+      --accent-strong: #43289E;
+      --accent-border: #D9D0F5;
+      --success: #2F8F63;
+      --success-dim: #E4F3EA;
+      --success-border: #BFDECB;
+      --success-text: #1F6B47;
+      --code-bg: #15171E;
+      --code-header: #1D2029;
+      --code-border: #2A2E3A;
+      --code-text: #E4E6EC;
+      --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: 'IBM Plex Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      --shadow: 0 1px 3px rgba(21, 23, 28, 0.05);
+      --shadow-md: 0 8px 24px rgba(21, 23, 28, 0.06);
     }}
     html.dark, html[data-theme="dark"] {{
-      --bg: #0b1120;
-      --surface: #151f32;
-      --surface-2: #1e293b;
-      --surface-3: #27354a;
-      --text: #f1f5f9;
-      --muted: #94a3b8;
-      --border: #223049;
-      --accent: #38bdf8;
-      --accent-dim: rgba(56, 189, 248, 0.12);
-      --code-bg: #070d18;
-      --code-text: #e2e8f0;
-      --shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      --bg: #0E1016;
+      --surface: #161922;
+      --surface-2: #11131A;
+      --surface-3: #242938;
+      --text: #E9EBF1;
+      --muted: #B8BDCB;
+      --faint: #6A7182;
+      --border: #242938;
+      --border-strong: #353B4F;
+      --separator: #1E2330;
+      --accent: #8F78F2;
+      --accent-dim: #211C38;
+      --accent-strong: #B7A8FF;
+      --accent-border: #3B3268;
+      --success: #46B987;
+      --success-dim: #11261C;
+      --success-border: #24503B;
+      --success-text: #7FE0B5;
+      --code-bg: #0B0D12;
+      --code-header: #12151D;
+      --code-border: #1E2330;
+      --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
     }}
     html.black, html[data-theme="black"] {{
       --bg: #000000;
-      --surface: #0a0a0a;
-      --surface-2: #141414;
-      --surface-3: #1f1f1f;
-      --text: #ffffff;
-      --muted: #888888;
-      --border: #222222;
-      --accent: #60a5fa;
-      --accent-dim: rgba(96, 165, 250, 0.15);
-      --code-bg: #080808;
-      --code-text: #ffffff;
-      --shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+      --surface: #0A0A0E;
+      --surface-2: #060608;
+      --surface-3: #1F222B;
+      --text: #FFFFFF;
+      --muted: #A6ACB9;
+      --faint: #5E6472;
+      --border: #1F222B;
+      --border-strong: #2F3342;
+      --separator: #181920;
+      --accent: #9D85F7;
+      --accent-dim: #1B172E;
+      --accent-strong: #C4B7FF;
+      --accent-border: #322B57;
+      --success: #46B987;
+      --success-dim: #0E1F17;
+      --success-border: #1C402F;
+      --success-text: #7FE0B5;
+      --code-bg: #050608;
+      --code-header: #0D0F14;
+      --code-border: #1A1D24;
+      --shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.75);
     }}
+
+    * {{ box-sizing: border-box; }}
 
     body {{
       margin: 0;
       background: var(--bg);
       color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family: var(--font-body);
       line-height: 1.65;
       font-size: 15.5px;
+      -webkit-font-smoothing: antialiased;
+    }}
+
+    /* Top Announcement / Breadcrumb Bar */
+    .tut-top-ribbon {{
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 13px;
+    }}
+    .tut-top-crumbs {{
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+    }}
+    .tut-top-crumbs a {{
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }}
+    .tut-top-crumbs a:hover {{
+      color: var(--accent);
+    }}
+    .tut-top-crumbs .sep {{
+      color: var(--border-strong);
+    }}
+    .tut-top-crumbs .cur {{
+      color: var(--accent);
+      font-weight: 700;
+    }}
+    .tut-top-links {{
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 12.5px;
+      color: var(--muted);
+    }}
+    .tut-top-links a {{
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 700;
+    }}
+
+    /* Outer Wrapper */
+    .tut-wrap {{
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 24px 20px 80px;
     }}
 
     .tut-layout {{
-      display: flex;
-      min-height: calc(100vh - 56px);
-      position: relative;
+      display: grid;
+      grid-template-columns: var(--tut-sidebar-w) minmax(0, 1fr);
+      gap: 28px;
+      align-items: start;
     }}
 
     /* ============================================================
-       LEFT SIDEBAR (TOC & Controls)
+       LEFT SIDEBAR (.course-nav Atlas Style)
        ============================================================ */
     .tut-sidebar {{
-      width: var(--tut-sidebar-w);
-      min-width: var(--tut-sidebar-w);
-      height: calc(100vh - 56px);
-      position: fixed;
-      top: 56px;
-      left: 0;
+      position: sticky;
+      top: 76px;
+      max-height: calc(100vh - 96px);
       background: var(--surface);
-      border-right: 1px solid var(--border);
+      border: 1px solid var(--border);
+      border-radius: 16px;
       display: flex;
       flex-direction: column;
-      z-index: 100;
-      box-shadow: 2px 0 10px rgba(0,0,0,0.03);
-      transition: transform 0.24s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      z-index: 40;
     }}
 
     .sidebar-top {{
       padding: 16px 16px 12px;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid var(--separator);
       background: var(--surface);
       display: flex;
       flex-direction: column;
@@ -278,17 +375,18 @@ def build_git_tutorial():
     .sidebar-brand {{
       display: flex;
       align-items: center;
-      gap: 10px;
-    }}
-    .brand-icon {{
-      font-size: 24px;
-      line-height: 1;
+      justify-content: space-between;
+      gap: 8px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent);
     }}
     .brand-title {{
-      font-size: 14.5px;
+      font-family: var(--font-heading);
+      font-size: 12px;
       font-weight: 800;
-      color: var(--text);
-      letter-spacing: -0.01em;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }}
     .brand-subtitle {{
       font-size: 11px;
@@ -296,32 +394,21 @@ def build_git_tutorial():
       font-weight: 600;
     }}
 
-    .sidebar-search {{
-      position: relative;
-    }}
     .sidebar-search input {{
       width: 100%;
       box-sizing: border-box;
-      padding: 7px 12px 7px 30px;
+      padding: 8px 12px;
       border-radius: 8px;
       border: 1px solid var(--border);
       background: var(--surface-2);
       color: var(--text);
       font-size: 12.5px;
       outline: none;
-      transition: border-color 0.15s ease;
+      transition: all 0.15s ease;
     }}
     .sidebar-search input:focus {{
       border-color: var(--accent);
-    }}
-    .sidebar-search::before {{
-      content: "🔍";
-      position: absolute;
-      left: 9px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 12px;
-      opacity: 0.6;
+      background: var(--surface);
     }}
 
     .sidebar-meta {{
@@ -330,14 +417,15 @@ def build_git_tutorial():
       gap: 8px;
     }}
     .progress-bar-wrap {{
-      height: 5px;
-      background: var(--surface-3);
+      height: 6px;
+      background: var(--surface-2);
       border-radius: 999px;
       overflow: hidden;
+      border: 1px solid var(--border);
     }}
     .progress-bar {{
       height: 100%;
-      background: linear-gradient(90deg, #10b981, #06b6d4);
+      background: var(--accent);
       border-radius: 999px;
       transition: width 0.3s ease;
     }}
@@ -345,19 +433,25 @@ def build_git_tutorial():
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 11px;
-      font-weight: 700;
+      font-size: 11.5px;
+      font-weight: 650;
       color: var(--muted);
+      font-family: var(--font-heading);
     }}
     .mark-all-btn {{
-      padding: 2px 7px;
-      font-size: 10px;
+      padding: 3px 8px;
+      font-size: 10.5px;
       font-weight: 700;
-      border-radius: 4px;
+      border-radius: 6px;
       background: var(--accent-dim);
       color: var(--accent);
-      border: 1px solid var(--border);
+      border: 1px solid var(--accent-border);
       cursor: pointer;
+      transition: all 0.15s ease;
+    }}
+    .mark-all-btn:hover {{
+      background: var(--accent);
+      color: #fff;
     }}
 
     .view-mode-toggle {{
@@ -374,6 +468,7 @@ def build_git_tutorial():
       background: transparent;
       padding: 5px 8px;
       border-radius: 6px;
+      font-family: var(--font-heading);
       font-size: 11px;
       font-weight: 700;
       color: var(--muted);
@@ -383,17 +478,19 @@ def build_git_tutorial():
     .mode-btn.active {{
       background: var(--surface);
       color: var(--text);
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
     }}
 
     /* TOC list */
     .sidebar-toc {{
       flex: 1;
       overflow-y: auto;
-      padding: 10px 8px 60px;
+      overscroll-behavior: contain;
+      scrollbar-width: thin;
+      padding: 10px 10px 40px;
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      gap: 3px;
     }}
 
     .sidebar-ch-item {{
@@ -401,46 +498,51 @@ def build_git_tutorial():
       overflow: hidden;
       transition: background 0.15s ease;
     }}
-    .sidebar-ch-item.active {{
-      background: var(--accent-dim);
-    }}
     .sidebar-ch-head {{
       display: flex;
       align-items: center;
       gap: 8px;
-      padding: 7px 10px;
+      padding: 8px 10px;
       cursor: pointer;
-      border-radius: 6px;
+      border-radius: 8px;
+      transition: background 0.15s ease;
     }}
     .sidebar-ch-head:hover {{
       background: var(--surface-2);
     }}
     .sidebar-ch-item.active .sidebar-ch-head {{
-      background: transparent;
+      background: var(--accent-dim);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
     }}
     .ch-read-check {{
-      accent-color: #10b981;
+      accent-color: var(--success);
+      width: 15px;
+      height: 15px;
       cursor: pointer;
+      flex-shrink: 0;
     }}
     .sidebar-ch-link {{
       flex: 1;
       display: flex;
-      align-items: baseline;
-      gap: 7px;
+      align-items: center;
+      gap: 8px;
       color: var(--text);
       text-decoration: none;
-      font-size: 12.5px;
+      font-size: 13px;
       font-weight: 600;
       min-width: 0;
     }}
     .ch-num-badge {{
-      font-size: 10px;
+      font-family: var(--font-mono);
+      font-size: 11px;
       font-weight: 800;
-      background: var(--surface-3);
-      padding: 1px 6px;
-      border-radius: 4px;
-      color: var(--muted);
+      background: var(--accent-dim);
+      color: var(--accent);
+      padding: 2px 6px;
+      border-radius: 6px;
       white-space: nowrap;
+      border: 1px solid var(--accent-border);
     }}
     .sidebar-ch-item.active .ch-num-badge {{
       background: var(--accent);
@@ -451,10 +553,14 @@ def build_git_tutorial():
       text-overflow: ellipsis;
       white-space: nowrap;
     }}
+    .sidebar-ch-item.active .ch-title-text {{
+      color: var(--accent);
+      font-weight: 750;
+    }}
     .ch-expander {{
       border: none;
       background: transparent;
-      color: var(--muted);
+      color: var(--faint);
       font-size: 12px;
       cursor: pointer;
       padding: 2px 4px;
@@ -462,13 +568,17 @@ def build_git_tutorial():
     }}
     .ch-expander:hover {{
       background: var(--surface-3);
+      color: var(--text);
     }}
 
     .sidebar-sub-list {{
       display: none;
       flex-direction: column;
-      padding: 2px 0 6px 26px;
+      padding: 3px 0 6px 20px;
       gap: 2px;
+      border-left: 2px solid var(--separator);
+      margin-left: 20px;
+      margin-top: 2px;
     }}
     .sidebar-sub-list.open {{
       display: flex;
@@ -477,9 +587,9 @@ def build_git_tutorial():
       display: flex;
       align-items: center;
       gap: 6px;
-      padding: 4px 8px;
-      border-radius: 4px;
-      font-size: 11.5px;
+      padding: 5px 8px;
+      border-radius: 6px;
+      font-size: 12px;
       color: var(--muted);
       text-decoration: none;
       transition: all 0.15s ease;
@@ -494,19 +604,14 @@ def build_git_tutorial():
     }}
 
     /* ============================================================
-       RIGHT MAIN CONTENT READER
+       RIGHT MAIN CONTENT READER (Atlas Style)
        ============================================================ */
     .tut-content {{
-      margin-left: var(--tut-sidebar-w);
-      flex: 1;
       min-width: 0;
-      padding: 24px 36px 120px;
-      box-sizing: border-box;
-      background: var(--bg);
     }}
 
     .tut-content-inner {{
-      max-width: 880px;
+      max-width: 900px;
       margin: 0 auto;
     }}
 
@@ -516,9 +621,8 @@ def build_git_tutorial():
     }}
     .chapter-pane.active {{
       display: block;
-      animation: fadeIn 0.18s ease-out;
+      animation: amFade 0.22s ease-out;
     }}
-    /* When in continuous view, show all */
     body.continuous-mode .chapter-pane {{
       display: block !important;
       margin-bottom: 60px;
@@ -526,9 +630,9 @@ def build_git_tutorial():
       border-bottom: 2px solid var(--border);
     }}
 
-    @keyframes fadeIn {{
+    @keyframes amFade {{
       from {{ opacity: 0; transform: translateY(6px); }}
-      to {{ opacity: 1; transform: translateY(0); }}
+      to {{ opacity: 1; transform: none; }}
     }}
 
     .pane-header-bar {{
@@ -537,18 +641,18 @@ def build_git_tutorial():
       align-items: center;
       flex-wrap: wrap;
       gap: 12px;
-      padding: 12px 18px;
-      margin-bottom: 28px;
+      padding: 14px 20px;
+      margin-bottom: 22px;
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 10px;
+      border-radius: 14px;
       box-shadow: var(--shadow);
     }}
     .pane-header-meta {{
       display: flex;
       align-items: center;
-      gap: 8px;
-      font-size: 12.5px;
+      gap: 10px;
+      font-size: 13px;
       color: var(--muted);
       font-weight: 600;
       flex-wrap: wrap;
@@ -556,17 +660,29 @@ def build_git_tutorial():
     .pane-badge {{
       background: var(--accent-dim);
       color: var(--accent);
-      padding: 2px 8px;
-      border-radius: 6px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-family: var(--font-heading);
       font-weight: 800;
       font-size: 11.5px;
+      border: 1px solid var(--accent-border);
+      letter-spacing: 0.04em;
+    }}
+    .pane-crumb {{
+      color: var(--muted);
+      font-size: 13.5px;
+    }}
+    .pane-crumb b {{
+      color: var(--text);
+      font-family: var(--font-heading);
     }}
     .pane-sep {{
-      color: var(--border);
+      color: var(--border-strong);
     }}
     .pane-external-link {{
       color: var(--muted);
       text-decoration: none;
+      font-size: 12px;
     }}
     .pane-external-link:hover {{
       color: var(--accent);
@@ -579,15 +695,16 @@ def build_git_tutorial():
       gap: 8px;
     }}
     .pane-nav-btn {{
-      padding: 6px 12px;
+      padding: 7px 13px;
       font-size: 12px;
       font-weight: 700;
       border: 1px solid var(--border);
       background: var(--surface-2);
       color: var(--text);
-      border-radius: 6px;
+      border-radius: 8px;
       cursor: pointer;
       transition: all 0.15s ease;
+      font-family: var(--font-heading);
     }}
     .pane-nav-btn:hover:not([disabled]) {{
       background: var(--accent);
@@ -599,70 +716,93 @@ def build_git_tutorial():
       cursor: not-allowed;
     }}
     .pane-read-toggle-btn {{
-      padding: 6px 12px;
+      padding: 7px 14px;
       font-size: 12px;
       font-weight: 700;
-      border: 1px solid var(--border);
+      border: 1px solid var(--accent-border);
       background: var(--accent-dim);
       color: var(--accent);
-      border-radius: 6px;
+      border-radius: 8px;
       cursor: pointer;
+      transition: all 0.15s ease;
+      font-family: var(--font-heading);
+    }}
+    .pane-read-toggle-btn:hover {{
+      background: var(--accent);
+      color: #fff;
+    }}
+
+    /* Pane Enclosing Card (Atlas Article Style) */
+    .pane-card {{
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: clamp(24px, 3.5vw, 44px);
+      box-shadow: var(--shadow);
     }}
 
     /* Typography & Code */
     .pane-body h1 {{
-      font-size: 28px;
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 2.8vw, 2.3rem);
       font-weight: 800;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.022em;
       margin: 0 0 20px;
       color: var(--text);
-      border-bottom: 2px solid var(--border);
-      padding-bottom: 10px;
+      line-height: 1.25;
     }}
     .pane-body h2 {{
-      font-size: 22px;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      margin: 34px 0 14px;
+      font-family: var(--font-heading);
+      font-size: 1.45rem;
+      font-weight: 750;
+      letter-spacing: -0.015em;
+      margin: 2.4rem 0 1rem;
       color: var(--text);
-      padding-top: 10px;
+      padding-top: 1.2rem;
+      border-top: 1px solid var(--separator);
+    }}
+    .pane-body h2:first-of-type {{
+      border-top: 0;
+      padding-top: 0;
     }}
     .pane-body h3 {{
-      font-size: 18px;
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
       font-weight: 700;
-      margin: 26px 0 10px;
+      margin: 1.8rem 0 0.6rem;
       color: var(--text);
     }}
     .pane-body h4 {{
-      font-size: 15px;
-      font-weight: 700;
-      margin: 18px 0 8px;
+      font-family: var(--font-heading);
+      font-size: 1.02rem;
+      font-weight: 650;
+      margin: 1.3rem 0 0.5rem;
       color: var(--text);
     }}
     .pane-body p {{
-      margin: 14px 0;
+      margin: 0.9rem 0;
       line-height: 1.7;
     }}
     .pane-body pre {{
       background: var(--code-bg);
       color: var(--code-text);
-      padding: 14px 18px;
-      border-radius: 8px;
+      padding: 18px 20px;
+      border-radius: 12px;
       overflow-x: auto;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      font-size: 13px;
-      line-height: 1.55;
-      margin: 18px 0;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-      border: 1px solid var(--border);
+      font-family: var(--font-mono);
+      font-size: 13.5px;
+      line-height: 1.65;
+      margin: 1.4rem 0;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.25);
+      border: 1px solid var(--code-border);
     }}
     .pane-body code {{
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-family: var(--font-mono);
       font-size: 13.5px;
       background: var(--surface-2);
-      color: var(--text);
-      padding: 2px 5px;
-      border-radius: 4px;
+      color: var(--accent);
+      padding: 2px 6px;
+      border-radius: 6px;
       border: 1px solid var(--border);
     }}
     .pane-body pre code {{
@@ -670,70 +810,74 @@ def build_git_tutorial():
       color: inherit;
       padding: 0;
       border: none;
-      font-size: 13px;
+      font-size: 13.5px;
     }}
     .pane-body table {{
       width: 100%;
       border-collapse: collapse;
-      margin: 22px 0;
+      margin: 1.4rem 0;
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 8px;
+      border-radius: 10px;
       overflow: hidden;
+      font-size: 14px;
     }}
     .pane-body th, .pane-body td {{
       padding: 10px 14px;
       text-align: left;
-      border-bottom: 1px solid var(--border);
-      font-size: 14px;
+      border: 1px solid var(--border);
     }}
     .pane-body th {{
       background: var(--surface-2);
-      font-weight: 700;
+      font-weight: 750;
+      font-family: var(--font-heading);
+      text-transform: uppercase;
+      font-size: 12.5px;
+      letter-spacing: 0.04em;
     }}
     .pane-body blockquote {{
-      margin: 20px 0;
-      padding: 12px 18px;
+      margin: 1.4rem 0;
+      padding: 14px 18px;
       border-left: 4px solid var(--accent);
-      background: var(--surface-2);
-      border-radius: 0 8px 8px 0;
-      font-style: italic;
+      background: var(--accent-dim);
+      border-radius: 0 10px 10px 0;
+      color: var(--muted);
+      font-style: normal;
     }}
     .pane-body img {{
       max-width: 100%;
       height: auto;
-      border-radius: 8px;
+      border-radius: 10px;
       border: 1px solid var(--border);
       margin: 20px 0;
       box-shadow: var(--shadow);
     }}
 
-    /* Footer Prev/Next Cards */
+    /* Footer Prev/Next Cards (Atlas Style) */
     .pane-footer-nav {{
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 16px;
-      margin-top: 48px;
-      padding-top: 24px;
-      border-top: 1px solid var(--border);
+      margin-top: 28px;
     }}
     .ch-nav-card {{
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 6px;
       padding: 16px 20px;
-      border-radius: 10px;
+      border-radius: 14px;
       border: 1px solid var(--border);
       background: var(--surface);
       text-decoration: none;
       color: var(--text);
       box-shadow: var(--shadow);
-      transition: all 0.15s ease;
+      transition: all 0.16s ease;
     }}
     .ch-nav-card:hover:not(.disabled) {{
       border-color: var(--accent);
       transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      box-shadow: var(--shadow-md);
+      text-decoration: none;
     }}
     .ch-nav-card.prev-card {{
       text-align: left;
@@ -742,19 +886,25 @@ def build_git_tutorial():
       text-align: right;
     }}
     .ch-nav-card.disabled {{
-      opacity: 0.5;
+      opacity: 0.45;
       cursor: not-allowed;
+      pointer-events: none;
     }}
     .nav-dir {{
+      font-family: var(--font-heading);
       font-size: 11px;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.08em;
       color: var(--accent);
     }}
     .nav-title {{
-      font-size: 14px;
+      font-family: var(--font-heading);
+      font-size: 14.5px;
       font-weight: 700;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }}
 
     /* Mobile drawer button */
@@ -769,27 +919,34 @@ def build_git_tutorial():
       border: none;
       padding: 10px 18px;
       border-radius: 999px;
-      font-weight: 700;
+      font-weight: 750;
       font-size: 13.5px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.3);
       cursor: pointer;
       align-items: center;
       gap: 8px;
+      font-family: var(--font-heading);
     }}
 
-    @media (max-width: 1024px) {{
+    @media (max-width: 1040px) {{
+      .tut-layout {{
+        grid-template-columns: 1fr;
+      }}
       .tut-sidebar {{
-        transform: translateX(-100%);
-        width: 300px;
+        position: fixed;
+        top: 56px;
+        left: 0;
+        bottom: 0;
+        max-height: none;
+        width: min(340px, 88vw);
+        border-radius: 0;
+        transform: translateX(-102%);
+        transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
         z-index: 1100;
-        box-shadow: 4px 0 25px rgba(0,0,0,0.25);
+        box-shadow: var(--shadow-md);
       }}
       body.drawer-open .tut-sidebar {{
         transform: translateX(0);
-      }}
-      .tut-content {{
-        margin-left: 0;
-        padding: 18px 16px 80px;
       }}
       .mobile-toc-toggle {{
         display: inline-flex;
@@ -803,63 +960,62 @@ def build_git_tutorial():
 <body>
 
   <!-- Top Announcement Bar / Breadcrumb -->
-  <div style="background:var(--surface);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12.5px;">
-    <div style="display:flex;align-items:center;gap:10px;font-weight:600">
-      <a href="../index.html" style="color:var(--muted);text-decoration:none">← Hub</a>
-      <span style="color:var(--border)">/</span>
-      <a href="../all_tech.html" style="color:var(--muted);text-decoration:none">All-Tech Portal</a>
-      <span style="color:var(--border)">/</span>
-      <a href="../tech_git.html" style="color:var(--muted);text-decoration:none">Git Masterclass</a>
-      <span style="color:var(--border)">/</span>
-      <span style="color:var(--accent);font-weight:700">Beej's Git Tutorial</span>
+  <div class="tut-top-ribbon">
+    <div class="tut-top-crumbs">
+      <a href="../index.html">← Hub</a>
+      <span class="sep">/</span>
+      <a href="../all_tech.html">All-Tech Portal</a>
+      <span class="sep">/</span>
+      <a href="../tech_git.html">Git Masterclass</a>
+      <span class="sep">/</span>
+      <span class="cur">Beej's Git Tutorial</span>
     </div>
-    <div style="display:flex;align-items:center;gap:12px;font-size:12px;color:var(--muted)">
-      <span>Keyboard: <kbd style="background:var(--surface-2);border:1px solid var(--border);padding:1px 5px;border-radius:3px;font-family:monospace">[</kbd> Prev &middot; <kbd style="background:var(--surface-2);border:1px solid var(--border);padding:1px 5px;border-radius:3px;font-family:monospace">]</kbd> Next</span>
-      <span style="color:var(--border)">|</span>
-      <a href="../library.html" style="color:var(--accent);text-decoration:none;font-weight:700">Reading Library ↗</a>
+    <div class="tut-top-links">
+      <span>Keyboard: <kbd style="background:var(--surface-2);border:1px solid var(--border);padding:1px 5px;border-radius:4px;font-family:monospace">[</kbd> Prev · <kbd style="background:var(--surface-2);border:1px solid var(--border);padding:1px 5px;border-radius:4px;font-family:monospace">]</kbd> Next</span>
+      <span class="sep">|</span>
+      <a href="../library.html">Reading Library ↗</a>
     </div>
   </div>
 
-  <div class="tut-layout">
-    <!-- LEFT SIDEBAR -->
-    <aside class="tut-sidebar" id="tut-sidebar">
-      <div class="sidebar-top">
-        <div class="sidebar-brand">
-          <span class="brand-icon">📘</span>
-          <div>
-            <div class="brand-title">Beej's Guide to Git</div>
-            <div class="brand-subtitle">Unabridged Interactive Tutorial (38 Ch)</div>
+  <div class="tut-wrap">
+    <div class="tut-layout">
+      <!-- LEFT SIDEBAR -->
+      <aside class="tut-sidebar" id="tut-sidebar">
+        <div class="sidebar-top">
+          <div class="sidebar-brand">
+            <span class="brand-title">📘 Beej's Git Track</span>
+            <span class="brand-subtitle">38 Modules</span>
+          </div>
+          <div class="sidebar-search">
+            <input type="search" id="sidebar-search" placeholder="Search 38 chapters & topics…" aria-label="Search chapters">
+          </div>
+          <div class="sidebar-meta">
+            <div class="progress-bar-wrap">
+              <div class="progress-bar" id="progress-bar" style="width: 0%"></div>
+            </div>
+            <div class="progress-stats">
+              <span id="read-count">0 of 38 chapters completed</span>
+              <button class="mark-all-btn" onclick="markAllReadToggle()">Mark All ✓</button>
+            </div>
+            <div class="view-mode-toggle">
+              <button class="mode-btn active" id="btn-chapter-mode" onclick="setViewMode('chapter')">📄 Chapter View</button>
+              <button class="mode-btn" id="btn-continuous-mode" onclick="setViewMode('continuous')">📜 All Chapters</button>
+            </div>
           </div>
         </div>
-        <div class="sidebar-search">
-          <input type="search" id="sidebar-search" placeholder="Search 38 chapters & topics…" aria-label="Search chapters">
-        </div>
-        <div class="sidebar-meta">
-          <div class="progress-bar-wrap">
-            <div class="progress-bar" id="progress-bar" style="width: 0%"></div>
-          </div>
-          <div class="progress-stats">
-            <span id="read-count">0 of 38 chapters read</span>
-            <button class="mark-all-btn" onclick="markAllReadToggle()">Mark All ✓</button>
-          </div>
-          <div class="view-mode-toggle">
-            <button class="mode-btn active" id="btn-chapter-mode" onclick="setViewMode('chapter')">📄 Chapter View</button>
-            <button class="mode-btn" id="btn-continuous-mode" onclick="setViewMode('continuous')">📜 All Chapters</button>
-          </div>
-        </div>
-      </div>
 
-      <nav class="sidebar-toc" id="sidebar-toc">
+        <nav class="sidebar-toc" id="sidebar-toc">
 {sidebar_toc_html}
-      </nav>
-    </aside>
+        </nav>
+      </aside>
 
-    <!-- RIGHT CONTENT AREA -->
-    <main class="tut-content" id="tut-content">
-      <div class="tut-content-inner">
+      <!-- RIGHT CONTENT AREA -->
+      <main class="tut-content" id="tut-content">
+        <div class="tut-content-inner">
 {all_panes_html}
-      </div>
-    </main>
+        </div>
+      </main>
+    </div>
   </div>
 
   <!-- Mobile Floating Drawer Toggle -->
@@ -867,12 +1023,15 @@ def build_git_tutorial():
     📑 Chapters (38)
   </button>
 
+
+
   <script>
     const ANCHOR_TO_CH = {anchor_map_json};
     const TOTAL_CHAPTERS = 38;
     let currentChapter = 1;
     let viewMode = 'chapter'; // 'chapter' or 'continuous'
     const STORAGE_KEY = 'hub_done_git_beej';
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 
     function getReadSet() {{
       try {{
@@ -961,13 +1120,12 @@ def build_git_tutorial():
         if (subList) subList.classList.add('open');
       }}
 
-      if (scroll) {{
-        window.scrollTo({{ top: 0, behavior: 'smooth' }});
-      }}
+      window.scrollTo({{ top: 0, behavior: 'instant' }});
 
       if (activePane) {{
         const chId = activePane.dataset.chid;
         history.replaceState(null, null, '#' + chId);
+        window.scrollTo({{ top: 0, behavior: 'instant' }});
       }}
     }}
 
@@ -1047,11 +1205,18 @@ def build_git_tutorial():
       if (hash) {{
         if (ANCHOR_TO_CH[hash]) {{
           const chNum = ANCHOR_TO_CH[hash];
+          const activePane = document.getElementById('chapter-' + chNum);
+          const isChId = activePane && activePane.dataset.chid === hash;
           showChapter(chNum, false);
-          setTimeout(() => {{
-            const el = document.getElementById(hash);
-            if (el) el.scrollIntoView({{ behavior: 'smooth', block: 'start' }});
-          }}, 150);
+          if (!isChId) {{
+            setTimeout(() => {{
+              const el = document.getElementById(hash);
+              if (el) el.scrollIntoView({{ behavior: 'smooth', block: 'start' }});
+            }}, 150);
+          }} else {{
+            window.scrollTo(0, 0);
+            setTimeout(() => window.scrollTo(0, 0), 60);
+          }}
         }} else if (hash.startsWith('chapter-')) {{
           const chNum = parseInt(hash.replace('chapter-', ''), 10);
           if (chNum) showChapter(chNum, true);

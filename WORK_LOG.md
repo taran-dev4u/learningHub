@@ -524,3 +524,37 @@ The autonomous agent is scheduled via recurring cron notification (`0 */3 * * *`
   - Headless Playwright test suite (`scratch/test_linux_expansion_playwright.py`):
     - Verified 24 concepts and 6 subsections in `tech_linux.html`.
     - Verified 209 total concepts in `all_tech.html` with zero horizontal overflow (`scrollWidth === clientWidth === 1440px`) across Light and Black themes.
+
+### [2026-11-02 18:30 UTC] Comprehensive Tutorial Redesign: Engineering Atlas Design System
+- **User Directive**: Redesign all tutorial websites across all sections to match the exact UI/UX, typography, layout, and component design of `https://engineering-atlas.in/java/` (strictly tutorial surfaces only, preserving reference index pages).
+- **Target Tutorial Surfaces**:
+  1. `System_Design_Tutorial/` (System Design Curriculum)
+  2. `LLD_Tutorial/` (Low-Level Design Curriculum)
+  3. `Cloud_DevOps_Tutorial/` (Cloud & DevOps Curriculum)
+  4. `Git_Tutorial/` & `ConvertedDocs/Git/beej_guide_to_git.html` (Beej's Quick Guide to Git Interactive Tutorial)
+  5. `DSA_Tutorial/` (DSA Tutorial Index, 29 Patterns, 699 Problem Walkthroughs)
+  6. `AI_Engineering_Tutorial/` (AI Engineering 20-Phase Masterclass & Reader)
+- **Atlas Design System Implementation**:
+  - **Color Tokens**:
+    - Light: `--color-background: #F7F8FA;`, `--color-surface: #FFFFFF;`, `--color-surface-sunken: #F0F2F6;`, `--color-accent-primary: #5B3CC4;` (Atlas Violet), `--color-accent-primary-soft: #EFEBFC;`, `--color-accent-secondary: #F2662B;` (Atlas Orange), `--color-border: #E3E4EB;`, `--color-text-primary: #15171C;`.
+    - Dark: `--color-background: #0E1016;`, `--color-surface: #161922;`, `--color-border: #242938;`, `--color-accent-primary: #8F78F2;`, `--color-accent-primary-soft: #211C38;`.
+    - Black (OLED): `--color-background: #000000;`, `--color-surface: #0A0A0E;`, `--color-border: #1F222B;`, `--color-accent-primary: #9D85F7;`, `--color-accent-primary-soft: #1B172E;`.
+  - **Typography**: Header hierarchy upgraded to `Plus Jakarta Sans`, body font to `Inter`, and monospace to `IBM Plex Mono`.
+  - **Curriculum Overview (Home View)**:
+    - Hero with Atlas pill badge (`📚 Atlas Curriculum Track`), clean bold heading, and interactive stats pills (`N Modules · M Lessons · Level · Progress`).
+    - Filter bar with search, status dropdown, and expand/collapse controls.
+    - Module cards styled as Atlas `.cn-module` cards with 2-digit numbered badges (`01`, `02`...), module title, priority chips (`MUST KNOW`, `ADVANCED`), lesson counter badge, and topic list.
+    - Vertical guide rails for topics (`border-left: 2px solid var(--color-separator)`) with circular completion checkmarks.
+  - **Lesson Reader View**:
+    - Sidebar styled as Atlas `.course-nav` enclosed in a rounded 16px card container (`border-radius: 16px; border: 1px solid var(--color-border)`).
+    - Added inline sidebar search filter (`.csearch--nav` / `#am-side-q`) for real-time lesson filtering while reading.
+    - Added Atlas progress bar track showing `N of M completed (X%)`.
+    - Active lesson indicator with soft accent background (`#EFEBFC`), purple text (`#5B3CC4`), and left border accent (`border-left: 3px solid #5B3CC4`).
+    - Main article rendered inside a rounded 18px card with H2 top border separators, dark syntax code blocks (`#15171E`), and Atlas alert boxes (`TIP`, `NOTE`, `WARNING`, `IMPORTANT`).
+    - Pager footer transformed into large Atlas card pairs (`← Previous Topic` / `Next Topic →`) with uppercase direction labels and bold titles.
+- **Verification & Compliance**:
+  - `python tools/audit_site.py`: **0 findings** across all 792 scanned pages.
+  - `node tools/verify-learning-hub.mjs`: All 16 hub pages passed with all checks green.
+  - Full multi-theme headless Playwright test suite (`scratch/test_all_tutorials_atlas.py`):
+    - Verified zero horizontal overflow (`scrollWidth === clientWidth === 1440px`) across Light, Dark, and Black themes on all tutorial surfaces.
+    - Zero console errors across all test runs.

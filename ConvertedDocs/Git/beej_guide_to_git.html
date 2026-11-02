@@ -9,86 +9,178 @@
   <script src="../../assets/learning-hub-shared.js"></script>
   <style>
     :root {
-      --tut-sidebar-w: 330px;
-      --bg: #f8fafc;
-      --surface: #ffffff;
-      --surface-2: #f1f5f9;
-      --surface-3: #e2e8f0;
-      --text: #0f172a;
-      --muted: #475569;
-      --border: #cbd5e1;
-      --accent: #2563eb;
-      --accent-dim: rgba(37, 99, 235, 0.08);
-      --code-bg: #0f172a;
-      --code-text: #f8fafc;
-      --shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      --tut-sidebar-w: 290px;
+      --bg: #F7F8FA;
+      --surface: #FFFFFF;
+      --surface-2: #F0F2F6;
+      --surface-3: #E3E4EB;
+      --text: #15171C;
+      --muted: #474C5A;
+      --faint: #8A92A6;
+      --border: #E3E4EB;
+      --border-strong: #C9CCD7;
+      --separator: #ECEDF2;
+      --accent: #5B3CC4;
+      --accent-dim: #EFEBFC;
+      --accent-strong: #43289E;
+      --accent-border: #D9D0F5;
+      --success: #2F8F63;
+      --success-dim: #E4F3EA;
+      --success-border: #BFDECB;
+      --success-text: #1F6B47;
+      --code-bg: #15171E;
+      --code-header: #1D2029;
+      --code-border: #2A2E3A;
+      --code-text: #E4E6EC;
+      --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: 'IBM Plex Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      --shadow: 0 1px 3px rgba(21, 23, 28, 0.05);
+      --shadow-md: 0 8px 24px rgba(21, 23, 28, 0.06);
     }
     html.dark, html[data-theme="dark"] {
-      --bg: #0b1120;
-      --surface: #151f32;
-      --surface-2: #1e293b;
-      --surface-3: #27354a;
-      --text: #f1f5f9;
-      --muted: #94a3b8;
-      --border: #223049;
-      --accent: #38bdf8;
-      --accent-dim: rgba(56, 189, 248, 0.12);
-      --code-bg: #070d18;
-      --code-text: #e2e8f0;
-      --shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      --bg: #0E1016;
+      --surface: #161922;
+      --surface-2: #11131A;
+      --surface-3: #242938;
+      --text: #E9EBF1;
+      --muted: #B8BDCB;
+      --faint: #6A7182;
+      --border: #242938;
+      --border-strong: #353B4F;
+      --separator: #1E2330;
+      --accent: #8F78F2;
+      --accent-dim: #211C38;
+      --accent-strong: #B7A8FF;
+      --accent-border: #3B3268;
+      --success: #46B987;
+      --success-dim: #11261C;
+      --success-border: #24503B;
+      --success-text: #7FE0B5;
+      --code-bg: #0B0D12;
+      --code-header: #12151D;
+      --code-border: #1E2330;
+      --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
     }
     html.black, html[data-theme="black"] {
       --bg: #000000;
-      --surface: #0a0a0a;
-      --surface-2: #141414;
-      --surface-3: #1f1f1f;
-      --text: #ffffff;
-      --muted: #888888;
-      --border: #222222;
-      --accent: #60a5fa;
-      --accent-dim: rgba(96, 165, 250, 0.15);
-      --code-bg: #080808;
-      --code-text: #ffffff;
-      --shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+      --surface: #0A0A0E;
+      --surface-2: #060608;
+      --surface-3: #1F222B;
+      --text: #FFFFFF;
+      --muted: #A6ACB9;
+      --faint: #5E6472;
+      --border: #1F222B;
+      --border-strong: #2F3342;
+      --separator: #181920;
+      --accent: #9D85F7;
+      --accent-dim: #1B172E;
+      --accent-strong: #C4B7FF;
+      --accent-border: #322B57;
+      --success: #46B987;
+      --success-dim: #0E1F17;
+      --success-border: #1C402F;
+      --success-text: #7FE0B5;
+      --code-bg: #050608;
+      --code-header: #0D0F14;
+      --code-border: #1A1D24;
+      --shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.75);
     }
+
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
       background: var(--bg);
       color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family: var(--font-body);
       line-height: 1.65;
       font-size: 15.5px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Top Announcement / Breadcrumb Bar */
+    .tut-top-ribbon {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 13px;
+    }
+    .tut-top-crumbs {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+    }
+    .tut-top-crumbs a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+    .tut-top-crumbs a:hover {
+      color: var(--accent);
+    }
+    .tut-top-crumbs .sep {
+      color: var(--border-strong);
+    }
+    .tut-top-crumbs .cur {
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .tut-top-links {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 12.5px;
+      color: var(--muted);
+    }
+    .tut-top-links a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    /* Outer Wrapper */
+    .tut-wrap {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 24px 20px 80px;
     }
 
     .tut-layout {
-      display: flex;
-      min-height: calc(100vh - 56px);
-      position: relative;
+      display: grid;
+      grid-template-columns: var(--tut-sidebar-w) minmax(0, 1fr);
+      gap: 28px;
+      align-items: start;
     }
 
     /* ============================================================
-       LEFT SIDEBAR (TOC & Controls)
+       LEFT SIDEBAR (.course-nav Atlas Style)
        ============================================================ */
     .tut-sidebar {
-      width: var(--tut-sidebar-w);
-      min-width: var(--tut-sidebar-w);
-      height: calc(100vh - 56px);
-      position: fixed;
-      top: 56px;
-      left: 0;
+      position: sticky;
+      top: 76px;
+      max-height: calc(100vh - 96px);
       background: var(--surface);
-      border-right: 1px solid var(--border);
+      border: 1px solid var(--border);
+      border-radius: 16px;
       display: flex;
       flex-direction: column;
-      z-index: 100;
-      box-shadow: 2px 0 10px rgba(0,0,0,0.03);
-      transition: transform 0.24s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      z-index: 40;
     }
 
     .sidebar-top {
       padding: 16px 16px 12px;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid var(--separator);
       background: var(--surface);
       display: flex;
       flex-direction: column;
@@ -98,17 +190,18 @@
     .sidebar-brand {
       display: flex;
       align-items: center;
-      gap: 10px;
-    }
-    .brand-icon {
-      font-size: 24px;
-      line-height: 1;
+      justify-content: space-between;
+      gap: 8px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent);
     }
     .brand-title {
-      font-size: 14.5px;
+      font-family: var(--font-heading);
+      font-size: 12px;
       font-weight: 800;
-      color: var(--text);
-      letter-spacing: -0.01em;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
     .brand-subtitle {
       font-size: 11px;
@@ -116,32 +209,21 @@
       font-weight: 600;
     }
 
-    .sidebar-search {
-      position: relative;
-    }
     .sidebar-search input {
       width: 100%;
       box-sizing: border-box;
-      padding: 7px 12px 7px 30px;
+      padding: 8px 12px;
       border-radius: 8px;
       border: 1px solid var(--border);
       background: var(--surface-2);
       color: var(--text);
       font-size: 12.5px;
       outline: none;
-      transition: border-color 0.15s ease;
+      transition: all 0.15s ease;
     }
     .sidebar-search input:focus {
       border-color: var(--accent);
-    }
-    .sidebar-search::before {
-      content: "🔍";
-      position: absolute;
-      left: 9px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 12px;
-      opacity: 0.6;
+      background: var(--surface);
     }
 
     .sidebar-meta {
@@ -150,14 +232,15 @@
       gap: 8px;
     }
     .progress-bar-wrap {
-      height: 5px;
-      background: var(--surface-3);
+      height: 6px;
+      background: var(--surface-2);
       border-radius: 999px;
       overflow: hidden;
+      border: 1px solid var(--border);
     }
     .progress-bar {
       height: 100%;
-      background: linear-gradient(90deg, #10b981, #06b6d4);
+      background: var(--accent);
       border-radius: 999px;
       transition: width 0.3s ease;
     }
@@ -165,19 +248,25 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 11px;
-      font-weight: 700;
+      font-size: 11.5px;
+      font-weight: 650;
       color: var(--muted);
+      font-family: var(--font-heading);
     }
     .mark-all-btn {
-      padding: 2px 7px;
-      font-size: 10px;
+      padding: 3px 8px;
+      font-size: 10.5px;
       font-weight: 700;
-      border-radius: 4px;
+      border-radius: 6px;
       background: var(--accent-dim);
       color: var(--accent);
-      border: 1px solid var(--border);
+      border: 1px solid var(--accent-border);
       cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .mark-all-btn:hover {
+      background: var(--accent);
+      color: #fff;
     }
 
     .view-mode-toggle {
@@ -194,6 +283,7 @@
       background: transparent;
       padding: 5px 8px;
       border-radius: 6px;
+      font-family: var(--font-heading);
       font-size: 11px;
       font-weight: 700;
       color: var(--muted);
@@ -203,17 +293,19 @@
     .mode-btn.active {
       background: var(--surface);
       color: var(--text);
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
     }
 
     /* TOC list */
     .sidebar-toc {
       flex: 1;
       overflow-y: auto;
-      padding: 10px 8px 60px;
+      overscroll-behavior: contain;
+      scrollbar-width: thin;
+      padding: 10px 10px 40px;
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      gap: 3px;
     }
 
     .sidebar-ch-item {
@@ -221,46 +313,51 @@
       overflow: hidden;
       transition: background 0.15s ease;
     }
-    .sidebar-ch-item.active {
-      background: var(--accent-dim);
-    }
     .sidebar-ch-head {
       display: flex;
       align-items: center;
       gap: 8px;
-      padding: 7px 10px;
+      padding: 8px 10px;
       cursor: pointer;
-      border-radius: 6px;
+      border-radius: 8px;
+      transition: background 0.15s ease;
     }
     .sidebar-ch-head:hover {
       background: var(--surface-2);
     }
     .sidebar-ch-item.active .sidebar-ch-head {
-      background: transparent;
+      background: var(--accent-dim);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
     }
     .ch-read-check {
-      accent-color: #10b981;
+      accent-color: var(--success);
+      width: 15px;
+      height: 15px;
       cursor: pointer;
+      flex-shrink: 0;
     }
     .sidebar-ch-link {
       flex: 1;
       display: flex;
-      align-items: baseline;
-      gap: 7px;
+      align-items: center;
+      gap: 8px;
       color: var(--text);
       text-decoration: none;
-      font-size: 12.5px;
+      font-size: 13px;
       font-weight: 600;
       min-width: 0;
     }
     .ch-num-badge {
-      font-size: 10px;
+      font-family: var(--font-mono);
+      font-size: 11px;
       font-weight: 800;
-      background: var(--surface-3);
-      padding: 1px 6px;
-      border-radius: 4px;
-      color: var(--muted);
+      background: var(--accent-dim);
+      color: var(--accent);
+      padding: 2px 6px;
+      border-radius: 6px;
       white-space: nowrap;
+      border: 1px solid var(--accent-border);
     }
     .sidebar-ch-item.active .ch-num-badge {
       background: var(--accent);
@@ -271,10 +368,14 @@
       text-overflow: ellipsis;
       white-space: nowrap;
     }
+    .sidebar-ch-item.active .ch-title-text {
+      color: var(--accent);
+      font-weight: 750;
+    }
     .ch-expander {
       border: none;
       background: transparent;
-      color: var(--muted);
+      color: var(--faint);
       font-size: 12px;
       cursor: pointer;
       padding: 2px 4px;
@@ -282,13 +383,17 @@
     }
     .ch-expander:hover {
       background: var(--surface-3);
+      color: var(--text);
     }
 
     .sidebar-sub-list {
       display: none;
       flex-direction: column;
-      padding: 2px 0 6px 26px;
+      padding: 3px 0 6px 20px;
       gap: 2px;
+      border-left: 2px solid var(--separator);
+      margin-left: 20px;
+      margin-top: 2px;
     }
     .sidebar-sub-list.open {
       display: flex;
@@ -297,9 +402,9 @@
       display: flex;
       align-items: center;
       gap: 6px;
-      padding: 4px 8px;
-      border-radius: 4px;
-      font-size: 11.5px;
+      padding: 5px 8px;
+      border-radius: 6px;
+      font-size: 12px;
       color: var(--muted);
       text-decoration: none;
       transition: all 0.15s ease;
@@ -314,19 +419,14 @@
     }
 
     /* ============================================================
-       RIGHT MAIN CONTENT READER
+       RIGHT MAIN CONTENT READER (Atlas Style)
        ============================================================ */
     .tut-content {
-      margin-left: var(--tut-sidebar-w);
-      flex: 1;
       min-width: 0;
-      padding: 24px 36px 120px;
-      box-sizing: border-box;
-      background: var(--bg);
     }
 
     .tut-content-inner {
-      max-width: 880px;
+      max-width: 900px;
       margin: 0 auto;
     }
 
@@ -336,9 +436,8 @@
     }
     .chapter-pane.active {
       display: block;
-      animation: fadeIn 0.18s ease-out;
+      animation: amFade 0.22s ease-out;
     }
-    /* When in continuous view, show all */
     body.continuous-mode .chapter-pane {
       display: block !important;
       margin-bottom: 60px;
@@ -346,9 +445,9 @@
       border-bottom: 2px solid var(--border);
     }
 
-    @keyframes fadeIn {
+    @keyframes amFade {
       from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
+      to { opacity: 1; transform: none; }
     }
 
     .pane-header-bar {
@@ -357,18 +456,18 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 12px;
-      padding: 12px 18px;
-      margin-bottom: 28px;
+      padding: 14px 20px;
+      margin-bottom: 22px;
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 10px;
+      border-radius: 14px;
       box-shadow: var(--shadow);
     }
     .pane-header-meta {
       display: flex;
       align-items: center;
-      gap: 8px;
-      font-size: 12.5px;
+      gap: 10px;
+      font-size: 13px;
       color: var(--muted);
       font-weight: 600;
       flex-wrap: wrap;
@@ -376,17 +475,29 @@
     .pane-badge {
       background: var(--accent-dim);
       color: var(--accent);
-      padding: 2px 8px;
-      border-radius: 6px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-family: var(--font-heading);
       font-weight: 800;
       font-size: 11.5px;
+      border: 1px solid var(--accent-border);
+      letter-spacing: 0.04em;
+    }
+    .pane-crumb {
+      color: var(--muted);
+      font-size: 13.5px;
+    }
+    .pane-crumb b {
+      color: var(--text);
+      font-family: var(--font-heading);
     }
     .pane-sep {
-      color: var(--border);
+      color: var(--border-strong);
     }
     .pane-external-link {
       color: var(--muted);
       text-decoration: none;
+      font-size: 12px;
     }
     .pane-external-link:hover {
       color: var(--accent);
@@ -399,15 +510,16 @@
       gap: 8px;
     }
     .pane-nav-btn {
-      padding: 6px 12px;
+      padding: 7px 13px;
       font-size: 12px;
       font-weight: 700;
       border: 1px solid var(--border);
       background: var(--surface-2);
       color: var(--text);
-      border-radius: 6px;
+      border-radius: 8px;
       cursor: pointer;
       transition: all 0.15s ease;
+      font-family: var(--font-heading);
     }
     .pane-nav-btn:hover:not([disabled]) {
       background: var(--accent);
@@ -419,70 +531,93 @@
       cursor: not-allowed;
     }
     .pane-read-toggle-btn {
-      padding: 6px 12px;
+      padding: 7px 14px;
       font-size: 12px;
       font-weight: 700;
-      border: 1px solid var(--border);
+      border: 1px solid var(--accent-border);
       background: var(--accent-dim);
       color: var(--accent);
-      border-radius: 6px;
+      border-radius: 8px;
       cursor: pointer;
+      transition: all 0.15s ease;
+      font-family: var(--font-heading);
+    }
+    .pane-read-toggle-btn:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    /* Pane Enclosing Card (Atlas Article Style) */
+    .pane-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: clamp(24px, 3.5vw, 44px);
+      box-shadow: var(--shadow);
     }
 
     /* Typography & Code */
     .pane-body h1 {
-      font-size: 28px;
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 2.8vw, 2.3rem);
       font-weight: 800;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.022em;
       margin: 0 0 20px;
       color: var(--text);
-      border-bottom: 2px solid var(--border);
-      padding-bottom: 10px;
+      line-height: 1.25;
     }
     .pane-body h2 {
-      font-size: 22px;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      margin: 34px 0 14px;
+      font-family: var(--font-heading);
+      font-size: 1.45rem;
+      font-weight: 750;
+      letter-spacing: -0.015em;
+      margin: 2.4rem 0 1rem;
       color: var(--text);
-      padding-top: 10px;
+      padding-top: 1.2rem;
+      border-top: 1px solid var(--separator);
+    }
+    .pane-body h2:first-of-type {
+      border-top: 0;
+      padding-top: 0;
     }
     .pane-body h3 {
-      font-size: 18px;
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
       font-weight: 700;
-      margin: 26px 0 10px;
+      margin: 1.8rem 0 0.6rem;
       color: var(--text);
     }
     .pane-body h4 {
-      font-size: 15px;
-      font-weight: 700;
-      margin: 18px 0 8px;
+      font-family: var(--font-heading);
+      font-size: 1.02rem;
+      font-weight: 650;
+      margin: 1.3rem 0 0.5rem;
       color: var(--text);
     }
     .pane-body p {
-      margin: 14px 0;
+      margin: 0.9rem 0;
       line-height: 1.7;
     }
     .pane-body pre {
       background: var(--code-bg);
       color: var(--code-text);
-      padding: 14px 18px;
-      border-radius: 8px;
+      padding: 18px 20px;
+      border-radius: 12px;
       overflow-x: auto;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      font-size: 13px;
-      line-height: 1.55;
-      margin: 18px 0;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-      border: 1px solid var(--border);
+      font-family: var(--font-mono);
+      font-size: 13.5px;
+      line-height: 1.65;
+      margin: 1.4rem 0;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.25);
+      border: 1px solid var(--code-border);
     }
     .pane-body code {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-family: var(--font-mono);
       font-size: 13.5px;
       background: var(--surface-2);
-      color: var(--text);
-      padding: 2px 5px;
-      border-radius: 4px;
+      color: var(--accent);
+      padding: 2px 6px;
+      border-radius: 6px;
       border: 1px solid var(--border);
     }
     .pane-body pre code {
@@ -490,70 +625,74 @@
       color: inherit;
       padding: 0;
       border: none;
-      font-size: 13px;
+      font-size: 13.5px;
     }
     .pane-body table {
       width: 100%;
       border-collapse: collapse;
-      margin: 22px 0;
+      margin: 1.4rem 0;
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 8px;
+      border-radius: 10px;
       overflow: hidden;
+      font-size: 14px;
     }
     .pane-body th, .pane-body td {
       padding: 10px 14px;
       text-align: left;
-      border-bottom: 1px solid var(--border);
-      font-size: 14px;
+      border: 1px solid var(--border);
     }
     .pane-body th {
       background: var(--surface-2);
-      font-weight: 700;
+      font-weight: 750;
+      font-family: var(--font-heading);
+      text-transform: uppercase;
+      font-size: 12.5px;
+      letter-spacing: 0.04em;
     }
     .pane-body blockquote {
-      margin: 20px 0;
-      padding: 12px 18px;
+      margin: 1.4rem 0;
+      padding: 14px 18px;
       border-left: 4px solid var(--accent);
-      background: var(--surface-2);
-      border-radius: 0 8px 8px 0;
-      font-style: italic;
+      background: var(--accent-dim);
+      border-radius: 0 10px 10px 0;
+      color: var(--muted);
+      font-style: normal;
     }
     .pane-body img {
       max-width: 100%;
       height: auto;
-      border-radius: 8px;
+      border-radius: 10px;
       border: 1px solid var(--border);
       margin: 20px 0;
       box-shadow: var(--shadow);
     }
 
-    /* Footer Prev/Next Cards */
+    /* Footer Prev/Next Cards (Atlas Style) */
     .pane-footer-nav {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 16px;
-      margin-top: 48px;
-      padding-top: 24px;
-      border-top: 1px solid var(--border);
+      margin-top: 28px;
     }
     .ch-nav-card {
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 6px;
       padding: 16px 20px;
-      border-radius: 10px;
+      border-radius: 14px;
       border: 1px solid var(--border);
       background: var(--surface);
       text-decoration: none;
       color: var(--text);
       box-shadow: var(--shadow);
-      transition: all 0.15s ease;
+      transition: all 0.16s ease;
     }
     .ch-nav-card:hover:not(.disabled) {
       border-color: var(--accent);
       transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      box-shadow: var(--shadow-md);
+      text-decoration: none;
     }
     .ch-nav-card.prev-card {
       text-align: left;
@@ -562,19 +701,25 @@
       text-align: right;
     }
     .ch-nav-card.disabled {
-      opacity: 0.5;
+      opacity: 0.45;
       cursor: not-allowed;
+      pointer-events: none;
     }
     .nav-dir {
+      font-family: var(--font-heading);
       font-size: 11px;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.08em;
       color: var(--accent);
     }
     .nav-title {
-      font-size: 14px;
+      font-family: var(--font-heading);
+      font-size: 14.5px;
       font-weight: 700;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     /* Mobile drawer button */
@@ -589,27 +734,34 @@
       border: none;
       padding: 10px 18px;
       border-radius: 999px;
-      font-weight: 700;
+      font-weight: 750;
       font-size: 13.5px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.3);
       cursor: pointer;
       align-items: center;
       gap: 8px;
+      font-family: var(--font-heading);
     }
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1040px) {
+      .tut-layout {
+        grid-template-columns: 1fr;
+      }
       .tut-sidebar {
-        transform: translateX(-100%);
-        width: 300px;
+        position: fixed;
+        top: 56px;
+        left: 0;
+        bottom: 0;
+        max-height: none;
+        width: min(340px, 88vw);
+        border-radius: 0;
+        transform: translateX(-102%);
+        transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
         z-index: 1100;
-        box-shadow: 4px 0 25px rgba(0,0,0,0.25);
+        box-shadow: var(--shadow-md);
       }
       body.drawer-open .tut-sidebar {
         transform: translateX(0);
-      }
-      .tut-content {
-        margin-left: 0;
-        padding: 18px 16px 80px;
       }
       .mobile-toc-toggle {
         display: inline-flex;
@@ -623,58 +775,56 @@
 <body>
 
   <!-- Top Announcement Bar / Breadcrumb -->
-  <div style="background:var(--surface);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12.5px;">
-    <div style="display:flex;align-items:center;gap:10px;font-weight:600">
-      <a href="../../index.html" style="color:var(--muted);text-decoration:none">← Hub</a>
-      <span style="color:var(--border)">/</span>
-      <a href="../../all_tech.html" style="color:var(--muted);text-decoration:none">All-Tech Portal</a>
-      <span style="color:var(--border)">/</span>
-      <a href="../../tech_git.html" style="color:var(--muted);text-decoration:none">Git Masterclass</a>
-      <span style="color:var(--border)">/</span>
-      <span style="color:var(--accent);font-weight:700">Beej's Git Tutorial</span>
+  <div class="tut-top-ribbon">
+    <div class="tut-top-crumbs">
+      <a href="../../index.html">← Hub</a>
+      <span class="sep">/</span>
+      <a href="../../all_tech.html">All-Tech Portal</a>
+      <span class="sep">/</span>
+      <a href="../../tech_git.html">Git Masterclass</a>
+      <span class="sep">/</span>
+      <span class="cur">Beej's Git Tutorial</span>
     </div>
-    <div style="display:flex;align-items:center;gap:12px;font-size:12px;color:var(--muted)">
-      <span>Keyboard: <kbd style="background:var(--surface-2);border:1px solid var(--border);padding:1px 5px;border-radius:3px;font-family:monospace">[</kbd> Prev &middot; <kbd style="background:var(--surface-2);border:1px solid var(--border);padding:1px 5px;border-radius:3px;font-family:monospace">]</kbd> Next</span>
-      <span style="color:var(--border)">|</span>
-      <a href="../../library.html" style="color:var(--accent);text-decoration:none;font-weight:700">Reading Library ↗</a>
+    <div class="tut-top-links">
+      <span>Keyboard: <kbd style="background:var(--surface-2);border:1px solid var(--border);padding:1px 5px;border-radius:4px;font-family:monospace">[</kbd> Prev · <kbd style="background:var(--surface-2);border:1px solid var(--border);padding:1px 5px;border-radius:4px;font-family:monospace">]</kbd> Next</span>
+      <span class="sep">|</span>
+      <a href="../../library.html">Reading Library ↗</a>
     </div>
   </div>
 
-  <div class="tut-layout">
-    <!-- LEFT SIDEBAR -->
-    <aside class="tut-sidebar" id="tut-sidebar">
-      <div class="sidebar-top">
-        <div class="sidebar-brand">
-          <span class="brand-icon">📘</span>
-          <div>
-            <div class="brand-title">Beej's Guide to Git</div>
-            <div class="brand-subtitle">Unabridged Interactive Tutorial (38 Ch)</div>
+  <div class="tut-wrap">
+    <div class="tut-layout">
+      <!-- LEFT SIDEBAR -->
+      <aside class="tut-sidebar" id="tut-sidebar">
+        <div class="sidebar-top">
+          <div class="sidebar-brand">
+            <span class="brand-title">📘 Beej's Git Track</span>
+            <span class="brand-subtitle">38 Modules</span>
+          </div>
+          <div class="sidebar-search">
+            <input type="search" id="sidebar-search" placeholder="Search 38 chapters & topics…" aria-label="Search chapters">
+          </div>
+          <div class="sidebar-meta">
+            <div class="progress-bar-wrap">
+              <div class="progress-bar" id="progress-bar" style="width: 0%"></div>
+            </div>
+            <div class="progress-stats">
+              <span id="read-count">0 of 38 chapters completed</span>
+              <button class="mark-all-btn" onclick="markAllReadToggle()">Mark All ✓</button>
+            </div>
+            <div class="view-mode-toggle">
+              <button class="mode-btn active" id="btn-chapter-mode" onclick="setViewMode('chapter')">📄 Chapter View</button>
+              <button class="mode-btn" id="btn-continuous-mode" onclick="setViewMode('continuous')">📜 All Chapters</button>
+            </div>
           </div>
         </div>
-        <div class="sidebar-search">
-          <input type="search" id="sidebar-search" placeholder="Search 38 chapters & topics…" aria-label="Search chapters">
-        </div>
-        <div class="sidebar-meta">
-          <div class="progress-bar-wrap">
-            <div class="progress-bar" id="progress-bar" style="width: 0%"></div>
-          </div>
-          <div class="progress-stats">
-            <span id="read-count">0 of 38 chapters read</span>
-            <button class="mark-all-btn" onclick="markAllReadToggle()">Mark All ✓</button>
-          </div>
-          <div class="view-mode-toggle">
-            <button class="mode-btn active" id="btn-chapter-mode" onclick="setViewMode('chapter')">📄 Chapter View</button>
-            <button class="mode-btn" id="btn-continuous-mode" onclick="setViewMode('continuous')">📜 All Chapters</button>
-          </div>
-        </div>
-      </div>
 
-      <nav class="sidebar-toc" id="sidebar-toc">
+        <nav class="sidebar-toc" id="sidebar-toc">
       <div class="sidebar-ch-item" id="toc-ch-1" data-ch-num="1">
         <div class="sidebar-ch-head">
           <input type="checkbox" class="ch-read-check" id="read-ch-1" onclick="toggleChapterRead(1, event)" title="Mark Chapter 1 as read">
           <a class="sidebar-ch-link" href="#foreword" onclick="onChapterLinkClick(1, 'foreword', event)">
-            <span class="ch-num-badge">Ch 1</span>
+            <span class="ch-num-badge">01</span>
             <span class="ch-title-text">Foreword</span>
           </a>
           <button class="ch-expander" onclick="toggleChapterSubs(1, event)" title="Toggle topics" aria-label="Toggle subtopics">▾</button>
@@ -693,7 +843,7 @@
         <div class="sidebar-ch-head">
           <input type="checkbox" class="ch-read-check" id="read-ch-2" onclick="toggleChapterRead(2, event)" title="Mark Chapter 2 as read">
           <a class="sidebar-ch-link" href="#git-basics" onclick="onChapterLinkClick(2, 'git-basics', event)">
-            <span class="ch-num-badge">Ch 2</span>
+            <span class="ch-num-badge">02</span>
             <span class="ch-title-text">Git Basics</span>
           </a>
           <button class="ch-expander" onclick="toggleChapterSubs(2, event)" title="Toggle topics" aria-label="Toggle subtopics">▾</button>
@@ -721,7 +871,7 @@
         <div class="sidebar-ch-head">
           <input type="checkbox" class="ch-read-check" id="read-ch-3" onclick="toggleChapterRead(3, event)" title="Mark Chapter 3 as read">
           <a class="sidebar-ch-link" href="#github-how-to-use-it" onclick="onChapterLinkClick(3, 'github-how-to-use-it', event)">
-            <span class="ch-num-badge">Ch 3</span>
+            <span class="ch-num-badge">03</span>
             <span class="ch-title-text">GitHub: How To Use It</span>
           </a>
           <button class="ch-expander" onclick="toggleChapterSubs(3, event)" title="Toggle topics" aria-label="Toggle subtopics">▾</button>
@@ -744,7 +894,7 @@
         <div class="sidebar-ch-head">
           <input type="checkbox" class="ch-read-check" id="read-ch-4" onclick="toggleChapterRead(4, event)" title="Mark Chapter 4 as read">
           <a class="sidebar-ch-link" href="#the-git-log-and-head" onclick="onChapterLinkClick(4, 'the-git-log-and-head', event)">
-            <span class="ch-num-badge">Ch 4</span>
+            <span class="ch-num-badge">04</span>
             <span class="ch-title-text">The Git Log andHEAD</span>
           </a>
           <button class="ch-expander" onclick="toggleChapterSubs(4, event)" title="Toggle topics" aria-label="Toggle subtopics">▾</button>
@@ -762,7 +912,7 @@
         <div class="sidebar-ch-head">
           <input type="checkbox" class="ch-read-check" id="read-ch-5" onclick="toggleChapterRead(5, event)" title="Mark Chapter 5 as read">
           <a class="sidebar-ch-link" href="#branches-and-fast-forward-merges" onclick="onChapterLinkClick(5, 'branches-and-fast-forward-merges', event)">
-            <span class="ch-num-badge">Ch 5</span>
+            <span class="ch-num-badge">05</span>
             <span class="ch-title-text">Branches and Fast-Forward Merges</span>
           </a>
           <button class="ch-expander" onclick="toggleChapterSubs(5, event)" title="Toggle topics" aria-label="Toggle subtopics">▾</button>
@@ -782,7 +932,7 @@
         <div class="sidebar-ch-head">
           <input type="checkbox" class="ch-read-check" id="read-ch-6" onclick="toggleChapterRead(6, event)" title="Mark Chapter 6 as read">
           <a class="sidebar-ch-link" href="#merge" onclick="onChapterLinkClick(6, 'merge', event)">
-            <span class="ch-num-badge">Ch 6</span>
+            <span class="ch-num-badge">06</span>
             <span class="ch-title-text">Merging and Conflicts</span>
           </a>
           <button class="ch-expander" onclick="toggleChapterSubs(6, event)" title="Toggle topics" aria-label="Toggle subtopics">▾</button>
@@ -801,7 +951,7 @@
         <div class="sidebar-ch-head">
           <input type="checkbox" class="ch-read-check" id="read-ch-7" onclick="toggleChapterRead(7, event)" title="Mark Chapter 7 as read">
           <a class="sidebar-ch-link" href="#using-subdirectories-with-git" onclick="onChapterLinkClick(7, 'using-subdirectories-with-git', event)">
-            <span class="ch-num-badge">Ch 7</span>
+            <span class="ch-num-badge">07</span>
             <span class="ch-title-text">Using Subdirectories with Git</span>
           </a>
           <button class="ch-expander" onclick="toggleChapterSubs(7, event)" title="Toggle topics" aria-label="Toggle subtopics">▾</button>
@@ -817,7 +967,7 @@
         <div class="sidebar-ch-head">
           <input type="checkbox" class="ch-read-check" id="read-ch-8" onclick="toggleChapterRead(8, event)" title="Mark Chapter 8 as read">
           <a class="sidebar-ch-link" href="#ignoring-files-with-.gitignore" onclick="onChapterLinkClick(8, 'ignoring-files-with-.gitignore', event)">
-            <span class="ch-num-badge">Ch 8</span>
+            <span class="ch-num-badge">08</span>
             <span class="ch-title-text">Ignoring Files with.gitignore</span>
           </a>
           <button class="ch-expander" onclick="toggleChapterSubs(8, event)" title="Toggle topics" aria-label="Toggle subtopics">▾</button>
@@ -836,7 +986,7 @@
         <div class="sidebar-ch-head">
           <input type="checkbox" class="ch-read-check" id="read-ch-9" onclick="toggleChapterRead(9, event)" title="Mark Chapter 9 as read">
           <a class="sidebar-ch-link" href="#remotes-repos-in-other-places" onclick="onChapterLinkClick(9, 'remotes-repos-in-other-places', event)">
-            <span class="ch-num-badge">Ch 9</span>
+            <span class="ch-num-badge">09</span>
             <span class="ch-title-text">Remotes: Repos in Other Places</span>
           </a>
           <button class="ch-expander" onclick="toggleChapterSubs(9, event)" title="Toggle topics" aria-label="Toggle subtopics">▾</button>
@@ -852,7 +1002,7 @@
         <div class="sidebar-ch-head">
           <input type="checkbox" class="ch-read-check" id="read-ch-10" onclick="toggleChapterRead(10, event)" title="Mark Chapter 10 as read">
           <a class="sidebar-ch-link" href="#remote-tracking-branch" onclick="onChapterLinkClick(10, 'remote-tracking-branch', event)">
-            <span class="ch-num-badge">Ch 10</span>
+            <span class="ch-num-badge">10</span>
             <span class="ch-title-text">Remote Tracking Branches</span>
           </a>
           <button class="ch-expander" onclick="toggleChapterSubs(10, event)" title="Toggle topics" aria-label="Toggle subtopics">▾</button>
@@ -873,7 +1023,7 @@
         <div class="sidebar-ch-head">
           <input type="checkbox" class="ch-read-check" id="read-ch-11" onclick="toggleChapterRead(11, event)" title="Mark Chapter 11 as read">
           <a class="sidebar-ch-link" href="#file-states" onclick="onChapterLinkClick(11, 'file-states', event)">
-            <span class="ch-num-badge">Ch 11</span>
+            <span class="ch-num-badge">11</span>
             <span class="ch-title-text">File States</span>
           </a>
           <button class="ch-expander" onclick="toggleChapterSubs(11, event)" title="Toggle topics" aria-label="Toggle subtopics">▾</button>
@@ -888,7 +1038,7 @@
         <div class="sidebar-ch-head">
           <input type="checkbox" class="ch-read-check" id="read-ch-12" onclick="toggleChapterRead(12, event)" title="Mark Chapter 12 as read">
           <a class="sidebar-ch-link" href="#diff" onclick="onChapterLinkClick(12, 'diff', event)">
-            <span class="ch-num-badge">Ch 12</span>
+            <span class="ch-num-badge">12</span>
             <span class="ch-title-text">Comparing Files with Diff</span>
           </a>
           <button class="ch-expander" onclick="toggleChapterSubs(12, event)" title="Toggle topics" aria-label="Toggle subtopics">▾</button>
@@ -912,7 +1062,7 @@
         <div class="sidebar-ch-head">
           <input type="checkbox" class="ch-read-check" id="read-ch-13" onclick="toggleChapterRead(13, event)" title="Mark Chapter 13 as read">
           <a class="sidebar-ch-link" href="#renaming-and-removing-files" onclick="onChapterLinkClick(13, 'renaming-and-removing-files', event)">
-            <span class="ch-num-badge">Ch 13</span>
+            <span class="ch-num-badge">13</span>
             <span class="ch-title-text">Renaming and Removing Files</span>
           </a>
           <button class="ch-expander" onclick="toggleChapterSubs(13, event)" title="Toggle topics" aria-label="Toggle subtopics">▾</button>
@@ -930,7 +1080,7 @@
         <div class="sidebar-ch-head">
           <input type="checkbox" class="ch-read-check" id="read-ch-14" onclick="toggleChapterRead(14, event)" title="Mark Chapter 14 as read">
           <a class="sidebar-ch-link" href="#collaboration-across-branches" onclick="onChapterLinkClick(14, 'collaboration-across-branches', event)">
-            <span class="ch-num-badge">Ch 14</span>
+            <span class="ch-num-badge">14</span>
             <span class="ch-title-text">Collaboration across Branches</span>
           </a>
           <button class="ch-expander" onclick="toggleChapterSubs(14, event)" title="Toggle topics" aria-label="Toggle subtopics">▾</button>
@@ -946,7 +1096,7 @@
         <div class="sidebar-ch-head">
           <input type="checkbox" class="ch-read-check" id="read-ch-15" onclick="toggleChapterRead(15, event)" title="Mark Chapter 15 as read">
           <a class="sidebar-ch-link" href="#rebase" onclick="onChapterLinkClick(15, 'rebase', event)">
-            <span class="ch-num-badge">Ch 15</span>
+            <span class="ch-num-badge">15</span>
             <span class="ch-title-text">Rebasing: Moving Commits</span>
           </a>
           <button class="ch-expander" onclick="toggleChapterSubs(15, event)" title="Toggle topics" aria-label="Toggle subtopics">▾</button>
@@ -966,7 +1116,7 @@
         <div class="sidebar-ch-head">
           <input type="checkbox" class="ch-read-check" id="read-ch-16" onclick="toggleChapterRead(16, event)" title="Mark Chapter 16 as read">
           <a class="sidebar-ch-link" href="#stash" onclick="onChapterLinkClick(16, 'stash', event)">
-            <span class="ch-num-badge">Ch 16</span>
+            <span class="ch-num-badge">16</span>
             <span class="ch-title-text">Stashing: Temporarily Set Changes Aside</span>
           </a>
           <button class="ch-expander" onclick="toggleChapterSubs(16, event)" title="Toggle topics" aria-label="Toggle subtopics">▾</button>
@@ -982,7 +1132,7 @@
         <div class="sidebar-ch-head">
           <input type="checkbox" class="ch-read-check" id="read-ch-17" onclick="toggleChapterRead(17, event)" title="Mark Chapter 17 as read">
           <a class="sidebar-ch-link" href="#github-forking-and-pull-requests" onclick="onChapterLinkClick(17, 'github-forking-and-pull-requests', event)">
-            <span class="ch-num-badge">Ch 17</span>
+            <span class="ch-num-badge">17</span>
             <span class="ch-title-text">GitHub: Forking and Pull Requests</span>
           </a>
           <button class="ch-expander" onclick="toggleChapterSubs(17, event)" title="Toggle topics" aria-label="Toggle subtopics">▾</button>
@@ -1002,7 +1152,7 @@
         <div class="sidebar-ch-head">
           <input type="checkbox" class="ch-read-check" id="read-ch-18" onclick="toggleChapterRead(18, event)" title="Mark Chapter 18 as read">
           <a class="sidebar-ch-link" href="#revert" onclick="onChapterLinkClick(18, 'revert', event)">
-            <span class="ch-num-badge">Ch 18</span>
+            <span class="ch-num-badge">18</span>
             <span class="ch-title-text">Reverting: Undoing Commits</span>
           </a>
           <button class="ch-expander" onclick="toggleChapterSubs(18, event)" title="Toggle topics" aria-label="Toggle subtopics">▾</button>
@@ -1017,7 +1167,7 @@
         <div class="sidebar-ch-head">
           <input type="checkbox" class="ch-read-check" id="read-ch-19" onclick="toggleChapterRead(19, event)" title="Mark Chapter 19 as read">
           <a class="sidebar-ch-link" href="#reset" onclick="onChapterLinkClick(19, 'reset', event)">
-            <span class="ch-num-badge">Ch 19</span>
+            <span class="ch-num-badge">19</span>
             <span class="ch-title-text">Reset: Moving Branches Around</span>
           </a>
           <button class="ch-expander" onclick="toggleChapterSubs(19, event)" title="Toggle topics" aria-label="Toggle subtopics">▾</button>
@@ -1040,7 +1190,7 @@
         <div class="sidebar-ch-head">
           <input type="checkbox" class="ch-read-check" id="read-ch-20" onclick="toggleChapterRead(20, event)" title="Mark Chapter 20 as read">
           <a class="sidebar-ch-link" href="#the-reference-log-reflog" onclick="onChapterLinkClick(20, 'the-reference-log-reflog', event)">
-            <span class="ch-num-badge">Ch 20</span>
+            <span class="ch-num-badge">20</span>
             <span class="ch-title-text">The Reference Log, “reflog”</span>
           </a>
           <button class="ch-expander" onclick="toggleChapterSubs(20, event)" title="Toggle topics" aria-label="Toggle subtopics">▾</button>
@@ -1055,7 +1205,7 @@
         <div class="sidebar-ch-head">
           <input type="checkbox" class="ch-read-check" id="read-ch-21" onclick="toggleChapterRead(21, event)" title="Mark Chapter 21 as read">
           <a class="sidebar-ch-link" href="#patch-mode-applying-partial-changes" onclick="onChapterLinkClick(21, 'patch-mode-applying-partial-changes', event)">
-            <span class="ch-num-badge">Ch 21</span>
+            <span class="ch-num-badge">21</span>
             <span class="ch-title-text">Patch Mode: Applying Partial Changes</span>
           </a>
           <button class="ch-expander" onclick="toggleChapterSubs(21, event)" title="Toggle topics" aria-label="Toggle subtopics">▾</button>
@@ -1070,7 +1220,7 @@
         <div class="sidebar-ch-head">
           <input type="checkbox" class="ch-read-check" id="read-ch-22" onclick="toggleChapterRead(22, event)" title="Mark Chapter 22 as read">
           <a class="sidebar-ch-link" href="#cherry-pick-bringing-in-specific-commits" onclick="onChapterLinkClick(22, 'cherry-pick-bringing-in-specific-commits', event)">
-            <span class="ch-num-badge">Ch 22</span>
+            <span class="ch-num-badge">22</span>
             <span class="ch-title-text">Cherry-Pick: Bringing in Specific Commits</span>
           </a>
           <button class="ch-expander" onclick="toggleChapterSubs(22, event)" title="Toggle topics" aria-label="Toggle subtopics">▾</button>
@@ -1084,7 +1234,7 @@
         <div class="sidebar-ch-head">
           <input type="checkbox" class="ch-read-check" id="read-ch-23" onclick="toggleChapterRead(23, event)" title="Mark Chapter 23 as read">
           <a class="sidebar-ch-link" href="#whos-to-blame-for-this-code" onclick="onChapterLinkClick(23, 'whos-to-blame-for-this-code', event)">
-            <span class="ch-num-badge">Ch 23</span>
+            <span class="ch-num-badge">23</span>
             <span class="ch-title-text">Who’s to Blame for this Code?</span>
           </a>
           <button class="ch-expander" onclick="toggleChapterSubs(23, event)" title="Toggle topics" aria-label="Toggle subtopics">▾</button>
@@ -1097,7 +1247,7 @@
         <div class="sidebar-ch-head">
           <input type="checkbox" class="ch-read-check" id="read-ch-24" onclick="toggleChapterRead(24, event)" title="Mark Chapter 24 as read">
           <a class="sidebar-ch-link" href="#configuration" onclick="onChapterLinkClick(24, 'configuration', event)">
-            <span class="ch-num-badge">Ch 24</span>
+            <span class="ch-num-badge">24</span>
             <span class="ch-title-text">Configuration</span>
           </a>
           <button class="ch-expander" onclick="toggleChapterSubs(24, event)" title="Toggle topics" aria-label="Toggle subtopics">▾</button>
@@ -1116,7 +1266,7 @@
         <div class="sidebar-ch-head">
           <input type="checkbox" class="ch-read-check" id="read-ch-25" onclick="toggleChapterRead(25, event)" title="Mark Chapter 25 as read">
           <a class="sidebar-ch-link" href="#git-aliases" onclick="onChapterLinkClick(25, 'git-aliases', event)">
-            <span class="ch-num-badge">Ch 25</span>
+            <span class="ch-num-badge">25</span>
             <span class="ch-title-text">Git Aliases</span>
           </a>
           <button class="ch-expander" onclick="toggleChapterSubs(25, event)" title="Toggle topics" aria-label="Toggle subtopics">▾</button>
@@ -1132,7 +1282,7 @@
         <div class="sidebar-ch-head">
           <input type="checkbox" class="ch-read-check" id="read-ch-26" onclick="toggleChapterRead(26, event)" title="Mark Chapter 26 as read">
           <a class="sidebar-ch-link" href="#changing-identity" onclick="onChapterLinkClick(26, 'changing-identity', event)">
-            <span class="ch-num-badge">Ch 26</span>
+            <span class="ch-num-badge">26</span>
             <span class="ch-title-text">Changing Identity</span>
           </a>
           <button class="ch-expander" onclick="toggleChapterSubs(26, event)" title="Toggle topics" aria-label="Toggle subtopics">▾</button>
@@ -1148,7 +1298,7 @@
         <div class="sidebar-ch-head">
           <input type="checkbox" class="ch-read-check" id="read-ch-27" onclick="toggleChapterRead(27, event)" title="Mark Chapter 27 as read">
           <a class="sidebar-ch-link" href="#amend" onclick="onChapterLinkClick(27, 'amend', event)">
-            <span class="ch-num-badge">Ch 27</span>
+            <span class="ch-num-badge">27</span>
             <span class="ch-title-text">Amending Commits</span>
           </a>
           <button class="ch-expander" onclick="toggleChapterSubs(27, event)" title="Toggle topics" aria-label="Toggle subtopics">▾</button>
@@ -1162,7 +1312,7 @@
         <div class="sidebar-ch-head">
           <input type="checkbox" class="ch-read-check" id="read-ch-28" onclick="toggleChapterRead(28, event)" title="Mark Chapter 28 as read">
           <a class="sidebar-ch-link" href="#difftool-1" onclick="onChapterLinkClick(28, 'difftool-1', event)">
-            <span class="ch-num-badge">Ch 28</span>
+            <span class="ch-num-badge">28</span>
             <span class="ch-title-text">Difftool</span>
           </a>
           <button class="ch-expander" onclick="toggleChapterSubs(28, event)" title="Toggle topics" aria-label="Toggle subtopics">▾</button>
@@ -1176,7 +1326,7 @@
         <div class="sidebar-ch-head">
           <input type="checkbox" class="ch-read-check" id="read-ch-29" onclick="toggleChapterRead(29, event)" title="Mark Chapter 29 as read">
           <a class="sidebar-ch-link" href="#mergetool" onclick="onChapterLinkClick(29, 'mergetool', event)">
-            <span class="ch-num-badge">Ch 29</span>
+            <span class="ch-num-badge">29</span>
             <span class="ch-title-text">Mergetool</span>
           </a>
           <button class="ch-expander" onclick="toggleChapterSubs(29, event)" title="Toggle topics" aria-label="Toggle subtopics">▾</button>
@@ -1192,7 +1342,7 @@
         <div class="sidebar-ch-head">
           <input type="checkbox" class="ch-read-check" id="read-ch-30" onclick="toggleChapterRead(30, event)" title="Mark Chapter 30 as read">
           <a class="sidebar-ch-link" href="#submodules" onclick="onChapterLinkClick(30, 'submodules', event)">
-            <span class="ch-num-badge">Ch 30</span>
+            <span class="ch-num-badge">30</span>
             <span class="ch-title-text">Submodules</span>
           </a>
           <button class="ch-expander" onclick="toggleChapterSubs(30, event)" title="Toggle topics" aria-label="Toggle subtopics">▾</button>
@@ -1214,7 +1364,7 @@
         <div class="sidebar-ch-head">
           <input type="checkbox" class="ch-read-check" id="read-ch-31" onclick="toggleChapterRead(31, event)" title="Mark Chapter 31 as read">
           <a class="sidebar-ch-link" href="#tags" onclick="onChapterLinkClick(31, 'tags', event)">
-            <span class="ch-num-badge">Ch 31</span>
+            <span class="ch-num-badge">31</span>
             <span class="ch-title-text">Tags</span>
           </a>
           <button class="ch-expander" onclick="toggleChapterSubs(31, event)" title="Toggle topics" aria-label="Toggle subtopics">▾</button>
@@ -1230,7 +1380,7 @@
         <div class="sidebar-ch-head">
           <input type="checkbox" class="ch-read-check" id="read-ch-32" onclick="toggleChapterRead(32, event)" title="Mark Chapter 32 as read">
           <a class="sidebar-ch-link" href="#worktrees" onclick="onChapterLinkClick(32, 'worktrees', event)">
-            <span class="ch-num-badge">Ch 32</span>
+            <span class="ch-num-badge">32</span>
             <span class="ch-title-text">Worktrees</span>
           </a>
           <button class="ch-expander" onclick="toggleChapterSubs(32, event)" title="Toggle topics" aria-label="Toggle subtopics">▾</button>
@@ -1247,7 +1397,7 @@
         <div class="sidebar-ch-head">
           <input type="checkbox" class="ch-read-check" id="read-ch-33" onclick="toggleChapterRead(33, event)" title="Mark Chapter 33 as read">
           <a class="sidebar-ch-link" href="#making-playground" onclick="onChapterLinkClick(33, 'making-playground', event)">
-            <span class="ch-num-badge">Ch 33</span>
+            <span class="ch-num-badge">33</span>
             <span class="ch-title-text">Appendix: Making a Playground</span>
           </a>
           <button class="ch-expander" onclick="toggleChapterSubs(33, event)" title="Toggle topics" aria-label="Toggle subtopics">▾</button>
@@ -1261,7 +1411,7 @@
         <div class="sidebar-ch-head">
           <input type="checkbox" class="ch-read-check" id="read-ch-34" onclick="toggleChapterRead(34, event)" title="Mark Chapter 34 as read">
           <a class="sidebar-ch-link" href="#editor-get-out" onclick="onChapterLinkClick(34, 'editor-get-out', event)">
-            <span class="ch-num-badge">Ch 34</span>
+            <span class="ch-num-badge">34</span>
             <span class="ch-title-text">Appendix: Getting Out of Editors</span>
           </a>
           
@@ -1271,7 +1421,7 @@
         <div class="sidebar-ch-head">
           <input type="checkbox" class="ch-read-check" id="read-ch-35" onclick="toggleChapterRead(35, event)" title="Mark Chapter 35 as read">
           <a class="sidebar-ch-link" href="#appendix-errors-and-scary-messages" onclick="onChapterLinkClick(35, 'appendix-errors-and-scary-messages', event)">
-            <span class="ch-num-badge">Ch 35</span>
+            <span class="ch-num-badge">35</span>
             <span class="ch-title-text">Appendix: Errors and Scary Messages</span>
           </a>
           <button class="ch-expander" onclick="toggleChapterSubs(35, event)" title="Toggle topics" aria-label="Toggle subtopics">▾</button>
@@ -1286,7 +1436,7 @@
         <div class="sidebar-ch-head">
           <input type="checkbox" class="ch-read-check" id="read-ch-36" onclick="toggleChapterRead(36, event)" title="Mark Chapter 36 as read">
           <a class="sidebar-ch-link" href="#vim-tutorial" onclick="onChapterLinkClick(36, 'vim-tutorial', event)">
-            <span class="ch-num-badge">Ch 36</span>
+            <span class="ch-num-badge">36</span>
             <span class="ch-title-text">Appendix: Just Enough Vim</span>
           </a>
           <button class="ch-expander" onclick="toggleChapterSubs(36, event)" title="Toggle topics" aria-label="Toggle subtopics">▾</button>
@@ -1306,7 +1456,7 @@
         <div class="sidebar-ch-head">
           <input type="checkbox" class="ch-read-check" id="read-ch-37" onclick="toggleChapterRead(37, event)" title="Mark Chapter 37 as read">
           <a class="sidebar-ch-link" href="#appendix-other-references" onclick="onChapterLinkClick(37, 'appendix-other-references', event)">
-            <span class="ch-num-badge">Ch 37</span>
+            <span class="ch-num-badge">37</span>
             <span class="ch-title-text">Appendix: Other References</span>
           </a>
           
@@ -1316,7 +1466,7 @@
         <div class="sidebar-ch-head">
           <input type="checkbox" class="ch-read-check" id="read-ch-38" onclick="toggleChapterRead(38, event)" title="Mark Chapter 38 as read">
           <a class="sidebar-ch-link" href="#quick-reference" onclick="onChapterLinkClick(38, 'quick-reference', event)">
-            <span class="ch-num-badge">Ch 38</span>
+            <span class="ch-num-badge">38</span>
             <span class="ch-title-text">Quick Reference</span>
           </a>
           <button class="ch-expander" onclick="toggleChapterSubs(38, event)" title="Toggle topics" aria-label="Toggle subtopics">▾</button>
@@ -1354,37 +1504,33 @@
           <a class="sidebar-sub-link" href="#worktrees-1" data-target-ch="38" data-anchor="worktrees-1"><span class="sub-bullet">•</span> <span class="sub-text">Worktrees</span></a>
         </div>
       </div>
-      </nav>
-    </aside>
+        </nav>
+      </aside>
 
-    <!-- RIGHT CONTENT AREA -->
-    <main class="tut-content" id="tut-content">
-      <div class="tut-content-inner">
+      <!-- RIGHT CONTENT AREA -->
+      <main class="tut-content" id="tut-content">
+        <div class="tut-content-inner">
     <article class="chapter-pane active" id="chapter-1" data-chapter-num="1" data-chid="foreword" data-chapter-title="Foreword">
       <header class="pane-header-bar">
         <div class="pane-header-meta">
-          <span class="pane-badge">Chapter 1 of 38</span>
+          <span class="pane-badge">Module 01</span>
+          <span class="pane-crumb">Beej's Guide to Git &rsaquo; <b>Foreword</b></span>
           <span class="pane-sep">•</span>
-          <span class="pane-book-title">Beej's Quick Guide to Git</span>
-          <span class="pane-sep">•</span>
-          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/foreword.html" target="_blank" rel="noopener noreferrer">Original Online Web ↗</a>
+          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/foreword.html" target="_blank" rel="noopener noreferrer">Original Web ↗</a>
         </div>
         <div class="pane-actions">
           <button class="pane-nav-btn prev-btn" onclick="goToChapter(0, event)" disabled="disabled">← Prev</button>
           <button class="pane-nav-btn next-btn" onclick="goToChapter(2, event)" >Next →</button>
-          <button class="pane-read-toggle-btn" id="pane-read-btn-1" onclick="toggleChapterRead(1, event)">Mark Read ✓</button>
+          <button class="pane-read-toggle-btn" id="pane-read-btn-1" onclick="toggleChapterRead(1, event)">Mark Completed ✓</button>
         </div>
       </header>
 
-      <div class="pane-body">
+      <div class="pane-card">
+        <div class="pane-body">
 <h1 data-number="1" id="foreword"><span class="header-section-number">1</span> Foreword</h1>
  Beej's guide to Git
-# vim: ts=4:sw=4:nosi:et:tw=72
 
- No hyphenation 
- \hyphenation{scalbn} 
- Index see alsos 
-<p> </p>
+ <p> </p>
 <p> </p>
 <p>Hello again, everyone! In my role as an industry professional-turned-college instructor, I definitely see my fair share of students struggling with Git.</p>
 <p>And who can blame ’em? It’s a seemingly-overcomplicated system with lots of pitfalls and merge conflicts and detached heads and remotes and cherrypicks and rebases and an endless array of other commands that do who-knows-what.</p>
@@ -1437,33 +1583,34 @@
 <p>Thank you! ♥</p>
  BG_NEW_CHAPTER 
 
+        </div>
       </div>
 
       <footer class="pane-footer-nav">
-        <div class="ch-nav-card disabled"><div class="nav-dir">Start of Guide</div><div class="nav-title">Chapter 1: Foreword</div></div>
+        <div class="ch-nav-card prev-card disabled"><div class="nav-dir">← PREVIOUS CHAPTER</div><div class="nav-title">Start of Guide</div></div>
         <a class="ch-nav-card next-card" href="#git-basics" onclick="goToChapter(2, event)">
-  <div class="nav-dir">Next Chapter →</div>
-  <div class="nav-title">Ch 2: Git Basics</div>
+  <div class="nav-dir">NEXT CHAPTER →</div>
+  <div class="nav-title">Ch 02: Git Basics</div>
 </a>
       </footer>
     </article>
     <article class="chapter-pane" id="chapter-2" data-chapter-num="2" data-chid="git-basics" data-chapter-title="Git Basics">
       <header class="pane-header-bar">
         <div class="pane-header-meta">
-          <span class="pane-badge">Chapter 2 of 38</span>
+          <span class="pane-badge">Module 02</span>
+          <span class="pane-crumb">Beej's Guide to Git &rsaquo; <b>Git Basics</b></span>
           <span class="pane-sep">•</span>
-          <span class="pane-book-title">Beej's Quick Guide to Git</span>
-          <span class="pane-sep">•</span>
-          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/git-basics.html" target="_blank" rel="noopener noreferrer">Original Online Web ↗</a>
+          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/git-basics.html" target="_blank" rel="noopener noreferrer">Original Web ↗</a>
         </div>
         <div class="pane-actions">
           <button class="pane-nav-btn prev-btn" onclick="goToChapter(1, event)" >← Prev</button>
           <button class="pane-nav-btn next-btn" onclick="goToChapter(3, event)" >Next →</button>
-          <button class="pane-read-toggle-btn" id="pane-read-btn-2" onclick="toggleChapterRead(2, event)">Mark Read ✓</button>
+          <button class="pane-read-toggle-btn" id="pane-read-btn-2" onclick="toggleChapterRead(2, event)">Mark Completed ✓</button>
         </div>
       </header>
 
-      <div class="pane-body">
+      <div class="pane-card">
+        <div class="pane-body">
 <h1 data-number="2" id="git-basics"><span class="header-section-number">2</span> Git Basics</h1>
 <p>Welcome to the <em>Beej’s Guide to Git</em>!</p>
 <p>This guide has two goals, in no particular order:</p>
@@ -1783,36 +1930,37 @@
 <p> </p>
  BG_NEW_CHAPTER 
 
+        </div>
       </div>
 
       <footer class="pane-footer-nav">
         <a class="ch-nav-card prev-card" href="#foreword" onclick="goToChapter(1, event)">
-  <div class="nav-dir">← Previous Chapter</div>
-  <div class="nav-title">Ch 1: Foreword</div>
+  <div class="nav-dir">← PREVIOUS CHAPTER</div>
+  <div class="nav-title">Ch 01: Foreword</div>
 </a>
         <a class="ch-nav-card next-card" href="#github-how-to-use-it" onclick="goToChapter(3, event)">
-  <div class="nav-dir">Next Chapter →</div>
-  <div class="nav-title">Ch 3: GitHub: How To Use It</div>
+  <div class="nav-dir">NEXT CHAPTER →</div>
+  <div class="nav-title">Ch 03: GitHub: How To Use It</div>
 </a>
       </footer>
     </article>
     <article class="chapter-pane" id="chapter-3" data-chapter-num="3" data-chid="github-how-to-use-it" data-chapter-title="GitHub: How To Use It">
       <header class="pane-header-bar">
         <div class="pane-header-meta">
-          <span class="pane-badge">Chapter 3 of 38</span>
+          <span class="pane-badge">Module 03</span>
+          <span class="pane-crumb">Beej's Guide to Git &rsaquo; <b>GitHub: How To Use It</b></span>
           <span class="pane-sep">•</span>
-          <span class="pane-book-title">Beej's Quick Guide to Git</span>
-          <span class="pane-sep">•</span>
-          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/github-how-to-use-it.html" target="_blank" rel="noopener noreferrer">Original Online Web ↗</a>
+          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/github-how-to-use-it.html" target="_blank" rel="noopener noreferrer">Original Web ↗</a>
         </div>
         <div class="pane-actions">
           <button class="pane-nav-btn prev-btn" onclick="goToChapter(2, event)" >← Prev</button>
           <button class="pane-nav-btn next-btn" onclick="goToChapter(4, event)" >Next →</button>
-          <button class="pane-read-toggle-btn" id="pane-read-btn-3" onclick="toggleChapterRead(3, event)">Mark Read ✓</button>
+          <button class="pane-read-toggle-btn" id="pane-read-btn-3" onclick="toggleChapterRead(3, event)">Mark Completed ✓</button>
         </div>
       </header>
 
-      <div class="pane-body">
+      <div class="pane-card">
+        <div class="pane-body">
 <h1 data-number="3" id="github-how-to-use-it"><span class="header-section-number">3</span> GitHub: How To Use It</h1>
 <p></p>
 <p>Now, we’ve said that GitHub (which is a proprietary web front-end to Git run and owned by Microsoft) is not Git, and it’s true. It’s also true that you never even need to touch GitHub in order to use Git.</p>
@@ -2006,36 +2154,37 @@
 <p></p>
  BG_NEW_CHAPTER 
 
+        </div>
       </div>
 
       <footer class="pane-footer-nav">
         <a class="ch-nav-card prev-card" href="#git-basics" onclick="goToChapter(2, event)">
-  <div class="nav-dir">← Previous Chapter</div>
-  <div class="nav-title">Ch 2: Git Basics</div>
+  <div class="nav-dir">← PREVIOUS CHAPTER</div>
+  <div class="nav-title">Ch 02: Git Basics</div>
 </a>
         <a class="ch-nav-card next-card" href="#the-git-log-and-head" onclick="goToChapter(4, event)">
-  <div class="nav-dir">Next Chapter →</div>
-  <div class="nav-title">Ch 4: The Git Log andHEAD</div>
+  <div class="nav-dir">NEXT CHAPTER →</div>
+  <div class="nav-title">Ch 04: The Git Log andHEAD</div>
 </a>
       </footer>
     </article>
     <article class="chapter-pane" id="chapter-4" data-chapter-num="4" data-chid="the-git-log-and-head" data-chapter-title="The Git Log andHEAD">
       <header class="pane-header-bar">
         <div class="pane-header-meta">
-          <span class="pane-badge">Chapter 4 of 38</span>
+          <span class="pane-badge">Module 04</span>
+          <span class="pane-crumb">Beej's Guide to Git &rsaquo; <b>The Git Log andHEAD</b></span>
           <span class="pane-sep">•</span>
-          <span class="pane-book-title">Beej's Quick Guide to Git</span>
-          <span class="pane-sep">•</span>
-          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/the-git-log-and-head.html" target="_blank" rel="noopener noreferrer">Original Online Web ↗</a>
+          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/the-git-log-and-head.html" target="_blank" rel="noopener noreferrer">Original Web ↗</a>
         </div>
         <div class="pane-actions">
           <button class="pane-nav-btn prev-btn" onclick="goToChapter(3, event)" >← Prev</button>
           <button class="pane-nav-btn next-btn" onclick="goToChapter(5, event)" >Next →</button>
-          <button class="pane-read-toggle-btn" id="pane-read-btn-4" onclick="toggleChapterRead(4, event)">Mark Read ✓</button>
+          <button class="pane-read-toggle-btn" id="pane-read-btn-4" onclick="toggleChapterRead(4, event)">Mark Completed ✓</button>
         </div>
       </header>
 
-      <div class="pane-body">
+      <div class="pane-card">
+        <div class="pane-body">
 <h1 data-number="4" id="the-git-log-and-head"><span class="header-section-number">4</span> The Git Log and <code>HEAD</code></h1>
 <p></p>
 <p>When we make commits to a Git repo, it tracks each of those commits in a log that you can visit. Let’s take a look at that now.</p>
@@ -2246,36 +2395,37 @@
 </blockquote>
  BG_NEW_CHAPTER 
 
+        </div>
       </div>
 
       <footer class="pane-footer-nav">
         <a class="ch-nav-card prev-card" href="#github-how-to-use-it" onclick="goToChapter(3, event)">
-  <div class="nav-dir">← Previous Chapter</div>
-  <div class="nav-title">Ch 3: GitHub: How To Use It</div>
+  <div class="nav-dir">← PREVIOUS CHAPTER</div>
+  <div class="nav-title">Ch 03: GitHub: How To Use It</div>
 </a>
         <a class="ch-nav-card next-card" href="#branches-and-fast-forward-merges" onclick="goToChapter(5, event)">
-  <div class="nav-dir">Next Chapter →</div>
-  <div class="nav-title">Ch 5: Branches and Fast-Forward Merges</div>
+  <div class="nav-dir">NEXT CHAPTER →</div>
+  <div class="nav-title">Ch 05: Branches and Fast-Forward Merges</div>
 </a>
       </footer>
     </article>
     <article class="chapter-pane" id="chapter-5" data-chapter-num="5" data-chid="branches-and-fast-forward-merges" data-chapter-title="Branches and Fast-Forward Merges">
       <header class="pane-header-bar">
         <div class="pane-header-meta">
-          <span class="pane-badge">Chapter 5 of 38</span>
+          <span class="pane-badge">Module 05</span>
+          <span class="pane-crumb">Beej's Guide to Git &rsaquo; <b>Branches and Fast-Forward Merges</b></span>
           <span class="pane-sep">•</span>
-          <span class="pane-book-title">Beej's Quick Guide to Git</span>
-          <span class="pane-sep">•</span>
-          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/branches-and-fast-forward-merges.html" target="_blank" rel="noopener noreferrer">Original Online Web ↗</a>
+          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/branches-and-fast-forward-merges.html" target="_blank" rel="noopener noreferrer">Original Web ↗</a>
         </div>
         <div class="pane-actions">
           <button class="pane-nav-btn prev-btn" onclick="goToChapter(4, event)" >← Prev</button>
           <button class="pane-nav-btn next-btn" onclick="goToChapter(6, event)" >Next →</button>
-          <button class="pane-read-toggle-btn" id="pane-read-btn-5" onclick="toggleChapterRead(5, event)">Mark Read ✓</button>
+          <button class="pane-read-toggle-btn" id="pane-read-btn-5" onclick="toggleChapterRead(5, event)">Mark Completed ✓</button>
         </div>
       </header>
 
-      <div class="pane-body">
+      <div class="pane-card">
+        <div class="pane-body">
 <h1 data-number="5" id="branches-and-fast-forward-merges"><span class="header-section-number">5</span> Branches and Fast-Forward Merges</h1>
 <h2 data-number="5.1" id="what-is-a-branch"><span class="header-section-number">5.1</span> What is a Branch?</h2>
 <p></p>
@@ -2679,36 +2829,37 @@
 <p></p>
  BG_NEW_CHAPTER 
 
+        </div>
       </div>
 
       <footer class="pane-footer-nav">
         <a class="ch-nav-card prev-card" href="#the-git-log-and-head" onclick="goToChapter(4, event)">
-  <div class="nav-dir">← Previous Chapter</div>
-  <div class="nav-title">Ch 4: The Git Log andHEAD</div>
+  <div class="nav-dir">← PREVIOUS CHAPTER</div>
+  <div class="nav-title">Ch 04: The Git Log andHEAD</div>
 </a>
         <a class="ch-nav-card next-card" href="#merge" onclick="goToChapter(6, event)">
-  <div class="nav-dir">Next Chapter →</div>
-  <div class="nav-title">Ch 6: Merging and Conflicts</div>
+  <div class="nav-dir">NEXT CHAPTER →</div>
+  <div class="nav-title">Ch 06: Merging and Conflicts</div>
 </a>
       </footer>
     </article>
     <article class="chapter-pane" id="chapter-6" data-chapter-num="6" data-chid="merge" data-chapter-title="Merging and Conflicts">
       <header class="pane-header-bar">
         <div class="pane-header-meta">
-          <span class="pane-badge">Chapter 6 of 38</span>
+          <span class="pane-badge">Module 06</span>
+          <span class="pane-crumb">Beej's Guide to Git &rsaquo; <b>Merging and Conflicts</b></span>
           <span class="pane-sep">•</span>
-          <span class="pane-book-title">Beej's Quick Guide to Git</span>
-          <span class="pane-sep">•</span>
-          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/merge.html" target="_blank" rel="noopener noreferrer">Original Online Web ↗</a>
+          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/merge.html" target="_blank" rel="noopener noreferrer">Original Web ↗</a>
         </div>
         <div class="pane-actions">
           <button class="pane-nav-btn prev-btn" onclick="goToChapter(5, event)" >← Prev</button>
           <button class="pane-nav-btn next-btn" onclick="goToChapter(7, event)" >Next →</button>
-          <button class="pane-read-toggle-btn" id="pane-read-btn-6" onclick="toggleChapterRead(6, event)">Mark Read ✓</button>
+          <button class="pane-read-toggle-btn" id="pane-read-btn-6" onclick="toggleChapterRead(6, event)">Mark Completed ✓</button>
         </div>
       </header>
 
-      <div class="pane-body">
+      <div class="pane-card">
+        <div class="pane-body">
 <h1 data-number="6" id="merge"><span class="header-section-number">6</span> Merging and Conflicts</h1>
 <p></p>
 <p>We’ve seen how a fast-forward merge can bring two branches into sync with no possibility of conflict.</p>
@@ -2924,36 +3075,37 @@
 <p> </p>
  BG_NEW_CHAPTER 
 
+        </div>
       </div>
 
       <footer class="pane-footer-nav">
         <a class="ch-nav-card prev-card" href="#branches-and-fast-forward-merges" onclick="goToChapter(5, event)">
-  <div class="nav-dir">← Previous Chapter</div>
-  <div class="nav-title">Ch 5: Branches and Fast-Forward Merges</div>
+  <div class="nav-dir">← PREVIOUS CHAPTER</div>
+  <div class="nav-title">Ch 05: Branches and Fast-Forward Merges</div>
 </a>
         <a class="ch-nav-card next-card" href="#using-subdirectories-with-git" onclick="goToChapter(7, event)">
-  <div class="nav-dir">Next Chapter →</div>
-  <div class="nav-title">Ch 7: Using Subdirectories with Git</div>
+  <div class="nav-dir">NEXT CHAPTER →</div>
+  <div class="nav-title">Ch 07: Using Subdirectories with Git</div>
 </a>
       </footer>
     </article>
     <article class="chapter-pane" id="chapter-7" data-chapter-num="7" data-chid="using-subdirectories-with-git" data-chapter-title="Using Subdirectories with Git">
       <header class="pane-header-bar">
         <div class="pane-header-meta">
-          <span class="pane-badge">Chapter 7 of 38</span>
+          <span class="pane-badge">Module 07</span>
+          <span class="pane-crumb">Beej's Guide to Git &rsaquo; <b>Using Subdirectories with Git</b></span>
           <span class="pane-sep">•</span>
-          <span class="pane-book-title">Beej's Quick Guide to Git</span>
-          <span class="pane-sep">•</span>
-          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/using-subdirectories-with-git.html" target="_blank" rel="noopener noreferrer">Original Online Web ↗</a>
+          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/using-subdirectories-with-git.html" target="_blank" rel="noopener noreferrer">Original Web ↗</a>
         </div>
         <div class="pane-actions">
           <button class="pane-nav-btn prev-btn" onclick="goToChapter(6, event)" >← Prev</button>
           <button class="pane-nav-btn next-btn" onclick="goToChapter(8, event)" >Next →</button>
-          <button class="pane-read-toggle-btn" id="pane-read-btn-7" onclick="toggleChapterRead(7, event)">Mark Read ✓</button>
+          <button class="pane-read-toggle-btn" id="pane-read-btn-7" onclick="toggleChapterRead(7, event)">Mark Completed ✓</button>
         </div>
       </header>
 
-      <div class="pane-body">
+      <div class="pane-card">
+        <div class="pane-body">
 <h1 data-number="7" id="using-subdirectories-with-git"><span class="header-section-number">7</span> Using Subdirectories with Git</h1>
 <p></p>
 <p>This is a shorter chapter, but we want to talk about Git’s behavior when it comes to working in subdirectories and some gotchas that you probably don’t want to get wrapped up in.</p>
@@ -2992,36 +3144,37 @@
 <p></p>
  BG_NEW_CHAPTER 
 
+        </div>
       </div>
 
       <footer class="pane-footer-nav">
         <a class="ch-nav-card prev-card" href="#merge" onclick="goToChapter(6, event)">
-  <div class="nav-dir">← Previous Chapter</div>
-  <div class="nav-title">Ch 6: Merging and Conflicts</div>
+  <div class="nav-dir">← PREVIOUS CHAPTER</div>
+  <div class="nav-title">Ch 06: Merging and Conflicts</div>
 </a>
         <a class="ch-nav-card next-card" href="#ignoring-files-with-.gitignore" onclick="goToChapter(8, event)">
-  <div class="nav-dir">Next Chapter →</div>
-  <div class="nav-title">Ch 8: Ignoring Files with.gitignore</div>
+  <div class="nav-dir">NEXT CHAPTER →</div>
+  <div class="nav-title">Ch 08: Ignoring Files with.gitignore</div>
 </a>
       </footer>
     </article>
     <article class="chapter-pane" id="chapter-8" data-chapter-num="8" data-chid="ignoring-files-with-.gitignore" data-chapter-title="Ignoring Files with.gitignore">
       <header class="pane-header-bar">
         <div class="pane-header-meta">
-          <span class="pane-badge">Chapter 8 of 38</span>
+          <span class="pane-badge">Module 08</span>
+          <span class="pane-crumb">Beej's Guide to Git &rsaquo; <b>Ignoring Files with.gitignore</b></span>
           <span class="pane-sep">•</span>
-          <span class="pane-book-title">Beej's Quick Guide to Git</span>
-          <span class="pane-sep">•</span>
-          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/ignoring-files-with-.gitignore.html" target="_blank" rel="noopener noreferrer">Original Online Web ↗</a>
+          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/ignoring-files-with-.gitignore.html" target="_blank" rel="noopener noreferrer">Original Web ↗</a>
         </div>
         <div class="pane-actions">
           <button class="pane-nav-btn prev-btn" onclick="goToChapter(7, event)" >← Prev</button>
           <button class="pane-nav-btn next-btn" onclick="goToChapter(9, event)" >Next →</button>
-          <button class="pane-read-toggle-btn" id="pane-read-btn-8" onclick="toggleChapterRead(8, event)">Mark Read ✓</button>
+          <button class="pane-read-toggle-btn" id="pane-read-btn-8" onclick="toggleChapterRead(8, event)">Mark Completed ✓</button>
         </div>
       </header>
 
-      <div class="pane-body">
+      <div class="pane-card">
+        <div class="pane-body">
 <h1 data-number="8" id="ignoring-files-with-.gitignore"><span class="header-section-number">8</span> Ignoring Files with <code>.gitignore</code></h1>
 <p></p>
 <p>What if you have files in your subdirectory you don’t want Git to pay any attention to? Like maybe you have some temporary files you don’t want to see in the repo. Or maybe you have an executable you built from a C project and you don’t want that checked in because your incredibly strict instructor won’t grade your project if the repo contains any build products? For example.</p>
@@ -3129,36 +3282,37 @@
 <p></p>
  BG_NEW_CHAPTER 
 
+        </div>
       </div>
 
       <footer class="pane-footer-nav">
         <a class="ch-nav-card prev-card" href="#using-subdirectories-with-git" onclick="goToChapter(7, event)">
-  <div class="nav-dir">← Previous Chapter</div>
-  <div class="nav-title">Ch 7: Using Subdirectories with Git</div>
+  <div class="nav-dir">← PREVIOUS CHAPTER</div>
+  <div class="nav-title">Ch 07: Using Subdirectories with Git</div>
 </a>
         <a class="ch-nav-card next-card" href="#remotes-repos-in-other-places" onclick="goToChapter(9, event)">
-  <div class="nav-dir">Next Chapter →</div>
-  <div class="nav-title">Ch 9: Remotes: Repos in Other Places</div>
+  <div class="nav-dir">NEXT CHAPTER →</div>
+  <div class="nav-title">Ch 09: Remotes: Repos in Other Places</div>
 </a>
       </footer>
     </article>
     <article class="chapter-pane" id="chapter-9" data-chapter-num="9" data-chid="remotes-repos-in-other-places" data-chapter-title="Remotes: Repos in Other Places">
       <header class="pane-header-bar">
         <div class="pane-header-meta">
-          <span class="pane-badge">Chapter 9 of 38</span>
+          <span class="pane-badge">Module 09</span>
+          <span class="pane-crumb">Beej's Guide to Git &rsaquo; <b>Remotes: Repos in Other Places</b></span>
           <span class="pane-sep">•</span>
-          <span class="pane-book-title">Beej's Quick Guide to Git</span>
-          <span class="pane-sep">•</span>
-          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/remotes-repos-in-other-places.html" target="_blank" rel="noopener noreferrer">Original Online Web ↗</a>
+          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/remotes-repos-in-other-places.html" target="_blank" rel="noopener noreferrer">Original Web ↗</a>
         </div>
         <div class="pane-actions">
           <button class="pane-nav-btn prev-btn" onclick="goToChapter(8, event)" >← Prev</button>
           <button class="pane-nav-btn next-btn" onclick="goToChapter(10, event)" >Next →</button>
-          <button class="pane-read-toggle-btn" id="pane-read-btn-9" onclick="toggleChapterRead(9, event)">Mark Read ✓</button>
+          <button class="pane-read-toggle-btn" id="pane-read-btn-9" onclick="toggleChapterRead(9, event)">Mark Completed ✓</button>
         </div>
       </header>
 
-      <div class="pane-body">
+      <div class="pane-card">
+        <div class="pane-body">
 <h1 data-number="9" id="remotes-repos-in-other-places"><span class="header-section-number">9</span> Remotes: Repos in Other Places</h1>
 <p></p>
 <p>A <em>remote</em> is just a name for a remote server you can clone, push, and pull from.</p>
@@ -3249,15 +3403,16 @@
 <p></p>
  BG_NEW_CHAPTER 
 
+        </div>
       </div>
 
       <footer class="pane-footer-nav">
         <a class="ch-nav-card prev-card" href="#ignoring-files-with-.gitignore" onclick="goToChapter(8, event)">
-  <div class="nav-dir">← Previous Chapter</div>
-  <div class="nav-title">Ch 8: Ignoring Files with.gitignore</div>
+  <div class="nav-dir">← PREVIOUS CHAPTER</div>
+  <div class="nav-title">Ch 08: Ignoring Files with.gitignore</div>
 </a>
         <a class="ch-nav-card next-card" href="#remote-tracking-branch" onclick="goToChapter(10, event)">
-  <div class="nav-dir">Next Chapter →</div>
+  <div class="nav-dir">NEXT CHAPTER →</div>
   <div class="nav-title">Ch 10: Remote Tracking Branches</div>
 </a>
       </footer>
@@ -3265,20 +3420,20 @@
     <article class="chapter-pane" id="chapter-10" data-chapter-num="10" data-chid="remote-tracking-branch" data-chapter-title="Remote Tracking Branches">
       <header class="pane-header-bar">
         <div class="pane-header-meta">
-          <span class="pane-badge">Chapter 10 of 38</span>
+          <span class="pane-badge">Module 10</span>
+          <span class="pane-crumb">Beej's Guide to Git &rsaquo; <b>Remote Tracking Branches</b></span>
           <span class="pane-sep">•</span>
-          <span class="pane-book-title">Beej's Quick Guide to Git</span>
-          <span class="pane-sep">•</span>
-          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/remote-tracking-branch.html" target="_blank" rel="noopener noreferrer">Original Online Web ↗</a>
+          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/remote-tracking-branch.html" target="_blank" rel="noopener noreferrer">Original Web ↗</a>
         </div>
         <div class="pane-actions">
           <button class="pane-nav-btn prev-btn" onclick="goToChapter(9, event)" >← Prev</button>
           <button class="pane-nav-btn next-btn" onclick="goToChapter(11, event)" >Next →</button>
-          <button class="pane-read-toggle-btn" id="pane-read-btn-10" onclick="toggleChapterRead(10, event)">Mark Read ✓</button>
+          <button class="pane-read-toggle-btn" id="pane-read-btn-10" onclick="toggleChapterRead(10, event)">Mark Completed ✓</button>
         </div>
       </header>
 
-      <div class="pane-body">
+      <div class="pane-card">
+        <div class="pane-body">
 <h1 data-number="10" id="remote-tracking-branch"><span class="header-section-number">10</span> Remote Tracking Branches</h1>
 <p></p>
 <p>We’ve seen how to create local branches that you do work on, then merge back into the <code>main</code> branch, then <code>git push</code> it up to a remote server.</p>
@@ -3476,15 +3631,16 @@
 <p> </p>
  BG_NEW_CHAPTER 
 
+        </div>
       </div>
 
       <footer class="pane-footer-nav">
         <a class="ch-nav-card prev-card" href="#remotes-repos-in-other-places" onclick="goToChapter(9, event)">
-  <div class="nav-dir">← Previous Chapter</div>
-  <div class="nav-title">Ch 9: Remotes: Repos in Other Places</div>
+  <div class="nav-dir">← PREVIOUS CHAPTER</div>
+  <div class="nav-title">Ch 09: Remotes: Repos in Other Places</div>
 </a>
         <a class="ch-nav-card next-card" href="#file-states" onclick="goToChapter(11, event)">
-  <div class="nav-dir">Next Chapter →</div>
+  <div class="nav-dir">NEXT CHAPTER →</div>
   <div class="nav-title">Ch 11: File States</div>
 </a>
       </footer>
@@ -3492,20 +3648,20 @@
     <article class="chapter-pane" id="chapter-11" data-chapter-num="11" data-chid="file-states" data-chapter-title="File States">
       <header class="pane-header-bar">
         <div class="pane-header-meta">
-          <span class="pane-badge">Chapter 11 of 38</span>
+          <span class="pane-badge">Module 11</span>
+          <span class="pane-crumb">Beej's Guide to Git &rsaquo; <b>File States</b></span>
           <span class="pane-sep">•</span>
-          <span class="pane-book-title">Beej's Quick Guide to Git</span>
-          <span class="pane-sep">•</span>
-          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/file-states.html" target="_blank" rel="noopener noreferrer">Original Online Web ↗</a>
+          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/file-states.html" target="_blank" rel="noopener noreferrer">Original Web ↗</a>
         </div>
         <div class="pane-actions">
           <button class="pane-nav-btn prev-btn" onclick="goToChapter(10, event)" >← Prev</button>
           <button class="pane-nav-btn next-btn" onclick="goToChapter(12, event)" >Next →</button>
-          <button class="pane-read-toggle-btn" id="pane-read-btn-11" onclick="toggleChapterRead(11, event)">Mark Read ✓</button>
+          <button class="pane-read-toggle-btn" id="pane-read-btn-11" onclick="toggleChapterRead(11, event)">Mark Completed ✓</button>
         </div>
       </header>
 
-      <div class="pane-body">
+      <div class="pane-card">
+        <div class="pane-body">
 <h1 data-number="11" id="file-states"><span class="header-section-number">11</span> File States</h1>
 <p></p>
 <p>We’ve talked about this quite a bit in passing already.</p>
@@ -3597,15 +3753,16 @@
 <p></p>
  BG_NEW_CHAPTER 
 
+        </div>
       </div>
 
       <footer class="pane-footer-nav">
         <a class="ch-nav-card prev-card" href="#remote-tracking-branch" onclick="goToChapter(10, event)">
-  <div class="nav-dir">← Previous Chapter</div>
+  <div class="nav-dir">← PREVIOUS CHAPTER</div>
   <div class="nav-title">Ch 10: Remote Tracking Branches</div>
 </a>
         <a class="ch-nav-card next-card" href="#diff" onclick="goToChapter(12, event)">
-  <div class="nav-dir">Next Chapter →</div>
+  <div class="nav-dir">NEXT CHAPTER →</div>
   <div class="nav-title">Ch 12: Comparing Files with Diff</div>
 </a>
       </footer>
@@ -3613,20 +3770,20 @@
     <article class="chapter-pane" id="chapter-12" data-chapter-num="12" data-chid="diff" data-chapter-title="Comparing Files with Diff">
       <header class="pane-header-bar">
         <div class="pane-header-meta">
-          <span class="pane-badge">Chapter 12 of 38</span>
+          <span class="pane-badge">Module 12</span>
+          <span class="pane-crumb">Beej's Guide to Git &rsaquo; <b>Comparing Files with Diff</b></span>
           <span class="pane-sep">•</span>
-          <span class="pane-book-title">Beej's Quick Guide to Git</span>
-          <span class="pane-sep">•</span>
-          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/diff.html" target="_blank" rel="noopener noreferrer">Original Online Web ↗</a>
+          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/diff.html" target="_blank" rel="noopener noreferrer">Original Web ↗</a>
         </div>
         <div class="pane-actions">
           <button class="pane-nav-btn prev-btn" onclick="goToChapter(11, event)" >← Prev</button>
           <button class="pane-nav-btn next-btn" onclick="goToChapter(13, event)" >Next →</button>
-          <button class="pane-read-toggle-btn" id="pane-read-btn-12" onclick="toggleChapterRead(12, event)">Mark Read ✓</button>
+          <button class="pane-read-toggle-btn" id="pane-read-btn-12" onclick="toggleChapterRead(12, event)">Mark Completed ✓</button>
         </div>
       </header>
 
-      <div class="pane-body">
+      <div class="pane-card">
+        <div class="pane-body">
 <h1 data-number="12" id="diff"><span class="header-section-number">12</span> Comparing Files with Diff</h1>
 <p></p>
 <p>The powerful <code>git diff</code> command can give you differences between two files or commits. We mentioned it briefly at the beginning, but here we’re going to delve more deeply into all the things you can do with it.</p>
@@ -3805,15 +3962,16 @@
 <p></p>
  BG_NEW_CHAPTER 
 
+        </div>
       </div>
 
       <footer class="pane-footer-nav">
         <a class="ch-nav-card prev-card" href="#file-states" onclick="goToChapter(11, event)">
-  <div class="nav-dir">← Previous Chapter</div>
+  <div class="nav-dir">← PREVIOUS CHAPTER</div>
   <div class="nav-title">Ch 11: File States</div>
 </a>
         <a class="ch-nav-card next-card" href="#renaming-and-removing-files" onclick="goToChapter(13, event)">
-  <div class="nav-dir">Next Chapter →</div>
+  <div class="nav-dir">NEXT CHAPTER →</div>
   <div class="nav-title">Ch 13: Renaming and Removing Files</div>
 </a>
       </footer>
@@ -3821,20 +3979,20 @@
     <article class="chapter-pane" id="chapter-13" data-chapter-num="13" data-chid="renaming-and-removing-files" data-chapter-title="Renaming and Removing Files">
       <header class="pane-header-bar">
         <div class="pane-header-meta">
-          <span class="pane-badge">Chapter 13 of 38</span>
+          <span class="pane-badge">Module 13</span>
+          <span class="pane-crumb">Beej's Guide to Git &rsaquo; <b>Renaming and Removing Files</b></span>
           <span class="pane-sep">•</span>
-          <span class="pane-book-title">Beej's Quick Guide to Git</span>
-          <span class="pane-sep">•</span>
-          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/renaming-and-removing-files.html" target="_blank" rel="noopener noreferrer">Original Online Web ↗</a>
+          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/renaming-and-removing-files.html" target="_blank" rel="noopener noreferrer">Original Web ↗</a>
         </div>
         <div class="pane-actions">
           <button class="pane-nav-btn prev-btn" onclick="goToChapter(12, event)" >← Prev</button>
           <button class="pane-nav-btn next-btn" onclick="goToChapter(14, event)" >Next →</button>
-          <button class="pane-read-toggle-btn" id="pane-read-btn-13" onclick="toggleChapterRead(13, event)">Mark Read ✓</button>
+          <button class="pane-read-toggle-btn" id="pane-read-btn-13" onclick="toggleChapterRead(13, event)">Mark Completed ✓</button>
         </div>
       </header>
 
-      <div class="pane-body">
+      <div class="pane-card">
+        <div class="pane-body">
 <h1 data-number="13" id="renaming-and-removing-files"><span class="header-section-number">13</span> Renaming and Removing Files</h1>
 <p>This is an extension of dealing with <a href="#file-states">file states</a>, so make sure you read that chapter first!</p>
 <p>Also, I’m going to interchangeably use the terms <em>rename</em> and <em>move</em> to mean the same thing. Moving as a concept is a little more powerful because not only can it rename, but it can also move files to other directories. It’s notable because the command to rename is <code>git mv</code>.</p>
@@ -3992,15 +4150,16 @@
 <p></p>
  BG_NEW_CHAPTER 
 
+        </div>
       </div>
 
       <footer class="pane-footer-nav">
         <a class="ch-nav-card prev-card" href="#diff" onclick="goToChapter(12, event)">
-  <div class="nav-dir">← Previous Chapter</div>
+  <div class="nav-dir">← PREVIOUS CHAPTER</div>
   <div class="nav-title">Ch 12: Comparing Files with Diff</div>
 </a>
         <a class="ch-nav-card next-card" href="#collaboration-across-branches" onclick="goToChapter(14, event)">
-  <div class="nav-dir">Next Chapter →</div>
+  <div class="nav-dir">NEXT CHAPTER →</div>
   <div class="nav-title">Ch 14: Collaboration across Branches</div>
 </a>
       </footer>
@@ -4008,20 +4167,20 @@
     <article class="chapter-pane" id="chapter-14" data-chapter-num="14" data-chid="collaboration-across-branches" data-chapter-title="Collaboration across Branches">
       <header class="pane-header-bar">
         <div class="pane-header-meta">
-          <span class="pane-badge">Chapter 14 of 38</span>
+          <span class="pane-badge">Module 14</span>
+          <span class="pane-crumb">Beej's Guide to Git &rsaquo; <b>Collaboration across Branches</b></span>
           <span class="pane-sep">•</span>
-          <span class="pane-book-title">Beej's Quick Guide to Git</span>
-          <span class="pane-sep">•</span>
-          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/collaboration-across-branches.html" target="_blank" rel="noopener noreferrer">Original Online Web ↗</a>
+          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/collaboration-across-branches.html" target="_blank" rel="noopener noreferrer">Original Web ↗</a>
         </div>
         <div class="pane-actions">
           <button class="pane-nav-btn prev-btn" onclick="goToChapter(13, event)" >← Prev</button>
           <button class="pane-nav-btn next-btn" onclick="goToChapter(15, event)" >Next →</button>
-          <button class="pane-read-toggle-btn" id="pane-read-btn-14" onclick="toggleChapterRead(14, event)">Mark Read ✓</button>
+          <button class="pane-read-toggle-btn" id="pane-read-btn-14" onclick="toggleChapterRead(14, event)">Mark Completed ✓</button>
         </div>
       </header>
 
-      <div class="pane-body">
+      <div class="pane-card">
+        <div class="pane-body">
 <h1 data-number="14" id="collaboration-across-branches"><span class="header-section-number">14</span> Collaboration across Branches</h1>
 <p></p>
 <p>Let’s say you’re on a team of coders and you all have access to the same GitHub repo. (One person on the team owns the repo, and they’ve <a href="https://tinyurl.com/y5kzpeyk">added you all as collaborators</a><a class="footnote-ref" href="#fn23" id="fnref23" role="doc-noteref"><sup>23</sup></a>.)</p>
@@ -4234,15 +4393,16 @@
 <p> </p>
  BG_NEW_CHAPTER 
 
+        </div>
       </div>
 
       <footer class="pane-footer-nav">
         <a class="ch-nav-card prev-card" href="#renaming-and-removing-files" onclick="goToChapter(13, event)">
-  <div class="nav-dir">← Previous Chapter</div>
+  <div class="nav-dir">← PREVIOUS CHAPTER</div>
   <div class="nav-title">Ch 13: Renaming and Removing Files</div>
 </a>
         <a class="ch-nav-card next-card" href="#rebase" onclick="goToChapter(15, event)">
-  <div class="nav-dir">Next Chapter →</div>
+  <div class="nav-dir">NEXT CHAPTER →</div>
   <div class="nav-title">Ch 15: Rebasing: Moving Commits</div>
 </a>
       </footer>
@@ -4250,20 +4410,20 @@
     <article class="chapter-pane" id="chapter-15" data-chapter-num="15" data-chid="rebase" data-chapter-title="Rebasing: Moving Commits">
       <header class="pane-header-bar">
         <div class="pane-header-meta">
-          <span class="pane-badge">Chapter 15 of 38</span>
+          <span class="pane-badge">Module 15</span>
+          <span class="pane-crumb">Beej's Guide to Git &rsaquo; <b>Rebasing: Moving Commits</b></span>
           <span class="pane-sep">•</span>
-          <span class="pane-book-title">Beej's Quick Guide to Git</span>
-          <span class="pane-sep">•</span>
-          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/rebase.html" target="_blank" rel="noopener noreferrer">Original Online Web ↗</a>
+          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/rebase.html" target="_blank" rel="noopener noreferrer">Original Web ↗</a>
         </div>
         <div class="pane-actions">
           <button class="pane-nav-btn prev-btn" onclick="goToChapter(14, event)" >← Prev</button>
           <button class="pane-nav-btn next-btn" onclick="goToChapter(16, event)" >Next →</button>
-          <button class="pane-read-toggle-btn" id="pane-read-btn-15" onclick="toggleChapterRead(15, event)">Mark Read ✓</button>
+          <button class="pane-read-toggle-btn" id="pane-read-btn-15" onclick="toggleChapterRead(15, event)">Mark Completed ✓</button>
         </div>
       </header>
 
-      <div class="pane-body">
+      <div class="pane-card">
+        <div class="pane-body">
 <h1 data-number="15" id="rebase"><span class="header-section-number">15</span> Rebasing: Moving Commits</h1>
 <p></p>
 <p>I’m going to start with the Number One Rule of Rebasing: <strong><em>never rebase anything that you have pushed</em></strong>. That is, only rebase local changes that no one else has seen. You can push them after the rebase.</p>
@@ -4577,15 +4737,16 @@
 <p></p>
  BG_NEW_CHAPTER 
 
+        </div>
       </div>
 
       <footer class="pane-footer-nav">
         <a class="ch-nav-card prev-card" href="#collaboration-across-branches" onclick="goToChapter(14, event)">
-  <div class="nav-dir">← Previous Chapter</div>
+  <div class="nav-dir">← PREVIOUS CHAPTER</div>
   <div class="nav-title">Ch 14: Collaboration across Branches</div>
 </a>
         <a class="ch-nav-card next-card" href="#stash" onclick="goToChapter(16, event)">
-  <div class="nav-dir">Next Chapter →</div>
+  <div class="nav-dir">NEXT CHAPTER →</div>
   <div class="nav-title">Ch 16: Stashing: Temporarily Set Changes Aside</div>
 </a>
       </footer>
@@ -4593,20 +4754,20 @@
     <article class="chapter-pane" id="chapter-16" data-chapter-num="16" data-chid="stash" data-chapter-title="Stashing: Temporarily Set Changes Aside">
       <header class="pane-header-bar">
         <div class="pane-header-meta">
-          <span class="pane-badge">Chapter 16 of 38</span>
+          <span class="pane-badge">Module 16</span>
+          <span class="pane-crumb">Beej's Guide to Git &rsaquo; <b>Stashing: Temporarily Set Changes Aside</b></span>
           <span class="pane-sep">•</span>
-          <span class="pane-book-title">Beej's Quick Guide to Git</span>
-          <span class="pane-sep">•</span>
-          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/stash.html" target="_blank" rel="noopener noreferrer">Original Online Web ↗</a>
+          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/stash.html" target="_blank" rel="noopener noreferrer">Original Web ↗</a>
         </div>
         <div class="pane-actions">
           <button class="pane-nav-btn prev-btn" onclick="goToChapter(15, event)" >← Prev</button>
           <button class="pane-nav-btn next-btn" onclick="goToChapter(17, event)" >Next →</button>
-          <button class="pane-read-toggle-btn" id="pane-read-btn-16" onclick="toggleChapterRead(16, event)">Mark Read ✓</button>
+          <button class="pane-read-toggle-btn" id="pane-read-btn-16" onclick="toggleChapterRead(16, event)">Mark Completed ✓</button>
         </div>
       </header>
 
-      <div class="pane-body">
+      <div class="pane-card">
+        <div class="pane-body">
 <h1 data-number="16" id="stash"><span class="header-section-number">16</span> Stashing: Temporarily Set Changes Aside</h1>
 <p></p>
 <p>If you’re in the middle of working on something and you realize you want to pull some changes in, but you’re not ready to make a commit because your stuff is still completely broken, <code>git stash</code> is your friend. It takes the stuff you’re working on and stashes it away on the side, returning your working tree to the state of the last commit.</p>
@@ -4737,15 +4898,16 @@
 <p></p>
  BG_NEW_CHAPTER 
 
+        </div>
       </div>
 
       <footer class="pane-footer-nav">
         <a class="ch-nav-card prev-card" href="#rebase" onclick="goToChapter(15, event)">
-  <div class="nav-dir">← Previous Chapter</div>
+  <div class="nav-dir">← PREVIOUS CHAPTER</div>
   <div class="nav-title">Ch 15: Rebasing: Moving Commits</div>
 </a>
         <a class="ch-nav-card next-card" href="#github-forking-and-pull-requests" onclick="goToChapter(17, event)">
-  <div class="nav-dir">Next Chapter →</div>
+  <div class="nav-dir">NEXT CHAPTER →</div>
   <div class="nav-title">Ch 17: GitHub: Forking and Pull Requests</div>
 </a>
       </footer>
@@ -4753,20 +4915,20 @@
     <article class="chapter-pane" id="chapter-17" data-chapter-num="17" data-chid="github-forking-and-pull-requests" data-chapter-title="GitHub: Forking and Pull Requests">
       <header class="pane-header-bar">
         <div class="pane-header-meta">
-          <span class="pane-badge">Chapter 17 of 38</span>
+          <span class="pane-badge">Module 17</span>
+          <span class="pane-crumb">Beej's Guide to Git &rsaquo; <b>GitHub: Forking and Pull Requests</b></span>
           <span class="pane-sep">•</span>
-          <span class="pane-book-title">Beej's Quick Guide to Git</span>
-          <span class="pane-sep">•</span>
-          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/github-forking-and-pull-requests.html" target="_blank" rel="noopener noreferrer">Original Online Web ↗</a>
+          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/github-forking-and-pull-requests.html" target="_blank" rel="noopener noreferrer">Original Web ↗</a>
         </div>
         <div class="pane-actions">
           <button class="pane-nav-btn prev-btn" onclick="goToChapter(16, event)" >← Prev</button>
           <button class="pane-nav-btn next-btn" onclick="goToChapter(18, event)" >Next →</button>
-          <button class="pane-read-toggle-btn" id="pane-read-btn-17" onclick="toggleChapterRead(17, event)">Mark Read ✓</button>
+          <button class="pane-read-toggle-btn" id="pane-read-btn-17" onclick="toggleChapterRead(17, event)">Mark Completed ✓</button>
         </div>
       </header>
 
-      <div class="pane-body">
+      <div class="pane-card">
+        <div class="pane-body">
 <h1 data-number="17" id="github-forking-and-pull-requests"><span class="header-section-number">17</span> GitHub: Forking and Pull Requests</h1>
 <p> </p>
 <p>For a lot of projects you’re on, maybe you have write permission to the main repo that everyone is using. That is, you’ve been added as a collaborator and you can just push directly.</p>
@@ -5011,15 +5173,16 @@
 <p> </p>
  BG_NEW_CHAPTER 
 
+        </div>
       </div>
 
       <footer class="pane-footer-nav">
         <a class="ch-nav-card prev-card" href="#stash" onclick="goToChapter(16, event)">
-  <div class="nav-dir">← Previous Chapter</div>
+  <div class="nav-dir">← PREVIOUS CHAPTER</div>
   <div class="nav-title">Ch 16: Stashing: Temporarily Set Changes Aside</div>
 </a>
         <a class="ch-nav-card next-card" href="#revert" onclick="goToChapter(18, event)">
-  <div class="nav-dir">Next Chapter →</div>
+  <div class="nav-dir">NEXT CHAPTER →</div>
   <div class="nav-title">Ch 18: Reverting: Undoing Commits</div>
 </a>
       </footer>
@@ -5027,20 +5190,20 @@
     <article class="chapter-pane" id="chapter-18" data-chapter-num="18" data-chid="revert" data-chapter-title="Reverting: Undoing Commits">
       <header class="pane-header-bar">
         <div class="pane-header-meta">
-          <span class="pane-badge">Chapter 18 of 38</span>
+          <span class="pane-badge">Module 18</span>
+          <span class="pane-crumb">Beej's Guide to Git &rsaquo; <b>Reverting: Undoing Commits</b></span>
           <span class="pane-sep">•</span>
-          <span class="pane-book-title">Beej's Quick Guide to Git</span>
-          <span class="pane-sep">•</span>
-          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/revert.html" target="_blank" rel="noopener noreferrer">Original Online Web ↗</a>
+          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/revert.html" target="_blank" rel="noopener noreferrer">Original Web ↗</a>
         </div>
         <div class="pane-actions">
           <button class="pane-nav-btn prev-btn" onclick="goToChapter(17, event)" >← Prev</button>
           <button class="pane-nav-btn next-btn" onclick="goToChapter(19, event)" >Next →</button>
-          <button class="pane-read-toggle-btn" id="pane-read-btn-18" onclick="toggleChapterRead(18, event)">Mark Read ✓</button>
+          <button class="pane-read-toggle-btn" id="pane-read-btn-18" onclick="toggleChapterRead(18, event)">Mark Completed ✓</button>
         </div>
       </header>
 
-      <div class="pane-body">
+      <div class="pane-card">
+        <div class="pane-body">
 <h1 data-number="18" id="revert"><span class="header-section-number">18</span> Reverting: Undoing Commits</h1>
 <p></p>
 <p>Let’s say you made some changes and committed them, but they actually botched everything up. You want to just revert to an earlier version of the file.</p>
@@ -5146,15 +5309,16 @@
 <p> </p>
  BG_NEW_CHAPTER 
 
+        </div>
       </div>
 
       <footer class="pane-footer-nav">
         <a class="ch-nav-card prev-card" href="#github-forking-and-pull-requests" onclick="goToChapter(17, event)">
-  <div class="nav-dir">← Previous Chapter</div>
+  <div class="nav-dir">← PREVIOUS CHAPTER</div>
   <div class="nav-title">Ch 17: GitHub: Forking and Pull Requests</div>
 </a>
         <a class="ch-nav-card next-card" href="#reset" onclick="goToChapter(19, event)">
-  <div class="nav-dir">Next Chapter →</div>
+  <div class="nav-dir">NEXT CHAPTER →</div>
   <div class="nav-title">Ch 19: Reset: Moving Branches Around</div>
 </a>
       </footer>
@@ -5162,20 +5326,20 @@
     <article class="chapter-pane" id="chapter-19" data-chapter-num="19" data-chid="reset" data-chapter-title="Reset: Moving Branches Around">
       <header class="pane-header-bar">
         <div class="pane-header-meta">
-          <span class="pane-badge">Chapter 19 of 38</span>
+          <span class="pane-badge">Module 19</span>
+          <span class="pane-crumb">Beej's Guide to Git &rsaquo; <b>Reset: Moving Branches Around</b></span>
           <span class="pane-sep">•</span>
-          <span class="pane-book-title">Beej's Quick Guide to Git</span>
-          <span class="pane-sep">•</span>
-          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/reset.html" target="_blank" rel="noopener noreferrer">Original Online Web ↗</a>
+          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/reset.html" target="_blank" rel="noopener noreferrer">Original Web ↗</a>
         </div>
         <div class="pane-actions">
           <button class="pane-nav-btn prev-btn" onclick="goToChapter(18, event)" >← Prev</button>
           <button class="pane-nav-btn next-btn" onclick="goToChapter(20, event)" >Next →</button>
-          <button class="pane-read-toggle-btn" id="pane-read-btn-19" onclick="toggleChapterRead(19, event)">Mark Read ✓</button>
+          <button class="pane-read-toggle-btn" id="pane-read-btn-19" onclick="toggleChapterRead(19, event)">Mark Completed ✓</button>
         </div>
       </header>
 
-      <div class="pane-body">
+      <div class="pane-card">
+        <div class="pane-body">
 <h1 data-number="19" id="reset"><span class="header-section-number">19</span> Reset: Moving Branches Around</h1>
 <p></p>
 <p>Before we begin, using <code>git reset</code> <strong><em>rewrites history</em></strong>. This means that you shouldn’t use it on any branches that other people might have copies of, i.e. branches that you have pushed.</p>
@@ -5430,15 +5594,16 @@
 <p></p>
  BG_NEW_CHAPTER 
 
+        </div>
       </div>
 
       <footer class="pane-footer-nav">
         <a class="ch-nav-card prev-card" href="#revert" onclick="goToChapter(18, event)">
-  <div class="nav-dir">← Previous Chapter</div>
+  <div class="nav-dir">← PREVIOUS CHAPTER</div>
   <div class="nav-title">Ch 18: Reverting: Undoing Commits</div>
 </a>
         <a class="ch-nav-card next-card" href="#the-reference-log-reflog" onclick="goToChapter(20, event)">
-  <div class="nav-dir">Next Chapter →</div>
+  <div class="nav-dir">NEXT CHAPTER →</div>
   <div class="nav-title">Ch 20: The Reference Log, “reflog”</div>
 </a>
       </footer>
@@ -5446,20 +5611,20 @@
     <article class="chapter-pane" id="chapter-20" data-chapter-num="20" data-chid="the-reference-log-reflog" data-chapter-title="The Reference Log, “reflog”">
       <header class="pane-header-bar">
         <div class="pane-header-meta">
-          <span class="pane-badge">Chapter 20 of 38</span>
+          <span class="pane-badge">Module 20</span>
+          <span class="pane-crumb">Beej's Guide to Git &rsaquo; <b>The Reference Log, “reflog”</b></span>
           <span class="pane-sep">•</span>
-          <span class="pane-book-title">Beej's Quick Guide to Git</span>
-          <span class="pane-sep">•</span>
-          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/the-reference-log-reflog.html" target="_blank" rel="noopener noreferrer">Original Online Web ↗</a>
+          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/the-reference-log-reflog.html" target="_blank" rel="noopener noreferrer">Original Web ↗</a>
         </div>
         <div class="pane-actions">
           <button class="pane-nav-btn prev-btn" onclick="goToChapter(19, event)" >← Prev</button>
           <button class="pane-nav-btn next-btn" onclick="goToChapter(21, event)" >Next →</button>
-          <button class="pane-read-toggle-btn" id="pane-read-btn-20" onclick="toggleChapterRead(20, event)">Mark Read ✓</button>
+          <button class="pane-read-toggle-btn" id="pane-read-btn-20" onclick="toggleChapterRead(20, event)">Mark Completed ✓</button>
         </div>
       </header>
 
-      <div class="pane-body">
+      <div class="pane-card">
+        <div class="pane-body">
 <h1 data-number="20" id="the-reference-log-reflog"><span class="header-section-number">20</span> The Reference Log, “reflog”</h1>
 <p></p>
 <p>All this time you’ve been committing things, branching, doing whatever. And Git’s been watching you, listening like Big Brother, recording everything you do.</p>
@@ -5606,15 +5771,16 @@
 <p></p>
  BG_NEW_CHAPTER 
 
+        </div>
       </div>
 
       <footer class="pane-footer-nav">
         <a class="ch-nav-card prev-card" href="#reset" onclick="goToChapter(19, event)">
-  <div class="nav-dir">← Previous Chapter</div>
+  <div class="nav-dir">← PREVIOUS CHAPTER</div>
   <div class="nav-title">Ch 19: Reset: Moving Branches Around</div>
 </a>
         <a class="ch-nav-card next-card" href="#patch-mode-applying-partial-changes" onclick="goToChapter(21, event)">
-  <div class="nav-dir">Next Chapter →</div>
+  <div class="nav-dir">NEXT CHAPTER →</div>
   <div class="nav-title">Ch 21: Patch Mode: Applying Partial Changes</div>
 </a>
       </footer>
@@ -5622,20 +5788,20 @@
     <article class="chapter-pane" id="chapter-21" data-chapter-num="21" data-chid="patch-mode-applying-partial-changes" data-chapter-title="Patch Mode: Applying Partial Changes">
       <header class="pane-header-bar">
         <div class="pane-header-meta">
-          <span class="pane-badge">Chapter 21 of 38</span>
+          <span class="pane-badge">Module 21</span>
+          <span class="pane-crumb">Beej's Guide to Git &rsaquo; <b>Patch Mode: Applying Partial Changes</b></span>
           <span class="pane-sep">•</span>
-          <span class="pane-book-title">Beej's Quick Guide to Git</span>
-          <span class="pane-sep">•</span>
-          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/patch-mode-applying-partial-changes.html" target="_blank" rel="noopener noreferrer">Original Online Web ↗</a>
+          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/patch-mode-applying-partial-changes.html" target="_blank" rel="noopener noreferrer">Original Web ↗</a>
         </div>
         <div class="pane-actions">
           <button class="pane-nav-btn prev-btn" onclick="goToChapter(20, event)" >← Prev</button>
           <button class="pane-nav-btn next-btn" onclick="goToChapter(22, event)" >Next →</button>
-          <button class="pane-read-toggle-btn" id="pane-read-btn-21" onclick="toggleChapterRead(21, event)">Mark Read ✓</button>
+          <button class="pane-read-toggle-btn" id="pane-read-btn-21" onclick="toggleChapterRead(21, event)">Mark Completed ✓</button>
         </div>
       </header>
 
-      <div class="pane-body">
+      <div class="pane-card">
+        <div class="pane-body">
 <h1 data-number="21" id="patch-mode-applying-partial-changes"><span class="header-section-number">21</span> Patch Mode: Applying Partial Changes</h1>
 <p></p>
 <p>A lot of Git commands obey the <code>-p</code> switch that puts them in <strong><em>patch mode</em></strong>. This is a powerful mode that allows you to select <em>some</em> of the changes for a particular command, but not <em>all</em> of the changes.</p>
@@ -5842,15 +6008,16 @@
 <p></p>
  BG_NEW_CHAPTER 
 
+        </div>
       </div>
 
       <footer class="pane-footer-nav">
         <a class="ch-nav-card prev-card" href="#the-reference-log-reflog" onclick="goToChapter(20, event)">
-  <div class="nav-dir">← Previous Chapter</div>
+  <div class="nav-dir">← PREVIOUS CHAPTER</div>
   <div class="nav-title">Ch 20: The Reference Log, “reflog”</div>
 </a>
         <a class="ch-nav-card next-card" href="#cherry-pick-bringing-in-specific-commits" onclick="goToChapter(22, event)">
-  <div class="nav-dir">Next Chapter →</div>
+  <div class="nav-dir">NEXT CHAPTER →</div>
   <div class="nav-title">Ch 22: Cherry-Pick: Bringing in Specific Commits</div>
 </a>
       </footer>
@@ -5858,20 +6025,20 @@
     <article class="chapter-pane" id="chapter-22" data-chapter-num="22" data-chid="cherry-pick-bringing-in-specific-commits" data-chapter-title="Cherry-Pick: Bringing in Specific Commits">
       <header class="pane-header-bar">
         <div class="pane-header-meta">
-          <span class="pane-badge">Chapter 22 of 38</span>
+          <span class="pane-badge">Module 22</span>
+          <span class="pane-crumb">Beej's Guide to Git &rsaquo; <b>Cherry-Pick: Bringing in Specific Commits</b></span>
           <span class="pane-sep">•</span>
-          <span class="pane-book-title">Beej's Quick Guide to Git</span>
-          <span class="pane-sep">•</span>
-          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/cherry-pick-bringing-in-specific-commits.html" target="_blank" rel="noopener noreferrer">Original Online Web ↗</a>
+          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/cherry-pick-bringing-in-specific-commits.html" target="_blank" rel="noopener noreferrer">Original Web ↗</a>
         </div>
         <div class="pane-actions">
           <button class="pane-nav-btn prev-btn" onclick="goToChapter(21, event)" >← Prev</button>
           <button class="pane-nav-btn next-btn" onclick="goToChapter(23, event)" >Next →</button>
-          <button class="pane-read-toggle-btn" id="pane-read-btn-22" onclick="toggleChapterRead(22, event)">Mark Read ✓</button>
+          <button class="pane-read-toggle-btn" id="pane-read-btn-22" onclick="toggleChapterRead(22, event)">Mark Completed ✓</button>
         </div>
       </header>
 
-      <div class="pane-body">
+      <div class="pane-card">
+        <div class="pane-body">
 <h1 data-number="22" id="cherry-pick-bringing-in-specific-commits"><span class="header-section-number">22</span> Cherry-Pick: Bringing in Specific Commits</h1>
 <p></p>
 <p>Let’s say you’re working on <code>branch1</code> and you have made a bug fix to <code>branch2</code>. You’re not ready to merge <em>all</em> the changes in from <code>branch2</code> into <code>branch1</code>, but you really want just that bug fixed.</p>
@@ -6017,15 +6184,16 @@
 <p></p>
  BG_NEW_CHAPTER 
 
+        </div>
       </div>
 
       <footer class="pane-footer-nav">
         <a class="ch-nav-card prev-card" href="#patch-mode-applying-partial-changes" onclick="goToChapter(21, event)">
-  <div class="nav-dir">← Previous Chapter</div>
+  <div class="nav-dir">← PREVIOUS CHAPTER</div>
   <div class="nav-title">Ch 21: Patch Mode: Applying Partial Changes</div>
 </a>
         <a class="ch-nav-card next-card" href="#whos-to-blame-for-this-code" onclick="goToChapter(23, event)">
-  <div class="nav-dir">Next Chapter →</div>
+  <div class="nav-dir">NEXT CHAPTER →</div>
   <div class="nav-title">Ch 23: Who’s to Blame for this Code?</div>
 </a>
       </footer>
@@ -6033,20 +6201,20 @@
     <article class="chapter-pane" id="chapter-23" data-chapter-num="23" data-chid="whos-to-blame-for-this-code" data-chapter-title="Who’s to Blame for this Code?">
       <header class="pane-header-bar">
         <div class="pane-header-meta">
-          <span class="pane-badge">Chapter 23 of 38</span>
+          <span class="pane-badge">Module 23</span>
+          <span class="pane-crumb">Beej's Guide to Git &rsaquo; <b>Who’s to Blame for this Code?</b></span>
           <span class="pane-sep">•</span>
-          <span class="pane-book-title">Beej's Quick Guide to Git</span>
-          <span class="pane-sep">•</span>
-          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/whos-to-blame-for-this-code.html" target="_blank" rel="noopener noreferrer">Original Online Web ↗</a>
+          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/whos-to-blame-for-this-code.html" target="_blank" rel="noopener noreferrer">Original Web ↗</a>
         </div>
         <div class="pane-actions">
           <button class="pane-nav-btn prev-btn" onclick="goToChapter(22, event)" >← Prev</button>
           <button class="pane-nav-btn next-btn" onclick="goToChapter(24, event)" >Next →</button>
-          <button class="pane-read-toggle-btn" id="pane-read-btn-23" onclick="toggleChapterRead(23, event)">Mark Read ✓</button>
+          <button class="pane-read-toggle-btn" id="pane-read-btn-23" onclick="toggleChapterRead(23, event)">Mark Completed ✓</button>
         </div>
       </header>
 
-      <div class="pane-body">
+      <div class="pane-card">
+        <div class="pane-body">
 <h1 data-number="23" id="whos-to-blame-for-this-code"><span class="header-section-number">23</span> Who’s to Blame for this Code?</h1>
 <p></p>
 <p>Let’s say you find something in the shared codebase that’s just wrong. Or, charitably, we’ll say you found something <em>interesting</em>.</p>
@@ -6077,15 +6245,16 @@
 <p></p>
  BG_NEW_CHAPTER 
 
+        </div>
       </div>
 
       <footer class="pane-footer-nav">
         <a class="ch-nav-card prev-card" href="#cherry-pick-bringing-in-specific-commits" onclick="goToChapter(22, event)">
-  <div class="nav-dir">← Previous Chapter</div>
+  <div class="nav-dir">← PREVIOUS CHAPTER</div>
   <div class="nav-title">Ch 22: Cherry-Pick: Bringing in Specific Commits</div>
 </a>
         <a class="ch-nav-card next-card" href="#configuration" onclick="goToChapter(24, event)">
-  <div class="nav-dir">Next Chapter →</div>
+  <div class="nav-dir">NEXT CHAPTER →</div>
   <div class="nav-title">Ch 24: Configuration</div>
 </a>
       </footer>
@@ -6093,20 +6262,20 @@
     <article class="chapter-pane" id="chapter-24" data-chapter-num="24" data-chid="configuration" data-chapter-title="Configuration">
       <header class="pane-header-bar">
         <div class="pane-header-meta">
-          <span class="pane-badge">Chapter 24 of 38</span>
+          <span class="pane-badge">Module 24</span>
+          <span class="pane-crumb">Beej's Guide to Git &rsaquo; <b>Configuration</b></span>
           <span class="pane-sep">•</span>
-          <span class="pane-book-title">Beej's Quick Guide to Git</span>
-          <span class="pane-sep">•</span>
-          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/configuration.html" target="_blank" rel="noopener noreferrer">Original Online Web ↗</a>
+          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/configuration.html" target="_blank" rel="noopener noreferrer">Original Web ↗</a>
         </div>
         <div class="pane-actions">
           <button class="pane-nav-btn prev-btn" onclick="goToChapter(23, event)" >← Prev</button>
           <button class="pane-nav-btn next-btn" onclick="goToChapter(25, event)" >Next →</button>
-          <button class="pane-read-toggle-btn" id="pane-read-btn-24" onclick="toggleChapterRead(24, event)">Mark Read ✓</button>
+          <button class="pane-read-toggle-btn" id="pane-read-btn-24" onclick="toggleChapterRead(24, event)">Mark Completed ✓</button>
         </div>
       </header>
 
-      <div class="pane-body">
+      <div class="pane-card">
+        <div class="pane-body">
 <h1 data-number="24" id="configuration"><span class="header-section-number">24</span> Configuration</h1>
 <p></p>
 <p>Waaaaay back at the beginning of this book, we did some Git configuration. We did this:</p>
@@ -6305,15 +6474,16 @@
 <p></p>
  BG_NEW_CHAPTER 
 
+        </div>
       </div>
 
       <footer class="pane-footer-nav">
         <a class="ch-nav-card prev-card" href="#whos-to-blame-for-this-code" onclick="goToChapter(23, event)">
-  <div class="nav-dir">← Previous Chapter</div>
+  <div class="nav-dir">← PREVIOUS CHAPTER</div>
   <div class="nav-title">Ch 23: Who’s to Blame for this Code?</div>
 </a>
         <a class="ch-nav-card next-card" href="#git-aliases" onclick="goToChapter(25, event)">
-  <div class="nav-dir">Next Chapter →</div>
+  <div class="nav-dir">NEXT CHAPTER →</div>
   <div class="nav-title">Ch 25: Git Aliases</div>
 </a>
       </footer>
@@ -6321,20 +6491,20 @@
     <article class="chapter-pane" id="chapter-25" data-chapter-num="25" data-chid="git-aliases" data-chapter-title="Git Aliases">
       <header class="pane-header-bar">
         <div class="pane-header-meta">
-          <span class="pane-badge">Chapter 25 of 38</span>
+          <span class="pane-badge">Module 25</span>
+          <span class="pane-crumb">Beej's Guide to Git &rsaquo; <b>Git Aliases</b></span>
           <span class="pane-sep">•</span>
-          <span class="pane-book-title">Beej's Quick Guide to Git</span>
-          <span class="pane-sep">•</span>
-          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/git-aliases.html" target="_blank" rel="noopener noreferrer">Original Online Web ↗</a>
+          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/git-aliases.html" target="_blank" rel="noopener noreferrer">Original Web ↗</a>
         </div>
         <div class="pane-actions">
           <button class="pane-nav-btn prev-btn" onclick="goToChapter(24, event)" >← Prev</button>
           <button class="pane-nav-btn next-btn" onclick="goToChapter(26, event)" >Next →</button>
-          <button class="pane-read-toggle-btn" id="pane-read-btn-25" onclick="toggleChapterRead(25, event)">Mark Read ✓</button>
+          <button class="pane-read-toggle-btn" id="pane-read-btn-25" onclick="toggleChapterRead(25, event)">Mark Completed ✓</button>
         </div>
       </header>
 
-      <div class="pane-body">
+      <div class="pane-card">
+        <div class="pane-body">
 <h1 data-number="25" id="git-aliases"><span class="header-section-number">25</span> Git Aliases</h1>
 <p></p>
 <p>Some of these Git commands might be painstaking to type. So far, we haven’t had to do anything <em>too</em> complicated, but we might eventually.</p>
@@ -6427,15 +6597,16 @@
 <p></p>
  BG_NEW_CHAPTER 
 
+        </div>
       </div>
 
       <footer class="pane-footer-nav">
         <a class="ch-nav-card prev-card" href="#configuration" onclick="goToChapter(24, event)">
-  <div class="nav-dir">← Previous Chapter</div>
+  <div class="nav-dir">← PREVIOUS CHAPTER</div>
   <div class="nav-title">Ch 24: Configuration</div>
 </a>
         <a class="ch-nav-card next-card" href="#changing-identity" onclick="goToChapter(26, event)">
-  <div class="nav-dir">Next Chapter →</div>
+  <div class="nav-dir">NEXT CHAPTER →</div>
   <div class="nav-title">Ch 26: Changing Identity</div>
 </a>
       </footer>
@@ -6443,20 +6614,20 @@
     <article class="chapter-pane" id="chapter-26" data-chapter-num="26" data-chid="changing-identity" data-chapter-title="Changing Identity">
       <header class="pane-header-bar">
         <div class="pane-header-meta">
-          <span class="pane-badge">Chapter 26 of 38</span>
+          <span class="pane-badge">Module 26</span>
+          <span class="pane-crumb">Beej's Guide to Git &rsaquo; <b>Changing Identity</b></span>
           <span class="pane-sep">•</span>
-          <span class="pane-book-title">Beej's Quick Guide to Git</span>
-          <span class="pane-sep">•</span>
-          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/changing-identity.html" target="_blank" rel="noopener noreferrer">Original Online Web ↗</a>
+          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/changing-identity.html" target="_blank" rel="noopener noreferrer">Original Web ↗</a>
         </div>
         <div class="pane-actions">
           <button class="pane-nav-btn prev-btn" onclick="goToChapter(25, event)" >← Prev</button>
           <button class="pane-nav-btn next-btn" onclick="goToChapter(27, event)" >Next →</button>
-          <button class="pane-read-toggle-btn" id="pane-read-btn-26" onclick="toggleChapterRead(26, event)">Mark Read ✓</button>
+          <button class="pane-read-toggle-btn" id="pane-read-btn-26" onclick="toggleChapterRead(26, event)">Mark Completed ✓</button>
         </div>
       </header>
 
-      <div class="pane-body">
+      <div class="pane-card">
+        <div class="pane-body">
 <h1 data-number="26" id="changing-identity"><span class="header-section-number">26</span> Changing Identity</h1>
 <p></p>
 <p>There are a few ways you’re identified when you do work with Git.</p>
@@ -6539,15 +6710,16 @@
 <p></p>
  BG_NEW_CHAPTER 
 
+        </div>
       </div>
 
       <footer class="pane-footer-nav">
         <a class="ch-nav-card prev-card" href="#git-aliases" onclick="goToChapter(25, event)">
-  <div class="nav-dir">← Previous Chapter</div>
+  <div class="nav-dir">← PREVIOUS CHAPTER</div>
   <div class="nav-title">Ch 25: Git Aliases</div>
 </a>
         <a class="ch-nav-card next-card" href="#amend" onclick="goToChapter(27, event)">
-  <div class="nav-dir">Next Chapter →</div>
+  <div class="nav-dir">NEXT CHAPTER →</div>
   <div class="nav-title">Ch 27: Amending Commits</div>
 </a>
       </footer>
@@ -6555,20 +6727,20 @@
     <article class="chapter-pane" id="chapter-27" data-chapter-num="27" data-chid="amend" data-chapter-title="Amending Commits">
       <header class="pane-header-bar">
         <div class="pane-header-meta">
-          <span class="pane-badge">Chapter 27 of 38</span>
+          <span class="pane-badge">Module 27</span>
+          <span class="pane-crumb">Beej's Guide to Git &rsaquo; <b>Amending Commits</b></span>
           <span class="pane-sep">•</span>
-          <span class="pane-book-title">Beej's Quick Guide to Git</span>
-          <span class="pane-sep">•</span>
-          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/amend.html" target="_blank" rel="noopener noreferrer">Original Online Web ↗</a>
+          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/amend.html" target="_blank" rel="noopener noreferrer">Original Web ↗</a>
         </div>
         <div class="pane-actions">
           <button class="pane-nav-btn prev-btn" onclick="goToChapter(26, event)" >← Prev</button>
           <button class="pane-nav-btn next-btn" onclick="goToChapter(28, event)" >Next →</button>
-          <button class="pane-read-toggle-btn" id="pane-read-btn-27" onclick="toggleChapterRead(27, event)">Mark Read ✓</button>
+          <button class="pane-read-toggle-btn" id="pane-read-btn-27" onclick="toggleChapterRead(27, event)">Mark Completed ✓</button>
         </div>
       </header>
 
-      <div class="pane-body">
+      <div class="pane-card">
+        <div class="pane-body">
 <h1 data-number="27" id="amend"><span class="header-section-number">27</span> Amending Commits</h1>
 <p></p>
 <p>Git gives you the power to relatively easily amend the last commit.</p>
@@ -6633,15 +6805,16 @@
 <p></p>
  BG_NEW_CHAPTER 
 
+        </div>
       </div>
 
       <footer class="pane-footer-nav">
         <a class="ch-nav-card prev-card" href="#changing-identity" onclick="goToChapter(26, event)">
-  <div class="nav-dir">← Previous Chapter</div>
+  <div class="nav-dir">← PREVIOUS CHAPTER</div>
   <div class="nav-title">Ch 26: Changing Identity</div>
 </a>
         <a class="ch-nav-card next-card" href="#difftool-1" onclick="goToChapter(28, event)">
-  <div class="nav-dir">Next Chapter →</div>
+  <div class="nav-dir">NEXT CHAPTER →</div>
   <div class="nav-title">Ch 28: Difftool</div>
 </a>
       </footer>
@@ -6649,20 +6822,20 @@
     <article class="chapter-pane" id="chapter-28" data-chapter-num="28" data-chid="difftool-1" data-chapter-title="Difftool">
       <header class="pane-header-bar">
         <div class="pane-header-meta">
-          <span class="pane-badge">Chapter 28 of 38</span>
+          <span class="pane-badge">Module 28</span>
+          <span class="pane-crumb">Beej's Guide to Git &rsaquo; <b>Difftool</b></span>
           <span class="pane-sep">•</span>
-          <span class="pane-book-title">Beej's Quick Guide to Git</span>
-          <span class="pane-sep">•</span>
-          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/difftool-1.html" target="_blank" rel="noopener noreferrer">Original Online Web ↗</a>
+          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/difftool-1.html" target="_blank" rel="noopener noreferrer">Original Web ↗</a>
         </div>
         <div class="pane-actions">
           <button class="pane-nav-btn prev-btn" onclick="goToChapter(27, event)" >← Prev</button>
           <button class="pane-nav-btn next-btn" onclick="goToChapter(29, event)" >Next →</button>
-          <button class="pane-read-toggle-btn" id="pane-read-btn-28" onclick="toggleChapterRead(28, event)">Mark Read ✓</button>
+          <button class="pane-read-toggle-btn" id="pane-read-btn-28" onclick="toggleChapterRead(28, event)">Mark Completed ✓</button>
         </div>
       </header>
 
-      <div class="pane-body">
+      <div class="pane-card">
+        <div class="pane-body">
 <h1 data-number="28" id="difftool-1"><span class="header-section-number">28</span> Difftool</h1>
 <p></p>
 <p>Admittedly, this diff output is hard to read. I swear, though, you do get used to it. I use it all the time.</p>
@@ -6712,15 +6885,16 @@
 <p></p>
  BG_NEW_CHAPTER 
 
+        </div>
       </div>
 
       <footer class="pane-footer-nav">
         <a class="ch-nav-card prev-card" href="#amend" onclick="goToChapter(27, event)">
-  <div class="nav-dir">← Previous Chapter</div>
+  <div class="nav-dir">← PREVIOUS CHAPTER</div>
   <div class="nav-title">Ch 27: Amending Commits</div>
 </a>
         <a class="ch-nav-card next-card" href="#mergetool" onclick="goToChapter(29, event)">
-  <div class="nav-dir">Next Chapter →</div>
+  <div class="nav-dir">NEXT CHAPTER →</div>
   <div class="nav-title">Ch 29: Mergetool</div>
 </a>
       </footer>
@@ -6728,20 +6902,20 @@
     <article class="chapter-pane" id="chapter-29" data-chapter-num="29" data-chid="mergetool" data-chapter-title="Mergetool">
       <header class="pane-header-bar">
         <div class="pane-header-meta">
-          <span class="pane-badge">Chapter 29 of 38</span>
+          <span class="pane-badge">Module 29</span>
+          <span class="pane-crumb">Beej's Guide to Git &rsaquo; <b>Mergetool</b></span>
           <span class="pane-sep">•</span>
-          <span class="pane-book-title">Beej's Quick Guide to Git</span>
-          <span class="pane-sep">•</span>
-          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/mergetool.html" target="_blank" rel="noopener noreferrer">Original Online Web ↗</a>
+          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/mergetool.html" target="_blank" rel="noopener noreferrer">Original Web ↗</a>
         </div>
         <div class="pane-actions">
           <button class="pane-nav-btn prev-btn" onclick="goToChapter(28, event)" >← Prev</button>
           <button class="pane-nav-btn next-btn" onclick="goToChapter(30, event)" >Next →</button>
-          <button class="pane-read-toggle-btn" id="pane-read-btn-29" onclick="toggleChapterRead(29, event)">Mark Read ✓</button>
+          <button class="pane-read-toggle-btn" id="pane-read-btn-29" onclick="toggleChapterRead(29, event)">Mark Completed ✓</button>
         </div>
       </header>
 
-      <div class="pane-body">
+      <div class="pane-card">
+        <div class="pane-body">
 <h1 data-number="29" id="mergetool"><span class="header-section-number">29</span> Mergetool</h1>
 <p></p>
 <p>Do you hate all those <code>&gt;&gt;&gt;&gt;&gt;</code>, <code>=====</code>, and <code>&lt;&lt;&lt;&lt;&lt;</code> things that Git puts in your files during a merge conflict?</p>
@@ -6859,15 +7033,16 @@
 <p></p>
  BG_NEW_CHAPTER 
 
+        </div>
       </div>
 
       <footer class="pane-footer-nav">
         <a class="ch-nav-card prev-card" href="#difftool-1" onclick="goToChapter(28, event)">
-  <div class="nav-dir">← Previous Chapter</div>
+  <div class="nav-dir">← PREVIOUS CHAPTER</div>
   <div class="nav-title">Ch 28: Difftool</div>
 </a>
         <a class="ch-nav-card next-card" href="#submodules" onclick="goToChapter(30, event)">
-  <div class="nav-dir">Next Chapter →</div>
+  <div class="nav-dir">NEXT CHAPTER →</div>
   <div class="nav-title">Ch 30: Submodules</div>
 </a>
       </footer>
@@ -6875,20 +7050,20 @@
     <article class="chapter-pane" id="chapter-30" data-chapter-num="30" data-chid="submodules" data-chapter-title="Submodules">
       <header class="pane-header-bar">
         <div class="pane-header-meta">
-          <span class="pane-badge">Chapter 30 of 38</span>
+          <span class="pane-badge">Module 30</span>
+          <span class="pane-crumb">Beej's Guide to Git &rsaquo; <b>Submodules</b></span>
           <span class="pane-sep">•</span>
-          <span class="pane-book-title">Beej's Quick Guide to Git</span>
-          <span class="pane-sep">•</span>
-          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/submodules.html" target="_blank" rel="noopener noreferrer">Original Online Web ↗</a>
+          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/submodules.html" target="_blank" rel="noopener noreferrer">Original Web ↗</a>
         </div>
         <div class="pane-actions">
           <button class="pane-nav-btn prev-btn" onclick="goToChapter(29, event)" >← Prev</button>
           <button class="pane-nav-btn next-btn" onclick="goToChapter(31, event)" >Next →</button>
-          <button class="pane-read-toggle-btn" id="pane-read-btn-30" onclick="toggleChapterRead(30, event)">Mark Read ✓</button>
+          <button class="pane-read-toggle-btn" id="pane-read-btn-30" onclick="toggleChapterRead(30, event)">Mark Completed ✓</button>
         </div>
       </header>
 
-      <div class="pane-body">
+      <div class="pane-card">
+        <div class="pane-body">
 <h1 data-number="30" id="submodules"><span class="header-section-number">30</span> Submodules</h1>
 <p></p>
 <p>You can’t really have a Git repo <em>inside</em> a Git repo. I mean, yes, you can make one, but when you try to add it to the outer repo, Git will have a lot to say about it.</p>
@@ -7196,15 +7371,16 @@
 <p></p>
  BG_NEW_CHAPTER 
 
+        </div>
       </div>
 
       <footer class="pane-footer-nav">
         <a class="ch-nav-card prev-card" href="#mergetool" onclick="goToChapter(29, event)">
-  <div class="nav-dir">← Previous Chapter</div>
+  <div class="nav-dir">← PREVIOUS CHAPTER</div>
   <div class="nav-title">Ch 29: Mergetool</div>
 </a>
         <a class="ch-nav-card next-card" href="#tags" onclick="goToChapter(31, event)">
-  <div class="nav-dir">Next Chapter →</div>
+  <div class="nav-dir">NEXT CHAPTER →</div>
   <div class="nav-title">Ch 31: Tags</div>
 </a>
       </footer>
@@ -7212,20 +7388,20 @@
     <article class="chapter-pane" id="chapter-31" data-chapter-num="31" data-chid="tags" data-chapter-title="Tags">
       <header class="pane-header-bar">
         <div class="pane-header-meta">
-          <span class="pane-badge">Chapter 31 of 38</span>
+          <span class="pane-badge">Module 31</span>
+          <span class="pane-crumb">Beej's Guide to Git &rsaquo; <b>Tags</b></span>
           <span class="pane-sep">•</span>
-          <span class="pane-book-title">Beej's Quick Guide to Git</span>
-          <span class="pane-sep">•</span>
-          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/tags.html" target="_blank" rel="noopener noreferrer">Original Online Web ↗</a>
+          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/tags.html" target="_blank" rel="noopener noreferrer">Original Web ↗</a>
         </div>
         <div class="pane-actions">
           <button class="pane-nav-btn prev-btn" onclick="goToChapter(30, event)" >← Prev</button>
           <button class="pane-nav-btn next-btn" onclick="goToChapter(32, event)" >Next →</button>
-          <button class="pane-read-toggle-btn" id="pane-read-btn-31" onclick="toggleChapterRead(31, event)">Mark Read ✓</button>
+          <button class="pane-read-toggle-btn" id="pane-read-btn-31" onclick="toggleChapterRead(31, event)">Mark Completed ✓</button>
         </div>
       </header>
 
-      <div class="pane-body">
+      <div class="pane-card">
+        <div class="pane-body">
 <h1 data-number="31" id="tags"><span class="header-section-number">31</span> Tags</h1>
 <p></p>
 <p>Tags are a way to annotate a particular commit. You can kind of think of them like branches that don’t move.</p>
@@ -7292,15 +7468,16 @@
 <p> </p>
  BG_NEW_CHAPTER 
 
+        </div>
       </div>
 
       <footer class="pane-footer-nav">
         <a class="ch-nav-card prev-card" href="#submodules" onclick="goToChapter(30, event)">
-  <div class="nav-dir">← Previous Chapter</div>
+  <div class="nav-dir">← PREVIOUS CHAPTER</div>
   <div class="nav-title">Ch 30: Submodules</div>
 </a>
         <a class="ch-nav-card next-card" href="#worktrees" onclick="goToChapter(32, event)">
-  <div class="nav-dir">Next Chapter →</div>
+  <div class="nav-dir">NEXT CHAPTER →</div>
   <div class="nav-title">Ch 32: Worktrees</div>
 </a>
       </footer>
@@ -7308,20 +7485,20 @@
     <article class="chapter-pane" id="chapter-32" data-chapter-num="32" data-chid="worktrees" data-chapter-title="Worktrees">
       <header class="pane-header-bar">
         <div class="pane-header-meta">
-          <span class="pane-badge">Chapter 32 of 38</span>
+          <span class="pane-badge">Module 32</span>
+          <span class="pane-crumb">Beej's Guide to Git &rsaquo; <b>Worktrees</b></span>
           <span class="pane-sep">•</span>
-          <span class="pane-book-title">Beej's Quick Guide to Git</span>
-          <span class="pane-sep">•</span>
-          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/worktrees.html" target="_blank" rel="noopener noreferrer">Original Online Web ↗</a>
+          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/worktrees.html" target="_blank" rel="noopener noreferrer">Original Web ↗</a>
         </div>
         <div class="pane-actions">
           <button class="pane-nav-btn prev-btn" onclick="goToChapter(31, event)" >← Prev</button>
           <button class="pane-nav-btn next-btn" onclick="goToChapter(33, event)" >Next →</button>
-          <button class="pane-read-toggle-btn" id="pane-read-btn-32" onclick="toggleChapterRead(32, event)">Mark Read ✓</button>
+          <button class="pane-read-toggle-btn" id="pane-read-btn-32" onclick="toggleChapterRead(32, event)">Mark Completed ✓</button>
         </div>
       </header>
 
-      <div class="pane-body">
+      <div class="pane-card">
+        <div class="pane-body">
 <h1 data-number="32" id="worktrees"><span class="header-section-number">32</span> Worktrees</h1>
 <p></p>
 <p>Let’s say you have your code in one window and you’re happily looking at <code>main</code>. And then you think, “It would be nice to look at some files on <code>foobranch</code> for a moment.”</p>
@@ -7406,15 +7583,16 @@
 <p> </p>
  BG_NEW_CHAPTER 
 
+        </div>
       </div>
 
       <footer class="pane-footer-nav">
         <a class="ch-nav-card prev-card" href="#tags" onclick="goToChapter(31, event)">
-  <div class="nav-dir">← Previous Chapter</div>
+  <div class="nav-dir">← PREVIOUS CHAPTER</div>
   <div class="nav-title">Ch 31: Tags</div>
 </a>
         <a class="ch-nav-card next-card" href="#making-playground" onclick="goToChapter(33, event)">
-  <div class="nav-dir">Next Chapter →</div>
+  <div class="nav-dir">NEXT CHAPTER →</div>
   <div class="nav-title">Ch 33: Appendix: Making a Playground</div>
 </a>
       </footer>
@@ -7422,20 +7600,20 @@
     <article class="chapter-pane" id="chapter-33" data-chapter-num="33" data-chid="making-playground" data-chapter-title="Appendix: Making a Playground">
       <header class="pane-header-bar">
         <div class="pane-header-meta">
-          <span class="pane-badge">Chapter 33 of 38</span>
+          <span class="pane-badge">Module 33</span>
+          <span class="pane-crumb">Beej's Guide to Git &rsaquo; <b>Appendix: Making a Playground</b></span>
           <span class="pane-sep">•</span>
-          <span class="pane-book-title">Beej's Quick Guide to Git</span>
-          <span class="pane-sep">•</span>
-          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/making-playground.html" target="_blank" rel="noopener noreferrer">Original Online Web ↗</a>
+          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/making-playground.html" target="_blank" rel="noopener noreferrer">Original Web ↗</a>
         </div>
         <div class="pane-actions">
           <button class="pane-nav-btn prev-btn" onclick="goToChapter(32, event)" >← Prev</button>
           <button class="pane-nav-btn next-btn" onclick="goToChapter(34, event)" >Next →</button>
-          <button class="pane-read-toggle-btn" id="pane-read-btn-33" onclick="toggleChapterRead(33, event)">Mark Read ✓</button>
+          <button class="pane-read-toggle-btn" id="pane-read-btn-33" onclick="toggleChapterRead(33, event)">Mark Completed ✓</button>
         </div>
       </header>
 
-      <div class="pane-body">
+      <div class="pane-card">
+        <div class="pane-body">
 <h1 data-number="33" id="making-playground"><span class="header-section-number">33</span> Appendix: Making a Playground</h1>
 <p></p>
 <p>In programming circles in general, a <em>playground</em> is a place you can go to mess with code and tech and not worry about messing up your production system.</p>
@@ -7607,15 +7785,16 @@
 <p></p>
  BG_NEW_CHAPTER 
 
+        </div>
       </div>
 
       <footer class="pane-footer-nav">
         <a class="ch-nav-card prev-card" href="#worktrees" onclick="goToChapter(32, event)">
-  <div class="nav-dir">← Previous Chapter</div>
+  <div class="nav-dir">← PREVIOUS CHAPTER</div>
   <div class="nav-title">Ch 32: Worktrees</div>
 </a>
         <a class="ch-nav-card next-card" href="#editor-get-out" onclick="goToChapter(34, event)">
-  <div class="nav-dir">Next Chapter →</div>
+  <div class="nav-dir">NEXT CHAPTER →</div>
   <div class="nav-title">Ch 34: Appendix: Getting Out of Editors</div>
 </a>
       </footer>
@@ -7623,20 +7802,20 @@
     <article class="chapter-pane" id="chapter-34" data-chapter-num="34" data-chid="editor-get-out" data-chapter-title="Appendix: Getting Out of Editors">
       <header class="pane-header-bar">
         <div class="pane-header-meta">
-          <span class="pane-badge">Chapter 34 of 38</span>
+          <span class="pane-badge">Module 34</span>
+          <span class="pane-crumb">Beej's Guide to Git &rsaquo; <b>Appendix: Getting Out of Editors</b></span>
           <span class="pane-sep">•</span>
-          <span class="pane-book-title">Beej's Quick Guide to Git</span>
-          <span class="pane-sep">•</span>
-          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/editor-get-out.html" target="_blank" rel="noopener noreferrer">Original Online Web ↗</a>
+          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/editor-get-out.html" target="_blank" rel="noopener noreferrer">Original Web ↗</a>
         </div>
         <div class="pane-actions">
           <button class="pane-nav-btn prev-btn" onclick="goToChapter(33, event)" >← Prev</button>
           <button class="pane-nav-btn next-btn" onclick="goToChapter(35, event)" >Next →</button>
-          <button class="pane-read-toggle-btn" id="pane-read-btn-34" onclick="toggleChapterRead(34, event)">Mark Read ✓</button>
+          <button class="pane-read-toggle-btn" id="pane-read-btn-34" onclick="toggleChapterRead(34, event)">Mark Completed ✓</button>
         </div>
       </header>
 
-      <div class="pane-body">
+      <div class="pane-card">
+        <div class="pane-body">
 <h1 data-number="34" id="editor-get-out"><span class="header-section-number">34</span> Appendix: Getting Out of Editors</h1>
 <p></p>
 <p>If you try to <code>git commit</code> and don’t specify <code>-m</code> for a message, or if you <code>git pull</code> and there’s a non-fast-forward merge, or if you <code>git merge</code> and there’s a non-fast-forward merge and you don’t specify <code>-m</code>, or what I’m sure are a host of other reasons, you might get popped into an editor.</p>
@@ -7650,15 +7829,16 @@
 <p></p>
  BG_NEW_CHAPTER 
 
+        </div>
       </div>
 
       <footer class="pane-footer-nav">
         <a class="ch-nav-card prev-card" href="#making-playground" onclick="goToChapter(33, event)">
-  <div class="nav-dir">← Previous Chapter</div>
+  <div class="nav-dir">← PREVIOUS CHAPTER</div>
   <div class="nav-title">Ch 33: Appendix: Making a Playground</div>
 </a>
         <a class="ch-nav-card next-card" href="#appendix-errors-and-scary-messages" onclick="goToChapter(35, event)">
-  <div class="nav-dir">Next Chapter →</div>
+  <div class="nav-dir">NEXT CHAPTER →</div>
   <div class="nav-title">Ch 35: Appendix: Errors and Scary Messages</div>
 </a>
       </footer>
@@ -7666,20 +7846,20 @@
     <article class="chapter-pane" id="chapter-35" data-chapter-num="35" data-chid="appendix-errors-and-scary-messages" data-chapter-title="Appendix: Errors and Scary Messages">
       <header class="pane-header-bar">
         <div class="pane-header-meta">
-          <span class="pane-badge">Chapter 35 of 38</span>
+          <span class="pane-badge">Module 35</span>
+          <span class="pane-crumb">Beej's Guide to Git &rsaquo; <b>Appendix: Errors and Scary Messages</b></span>
           <span class="pane-sep">•</span>
-          <span class="pane-book-title">Beej's Quick Guide to Git</span>
-          <span class="pane-sep">•</span>
-          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/appendix-errors-and-scary-messages.html" target="_blank" rel="noopener noreferrer">Original Online Web ↗</a>
+          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/appendix-errors-and-scary-messages.html" target="_blank" rel="noopener noreferrer">Original Web ↗</a>
         </div>
         <div class="pane-actions">
           <button class="pane-nav-btn prev-btn" onclick="goToChapter(34, event)" >← Prev</button>
           <button class="pane-nav-btn next-btn" onclick="goToChapter(36, event)" >Next →</button>
-          <button class="pane-read-toggle-btn" id="pane-read-btn-35" onclick="toggleChapterRead(35, event)">Mark Read ✓</button>
+          <button class="pane-read-toggle-btn" id="pane-read-btn-35" onclick="toggleChapterRead(35, event)">Mark Completed ✓</button>
         </div>
       </header>
 
-      <div class="pane-body">
+      <div class="pane-card">
+        <div class="pane-body">
 <h1 data-number="35" id="appendix-errors-and-scary-messages"><span class="header-section-number">35</span> Appendix: Errors and Scary Messages</h1>
 <p></p>
 <h2 data-number="35.1" id="detached-head"><span class="header-section-number">35.1</span> Detached Head</h2>
@@ -7774,15 +7954,16 @@
 <p></p>
  BG_NEW_CHAPTER 
 
+        </div>
       </div>
 
       <footer class="pane-footer-nav">
         <a class="ch-nav-card prev-card" href="#editor-get-out" onclick="goToChapter(34, event)">
-  <div class="nav-dir">← Previous Chapter</div>
+  <div class="nav-dir">← PREVIOUS CHAPTER</div>
   <div class="nav-title">Ch 34: Appendix: Getting Out of Editors</div>
 </a>
         <a class="ch-nav-card next-card" href="#vim-tutorial" onclick="goToChapter(36, event)">
-  <div class="nav-dir">Next Chapter →</div>
+  <div class="nav-dir">NEXT CHAPTER →</div>
   <div class="nav-title">Ch 36: Appendix: Just Enough Vim</div>
 </a>
       </footer>
@@ -7790,20 +7971,20 @@
     <article class="chapter-pane" id="chapter-36" data-chapter-num="36" data-chid="vim-tutorial" data-chapter-title="Appendix: Just Enough Vim">
       <header class="pane-header-bar">
         <div class="pane-header-meta">
-          <span class="pane-badge">Chapter 36 of 38</span>
+          <span class="pane-badge">Module 36</span>
+          <span class="pane-crumb">Beej's Guide to Git &rsaquo; <b>Appendix: Just Enough Vim</b></span>
           <span class="pane-sep">•</span>
-          <span class="pane-book-title">Beej's Quick Guide to Git</span>
-          <span class="pane-sep">•</span>
-          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/vim-tutorial.html" target="_blank" rel="noopener noreferrer">Original Online Web ↗</a>
+          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/vim-tutorial.html" target="_blank" rel="noopener noreferrer">Original Web ↗</a>
         </div>
         <div class="pane-actions">
           <button class="pane-nav-btn prev-btn" onclick="goToChapter(35, event)" >← Prev</button>
           <button class="pane-nav-btn next-btn" onclick="goToChapter(37, event)" >Next →</button>
-          <button class="pane-read-toggle-btn" id="pane-read-btn-36" onclick="toggleChapterRead(36, event)">Mark Read ✓</button>
+          <button class="pane-read-toggle-btn" id="pane-read-btn-36" onclick="toggleChapterRead(36, event)">Mark Completed ✓</button>
         </div>
       </header>
 
-      <div class="pane-body">
+      <div class="pane-card">
+        <div class="pane-body">
 <h1 data-number="36" id="vim-tutorial"><span class="header-section-number">36</span> Appendix: Just Enough Vim</h1>
 <p><a href="https://www.vim.org/">Vim</a><a class="footnote-ref" href="#fn64" id="fnref64" role="doc-noteref"><sup>64</sup></a> is a very-commonly installed editor with a steep learning curve.</p>
 <p>This appendix is here just to give you enough Vim to be dangerous!</p>
@@ -7878,15 +8059,16 @@
 </blockquote>
  BG_NEW_CHAPTER 
 
+        </div>
       </div>
 
       <footer class="pane-footer-nav">
         <a class="ch-nav-card prev-card" href="#appendix-errors-and-scary-messages" onclick="goToChapter(35, event)">
-  <div class="nav-dir">← Previous Chapter</div>
+  <div class="nav-dir">← PREVIOUS CHAPTER</div>
   <div class="nav-title">Ch 35: Appendix: Errors and Scary Messages</div>
 </a>
         <a class="ch-nav-card next-card" href="#appendix-other-references" onclick="goToChapter(37, event)">
-  <div class="nav-dir">Next Chapter →</div>
+  <div class="nav-dir">NEXT CHAPTER →</div>
   <div class="nav-title">Ch 37: Appendix: Other References</div>
 </a>
       </footer>
@@ -7894,20 +8076,20 @@
     <article class="chapter-pane" id="chapter-37" data-chapter-num="37" data-chid="appendix-other-references" data-chapter-title="Appendix: Other References">
       <header class="pane-header-bar">
         <div class="pane-header-meta">
-          <span class="pane-badge">Chapter 37 of 38</span>
+          <span class="pane-badge">Module 37</span>
+          <span class="pane-crumb">Beej's Guide to Git &rsaquo; <b>Appendix: Other References</b></span>
           <span class="pane-sep">•</span>
-          <span class="pane-book-title">Beej's Quick Guide to Git</span>
-          <span class="pane-sep">•</span>
-          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/appendix-other-references.html" target="_blank" rel="noopener noreferrer">Original Online Web ↗</a>
+          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/appendix-other-references.html" target="_blank" rel="noopener noreferrer">Original Web ↗</a>
         </div>
         <div class="pane-actions">
           <button class="pane-nav-btn prev-btn" onclick="goToChapter(36, event)" >← Prev</button>
           <button class="pane-nav-btn next-btn" onclick="goToChapter(38, event)" >Next →</button>
-          <button class="pane-read-toggle-btn" id="pane-read-btn-37" onclick="toggleChapterRead(37, event)">Mark Read ✓</button>
+          <button class="pane-read-toggle-btn" id="pane-read-btn-37" onclick="toggleChapterRead(37, event)">Mark Completed ✓</button>
         </div>
       </header>
 
-      <div class="pane-body">
+      <div class="pane-card">
+        <div class="pane-body">
 <h1 data-number="37" id="appendix-other-references"><span class="header-section-number">37</span> Appendix: Other References</h1>
 <p></p>
 <p><strong>“Your book stinks. What other references can I use?”</strong></p>
@@ -7962,15 +8144,16 @@
 <p></p>
  BG_NEW_CHAPTER 
 
+        </div>
       </div>
 
       <footer class="pane-footer-nav">
         <a class="ch-nav-card prev-card" href="#vim-tutorial" onclick="goToChapter(36, event)">
-  <div class="nav-dir">← Previous Chapter</div>
+  <div class="nav-dir">← PREVIOUS CHAPTER</div>
   <div class="nav-title">Ch 36: Appendix: Just Enough Vim</div>
 </a>
         <a class="ch-nav-card next-card" href="#quick-reference" onclick="goToChapter(38, event)">
-  <div class="nav-dir">Next Chapter →</div>
+  <div class="nav-dir">NEXT CHAPTER →</div>
   <div class="nav-title">Ch 38: Quick Reference</div>
 </a>
       </footer>
@@ -7978,20 +8161,20 @@
     <article class="chapter-pane" id="chapter-38" data-chapter-num="38" data-chid="quick-reference" data-chapter-title="Quick Reference">
       <header class="pane-header-bar">
         <div class="pane-header-meta">
-          <span class="pane-badge">Chapter 38 of 38</span>
+          <span class="pane-badge">Module 38</span>
+          <span class="pane-crumb">Beej's Guide to Git &rsaquo; <b>Quick Reference</b></span>
           <span class="pane-sep">•</span>
-          <span class="pane-book-title">Beej's Quick Guide to Git</span>
-          <span class="pane-sep">•</span>
-          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/quick-reference.html" target="_blank" rel="noopener noreferrer">Original Online Web ↗</a>
+          <a class="pane-external-link" href="https://beej.us/guide/bggit/html/split/quick-reference.html" target="_blank" rel="noopener noreferrer">Original Web ↗</a>
         </div>
         <div class="pane-actions">
           <button class="pane-nav-btn prev-btn" onclick="goToChapter(37, event)" >← Prev</button>
           <button class="pane-nav-btn next-btn" onclick="goToChapter(39, event)" disabled="disabled">Next →</button>
-          <button class="pane-read-toggle-btn" id="pane-read-btn-38" onclick="toggleChapterRead(38, event)">Mark Read ✓</button>
+          <button class="pane-read-toggle-btn" id="pane-read-btn-38" onclick="toggleChapterRead(38, event)">Mark Completed ✓</button>
         </div>
       </header>
 
-      <div class="pane-body">
+      <div class="pane-card">
+        <div class="pane-body">
 <h1 data-number="38" id="quick-reference"><span class="header-section-number">38</span> Quick Reference</h1>
 <p>Quickly look up commands based on what you want to do! Caveat: this list is grotesquely incomplete! See your man pages for more info!</p>
 <p>In this reference section we use the following substitutions:</p>
@@ -8471,18 +8654,20 @@ $ git pull --no-rebase   # Force a merge on pull</code></pre>
 </ol>
 </section>
 
+        </div>
       </div>
 
       <footer class="pane-footer-nav">
         <a class="ch-nav-card prev-card" href="#appendix-other-references" onclick="goToChapter(37, event)">
-  <div class="nav-dir">← Previous Chapter</div>
+  <div class="nav-dir">← PREVIOUS CHAPTER</div>
   <div class="nav-title">Ch 37: Appendix: Other References</div>
 </a>
-        <div class="ch-nav-card disabled"><div class="nav-dir">End of Guide</div><div class="nav-title">Congratulations! All 38 Chapters Complete.</div></div>
+        <div class="ch-nav-card next-card disabled"><div class="nav-dir">NEXT CHAPTER →</div><div class="nav-title">All 38 Chapters Complete</div></div>
       </footer>
     </article>
-      </div>
-    </main>
+        </div>
+      </main>
+    </div>
   </div>
 
   <!-- Mobile Floating Drawer Toggle -->
@@ -8490,12 +8675,15 @@ $ git pull --no-rebase   # Force a merge on pull</code></pre>
     📑 Chapters (38)
   </button>
 
+
+
   <script>
     const ANCHOR_TO_CH = {"foreword": 1, "audience": 1, "official-homepage": 1, "email-policy": 1, "mirroring": 1, "note-for-translators": 1, "copyright-and-distribution": 1, "dedication": 1, "git-basics": 2, "what-is-git": 2, "definitions": 2, "what-is-github": 2, "what-is-github-1": 2, "the-most-basic-git-workflow": 2, "definitions-1": 2, "what-is-cloning": 2, "definitions-2": 2, "how-do-clones-interact": 2, "actual-git-usage": 2, "initial-setup": 2, "step-1-clone-an-existing-repo": 2, "step-2-make-some-local-changes": 2, "step-3-add-changes-to-the-stage": 2, "step-4-commit-those-changes": 2, "step-5-push-your-changes-to-the-remote-repo": 2, "github-how-to-use-it": 3, "making-a-github-account": 3, "creating-a-new-repo-on-github": 3, "authentication": 3, "github-cli": 3, "ssh-keys": 3, "using-personal-access-tokens": 3, "make-a-local-clone-of-the-repo": 3, "cloning-from-github-with-github-cli": 3, "cloning-from-github-with-ssh-keys": 3, "make-changes-and-push": 3, "collaboration-on-github": 3, "the-git-log-and-head": 4, "an-example-log": 4, "whats-in-the-log": 4, "the-head-reference": 4, "going-back-in-time-and-detached-head": 4, "the-old-command-git-checkout": 4, "commits-relative-to-head": 4, "branches-and-fast-forward-merges": 5, "what-is-a-branch": 5, "a-quick-note-about-git-pull": 5, "head-and-branches": 5, "listing-all-your-branches": 5, "creating-a-branch": 5, "make-some-commits-on-a-branch": 5, "merging-fast-forward": 5, "deleting-a-branch": 5, "merge": 6, "an-example-of-divergent-branches": 6, "merging-divergent-branches": 6, "merge-conflicts": 6, "what-a-conflict-looks-like": 6, "why-merge-conflicts-happen": 6, "merging-with-ides-or-other-merge-tools": 6, "merge-big-ideas": 6, "using-subdirectories-with-git": 7, "repos-and-subdirectories": 7, "what-about-subprojects": 7, "accidentally-making-a-repo-in-your-home-directory": 7, "empty-subdirectories-in-repos": 7, "ignoring-files-with-.gitignore": 8, "adding-a-.gitignore-file": 8, "can-i-specify-subdirectories-in-.gitignore": 8, "where-do-i-put-the-.gitignore": 8, "wildcards": 8, "negated-.gitignore-rules": 8, "how-to-ignore-all-files-except-a-few": 8, "getting-premade-.gitignore-files": 8, "remotes-repos-in-other-places": 9, "remote-and-branch-notation": 9, "getting-a-list-of-remotes": 9, "changing-a-remotes-url": 9, "adding-a-remote": 9, "remote-tracking-branch": 10, "branches-on-remotes": 10, "listing-remote-tracking-branches": 10, "pushing-to-a-remote": 10, "making-a-branch-and-pushing-to-remote": 10, "deleting-remote-tracking-branches": 10, "fetching-deleted-remote-branches": 10, "deleting-your-remote-tracking-branch": 10, "deleting-a-branch-on-a-remote": 10, "multiple-remotes": 10, "file-states": 11, "what-states-can-files-in-git-be-in": 11, "unmodified-to-untracked": 11, "files-in-multiple-states": 11, "diff": 12, "basic-usage": 12, "diffing-the-stage": 12, "more-diff-fun": 12, "diff-any-commits-or-branches": 12, "diffing-order": 12, "diffing-with-parent-commit": 12, "more-context": 12, "just-the-file-names": 12, "ignoring-whitespace": 12, "just-certain-files": 12, "inter-branch-diffs": 12, "difftool": 12, "renaming-and-removing-files": 13, "renaming-files": 13, "unrenaming-files-from-the-stage": 13, "removing-files": 13, "unremoving-files-from-the-stage": 13, "unremoving-files-from-earlier-commits": 13, "a-note-on-removing-secrets": 13, "collaboration-across-branches": 14, "communication-and-delegation": 14, "approach-everyone-uses-one-branch": 14, "approach-everyone-uses-their-own-branch": 14, "approach-everyone-merges-to-the-dev-branch": 14, "rebase": 15, "contrasted-to-merging": 15, "how-it-works": 15, "when-should-i-do-this": 15, "pulling-and-rebasing": 15, "rebasing-conflicts": 15, "squashing-commits": 15, "squash-versus-fixup": 15, "multiple-conflicts-in-the-rebase": 15, "stash": 16, "example": 16, "the-stash-stack": 16, "conflicts": 16, "stashing-new-files": 16, "github-forking-and-pull-requests": 17, "making-a-fork": 17, "making-your-changes": 17, "syncing-the-upstream-with-your-fork": 17, "making-a-pull-request": 17, "flipside-merging-a-pull-request": 17, "making-many-pull-requests-with-branches": 17, "deleting-a-pull-request": 17, "sync-cl": 17, "revert": 18, "performing-the-revert": 18, "revert-conflicts": 18, "reverting-multiple-commits": 18, "reset": 19, "soft-reset": 19, "mixed-reset": 19, "hard-reset": 19, "reset-to-a-divergent-branch": 19, "resetting-files": 19, "pushing-branch-changes-to-a-remote": 19, "forcing-the-push": 19, "example-rewrite-public-history": 19, "example-receiving-rewritten-history": 19, "resetting-without-moving-head": 19, "resetting-to-remove-credentials": 19, "the-reference-log-reflog": 20, "what-can-we-use-it-for": 20, "looking-back-at-an-orphan-commit": 20, "reflog-selectors": 20, "patch-mode-applying-partial-changes": 21, "adding-files-in-patch-mode": 21, "resetting-files-in-patch-mode": 21, "other-patch-mode-commands": 21, "cherry-pick-bringing-in-specific-commits": 22, "cherry-pick-example": 22, "cherry-pick-conflicts": 22, "whos-to-blame-for-this-code": 23, "fancier-blaming": 23, "configuration": 24, "local-configuration": 24, "listing-the-current-config": 24, "getting-setting-and-deleting-variables": 24, "some-popular-variables": 24, "editing-the-config-directly": 24, "conditional-configuration": 24, "config-old": 24, "git-aliases": 25, "creating-an-alias": 25, "displaying-aliases": 25, "some-neat-sample-aliases": 25, "seeing-gits-alias-expansion": 25, "changing-identity": 26, "changing-the-user-configuration-variables": 26, "changing-the-ssh-authentication-key": 26, "gpg-signing": 26, "changing-your-ssh-signing-key": 26, "amend": 27, "amending-the-commit-message": 27, "adding-some-files-to-the-commit": 27, "difftool-1": 28, "configuring": 28, "available-difftools": 28, "mergetool": 29, "merge-tool-operations": 29, "some-example-merge-tools": 29, "using-vimdiff-as-a-merge-tool": 29, "backing-up-the-originals": 29, "submodules": 30, "using-a-repo-with-submodules": 30, "creating-a-submodule": 30, "set-submodule-commit": 30, "getting-submodule-latest": 30, "updating-the-actual-submodule-itself": 30, "modify-the-submodule-repo-elsewhere": 30, "modify-the-submodule-repo-in-the-submodule-directory": 30, "getting-the-submodule-status": 30, "some-behind-the-scenes": 30, "deleting-a-submodule": 30, "tags": 31, "lightweight-tags": 31, "annotated-tags": 31, "pushing-tags": 31, "deleting-tags": 31, "worktrees": 32, "worktree-rules-and-regulations": 32, "making-a-new-worktree": 32, "removing-a-worktree": 32, "listing-worktrees": 32, "worktrees-and-detached-head": 32, "making-playground": 33, "cloning-bare-repos": 33, "automating-playground-builds": 33, "editor-get-out": 34, "appendix-errors-and-scary-messages": 35, "detached-head": 35, "upstream-branch-name-doesnt-match-current": 35, "current-branch-has-no-upstream-branch": 35, "vim-tutorial": 36, "launching-vim": 36, "modal-editing": 36, "going-between-modes": 36, "moving-the-cursor": 36, "more-modes": 36, "command-line-mode": 36, "exiting-vim": 36, "learn-more": 36, "appendix-other-references": 37, "quick-reference": 38, "glossary": 38, "file-states-1": 38, "configuration-1": 38, "set-identity": 38, "set-default-branch": 38, "set-default-pull-behavior-to-merge-or-rebase": 38, "set-default-editor-difftool-and-mergetool": 38, "colorful-git-output": 38, "autocorrect": 38, "newline-translation": 38, "aliases": 38, "creating-and-cloning-repos": 38, "adding-renaming-deleting-committing": 38, "getting-status": 38, "getting-a-diff": 38, "branches": 38, "pulling-and-pushing-and-fetching": 38, "merging": 38, "remotes": 38, "ignoring-files": 38, "rebasing": 38, "stashing": 38, "reverting": 38, "resetting": 38, "the-reflog": 38, "cherry-pick": 38, "blame": 38, "submodules-1": 38, "tags-1": 38, "worktrees-1": 38};
     const TOTAL_CHAPTERS = 38;
     let currentChapter = 1;
     let viewMode = 'chapter'; // 'chapter' or 'continuous'
     const STORAGE_KEY = 'hub_done_git_beej';
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 
     function getReadSet() {
       try {
@@ -8584,13 +8772,12 @@ $ git pull --no-rebase   # Force a merge on pull</code></pre>
         if (subList) subList.classList.add('open');
       }
 
-      if (scroll) {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
+      window.scrollTo({ top: 0, behavior: 'instant' });
 
       if (activePane) {
         const chId = activePane.dataset.chid;
         history.replaceState(null, null, '#' + chId);
+        window.scrollTo({ top: 0, behavior: 'instant' });
       }
     }
 
@@ -8670,11 +8857,18 @@ $ git pull --no-rebase   # Force a merge on pull</code></pre>
       if (hash) {
         if (ANCHOR_TO_CH[hash]) {
           const chNum = ANCHOR_TO_CH[hash];
+          const activePane = document.getElementById('chapter-' + chNum);
+          const isChId = activePane && activePane.dataset.chid === hash;
           showChapter(chNum, false);
-          setTimeout(() => {
-            const el = document.getElementById(hash);
-            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }, 150);
+          if (!isChId) {
+            setTimeout(() => {
+              const el = document.getElementById(hash);
+              if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 150);
+          } else {
+            window.scrollTo(0, 0);
+            setTimeout(() => window.scrollTo(0, 0), 60);
+          }
         } else if (hash.startsWith('chapter-')) {
           const chNum = parseInt(hash.replace('chapter-', ''), 10);
           if (chNum) showChapter(chNum, true);

@@ -1,12 +1,13 @@
 /* ==========================================================================
-   Shared tutorial engine (AlgoMaster-style) for Taran's Learning Hub
-   Used by System_Design_Tutorial and LLD_Tutorial.
+   Engineering Atlas Tutorial Engine for Taran's Learning Hub
+   Powers System_Design_Tutorial, LLD_Tutorial, and Cloud_DevOps_Tutorial
+   Inspired by https://engineering-atlas.in/
 
    Expects, before this script:
-     window.TUTORIAL_CONFIG = { title, subtitle, icon, storageKey, navHtml }
+     window.TUTORIAL_CONFIG = { title, subtitle, icon, storageKey, navHtml, progressDomain, companionLink }
      window.topicsData      = [{ section, priority?, subsections:[{id,title,file,concepts:[{title,anchor}]}] }]
      window.contentBundle   = { "file.md": "markdown" }
-   Renders into #am-root. No counters, no percentages — ticks only.
+   Renders into #am-root.
    ========================================================================== */
 (function () {
   'use strict';
@@ -32,7 +33,6 @@
     return String(v || '').toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, ' ').replace(/\s+/g, ' ').trim();
   }
 
-  // Keeps ticks in sync with the main hub pages when a domain is configured.
   function loadHubProgressMap() {
     if (!CFG.progressDomain) return Promise.resolve();
     return fetch('../learning-hub-data.json', { cache: 'no-cache' })
@@ -64,6 +64,9 @@
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
     });
   }
+  function pad2(n) {
+    return String(n < 10 ? '0' + n : n);
+  }
   function chipClass(p) {
     var x = String(p || '').toLowerCase();
     if (x.indexOf('must') === 0) return 'must';
@@ -72,9 +75,7 @@
     if (x.indexOf('adv') === 0) return 'adv';
     return 'plain';
   }
-  /* Topic names carry their detail inline ("Rate Limiter (distributed) — token
-     bucket in Redis, per-user limits"). Split it so the row shows a short title
-     with the detail underneath, and so searches use the short name. */
+
   function splitTitle(value) {
     var s = String(value == null ? '' : value).trim();
     var m = s.match(/^(.*?)\s+[—–]\s+(.+)$/);
@@ -199,44 +200,69 @@
 
   function homeView() {
     var q = filters.q.toLowerCase();
+
+    // Compute stats
+    var totalLessons = flat.length;
+    var completedLessons = flat.filter(function (it) { return isDone(it); }).length;
+    var pct = Math.round((completedLessons / (totalLessons || 1)) * 100);
+
     var companionBanner = '';
     if (CFG.companionLink) {
-      companionBanner = '<div class="am-companion-card" style="margin:0 0 20px;padding:14px 18px;border-radius:10px;border:1px solid var(--border,#2b3142);border-left:4px solid var(--accent,#2459d6);background:var(--bg-card,#161922);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">' +
+      companionBanner = '<div class="am-companion-card">' +
         '<div>' +
-          '<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent,#2459d6);margin-bottom:2px;">' + esc(CFG.companionLink.tag || 'Companion Guide') + '</div>' +
-          '<div style="font-size:15px;font-weight:700;color:var(--text,#e6e8ee);margin-bottom:2px;">' + esc(CFG.companionLink.title || '') + '</div>' +
-          '<div style="font-size:12.5px;color:var(--text-dim,#9aa0b0);">' + esc(CFG.companionLink.desc || '') + '</div>' +
+          '<div class="am-companion-tag">' + esc(CFG.companionLink.tag || 'Companion Guide') + '</div>' +
+          '<div class="am-companion-title">' + esc(CFG.companionLink.title || '') + '</div>' +
+          '<div class="am-companion-desc">' + esc(CFG.companionLink.desc || '') + '</div>' +
         '</div>' +
-        '<a href="' + esc(CFG.companionLink.href) + '" style="display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:7px;background:var(--accent,#2459d6);color:#fff;text-decoration:none;font-size:13px;font-weight:700;white-space:nowrap;">' + esc(CFG.companionLink.label || 'Open Companion →') + '</a>' +
+        '<a href="' + esc(CFG.companionLink.href) + '" class="am-btn primary" style="white-space:nowrap">' +
+          esc(CFG.companionLink.label || 'Open Companion →') + '</a>' +
       '</div>';
     }
-    var html = '<div class="am-hero"><h1>' + esc(CFG.title || 'Curriculum') + '</h1><p>' + esc(CFG.subtitle || '') + '</p></div>' +
-      companionBanner +
-      '<div class="am-filters">' +
-        '<div class="am-field"><label for="am-q">Search</label>' +
-          '<input id="am-q" type="search" placeholder="Search topics…" value="' + esc(filters.q) + '"></div>' +
-        '<div class="am-field"><label for="am-status">Status</label><select id="am-status">' +
-          ['all', 'todo', 'done'].map(function (v) {
-            var label = v === 'all' ? 'All' : v === 'todo' ? 'Not started' : 'Completed';
-            return '<option value="' + v + '"' + (filters.status === v ? ' selected' : '') + '>' + label + '</option>';
-          }).join('') +
-        '</select></div>' +
-        '<div class="am-spacer"></div>' +
-        '<button class="am-btn" type="button" id="am-expand">Expand all</button>' +
-        '<button class="am-btn" type="button" id="am-collapse">Collapse all</button>' +
-      '</div>';
+
+    var html = '<div class="am-hero">' +
+      '<div class="atlas-badge">📚 Atlas Curriculum Track</div>' +
+      '<h1>' + esc(CFG.title || 'Curriculum') + '</h1>' +
+      '<p>' + esc(CFG.subtitle || '') + '</p>' +
+      '<div class="atlas-stats-bar">' +
+        '<span class="atlas-stat-pill"><b>' + topics.length + '</b> Modules</span>' +
+        '<span class="atlas-stat-pill"><b>' + totalLessons + '</b> Lessons</span>' +
+        '<span class="atlas-stat-pill"><b>' + completedLessons + '</b> Completed</span>' +
+        '<span class="atlas-stat-pill"><b>' + pct + '%</b> Progress</span>' +
+      '</div>' +
+    '</div>' +
+    companionBanner +
+    '<div class="am-filters">' +
+      '<div class="am-field"><label for="am-q">Search Topics</label>' +
+        '<input id="am-q" type="search" placeholder="Search by topic, keyword, or module…" value="' + esc(filters.q) + '"></div>' +
+      '<div class="am-field"><label for="am-status">Status</label><select id="am-status">' +
+        ['all', 'todo', 'done'].map(function (v) {
+          var label = v === 'all' ? 'All Lessons' : v === 'todo' ? 'Not Started' : 'Completed';
+          return '<option value="' + v + '"' + (filters.status === v ? ' selected' : '') + '>' + label + '</option>';
+        }).join('') +
+      '</select></div>' +
+      '<div class="am-spacer"></div>' +
+      '<button class="am-btn" type="button" id="am-expand">Expand all</button>' +
+      '<button class="am-btn" type="button" id="am-collapse">Collapse all</button>' +
+    '</div>';
 
     var any = false;
-    topics.forEach(function (section) {
+    topics.forEach(function (section, secIdx) {
       var rows = [];
+      var secTotal = 0;
+      var secDone = 0;
+
       section.subsections.forEach(function (sub) {
         var md = (window.contentBundle || {})[sub.file] || '';
         sub.concepts.forEach(function (concept) {
+          secTotal++;
           var item = flat.find(function (f) { return f.pageId === sub.id && f.conceptId === concept.anchor; });
           var done = item ? isDone(item) : false;
+          if (done) secDone++;
+
           if (filters.status === 'todo' && done) return;
           if (filters.status === 'done' && !done) return;
           if (q && (concept.title + ' ' + section.section + ' ' + sub.title).toLowerCase().indexOf(q) === -1) return;
+
           var parts = splitTitle(concept.title);
           var detail = parts.detail || firstLine(md, concept.anchor);
           rows.push('<a class="am-row' + (done ? ' done' : '') + '" href="#' + sub.id + '/' + concept.anchor + '"' +
@@ -244,15 +270,32 @@
             '<button class="am-check' + (done ? ' on' : '') + '" type="button" data-done="' + esc(sub.id + '/' + concept.anchor) + '" ' +
               'title="Mark as completed" aria-label="Mark ' + esc(parts.short) + ' as completed">✓</button>' +
             '<span class="am-title">' + esc(parts.short) + '</span>' +
-            '<span class="am-sub">' + esc(detail) + '</span></a>');
+            '<span class="am-sub">' + esc(detail) + '</span>' +
+            '</a>');
         });
       });
+
       if (!rows.length) return;
       any = true;
-      html += '<details class="am-section" open><summary><h2>' + esc(section.section) + '</h2>' +
-        (section.priority ? '<span class="am-chip ' + chipClass(section.priority) + '">' + esc(section.priority) + '</span>' : '') +
-        '</summary><div class="am-rows">' + rows.join('') + '</div></details>';
+
+      html += '<details class="am-section" open>' +
+        '<summary>' +
+          '<span class="cn-module__no">' + pad2(secIdx + 1) + '</span>' +
+          '<div class="cn-module__head">' +
+            '<h2>' + esc(section.section) + '</h2>' +
+          '</div>' +
+          '<div class="cn-module__meta">' +
+            (section.priority ? '<span class="am-chip ' + chipClass(section.priority) + '">' + esc(section.priority) + '</span>' : '') +
+            '<span class="cn-module__count">' + secDone + '/' + secTotal + ' done</span>' +
+            '<span class="am-section-chevron">▾</span>' +
+          '</div>' +
+        '</summary>' +
+        '<div class="am-rows">' +
+          '<div class="am-topic-guide-rail">' + rows.join('') + '</div>' +
+        '</div>' +
+      '</details>';
     });
+
     if (!any) html += '<div class="am-section"><div class="am-empty">No topics match that search.</div></div>';
     root.innerHTML = html;
 
@@ -288,20 +331,42 @@
   }
 
   /* ---------------- chapter view ---------------- */
-  function sidebarHtml(current) {
-    return topics.map(function (section) {
+  function sidebarHtml(current, filterText) {
+    var sq = (filterText || '').toLowerCase().trim();
+    return topics.map(function (section, secIdx) {
       var links = [];
+      var secTotal = 0;
+      var secDone = 0;
+
       section.subsections.forEach(function (sub) {
         sub.concepts.forEach(function (concept) {
+          secTotal++;
           var item = flat.find(function (f) { return f.pageId === sub.id && f.conceptId === concept.anchor; });
-          var cls = 'am-side-link' + (item && isDone(item) ? ' studied' : '') +
+          var done = item ? isDone(item) : false;
+          if (done) secDone++;
+
+          if (sq && (concept.title + ' ' + section.section).toLowerCase().indexOf(sq) === -1) {
+            return;
+          }
+
+          var cls = 'am-side-link' + (done ? ' studied' : '') +
             (current && current.pageId === sub.id && current.conceptId === concept.anchor ? ' active' : '');
           var sp = splitTitle(concept.title);
           links.push('<a class="' + cls + '" href="#' + sub.id + '/' + concept.anchor + '" title="' + esc(concept.title) + '">' + esc(sp.short) + '</a>');
         });
       });
-      var open = section.subsections.some(function (sub) { return current && sub.id === current.pageId; });
-      return '<details' + (open ? ' open' : '') + '><summary>' + esc(section.section) + '</summary>' + links.join('') + '</details>';
+
+      if (sq && !links.length) return '';
+
+      var open = Boolean(sq) || section.subsections.some(function (sub) { return current && sub.id === current.pageId; });
+      return '<details class="am-side-mod"' + (open ? ' open' : '') + '>' +
+        '<summary>' +
+          '<span class="am-side-mod-no">' + pad2(secIdx + 1) + '</span>' +
+          '<span class="am-side-mod-t">' + esc(section.section) + '</span>' +
+          '<span class="am-side-mod-subcount">' + secDone + '/' + secTotal + '</span>' +
+        '</summary>' +
+        '<div class="am-side-sublinks">' + links.join('') + '</div>' +
+      '</details>';
     }).join('');
   }
 
@@ -309,23 +374,68 @@
     var idx = flat.indexOf(item);
     var prev = flat[idx - 1], next = flat[idx + 1];
     var done = isDone(item);
+
+    var totalLessons = flat.length;
+    var completedLessons = flat.filter(function (it) { return isDone(it); }).length;
+    var pct = Math.round((completedLessons / (totalLessons || 1)) * 100);
+
+    var prevShort = prev ? splitTitle(prev.conceptTitle).short : '';
+    var nextShort = next ? splitTitle(next.conceptTitle).short : '';
+
     root.innerHTML =
       '<div class="am-layout">' +
         '<aside class="am-side" id="am-side">' +
-          '<div class="am-side-head"><b>Curriculum</b><a href="#" class="am-btn" style="padding:5px 9px;font-size:.76rem">All topics</a></div>' +
-          sidebarHtml(item) +
+          '<div class="am-side-head">' +
+            '<b>' + esc(CFG.title ? CFG.title.split(' ')[0] + ' Track' : 'Curriculum') + '</b>' +
+            '<a href="#" class="am-btn" style="padding:4px 9px;font-size:.74rem">Overview</a>' +
+          '</div>' +
+          '<div class="am-side-search-wrap">' +
+            '<input type="search" placeholder="Filter lessons…" class="am-side-search" id="am-side-q">' +
+          '</div>' +
+          '<div class="am-side-progress">' +
+            '<div class="am-side-progress-meta">' +
+              '<span>Progress</span>' +
+              '<span id="am-side-pct">' + completedLessons + '/' + totalLessons + ' (' + pct + '%)</span>' +
+            '</div>' +
+            '<div class="am-side-progress-track">' +
+              '<div class="am-side-progress-fill" id="am-side-bar" style="width:' + pct + '%"></div>' +
+            '</div>' +
+          '</div>' +
+          '<div id="am-side-list">' + sidebarHtml(item) + '</div>' +
         '</aside>' +
         '<div class="am-main">' +
           '<div class="am-chapter-head">' +
             '<button class="am-btn am-icon-btn am-side-toggle" type="button" id="am-side-btn" aria-label="Open curriculum">☰</button>' +
-            '<span class="am-crumb">' + esc(item.sectionTitle) + ' &rsaquo; <b>' + esc(splitTitle(item.conceptTitle).short) + '</b></span>' +
+            '<div class="am-crumb">' +
+              '<span>' + esc(item.sectionTitle) + '</span>' +
+              '<span>&rsaquo;</span>' +
+              '<b>' + esc(splitTitle(item.conceptTitle).short) + '</b>' +
+            '</div>' +
             '<span class="am-spacer"></span>' +
-            '<button class="am-btn' + (done ? ' is-done' : '') + '" type="button" id="am-done">' + (done ? '✓ Completed' : 'Mark completed') + '</button>' +
+            '<button class="am-btn' + (done ? ' is-done' : '') + '" type="button" id="am-done">' + (done ? '✓ Completed' : 'Mark Completed') + '</button>' +
           '</div>' +
-          '<article class="am-article am-fade" id="am-article"><div class="am-loading">Loading…</div></article>' +
+          '<article class="am-article am-fade" id="am-article"><div class="am-loading">Loading content…</div></article>' +
           '<div class="am-pager">' +
-            '<button class="am-btn" type="button" id="am-prev"' + (prev ? '' : ' disabled') + '>← ' + esc(prev ? splitTitle(prev.conceptTitle).short : 'Start') + '</button>' +
-            '<button class="am-btn primary" type="button" id="am-next"' + (next ? '' : ' disabled') + '>' + esc(next ? splitTitle(next.conceptTitle).short : 'End') + ' →</button>' +
+            (prev ?
+              '<a class="am-pager-card am-pager-prev" href="#' + prev.pageId + '/' + prev.conceptId + '">' +
+                '<span class="am-pager-dir">← Previous Topic</span>' +
+                '<span class="am-pager-title">' + esc(prevShort) + '</span>' +
+              '</a>' :
+              '<div class="am-pager-card am-pager-prev disabled">' +
+                '<span class="am-pager-dir">← Previous Topic</span>' +
+                '<span class="am-pager-title">Start of Curriculum</span>' +
+              '</div>'
+            ) +
+            (next ?
+              '<a class="am-pager-card am-pager-next" href="#' + next.pageId + '/' + next.conceptId + '">' +
+                '<span class="am-pager-dir">Next Topic →</span>' +
+                '<span class="am-pager-title">' + esc(nextShort) + '</span>' +
+              '</a>' :
+              '<div class="am-pager-card am-pager-next disabled">' +
+                '<span class="am-pager-dir">Next Topic →</span>' +
+                '<span class="am-pager-title">End of Curriculum</span>' +
+              '</div>'
+            ) +
           '</div>' +
         '</div>' +
       '</div>';
@@ -340,21 +450,37 @@
       loadedFile = item.file;
     }
 
+    // Sidebar search filter event
+    var sideQ = document.getElementById('am-side-q');
+    if (sideQ) {
+      sideQ.addEventListener('input', function () {
+        var list = document.getElementById('am-side-list');
+        if (list) list.innerHTML = sidebarHtml(item, sideQ.value);
+      });
+    }
+
     document.getElementById('am-done').addEventListener('click', function (e) {
       toggleDone(item);
       var nowDone = isDone(item);
       e.currentTarget.classList.toggle('is-done', nowDone);
-      e.currentTarget.textContent = nowDone ? '✓ Completed' : 'Mark completed';
-      document.getElementById('am-side').innerHTML =
-        '<div class="am-side-head"><b>Curriculum</b><a href="#" class="am-btn" style="padding:5px 9px;font-size:.76rem">All topics</a></div>' + sidebarHtml(item);
+      e.currentTarget.textContent = nowDone ? '✓ Completed' : 'Mark Completed';
+
+      var cDone = flat.filter(function (it) { return isDone(it); }).length;
+      var cPct = Math.round((cDone / (totalLessons || 1)) * 100);
+      var pctEl = document.getElementById('am-side-pct');
+      var barEl = document.getElementById('am-side-bar');
+      if (pctEl) pctEl.textContent = cDone + '/' + totalLessons + ' (' + cPct + '%)';
+      if (barEl) barEl.style.width = cPct + '%';
+
+      var list = document.getElementById('am-side-list');
+      if (list) list.innerHTML = sidebarHtml(item, sideQ ? sideQ.value : '');
     });
-    if (prev) document.getElementById('am-prev').addEventListener('click', function () { location.hash = prev.pageId + '/' + prev.conceptId; });
-    if (next) document.getElementById('am-next').addEventListener('click', function () { location.hash = next.pageId + '/' + next.conceptId; });
+
     var sideBtn = document.getElementById('am-side-btn');
     if (sideBtn) sideBtn.addEventListener('click', function () { document.getElementById('am-side').classList.toggle('open'); });
     root.querySelectorAll('.am-side-link').forEach(function (a) {
       a.addEventListener('click', function () {
-        if (window.innerWidth <= 1000) document.getElementById('am-side').classList.remove('open');
+        if (window.innerWidth <= 1040) document.getElementById('am-side').classList.remove('open');
       });
     });
 
@@ -406,12 +532,13 @@
 
   /* ---------------- theme ---------------- */
   function initTheme() {
-    var saved = localStorage.getItem('theme') || 'light';
+    var saved = localStorage.getItem('learning_hub_theme') || localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', saved);
     var btn = document.getElementById('am-theme');
     if (btn) btn.addEventListener('click', function () {
       var cur = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', cur);
+      localStorage.setItem('learning_hub_theme', cur);
       localStorage.setItem('theme', cur);
     });
   }
