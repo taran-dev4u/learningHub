@@ -130,7 +130,33 @@
   function renderMarkdown(md) {
     var processed = md.replace(/([A-Za-z0-9_]+)\^([A-Za-z0-9_]+)/g, '$1<sup>$2</sup>');
     var html = window.marked ? marked.parse(processed) : esc(processed);
-    html = html.replace(/<blockquote>\s*<p>\[!(TIP|NOTE|WARNING|IMPORTANT|CAUTION)\]([\s\S]*?)<\/p>\s*<\/blockquote>/gi,
+
+    // Atlas Special Pedagogical Blocks
+    html = html.replace(/<blockquote>\s*<p>\[!(ANSWER30|30S|FASTRECALL)\]([\s\S]*?)<\/blockquote>/gi,
+      function (match, type, content) {
+        var clean = content.replace(/^(?:<br\s*\/?>|\n|\s)+/, '');
+        return '<div class="answer30"><div class="answer30__label">In 30 Seconds (Fast Recall)</div>' + clean + '</div>';
+      });
+
+    html = html.replace(/<blockquote>\s*<p>\[!(SCOPE|REQUIREMENTS)\]([\s\S]*?)<\/blockquote>/gi,
+      function (match, type, content) {
+        var clean = content.replace(/^(?:<br\s*\/?>|\n|\s)+/, '');
+        return '<div class="lblock lblock--scope"><div class="lblock__label">📋 System Scope & Requirements Checklist</div>' + clean + '</div>';
+      });
+
+    html = html.replace(/<blockquote>\s*<p>\[!(TRADEOFF|DECISION)\]([\s\S]*?)<\/blockquote>/gi,
+      function (match, type, content) {
+        var clean = content.replace(/^(?:<br\s*\/?>|\n|\s)+/, '');
+        return '<div class="lblock lblock--try"><div class="lblock__label">⚖️ Architectural Trade-off & Decision</div>' + clean + '</div>';
+      });
+
+    html = html.replace(/<blockquote>\s*<p>\[!(LEARN|OBJECTIVES)\]([\s\S]*?)<\/blockquote>/gi,
+      function (match, type, content) {
+        var clean = content.replace(/^(?:<br\s*\/?>|\n|\s)+/, '');
+        return '<div class="learn"><div class="learn__label">🎯 What You Will Master</div>' + clean + '</div>';
+      });
+
+    html = html.replace(/<blockquote>\s*<p>\[!(TIP|NOTE|WARNING|IMPORTANT|CAUTION)\]([\s\S]*?)<\/blockquote>/gi,
       function (match, type, content) {
         var t = type.toLowerCase();
         var icon = t === 'note' ? 'ℹ️' : t === 'warning' ? '⚠️' : t === 'important' ? '🔥' : t === 'caution' ? '🛑' : '💡';
@@ -138,12 +164,20 @@
         return '<div class="alert alert-' + t + '"><div class="alert-header"><span>' + icon + '</span><span>' + t.toUpperCase() +
           '</span></div><div class="alert-content">' + clean + '</div></div>';
       });
-    return window.DOMPurify ? DOMPurify.sanitize(html, { ADD_ATTR: ['id', 'target', 'rel'] }) : html;
+    return window.DOMPurify ? DOMPurify.sanitize(html, { ADD_ATTR: ['id', 'target', 'rel', 'class', 'data-video-id', 'data-sr', 'data-done'] }) : html;
   }
 
   function enhanceArticle(article) {
     article.querySelectorAll('a[href^="http"]').forEach(function (a) {
       a.target = '_blank'; a.rel = 'noopener noreferrer';
+    });
+    // Wrap tables in .tablewrap for responsive scroll and Atlas styling
+    article.querySelectorAll('table').forEach(function (tbl) {
+      if (tbl.parentElement && tbl.parentElement.classList.contains('tablewrap')) return;
+      var wrap = document.createElement('div');
+      wrap.className = 'tablewrap';
+      tbl.parentNode.insertBefore(wrap, tbl);
+      wrap.appendChild(tbl);
     });
     article.querySelectorAll('pre').forEach(function (pre) {
       if (pre.querySelector('.am-copy')) return;
@@ -370,6 +404,52 @@
     }).join('');
   }
 
+  function getLessonResources(item) {
+    var out = { videos: [], docs: [] };
+    var store = window.sdResources || window.aiResources || window.cloudDevOpsResources || window.roadmapResources;
+    var file = item.file;
+    var parent = file && store && store.lessons && store.lessons[file];
+    var conceptKey = item.pageId + '/' + item.conceptId;
+    var hit = store && store.concepts && store.concepts[conceptKey];
+
+    var vids = (hit && hit.videos && hit.videos.length) ? hit.videos.slice() : (parent && parent.videos ? parent.videos.slice() : []);
+    var docs = (hit && hit.docs && hit.docs.length) ? hit.docs.slice() : (parent && parent.docs ? parent.docs.slice() : []);
+
+    // Also pull links from markdown content
+    var md = (window.contentBundle || {})[file] || "";
+    if (md) {
+      var start = 0, end = md.length;
+      var heads = [], re = /^##\s+.*$/gm, m;
+      while ((m = re.exec(md))) heads.push({ i: m.index, t: m[0] });
+      for (var j = 0; j < heads.length; j++) {
+        var slug = heads[j].t.replace(/^#+\s+/, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+        if (slug === item.conceptId) {
+          start = heads[j].i;
+          end = heads[j + 1] ? heads[j + 1].i : md.length;
+          break;
+        }
+      }
+      var body = start >= 0 ? md.slice(start, end) : md;
+      var linkRe = /\[([^\]]*)\]\((https?:\/\/[^\s)]+)\)|(?:^|\s)(https?:\/\/[^\s)<]+)/g, l;
+      while ((l = linkRe.exec(body))) {
+        var href = l[2] || l[3], label = (l[1] || "").trim() || "Reference Document";
+        if (!href || href.indexOf("youtube.com/results") !== -1 || href.indexOf("google.com/search") !== -1) continue;
+        var ytMatch = href.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/);
+        if (ytMatch) {
+          var yId = ytMatch[1];
+          if (!vids.some(function (v) { return v[0] === yId; })) {
+            vids.push([yId, label, "YouTube Walkthrough"]);
+          }
+        } else {
+          if (!docs.some(function (d) { return d[1] === href; })) {
+            docs.push([label, href]);
+          }
+        }
+      }
+    }
+    return { videos: vids, docs: docs };
+  }
+
   function chapterView(item) {
     var idx = flat.indexOf(item);
     var prev = flat[idx - 1], next = flat[idx + 1];
@@ -381,6 +461,33 @@
 
     var prevShort = prev ? splitTitle(prev.conceptTitle).short : '';
     var nextShort = next ? splitTitle(next.conceptTitle).short : '';
+    var parts = splitTitle(item.conceptTitle);
+
+    var res = getLessonResources(item);
+    var subj = location.pathname.indexOf('LLD') !== -1 ? 'low level design' : (location.pathname.indexOf('Cloud') !== -1 ? 'cloud devops' : 'system design');
+    var q = encodeURIComponent(parts.short + ' ' + subj);
+    var ytSearchUrl = 'https://www.youtube.com/results?search_query=' + q;
+    var gSearchUrl = 'https://www.google.com/search?q=' + q;
+
+    var resourceBarHtml =
+      '<div class="am-lesson-resources">' +
+        '<div class="am-res-badge"><span>Course Companion Resources</span></div>' +
+        '<div class="am-res-actions">' +
+          (res.videos.length ?
+            '<button class="study-link youtube" type="button" id="am-watch-btn" title="Watch ' + res.videos.length + ' video(s) in side panel">' +
+              'Watch Lecture <span class="sr-count">' + res.videos.length + '</span>' +
+            '</button>' :
+            '<a class="study-link youtube icon-only yt-search" href="' + ytSearchUrl + '" target="_blank" rel="noopener" title="Search YouTube: ' + esc(parts.short) + '">⌕</a>'
+          ) +
+          (res.docs.length ?
+            '<button class="study-link read" type="button" id="am-read-btn" title="Read ' + res.docs.length + ' article(s) in side panel">' +
+              'Read Docs <span class="sr-count">' + res.docs.length + '</span>' +
+            '</button>' : ''
+          ) +
+          '<a class="study-link youtube yt-search" href="' + ytSearchUrl + '" target="_blank" rel="noopener">⌕ Search YouTube</a>' +
+          '<a class="study-link google" href="' + gSearchUrl + '" target="_blank" rel="noopener">Google Topic</a>' +
+        '</div>' +
+      '</div>';
 
     root.innerHTML =
       '<div class="am-layout">' +
@@ -409,11 +516,12 @@
             '<div class="am-crumb">' +
               '<span>' + esc(item.sectionTitle) + '</span>' +
               '<span>&rsaquo;</span>' +
-              '<b>' + esc(splitTitle(item.conceptTitle).short) + '</b>' +
+              '<b>' + esc(parts.short) + '</b>' +
             '</div>' +
             '<span class="am-spacer"></span>' +
             '<button class="am-btn' + (done ? ' is-done' : '') + '" type="button" id="am-done">' + (done ? '✓ Completed' : 'Mark Completed') + '</button>' +
           '</div>' +
+          resourceBarHtml +
           '<article class="am-article am-fade" id="am-article"><div class="am-loading">Loading content…</div></article>' +
           '<div class="am-pager">' +
             (prev ?
@@ -448,7 +556,93 @@
       article.innerHTML = renderMarkdown(md);
       enhanceArticle(article);
       loadedFile = item.file;
+
+      if (res.videos.length || res.docs.length) {
+        var gridCards = [];
+        res.videos.forEach(function (v) {
+          var vId = v[0], vTitle = v[1] || 'Video Lecture Walkthrough', vAuthor = v[2] ? 'By ' + v[2] : 'Verified Lecture';
+          gridCards.push(
+            '<a class="am-resource-card video-card" href="https://www.youtube.com/watch?v=' + vId + '" data-video-id="' + vId + '" target="_blank" rel="noopener">' +
+              '<div class="am-res-type video">🎥 Video Lecture</div>' +
+              '<div class="am-res-title">' + esc(vTitle) + '</div>' +
+              '<div class="am-res-author">' + esc(vAuthor) + '</div>' +
+            '</a>'
+          );
+        });
+        res.docs.forEach(function (d) {
+          var dTitle = d[0] || 'Reference Documentation', dHref = d[1];
+          gridCards.push(
+            '<a class="am-resource-card doc-card" href="' + dHref + '" target="_blank" rel="noopener">' +
+              '<div class="am-res-type doc">📄 Deep-Dive Reading</div>' +
+              '<div class="am-res-title">' + esc(dTitle) + '</div>' +
+              '<div class="am-res-author">Documentation / Architecture Guide</div>' +
+            '</a>'
+          );
+        });
+        if (gridCards.length) {
+          var resSec = document.createElement('div');
+          resSec.className = 'am-resources-section';
+          resSec.innerHTML = '<h3><span>📚 Curated Study Materials & Video Walkthroughs</span></h3>' +
+            '<div class="am-resources-grid">' + gridCards.join('') + '</div>';
+          article.appendChild(resSec);
+        }
+      }
     }
+
+    var wBtn = document.getElementById('am-watch-btn');
+    if (wBtn) {
+      wBtn.addEventListener('click', function () {
+        if (window.VideoPanel) {
+          window.VideoPanel.open({
+            title: parts.short,
+            query: parts.short + ' ' + subj,
+            videos: res.videos,
+            anim: [],
+            docs: res.docs,
+            tab: 'videos',
+            originEl: wBtn
+          });
+        } else {
+          window.open(ytSearchUrl, '_blank', 'noopener');
+        }
+      });
+    }
+
+    var rBtn = document.getElementById('am-read-btn');
+    if (rBtn) {
+      rBtn.addEventListener('click', function () {
+        if (window.VideoPanel) {
+          window.VideoPanel.open({
+            title: parts.short,
+            query: parts.short + ' ' + subj,
+            videos: res.videos,
+            anim: [],
+            docs: res.docs,
+            tab: 'read',
+            originEl: rBtn
+          });
+        }
+      });
+    }
+
+    article.querySelectorAll('.video-card').forEach(function (card) {
+      card.addEventListener('click', function (e) {
+        if (window.VideoPanel) {
+          e.preventDefault();
+          var vId = card.getAttribute('data-video-id');
+          window.VideoPanel.open({
+            title: parts.short,
+            query: parts.short + ' ' + subj,
+            videos: res.videos,
+            anim: [],
+            docs: res.docs,
+            tab: 'videos',
+            originEl: card
+          });
+          if (vId) window.VideoPanel.openVideo(vId);
+        }
+      });
+    });
 
     // Sidebar search filter event
     var sideQ = document.getElementById('am-side-q');

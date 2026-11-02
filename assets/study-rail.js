@@ -398,7 +398,7 @@
     {
       /* System Design / LLD tutorials — the roadmap rows */
       name: "am-roadmap",
-      rows: function () { return document.querySelectorAll(".am-rows > a.am-row"); },
+      rows: function () { return document.querySelectorAll(".am-rows a.am-row, .am-topic-guide-rail a.am-row"); },
       read: function (row) {
         var full = clean(row.getAttribute("data-full-title") || (row.querySelector(".am-title") || row).textContent);
         var title = clean(row.getAttribute("data-short-title")) || shortTitle(full);

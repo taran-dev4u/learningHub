@@ -908,6 +908,306 @@ body.am a:hover {
   to { opacity: 1; transform: none; }
 }
 
+/* ---------- Engineering Atlas Lesson Header & Resource Bar ---------- */
+.am-lesson-resources {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 18px;
+  margin: 0 0 24px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg, 12px);
+  box-shadow: var(--shadow-sm);
+}
+.am-res-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--color-text-secondary);
+}
+.am-res-badge::before {
+  content: "⚡";
+  font-size: 14px;
+}
+.am-res-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ---------- Engineering Atlas Structural Pedagogical Boxes ---------- */
+.section-intro {
+  margin: 0 0 24px;
+  padding: 16px 20px;
+  border: 1px solid var(--color-accent-primary-border);
+  border-radius: 14px;
+  background: var(--color-accent-primary-soft);
+  color: var(--color-text-secondary);
+  font-size: 1.02rem;
+  line-height: 1.6;
+}
+.section-intro strong {
+  color: var(--color-text-primary);
+}
+
+/* In 30 Seconds Card (Atlas answer30) */
+.answer30 {
+  margin: 22px 0 26px;
+  padding: 20px 22px;
+  border-radius: var(--radius-lg, 12px);
+  background: linear-gradient(135deg, var(--color-accent-primary-soft), var(--color-surface-raised) 70%);
+  border: 1px solid var(--color-accent-primary-border);
+  font-size: 1.02rem;
+  line-height: 1.65;
+  box-shadow: var(--shadow-sm);
+}
+.answer30__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 10px !important;
+  font-family: var(--font-heading);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--color-accent-primary-strong);
+}
+.answer30__label::before {
+  content: "30s";
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: #fff;
+  background: var(--color-accent-primary);
+  border-radius: 4px;
+  padding: 2px 6px;
+}
+
+/* Atlas Concept Block (lblock) */
+.lblock {
+  margin: 24px 0;
+  padding: 18px 22px;
+  border-radius: var(--radius-lg, 12px);
+  font-size: 1rem;
+  line-height: 1.65;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+}
+.lblock > :last-child {
+  margin-bottom: 0;
+}
+.lblock__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 10px !important;
+  font-family: var(--font-heading);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+.lblock--scope {
+  border-color: rgba(16, 185, 129, 0.4);
+  background: color-mix(in srgb, #10b981 7%, var(--color-surface));
+}
+.lblock--scope .lblock__label {
+  color: #059669;
+}
+.lblock--try {
+  border-color: rgba(242, 102, 43, 0.4);
+  background: color-mix(in srgb, #f2662b 7%, var(--color-surface));
+}
+.lblock--try .lblock__label {
+  color: #d9531e;
+}
+.lblock--define {
+  border-color: var(--color-accent-primary-border);
+  background: var(--color-accent-primary-soft);
+}
+.lblock--define .lblock__label {
+  color: var(--color-accent-primary-strong);
+}
+.lblock--warn {
+  border-color: rgba(239, 68, 68, 0.4);
+  background: color-mix(in srgb, #ef4444 7%, var(--color-surface));
+}
+.lblock--warn .lblock__label {
+  color: #dc2626;
+}
+
+/* What You Will Learn (Atlas learn) */
+.learn {
+  margin: 20px 0 24px;
+  padding: 18px 22px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg, 12px);
+  box-shadow: var(--shadow-sm);
+}
+.learn__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 10px !important;
+  font-family: var(--font-heading);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--color-accent-primary);
+}
+
+/* Step-by-Step Horizontal Cards (Atlas hsteps) */
+.hsteps {
+  list-style: none;
+  margin: 20px 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+.hsteps li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+  padding: 16px 18px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md, 8px);
+  background: var(--color-surface-raised);
+  font-size: 0.92rem;
+  color: var(--color-text-secondary);
+}
+.hsteps li strong {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  color: var(--color-text-primary);
+}
+.hsteps__no {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  margin-bottom: 6px;
+  border-radius: 50%;
+  background: var(--color-accent-primary);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+}
+.hsteps li:last-child .hsteps__no {
+  background: var(--color-accent-secondary);
+}
+
+/* Responsive Tables (Atlas tablewrap) */
+.tablewrap {
+  width: 100%;
+  overflow-x: auto;
+  margin: 22px 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md, 8px);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+}
+.tablewrap table {
+  width: 100%;
+  margin: 0;
+  border-collapse: collapse;
+}
+.tablewrap th {
+  background: var(--color-surface-sunken);
+  font-family: var(--font-heading);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  text-align: left;
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--color-border);
+}
+.tablewrap td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--color-separator);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+}
+.tablewrap tr:last-child td {
+  border-bottom: 0;
+}
+.tablewrap tr:hover td {
+  background: var(--color-surface-sunken);
+}
+
+/* Resource Section Box (Bottom of lesson) */
+.am-resources-section {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 2px solid var(--color-separator);
+}
+.am-resources-section h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.am-resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+}
+.am-resource-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md, 8px);
+  background: var(--color-surface);
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+.am-resource-card:hover {
+  border-color: var(--color-accent-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  text-decoration: none;
+}
+.am-res-type {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.am-res-type.video { color: #ef4444; }
+.am-res-type.doc { color: #0284c7; }
+.am-res-title {
+  font-family: var(--font-heading);
+  font-weight: 650;
+  font-size: 0.95rem;
+  color: var(--color-text-primary);
+  line-height: 1.4;
+}
+.am-res-author {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
 /* ---------- Responsive Design ---------- */
 .am-side-toggle { display: none; }
 @media (max-width: 1040px) {

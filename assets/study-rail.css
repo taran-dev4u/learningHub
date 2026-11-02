@@ -76,10 +76,27 @@ li[data-cid] .hub-actions { margin-top: 4px; }
   display: flex;
   align-items: center;
   gap: 8px;
-  border-bottom: 1px solid var(--am-border, var(--border, #e5e7eb));
+  border-radius: var(--radius-md, 8px);
+  border: 1px solid transparent;
+  transition: all 0.15s ease;
 }
-.am-row-wrap > .am-row { flex: 1 1 auto; min-width: 0; border-bottom: 0; }
-.am-row-wrap > .hub-actions { flex: 0 0 auto; padding-right: 12px; }
+.am-row-wrap:hover {
+  background: var(--color-surface-sunken, rgba(0, 0, 0, 0.03));
+  border-color: var(--color-border, rgba(0, 0, 0, 0.08));
+}
+.am-row-wrap > .am-row {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: 0 !important;
+  background: transparent !important;
+}
+.am-row-wrap > .hub-actions {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-right: 12px;
+}
 .am-row-wrap > .am-row .am-sub { flex: 1 1 auto; min-width: 0; }
 
 .sr-page-actions {
