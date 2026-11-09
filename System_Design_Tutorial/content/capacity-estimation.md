@@ -1,5 +1,35 @@
 # Capacity Estimation & Back-of-the-Envelope Calculations: The Complete Staff Engineer Masterclass
 
+<div class="section-intro">
+  <strong>The Foundation of Architecture Sizing:</strong> Before drawing boxes or selecting databases, capacity estimation establishes the physical boundaries of hardware—throughput, DRAM working sets, disk storage over 5 years, and network bandwidth. This masterclass provides the exact mathematical framework, power-of-ten shortcuts, and latency hierarchy required for staff-level interview execution.
+</div>
+
+> [!ANSWER30]
+> Never design without numbers. Use the $10^5$ rule (86,400s $\approx 10^5$s in a day): 10M daily requests = 100 QPS avg (200–500 QPS peak). Apply the 80/20 Pareto rule to cache the top 20% of hot daily traffic in memory (RAM). Size storage for 3–5 years with 3x replication. Bandwidth in bytes/sec dictates network interface card (NIC) limits.
+
+<ul class="hsteps">
+  <li>
+    <span class="hsteps__no">01</span>
+    <strong>Traffic (QPS)</strong>
+    Convert daily active volume into average and peak QPS using the $10^5$ rule.
+  </li>
+  <li>
+    <span class="hsteps__no">02</span>
+    <strong>Storage (Disk)</strong>
+    Calculate daily ingestion and 5-year retention with $3\times$ cross-AZ replication.
+  </li>
+  <li>
+    <span class="hsteps__no">03</span>
+    <strong>Memory (Cache)</strong>
+    Apply the 80/20 Pareto rule to cache the top 20% working set in Redis/Memcached.
+  </li>
+  <li>
+    <span class="hsteps__no">04</span>
+    <strong>Network & NIC</strong>
+    Calculate ingress and egress Gbps to determine CDN offload and interface bounds.
+  </li>
+</ul>
+
 ## Overview
 
 Welcome to **Capacity Estimation & Back-of-the-Envelope Calculations**. In professional distributed system design and FAANG/tier-1 technical interviews, capacity estimation is not a trivia exercise—it is the foundation of every architectural decision.
@@ -42,6 +72,12 @@ In software architecture, estimation establishes the physical boundaries of hard
 | - CDN offload    |           | - Redis instances |           | - LSM vs B-Tree   |
 +------------------+           +-------------------+           +-------------------+
 ```
+
+> [!SCOPE]
+> **Capacity Estimation Boundary Checklist:**
+> 1. **Traffic Profile:** Clarify DAU, MAU, and the peak-to-average multiplier ($2\times$ for uniform apps, $5\times$ to $10\times$ for event-driven apps like Uber or Ticketmaster).
+> 2. **Payload Sizing:** Distinguish metadata JSON rows ($\approx 200\text{--}500\text{ bytes}$) from binary assets (photos $\approx 200\text{ KB}$, 1080p video $\approx 50\text{ MB}$).
+> 3. **Retention Policy:** Define hot data retention (30–90 days in tier 1 storage) vs cold archival (S3 Glacier after 1 year).
 
 > [!NOTE]
 > **Teacher's Insight on Interviewer Intent:**
@@ -274,6 +310,12 @@ $$\text{Egress Bandwidth in Bits} = 30 \text{ GB/s} \times 8 \text{ bits/byte} =
 
 ---
 
+> [!TRADEOFF]
+> **RAM Cache vs NVMe SSD Cost & Latency Trade-off:**
+> - **In-Memory DRAM (Redis / Memcached):** Provides $\approx 50\text{--}100\text{ ns}$ lookup latency, but costs $\approx \$5\text{--}\$10\text{/GB/month}$ on cloud providers. Always reserve RAM for the hot 20% working set.
+> - **Fast NVMe SSD (Cassandra / DynamoDB):** Delivers $\approx 10\text{--}25\text{ µs}$ latency ($\approx 100\times$ slower than DRAM, but still sub-millisecond) at $\approx \$0.10\text{--}\$0.25\text{/GB/month}$.
+> - **Rule of Thumb:** If read QPS $> 10,000$ on hot keys, place Redis in front of the database. If reads are uniformly distributed across millions of unique keys with no Pareto clustering, avoid caching and scale NVMe SSD partitions.
+
 ## Storage Engine Decision Matrix Based on Estimation
 
 Once capacity math is complete, use this decision matrix to justify your database engine to the interviewer:
@@ -305,3 +347,10 @@ Once capacity math is complete, use this decision matrix to justify your databas
 > - $10^9 \text{ (Billions)} \times 10^3 \text{ (KB)} = 10^{12} \text{ (TB)}$
 > - $\frac{10^9 \text{ (1 Billion)}}{10^5 \text{ (Day seconds)}} = 10,000 \text{ QPS}$
 > Memorizing these three combinations eliminates 90% of arithmetic anxiety.
+
+> [!LEARN]
+> **Staff Engineer Mental Math Shortcuts:**
+> 1. **The $10^5$ Rule:** Always divide daily counts by $10^5$ (not 86,400) for instant mental arithmetic.
+> 2. **The Million-Byte Shift:** $1\text{ Million} \times 1\text{ KB} = 1\text{ GB}$; $1\text{ Billion} \times 1\text{ KB} = 1\text{ TB}$.
+> 3. **The 3x Rule:** Always multiply final raw storage by 3 for cross-AZ replication.
+> 4. **The Pareto Cache Rule:** Cache 20% of daily volume to absorb 80% of read traffic.
