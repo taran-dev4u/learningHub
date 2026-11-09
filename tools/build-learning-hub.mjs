@@ -3498,6 +3498,75 @@ const linuxSearchItems = linuxConcepts.map((item) => ({
   a: `tech_linux.html`,
 }));
 
+const dockerK8sConcepts = [
+  // Docker (6.1.1 to 6.6.4)
+  { cid: "6.1.1", t: "Linux Kernel Primitives: Namespaces (PID, NET, MNT, IPC, UTS, USER) & cgroups v1/v2 Resource Accounting", s: "Docker & Containerization Deep-Dive" },
+  { cid: "6.1.2", t: "Union File Systems, Storage Drivers & Copy-on-Write (OverlayFS Mechanics)", s: "Docker & Containerization Deep-Dive" },
+  { cid: "6.1.3", t: "OCI Specifications & Container Runtimes: OCI Runtime Spec, runc, containerd & CRI-O", s: "Docker & Containerization Deep-Dive" },
+  { cid: "6.1.4", t: "Containers vs Virtual Machines: Resource Isolation, Hypervisors & Overhead Comparison", s: "Docker & Containerization Deep-Dive" },
+  { cid: "6.2.1", t: "Dockerfile Directives & Execution Semantics: ENTRYPOINT vs CMD, RUN vs COPY vs ADD", s: "Docker & Containerization Deep-Dive" },
+  { cid: "6.2.2", t: "Multi-Stage Builds: Build Arguments, Target Stages & Minimizing Attack Surface", s: "Docker & Containerization Deep-Dive" },
+  { cid: "6.2.3", t: "BuildKit Engine, Cache Mounts & Layer Optimization Strategies", s: "Docker & Containerization Deep-Dive" },
+  { cid: "6.2.4", t: "Multi-Architecture Images: Buildx, QEMU Emulation & OCI Manifest Lists", s: "Docker & Containerization Deep-Dive" },
+  { cid: "6.3.1", t: "Principle of Least Privilege: Non-Root Users, USER Directive & Rootless Docker", s: "Docker & Containerization Deep-Dive" },
+  { cid: "6.3.2", t: "Linux Security Capabilities (cap-add/cap-drop), Seccomp Profiles & AppArmor", s: "Docker & Containerization Deep-Dive" },
+  { cid: "6.3.3", t: "Minimal Base Images: Distroless, Alpine vs Debian Slim & Stripping Compilers", s: "Docker & Containerization Deep-Dive" },
+  { cid: "6.3.4", t: "Container Supply Chain Security: Trivy / Grype Vulnerability Scanning, SBOM & Cosign Signing", s: "Docker & Containerization Deep-Dive" },
+  { cid: "6.4.1", t: "Docker Network Drivers: Bridge (docker0, veth pairs), Host, None & Macvlan", s: "Docker & Containerization Deep-Dive" },
+  { cid: "6.4.2", t: "Port Mapping, iptables NAT Rules & Embedded DNS Resolver (127.0.0.11)", s: "Docker & Containerization Deep-Dive" },
+  { cid: "6.4.3", t: "Multi-Host Overlay Networking, VXLAN Encapsulation & Distributed Service Discovery", s: "Docker & Containerization Deep-Dive" },
+  { cid: "6.4.4", t: "Network Debugging: Inspecting veth Interfaces, ip netns & tcpdump in Container Namespaces", s: "Docker & Containerization Deep-Dive" },
+  { cid: "6.5.1", t: "Storage Types: Named Volumes (/var/lib/docker/volumes), Bind Mounts & tmpfs", s: "Docker & Containerization Deep-Dive" },
+  { cid: "6.5.2", t: "Volume Driver Plugins: Cloud Storage Backends (NFS, EFS, AWS EBS) & Backup Strategies", s: "Docker & Containerization Deep-Dive" },
+  { cid: "6.5.3", t: "Copy-on-Write Performance: Database I/O Overhead on OverlayFS vs Volume Mounts", s: "Docker & Containerization Deep-Dive" },
+  { cid: "6.5.4", t: "Data Migration, Volume Permissions (chown, UID/GID matching) & Orphan Cleanup", s: "Docker & Containerization Deep-Dive" },
+  { cid: "6.6.1", t: "Docker Compose Specification: Services, Networks, Volumes & Environment Variables (.env)", s: "Docker & Containerization Deep-Dive" },
+  { cid: "6.6.2", t: "Service Dependencies & Startup Sequencing: depends_on, Condition Checks & Healthchecks", s: "Docker & Containerization Deep-Dive" },
+  { cid: "6.6.3", t: "Docker Daemon Operations: daemon.json Configuration, Live-Restore & Log Drivers", s: "Docker & Containerization Deep-Dive" },
+  { cid: "6.6.4", t: "Production Troubleshooting & Monitoring: docker stats, cAdvisor, docker inspect & Event Streams", s: "Docker & Containerization Deep-Dive" },
+  // Kubernetes (7.1.1 to 7.8.4)
+  { cid: "7.1.1", t: "Control Plane Architecture: kube-apiserver, etcd Distributed Consensus & Raft Quorum", s: "Kubernetes (K8s) Container Orchestration" },
+  { cid: "7.1.2", t: "Scheduling & Orchestration: kube-scheduler Decision Algorithm & Controller-Manager Reconciliation Loops", s: "Kubernetes (K8s) Container Orchestration" },
+  { cid: "7.1.3", t: "Worker Node Architecture: Kubelet Lifecycle, CRI-O/containerd & kube-proxy (iptables vs IPVS)", s: "Kubernetes (K8s) Container Orchestration" },
+  { cid: "7.1.4", t: "Declarative Object Model: Desired State vs Actual State Reconciliation & kubectl Context Flow", s: "Kubernetes (K8s) Container Orchestration" },
+  { cid: "7.2.1", t: "Pod Anatomy & Lifecycle: Init Containers, Sidecar Containers & Ephemeral Containers", s: "Kubernetes (K8s) Container Orchestration" },
+  { cid: "7.2.2", t: "Pod Health Diagnostics: Liveness, Readiness & Startup Probes Configuration & Mechanics", s: "Kubernetes (K8s) Container Orchestration" },
+  { cid: "7.2.3", t: "Deployments & ReplicaSets: Managing Stateless Workloads & Rollout History", s: "Kubernetes (K8s) Container Orchestration" },
+  { cid: "7.2.4", t: "Rollout Strategies: RollingUpdate (maxSurge, maxUnavailable), Blue-Green & Canary Traffic Shifting", s: "Kubernetes (K8s) Container Orchestration" },
+  { cid: "7.3.1", t: "StatefulSets: Stable Network IDs, Headless Services & VolumeClaimTemplates", s: "Kubernetes (K8s) Container Orchestration" },
+  { cid: "7.3.2", t: "StatefulSet Operations: Ordered Graceful Termination, Scaling & Partitioned Updates", s: "Kubernetes (K8s) Container Orchestration" },
+  { cid: "7.3.3", t: "DaemonSets: Node-Level Agent Scheduling (Logging, CNI, Monitoring) & Rolling Updates", s: "Kubernetes (K8s) Container Orchestration" },
+  { cid: "7.3.4", t: "Batch Workloads: One-Shot Jobs, Parallelism, Completions & Scheduled CronJobs", s: "Kubernetes (K8s) Container Orchestration" },
+  { cid: "7.4.1", t: "Flat Pod-to-Pod Network Model & Container Network Interface (CNI: Calico, Cilium, eBPF)", s: "Kubernetes (K8s) Container Orchestration" },
+  { cid: "7.4.2", t: "Service Discovery & Types: ClusterIP (Internal), NodePort, LoadBalancer & Headless Services", s: "Kubernetes (K8s) Container Orchestration" },
+  { cid: "7.4.3", t: "CoreDNS Architecture: Internal DNS Records (.default.svc.cluster.local), Resolv.conf & ndots", s: "Kubernetes (K8s) Container Orchestration" },
+  { cid: "7.4.4", t: "Ingress Controllers (Nginx Ingress, Traefik) & Kubernetes Gateway API (HTTPRoute, GRPCRoute)", s: "Kubernetes (K8s) Container Orchestration" },
+  { cid: "7.5.1", t: "ConfigMaps & Environment Variables: Key-Value Stores, Volume Projections & Hot-Reloading", s: "Kubernetes (K8s) Container Orchestration" },
+  { cid: "7.5.2", t: "Secrets Management: Base64 Encoding vs Encryption at Rest & HashiCorp Vault / External Secrets", s: "Kubernetes (K8s) Container Orchestration" },
+  { cid: "7.5.3", t: "Container Storage Interface (CSI): StorageClasses, Dynamic Provisioning & PV / PVC Binding", s: "Kubernetes (K8s) Container Orchestration" },
+  { cid: "7.5.4", t: "Storage Access Modes (RWO, ROX, RWX) & Stateful Volume Expansion / Snapshots", s: "Kubernetes (K8s) Container Orchestration" },
+  { cid: "7.6.1", t: "Node Selection & Node Affinity / Anti-Affinity (Required vs Preferred During Scheduling)", s: "Kubernetes (K8s) Container Orchestration" },
+  { cid: "7.6.2", t: "Taints and Tolerations: Dedicated Node Pools, Master Protection & NoSchedule/NoExecute", s: "Kubernetes (K8s) Container Orchestration" },
+  { cid: "7.6.3", t: "Pod Anti-Affinity & Pod Topology Spread Constraints: High Availability across Failure Zones", s: "Kubernetes (K8s) Container Orchestration" },
+  { cid: "7.6.4", t: "Resource Quotas, LimitRanges, PriorityClasses & Preemption Eviction Logic", s: "Kubernetes (K8s) Container Orchestration" },
+  { cid: "7.7.1", t: "Authentication & Authorization: X.509 Client Certs, ServiceAccounts & Granular RBAC", s: "Kubernetes (K8s) Container Orchestration" },
+  { cid: "7.7.2", t: "Pod Security Standards (PSS) & Admission (PSA): Privileged, Baseline, Restricted Profiles", s: "Kubernetes (K8s) Container Orchestration" },
+  { cid: "7.7.3", t: "NetworkPolicies: Pod-Level Micro-Segmentation, Ingress / Egress Rules & Default Deny", s: "Kubernetes (K8s) Container Orchestration" },
+  { cid: "7.7.4", t: "Policy as Code & Security Auditing: OPA Gatekeeper / Kyverno, Kube-bench CIS Benchmarks", s: "Kubernetes (K8s) Container Orchestration" },
+  { cid: "7.8.1", t: "Horizontal Pod Autoscaler (HPA v2 Custom Metrics) & Vertical Pod Autoscaler (VPA)", s: "Kubernetes (K8s) Container Orchestration" },
+  { cid: "7.8.2", t: "Cluster Autoscaler & Next-Gen Node Provisioning with Karpenter", s: "Kubernetes (K8s) Container Orchestration" },
+  { cid: "7.8.3", t: "Kubernetes Observability Stack: Prometheus Operator, ServiceMonitors, Grafana & cAdvisor", s: "Kubernetes (K8s) Container Orchestration" },
+  { cid: "7.8.4", t: "Helm Package Manager & GitOps Continuous Delivery: Helm Charts & ArgoCD Reconciliation", s: "Kubernetes (K8s) Container Orchestration" },
+];
+
+const dockerK8sSearchItems = dockerK8sConcepts.map((item) => ({
+  k: "cloud",
+  c: `dk8s-${item.cid}`,
+  t: `Container Orchestration · ${item.cid}: ${item.t}`,
+  s: item.s,
+  a: `tech_docker_k8s.html`,
+}));;
+
 const allSearchItems = [
   ...data.items.map((item) => ({
     k: item.domain,
@@ -3510,6 +3579,7 @@ const allSearchItems = [
   ...apiSearchItems,
   ...awsSearchItems,
   ...linuxSearchItems,
+  ...dockerK8sSearchItems,
 ];
 
 write(

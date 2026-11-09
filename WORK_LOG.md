@@ -27,7 +27,7 @@
 | `index.html` | Universal landing hub, 7 site cards, global catalog search | ✅ Up to date | `build-learning-hub.mjs` |
 | `DSA_Ultimate_Index.html` | 47 patterns, 219 subpatterns, 940 problems, default-collapsed pattern sidebar & full-width layout | ✅ Upgraded & Verified | Playwright + Audit |
 | `cloud_aws_azure.html` | **Cloud Platforms Hub**: AWS (55 concepts), Microsoft Azure (19 concepts), GCP (14 concepts) — 18 subsections, 88 concepts, Multi-Cloud Command Deck, sticky domain switcher, focused view isolation | ✅ Redesigned & Active | Playwright + Audit |
-| `all_tech.html` | **All-in-One Tech & Software Engineering Portal**: 13 disciplines (Linux, Git, Docker, K8s, Terraform, CI/CD, Kafka, Spark, PostgreSQL, Redis, Java, FastAPI, APIs) — 53 subsections, 209 concepts | ✅ Redesigned & Active | Playwright + Audit |
+| `all_tech.html` | **All-in-One Tech & Software Engineering Portal**: 13 disciplines (Linux, Git, Docker, K8s, Terraform, CI/CD, Kafka, Spark, PostgreSQL, Redis, Java, FastAPI, APIs) — 59 subsections, 234 concepts | ✅ Redesigned & Active | Playwright + Audit |
 | `ai_data.html` | **AI & Data Hub**: 4 tracks (AI Engineering, Machine Learning Engineering, Data Science, Data Engineering) — 24 subsections, 96 concepts, Command Deck, sticky pill bar, Domain Isolation Engine | ✅ Redesigned & Active | Playwright + Audit |
 | `ai_engineering.html` | **AI Engineering from Scratch Masterclass**: 20 phases, 542 lessons, full MIT curriculum snapshot, direct link integration | ✅ Active with Hub Breadcrumb | Playwright + Audit |
 | `tech_aws.html` | Standalone AWS Cloud Architecture Masterclass (11 subsections, 55 concepts, Complete Enterprise Services Inventory) | ✅ Deployed & Verified | Playwright + Audit |
@@ -38,7 +38,7 @@
 | `tech_git.html` | Standalone Git & GitHub Architecture Masterclass (6 subsections, 28 concepts, Beej's Guide integration) | ✅ Deployed | Playwright + Audit |
 | `Git_Tutorial/index.html` | **Git Master Tutorial (Beej's Guide to Git)**: Split-pane interactive reader (38 chapters, 270 topics, instant search, reading tracker) | ✅ Deployed & Verified | Playwright + Audit |
 | `ConvertedDocs/Git/beej_guide_to_git.html` | Brian "Beej" Hall's Quick Guide to Git (Unabridged offline split tutorial, 38 chapters) | ✅ Deployed & Integrated | Playwright + Audit |
-| `tech_docker_k8s.html` | Standalone Docker & Kubernetes Container Orchestration Masterclass (8 subsections, 31 concepts) | ✅ Deployed | Playwright + Audit |
+| `tech_docker_k8s.html` | Standalone Docker & Kubernetes Container Orchestration Masterclass (14 subsections, 56 concepts, cgroups, OverlayFS, Multi-Stage, BuildKit, Compose, K8s Control Plane, Pod Lifecycle, Services, Ingress, StatefulSets, Scheduling, Security, Autoscaling, GitOps) | ✅ Expanded & Verified | Playwright + Audit |
 | `tech_cicd.html` | Standalone CI/CD Pipelines & DevOps Automation Masterclass (3 subsections, 12 concepts) | ✅ Deployed | Playwright + Audit |
 | `tech_terraform.html` | Standalone Terraform & Infrastructure as Code Masterclass (3 subsections, 12 concepts) | ✅ Deployed | Playwright + Audit |
 | `tech_kafka.html` | Standalone Apache Kafka Distributed Streaming Masterclass (4 subsections, 14 concepts) | ✅ Deployed | Playwright + Audit |
@@ -558,3 +558,92 @@ The autonomous agent is scheduled via recurring cron notification (`0 */3 * * *`
   - Full multi-theme headless Playwright test suite (`scratch/test_all_tutorials_atlas.py`):
     - Verified zero horizontal overflow (`scrollWidth === clientWidth === 1440px`) across Light, Dark, and Black themes on all tutorial surfaces.
     - Zero console errors across all test runs.
+
+### [2026-11-09 11:40 UTC] Daily Expansion: Docker & Kubernetes Container Orchestration Deep Expansion (14 Subsections, 56 Concepts)
+- **Domain Sequence Identification**:
+  - Identified Docker & Kubernetes as the next domain in sequence following Linux (Domain 4) and Git (Domain 5).
+  - Both disciplines integrated into unified standalone masterclass `tech_docker_k8s.html` and central portal `all_tech.html` (Sections 6 & 7).
+- **Docker Curriculum Architecture (6 Subsections, 24 Concepts: 6.1.1 to 6.6.4)**:
+  - `6.1 Container Architecture, OCI Standards & Linux Kernel Primitives`:
+    - `6.1.1` Linux Kernel Primitives: Namespaces (PID, NET, MNT, IPC, UTS, USER) & cgroups v1/v2 Resource Accounting
+    - `6.1.2` Union File Systems, Storage Drivers & Copy-on-Write (OverlayFS Mechanics)
+    - `6.1.3` OCI Specifications & Container Runtimes: OCI Runtime Spec, runc, containerd & CRI-O
+    - `6.1.4` Containers vs Virtual Machines: Resource Isolation, Hypervisors & Overhead Comparison
+  - `6.2 Dockerfile Engineering, Multi-Stage Builds & Image Optimization`:
+    - `6.2.1` Dockerfile Directives & Execution Semantics: ENTRYPOINT vs CMD, RUN vs COPY vs ADD
+    - `6.2.2` Multi-Stage Builds: Build Arguments, Target Stages & Minimizing Attack Surface
+    - `6.2.3` BuildKit Engine, Cache Mounts & Layer Optimization Strategies
+    - `6.2.4` Multi-Architecture Images: Buildx, QEMU Emulation & OCI Manifest Lists
+  - `6.3 Container Security, Hardening & Image Supply Chain`:
+    - `6.3.1` Principle of Least Privilege: Non-Root Users, USER Directive & Rootless Docker
+    - `6.3.2` Linux Security Capabilities (cap-add/cap-drop), Seccomp Profiles & AppArmor
+    - `6.3.3` Minimal Base Images: Distroless, Alpine vs Debian Slim & Stripping Compilers
+    - `6.3.4` Container Supply Chain Security: Trivy / Grype Vulnerability Scanning, SBOM & Cosign Signing
+  - `6.4 Docker Networking Architecture & Traffic Routing`:
+    - `6.4.1` Docker Network Drivers: Bridge (docker0, veth pairs), Host, None & Macvlan
+    - `6.4.2` Port Mapping, iptables NAT Rules & Embedded DNS Resolver (127.0.0.11)
+    - `6.4.3` Multi-Host Overlay Networking, VXLAN Encapsulation & Distributed Service Discovery
+    - `6.4.4` Network Debugging: Inspecting veth Interfaces, ip netns & tcpdump in Container Namespaces
+  - `6.5 Docker Storage, Volume Plugins & Persistent Data Management`:
+    - `6.5.1` Storage Types: Named Volumes (/var/lib/docker/volumes), Bind Mounts & tmpfs
+    - `6.5.2` Volume Driver Plugins: Cloud Storage Backends (NFS, EFS, AWS EBS) & Backup Strategies
+    - `6.5.3` Copy-on-Write Performance: Database I/O Overhead on OverlayFS vs Volume Mounts
+    - `6.5.4` Data Migration, Volume Permissions (chown, UID/GID matching) & Orphan Cleanup
+  - `6.6 Multi-Container Orchestration with Docker Compose & Operations`:
+    - `6.6.1` Docker Compose Specification: Services, Networks, Volumes & Environment Variables (.env)
+    - `6.6.2` Service Dependencies & Startup Sequencing: depends_on, Condition Checks & Healthchecks
+    - `6.6.3` Docker Daemon Operations: daemon.json Configuration, Live-Restore & Log Drivers
+    - `6.6.4` Production Troubleshooting & Monitoring: docker stats, cAdvisor, docker inspect & Event Streams
+- **Kubernetes Curriculum Architecture (8 Subsections, 32 Concepts: 7.1.1 to 7.8.4)**:
+  - `7.1 Kubernetes Architecture, Control Plane & Core Components`:
+    - `7.1.1` Control Plane Architecture: kube-apiserver, etcd Distributed Consensus & Raft Quorum
+    - `7.1.2` Scheduling & Orchestration: kube-scheduler Decision Algorithm & Controller-Manager Reconciliation Loops
+    - `7.1.3` Worker Node Architecture: Kubelet Lifecycle, CRI-O/containerd & kube-proxy (iptables vs IPVS)
+    - `7.1.4` Declarative Object Model: Desired State vs Actual State Reconciliation & kubectl Context Flow
+  - `7.2 Workload Management: Pod Lifecycle, Deployments & Rollouts`:
+    - `7.2.1` Pod Anatomy & Lifecycle: Init Containers, Sidecar Containers & Ephemeral Containers
+    - `7.2.2` Pod Health Diagnostics: Liveness, Readiness & Startup Probes Configuration & Mechanics
+    - `7.2.3` Deployments & ReplicaSets: Managing Stateless Workloads & Rollout History
+    - `7.2.4` Rollout Strategies: RollingUpdate (maxSurge, maxUnavailable), Blue-Green & Canary Traffic Shifting
+  - `7.3 Advanced Stateful & Batch Workload Controllers`:
+    - `7.3.1` StatefulSets: Stable Network IDs, Headless Services & VolumeClaimTemplates
+    - `7.3.2` StatefulSet Operations: Ordered Graceful Termination, Scaling & Partitioned Updates
+    - `7.3.3` DaemonSets: Node-Level Agent Scheduling (Logging, CNI, Monitoring) & Rolling Updates
+    - `7.3.4` Batch Workloads: One-Shot Jobs, Parallelism, Completions & Scheduled CronJobs
+  - `7.4 Kubernetes Networking Primitives, CNI & Service Topologies`:
+    - `7.4.1` Flat Pod-to-Pod Network Model & Container Network Interface (CNI: Calico, Cilium, eBPF)
+    - `7.4.2` Service Discovery & Types: ClusterIP (Internal), NodePort, LoadBalancer & Headless Services
+    - `7.4.3` CoreDNS Architecture: Internal DNS Records (.default.svc.cluster.local), Resolv.conf & ndots
+    - `7.4.4` Ingress Controllers (Nginx Ingress, Traefik) & Kubernetes Gateway API (HTTPRoute, GRPCRoute)
+  - `7.5 Configuration Management, Secrets & Storage (CSI)`:
+    - `7.5.1` ConfigMaps & Environment Variables: Key-Value Stores, Volume Projections & Hot-Reloading
+    - `7.5.2` Secrets Management: Base64 Encoding vs Encryption at Rest & HashiCorp Vault / External Secrets
+    - `7.5.3` Container Storage Interface (CSI): StorageClasses, Dynamic Provisioning & PV / PVC Binding
+    - `7.5.4` Storage Access Modes (RWO, ROX, RWX) & Stateful Volume Expansion / Snapshots
+  - `7.6 Pod Scheduling, Node Affinity & Cluster Placement`:
+    - `7.6.1` Node Selection & Node Affinity / Anti-Affinity (Required vs Preferred During Scheduling)
+    - `7.6.2` Taints and Tolerations: Dedicated Node Pools, Master Protection & NoSchedule/NoExecute
+    - `7.6.3` Pod Anti-Affinity & Pod Topology Spread Constraints: High Availability across Failure Zones
+    - `7.6.4` Resource Quotas, LimitRanges, PriorityClasses & Preemption Eviction Logic
+  - `7.7 Cluster Security, Access Control & Micro-Segmentation`:
+    - `7.7.1` Authentication & Authorization: X.509 Client Certs, ServiceAccounts & Granular RBAC
+    - `7.7.2` Pod Security Standards (PSS) & Admission (PSA): Privileged, Baseline, Restricted Profiles
+    - `7.7.3` NetworkPolicies: Pod-Level Micro-Segmentation, Ingress / Egress Rules & Default Deny
+    - `7.7.4` Policy as Code & Security Auditing: OPA Gatekeeper / Kyverno, Kube-bench CIS Benchmarks
+  - `7.8 Cluster Auto-scaling, Observability & GitOps Operations`:
+    - `7.8.1` Horizontal Pod Autoscaler (HPA v2 Custom Metrics) & Vertical Pod Autoscaler (VPA)
+    - `7.8.2` Cluster Autoscaler & Next-Gen Node Provisioning with Karpenter
+    - `7.8.3` Kubernetes Observability Stack: Prometheus Operator, ServiceMonitors, Grafana & cAdvisor
+    - `7.8.4` Helm Package Manager & GitOps Continuous Delivery: Helm Charts & ArgoCD Reconciliation
+- **Portal & Masterclass Synchronization**:
+  - `tech_docker_k8s.html`: Expanded from 8 subsections (31 concepts) to **14 subsections (56 concepts)**. Updated hero, stats chips (14 subs, 56 concepts, 100% curated, 40+ docs/labs), 0-56 progress bar.
+  - `all_tech.html`: Expanded Docker (Section 6) to 24 concepts and Kubernetes (Section 7) to 32 concepts. Updated total metrics to **13 Disciplines · 59 Subsections · 234 Concepts**. Updated `card-docker` and `card-k8s` in Domain Deck.
+  - `tools/build-learning-hub.mjs` & `search-index.json`: Added all 56 Docker & Kubernetes concepts with direct deep-links to global search catalog.
+- **Verification Suite**:
+  - `python tools/audit_site.py`: **0 findings** across all 792 scanned pages.
+  - `node tools/verify-learning-hub.mjs`: All 16 hub pages passed with all checks green.
+  - Headless Playwright test suite (`scratch/test_docker_k8s_expansion_playwright.py`):
+    - Verified 56 concepts and 14 subsections in `tech_docker_k8s.html`.
+    - Verified 234 total concepts in `all_tech.html`.
+    - Verified domain isolation engine for Docker (`switchDomain('docker')`) and Kubernetes (`switchDomain('k8s')`).
+    - Verified zero horizontal overflow (`scrollWidth === clientWidth === 1440px`) across Light and Black themes.
