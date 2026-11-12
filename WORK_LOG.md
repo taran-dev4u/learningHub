@@ -27,7 +27,7 @@
 | `index.html` | Universal landing hub, 7 site cards, global catalog search | ✅ Up to date | `build-learning-hub.mjs` |
 | `DSA_Ultimate_Index.html` | 47 patterns, 219 subpatterns, 940 problems, default-collapsed pattern sidebar & full-width layout | ✅ Upgraded & Verified | Playwright + Audit |
 | `cloud_aws_azure.html` | **Cloud Platforms Hub**: AWS (55 concepts), Microsoft Azure (19 concepts), GCP (14 concepts) — 18 subsections, 88 concepts, Multi-Cloud Command Deck, sticky domain switcher, focused view isolation | ✅ Redesigned & Active | Playwright + Audit |
-| `all_tech.html` | **All-in-One Tech & Software Engineering Portal**: 13 disciplines (Linux, Git, Docker, K8s, Terraform, CI/CD, Kafka, Spark, PostgreSQL, Redis, Java, FastAPI, APIs) — 59 subsections, 234 concepts | ✅ Redesigned & Active | Playwright + Audit |
+| `all_tech.html` | **All-in-One Tech & Software Engineering Portal**: 13 disciplines (Linux, Git, Docker, K8s, Terraform, CI/CD, Kafka, Spark, PostgreSQL, Redis, Java, FastAPI, APIs) — 62 subsections, 246 concepts | ✅ Redesigned & Active | Playwright + Audit |
 | `ai_data.html` | **AI & Data Hub**: 4 tracks (AI Engineering, Machine Learning Engineering, Data Science, Data Engineering) — 24 subsections, 96 concepts, Command Deck, sticky pill bar, Domain Isolation Engine | ✅ Redesigned & Active | Playwright + Audit |
 | `ai_engineering.html` | **AI Engineering from Scratch Masterclass**: 20 phases, 542 lessons, full MIT curriculum snapshot, direct link integration | ✅ Active with Hub Breadcrumb | Playwright + Audit |
 | `tech_aws.html` | Standalone AWS Cloud Architecture Masterclass (11 subsections, 55 concepts, Complete Enterprise Services Inventory) | ✅ Deployed & Verified | Playwright + Audit |
@@ -40,7 +40,7 @@
 | `ConvertedDocs/Git/beej_guide_to_git.html` | Brian "Beej" Hall's Quick Guide to Git (Unabridged offline split tutorial, 38 chapters) | ✅ Deployed & Integrated | Playwright + Audit |
 | `tech_docker_k8s.html` | Standalone Docker & Kubernetes Container Orchestration Masterclass (14 subsections, 56 concepts, cgroups, OverlayFS, Multi-Stage, BuildKit, Compose, K8s Control Plane, Pod Lifecycle, Services, Ingress, StatefulSets, Scheduling, Security, Autoscaling, GitOps) | ✅ Expanded & Verified | Playwright + Audit |
 | `tech_cicd.html` | Standalone CI/CD Pipelines & DevOps Automation Masterclass (3 subsections, 12 concepts) | ✅ Deployed | Playwright + Audit |
-| `tech_terraform.html` | Standalone Terraform & Infrastructure as Code Masterclass (3 subsections, 12 concepts) | ✅ Deployed | Playwright + Audit |
+| `tech_terraform.html` | Standalone Terraform & Infrastructure as Code Masterclass (6 subsections, 24 concepts, HCL2, Remote State, DynamoDB Locking, Modules, Refactoring, import/moved blocks, Terragrunt, CI/CD with OIDC, Policy as Code, Sentinel/OPA, terraform test, Continuous Drift Automation) | ✅ Expanded & Verified | Playwright + Audit |
 | `tech_kafka.html` | Standalone Apache Kafka Distributed Streaming Masterclass (4 subsections, 14 concepts) | ✅ Deployed | Playwright + Audit |
 | `tech_postgres.html` | Standalone Database Engineering & PostgreSQL Internals Masterclass (4 subsections, 15 concepts) | ✅ Deployed | Playwright + Audit |
 | `tech_redis.html` | Standalone In-Memory Caching with Redis Masterclass (3 subsections, 12 concepts) | ✅ Deployed | Playwright + Audit |
@@ -646,4 +646,53 @@ The autonomous agent is scheduled via recurring cron notification (`0 */3 * * *`
     - Verified 56 concepts and 14 subsections in `tech_docker_k8s.html`.
     - Verified 234 total concepts in `all_tech.html`.
     - Verified domain isolation engine for Docker (`switchDomain('docker')`) and Kubernetes (`switchDomain('k8s')`).
+    - Verified zero horizontal overflow (`scrollWidth === clientWidth === 1440px`) across Light and Black themes.
+
+### [2026-11-12 14:55 UTC] Daily Expansion: Terraform & Infrastructure as Code Deep Expansion (6 Subsections, 24 Concepts)
+- **Domain Sequence Identification**:
+  - Identified Terraform (Domain 05 in `all_tech.html` / Section 8) as the next domain in sequence following Linux (Domain 01), Git (Domain 02), Docker (Domain 03), and Kubernetes (Domain 04).
+  - Discipline integrated into dedicated standalone masterclass `tech_terraform.html` and central portal `all_tech.html` (Section 8).
+- **Terraform Curriculum Architecture (6 Subsections, 24 Concepts: 8.1.1 to 8.6.4)**:
+  - `8.1 Terraform Core Architecture, HCL2 Syntax & Execution Lifecycle`:
+    - `8.1.1` IaC Declarative Paradigm: Desired State vs Imperative Scripting
+    - `8.1.2` HCL2 Syntax Foundations: Blocks, Arguments, Types & Variable Validation
+    - `8.1.3` The Core Terraform Lifecycle: init, validate, plan, apply & destroy
+    - `8.1.4` Resource Dependency Graph Engine: Implicit vs Explicit (depends_on) Execution Graphs
+  - `8.2 State Management, Remote Backends & Distributed Concurrency`:
+    - `8.2.1` Terraform State Internals: terraform.tfstate Schema, Lineage & Serial
+    - `8.2.2` Remote Backends & Distributed State Locking: S3 + DynamoDB, Azure Blob & GCS
+    - `8.2.3` Sensitive Data in State & Backend Security Hardening
+    - `8.2.4` Environment Isolation: Workspaces vs Directory-Isolated Root Modules
+  - `8.3 Dynamic Configuration, Meta-Arguments & Reusable Module Engineering`:
+    - `8.3.1` Reusable Module Architecture: Root vs Child Modules & Clean Interface Contracts
+    - `8.3.2` Meta-Arguments: count vs for_each & Dynamic Nested Blocks
+    - `8.3.3` HCL Advanced Functions, Expressions & Collection Comprehensions
+    - `8.3.4` Data Sources & Cross-Stack State Sharing: terraform_remote_state
+  - `8.4 Resource Lifecycle Hooks, Refactoring & Advanced State Operations`:
+    - `8.4.1` Resource Lifecycle Meta-Arguments: create_before_destroy, prevent_destroy & ignore_changes
+    - `8.4.2` State Inspection & Surgical CLI Manipulation: state list, show, mv, rm & replace
+    - `8.4.3` Declarative Resource Import & Code Generation: import Blocks (Terraform 1.5+)
+    - `8.4.4` Declarative Architecture Refactoring: moved Blocks (Terraform 1.1+)
+  - `8.5 Multi-Environment Orchestration, Terragrunt & CI/CD GitOps`:
+    - `8.5.1` DRY Architecture with Terragrunt: Remote State Inheritance & Dependency Blocks
+    - `8.5.2` Automated CI/CD Pipelines: GitHub Actions, GitLab CI & Speculative PR Plans
+    - `8.5.3` Terraform Cloud (HCP Terraform) & Terraform Enterprise Architecture
+    - `8.5.4` Multi-Provider & Multi-Region Orchestration: Provider Aliases & AssumeRole Delegation
+  - `8.6 IaC Security, Policy as Code, Testing & Drift Automation`:
+    - `8.6.1` Static Code Analysis, Linting & Security Scanning: TFLint, tfsec & Checkov
+    - `8.6.2` Policy as Code & Guardrails: HashiCorp Sentinel & Open Policy Agent (OPA / Rego)
+    - `8.6.3` Native Integration Testing: The terraform test Framework (Terraform 1.6+)
+    - `8.6.4` Continuous Drift Detection & Automated Self-Healing Workflows
+- **Portal & Masterclass Synchronization**:
+  - `tech_terraform.html`: Expanded from 3 subsections (12 concepts) to **6 subsections (24 concepts)**. Updated hero edition, stats chips (6 subs, 24 concepts, 100% curated, 25+ docs/labs), 0–24 progress bar, search placeholder.
+  - `all_tech.html`: Expanded Section 8 (Terraform) to 24 concepts. Updated total metrics to **13 Disciplines · 62 Subsections · 246 Concepts**. Updated `card-terraform` in Domain Deck.
+  - `tools/build-learning-hub.mjs` & `search-index.json`: Added all 24 Terraform concepts with direct deep-links to global search catalog.
+  - `tools/expand_terraform_masterclass.py`: Atomic, idempotent builder script created.
+- **Verification Suite**:
+  - `python tools/audit_site.py`: **0 findings** across all 792 scanned pages.
+  - `node tools/verify-learning-hub.mjs`: All 16 hub pages passed with all checks green.
+  - Headless Playwright test suite (`scratch/test_terraform_expansion_playwright.py`):
+    - Verified 24 concepts and 6 subsections in `tech_terraform.html`.
+    - Verified 246 total concepts in `all_tech.html`.
+    - Verified domain isolation engine for Terraform (`switchDomain('terraform')`).
     - Verified zero horizontal overflow (`scrollWidth === clientWidth === 1440px`) across Light and Black themes.

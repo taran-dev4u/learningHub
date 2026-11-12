@@ -3565,7 +3565,42 @@ const dockerK8sSearchItems = dockerK8sConcepts.map((item) => ({
   t: `Container Orchestration · ${item.cid}: ${item.t}`,
   s: item.s,
   a: `tech_docker_k8s.html`,
-}));;
+}));
+
+const terraformConcepts = [
+  { cid: "8.1.1", t: "IaC Declarative Paradigm: Desired State vs Imperative Scripting" },
+  { cid: "8.1.2", t: "HCL2 Syntax Foundations: Blocks, Arguments, Types & Variable Validation" },
+  { cid: "8.1.3", t: "The Core Terraform Lifecycle: init, validate, plan, apply & destroy" },
+  { cid: "8.1.4", t: "Resource Dependency Graph Engine: Implicit vs Explicit (depends_on) Execution Graphs" },
+  { cid: "8.2.1", t: "Terraform State Internals: terraform.tfstate Schema, Lineage & Serial" },
+  { cid: "8.2.2", t: "Remote Backends & Distributed State Locking: S3 + DynamoDB, Azure Blob & GCS" },
+  { cid: "8.2.3", t: "Sensitive Data in State & Backend Security Hardening" },
+  { cid: "8.2.4", t: "Environment Isolation: Workspaces vs Directory-Isolated Root Modules" },
+  { cid: "8.3.1", t: "Reusable Module Architecture: Root vs Child Modules & Clean Interface Contracts" },
+  { cid: "8.3.2", t: "Meta-Arguments: count vs for_each & Dynamic Nested Blocks" },
+  { cid: "8.3.3", t: "HCL Advanced Functions, Expressions & Collection Comprehensions" },
+  { cid: "8.3.4", t: "Data Sources & Cross-Stack State Sharing: terraform_remote_state" },
+  { cid: "8.4.1", t: "Resource Lifecycle Meta-Arguments: create_before_destroy, prevent_destroy & ignore_changes" },
+  { cid: "8.4.2", t: "State Inspection & Surgical CLI Manipulation: state list, show, mv, rm & replace" },
+  { cid: "8.4.3", t: "Declarative Resource Import & Code Generation: import Blocks (Terraform 1.5+)" },
+  { cid: "8.4.4", t: "Declarative Architecture Refactoring: moved Blocks (Terraform 1.1+)" },
+  { cid: "8.5.1", t: "DRY Architecture with Terragrunt: Remote State Inheritance & Dependency Blocks" },
+  { cid: "8.5.2", t: "Automated CI/CD Pipelines: GitHub Actions, GitLab CI & Speculative PR Plans" },
+  { cid: "8.5.3", t: "Terraform Cloud (HCP Terraform) & Terraform Enterprise Architecture" },
+  { cid: "8.5.4", t: "Multi-Provider & Multi-Region Orchestration: Provider Aliases & AssumeRole Delegation" },
+  { cid: "8.6.1", t: "Static Code Analysis, Linting & Security Scanning: TFLint, tfsec & Checkov" },
+  { cid: "8.6.2", t: "Policy as Code & Guardrails: HashiCorp Sentinel & Open Policy Agent (OPA / Rego)" },
+  { cid: "8.6.3", t: "Native Integration Testing: The terraform test Framework (Terraform 1.6+)" },
+  { cid: "8.6.4", t: "Continuous Drift Detection & Automated Self-Healing Workflows" },
+];
+
+const terraformSearchItems = terraformConcepts.map((item) => ({
+  k: "cloud",
+  c: `tf-${item.cid}`,
+  t: `Terraform IaC · ${item.cid}: ${item.t}`,
+  s: "Infrastructure as Code (IaC) with Terraform",
+  a: `tech_terraform.html`,
+}));
 
 const allSearchItems = [
   ...data.items.map((item) => ({
@@ -3580,6 +3615,7 @@ const allSearchItems = [
   ...awsSearchItems,
   ...linuxSearchItems,
   ...dockerK8sSearchItems,
+  ...terraformSearchItems,
 ];
 
 write(
