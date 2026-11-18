@@ -3602,6 +3602,41 @@ const terraformSearchItems = terraformConcepts.map((item) => ({
   a: `tech_terraform.html`,
 }));
 
+const cicdConcepts = [
+  { cid: "9.1.1", t: "Continuous Integration vs Continuous Delivery vs Continuous Deployment" },
+  { cid: "9.1.2", t: "Trunk-Based Development, Short-Lived Feature Branches & Merge Queues" },
+  { cid: "9.1.3", t: "Deterministic Builds, Dependency Caching, Hermetic Environments & Bazel/Nix" },
+  { cid: "9.1.4", t: "Automated Testing Pyramid in CI: Unit, Integration, Contract, E2E & Flaky Test Quarantine" },
+  { cid: "9.2.1", t: "Rolling Updates & Recreate Strategies: Readiness Gates & PodDisruptionBudgets" },
+  { cid: "9.2.2", t: "Blue/Green Deployments: Traffic Cutover, Instant Rollbacks & Database Schema Compatibility" },
+  { cid: "9.2.3", t: "Canary Releases & Traffic Splitting: Argo Rollouts, Flagger & Automated Metric Rollbacks" },
+  { cid: "9.2.4", t: "Feature Flags, Dark Launches, Shadow Traffic & Decoupling Deploy from Release" },
+  { cid: "9.3.1", t: "GitHub Actions Core: Events, Triggers, Jobs, Matrix Strategies & Concurrency Controls" },
+  { cid: "9.3.2", t: "Reusable Workflows, Composite Actions & Marketplace Action Version Pinning (SHA Pinning)" },
+  { cid: "9.3.3", t: "Secretless Cloud Auth: OIDC Federation with AWS IAM, Azure & GCP Workload Identity" },
+  { cid: "9.3.4", t: "Runners & Build Optimization: Ephemeral Self-Hosted Runners, ARC & BuildKit Cache" },
+  { cid: "9.4.1", t: "Jenkins Architecture: Controller-Agent Topology, Ephemeral Kubernetes Agents & JCasC" },
+  { cid: "9.4.2", t: "Declarative vs Scripted Jenkinsfiles: Stages, Parallel Execution, Shared Libraries & Post Blocks" },
+  { cid: "9.4.3", t: "GitLab CI/CD Architecture: .gitlab-ci.yml DAG (needs:), Environments, Review Apps & Runners" },
+  { cid: "9.4.4", t: "Cloud-Native & Code-Native CI: Tekton Pipelines (Kubernetes CRDs) & Dagger Engines" },
+  { cid: "9.5.1", t: "Artifact Repositories & Semantic Versioning: JFrog Artifactory, Sonatype Nexus, GHCR & Immutable Tags" },
+  { cid: "9.5.2", t: "Shift-Left Security Scanning: SAST (Semgrep/CodeQL), DAST, SCA Dependency Audits & Secret Detection" },
+  { cid: "9.5.3", t: "Software Supply Chain Integrity: SBOM Generation (Syft), SLSA Provenance & Sigstore Cosign Verification" },
+  { cid: "9.5.4", t: "Dynamic Secrets & Environment Promotion Gates: HashiCorp Vault, OIDC Secrets & Manual Approvals" },
+  { cid: "9.6.1", t: "Push vs Pull Deployment Models: GitOps Principles, State Reconciliation & Drift Prevention" },
+  { cid: "9.6.2", t: "ArgoCD Architecture: Application CRDs, ApplicationSets, Sync Waves, Hooks & Multi-Cluster Delivery" },
+  { cid: "9.6.3", t: "Flux CD Architecture: GitRepository/Kustomization Controllers, Image Automation & Helm Releases" },
+  { cid: "9.6.4", t: "Release Observability & DORA Metrics: Deployment Frequency, Lead Time, CFR, MTTR & OTel CI Traces" },
+];
+
+const cicdSearchItems = cicdConcepts.map((item) => ({
+  k: "cloud",
+  c: `cicd-${item.cid}`,
+  t: `CI/CD & DevOps · ${item.cid}: ${item.t}`,
+  s: "CI/CD Pipelines & DevOps Automation",
+  a: `tech_cicd.html`,
+}));
+
 const allSearchItems = [
   ...data.items.map((item) => ({
     k: item.domain,
@@ -3616,6 +3651,7 @@ const allSearchItems = [
   ...linuxSearchItems,
   ...dockerK8sSearchItems,
   ...terraformSearchItems,
+  ...cicdSearchItems,
 ];
 
 write(

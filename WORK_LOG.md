@@ -27,7 +27,7 @@
 | `index.html` | Universal landing hub, 7 site cards, global catalog search | ✅ Up to date | `build-learning-hub.mjs` |
 | `DSA_Ultimate_Index.html` | 47 patterns, 219 subpatterns, 940 problems, default-collapsed pattern sidebar & full-width layout | ✅ Upgraded & Verified | Playwright + Audit |
 | `cloud_aws_azure.html` | **Cloud Platforms Hub**: AWS (55 concepts), Microsoft Azure (19 concepts), GCP (14 concepts) — 18 subsections, 88 concepts, Multi-Cloud Command Deck, sticky domain switcher, focused view isolation | ✅ Redesigned & Active | Playwright + Audit |
-| `all_tech.html` | **All-in-One Tech & Software Engineering Portal**: 13 disciplines (Linux, Git, Docker, K8s, Terraform, CI/CD, Kafka, Spark, PostgreSQL, Redis, Java, FastAPI, APIs) — 62 subsections, 246 concepts | ✅ Redesigned & Active | Playwright + Audit |
+| `all_tech.html` | **All-in-One Tech & Software Engineering Portal**: 13 disciplines (Linux, Git, Docker, K8s, Terraform, CI/CD, Kafka, Spark, PostgreSQL, Redis, Java, FastAPI, APIs) — 65 subsections, 258 concepts | ✅ Redesigned & Active | Playwright + Audit |
 | `ai_data.html` | **AI & Data Hub**: 4 tracks (AI Engineering, Machine Learning Engineering, Data Science, Data Engineering) — 24 subsections, 96 concepts, Command Deck, sticky pill bar, Domain Isolation Engine | ✅ Redesigned & Active | Playwright + Audit |
 | `ai_engineering.html` | **AI Engineering from Scratch Masterclass**: 20 phases, 542 lessons, full MIT curriculum snapshot, direct link integration | ✅ Active with Hub Breadcrumb | Playwright + Audit |
 | `tech_aws.html` | Standalone AWS Cloud Architecture Masterclass (11 subsections, 55 concepts, Complete Enterprise Services Inventory) | ✅ Deployed & Verified | Playwright + Audit |
@@ -39,7 +39,7 @@
 | `Git_Tutorial/index.html` | **Git Master Tutorial (Beej's Guide to Git)**: Split-pane interactive reader (38 chapters, 270 topics, instant search, reading tracker) | ✅ Deployed & Verified | Playwright + Audit |
 | `ConvertedDocs/Git/beej_guide_to_git.html` | Brian "Beej" Hall's Quick Guide to Git (Unabridged offline split tutorial, 38 chapters) | ✅ Deployed & Integrated | Playwright + Audit |
 | `tech_docker_k8s.html` | Standalone Docker & Kubernetes Container Orchestration Masterclass (14 subsections, 56 concepts, cgroups, OverlayFS, Multi-Stage, BuildKit, Compose, K8s Control Plane, Pod Lifecycle, Services, Ingress, StatefulSets, Scheduling, Security, Autoscaling, GitOps) | ✅ Expanded & Verified | Playwright + Audit |
-| `tech_cicd.html` | Standalone CI/CD Pipelines & DevOps Automation Masterclass (3 subsections, 12 concepts) | ✅ Deployed | Playwright + Audit |
+| `tech_cicd.html` | Standalone CI/CD Pipelines & DevOps Automation Masterclass (6 subsections, 24 concepts, Trunk-Based CI, GitHub Actions OIDC, Jenkins/GitLab/Tekton, Blue/Green & Canary Rollouts, SBOM/SLSA/Cosign DevSecOps, ArgoCD/Flux GitOps, DORA Metrics) | ✅ Expanded & Verified | Playwright + Audit |
 | `tech_terraform.html` | Standalone Terraform & Infrastructure as Code Masterclass (6 subsections, 24 concepts, HCL2, Remote State, DynamoDB Locking, Modules, Refactoring, import/moved blocks, Terragrunt, CI/CD with OIDC, Policy as Code, Sentinel/OPA, terraform test, Continuous Drift Automation) | ✅ Expanded & Verified | Playwright + Audit |
 | `tech_kafka.html` | Standalone Apache Kafka Distributed Streaming Masterclass (4 subsections, 14 concepts) | ✅ Deployed | Playwright + Audit |
 | `tech_postgres.html` | Standalone Database Engineering & PostgreSQL Internals Masterclass (4 subsections, 15 concepts) | ✅ Deployed | Playwright + Audit |
@@ -696,3 +696,51 @@ The autonomous agent is scheduled via recurring cron notification (`0 */3 * * *`
     - Verified 246 total concepts in `all_tech.html`.
     - Verified domain isolation engine for Terraform (`switchDomain('terraform')`).
     - Verified zero horizontal overflow (`scrollWidth === clientWidth === 1440px`) across Light and Black themes.
+
+### [2026-11-18 17:04 UTC] Daily Expansion: CI/CD Pipelines & DevOps Automation Deep Expansion (6 Subsections, 24 Concepts)
+- **Domain Sequence Identification**:
+  - Identified CI/CD Pipelines & DevOps Automation (Domain 06 in `all_tech.html` / Section 9) as the next domain in sequence following Linux (Domain 01), Git (Domain 02), Docker (Domain 03), Kubernetes (Domain 04), and Terraform (Domain 05).
+  - Discipline synchronized across standalone masterclass `tech_cicd.html` and central portal `all_tech.html` (Section 9).
+- **CI/CD Curriculum Architecture (6 Subsections, 24 Concepts: 9.1.1 to 9.6.4)**:
+  - `9.1 CI/CD Foundations, Branching Workflows & Build Pipelines`:
+    - `9.1.1` Continuous Integration vs Continuous Delivery vs Continuous Deployment
+    - `9.1.2` Trunk-Based Development, Short-Lived Feature Branches & Merge Queues
+    - `9.1.3` Deterministic Builds, Dependency Caching, Hermetic Environments & Bazel/Nix
+    - `9.1.4` Automated Testing Pyramid in CI: Unit, Integration, Contract, E2E & Flaky Test Quarantine
+  - `9.2 Progressive Delivery, Zero-Downtime Deployments & Release Engineering`:
+    - `9.2.1` Rolling Updates & Recreate Strategies: Readiness Gates & PodDisruptionBudgets
+    - `9.2.2` Blue/Green Deployments: Traffic Cutover, Instant Rollbacks & Database Schema Compatibility
+    - `9.2.3` Canary Releases & Traffic Splitting: Argo Rollouts, Flagger & Automated Metric Rollbacks
+    - `9.2.4` Feature Flags, Dark Launches, Shadow Traffic & Decoupling Deploy from Release
+  - `9.3 GitHub Actions Architecture, Workflows & Enterprise Scale`:
+    - `9.3.1` GitHub Actions Core: Events, Triggers, Jobs, Matrix Strategies & Concurrency Controls
+    - `9.3.2` Reusable Workflows, Composite Actions & Marketplace Action Version Pinning (SHA Pinning)
+    - `9.3.3` Secretless Cloud Auth: OIDC Federation with AWS IAM, Azure & GCP Workload Identity
+    - `9.3.4` Runners & Build Optimization: Ephemeral Self-Hosted Runners, ARC & BuildKit Cache
+  - `9.4 Enterprise CI Engines: Jenkins, GitLab CI & Cloud-Native Pipelines`:
+    - `9.4.1` Jenkins Architecture: Controller-Agent Topology, Ephemeral Kubernetes Agents & JCasC
+    - `9.4.2` Declarative vs Scripted Jenkinsfiles: Stages, Parallel Execution, Shared Libraries & Post Blocks
+    - `9.4.3` GitLab CI/CD Architecture: .gitlab-ci.yml DAG (needs:), Environments, Review Apps & Runners
+    - `9.4.4` Cloud-Native & Code-Native CI: Tekton Pipelines (Kubernetes CRDs) & Dagger Engines
+  - `9.5 Artifact Management, Container Supply Chain Security & DevSecOps`:
+    - `9.5.1` Artifact Repositories & Semantic Versioning: JFrog Artifactory, Sonatype Nexus, GHCR & Immutable Tags
+    - `9.5.2` Shift-Left Security Scanning: SAST (Semgrep/CodeQL), DAST, SCA Dependency Audits & Secret Detection
+    - `9.5.3` Software Supply Chain Integrity: SBOM Generation (Syft), SLSA Provenance & Sigstore Cosign Verification
+    - `9.5.4` Dynamic Secrets & Environment Promotion Gates: HashiCorp Vault, OIDC Secrets & Manual Approvals
+  - `9.6 GitOps Continuous Delivery, DORA Metrics & Pipeline Observability`:
+    - `9.6.1` Push vs Pull Deployment Models: GitOps Principles, State Reconciliation & Drift Prevention
+    - `9.6.2` ArgoCD Architecture: Application CRDs, ApplicationSets, Sync Waves, Hooks & Multi-Cluster Delivery
+    - `9.6.3` Flux CD Architecture: GitRepository/Kustomization Controllers, Image Automation & Helm Releases
+    - `9.6.4` Release Observability & DORA Metrics: Deployment Frequency, Lead Time, CFR, MTTR & OTel CI Traces
+- **Portal, Masterclass & Search Synchronization**:
+  - `tech_cicd.html`: Expanded from 3 subsections (12 concepts) to **6 subsections (24 concepts)** with oEmbed-verified YouTube walkthroughs and HTTP-200 verified official documentation URLs.
+  - `all_tech.html`: Expanded Section 9 (CI/CD) to 24 concepts and updated `card-cicd` and portal totals to **13 Disciplines · 65 Subsections · 258 Concepts**.
+  - `tools/build-learning-hub.mjs` & `search-index.json`: Added all 24 CI/CD concepts to global search catalog.
+  - `tools/expand_cicd_masterclass.py`: Atomic, idempotent builder script created.
+- **Verification Suite**:
+  - `python tools/audit_site.py`: **0 findings** across all 792 scanned pages.
+  - `node tools/verify-learning-hub.mjs`: All 16 hub pages passed with all checks green.
+  - Headless Playwright test suite (`scratch/test_cicd_expansion_playwright.py`):
+    - Verified 24 concepts, 6 subsections, and study-rail mount in `tech_cicd.html`.
+    - Verified 258 total concepts and `switchDomain('cicd')` isolation in `all_tech.html`.
+    - Verified 24 CI/CD entries in `search-index.json`, zero page/console errors, and zero horizontal overflow (`scrollWidth === clientWidth === 1440px`) across Light and Black themes.
