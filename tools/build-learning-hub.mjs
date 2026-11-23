@@ -3637,6 +3637,41 @@ const cicdSearchItems = cicdConcepts.map((item) => ({
   a: `tech_cicd.html`,
 }));
 
+const kafkaConcepts = [
+  { cid: "10.1.1", t: "Distributed Commit Log: Append-Only Segments, Offsets & Sequential Disk I/O" },
+  { cid: "10.1.2", t: "Broker Internals: Linux OS Page Cache, Zero-Copy sendfile() & Network Threads" },
+  { cid: "10.1.3", t: "KRaft Consensus Architecture: ZooKeeper Elimination, Raft Controller Quorum & Metadata Log" },
+  { cid: "10.1.4", t: "Topics, Partitions & Key-Based Sharding: Ordering Guarantees, Partition Sizing & Hot Partitions" },
+  { cid: "10.2.1", t: "Partition Replication: Leader/Follower Model, In-Sync Replicas (ISR) & Unclean Leader Election" },
+  { cid: "10.2.2", t: "High Watermark (HW), Leader Epoch & Log Truncation Consistency" },
+  { cid: "10.2.3", t: "Log Segments, Index Files (.index, .timeindex) & Retention Policies (Time/Size)" },
+  { cid: "10.2.4", t: "Log Compaction (cleanup.policy=compact): Tombstones, Cleaner Threads & State Materialization" },
+  { cid: "10.3.1", t: "Producer Pipeline: Serialization, Partitioners (Sticky/Custom), RecordAccumulator & Sender Thread" },
+  { cid: "10.3.2", t: "Batching & Compression Tuning: linger.ms, batch.size, LZ4/Zstd/Snappy & Throughput vs Latency" },
+  { cid: "10.3.3", t: "Durability & Ack Semantics: acks=0/1/all, min.insync.replicas & retries / delivery.timeout.ms" },
+  { cid: "10.3.4", t: "Idempotent Producers (PID, Sequence Numbers) & Transactional EOS (TransactionCoordinator, read_committed)" },
+  { cid: "10.4.1", t: "Consumer Group Coordination: GroupCoordinator, __consumer_offsets, Poll Loop & Heartbeats" },
+  { cid: "10.4.2", t: "Partition Assignment & Rebalancing: Eager (Stop-the-World), CooperativeStickyAssignor & KIP-848" },
+  { cid: "10.4.3", t: "Offset Commit Strategies: Auto-Commit Risks, Manual commitSync/commitAsync & Static Membership" },
+  { cid: "10.4.4", t: "Poison Pills, Non-Blocking Retry Topics & Dead-Letter Queues (DLQ) with Backpressure" },
+  { cid: "10.5.1", t: "Schema Registry & Wire Format: Avro, Protobuf, JSON Schema & Compatibility Modes" },
+  { cid: "10.5.2", t: "Kafka Connect Architecture: Workers (Standalone vs Distributed), Source/Sink Connectors & SMTs" },
+  { cid: "10.5.3", t: "Change Data Capture (CDC) with Debezium: WAL Log Mining, Outbox Pattern & Snapshot Modes" },
+  { cid: "10.5.4", t: "Kafka Streams & ksqlDB: KStream, KTable, RocksDB State Stores, Changelog Topics & Windowing" },
+  { cid: "10.6.1", t: "Tiered Storage (KIP-405) & RemoteLogManager: S3/GCS Object Offloading & Infinite Retention" },
+  { cid: "10.6.2", t: "Multi-Cluster Geo-Replication: MirrorMaker 2 (MM2), Active-Active Topologies & Offset Translation" },
+  { cid: "10.6.3", t: "Kafka Security: TLS Encryption, SASL (SCRAM/PLAIN/OAUTHBEARER), mTLS & Granular ACLs" },
+  { cid: "10.6.4", t: "Production Observability & Capacity Planning: Consumer Lag, UnderReplicatedPartitions, JMX & Cruise Control" },
+];
+
+const kafkaSearchItems = kafkaConcepts.map((item) => ({
+  k: "cloud",
+  c: `kafka-${item.cid}`,
+  t: `Apache Kafka · ${item.cid}: ${item.t}`,
+  s: "Apache Kafka Distributed Streaming",
+  a: `tech_kafka.html`,
+}));
+
 const allSearchItems = [
   ...data.items.map((item) => ({
     k: item.domain,
@@ -3652,6 +3687,7 @@ const allSearchItems = [
   ...dockerK8sSearchItems,
   ...terraformSearchItems,
   ...cicdSearchItems,
+  ...kafkaSearchItems,
 ];
 
 write(

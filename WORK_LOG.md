@@ -27,7 +27,7 @@
 | `index.html` | Universal landing hub, 7 site cards, global catalog search | ✅ Up to date | `build-learning-hub.mjs` |
 | `DSA_Ultimate_Index.html` | 47 patterns, 219 subpatterns, 940 problems, default-collapsed pattern sidebar & full-width layout | ✅ Upgraded & Verified | Playwright + Audit |
 | `cloud_aws_azure.html` | **Cloud Platforms Hub**: AWS (55 concepts), Microsoft Azure (19 concepts), GCP (14 concepts) — 18 subsections, 88 concepts, Multi-Cloud Command Deck, sticky domain switcher, focused view isolation | ✅ Redesigned & Active | Playwright + Audit |
-| `all_tech.html` | **All-in-One Tech & Software Engineering Portal**: 13 disciplines (Linux, Git, Docker, K8s, Terraform, CI/CD, Kafka, Spark, PostgreSQL, Redis, Java, FastAPI, APIs) — 65 subsections, 258 concepts | ✅ Redesigned & Active | Playwright + Audit |
+| `all_tech.html` | **All-in-One Tech & Software Engineering Portal**: 13 disciplines (Linux, Git, Docker, K8s, Terraform, CI/CD, Kafka, Spark, PostgreSQL, Redis, Java, FastAPI, APIs) — 67 subsections, 268 concepts | ✅ Redesigned & Active | Playwright + Audit |
 | `ai_data.html` | **AI & Data Hub**: 4 tracks (AI Engineering, Machine Learning Engineering, Data Science, Data Engineering) — 24 subsections, 96 concepts, Command Deck, sticky pill bar, Domain Isolation Engine | ✅ Redesigned & Active | Playwright + Audit |
 | `ai_engineering.html` | **AI Engineering from Scratch Masterclass**: 20 phases, 542 lessons, full MIT curriculum snapshot, direct link integration | ✅ Active with Hub Breadcrumb | Playwright + Audit |
 | `tech_aws.html` | Standalone AWS Cloud Architecture Masterclass (11 subsections, 55 concepts, Complete Enterprise Services Inventory) | ✅ Deployed & Verified | Playwright + Audit |
@@ -41,7 +41,7 @@
 | `tech_docker_k8s.html` | Standalone Docker & Kubernetes Container Orchestration Masterclass (14 subsections, 56 concepts, cgroups, OverlayFS, Multi-Stage, BuildKit, Compose, K8s Control Plane, Pod Lifecycle, Services, Ingress, StatefulSets, Scheduling, Security, Autoscaling, GitOps) | ✅ Expanded & Verified | Playwright + Audit |
 | `tech_cicd.html` | Standalone CI/CD Pipelines & DevOps Automation Masterclass (6 subsections, 24 concepts, Trunk-Based CI, GitHub Actions OIDC, Jenkins/GitLab/Tekton, Blue/Green & Canary Rollouts, SBOM/SLSA/Cosign DevSecOps, ArgoCD/Flux GitOps, DORA Metrics) | ✅ Expanded & Verified | Playwright + Audit |
 | `tech_terraform.html` | Standalone Terraform & Infrastructure as Code Masterclass (6 subsections, 24 concepts, HCL2, Remote State, DynamoDB Locking, Modules, Refactoring, import/moved blocks, Terragrunt, CI/CD with OIDC, Policy as Code, Sentinel/OPA, terraform test, Continuous Drift Automation) | ✅ Expanded & Verified | Playwright + Audit |
-| `tech_kafka.html` | Standalone Apache Kafka Distributed Streaming Masterclass (4 subsections, 14 concepts) | ✅ Deployed | Playwright + Audit |
+| `tech_kafka.html` | Standalone Apache Kafka Distributed Streaming Masterclass (6 subsections, 24 concepts, Commit Log/Zero-Copy, KRaft, ISR/ELR/Compaction, Idempotent EOS Producers, CooperativeSticky/KIP-848, Schema Registry, Debezium CDC, Kafka Streams, Tiered Storage KIP-405, MirrorMaker 2, TLS/SASL/ACLs & Observability) | ✅ Expanded & Verified | Playwright + Audit |
 | `tech_postgres.html` | Standalone Database Engineering & PostgreSQL Internals Masterclass (4 subsections, 15 concepts) | ✅ Deployed | Playwright + Audit |
 | `tech_redis.html` | Standalone In-Memory Caching with Redis Masterclass (3 subsections, 12 concepts) | ✅ Deployed | Playwright + Audit |
 | `tech_java.html` | Standalone Java & Spring Boot Microservices Masterclass (4 subsections, 16 concepts) | ✅ Deployed | Playwright + Audit |
@@ -744,3 +744,51 @@ The autonomous agent is scheduled via recurring cron notification (`0 */3 * * *`
     - Verified 24 concepts, 6 subsections, and study-rail mount in `tech_cicd.html`.
     - Verified 258 total concepts and `switchDomain('cicd')` isolation in `all_tech.html`.
     - Verified 24 CI/CD entries in `search-index.json`, zero page/console errors, and zero horizontal overflow (`scrollWidth === clientWidth === 1440px`) across Light and Black themes.
+
+### [2026-11-22 19:24 UTC] Daily Expansion: Apache Kafka Distributed Streaming Deep Expansion (6 Subsections, 24 Concepts)
+- **Domain Sequence Identification**:
+  - Identified Apache Kafka Distributed Streaming (Domain 07 in `all_tech.html` / Section 10) as the next domain in sequence following Linux (Domain 01), Git (Domain 02), Docker (Domain 03), Kubernetes (Domain 04), Terraform (Domain 05), and CI/CD (Domain 06).
+  - Synchronized across standalone masterclass `tech_kafka.html` and central portal `all_tech.html` (Section 10).
+- **Apache Kafka Curriculum Architecture (6 Subsections, 24 Concepts: 10.1.1 to 10.6.4)**:
+  - `10.1 Kafka Architecture, Distributed Commit Log & KRaft Quorum`:
+    - `10.1.1` Distributed Commit Log: Append-Only Segments, Offsets & Sequential Disk I/O
+    - `10.1.2` Broker Internals: Linux OS Page Cache, Zero-Copy sendfile() & Network Threads
+    - `10.1.3` KRaft Consensus Architecture: ZooKeeper Elimination, Raft Controller Quorum & Metadata Log
+    - `10.1.4` Topics, Partitions & Key-Based Sharding: Ordering Guarantees, Partition Sizing & Hot Partitions
+  - `10.2 Replication, Durability, Storage & Log Compaction`:
+    - `10.2.1` Partition Replication: Leader/Follower Model, In-Sync Replicas (ISR) & Unclean Leader Election
+    - `10.2.2` High Watermark (HW), Leader Epoch & Log Truncation Consistency
+    - `10.2.3` Log Segments, Index Files (.index, .timeindex) & Retention Policies (Time/Size)
+    - `10.2.4` Log Compaction (cleanup.policy=compact): Tombstones, Cleaner Threads & State Materialization
+  - `10.3 Producer Internals, Delivery Guarantees & Exactly-Once Semantics (EOS)`:
+    - `10.3.1` Producer Pipeline: Serialization, Partitioners (Sticky/Custom), RecordAccumulator & Sender Thread
+    - `10.3.2` Batching & Compression Tuning: linger.ms, batch.size, LZ4/Zstd/Snappy & Throughput vs Latency
+    - `10.3.3` Durability & Ack Semantics: acks=0/1/all, min.insync.replicas & retries / delivery.timeout.ms
+    - `10.3.4` Idempotent Producers (PID, Sequence Numbers) & Transactional EOS (TransactionCoordinator, read_committed)
+  - `10.4 Consumer Groups, Rebalancing Protocols & Resilience Patterns`:
+    - `10.4.1` Consumer Group Coordination: GroupCoordinator, __consumer_offsets, Poll Loop & Heartbeats
+    - `10.4.2` Partition Assignment & Rebalancing: Eager (Stop-the-World), CooperativeStickyAssignor & KIP-848
+    - `10.4.3` Offset Commit Strategies: Auto-Commit Risks, Manual commitSync/commitAsync & Static Membership
+    - `10.4.4` Poison Pills, Non-Blocking Retry Topics & Dead-Letter Queues (DLQ) with Backpressure
+  - `10.5 Kafka Ecosystem: Schema Registry, Kafka Connect & Kafka Streams`:
+    - `10.5.1` Schema Registry & Wire Format: Avro, Protobuf, JSON Schema & Compatibility Modes
+    - `10.5.2` Kafka Connect Architecture: Workers (Standalone vs Distributed), Source/Sink Connectors & SMTs
+    - `10.5.3` Change Data Capture (CDC) with Debezium: WAL Log Mining, Outbox Pattern & Snapshot Modes
+    - `10.5.4` Kafka Streams & ksqlDB: KStream, KTable, RocksDB State Stores, Changelog Topics & Windowing
+  - `10.6 Enterprise Operations, Tiered Storage, Geo-Replication & Observability`:
+    - `10.6.1` Tiered Storage (KIP-405) & RemoteLogManager: S3/GCS Object Offloading & Infinite Retention
+    - `10.6.2` Multi-Cluster Geo-Replication: MirrorMaker 2 (MM2), Active-Active Topologies & Offset Translation
+    - `10.6.3` Kafka Security: TLS Encryption, SASL (SCRAM/PLAIN/OAUTHBEARER), mTLS & Granular ACLs
+    - `10.6.4` Production Observability & Capacity Planning: Consumer Lag, UnderReplicatedPartitions, JMX & Cruise Control
+- **Portal, Masterclass & Search Synchronization**:
+  - `tech_kafka.html`: Expanded from 4 subsections (14 concepts) to **6 subsections (24 concepts)** with oEmbed-verified YouTube walkthroughs and HTTP-200 verified official documentation URLs.
+  - `all_tech.html`: Expanded Section 10 (Kafka) to 24 concepts and updated `card-kafka` and portal totals to **13 Disciplines · 67 Subsections · 268 Concepts**.
+  - `tools/build-learning-hub.mjs` & `search-index.json`: Added all 24 Kafka concepts to the global search catalog.
+  - `tools/expand_kafka_masterclass.py`: Atomic, idempotent builder script created.
+- **Verification Suite**:
+  - `python tools/audit_site.py`: **0 findings** across all 792 scanned pages.
+  - `node tools/verify-learning-hub.mjs`: All 16 hub pages passed with all checks green.
+  - Headless Playwright test suite (`scratch/test_kafka_expansion_playwright.py`):
+    - Verified 24 concepts, 6 subsections, and study-rail mount (3 buttons) in `tech_kafka.html`.
+    - Verified 268 total concepts and `switchDomain('kafka')` isolation in `all_tech.html`.
+    - Verified 24 Kafka entries in `search-index.json`, zero page/console errors, and zero horizontal overflow (`scrollWidth === clientWidth === 1440px`) across Light and Black themes.
