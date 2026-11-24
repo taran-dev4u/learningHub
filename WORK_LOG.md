@@ -27,13 +27,13 @@
 | `index.html` | Universal landing hub, 7 site cards, global catalog search | ✅ Up to date | `build-learning-hub.mjs` |
 | `DSA_Ultimate_Index.html` | 47 patterns, 219 subpatterns, 940 problems, default-collapsed pattern sidebar & full-width layout | ✅ Upgraded & Verified | Playwright + Audit |
 | `cloud_aws_azure.html` | **Cloud Platforms Hub**: AWS (55 concepts), Microsoft Azure (19 concepts), GCP (14 concepts) — 18 subsections, 88 concepts, Multi-Cloud Command Deck, sticky domain switcher, focused view isolation | ✅ Redesigned & Active | Playwright + Audit |
-| `all_tech.html` | **All-in-One Tech & Software Engineering Portal**: 13 disciplines (Linux, Git, Docker, K8s, Terraform, CI/CD, Kafka, Spark, PostgreSQL, Redis, Java, FastAPI, APIs) — 67 subsections, 268 concepts | ✅ Redesigned & Active | Playwright + Audit |
+| `all_tech.html` | **All-in-One Tech & Software Engineering Portal**: 13 disciplines (Linux, Git, Docker, K8s, Terraform, CI/CD, Kafka, Spark, PostgreSQL, Redis, Java, FastAPI, APIs) — 69 subsections, 279 concepts | ✅ Redesigned & Active | Playwright + Audit |
 | `ai_data.html` | **AI & Data Hub**: 4 tracks (AI Engineering, Machine Learning Engineering, Data Science, Data Engineering) — 24 subsections, 96 concepts, Command Deck, sticky pill bar, Domain Isolation Engine | ✅ Redesigned & Active | Playwright + Audit |
 | `ai_engineering.html` | **AI Engineering from Scratch Masterclass**: 20 phases, 542 lessons, full MIT curriculum snapshot, direct link integration | ✅ Active with Hub Breadcrumb | Playwright + Audit |
 | `tech_aws.html` | Standalone AWS Cloud Architecture Masterclass (11 subsections, 55 concepts, Complete Enterprise Services Inventory) | ✅ Deployed & Verified | Playwright + Audit |
 | `tech_azure.html` | Standalone Microsoft Azure Cloud Architecture Masterclass (4 subsections, 19 concepts) | ✅ Deployed | Playwright + Audit |
 | `tech_gcp.html` | Standalone Google Cloud Platform Architecture Masterclass (3 subsections, 14 concepts) | ✅ Deployed | Playwright + Audit |
-| `tech_spark.html` | Standalone Apache Spark Big Data Processing Masterclass (4 subsections, 13 concepts) | ✅ Deployed | Playwright + Audit |
+| `tech_spark.html` | Standalone Apache Spark Big Data Processing Masterclass (6 subsections, 24 concepts, Driver/Executors, Spark Connect, RDD Lineage, Catalyst/Tungsten/AQE, Joins/Memory/Skew, PySpark Arrow, Parquet/Iceberg/Delta, Structured Streaming, Spark UI) | ✅ Expanded & Verified | Playwright + Audit |
 | `tech_linux.html` | Standalone Linux & Terminal Power Engineering Masterclass (6 subsections, 24 concepts, VFS, ACLs, CFS, Memory & Networking) | ✅ Deployed & Verified | Playwright + Audit |
 | `tech_git.html` | Standalone Git & GitHub Architecture Masterclass (6 subsections, 28 concepts, Beej's Guide integration) | ✅ Deployed | Playwright + Audit |
 | `Git_Tutorial/index.html` | **Git Master Tutorial (Beej's Guide to Git)**: Split-pane interactive reader (38 chapters, 270 topics, instant search, reading tracker) | ✅ Deployed & Verified | Playwright + Audit |
@@ -792,3 +792,51 @@ The autonomous agent is scheduled via recurring cron notification (`0 */3 * * *`
     - Verified 24 concepts, 6 subsections, and study-rail mount (3 buttons) in `tech_kafka.html`.
     - Verified 268 total concepts and `switchDomain('kafka')` isolation in `all_tech.html`.
     - Verified 24 Kafka entries in `search-index.json`, zero page/console errors, and zero horizontal overflow (`scrollWidth === clientWidth === 1440px`) across Light and Black themes.
+
+### [2026-11-24 17:55 UTC] Daily Expansion: Apache Spark Big Data Engine Deep Expansion (6 Subsections, 24 Concepts)
+- **Domain Sequence Identification**:
+  - Identified Apache Spark Big Data Engine (Domain 08 in `all_tech.html` / Section 11) as the next domain in sequence following Linux (Domain 01), Git (Domain 02), Docker (Domain 03), Kubernetes (Domain 04), Terraform (Domain 05), CI/CD (Domain 06), and Apache Kafka (Domain 07).
+  - Synchronized across standalone masterclass `tech_spark.html` and central portal `all_tech.html` (Section 11).
+- **Apache Spark Curriculum Architecture (6 Subsections, 24 Concepts: 11.1.1 to 11.6.4)**:
+  - `11.1 Spark Architecture, Cluster Topologies & DAG Execution Engine`:
+    - `11.1.1` Spark Cluster Architecture: Driver Program, Cluster Managers (K8s, YARN) & Executors
+    - `11.1.2` Execution Hierarchy: Applications, Jobs, Stages, Tasks & Data Locality
+    - `11.1.3` Narrow vs Wide Dependencies & Shuffle Mechanics (Sort Shuffle & BypassMergeSort)
+    - `11.1.4` Spark Connect (Client-Server gRPC) & Decoupled Spark 4.0 Architecture
+  - `11.2 Resilient Distributed Datasets (RDDs), Lineage & Shared Variables`:
+    - `11.2.1` RDD Internals: Immutability, Partitioning, Compute() & Deterministic Lineage Graphs
+    - `11.2.2` Lazy Transformations vs Eager Actions: Pipelining, reduceByKey vs groupByKey & collect() Traps
+    - `11.2.3` Fault Tolerance: Lineage Graph Recomputation vs Reliable Checkpointing (HDFS/S3)
+    - `11.2.4` Shared Variables: Broadcast Variables (TorrentBroadcast) & Distributed Accumulators
+  - `11.3 DataFrames, Spark SQL, Catalyst Optimizer & Tungsten Engine`:
+    - `11.3.1` Structured APIs: DataFrames, Typed Datasets, Encoders & Unified Spark SQL Engine
+    - `11.3.2` Catalyst Optimizer: Analysis, Logical Optimization, Physical Planning & Cost-Based Optimization
+    - `11.3.3` Tungsten Execution Engine: Off-Heap Binary Memory, Cache-Aware Layout & Whole-Stage Codegen
+    - `11.3.4` Adaptive Query Execution (AQE): Dynamic Partition Coalescing, Join Switching & Skew Mitigation
+  - `11.4 Joins, Shuffle Tuning, Memory Management & Skew Elimination`:
+    - `11.4.1` Distributed Join Strategies: Broadcast Hash Join (BHJ), Shuffle Hash (SHJ) & Sort-Merge Join (SMJ)
+    - `11.4.2` Unified Memory Management: Execution vs Storage Pools, Off-Heap & Disk Spilling
+    - `11.4.3` Partition Sizing & Shuffle Tuning: coalesce() vs repartition(), Small Files & Push-Based Shuffle
+    - `11.4.4` Diagnosing & Fixing Data Skew: Key Salting, Null Isolation & AQE Skew Join Optimization
+  - `11.5 PySpark Optimization, Columnar Storage & Open Lakehouse Formats`:
+    - `11.5.1` PySpark Execution Internals: Py4J Bridge, Arrow Vectorized UDFs & Pandas API on Spark
+    - `11.5.2` Columnar Storage Formats: Apache Parquet, ORC, Row Groups, Compression & Predicate Pushdown
+    - `11.5.3` Open Lakehouse Table Formats: Apache Iceberg, Delta Lake & Apache Hudi with Spark
+    - `11.5.4` Catalogs, Dynamic Partition Pruning (DPP) & Pre-Shuffled Bucketing
+  - `11.6 Structured Streaming, State Stores, Reliability & Spark UI Diagnostics`:
+    - `11.6.1` Spark Structured Streaming: Unbounded Tables, Micro-Batching & Continuous Processing
+    - `11.6.2` Event-Time Processing, Watermarking, Windowing & RocksDB Stateful Streaming
+    - `11.6.3` Exactly-Once End-to-End Streaming: Checkpointing, Write-Ahead Logs & Idempotent Sinks
+    - `11.6.4` Spark UI Diagnostics, History Server & JVM/GC Production Troubleshooting
+- **Portal, Masterclass & Search Synchronization**:
+  - `tech_spark.html`: Expanded from 4 subsections (13 concepts) to **6 subsections (24 concepts)** with oEmbed-verified YouTube walkthroughs and HTTP-200 verified official documentation URLs; removed stray `.focus-bar-right` markup and wired inline `#theme-toggle`.
+  - `all_tech.html`: Expanded Section 11 (Spark) to 24 concepts and updated `card-spark` and portal totals to **13 Disciplines · 69 Subsections · 279 Concepts**.
+  - `tools/build-learning-hub.mjs` & `search-index.json`: Added all 24 Spark concepts to the global search catalog.
+  - `tools/expand_spark_masterclass.py`: Atomic, idempotent builder script created.
+- **Verification Suite**:
+  - `python tools/audit_site.py`: **0 findings** across all 792 scanned pages.
+  - `node tools/verify-learning-hub.mjs`: All 16 hub pages passed with all checks green.
+  - Headless Playwright test suite (`scratch/test_spark_expansion_playwright.py`):
+    - Verified 24 concepts, 6 subsections, progress toggle, and study-rail mount (3 buttons) in `tech_spark.html`.
+    - Verified 279 total concepts and `switchDomain('spark')` isolation in `all_tech.html`.
+    - Verified 24 Spark entries in `search-index.json`, zero page/console errors, and zero horizontal overflow (`scrollWidth === clientWidth === 1440px`) across Light and Black themes.

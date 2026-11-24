@@ -627,15 +627,15 @@ body {
 <body data-site="all_tech">
 <div class="wrap">
   <div class="hero">
-    <div class="edition">v4 · All-in-One Tech &amp; Engineering Portal · 13 Disciplines · 67 Subsections · 268 Concepts</div>
+    <div class="edition">v4 · All-in-One Tech &amp; Engineering Portal · 13 Disciplines · 69 Subsections · 279 Concepts</div>
     <h1>All-in-One Tech &amp; Engineering Portal</h1>
     <p class="subtitle">Complete interactive curriculum across Core Linux OS, GitOps, Containerization, Kubernetes Orchestration, Infrastructure as Code, CI/CD Automation, Distributed Streaming, Databases &amp; High-Performance Backend Engineering.</p>
   </div>
 
   <div class="stats">
     <div class="stat"><div class="n">13</div><div class="l">Disciplines</div></div>
-    <div class="stat"><div class="n">67</div><div class="l">Subsections</div></div>
-    <div class="stat"><div class="n">268</div><div class="l">Concepts</div></div>
+    <div class="stat"><div class="n">69</div><div class="l">Subsections</div></div>
+    <div class="stat"><div class="n">279</div><div class="l">Concepts</div></div>
     <div class="stat"><div class="n">13</div><div class="l">Masterclasses</div></div>
     <div class="stat"><div class="n">85+</div><div class="l">Resources</div></div>
   </div>
@@ -643,7 +643,7 @@ body {
   <div class="overall-progress">
     <span class="lbl">Your Progress</span>
     <div class="bar-track"><div class="bar-fill" id="overall-bar"></div></div>
-    <span class="pct" id="overall-pct">0 / 268</span>
+    <span class="pct" id="overall-pct">0 / 279</span>
   </div>
 
   <div class="controls">
@@ -653,7 +653,7 @@ body {
       <button class="filter-btn" data-filter="status" data-val="undone">Not Done</button>
       <button class="filter-btn status-bookmarked" data-filter="status" data-val="bookmarked">★ Bookmarked</button>
       <span class="sep"></span>
-      <div class="search"><input id="search-input" placeholder="Search 268 engineering &amp; infrastructure concepts…" type="search"/></div>
+      <div class="search"><input id="search-input" placeholder="Search 279 engineering &amp; infrastructure concepts…" type="search"/></div>
       <button class="icon-btn" id="random-btn" title="Random concept">🎲</button>
       <button class="icon-btn" id="theme-toggle" title="Toggle theme">🌓</button>
       <button class="icon-btn" onclick="window.print()" title="Print">🖨️</button>
@@ -794,9 +794,11 @@ body {
 <h3 class="domain-card-title">Apache Spark Big Data Engine</h3>
 </div>
 </div>
-<p class="domain-card-desc">Driver/executor architecture, RDDs, DataFrames, Spark SQL, Catalyst query optimizer, Tungsten execution engine & shuffle management.</p>
+<p class="domain-card-desc">Driver/Executor DAGs &amp; Spark Connect, RDD lineage, Catalyst &amp; Tungsten AQE, Join/Shuffle/Skew tuning, PySpark Arrow, Parquet/Iceberg/Delta Lakehouses &amp; Structured Streaming.</p>
 <div class="domain-card-chips">
-<span class="domain-card-chip highlight">Distributed In-Memory Cluster Computing</span>
+<span class="domain-card-chip">6 Subsections</span>
+<span class="domain-card-chip">24 Concepts</span>
+<span class="domain-card-chip highlight">Catalyst, Tungsten, AQE, Arrow &amp; Streaming</span>
 </div>
 <div class="domain-card-actions">
 <button class="domain-btn-view" onclick="event.stopPropagation(); switchDomain('spark')" type="button">Focus Domain</button>
@@ -3279,7 +3281,7 @@ body {
 <div class="focus-bar-left">
 <span class="focus-bar-pill">Domain 11 of 16</span>
 <span class="focus-bar-title">Apache Spark Big Data Engine</span>
-<span class="focus-bar-stats">13 concepts • 4 subsections</span>
+<span class="focus-bar-stats">24 concepts &bull; 6 subsections</span>
 </div>
 <div class="focus-bar-right">
 <button class="focus-btn" onclick="navigateDomain(-1)" type="button">← Prev Domain</button>
@@ -3292,189 +3294,310 @@ body {
 <div class="info">
 <div class="label">Section 11 of 16</div>
 <h2>11. Apache Spark Big Data Engine</h2>
-<div class="meta">4 subsections · 13 concepts</div>
+<div class="meta">6 subsections · 24 concepts</div>
 </div>
 <div class="ppg">
-<div class="pct-text" data-pp-text="11">0 / 13</div>
+<div class="pct-text" data-pp-text="11">0 / 24</div>
 <div class="pp-track"><div class="pp-fill" data-pp-fill="11"></div></div>
 </div>
 </div>
 <div class="section-desc">
-<div class="tagline">In-memory distributed computing, Directed Acyclic Graph (DAG) query optimization, and structured streaming.</div>
-<div class="row"><b>Core Focus:</b> RDD lineage &amp; fault tolerance, Catalyst query optimizer, Tungsten off-heap memory, and shuffle partition tuning.</div>
-<div class="row"><b>Production Trade-offs:</b> In-memory cache speed vs JVM garbage collection pauses, wide transformation shuffles vs co-located joins.</div>
-</div>
-<div class="resources-section">
-<div class="head" onclick="this.parentElement.classList.toggle('open')">
-<h4>📚 Learn this domain</h4>
-<div><span class="count">4 curated resources</span><span class="chevron">▶</span></div>
-</div>
-<div class="resources-body">
-<div class="res-grid">
-<a class="res-link" href="https://spark.apache.org/docs/latest/" rel="noopener" target="_blank"><span class="res-icon">📖</span><span class="res-title">Apache Spark Official Documentation</span><span class="res-source">Apache</span></a>
-<a class="res-link" href="https://www.youtube.com/watch?v=_C8kWso4ne4" rel="noopener" target="_blank"><span class="res-icon">🎥</span><span class="res-title">Apache Spark Full Course (freeCodeCamp)</span><span class="res-source">freeCodeCamp</span></a>
-<a class="res-link" href="https://www.databricks.com/spark/getting-started" rel="noopener" target="_blank"><span class="res-icon">📝</span><span class="res-title">Databricks: Spark Definitive Guide Concepts</span><span class="res-source">Databricks</span></a>
-<a class="res-link" href="https://www.oreilly.com/library/view/learning-spark-2nd/9781492050032/" rel="noopener" target="_blank"><span class="res-icon">📖</span><span class="res-title">Learning Spark: Lightning-Fast Data Analytics</span><span class="res-source">O'Reilly</span></a>
-</div>
-</div>
-</div>
-<div class="subsection">
-<div class="subsection-head">
-<span class="subsection-tag">11.1</span>
-<h3>Spark Architecture, Cluster Topologies &amp; DAG Engine</h3>
-<span style="font-size:11px;color:var(--text-faint);">3 concepts</span>
-</div>
-<div class="subsection-desc">Masterclass lessons covering Spark Architecture, Cluster Topologies &amp; DAG Engine architecture, operational mechanisms, and failure modes.</div>
-<ol class="concepts">
-<li data-cid="11.1.1" data-name="spark cluster architecture  driver program  cluster manager  k8s yarn    executors">
-<div class="done-check" title="Mark as done"></div>
-<div class="bookmark-star" title="Bookmark">☆</div>
-<div>
-<div class="cname">Spark Cluster Architecture: Driver Program, Cluster Manager (K8s/YARN) &amp; Executors</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Spark Cluster Architecture: Driver Program, Cluster Manager (K8s/YARN) &amp; Executors.</div>
-</div>
-<div class="res-links"><a class="video" data-start="0" data-vchannel="freeCodeCamp.org" data-vdur="" data-vtitle="Spark Cluster Architecture: Driver Program, Cluster Manager (K8s/YARN) &amp; Executors" href="https://www.youtube.com/watch?v=_C8kWso4ne4&amp;t=0s" rel="noopener" target="_blank" title="Watch walkthrough: Spark Cluster Architecture: Driver Program, Cluster Manager (K8s/YARN) &amp; Executors">🎬YT</a><a href="https://spark.apache.org/docs/latest/cluster-overview.html" rel="noopener" target="_blank" title="Apache Spark Cluster Mode Overview">🌐Doc</a></div>
-</li>
-<li data-cid="11.1.2" data-name="job execution lifecycle  jobs  stages  tasks   dagscheduler graph construction">
-<div class="done-check" title="Mark as done"></div>
-<div class="bookmark-star" title="Bookmark">☆</div>
-<div>
-<div class="cname">Job Execution Lifecycle: Jobs, Stages, Tasks &amp; DAGScheduler Graph Construction</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Job Execution Lifecycle: Jobs, Stages, Tasks &amp; DAGScheduler Graph Construction.</div>
-</div>
-<div class="res-links"><a class="video" data-start="300" data-vchannel="freeCodeCamp.org" data-vdur="" data-vtitle="Job Execution Lifecycle: Jobs, Stages, Tasks &amp; DAGScheduler Graph Construction" href="https://www.youtube.com/watch?v=_C8kWso4ne4&amp;t=300s" rel="noopener" target="_blank" title="Watch walkthrough: Job Execution Lifecycle: Jobs, Stages, Tasks &amp; DAGScheduler Graph Construction">🎬YT</a><a href="https://spark.apache.org/docs/latest/cluster-overview.html" rel="noopener" target="_blank" title="Apache Spark Cluster Mode Overview">🌐Doc</a></div>
-</li>
-<li data-cid="11.1.3" data-name="narrow vs wide dependencies   shuffle boundary triggering">
-<div class="done-check" title="Mark as done"></div>
-<div class="bookmark-star" title="Bookmark">☆</div>
-<div>
-<div class="cname">Narrow vs Wide Dependencies &amp; Shuffle Boundary Triggering</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Narrow dependencies (map, filter) execute in-memory on local partitions without network movement; Wide dependencies (groupByKey, join) require expensive cluster-wide data shuffles.</div>
-</div>
-<div class="res-links"><a class="video" data-start="600" data-vchannel="freeCodeCamp.org" data-vdur="" data-vtitle="Narrow vs Wide Dependencies &amp; Shuffle Boundary Triggering" href="https://www.youtube.com/watch?v=_C8kWso4ne4&amp;t=600s" rel="noopener" target="_blank" title="Watch walkthrough: Narrow vs Wide Dependencies &amp; Shuffle Boundary Triggering">🎬YT</a><a href="https://spark.apache.org/docs/latest/cluster-overview.html" rel="noopener" target="_blank" title="Apache Spark Cluster Mode Overview">🌐Doc</a></div>
-</li>
-</ol>
-</div>
-<div class="subsection">
-<div class="subsection-head">
-<span class="subsection-tag">11.2</span>
-<h3>Resilient Distributed Datasets (RDDs) &amp; Lineage</h3>
-<span style="font-size:11px;color:var(--text-faint);">3 concepts</span>
-</div>
-<div class="subsection-desc">Masterclass lessons covering Resilient Distributed Datasets (RDDs) &amp; Lineage architecture, operational mechanisms, and failure modes.</div>
-<ol class="concepts">
-<li data-cid="11.2.1" data-name="rdd fundamentals  immutability  partitioning   deterministic lineage graphs">
-<div class="done-check" title="Mark as done"></div>
-<div class="bookmark-star" title="Bookmark">☆</div>
-<div>
-<div class="cname">RDD Fundamentals: Immutability, Partitioning &amp; Deterministic Lineage Graphs</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for RDD Fundamentals: Immutability, Partitioning &amp; Deterministic Lineage Graphs.</div>
-</div>
-<div class="res-links"><a class="video" data-start="900" data-vchannel="freeCodeCamp.org" data-vdur="" data-vtitle="RDD Fundamentals: Immutability, Partitioning &amp; Deterministic Lineage Graphs" href="https://www.youtube.com/watch?v=_C8kWso4ne4&amp;t=900s" rel="noopener" target="_blank" title="Watch walkthrough: RDD Fundamentals: Immutability, Partitioning &amp; Deterministic Lineage Graphs">🎬YT</a><a href="https://spark.apache.org/docs/latest/rdd-programming-guide.html" rel="noopener" target="_blank" title="Spark RDD Programming Guide">🌐Doc</a></div>
-</li>
-<li data-cid="11.2.2" data-name="transformations  lazy  vs actions  eager  map  filter vs reducebykey  collect">
-<div class="done-check" title="Mark as done"></div>
-<div class="bookmark-star" title="Bookmark">☆</div>
-<div>
-<div class="cname">Transformations (Lazy) vs Actions (Eager): map, filter vs reduceByKey, collect</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Transformations (Lazy) vs Actions (Eager): map, filter vs reduceByKey, collect.</div>
-</div>
-<div class="res-links"><a class="video" data-start="1200" data-vchannel="freeCodeCamp.org" data-vdur="" data-vtitle="Transformations (Lazy) vs Actions (Eager): map, filter vs reduceByKey, collect" href="https://www.youtube.com/watch?v=_C8kWso4ne4&amp;t=1200s" rel="noopener" target="_blank" title="Watch walkthrough: Transformations (Lazy) vs Actions (Eager): map, filter vs reduceByKey, collect">🎬YT</a><a href="https://spark.apache.org/docs/latest/rdd-programming-guide.html" rel="noopener" target="_blank" title="Spark RDD Programming Guide">🌐Doc</a></div>
-</li>
-<li data-cid="11.2.3" data-name="fault tolerance  lineage graph recomputation vs rdd checkpointing">
-<div class="done-check" title="Mark as done"></div>
-<div class="bookmark-star" title="Bookmark">☆</div>
-<div>
-<div class="cname">Fault Tolerance: Lineage Graph Recomputation vs RDD Checkpointing</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Fault Tolerance: Lineage Graph Recomputation vs RDD Checkpointing.</div>
-</div>
-<div class="res-links"><a class="video" data-start="1500" data-vchannel="freeCodeCamp.org" data-vdur="" data-vtitle="Fault Tolerance: Lineage Graph Recomputation vs RDD Checkpointing" href="https://www.youtube.com/watch?v=_C8kWso4ne4&amp;t=1500s" rel="noopener" target="_blank" title="Watch walkthrough: Fault Tolerance: Lineage Graph Recomputation vs RDD Checkpointing">🎬YT</a><a href="https://spark.apache.org/docs/latest/rdd-programming-guide.html" rel="noopener" target="_blank" title="Spark RDD Programming Guide">🌐Doc</a></div>
-</li>
-</ol>
-</div>
-<div class="subsection">
-<div class="subsection-head">
-<span class="subsection-tag">11.3</span>
-<h3>Spark DataFrames, Datasets &amp; Catalyst Optimization</h3>
-<span style="font-size:11px;color:var(--text-faint);">3 concepts</span>
-</div>
-<div class="subsection-desc">Masterclass lessons covering Spark DataFrames, Datasets &amp; Catalyst Optimization architecture, operational mechanisms, and failure modes.</div>
-<ol class="concepts">
-<li data-cid="11.3.1" data-name="dataframes   spark sql  schema enforced structured big data processing">
-<div class="done-check" title="Mark as done"></div>
-<div class="bookmark-star" title="Bookmark">☆</div>
-<div>
-<div class="cname">DataFrames &amp; Spark SQL: Schema Enforced Structured Big Data Processing</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for DataFrames &amp; Spark SQL: Schema Enforced Structured Big Data Processing.</div>
-</div>
-<div class="res-links"><a class="video" data-start="1800" data-vchannel="freeCodeCamp.org" data-vdur="" data-vtitle="DataFrames &amp; Spark SQL: Schema Enforced Structured Big Data Processing" href="https://www.youtube.com/watch?v=_C8kWso4ne4&amp;t=1800s" rel="noopener" target="_blank" title="Watch walkthrough: DataFrames &amp; Spark SQL: Schema Enforced Structured Big Data Processing">🎬YT</a><a href="https://spark.apache.org/docs/latest/sql-programming-guide.html" rel="noopener" target="_blank" title="Spark SQL, DataFrames and Datasets Guide">🌐Doc</a></div>
-</li>
-<li data-cid="11.3.2" data-name="catalyst optimizer  analysis  logical optimization  physical planning   code gen">
-<div class="done-check" title="Mark as done"></div>
-<div class="bookmark-star" title="Bookmark">☆</div>
-<div>
-<div class="cname">Catalyst Optimizer: Analysis, Logical Optimization, Physical Planning &amp; Code Gen</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Catalyst Optimizer: Analysis, Logical Optimization, Physical Planning &amp; Code Gen.</div>
-</div>
-<div class="res-links"><a class="video" data-start="2400" data-vchannel="freeCodeCamp.org" data-vdur="" data-vtitle="Catalyst Optimizer: Analysis, Logical Optimization, Physical Planning &amp; Code Gen" href="https://www.youtube.com/watch?v=_C8kWso4ne4&amp;t=2400s" rel="noopener" target="_blank" title="Watch walkthrough: Catalyst Optimizer: Analysis, Logical Optimization, Physical Planning &amp; Code Gen">🎬YT</a><a href="https://spark.apache.org/docs/latest/sql-programming-guide.html" rel="noopener" target="_blank" title="Spark SQL, DataFrames and Datasets Guide">🌐Doc</a></div>
-</li>
-<li data-cid="11.3.3" data-name="tungsten execution engine  off heap binary memory management   whole stage codegen">
-<div class="done-check" title="Mark as done"></div>
-<div class="bookmark-star" title="Bookmark">☆</div>
-<div>
-<div class="cname">Tungsten Execution Engine: Off-Heap Binary Memory Management &amp; Whole-Stage Codegen</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Tungsten Execution Engine: Off-Heap Binary Memory Management &amp; Whole-Stage Codegen.</div>
-</div>
-<div class="res-links"><a class="video" data-start="3000" data-vchannel="freeCodeCamp.org" data-vdur="" data-vtitle="Tungsten Execution Engine: Off-Heap Binary Memory Management &amp; Whole-Stage Codegen" href="https://www.youtube.com/watch?v=_C8kWso4ne4&amp;t=3000s" rel="noopener" target="_blank" title="Watch walkthrough: Tungsten Execution Engine: Off-Heap Binary Memory Management &amp; Whole-Stage Codegen">🎬YT</a><a href="https://spark.apache.org/docs/latest/sql-programming-guide.html" rel="noopener" target="_blank" title="Spark SQL, DataFrames and Datasets Guide">🌐Doc</a></div>
-</li>
-</ol>
-</div>
-<div class="subsection">
-<div class="subsection-head">
-<span class="subsection-tag">11.4</span>
-<h3>Shuffle Optimization, Memory Tuning &amp; Structured Streaming</h3>
-<span style="font-size:11px;color:var(--text-faint);">4 concepts</span>
-</div>
-<div class="subsection-desc">Masterclass lessons covering Shuffle Optimization, Memory Tuning &amp; Structured Streaming architecture, operational mechanisms, and failure modes.</div>
-<ol class="concepts">
-<li data-cid="11.4.1" data-name="shuffle optimization  partition tuning  spark sql shuffle partitions    broadcast joins">
-<div class="done-check" title="Mark as done"></div>
-<div class="bookmark-star" title="Bookmark">☆</div>
-<div>
-<div class="cname">Shuffle Optimization: Partition Tuning (spark.sql.shuffle.partitions) &amp; Broadcast Joins</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Shuffle Optimization: Partition Tuning (spark.sql.shuffle.partitions) &amp; Broadcast Joins.</div>
-</div>
-<div class="res-links"><a class="video" data-start="3600" data-vchannel="freeCodeCamp.org" data-vdur="" data-vtitle="Shuffle Optimization: Partition Tuning (spark.sql.shuffle.partitions) &amp; Broadcast Joins" href="https://www.youtube.com/watch?v=_C8kWso4ne4&amp;t=3600s" rel="noopener" target="_blank" title="Watch walkthrough: Shuffle Optimization: Partition Tuning (spark.sql.shuffle.partitions) &amp; Broadcast Joins">🎬YT</a><a href="https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html" rel="noopener" target="_blank" title="Spark Structured Streaming Programming Guide">🌐Doc</a></div>
-</li>
-<li data-cid="11.4.2" data-name="spark memory management  storage memory vs execution memory   spilling">
-<div class="done-check" title="Mark as done"></div>
-<div class="bookmark-star" title="Bookmark">☆</div>
-<div>
-<div class="cname">Spark Memory Management: Storage Memory vs Execution Memory &amp; Spilling</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Spark Memory Management: Storage Memory vs Execution Memory &amp; Spilling.</div>
-</div>
-<div class="res-links"><a class="video" data-start="4200" data-vchannel="freeCodeCamp.org" data-vdur="" data-vtitle="Spark Memory Management: Storage Memory vs Execution Memory &amp; Spilling" href="https://www.youtube.com/watch?v=_C8kWso4ne4&amp;t=4200s" rel="noopener" target="_blank" title="Watch walkthrough: Spark Memory Management: Storage Memory vs Execution Memory &amp; Spilling">🎬YT</a><a href="https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html" rel="noopener" target="_blank" title="Spark Structured Streaming Programming Guide">🌐Doc</a></div>
-</li>
-<li data-cid="11.4.3" data-name="handling data skew  key salting   skew join hints">
-<div class="done-check" title="Mark as done"></div>
-<div class="bookmark-star" title="Bookmark">☆</div>
-<div>
-<div class="cname">Handling Data Skew: Key Salting &amp; Skew Join Hints</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Handling Data Skew: Key Salting &amp; Skew Join Hints.</div>
-</div>
-<div class="res-links"><a class="video" data-start="4800" data-vchannel="freeCodeCamp.org" data-vdur="" data-vtitle="Handling Data Skew: Key Salting &amp; Skew Join Hints" href="https://www.youtube.com/watch?v=_C8kWso4ne4&amp;t=4800s" rel="noopener" target="_blank" title="Watch walkthrough: Handling Data Skew: Key Salting &amp; Skew Join Hints">🎬YT</a><a href="https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html" rel="noopener" target="_blank" title="Spark Structured Streaming Programming Guide">🌐Doc</a></div>
-</li>
-<li data-cid="11.4.4" data-name="spark structured streaming  event time processing  watermarking   micro batching">
-<div class="done-check" title="Mark as done"></div>
-<div class="bookmark-star" title="Bookmark">☆</div>
-<div>
-<div class="cname">Spark Structured Streaming: Event-Time Processing, Watermarking &amp; Micro-Batching</div>
-<div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Spark Structured Streaming: Event-Time Processing, Watermarking &amp; Micro-Batching.</div>
-</div>
-<div class="res-links"><a class="video" data-start="5400" data-vchannel="freeCodeCamp.org" data-vdur="" data-vtitle="Spark Structured Streaming: Event-Time Processing, Watermarking &amp; Micro-Batching" href="https://www.youtube.com/watch?v=_C8kWso4ne4&amp;t=5400s" rel="noopener" target="_blank" title="Watch walkthrough: Spark Structured Streaming: Event-Time Processing, Watermarking &amp; Micro-Batching">🎬YT</a><a href="https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html" rel="noopener" target="_blank" title="Spark Structured Streaming Programming Guide">🌐Doc</a></div>
-</li>
-</ol>
-</div>
+    <div class="tagline">In-memory distributed cluster computing: Driver/Executor DAGs &amp; Spark Connect, RDD lineage, Catalyst &amp; Tungsten AQE, Join/Shuffle/Skew tuning, PySpark Arrow, Lakehouses &amp; Structured Streaming.</div>
+    <div class="row"><b>Core Focus:</b> Catalyst 4-phase optimization, Tungsten off-heap &amp; Whole-Stage Codegen, Adaptive Query Execution (AQE), Sort-Merge vs Broadcast Joins, Unified Memory spilling, Parquet/Iceberg/Delta &amp; RocksDB state stores.</div>
+    <div class="row"><b>Production Trade-offs:</b> Shuffle network I/O vs broadcast memory, Python UDF serialization tax vs Arrow @pandas_udf, small-file explosion vs coalesce/repartition cost, and streaming micro-batch latency vs RocksDB state overhead.</div>
+  </div>
+  <div class="resources-section">
+    <div class="head" onclick="this.parentElement.classList.toggle('open')">
+      <h4>📚 Learn this domain</h4>
+      <div><span class="count">6 curated resources</span><span class="chevron">▶</span></div>
+    </div>
+    <div class="resources-body">
+      <div class="res-grid">
+        <a class="res-link" href="https://spark.apache.org/docs/latest/" target="_blank" rel="noopener"><span class="res-icon">📖</span><span class="res-title">Apache Spark Official Documentation</span><span class="res-source">Apache</span></a>
+        <a class="res-link" href="https://spark.apache.org/docs/latest/sql-performance-tuning.html" target="_blank" rel="noopener"><span class="res-icon">⚡</span><span class="res-title">Spark SQL Performance Tuning &amp; AQE Guide</span><span class="res-source">Apache</span></a>
+        <a class="res-link" href="https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html" target="_blank" rel="noopener"><span class="res-icon">🌊</span><span class="res-title">Structured Streaming Programming Guide</span><span class="res-source">Apache</span></a>
+        <a class="res-link" href="https://iceberg.apache.org/docs/latest/spark-getting-started/" target="_blank" rel="noopener"><span class="res-icon">🧊</span><span class="res-title">Apache Iceberg + Spark Lakehouse Guide</span><span class="res-source">Iceberg</span></a>
+        <a class="res-link" href="https://docs.delta.io/latest/delta-intro.html" target="_blank" rel="noopener"><span class="res-icon">🔺</span><span class="res-title">Delta Lake Architecture &amp; ACID Guide</span><span class="res-source">Delta Lake</span></a>
+        <a class="res-link" href="https://www.youtube.com/watch?v=_C8kWso4ne4" target="_blank" rel="noopener"><span class="res-icon">🎥</span><span class="res-title">Apache Spark &amp; PySpark Full Course</span><span class="res-source">freeCodeCamp</span></a>
+      </div>
+    </div>
+  </div>
+  <div class="subsection">
+    <div class="subsection-head">
+      <span class="subsection-tag">11.1</span>
+      <h3>Spark Architecture, Cluster Topologies &amp; DAG Execution Engine</h3>
+      <span style="font-size:11px;color:var(--text-faint);">4 concepts</span>
+    </div>
+    <div class="subsection-desc">Distributed runtime internals: Driver/Executor coordination, Cluster Managers (Kubernetes, YARN, Standalone), DAG stage boundaries, and decoupled Spark Connect gRPC execution.</div>
+    <ol class="concepts">
+      <li data-cid="11.1.1" data-name="spark cluster architecture driver program cluster managers k8s yarn executors">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Spark Cluster Architecture: Driver Program, Cluster Managers (K8s, YARN) &amp; Executors</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">How the Driver JVM runs SparkSession, DAGScheduler, and TaskScheduler while Cluster Managers (Kubernetes native scheduler, YARN ResourceManager, Standalone) provision isolated Executor JVMs with dynamic allocation and shuffle tracking.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=c3RfF-Q2o0I" data-vtitle="Spark Cluster Architecture: Driver Program, Cluster Managers (K8s, YARN) &amp; Executors" data-vchannel="DataCeps" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Spark Cluster Architecture: Driver Program, Cluster Managers (K8s, YARN) &amp; Executors">🎬YT</a><a href="https://spark.apache.org/docs/latest/cluster-overview.html" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
+      </li>
+      <li data-cid="11.1.2" data-name="execution hierarchy applications jobs stages tasks data locality">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Execution Hierarchy: Applications, Jobs, Stages, Tasks &amp; Data Locality</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Mapping eager Actions to Jobs, splitting Jobs at wide shuffle dependencies into ShuffleMapStages and ResultStages, and scheduling parallel Tasks (one per partition) using PROCESS_LOCAL, NODE_LOCAL, and RACK_LOCAL locality preferences.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=PZGUFnd0So4" data-vtitle="Execution Hierarchy: Applications, Jobs, Stages, Tasks &amp; Data Locality" data-vchannel="Under the Hood Data" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Execution Hierarchy: Applications, Jobs, Stages, Tasks &amp; Data Locality">🎬YT</a><a href="https://spark.apache.org/docs/latest/job-scheduling.html" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
+      </li>
+      <li data-cid="11.1.3" data-name="narrow vs wide dependencies shuffle mechanics sort shuffle bypassmergesort">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Narrow vs Wide Dependencies &amp; Shuffle Mechanics (Sort Shuffle &amp; BypassMergeSort)</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Why Narrow transformations (map, filter, union) pipeline in-memory within a single stage, whereas Wide dependencies (groupByKey, join, repartition) materialize map-side sorted .data and .index files across disk and network.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=JkirctZv6Nw" data-vtitle="Narrow vs Wide Dependencies &amp; Shuffle Mechanics (Sort Shuffle &amp; BypassMergeSort)" data-vchannel="Arun Yadav" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Narrow vs Wide Dependencies &amp; Shuffle Mechanics (Sort Shuffle &amp; BypassMergeSort)">🎬YT</a><a href="https://spark.apache.org/docs/latest/rdd-programming-guide.html" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
+      </li>
+      <li data-cid="11.1.4" data-name="spark connect client server grpc decoupled spark 4 0 architecture">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Spark Connect (Client-Server gRPC) &amp; Decoupled Spark 4.0 Architecture</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Thin client-server gRPC architecture separating IDEs, notebooks, and microservices from the Spark Driver JVM using unresolved Catalyst logical plans, eliminating driver OOM coupling and enabling multi-language clients.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=QoKWzrHVbgo" data-vtitle="Spark Connect (Client-Server gRPC) &amp; Decoupled Spark 4.0 Architecture" data-vchannel="Apache Spark" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Spark Connect (Client-Server gRPC) &amp; Decoupled Spark 4.0 Architecture">🎬YT</a><a href="https://spark.apache.org/docs/latest/spark-connect-overview.html" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
+      </li>
+    </ol>
+  </div>
+  <div class="subsection">
+    <div class="subsection-head">
+      <span class="subsection-tag">11.2</span>
+      <h3>Resilient Distributed Datasets (RDDs), Lineage &amp; Shared Variables</h3>
+      <span style="font-size:11px;color:var(--text-faint);">4 concepts</span>
+    </div>
+    <div class="subsection-desc">Core immutable distributed collection primitives, lazy DAG pipelining, fault recovery via lineage or checkpointing, and cluster-wide Broadcast and Accumulator mechanics.</div>
+    <ol class="concepts">
+      <li data-cid="11.2.1" data-name="rdd internals immutability partitioning compute deterministic lineage graphs">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">RDD Internals: Immutability, Partitioning, Compute() &amp; Deterministic Lineage Graphs</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Understanding the five core properties of an RDD (partitions, compute function, dependencies, optional Hash/RangePartitioner, and preferred locations) and how deterministic lineage guarantees lock-free parallel recovery.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=zGS6LFg4RLo" data-vtitle="RDD Internals: Immutability, Partitioning, Compute() &amp; Deterministic Lineage Graphs" data-vchannel="The Learning Pipeline" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: RDD Internals: Immutability, Partitioning, Compute() &amp; Deterministic Lineage Graphs">🎬YT</a><a href="https://spark.apache.org/docs/latest/rdd-programming-guide.html" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
+      </li>
+      <li data-cid="11.2.2" data-name="lazy transformations vs eager actions pipelining reducebykey vs groupbykey collect traps">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Lazy Transformations vs Eager Actions: Pipelining, reduceByKey vs groupByKey &amp; collect() Traps</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">How lazy evaluation fuses chained maps/filters before execution, why map-side combining in reduceByKey/aggregateByKey avoids catastrophic shuffle bloat vs groupByKey, and why collect()/toPandas() crash the Driver.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=rKkqSeU_idY" data-vtitle="Lazy Transformations vs Eager Actions: Pipelining, reduceByKey vs groupByKey &amp; collect() Traps" data-vchannel="DE_With_Karim" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Lazy Transformations vs Eager Actions: Pipelining, reduceByKey vs groupByKey &amp; collect() Traps">🎬YT</a><a href="https://spark.apache.org/docs/latest/rdd-programming-guide.html" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
+      </li>
+      <li data-cid="11.2.3" data-name="fault tolerance lineage graph recomputation vs reliable checkpointing hdfs s3">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Fault Tolerance: Lineage Graph Recomputation vs Reliable Checkpointing (HDFS/S3)</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Recovering lost partitions by replaying narrow ancestor tasks vs truncating unbounded iterative or streaming lineage graphs onto durable storage via sparkContext.checkpoint() and localCheckpoint().</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=iNv90A44fpA" data-vtitle="Fault Tolerance: Lineage Graph Recomputation vs Reliable Checkpointing (HDFS/S3)" data-vchannel="DataOrbitAI" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Fault Tolerance: Lineage Graph Recomputation vs Reliable Checkpointing (HDFS/S3)">🎬YT</a><a href="https://spark.apache.org/docs/latest/rdd-programming-guide.html" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
+      </li>
+      <li data-cid="11.2.4" data-name="shared variables broadcast variables torrentbroadcast distributed accumulators">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Shared Variables: Broadcast Variables (TorrentBroadcast) &amp; Distributed Accumulators</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Distributing read-only lookup tables once per executor via BitTorrent-style peer-to-peer chunking instead of per-task closure serialization, and safely using write-only Accumulators despite speculative execution retries.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=JB98Loobc7k" data-vtitle="Shared Variables: Broadcast Variables (TorrentBroadcast) &amp; Distributed Accumulators" data-vchannel="Ease With Data" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Shared Variables: Broadcast Variables (TorrentBroadcast) &amp; Distributed Accumulators">🎬YT</a><a href="https://spark.apache.org/docs/latest/rdd-programming-guide.html" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
+      </li>
+    </ol>
+  </div>
+  <div class="subsection">
+    <div class="subsection-head">
+      <span class="subsection-tag">11.3</span>
+      <h3>DataFrames, Spark SQL, Catalyst Optimizer &amp; Tungsten Engine</h3>
+      <span style="font-size:11px;color:var(--text-faint);">4 concepts</span>
+    </div>
+    <div class="subsection-desc">Structured schema-aware processing, four-phase Catalyst query planning, Tungsten off-heap binary memory with Whole-Stage Codegen, and Spark 3.x+ Adaptive Query Execution.</div>
+    <ol class="concepts">
+      <li data-cid="11.3.1" data-name="structured apis dataframes typed datasets encoders unified spark sql engine">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Structured APIs: DataFrames, Typed Datasets, Encoders &amp; Unified Spark SQL Engine</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Why untyped Row-based DataFrames and type-safe JVM Datasets compile into the identical Catalyst physical plan, leveraging compact binary Encoders to outperform raw Java/Python RDD serialization.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=nTYcvfmDLDE" data-vtitle="Structured APIs: DataFrames, Typed Datasets, Encoders &amp; Unified Spark SQL Engine" data-vchannel="Azurelib Academy" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Structured APIs: DataFrames, Typed Datasets, Encoders &amp; Unified Spark SQL Engine">🎬YT</a><a href="https://spark.apache.org/docs/latest/sql-programming-guide.html" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
+      </li>
+      <li data-cid="11.3.2" data-name="catalyst optimizer analysis logical optimization physical planning cost based optimization">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Catalyst Optimizer: Analysis, Logical Optimization, Physical Planning &amp; Cost-Based Optimization</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Four-stage tree transformation pipeline: Catalog schema resolution, rule-based logical optimizations (Predicate Pushdown, Column Pruning, Constant Folding), and Cost-Based Optimizer (CBO) physical plan selection.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=1to11_o63F8" data-vtitle="Catalyst Optimizer: Analysis, Logical Optimization, Physical Planning &amp; Cost-Based Optimization" data-vchannel="SMAC Academy" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Catalyst Optimizer: Analysis, Logical Optimization, Physical Planning &amp; Cost-Based Optimization">🎬YT</a><a href="https://spark.apache.org/docs/latest/sql-programming-guide.html" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
+      </li>
+      <li data-cid="11.3.3" data-name="tungsten execution engine off heap binary memory cache aware layout whole stage codegen">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Tungsten Execution Engine: Off-Heap Binary Memory, Cache-Aware Layout &amp; Whole-Stage Codegen</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Eliminating JVM object overhead and GC pauses via sun.misc.Unsafe byte-packed InternalRow storage, L1/L2/L3 cache-friendly pointer sorting, and Janino runtime Java bytecode generation fusing operators into tight loops.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=XourMIutDPc" data-vtitle="Tungsten Execution Engine: Off-Heap Binary Memory, Cache-Aware Layout &amp; Whole-Stage Codegen" data-vchannel="OneStop Insightful Tech Log" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Tungsten Execution Engine: Off-Heap Binary Memory, Cache-Aware Layout &amp; Whole-Stage Codegen">🎬YT</a><a href="https://spark.apache.org/docs/latest/sql-performance-tuning.html" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
+      </li>
+      <li data-cid="11.3.4" data-name="adaptive query execution aqe dynamic partition coalescing join switching skew mitigation">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Adaptive Query Execution (AQE): Dynamic Partition Coalescing, Join Switching &amp; Skew Mitigation</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Runtime plan re-optimization between shuffle stages using actual map output statistics: coalescing tiny post-shuffle partitions, converting Sort-Merge Joins into Broadcast Hash Joins, and splitting skewed partitions dynamically.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=164OKvwW8T8" data-vtitle="Adaptive Query Execution (AQE): Dynamic Partition Coalescing, Join Switching &amp; Skew Mitigation" data-vchannel="Ease With Data" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Adaptive Query Execution (AQE): Dynamic Partition Coalescing, Join Switching &amp; Skew Mitigation">🎬YT</a><a href="https://spark.apache.org/docs/latest/sql-performance-tuning.html" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
+      </li>
+    </ol>
+  </div>
+  <div class="subsection">
+    <div class="subsection-head">
+      <span class="subsection-tag">11.4</span>
+      <h3>Joins, Shuffle Tuning, Memory Management &amp; Skew Elimination</h3>
+      <span style="font-size:11px;color:var(--text-faint);">4 concepts</span>
+    </div>
+    <div class="subsection-desc">Physical distributed join algorithms, unified Execution/Storage memory pools and disk spilling, partition sizing, and diagnosing straggler data skew.</div>
+    <ol class="concepts">
+      <li data-cid="11.4.1" data-name="distributed join strategies broadcast hash join bhj shuffle hash shj sort merge join smj">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Distributed Join Strategies: Broadcast Hash Join (BHJ), Shuffle Hash (SHJ) &amp; Sort-Merge Join (SMJ)</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Physical join execution mechanics: autoBroadcastJoinThreshold (10 MB default), why Sort-Merge Join scales to multi-terabyte tables via external merge sort, Shuffle Hash memory trade-offs, and Broadcast Nested Loop pitfalls.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=lkTvchqa_Ck" data-vtitle="Distributed Join Strategies: Broadcast Hash Join (BHJ), Shuffle Hash (SHJ) &amp; Sort-Merge Join (SMJ)" data-vchannel="Sumit Mittal" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Distributed Join Strategies: Broadcast Hash Join (BHJ), Shuffle Hash (SHJ) &amp; Sort-Merge Join (SMJ)">🎬YT</a><a href="https://spark.apache.org/docs/latest/sql-ref-syntax-qry-select-hints.html" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
+      </li>
+      <li data-cid="11.4.2" data-name="unified memory management execution vs storage pools off heap disk spilling">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Unified Memory Management: Execution vs Storage Pools, Off-Heap &amp; Disk Spilling</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">How Spark partitions JVM heap (spark.memory.fraction=0.6, storageFraction=0.5) with dynamic borrowing and eviction, MEMORY_AND_DISK vs MEMORY_ONLY_SER caching, and UnsafeExternalSorter disk spilling under pressure.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=McMQ7yMaL9Q" data-vtitle="Unified Memory Management: Execution vs Storage Pools, Off-Heap &amp; Disk Spilling" data-vchannel="Ease With Data" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Unified Memory Management: Execution vs Storage Pools, Off-Heap &amp; Disk Spilling">🎬YT</a><a href="https://spark.apache.org/docs/latest/tuning.html" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
+      </li>
+      <li data-cid="11.4.3" data-name="partition sizing shuffle tuning coalesce vs repartition small files push based shuffle">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Partition Sizing &amp; Shuffle Tuning: coalesce() vs repartition(), Small Files &amp; Push-Based Shuffle</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Eliminating the Small Files Problem with maxRecordsPerFile, metadata-only coalesce() vs full-shuffle repartition(), sizing shuffle partitions to 128 MB-200 MB targets, and Push-Based Shuffle (Magnet).</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=PklT4Hm6u1w" data-vtitle="Partition Sizing &amp; Shuffle Tuning: coalesce() vs repartition(), Small Files &amp; Push-Based Shuffle" data-vchannel="Mastering Big Data Engineering" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Partition Sizing &amp; Shuffle Tuning: coalesce() vs repartition(), Small Files &amp; Push-Based Shuffle">🎬YT</a><a href="https://spark.apache.org/docs/latest/configuration.html" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
+      </li>
+      <li data-cid="11.4.4" data-name="diagnosing fixing data skew key salting null isolation aqe skew join optimization">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Diagnosing &amp; Fixing Data Skew: Key Salting, Null Isolation &amp; AQE Skew Join Optimization</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Spotting 99%-stuck straggler tasks via p50 vs max task metrics in the Spark UI, applying deterministic N-way key salting with broadcast replication, isolating skewed NULL/sentinel keys, and tuning AQE skew thresholds.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=rZGsc5y8AQk" data-vtitle="Diagnosing &amp; Fixing Data Skew: Key Salting, Null Isolation &amp; AQE Skew Join Optimization" data-vchannel="Afaque Ahmad" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Diagnosing &amp; Fixing Data Skew: Key Salting, Null Isolation &amp; AQE Skew Join Optimization">🎬YT</a><a href="https://spark.apache.org/docs/latest/sql-performance-tuning.html" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
+      </li>
+    </ol>
+  </div>
+  <div class="subsection">
+    <div class="subsection-head">
+      <span class="subsection-tag">11.5</span>
+      <h3>PySpark Optimization, Columnar Storage &amp; Open Lakehouse Formats</h3>
+      <span style="font-size:11px;color:var(--text-faint);">4 concepts</span>
+    </div>
+    <div class="subsection-desc">Zero-copy Apache Arrow PySpark UDFs, Parquet/ORC columnar internals, ACID lakehouse table formats (Iceberg, Delta Lake, Hudi), and partition/bucket pruning.</div>
+    <ol class="concepts">
+      <li data-cid="11.5.1" data-name="pyspark execution internals py4j bridge arrow vectorized udfs pandas api on spark">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">PySpark Execution Internals: Py4J Bridge, Arrow Vectorized UDFs &amp; Pandas API on Spark</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Understanding the JVM-to-Python socket serialization tax of standard Python UDFs, accelerating vectorized batch transfers 10x-100x with Apache Arrow (@pandas_udf), and scaling Pandas workloads via pyspark.pandas.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=N_e9S8wbX28" data-vtitle="PySpark Execution Internals: Py4J Bridge, Arrow Vectorized UDFs &amp; Pandas API on Spark" data-vchannel="Databricks Events" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: PySpark Execution Internals: Py4J Bridge, Arrow Vectorized UDFs &amp; Pandas API on Spark">🎬YT</a><a href="https://spark.apache.org/docs/latest/sql-pyspark-pandas-with-arrow.html" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
+      </li>
+      <li data-cid="11.5.2" data-name="columnar storage formats apache parquet orc row groups compression predicate pushdown">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Columnar Storage Formats: Apache Parquet, ORC, Row Groups, Compression &amp; Predicate Pushdown</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Parquet physical hierarchy (Row Groups, Column Chunks, Pages), Dictionary/RLE/Bit-packing encodings, min/max Footer statistics for page skipping, and Zstandard vs Snappy compression trade-offs.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=BjssGRlSnfA" data-vtitle="Columnar Storage Formats: Apache Parquet, ORC, Row Groups, Compression &amp; Predicate Pushdown" data-vchannel="Learn Data with Mark" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Columnar Storage Formats: Apache Parquet, ORC, Row Groups, Compression &amp; Predicate Pushdown">🎬YT</a><a href="https://spark.apache.org/docs/latest/sql-data-sources-parquet.html" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
+      </li>
+      <li data-cid="11.5.3" data-name="open lakehouse table formats apache iceberg delta lake apache hudi with spark">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Open Lakehouse Table Formats: Apache Iceberg, Delta Lake &amp; Apache Hudi with Spark</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Bringing ACID transactions, Optimistic Concurrency Control (OCC), snapshot time travel, safe schema evolution, hidden partitioning, and Z-Ordering/Liquid Clustering directly onto S3/ADLS/GCS object stores.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=8B7Ol16SnOg" data-vtitle="Open Lakehouse Table Formats: Apache Iceberg, Delta Lake &amp; Apache Hudi with Spark" data-vchannel="SalesOptecs Academy" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Open Lakehouse Table Formats: Apache Iceberg, Delta Lake &amp; Apache Hudi with Spark">🎬YT</a><a href="https://iceberg.apache.org/docs/latest/spark-getting-started/" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
+      </li>
+      <li data-cid="11.5.4" data-name="catalogs dynamic partition pruning dpp pre shuffled bucketing">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Catalogs, Dynamic Partition Pruning (DPP) &amp; Pre-Shuffled Bucketing</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">How Dynamic Partition Pruning (DPP) pushes dimension-table broadcast filters down into fact-table partition scans, avoiding high-cardinality directory over-partitioning, and eliminating shuffles with bucketBy() joins.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=s8Z8Gex7VFw" data-vtitle="Catalogs, Dynamic Partition Pruning (DPP) &amp; Pre-Shuffled Bucketing" data-vchannel="Afaque Ahmad" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Catalogs, Dynamic Partition Pruning (DPP) &amp; Pre-Shuffled Bucketing">🎬YT</a><a href="https://spark.apache.org/docs/latest/sql-data-sources-hive-tables.html" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
+      </li>
+    </ol>
+  </div>
+  <div class="subsection">
+    <div class="subsection-head">
+      <span class="subsection-tag">11.6</span>
+      <h3>Structured Streaming, State Stores, Reliability &amp; Spark UI Diagnostics</h3>
+      <span style="font-size:11px;color:var(--text-faint);">4 concepts</span>
+    </div>
+    <div class="subsection-desc">Incremental unbounded tables, event-time watermarks and RocksDB state stores, end-to-end exactly-once checkpoints, and production Spark UI / JVM GC troubleshooting.</div>
+    <ol class="concepts">
+      <li data-cid="11.6.1" data-name="spark structured streaming unbounded tables micro batching continuous processing">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Spark Structured Streaming: Unbounded Tables, Micro-Batching &amp; Continuous Processing</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Modeling streams as append-only unbounded DataFrames, trigger modes (processingTime, availableNow backfill, Continuous sub-millisecond mode), and output modes (Append, Update, Complete).</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=qxKCqcxRawc" data-vtitle="Spark Structured Streaming: Unbounded Tables, Micro-Batching &amp; Continuous Processing" data-vchannel="Ease With Data" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Spark Structured Streaming: Unbounded Tables, Micro-Batching &amp; Continuous Processing">🎬YT</a><a href="https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
+      </li>
+      <li data-cid="11.6.2" data-name="event time processing watermarking windowing rocksdb stateful streaming">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Event-Time Processing, Watermarking, Windowing &amp; RocksDB Stateful Streaming</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Bound state memory on late-arriving out-of-order events with event-time watermarks (withWatermark), tumbling/sliding/session windows, stream-stream joins, and RocksDB StateStoreProvider for million-key state.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=8DaIDXvBtKA" data-vtitle="Event-Time Processing, Watermarking, Windowing &amp; RocksDB Stateful Streaming" data-vchannel="Quantum Root" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Event-Time Processing, Watermarking, Windowing &amp; RocksDB Stateful Streaming">🎬YT</a><a href="https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
+      </li>
+      <li data-cid="11.6.3" data-name="exactly once end to end streaming checkpointing write ahead logs idempotent sinks">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Exactly-Once End-to-End Streaming: Checkpointing, Write-Ahead Logs &amp; Idempotent Sinks</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Achieving end-to-end exactly-once semantics by pairing replayable sources (Kafka offsets), durable HDFS/S3 offset WAL + state snapshots in checkpointLocation, and idempotent/transactional sinks (Delta/Iceberg).</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=ec70A9MXCao" data-vtitle="Exactly-Once End-to-End Streaming: Checkpointing, Write-Ahead Logs &amp; Idempotent Sinks" data-vchannel="VerifyFix" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Exactly-Once End-to-End Streaming: Checkpointing, Write-Ahead Logs &amp; Idempotent Sinks">🎬YT</a><a href="https://spark.apache.org/docs/latest/structured-streaming-kafka-integration.html" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
+      </li>
+      <li data-cid="11.6.4" data-name="spark ui diagnostics history server jvm gc production troubleshooting">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Spark UI Diagnostics, History Server &amp; JVM/GC Production Troubleshooting</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Reading Spark UI DAG visualizations, SQL physical plan metrics (scan rows, shuffle read/write, memory/disk spill), tuning G1GC executor pauses, and diagnosing OOMKilled containers vs FetchFailedException.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=iOUi_KF-sQ0" data-vtitle="Spark UI Diagnostics, History Server &amp; JVM/GC Production Troubleshooting" data-vchannel="Data Architect Studio" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Spark UI Diagnostics, History Server &amp; JVM/GC Production Troubleshooting">🎬YT</a><a href="https://spark.apache.org/docs/latest/monitoring.html" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
+      </li>
+    </ol>
+  </div>
 </section><section class="section domain-section" data-domain="postgres" id="section-12" style="--section-color:hsl(215, 80%, 50%)">
 <div id="postgres"></div>
 <div class="domain-focus-bar">

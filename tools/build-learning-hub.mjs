@@ -3672,6 +3672,41 @@ const kafkaSearchItems = kafkaConcepts.map((item) => ({
   a: `tech_kafka.html`,
 }));
 
+const sparkConcepts = [
+  { cid: "11.1.1", t: "Spark Cluster Architecture: Driver Program, Cluster Managers (K8s, YARN) & Executors" },
+  { cid: "11.1.2", t: "Execution Hierarchy: Applications, Jobs, Stages, Tasks & Data Locality" },
+  { cid: "11.1.3", t: "Narrow vs Wide Dependencies & Shuffle Mechanics (Sort Shuffle & BypassMergeSort)" },
+  { cid: "11.1.4", t: "Spark Connect (Client-Server gRPC) & Decoupled Spark 4.0 Architecture" },
+  { cid: "11.2.1", t: "RDD Internals: Immutability, Partitioning, Compute() & Deterministic Lineage Graphs" },
+  { cid: "11.2.2", t: "Lazy Transformations vs Eager Actions: Pipelining, reduceByKey vs groupByKey & collect() Traps" },
+  { cid: "11.2.3", t: "Fault Tolerance: Lineage Graph Recomputation vs Reliable Checkpointing (HDFS/S3)" },
+  { cid: "11.2.4", t: "Shared Variables: Broadcast Variables (TorrentBroadcast) & Distributed Accumulators" },
+  { cid: "11.3.1", t: "Structured APIs: DataFrames, Typed Datasets, Encoders & Unified Spark SQL Engine" },
+  { cid: "11.3.2", t: "Catalyst Optimizer: Analysis, Logical Optimization, Physical Planning & Cost-Based Optimization" },
+  { cid: "11.3.3", t: "Tungsten Execution Engine: Off-Heap Binary Memory, Cache-Aware Layout & Whole-Stage Codegen" },
+  { cid: "11.3.4", t: "Adaptive Query Execution (AQE): Dynamic Partition Coalescing, Join Switching & Skew Mitigation" },
+  { cid: "11.4.1", t: "Distributed Join Strategies: Broadcast Hash Join (BHJ), Shuffle Hash (SHJ) & Sort-Merge Join (SMJ)" },
+  { cid: "11.4.2", t: "Unified Memory Management: Execution vs Storage Pools, Off-Heap & Disk Spilling" },
+  { cid: "11.4.3", t: "Partition Sizing & Shuffle Tuning: coalesce() vs repartition(), Small Files & Push-Based Shuffle" },
+  { cid: "11.4.4", t: "Diagnosing & Fixing Data Skew: Key Salting, Null Isolation & AQE Skew Join Optimization" },
+  { cid: "11.5.1", t: "PySpark Execution Internals: Py4J Bridge, Arrow Vectorized UDFs & Pandas API on Spark" },
+  { cid: "11.5.2", t: "Columnar Storage Formats: Apache Parquet, ORC, Row Groups, Compression & Predicate Pushdown" },
+  { cid: "11.5.3", t: "Open Lakehouse Table Formats: Apache Iceberg, Delta Lake & Apache Hudi with Spark" },
+  { cid: "11.5.4", t: "Catalogs, Dynamic Partition Pruning (DPP) & Pre-Shuffled Bucketing" },
+  { cid: "11.6.1", t: "Spark Structured Streaming: Unbounded Tables, Micro-Batching & Continuous Processing" },
+  { cid: "11.6.2", t: "Event-Time Processing, Watermarking, Windowing & RocksDB Stateful Streaming" },
+  { cid: "11.6.3", t: "Exactly-Once End-to-End Streaming: Checkpointing, Write-Ahead Logs & Idempotent Sinks" },
+  { cid: "11.6.4", t: "Spark UI Diagnostics, History Server & JVM/GC Production Troubleshooting" },
+];
+
+const sparkSearchItems = sparkConcepts.map((item) => ({
+  k: "cloud",
+  c: `spark-${item.cid}`,
+  t: `Apache Spark · ${item.cid}: ${item.t}`,
+  s: "Apache Spark Big Data Engine",
+  a: `tech_spark.html`,
+}));
+
 const allSearchItems = [
   ...data.items.map((item) => ({
     k: item.domain,
@@ -3688,6 +3723,7 @@ const allSearchItems = [
   ...terraformSearchItems,
   ...cicdSearchItems,
   ...kafkaSearchItems,
+  ...sparkSearchItems,
 ];
 
 write(
