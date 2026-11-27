@@ -27,7 +27,7 @@
 | `index.html` | Universal landing hub, 7 site cards, global catalog search | ✅ Up to date | `build-learning-hub.mjs` |
 | `DSA_Ultimate_Index.html` | 47 patterns, 219 subpatterns, 940 problems, default-collapsed pattern sidebar & full-width layout | ✅ Upgraded & Verified | Playwright + Audit |
 | `cloud_aws_azure.html` | **Cloud Platforms Hub**: AWS (55 concepts), Microsoft Azure (19 concepts), GCP (14 concepts) — 18 subsections, 88 concepts, Multi-Cloud Command Deck, sticky domain switcher, focused view isolation | ✅ Redesigned & Active | Playwright + Audit |
-| `all_tech.html` | **All-in-One Tech & Software Engineering Portal**: 13 disciplines (Linux, Git, Docker, K8s, Terraform, CI/CD, Kafka, Spark, PostgreSQL, Redis, Java, FastAPI, APIs) — 69 subsections, 279 concepts | ✅ Redesigned & Active | Playwright + Audit |
+| `all_tech.html` | **All-in-One Tech & Software Engineering Portal**: 13 disciplines (Linux, Git, Docker, K8s, Terraform, CI/CD, Kafka, Spark, PostgreSQL, Redis, Java, FastAPI, APIs) — 71 subsections, 288 concepts | ✅ Redesigned & Active | Playwright + Audit |
 | `ai_data.html` | **AI & Data Hub**: 4 tracks (AI Engineering, Machine Learning Engineering, Data Science, Data Engineering) — 24 subsections, 96 concepts, Command Deck, sticky pill bar, Domain Isolation Engine | ✅ Redesigned & Active | Playwright + Audit |
 | `ai_engineering.html` | **AI Engineering from Scratch Masterclass**: 20 phases, 542 lessons, full MIT curriculum snapshot, direct link integration | ✅ Active with Hub Breadcrumb | Playwright + Audit |
 | `tech_aws.html` | Standalone AWS Cloud Architecture Masterclass (11 subsections, 55 concepts, Complete Enterprise Services Inventory) | ✅ Deployed & Verified | Playwright + Audit |
@@ -42,7 +42,7 @@
 | `tech_cicd.html` | Standalone CI/CD Pipelines & DevOps Automation Masterclass (6 subsections, 24 concepts, Trunk-Based CI, GitHub Actions OIDC, Jenkins/GitLab/Tekton, Blue/Green & Canary Rollouts, SBOM/SLSA/Cosign DevSecOps, ArgoCD/Flux GitOps, DORA Metrics) | ✅ Expanded & Verified | Playwright + Audit |
 | `tech_terraform.html` | Standalone Terraform & Infrastructure as Code Masterclass (6 subsections, 24 concepts, HCL2, Remote State, DynamoDB Locking, Modules, Refactoring, import/moved blocks, Terragrunt, CI/CD with OIDC, Policy as Code, Sentinel/OPA, terraform test, Continuous Drift Automation) | ✅ Expanded & Verified | Playwright + Audit |
 | `tech_kafka.html` | Standalone Apache Kafka Distributed Streaming Masterclass (6 subsections, 24 concepts, Commit Log/Zero-Copy, KRaft, ISR/ELR/Compaction, Idempotent EOS Producers, CooperativeSticky/KIP-848, Schema Registry, Debezium CDC, Kafka Streams, Tiered Storage KIP-405, MirrorMaker 2, TLS/SASL/ACLs & Observability) | ✅ Expanded & Verified | Playwright + Audit |
-| `tech_postgres.html` | Standalone Database Engineering & PostgreSQL Internals Masterclass (4 subsections, 15 concepts) | ✅ Deployed | Playwright + Audit |
+| `tech_postgres.html` | Standalone Database Engineering & PostgreSQL Internals Masterclass (6 subsections, 24 concepts, Partitioning, JSONB/pgvector, Slotted Pages, MVCC/HOT, WAL/ARIES, Autovacuum, SSI/Locks, Zero-Downtime DDL, B-Tree/GIN/GiST/BRIN, CBO/EXPLAIN, Replication, PgBouncer, Patroni HA, PITR, RLS & Linux Tuning) | ✅ Expanded & Verified | Playwright + Audit |
 | `tech_redis.html` | Standalone In-Memory Caching with Redis Masterclass (3 subsections, 12 concepts) | ✅ Deployed | Playwright + Audit |
 | `tech_java.html` | Standalone Java & Spring Boot Microservices Masterclass (4 subsections, 16 concepts) | ✅ Deployed | Playwright + Audit |
 | `tech_fastapi.html` | Standalone Python & FastAPI Backend Engineering Masterclass (2 subsections, 8 concepts) | ✅ Deployed | Playwright + Audit |
@@ -840,3 +840,51 @@ The autonomous agent is scheduled via recurring cron notification (`0 */3 * * *`
     - Verified 24 concepts, 6 subsections, progress toggle, and study-rail mount (3 buttons) in `tech_spark.html`.
     - Verified 279 total concepts and `switchDomain('spark')` isolation in `all_tech.html`.
     - Verified 24 Spark entries in `search-index.json`, zero page/console errors, and zero horizontal overflow (`scrollWidth === clientWidth === 1440px`) across Light and Black themes.
+
+### [2026-11-26 23:36 EST] Daily Expansion: Database Engineering & PostgreSQL Internals Deep Expansion (6 Subsections, 24 Concepts)
+- **Domain Sequence Identification**:
+  - Identified Database Engineering & PostgreSQL Internals (Domain 09 in `all_tech.html` / Section 12) as the next domain in sequence following Linux (Domain 01), Git (Domain 02), Docker (Domain 03), Kubernetes (Domain 04), Terraform (Domain 05), CI/CD (Domain 06), Apache Kafka (Domain 07), and Apache Spark (Domain 08).
+  - Synchronized across standalone masterclass `tech_postgres.html` and central portal `all_tech.html` (Section 12).
+- **PostgreSQL & Database Engineering Curriculum Architecture (6 Subsections, 24 Concepts: 12.1.1 to 12.6.4)**:
+  - `12.1 Relational Theory, Schema Design, Partitioning & Hybrid Modeling`:
+    - `12.1.1` Relational Theory & Integrity: Candidate/Surrogate Keys, Foreign Keys, CHECK, Exclusion Constraints & Domains
+    - `12.1.2` Functional Dependencies & Normalization (1NF-BCNF) vs Strategic Denormalization & Materialized Views
+    - `12.1.3` Declarative Table Partitioning (Range, List, Hash), Partition Pruning & Time-Series Patterns
+    - `12.1.4` Semi-Structured & Hybrid Data: JSONB Binary Storage, TOAST Compression, Arrays, UUIDv7 & pgvector
+  - `12.2 Storage Engine Internals: Slotted Pages, MVCC, WAL & Vacuuming`:
+    - `12.2.1` Physical Storage Internals: Heap Slotted Pages (8KB), CTID, FSM/VM Maps, TOAST & Shared Buffers Clock-Sweep
+    - `12.2.2` Multi-Version Concurrency Control (MVCC): xmin/xmax Tuple Headers, Snapshots, HOT Updates & Visibility
+    - `12.2.3` Write-Ahead Logging (WAL): ARIES Steal/No-Force, Checkpoints, Full-Page Writes, LSNs & Crash Recovery
+    - `12.2.4` VACUUM & Autovacuum Internals: Dead Tuple Bloat, Visibility Map & XID Anti-Wraparound Freeze
+  - `12.3 Concurrency Control, Locking, Transactions & Zero-Downtime Migrations`:
+    - `12.3.1` ACID Isolation Levels: Read Committed, Repeatable Read (SI) & Serializable (SSI / RW-Antidependencies)
+    - `12.3.2` PostgreSQL Lock Hierarchy: Table Locks (ACCESS SHARE to ACCESS EXCLUSIVE), Row Locks & Deadlocks
+    - `12.3.3` Lightweight Locks (LWLocks), Spinlocks, Buffer Pinning, Lock Queues & Advisory Locks
+    - `12.3.4` Lock-Free Zero-Downtime Schema Migrations: Expand-Contract, CONCURRENTLY & lock_timeout Guardrails
+  - `12.4 Indexing Internals & Cost-Based Query Optimization`:
+    - `12.4.1` B-Tree Index Internals: Lehman-Yao Concurrent B-Trees, Composite Ordering, INCLUDE & Index-Only Scans
+    - `12.4.2` Specialized Index Engines: GIN (JSONB/Full-Text), GiST (R-Tree/PostGIS), BRIN (Block Range) & Hash
+    - `12.4.3` Query Lifecycle & Cost-Based Optimizer (CBO): Parser, Rewriter, pg_statistic Histograms, MCVs & GEQO
+    - `12.4.4` Mastering EXPLAIN (ANALYZE, BUFFERS): Scan Types, Nested Loop/Hash/Merge Joins & CTE Materialization
+  - `12.5 Replication, High Availability, Connection Pooling & Horizontal Scaling`:
+    - `12.5.1` Physical Streaming Replication: WAL Sender/Receiver, Replication Slots, Sync vs Async & Cascading
+    - `12.5.2` Logical Replication Internals: pgoutput Decoding, Publications/Subscriptions, Major Upgrades & CDC
+    - `12.5.3` Connection Pooling & Process-Per-Connection Limits: PgBouncer (Session, Transaction, Statement) & Prepared Statements
+    - `12.5.4` High Availability & Horizontal Scaling: Patroni + etcd Consensus Failover, Split-Brain Fencing & Citus Sharding
+  - `12.6 Backup/PITR, Security, Observability & Production Kernel Tuning`:
+    - `12.6.1` Physical & Logical Backups: pg_basebackup, pgBackRest, Continuous WAL Archiving & Point-in-Time Recovery (PITR)
+    - `12.6.2` PostgreSQL Security & Multi-Tenancy: pg_hba.conf, SCRAM-SHA-256, TLS/mTLS, RBAC & Row-Level Security (RLS)
+    - `12.6.3` Observability & Bottleneck Diagnostics: pg_stat_statements, pg_stat_activity, Wait Events & Bloat Metrics
+    - `12.6.4` Production Kernel & Memory Tuning: shared_buffers, work_mem, effective_cache_size, HugePages & Linux Dirty I/O
+- **Portal, Masterclass & Search Synchronization**:
+  - `tech_postgres.html`: Expanded from 4 subsections (15 concepts) to **6 subsections (24 concepts)** with 24 unique oEmbed-verified YouTube walkthroughs and HTTP-200 verified official documentation URLs; removed stale `.focus-bar-right` buttons, updated `sister-guides-card` to all 17 links, and delegated `#theme-toggle` to shared navbar control.
+  - `all_tech.html`: Expanded Section 12 (PostgreSQL) to 24 concepts and updated `card-postgres` and portal totals to **13 Disciplines · 71 Subsections · 288 Concepts**.
+  - `tools/build-learning-hub.mjs` & `search-index.json`: Added all 24 PostgreSQL concepts to the global search catalog.
+  - `tools/expand_postgres_masterclass.py`: Atomic, idempotent builder script created.
+- **Verification Suite**:
+  - `python tools/audit_site.py`: **0 findings** across all 792 scanned pages.
+  - `node tools/verify-learning-hub.mjs`: All 16 hub pages passed with all checks green.
+  - Headless Playwright test suite (`test_postgres_expansion_playwright.py`):
+    - Verified 24 concepts, 6 subsections, 17 sister links, progress toggle, and study-rail mount (3 buttons) in `tech_postgres.html`.
+    - Verified 288 total concepts, 71 subsections, and `switchDomain('postgres')` isolation in `all_tech.html`.
+    - Verified 24 PostgreSQL entries in `search-index.json`, zero page/console errors, and zero horizontal overflow (`scrollWidth === clientWidth === 1440px`) across Light and Black themes.

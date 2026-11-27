@@ -3707,6 +3707,41 @@ const sparkSearchItems = sparkConcepts.map((item) => ({
   a: `tech_spark.html`,
 }));
 
+const postgresConcepts = [
+  { cid: "12.1.1", t: "Relational Theory & Integrity: Candidate/Surrogate Keys, Foreign Keys, CHECK, Exclusion Constraints & Domains" },
+  { cid: "12.1.2", t: "Functional Dependencies & Normalization (1NF-BCNF) vs Strategic Denormalization & Materialized Views" },
+  { cid: "12.1.3", t: "Declarative Table Partitioning (Range, List, Hash), Partition Pruning & Time-Series Patterns" },
+  { cid: "12.1.4", t: "Semi-Structured & Hybrid Data: JSONB Binary Storage, TOAST Compression, Arrays, UUIDv7 & pgvector" },
+  { cid: "12.2.1", t: "Physical Storage Internals: Heap Slotted Pages (8KB), CTID, FSM/VM Maps, TOAST & Shared Buffers Clock-Sweep" },
+  { cid: "12.2.2", t: "Multi-Version Concurrency Control (MVCC): xmin/xmax Tuple Headers, Snapshots, HOT Updates & Visibility" },
+  { cid: "12.2.3", t: "Write-Ahead Logging (WAL): ARIES Steal/No-Force, Checkpoints, Full-Page Writes, LSNs & Crash Recovery" },
+  { cid: "12.2.4", t: "VACUUM & Autovacuum Internals: Dead Tuple Bloat, Visibility Map & XID Anti-Wraparound Freeze" },
+  { cid: "12.3.1", t: "ACID Isolation Levels: Read Committed, Repeatable Read (SI) & Serializable (SSI / RW-Antidependencies)" },
+  { cid: "12.3.2", t: "PostgreSQL Lock Hierarchy: Table Locks (ACCESS SHARE to ACCESS EXCLUSIVE), Row Locks & Deadlocks" },
+  { cid: "12.3.3", t: "Lightweight Locks (LWLocks), Spinlocks, Buffer Pinning, Lock Queues & Advisory Locks" },
+  { cid: "12.3.4", t: "Lock-Free Zero-Downtime Schema Migrations: Expand-Contract, CONCURRENTLY & lock_timeout Guardrails" },
+  { cid: "12.4.1", t: "B-Tree Index Internals: Lehman-Yao Concurrent B-Trees, Composite Ordering, INCLUDE & Index-Only Scans" },
+  { cid: "12.4.2", t: "Specialized Index Engines: GIN (JSONB/Full-Text), GiST (R-Tree/PostGIS), BRIN (Block Range) & Hash" },
+  { cid: "12.4.3", t: "Query Lifecycle & Cost-Based Optimizer (CBO): Parser, Rewriter, pg_statistic Histograms, MCVs & GEQO" },
+  { cid: "12.4.4", t: "Mastering EXPLAIN (ANALYZE, BUFFERS): Scan Types, Nested Loop/Hash/Merge Joins & CTE Materialization" },
+  { cid: "12.5.1", t: "Physical Streaming Replication: WAL Sender/Receiver, Replication Slots, Sync vs Async & Cascading" },
+  { cid: "12.5.2", t: "Logical Replication Internals: pgoutput Decoding, Publications/Subscriptions, Major Upgrades & CDC" },
+  { cid: "12.5.3", t: "Connection Pooling & Process-Per-Connection Limits: PgBouncer (Session, Transaction, Statement) & Prepared Statements" },
+  { cid: "12.5.4", t: "High Availability & Horizontal Scaling: Patroni + etcd Consensus Failover, Split-Brain Fencing & Citus Sharding" },
+  { cid: "12.6.1", t: "Physical & Logical Backups: pg_basebackup, pgBackRest, Continuous WAL Archiving & Point-in-Time Recovery (PITR)" },
+  { cid: "12.6.2", t: "PostgreSQL Security & Multi-Tenancy: pg_hba.conf, SCRAM-SHA-256, TLS/mTLS, RBAC & Row-Level Security (RLS)" },
+  { cid: "12.6.3", t: "Observability & Bottleneck Diagnostics: pg_stat_statements, pg_stat_activity, Wait Events & Bloat Metrics" },
+  { cid: "12.6.4", t: "Production Kernel & Memory Tuning: shared_buffers, work_mem, effective_cache_size, HugePages & Linux Dirty I/O" },
+];
+
+const postgresSearchItems = postgresConcepts.map((item) => ({
+  k: "cloud",
+  c: `postgres-${item.cid}`,
+  t: `PostgreSQL · ${item.cid}: ${item.t}`,
+  s: "Database Engineering & PostgreSQL Internals",
+  a: `tech_postgres.html`,
+}));
+
 const allSearchItems = [
   ...data.items.map((item) => ({
     k: item.domain,
@@ -3724,6 +3759,7 @@ const allSearchItems = [
   ...cicdSearchItems,
   ...kafkaSearchItems,
   ...sparkSearchItems,
+  ...postgresSearchItems,
 ];
 
 write(
