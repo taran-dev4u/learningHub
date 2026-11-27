@@ -790,7 +790,7 @@ html.black, html[data-theme="black"] {
 
 </style>
 </head>
-<body>
+<body data-site="cloud">
 <div class="wrap">
   <div class="tech-breadcrumb">
     <a href="all_tech.html" class="tech-bc-home">← All-in-One Tech Portal</a>
@@ -799,22 +799,22 @@ html.black, html[data-theme="black"] {
   </div>
 
   <div class="hero">
-    <div class="edition">Caching & In-Memory Data · Masterclass 09 · 3 Subsections · 12 Concepts</div>
+    <div class="edition">Caching &amp; In-Memory Data &middot; Masterclass 10 &middot; 6 Subsections &middot; 24 Concepts</div>
     <h1>In-Memory Caching with Redis Masterclass</h1>
-    <p class="subtitle">Ultra-low-latency in-memory data structures: non-blocking IO multiplexing, Redis Cluster sharding, Sentinel failover, cache stampede prevention, and Redlock.</p>
+    <p class="subtitle">Ultra-low-latency in-memory engineering: epoll event loop, RESP3 pipelining, jemalloc &amp; listpack memory, SDS/Skiplist/HyperLogLog/Streams, LRU/LFU eviction, stampede defense, RDB/AOF, Sentinel, Redis Cluster, Lua/Functions, Redlock, CLIENT TRACKING &amp; Linux tuning.</p>
   </div>
 
   <div class="stats">
-    <div class="stat"><div class="n">3</div><div class="l">Subsections</div></div>
-    <div class="stat"><div class="n">12</div><div class="l">Concepts</div></div>
+    <div class="stat"><div class="n">6</div><div class="l">Subsections</div></div>
+    <div class="stat"><div class="n">24</div><div class="l">Concepts</div></div>
     <div class="stat"><div class="n">100%</div><div class="l">Curated</div></div>
-    <div class="stat"><div class="n">15+</div><div class="l">Verified Docs &amp; Labs</div></div>
+    <div class="stat"><div class="n">25+</div><div class="l">Verified Docs &amp; Labs</div></div>
   </div>
 
   <div class="overall-progress">
     <span class="lbl">Masterclass Progress</span>
     <div class="bar-track"><div class="bar-fill" id="overall-bar"></div></div>
-    <span class="pct" id="overall-pct">0 / 12</span>
+    <span class="pct" id="overall-pct">0 / 24</span>
   </div>
 
   <div class="controls">
@@ -824,7 +824,7 @@ html.black, html[data-theme="black"] {
       <button class="filter-btn" data-filter="status" data-val="undone">Not Done</button>
       <button class="filter-btn status-bookmarked" data-filter="status" data-val="bookmarked">★ Bookmarked</button>
       <span class="sep"></span>
-      <div class="search"><input id="search-input" placeholder="Search 12 concepts…" type="search"/></div>
+      <div class="search"><input id="search-input" placeholder="Search 24 concepts…" type="search"/></div>
       <button class="icon-btn" id="random-btn" title="Random concept">🎲</button>
       <button class="icon-btn" id="theme-toggle" title="Toggle theme">🌓</button>
       <button class="icon-btn" onclick="window.print()" title="Print">🖨️</button>
@@ -838,13 +838,7 @@ html.black, html[data-theme="black"] {
     <div class="focus-bar-left">
       <span class="focus-bar-pill">Domain 13 of 16</span>
       <span class="focus-bar-title">In-Memory Caching with Redis</span>
-      <span class="focus-bar-stats">12 concepts &bull; 3 subsections</span>
-    </div>
-    <div class="focus-bar-right">
-      <button type="button" class="focus-btn" onclick="navigateDomain(-1)">← Prev Domain</button>
-      <button type="button" class="focus-btn view-all-btn" onclick="switchDomain('all')">🌐 View All (16)</button>
-      <button type="button" class="focus-btn" onclick="navigateDomain(1)">Next Domain →</button>
-      
+      <span class="focus-bar-stats">24 concepts &bull; 6 subsections</span>
     </div>
   </div>
   <div class="section-banner" style="background:linear-gradient(135deg, hsl(355, 85%, 45%), hsl(375, 75%, 35%))">
@@ -852,188 +846,332 @@ html.black, html[data-theme="black"] {
     <div class="info">
       <div class="label">Section 13 of 16</div>
       <h2>13. In-Memory Caching with Redis</h2>
-      <div class="meta">3 subsections · 12 concepts</div>
+      <div class="meta">6 subsections · 24 concepts</div>
     </div>
     <div class="ppg">
-      <div class="pct-text" data-pp-text="13">0 / 12</div>
+      <div class="pct-text" data-pp-text="13">0 / 24</div>
       <div class="pp-track"><div class="pp-fill" data-pp-fill="13"></div></div>
     </div>
   </div>
   <div class="section-desc">
-    <div class="tagline">Sub-millisecond single-threaded event loop, specialized data structures, and distributed caching topologies.</div>
-    <div class="row"><b>Core Focus:</b> Strings, Hashes, Sorted Sets, HyperLogLog; Cache-Aside &amp; Write-Through; RDB snapshots &amp; AOF logging; Redis Cluster.</div>
-    <div class="row"><b>Production Trade-offs:</b> RAM cost vs disk persistence latency, Redis Cluster hash slots vs client-side consistent hashing.</div>
+    <div class="tagline">Sub-millisecond in-memory computing: single-threaded epoll event loop, RESP3 pipelining, jemalloc &amp; listpack encodings, Cache-Aside &amp; XFetch stampede defense, RDB/AOF durability, Sentinel HA, 16,384-slot Redis Cluster, Lua atomicity &amp; Redlock.</div>
+    <div class="row"><b>Core Focus:</b> SDS/Skiplist/HyperLogLog/Streams internals, approximated LRU/LFU eviction, BGSAVE fork Copy-on-Write, PSYNC2 failover, CRC16 hash tags, Lua/Redis Functions, CLIENT TRACKING &amp; Linux THP/overcommit tuning.</div>
+    <div class="row"><b>Production Trade-offs:</b> RAM cost &amp; COW fork headroom vs persistence fsync durability, Redis Cluster cross-slot limits vs hash tags, and Redlock lease expiry vs monotonic fencing tokens.</div>
   </div>
   <div class="resources-section">
     <div class="head" onclick="this.parentElement.classList.toggle('open')">
       <h4>📚 Learn this domain</h4>
-      <div><span class="count">4 curated resources</span><span class="chevron">▶</span></div>
+      <div><span class="count">6 curated resources</span><span class="chevron">▶</span></div>
     </div>
     <div class="resources-body">
       <div class="res-grid">
-        <a class="res-link" href="https://redis.io/docs/" target="_blank" rel="noopener"><span class="res-icon">📖</span><span class="res-title">Redis Official Documentation</span><span class="res-source">Redis</span></a>
-        <a class="res-link" href="https://www.youtube.com/watch?v=Hbt56gFj998" target="_blank" rel="noopener"><span class="res-icon">🎥</span><span class="res-title">Redis Crash Course Tutorial (Traversy Media)</span><span class="res-source">Traversy Media</span></a>
-        <a class="res-link" href="https://university.redis.com/" target="_blank" rel="noopener"><span class="res-icon">🎓</span><span class="res-title">Redis University: Free Developer Courses</span><span class="res-source">Redis</span></a>
-        <a class="res-link" href="https://redis.io/docs/management/scaling/" target="_blank" rel="noopener"><span class="res-icon">🏛️</span><span class="res-title">Redis Cluster Specification &amp; Architecture</span><span class="res-source">Redis</span></a>
+        <a class="res-link" href="https://redis.io/docs/latest/" target="_blank" rel="noopener"><span class="res-icon">📖</span><span class="res-title">Redis Official Documentation</span><span class="res-source">Redis</span></a>
+        <a class="res-link" href="https://redis.io/docs/latest/develop/data-types/" target="_blank" rel="noopener"><span class="res-icon">🧱</span><span class="res-title">Redis Data Types &amp; Internals Guide</span><span class="res-source">Redis</span></a>
+        <a class="res-link" href="https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/" target="_blank" rel="noopener"><span class="res-icon">💾</span><span class="res-title">RDB &amp; AOF Persistence Specification</span><span class="res-source">Redis</span></a>
+        <a class="res-link" href="https://redis.io/docs/latest/operate/oss_and_stack/management/scaling/" target="_blank" rel="noopener"><span class="res-icon">🏛️</span><span class="res-title">Redis Cluster &amp; Hash Slots Architecture</span><span class="res-source">Redis</span></a>
+        <a class="res-link" href="https://redis.io/docs/latest/develop/clients/patterns/distributed-locks/" target="_blank" rel="noopener"><span class="res-icon">🔒</span><span class="res-title">Distributed Locks &amp; Redlock Pattern</span><span class="res-source">Redis</span></a>
+        <a class="res-link" href="https://valkey.io/topics/" target="_blank" rel="noopener"><span class="res-icon">⚡</span><span class="res-title">Valkey Open-Source Documentation</span><span class="res-source">Linux Foundation</span></a>
       </div>
     </div>
   </div>
   <div class="subsection">
     <div class="subsection-head">
       <span class="subsection-tag">13.1</span>
-      <h3>Redis Architecture &amp; Data Structure Internals</h3>
+      <h3>Redis Architecture, Event Loop, Memory Model &amp; Wire Protocol</h3>
       <span style="font-size:11px;color:var(--text-faint);">4 concepts</span>
     </div>
-    <div class="subsection-desc">Masterclass lessons covering Redis Architecture &amp; Data Structure Internals architecture, operational mechanisms, and failure modes.</div>
+    <div class="subsection-desc">How Redis achieves sub-millisecond tail latencies via single-threaded epoll/kqueue multiplexing, pipelined RESP2/RESP3 framing, jemalloc memory layout, and fork Copy-on-Write semantics.</div>
     <ol class="concepts">
-      <li data-cid="13.1.1" data-name="redis single threaded event loop  i o multiplexing  epoll kqueue  architecture">
+      <li data-cid="13.1.1" data-name="single threaded event loop i o multiplexing epoll kqueue aeeventloop redis 6 threaded i o">
         <div class="done-check" title="Mark as done"></div>
         <div class="bookmark-star" title="Bookmark">☆</div>
         <div>
-          <div class="cname">Redis Single-Threaded Event Loop: I/O Multiplexing (epoll/kqueue) Architecture</div>
-          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Redis Single-Threaded Event Loop: I/O Multiplexing (epoll/kqueue) Architecture.</div>
+          <div class="cname">Single-Threaded Event Loop &amp; I/O Multiplexing (epoll/kqueue, aeEventLoop &amp; Redis 6+ Threaded I/O)</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Why a single command-execution thread eliminates mutex contention and context switching, how aeEventLoop polls thousands of non-blocking sockets via epoll/kqueue, and how Redis 6+ offloads socket read/write parsing to I/O threads.</div>
         </div>
-        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=Hbt56gFj998&t=0s" data-vtitle="Redis Single-Threaded Event Loop: I/O Multiplexing (epoll/kqueue) Architecture" data-vchannel="Traversy Media" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Redis Single-Threaded Event Loop: I/O Multiplexing (epoll/kqueue) Architecture">🎬YT</a><a href="https://redis.io/docs/data-types/" target="_blank" rel="noopener" title="Redis Data Types Tutorial">🌐Doc</a></div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=No8JvCwR5P8" data-vtitle="Single-Threaded Event Loop &amp; I/O Multiplexing (epoll/kqueue, aeEventLoop &amp; Redis 6+ Threaded I/O)" data-vchannel="Yatharth Verma" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Single-Threaded Event Loop &amp; I/O Multiplexing (epoll/kqueue, aeEventLoop &amp; Redis 6+ Threaded I/O)">🎬YT</a><a href="https://redis.io/docs/latest/develop/get-started/data-store/" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
       </li>
-      <li data-cid="13.1.2" data-name="core data structures  strings  sds  hashes  ziplist dict  lists  quicklist">
+      <li data-cid="13.1.2" data-name="resp2 resp3 wire protocol command pipelining round trip time rtt elimination">
         <div class="done-check" title="Mark as done"></div>
         <div class="bookmark-star" title="Bookmark">☆</div>
         <div>
-          <div class="cname">Core Data Structures: Strings (SDS), Hashes (ZipList/Dict), Lists (QuickList)</div>
-          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Core Data Structures: Strings (SDS), Hashes (ZipList/Dict), Lists (QuickList).</div>
+          <div class="cname">RESP2 &amp; RESP3 Wire Protocol, Command Pipelining &amp; Round-Trip Time (RTT) Elimination</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Binary-safe length-prefixed framing in RESP2 vs RESP3 push/map/attribute types, batching hundreds of commands in a single TCP write with pipelining, and avoiding RTT bottlenecks without blocking other clients.</div>
         </div>
-        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=Hbt56gFj998&t=300s" data-vtitle="Core Data Structures: Strings (SDS), Hashes (ZipList/Dict), Lists (QuickList)" data-vchannel="Traversy Media" data-start="300" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Core Data Structures: Strings (SDS), Hashes (ZipList/Dict), Lists (QuickList)">🎬YT</a><a href="https://redis.io/docs/data-types/" target="_blank" rel="noopener" title="Redis Data Types Tutorial">🌐Doc</a></div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=cNUC4qXZ_A8" data-vtitle="RESP2 &amp; RESP3 Wire Protocol, Command Pipelining &amp; Round-Trip Time (RTT) Elimination" data-vchannel="PingToPrompt" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: RESP2 &amp; RESP3 Wire Protocol, Command Pipelining &amp; Round-Trip Time (RTT) Elimination">🎬YT</a><a href="https://redis.io/docs/latest/develop/reference/protocol-spec/" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
       </li>
-      <li data-cid="13.1.3" data-name="advanced structures  sets  intset dict  sorted sets  skiplist  bitmaps   hyperloglog">
+      <li data-cid="13.1.3" data-name="memory allocator internals jemalloc fragmentation ratio redisobject listpack compression">
         <div class="done-check" title="Mark as done"></div>
         <div class="bookmark-star" title="Bookmark">☆</div>
         <div>
-          <div class="cname">Advanced Structures: Sets (IntSet/Dict), Sorted Sets (SkipList), Bitmaps &amp; HyperLogLog</div>
-          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Advanced Structures: Sets (IntSet/Dict), Sorted Sets (SkipList), Bitmaps &amp; HyperLogLog.</div>
+          <div class="cname">Memory Allocator Internals (jemalloc), Fragmentation Ratio, redisObject &amp; Listpack Compression</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Anatomy of 16-byte redisObject headers, jemalloc slab/arena allocation reducing fragmentation, mem_fragmentation_ratio &gt; 1.5 vs &lt; 1.0 swap danger, and compact ziplist/listpack encodings for small hashes and zsets.</div>
         </div>
-        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=Hbt56gFj998&t=900s" data-vtitle="Advanced Structures: Sets (IntSet/Dict), Sorted Sets (SkipList), Bitmaps &amp; HyperLogLog" data-vchannel="Traversy Media" data-start="900" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Advanced Structures: Sets (IntSet/Dict), Sorted Sets (SkipList), Bitmaps &amp; HyperLogLog">🎬YT</a><a href="https://redis.io/docs/data-types/" target="_blank" rel="noopener" title="Redis Data Types Tutorial">🌐Doc</a></div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=h30k7YixrMo" data-vtitle="Memory Allocator Internals (jemalloc), Fragmentation Ratio, redisObject &amp; Listpack Compression" data-vchannel="Arpit Bhayani" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Memory Allocator Internals (jemalloc), Fragmentation Ratio, redisObject &amp; Listpack Compression">🎬YT</a><a href="https://redis.io/docs/latest/operate/oss_and_stack/management/optimization/memory-optimization/" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
       </li>
-      <li data-cid="13.1.4" data-name="redis streams  message queuing with consumer groups and pending entries list  pel">
+      <li data-cid="13.1.4" data-name="valkey redis licensing evolution forking copy on write cow memory overhead">
         <div class="done-check" title="Mark as done"></div>
         <div class="bookmark-star" title="Bookmark">☆</div>
         <div>
-          <div class="cname">Redis Streams: Message Queuing with Consumer Groups and Pending Entries List (PEL)</div>
-          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Redis Streams: Message Queuing with Consumer Groups and Pending Entries List (PEL).</div>
+          <div class="cname">Valkey, Redis Licensing Evolution &amp; Forking Copy-on-Write (COW) Memory Overhead</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Open-source governance split to Linux Foundation Valkey 8+, multi-threaded I/O improvements, and why BGSAVE/BGREWRITEAOF fork() can double RAM usage under heavy write churn via OS 4KB page Copy-on-Write.</div>
         </div>
-        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=Hbt56gFj998&t=1500s" data-vtitle="Redis Streams: Message Queuing with Consumer Groups and Pending Entries List (PEL)" data-vchannel="Traversy Media" data-start="1500" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Redis Streams: Message Queuing with Consumer Groups and Pending Entries List (PEL)">🎬YT</a><a href="https://redis.io/docs/data-types/" target="_blank" rel="noopener" title="Redis Data Types Tutorial">🌐Doc</a></div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=wWTjxLcMVsg" data-vtitle="Valkey, Redis Licensing Evolution &amp; Forking Copy-on-Write (COW) Memory Overhead" data-vchannel="Anton Putra" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Valkey, Redis Licensing Evolution &amp; Forking Copy-on-Write (COW) Memory Overhead">🎬YT</a><a href="https://valkey.io/topics/" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
       </li>
     </ol>
   </div>
   <div class="subsection">
     <div class="subsection-head">
       <span class="subsection-tag">13.2</span>
-      <h3>Caching Topologies, Invalidation &amp; Eviction</h3>
+      <h3>Core &amp; Advanced In-Memory Data Structures</h3>
       <span style="font-size:11px;color:var(--text-faint);">4 concepts</span>
     </div>
-    <div class="subsection-desc">Masterclass lessons covering Caching Topologies, Invalidation &amp; Eviction architecture, operational mechanisms, and failure modes.</div>
+    <div class="subsection-desc">Internal representations, Big-O guarantees, and production engineering patterns for Strings, Hashes, Lists, Sets, Sorted Sets, HyperLogLog, Bloom Filters, and Redis Streams.</div>
     <ol class="concepts">
-      <li data-cid="13.2.1" data-name="caching topologies  cache aside  lazy  read through  write through   write behind">
+      <li data-cid="13.2.1" data-name="strings sds dynamic strings atomic counters incr decr bitfields setbit bitfield">
         <div class="done-check" title="Mark as done"></div>
         <div class="bookmark-star" title="Bookmark">☆</div>
         <div>
-          <div class="cname">Caching Topologies: Cache-Aside (Lazy), Read-Through, Write-Through &amp; Write-Behind</div>
-          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Caching Topologies: Cache-Aside (Lazy), Read-Through, Write-Through &amp; Write-Behind.</div>
+          <div class="cname">Strings (SDS Dynamic Strings), Atomic Counters (INCR/DECR) &amp; Bitfields (SETBIT / BITFIELD)</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Why Simple Dynamic Strings (SDS) store O(1) length and pre-allocate free space unlike C strings, binary-safe 512MB payloads, atomic INCR/INCRBY counters, and memory-dense daily active user tracking via Bitmaps.</div>
         </div>
-        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=1NngTUYPdpI&t=0s" data-vtitle="Caching Topologies: Cache-Aside (Lazy), Read-Through, Write-Through &amp; Write-Behind" data-vchannel="Hello Interview" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Caching Topologies: Cache-Aside (Lazy), Read-Through, Write-Through &amp; Write-Behind">🎬YT</a><a href="https://redis.io/docs/reference/eviction/" target="_blank" rel="noopener" title="Redis Key Eviction (LRU / LFU)">🌐Doc</a></div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=vg71BKWJQdw" data-vtitle="Strings (SDS Dynamic Strings), Atomic Counters (INCR/DECR) &amp; Bitfields (SETBIT / BITFIELD)" data-vchannel="Concept &amp;&amp; Coding - by Shrayansh" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Strings (SDS Dynamic Strings), Atomic Counters (INCR/DECR) &amp; Bitfields (SETBIT / BITFIELD)">🎬YT</a><a href="https://redis.io/docs/latest/develop/data-types/strings/" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
       </li>
-      <li data-cid="13.2.2" data-name="cache failure modes  cache penetration  cache avalanche   cache stampede">
+      <li data-cid="13.2.2" data-name="hashes listpack vs hashtable lists quicklist blocking queues blpop sets intset">
         <div class="done-check" title="Mark as done"></div>
         <div class="bookmark-star" title="Bookmark">☆</div>
         <div>
-          <div class="cname">Cache Failure Modes: Cache Penetration, Cache Avalanche &amp; Cache Stampede</div>
-          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Cache Failure Modes: Cache Penetration, Cache Avalanche &amp; Cache Stampede.</div>
+          <div class="cname">Hashes (listpack vs hashtable), Lists (quicklist), Blocking Queues (BLPOP) &amp; Sets (intset)</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Packing object fields efficiently in Hashes with listpack thresholds, doubly-linked quicklists of packed nodes for O(1) LPUSH/RPOP queues, BLPOP worker blocking, and O(1) Set intersections/unions.</div>
         </div>
-        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=1NngTUYPdpI&t=450s" data-vtitle="Cache Failure Modes: Cache Penetration, Cache Avalanche &amp; Cache Stampede" data-vchannel="Hello Interview" data-start="450" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Cache Failure Modes: Cache Penetration, Cache Avalanche &amp; Cache Stampede">🎬YT</a><a href="https://redis.io/docs/reference/eviction/" target="_blank" rel="noopener" title="Redis Key Eviction (LRU / LFU)">🌐Doc</a></div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=ynKFI40oEKg" data-vtitle="Hashes (listpack vs hashtable), Lists (quicklist), Blocking Queues (BLPOP) &amp; Sets (intset)" data-vchannel="Eric Tech" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Hashes (listpack vs hashtable), Lists (quicklist), Blocking Queues (BLPOP) &amp; Sets (intset)">🎬YT</a><a href="https://redis.io/docs/latest/develop/data-types/hashes/" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
       </li>
-      <li data-cid="13.2.3" data-name="mitigation patterns  bloom filters  mutex locks   probabilistic early expiration  xfetch">
+      <li data-cid="13.2.3" data-name="sorted sets zset dual dict skiplist o log n real time leaderboards priority queues">
         <div class="done-check" title="Mark as done"></div>
         <div class="bookmark-star" title="Bookmark">☆</div>
         <div>
-          <div class="cname">Mitigation Patterns: Bloom Filters, Mutex Locks &amp; Probabilistic Early Expiration (XFetch)</div>
-          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Mitigation Patterns: Bloom Filters, Mutex Locks &amp; Probabilistic Early Expiration (XFetch).</div>
+          <div class="cname">Sorted Sets (ZSET: Dual dict + skiplist O(log N)), Real-Time Leaderboards &amp; Priority Queues</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">How Redis pairs a hash table (O(1) score lookup by member) with a probabilistic skiplist (O(log N) range queries by rank/score) to power real-time leaderboards, delayed job queues, and sliding-window logs.</div>
         </div>
-        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=1NngTUYPdpI&t=900s" data-vtitle="Mitigation Patterns: Bloom Filters, Mutex Locks &amp; Probabilistic Early Expiration (XFetch)" data-vchannel="Hello Interview" data-start="900" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Mitigation Patterns: Bloom Filters, Mutex Locks &amp; Probabilistic Early Expiration (XFetch)">🎬YT</a><a href="https://redis.io/docs/reference/eviction/" target="_blank" rel="noopener" title="Redis Key Eviction (LRU / LFU)">🌐Doc</a></div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=MUKlxdBQZ7g" data-vtitle="Sorted Sets (ZSET: Dual dict + skiplist O(log N)), Real-Time Leaderboards &amp; Priority Queues" data-vchannel="Redis" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Sorted Sets (ZSET: Dual dict + skiplist O(log N)), Real-Time Leaderboards &amp; Priority Queues">🎬YT</a><a href="https://redis.io/docs/latest/develop/data-types/sorted-sets/" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
       </li>
-      <li data-cid="13.2.4" data-name="eviction policies  allkeys lru  volatile lru  lfu   maxmemory configuration">
+      <li data-cid="13.2.4" data-name="probabilistic streaming structures hyperloglog 12kb bloom filters geo redis streams">
         <div class="done-check" title="Mark as done"></div>
         <div class="bookmark-star" title="Bookmark">☆</div>
         <div>
-          <div class="cname">Eviction Policies: allkeys-lru, volatile-lru, LFU &amp; maxmemory Configuration</div>
-          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Eviction Policies: allkeys-lru, volatile-lru, LFU &amp; maxmemory Configuration.</div>
+          <div class="cname">Probabilistic &amp; Streaming Structures: HyperLogLog (12KB), Bloom Filters, Geo &amp; Redis Streams</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Estimating billions of unique visitors in a fixed 12KB HyperLogLog (&lt;0.81% error), sub-linear Bloom Filter membership checks, Geohash proximity queries, and persistent Redis Streams with Consumer Groups &amp; PEL.</div>
         </div>
-        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=1NngTUYPdpI&t=1350s" data-vtitle="Eviction Policies: allkeys-lru, volatile-lru, LFU &amp; maxmemory Configuration" data-vchannel="Hello Interview" data-start="1350" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Eviction Policies: allkeys-lru, volatile-lru, LFU &amp; maxmemory Configuration">🎬YT</a><a href="https://redis.io/docs/reference/eviction/" target="_blank" rel="noopener" title="Redis Key Eviction (LRU / LFU)">🌐Doc</a></div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=MunL8nnwscQ" data-vtitle="Probabilistic &amp; Streaming Structures: HyperLogLog (12KB), Bloom Filters, Geo &amp; Redis Streams" data-vchannel="Redis" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Probabilistic &amp; Streaming Structures: HyperLogLog (12KB), Bloom Filters, Geo &amp; Redis Streams">🎬YT</a><a href="https://redis.io/docs/latest/develop/data-types/streams/" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
       </li>
     </ol>
   </div>
   <div class="subsection">
     <div class="subsection-head">
       <span class="subsection-tag">13.3</span>
-      <h3>Persistence, Sentinel High Availability &amp; Redis Cluster</h3>
+      <h3>Caching Topologies, Eviction Policies &amp; Failure Mode Mitigations</h3>
       <span style="font-size:11px;color:var(--text-faint);">4 concepts</span>
     </div>
-    <div class="subsection-desc">Masterclass lessons covering Persistence, Sentinel High Availability &amp; Redis Cluster architecture, operational mechanisms, and failure modes.</div>
+    <div class="subsection-desc">Read/write caching architectures, approximated LRU/LFU eviction internals, defending against penetration/avalanche/stampede storms, and CDC cache invalidation.</div>
     <ol class="concepts">
-      <li data-cid="13.3.1" data-name="persistence mechanics  rdb  point in time snapshots  vs aof  append only file">
+      <li data-cid="13.3.1" data-name="caching topologies cache aside lazy read through write through write behind write back">
         <div class="done-check" title="Mark as done"></div>
         <div class="bookmark-star" title="Bookmark">☆</div>
         <div>
-          <div class="cname">Persistence Mechanics: RDB (Point-in-Time Snapshots) vs AOF (Append-Only File)</div>
-          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Persistence Mechanics: RDB (Point-in-Time Snapshots) vs AOF (Append-Only File).</div>
+          <div class="cname">Caching Topologies: Cache-Aside (Lazy), Read-Through, Write-Through &amp; Write-Behind (Write-Back)</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comparing application-managed Cache-Aside against Read-Through providers, synchronous Write-Through durability, and high-throughput asynchronous Write-Behind batching (plus stale-cache race conditions).</div>
         </div>
-        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=Hbt56gFj998&t=1800s" data-vtitle="Persistence Mechanics: RDB (Point-in-Time Snapshots) vs AOF (Append-Only File)" data-vchannel="Traversy Media" data-start="1800" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Persistence Mechanics: RDB (Point-in-Time Snapshots) vs AOF (Append-Only File)">🎬YT</a><a href="https://redis.io/docs/management/persistence/" target="_blank" rel="noopener" title="Redis Persistence: RDB and AOF">🌐Doc</a></div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=V1oGVbxD8mk" data-vtitle="Caching Topologies: Cache-Aside (Lazy), Read-Through, Write-Through &amp; Write-Behind (Write-Back)" data-vchannel="CodeLucky" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Caching Topologies: Cache-Aside (Lazy), Read-Through, Write-Through &amp; Write-Behind (Write-Back)">🎬YT</a><a href="https://redis.io/docs/latest/develop/use-cases/" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
       </li>
-      <li data-cid="13.3.2" data-name="aof fsync policies  always  everysec  no    background log rewriting  bgrewriteaof">
+      <li data-cid="13.3.2" data-name="eviction policies memory pressure approximated allkeys lru volatile lru allkeys lfu maxmemory">
         <div class="done-check" title="Mark as done"></div>
         <div class="bookmark-star" title="Bookmark">☆</div>
         <div>
-          <div class="cname">AOF Fsync Policies (always, everysec, no) &amp; Background Log Rewriting (bgrewriteaof)</div>
-          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for AOF Fsync Policies (always, everysec, no) &amp; Background Log Rewriting (bgrewriteaof).</div>
+          <div class="cname">Eviction Policies &amp; Memory Pressure: Approximated allkeys-lru, volatile-lru, allkeys-lfu &amp; maxmemory</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">How Redis avoids global LRU doubly-linked list overhead using randomized N-key sampling (maxmemory-samples), 24-bit Morris counter logarithmic frequency decay in LFU, and volatile-ttl vs noeviction OOM errors.</div>
         </div>
-        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=Hbt56gFj998&t=2100s" data-vtitle="AOF Fsync Policies (always, everysec, no) &amp; Background Log Rewriting (bgrewriteaof)" data-vchannel="Traversy Media" data-start="2100" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: AOF Fsync Policies (always, everysec, no) &amp; Background Log Rewriting (bgrewriteaof)">🎬YT</a><a href="https://redis.io/docs/management/persistence/" target="_blank" rel="noopener" title="Redis Persistence: RDB and AOF">🌐Doc</a></div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=72eZWhx4mDs" data-vtitle="Eviction Policies &amp; Memory Pressure: Approximated allkeys-lru, volatile-lru, allkeys-lfu &amp; maxmemory" data-vchannel="Java Techie" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Eviction Policies &amp; Memory Pressure: Approximated allkeys-lru, volatile-lru, allkeys-lfu &amp; maxmemory">🎬YT</a><a href="https://redis.io/docs/latest/develop/reference/eviction/" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
       </li>
-      <li data-cid="13.3.3" data-name="redis sentinel  quorum based automatic failover   configuration provider">
+      <li data-cid="13.3.3" data-name="cache failure modes cache penetration cache avalanche jittered ttls cache stampede">
         <div class="done-check" title="Mark as done"></div>
         <div class="bookmark-star" title="Bookmark">☆</div>
         <div>
-          <div class="cname">Redis Sentinel: Quorum-Based Automatic Failover &amp; Configuration Provider</div>
-          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Redis Sentinel: Quorum-Based Automatic Failover &amp; Configuration Provider.</div>
+          <div class="cname">Cache Failure Modes: Cache Penetration, Cache Avalanche (Jittered TTLs) &amp; Cache Stampede</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Distinguishing missing-key DB floods (Penetration), synchronized mass key expiration (Avalanche), and hot-key expiration under massive concurrency (Stampede / Thundering Herd).</div>
         </div>
-        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=Hbt56gFj998&t=2400s" data-vtitle="Redis Sentinel: Quorum-Based Automatic Failover &amp; Configuration Provider" data-vchannel="Traversy Media" data-start="2400" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Redis Sentinel: Quorum-Based Automatic Failover &amp; Configuration Provider">🎬YT</a><a href="https://redis.io/docs/management/persistence/" target="_blank" rel="noopener" title="Redis Persistence: RDB and AOF">🌐Doc</a></div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=HpvokZchYKY" data-vtitle="Cache Failure Modes: Cache Penetration, Cache Avalanche (Jittered TTLs) &amp; Cache Stampede" data-vchannel="TheNextGenFreak" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Cache Failure Modes: Cache Penetration, Cache Avalanche (Jittered TTLs) &amp; Cache Stampede">🎬YT</a><a href="https://redis.io/docs/latest/develop/data-types/probabilistic/bloom-filter/" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
       </li>
-      <li data-cid="13.3.4" data-name="redis cluster  hash slots  16 384  crc16 sharding  multi key limitations   smart clients">
+      <li data-cid="13.3.4" data-name="stampede consistency mitigations singleflight mutexes xfetch early expiration cdc invalidation">
         <div class="done-check" title="Mark as done"></div>
         <div class="bookmark-star" title="Bookmark">☆</div>
         <div>
-          <div class="cname">Redis Cluster: Hash Slots (16,384), CRC16 Sharding, Multi-Key Limitations &amp; Smart Clients</div>
-          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Comprehensive production architecture, core execution mechanisms, and operational trade-offs for Redis Cluster: Hash Slots (16,384), CRC16 Sharding, Multi-Key Limitations &amp; Smart Clients.</div>
+          <div class="cname">Stampede &amp; Consistency Mitigations: Singleflight Mutexes, XFetch Early Expiration &amp; CDC Invalidation</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Coalescing duplicate origin fetches with singleflight / Redis mutex locks, mathematical Probabilistic Early Expiration (XFetch), caching short-TTL null sentinels, and Debezium CDC out-of-band cache invalidation.</div>
         </div>
-        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=Hbt56gFj998&t=2700s" data-vtitle="Redis Cluster: Hash Slots (16,384), CRC16 Sharding, Multi-Key Limitations &amp; Smart Clients" data-vchannel="Traversy Media" data-start="2700" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Redis Cluster: Hash Slots (16,384), CRC16 Sharding, Multi-Key Limitations &amp; Smart Clients">🎬YT</a><a href="https://redis.io/docs/management/persistence/" target="_blank" rel="noopener" title="Redis Persistence: RDB and AOF">🌐Doc</a></div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=WMH_zBio1Mo" data-vtitle="Stampede &amp; Consistency Mitigations: Singleflight Mutexes, XFetch Early Expiration &amp; CDC Invalidation" data-vchannel="SaaS RTO" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Stampede &amp; Consistency Mitigations: Singleflight Mutexes, XFetch Early Expiration &amp; CDC Invalidation">🎬YT</a><a href="https://redis.io/docs/latest/develop/clients/patterns/distributed-locks/" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
+      </li>
+    </ol>
+  </div>
+  <div class="subsection">
+    <div class="subsection-head">
+      <span class="subsection-tag">13.4</span>
+      <h3>Persistence, Replication, Sentinel HA &amp; Redis Cluster</h3>
+      <span style="font-size:11px;color:var(--text-faint);">4 concepts</span>
+    </div>
+    <div class="subsection-desc">RDB snapshot forks vs AOF durability logs, PSYNC2 replication and Sentinel quorum failovers, and Redis Cluster 16,384 hash slot sharding internals.</div>
+    <ol class="concepts">
+      <li data-cid="13.4.1" data-name="persistence mechanics rdb snapshots bgsave fork vs aof append only file multi part aof">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Persistence Mechanics: RDB Snapshots (BGSAVE Fork) vs AOF (Append-Only File &amp; Multi-Part AOF)</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Point-in-time compact binary RDB dumps for fast restarts vs command-logged AOF durability, Redis 7+ Multi-Part AOF eliminating rewrite memory duplication, and recovery startup order.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=mi7RNK-NFKI" data-vtitle="Persistence Mechanics: RDB Snapshots (BGSAVE Fork) vs AOF (Append-Only File &amp; Multi-Part AOF)" data-vchannel="TheNextGenFreak" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Persistence Mechanics: RDB Snapshots (BGSAVE Fork) vs AOF (Append-Only File &amp; Multi-Part AOF)">🎬YT</a><a href="https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
+      </li>
+      <li data-cid="13.4.2" data-name="aof fsync policies always everysec no bgrewriteaof hybrid rdb aof preamble">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">AOF Fsync Policies (always, everysec, no), bgrewriteaof &amp; Hybrid RDB-AOF Preamble</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Latency vs durability across fsync=always, everysec (up to 1s data loss), and no, preventing fsync stalls during BGREWRITEAOF via no-appendfsync-on-rewrite, and fast RDB-preamble hybrid AOF loading.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=r5qsVg1KvuU" data-vtitle="AOF Fsync Policies (always, everysec, no), bgrewriteaof &amp; Hybrid RDB-AOF Preamble" data-vchannel="Coditioning" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: AOF Fsync Policies (always, everysec, no), bgrewriteaof &amp; Hybrid RDB-AOF Preamble">🎬YT</a><a href="https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
+      </li>
+      <li data-cid="13.4.3" data-name="replication redis sentinel psync2 partial resync quorum sdown odown automatic failover">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Replication &amp; Redis Sentinel: PSYNC2 Partial Resync, Quorum (SDOWN/ODOWN) &amp; Automatic Failover</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Asynchronous primary-replica replication via repl_backlog_buffer and replication IDs (PSYNC2), WAIT synchronous durability, Sentinel SDOWN vs ODOWN quorum voting, and min-replicas-to-write split-brain protection.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=sbzz3KRZbPU" data-vtitle="Replication &amp; Redis Sentinel: PSYNC2 Partial Resync, Quorum (SDOWN/ODOWN) &amp; Automatic Failover" data-vchannel="Prepare-sh" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Replication &amp; Redis Sentinel: PSYNC2 Partial Resync, Quorum (SDOWN/ODOWN) &amp; Automatic Failover">🎬YT</a><a href="https://redis.io/docs/latest/operate/oss_and_stack/management/sentinel/" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
+      </li>
+      <li data-cid="13.4.4" data-name="redis cluster architecture 16 384 hash slots crc16 gossip bus hash tags moved ask redirects">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Redis Cluster Architecture: 16,384 Hash Slots (CRC16), Gossip Bus, Hash Tags &amp; MOVED/ASK Redirects</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Partitioning keyspace across 16,384 CRC16 slots, cluster gossip bus failure detection, pinning multi-key operations with {hashtag} keys to avoid CROSSSLOT errors, and live resharding MOVED vs ASK client redirects.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=0G5_w2lX02o" data-vtitle="Redis Cluster Architecture: 16,384 Hash Slots (CRC16), Gossip Bus, Hash Tags &amp; MOVED/ASK Redirects" data-vchannel="System Design Lab" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Redis Cluster Architecture: 16,384 Hash Slots (CRC16), Gossip Bus, Hash Tags &amp; MOVED/ASK Redirects">🎬YT</a><a href="https://redis.io/docs/latest/operate/oss_and_stack/management/scaling/" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
+      </li>
+    </ol>
+  </div>
+  <div class="subsection">
+    <div class="subsection-head">
+      <span class="subsection-tag">13.5</span>
+      <h3>Atomicity, Distributed Locking, Lua Scripting &amp; Pub/Sub</h3>
+      <span style="font-size:11px;color:var(--text-faint);">4 concepts</span>
+    </div>
+    <div class="subsection-desc">Optimistic WATCH/MULTI/EXEC pipelines, atomic Lua scripts and Redis 7 Functions, Redlock safety &amp; fencing tokens, and Sharded Pub/Sub vs Streams.</div>
+    <ol class="concepts">
+      <li data-cid="13.5.1" data-name="redis transactions multi exec optimistic concurrency watch cas no rollback semantics">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Redis Transactions (MULTI/EXEC), Optimistic Concurrency (WATCH CAS) &amp; No-Rollback Semantics</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Queuing commands atomically inside MULTI/EXEC, implementing Compare-And-Set optimistic locking with WATCH, and why Redis intentionally executes valid queued commands even if one command fails at runtime.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=zVMP1IuiZB4" data-vtitle="Redis Transactions (MULTI/EXEC), Optimistic Concurrency (WATCH CAS) &amp; No-Rollback Semantics" data-vchannel="Oddly Yogi" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Redis Transactions (MULTI/EXEC), Optimistic Concurrency (WATCH CAS) &amp; No-Rollback Semantics">🎬YT</a><a href="https://redis.io/docs/latest/develop/interact/transactions/" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
+      </li>
+      <li data-cid="13.5.2" data-name="server side atomicity lua scripts eval evalsha redis 7 functions function load">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Server-Side Atomicity: Lua Scripts (EVAL/EVALSHA) &amp; Redis 7 Functions (FUNCTION LOAD)</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Executing multi-step read-modify-write logic atomically inside the single event loop via EVALSHA, avoiding script-cache eviction bugs with Redis 7 persistent Functions, and preventing long-running Lua scripts from blocking.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=uptxcaf2s_4" data-vtitle="Server-Side Atomicity: Lua Scripts (EVAL/EVALSHA) &amp; Redis 7 Functions (FUNCTION LOAD)" data-vchannel="DevMonk" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Server-Side Atomicity: Lua Scripts (EVAL/EVALSHA) &amp; Redis 7 Functions (FUNCTION LOAD)">🎬YT</a><a href="https://redis.io/docs/latest/develop/interact/programmability/eval-intro/" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
+      </li>
+      <li data-cid="13.5.3" data-name="distributed locks set nx px fencing tokens lease watchdogs redlock controversy">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Distributed Locks: SET NX PX, Fencing Tokens, Lease Watchdogs &amp; Redlock Controversy</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Safe single-instance locks using SET key token NX PX ttl with atomic Lua unlock verification, GC-pause lease expiry hazards, monotonic fencing tokens, and Kleppmann vs Antirez analysis of multi-node Redlock.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=qY4MfWv01pI" data-vtitle="Distributed Locks: SET NX PX, Fencing Tokens, Lease Watchdogs &amp; Redlock Controversy" data-vchannel="ByteMonk" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Distributed Locks: SET NX PX, Fencing Tokens, Lease Watchdogs &amp; Redlock Controversy">🎬YT</a><a href="https://redis.io/docs/latest/develop/clients/patterns/distributed-locks/" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
+      </li>
+      <li data-cid="13.5.4" data-name="pub sub messaging vs sharded pub sub spublish vs redis streams keyspace notifications">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Pub/Sub Messaging vs Sharded Pub/Sub (SPUBLISH) vs Redis Streams &amp; Keyspace Notifications</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Why classic Pub/Sub drops messages for disconnected subscribers and broadcasts across every cluster node, Redis 7 Sharded Pub/Sub (SPUBLISH/SSUBSCRIBE) slot routing, and Keyspace Notifications overhead.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=61EOtB1vm8k" data-vtitle="Pub/Sub Messaging vs Sharded Pub/Sub (SPUBLISH) vs Redis Streams &amp; Keyspace Notifications" data-vchannel="shubham.patel03" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Pub/Sub Messaging vs Sharded Pub/Sub (SPUBLISH) vs Redis Streams &amp; Keyspace Notifications">🎬YT</a><a href="https://redis.io/docs/latest/develop/interact/pubsub/" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
+      </li>
+    </ol>
+  </div>
+  <div class="subsection">
+    <div class="subsection-head">
+      <span class="subsection-tag">13.6</span>
+      <h3>Distributed Use Cases, Client Optimization, Security &amp; Production Tuning</h3>
+      <span style="font-size:11px;color:var(--text-faint);">4 concepts</span>
+    </div>
+    <div class="subsection-desc">Atomic Lua rate limiters and idempotency stores, RESP3 client-side caching, ACLs and TLS hardening, and Linux kernel/SLOWLOG production diagnostics.</div>
+    <ol class="concepts">
+      <li data-cid="13.6.1" data-name="distributed use cases rate limiting token bucket sliding window lua sessions idempotency">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Distributed Use Cases: Rate Limiting (Token Bucket / Sliding Window Lua), Sessions &amp; Idempotency</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Building exact Sliding Window Log (ZSET) and Token Bucket (Lua + Hash) distributed rate limiters, sticky-free session stores, and atomic Idempotency-Key deduplication caches.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=LPtQguD8_K0" data-vtitle="Distributed Use Cases: Rate Limiting (Token Bucket / Sliding Window Lua), Sessions &amp; Idempotency" data-vchannel="Real STEM" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Distributed Use Cases: Rate Limiting (Token Bucket / Sliding Window Lua), Sessions &amp; Idempotency">🎬YT</a><a href="https://redis.io/glossary/rate-limiting/" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
+      </li>
+      <li data-cid="13.6.2" data-name="client side caching client tracking bcast optin resp3 push invalidation pool sizing">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Client-Side Caching (CLIENT TRACKING BCAST/OPTIN), RESP3 Push Invalidation &amp; Pool Sizing</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Eliminating even sub-millisecond network hops with L1 in-process caching backed by server-assisted RESP3 invalidation tables (Default vs Prefix BCAST mode), plus sizing multiplexed async client connections.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=ILxO68z0OmQ" data-vtitle="Client-Side Caching (CLIENT TRACKING BCAST/OPTIN), RESP3 Push Invalidation &amp; Pool Sizing" data-vchannel="Salvatore Sanfilippo" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Client-Side Caching (CLIENT TRACKING BCAST/OPTIN), RESP3 Push Invalidation &amp; Pool Sizing">🎬YT</a><a href="https://redis.io/docs/latest/develop/clients/client-side-caching/" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
+      </li>
+      <li data-cid="13.6.3" data-name="redis security acls acl setuser tls mtls encryption command hardening protected mode">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Redis Security: ACLs (ACL SETUSER), TLS/mTLS Encryption, Command Hardening &amp; Protected Mode</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Replacing shared requirepass with granular per-user ACL categories (@read, @write, -@dangerous) and key pattern restrictions (~app:*), disabling FLUSHALL/KEYS *, and enabling TLS 1.3 transport encryption.</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=57SgF5iht8Y" data-vtitle="Redis Security: ACLs (ACL SETUSER), TLS/mTLS Encryption, Command Hardening &amp; Protected Mode" data-vchannel="Redis" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Redis Security: ACLs (ACL SETUSER), TLS/mTLS Encryption, Command Hardening &amp; Protected Mode">🎬YT</a><a href="https://redis.io/docs/latest/operate/oss_and_stack/management/security/acl/" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
+      </li>
+      <li data-cid="13.6.4" data-name="production diagnostics linux kernel tuning slowlog latency doctor overcommit disabling thp">
+        <div class="done-check" title="Mark as done"></div>
+        <div class="bookmark-star" title="Bookmark">☆</div>
+        <div>
+          <div class="cname">Production Diagnostics &amp; Linux Kernel Tuning: SLOWLOG, LATENCY DOCTOR, overcommit &amp; Disabling THP</div>
+          <div style="font-size:11.5px;color:var(--text-faint);margin-top:2px">Hunting O(N) blockers (KEYS *, HGETALL on huge hashes) with SLOWLOG GET and SCAN, LATENCY DOCTOR diagnostics, setting vm.overcommit_memory=1 and net.core.somaxconn, and disabling Transparent Huge Pages (THP).</div>
+        </div>
+        <div class="res-links"><a class="video" href="https://www.youtube.com/watch?v=HIrlMqbApv0" data-vtitle="Production Diagnostics &amp; Linux Kernel Tuning: SLOWLOG, LATENCY DOCTOR, overcommit &amp; Disabling THP" data-vchannel="Nick Janetakis" data-start="0" data-vdur="" target="_blank" rel="noopener" title="Watch walkthrough: Production Diagnostics &amp; Linux Kernel Tuning: SLOWLOG, LATENCY DOCTOR, overcommit &amp; Disabling THP">🎬YT</a><a href="https://redis.io/docs/latest/operate/oss_and_stack/management/optimization/latency/" target="_blank" rel="noopener" title="Official Documentation">🌐Doc</a></div>
       </li>
     </ol>
   </div>
 </section>
 
-  <div class="sister-guides-card">
-    <div class="sister-title">🚀 Companion Engineering Masterclasses</div>
+      <div class="sister-guides-card">
+    <div class="sister-title">🚀 Complete Engineering &amp; Cloud Masterclasses</div>
     <div class="sister-grid">
-      <a href="tech_aws.html" class="sister-link">☁️ AWS Cloud</a>
-      <a href="tech_linux.html" class="sister-link">🐧 Linux &amp; CLI</a>
-      <a href="tech_git.html" class="sister-link">🌿 Git &amp; GitHub</a>
-      <a href="tech_docker_k8s.html" class="sister-link">🐳 Docker &amp; Kubernetes</a>
-      <a href="tech_cicd.html" class="sister-link">🚀 CI/CD Pipelines</a>
-      <a href="tech_terraform.html" class="sister-link">🏗️ Terraform IaC</a>
-      <a href="tech_kafka.html" class="sister-link">⚡ Apache Kafka</a>
-      <a href="tech_postgres.html" class="sister-link">🐘 PostgreSQL</a>
-      <a href="tech_redis.html" class="sister-link">🔴 Redis Caching</a>
-      <a href="tech_java.html" class="sister-link">☕ Java &amp; Spring Boot</a>
-      <a href="tech_fastapi.html" class="sister-link">🐍 Python &amp; FastAPI</a>
-      <a href="tech_apis.html" class="sister-link">🔌 Production APIs</a>
-      <a href="all_tech.html" class="sister-link active-hub">🌐 All-in-One Tech Portal (16 Domains) &rarr;</a>
+      <a class="sister-link" href="tech_aws.html">☁️ AWS Cloud</a>
+      <a class="sister-link" href="tech_azure.html">🔷 Microsoft Azure</a>
+      <a class="sister-link" href="tech_gcp.html">🌐 Google Cloud Platform</a>
+      <a class="sister-link" href="tech_linux.html">🐧 Linux &amp; CLI</a>
+      <a class="sister-link" href="tech_git.html">🌿 Git &amp; GitHub</a>
+      <a class="sister-link" href="tech_docker_k8s.html">🐳 Docker &amp; Kubernetes</a>
+      <a class="sister-link" href="tech_cicd.html">🚀 CI/CD Pipelines</a>
+      <a class="sister-link" href="tech_terraform.html">🏗️ Terraform IaC</a>
+      <a class="sister-link" href="tech_kafka.html">⚡ Apache Kafka</a>
+      <a class="sister-link" href="tech_spark.html">📊 Apache Spark</a>
+      <a class="sister-link" href="tech_postgres.html">🐘 PostgreSQL</a>
+      <a class="sister-link" href="tech_redis.html">🔴 Redis Caching</a>
+      <a class="sister-link" href="tech_java.html">☕ Java &amp; Spring Boot</a>
+      <a class="sister-link" href="tech_fastapi.html">🐍 Python &amp; FastAPI</a>
+      <a class="sister-link" href="tech_apis.html">🔌 Production APIs</a>
+      <a class="sister-link active-hub" href="cloud_aws_azure.html">☁️ Cloud Platforms Hub &rarr;</a>
+      <a class="sister-link active-hub" href="all_tech.html">🌐 All-in-One Tech Portal &rarr;</a>
     </div>
   </div>
 </div>
@@ -1065,6 +1203,8 @@ window.SITE_SLUG = "cloud";
 
   const themeBtn = document.getElementById('theme-toggle');
   if (themeBtn) themeBtn.addEventListener('click', () => {
+    const navBtn = document.querySelector('[data-hub-theme]');
+    if (navBtn) { navBtn.click(); return; }
     let cur = localStorage.getItem(KEY_THEME) || 'dark';
     let next = cur === 'light' ? 'dark' : (cur === 'dark' ? 'black' : 'light');
     localStorage.setItem(KEY_THEME, next);

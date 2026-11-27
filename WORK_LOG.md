@@ -27,7 +27,7 @@
 | `index.html` | Universal landing hub, 7 site cards, global catalog search | ✅ Up to date | `build-learning-hub.mjs` |
 | `DSA_Ultimate_Index.html` | 47 patterns, 219 subpatterns, 940 problems, default-collapsed pattern sidebar & full-width layout | ✅ Upgraded & Verified | Playwright + Audit |
 | `cloud_aws_azure.html` | **Cloud Platforms Hub**: AWS (55 concepts), Microsoft Azure (19 concepts), GCP (14 concepts) — 18 subsections, 88 concepts, Multi-Cloud Command Deck, sticky domain switcher, focused view isolation | ✅ Redesigned & Active | Playwright + Audit |
-| `all_tech.html` | **All-in-One Tech & Software Engineering Portal**: 13 disciplines (Linux, Git, Docker, K8s, Terraform, CI/CD, Kafka, Spark, PostgreSQL, Redis, Java, FastAPI, APIs) — 71 subsections, 288 concepts | ✅ Redesigned & Active | Playwright + Audit |
+| `all_tech.html` | **All-in-One Tech & Software Engineering Portal**: 13 disciplines (Linux, Git, Docker, K8s, Terraform, CI/CD, Kafka, Spark, PostgreSQL, Redis, Java, FastAPI, APIs) — 74 subsections, 300 concepts | ✅ Redesigned & Active | Playwright + Audit |
 | `ai_data.html` | **AI & Data Hub**: 4 tracks (AI Engineering, Machine Learning Engineering, Data Science, Data Engineering) — 24 subsections, 96 concepts, Command Deck, sticky pill bar, Domain Isolation Engine | ✅ Redesigned & Active | Playwright + Audit |
 | `ai_engineering.html` | **AI Engineering from Scratch Masterclass**: 20 phases, 542 lessons, full MIT curriculum snapshot, direct link integration | ✅ Active with Hub Breadcrumb | Playwright + Audit |
 | `tech_aws.html` | Standalone AWS Cloud Architecture Masterclass (11 subsections, 55 concepts, Complete Enterprise Services Inventory) | ✅ Deployed & Verified | Playwright + Audit |
@@ -43,7 +43,7 @@
 | `tech_terraform.html` | Standalone Terraform & Infrastructure as Code Masterclass (6 subsections, 24 concepts, HCL2, Remote State, DynamoDB Locking, Modules, Refactoring, import/moved blocks, Terragrunt, CI/CD with OIDC, Policy as Code, Sentinel/OPA, terraform test, Continuous Drift Automation) | ✅ Expanded & Verified | Playwright + Audit |
 | `tech_kafka.html` | Standalone Apache Kafka Distributed Streaming Masterclass (6 subsections, 24 concepts, Commit Log/Zero-Copy, KRaft, ISR/ELR/Compaction, Idempotent EOS Producers, CooperativeSticky/KIP-848, Schema Registry, Debezium CDC, Kafka Streams, Tiered Storage KIP-405, MirrorMaker 2, TLS/SASL/ACLs & Observability) | ✅ Expanded & Verified | Playwright + Audit |
 | `tech_postgres.html` | Standalone Database Engineering & PostgreSQL Internals Masterclass (6 subsections, 24 concepts, Partitioning, JSONB/pgvector, Slotted Pages, MVCC/HOT, WAL/ARIES, Autovacuum, SSI/Locks, Zero-Downtime DDL, B-Tree/GIN/GiST/BRIN, CBO/EXPLAIN, Replication, PgBouncer, Patroni HA, PITR, RLS & Linux Tuning) | ✅ Expanded & Verified | Playwright + Audit |
-| `tech_redis.html` | Standalone In-Memory Caching with Redis Masterclass (3 subsections, 12 concepts) | ✅ Deployed | Playwright + Audit |
+| `tech_redis.html` | Standalone In-Memory Caching with Redis Masterclass (6 subsections, 24 concepts, Event Loop, RESP3, jemalloc/Listpack, SDS/Skiplist/HyperLogLog/Streams, LRU/LFU, Stampede Defense, RDB/AOF, Sentinel, Cluster 16,384 Slots, Lua/Functions, Redlock, CLIENT TRACKING, ACLs & Linux Tuning) | ✅ Expanded & Verified | Playwright + Audit |
 | `tech_java.html` | Standalone Java & Spring Boot Microservices Masterclass (4 subsections, 16 concepts) | ✅ Deployed | Playwright + Audit |
 | `tech_fastapi.html` | Standalone Python & FastAPI Backend Engineering Masterclass (2 subsections, 8 concepts) | ✅ Deployed | Playwright + Audit |
 | `tech_apis.html` | Standalone Production API Design & Architecture Masterclass (6 subsections, 24 concepts, All Protocols & Architecture Types) | ✅ Deployed & Verified | Playwright + Audit |
@@ -888,3 +888,51 @@ The autonomous agent is scheduled via recurring cron notification (`0 */3 * * *`
     - Verified 24 concepts, 6 subsections, 17 sister links, progress toggle, and study-rail mount (3 buttons) in `tech_postgres.html`.
     - Verified 288 total concepts, 71 subsections, and `switchDomain('postgres')` isolation in `all_tech.html`.
     - Verified 24 PostgreSQL entries in `search-index.json`, zero page/console errors, and zero horizontal overflow (`scrollWidth === clientWidth === 1440px`) across Light and Black themes.
+
+### [2026-11-27 15:28 EST] Daily Expansion: In-Memory Caching & Redis Architecture Deep Expansion (6 Subsections, 24 Concepts)
+- **Domain Sequence Identification**:
+  - Identified In-Memory Caching with Redis (Domain 10 in `all_tech.html` / Section 13) as the next domain in sequence following Linux (Domain 01), Git (Domain 02), Docker (Domain 03), Kubernetes (Domain 04), Terraform (Domain 05), CI/CD (Domain 06), Apache Kafka (Domain 07), Apache Spark (Domain 08), and PostgreSQL (Domain 09).
+  - Synchronized across standalone masterclass `tech_redis.html` and central portal `all_tech.html` (Section 13).
+- **Redis & In-Memory Caching Curriculum Architecture (6 Subsections, 24 Concepts: 13.1.1 to 13.6.4)**:
+  - `13.1 Redis Architecture, Event Loop, Memory Model & Wire Protocol`:
+    - `13.1.1` Single-Threaded Event Loop & I/O Multiplexing (epoll/kqueue, aeEventLoop & Redis 6+ Threaded I/O)
+    - `13.1.2` RESP2 & RESP3 Wire Protocol, Command Pipelining & Round-Trip Time (RTT) Elimination
+    - `13.1.3` Memory Allocator Internals (jemalloc), Fragmentation Ratio, redisObject & Listpack Compression
+    - `13.1.4` Valkey, Redis Licensing Evolution & Forking Copy-on-Write (COW) Memory Overhead
+  - `13.2 Core & Advanced In-Memory Data Structures`:
+    - `13.2.1` Strings (SDS Dynamic Strings), Atomic Counters (INCR/DECR) & Bitfields (SETBIT / BITFIELD)
+    - `13.2.2` Hashes (listpack vs hashtable), Lists (quicklist), Blocking Queues (BLPOP) & Sets (intset)
+    - `13.2.3` Sorted Sets (ZSET: Dual dict + skiplist O(log N)), Real-Time Leaderboards & Priority Queues
+    - `13.2.4` Probabilistic & Streaming Structures: HyperLogLog (12KB), Bloom Filters, Geo & Redis Streams
+  - `13.3 Caching Topologies, Eviction Policies & Failure Mode Mitigations`:
+    - `13.3.1` Caching Topologies: Cache-Aside (Lazy), Read-Through, Write-Through & Write-Behind (Write-Back)
+    - `13.3.2` Eviction Policies & Memory Pressure: Approximated allkeys-lru, volatile-lru, allkeys-lfu & maxmemory
+    - `13.3.3` Cache Failure Modes: Cache Penetration, Cache Avalanche (Jittered TTLs) & Cache Stampede
+    - `13.3.4` Stampede & Consistency Mitigations: Singleflight Mutexes, XFetch Early Expiration & CDC Invalidation
+  - `13.4 Persistence, Replication, Sentinel HA & Redis Cluster`:
+    - `13.4.1` Persistence Mechanics: RDB Snapshots (BGSAVE Fork) vs AOF (Append-Only File & Multi-Part AOF)
+    - `13.4.2` AOF Fsync Policies (always, everysec, no), bgrewriteaof & Hybrid RDB-AOF Preamble
+    - `13.4.3` Replication & Redis Sentinel: PSYNC2 Partial Resync, Quorum (SDOWN/ODOWN) & Automatic Failover
+    - `13.4.4` Redis Cluster Architecture: 16,384 Hash Slots (CRC16), Gossip Bus, Hash Tags & MOVED/ASK Redirects
+  - `13.5 Atomicity, Distributed Locking, Lua Scripting & Pub/Sub`:
+    - `13.5.1` Redis Transactions (MULTI/EXEC), Optimistic Concurrency (WATCH CAS) & No-Rollback Semantics
+    - `13.5.2` Server-Side Atomicity: Lua Scripts (EVAL/EVALSHA) & Redis 7 Functions (FUNCTION LOAD)
+    - `13.5.3` Distributed Locks: SET NX PX, Fencing Tokens, Lease Watchdogs & Redlock Controversy
+    - `13.5.4` Pub/Sub Messaging vs Sharded Pub/Sub (SPUBLISH) vs Redis Streams & Keyspace Notifications
+  - `13.6 Distributed Use Cases, Client Optimization, Security & Production Tuning`:
+    - `13.6.1` Distributed Use Cases: Rate Limiting (Token Bucket / Sliding Window Lua), Sessions & Idempotency
+    - `13.6.2` Client-Side Caching (CLIENT TRACKING BCAST/OPTIN), RESP3 Push Invalidation & Pool Sizing
+    - `13.6.3` Redis Security: ACLs (ACL SETUSER), TLS/mTLS Encryption, Command Hardening & Protected Mode
+    - `13.6.4` Production Diagnostics & Linux Kernel Tuning: SLOWLOG, LATENCY DOCTOR, overcommit & Disabling THP
+- **Portal, Masterclass & Search Synchronization**:
+  - `tech_redis.html`: Expanded from 3 subsections (12 concepts) to **6 subsections (24 concepts)** with 24 unique oEmbed-verified YouTube walkthroughs and HTTP-200 verified official documentation URLs; removed stale `.focus-bar-right` buttons, updated `sister-guides-card` to all 17 links, and delegated `#theme-toggle` to shared navbar control.
+  - `all_tech.html`: Expanded Section 13 (Redis) to 24 concepts and updated `card-redis` and portal totals to **13 Disciplines · 74 Subsections · 300 Concepts**.
+  - `tools/build-learning-hub.mjs` & `search-index.json`: Added all 24 Redis concepts to the global search catalog.
+  - `tools/expand_redis_masterclass.py`: Atomic, idempotent builder script created.
+- **Verification Suite**:
+  - `python tools/audit_site.py`: **0 findings** across all 792 scanned pages.
+  - `node tools/verify-learning-hub.mjs`: All 16 hub pages passed with all checks green.
+  - Headless Playwright test suite (`test_redis_expansion_playwright.py`):
+    - Verified 24 concepts, 6 subsections, 17 sister links, progress toggle, and study-rail mount (3 buttons) in `tech_redis.html`.
+    - Verified 300 total concepts, 74 subsections, and `switchDomain('redis')` isolation in `all_tech.html`.
+    - Verified 24 Redis entries in `search-index.json`, zero page/console errors, and zero horizontal overflow (`scrollWidth === clientWidth === 1440px`) across Light and Black themes.

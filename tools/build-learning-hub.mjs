@@ -3742,6 +3742,41 @@ const postgresSearchItems = postgresConcepts.map((item) => ({
   a: `tech_postgres.html`,
 }));
 
+const redisConcepts = [
+  { cid: "13.1.1", t: "Single-Threaded Event Loop & I/O Multiplexing (epoll/kqueue, aeEventLoop & Redis 6+ Threaded I/O)" },
+  { cid: "13.1.2", t: "RESP2 & RESP3 Wire Protocol, Command Pipelining & Round-Trip Time (RTT) Elimination" },
+  { cid: "13.1.3", t: "Memory Allocator Internals (jemalloc), Fragmentation Ratio, redisObject & Listpack Compression" },
+  { cid: "13.1.4", t: "Valkey, Redis Licensing Evolution & Forking Copy-on-Write (COW) Memory Overhead" },
+  { cid: "13.2.1", t: "Strings (SDS Dynamic Strings), Atomic Counters (INCR/DECR) & Bitfields (SETBIT / BITFIELD)" },
+  { cid: "13.2.2", t: "Hashes (listpack vs hashtable), Lists (quicklist), Blocking Queues (BLPOP) & Sets (intset)" },
+  { cid: "13.2.3", t: "Sorted Sets (ZSET: Dual dict + skiplist O(log N)), Real-Time Leaderboards & Priority Queues" },
+  { cid: "13.2.4", t: "Probabilistic & Streaming Structures: HyperLogLog (12KB), Bloom Filters, Geo & Redis Streams" },
+  { cid: "13.3.1", t: "Caching Topologies: Cache-Aside (Lazy), Read-Through, Write-Through & Write-Behind (Write-Back)" },
+  { cid: "13.3.2", t: "Eviction Policies & Memory Pressure: Approximated allkeys-lru, volatile-lru, allkeys-lfu & maxmemory" },
+  { cid: "13.3.3", t: "Cache Failure Modes: Cache Penetration, Cache Avalanche (Jittered TTLs) & Cache Stampede" },
+  { cid: "13.3.4", t: "Stampede & Consistency Mitigations: Singleflight Mutexes, XFetch Early Expiration & CDC Invalidation" },
+  { cid: "13.4.1", t: "Persistence Mechanics: RDB Snapshots (BGSAVE Fork) vs AOF (Append-Only File & Multi-Part AOF)" },
+  { cid: "13.4.2", t: "AOF Fsync Policies (always, everysec, no), bgrewriteaof & Hybrid RDB-AOF Preamble" },
+  { cid: "13.4.3", t: "Replication & Redis Sentinel: PSYNC2 Partial Resync, Quorum (SDOWN/ODOWN) & Automatic Failover" },
+  { cid: "13.4.4", t: "Redis Cluster Architecture: 16,384 Hash Slots (CRC16), Gossip Bus, Hash Tags & MOVED/ASK Redirects" },
+  { cid: "13.5.1", t: "Redis Transactions (MULTI/EXEC), Optimistic Concurrency (WATCH CAS) & No-Rollback Semantics" },
+  { cid: "13.5.2", t: "Server-Side Atomicity: Lua Scripts (EVAL/EVALSHA) & Redis 7 Functions (FUNCTION LOAD)" },
+  { cid: "13.5.3", t: "Distributed Locks: SET NX PX, Fencing Tokens, Lease Watchdogs & Redlock Controversy" },
+  { cid: "13.5.4", t: "Pub/Sub Messaging vs Sharded Pub/Sub (SPUBLISH) vs Redis Streams & Keyspace Notifications" },
+  { cid: "13.6.1", t: "Distributed Use Cases: Rate Limiting (Token Bucket / Sliding Window Lua), Sessions & Idempotency" },
+  { cid: "13.6.2", t: "Client-Side Caching (CLIENT TRACKING BCAST/OPTIN), RESP3 Push Invalidation & Pool Sizing" },
+  { cid: "13.6.3", t: "Redis Security: ACLs (ACL SETUSER), TLS/mTLS Encryption, Command Hardening & Protected Mode" },
+  { cid: "13.6.4", t: "Production Diagnostics & Linux Kernel Tuning: SLOWLOG, LATENCY DOCTOR, overcommit & Disabling THP" },
+];
+
+const redisSearchItems = redisConcepts.map((item) => ({
+  k: "cloud",
+  c: `redis-${item.cid}`,
+  t: `Redis · ${item.cid}: ${item.t}`,
+  s: "In-Memory Caching with Redis",
+  a: `tech_redis.html`,
+}));
+
 const allSearchItems = [
   ...data.items.map((item) => ({
     k: item.domain,
@@ -3760,6 +3795,7 @@ const allSearchItems = [
   ...kafkaSearchItems,
   ...sparkSearchItems,
   ...postgresSearchItems,
+  ...redisSearchItems,
 ];
 
 write(
